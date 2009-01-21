@@ -17,6 +17,8 @@
 
 package android.util;
 
+import android.os.SystemProperties;
+
 /**
  * Build configuration.  The constants in this class vary depending
  * on release vs. debug build.  This is the configuration for release builds.
@@ -48,4 +50,31 @@ public final class Config
      * Are DEBUG log messages enabled?
      */
     public static final boolean LOGD = true;
+
+    /**
+     * Get a boolean static configuration parameter.
+     *
+     * The value of any given parameter is guaranteed to not change
+     * during the life of the phone.
+     *
+     * TODO: back this with a serious implementation.
+     * TODO: proper javadoc.
+     */
+    public static final boolean getBoolean(String key, boolean fallback) {
+        if (key.equals(REQUIRES_PROVISIONING)) {
+            return SystemProperties.getBoolean("ro.requires_provisioning", fallback);
+        }
+        return fallback;
+    }
+
+    /**
+     * Whether the device requires provisioning.
+     *
+     * Devices that require provisioning through a setup app can
+     * restrict their behaviors until the setup app sets the setting
+     * Settings.Secure.DEVICE_PROVISIONED.
+     *
+     * Pass this string to getBoolean().
+     */
+    public static final String REQUIRES_PROVISIONING = "requires_provisioning";
 }

@@ -109121,6 +109121,21 @@
  visibility="public"
 >
 </constructor>
+<method name="getBoolean"
+ return="boolean"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="true"
+ final="true"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="key" type="java.lang.String">
+</parameter>
+<parameter name="fallback" type="boolean">
+</parameter>
+</method>
 <field name="DEBUG"
  type="boolean"
  transient="false"
@@ -109170,6 +109185,17 @@
  transient="false"
  volatile="false"
  value="true"
+ static="true"
+ final="true"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</field>
+<field name="REQUIRES_PROVISIONING"
+ type="java.lang.String"
+ transient="false"
+ volatile="false"
+ value="&quot;requires_provisioning&quot;"
  static="true"
  final="true"
  deprecated="not deprecated"
