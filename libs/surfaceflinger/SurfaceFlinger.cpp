@@ -63,7 +63,7 @@
 
 
 // the VNC server even on local ports presents a significant
-// thread as it can allow an application to control and "see" other
+// threat as it can allow an application to control and "see" other
 // applications, de-facto bypassing security permissions.
 #define ENABLE_VNC_SERVER   0
 
