@@ -1024,7 +1024,7 @@ AudioFlinger::TrackBase::TrackBase(
 {
     mName = audioFlinger->audioMixer()->getTrackName();
     if (mName < 0) {
-        LOGE("no more track names availlable");
+        LOGE("no more track names available");
         return;
     }
 
@@ -1503,14 +1503,11 @@ status_t AudioFlinger::RecordTrack::getNextBuffer(AudioBufferProvider::Buffer* b
 
     framesAvail = cblk->framesAvailable_l();
 
-    if (LIKELY(framesAvail)) {
+    if (LIKELY(framesAvail >= framesReq)) {
         uint32_t s = cblk->server;
         uint32_t bufferEnd = cblk->serverBase + cblk->frameCount;
 
-        if (framesReq > framesAvail) {
-            framesReq = framesAvail;
-        }
-        if (s + framesReq > bufferEnd) {
+        if (s + framesReq > bufferEnd) { // should never happen
             framesReq = bufferEnd - s;
         }
 
