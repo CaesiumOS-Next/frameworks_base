@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAZn///rQ\u003d",
+        "filename": "core/java/android/widget/DatePicker.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1001146
+      },
+      "writtenOn": "2009-07-01T04:02:16Z",
+      "side": 1,
+      "message": "Like I said in the previous review (https://review.source.android.com/Gerrit#patch,sidebyside,9917,1,core/java/android/widget/DatePicker.java), calling this method here will trigger mOnDateChangedListener to be invoked twice. Please put a guard somewhere to prevent this from happening.",
+      "revId": "192c9bc7c9c5e293e6b8a257768dff4f596389c0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
