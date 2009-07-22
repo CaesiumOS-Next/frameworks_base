@@ -565,11 +565,22 @@ public class InputMethodManagerService extends IInputMethodManager.Stub
         if (enabledStr != null) {
             final TextUtils.SimpleStringSplitter splitter = mStringColonSplitter;
             splitter.setString(enabledStr);
+            
+            final PackageManager pm = mContext.getPackageManager();
 
             while (splitter.hasNext()) {
                 InputMethodInfo info = mMethodMap.get(splitter.next());
                 if (info != null) {
-                    res.add(info);
+                    final int len = res.size();
+                    final String infoStr = info.loadLabel(pm).toString();
+                    int i;
+                    for (i = 0; i < len; i++) {
+                        InputMethodInfo curInfo = (InputMethodInfo) res.get(i);
+                        if (infoStr.compareTo(curInfo.loadLabel(pm).toString()) < 0) {
+                            break;
+                        }
+                    }
+                    res.add(i, info);
                 }
             }
         }
