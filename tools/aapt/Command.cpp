@@ -408,6 +408,7 @@ int doDump(Bundle* bundle)
             }
             tree.restart();
             printXMLBlock(&tree);
+            tree.uninit();
             delete asset;
             asset = NULL;
         }

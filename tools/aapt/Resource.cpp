@@ -583,6 +583,12 @@ status_t buildResources(Bundle* bundle, const sp<AaptAssets>& assets)
 
     NOISY(printf("Found %d included resource packages\n", (int)table.size()));
 
+    // Standard flags for compiled XML and optional UTF-8 encoding
+    int xmlFlags = XML_COMPILE_STANDARD_RESOURCE;
+    if (bundle->getUTF8()) {
+        xmlFlags |= XML_COMPILE_UTF8;
+    }
+
     // --------------------------------------------------------------
     // First, gather all resource information.
     // --------------------------------------------------------------
@@ -733,7 +739,7 @@ status_t buildResources(Bundle* bundle, const sp<AaptAssets>& assets)
         ResourceDirIterator it(layouts, String8("layout"));
         while ((err=it.next()) == NO_ERROR) {
             String8 src = it.getFile()->getPrintableSource();
-            err = compileXmlFile(assets, it.getFile(), &table);
+            err = compileXmlFile(assets, it.getFile(), &table, xmlFlags);
             if (err == NO_ERROR) {
                 ResXMLTree block;
                 block.setTo(it.getFile()->getData(), it.getFile()->getSize(), true);
@@ -752,7 +758,7 @@ status_t buildResources(Bundle* bundle, const sp<AaptAssets>& assets)
     if (anims != NULL) {
         ResourceDirIterator it(anims, String8("anim"));
         while ((err=it.next()) == NO_ERROR) {
-            err = compileXmlFile(assets, it.getFile(), &table);
+            err = compileXmlFile(assets, it.getFile(), &table, xmlFlags);
             if (err != NO_ERROR) {
                 hasErrors = true;
             }
@@ -767,7 +773,7 @@ status_t buildResources(Bundle* bundle, const sp<AaptAssets>& assets)
     if (xmls != NULL) {
         ResourceDirIterator it(xmls, String8("xml"));
         while ((err=it.next()) == NO_ERROR) {
-            err = compileXmlFile(assets, it.getFile(), &table);
+            err = compileXmlFile(assets, it.getFile(), &table, xmlFlags);
             if (err != NO_ERROR) {
                 hasErrors = true;
             }
@@ -789,7 +795,7 @@ status_t buildResources(Bundle* bundle, const sp<AaptAssets>& assets)
     if (colors != NULL) {
         ResourceDirIterator it(colors, String8("color"));
         while ((err=it.next()) == NO_ERROR) {
-          err = compileXmlFile(assets, it.getFile(), &table);
+          err = compileXmlFile(assets, it.getFile(), &table, xmlFlags);
             if (err != NO_ERROR) {
                 hasErrors = true;
             }
@@ -805,7 +811,7 @@ status_t buildResources(Bundle* bundle, const sp<AaptAssets>& assets)
         ResourceDirIterator it(menus, String8("menu"));
         while ((err=it.next()) == NO_ERROR) {
             String8 src = it.getFile()->getPrintableSource();
-            err = compileXmlFile(assets, it.getFile(), &table);
+            err = compileXmlFile(assets, it.getFile(), &table, xmlFlags);
             if (err != NO_ERROR) {
                 hasErrors = true;
             }

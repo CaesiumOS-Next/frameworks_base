@@ -473,6 +473,7 @@ XMLNode::XMLNode(const String8& filename, const String16& s1, const String16& s2
     , mFilename(filename)
     , mStartLineNumber(0)
     , mEndLineNumber(0)
+    , mUTF8(false)
 {
     if (isNamespace) {
         mNamespacePrefix = s1;
@@ -831,7 +832,7 @@ status_t XMLNode::assignResourceIds(const sp<AaptAssets>& assets,
 status_t XMLNode::flatten(const sp<AaptFile>& dest,
         bool stripComments, bool stripRawValues) const
 {
-    StringPool strings;
+    StringPool strings = StringPool(false, mUTF8);
     Vector<uint32_t> resids;
     
     // First collect just the strings for attribute names that have a
