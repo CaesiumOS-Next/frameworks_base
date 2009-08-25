@@ -30,8 +30,8 @@ void printStringPool(const ResStringPool* pool)
     }
 }
 
-StringPool::StringPool(bool sorted)
-    : mSorted(sorted), mValues(-1), mIdents(-1)
+StringPool::StringPool(bool sorted, bool utf8)
+    : mSorted(sorted), mUTF8(utf8), mValues(-1), mIdents(-1)
 {
 }
 
@@ -218,9 +218,25 @@ status_t StringPool::writeStringBlock(const sp<AaptFile>& pool)
         entry& ent = mEntries.editItemAt(i);
         const size_t strSize = (ent.value.size());
         const size_t lenSize = strSize > 0x7fff ? sizeof(uint32_t) : sizeof(uint16_t);
-        const size_t totalSize = lenSize + ((strSize+1)*sizeof(uint16_t));
+
+        size_t encLenSize = 0;
+        size_t encSize = 0;
+        String8 encStr;
+        if (mUTF8) {
+            encStr = String8(ent.value);
+            encSize = encStr.size();
+            encLenSize = encSize > 0x7fff ? sizeof(uint32_t) : sizeof(uint32_t);
+        }
 
         ent.offset = strPos;
+
+        size_t totalSize;
+        if (mUTF8) {
+            totalSize = lenSize + encLenSize + ((encSize+1)*sizeof(char));
+        } else {
+            totalSize = lenSize + ((strSize+1)*sizeof(uint16_t));
+        }
+
         uint16_t* dat = (uint16_t*)pool->editData(preSize + strPos + totalSize);
         if (dat == NULL) {
             fprintf(stderr, "ERROR: Out of memory for string pool\n");
@@ -232,9 +248,34 @@ status_t StringPool::writeStringBlock(const sp<AaptFile>& pool)
             dat++;
         }
         *dat++ = htods(strSize);
-        strcpy16_htod(dat, ent.value);
 
-        strPos += lenSize + (strSize+1)*sizeof(uint16_t);
+        if (mUTF8) {
+            if (encLenSize > sizeof(uint16_t)) {
+                *dat = htods(0x8000 | ((encSize>>16)&0x7fff));
+                dat++;
+            }
+            *dat++ = htods(encSize);
+
+            char* cdat = reinterpret_cast<char*>(dat);
+            strcpy(cdat, encStr);
+
+            strPos += lenSize + encLenSize + (encSize+1)*sizeof(char);
+
+            if (strPos&0x1) {
+                size_t padPos = ((strPos+1)&~0x1);
+                uint8_t* dat = (uint8_t*)pool->editData(preSize + padPos);
+                if (dat == NULL) {
+                    fprintf(stderr, "ERROR: Out of memory padding string\n");
+                    return NO_MEMORY;
+                }
+                memset(dat+preSize+strPos, 0, padPos-strPos);
+                strPos = padPos;
+            }
+        } else {
+            strcpy16_htod(dat, ent.value);
+
+            strPos += lenSize + (strSize+1)*sizeof(uint16_t);
+	    }
     }
 
     // Pad ending string position up to a uint32_t boundary.
@@ -311,6 +352,9 @@ status_t StringPool::writeStringBlock(const sp<AaptFile>& pool)
     header->styleCount = htodl(STYLES);
     if (mSorted) {
         header->flags |= htodl(ResStringPool_header::SORTED_FLAG);
+    }
+    if (mUTF8) {
+        header->flags |= htodl(ResStringPool_header::UTF8_FLAG);
     }
     header->stringsStart = htodl(preSize);
     header->stylesStart = htodl(STYLES > 0 ? (preSize+strPos) : 0);

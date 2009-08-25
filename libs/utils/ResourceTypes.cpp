@@ -228,12 +228,12 @@ Res_png_9patch* Res_png_9patch::deserialize(const void* inData)
 // --------------------------------------------------------------------
 
 ResStringPool::ResStringPool()
-    : mError(NO_INIT), mOwnedData(NULL)
+    : mError(NO_INIT), mOwnedData(NULL), mCache(NULL)
 {
 }
 
 ResStringPool::ResStringPool(const void* data, size_t size, bool copyData)
-    : mError(NO_INIT), mOwnedData(NULL)
+    : mError(NO_INIT), mOwnedData(NULL), mCache(NULL)
 {
     setTo(data, size, copyData);
 }
@@ -295,6 +295,16 @@ status_t ResStringPool::setTo(const void* data, size_t size, bool copyData)
                     (int)size);
             return (mError=BAD_TYPE);
         }
+
+        size_t charSize;
+        if (mHeader->flags&ResStringPool_header::UTF8_FLAG) {
+            charSize = sizeof(uint8_t);
+            mCache = (char16_t**)malloc(sizeof(char16_t**)*mHeader->stringCount);
+            memset(mCache, 0, sizeof(char16_t**)*mHeader->stringCount);
+        } else {
+            charSize = sizeof(char16_t);
+        }
+
         mStrings = (const char16_t*)
             (((const uint8_t*)data)+mHeader->stringsStart);
         if (mHeader->stringsStart >= (mHeader->header.size-sizeof(uint16_t))) {
@@ -304,7 +314,7 @@ status_t ResStringPool::setTo(const void* data, size_t size, bool copyData)
         }
         if (mHeader->styleCount == 0) {
             mStringPoolSize =
-                (mHeader->header.size-mHeader->stringsStart)/sizeof(uint16_t);
+                (mHeader->header.size-mHeader->stringsStart)/charSize;
         } else {
             // check invariant: styles follow the strings
             if (mHeader->stylesStart <= mHeader->stringsStart) {
@@ -313,7 +323,7 @@ status_t ResStringPool::setTo(const void* data, size_t size, bool copyData)
                 return (mError=BAD_TYPE);
             }
             mStringPoolSize =
-                (mHeader->stylesStart-mHeader->stringsStart)/sizeof(uint16_t);
+                (mHeader->stylesStart-mHeader->stringsStart)/charSize;
         }
 
         // check invariant: stringCount > 0 requires a string pool to exist
@@ -328,13 +338,19 @@ status_t ResStringPool::setTo(const void* data, size_t size, bool copyData)
             for (i=0; i<mHeader->stringCount; i++) {
                 e[i] = dtohl(mEntries[i]);
             }
-            char16_t* s = const_cast<char16_t*>(mStrings);
-            for (i=0; i<mStringPoolSize; i++) {
-                s[i] = dtohs(mStrings[i]);
+            if (!(mHeader->flags&ResStringPool_header::UTF8_FLAG)) {
+                char16_t* s = const_cast<char16_t*>(mStrings);
+                for (i=0; i<mStringPoolSize; i++) {
+                    s[i] = dtohs(mStrings[i]);
+                }
             }
         }
 
-        if (mStrings[mStringPoolSize-1] != 0) {
+        const unsigned char *string8s = reinterpret_cast<const unsigned char *>(mStrings);
+        if ((mHeader->flags&ResStringPool_header::UTF8_FLAG &&
+                string8s[mStringPoolSize-1] != 0) ||
+                (!mHeader->flags&ResStringPool_header::UTF8_FLAG &&
+                mStrings[mStringPoolSize-1] != 0)) {
             LOGW("Bad string block: last string is not 0-terminated\n");
             return (mError=BAD_TYPE);
         }
@@ -409,6 +425,26 @@ void ResStringPool::uninit()
         free(mOwnedData);
         mOwnedData = NULL;
     }
+    if (mCache != NULL) {
+        for (size_t x = 0; x < mHeader->stringCount; x++) {
+            if (mCache[x] != NULL) {
+                free(mCache[x]);
+                mCache[x] = NULL;
+            }
+        }
+        free(mCache);
+        mCache = NULL;
+    }
+}
+
+inline void decodeLength(const char16_t** str, size_t *const len)
+{
+    *len = **str;
+    if ((**str)&0x8000) {
+        (*str)++;
+        *len = (((*len)&0x7fff)<<16) + **str;
+    }
+    (*str)++;
 }
 
 const uint16_t* ResStringPool::stringAt(size_t idx, size_t* outLen) const
@@ -417,16 +453,35 @@ const uint16_t* ResStringPool::stringAt(size_t idx, size_t* outLen) const
         const uint32_t off = (mEntries[idx]/sizeof(uint16_t));
         if (off < (mStringPoolSize-1)) {
             const char16_t* str = mStrings+off;
-            *outLen = *str;
-            if ((*str)&0x8000) {
-                str++;
-                *outLen = (((*outLen)&0x7fff)<<16) + *str;
-            }
-            if ((uint32_t)(str+1+*outLen-mStrings) < mStringPoolSize) {
-                return str+1;
+            decodeLength(&str, outLen);
+            if (!(mHeader->flags&ResStringPool_header::UTF8_FLAG)) {
+                if ((uint32_t)(str+*outLen-mStrings) < mStringPoolSize) {
+                    return str;
+                } else {
+                    LOGW("Bad string block: string #%d extends to %d, past end at %d\n",
+                            (int)idx, (int)(str+*outLen-mStrings), (int)mStringPoolSize);
+                }
             } else {
-                LOGW("Bad string block: string #%d extends to %d, past end at %d\n",
-                        (int)idx, (int)(str+1+*outLen-mStrings), (int)mStringPoolSize);
+                size_t encLen = *str;
+                decodeLength(&str, &encLen);
+                if ((uint32_t)(str+encLen-mStrings) < mStringPoolSize) {
+                    if (mCache[idx] != NULL) {
+                        return mCache[idx];
+                    }
+                    char16_t *u16str = (char16_t *)malloc(sizeof(char16_t)*(*outLen));
+                    if (!u16str) {
+                        LOGW("No memory when trying to allocate decode cache for string #%d\n",
+                                (int)idx);
+                        return NULL;
+                    }
+                    const unsigned char *u8src = reinterpret_cast<const unsigned char *>(str);
+                    utf8_to_utf16(u8src, encLen, u16str, *outLen);
+                    mCache[idx] = u16str;
+                    return u16str;
+                } else {
+                    LOGW("Bad string block: string #%d extends to %d, past end at %d\n",
+                            (int)idx, (int)(str+encLen-mStrings), (int)mStringPoolSize);
+                }
             }
         } else {
             LOGW("Bad string block: string #%d entry is at %d, past end at %d\n",
