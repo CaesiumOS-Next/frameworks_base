@@ -1695,4 +1695,11 @@ public final class MediaStore {
      * Name of current volume being scanned by the media scanner.
      */
     public static final String MEDIA_SCANNER_VOLUME = "volume";
+
+    /**
+     * Name of the file signalling the media scanner to ignore media in the containing directory
+     * and its subdirectories. Developers should use this to avoid littering the Gallery with
+     * application graphics.
+     */
+    public static final String MEDIA_IGNORE_FILENAME = ".nomedia";
 }
