@@ -496,6 +496,10 @@ public final class ContentService extends IContentService.Stub {
 
             // Look to see if the proper child already exists
             String segment = getUriSegment(uri, index);
+            if (null == segment) {
+                Log.e(TAG, "Invalid uri provided (" + uri + "); aborting observer addition");
+                return;
+            }
             int N = mChildren.size();
             for (int i = 0; i < N; i++) {
                 ObserverNode node = mChildren.get(i);
