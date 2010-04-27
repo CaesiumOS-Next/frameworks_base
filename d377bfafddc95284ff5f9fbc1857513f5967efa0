@@ -1,0 +1,259 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAx3///5A\u003d",
+        "filename": "core/java/android/widget/AbsListView.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1001146
+      },
+      "writtenOn": "2010-04-27T16:32:55Z",
+      "side": 1,
+      "message": "See comments in FastScroller",
+      "revId": "d377bfafddc95284ff5f9fbc1857513f5967efa0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAx3///44\u003d",
+        "filename": "core/java/android/widget/AbsListView.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 571,
+      "author": {
+        "id": 1001146
+      },
+      "writtenOn": "2010-04-27T16:32:55Z",
+      "side": 1,
+      "message": "Do all of this after  setFastScrollEnabled() and only if enableFastScroll \u003d\u003d true. No need to do this for every ListView.",
+      "revId": "d377bfafddc95284ff5f9fbc1857513f5967efa0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAx3///4Y\u003d",
+        "filename": "core/java/android/widget/AbsListView.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 618,
+      "author": {
+        "id": 1001146
+      },
+      "writtenOn": "2010-04-27T16:32:55Z",
+      "side": 1,
+      "message": "Just call the methods on the fast scroller instead of resetting the various m* fields again.",
+      "revId": "d377bfafddc95284ff5f9fbc1857513f5967efa0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAx3///40\u003d",
+        "filename": "core/java/android/widget/AbsListView.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 645,
+      "author": {
+        "id": 1001146
+      },
+      "writtenOn": "2010-04-27T16:32:55Z",
+      "side": 1,
+      "message": "This specifies the size in pixels of the overlay, NOT of the hint letter.\n\nThere should also be a variant of this method that takes a Drawable instead of a resource id. Actually I would remove this variant and keep only the one with Drawable.",
+      "revId": "d377bfafddc95284ff5f9fbc1857513f5967efa0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAx3///4s\u003d",
+        "filename": "core/java/android/widget/AbsListView.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 664,
+      "author": {
+        "id": 1001146
+      },
+      "writtenOn": "2010-04-27T16:32:55Z",
+      "side": 1,
+      "message": "This should return a Drawable, not a resource id.",
+      "revId": "d377bfafddc95284ff5f9fbc1857513f5967efa0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAx3///4o\u003d",
+        "filename": "core/java/android/widget/AbsListView.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 677,
+      "author": {
+        "id": 1001146
+      },
+      "writtenOn": "2010-04-27T16:32:55Z",
+      "side": 1,
+      "message": "Needs a variant that takes a Drawable. Actually I would remove this variant and keep only the one with Drawable.",
+      "revId": "d377bfafddc95284ff5f9fbc1857513f5967efa0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAx3///4k\u003d",
+        "filename": "core/java/android/widget/AbsListView.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 695,
+      "author": {
+        "id": 1001146
+      },
+      "writtenOn": "2010-04-27T16:32:55Z",
+      "side": 1,
+      "message": "Return a Drawable, not a resource id.",
+      "revId": "d377bfafddc95284ff5f9fbc1857513f5967efa0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAx3///4g\u003d",
+        "filename": "core/java/android/widget/AbsListView.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 1592,
+      "author": {
+        "id": 1001146
+      },
+      "writtenOn": "2010-04-27T16:32:55Z",
+      "side": 1,
+      "message": "Don\u0027t call getDrawableState() several times.",
+      "revId": "d377bfafddc95284ff5f9fbc1857513f5967efa0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAx3///5I\u003d",
+        "filename": "core/java/android/widget/FastScroller.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1001146
+      },
+      "writtenOn": "2010-04-27T16:32:55Z",
+      "side": 1,
+      "message": "Why should the overlay be square? It should have a width and a height, just like with the thumb. Also, if the size is not specified (0 or -1), it should default to the intrinsic dimension of the overlay.",
+      "revId": "d377bfafddc95284ff5f9fbc1857513f5967efa0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAx3///5c\u003d",
+        "filename": "core/java/android/widget/FastScroller.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1001146
+      },
+      "writtenOn": "2010-04-27T16:32:55Z",
+      "side": 1,
+      "message": "This looks like code duplicated from onSizeChanged(). Why is it duplicated? Since it relies on hardcoded constant, it makes the code harder to maintain, it should instead rely on onSizeChanged() to be called again.",
+      "revId": "d377bfafddc95284ff5f9fbc1857513f5967efa0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAx3///5g\u003d",
+        "filename": "core/java/android/widget/FastScroller.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1001146
+      },
+      "writtenOn": "2010-04-27T16:32:55Z",
+      "side": 1,
+      "message": "Space after each (int) cast",
+      "revId": "d377bfafddc95284ff5f9fbc1857513f5967efa0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAx3///5E\u003d",
+        "filename": "core/java/android/widget/FastScroller.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1001146
+      },
+      "writtenOn": "2010-04-27T16:32:55Z",
+      "side": 1,
+      "message": "Why should be the text size half the size of the overlay?",
+      "revId": "d377bfafddc95284ff5f9fbc1857513f5967efa0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAx3///5Y\u003d",
+        "filename": "core/java/android/widget/FastScroller.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1001146
+      },
+      "writtenOn": "2010-04-27T16:32:55Z",
+      "side": 1,
+      "message": "Throw an IllegalArgumentException when the thumb is null.",
+      "revId": "d377bfafddc95284ff5f9fbc1857513f5967efa0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAx3///5U\u003d",
+        "filename": "core/java/android/widget/FastScroller.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1001146
+      },
+      "writtenOn": "2010-04-27T16:32:55Z",
+      "side": 1,
+      "message": "Don\u0027t check for !\u003d null here, having an invisible thumb makes no sense, throw an exception when a null thumb is set.",
+      "revId": "d377bfafddc95284ff5f9fbc1857513f5967efa0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAx3///5Q\u003d",
+        "filename": "core/java/android/widget/FastScroller.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1001146
+      },
+      "writtenOn": "2010-04-27T16:32:55Z",
+      "side": 1,
+      "message": "Don\u0027t check for !\u003d null here, having an invisible thumb makes no sense, throw an exception when a null thumb is set.",
+      "revId": "d377bfafddc95284ff5f9fbc1857513f5967efa0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
