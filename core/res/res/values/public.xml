@@ -1214,5 +1214,5 @@
 
   <public type="attr" name="author" id="0x010102b4" />
   <public type="attr" name="autoStart" id="0x010102b5" />
-  
+  <public type="attr" name="fastScrollSide" id="0x010102b6" />
 </resources>
