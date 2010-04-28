@@ -36,6 +36,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAx3///uQ\u003d",
+        "filename": "core/java/android/widget/AbsListView.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 571,
+      "author": {
+        "id": 1003716
+      },
+      "writtenOn": "2010-04-28T08:57:47Z",
+      "side": 1,
+      "message": "We ran into problems with this since we need the TypedArray (a) when fetching the resources. If the things here are set only if enabledFastScroll \u003d\u003d true, then it won\u0027t be possible to switch on the fast scroller after the list has been created (that is probably a very rare use case, but there _is_ a public setFastScrollEnabled).\n\nThe best solution would be to move this into setFastScrollEnabled, but there we haven\u0027t got access to the TypedArray so we can\u0027t fetch the resources. Any suggestions on how to do this is very welcome.\n\nBTW, this is why we only get the resource id\u0027s, that should be less expensive than getting the drawables.",
+      "parentUuid": "AAAAx3///44\u003d",
+      "revId": "d377bfafddc95284ff5f9fbc1857513f5967efa0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAx3///4Y\u003d",
         "filename": "core/java/android/widget/AbsListView.java",
         "patchSetId": 1
@@ -70,6 +88,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAx3///uM\u003d",
+        "filename": "core/java/android/widget/AbsListView.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 645,
+      "author": {
+        "id": 1003716
+      },
+      "writtenOn": "2010-04-28T08:57:47Z",
+      "side": 1,
+      "message": "Regarding the size. Yes, it specifies the size of the background (but also twice the letter size...). It says the letter to be consistent with the description of fastscroll_overlay_size in dimens.xml. Should probably have changed that one instead...\n\nThe reason it takes a resource id instead of a drawable is mostly to avoid having to have another variable for the drawable. Seems a bit strange to have one for the resource id and one for the drawable. If it\u0027s possible to do the assignments in the constructor in another way, we should skip the resource id and go with drawables instead.\n\nWhat\u0027s the guidelines regarding drawable vs resource id. Should drawables be passed around instead of id\u0027s?",
+      "parentUuid": "AAAAx3///40\u003d",
+      "revId": "d377bfafddc95284ff5f9fbc1857513f5967efa0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAx3///4s\u003d",
         "filename": "core/java/android/widget/AbsListView.java",
         "patchSetId": 1
@@ -81,6 +117,24 @@
       "writtenOn": "2010-04-27T16:32:55Z",
       "side": 1,
       "message": "This should return a Drawable, not a resource id.",
+      "revId": "d377bfafddc95284ff5f9fbc1857513f5967efa0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAx3///uI\u003d",
+        "filename": "core/java/android/widget/AbsListView.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 664,
+      "author": {
+        "id": 1003716
+      },
+      "writtenOn": "2010-04-28T08:57:47Z",
+      "side": 1,
+      "message": "See comment for setFastScrollOverlay",
+      "parentUuid": "AAAAx3///4s\u003d",
       "revId": "d377bfafddc95284ff5f9fbc1857513f5967efa0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -155,6 +209,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAx3///uc\u003d",
+        "filename": "core/java/android/widget/FastScroller.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1003716
+      },
+      "writtenOn": "2010-04-28T08:57:47Z",
+      "side": 1,
+      "message": "We didn\u0027t change this from what it was before since we didn\u0027t need it for our use case. But replacing it with a width and a height attribute is of course reasonable, we\u0027ll do that.",
+      "parentUuid": "AAAAx3///5I\u003d",
+      "revId": "d377bfafddc95284ff5f9fbc1857513f5967efa0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAx3///5c\u003d",
         "filename": "core/java/android/widget/FastScroller.java",
         "patchSetId": 1
@@ -166,6 +238,24 @@
       "writtenOn": "2010-04-27T16:32:55Z",
       "side": 1,
       "message": "This looks like code duplicated from onSizeChanged(). Why is it duplicated? Since it relies on hardcoded constant, it makes the code harder to maintain, it should instead rely on onSizeChanged() to be called again.",
+      "revId": "d377bfafddc95284ff5f9fbc1857513f5967efa0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAx3///uY\u003d",
+        "filename": "core/java/android/widget/FastScroller.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1003716
+      },
+      "writtenOn": "2010-04-28T08:57:47Z",
+      "side": 1,
+      "message": "You\u0027re right, this is duplicated code, we\u0027ll try to fix it.",
+      "parentUuid": "AAAAx3///5c\u003d",
       "revId": "d377bfafddc95284ff5f9fbc1857513f5967efa0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -200,6 +290,24 @@
       "writtenOn": "2010-04-27T16:32:55Z",
       "side": 1,
       "message": "Why should be the text size half the size of the overlay?",
+      "revId": "d377bfafddc95284ff5f9fbc1857513f5967efa0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAx3///uU\u003d",
+        "filename": "core/java/android/widget/FastScroller.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1003716
+      },
+      "writtenOn": "2010-04-28T08:57:47Z",
+      "side": 1,
+      "message": "We didn\u0027t change this since we didn\u0027t need to have it in any other way, when having a square background, half the size works quite good. Should we add a new attribute for the text size? (I think this is needed anyway if we split overlaySize into width and height).",
+      "parentUuid": "AAAAx3///5E\u003d",
       "revId": "d377bfafddc95284ff5f9fbc1857513f5967efa0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
