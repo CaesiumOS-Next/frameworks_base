@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAzH///kk\u003d",
+        "filename": "core/java/android/widget/AbsListView.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 338,
+      "author": {
+        "id": 1001146
+      },
+      "writtenOn": "2010-05-17T17:32:38Z",
+      "side": 1,
+      "message": "I\u0027d rather not have the drawables kept in the list view if possible. That\u0027s extra fields that will rarely be needed.",
+      "revId": "f5261f1753eb1a389ac58f0662eb7d172af75baf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAzH///ko\u003d",
+        "filename": "core/java/android/widget/AbsListView.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 639,
+      "author": {
+        "id": 1001146
+      },
+      "writtenOn": "2010-05-17T17:32:38Z",
+      "side": 1,
+      "message": "No ASCII art, there\u0027s enough room to put everything on one line",
+      "revId": "f5261f1753eb1a389ac58f0662eb7d172af75baf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAzH///ks\u003d",
+        "filename": "core/java/android/widget/FastScroller.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1001146
+      },
+      "writtenOn": "2010-05-17T17:32:38Z",
+      "side": 1,
+      "message": "Public methods must have a javadoc.",
+      "revId": "f5261f1753eb1a389ac58f0662eb7d172af75baf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
