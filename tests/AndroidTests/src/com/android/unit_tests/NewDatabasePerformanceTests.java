@@ -18,6 +18,7 @@ package com.android.unit_tests;
 
 import android.content.ContentValues;
 import android.database.sqlite.SQLiteDatabase;
+import android.os.Environment;
 import android.test.PerformanceTestCase;
 
 import junit.framework.Assert;
@@ -28,14 +29,14 @@ import java.util.Random;
 
 /**
  * Database Performance Tests
- * 
+ *
  */
 
 public class NewDatabasePerformanceTests {
 
   // Edit this to change the test run times.  The original is 100.
   final static int kMultiplier = 1;
-  
+
   public static class PerformanceBase extends TestCase
           implements PerformanceTestCase {
     protected static final int CURRENT_DATABASE_VERSION = 42;
@@ -43,7 +44,8 @@ public class NewDatabasePerformanceTests {
     protected File mDatabaseFile;
 
     public void setUp() {
-      mDatabaseFile = new File("/sdcard", "perf_database_test.db");
+      mDatabaseFile = new File(Environment.getExternalStorageDirectory(),
+              "perf_database_test.db");
       if (mDatabaseFile.exists()) {
         mDatabaseFile.delete();
       }
@@ -486,7 +488,7 @@ public class NewDatabasePerformanceTests {
   }
 
   /**
-   *  100 SELECTs on integer 
+   *  100 SELECTs on integer
    */
 
   public static class SelectInteger100 extends PerformanceBase {
@@ -589,7 +591,7 @@ public class NewDatabasePerformanceTests {
 
   public static class SelectIndexString100 extends PerformanceBase {
     private static final int SIZE = 1 * kMultiplier;
-    private static final String[] COLUMNS = {"c"};      
+    private static final String[] COLUMNS = {"c"};
 
     @Override
     public void setUp() {
@@ -693,7 +695,7 @@ public class NewDatabasePerformanceTests {
 
   public static class Delete1000 extends PerformanceBase {
     private static final int SIZE = 10 * kMultiplier;
-    private static final String[] COLUMNS = {"c"};       
+    private static final String[] COLUMNS = {"c"};
 
     @Override
     public void setUp() {
@@ -719,7 +721,7 @@ public class NewDatabasePerformanceTests {
   }
 
   /**
-   *  1000 DELETE's without an index with where clause 
+   *  1000 DELETE's without an index with where clause
    */
 
   public static class DeleteWhere1000 extends PerformanceBase {
@@ -755,7 +757,7 @@ public class NewDatabasePerformanceTests {
   }
 
   /**
-   *  1000 DELETE's with an index with where clause 
+   *  1000 DELETE's with an index with where clause
    */
 
   public static class DeleteIndexWhere1000 extends PerformanceBase {
@@ -792,7 +794,7 @@ public class NewDatabasePerformanceTests {
   }
 
   /**
-   *  1000 update's with an index with where clause 
+   *  1000 update's with an index with where clause
    */
 
   public static class UpdateIndexWhere1000 extends PerformanceBase {
@@ -835,11 +837,11 @@ public class NewDatabasePerformanceTests {
   }
 
   /**
-   *  1000 update's without an index with where clause 
+   *  1000 update's without an index with where clause
    */
 
   public static class UpdateWhere1000 extends PerformanceBase {
-    private static final int SIZE = 10 * kMultiplier;       
+    private static final int SIZE = 10 * kMultiplier;
     private String[] where = new String[SIZE];
     ContentValues[] mValues = new ContentValues[SIZE];
 
@@ -876,7 +878,7 @@ public class NewDatabasePerformanceTests {
   }
 
   /**
-   *  10000 inserts for an integer 
+   *  10000 inserts for an integer
    */
 
   public static class InsertInteger10000 extends PerformanceBase {
@@ -897,7 +899,7 @@ public class NewDatabasePerformanceTests {
         b.put("a", r);
         mValues[i] = b;
       }
-    }        
+    }
 
     public void testRun() {
       for (int i = 0; i < SIZE; i++) {
@@ -929,7 +931,7 @@ public class NewDatabasePerformanceTests {
         b.put("a", r);
         mValues[i] = b;
       }
-    }        
+    }
 
     public void testRun() {
       for (int i = 0; i < SIZE; i++) {
@@ -939,7 +941,7 @@ public class NewDatabasePerformanceTests {
   }
 
   /**
-   *  10000 inserts for a String 
+   *  10000 inserts for a String
    */
 
   public static class InsertString10000 extends PerformanceBase {
@@ -960,7 +962,7 @@ public class NewDatabasePerformanceTests {
         b.put("a", numberName(r));
         mValues[i] = b;
       }
-    }        
+    }
 
     public void testRun() {
       for (int i = 0; i < SIZE; i++) {
@@ -970,11 +972,11 @@ public class NewDatabasePerformanceTests {
   }
 
   /**
-   *  10000 inserts for a String - indexed table 
+   *  10000 inserts for a String - indexed table
    */
 
   public static class InsertStringIndexed10000 extends PerformanceBase {
-    private static final int SIZE = 100 * kMultiplier;       
+    private static final int SIZE = 100 * kMultiplier;
     ContentValues[] mValues = new ContentValues[SIZE];
 
     @Override
@@ -990,7 +992,7 @@ public class NewDatabasePerformanceTests {
         int r = random.nextInt(100000);
         ContentValues b = new ContentValues(1);
         b.put("a", numberName(r));
-        mValues[i] = b; 
+        mValues[i] = b;
       }
     }
 
@@ -1030,7 +1032,7 @@ public class NewDatabasePerformanceTests {
         where[i] = "a LIKE '" + numberName(r).substring(0, 1) + "*'";
 
       }
-    }        
+    }
 
     public void testRun() {
       for (int i = 0; i < SIZE; i++) {
@@ -1068,8 +1070,8 @@ public class NewDatabasePerformanceTests {
         int r = random.nextInt(100000);
         where[i] = "a LIKE '" + numberName(r).substring(0, 1) + "*'";
 
-      }                              
-    }        
+      }
+    }
 
     public void testRun() {
       for (int i = 0; i < SIZE; i++) {
@@ -1102,7 +1104,7 @@ public class NewDatabasePerformanceTests {
         int upper = (i + 10) * 100;
         where[i] = "a >= " + lower + " AND a < " + upper;
       }
-    }        
+    }
 
     public void testRun() {
       for (int i = 0; i < SIZE; i++) {
@@ -1138,7 +1140,7 @@ public class NewDatabasePerformanceTests {
         where[i] = "a >= " + lower + " AND a < " + upper;
       }
 
-    }        
+    }
 
     public void testRun() {
       for (int i = 0; i < SIZE; i++) {
@@ -1174,8 +1176,8 @@ public class NewDatabasePerformanceTests {
       for (int i = 0; i < SIZE; i++) {
         where[i] = "a LIKE '*e*'";
 
-      }                              
-    }        
+      }
+    }
 
     public void testRun() {
       for (int i = 0; i < SIZE; i++) {
@@ -1212,8 +1214,8 @@ public class NewDatabasePerformanceTests {
       for (int i = 0; i < SIZE; i++) {
         where[i] = "a LIKE '*e*'";
 
-      }                              
-    }        
+      }
+    }
 
     public void testRun() {
       for (int i = 0; i < SIZE; i++) {

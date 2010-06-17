@@ -26,6 +26,7 @@ import android.content.ContentResolver;
 import android.content.Intent;
 import android.app.Notification;
 import android.app.NotificationManager;
+import android.os.Environment;
 import android.os.Vibrator;
 import android.os.Bundle;
 import android.os.Handler;
@@ -54,7 +55,7 @@ public class NotificationTestList extends TestActivity
     @Override
     protected Test[] tests() {
         mNM = (NotificationManager)getSystemService(NOTIFICATION_SERVICE);
-        
+
         return mTests;
     }
 
@@ -62,14 +63,15 @@ public class NotificationTestList extends TestActivity
         new Test("Off and sound") {
             public void run() {
                 PowerManager pm = (PowerManager)NotificationTestList.this.getSystemService(Context.POWER_SERVICE);
-                PowerManager.WakeLock wl = 
+                PowerManager.WakeLock wl =
                             pm.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK, "sound");
                 wl.acquire();
 
                 pm.goToSleep(SystemClock.uptimeMillis());
 
                 Notification n = new Notification();
-                n.sound = Uri.parse("file:///sdcard/virtual-void.mp3");
+                n.sound = Uri.parse("file://" + Environment.getExternalStorageDirectory()
+                        + "/virtual-void.mp3");
                 Log.d(TAG, "n.sound=" + n.sound);
 
                 mNM.notify(1, n);
@@ -154,7 +156,7 @@ public class NotificationTestList extends TestActivity
                 n.defaults |= Notification.DEFAULT_SOUND ;
                 n.vibrate = new long[] {
                         300, 400, 300, 400, 300, 400, 300, 400, 300, 400, 300, 400,
-                        300, 400, 300, 400, 300, 400, 300, 400, 300, 400, 300, 400, 
+                        300, 400, 300, 400, 300, 400, 300, 400, 300, 400, 300, 400,
                         300, 400, 300, 400, 300, 400, 300, 400, 300, 400, 300, 400 };
                 mNM.notify(1, n);
             }
@@ -513,7 +515,7 @@ public class NotificationTestList extends TestActivity
                 }
             }
         },
-        
+
         new Test("Cancel eight notifications") {
             public void run() {
                 for (int i = 1; i < 9; i++) {
@@ -521,7 +523,7 @@ public class NotificationTestList extends TestActivity
                 }
             }
         },
-        
+
         new Test("Persistent with numbers 1") {
             public void run() {
                 mNM.notify(1, notificationWithNumbers(1));

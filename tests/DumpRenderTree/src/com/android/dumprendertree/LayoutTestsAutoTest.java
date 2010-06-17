@@ -24,6 +24,7 @@ import com.android.dumprendertree.forwarder.ForwardService;
 import android.app.Instrumentation;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Environment;
 import android.test.ActivityInstrumentationTestCase2;
 import android.util.Log;
 
@@ -90,10 +91,11 @@ class MyTestRecorder {
 
     public MyTestRecorder(boolean resume) {
         try {
-            File resultsPassedFile = new File("/sdcard/layout_tests_passed.txt");
-            File resultsFailedFile = new File("/sdcard/layout_tests_failed.txt");
-            File noExpectedResultFile = new File("/sdcard/layout_tests_nontext.txt");
-            File resultTimedoutFile = new File("/sdcard/layout_tests_timedout.txt");
+            File externalDir = Environment.getExternalStorageDirectory();
+            File resultsPassedFile = new File(externalDir, "layout_tests_passed.txt");
+            File resultsFailedFile = new File(externalDir, "layout_tests_failed.txt");
+            File noExpectedResultFile = new File(externalDir, "layout_tests_nontext.txt");
+            File resultTimedoutFile = new File(externalDir, "layout_tests_timedout.txt");
 
             mBufferedOutputPassedStream =
                 new BufferedOutputStream(new FileOutputStream(resultsPassedFile, resume));
@@ -126,11 +128,12 @@ public class LayoutTestsAutoTest extends ActivityInstrumentationTestCase2<TestSh
     private static final String LOGTAG = "LayoutTests";
     static final int DEFAULT_TIMEOUT_IN_MILLIS = 5000;
 
-    static final String LAYOUT_TESTS_ROOT = "/sdcard/android/layout_tests/";
-    static final String LAYOUT_TESTS_RESULT_DIR = "/sdcard/android/layout_tests_results/";
-    static final String ANDROID_EXPECTED_RESULT_DIR = "/sdcard/android/expected_results/";
-    static final String LAYOUT_TESTS_LIST_FILE = "/sdcard/android/layout_tests_list.txt";
-    static final String TEST_STATUS_FILE = "/sdcard/android/running_test.txt";
+    static final String EXTERNAL_DIR = Environment.getExternalStorageDirectory().toString();
+    static final String LAYOUT_TESTS_ROOT = EXTERNAL_DIR + "/android/layout_tests/";
+    static final String LAYOUT_TESTS_RESULT_DIR = EXTERNAL_DIR + "/android/layout_tests_results/";
+    static final String ANDROID_EXPECTED_RESULT_DIR = EXTERNAL_DIR + "/android/expected_results/";
+    static final String LAYOUT_TESTS_LIST_FILE = EXTERNAL_DIR + "/android/layout_tests_list.txt";
+    static final String TEST_STATUS_FILE = EXTERNAL_DIR + "/android/running_test.txt";
     static final String LAYOUT_TESTS_RESULTS_REFERENCE_FILES[] = {
           "results/layout_tests_passed.txt",
           "results/layout_tests_failed.txt",
