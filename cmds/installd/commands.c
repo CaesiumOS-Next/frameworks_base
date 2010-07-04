@@ -179,29 +179,60 @@ int free_cache(int free_size)
  */
 static int is_valid_apk_path(const char *path)
 {
-    int len = strlen(APK_DIR_PREFIX);
-int nosubdircheck = 0;
-    if (strncmp(path, APK_DIR_PREFIX, len)) {
-        len = strlen(PROTECTED_DIR_PREFIX);
-        if (strncmp(path, PROTECTED_DIR_PREFIX, len)) {
-            len = strlen(SDCARD_DIR_PREFIX);
-            if (strncmp(path, SDCARD_DIR_PREFIX, len)) {
-                LOGE("invalid apk path '%s' (bad prefix)\n", path);
-                return 0;
-            } else {
-                nosubdircheck = 1;
-            }
-        }
+    /* strncmp len */
+    int len = 0;
+
+    /* the final return value, defaulted to 0 */
+    int retval = 0;
+
+    /* whether or not to run subdircheck */
+    int subdircheck = 1;
+
+    /* len for the last matched prefix */
+    int match = 0;
+
+    /* see if we match the APK_DIR_PREFIX */
+    len = strlen(APK_DIR_PREFIX);
+    if (strncmp(path, APK_DIR_PREFIX, len) == 0) {
+        match = len;
+        retval = 1;
     }
-    if ((nosubdircheck != 1) && strchr(path + len, '/')) {
+
+    /* see if we match the PROTECTED_DIR_PREFIX */
+    len = strlen(PROTECTED_DIR_PREFIX);
+    if (strncmp(path, PROTECTED_DIR_PREFIX, len) == 0) {
+        match = len;
+        retval = 1;
+    }
+
+    /* see if we match the SDCARD_DIR_PREFIX */
+    len = strlen(SDCARD_DIR_PREFIX);
+    if (strncmp(path, SDCARD_DIR_PREFIX, len) == 0) {
+        /* allow apks to be stored in subfolders */
+        subdircheck = 0;
+        retval = 1;
+    }
+
+    /* if nothing matched, return now to avoid further checks */
+    if (match == 0) {
+        LOGE("invalid apk path '%s' (bad prefix)\n", path);
+        return 0;
+    }
+
+    /* checks to be run on everything, use match
+       to exclude the matched path */
+
+    if ((subdircheck == 1) && strchr(path + match, '/')) {
         LOGE("invalid apk path '%s' (subdir?)\n", path);
-        return 0;
+        retval = 0;
     }
-    if (path[len] == '.') {
+
+    if (path[match] == '.') {
         LOGE("invalid apk path '%s' (trickery)\n", path);
-        return 0;
+        retval = 0;
     }
-    return 1;
+
+    return retval;
 }
 
 int move_dex(const char *src, const char *dst)
