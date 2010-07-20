@@ -119,6 +119,10 @@ public class SensorEvent {
      *  All values are in micro-Tesla (uT) and measure the ambient magnetic
      *  field in the X, Y and Z axis.
      *
+     * <p>{@link android.hardware.Sensor#TYPE_GYRROSCOPE Sensor.TYPE_GYROSCOPE}:<p>
+     *  All values are in degrees/second and measure the rate of rotation
+     *  around the X, Y and Z axis.
+     *
      * <p>{@link android.hardware.Sensor#TYPE_LIGHT Sensor.TYPE_LIGHT}:<p>
      *
      *  <p>values[0]: Ambient light level in SI lux units
@@ -130,7 +134,34 @@ public class SensorEvent {
      *  <p> Note that some proximity sensors only support a binary "close" or "far" measurement.
      *   In this case, the sensor should report its maxRange value in the "far" state and a value
      *   less than maxRange in the "near" state.
+     *
+     *  <p>{@link android.hardware.Sensor#TYPE_ROTATION_MATRIX Sensor.TYPE_ROTATION_MATRIX}:<p>
+     *  9 values representing a 3 dimensional rotation matrix.  The 3x3 matrix (a) is held in the
+     *  values array in row major order:
+     *  <pre>
+     *   a = /  v[ 0]   v[ 1]   v[ 2]  \
+     *       |  v[ 3]   v[ 4]   v[ 5]  |
+     *       \  v[ 6]   v[ 7]   v[ 8]  /
+     *  </pre>
+     *  <p>{@link android.hardware.Sensor#TYPE_GRAVITY Sensor.TYPE_GRAVITY}:<p>
+     *  A three dimensional vector indicating the direction and magnitude of gravity.  Units
+     *  are m/s^2.
+     *
+     *  <p>{@link android.hardware.Sensor#TYPE_LINEAR_ACCELERATION Sensor.TYPE_LINEAR_ACCELERATION}:<p>
+     *  A three dimensional vector indicating acceleration along each device axis, not including
+     *  gravity.  All values have units of m/s^2.
+     *
+     *  <p>{@link android.hardware.Sensor#TYPE_ROTATION_VECTOR Sensor.TYPE_ROTATION_VECTOR}:<p>
+     *  The rotation vector represents the orientation of the device as a combination of an angle
+     *  and an axis, in which the device has rotated through an angle theta around an axis
+     *  <x, y, z>. The three elements of the rotation vector are
+     *  <x*sin(theta/2), y*sin(theta/2), z*sin(theta/2)>, such that the magnitude of the rotation
+     *  vector is equal to sin(theta/2), and the direction of the rotation vector is equal to the
+     *  direction of the axis of rotation. The three elements of the rotation vector are equal to
+     *  the last three components of a unit quaternion
+     *  <cos(theta/2), x*sin(theta/2), y*sin(theta/2), z*sin(theta/2)>.
      */
+
     public final float[] values;
 
     /**

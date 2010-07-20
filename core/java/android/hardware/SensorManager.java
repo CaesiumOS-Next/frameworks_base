@@ -369,7 +369,7 @@ public class SensorManager
 
             public void run() {
                 //Log.d(TAG, "entering main sensor thread");
-                final float[] values = new float[3];
+                final float[] values = new float[9];
                 final int[] status = new int[1];
                 final long timestamp[] = new long[1];
                 Process.setThreadPriority(Process.THREAD_PRIORITY_URGENT_DISPLAY);
@@ -455,7 +455,7 @@ public class SensorManager
 
         protected SensorEvent createSensorEvent() {
             // maximal size for all legacy events is 3
-            return new SensorEvent(3);
+            return new SensorEvent(9);
         }
 
         protected SensorEvent getFromPool() {
@@ -505,9 +505,7 @@ public class SensorManager
         void onSensorChangedLocked(Sensor sensor, float[] values, long[] timestamp, int accuracy) {
             SensorEvent t = getFromPool();
             final float[] v = t.values;
-            v[0] = values[0];
-            v[1] = values[1];
-            v[2] = values[2];
+            System.arraycopy( values, 0, t.values, 0, values.length);
             t.timestamp = timestamp[0];
             t.accuracy = accuracy;
             t.sensor = sensor;
@@ -1555,7 +1553,128 @@ public class SensorManager
         }
     }
 
+
+    /** Helper function to compute the angle change between two rotation matrices.
+     *  Given a current rotation matrix (R) and a previous rotation matrix
+     *  (prevR) computes the rotation around the x,y, and z axes which
+     *  transforms prevR to R.
+     *  outputs a 3 element vector containing the x,y, and z angle
+     *  change at indexes 0, 1, and 2 respectively.
+     * <p> Each input matrix is either as a 3x3 or 4x4 row-major matrix
+     * depending on the length of the passed array:
+     * <p>If the array length is 9, then the array elements represent this matrix
+     * <pre>
+     *   /  R[ 0]   R[ 1]   R[ 2]   \
+     *   |  R[ 3]   R[ 4]   R[ 5]   |
+     *   \  R[ 6]   R[ 7]   R[ 8]   /
+     *</pre>
+     * <p>If the array length is 16, then the array elements represent this matrix
+     * <pre>
+     *   /  R[ 0]   R[ 1]   R[ 2]   R[ 3]  \
+     *   |  R[ 4]   R[ 5]   R[ 6]   R[ 7]  |
+     *   |  R[ 8]   R[ 9]   R[10]   R[11]  |
+     *   \  R[12]   R[13]   R[14]   R[15]  /
+     *</pre>
+     * @param R current rotation matrix see {@link android.hardware.Sensor#TYPE_ROTATION_MATRIX}.
+     * @param prevR previous rotation matrix
+     * @param angleChange an array of floats in which the angle change is stored
+     */
+
+    public static void getAngleChange(float[] R, float[] prevR, float[] angleChange) {
+        float rotDiff[] = new float[9];
+        float R_i[]=null;
+        float prevR_i[]=null;
+        int i, j, k;
+
+        if(R.length == 9) {
+            R_i = R;
+        } else if(R.length == 16) {
+            R_i = new float[9];
+            R_i[0] = R[0];
+            R_i[1] = R[1];
+            R_i[2] = R[2];
+            R_i[3] = R[4];
+            R_i[4] = R[5];
+            R_i[5] = R[6];
+            R_i[6] = R[8];
+            R_i[7] = R[9];
+            R_i[8] = R[10];
+        }
+
+        if(prevR.length == 9) {
+            prevR_i = prevR;
+        } else if(R.length == 16) {
+            prevR_i = new float[9];
+            prevR_i[0] = prevR[0];
+            prevR_i[1] = prevR[1];
+            prevR_i[2] = prevR[2];
+            prevR_i[3] = prevR[4];
+            prevR_i[4] = prevR[5];
+            prevR_i[5] = prevR[6];
+            prevR_i[6] = prevR[8];
+            prevR_i[7] = prevR[9];
+            prevR_i[8] = prevR[10];
+        }
+
+        for (i=0; i<3; i++) {
+            for (j=0; j<3; j++) {
+                rotDiff[3*i+j] = 0;
+                for (k=0; k<3; k++) {
+                    rotDiff[3*i+j] += prevR_i[3*k+i] * R_i[3*k+j];
+                }
+            }
+        }
+
+        angleChange[0] = (float)Math.atan2(rotDiff[1], rotDiff[4]);
+        angleChange[1] = (float)Math.asin(-rotDiff[7]);
+        angleChange[2] = (float)Math.atan2(-rotDiff[6], rotDiff[8]);
+
+    }
     
+    /** Helper function to convert a rotation vector to a rotation matrix.
+     *  Given a rotation vector (presumably from a ROTATION_VECTOR sensor), returns a
+     *  9 element rotation matrix in the array R.  R must have length at least 9.
+     * <pre>
+     *   /  R[ 0]   R[ 1]   R[ 2]   \
+     *   |  R[ 3]   R[ 4]   R[ 5]   |
+     *   \  R[ 6]   R[ 7]   R[ 8]   /
+     *</pre>
+     *  @param rotationVector the rotation vector to convert
+     *  @param R an array of floats in which to store the rotation matrix
+     */
+    public static void getRotationMatrixFromVector(float[] rotationVector, float[] R) {
+        float Q[] = new float[4];
+        getQuaternionFromVector(rotationVector, Q);
+
+        R[0] = 1 - 2*Q[2]*Q[2] - 2*Q[3]*Q[3];
+        R[1] = 2*Q[1]*Q[2] - 2*Q[3]*Q[0];
+        R[2] = 2*Q[1]*Q[3] + 2*Q[2]*Q[0];
+
+        R[3] = 2*Q[1]*Q[2] + 2*Q[3]*Q[0];
+        R[4] = 1 - 2*Q[1]*Q[1] - 2*Q[3]*Q[3];
+        R[5] = 2*Q[2]*Q[3] - 2*Q[1]*Q[0];
+
+        R[6] = 2*Q[1]*Q[3] - 2*Q[2]*Q[0];
+        R[7] = 2*Q[2]*Q[3] + 2*Q[1]*Q[0];
+        R[8] = 1 - 2*Q[1]*Q[1] - 2*Q[2]*Q[2];
+    }
+
+    /** Helper function to convert a rotation vector to a normalized quaternion.
+     *  Given a rotation vector (presumably from a ROTATION_VECTOR sensor), returns a normalized
+     *  quaternion in the array Q.  The quaternion is stored as [w, x, y, z]
+     *  @param rv the rotation vector to convert
+     *  @param Q an array of floats in which to store the computed quaternion
+     */
+    public static void getQuaternionFromVector(float[] rv, float[] Q) {
+        float w = (float)Math.sqrt(1 - rv[0]*rv[0] - rv[1]*rv[1] - rv[2]*rv[2]);
+        //In this case, the w component of the quaternion is known to be a positive number
+
+        Q[0] = w;
+        Q[1] = rv[0];
+        Q[2] = rv[1];
+        Q[3] = rv[2];
+    }
+
     private static native void nativeClassInit();
 
     private static native int sensors_module_init();
