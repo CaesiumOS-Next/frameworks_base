@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAA6H///rQ\u003d",
+        "filename": "core/res/res/layout/always_use_checkbox.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1003856
+      },
+      "writtenOn": "2010-08-24T09:15:49Z",
+      "side": 1,
+      "message": "Shouldn\u0027t this be\nMATCH_PARENT\nto be API level 8 conform?",
+      "revId": "77430109e0447e5b35041fedcddce9950fdd438f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAA6H///rM\u003d",
+        "filename": "core/res/res/layout/always_use_checkbox.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1003856
+      },
+      "writtenOn": "2010-08-24T09:15:49Z",
+      "side": 1,
+      "message": "same here",
+      "revId": "77430109e0447e5b35041fedcddce9950fdd438f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
