@@ -1641,4 +1641,14 @@ public interface CommandsInterface {
      * @param response a callback message with the String response in the obj field
      */
     public void requestIsimAuthentication(String nonce, Message response);
+
+    /**
+     * Request to validate and store the Authentication Key
+     *
+     * @param akey
+     *            String containing authentication key with the checksum
+     * @param response
+     *            Callback message to report success or failure
+     */
+    public void validateAndStoreAuthenticationKey(String akey, Message response);
 }
