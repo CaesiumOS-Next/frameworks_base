@@ -1707,6 +1707,11 @@ public interface Phone {
      */
     void unsetOnEcbModeExitResponse(Handler h);
 
+    /**
+     * Checks whether the modem is in power save mode
+     * @return true if modem is in power save mode
+     */
+    boolean isModemPowerSave();
 
     /**
      * TODO: Adding a function for each property is not good.
