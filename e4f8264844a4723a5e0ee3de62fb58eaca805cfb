@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAA8H//98E\u003d",
+        "filename": "core/java/android/webkit/FrameLoader.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 365,
+      "author": {
+        "id": 1000269
+      },
+      "writtenOn": "2010-10-29T14:57:03Z",
+      "side": 1,
+      "message": "remove the unnecessary parens",
+      "revId": "e4f8264844a4723a5e0ee3de62fb58eaca805cfb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAA8H//98M\u003d",
+        "filename": "core/res/res/values/config.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 335,
+      "author": {
+        "id": 1000269
+      },
+      "writtenOn": "2010-10-29T14:57:03Z",
+      "side": 1,
+      "message": "Can you reference the relevant spec(s) here?",
+      "revId": "e4f8264844a4723a5e0ee3de62fb58eaca805cfb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAA8H//98I\u003d",
+        "filename": "core/res/res/values/config.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 336,
+      "author": {
+        "id": 1000269
+      },
+      "writtenOn": "2010-10-29T14:57:03Z",
+      "side": 1,
+      "message": "Is the %s escaped at all?  If so, which type of escaping is used?\n\n(I could go read the code, but this XML file should fully describe what the config strings do and why....)",
+      "revId": "e4f8264844a4723a5e0ee3de62fb58eaca805cfb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
