@@ -1012,7 +1012,7 @@ public final class GsmDataConnectionTracker extends DataConnectionTracker {
                     onEnableApn(apnTypeToId(mRequestedApnType), DISABLED);
                     return;
                 }
-                if (mReregisterOnReconnectFailure) {
+                if ((mReregisterOnReconnectFailure || !lastFailCauseCode.isPermanentFail())) {
                     // We've re-registerd once now just retry forever.
                     mRetryMgr.retryForeverUsingLastTimeout();
                 } else {
