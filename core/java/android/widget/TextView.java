@@ -4556,6 +4556,11 @@ public class TextView extends View implements ViewTreeObserver.OnPreDrawListener
                     } else if (partialEndOffset < 0) {
                         partialEndOffset = 0;
                     }
+                    if (partialEndOffset < partialStartOffset) {
+		        partialStartOffset ^= partialEndOffset;
+		        partialEndOffset ^= partialStartOffset;
+			partialStartOffset ^= partialEndOffset;
+	             }
                 }
                 if ((request.flags&InputConnection.GET_TEXT_WITH_STYLES) != 0) {
                     outText.text = content.subSequence(partialStartOffset,
