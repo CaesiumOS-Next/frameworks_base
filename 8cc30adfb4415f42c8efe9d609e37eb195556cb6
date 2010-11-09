@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAA8X///9Y\u003d",
+        "filename": "media/libstagefright/MPEG4Extractor.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 425,
+      "author": {
+        "id": 1000269
+      },
+      "writtenOn": "2010-11-09T02:22:46Z",
+      "side": 1,
+      "message": "obey local style:\n\n-- space after if, before the \"(\"\n-- braces around the return.  we always use braces, even for single lines.",
+      "revId": "8cc30adfb4415f42c8efe9d609e37eb195556cb6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
