@@ -742,6 +742,11 @@ public class MediaScanner
                     long time = exif.getGpsDateTime();
                     if (time != -1) {
                         values.put(Images.Media.DATE_TAKEN, time);
+                    } else {
+                        time = exif.getDateTime();
+                        if (time != -1) {
+                            values.put(Images.Media.DATE_TAKEN, time);
+                        }
                     }
 
                     int orientation = exif.getAttributeInt(
