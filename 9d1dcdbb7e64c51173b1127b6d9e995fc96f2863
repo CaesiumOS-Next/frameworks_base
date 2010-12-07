@@ -16,6 +16,24 @@
       "revId": "9d1dcdbb7e64c51173b1127b6d9e995fc96f2863",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAA93///7A\u003d",
+        "filename": "telephony/java/com/android/internal/telephony/RIL.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 364,
+      "author": {
+        "id": 1005066
+      },
+      "writtenOn": "2010-12-07T18:27:21Z",
+      "side": 1,
+      "message": "This is happening on the devices which do not have modem but only the apps side. On such devices the socket between RILJ and RILC is not being established and RILJ is not able to send any RIL requests. On such device wake lock timeout prevent the device to go in power collapse immediately every time.\n\nIn this scenario it seems logical to not wait for wake lock timeout as that is going to happen for sure. Yes this fix would let the device go in the power collapse earlier and save on battery.",
+      "parentUuid": "AAAA93///98\u003d",
+      "revId": "9d1dcdbb7e64c51173b1127b6d9e995fc96f2863",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
