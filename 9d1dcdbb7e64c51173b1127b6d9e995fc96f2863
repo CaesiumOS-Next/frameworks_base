@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAA93///98\u003d",
+        "filename": "telephony/java/com/android/internal/telephony/RIL.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 364,
+      "author": {
+        "id": 1001401
+      },
+      "writtenOn": "2010-12-07T05:43:20Z",
+      "side": 1,
+      "message": "So this is an optimization that will release the wake lock if there is an error and there are no pending requests or results.\n\nUnder what conditions will this occur, and is this happening frequently enough that it will save significant power in normal operation?",
+      "revId": "9d1dcdbb7e64c51173b1127b6d9e995fc96f2863",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
