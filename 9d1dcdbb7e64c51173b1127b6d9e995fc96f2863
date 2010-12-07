@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "AAAA93///2w\u003d",
+        "filename": "telephony/java/com/android/internal/telephony/RIL.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 363,
+      "author": {
+        "id": 1001401
+      },
+      "writtenOn": "2010-12-07T23:01:45Z",
+      "side": 1,
+      "message": "Add a comment indicating that the wake lock be released only on errors, when I first looked at this I thought it was wrong and had to dig deeper to understand. I\u0027d like to give the next person a little heads up on what\u0027s happening.",
+      "revId": "9d1dcdbb7e64c51173b1127b6d9e995fc96f2863",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAA93///98\u003d",
         "filename": "telephony/java/com/android/internal/telephony/RIL.java",
         "patchSetId": 1
@@ -85,6 +102,24 @@
       "side": 1,
       "message": "I\u0027m wondering if we could change RIL#send to not send the message to the handler if there is no communication channel. Thus no acquireWakeLock call.",
       "parentUuid": "AAAA93///4U\u003d",
+      "revId": "9d1dcdbb7e64c51173b1127b6d9e995fc96f2863",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAA93///20\u003d",
+        "filename": "telephony/java/com/android/internal/telephony/RIL.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 364,
+      "author": {
+        "id": 1001401
+      },
+      "writtenOn": "2010-12-07T23:01:45Z",
+      "side": 1,
+      "message": "Actually I\u0027m thinking we do both, what do you thin?",
+      "parentUuid": "AAAA93///4M\u003d",
       "revId": "9d1dcdbb7e64c51173b1127b6d9e995fc96f2863",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
