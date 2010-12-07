@@ -105,6 +105,24 @@
       "revId": "9d1dcdbb7e64c51173b1127b6d9e995fc96f2863",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAA93///34\u003d",
+        "filename": "telephony/java/com/android/internal/telephony/RIL.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 2047,
+      "author": {
+        "id": 1005066
+      },
+      "writtenOn": "2010-12-07T20:30:49Z",
+      "side": 1,
+      "message": "Wink, this would only handle the case where socket is null. What if there is an exception in sending the RIL request, we should be releasing the wakelock in that case we well. The change I proposed would take care of all cases of failure on socket send.",
+      "parentUuid": "AAAA93///4E\u003d",
+      "revId": "9d1dcdbb7e64c51173b1127b6d9e995fc96f2863",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
