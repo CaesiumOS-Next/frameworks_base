@@ -126,6 +126,24 @@
     },
     {
       "key": {
+        "uuid": "AAAA93///2M\u003d",
+        "filename": "telephony/java/com/android/internal/telephony/RIL.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 364,
+      "author": {
+        "id": 1005066
+      },
+      "writtenOn": "2010-12-07T23:20:49Z",
+      "side": 1,
+      "message": "Wink, although we can do both the change in Ril#send seems unnecessary. I am adding a comment to clarify what this change is for. Hopefully that would make the change easier to understand.",
+      "parentUuid": "AAAA93///20\u003d",
+      "revId": "9d1dcdbb7e64c51173b1127b6d9e995fc96f2863",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAA93///4E\u003d",
         "filename": "telephony/java/com/android/internal/telephony/RIL.java",
         "patchSetId": 1
