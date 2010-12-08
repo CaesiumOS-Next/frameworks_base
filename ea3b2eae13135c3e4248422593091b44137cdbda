@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAA93///ys\u003d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1001401
+      },
+      "writtenOn": "2010-12-08T16:43:35Z",
+      "side": 1,
+      "message": "Lets add something like the following as another paragraph.\n\nAlso, changed RIL#send to not send a request if there no\nconnection to the vendor ril, as these will always fail.",
+      "revId": "ea3b2eae13135c3e4248422593091b44137cdbda",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
