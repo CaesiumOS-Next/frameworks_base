@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAA93///0o\u003d",
+        "filename": "telephony/java/com/android/internal/telephony/RIL.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 364,
+      "author": {
+        "id": 1001401
+      },
+      "writtenOn": "2010-12-08T00:57:42Z",
+      "side": 1,
+      "message": "How about this:\n\n// Note: We are \"Done\" only if there are no outstanding\n// requests or replies. Thus this code path will only release\n// the wake lock on errors.",
+      "revId": "9fa6f1dee7d0e12a965276f47daf0ca1f4fef0d8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
