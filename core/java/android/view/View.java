@@ -4912,6 +4912,18 @@ public class View implements Drawable.Callback, KeyEvent.Callback, Accessibility
     }
 
     /**
+     * When searching for a view to focus this rectangle is used when considering if this view is
+     * a good candidate for receiving focus.
+     *
+     * By default, the rectangle is the {@link #getDrawingRect}) of the view.
+     *
+     * @param r The rectangle to fill in, in this view's coordinates.
+     */
+    public void getFocusRect(Rect r) {
+        getDrawingRect(r);
+    }
+
+    /**
      * If some part of this view is not clipped by any of its parents, then
      * return that area in r in global (root) coordinates. To convert r to local
      * coordinates, offset it by -globalOffset (e.g. r.offset(-globalOffset.x,

@@ -188897,6 +188897,19 @@
  visibility="public"
 >
 </method>
+<method name="getFocusRect"
+ return="void"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="r" type="android.graphics.Rect">
+</parameter>
+</method>
 <method name="getFocusables"
  return="java.util.ArrayList&lt;android.view.View&gt;"
  abstract="false"
