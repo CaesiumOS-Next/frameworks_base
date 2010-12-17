@@ -36,6 +36,24 @@
     },
     {
       "key": {
+        "uuid": "AAAA+3///2o\u003d",
+        "filename": "services/java/com/android/server/am/ActivityManagerService.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 11392,
+      "author": {
+        "id": 1004254
+      },
+      "writtenOn": "2010-12-17T01:14:11Z",
+      "side": 1,
+      "message": "I didn\u0027t understand this comment, could you elaborate?",
+      "parentUuid": "AAAA+3///3A\u003d",
+      "revId": "a5a265a7622375288358fdef0becbd340c54a5a4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAA+3///24\u003d",
         "filename": "services/java/com/android/server/am/ActivityManagerService.java",
         "patchSetId": 1
@@ -64,6 +82,24 @@
       "writtenOn": "2010-12-16T23:21:18Z",
       "side": 1,
       "message": "style: 4 spaces, not 2",
+      "revId": "a5a265a7622375288358fdef0becbd340c54a5a4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAA+3///2k\u003d",
+        "filename": "services/java/com/android/server/am/ActivityManagerService.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 11396,
+      "author": {
+        "id": 1004254
+      },
+      "writtenOn": "2010-12-17T01:14:11Z",
+      "side": 1,
+      "message": "I didn\u0027t understand this comment, could you elaborate?",
+      "parentUuid": "AAAA+3///28\u003d",
       "revId": "a5a265a7622375288358fdef0becbd340c54a5a4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
