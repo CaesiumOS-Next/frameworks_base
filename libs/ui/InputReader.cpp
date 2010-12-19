@@ -52,6 +52,11 @@ inline static T min(const T& a, const T& b) {
 }
 
 template<typename T>
+inline static T max(const T& a, const T& b) {
+    return a > b ? a : b;
+}
+
+template<typename T>
 inline static void swap(T& a, T& b) {
     T temp = a;
     a = b;
@@ -2497,8 +2502,8 @@ void TouchInputMapper::dispatchTouch(nsecs_t when, uint32_t policyFlags,
 
 bool TouchInputMapper::isPointInsideSurfaceLocked(int32_t x, int32_t y) {
     if (mRawAxes.x.valid && mRawAxes.y.valid) {
-        return x >= mRawAxes.x.minValue && x <= mRawAxes.x.maxValue
-                && y >= mRawAxes.y.minValue && y <= mRawAxes.y.maxValue;
+        return x >= min(mRawAxes.x.minValue,mRawAxes.x.maxValue) && x <= max(mRawAxes.x.minValue,mRawAxes.x.maxValue)
+                && y >= min(mRawAxes.y.minValue,mRawAxes.y.maxValue) && y <= max(mRawAxes.y.minValue,mRawAxes.y.maxValue);
     }
     return true;
 }
