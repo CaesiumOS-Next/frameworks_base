@@ -33,6 +33,7 @@
 #include <sys/types.h>
 #include <sys/uio.h>
 #include <sys/poll.h>
+#include <fcntl.h>
 
 #ifdef HAVE_BLUETOOTH
 #include <bluetooth/bluetooth.h>
@@ -63,11 +64,6 @@
  * call close() from the same thread that does blocking I/O. This requires the
  * use of a socketpair to signal the blocking I/O to abort.
  *
- * Unfortunately I don't know a way to abort connect() yet, but at least this
- * times out after the BT page timeout (10 seconds currently), so the thread
- * will die eventually. The fact that the thread can outlive
- * the Java object forces us to use a mutex in destoryNative().
- *
  * The JNI API is entirely async.
  *
  * Also note this class deals only with SCO connections, not with data
@@ -84,7 +80,7 @@ static jmethodID method_onClosed;
 
 struct thread_data_t;
 static void *work_thread(void *arg);
-static int connect_work(const char *address, uint16_t sco_pkt_type);
+static int connect_work(int signal_sk, const char *address, uint16_t sco_pkt_type);
 static int accept_work(int signal_sk);
 static void wait_for_close(int sk, int signal_sk);
 static void closeNative(JNIEnv *env, jobject object);
@@ -464,7 +460,7 @@ static void *work_thread(void *arg) {
         sk = accept_work(data->signal_sk);
         LOGV("SCO OBJECT %p END ACCEPT *****", data->nat->object);
     } else {
-        sk = connect_work(data->address, data->sco_pkt_type);
+        sk = connect_work(data->signal_sk, data->address, data->sco_pkt_type);
     }
 
     /* callback with connection result */
@@ -608,10 +604,12 @@ error:
     return -1;
 }
 
-static int connect_work(const char *address, uint16_t sco_pkt_type) {
+static int connect_work(int signal_sk, const char *address, uint16_t sco_pkt_type) {
     LOGV(__FUNCTION__);
     struct sockaddr_sco addr;
     int sk = -1;
+    int flags = -1;
+    int ret = -1;
 
     sk = socket(PF_BLUETOOTH, SOCK_SEQPACKET, BTPROTO_SCO);
     if (sk < 0) {
@@ -633,9 +631,52 @@ static int connect_work(const char *address, uint16_t sco_pkt_type) {
     get_bdaddr(address, &addr.sco_bdaddr);
     addr.sco_pkt_type = sco_pkt_type;
     LOGI("Connecting to socket");
-    while (connect(sk, (struct sockaddr *)&addr, sizeof(addr)) < 0) {
-        if (errno != EINTR) {
-            LOGE("%s: connect() failed: %s", __FUNCTION__, strerror(errno));
+
+    // assign non-blocking flag for connect socket
+    flags = fcntl(sk, F_GETFL);
+    if ((flags < 0) || (fcntl(sk, F_SETFL, flags | O_NONBLOCK) == -1)) {
+        LOGE("%s: unable to set flags: %d", __FUNCTION__, flags);
+        goto error;
+     }
+
+    // try to connect and keep in loop until EINPROGRESS is received
+    do {
+        ret = connect(sk, (struct sockaddr *)&addr, sizeof(addr));
+        if (errno != EINPROGRESS)
+           LOGE("%s: connect() try failed: %s", __FUNCTION__, strerror(errno));
+
+    } while (ret && errno == EINTR);
+
+    // if return is zero connection was already successfull
+    // however we except EINPROGRESS indication to start polling until connected
+    if (ret && errno == EINPROGRESS) {
+
+        // fill in pollfd entries to get notified once sockets get used
+        // p[0] holds the connect socket (to connect the device)
+        // p[1] holds the signaling socket (to permit interruption on close)
+        pollfd p[2];
+        memset(p, 0, 2 * sizeof(pollfd));
+        p[0].fd = sk;
+        p[0].events = POLLOUT;
+        p[0].revents = 0;
+        p[1].fd = signal_sk;
+        p[1].events = POLLIN | POLLPRI;
+        p[1].revents = 0;
+
+        do {
+            ret = poll(p, 2, -1);
+        } while (ret < 0 && errno == EINTR);
+
+        // stopped by signaling socket
+        if (p[1].revents) {
+            LOGE("%s: stopped by signaling socket", __FUNCTION__);
+            goto error;
+        }
+
+    } else {
+        // not in progress and not connected
+        if (ret != 0) {
+            LOGE("%s: wrong connect return: %d", __FUNCTION__, ret);
             goto error;
         }
         LOGV("%s: connect() EINTR, retrying", __FUNCTION__);
