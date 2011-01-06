@@ -19,6 +19,23 @@
     },
     {
       "key": {
+        "uuid": "AAAA+3//+B0\u003d",
+        "filename": "services/java/com/android/server/SystemServer.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 432,
+      "author": {
+        "id": 1000559
+      },
+      "writtenOn": "2011-01-06T05:43:34Z",
+      "side": 1,
+      "message": "Why would wm be null?  It should never be null as far as I know.  What are you trying to accomplish here?  I don\u0027t really like this change, because it seems to just make it harder to figure out when something bad is going on.",
+      "revId": "281b834c2b45dc0086e262cb4465f719e97a64eb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAA+3//+CM\u003d",
         "filename": "services/java/com/android/server/SystemServer.java",
         "patchSetId": 1
