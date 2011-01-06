@@ -1,0 +1,89 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAA+3//+CQ\u003d",
+        "filename": "services/java/com/android/server/SystemServer.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 429,
+      "author": {
+        "id": 1000269
+      },
+      "writtenOn": "2011-01-06T04:39:20Z",
+      "side": 1,
+      "message": "None of this noise allowed.",
+      "revId": "281b834c2b45dc0086e262cb4465f719e97a64eb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAA+3//+CM\u003d",
+        "filename": "services/java/com/android/server/SystemServer.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 433,
+      "author": {
+        "id": 1000269
+      },
+      "writtenOn": "2011-01-06T04:39:20Z",
+      "side": 1,
+      "message": "remove noise",
+      "revId": "281b834c2b45dc0086e262cb4465f719e97a64eb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAA+3//+CI\u003d",
+        "filename": "services/java/com/android/server/SystemServer.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 462,
+      "author": {
+        "id": 1000269
+      },
+      "writtenOn": "2011-01-06T04:39:20Z",
+      "side": 1,
+      "message": "None of this noise allowed.",
+      "revId": "281b834c2b45dc0086e262cb4465f719e97a64eb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAA+3//+CE\u003d",
+        "filename": "services/java/com/android/server/SystemServer.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 470,
+      "author": {
+        "id": 1000269
+      },
+      "writtenOn": "2011-01-06T04:39:20Z",
+      "side": 1,
+      "message": "remove noise",
+      "revId": "281b834c2b45dc0086e262cb4465f719e97a64eb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAA+3//+CA\u003d",
+        "filename": "services/java/com/android/server/SystemServer.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 471,
+      "author": {
+        "id": 1000269
+      },
+      "writtenOn": "2011-01-06T04:39:20Z",
+      "side": 1,
+      "message": "remove tab characters",
+      "revId": "281b834c2b45dc0086e262cb4465f719e97a64eb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
