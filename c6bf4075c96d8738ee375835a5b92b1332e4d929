@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAA+3//8MI\u003d",
+        "filename": "test-runner/src/android/test/SingleLaunchActivityTestCase.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1002621
+      },
+      "writtenOn": "2011-01-18T20:03:25Z",
+      "side": 1,
+      "message": "Not an issue with this change of course, but I wonder why sTestCaseCounter is incremented here as opposed to in setUp().",
+      "revId": "c6bf4075c96d8738ee375835a5b92b1332e4d929",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
