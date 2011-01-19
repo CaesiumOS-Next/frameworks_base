@@ -695,4 +695,16 @@ public abstract class IccCard {
     private void log(String msg) {
         Log.d(mLogTag, "[IccCard] " + msg);
     }
+
+    /**
+     * return true if an ICC card is invalid
+     */
+    public boolean isIccInvalidCard() {
+        if (mPhone.getPhoneName().equals("GSM")) {
+            return mIccCardStatus.getCardState().isCardInvalid();
+        } else {
+            // TODO: Make work with a CDMA device with a RUIM card.
+            return false;
+        }
+    }
 }

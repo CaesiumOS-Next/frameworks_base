@@ -37,6 +37,7 @@ import android.media.AudioManager;
 import android.os.SystemClock;
 import android.os.SystemProperties;
 import android.provider.Settings;
+import android.telephony.TelephonyManager;
 
 import java.util.Date;
 import java.io.File;
@@ -538,8 +539,12 @@ class LockScreen extends LinearLayout implements KeyguardScreen, KeyguardUpdateM
                 break;
             case SimMissing:
                 // text
-                mCarrier.setText(R.string.lockscreen_missing_sim_message_short);
-                mScreenLocked.setText(R.string.lockscreen_missing_sim_instructions);
+                if (TelephonyManager.getDefault().isIccInvalidCard()) {
+                    mCarrier.setText(R.string.carrier_invalid_sim_card);
+                } else {
+                    mCarrier.setText(R.string.lockscreen_missing_sim_message_short);
+                    mScreenLocked.setText(R.string.lockscreen_missing_sim_instructions);
+                }
 
                 // layout
                 mScreenLocked.setVisibility(View.VISIBLE);

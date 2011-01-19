@@ -257,5 +257,10 @@ interface ITelephony {
      * Return true if an ICC card is present
      */
     boolean hasIccCard();
+
+    /**
+     * Return true if an ICC card is invalid
+     */
+    boolean isIccInvalidCard();
 }
 

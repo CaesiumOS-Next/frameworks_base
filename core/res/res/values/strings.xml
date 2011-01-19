@@ -2363,4 +2363,6 @@
     <!-- Network positioning verification No. Button to push to deny sharing of location
          information. -->
     <string name="gpsVerifNo">No</string>
+    <!--Will indicate that the SIM card is a invalid SIM card.-->
+    <string name="carrier_invalid_sim_card">Invalid SIM Card</string>
 </resources>

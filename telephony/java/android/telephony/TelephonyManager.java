@@ -912,4 +912,20 @@ public class TelephonyManager {
             return null;
         }
     }
+    /**
+     * Return true if the ICC card is invalid
+     *
+     * @hide
+     */
+    public boolean isIccInvalidCard() {
+        try {
+             return getITelephony().isIccInvalidCard();
+        } catch (RemoteException ex) {
+            // Assume no ICC card if remote exception which shouldn't happen
+            return false;
+        } catch (NullPointerException ex) {
+            // This could happen before phone restarts due to crashing
+            return false;
+        }
+    }
 }

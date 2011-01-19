@@ -25,6 +25,10 @@ import android.util.AttributeSet;
 import android.util.Slog;
 import android.view.View;
 import android.widget.TextView;
+import android.telephony.TelephonyManager;
+
+import com.android.internal.telephony.TelephonyIntents;
+import com.android.internal.telephony.IccCard;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -60,6 +64,7 @@ public class CarrierLabel extends TextView {
             mAttached = true;
             IntentFilter filter = new IntentFilter();
             filter.addAction(Telephony.Intents.SPN_STRINGS_UPDATED_ACTION);
+            filter.addAction(TelephonyIntents.ACTION_SIM_STATE_CHANGED);
             getContext().registerReceiver(mIntentReceiver, filter, null, getHandler());
         }
     }
@@ -82,6 +87,11 @@ public class CarrierLabel extends TextView {
                         intent.getStringExtra(Telephony.Intents.EXTRA_SPN),
                         intent.getBooleanExtra(Telephony.Intents.EXTRA_SHOW_PLMN, false),
                         intent.getStringExtra(Telephony.Intents.EXTRA_PLMN));
+           } else if (TelephonyIntents.ACTION_SIM_STATE_CHANGED.equals(action)) {
+                String stateExtra = intent.getStringExtra(IccCard.INTENT_KEY_ICC_STATE);
+                if (IccCard.INTENT_VALUE_ICC_ABSENT.equals(stateExtra)) {
+                    updateNetworkName(false,null,false,null);
+                }
             }
         }
     };
@@ -91,23 +101,22 @@ public class CarrierLabel extends TextView {
             Slog.d("CarrierLabel", "updateNetworkName showSpn=" + showSpn + " spn=" + spn
                     + " showPlmn=" + showPlmn + " plmn=" + plmn);
         }
-        StringBuilder str = new StringBuilder();
-        boolean something = false;
-        if (showPlmn && plmn != null) {
-            str.append(plmn);
-            something = true;
-        }
-        if (showSpn && spn != null) {
-            if (something) {
-                str.append('\n');
-            }
-            str.append(spn);
-            something = true;
-        }
-        if (something) {
-            setText(str.toString());
+        if (TelephonyManager.getDefault().isIccInvalidCard()) {
+            setText(com.android.internal.R.string.carrier_invalid_sim_card);
         } else {
-            setText(com.android.internal.R.string.lockscreen_carrier_default);
+            StringBuilder str = new StringBuilder();
+            boolean something = false;
+            if (showPlmn && plmn != null) {
+                str.append(plmn);
+                something = true;
+            }
+            if (showSpn && spn != null) {
+               if (something) {
+                    setText(str.toString());
+                } else {
+                    setText(com.android.internal.R.string.lockscreen_carrier_default);
+                }
+            }
         }
     }
 
