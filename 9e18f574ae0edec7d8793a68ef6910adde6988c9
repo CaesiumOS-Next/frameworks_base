@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAA+3//7/c\u003d",
+        "filename": "drm/libdrmframework/include/DrmManager.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1004395
+      },
+      "writtenOn": "2011-01-20T00:43:08Z",
+      "side": 1,
+      "message": "It is a little scary to see so many mutexes. Can some of these be combined?",
+      "revId": "9e18f574ae0edec7d8793a68ef6910adde6988c9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
