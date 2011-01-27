@@ -26,7 +26,6 @@
 #include <media/stagefright/OMXClient.h>
 #include <media/stagefright/TimeSource.h>
 #include <utils/threads.h>
-#include <drm/DrmManagerClient.h>
 
 namespace android {
 
@@ -42,7 +41,7 @@ struct ARTSPController;
 struct ARTPSession;
 struct UDPPusher;
 
-class DrmManagerClinet;
+class DrmManagerClient;
 class DecryptHandle;
 
 struct AwesomeRenderer : public RefBase {
