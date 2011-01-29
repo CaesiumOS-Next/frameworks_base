@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAA+3//7Io\u003d",
+        "filename": "libs/ui/InputReader.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 2439,
+      "author": {
+        "id": 1003957
+      },
+      "writtenOn": "2011-01-29T08:59:55Z",
+      "side": 1,
+      "message": "There\u0027s actually another bug here.\nWe should remove the line with orientation \u003d -orientation.  It\u0027s fixed in our internal master but not in AOSP.",
+      "revId": "ea3b62c84ca4bc0f3b7e5b697af28b004ae08874",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
