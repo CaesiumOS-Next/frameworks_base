@@ -189,7 +189,7 @@ components. The Android SDK and AVD Manager will install the selected components
 your SDK environment. For information about which components you should download, see the following
 section about <a href="#which">Recommended Components</a>.</p>
 
-<img src="/images/sdk_manager_packages.png" />
+<img src="{@docRoot}images/sdk_manager_packages.png" />
 <p class="img-caption"><strong>Figure 1.</strong> The Android SDK and AVD Manager's
 <strong>Available Packages</strong> panel, which shows the SDK components that are
 available for you to download into your environment.</p>
