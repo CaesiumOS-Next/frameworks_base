@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAA+3//6eA\u003d",
+        "filename": "libs/ui/InputReader.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1418,
+      "author": {
+        "id": 1003957
+      },
+      "writtenOn": "2011-02-02T10:18:22Z",
+      "side": 1,
+      "message": "The -1 seems wrong here.  Should be +1.\n\nHowever, this is not the only remaining off by one either.  The ranges that we advertise to applications (in populateDeviceInfo from the orientedRanges fields) are also off by one.",
+      "revId": "25c980236b859d77457091f5918dd2e2bd355c41",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
