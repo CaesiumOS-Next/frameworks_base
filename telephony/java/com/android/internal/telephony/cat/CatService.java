@@ -513,7 +513,7 @@ public class CatService extends Handler implements AppInterface {
      * @param ic Icc card
      * @return The only Service object in the system
      */
-    public static CatService getInstance(CommandsInterface ci, IccRecords ir,
+    public static synchronized CatService getInstance(CommandsInterface ci, IccRecords ir,
             Context context, IccFileHandler fh, IccCard ic) {
         if (sInstance == null) {
             if (ci == null || ir == null || context == null || fh == null
