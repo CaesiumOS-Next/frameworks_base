@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAA+3//34U\u003d",
+        "filename": "drm/common/DrmSupportInfo.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1004649
+      },
+      "writtenOn": "2011-02-22T22:07:08Z",
+      "side": 1,
+      "message": "String8 has toLower method, use that instead",
+      "revId": "91022c6b0828fc988aec93f3d95d87bb3b22c689",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAA+3//34I\u003d",
+        "filename": "drm/common/DrmSupportInfo.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1004649
+      },
+      "writtenOn": "2011-02-22T22:07:08Z",
+      "side": 1,
+      "message": "Same here",
+      "revId": "91022c6b0828fc988aec93f3d95d87bb3b22c689",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAA+3//34M\u003d",
+        "filename": "drm/common/DrmSupportInfo.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1004649
+      },
+      "writtenOn": "2011-02-22T22:07:08Z",
+      "side": 1,
+      "message": "This is OK, but you could also propose an enhancement to String8",
+      "revId": "91022c6b0828fc988aec93f3d95d87bb3b22c689",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
