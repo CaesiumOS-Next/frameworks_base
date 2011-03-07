@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAA/H///Ns\u003d",
+        "filename": "drm/common/DrmSupportInfo.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1004395
+      },
+      "writtenOn": "2011-03-07T16:31:11Z",
+      "side": 1,
+      "message": "This is a substring comparison, not full string comparison. Do you prefer to fix it now or do you want a separate bug?",
+      "revId": "a08345b92362fc5932242a2608f2a77f3b6c484d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
