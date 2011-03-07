@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "AAAA/H///MU\u003d",
+        "filename": "drm/common/DrmSupportInfo.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1005614
+      },
+      "writtenOn": "2011-03-07T19:08:56Z",
+      "side": 1,
+      "message": "if we do not care about the case of the mime type, making sure that existing mimes in mMimeTypeVector to be lower case when that data structure is populated makes more sense, since this method will be repeatedly called, I guess?",
+      "revId": "a08345b92362fc5932242a2608f2a77f3b6c484d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAA/H///Ns\u003d",
         "filename": "drm/common/DrmSupportInfo.cpp",
         "patchSetId": 7
@@ -13,6 +30,57 @@
       "writtenOn": "2011-03-07T16:31:11Z",
       "side": 1,
       "message": "This is a substring comparison, not full string comparison. Do you prefer to fix it now or do you want a separate bug?",
+      "revId": "a08345b92362fc5932242a2608f2a77f3b6c484d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAA/H///MY\u003d",
+        "filename": "drm/common/DrmSupportInfo.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1005614
+      },
+      "writtenOn": "2011-03-07T19:08:56Z",
+      "side": 1,
+      "message": "do we care about the file type case?",
+      "revId": "a08345b92362fc5932242a2608f2a77f3b6c484d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAA/H///Mc\u003d",
+        "filename": "drm/drmserver/DrmManager.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1005614
+      },
+      "writtenOn": "2011-03-07T19:08:56Z",
+      "side": 1,
+      "message": "Why could not we protect the shared resources, the instance vectors in this case, instead of adding a lock for each and every vector that is being used. I am afraid by protecting the instance vectors this way does not make sure consistency across all vectors if there is an coordination between them (does it matter?).",
+      "revId": "a08345b92362fc5932242a2608f2a77f3b6c484d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAA/H///MQ\u003d",
+        "filename": "drm/java/android/drm/DrmManagerClient.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1005614
+      },
+      "writtenOn": "2011-03-07T19:08:56Z",
+      "side": 1,
+      "message": "This treats other informational events, like TYPE_WAIT_FOR_RIGHTS and TYPE_RIGHTS_INSTALLED, as error events. Is this intended?",
       "revId": "a08345b92362fc5932242a2608f2a77f3b6c484d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
