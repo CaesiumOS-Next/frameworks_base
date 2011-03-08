@@ -55,6 +55,24 @@
     },
     {
       "key": {
+        "uuid": "AAAA/H///II\u003d",
+        "filename": "drm/common/DrmSupportInfo.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1004291
+      },
+      "writtenOn": "2011-03-08T05:36:29Z",
+      "side": 1,
+      "message": "Based on discussion with Glenn, I will use strcasecmp here,\ninstead of find(). Thus, case conversion will not be required anymore.\nI will include this change in the next patch.",
+      "parentUuid": "AAAA/H///I8\u003d",
+      "revId": "a08345b92362fc5932242a2608f2a77f3b6c484d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAA/H///Ns\u003d",
         "filename": "drm/common/DrmSupportInfo.cpp",
         "patchSetId": 7
@@ -102,6 +120,24 @@
       "side": 1,
       "message": "Gloria is thinking using the strcasecmp for this purpose.",
       "parentUuid": "AAAA/H///KA\u003d",
+      "revId": "a08345b92362fc5932242a2608f2a77f3b6c484d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAA/H///IE\u003d",
+        "filename": "drm/common/DrmSupportInfo.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1004291
+      },
+      "writtenOn": "2011-03-08T05:36:29Z",
+      "side": 1,
+      "message": "As mentioned above, I will use strcasecmp.\nThanks.",
+      "parentUuid": "AAAA/H///I4\u003d",
       "revId": "a08345b92362fc5932242a2608f2a77f3b6c484d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -208,6 +244,24 @@
       "side": 1,
       "message": "The lock in the vector helps prevent the data in the vector gets corrupted due to race condition, but it will not help enforce consistency between vector A and vector B, if there is a need for such data consistency. Do you see this data consistency is needed for these vectors?",
       "parentUuid": "AAAA/H///J0\u003d",
+      "revId": "a08345b92362fc5932242a2608f2a77f3b6c484d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAA/H///IA\u003d",
+        "filename": "drm/drmserver/DrmManager.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1004291
+      },
+      "writtenOn": "2011-03-08T05:36:29Z",
+      "side": 1,
+      "message": "I understand the problem here.\nUnique ID creation itself should be protected.\nI will lock entire \"if (0 \u003d\u003d uniqueId)\" block.",
+      "parentUuid": "AAAA/H///Io\u003d",
       "revId": "a08345b92362fc5932242a2608f2a77f3b6c484d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
