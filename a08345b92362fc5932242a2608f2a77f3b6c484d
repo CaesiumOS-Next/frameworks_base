@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "AAAA/H///I8\u003d",
+        "filename": "drm/common/DrmSupportInfo.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1005614
+      },
+      "writtenOn": "2011-03-08T02:03:03Z",
+      "side": 1,
+      "message": "you can do this at addMimeType() method, but performance is not that critical for this patch.",
+      "parentUuid": "AAAA/H///Jc\u003d",
+      "revId": "a08345b92362fc5932242a2608f2a77f3b6c484d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAA/H///Ns\u003d",
         "filename": "drm/common/DrmSupportInfo.cpp",
         "patchSetId": 7
@@ -66,6 +84,24 @@
       "side": 1,
       "message": "This substring comparison was intended. Different from file extension, MIME type could have several possibilities. \ne.g.)\n  \"application/vnd.marlin.drm.actiontoken+xml\",\n  \"application/vnd.marlin.drm.conftoken+xml\",\n  \"application/vnd.marlin.drm.license+xml,\n  \"application/vnd.marlin.drm.content,\n  etc.\nAnd it could increase when service introduce more objects for DRM,\nwhereas we cannot add new MIME type to plug-in, afterward.\nTherefore, I did substring comparison, instead of full matching.\n\nIf this treatment is not suitable from the perspective of possible runtime bug,\nI would change the comparison way to use String.equals(), instead.\n\nWhat do you think about it?",
       "parentUuid": "AAAA/H///Ns\u003d",
+      "revId": "a08345b92362fc5932242a2608f2a77f3b6c484d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAA/H///I4\u003d",
+        "filename": "drm/common/DrmSupportInfo.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1005614
+      },
+      "writtenOn": "2011-03-08T02:03:03Z",
+      "side": 1,
+      "message": "Gloria is thinking using the strcasecmp for this purpose.",
+      "parentUuid": "AAAA/H///KA\u003d",
       "revId": "a08345b92362fc5932242a2608f2a77f3b6c484d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -107,6 +143,24 @@
     },
     {
       "key": {
+        "uuid": "AAAA/H///I0\u003d",
+        "filename": "drm/common/DrmSupportInfo.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1005614
+      },
+      "writtenOn": "2011-03-08T02:03:03Z",
+      "side": 1,
+      "message": "Good. Thanks.",
+      "parentUuid": "AAAA/H///J8\u003d",
+      "revId": "a08345b92362fc5932242a2608f2a77f3b6c484d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAA/H///Mc\u003d",
         "filename": "drm/drmserver/DrmManager.cpp",
         "patchSetId": 7
@@ -142,6 +196,24 @@
     },
     {
       "key": {
+        "uuid": "AAAA/H///Io\u003d",
+        "filename": "drm/drmserver/DrmManager.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1005614
+      },
+      "writtenOn": "2011-03-08T02:03:03Z",
+      "side": 1,
+      "message": "The lock in the vector helps prevent the data in the vector gets corrupted due to race condition, but it will not help enforce consistency between vector A and vector B, if there is a need for such data consistency. Do you see this data consistency is needed for these vectors?",
+      "parentUuid": "AAAA/H///J0\u003d",
+      "revId": "a08345b92362fc5932242a2608f2a77f3b6c484d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAA/H///MQ\u003d",
         "filename": "drm/java/android/drm/DrmManagerClient.java",
         "patchSetId": 7
@@ -171,6 +243,24 @@
       "side": 1,
       "message": "I\u0027ll add missed info events.",
       "parentUuid": "AAAA/H///MQ\u003d",
+      "revId": "a08345b92362fc5932242a2608f2a77f3b6c484d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAA/H///Ik\u003d",
+        "filename": "drm/java/android/drm/DrmManagerClient.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1005614
+      },
+      "writtenOn": "2011-03-08T02:03:03Z",
+      "side": 1,
+      "message": "thanks.",
+      "parentUuid": "AAAA/H///Jw\u003d",
       "revId": "a08345b92362fc5932242a2608f2a77f3b6c484d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
