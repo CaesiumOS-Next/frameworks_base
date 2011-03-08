@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "AAAA/H///Jc\u003d",
+        "filename": "drm/common/DrmSupportInfo.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1004291
+      },
+      "writtenOn": "2011-03-08T01:25:41Z",
+      "side": 1,
+      "message": "The module who registers MIME type to mMimeTypeVector is each DRM plug-in.\nAnd it is out of DRM framework. DRM framework cannot know if each plug-in will always input small letter or not. \nThus, here we need to lower the case of both string for fail-safe.",
+      "parentUuid": "AAAA/H///MU\u003d",
+      "revId": "a08345b92362fc5932242a2608f2a77f3b6c484d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAA/H///Ns\u003d",
         "filename": "drm/common/DrmSupportInfo.cpp",
         "patchSetId": 7
@@ -30,6 +48,24 @@
       "writtenOn": "2011-03-07T16:31:11Z",
       "side": 1,
       "message": "This is a substring comparison, not full string comparison. Do you prefer to fix it now or do you want a separate bug?",
+      "revId": "a08345b92362fc5932242a2608f2a77f3b6c484d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAA/H///KA\u003d",
+        "filename": "drm/common/DrmSupportInfo.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1004291
+      },
+      "writtenOn": "2011-03-08T01:25:41Z",
+      "side": 1,
+      "message": "This substring comparison was intended. Different from file extension, MIME type could have several possibilities. \ne.g.)\n  \"application/vnd.marlin.drm.actiontoken+xml\",\n  \"application/vnd.marlin.drm.conftoken+xml\",\n  \"application/vnd.marlin.drm.license+xml,\n  \"application/vnd.marlin.drm.content,\n  etc.\nAnd it could increase when service introduce more objects for DRM,\nwhereas we cannot add new MIME type to plug-in, afterward.\nTherefore, I did substring comparison, instead of full matching.\n\nIf this treatment is not suitable from the perspective of possible runtime bug,\nI would change the comparison way to use String.equals(), instead.\n\nWhat do you think about it?",
+      "parentUuid": "AAAA/H///Ns\u003d",
       "revId": "a08345b92362fc5932242a2608f2a77f3b6c484d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "AAAA/H///J8\u003d",
+        "filename": "drm/common/DrmSupportInfo.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1004291
+      },
+      "writtenOn": "2011-03-08T01:25:41Z",
+      "side": 1,
+      "message": "Yes, we need to accept both \"MP4\" and \"mp4\" and even \"mP4\", for instance.",
+      "parentUuid": "AAAA/H///MY\u003d",
+      "revId": "a08345b92362fc5932242a2608f2a77f3b6c484d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAA/H///Mc\u003d",
         "filename": "drm/drmserver/DrmManager.cpp",
         "patchSetId": 7
@@ -70,6 +124,24 @@
     },
     {
       "key": {
+        "uuid": "AAAA/H///J0\u003d",
+        "filename": "drm/drmserver/DrmManager.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1004291
+      },
+      "writtenOn": "2011-03-08T01:25:41Z",
+      "side": 1,
+      "message": "mUniqueIdVector itself has mutex lock in it.",
+      "parentUuid": "AAAA/H///Mc\u003d",
+      "revId": "a08345b92362fc5932242a2608f2a77f3b6c484d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAA/H///MQ\u003d",
         "filename": "drm/java/android/drm/DrmManagerClient.java",
         "patchSetId": 7
@@ -81,6 +153,24 @@
       "writtenOn": "2011-03-07T19:08:56Z",
       "side": 1,
       "message": "This treats other informational events, like TYPE_WAIT_FOR_RIGHTS and TYPE_RIGHTS_INSTALLED, as error events. Is this intended?",
+      "revId": "a08345b92362fc5932242a2608f2a77f3b6c484d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAA/H///Jw\u003d",
+        "filename": "drm/java/android/drm/DrmManagerClient.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1004291
+      },
+      "writtenOn": "2011-03-08T01:25:41Z",
+      "side": 1,
+      "message": "I\u0027ll add missed info events.",
+      "parentUuid": "AAAA/H///MQ\u003d",
       "revId": "a08345b92362fc5932242a2608f2a77f3b6c484d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
