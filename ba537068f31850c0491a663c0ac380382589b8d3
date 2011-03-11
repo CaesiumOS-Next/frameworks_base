@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAA/H//+o0\u003d",
+        "filename": "drm/libdrmframework/include/DrmManagerClientImpl.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 418,
+      "author": {
+        "id": 1005614
+      },
+      "writtenOn": "2011-03-11T15:32:23Z",
+      "side": 1,
+      "message": "FYI: for static variable name, the convension is to use sXXX, rather than mXXX.",
+      "revId": "ba537068f31850c0491a663c0ac380382589b8d3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
