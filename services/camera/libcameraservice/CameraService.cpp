@@ -521,16 +521,36 @@ status_t CameraService::Client::setPreviewDisplay(const sp<ISurface>& surface) {
     return result;
 }
 
+#define ARRAY_SIZE(x) (sizeof(x) / sizeof(x[0]))
+
+static int halPreviewFormat(const char *paramFormat) {
+    // FIXME:
+    // Add in all supported preview formats. It would appear
+    // that YUV formats only show the Y, so any YUV4xx should work.
+    static const struct {
+        const char *name;
+        int format;
+    } convert[] = {
+            {CameraParameters::PIXEL_FORMAT_YUV420SP, HAL_PIXEL_FORMAT_YV12},
+            {CameraParameters::PIXEL_FORMAT_RGB565, HAL_PIXEL_FORMAT_RGB_565}
+    };
+
+    for (size_t i = 0; i < ARRAY_SIZE(convert); i++)
+        if (strcmp(paramFormat, convert[i].name) == 0)
+            return convert[i].format;
+
+    // Default format
+    return HAL_PIXEL_FORMAT_YV12;
+}
+
 status_t CameraService::Client::registerPreviewBuffers() {
     int w, h;
     CameraParameters params(mHardware->getParameters());
     params.getPreviewSize(&w, &h);
 
-    // FIXME: don't use a hardcoded format here.
-    ISurface::BufferHeap buffers(w, h, w, h,
-                                 HAL_PIXEL_FORMAT_YCrCb_420_SP,
-                                 mOrientation,
-                                 0,
+    int format = halPreviewFormat(params.getPreviewFormat());
+
+    ISurface::BufferHeap buffers(w, h, w, h, format, mOrientation, 0,
                                  mHardware->getPreviewHeap());
 
     status_t result = mSurface->registerBuffers(buffers);
