@@ -203,6 +203,14 @@ public class AppSecurityPermissions  implements View.OnClickListener {
         return mPermsList.size();
     }
 
+    public boolean anyDisplayable() {
+        for (PermissionInfo pInfo : mPermsList) {
+            if(isDisplayablePermission(pInfo))
+                return true;
+        }
+        return false;
+    }
+
     public View getPermissionsView() {
         
         mInflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
