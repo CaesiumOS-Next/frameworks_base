@@ -3495,6 +3495,9 @@ package android.app {
 
   public abstract class LauncherActivity extends android.app.ListActivity {
     ctor public LauncherActivity();
+    method protected boolean checkActivityForAdding(android.content.pm.ResolveInfo);
+    method protected java.util.Comparator<android.content.pm.ResolveInfo> getComparator();
+    method protected int getQueryFlags();
     method protected android.content.Intent getTargetIntent();
     method protected android.content.Intent intentForPosition(int);
     method protected android.app.LauncherActivity.ListItem itemForPosition(int);
