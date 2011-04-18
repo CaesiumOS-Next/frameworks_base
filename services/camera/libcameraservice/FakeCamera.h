@@ -40,14 +40,14 @@ public:
     ~FakeCamera();
 
     void setSize(int width, int height);
+    // TODO: remove the uint16_t buffer param everywhere since it is a field of
+    // this class.
+    void getNextFrameAsRgb565(uint16_t *buffer);
     void getNextFrameAsYuv420(uint8_t *buffer);
     // Write to the fd a string representing the current state.
     void dump(int fd) const;
 
 private:
-    // TODO: remove the uint16_t buffer param everywhere since it is a field of
-    // this class.
-    void getNextFrameAsRgb565(uint16_t *buffer);
 
     void drawSquare(uint16_t *buffer, int x, int y, int size, int color, int shadow);
     void drawCheckerboard(uint16_t *buffer, int size);
