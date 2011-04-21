@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAA/n//+CU\u003d",
+        "filename": "core/java/com/android/internal/widget/LockPatternUtils.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 509,
+      "author": {
+        "id": 1002975
+      },
+      "writtenOn": "2011-04-21T15:04:50Z",
+      "side": 1,
+      "message": "Looks like all users of toHex call .getBytes()",
+      "revId": "5b1752cba1c617bb0a24dbd84e25482dc27a2589",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAA/n//+Cc\u003d",
+        "filename": "core/java/com/android/internal/widget/LockPatternUtils.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 516,
+      "author": {
+        "id": 1002975
+      },
+      "writtenOn": "2011-04-21T15:04:50Z",
+      "side": 1,
+      "message": "Seems like this would do better as a byte[] as long as we\u0027re changing things.",
+      "revId": "5b1752cba1c617bb0a24dbd84e25482dc27a2589",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAA/n//+CY\u003d",
+        "filename": "core/java/com/android/internal/widget/LockPatternUtils.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 519,
+      "author": {
+        "id": 1002975
+      },
+      "writtenOn": "2011-04-21T15:04:50Z",
+      "side": 1,
+      "message": "Since we\u0027re converting this back to byte[] in the callers, this should probably return byte[] instead of a String.\n\nnew byte[array.length * 2]",
+      "revId": "5b1752cba1c617bb0a24dbd84e25482dc27a2589",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
