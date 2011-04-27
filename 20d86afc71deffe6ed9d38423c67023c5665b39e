@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAA/3///sw\u003d",
+        "filename": "packages/SystemUI/src/com/android/systemui/statusbar/StatusBarPolicy.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 354,
+      "author": {
+        "id": 1002609
+      },
+      "writtenOn": "2011-04-27T19:36:28Z",
+      "side": 1,
+      "message": "Check for IPv6 LL too..",
+      "revId": "20d86afc71deffe6ed9d38423c67023c5665b39e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
