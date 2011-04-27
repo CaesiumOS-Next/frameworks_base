@@ -2658,10 +2658,13 @@ class PackageManagerService extends IPackageManager.Stub {
             return null;
         }
         // The apk is forward locked (not public) if its code and resources
-        // are kept in different files.
+        // are kept in different files (except for app in either system or
+        // vendor path).
         // TODO grab this value from PackageSettings
-        if (ps != null && !ps.codePath.equals(ps.resourcePath)) {
-            parseFlags |= PackageParser.PARSE_FORWARD_LOCK;
+        if (parseFlags != PackageParser.PARSE_IS_SYSTEM_DIR) {
+            if (ps != null && !ps.codePath.equals(ps.resourcePath)) {
+                    parseFlags |= PackageParser.PARSE_FORWARD_LOCK;
+            }
         }
 
         String codePath = null;
