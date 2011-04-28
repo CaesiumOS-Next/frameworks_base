@@ -34,6 +34,7 @@ import android.os.RemoteException;
 import android.os.ServiceManager;
 import android.os.SystemClock;
 import android.os.Vibrator;
+import android.os.SystemProperties;
 import android.os.storage.IMountService;
 import android.os.storage.IMountShutdownObserver;
 
@@ -324,7 +325,8 @@ public final class ShutdownThread extends Thread {
         if (mReboot) {
             Log.i(TAG, "Rebooting, reason: " + mRebootReason);
             try {
-                Power.reboot(mRebootReason);
+//                Power.reboot(mRebootReason);
+                SystemProperties.set("ctl.start", "reboot:" + mRebootReason);
             } catch (Exception e) {
                 Log.e(TAG, "Reboot failed, will attempt shutdown instead", e);
             }
@@ -341,6 +343,7 @@ public final class ShutdownThread extends Thread {
 
         // Shutdown power
         Log.i(TAG, "Performing low-level shutdown...");
-        Power.shutdown();
+//        Power.shutdown();
+        SystemProperties.set("ctl.start", "shutdown");
     }
 }
