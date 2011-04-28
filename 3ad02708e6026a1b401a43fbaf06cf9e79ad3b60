@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAA/3///iE\u003d",
+        "filename": "core/java/com/android/internal/widget/LockPatternUtils.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 531,
+      "author": {
+        "id": 1004017
+      },
+      "writtenOn": "2011-04-28T20:22:05Z",
+      "side": 1,
+      "message": "Although this is much more efficient, I\u0027m not convinced of the utility of it since this isn\u0027t performance-critical code.\n\nIs there a performance issue you\u0027re addressing?",
+      "revId": "3ad02708e6026a1b401a43fbaf06cf9e79ad3b60",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
