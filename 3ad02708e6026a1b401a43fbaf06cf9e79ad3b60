@@ -16,6 +16,24 @@
       "revId": "3ad02708e6026a1b401a43fbaf06cf9e79ad3b60",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAA/3///dA\u003d",
+        "filename": "core/java/com/android/internal/widget/LockPatternUtils.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 531,
+      "author": {
+        "id": 1005471
+      },
+      "writtenOn": "2011-04-29T08:14:53Z",
+      "side": 1,
+      "message": "Well, maybe there is no real performance issue observed by end-user. However I see three reasons why to merge this change (and any similar change):\n\n1) It leaves the code in better shape than it was before. More cleanup changes result to cleaner code, similarly than more ad-hoc changes emerge to dirty code.\n\n2) Being more efficient saves battery. Doing similar changes can improve battery life. The performance improvement cannot be refused just because it is not observed by the end user directly. Doing enough tiny performance improvemnts can have very positive emergent effect.\n\n3) It resoves findbugs finding. What I\u0027m mainly is fixing those findings. The findbugs report has limited usage now, just because there are too many findings. I would like to reduce them as much as possible - reports then will be more useful and newly \"added\" issues will be easy to identify.",
+      "parentUuid": "AAAA/3///iE\u003d",
+      "revId": "3ad02708e6026a1b401a43fbaf06cf9e79ad3b60",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
