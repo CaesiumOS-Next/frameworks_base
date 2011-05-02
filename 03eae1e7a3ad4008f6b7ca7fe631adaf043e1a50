@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAA/3///L8\u003d",
+        "filename": "telephony/java/com/android/internal/telephony/CommandsInterface.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 1419,
+      "author": {
+        "id": 1002609
+      },
+      "writtenOn": "2011-05-02T23:16:25Z",
+      "side": 1,
+      "message": "mention the two values supported",
+      "revId": "03eae1e7a3ad4008f6b7ca7fe631adaf043e1a50",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
