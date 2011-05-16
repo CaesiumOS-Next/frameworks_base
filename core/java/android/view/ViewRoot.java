@@ -1428,7 +1428,9 @@ public final class ViewRoot extends Handler implements ViewParent,
             }
 
         } finally {
-            surface.unlockCanvasAndPost(canvas);
+               if (surface != null && canvas != null) {
+		    surface.unlockCanvasAndPost(canvas);
+		}
         }
 
         if (LOCAL_LOGV) {
