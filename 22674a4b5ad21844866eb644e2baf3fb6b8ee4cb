@@ -16,6 +16,24 @@
       "revId": "22674a4b5ad21844866eb644e2baf3fb6b8ee4cb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAABCH///cs\u003d",
+        "filename": "telephony/java/com/android/internal/telephony/gsm/SmsMessage.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 882,
+      "author": {
+        "id": 1004644
+      },
+      "writtenOn": "2011-06-10T07:19:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAABCH///dM\u003d",
+      "revId": "22674a4b5ad21844866eb644e2baf3fb6b8ee4cb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
