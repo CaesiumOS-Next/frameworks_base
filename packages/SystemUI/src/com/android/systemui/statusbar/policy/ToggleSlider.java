@@ -138,5 +138,9 @@ public class ToggleSlider extends RelativeLayout
     public void setValue(int value) {
         mSlider.setProgress(value);
     }
+
+    public void hideToggle() {
+        mToggle.setVisibility(View.GONE);
+    }
 }
 
