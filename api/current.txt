@@ -19299,6 +19299,7 @@ package android.telephony.cdma {
     method public void setCellLocationData(int, int, int);
     method public void setCellLocationData(int, int, int, int, int);
     method public void setStateInvalid();
+    method public double convertQuartSecToDecDegrees(int);
   }
 
 }
