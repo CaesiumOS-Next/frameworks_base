@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAACE3///8o\u003d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1000660
+      },
+      "writtenOn": "2012-01-18T21:46:29Z",
+      "side": 1,
+      "message": "Please wrap commit descriptions to about 70 characters",
+      "revId": "d565ba863d14be28fcd19d7b0598a2f73e92c089",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAACE3///8w\u003d",
+        "filename": "services/jni/com_android_server_BatteryService.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1000660
+      },
+      "writtenOn": "2012-01-18T21:46:29Z",
+      "side": 1,
+      "message": "Please replace this tab with spaces (same for all tabs below)",
+      "revId": "d565ba863d14be28fcd19d7b0598a2f73e92c089",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAACE3///8s\u003d",
+        "filename": "services/jni/com_android_server_BatteryService.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 1000660
+      },
+      "writtenOn": "2012-01-18T21:46:29Z",
+      "side": 1,
+      "message": "Please delete the end-of-line whitespace",
+      "revId": "d565ba863d14be28fcd19d7b0598a2f73e92c089",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
