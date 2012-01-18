@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAACE3///8Y\u003d",
+        "filename": "services/jni/com_android_server_BatteryService.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1000660
+      },
+      "writtenOn": "2012-01-18T22:17:20Z",
+      "side": 1,
+      "message": "Unnecessary blank line",
+      "revId": "1528df8f8d9c7975a85956427eca9cc11d8e215e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAACE3///8Q\u003d",
+        "filename": "services/jni/com_android_server_BatteryService.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 1000660
+      },
+      "writtenOn": "2012-01-18T22:17:20Z",
+      "side": 1,
+      "message": "One more little stray whitespace",
+      "revId": "1528df8f8d9c7975a85956427eca9cc11d8e215e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAACE3///8U\u003d",
+        "filename": "services/jni/com_android_server_BatteryService.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 1000660
+      },
+      "writtenOn": "2012-01-18T22:17:20Z",
+      "side": 1,
+      "message": "Technically, this should be surrounded by curly braces (though unfortunately the original code doesn\u0027t do a great job at following that rule consistently. Please use braces for all conditional statements that you write or modify.",
+      "revId": "1528df8f8d9c7975a85956427eca9cc11d8e215e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
