@@ -55,6 +55,24 @@
     },
     {
       "key": {
+        "uuid": "AAACSH////k\u003d",
+        "filename": "services/jni/com_android_server_BatteryService.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1010184
+      },
+      "writtenOn": "2012-01-23T18:37:52Z",
+      "side": 1,
+      "message": "On my VirtualBox VM, energy_now can be up to 50,000,000 --\u003e if mult per 100, goes beyond unsigned 32-bit.",
+      "parentUuid": "AAACRn///+Q\u003d",
+      "revId": "d6caf214e474e2830dee4e2077e8ef3fd96f9803",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAACRn///+c\u003d",
         "filename": "services/jni/com_android_server_BatteryService.cpp",
         "patchSetId": 5
