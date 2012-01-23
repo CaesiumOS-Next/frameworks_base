@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "AAACRn///+Q\u003d",
+        "filename": "services/jni/com_android_server_BatteryService.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1003360
+      },
+      "writtenOn": "2012-01-23T18:25:28Z",
+      "side": 1,
+      "message": "quite so. It depends on the range of efull and enow. I don\u0027t have that information.",
+      "parentUuid": "AAACSH////0\u003d",
+      "revId": "d6caf214e474e2830dee4e2077e8ef3fd96f9803",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAACRn///+c\u003d",
         "filename": "services/jni/com_android_server_BatteryService.cpp",
         "patchSetId": 5
