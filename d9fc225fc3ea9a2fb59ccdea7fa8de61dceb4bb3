@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAACWX////M\u003d",
+        "filename": "telephony/java/com/android/internal/telephony/gsm/GsmServiceStateTracker.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 1643,
+      "author": {
+        "id": 1000660
+      },
+      "writtenOn": "2012-01-25T17:58:37Z",
+      "side": 1,
+      "message": "If you get a chance, you might indent this by 8 spaces instead of 4.",
+      "revId": "d9fc225fc3ea9a2fb59ccdea7fa8de61dceb4bb3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
