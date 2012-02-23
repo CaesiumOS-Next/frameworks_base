@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAADLH////E\u003d",
+        "filename": "tools/aapt/XMLNode.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1000559
+      },
+      "writtenOn": "2012-02-23T19:30:49Z",
+      "side": 1,
+      "message": "I think this should go in a namespace outside of the res namespace.  Note that \"res/auto\" means resources for the \"auto\" package name.  That is not what this is.  This is...  resources that aren\u0027t yet in a package name or something.\n\nMaybe http://schemas.android.com/apk/res-auto?  Or something.  Just not ambiguous with actual resource namespaces.",
+      "revId": "e348909c1966c3d192841cc131a32be6ed90da18",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
