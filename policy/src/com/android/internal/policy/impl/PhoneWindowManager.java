@@ -308,10 +308,10 @@ public class PhoneWindowManager implements WindowManagerPolicy {
     int mRecentAppsDialogHeldModifiers;
 
     private static final int LID_ABSENT = -1;
-    private static final int LID_CLOSED = 0;
-    private static final int LID_OPEN = 1;
+    private static final int LID_CLOSED = 1;
+    private static final int LID_OPEN = 0;
 
-    int mLidOpen = LID_ABSENT;
+    int mLidState = LID_ABSENT;
 
     boolean mSystemReady;
     boolean mSystemBooted;
@@ -1083,11 +1083,11 @@ public class PhoneWindowManager implements WindowManagerPolicy {
         try {
             int sw = mWindowManager.getSwitchState(SW_LID);
             if (sw > 0) {
-                mLidOpen = LID_OPEN;
+                mLidState = LID_CLOSED;
             } else if (sw == 0) {
-                mLidOpen = LID_CLOSED;
+                mLidState = LID_OPEN;
             } else {
-                mLidOpen = LID_ABSENT;
+                mLidState = LID_ABSENT;
             }
         } catch (RemoteException e) {
             // Ignore
@@ -1095,12 +1095,12 @@ public class PhoneWindowManager implements WindowManagerPolicy {
     }
     
     private int determineHiddenState(int mode, int hiddenValue, int visibleValue) {
-        if (mLidOpen != LID_ABSENT) {
+        if (mLidState != LID_ABSENT) {
             switch (mode) {
                 case 1:
-                    return mLidOpen == LID_OPEN ? visibleValue : hiddenValue;
+                    return mLidState == LID_OPEN ? visibleValue : hiddenValue;
                 case 2:
-                    return mLidOpen == LID_OPEN ? hiddenValue : visibleValue;
+                    return mLidState == LID_OPEN ? hiddenValue : visibleValue;
             }
         }
         return visibleValue;
@@ -2507,7 +2507,7 @@ public class PhoneWindowManager implements WindowManagerPolicy {
     /** {@inheritDoc} */
     public void notifyLidSwitchChanged(long whenNanos, boolean lidOpen) {
         // lid changed state
-        mLidOpen = lidOpen ? LID_OPEN : LID_CLOSED;
+        mLidState = lidOpen ? LID_OPEN : LID_CLOSED;
         updateKeyboardVisibility();
 
         boolean awakeNow = mKeyguardMediator.doLidChangeTq(lidOpen);
@@ -3168,7 +3168,7 @@ public class PhoneWindowManager implements WindowManagerPolicy {
             }
 
             final int preferredRotation;
-            if (mLidOpen == LID_OPEN && mLidOpenRotation >= 0) {
+            if (mLidState == LID_OPEN && mLidOpenRotation >= 0) {
                 // Ignore sensor when lid switch is open and rotation is forced.
                 preferredRotation = mLidOpenRotation;
             } else if (mDockMode == Intent.EXTRA_DOCK_STATE_CAR
@@ -3513,7 +3513,7 @@ public class PhoneWindowManager implements WindowManagerPolicy {
     }
 
     private void updateKeyboardVisibility() {
-        mPowerManager.setKeyboardVisibility(mLidOpen == LID_OPEN);
+        mPowerManager.setKeyboardVisibility(mLidState == LID_OPEN);
     }
 
     void updateRotation(boolean alwaysSendConfiguration) {
@@ -3745,7 +3745,7 @@ public class PhoneWindowManager implements WindowManagerPolicy {
         pw.print(prefix); pw.print("mSafeMode="); pw.print(mSafeMode);
                 pw.print(" mSystemReady="); pw.print(mSystemReady);
                 pw.print(" mSystemBooted="); pw.println(mSystemBooted);
-        pw.print(prefix); pw.print("mLidOpen="); pw.print(mLidOpen);
+        pw.print(prefix); pw.print("mLidState="); pw.print(mLidState);
                 pw.print(" mLidOpenRotation="); pw.print(mLidOpenRotation);
                 pw.print(" mHdmiPlugged="); pw.println(mHdmiPlugged);
         if (mLastSystemUiFlags != 0 || mResettingSystemUiFlags != 0
