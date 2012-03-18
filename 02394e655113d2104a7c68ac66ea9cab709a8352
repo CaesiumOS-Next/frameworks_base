@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAECn////w\u003d",
+        "filename": "core/java/android/widget/SimpleExpandableListAdapter.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 309,
+      "author": {
+        "id": 1001146
+      },
+      "writtenOn": "2012-03-18T21:11:38Z",
+      "side": 1,
+      "message": "When you override methods, add @Override.",
+      "revId": "02394e655113d2104a7c68ac66ea9cab709a8352",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
