@@ -2177,7 +2177,7 @@ public class BluetoothService extends IBluetooth.Stub {
         }
     }
 
-    public boolean disconnectInputDeviceInternal(BluetoothDevice device) {
+    public synchronized boolean disconnectInputDeviceInternal(BluetoothDevice device) {
         synchronized (mBluetoothInputProfileHandler) {
             return mBluetoothInputProfileHandler.disconnectInputDeviceInternal(device);
         }
