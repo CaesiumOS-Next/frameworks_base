@@ -5085,8 +5085,8 @@ public final class BatteryStatsImpl extends BatteryStats {
         mBluetoothOnTimer.readSummaryFromParcelLocked(in);
 
         int NKW = in.readInt();
-        if (NKW > 10000) {
-            Slog.w(TAG, "File corrupt: too many kernel wake locks " + NKW);
+        if (NKW > 10000 || NKW < 0) {
+            Slog.w(TAG, "File corrupt: invalid kernel wake locks " + NKW);
             return;
         }
         for (int ikw = 0; ikw < NKW; ikw++) {
@@ -5097,10 +5097,15 @@ public final class BatteryStatsImpl extends BatteryStats {
         }
 
         sNumSpeedSteps = in.readInt();
+        if (sNumSpeedSteps > 100 || sNumSpeedSteps < 0) {
+            Slog.w(TAG, "File corrupt: invalid speedSteps " + sNumSpeedSteps);
+            sNumSpeedSteps = 0;
+            return;
+        }
 
         final int NU = in.readInt();
-        if (NU > 10000) {
-            Slog.w(TAG, "File corrupt: too many uids " + NU);
+        if (NU > 10000 || NU < 0) {
+            Slog.w(TAG, "File corrupt: invalid uids " + NU);
             return;
         }
         for (int iu = 0; iu < NU; iu++) {
@@ -5143,8 +5148,8 @@ public final class BatteryStatsImpl extends BatteryStats {
             }
 
             int NW = in.readInt();
-            if (NW > 100) {
-                Slog.w(TAG, "File corrupt: too many wake locks " + NW);
+            if (NW > 100 || NW < 0) {
+                Slog.w(TAG, "File corrupt: invalid wake locks " + NW);
                 return;
             }
             for (int iw = 0; iw < NW; iw++) {
@@ -5161,8 +5166,8 @@ public final class BatteryStatsImpl extends BatteryStats {
             }
 
             int NP = in.readInt();
-            if (NP > 1000) {
-                Slog.w(TAG, "File corrupt: too many sensors " + NP);
+            if (NP > 1000 || NP < 0) {
+                Slog.w(TAG, "File corrupt: invalid sensors " + NP);
                 return;
             }
             for (int is = 0; is < NP; is++) {
@@ -5174,8 +5179,8 @@ public final class BatteryStatsImpl extends BatteryStats {
             }
 
             NP = in.readInt();
-            if (NP > 1000) {
-                Slog.w(TAG, "File corrupt: too many processes " + NP);
+            if (NP > 1000 || NP < 0) {
+                Slog.w(TAG, "File corrupt: invalid processes " + NP);
                 return;
             }
             for (int ip = 0; ip < NP; ip++) {
@@ -5185,8 +5190,8 @@ public final class BatteryStatsImpl extends BatteryStats {
                 p.mSystemTime = p.mLoadedSystemTime = in.readLong();
                 p.mStarts = p.mLoadedStarts = in.readInt();
                 int NSB = in.readInt();
-                if (NSB > 100) {
-                    Slog.w(TAG, "File corrupt: too many speed bins " + NSB);
+                if (NSB > 100 || NSB < 0) {
+                    Slog.w(TAG, "File corrupt: invalid speed bins " + NSB);
                     return;
                 }
                 p.mSpeedBins = new SamplingCounter[NSB];
@@ -5202,8 +5207,8 @@ public final class BatteryStatsImpl extends BatteryStats {
             }
 
             NP = in.readInt();
-            if (NP > 10000) {
-                Slog.w(TAG, "File corrupt: too many packages " + NP);
+            if (NP > 10000 || NP < 0) {
+                Slog.w(TAG, "File corrupt: invalid packages " + NP);
                 return;
             }
             for (int ip = 0; ip < NP; ip++) {
@@ -5211,8 +5216,8 @@ public final class BatteryStatsImpl extends BatteryStats {
                 Uid.Pkg p = u.getPackageStatsLocked(pkgName);
                 p.mWakeups = p.mLoadedWakeups = in.readInt();
                 final int NS = in.readInt();
-                if (NS > 1000) {
-                    Slog.w(TAG, "File corrupt: too many services " + NS);
+                if (NS > 1000 || NS < 0) {
+                    Slog.w(TAG, "File corrupt: invalid services " + NS);
                     return;
                 }
                 for (int is = 0; is < NS; is++) {
