@@ -3552,7 +3552,7 @@ public class DevicePolicyManagerService extends IDevicePolicyManager.Stub {
             }
             if (wipeData) {
                 // Call without holding lock.
-                wipeDeviceOrUserLocked(false, identifier,
+                wipeDeviceOrUserLocked(true, identifier,
                         "reportFailedPasswordAttempt()");
             }
         } finally {
