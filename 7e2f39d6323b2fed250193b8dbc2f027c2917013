@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAHFn///gM\u003d",
+        "filename": "core/java/android/webkit/HTML5VideoViewProxy.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1010553
+      },
+      "writtenOn": "2012-07-03T22:52:45Z",
+      "side": 1,
+      "message": "I suggest doing the release() at the time of onTrimMemory, instead of pause, given this is a memory consumption issue.\nB/c when users switch from tab to tab, we don\u0027t want to release the video if they still want to continue to play the same video. This release will require a new full reload in this use case.",
+      "revId": "7e2f39d6323b2fed250193b8dbc2f027c2917013",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
