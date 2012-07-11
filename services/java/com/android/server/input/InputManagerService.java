@@ -177,6 +177,7 @@ public class InputManagerService extends IInputManager.Stub implements Watchdog.
     private static native void nativeCancelVibrate(int ptr, int deviceId, int token);
     private static native void nativeReloadKeyboardLayouts(int ptr);
     private static native void nativeReloadDeviceAliases(int ptr);
+    private static native void nativeSetCalibration(int ptr);
     private static native String nativeDump(int ptr);
     private static native void nativeMonitor(int ptr);
 
@@ -664,7 +665,8 @@ public class InputManagerService extends IInputManager.Stub implements Watchdog.
 
         synchronized (mDataStore) {
             try {
-                mDataStore.setCalibrationMatrix(inputDeviceDescriptor, calibration);
+                if (mDataStore.setCalibrationMatrix(inputDeviceDescriptor, calibration))
+                    nativeSetCalibration(mPtr);
             } finally {
                 mDataStore.saveIfNeeded();
             }

@@ -75,6 +75,9 @@ struct InputReaderConfiguration {
         // The device name alias supplied by the may have changed for some devices.
         CHANGE_DEVICE_ALIAS = 1 << 5,
 
+        // The location calibration matrix changed.
+        CHANGE_LOCATION_CALIBRATION = 1 << 6,
+
         // All devices must be reopened.
         CHANGE_MUST_REOPEN = 1 << 31,
     };
