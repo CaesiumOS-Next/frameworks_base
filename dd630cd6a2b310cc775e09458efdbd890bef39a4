@@ -1,0 +1,157 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAHJH///J0\u003d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1013986
+      },
+      "writtenOn": "2012-07-12T16:24:32Z",
+      "side": 1,
+      "message": "I added support for this to JB. See:\nhttps://android.googlesource.com/platform/frameworks/av/+/master/media/libstagefright/matroska/MatroskaExtractor.cpp",
+      "revId": "dd630cd6a2b310cc775e09458efdbd890bef39a4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAHJH///Js\u003d",
+        "filename": "media/libstagefright/matroska/MatroskaExtractor.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 1013986
+      },
+      "writtenOn": "2012-07-12T16:24:32Z",
+      "side": 1,
+      "message": "Loading all the Cues immediately is not usually desirable. For example, YouTube puts the cues element at the end of the file because they are infrequently used. On the first seek request, they are retrieved and parsed as far as is necessary for the current seek.",
+      "revId": "dd630cd6a2b310cc775e09458efdbd890bef39a4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAHJH///T4\u003d",
+        "filename": "media/libstagefright/matroska/MatroskaExtractor.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 316,
+      "author": {
+        "id": 1013986
+      },
+      "writtenOn": "2012-07-12T16:24:32Z",
+      "side": 1,
+      "message": "Where is this function used?",
+      "revId": "dd630cd6a2b310cc775e09458efdbd890bef39a4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAHJH///Jo\u003d",
+        "filename": "media/libstagefright/matroska/MatroskaExtractor.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 330,
+      "author": {
+        "id": 1013986
+      },
+      "writtenOn": "2012-07-12T16:24:32Z",
+      "side": 1,
+      "message": "The current implementation (in JB) could use some refactoring. This would be a nice function to have, instead of just sticking it in ::seek where it is now.",
+      "revId": "dd630cd6a2b310cc775e09458efdbd890bef39a4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAHJH///Jk\u003d",
+        "filename": "media/libstagefright/matroska/MatroskaExtractor.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 370,
+      "author": {
+        "id": 1013986
+      },
+      "writtenOn": "2012-07-12T16:24:32Z",
+      "side": 1,
+      "message": "Do you have files with audio Cues? When searching video, I found it better to seek to the closest block using the video cues, which point to keyframes, and iterate from there for audio.",
+      "revId": "dd630cd6a2b310cc775e09458efdbd890bef39a4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAHJH///T8\u003d",
+        "filename": "media/libstagefright/matroska/MatroskaExtractor.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 400,
+      "author": {
+        "id": 1013986
+      },
+      "writtenOn": "2012-07-12T16:24:32Z",
+      "side": 1,
+      "message": "m_block is indexed from 1, mBlockEntryIndex is indexed from 0",
+      "revId": "dd630cd6a2b310cc775e09458efdbd890bef39a4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAHJH///Jg\u003d",
+        "filename": "media/libstagefright/matroska/MatroskaExtractor.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 402,
+      "author": {
+        "id": 1013986
+      },
+      "writtenOn": "2012-07-12T16:24:32Z",
+      "side": 1,
+      "message": "I found that I didn\u0027t have to account for files without cues. The advance_l function still allowed for seeking and reduced the code that needed to be tested. Do you have files that would fail without this?",
+      "revId": "dd630cd6a2b310cc775e09458efdbd890bef39a4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAHJH///Jc\u003d",
+        "filename": "media/libstagefright/matroska/MatroskaExtractor.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 622,
+      "author": {
+        "id": 1013986
+      },
+      "writtenOn": "2012-07-12T16:24:32Z",
+      "side": 1,
+      "message": "By using incremental parsing and cues for all files, it seemed that we didn\u0027t need to be concerned about whether a file was streaming or local, just live streaming (to disable seeking)",
+      "revId": "dd630cd6a2b310cc775e09458efdbd890bef39a4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAHJH///Jw\u003d",
+        "filename": "media/libstagefright/matroska/MatroskaExtractor.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1013986
+      },
+      "writtenOn": "2012-07-12T16:24:32Z",
+      "side": 1,
+      "message": "Cues are more efficient for all searching, not just live streaming.",
+      "revId": "dd630cd6a2b310cc775e09458efdbd890bef39a4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
