@@ -236,6 +236,9 @@ public:
 
     /* Gets a user-supplied alias for a particular input device, or an empty string if none. */
     virtual String8 getDeviceAlias(const InputDeviceIdentifier& identifier) = 0;
+
+    /* Gets the calibration associated with the specified device. */
+    virtual void getCalibrationMatrix(const String8& inputDeviceDescriptor, float affineTransform[]) = 0;
 };
 
 
@@ -466,6 +469,7 @@ public:
     inline int32_t getId() { return mId; }
     inline int32_t getGeneration() { return mGeneration; }
     inline const String8& getName() { return mIdentifier.name; }
+    inline const String8& getDescriptor() { return mIdentifier.descriptor; }
     inline uint32_t getClasses() { return mClasses; }
     inline uint32_t getSources() { return mSources; }
 

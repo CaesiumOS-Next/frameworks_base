@@ -3493,13 +3493,7 @@ void TouchInputMapper::dumpCalibration(String8& dump) {
 }
 
 void TouchInputMapper::updateLocationCalibration() {
-    // FIXME: Get actual calibration values
-    mAffineTransform[0] = 1.0f;
-    mAffineTransform[1] = 0.0f;
-    mAffineTransform[2] = 0.0f;
-    mAffineTransform[3] = 0.0f;
-    mAffineTransform[4] = 1.0f;
-    mAffineTransform[5] = 0.0f;
+    getPolicy()->getCalibrationMatrix(mDevice->getDescriptor(), mAffineTransform);
 }
 
 void TouchInputMapper::reset(nsecs_t when) {

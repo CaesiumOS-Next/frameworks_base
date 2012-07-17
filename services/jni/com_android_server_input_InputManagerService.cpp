@@ -187,6 +187,7 @@ public:
     virtual void notifyInputDevicesChanged(const Vector<InputDeviceInfo>& inputDevices);
     virtual sp<KeyCharacterMap> getKeyboardLayoutOverlay(const String8& inputDeviceDescriptor);
     virtual String8 getDeviceAlias(const InputDeviceIdentifier& identifier);
+    void getCalibrationMatrix(const String8& inputDeviceDescriptor, float affineTransform[]);
 
     /* --- InputDispatcherPolicyInterface implementation --- */
 
@@ -782,6 +783,26 @@ bool NativeInputManager::isScreenOn() {
 
 bool NativeInputManager::isScreenBright() {
     return android_server_PowerManagerService_isScreenBright();
+}
+
+void NativeInputManager::getCalibrationMatrix(const String8& inputDeviceDescriptor, float affineTransform[]) {
+    JNIEnv* env = jniEnv();
+
+    jstring descriptor = env->NewStringUTF(inputDeviceDescriptor.string());
+    if (descriptor == NULL)
+        return; /* out of memory */
+
+    jfloatArray matrixArr = (jfloatArray)env->CallObjectMethod(mServiceObj,
+                              gServiceClassInfo.getCalibrationMatrixForInputDevice, descriptor);
+    jfloat *matrix = env->GetFloatArrayElements(matrixArr, 0);
+
+    if (env->GetArrayLength(matrixArr) == 6) {
+        for (int i = 0; i < 6; i++) {
+            affineTransform[i] = matrix[i];
+        }
+    }
+
+    env->ReleaseFloatArrayElements(matrixArr, matrix, 0);
 }
 
 bool NativeInputManager::filterInputEvent(const InputEvent* inputEvent, uint32_t policyFlags) {

@@ -158,6 +158,10 @@ public:
         return mInputDevices;
     }
 
+    void getCalibrationMatrix(const String8& inputDeviceDescriptor, float affineTransform[]) {
+        return;
+    }
+
 private:
     virtual void getReaderConfiguration(InputReaderConfiguration* outConfig) {
         *outConfig = mConfig;
