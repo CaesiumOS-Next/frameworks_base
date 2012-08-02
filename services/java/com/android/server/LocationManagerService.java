@@ -205,20 +205,53 @@ public class LocationManagerService extends ILocationManager.Stub implements Run
         final PendingIntent mPendingIntent;
         final Object mKey;
         final HashMap<String,UpdateRecord> mUpdateRecords = new HashMap<String,UpdateRecord>();
-
-        int mPendingBroadcasts;
         String mRequiredPermissions;
+
+        // wakelock variables
+        final static String WAKELOCK_KEY = "LocationCallback";
+        // timeout to avoid battery drain in case of a non functioning receiver
+        final static int WAKELOCK_TIMEOUT = 60000;
+        PowerManager.WakeLock mWakeLock = null;
+
+        {
+            PowerManager powerManager =
+                (PowerManager) mContext.getSystemService(Context.POWER_SERVICE);
+            mWakeLock = powerManager.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK, WAKELOCK_KEY);
+        }
 
         Receiver(ILocationListener listener) {
             mListener = listener;
             mPendingIntent = null;
             mKey = listener.asBinder();
+            mWakeLock.setWorkSource(new WorkSource(Binder.getCallingUid()));
         }
 
         Receiver(PendingIntent intent) {
             mPendingIntent = intent;
             mListener = null;
             mKey = intent;
+        }
+
+        private void acquireWakeLock() {
+            try {
+                mWakeLock.acquire(WAKELOCK_TIMEOUT);
+                if (LOCAL_LOGV) {
+                    Slog.v(TAG, "Acquired wakelock");
+                }
+            } catch (Exception e) {
+                Slog.e(TAG, "exception in acquireWakeLock()", e);
+            }
+        }
+
+        private void releaseWakeLock() {
+            try {
+                mWakeLock.release();
+                if (LOCAL_LOGV) {
+                    Slog.v(TAG, "Released wakelock");
+                }
+            } catch (Exception e) {
+                Slog.e(TAG, "exception in releaseWakeLock()", e);
+            }
         }
 
         @Override
@@ -277,13 +310,13 @@ public class LocationManagerService extends ILocationManager.Stub implements Run
             if (mListener != null) {
                 try {
                     synchronized (this) {
-                        // synchronize to ensure incrementPendingBroadcastsLocked()
-                        // is called before decrementPendingBroadcasts()
+                        // synchronize to ensure acquireWakeLock()
+                        // is called before releaseWakeLock()
                         mListener.onStatusChanged(provider, status, extras);
                         if (mListener != mProximityListener) {
-                            // call this after broadcasting so we do not increment
+                            // call this after broadcasting so we do not acquire a wake lock
                             // if we throw an exeption.
-                            incrementPendingBroadcastsLocked();
+                            acquireWakeLock();
                         }
                     }
                 } catch (RemoteException e) {
@@ -295,13 +328,13 @@ public class LocationManagerService extends ILocationManager.Stub implements Run
                 statusChanged.putExtra(LocationManager.KEY_STATUS_CHANGED, status);
                 try {
                     synchronized (this) {
-                        // synchronize to ensure incrementPendingBroadcastsLocked()
-                        // is called before decrementPendingBroadcasts()
+                        // synchronize to ensure acquireWakeLock()
+                        // is called before releaseWakeLock()
                         mPendingIntent.send(mContext, 0, statusChanged, this, mLocationHandler,
                                 mRequiredPermissions);
                         // call this after broadcasting so we do not increment
                         // if we throw an exeption.
-                        incrementPendingBroadcastsLocked();
+                        acquireWakeLock();
                     }
                 } catch (PendingIntent.CanceledException e) {
                     return false;
@@ -314,13 +347,13 @@ public class LocationManagerService extends ILocationManager.Stub implements Run
             if (mListener != null) {
                 try {
                     synchronized (this) {
-                        // synchronize to ensure incrementPendingBroadcastsLocked()
-                        // is called before decrementPendingBroadcasts()
+                        // synchronize to ensure acquireWakeLock()
+                        // is called before releaseWakeLock()
                         mListener.onLocationChanged(location);
                         if (mListener != mProximityListener) {
-                            // call this after broadcasting so we do not increment
+                            // call this after broadcasting so we do not acquire a wake lock
                             // if we throw an exeption.
-                            incrementPendingBroadcastsLocked();
+                            acquireWakeLock();
                         }
                     }
                 } catch (RemoteException e) {
@@ -331,13 +364,13 @@ public class LocationManagerService extends ILocationManager.Stub implements Run
                 locationChanged.putExtra(LocationManager.KEY_LOCATION_CHANGED, location);
                 try {
                     synchronized (this) {
-                        // synchronize to ensure incrementPendingBroadcastsLocked()
-                        // is called before decrementPendingBroadcasts()
+                        // synchronize to ensure acquireWakeLock()
+                        // is called before releaseWakeLock()
                         mPendingIntent.send(mContext, 0, locationChanged, this, mLocationHandler,
                                 mRequiredPermissions);
                         // call this after broadcasting so we do not increment
                         // if we throw an exeption.
-                        incrementPendingBroadcastsLocked();
+                        acquireWakeLock();
                     }
                 } catch (PendingIntent.CanceledException e) {
                     return false;
@@ -350,17 +383,17 @@ public class LocationManagerService extends ILocationManager.Stub implements Run
             if (mListener != null) {
                 try {
                     synchronized (this) {
-                        // synchronize to ensure incrementPendingBroadcastsLocked()
-                        // is called before decrementPendingBroadcasts()
+                        // synchronize to ensure acquireWakeLock()
+                        // is called before releaseWakeLock()
                         if (enabled) {
                             mListener.onProviderEnabled(provider);
                         } else {
                             mListener.onProviderDisabled(provider);
                         }
                         if (mListener != mProximityListener) {
-                            // call this after broadcasting so we do not increment
+                            // call this after broadcasting so we do not acquire a wake lock
                             // if we throw an exeption.
-                            incrementPendingBroadcastsLocked();
+                            acquireWakeLock();
                         }
                     }
                 } catch (RemoteException e) {
@@ -371,13 +404,13 @@ public class LocationManagerService extends ILocationManager.Stub implements Run
                 providerIntent.putExtra(LocationManager.KEY_PROVIDER_ENABLED, enabled);
                 try {
                     synchronized (this) {
-                        // synchronize to ensure incrementPendingBroadcastsLocked()
-                        // is called before decrementPendingBroadcasts()
+                        // synchronize to ensure acquireWakeLock()
+                        // is called before releaseWakeLock()
                         mPendingIntent.send(mContext, 0, providerIntent, this, mLocationHandler,
                                 mRequiredPermissions);
                         // call this after broadcasting so we do not increment
                         // if we throw an exeption.
-                        incrementPendingBroadcastsLocked();
+                        acquireWakeLock();
                     }
                 } catch (PendingIntent.CanceledException e) {
                     return false;
@@ -395,31 +428,18 @@ public class LocationManagerService extends ILocationManager.Stub implements Run
                 removeUpdatesLocked(this);
             }
             synchronized (this) {
-                if (mPendingBroadcasts > 0) {
-                    LocationManagerService.this.decrementPendingBroadcasts();
-                    mPendingBroadcasts = 0;
+                // Release all wake locks currently held by the receiver
+                while (mWakeLock.isHeld()) {
+                    releaseWakeLock();
                 }
+                mWakeLock = null;
             }
         }
 
         public void onSendFinished(PendingIntent pendingIntent, Intent intent,
                 int resultCode, String resultData, Bundle resultExtras) {
             synchronized (this) {
-                decrementPendingBroadcastsLocked();
-            }
-        }
-
-        // this must be called while synchronized by caller in a synchronized block
-        // containing the sending of the broadcaset
-        private void incrementPendingBroadcastsLocked() {
-            if (mPendingBroadcasts++ == 0) {
-                LocationManagerService.this.incrementPendingBroadcasts();
-            }
-        }
-
-        private void decrementPendingBroadcastsLocked() {
-            if (--mPendingBroadcasts == 0) {
-                LocationManagerService.this.decrementPendingBroadcasts();
+                releaseWakeLock();
             }
         }
     }
@@ -435,7 +455,7 @@ public class LocationManagerService extends ILocationManager.Stub implements Run
             synchronized (receiver) {
                 // so wakelock calls will succeed
                 long identity = Binder.clearCallingIdentity();
-                receiver.decrementPendingBroadcastsLocked();
+                receiver.releaseWakeLock();
                 Binder.restoreCallingIdentity(identity);
            }
         }
@@ -1311,10 +1331,11 @@ public class LocationManagerService extends ILocationManager.Stub implements Run
             if (mReceivers.remove(receiver.mKey) != null && receiver.isListener()) {
                 receiver.getListener().asBinder().unlinkToDeath(receiver, 0);
                 synchronized(receiver) {
-                    if(receiver.mPendingBroadcasts > 0) {
-                        decrementPendingBroadcasts();
-                        receiver.mPendingBroadcasts = 0;
+                    // Release all wake locks currently held by the receiver
+                    while (receiver.mWakeLock.isHeld()) {
+                        receiver.releaseWakeLock();
                     }
+                    receiver.mWakeLock = null;
                 }
             }
 
