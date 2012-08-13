@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAISH///eQ\u003d",
+        "filename": "packages/SystemUI/src/com/android/systemui/statusbar/policy/NetworkController.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 1028,
+      "author": {
+        "id": 1000660
+      },
+      "writtenOn": "2012-08-13T20:20:04Z",
+      "side": 1,
+      "message": "In theory, this should be indented by 8 spaces instead of 4 (same below). In reality, I see that the continuation on the next line of existing code only uses 4 spaces, so this might be the local style of this file.",
+      "revId": "471d6b380da229cf996d7988e65546f6697445f1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
