@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAIk3///68\u003d",
+        "filename": "services/input/InputReader.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 2710,
+      "author": {
+        "id": 1003957
+      },
+      "writtenOn": "2012-08-17T09:04:25Z",
+      "side": 1,
+      "message": "This should be more specific.  We don\u0027t always want to reload the calibration because we call this pretty often.  Add a more specific CHANGE_AFFINE_TRANSFORMATION flag and test for it.",
+      "revId": "302221dcdbdc1a30ab44c636e7ebbc7552c44538",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAIk3///7A\u003d",
+        "filename": "services/input/InputReader.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 3487,
+      "author": {
+        "id": 1003957
+      },
+      "writtenOn": "2012-08-17T09:04:25Z",
+      "side": 1,
+      "message": "Move this to a dumpAffineTransformation() function and give it a separate header at INDENT3.  It\u0027s weird to have these getting mixed in with the IDC file properties.",
+      "revId": "302221dcdbdc1a30ab44c636e7ebbc7552c44538",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAIk3///64\u003d",
+        "filename": "services/input/InputReader.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 3495,
+      "author": {
+        "id": 1003957
+      },
+      "writtenOn": "2012-08-17T09:04:25Z",
+      "side": 1,
+      "message": "Better name would be updateAffineTransformation()",
+      "revId": "302221dcdbdc1a30ab44c636e7ebbc7552c44538",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
