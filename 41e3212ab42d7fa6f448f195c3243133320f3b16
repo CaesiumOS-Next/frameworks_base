@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAI63///58\u003d",
+        "filename": "core/java/com/android/internal/os/BatteryStatsImpl.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 4854,
+      "author": {
+        "id": 1000559
+      },
+      "writtenOn": "2012-08-27T00:01:24Z",
+      "side": 1,
+      "message": "I don\u0027t think this will ever be null?",
+      "revId": "41e3212ab42d7fa6f448f195c3243133320f3b16",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
