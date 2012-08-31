@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAI6X//76Y\u003d",
+        "filename": "core/java/android/widget/TextView.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 1586,
+      "author": {
+        "id": 1000660
+      },
+      "writtenOn": "2012-08-31T21:41:47Z",
+      "side": 1,
+      "message": "This should use spaces instead of a tab",
+      "revId": "70a992cd1c6daeb63e664757c3463a5b542362bb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
