@@ -32,6 +32,7 @@ import android.os.IBinder;
 import android.os.Parcel;
 import android.os.Process;
 import android.os.RemoteException;
+import android.os.SELinux;
 import android.os.ServiceManager;
 import android.os.UserHandle;
 import android.util.Slog;
@@ -56,6 +57,7 @@ final class Session extends IWindowSession.Stub
     final IInputContext mInputContext;
     final int mUid;
     final int mPid;
+    final String mSecurityLabel;
     final String mStringName;
     SurfaceSession mSurfaceSession;
     int mNumWindow = 0;
@@ -68,6 +70,7 @@ final class Session extends IWindowSession.Stub
         mInputContext = inputContext;
         mUid = Binder.getCallingUid();
         mPid = Binder.getCallingPid();
+        mSecurityLabel = SELinux.getPidContext(mPid);
         StringBuilder sb = new StringBuilder();
         sb.append("Session{");
         sb.append(Integer.toHexString(System.identityHashCode(this)));
@@ -232,6 +235,10 @@ final class Session extends IWindowSession.Stub
         synchronized(mService.mWindowMap) {
             return mService.mInTouchMode;
         }
+    }
+
+    public String getSecurityLabel() {
+        return mSecurityLabel;
     }
 
     public boolean performHapticFeedback(IWindow window, int effectId,

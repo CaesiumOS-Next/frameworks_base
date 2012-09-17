@@ -132,6 +132,11 @@ public class NavigationBarView extends LinearLayout {
 
     private H mHandler = new H();
 
+    public void setBackgroundColor(int color) {
+        mCurrentView.setBackgroundColor(color);
+        return;
+    }
+
     public View getRecentsButton() {
         return mCurrentView.findViewById(R.id.recent_apps);
     }

@@ -108,6 +108,12 @@ public final class BridgeWindowSession implements IWindowSession {
     }
 
     @Override
+    public String getSecurityLabel() {
+        // pass for now.
+	return "";
+    }
+
+    @Override
     public void remove(IWindow arg0) throws RemoteException {
         // pass for now.
     }

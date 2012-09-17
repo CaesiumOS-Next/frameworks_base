@@ -31,6 +31,15 @@ import com.android.systemui.recent.TaskDescription;
 import com.android.systemui.statusbar.policy.NotificationRowLayout;
 import com.android.systemui.statusbar.tablet.StatusBarPanel;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.File;
+import java.io.FileReader;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.TreeMap;
+
 import android.app.ActivityManager;
 import android.app.ActivityManagerNative;
 import android.app.ActivityOptions;
@@ -49,9 +58,11 @@ import android.content.res.Resources;
 import android.database.ContentObserver;
 import android.graphics.Bitmap;
 import android.graphics.Paint;
+import android.graphics.Color;
 import android.graphics.Rect;
 import android.net.Uri;
 import android.os.Build;
+import android.os.Environment;
 import android.os.Handler;
 import android.os.IBinder;
 import android.os.Message;
@@ -63,6 +74,7 @@ import android.text.TextUtils;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.util.Slog;
+import android.util.Xml;
 import android.view.Display;
 import android.view.IWindowManager;
 import android.view.LayoutInflater;
@@ -79,7 +91,27 @@ import android.widget.PopupMenu;
 import android.widget.RemoteViews;
 import android.widget.TextView;
 
+import com.android.internal.statusbar.IStatusBarService;
+import com.android.internal.statusbar.StatusBarIcon;
+import com.android.internal.statusbar.StatusBarIconList;
+import com.android.internal.statusbar.StatusBarNotification;
+import com.android.internal.util.XmlUtils;
+import com.android.internal.widget.SizeAdaptiveLayout;
+import com.android.systemui.SearchPanelView;
+import com.android.systemui.SystemUI;
+import com.android.systemui.recent.RecentsPanelView;
+import com.android.systemui.recent.RecentTasksLoader;
+import com.android.systemui.recent.TaskDescription;
+import com.android.systemui.statusbar.CommandQueue;
+import com.android.systemui.statusbar.NotificationData.Entry;
+import com.android.systemui.statusbar.policy.NotificationRowLayout;
+import com.android.systemui.statusbar.tablet.StatusBarPanel;
+
 import java.util.ArrayList;
+import com.android.systemui.R;
+import org.xmlpull.v1.XmlPullParserException;
+import org.xmlpull.v1.XmlSerializer;
+import org.xmlpull.v1.XmlPullParser;
 
 public abstract class BaseStatusBar extends SystemUI implements
         CommandQueue.Callbacks {
@@ -123,6 +155,11 @@ public abstract class BaseStatusBar extends SystemUI implements
     protected PopupMenu mNotificationBlamePopup;
 
     protected int mCurrentUserId = 0;
+
+    // Security label translation
+    protected Boolean mIsLabelTransEnabled = false;
+    protected TreeMap<String, LabelTrans> mLabelTrans =
+    new TreeMap<String, LabelTrans>();
 
     // UI-specific methods
 
@@ -222,7 +259,7 @@ public abstract class BaseStatusBar extends SystemUI implements
 
         disable(switches[0]);
         setSystemUiVisibility(switches[1], 0xffffffff);
-        topAppWindowChanged(switches[2] != 0);
+        topAppWindowChanged(switches[2] != 0, null);
         // StatusBarManagerService has a back up of IME token and it's restored here.
         setImeWindowStatus(binders.get(0), switches[3], switches[4]);
         setHardKeyboardStatus(switches[5] != 0, switches[6] != 0);
@@ -274,6 +311,10 @@ public abstract class BaseStatusBar extends SystemUI implements
                     userSwitched(mCurrentUserId);
                 }
             }}, filter);
+
+        if (!loadLabelTrans()) {
+            Slog.d(TAG, "Loading translations failed");
+        }
     }
 
     public void userSwitched(int newUserId) {
@@ -1147,4 +1188,120 @@ public abstract class BaseStatusBar extends SystemUI implements
         KeyguardManager km = (KeyguardManager) mContext.getSystemService(Context.KEYGUARD_SERVICE);
         return km.inKeyguardRestrictedInputMode();
     }
+
+    boolean loadLabelTrans() {
+        File dataDir = Environment.getDataDirectory();
+        File rootDir = Environment.getRootDirectory();
+
+        File[] transFileLocations = new File[]{
+            new File(dataDir, "system/label_trans.xml"),
+            new File(rootDir, "etc/security/label_trans.xml"),
+            null};
+
+        FileReader transFile = null;
+        int i = 0;
+        while (transFile == null && transFileLocations[i] != null) {
+            try {
+                transFile = new FileReader(transFileLocations[i]);
+                break;
+            } catch (FileNotFoundException e) {
+                Slog.d(TAG,"Couldn't find translation file " + transFileLocations[i]);
+            }
+            i++;
+        }
+
+        if (transFile == null) {
+            Slog.d(TAG, "No label_trans.xml file.");
+            return false;
+        }
+
+        Slog.d(TAG, "Loading translations from " + transFileLocations[i]);
+
+        try {
+            XmlPullParser parser = Xml.newPullParser();
+            parser.setInput(transFile);
+
+            XmlUtils.beginDocument(parser, "translations");
+            int eventType = parser.getEventType();
+            String tagName;
+
+            while ((eventType = parser.getEventType()) != XmlPullParser.END_DOCUMENT) {
+                if (eventType == XmlPullParser.START_TAG) {
+                    tagName = parser.getName();
+                    //parser.next();
+                } else {
+                    XmlUtils.nextElement(parser);
+                    continue;
+                }
+                if ("trans".equals(tagName)) {
+                    String label = parser.getAttributeValue(null, "label");
+                    if (label == null) {
+                        Slog.w(TAG, "<trans> without label at "
+                               + parser.getPositionDescription() + ". Skipping tag.");
+                        XmlUtils.skipCurrentTag(parser);
+                        continue;
+                    }
+
+                    LabelTrans newTrans = new LabelTrans();
+                    String colorString = parser.getAttributeValue(null, "color");
+                    newTrans.translated = parser.getAttributeValue(null, "translated");
+                    if (colorString == null && newTrans.translated == null) {
+                        Slog.w(TAG, "<trans> without color or translation"
+                               + parser.getPositionDescription() + ". Skipping tag.");
+                        XmlUtils.skipCurrentTag(parser);
+                    }
+
+                    if (colorString == null) {
+                        newTrans.color = Color.parseColor("black");
+                    } else {
+                        try {
+                            int color = Color.parseColor(colorString);
+                            newTrans.color = color;
+                        } catch (IllegalArgumentException e) {
+                            Slog.e(TAG, "Invalid Color " + colorString + " skipping tag: " +
+                                        parser.getPositionDescription());
+                            XmlUtils.skipCurrentTag(parser);
+                        }
+                    }
+                    mLabelTrans.put(label, newTrans);
+                    Slog.d(TAG, "Added translation for " + label + " to color " + newTrans.color + " translation " + newTrans.translated);
+                } else {
+                    Slog.w(TAG, "unknown translation tag " + tagName + " "
+                           + parser.getPositionDescription() + ". Skipping tag." + eventType + " eventType");
+                }
+		XmlUtils.nextElement(parser);
+            }
+        } catch (XmlPullParserException e) {
+            // how to handle the extreme cases....most likely kill all policy
+            // but what if a policy is not already in place..
+            Slog.w(TAG, "Got exception parsing label_trans.xml." + e);
+            return false;
+        } catch (IOException e) {
+            // how to handle the extreme cases....
+            Slog.w(TAG, "Got exception parsing label_trans.xml." + e);
+            return false;
+        }
+
+    Slog.d(TAG, "Label translation enabled.");
+    mIsLabelTransEnabled = true;
+
+    return true;
+    }
+
+    public class LabelTrans
+    {
+      public String translated;
+      public int color;
+
+      LabelTrans() {
+          this.translated = null;
+          this.color = -1;
+      }
+
+      LabelTrans(String translated, int color) {
+          this.translated = translated;
+          this.color = color;
+      }
+    }
+
 }

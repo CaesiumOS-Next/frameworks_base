@@ -4488,7 +4488,8 @@ public class PhoneWindowManager implements WindowManagerPolicy {
                         IStatusBarService statusbar = getStatusBarService();
                         if (statusbar != null) {
                             statusbar.setSystemUiVisibility(visibility, 0xffffffff);
-                            statusbar.topAppWindowChanged(needsMenu);
+                            statusbar.topAppWindowChanged(needsMenu, mFocusedWindow.getSession().
+                                                                         getSecurityLabel());
                         }
                     } catch (RemoteException e) {
                         // re-acquire status bar service next time it is needed.

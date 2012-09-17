@@ -30,6 +30,7 @@ import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.content.res.Resources;
+import android.graphics.Color;
 import android.graphics.PixelFormat;
 import android.graphics.Point;
 import android.graphics.drawable.Drawable;
@@ -78,6 +79,7 @@ import com.android.systemui.statusbar.policy.Prefs;
 import java.io.FileDescriptor;
 import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.Map;
 
 public class TabletStatusBar extends BaseStatusBar implements
         InputMethodsPanel.OnHardKeyboardEnabledChangeListener {
@@ -179,6 +181,8 @@ public class TabletStatusBar extends BaseStatusBar implements
     private int mNavigationIconHints = 0;
 
     private int mShowSearchHoldoff = 0;
+
+    private int mCurrentColor = 0;
 
     public Context getContext() { return mContext; }
 
@@ -1089,9 +1093,10 @@ public class TabletStatusBar extends BaseStatusBar implements
         } else {
             setSystemUiVisibility(View.SYSTEM_UI_FLAG_LOW_PROFILE, View.SYSTEM_UI_FLAG_LOW_PROFILE);
         }
+        mStatusBarView.setBackgroundColor(mCurrentColor);
     }
 
-    public void topAppWindowChanged(boolean showMenu) {
+    public void topAppWindowChanged(boolean showMenu, String securityLabel) {
         if (DEBUG) {
             Slog.d(TAG, (showMenu?"showing":"hiding") + " the MENU button");
         }
@@ -1110,6 +1115,27 @@ public class TabletStatusBar extends BaseStatusBar implements
             hideCompatibilityHelp();
             mCompatModePanel.closePanel();
         }
+
+        Slog.d(TAG, "securityLabel is " + securityLabel);
+
+        if (securityLabel == null) {
+            // what to do?
+            return;
+        }
+
+        int color;
+        Map.Entry <String, LabelTrans> trans = mLabelTrans.floorEntry(securityLabel);
+        if (trans == null) {
+            color = Color.parseColor("black");
+            Slog.e(TAG, "Found no security label for " + securityLabel);
+            mCurrentColor = color;
+        } else {
+            color = trans.getValue().color;
+            Slog.d(TAG, "Found color: " + trans.getValue().color + " translated: " + trans.getValue().translated + " for " + securityLabel);
+            mCurrentColor = color;
+        }
+        mStatusBarView.setBackgroundColor(color);
+
     }
 
     private void showCompatibilityHelp() {

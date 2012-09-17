@@ -73,7 +73,7 @@ public class TvStatusBar extends BaseStatusBar {
     }
 
     @Override
-    public void topAppWindowChanged(boolean visible) {
+    public void topAppWindowChanged(boolean visible, String securityLabel) {
     }
 
     @Override

@@ -34,6 +34,7 @@ import android.content.SharedPreferences;
 import android.content.res.Resources;
 import android.database.ContentObserver;
 import android.graphics.Canvas;
+import android.graphics.Color;
 import android.graphics.ColorFilter;
 import android.graphics.PixelFormat;
 import android.graphics.Point;
@@ -97,6 +98,7 @@ import com.android.systemui.statusbar.policy.Prefs;
 import java.io.FileDescriptor;
 import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.Map;
 
 public class PhoneStatusBar extends BaseStatusBar {
     static final String TAG = "PhoneStatusBar";
@@ -212,6 +214,10 @@ public class PhoneStatusBar extends BaseStatusBar {
     private int mNotificationHeaderHeight;
 
     private boolean mShowCarrierInPanel = false;
+
+    //SELinux Translated Label and color
+    private TextView mTransLabel;
+    private int mBackgroundColor;
 
     // position
     int[] mPositionTmp = new int[2];
@@ -470,6 +476,9 @@ public class PhoneStatusBar extends BaseStatusBar {
                 mNotificationButton.setOnClickListener(mNotificationButtonListener);
             }
         }
+
+        mTransLabel = (TextView)mStatusBarWindow.findViewById(R.id.trans_label);
+        mTransLabel.setVisibility(View.VISIBLE);
 
         mScrollView = (ScrollView)mStatusBarWindow.findViewById(R.id.scroll);
         mScrollView.setVerticalScrollBarEnabled(false); // less drawing during pulldowns
@@ -759,6 +768,7 @@ public class PhoneStatusBar extends BaseStatusBar {
 
     private void prepareNavigationBarView() {
         mNavigationBarView.reorient();
+        mNavigationBarView.setBackgroundColor(mBackgroundColor);
 
         mNavigationBarView.getRecentsButton().setOnClickListener(mRecentsClickListener);
         mNavigationBarView.getRecentsButton().setOnTouchListener(mRecentsPreloadOnTouchListener);
@@ -1871,16 +1881,40 @@ public class PhoneStatusBar extends BaseStatusBar {
         }
     }
 
-    public void topAppWindowChanged(boolean showMenu) {
+    public void topAppWindowChanged(boolean showMenu, String securityLabel) {
         if (DEBUG) {
             Slog.d(TAG, (showMenu?"showing":"hiding") + " the MENU button");
         }
+
         if (mNavigationBarView != null) {
             mNavigationBarView.setMenuVisibility(showMenu);
         }
 
         // See above re: lights-out policy for legacy apps.
         if (showMenu) setLightsOn(true);
+
+        if (!mIsLabelTransEnabled)
+            return;
+
+        Slog.d(TAG, "SecurityLabel is " + securityLabel);
+
+        if (securityLabel == null) {
+            // what to do?
+            return;
+        }
+
+        Map.Entry <String, LabelTrans> trans = mLabelTrans.floorEntry(securityLabel);
+        if (trans == null) {
+            mBackgroundColor = Color.parseColor("black");
+            Slog.e(TAG, "Found no translated label for " + securityLabel);
+            mTransLabel.setText("");
+        } else {
+            Slog.e(TAG, "Found color: " + trans.getValue().color + " translated: " + trans.getValue().translated + " for " + securityLabel);
+            mBackgroundColor = trans.getValue().color;
+            mTransLabel.setText(trans.getValue().translated);
+        }
+        mNavigationBarView.setBackgroundColor(mBackgroundColor);
+        mStatusBarView.setBackgroundColor(mBackgroundColor);
     }
 
     @Override

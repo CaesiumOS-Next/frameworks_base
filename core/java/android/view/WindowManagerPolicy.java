@@ -25,6 +25,7 @@ import android.os.Bundle;
 import android.os.IBinder;
 import android.os.Looper;
 import android.view.animation.Animation;
+import android.view.IWindowSession;
 
 import java.io.PrintWriter;
 
@@ -345,6 +346,15 @@ public interface WindowManagerPolicy {
          * @return true if window is on default display.
          */
         public boolean isDefaultDisplay();
+
+        /**
+         * Return the session for the application (actually activity) that owns
+         * this window.
+         *
+         * @return An IWindowSession identifying the owning activity.
+         */
+        public IWindowSession getSession();
+
     }
 
     /**

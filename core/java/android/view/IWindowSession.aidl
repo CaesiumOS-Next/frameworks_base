@@ -125,6 +125,8 @@ interface IWindowSession {
      */
     void getDisplayFrame(IWindow window, out Rect outDisplayFrame);
     
+    String getSecurityLabel();
+
     void finishDrawing(IWindow window);
     
     void setInTouchMode(boolean showFocus);

@@ -263,10 +263,12 @@ public class StatusBarManagerService extends IStatusBarService.Stub
      * Hide or show the on-screen Menu key. Only call this from the window manager, typically in
      * response to a window with FLAG_NEEDS_MENU_KEY set.
      */
-    public void topAppWindowChanged(final boolean menuVisible) {
+    public void topAppWindowChanged(final boolean menuVisible, final String securityLabel) {
         enforceStatusBar();
 
         if (SPEW) Slog.d(TAG, (menuVisible?"showing":"hiding") + " MENU key");
+
+        Slog.d(TAG, "securityLabel is " + securityLabel);
 
         synchronized(mLock) {
             mMenuVisible = menuVisible;
@@ -274,7 +276,7 @@ public class StatusBarManagerService extends IStatusBarService.Stub
                     public void run() {
                         if (mBar != null) {
                             try {
-                                mBar.topAppWindowChanged(menuVisible);
+                                mBar.topAppWindowChanged(menuVisible, securityLabel);
                             } catch (RemoteException ex) {
                             }
                         }

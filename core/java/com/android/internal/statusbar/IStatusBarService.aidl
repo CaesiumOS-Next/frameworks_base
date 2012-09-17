@@ -30,7 +30,7 @@ interface IStatusBarService
     void setIcon(String slot, String iconPackage, int iconId, int iconLevel, String contentDescription);
     void setIconVisibility(String slot, boolean visible);
     void removeIcon(String slot);
-    void topAppWindowChanged(boolean menuVisible);
+    void topAppWindowChanged(boolean menuVisible, String securityLabel);
     void setImeWindowStatus(in IBinder token, int vis, int backDisposition);
     void expandSettingsPanel();
     void setCurrentUser(int newUserId);

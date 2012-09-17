@@ -574,6 +574,11 @@ final class WindowState implements WindowManagerPolicy.WindowState {
     }
 
     @Override
+    public Session getSession() {
+        return mSession;
+    }
+
+    @Override
     public boolean getNeedsMenuLw(WindowManagerPolicy.WindowState bottom) {
         int index = -1;
         WindowState ws = this;
