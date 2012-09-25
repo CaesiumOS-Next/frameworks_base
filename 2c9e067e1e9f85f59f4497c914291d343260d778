@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAJan///Hg\u003d",
+        "filename": "services/input/EventHub.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1399,
+      "author": {
+        "id": 1005480
+      },
+      "writtenOn": "2012-09-25T23:15:21Z",
+      "side": 1,
+      "message": "How is the kernel sending two IN_CREATE for the same devname without an IN_DELETE?\nUncomment the line printf above. Maybe inotify_add_watch() needs to look at extra events?",
+      "revId": "2c9e067e1e9f85f59f4497c914291d343260d778",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
