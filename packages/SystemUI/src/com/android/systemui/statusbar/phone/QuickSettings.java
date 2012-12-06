@@ -17,6 +17,7 @@
 package com.android.systemui.statusbar.phone;
 
 import android.animation.ValueAnimator;
+import com.android.systemui.statusbar.policy.NetworkController_brcm;
 import android.app.ActivityManagerNative;
 import android.app.AlertDialog;
 import android.app.Dialog;
@@ -159,7 +160,7 @@ class QuickSettings {
         mModel.onImeWindowStatusChanged(visible);
     }
 
-    void setup(NetworkController networkController, BluetoothController bluetoothController,
+    void setup(NetworkController_brcm networkController, BluetoothController bluetoothController,
             BatteryController batteryController, LocationController locationController,
             RotationLockController rotationLockController) {
         mBluetoothController = bluetoothController;
@@ -460,7 +461,6 @@ class QuickSettings {
                         iov.setImageDrawable(null);
                     }
                     setActivity(view, rssiState);
-
                     tv.setText(state.label);
                     view.setContentDescription(mContext.getResources().getString(
                             R.string.accessibility_quick_settings_mobile,
@@ -469,6 +469,51 @@ class QuickSettings {
                 }
             });
             parent.addView(rssiTile);
+
+            // BRCM Dual SIM support start
+            rssiTile = (QuickSettingsTileView)
+                    inflater.inflate(R.layout.quick_settings_tile, parent, false);
+            rssiTile.setContent(R.layout.quick_settings_tile_rssi, inflater);
+            rssiTile.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent();
+                    intent.setComponent(new ComponentName(
+                            "com.android.settings",
+                            "com.android.settings.Settings$DataUsageSummaryActivity"));
+                    startSettingsActivity(intent);
+                }
+            });
+            mModel.addRSSITile_2(rssiTile, new QuickSettingsModel.RefreshCallback() {
+                @Override
+                public void refreshView(QuickSettingsTileView view, State state) {
+                    Log.d(TAG, "RSSI Tile 2 refreshView");
+                    RSSIState rssiState = (RSSIState) state;
+                    ImageView iv = (ImageView) view.findViewById(R.id.rssi_image);
+                    ImageView iov = (ImageView) view.findViewById(R.id.rssi_overlay_image);
+                    TextView tv = (TextView) view.findViewById(R.id.rssi_textview);
+                    iv.setImageResource(rssiState.signalIconId);
+
+                    if (rssiState.dataTypeIconId > 0) {
+                        iov.setImageResource(rssiState.dataTypeIconId);
+                    } else {
+                        iov.setImageDrawable(null);
+                    }
+                    tv.setText(state.label);
+                    view.setContentDescription(mContext.getResources().getString(
+                            R.string.accessibility_quick_settings_mobile,
+                            rssiState.signalContentDescription, rssiState.dataContentDescription,
+                            state.label));
+                    if (!rssiState.hasService) {
+                        Log.d(TAG, "RSSI Tile 2 didn't has service, disabled UI.");
+                        view.setVisibility(View.GONE);
+                    } else {
+                        view.setVisibility(View.VISIBLE);
+                    }
+                }
+            });
+            parent.addView(rssiTile);
+            // BRCM Dual SIM support end
         }
 
         // Rotation Lock

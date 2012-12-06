@@ -28,6 +28,8 @@ import android.telephony.gsm.GsmCellLocation;
 import com.android.internal.telephony.ITelephony;
 import com.android.internal.telephony.PhoneConstants;
 
+import android.content.Context;
+
 /**
  * Abstract class that represents the location of the device.  {@more}
  */
@@ -40,9 +42,13 @@ public abstract class CellLocation {
      */
     public static void requestLocationUpdate() {
         try {
-            ITelephony phone = ITelephony.Stub.asInterface(ServiceManager.getService("phone"));
+            ITelephony phone = ITelephony.Stub.asInterface(ServiceManager.getService("phone1"));
             if (phone != null) {
                 phone.updateServiceLocation();
+            }
+            ITelephony phone2 = ITelephony.Stub.asInterface(ServiceManager.getService("phone2"));
+            if (phone2 != null) {
+                phone2.updateServiceLocation();
             }
         } catch (RemoteException ex) {
             // ignore it

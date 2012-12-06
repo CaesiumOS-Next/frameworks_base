@@ -40,6 +40,7 @@ import com.android.i18n.phonenumbers.Phonenumber.PhoneNumber;
 
 import java.util.Locale;
 
+import com.android.internal.telephony.RILConstants.SimCardID;
 
 /**
  * Looks up caller information for the given phone number.
@@ -49,6 +50,10 @@ import java.util.Locale;
 public class CallerInfo {
     private static final String TAG = "CallerInfo";
     private static final boolean VDBG = Rlog.isLoggable(TAG, Log.VERBOSE);
+
+    public static final String UNKNOWN_NUMBER = "-1";
+    public static final String PRIVATE_NUMBER = "-2";
+    public static final String PAYPHONE_NUMBER = "-3";
 
     /**
      * Please note that, any one of these member variables can be null,
@@ -267,6 +272,9 @@ public class CallerInfo {
      * with all relevant fields empty or null.
      */
     public static CallerInfo getCallerInfo(Context context, String number) {
+        return getCallerInfo(context, number, SimCardID.ID_ZERO);
+    }
+    public static CallerInfo getCallerInfo(Context context, String number, SimCardID simCardId) {
         if (VDBG) Rlog.v(TAG, "getCallerInfo() based on number...");
 
         if (TextUtils.isEmpty(number)) {
@@ -276,7 +284,7 @@ public class CallerInfo {
         // Change the callerInfo number ONLY if it is an emergency number
         // or if it is the voicemail number.  If it is either, take a
         // shortcut and skip the query.
-        if (PhoneNumberUtils.isLocalEmergencyNumber(number, context)) {
+        if (PhoneNumberUtils.isLocalEmergencyNumber(number, context, simCardId)) {
             return new CallerInfo().markAsEmergency(context);
         } else if (PhoneNumberUtils.isVoiceMailNumber(number)) {
             return new CallerInfo().markAsVoiceMail();
@@ -403,7 +411,7 @@ public class CallerInfo {
         mIsVoiceMail = true;
 
         try {
-            String voiceMailLabel = TelephonyManager.getDefault().getVoiceMailAlphaTag();
+            String voiceMailLabel = TelephonyManager.getDefault(SimCardID.ID_ZERO).getVoiceMailAlphaTag();
 
             phoneNumber = voiceMailLabel;
         } catch (SecurityException se) {

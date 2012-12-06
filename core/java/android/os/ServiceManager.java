@@ -23,6 +23,10 @@ import android.util.Log;
 import java.util.HashMap;
 import java.util.Map;
 
+import com.android.internal.telephony.RILConstants.SimCardID;
+import com.android.internal.telephony.TelephonyProperties;
+import android.content.Context;
+
 /** @hide */
 public final class ServiceManager {
     private static final String TAG = "ServiceManager";
@@ -47,6 +51,16 @@ public final class ServiceManager {
      * @return a reference to the service, or <code>null</code> if the service doesn't exist
      */
     public static IBinder getService(String name) {
+        if (Context.TELEPHONY_SERVICE.equals(name)) {
+            if (SimCardID.ID_ONE.toInt() == SystemProperties.getInt(
+                                                TelephonyProperties.PROPERTY_API_SIM,
+                                                SimCardID.ID_ZERO.toInt())) {
+                name = Context.TELEPHONY_SERVICE2;
+            } else {
+                name = Context.TELEPHONY_SERVICE1;
+            }
+        }
+
         try {
             IBinder service = sCache.get(name);
             if (service != null) {
@@ -97,6 +111,14 @@ public final class ServiceManager {
      * service manager.  Non-blocking.
      */
     public static IBinder checkService(String name) {
+        if (Context.TELEPHONY_SERVICE.equals(name)) {
+            if (SimCardID.ID_ONE.toInt() == SystemProperties.getInt(TelephonyProperties.PROPERTY_API_SIM, SimCardID.ID_ZERO.toInt())) {
+                name = Context.TELEPHONY_SERVICE2;
+            } else {
+                name = Context.TELEPHONY_SERVICE1;
+            }
+        }
+
         try {
             IBinder service = sCache.get(name);
             if (service != null) {

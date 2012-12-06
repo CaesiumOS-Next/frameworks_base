@@ -57,6 +57,7 @@ public interface RILConstants {
                                                  retries needed */
     int MISSING_RESOURCE = 16;                /* no logical channel available */
     int NO_SUCH_ELEMENT = 17;                 /* application not found on SIM */
+    int INVALID_PARAMETER = 18;
 
     /* NETWORK_MODE_* See ril.h RIL_REQUEST_SET_PREFERRED_NETWORK_TYPE */
     int NETWORK_MODE_WCDMA_PREF     = 0; /* GSM/WCDMA (WCDMA preferred) */
@@ -76,6 +77,9 @@ public interface RILConstants {
     int NETWORK_MODE_LTE_ONLY       = 11; /* LTE Only mode. */
     int NETWORK_MODE_LTE_WCDMA      = 12; /* LTE/WCDMA */
     int PREFERRED_NETWORK_MODE      = NETWORK_MODE_WCDMA_PREF;
+
+    int GSM_CELL_BROADCAST_SMS_DISABLED = 0;
+    int GSM_CELL_BROADCAST_SMS_ENABLED  = 1;
 
     int CDMA_CELL_BROADCAST_SMS_DISABLED = 1;
     int CDMA_CELL_BROADCAST_SMS_ENABLED  = 0;
@@ -115,11 +119,56 @@ public interface RILConstants {
     int DEACTIVATE_REASON_PDP_RESET = 2;
 
 /*
+ * Start - RIL_REQUEST_OEM_HOOK_RAW msg type
+ */
+
+/*The following OEM HOOK Ids  must match with the values in brcm_usrlib\modem\ril\public\bcm_kril.h.*/
+    int BRIL_HOOK_SET_PREFDATA = 0x0;
+    int BRIL_HOOK_QUERY_SIM_PIN_REMAINING = 0x1;
+    int BRIL_HOOK_SET_BPM_MODE = 0x3;
+    int BRIL_HOOK_POWER_ONOFF_CARD =0x08;
+    int BRIL_HOOK_PBK_SEND_INFO_REQ = 0x09;
+    int BRIL_HOOK_PBK_READ_ENTRY_REQ = 0x0a;
+    int BRIL_HOOK_PBK_UPDATE_ENTRY_REQ = 0x0b;
+    int BRIL_HOOK_SET_FAST_DORMANCY =0x0c;
+    int BRIL_HOOK_PBK_GAS_INFO_REQ=0x0f;
+    int BRIL_HOOK_PBK_GAS_READ_ENTRY_REQ=0x10;
+    int BRIL_HOOK_PBK_GAS_UPDATAE_ENTRY_REQ=0x11;
+
+    int CAPI2_PB_ME = 0;          ///< ME Phonebook
+    int CAPI2_PB_FDN = 1;         ///< fixdialling-phonebook
+    int CAPI2_PB_ADN = 2;         ///< Abreviated dialing-phonebook for 2G.
+    int CAPI2_PB_EN = 3;          ///< SIM Emergency Call Code phonebook
+    int CAPI2_PB_SDN = 4;         ///< service dialing number phone book
+    int CAPI2_PB_LND = 5;         ///< Last Dialled Bumber
+    int CAPI2_PB_MSISDN = 6;      ///< Mobile Own Phone Number
+    int CAPI2_PB_BDN = 7;         ///< Barred Dialling Numbers
+    int CAPI2_PB_3G_GLOBAL = 8;   ///< 3G Global Phonebook
+    int CAPI2_PB_3G_LOCAL = 9;    ///< 3G Local Phonebook
+    int CAPI2_PB_INVALID_TYPE = 10; ///< Invalid phonebook type: equal to the number of phonebook type
+/*
+ * End - RIL_REQUEST_OEM_HOOK_RAW msg type
+ */
+
+/*
 cat include/telephony/ril.h | \
    egrep '^#define' | \
    sed -re 's/^#define +([^ ]+)* +([^ ]+)/    int \1 = \2;/' \
    >>java/android/com.android.internal.telephony/gsm/RILConstants.java
 */
+    public enum SimCardID {
+        ID_PROMPT,
+        ID_ZERO,
+        ID_ONE;
+        public int toInt() {
+            switch (this) {
+                case ID_PROMPT:return -1;
+                case ID_ZERO:return 0;
+                case ID_ONE:return 1;
+                default:return -2;
+            }
+        }
+    };
 
     /**
      * No restriction at all including voice/SMS/USSD/SS/AV64

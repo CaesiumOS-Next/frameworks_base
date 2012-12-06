@@ -117,6 +117,17 @@ public interface TelephonyProperties
      */
     static String PROPERTY_DATA_NETWORK_TYPE = "gsm.network.type";
 
+    /** PROPERTY_SIM_ACTIVE_PHONE is also known as the phone name, or Service Provider Name.
+     * Values include: <code>"PHONE1"</code>, <code>"PHONE2"</code>
+     */
+    static String PROPERTY_SIM_ACTIVE_PHONE = "persist.gsm.sim.active.phone";
+
+    /** 'true' if the phone is dual sim phone
+     *  purposes.
+     *  Availability: control the configure of singular mode or dual mode phone
+     */
+    static String PROPERTY_DUAL_MODE_PHONE = "ro.dual.sim.phone";
+
     /** Indicate if phone is in emergency callback mode */
     static final String PROPERTY_INECM_MODE = "ril.cdma.inecmmode";
 
@@ -187,4 +198,67 @@ public interface TelephonyProperties
      * Ignore RIL_UNSOL_NITZ_TIME_RECEIVED completely, used for debugging/testing.
      */
     static final String PROPERTY_IGNORE_NITZ = "telephony.test.ignore.nitz";
+
+    /* vdang:fixme to be removed */
+    /* @hide */
+    static final String PROPERTY_CALL_DEFAULT_SIM_ID = "persist.radio.calldefault.simid";
+
+    /* @hide */
+    static final String PROPERTY_DATA_PREFER_SIM_ID = "persist.radio.dataprefer.simid";
+
+    /* @hide */
+    static final String PROPERTY_BPM_SETTING_ENABLE = "persist.sys.bpmsetting.enable";
+
+    /* @hide */
+    static final String PROPERTY_CMAS_ENABLE= "persist.sys.cmas.enable";
+
+     /* @hide */
+    static final String PROPERTY_STK_KEYEVENT_ENABLE = "persist.sys.stkkeyevent.enable";
+
+    /* @hide */
+    static final String PROPERTY_STK_USERACTIVITY = "persist.sys.stk.useractivity";
+
+    /* @hide */
+    static final String PROPERTY_STK_IDLESCREEN = "persist.sys.stk.idlescreen";
+
+    /** BRCM add for dual 3G feature.
+     * @hide
+     */
+    static final String PROPERTY_BOTH_3G_ENABLE = "persist.sys.both3g.enable";
+
+    /* @hide */ // for TMO ECN
+    static final String PROPERTY_ECN_ENABLE = "persist.sys.radio.enable";
+    /* @hide */ // for TMO ECN
+    static final String PROPERTY_ECN_SC = "persist.sys.radio.sc";
+    /**
+    * Set to true to indicate that mms is busy working. we ONLY use this property to indicate if network is switched for mms, so it will prevent
+    * switching data network double times for sending mms. Sending mms without switching network will not set this property, so we can swtich
+    * it if we just want to send mms with the other SIM, even other mms is being processed.
+    *@hide
+    */
+    static final String PROPERTY_DATA_MMS_BUSY = "persist.radio.mms.busy";
+
+    /* @hide */
+    static final String PROPERTY_WORKING_MMS_SIM_ID = "persist.sys.mms.simid";
+
+    /* @hide */
+    static final String PROPERTY_ICC_CB_CHANNEL_LIST = "persist.radio.icc.cb.list";
+
+    /* @hide */
+    static final String PROPERTY_ICC_MAX_CB_CHANNELS = "persist.radio.icc.cb.count";
+
+    /* @hide */
+    static final String PROPERTY_ICC_CB_LANGUAGE_INDEX = "persist.radio.icc.cb.lang";
+
+    /* @hide */
+    static final String PROPERTY_API_SIM = "persist.sys.api.simid";
+
+    /* @hide */
+    static final String PROPERTY_NETWORK_TYPE = "persist.radio.networktype";
+
+    /* @hide */
+    static final String PROPERTY_FASTDORMANCY_ENABLE = "persist.radio.fastdormancy";
+
+    /* @hide */
+    static final String PROPERTY_FASTDORMANCY_INACTTIMER = "persist.radio.inactivity";
 }

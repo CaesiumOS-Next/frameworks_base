@@ -29,6 +29,10 @@ import android.widget.Button;
 import com.android.internal.telephony.IccCardConstants.State;
 import com.android.internal.widget.LockPatternUtils;
 
+// BRCM Dual SIM support start
+import com.android.internal.telephony.RILConstants.SimCardID;
+import android.util.Log;
+// BRCM Dual SIM support end
 /**
  * This class implements a smart emergency button that updates itself based
  * on telephony state.  When the phone is idle, it is an emergency call button.
@@ -117,8 +121,13 @@ public class EmergencyButton extends Button {
         if (phoneState == TelephonyManager.CALL_STATE_OFFHOOK) {
             enabled = true; // always show "return to call" if phone is off-hook
         } else if (mLockPatternUtils.isEmergencyCallCapable()) {
-            boolean simLocked = KeyguardUpdateMonitor.getInstance(mContext).isSimLocked();
-            if (simLocked) {
+            //boolean simLocked = KeyguardUpdateMonitor.getInstance(mContext).isSimLocked();
+            // BRCM Dual SIM support start
+            boolean sim1Locked = KeyguardUpdateMonitor.getInstance(mContext).isSimLocked();
+            boolean sim2Locked = KeyguardUpdateMonitor.getInstance(mContext).isSimLocked(SimCardID.ID_ONE);
+            Log.d("EmergencyButton", "Is Sim 1 Locked = " + sim1Locked + ", Is Sim 2 locked = " + sim2Locked);
+            // BRCM Dual SIM support end
+            if (sim1Locked || sim2Locked) {
                 // Some countries can't handle emergency calls while SIM is locked.
                 enabled = mLockPatternUtils.isEmergencyCallEnabledWhileSimLocked();
             } else {

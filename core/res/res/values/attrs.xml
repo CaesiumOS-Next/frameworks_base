@@ -5323,6 +5323,8 @@
             <flag name="notification" value="2" />
             <!-- Alarm sounds. -->
             <flag name="alarm" value="4" />
+			<!-- Ringtones. -->
+            <flag name="ringtone_2" value="8" />
             <!-- All available ringtone sounds. -->
             <flag name="all" value="7" />
         </attr>

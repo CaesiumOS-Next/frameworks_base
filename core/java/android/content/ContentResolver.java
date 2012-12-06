@@ -2277,7 +2277,15 @@ public abstract class ContentResolver {
                     // Even though we are using CloseGuard, log this anyway so that
                     // application developers always see the message in the log.
                     Log.w(TAG, "Cursor finalized without prior close()");
-                    ContentResolver.this.releaseProvider(mContentProvider);
+                    // There is a cursor leak occurred here. We call close function here to
+                    // reclaim this cursor resource. And we could still trace the leak source
+                    // by the dump of stick mode. We catch IllegalStateException here to prevent
+                    // Uncaught exception thrown for remote binder has been finalized.
+                    try {
+                        close();
+                    } catch (IllegalStateException ise) {
+                        Log.w(TAG, "Binder has been finalized, ise=" + ise);
+                    }
                 }
             } finally {
                 super.finalize();

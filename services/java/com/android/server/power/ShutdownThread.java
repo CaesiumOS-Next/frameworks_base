@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
- 
+
 package com.android.server.power;
 
 import android.app.ActivityManagerNative;
@@ -59,11 +59,11 @@ public final class ShutdownThread extends Thread {
 
     // length of vibration before shutting down
     private static final int SHUTDOWN_VIBRATE_MS = 500;
-    
+
     // state tracking
     private static Object sIsStartedGuard = new Object();
     private static boolean sIsStarted = false;
-    
+
     private static boolean mReboot;
     private static boolean mRebootSafeMode;
     private static String mRebootReason;
@@ -76,7 +76,7 @@ public final class ShutdownThread extends Thread {
 
     // static instance of this thread
     private static final ShutdownThread sInstance = new ShutdownThread();
-    
+
     private final Object mActionDoneSync = new Object();
     private boolean mActionDone;
     private Context mContext;
@@ -86,10 +86,10 @@ public final class ShutdownThread extends Thread {
     private Handler mHandler;
 
     private static AlertDialog sConfirmDialog;
-    
+
     private ShutdownThread() {
     }
- 
+
     /**
      * Request a clean shutdown, waiting for subsystems to clean up their
      * state etc.  Must be called from a Looper thread in which its UI
@@ -294,14 +294,14 @@ public final class ShutdownThread extends Thread {
         }
 
         Log.i(TAG, "Sending shutdown broadcast...");
-        
+
         // First send the high-level shut down broadcast.
         mActionDone = false;
         Intent intent = new Intent(Intent.ACTION_SHUTDOWN);
         intent.addFlags(Intent.FLAG_RECEIVER_FOREGROUND);
         mContext.sendOrderedBroadcastAsUser(intent,
                 UserHandle.ALL, null, br, mHandler, 0, null, null);
-        
+
         final long endTime = SystemClock.elapsedRealtime() + MAX_BROADCAST_TIME;
         synchronized (mActionDoneSync) {
             while (!mActionDone) {
@@ -316,9 +316,9 @@ public final class ShutdownThread extends Thread {
                 }
             }
         }
-        
+
         Log.i(TAG, "Shutting down activity manager...");
-        
+
         final IActivityManager am =
             ActivityManagerNative.asInterface(ServiceManager.checkService("activity"));
         if (am != null) {
@@ -382,11 +382,14 @@ public final class ShutdownThread extends Thread {
                 boolean nfcOff;
                 boolean bluetoothOff;
                 boolean radioOff;
+                boolean radioOff2 = false;
 
                 final INfcAdapter nfc =
                         INfcAdapter.Stub.asInterface(ServiceManager.checkService("nfc"));
                 final ITelephony phone =
-                        ITelephony.Stub.asInterface(ServiceManager.checkService("phone"));
+                        ITelephony.Stub.asInterface(ServiceManager.checkService("phone1"));
+                final ITelephony phone2 =
+                        ITelephony.Stub.asInterface(ServiceManager.checkService("phone2"));
                 final IBluetoothManager bluetooth =
                         IBluetoothManager.Stub.asInterface(ServiceManager.checkService(
                                 BluetoothAdapter.BLUETOOTH_MANAGER_SERVICE));
@@ -425,6 +428,17 @@ public final class ShutdownThread extends Thread {
                     radioOff = true;
                 }
 
+                try {
+                    radioOff2 = phone2 == null || !phone2.isRadioOn();
+                    if (!radioOff2) {
+                        Log.w(TAG, "Turning off radio2...");
+                        phone2.setRadio(false);
+                    }
+                } catch (RemoteException ex) {
+                    Log.e(TAG, "RemoteException during radio shutdown", ex);
+                    radioOff2 = true;
+                }
+
                 Log.i(TAG, "Waiting for NFC, Bluetooth and Radio...");
 
                 while (SystemClock.elapsedRealtime() < endTime) {
@@ -450,6 +464,17 @@ public final class ShutdownThread extends Thread {
                             Log.i(TAG, "Radio turned off.");
                         }
                     }
+                    if (!radioOff2) {
+                        try {
+                            radioOff2 = !phone2.isRadioOn();
+                        } catch (RemoteException ex) {
+                            Log.e(TAG, "RemoteException during radio shutdown", ex);
+                            radioOff2 = true;
+                        }
+                        if (radioOff2) {
+                            Log.i(TAG, "Radio2 turned off.");
+                        }
+                    }
                     if (!nfcOff) {
                         try {
                             nfcOff = nfc.getState() == NfcAdapter.STATE_OFF;
@@ -462,7 +487,7 @@ public final class ShutdownThread extends Thread {
                         }
                     }
 
-                    if (radioOff && bluetoothOff && nfcOff) {
+                    if (radioOff && radioOff2 && bluetoothOff && nfcOff) {
                         Log.i(TAG, "NFC, Radio and Bluetooth shutdown complete.");
                         done[0] = true;
                         break;

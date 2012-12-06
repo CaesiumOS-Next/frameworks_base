@@ -37,6 +37,12 @@ import android.widget.TextView.OnEditorActionListener;
 import com.android.internal.telephony.ITelephony;
 import com.android.internal.telephony.PhoneConstants;
 
+import android.os.SystemProperties;
+import android.util.Log;
+import com.android.keyguard.KeyguardSecurityModel.SecurityMode;
+import com.android.internal.telephony.IccCardConstants;
+import com.android.internal.telephony.RILConstants.SimCardID;
+import com.android.internal.telephony.TelephonyProperties;
 
 /**
  * Displays a PIN pad for entering a PUK (Pin Unlock Kode) provided by a carrier.
@@ -46,6 +52,17 @@ public class KeyguardSimPukView extends KeyguardAbsKeyInputView
     private static final String LOG_TAG = "KeyguardSimPukView";
     private static final boolean DEBUG = KeyguardViewMediator.DEBUG;
     public static final String TAG = "KeyguardSimPukView";
+
+    // Use this to debug all of keyguard
+    private static boolean DEBUG = KeyguardViewMediator.DEBUG;
+    private static final String TAG = "KeyguardSimPukView";
+    /* dual sim */
+    static final boolean isDualMode =
+            SystemProperties.getBoolean(TelephonyProperties.PROPERTY_DUAL_MODE_PHONE, false);
+    private SimCardID mSimCardId = SimCardID.ID_ZERO;
+    private KeyguardSecurityModel mKeyguardSecurityModel;
+    private SecurityMode mSecurityMode;
+    private int mPinRemainingCount = -1;
 
     private ProgressDialog mSimUnlockProgressDialog = null;
     private CheckSimPuk mCheckSimPukThread;
@@ -68,7 +85,7 @@ public class KeyguardSimPukView extends KeyguardAbsKeyInputView
                     state = ENTER_PIN;
                     msg = R.string.kg_puk_enter_pin_hint;
                 } else {
-                    msg = R.string.kg_invalid_sim_puk_hint;
+                    msg = R.string.invalidPuk_8numbers;
                 }
             } else if (state == ENTER_PIN) {
                 if (checkPin()) {
@@ -97,7 +114,19 @@ public class KeyguardSimPukView extends KeyguardAbsKeyInputView
             mPinText="";
             mPukText="";
             state = ENTER_PUK;
-            mSecurityMessageDisplay.setMessage(R.string.kg_puk_enter_puk_hint, true);
+            /* dual sim */
+            String title = "";
+            if(isDualMode) {
+                if (SimCardID.ID_ZERO == mSimCardId) {
+                    title += mContext.getString(R.string.keyguard_password_enter_sim1_puk_code);
+                } else {
+                    title += mContext.getString(R.string.keyguard_password_enter_sim2_puk_code);
+                }
+            } else {
+                title += mContext.getString(R.string.kg_puk_enter_puk_hint);
+            }
+            title += "("+Integer.toString(mPinRemainingCount)+")";
+            mSecurityMessageDisplay.setMessage(title, true);//SIM is now disabled. Enter PUK code to continue. Contact carrier for details.
             mPasswordEntry.requestFocus();
         }
     }
@@ -125,9 +154,64 @@ public class KeyguardSimPukView extends KeyguardAbsKeyInputView
 
     public KeyguardSimPukView(Context context, AttributeSet attrs) {
         super(context, attrs);
+        /* dual sim */
+        reGetSecurityMode(context);
+        checkPukRemainingCount();
+    }
+
+    /* dual sim */
+    private void reGetSecurityMode(Context context){
+        KeyguardUpdateMonitor updateMonitor = KeyguardUpdateMonitor.getInstance(mContext);
+        final IccCardConstants.State simState = updateMonitor.getSimState();
+        final IccCardConstants.State sim2State = updateMonitor.getSimState(SimCardID.ID_ONE);
+        mKeyguardSecurityModel = new KeyguardSecurityModel(context);
+        mSecurityMode = mKeyguardSecurityModel.getSecurityMode();
+        switch (mSecurityMode) {
+            case SimPuk:
+                mSimCardId = SimCardID.ID_ZERO;
+                break;
+            case Sim2Puk:
+                mSimCardId = SimCardID.ID_ONE;
+                break;
+            case SimsBothPuk:
+            {
+                /* In the SimsBothPuk case, we can choose which SIM PUK that we prefer to unlock first.
+                           * The priority is based on SIM state check order */
+                if(sim2State == IccCardConstants.State.PUK_REQUIRED) {
+                    mSimCardId = SimCardID.ID_ONE;
+                } else if(simState == IccCardConstants.State.PUK_REQUIRED) {
+                    mSimCardId = SimCardID.ID_ZERO;
+                }
+                break;
+            }
+            case SimsPinPuk: //dual sim
+            {
+                if(simState == IccCardConstants.State.PUK_REQUIRED) {
+                    mSimCardId = SimCardID.ID_ZERO;
+                } else if (sim2State == IccCardConstants.State.PUK_REQUIRED) {
+                    mSimCardId = SimCardID.ID_ONE;
+                }
+                break;
+            }
+        }
+        if(DEBUG) Log.d(TAG,"reGetSecurityMode(), simState:" + simState
+            + ", sim2State:" + sim2State
+            + ", mSecurityMode:" + mSecurityMode
+            + ", mSimCardId:" + mSimCardId.toInt());
+    }
+
+    private void checkPukRemainingCount(){
+        try {
+            ITelephony phone = ITelephony.Stub.asInterface(ServiceManager.checkService(SimCardID.ID_ONE == mSimCardId?Context.TELEPHONY_SERVICE2:Context.TELEPHONY_SERVICE1));
+            if(phone != null) mPinRemainingCount = phone.getPinRemainingStatus(1);
+            else Log.d(TAG,"checkPukRemainingCount(), phone is null");
+        } catch (RemoteException e) {
+        }
+        if(DEBUG)Log.d(TAG,"checkPinRemainingCount(), mSimCardId:" + mSimCardId + ", mPinRemainingCount:" + mPinRemainingCount);
     }
 
     public void resetState() {
+        if(DEBUG) Log.d(TAG, "resetState()");
         mStateMachine.reset();
         mPasswordEntry.setEnabled(true);
     }
@@ -221,10 +305,10 @@ public class KeyguardSimPukView extends KeyguardAbsKeyInputView
         @Override
         public void run() {
             try {
-                Log.v(TAG, "call supplyPukReportResult()");
-                final int[] result = ITelephony.Stub.asInterface(ServiceManager
-                        .checkService("phone")).supplyPukReportResult(mPuk, mPin);
-                Log.v(TAG, "supplyPukReportResult returned: " + result[0] + " " + result[1]);
+                ITelephony phone;
+                phone = ITelephony.Stub.asInterface(ServiceManager.checkService(SimCardID.ID_ONE == mSimCardId?Context.TELEPHONY_SERVICE2:Context.TELEPHONY_SERVICE1));
+                final boolean result = phone.supplyPuk(mPuk, mPin);
+
                 post(new Runnable() {
                     public void run() {
                         onSimLockChangedResponse(result[0], result[1]);
@@ -273,8 +357,8 @@ public class KeyguardSimPukView extends KeyguardAbsKeyInputView
     }
 
     private boolean checkPuk() {
-        // make sure the puk is at least 8 digits long.
-        if (mPasswordEntry.getText().length() >= 8) {
+        // make sure the puk is 8 digits long.
+        if (mPasswordEntry.getText().length() == 8) {//android default: >=8
             mPukText = mPasswordEntry.getText().toString();
             return true;
         }
@@ -303,30 +387,33 @@ public class KeyguardSimPukView extends KeyguardAbsKeyInputView
                 void onSimLockChangedResponse(final int result, final int attemptsRemaining) {
                     post(new Runnable() {
                         public void run() {
+                            if(DEBUG) Log.d(TAG, "onSimLockChangedResponse(), mSimCardId:" + mSimCardId.toInt() + ", success:" + success);
+                            // dual sim, re-check and dismiss the needless dialog.
                             if (mSimUnlockProgressDialog != null) {
                                 mSimUnlockProgressDialog.hide();
+                                mSimUnlockProgressDialog.dismiss();
+                                mSimUnlockProgressDialog = null;
+                                if(DEBUG) Log.d(TAG, "onSimLockChangedResponse(), unlock process finished, dismiss the needless progress dialog");
                             }
                             if (result == PhoneConstants.PIN_RESULT_SUCCESS) {
                                 KeyguardUpdateMonitor.getInstance(getContext()).reportSimUnlocked();
                                 mCallback.dismiss(true);
                             } else {
-                                if (result == PhoneConstants.PIN_PASSWORD_INCORRECT) {
-                                    if (attemptsRemaining <= 2) {
-                                        // this is getting critical - show dialog
-                                        getPukRemainingAttemptsDialog(attemptsRemaining).show();
+                                checkPukRemainingCount();
+
+                                mStateMachine.reset();
+                                String title = "";
+                                if(isDualMode) {
+                                    if (SimCardID.ID_ZERO == mSimCardId) {
+                                        title += mContext.getString(R.string.kg_invalid_puk_sim1);
                                     } else {
-                                        // show message
-                                        mSecurityMessageDisplay.setMessage(
-                                                getPukPasswordErrorMessage(attemptsRemaining), true);
+                                        title += mContext.getString(R.string.kg_invalid_puk_sim2);
                                     }
                                 } else {
-                                    mSecurityMessageDisplay.setMessage(getContext().getString(
-                                            R.string.kg_password_puk_failed), true);
+                                    title += mContext.getString(R.string.kg_invalid_puk);
                                 }
-                                if (DEBUG) Log.d(LOG_TAG, "verifyPasswordAndUnlock "
-                                        + " UpdateSim.onSimCheckResponse: "
-                                        + " attemptsRemaining=" + attemptsRemaining);
-                                mStateMachine.reset();
+                                title += "("+Integer.toString(mPinRemainingCount)+")";
+                                mSecurityMessageDisplay.setMessage(title, true);
                             }
                             mCheckSimPukThread = null;
                         }

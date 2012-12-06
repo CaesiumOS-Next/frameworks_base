@@ -46,7 +46,7 @@ import com.android.systemui.settings.BrightnessController.BrightnessStateChangeC
 import com.android.systemui.settings.CurrentUserTracker;
 import com.android.systemui.statusbar.policy.BatteryController.BatteryStateChangeCallback;
 import com.android.systemui.statusbar.policy.LocationController.LocationSettingsChangeCallback;
-import com.android.systemui.statusbar.policy.NetworkController.NetworkSignalChangedCallback;
+import com.android.systemui.statusbar.policy.NetworkController_brcm.NetworkSignalChangedCallback;
 import com.android.systemui.statusbar.policy.RotationLockController;
 import com.android.systemui.statusbar.policy.RotationLockController.RotationLockControllerCallback;
 
@@ -80,6 +80,7 @@ class QuickSettingsModel implements BluetoothStateChangeCallback,
         String signalContentDescription;
         int dataTypeIconId;
         String dataContentDescription;
+        boolean hasService;
     }
     static class WifiState extends ActivityState {
         String signalContentDescription;
@@ -300,6 +301,10 @@ class QuickSettingsModel implements BluetoothStateChangeCallback,
     private State mSslCaCertWarningState = new State();
 
     private RotationLockController mRotationLockController;
+
+    private QuickSettingsTileView mRSSITile_2;
+    private RefreshCallback mRSSICallback_2;
+    private RSSIState mRSSIState_2 = new RSSIState();
 
     public QuickSettingsModel(Context context) {
         mContext = context;
@@ -537,6 +542,41 @@ class QuickSettingsModel implements BluetoothStateChangeCallback,
             mRSSICallback.refreshView(mRSSITile, mRSSIState);
         }
     }
+
+    void addRSSITile_2(QuickSettingsTileView view, RefreshCallback cb) {
+        mRSSITile_2 = view;
+        mRSSICallback_2 = cb;
+        mRSSICallback_2.refreshView(mRSSITile_2, mRSSIState_2);
+    }
+    // NetworkSignalChanged callback
+    @Override
+    public void onMobileDataSignalChanged2(
+            boolean enabled, int mobileSignalIconId, String signalContentDescription,
+            int dataTypeIconId, boolean activityIn, boolean activityOut,
+            String dataContentDescription, String enabledDesc, boolean hasService) {
+        if (deviceHasMobileData()) {
+            // TODO: If view is in awaiting state, disable
+            Resources r = mContext.getResources();
+            mRSSIState_2.signalIconId = enabled && (mobileSignalIconId > 0)
+                    ? mobileSignalIconId
+                    : R.drawable.ic_qs_signal_no_signal_1;
+            mRSSIState_2.signalContentDescription = enabled && (mobileSignalIconId > 0)
+                    ? signalContentDescription
+                    : r.getString(R.string.accessibility_no_signal);
+            mRSSIState_2.dataTypeIconId = enabled && (dataTypeIconId > 0) && !mWifiState.enabled
+                    ? dataTypeIconId
+                    : 0;
+            mRSSIState_2.dataContentDescription = enabled && (dataTypeIconId > 0) && !mWifiState.enabled
+                    ? dataContentDescription
+                    : r.getString(R.string.accessibility_no_data);
+            mRSSIState_2.label = enabled
+                    ? removeTrailingPeriod(enabledDesc)
+                    : r.getString(R.string.quick_settings_rssi_emergency_only);
+            mRSSIState_2.hasService = hasService;
+            mRSSICallback_2.refreshView(mRSSITile_2, mRSSIState_2);
+        }
+    }
+
 
     void refreshRssiTile() {
         if (mRSSITile != null) {

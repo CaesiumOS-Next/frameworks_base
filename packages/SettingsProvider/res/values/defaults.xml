@@ -169,6 +169,28 @@
     <!-- Default for Settings.Secure.USER_SETUP_COMPLETE -->
     <bool name="def_user_setup_complete">false</bool>
 
+    <!-- Default value for sim1 sim2 power on or not-->
+    <bool name="def_dualmode_phone1_on">true</bool>
+    <bool name="def_dualmode_phone2_on">true</bool>
+
+    <!-- Default for Settings.Secure.DEFAULT_VOICE_CALL_MODE -->
+    <integer name="def_default_voice_call_mode">2</integer>
+
+    <!-- Default for Settings.Secure.DEFAULT_VIDEO_CALL_MODE -->
+    <integer name="def_default_video_call_mode">0</integer>
+
+    <!-- Default for Settings.Secure.DEFAULT_MESSAGE_MODE -->
+    <integer name="def_default_message_mode">2</integer>
+
+    <!-- Default for Settings.Secure.DEFAULT_DATA_CONNECTION_MODE -->
+    <integer name="def_default_data_connection_mode">0</integer>
+
+    <!-- Default for Settings.Secure.DISPLAY_SIM_NUMBER_MODE -->
+    <integer name="def_display_sim_number_mode">0</integer>
+    
+    <!-- Default for WAP Push-->
+    <bool name="def_wap_push_on">true</bool>
+
     <!-- Default for Settings.Global.LOW_BATTERY_SOUND_TIMEOUT.
          0 means no timeout; battery sounds will always play
          >0 is milliseconds of screen-off time after which battery sounds will not play -->

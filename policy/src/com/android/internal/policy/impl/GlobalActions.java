@@ -123,8 +123,13 @@ class GlobalActions implements DialogInterface.OnDismissListener, DialogInterfac
 
         // get notified of phone state changes
         TelephonyManager telephonyManager =
-                (TelephonyManager) context.getSystemService(Context.TELEPHONY_SERVICE);
+                (TelephonyManager) context.getSystemService(Context.TELEPHONY_SERVICE1);
         telephonyManager.listen(mPhoneStateListener, PhoneStateListener.LISTEN_SERVICE_STATE);
+
+        TelephonyManager telephonyManager2 =
+            (TelephonyManager) context.getSystemService(Context.TELEPHONY_SERVICE2);
+        telephonyManager2.listen(mPhoneStateListener, PhoneStateListener.LISTEN_SERVICE_STATE);
+
         ConnectivityManager cm = (ConnectivityManager)
                 context.getSystemService(Context.CONNECTIVITY_SERVICE);
         mHasTelephony = cm.isNetworkSupported(ConnectivityManager.TYPE_MOBILE);
@@ -853,7 +858,8 @@ class GlobalActions implements DialogInterface.OnDismissListener, DialogInterfac
         @Override
         public void onServiceStateChanged(ServiceState serviceState) {
             if (!mHasTelephony) return;
-            final boolean inAirplaneMode = serviceState.getState() == ServiceState.STATE_POWER_OFF;
+            final boolean inAirplaneMode = Settings.System.getInt(mContext.getContentResolver(),
+                    Settings.Global.AIRPLANE_MODE_ON, 0) != 0;
             mAirplaneState = inAirplaneMode ? ToggleAction.State.On : ToggleAction.State.Off;
             mAirplaneModeOn.updateState(mAirplaneState);
             mAdapter.notifyDataSetChanged();

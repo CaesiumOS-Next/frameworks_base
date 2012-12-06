@@ -31,6 +31,7 @@ import android.animation.ObjectAnimator;
 import android.animation.TimeInterpolator;
 import android.app.ActivityManager;
 import android.app.ActivityManagerNative;
+import android.app.KeyguardManager;
 import android.app.Notification;
 import android.app.PendingIntent;
 import android.app.StatusBarManager;
@@ -81,7 +82,11 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
+import android.widget.RelativeLayout;
 
+import android.telephony.TelephonyManager;
+import android.text.TextUtils;
+import com.android.internal.telephony.RILConstants.SimCardID;
 import com.android.internal.statusbar.StatusBarIcon;
 import com.android.systemui.DemoMode;
 import com.android.systemui.EventLogTags;
@@ -91,14 +96,14 @@ import com.android.systemui.statusbar.CommandQueue;
 import com.android.systemui.statusbar.GestureRecorder;
 import com.android.systemui.statusbar.NotificationData;
 import com.android.systemui.statusbar.NotificationData.Entry;
-import com.android.systemui.statusbar.SignalClusterView;
+import com.android.systemui.statusbar.SignalClusterView_brcm;
 import com.android.systemui.statusbar.StatusBarIconView;
 import com.android.systemui.statusbar.policy.BatteryController;
 import com.android.systemui.statusbar.policy.BluetoothController;
 import com.android.systemui.statusbar.policy.DateView;
 import com.android.systemui.statusbar.policy.HeadsUpNotificationView;
 import com.android.systemui.statusbar.policy.LocationController;
-import com.android.systemui.statusbar.policy.NetworkController;
+import com.android.systemui.statusbar.policy.NetworkController_brcm;
 import com.android.systemui.statusbar.policy.NotificationRowLayout;
 import com.android.systemui.statusbar.policy.OnSizeChangedListener;
 import com.android.systemui.statusbar.policy.RotationLockController;
@@ -159,7 +164,7 @@ public class PhoneStatusBar extends BaseStatusBar implements DemoMode {
     BluetoothController mBluetoothController;
     BatteryController mBatteryController;
     LocationController mLocationController;
-    NetworkController mNetworkController;
+    NetworkController_brcm mNetworkController;
     RotationLockController mRotationLockController;
 
     int mNaturalBarHeight = -1;
@@ -222,6 +227,18 @@ public class PhoneStatusBar extends BaseStatusBar implements DemoMode {
     private int mNotificationHeaderHeight;
 
     private boolean mShowCarrierInPanel = false;
+
+    // SIM card switch notification and button
+    LinearLayout mSimSwitchNotification;
+    TextView mSimSwitchNotificationText;
+    private int mSwitchType;
+    private LinearLayout mSimSwitchContainer;
+    private LinearLayout mSim1Container;
+    private LinearLayout mSim2Container;
+    private SimImageButton mSwitchSim1Button;
+    private SimImageButton mSwitchSim2Button;
+    private TextView mSwitchSim1Text;
+    private TextView mSwitchSim2Text;
 
     // position
     int[] mPositionTmp = new int[2];
@@ -458,6 +475,18 @@ public class PhoneStatusBar extends BaseStatusBar implements DemoMode {
         mStatusBarContents = (LinearLayout)mStatusBarView.findViewById(R.id.status_bar_contents);
         mTickerView = mStatusBarView.findViewById(R.id.ticker);
 
+        mSimSwitchNotification = (LinearLayout) mStatusBarView.findViewById(R.id.simSwitchNotification);
+        mSimSwitchNotificationText = (TextView) mStatusBarView.findViewById(R.id.simSwitchNotificationText);
+        mSimSwitchContainer = (LinearLayout) mStatusBarWindow.findViewById(R.id.sim_switch_container);
+        mSim1Container = (LinearLayout)mStatusBarWindow.findViewById(R.id.sim1_container);
+        mSim2Container = (LinearLayout)mStatusBarWindow.findViewById(R.id.sim2_container);
+        mSwitchSim1Button = (SimImageButton)mStatusBarWindow.findViewById(R.id.sim1_switch_button);
+        mSwitchSim2Button = (SimImageButton)mStatusBarWindow.findViewById(R.id.sim2_switch_button);
+        mSwitchSim1Button.setOnClickListener(mSimSwitchListener);
+        mSwitchSim2Button.setOnClickListener(mSimSwitchListener);
+        mSwitchSim1Text  = (TextView)mStatusBarWindow.findViewById(R.id.sim1_switch_text);
+        mSwitchSim2Text  = (TextView)mStatusBarWindow.findViewById(R.id.sim2_switch_text);
+
         mPile = (NotificationRowLayout)mStatusBarWindow.findViewById(R.id.latestItems);
         mPile.setLayoutTransitionsEnabled(false);
         mPile.setLongPressListener(getNotificationLongClicker());
@@ -532,11 +561,13 @@ public class PhoneStatusBar extends BaseStatusBar implements DemoMode {
         // Other icons
         mLocationController = new LocationController(mContext); // will post a notification
         mBatteryController = new BatteryController(mContext);
-        mNetworkController = new NetworkController(mContext);
+        mNetworkController = new NetworkController_brcm(mContext);
         mBluetoothController = new BluetoothController(mContext);
         mRotationLockController = new RotationLockController(mContext);
-        final SignalClusterView signalCluster =
-                (SignalClusterView)mStatusBarView.findViewById(R.id.signal_cluster);
+        final SignalClusterView_brcm signalCluster =
+                (SignalClusterView_brcm)mStatusBarView.findViewById(R.id.signal_cluster_brcm);
+
+
 
 
         mNetworkController.addSignalCluster(signalCluster);
@@ -1523,6 +1554,7 @@ public class PhoneStatusBar extends BaseStatusBar implements DemoMode {
             flipToNotifications();
         }
 
+        updateSimSwitchUi();
         if (false) postStartTracing();
     }
 
@@ -2059,6 +2091,142 @@ public class PhoneStatusBar extends BaseStatusBar implements DemoMode {
     public void setHardKeyboardStatus(boolean available, boolean enabled) {}
 
     @Override
+    public void showSimSwitchUi(int type) {
+        TelephonyManager tm1 = (TelephonyManager) mContext
+                .getSystemService(Context.TELEPHONY_SERVICE1);
+        TelephonyManager tm2 = (TelephonyManager) mContext
+                .getSystemService(Context.TELEPHONY_SERVICE2);
+        // Don't show the ui if both sim card are absent
+        if ((tm1 == null || !tm1.hasIccCard())
+                && (tm2 == null || !tm2.hasIccCard())) {
+            hideSimSwitchUi();
+            return;
+        }
+
+        mSwitchType = type;
+        // Show notification
+        showSimSwitchNotification(type);
+
+        updateSimSwitchUi();
+        mSimSwitchContainer.setVisibility(View.VISIBLE);
+    }
+
+    @Override
+    public void hideSimSwitchUi() {
+        // Hide notification
+        mSimSwitchNotification.setVisibility(View.GONE);
+
+        mSimSwitchContainer.setVisibility(View.GONE);
+    }
+
+    private void updateSimSwitchUi() {
+        TelephonyManager tm1 = (TelephonyManager) mContext
+                .getSystemService(Context.TELEPHONY_SERVICE1);
+        TelephonyManager tm2 = (TelephonyManager) mContext
+                .getSystemService(Context.TELEPHONY_SERVICE2);
+        SimCardID defaultSimId = getDefaultSimCardSettings(mSwitchType);
+
+        if (tm1 != null && tm1.hasIccCard()) {
+            if (SimCardID.ID_ZERO == defaultSimId) {
+                mSwitchSim1Button.setBackgroundResource(R.drawable.ic_sim_switch_selected_1);
+                mSwitchSim1Text.setTextColor(mContext.getResources().getColor(
+                        R.color.dual_sim1_color));
+            } else {
+                mSwitchSim1Button.setBackgroundResource(R.drawable.ic_sim_switch_normal_1);
+                mSwitchSim1Text.setTextColor(mContext.getResources().getColorStateList(
+                        android.R.color.secondary_text_dark));
+            }
+            mSwitchSim1Button.updateInfo(tm1);
+            mSwitchSim1Button.invalidate();
+            mSwitchSim1Text.setText(getOperatorName(SimCardID.ID_ZERO));
+
+            mSim1Container.setVisibility(View.VISIBLE);
+        } else {
+            mSim1Container.setVisibility(View.GONE);
+        }
+
+        if (tm2 != null && tm2.hasIccCard()) {
+            if (SimCardID.ID_ONE == defaultSimId) {
+                mSwitchSim2Button.setBackgroundResource(R.drawable.ic_sim_switch_selected_2);
+                mSwitchSim2Text.setTextColor(mContext.getResources().getColor(
+                        R.color.dual_sim2_color));
+            } else {
+                mSwitchSim2Button.setBackgroundResource(R.drawable.ic_sim_switch_normal_2);
+                mSwitchSim2Text.setTextColor(mContext.getResources().getColorStateList(
+                        android.R.color.secondary_text_dark));
+            }
+            mSwitchSim2Button.updateInfo(tm2);
+            mSwitchSim2Button.invalidate();
+            mSwitchSim2Text.setText(getOperatorName(SimCardID.ID_ONE));
+
+            mSim2Container.setVisibility(View.VISIBLE);
+        } else {
+            mSim2Container.setVisibility(View.GONE);
+        }
+    }
+
+    private void showSimSwitchNotification(int type) {
+        SimCardID simId = getDefaultSimCardSettings(type);
+        mSimSwitchNotificationText.setText(getOperatorName(simId));
+        if (SimCardID.ID_ONE == simId) {
+            mSimSwitchNotificationText.setTextColor(mContext.getResources().getColor(
+                    R.color.dual_sim2_color));
+        } else {
+            mSimSwitchNotificationText.setTextColor(mContext.getResources().getColor(
+                    R.color.dual_sim1_color));
+        }
+
+        mSimSwitchNotification.setVisibility(View.VISIBLE);
+    }
+
+    private SimCardID getDefaultSimCardSettings(int type) {
+        SimCardID simId;
+        String mode;
+
+        switch (type) {
+            case StatusBarManager.SWITCH_VOICE_CALL:
+                mode = Settings.Global.DEFAULT_VOICE_CALL_MODE;
+                break;
+            case StatusBarManager.SWITCH_VIDEO_CALL:
+                mode = Settings.Global.DEFAULT_VIDEO_CALL_MODE;
+                break;
+            case StatusBarManager.SWITCH_MESSAGE:
+                mode = Settings.Global.DEFAULT_MESSAGE_MODE;
+                break;
+            default:
+                mode = Settings.Global.DEFAULT_VOICE_CALL_MODE;
+                break;
+        }
+        int defaultValue = Settings.Global.getInt(
+                mContext.getContentResolver(), mode, 0);
+        simId = (defaultValue == 1 ? SimCardID.ID_ONE : SimCardID.ID_ZERO);
+
+        return simId;
+    }
+
+    private String getOperatorName(SimCardID simCardId) {
+        String name = null;
+
+        if (SimCardID.ID_ONE == simCardId) {
+            TelephonyManager tm = (TelephonyManager) mContext
+                    .getSystemService(Context.TELEPHONY_SERVICE2);
+            name = tm.getNetworkOperatorName();
+            if (TextUtils.isEmpty(name)) {
+                name = "SIM2";
+            }
+        } else {
+            TelephonyManager tm = (TelephonyManager) mContext
+                    .getSystemService(Context.TELEPHONY_SERVICE);
+            name = tm.getNetworkOperatorName();
+            if (TextUtils.isEmpty(name)) {
+                name = "SIM1";
+            }
+        }
+
+        return name;
+    }
+
+    @Override
     protected void tick(IBinder key, StatusBarNotification n, boolean firstTime) {
         // no ticking in lights-out mode
         if (!areLightsOn()) return;
@@ -2440,6 +2608,36 @@ public class PhoneStatusBar extends BaseStatusBar implements DemoMode {
     private View.OnClickListener mNotificationButtonListener = new View.OnClickListener() {
         public void onClick(View v) {
             animateExpandNotificationsPanel();
+        }
+    };
+
+    private View.OnClickListener mSimSwitchListener = new View.OnClickListener() {
+        public void onClick(View v) {
+            String mode;
+            switch (mSwitchType) {
+                case StatusBarManager.SWITCH_VOICE_CALL:
+                    mode = Settings.Global.DEFAULT_VOICE_CALL_MODE;
+                    break;
+                case StatusBarManager.SWITCH_VIDEO_CALL:
+                    mode = Settings.Global.DEFAULT_VIDEO_CALL_MODE;
+                    break;
+                case StatusBarManager.SWITCH_MESSAGE:
+                    mode = Settings.Global.DEFAULT_MESSAGE_MODE;
+                    break;
+                default:
+                    mode = Settings.Global.DEFAULT_VOICE_CALL_MODE;
+                    break;
+            }
+            if (v.getId() == mSwitchSim1Button.getId()) {
+                Settings.Global.putInt(mContext.getContentResolver(), mode, 0);
+            } else if (v.getId() == mSwitchSim2Button.getId()) {
+                Settings.Global.putInt(mContext.getContentResolver(), mode, 1);
+            }
+
+            updateSimSwitchUi();
+            animateCollapsePanels();
+
+            showSimSwitchNotification(mSwitchType);
         }
     };
 

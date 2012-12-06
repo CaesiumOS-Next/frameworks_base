@@ -84,6 +84,10 @@ import java.util.Date;
 import java.util.Map.Entry;
 import java.util.Properties;
 
+import static com.android.internal.telephony.TelephonyProperties.*;
+import android.os.SystemProperties;
+import com.android.internal.telephony.RILConstants.SimCardID;
+
 /**
  * A GPS implementation of LocationProvider used by LocationManager.
  *
@@ -1676,9 +1680,13 @@ public class GpsLocationProvider implements LocationProviderInterface {
 
     private void requestSetID(int flags) {
         TelephonyManager phone = (TelephonyManager)
-                mContext.getSystemService(Context.TELEPHONY_SERVICE);
+                mContext.getSystemService(Context.TELEPHONY_SERVICE1);
         int    type = AGPS_SETID_TYPE_NONE;
         String data = "";
+
+        if (SimCardID.ID_ONE.toInt() == SystemProperties.getInt(PROPERTY_DATA_PREFER_SIM_ID, SimCardID.ID_ZERO.toInt())) {
+            phone = (TelephonyManager) mContext.getSystemService(Context.TELEPHONY_SERVICE2); // use SIM2
+        }
 
         if ((flags & AGPS_RIL_REQUEST_SETID_IMSI) == AGPS_RIL_REQUEST_SETID_IMSI) {
             String data_temp = phone.getSubscriberId();
@@ -1717,9 +1725,15 @@ public class GpsLocationProvider implements LocationProviderInterface {
 
     private void requestRefLocation(int flags) {
         TelephonyManager phone = (TelephonyManager)
-                mContext.getSystemService(Context.TELEPHONY_SERVICE);
+                mContext.getSystemService(Context.TELEPHONY_SERVICE1);
+
+        if (SimCardID.ID_ONE.toInt() == SystemProperties.getInt(PROPERTY_DATA_PREFER_SIM_ID, SimCardID.ID_ZERO.toInt())) {
+            phone = (TelephonyManager) mContext.getSystemService(Context.TELEPHONY_SERVICE2);
+        }
+
         final int phoneType = phone.getPhoneType();
         if (phoneType == TelephonyManager.PHONE_TYPE_GSM) {
+
             GsmCellLocation gsm_cell = (GsmCellLocation) phone.getCellLocation();
             if ((gsm_cell != null) && (phone.getNetworkOperator() != null)
                     && (phone.getNetworkOperator().length() > 3)) {

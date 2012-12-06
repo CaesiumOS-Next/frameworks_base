@@ -87,6 +87,10 @@ import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import com.android.internal.telephony.TelephonyProperties;
+import com.android.internal.telephony.RILConstants.SimCardID;
+import android.os.SystemProperties;
+
 /**
  * An activity is a single, focused thing that the user can do.  Almost all
  * activities interact with the user, so the Activity class takes care of
@@ -4528,6 +4532,16 @@ public class Activity extends ContextThemeWrapper
     
     @Override
     public Object getSystemService(String name) {
+        if (Context.TELEPHONY_SERVICE.equals(name)) {
+            if (SimCardID.ID_ONE.toInt() == SystemProperties.getInt(
+                                                TelephonyProperties.PROPERTY_API_SIM,
+                                                SimCardID.ID_ZERO.toInt())) {
+                name = Context.TELEPHONY_SERVICE2;
+            } else {
+                name = Context.TELEPHONY_SERVICE1;
+            }
+        }
+
         if (getBaseContext() == null) {
             throw new IllegalStateException(
                     "System services not available to Activities before onCreate()");

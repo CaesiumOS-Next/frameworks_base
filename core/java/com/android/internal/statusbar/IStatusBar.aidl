@@ -39,5 +39,10 @@ oneway interface IStatusBar
     void preloadRecentApps();
     void cancelPreloadRecentApps();
     void setWindowState(int window, int state);
+    // BRCM start - add Dual SIM support
+    // Show/Hide SIM card switch ui
+    void showSimSwitchUi(int type);
+    void hideSimSwitchUi();
+    // BRCM end - add Dual SIM support
 }
 

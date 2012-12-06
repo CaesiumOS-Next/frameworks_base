@@ -103,6 +103,9 @@ public class NetworkManagementService extends INetworkManagementService.Stub
     private static final String ALLOW = "allow";
     private static final String DENY = "deny";
 
+    private static final int STKBIPADD = 1;
+    private static final int STKBIPREMOVE = 2;
+
     private static final String DEFAULT = "default";
     private static final String SECONDARY = "secondary";
 
@@ -718,6 +721,157 @@ public class NetworkManagementService extends INetworkManagementService.Stub
             mConnector.execute("interface", "ipv6", iface, "disable");
         } catch (NativeDaemonConnectorException e) {
             throw e.rethrowAsParcelableException();
+        }
+    }
+
+    public void stkBipRoute(String interfaceName, int action, String[] hostaddr) throws IllegalStateException {
+        Log.d(TAG, "stkBipaddHostRoute");
+        mContext.enforceCallingOrSelfPermission(
+            android.Manifest.permission.CHANGE_NETWORK_STATE, "NetworkManagementService");
+        ArrayList<String> rsp;
+
+        StringBuilder cmd;
+
+        Log.d(TAG, "action"+action);
+        switch (action) {
+        case STKBIPADD: {
+            // create triplet: dest-ip-addr prefixlength gateway-ip-addr
+
+            for( int i = 0; i < 2; i++) {
+                cmd=null;
+                if (i ==0) {
+                    cmd = new StringBuilder("interface route add " + interfaceName + " " + DEFAULT);
+
+                    cmd.append(' ');
+
+                    if (hostaddr[0] != null) {
+                        cmd.append(NetworkUtils.numericToInetAddress(hostaddr[0]).getHostAddress());
+                    }
+
+                    cmd.append(' ');
+                    cmd.append("32");
+                    cmd.append(' ');
+                    cmd.append("0.0.0.0");
+                    try {
+                        Log.d(TAG, "cmd:" + cmd.toString());
+                        rsp = mConnector.doCommand(cmd.toString());
+                    } catch (NativeDaemonConnectorException e) {
+                        throw new IllegalStateException(
+                            "Unable to communicate with native dameon to add routes - "
+                            + e);
+                    }
+
+                    if (DBG) {
+                        for (String line : rsp) {
+                            Log.v(TAG, "add route response is " + line);
+                        }
+                    }
+                } else {
+                    cmd=null;
+                    cmd = new StringBuilder("interface route add " + interfaceName + " " + DEFAULT);
+
+                    // create triplet: dest-ip-addr prefixlength gateway-ip-addr
+                    cmd.append(' ');
+                    cmd.append("0.0.0.0");
+                    cmd.append(' ');
+                    cmd.append("0");
+                    cmd.append(' ');
+
+                    if (hostaddr[0] != null) {
+                        cmd.append(NetworkUtils.numericToInetAddress(hostaddr[0]).getHostAddress());
+                    }
+
+                   try {
+                        Log.d(TAG, "cmd:" + cmd.toString());
+                        rsp = mConnector.doCommand(cmd.toString());
+                    } catch (NativeDaemonConnectorException e) {
+                        throw new IllegalStateException(
+                            "Unable to communicate with native dameon to add routes - "
+                            + e);
+                    }
+
+                    if (DBG) {
+                        for (String line : rsp) {
+                            Log.v(TAG, "add route response is " + line);
+                        }
+                    }
+                }
+            }
+
+            break;
+        }
+        case STKBIPREMOVE:
+
+        {
+            mContext.enforceCallingOrSelfPermission(CONNECTIVITY_INTERNAL, TAG);
+            // create triplet: dest-ip-addr prefixlength gateway-ip-addr
+
+            for( int i = 0; i < 2; i++) {
+                cmd=null;
+                if (i ==0) {
+                    cmd = new StringBuilder("interface route remove " + interfaceName + " " + DEFAULT);
+
+                    cmd.append(' ');
+
+                    if (hostaddr[0] != null) {
+                        cmd.append(NetworkUtils.numericToInetAddress(hostaddr[0]).getHostAddress());
+                    }
+                    cmd.append(' ');
+                    cmd.append("32");
+                    cmd.append(' ');
+                    cmd.append("0.0.0.0");
+                    try {
+                        Log.d(TAG, "cmd:" + cmd.toString());
+                        rsp = mConnector.doCommand(cmd.toString());
+                    } catch (NativeDaemonConnectorException e) {
+                        throw new IllegalStateException(
+                            "Unable to communicate with native dameon to add routes - "
+                            + e);
+                    }
+
+                    if (DBG) {
+                        for (String line : rsp) {
+                            Log.v(TAG, "add route response is " + line);
+                        }
+                    }
+                } else {
+                    cmd=null;
+                    cmd = new StringBuilder("interface route remove " + interfaceName + " " + DEFAULT);
+
+                    // create triplet: dest-ip-addr prefixlength gateway-ip-addr
+                    cmd.append(' ');
+                    cmd.append("0.0.0.0");
+                    cmd.append(' ');
+                    cmd.append("0");
+                    cmd.append(' ');
+
+                    if (hostaddr[0] != null) {
+                        cmd.append(NetworkUtils.numericToInetAddress(hostaddr[0]).getHostAddress());
+                    }
+
+
+
+                    try {
+                        Log.d(TAG, "cmd:" + cmd.toString());
+                        rsp = mConnector.doCommand(cmd.toString());
+                     } catch (NativeDaemonConnectorException e) {
+                        throw new IllegalStateException(
+                            "Unable to communicate with native dameon to add routes - "
+                            + e);
+                    }
+
+                    if (DBG) {
+                        for (String line : rsp) {
+                            Log.v(TAG, "add route response is " + line);
+                        }
+                    }
+                }
+            }
+
+            break;
+        }
+        default:
+            throw new IllegalStateException("Unknown action type " + action);
         }
     }
 

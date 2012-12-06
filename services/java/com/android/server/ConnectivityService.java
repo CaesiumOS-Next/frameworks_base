@@ -160,6 +160,10 @@ import javax.net.ssl.HostnameVerifier;
 import javax.net.ssl.HttpsURLConnection;
 import javax.net.ssl.SSLSession;
 
+import com.android.internal.telephony.RILConstants.SimCardID;
+import com.android.internal.telephony.ITelephony;
+import com.android.internal.telephony.TelephonyProperties;
+
 /**
  * @hide
  */
@@ -394,6 +398,8 @@ public class ConnectivityService extends IConnectivityManager.Stub {
     // this collection corresponds to the entries of mAddedRoutes that have routing exemptions
     // used to handle cleanup of exempt rules
     @GuardedBy("mRoutesLock")
+
+    private ITelephony mPhoneService;
     private Collection<LinkAddress> mExemptAddresses = new ArrayList<LinkAddress>();
 
     // used in DBG mode to track inet condition reports
@@ -413,7 +419,7 @@ public class ConnectivityService extends IConnectivityManager.Stub {
     private SettingsObserver mSettingsObserver;
 
     NetworkConfig[] mNetConfigs;
-    int mNetworksDefined;
+    int mNetworksDefined = 0;
 
     private static class RadioAttributes {
         public int mSimultaneity;
@@ -950,6 +956,30 @@ public class ConnectivityService extends IConnectivityManager.Stub {
     }
 
     /**
+     * Return a filtered {@link NetworkInfo}, potentially marked
+     * {@link DetailedState#BLOCKED} based on
+     * {@link #isNetworkBlocked(NetworkStateTracker, int)}.
+     */
+    private NetworkInfo getFilteredNetworkInfo(NetworkStateTracker tracker, int uid, int simId) {
+        NetworkInfo info;
+        if (tracker instanceof MobileDataStateTracker) {
+            MobileDataStateTracker mdst = (MobileDataStateTracker) tracker;
+            info = mdst.getNetworkInfo(simId);
+        } else {
+            info = tracker.getNetworkInfo();
+        }
+        if (isNetworkBlocked(tracker, uid)) {
+            // network is blocked; clone and override state
+            info = new NetworkInfo(info);
+            info.setDetailedState(DetailedState.BLOCKED, null, null);
+        }
+        if (mLockdownTracker != null) {
+            info = mLockdownTracker.augmentNetworkInfo(info);
+        }
+        return info;
+    }
+
+    /**
      * Return NetworkInfo for the active (i.e., connected) network interface.
      * It is assumed that at most one network is active at a time. If more
      * than one is active, it is indeterminate which will be returned.
@@ -1024,6 +1054,29 @@ public class ConnectivityService extends IConnectivityManager.Stub {
         enforceAccessPermission();
         final int uid = Binder.getCallingUid();
         return getNetworkInfo(networkType, uid);
+    }
+
+    @Override
+    public NetworkInfo getNetworkInfoBySimId(int networkType, int simId) {
+        enforceAccessPermission();
+        final int uid = Binder.getCallingUid();
+        return getNetworkInfo(networkType, uid, simId);
+    }
+
+    private NetworkInfo getNetworkInfo(int networkType, int uid, int simId) {
+        NetworkInfo info = null;
+        if (isNetworkTypeValid(networkType)) {
+            final NetworkStateTracker tracker = mNetTrackers[networkType];
+            if (tracker != null) {
+                info = getFilteredNetworkInfo(tracker, uid, simId);
+            }
+        }
+        return info;
+    }
+
+    @Override
+    public void setMmsDataSim(int simId) {
+        SystemProperties.set(TelephonyProperties.PROPERTY_WORKING_MMS_SIM_ID, String.valueOf(simId));
     }
 
     private NetworkInfo getNetworkInfo(int networkType, int uid) {
@@ -1397,6 +1450,210 @@ public class ConnectivityService extends IConnectivityManager.Stub {
          }
     }
 
+    public void onSwitchToSim1DataNetworkCallback(boolean success){
+        boolean reconnect_result;
+        if (success) {
+            if(getMobileDataEnabled() && mNetTrackers[ConnectivityManager.TYPE_MOBILE] != null) {
+                MobileDataStateTracker mdst = (MobileDataStateTracker) mNetTrackers[ConnectivityManager.TYPE_MOBILE];
+                final int prevSimId = mdst.getEnableApnSimId();
+                if (SimCardID.ID_ZERO.toInt() == prevSimId) {
+                    Slog.d(TAG, "onSwitchToSim1DataNetworkCallback(): prev default = 0, already connected");
+                    return;
+                }
+                if (SimCardID.ID_ONE.toInt() == prevSimId) {
+                    // Teardown SIM2
+                    Slog.d(TAG, "onSwitchToSim1DataNetworkCallback(): prev default = 1, tear down");
+                    mNetTrackers[ConnectivityManager.TYPE_MOBILE].teardown();
+                }
+                reconnect_result = mNetTrackers[ConnectivityManager.TYPE_MOBILE].reconnect();
+                if(false == reconnect_result)  {
+                    Slog.e(TAG, "onSwitchToSim1DataNetworkCallback re-connection failed");
+                    Intent intent = new Intent(ConnectivityManager.ACTION_DATA_RECONNECTION_FAIL);
+                    intent.putExtra(ConnectivityManager.EXTRA_DATA_CONNECTION_SIMID, SimCardID.ID_ZERO.toInt());
+                    mContext.sendBroadcast(intent);
+                }
+            }
+        } else {
+            Slog.e(TAG, "onSwitchToSim1DataNetworkCallback switch failed");
+            Intent intent = new Intent(ConnectivityManager.ACTION_DATA_CONNECTION_CHANGE_FAIL);
+            intent.putExtra(ConnectivityManager.EXTRA_DATA_CONNECTION_SIMID, SimCardID.ID_ZERO.toInt());
+            mContext.sendBroadcast(intent);
+        }
+    }
+
+    public void onSwitchToSim2DataNetworkCallback(boolean success) {
+        boolean reconnect_result;
+        if (success) {
+            if(getMobileDataEnabled() && mNetTrackers[ConnectivityManager.TYPE_MOBILE] != null) {
+                MobileDataStateTracker mdst = (MobileDataStateTracker) mNetTrackers[ConnectivityManager.TYPE_MOBILE];
+                final int prevSimId = mdst.getEnableApnSimId();
+                if (SimCardID.ID_ONE.toInt() == prevSimId) {
+                    Slog.d(TAG, "onSwitchToSim2DataNetworkCallback(): prev default = 1, already connected");
+                    return;
+                }
+                if (SimCardID.ID_ZERO.toInt() == prevSimId) {
+                    // Teardown SIM1
+                    Slog.d(TAG, "onSwitchToSim2DataNetworkCallback(): prev default = 0, tear down");
+                    mNetTrackers[ConnectivityManager.TYPE_MOBILE].teardown();
+                }
+                reconnect_result = mNetTrackers[ConnectivityManager.TYPE_MOBILE].reconnect();
+                if(false == reconnect_result)  {
+                    Slog.e(TAG, "onSwitchToSim2DataNetworkCallback re-connection failed");
+                    Intent intent = new Intent(ConnectivityManager.ACTION_DATA_RECONNECTION_FAIL);
+                    intent.putExtra(ConnectivityManager.EXTRA_DATA_CONNECTION_SIMID, SimCardID.ID_ONE.toInt());
+                    mContext.sendBroadcast(intent);
+                }
+            }
+        } else {
+            Slog.e(TAG, "onSwitchToSim1DataNetworkCallback switch failed");
+            Intent intent = new Intent(ConnectivityManager.ACTION_DATA_CONNECTION_CHANGE_FAIL);
+            intent.putExtra(ConnectivityManager.EXTRA_DATA_CONNECTION_SIMID, SimCardID.ID_ONE.toInt());
+            mContext.sendBroadcast(intent);
+        }
+    }
+
+    /* Switch to MMS directly, skip default apn */
+    public void onSwitchToSim1DataNetworkCallbackEx(boolean success, int networkType){
+        boolean reconnect_result;
+        int prefered_networkType = 0;
+        if (success) {
+            if(networkType > ConnectivityManager.TYPE_MOBILE_CBS || networkType < ConnectivityManager.TYPE_MOBILE) {
+                        Slog.e(TAG, "onSwitchToSim1DataNetworkCallbackEx:out of rang,networkType="+networkType);
+                        prefered_networkType = ConnectivityManager.TYPE_MOBILE;
+            } else {
+                        prefered_networkType = networkType;
+            }
+
+            if(getMobileDataEnabled() && mNetTrackers[ConnectivityManager.TYPE_MOBILE] != null && mNetTrackers[prefered_networkType] != null) {
+                MobileDataStateTracker mdst = (MobileDataStateTracker) mNetTrackers[ConnectivityManager.TYPE_MOBILE];
+                final int prevSimId = mdst.getEnableApnSimId();
+                if (SimCardID.ID_ONE.toInt() == prevSimId) {
+                    // Teardown SIM2 default
+                    Slog.d(TAG, "onSwitchToSim1DataNetworkCallbackEx(): prev default = 1, tear down");
+                    mNetTrackers[ConnectivityManager.TYPE_MOBILE].teardown();
+                }
+                reconnect_result = mNetTrackers[prefered_networkType].reconnect();
+                if(false == reconnect_result)  {
+                    Slog.e(TAG, "onSwitchToSim1DataNetworkCallback re-connection failed");
+                    Intent intent = new Intent(ConnectivityManager.ACTION_DATA_RECONNECTION_FAIL);
+                    intent.putExtra(ConnectivityManager.EXTRA_DATA_CONNECTION_SIMID, SimCardID.ID_ZERO.toInt());
+                    mContext.sendBroadcast(intent);
+                }
+            }
+        } else {
+            Slog.e(TAG, "onSwitchToSim1DataNetworkCallback switch failed");
+        Intent intent = new Intent(ConnectivityManager.ACTION_DATA_CONNECTION_CHANGE_FAIL);
+        intent.putExtra(ConnectivityManager.EXTRA_DATA_CONNECTION_SIMID, SimCardID.ID_ZERO.toInt());
+        mContext.sendBroadcast(intent);
+        }
+    }
+
+    /* Switch to MMS directly, skip default apn */
+    public void onSwitchToSim2DataNetworkCallbackEx(boolean success, int networkType) {
+        boolean reconnect_result;
+        int prefered_networkType = 0;
+        if (success) {
+            if(networkType > ConnectivityManager.TYPE_MOBILE_CBS || networkType < ConnectivityManager.TYPE_MOBILE) {
+                Slog.e(TAG, "onSwitchToSim2DataNetworkCallbackEx:out of rang,networkType="+networkType);
+                prefered_networkType = ConnectivityManager.TYPE_MOBILE;
+            } else {
+                prefered_networkType = networkType;
+            }
+
+            if(getMobileDataEnabled() && mNetTrackers[ConnectivityManager.TYPE_MOBILE] != null && mNetTrackers[prefered_networkType] != null) {
+                MobileDataStateTracker mdst = (MobileDataStateTracker) mNetTrackers[ConnectivityManager.TYPE_MOBILE];
+                final int prevSimId = mdst.getEnableApnSimId();
+                if (SimCardID.ID_ZERO.toInt() == prevSimId) {
+                    // Teardown SIM1 default
+                    Slog.d(TAG, "onSwitchToSim2DataNetworkCallbackEx(): prev default = 0, tear down");
+                    mNetTrackers[ConnectivityManager.TYPE_MOBILE].teardown();
+                }
+                reconnect_result = mNetTrackers[prefered_networkType].reconnect();
+                if(false == reconnect_result)  {
+                    Slog.e(TAG, "onSwitchToSim2DataNetworkCallback re-connection failed");
+                    Intent intent = new Intent(ConnectivityManager.ACTION_DATA_RECONNECTION_FAIL);
+                    intent.putExtra(ConnectivityManager.EXTRA_DATA_CONNECTION_SIMID, SimCardID.ID_ONE.toInt());
+                    mContext.sendBroadcast(intent);
+                }
+            }
+        } else {
+            Slog.e(TAG, "onSwitchToSim1DataNetworkCallback switch failed");
+        Intent intent = new Intent(ConnectivityManager.ACTION_DATA_CONNECTION_CHANGE_FAIL);
+        intent.putExtra(ConnectivityManager.EXTRA_DATA_CONNECTION_SIMID, SimCardID.ID_ONE.toInt());
+        mContext.sendBroadcast(intent);
+        }
+    }
+
+    public void switchToSim1DataNetwork(){
+        try {
+            mPhoneService = ITelephony.Stub.asInterface(ServiceManager.getService(Context.TELEPHONY_SERVICE1));
+            if (null != mPhoneService) {
+                mPhoneService.switchToSim1DataNetwork();
+            }
+        } catch (RemoteException re) {
+        }
+    }
+
+    public void switchToSim2DataNetwork(){
+        try {
+            mPhoneService = ITelephony.Stub.asInterface(ServiceManager.getService(Context.TELEPHONY_SERVICE2));
+            if (null != mPhoneService) {
+                mPhoneService.switchToSim2DataNetwork();
+            }
+        } catch (RemoteException re) {
+        }
+    }
+
+    /* Switch to MMS directly, skip default apn */
+    public void switchToSim1DataNetworkEx(int networkType){
+        try {
+            mPhoneService = ITelephony.Stub.asInterface(ServiceManager.getService(Context.TELEPHONY_SERVICE1));
+            if (null != mPhoneService) {
+                mPhoneService.switchToSim1DataNetworkEx(networkType);
+            }
+        } catch(RemoteException re) {
+        }
+    }
+    /* Switch to MMS directly, skip default apn */
+    public void switchToSim2DataNetworkEx(int networkType){
+        try {
+            mPhoneService = ITelephony.Stub.asInterface(ServiceManager.getService(Context.TELEPHONY_SERVICE2));
+            if (null != mPhoneService) {
+                mPhoneService.switchToSim2DataNetworkEx(networkType);
+            }
+        }catch(RemoteException re){
+        }
+    }
+
+    /*
+    //TODO: Need synchronized?
+    private boolean anyMoreMmsFeatureUser(){
+        if(mFeatureUsers == null)
+            return false;
+        int size = mFeatureUsers.size();
+        if(size == 0){
+            //android.util.Log.d(TAG, "=====>Remove me later: anyMoreMmsFeatureUser()? = "+ false);
+            return false;
+        }
+        for (int i = 0; i < size ; i++) {
+            FeatureUser user = (FeatureUser)mFeatureUsers.get(i);
+            if ((user.mNetworkType == ConnectivityManager.TYPE_MOBILE ||  user.mNetworkType == ConnectivityManager.TYPE_MOBILE2)
+                && TextUtils.equals(user.mFeature, Phone.FEATURE_ENABLE_MMS)) {
+                //android.util.Log.d(TAG, "=====>Remove me later: anyMoreMmsFeatureUser()? = "+true);
+                return true;
+            }
+        }
+        //android.util.Log.d(TAG, "=====>Remove me later: anyMoreMmsFeatureUser()? = "+ false);
+        return false;
+    }*/
+    private boolean anyMoreMmsNetRequesters(){
+        if(mNetRequestersPids == null)
+            return false;
+        if(mNetRequestersPids[ConnectivityManager.TYPE_MOBILE_MMS] != null && mNetRequestersPids[ConnectivityManager.TYPE_MOBILE_MMS].size() > 0)
+            return true;
+        return false;
+    }
+
     // javadoc from interface
     public int stopUsingNetworkFeature(int networkType, String feature) {
         enforceChangePermission();
@@ -1435,6 +1692,7 @@ public class ConnectivityService extends IConnectivityManager.Stub {
 
         NetworkStateTracker tracker = null;
         boolean callTeardown = false;  // used to carry our decision outside of sync block
+        int usedNetworkType = 0;
 
         if (VDBG) {
             log("stopUsingNetworkFeature: net " + networkType + ": " + feature);
@@ -1478,7 +1736,7 @@ public class ConnectivityService extends IConnectivityManager.Stub {
             }
 
             // TODO - move to individual network trackers
-            int usedNetworkType = convertFeatureToNetworkType(networkType, feature);
+            usedNetworkType = convertFeatureToNetworkType(networkType, feature);
 
             tracker =  mNetTrackers[usedNetworkType];
             if (tracker == null) {
@@ -1520,6 +1778,21 @@ public class ConnectivityService extends IConnectivityManager.Stub {
                 log("stopUsingNetworkFeature: teardown net " + networkType + ": " + feature);
             }
             tracker.teardown();
+            if(null != ITelephony.Stub.asInterface(ServiceManager.getService(Context.TELEPHONY_SERVICE2))){
+                //Now we can tear down, means no more net requesters pids for usedNetworkType
+                if (usedNetworkType == ConnectivityManager.TYPE_MOBILE_MMS) {
+                    if (SystemProperties.getInt(TelephonyProperties.PROPERTY_DATA_PREFER_SIM_ID,
+                            SimCardID.ID_ZERO.toInt()) == SimCardID.ID_ONE.toInt()) {
+                        switchToSim2DataNetwork(); // It is ok, if it is sim2 network already active
+                    } else {
+                                    switchToSim1DataNetwork(); // It is ok, if it is sim1 network already active
+                    }
+                }
+
+                if(!anyMoreMmsNetRequesters()){
+                    SystemProperties.set(TelephonyProperties.PROPERTY_DATA_MMS_BUSY, String.valueOf(false));
+                }
+            }
             return 1;
         } else {
             return -1;
@@ -2381,8 +2654,8 @@ public class ConnectivityService extends IConnectivityManager.Stub {
                                              0);
             // Canonicalize mobile network type
             type = ConnectivityManager.TYPE_MOBILE;
-        } else if (ConnectivityManager.TYPE_WIFI == type) {
-            timeout = Settings.Global.getInt(mContext.getContentResolver(),
+         } else if (ConnectivityManager.TYPE_WIFI == type) {
+             timeout = Settings.Global.getInt(mContext.getContentResolver(),
                                              Settings.Global.DATA_ACTIVITY_TIMEOUT_WIFI,
                                              0);
         } else {
@@ -2680,16 +2953,37 @@ public class ConnectivityService extends IConnectivityManager.Stub {
         String bufferSizes = key == null ? null : SystemProperties.get(key);
 
         if (TextUtils.isEmpty(bufferSizes)) {
-            if (VDBG) log(key + " not found in system properties. Using defaults");
+            Boolean keyChanged = false;
 
-            // Setting to default values so we won't be stuck to previous values
-            key = "net.tcp.buffersize.default";
-            bufferSizes = SystemProperties.get(key);
+            //if one of the hsdpa, hsupa, hspap, try parent category hspa then
+            if (DBG) log(key + " not found in system properties. Try alternate hspa");
+            if (key.indexOf("hsdpa") !=-1) {
+                key = key.replaceFirst("hsdpa","hspa");
+                keyChanged = true;
+            } else if (key.indexOf("hsupa") !=-1) {
+                key = key.replaceFirst("hsupa","hspa");
+                keyChanged = true;
+            } else if (key.indexOf("hspap") !=-1) {
+                key = key.replaceFirst("hspap","hspa");
+                keyChanged = true;
+            }
+
+            if (keyChanged) {
+                bufferSizes = SystemProperties.get(key);
+            }
+
+            if (TextUtils.isEmpty(bufferSizes)) { //still can't find
+                if (VDBG) log(key + " not found in system properties. Using defaults");
+
+                // Setting to default values so we won't be stuck to previous values
+                key = "net.tcp.buffersize.default";
+                bufferSizes = SystemProperties.get(key);
+            }
         }
 
         // Set values in kernel
         if (bufferSizes.length() != 0) {
-            if (VDBG) {
+            if (DBG) {
                 log("Setting TCP values: [" + bufferSizes
                         + "] which comes from [" + key + "]");
             }

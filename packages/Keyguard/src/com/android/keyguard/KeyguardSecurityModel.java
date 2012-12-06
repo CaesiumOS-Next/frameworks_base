@@ -22,6 +22,12 @@ import android.telephony.TelephonyManager;
 import com.android.internal.telephony.IccCardConstants;
 import com.android.internal.widget.LockPatternUtils;
 
+/* dual sim */
+import android.os.SystemProperties;
+import android.util.Log;
+import com.android.internal.telephony.RILConstants.SimCardID;
+import static com.android.internal.telephony.TelephonyProperties.*;
+
 public class KeyguardSecurityModel {
     /**
      * The different types of security available for {@link Mode#UnlockScreen}.
@@ -36,11 +42,19 @@ public class KeyguardSecurityModel {
         Biometric, // Unlock with a biometric key (e.g. finger print or face unlock)
         Account, // Unlock by entering an account's login and password.
         SimPin, // Unlock by entering a sim pin.
-        SimPuk // Unlock by entering a sim puk
+        Sim2Pin, //Unlock by entering a sim2 pin, only for dual SIM.
+        SimPuk, // Unlock by entering a sim puk
+        Sim2Puk,// Unlock by entering a sim2 puk, only for dual SIM
+        SimsBothPin, // Unlock by entering sim1 & sim2 pin, only for dual SIM
+        SimsBothPuk, // Unlock by entering sim1 & sim2 puk, only for dual SIM
+        SimsPinPuk // Unlock by entering sim pin or puk, one sim is PINed the another one is PUKed, only for dual SIM
     }
 
     private Context mContext;
     private LockPatternUtils mLockPatternUtils;
+    /* BRCM */
+    private static boolean DEBUG = KeyguardViewMediator.DEBUG;
+    private static final String TAG = "KeyguardSecurityModel";
 
     KeyguardSecurityModel(Context context) {
         mContext = context;
@@ -76,38 +90,102 @@ public class KeyguardSecurityModel {
     SecurityMode getSecurityMode() {
         KeyguardUpdateMonitor updateMonitor = KeyguardUpdateMonitor.getInstance(mContext);
         final IccCardConstants.State simState = updateMonitor.getSimState();
+        final IccCardConstants.State sim2State = updateMonitor.getSimState(SimCardID.ID_ONE);
+        if(DEBUG) Log.d(TAG,"getSecurityMode(), simState:" + simState + ", sim2State:" + sim2State);
         SecurityMode mode = SecurityMode.None;
-        if (simState == IccCardConstants.State.PIN_REQUIRED) {
-            mode = SecurityMode.SimPin;
-        } else if (simState == IccCardConstants.State.PUK_REQUIRED
-                && mLockPatternUtils.isPukUnlockScreenEnable()) {
-            mode = SecurityMode.SimPuk;
-        } else {
-            final int security = mLockPatternUtils.getKeyguardStoredPasswordQuality();
-            switch (security) {
-                case DevicePolicyManager.PASSWORD_QUALITY_NUMERIC:
-                    mode = mLockPatternUtils.isLockPasswordEnabled() ?
-                            SecurityMode.PIN : SecurityMode.None;
-                    break;
-                case DevicePolicyManager.PASSWORD_QUALITY_ALPHABETIC:
-                case DevicePolicyManager.PASSWORD_QUALITY_ALPHANUMERIC:
-                case DevicePolicyManager.PASSWORD_QUALITY_COMPLEX:
-                    mode = mLockPatternUtils.isLockPasswordEnabled() ?
-                            SecurityMode.Password : SecurityMode.None;
-                    break;
 
-                case DevicePolicyManager.PASSWORD_QUALITY_SOMETHING:
-                case DevicePolicyManager.PASSWORD_QUALITY_UNSPECIFIED:
-                    if (mLockPatternUtils.isLockPatternEnabled()) {
-                        mode = mLockPatternUtils.isPermanentlyLocked() ?
-                            SecurityMode.Account : SecurityMode.Pattern;
-                    }
-                    break;
+        if(sim2State != IccCardConstants.State.UNKNOWN){ /* dual sim case */
+            if (simState == IccCardConstants.State.PIN_REQUIRED
+                && sim2State == IccCardConstants.State.PIN_REQUIRED) {
+                mode = SecurityMode.SimsBothPin;
+            } else if (simState == IccCardConstants.State.PUK_REQUIRED
+                && sim2State == IccCardConstants.State.PUK_REQUIRED) {
+                mode = SecurityMode.SimsBothPuk;
+            } else if ((simState == IccCardConstants.State.PIN_REQUIRED && sim2State == IccCardConstants.State.PUK_REQUIRED)
+                || (sim2State == IccCardConstants.State.PIN_REQUIRED && simState == IccCardConstants.State.PUK_REQUIRED)) {
+                mode = SecurityMode.SimsPinPuk;
+            } else if (simState == IccCardConstants.State.PIN_REQUIRED
+                && (sim2State == IccCardConstants.State.ABSENT
+                    || sim2State == IccCardConstants.State.NOT_READY
+                    || sim2State == IccCardConstants.State.READY) ) {
+                mode = SecurityMode.SimPin;
+            } else if (simState == IccCardConstants.State.PUK_REQUIRED
+                && mLockPatternUtils.isPukUnlockScreenEnable()
+                && (sim2State == IccCardConstants.State.ABSENT
+                    || sim2State == IccCardConstants.State.NOT_READY
+                    || sim2State == IccCardConstants.State.READY) ) {
+                mode = SecurityMode.SimPuk;
+            } else if (sim2State == IccCardConstants.State.PIN_REQUIRED
+                && (simState == IccCardConstants.State.ABSENT
+                    || simState == IccCardConstants.State.NOT_READY
+                    || simState == IccCardConstants.State.READY) ) {
+                mode = SecurityMode.Sim2Pin;
+            } else if (sim2State == IccCardConstants.State.PUK_REQUIRED
+                && mLockPatternUtils.isPukUnlockScreenEnable()
+                && (simState == IccCardConstants.State.ABSENT
+                    || simState == IccCardConstants.State.NOT_READY
+                    || simState == IccCardConstants.State.READY) ) {
+                mode = SecurityMode.Sim2Puk;
+            } else {
+                final int security = mLockPatternUtils.getKeyguardStoredPasswordQuality();
+                switch (security) {
+                    case DevicePolicyManager.PASSWORD_QUALITY_NUMERIC:
+                        mode = mLockPatternUtils.isLockPasswordEnabled() ?
+                                SecurityMode.PIN : SecurityMode.None;
+                        break;
+                    case DevicePolicyManager.PASSWORD_QUALITY_ALPHABETIC:
+                    case DevicePolicyManager.PASSWORD_QUALITY_ALPHANUMERIC:
+                    case DevicePolicyManager.PASSWORD_QUALITY_COMPLEX:
+                        mode = mLockPatternUtils.isLockPasswordEnabled() ?
+                                SecurityMode.Password : SecurityMode.None;
+                        break;
 
-                default:
-                    throw new IllegalStateException("Unknown unlock mode:" + mode);
+                    case DevicePolicyManager.PASSWORD_QUALITY_SOMETHING:
+                    case DevicePolicyManager.PASSWORD_QUALITY_UNSPECIFIED:
+                        if (mLockPatternUtils.isLockPatternEnabled()) {
+                            mode = mLockPatternUtils.isPermanentlyLocked() ?
+                                SecurityMode.Account : SecurityMode.Pattern;
+                        }
+                        break;
+
+                    default:
+                        throw new IllegalStateException("Unknown unlock mode:" + mode);
+                }
+            }
+        } else { /* single sim case */
+            if (simState == IccCardConstants.State.PIN_REQUIRED) {
+                mode = SecurityMode.SimPin;
+            } else if (simState == IccCardConstants.State.PUK_REQUIRED
+                    && mLockPatternUtils.isPukUnlockScreenEnable()) {
+                mode = SecurityMode.SimPuk;
+            } else {
+                final int security = mLockPatternUtils.getKeyguardStoredPasswordQuality();
+                switch (security) {
+                    case DevicePolicyManager.PASSWORD_QUALITY_NUMERIC:
+                        mode = mLockPatternUtils.isLockPasswordEnabled() ?
+                                SecurityMode.PIN : SecurityMode.None;
+                        break;
+                    case DevicePolicyManager.PASSWORD_QUALITY_ALPHABETIC:
+                    case DevicePolicyManager.PASSWORD_QUALITY_ALPHANUMERIC:
+                    case DevicePolicyManager.PASSWORD_QUALITY_COMPLEX:
+                        mode = mLockPatternUtils.isLockPasswordEnabled() ?
+                                SecurityMode.Password : SecurityMode.None;
+                        break;
+
+                    case DevicePolicyManager.PASSWORD_QUALITY_SOMETHING:
+                    case DevicePolicyManager.PASSWORD_QUALITY_UNSPECIFIED:
+                        if (mLockPatternUtils.isLockPatternEnabled()) {
+                            mode = mLockPatternUtils.isPermanentlyLocked() ?
+                                SecurityMode.Account : SecurityMode.Pattern;
+                        }
+                        break;
+
+                    default:
+                        throw new IllegalStateException("Unknown unlock mode:" + mode);
+                }
             }
         }
+        if(DEBUG) Log.d(TAG,"getSecurityMode(), mode:" + mode);
         return mode;
     }
 

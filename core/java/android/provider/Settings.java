@@ -294,6 +294,21 @@ public final class Settings {
             "android.settings.SOUND_SETTINGS";
 
     /**
+     * Activity Action: Show settings to allow set default sim for voice call.
+     * <p>
+     * In some cases, a matching Activity may not exist, so ensure you
+     * safeguard against this.
+     * <p>
+     * Input: Nothing.
+     * <p>
+     * Output: Nothing.
+     * @hide
+     */
+    @SdkConstant(SdkConstantType.ACTIVITY_INTENT_ACTION)
+    public static final String ACTION_CALL_SETTINGS =
+            "android.settings.CALL_SETTINGS";
+
+    /**
      * Activity Action: Show settings to allow configuration of display.
      * <p>
      * In some cases, a matching Activity may not exist, so ensure you
@@ -1999,6 +2014,9 @@ public final class Settings {
          */
         public static final String RINGTONE = "ringtone";
 
+        /**@hide*/
+        public static final String RINGTONE_2 = "ringtone_2";
+
         /**
          * A {@link Uri} that will point to the current default ringtone at any
          * given time.
@@ -2008,6 +2026,9 @@ public final class Settings {
          * FileNotFoundException.
          */
         public static final Uri DEFAULT_RINGTONE_URI = getUriFor(RINGTONE);
+
+        /**@hide*/
+        public static final Uri DEFAULT_RINGTONE_URI_2 = getUriFor(RINGTONE_2);
 
         /**
          * Persistent store for the system-wide default notification sound.
@@ -4623,6 +4644,17 @@ public final class Settings {
         public static final String AIRPLANE_MODE_ON = "airplane_mode_on";
 
         /**
+         * Whether SIM1 is on
+         * @hide
+         */
+        public static final String PHONE1_ON = "phone1_on";
+        /**
+         * Whether SIM2 is on
+         * @hide
+         */
+        public static final String PHONE2_ON = "phone2_on";
+
+        /**
          * Constant for use in AIRPLANE_MODE_RADIOS to specify Bluetooth radio.
          */
         public static final String RADIO_BLUETOOTH = "bluetooth";
@@ -4804,6 +4836,20 @@ public final class Settings {
         public static final String BLUETOOTH_ON = "bluetooth_on";
 
         /**
+         * Whether the SIM1 cell broadcast is enabled. The value is
+         * boolean (1 or 0).
+         * @hide
+         */
+        public static final String SIM1_CELL_BROADCAST_ENABLE = "sim1_cell_broadcast_enable";
+
+        /**
+         * Whether the SIM2 cell broadcast is enabled. The value is
+         * boolean (1 or 0).
+         * @hide
+         */
+        public static final String SIM2_CELL_BROADCAST_ENABLE = "sim2_cell_broadcast_enable";
+
+        /**
          * CDMA Cell Broadcast SMS
          *                            0 = CDMA Cell Broadcast SMS disabled
          *                            1 = CDMA Cell Broadcast SMS enabled
@@ -4856,7 +4902,68 @@ public final class Settings {
        public static final String DATA_ROAMING = "data_roaming";
 
        /**
-        * The value passed to a Mobile DataConnection via bringUp which defines the
+        * Whether or not data roaming is enabled. (0 = false, 1 = true)
+        */
+       /** @hide */
+       public static final String DATA_ROAMING_1 = "data_roaming_1";
+
+       /**
+        * Default voice call mode value in dual sim mode.
+        * 0 = SIM1; 1 = SIM2; 2 = Always ask
+        *
+        * @hide
+        */
+       public static final String DEFAULT_VOICE_CALL_MODE = "default_voice_call_mode";
+
+       /**
+        * Default video call mode value in dual sim mode.
+        * 0 = SIM1; 1 = SIM2; 2 = Always ask
+        *
+        * @hide
+        */
+       public static final String DEFAULT_VIDEO_CALL_MODE = "default_video_call_mode";
+
+       /**
+        * Default messgae(sms and mms) mode value in dual sim mode.
+        * 0 = SIM1; 1 = SIM2; 2 = Always ask
+        *
+        * @hide
+        */
+       public static final String DEFAULT_MESSAGE_MODE = "default_message_mode";
+
+       /**
+        * Default data connection mode value in dual sim mode.
+        * 0 = SIM1; 1 = SIM2; 2 = Disabled
+        *
+        * @hide
+        */
+       public static final String DEFAULT_DATA_CONNECTION_MODE = "default_data_connection_mode";
+
+       /**
+        * Display sim card number mode value in dual sim mode.
+        *  0 = display prefix 4 digits; 1 = display subfix 4 digits;  2 = None
+        *
+        * @hide
+        */
+       public static final String DISPLAY_SIM_NUMBER_MODE = "display_sim_number_mode";
+
+       /**
+        * Display sim2 card number mode value in dual sim mode.
+        *  0 = display prefix 4 digits; 1 = display subfix 4 digits;  2 = None
+        *
+        * @hide
+        */
+       public static final String DISPLAY_SIM2_NUMBER_MODE = "display_sim2_number_mode";
+
+        // BRCM start - WAP Push On/Off
+        /**
+        * Whether WAP PUSH is enabled
+        * @hide
+        */
+        public static final String WAP_PUSH_ON = "wap_push_on";
+        // BRCM end - WAP Push On/Off
+
+        /**
         * number of retries to preform when setting up the initial connection. The default
         * value defined in DataConnectionTrackerBase#DEFAULT_MDC_INITIAL_RETRY is currently 1.
         * @hide

@@ -57,6 +57,9 @@ import android.view.WindowManagerPolicy;
 import com.android.internal.telephony.IccCardConstants;
 import com.android.internal.widget.LockPatternUtils;
 
+import static com.android.internal.telephony.TelephonyProperties.*;
+import com.android.internal.telephony.RILConstants.SimCardID;
+import com.android.keyguard.KeyguardSecurityModel.SecurityMode;
 
 /**
  * Mediates requests related to the keyguard.  This includes queries about the
@@ -101,8 +104,8 @@ import com.android.internal.widget.LockPatternUtils;
  */
 public class KeyguardViewMediator {
     private static final int KEYGUARD_DISPLAY_TIMEOUT_DELAY_DEFAULT = 30000;
-    final static boolean DEBUG = false;
-    private final static boolean DBG_WAKE = false;
+    static boolean DEBUG = false;
+    private static boolean DBG_WAKE = false;
 
     private final static String TAG = "KeyguardViewMediator";
 
@@ -252,6 +255,11 @@ public class KeyguardViewMediator {
      */
     private final float mLockSoundVolume;
 
+    private boolean SimsBothPin_isShowing = false;
+    private boolean SimsBothPuk_isShowing = false;
+    private boolean SimsPinPuk_isShowing = false;
+    private KeyguardSecurityModel mSecurityModel;
+
     /**
      * For managing external displays
      */
@@ -378,11 +386,11 @@ public class KeyguardViewMediator {
         }
 
         @Override
-        public void onSimStateChanged(IccCardConstants.State simState) {
-            if (DEBUG) Log.d(TAG, "onSimStateChanged: " + simState);
+        public void onSimStateChanged(IccCardConstants.State simState, SimCardID simCardId) {
+            if (DEBUG) Log.d(TAG, "onSimStateChanged: " + simState + ", simCardId:" + simCardId.toInt());
+            SecurityMode securityMode = mSecurityModel.getSecurityMode();
 
             switch (simState) {
-                case NOT_READY:
                 case ABSENT:
                     // only force lock screen in case of missing sim if user hasn't
                     // gone through setup wizard
@@ -397,17 +405,30 @@ public class KeyguardViewMediator {
                                 resetStateLocked(null);
                             }
                         }
+                        /* Fixed SIM Pin lock didn't reflash after SIM hot swap */
+                        else if (isShowing()) {
+                            resetStateLocked(null);
+                        }
                     }
                     break;
                 case PIN_REQUIRED:
                 case PUK_REQUIRED:
-                    synchronized (this) {
-                        if (!isShowing()) {
-                            if (DEBUG) Log.d(TAG, "INTENT_VALUE_ICC_LOCKED and keygaurd isn't "
-                                    + "showing; need to show keyguard so user can enter sim pin");
-                            doKeyguardLocked(null);
-                        } else {
-                            resetStateLocked(null);
+                    if((SimsBothPin_isShowing == true && securityMode == SecurityMode.SimsBothPin)
+                        || (SimsBothPuk_isShowing == true && securityMode == SecurityMode.SimsBothPuk)
+                        || (SimsPinPuk_isShowing == true && securityMode == SecurityMode.SimsPinPuk)) {
+                        if (DEBUG) {
+                            Log.d(TAG, "In the Dual SIM mode, we should ignore the " +
+                                       "2nd same sim state change callback");
+                        }
+                    } else {
+                        synchronized (this) {
+                            if (!isShowing()) {
+                                if (DEBUG) Log.d(TAG, "INTENT_VALUE_ICC_LOCKED and keygaurd isn't "
+                                        + "showing; need to show keyguard so user can enter sim pin");
+                                doKeyguardLocked(null);
+                            } else {
+                                resetStateLocked(null);
+                            }
                         }
                     }
                     break;
@@ -425,11 +446,34 @@ public class KeyguardViewMediator {
                     }
                     break;
                 case READY:
+                case NOT_READY: //reset lock screen when sim state is NOT_READY(e.g., turn on airplane mode)
                     synchronized (this) {
                         if (isShowing()) {
                             resetStateLocked(null);
                         }
                     }
+                    break;
+            }
+            switch(securityMode) {
+                case SimsBothPin:
+                    SimsBothPin_isShowing = true;
+                    SimsBothPuk_isShowing = false;
+                    SimsPinPuk_isShowing = false;
+                    break;
+                case SimsBothPuk:
+                    SimsBothPin_isShowing = false;
+                    SimsBothPuk_isShowing = true;
+                    SimsPinPuk_isShowing = false;
+                    break;
+                case SimsPinPuk:
+                    SimsBothPin_isShowing = false;
+                    SimsBothPuk_isShowing = false;
+                    SimsPinPuk_isShowing = true;
+                    break;
+                default: //other security mode, reset all dual sim show flag for SIM PIN/PUK unlock screen
+                    SimsBothPin_isShowing = false;
+                    SimsBothPuk_isShowing = false;
+                    SimsPinPuk_isShowing = false;
                     break;
             }
         }
@@ -490,6 +534,7 @@ public class KeyguardViewMediator {
      * @param lockPatternUtils optional mock interface for LockPatternUtils
      */
     public KeyguardViewMediator(Context context, LockPatternUtils lockPatternUtils) {
+        if (DEBUG) Log.d(TAG, "KeyguardViewMediator constructor");
         mContext = context;
         mPM = (PowerManager) context.getSystemService(Context.POWER_SERVICE);
         mUserManager = (UserManager) mContext.getSystemService(Context.USER_SERVICE);
@@ -539,6 +584,8 @@ public class KeyguardViewMediator {
         int lockSoundDefaultAttenuation = context.getResources().getInteger(
                 com.android.internal.R.integer.config_lockSoundVolumeDb);
         mLockSoundVolume = (float)Math.pow(10, (float)lockSoundDefaultAttenuation/20);
+
+        mSecurityModel = new KeyguardSecurityModel(context);
     }
 
     /**
@@ -903,14 +950,24 @@ public class KeyguardViewMediator {
         }
 
         // if the setup wizard hasn't run yet, don't show
+        /* The default requireSim is false due to the default system property "keyguard.no_require_sim" is true
+         * Check target/product/full_base_telephony.mk
+         */
         final boolean requireSim = !SystemProperties.getBoolean("keyguard.no_require_sim",
                 false);
         final boolean provisioned = mUpdateMonitor.isDeviceProvisioned();
         final IccCardConstants.State state = mUpdateMonitor.getSimState();
-        final boolean lockedOrMissing = state.isPinLocked()
+        final IccCardConstants.State state2 = mUpdateMonitor.getSimState(SimCardID.ID_ONE);
+        boolean lockedOrMissing = state.isPinLocked()
                 || ((state == IccCardConstants.State.ABSENT
                 || state == IccCardConstants.State.PERM_DISABLED)
                 && requireSim);
+        // So even only one sim card is PIN required, still need to show locked screen.
+        lockedOrMissing = lockedOrMissing || state2.isPinLocked();
+        if (DEBUG) {
+            Log.d(TAG,"requireSim:" + requireSim + ", provisioned:" + provisioned +
+                      ", lockedOrMissing:" + lockedOrMissing);
+        }
 
         if (!lockedOrMissing && !provisioned) {
             if (DEBUG) Log.d(TAG, "doKeyguard: not showing because device isn't provisioned"
@@ -1272,6 +1329,8 @@ public class KeyguardViewMediator {
         if (mStatusBarManager == null) {
             Log.w(TAG, "Could not get status bar manager");
         } else {
+            if (DEBUG) Log.d(TAG, "adjustStatusBarLocked: mShowing=" + mShowing + " mHidden=" + mHidden);
+
             // Disable aspects of the system/status/navigation bars that must not be re-enabled by
             // windows that appear on top, ever
             int flags = StatusBarManager.DISABLE_NONE;
@@ -1291,11 +1350,11 @@ public class KeyguardViewMediator {
                 if (!isAssistantAvailable()) {
                     flags |= StatusBarManager.DISABLE_SEARCH;
                 }
-            }
+               if (DEBUG)  {
+                   Log.d(TAG, "adjustStatusBarLocked: isSecure=" + isSecure() +
+                              " --> flags=0x" + Integer.toHexString(flags));
+               }
 
-            if (DEBUG) {
-                Log.d(TAG, "adjustStatusBarLocked: mShowing=" + mShowing + " mHidden=" + mHidden
-                        + " isSecure=" + isSecure() + " --> flags=0x" + Integer.toHexString(flags));
             }
 
             if (!(mContext instanceof Activity)) {

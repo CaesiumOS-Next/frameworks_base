@@ -39,6 +39,14 @@ import android.util.Log;
 import android.view.WindowManager;
 import android.widget.TextView.OnEditorActionListener;
 
+/* dual sim */
+import android.os.SystemProperties;
+import android.util.Log;
+import com.android.keyguard.KeyguardSecurityModel.SecurityMode;
+import com.android.internal.telephony.IccCardConstants;
+import com.android.internal.telephony.RILConstants.SimCardID;
+import com.android.internal.telephony.TelephonyProperties;
+
 /**
  * Displays a PIN pad for unlocking.
  */
@@ -53,16 +61,104 @@ public class KeyguardSimPinView extends KeyguardAbsKeyInputView
 
     private AlertDialog mRemainingAttemptsDialog;
 
+    // Use this to debug all of keyguard
+    private static boolean DEBUG = KeyguardViewMediator.DEBUG;
+    private static final String TAG = "KeyguardSimPinView";
+    /* dual sim */
+    static final boolean isDualMode =
+            SystemProperties.getBoolean(TelephonyProperties.PROPERTY_DUAL_MODE_PHONE, false);
+    private SimCardID mSimCardId = SimCardID.ID_ZERO;
+    private KeyguardSecurityModel mKeyguardSecurityModel;
+    private SecurityMode mSecurityMode;
+	private int mPinRemainingCount = -1;
+
     public KeyguardSimPinView(Context context) {
         this(context, null);
     }
 
     public KeyguardSimPinView(Context context, AttributeSet attrs) {
         super(context, attrs);
+        /* dual sim */
+        reGetSecurityMode(context);
+        checkPinRemainingCount();
+        if(DEBUG && mSimUnlockProgressDialog != null) {
+            Log.d(TAG, "KeyguardSimPinView(), mSimUnlockProgressDialog is not NULL, mSimCardId:" + mSimCardId.toInt());
+        }
+    }
+
+    /* dual sim */
+    private void reGetSecurityMode(Context context){
+        KeyguardUpdateMonitor updateMonitor = KeyguardUpdateMonitor.getInstance(mContext);
+        final IccCardConstants.State simState = updateMonitor.getSimState();
+        final IccCardConstants.State sim2State = updateMonitor.getSimState(SimCardID.ID_ONE);
+        mKeyguardSecurityModel = new KeyguardSecurityModel(context);
+        mSecurityMode = mKeyguardSecurityModel.getSecurityMode();
+        switch (mSecurityMode) {
+            case SimPin:
+                mSimCardId = SimCardID.ID_ZERO;
+                break;
+            case Sim2Pin:
+                mSimCardId = SimCardID.ID_ONE;
+                break;
+            case SimsBothPin:
+            {
+                /* In the SimsBothPin case, we can choose which SIM PIN that we prefer to unlock first.
+                           * The priority is based on SIM state check order */
+                if(sim2State == IccCardConstants.State.PIN_REQUIRED) {
+                    mSimCardId = SimCardID.ID_ONE;
+                } else if(simState == IccCardConstants.State.PIN_REQUIRED) {
+                    mSimCardId = SimCardID.ID_ZERO;
+                }
+                break;
+            }
+            case SimsPinPuk: //dual sim
+            {
+                if(simState == IccCardConstants.State.PIN_REQUIRED) {
+                    mSimCardId = SimCardID.ID_ZERO;
+                } else if (sim2State == IccCardConstants.State.PIN_REQUIRED) {
+                    mSimCardId = SimCardID.ID_ONE;
+                }
+                break;
+            }
+        }
+        if(DEBUG) Log.d(TAG,"reGetSecurityMode(), simState:" + simState
+            + ", sim2State:" + sim2State
+            + ", mSecurityMode:" + mSecurityMode
+            + ", mSimCardId:" + mSimCardId.toInt());
+    }
+
+    private void checkPinRemainingCount(){
+        try {
+            ITelephony phone = ITelephony.Stub.asInterface(ServiceManager.checkService(SimCardID.ID_ONE == mSimCardId?Context.TELEPHONY_SERVICE2:Context.TELEPHONY_SERVICE1));
+            if(phone != null) mPinRemainingCount = phone.getPinRemainingStatus(0);
+            else Log.d(TAG,"checkPinRemainingCount(), phone is null");
+        } catch (RemoteException e) {
+        }
+        if(DEBUG)Log.d(TAG,"checkPinRemainingCount(), mSimCardId:" + mSimCardId + ", mPinRemainingCount:" + mPinRemainingCount);
     }
 
     public void resetState() {
-        mSecurityMessageDisplay.setMessage(R.string.kg_sim_pin_instructions, true);
+        if(DEBUG) {
+            Log.d(TAG, "resetState()");
+            if(mSimUnlockProgressDialog != null) {
+                Log.d(TAG, "resetState(), mSimUnlockProgressDialog is not NULL, mSimCardId:" + mSimCardId.toInt());
+            }
+        }
+
+        /* dual sim */
+        String title = "";
+        if(isDualMode) {
+            if (SimCardID.ID_ZERO == mSimCardId) {
+                title += mContext.getString(R.string.keyguard_password_enter_sim1_pin_code);
+            } else {
+                title += mContext.getString(R.string.keyguard_password_enter_sim2_pin_code);
+            }
+        } else {
+            title += mContext.getString(R.string.kg_sim_pin_instructions);
+        }
+		title += "("+Integer.toString(mPinRemainingCount)+")";
+
+        mSecurityMessageDisplay.setMessage(title, true);
         mPasswordEntry.setEnabled(true);
     }
 
@@ -151,6 +247,7 @@ public class KeyguardSimPinView extends KeyguardAbsKeyInputView
         if (mSimUnlockProgressDialog != null) {
             mSimUnlockProgressDialog.dismiss();
             mSimUnlockProgressDialog = null;
+            if(DEBUG) Log.d(TAG, "onPause(), mSimUnlockProgressDialog is NULL now, mSimCardId:" + mSimCardId.toInt());
         }
     }
 
@@ -170,10 +267,8 @@ public class KeyguardSimPinView extends KeyguardAbsKeyInputView
         @Override
         public void run() {
             try {
-                Log.v(TAG, "call supplyPinReportResult()");
-                final int[] result = ITelephony.Stub.asInterface(ServiceManager
-                        .checkService("phone")).supplyPinReportResult(mPin);
-                Log.v(TAG, "supplyPinReportResult returned: " + result[0] + " " + result[1]);
+                ITelephony phone = ITelephony.Stub.asInterface(ServiceManager.checkService(SimCardID.ID_ONE == mSimCardId?Context.TELEPHONY_SERVICE2:Context.TELEPHONY_SERVICE1));
+                final boolean result = phone.supplyPin(mPin);
                 post(new Runnable() {
                     public void run() {
                         onSimCheckResponse(result[0], result[1]);
@@ -232,37 +327,43 @@ public class KeyguardSimPinView extends KeyguardAbsKeyInputView
         }
 
         getSimUnlockProgressDialog().show();
+        if(DEBUG) Log.d(TAG, "verifyPasswordAndUnlock(), start unlock SIM and show progress dialog, mSimCheckInProgress:" + mSimCheckInProgress 
+            + ", mSimCardId:" + mSimCardId.toInt());
 
         if (mCheckSimPinThread == null) {
             mCheckSimPinThread = new CheckSimPin(mPasswordEntry.getText().toString()) {
                 void onSimCheckResponse(final int result, final int attemptsRemaining) {
                     post(new Runnable() {
                         public void run() {
+                            if(DEBUG) Log.d(TAG, "onSimCheckResponse(), mSimCardId:" + mSimCardId.toInt() + ", success:" + success);
+                            // dual sim, re-check and dismiss the needless dialog.
                             if (mSimUnlockProgressDialog != null) {
                                 mSimUnlockProgressDialog.hide();
+                                mSimUnlockProgressDialog.dismiss();
+                                mSimUnlockProgressDialog = null;
+                                if(DEBUG) Log.d(TAG, "onSimCheckResponse(), unlock process finished, dismiss the needless progress dialog");
                             }
-                            if (result == PhoneConstants.PIN_RESULT_SUCCESS) {
-                                KeyguardUpdateMonitor.getInstance(getContext()).reportSimUnlocked();
+                            if (success) {
+                                // before closing the keyguard, report back that the sim is unlocked
+                                // so it knows right away.
+                                KeyguardUpdateMonitor.getInstance(getContext()).reportSimUnlocked(mSimCardId);//dual sim
                                 mCallback.dismiss(true);
                             } else {
-                                if (result == PhoneConstants.PIN_PASSWORD_INCORRECT) {
-                                    if (attemptsRemaining <= 2) {
-                                        // this is getting critical - show dialog
-                                        getSimRemainingAttemptsDialog(attemptsRemaining).show();
+                                checkPinRemainingCount();
+                                String title = "";
+                                if(isDualMode) {
+                                    if (SimCardID.ID_ZERO == mSimCardId) {
+                                        title += mContext.getString(R.string.keyguard_password_wrong_sim1_pin_code);
                                     } else {
-                                        // show message
-                                        mSecurityMessageDisplay.setMessage(
-                                                getPinPasswordErrorMessage(attemptsRemaining), true);
+                                        title += mContext.getString(R.string.keyguard_password_wrong_sim2_pin_code);
                                     }
                                 } else {
-                                    // "PIN operation failed!" - no idea what this was and no way to
-                                    // find out. :/
-                                    mSecurityMessageDisplay.setMessage(getContext().getString(
-                                            R.string.kg_password_pin_failed), true);
+                                    title += mContext.getString(R.string.kg_password_wrong_pin_code);
                                 }
-                                if (DEBUG) Log.d(LOG_TAG, "verifyPasswordAndUnlock "
-                                        + " CheckSimPin.onSimCheckResponse: " + result
-                                        + " attemptsRemaining=" + attemptsRemaining);
+                                title += "("+Integer.toString(mPinRemainingCount)+")";
+
+                                mSecurityMessageDisplay.setMessage
+                                    (title, true);
                                 mPasswordEntry.setText("");
                             }
                             mCallback.userActivity(0);

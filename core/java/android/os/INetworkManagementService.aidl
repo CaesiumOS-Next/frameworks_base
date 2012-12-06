@@ -96,6 +96,11 @@ interface INetworkManagementService
     RouteInfo[] getRoutes(String iface);
 
     /**
+     * Add or Remove the specified route to the interface.
+     */
+    void stkBipRoute(String interfaceName, int action, in String[] hostaddr);
+
+    /**
      * Add the specified route to the interface.
      */
     void addRoute(String iface, in RouteInfo route);

@@ -53,6 +53,15 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
+// BRCM DUAL_SIM
+import com.android.internal.telephony.RILConstants.SimCardID;
+import static com.android.internal.telephony.RILConstants.SimCardID.*;
+import static com.android.internal.telephony.TelephonyProperties.*;
+import android.app.Notification;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
+import android.os.SystemProperties;
+
 public class NetworkController extends BroadcastReceiver implements DemoMode {
     // debug
     static final String TAG = "StatusBar.NetworkController";

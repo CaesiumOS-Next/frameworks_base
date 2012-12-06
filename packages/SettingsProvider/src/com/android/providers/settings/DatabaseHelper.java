@@ -292,6 +292,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                     Settings.Secure.ANDROID_ID,
                     Settings.Secure.BLUETOOTH_ON,
                     Settings.Secure.DATA_ROAMING,
+                    Settings.Global.DATA_ROAMING_1,
                     Settings.Secure.DEVICE_PROVISIONED,
                     Settings.Secure.HTTP_PROXY,
                     Settings.Secure.INSTALL_NON_MARKET_APPS,
@@ -1276,6 +1277,13 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                             Settings.Secure.ADB_ENABLED,
                             Settings.Secure.BLUETOOTH_ON,
                             Settings.Secure.DATA_ROAMING,
+                            Settings.Global.DATA_ROAMING_1,
+                            Settings.Global.DEFAULT_VOICE_CALL_MODE,
+                            Settings.Global.DEFAULT_VIDEO_CALL_MODE,
+                            Settings.Global.DEFAULT_MESSAGE_MODE,
+                            Settings.Global.DEFAULT_DATA_CONNECTION_MODE,
+                            Settings.Global.DISPLAY_SIM_NUMBER_MODE,
+                            Settings.Global.DISPLAY_SIM2_NUMBER_MODE,
                             Settings.Secure.DEVICE_PROVISIONED,
                             Settings.Secure.INSTALL_NON_MARKET_APPS,
                             Settings.Secure.USB_MASS_STORAGE_ENABLED
@@ -2176,6 +2184,18 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             loadBooleanSetting(stmt, Settings.Global.BLUETOOTH_ON,
                     R.bool.def_bluetooth_on);
 
+            loadBooleanSetting(stmt, Settings.Global.PHONE1_ON,
+                    R.bool.def_dualmode_phone1_on);
+            loadBooleanSetting(stmt, Settings.Global.PHONE2_ON,
+                    R.bool.def_dualmode_phone2_on);
+
+            // Enable or disable SIM1 GSM Cell Broadcast SMS
+            loadSetting(stmt, Settings.Global.SIM1_CELL_BROADCAST_ENABLE,
+                    RILConstants.GSM_CELL_BROADCAST_SMS_DISABLED);
+            // Enable or disable SIM1 GSM Cell Broadcast SMS
+            loadSetting(stmt, Settings.Global.SIM2_CELL_BROADCAST_ENABLE,
+                    RILConstants.GSM_CELL_BROADCAST_SMS_DISABLED);
+
             // Enable or disable Cell Broadcast SMS
             loadSetting(stmt, Settings.Global.CDMA_CELL_BROADCAST_SMS,
                     RILConstants.CDMA_CELL_BROADCAST_SMS_DISABLED);
@@ -2184,6 +2204,12 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             loadSetting(stmt, Settings.Global.DATA_ROAMING,
                     "true".equalsIgnoreCase(
                             SystemProperties.get("ro.com.android.dataroaming",
+                                    "false")) ? 1 : 0);
+
+            // Data roaming default, based on build
+            loadSetting(stmt, Settings.Global.DATA_ROAMING_1,
+                    "true".equalsIgnoreCase(
+                            SystemProperties.get("ro.com.android.dataroaming_1",
                                     "false")) ? 1 : 0);
 
             loadBooleanSetting(stmt, Settings.Global.DEVICE_PROVISIONED,
@@ -2278,6 +2304,28 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                     R.integer.def_wifi_scan_always_available);
 
             // --- New global settings start here
+            loadIntegerSetting(stmt, Settings.Global.DEFAULT_VOICE_CALL_MODE,
+                    R.integer.def_default_voice_call_mode);
+
+            loadIntegerSetting(stmt, Settings.Global.DEFAULT_VIDEO_CALL_MODE,
+                    R.integer.def_default_video_call_mode);
+
+            loadIntegerSetting(stmt, Settings.Global.DEFAULT_MESSAGE_MODE,
+                    R.integer.def_default_message_mode);
+
+            loadIntegerSetting(stmt, Settings.Global.DEFAULT_DATA_CONNECTION_MODE,
+                    R.integer.def_default_data_connection_mode);
+
+            loadIntegerSetting(stmt, Settings.Global.DISPLAY_SIM_NUMBER_MODE,
+                    R.integer.def_display_sim_number_mode);
+
+            loadIntegerSetting(stmt, Settings.Global.DISPLAY_SIM2_NUMBER_MODE,
+                    R.integer.def_display_sim_number_mode);
+
+            // BRCM start - WAP Push On/Off
+            loadBooleanSetting(stmt, Settings.Global.WAP_PUSH_ON,
+                    R.bool.def_wap_push_on);
+            // BRCM end - WAP Push On/Off
         } finally {
             if (stmt != null) stmt.close();
         }

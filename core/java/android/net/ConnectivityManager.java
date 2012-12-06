@@ -207,6 +207,25 @@ public class ConnectivityManager {
             "android.net.conn.INET_CONDITION_ACTION";
 
     /**
+     * Broadcast Action: A data connection changed failed.
+     * @hide
+     */
+    public static final String ACTION_DATA_CONNECTION_CHANGE_FAIL =
+            "android.net.conn.DATA_CONNECTION_CHANGE_FAIL";
+
+    /**
+     * Broadcast Action: A data re-connection failed.
+     * @hide
+     */
+    public static final String ACTION_DATA_RECONNECTION_FAIL =
+            "android.net.conn.DATA_RECONNECTION_FAIL";
+    /**
+     * @hide
+     * A simid information send with ACTION_DATA_CONNECTION_CHANGE_FAIL
+     */
+    public static final String EXTRA_DATA_CONNECTION_SIMID = "simid";
+
+    /**
      * Broadcast Action: A tetherable connection has come or gone.
      * Uses {@code ConnectivityManager.EXTRA_AVAILABLE_TETHER},
      * {@code ConnectivityManager.EXTRA_ACTIVE_TETHER} and
@@ -356,7 +375,7 @@ public class ConnectivityManager {
     public static final int TYPE_WIFI_P2P    = 13;
 
     /**
-     * The network to use for initially attaching to the network
+    * The network to use for initially attaching to the network
      * {@hide}
      */
     public static final int TYPE_MOBILE_IA = 14;
@@ -605,6 +624,22 @@ public class ConnectivityManager {
         }
     }
 
+    /** {@hide} */
+    public NetworkInfo getNetworkInfo(int networkType, int simId) {
+        try {
+            return mService.getNetworkInfoBySimId(networkType, simId);
+        } catch (RemoteException e) {
+            return null;
+        }
+    }
+    /** {@hide} */
+    public void setMmsDataSim(int simId) {
+        try {
+            mService.setMmsDataSim(simId);
+        } catch (RemoteException e) {
+        }
+    }
+
     /**
      * Returns connection status information about all network
      * types supported by the device.
@@ -622,7 +657,6 @@ public class ConnectivityManager {
             return null;
         }
     }
-
     /**
      * Returns details about the Provisioning or currently active default data network. When
      * connected, this network is the default route for outgoing connections.
@@ -892,6 +926,90 @@ public class ConnectivityManager {
         try {
             mService.setMobileDataEnabled(enabled);
         } catch (RemoteException e) {
+        }
+    }
+
+    /**
+    * @hide
+    */
+    public void switchToSim1DataNetwork() {
+        try {
+            mService.switchToSim1DataNetwork();
+        } catch (RemoteException re) {
+        }
+    }
+
+    /**
+     * @hide
+     */
+    public void switchToSim2DataNetwork() {
+        try {
+            mService.switchToSim2DataNetwork();
+        } catch (RemoteException re) {
+        }
+    }
+
+    /**
+     * Switch to MMS directly,skip default apn
+     * @hide
+     */
+    public void switchToSim1DataNetwork(int networkType){
+        try {
+            mService.switchToSim1DataNetworkEx(networkType);
+        } catch (RemoteException re) {
+        }
+    }
+
+    /**
+     * Switch to MMS directly,skip default apn
+     * @hide
+     */
+    public void switchToSim2DataNetwork(int networkType){
+        try {
+            mService.switchToSim2DataNetworkEx(networkType);
+        } catch (RemoteException re) {
+        }
+    }
+
+    /**
+     * @hide
+     */
+    public void onSwitchToSim1DataNetworkCallback(boolean success){
+        try {
+            mService.onSwitchToSim1DataNetworkCallback(success);
+        } catch  (RemoteException re) {
+        }
+    }
+
+    /**
+     * @hide
+     */
+    public void onSwitchToSim2DataNetworkCallback(boolean success){
+        try {
+            mService.onSwitchToSim2DataNetworkCallback(success);
+        } catch (RemoteException re) {
+        }
+    }
+
+    /**
+     * Switch to MMS directly,skip default apn
+     * @hide
+     */
+    public void onSwitchToSim1DataNetworkCallback(boolean success,int networkType){
+        try {
+            mService.onSwitchToSim1DataNetworkCallbackEx(success, networkType);
+        } catch (RemoteException re) {
+        }
+    }
+
+    /**
+     * Switch to MMS directly,skip default apn
+     * @hide
+     */
+    public void onSwitchToSim2DataNetworkCallback(boolean success,int networkType){
+        try {
+            mService.onSwitchToSim2DataNetworkCallbackEx(success, networkType);
+        } catch (RemoteException re) {
         }
     }
 

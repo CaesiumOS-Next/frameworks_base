@@ -1,5 +1,6 @@
 /*
  * Copyright (C) 2006 The Android Open Source Project
+ * Copyright (C) 2009-2012 Broadcom Corporation
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -76,6 +77,8 @@ import dalvik.system.Zygote;
 import java.io.File;
 import java.util.Timer;
 import java.util.TimerTask;
+
+import com.android.internal.telephony.RILConstants.SimCardID;
 
 class ServerThread {
     private static final String TAG = "SystemServer";
@@ -156,6 +159,7 @@ class ServerThread {
         InputManagerService inputManager = null;
         TelephonyRegistry telephonyRegistry = null;
         ConsumerIrService consumerIr = null;
+        TelephonyRegistry telephonyRegistry2 = null;
 
         // Create a handler thread just for the window manager to enjoy.
         HandlerThread wmHandlerThread = new HandlerThread("WindowManager");
@@ -214,8 +218,10 @@ class ServerThread {
             ServiceManager.addService(Context.DISPLAY_SERVICE, display, true);
 
             Slog.i(TAG, "Telephony Registry");
-            telephonyRegistry = new TelephonyRegistry(context);
+            telephonyRegistry = new TelephonyRegistry(context, SimCardID.ID_ZERO);
             ServiceManager.addService("telephony.registry", telephonyRegistry);
+            telephonyRegistry2 = new TelephonyRegistry(context, SimCardID.ID_ONE);
+            ServiceManager.addService("telephony.registry2", telephonyRegistry2);
 
             Slog.i(TAG, "Scheduling Policy");
             ServiceManager.addService("scheduling_policy", new SchedulingPolicyService());
@@ -770,7 +776,7 @@ class ServerThread {
                 }
             }
 
-            if (!disableNonCoreServices && 
+            if (!disableNonCoreServices &&
                 context.getResources().getBoolean(R.bool.config_dreamsSupported)) {
                 try {
                     Slog.i(TAG, "Dreams Service");
@@ -927,6 +933,7 @@ class ServerThread {
         final AssetAtlasService atlasF = atlas;
         final InputManagerService inputManagerF = inputManager;
         final TelephonyRegistry telephonyRegistryF = telephonyRegistry;
+        final TelephonyRegistry telephonyRegistry2F = telephonyRegistry2;
         final PrintManagerService printManagerF = printManager;
         final MediaRouterService mediaRouterF = mediaRouter;
 
@@ -1081,6 +1088,12 @@ class ServerThread {
                     if (mediaRouterF != null) mediaRouterF.systemRunning();
                 } catch (Throwable e) {
                     reportWtf("Notifying MediaRouterService running", e);
+                }
+
+                try {
+                    if (telephonyRegistry2F != null) telephonyRegistry2F.systemRunning();
+                } catch (Throwable e) {
+                    reportWtf("Notifying TelephonyRegistry2 running", e);
                 }
             }
         });

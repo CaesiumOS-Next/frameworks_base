@@ -50,6 +50,7 @@ import static android.net.NetworkTemplate.MATCH_MOBILE_3G_LOWER;
 import static android.net.NetworkTemplate.MATCH_MOBILE_4G;
 import static android.net.NetworkTemplate.MATCH_MOBILE_ALL;
 import static android.net.NetworkTemplate.MATCH_WIFI;
+import static android.net.NetworkTemplate.MATCH_WIFI_WILDCARD; // BRCM fix unexpected template issue
 import static android.net.NetworkTemplate.buildTemplateMobileAll;
 import static android.net.TrafficStats.MB_IN_BYTES;
 import static android.net.wifi.WifiManager.CHANGE_REASON_ADDED;
@@ -158,6 +159,8 @@ import java.util.Objects;
 
 import libcore.io.IoUtils;
 
+import com.android.internal.telephony.RILConstants.SimCardID;
+
 /**
  * Service that maintains low-level network policy rules, using
  * {@link NetworkStatsService} statistics to drive those rules.
@@ -168,7 +171,7 @@ import libcore.io.IoUtils;
  */
 public class NetworkPolicyManagerService extends INetworkPolicyManager.Stub {
     private static final String TAG = "NetworkPolicy";
-    private static final boolean LOGD = false;
+    private static final boolean LOGD = true; // BRCM fix unexpected template issue
     private static final boolean LOGV = false;
 
     private static final int VERSION_INIT = 1;
@@ -679,7 +682,8 @@ public class NetworkPolicyManagerService extends INetworkPolicyManager.Stub {
      * data connection status.
      */
     private boolean isTemplateRelevant(NetworkTemplate template) {
-        final TelephonyManager tele = TelephonyManager.from(mContext);
+        final TelephonyManager tele = TelephonyManager.from(mContext, SimCardID.ID_ZERO);
+        final TelephonyManager tele2 = TelephonyManager.from(mContext, SimCardID.ID_ONE);
 
         switch (template.getMatchRule()) {
             case MATCH_MOBILE_3G_LOWER:
@@ -688,7 +692,9 @@ public class NetworkPolicyManagerService extends INetworkPolicyManager.Stub {
                 // mobile templates are relevant when SIM is ready and
                 // subscriberId matches.
                 if (tele.getSimState() == SIM_STATE_READY) {
-                    return Objects.equals(tele.getSubscriberId(), template.getSubscriberId());
+                    return Objects.equal(tele.getSubscriberId(), template.getSubscriberId());
+                } else if (tele2.getSimState() == SIM_STATE_READY) {
+                    return Objects.equal(tele2.getSubscriberId(), template.getSubscriberId());
                 } else {
                     return false;
                 }
@@ -937,7 +943,9 @@ public class NetworkPolicyManagerService extends INetworkPolicyManager.Stub {
      * for the given {@link NetworkTemplate}.
      */
     private void setNetworkTemplateEnabled(NetworkTemplate template, boolean enabled) {
-        final TelephonyManager tele = TelephonyManager.from(mContext);
+        final TelephonyManager tele = TelephonyManager.from(mContext, SimCardID.ID_ZERO);
+        final TelephonyManager tele2 = TelephonyManager.from(mContext, SimCardID.ID_ONE);
+        if (LOGD) Slog.d(TAG, "setNetworkTemplateEnabled(): match rule = " + template.getMatchRule()); // BRCM fix unexpected template issue
 
         switch (template.getMatchRule()) {
             case MATCH_MOBILE_3G_LOWER:
@@ -949,9 +957,14 @@ public class NetworkPolicyManagerService extends INetworkPolicyManager.Stub {
                         && Objects.equals(tele.getSubscriberId(), template.getSubscriberId())) {
                     setPolicyDataEnable(TYPE_MOBILE, enabled);
                     setPolicyDataEnable(TYPE_WIMAX, enabled);
+                } else if (tele2.getSimState() == SIM_STATE_READY
+                        && Objects.equal(tele2.getSubscriberId(), template.getSubscriberId())) {
+                    setPolicyDataEnable(TYPE_MOBILE, enabled);
+                    setPolicyDataEnable(TYPE_WIMAX, enabled);
                 }
                 break;
             case MATCH_WIFI:
+            case MATCH_WIFI_WILDCARD: // BRCM fix unexpected template issue
                 setPolicyDataEnable(TYPE_WIFI, enabled);
                 break;
             case MATCH_ETHERNET:
@@ -1097,12 +1110,16 @@ public class NetworkPolicyManagerService extends INetworkPolicyManager.Stub {
         if (LOGV) Slog.v(TAG, "ensureActiveMobilePolicyLocked()");
         if (mSuppressDefaultPolicy) return;
 
-        final TelephonyManager tele = TelephonyManager.from(mContext);
+        final TelephonyManager tele = TelephonyManager.from(mContext, SimCardID.ID_ZERO);
+        final TelephonyManager tele2 = TelephonyManager.from(mContext, SimCardID.ID_ONE);
 
         // avoid creating policy when SIM isn't ready
-        if (tele.getSimState() != SIM_STATE_READY) return;
+        if ((tele.getSimState() != SIM_STATE_READY) && (tele2.getSimState() != SIM_STATE_READY)) return;
 
-        final String subscriberId = tele.getSubscriberId();
+        String subscriberId = tele.getSubscriberId();
+        if (null == subscriberId) {
+            subscriberId = tele2.getSubscriberId();
+        }
         final NetworkIdentity probeIdent = new NetworkIdentity(
                 TYPE_MOBILE, TelephonyManager.NETWORK_TYPE_UNKNOWN, subscriberId, null, false);
 

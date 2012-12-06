@@ -57,6 +57,11 @@ public class CommandQueue extends IStatusBar.Stub {
     private static final int MSG_CANCEL_PRELOAD_RECENT_APPS = 15 << MSG_SHIFT;
     private static final int MSG_SET_WINDOW_STATE           = 16 << MSG_SHIFT;
 
+    // BRCM start - add Dual SIM support
+    private static final int MSG_SHOW_SIM_SWITCH = 18 << MSG_SHIFT;
+    private static final int MSG_HIDE_SIM_SWITCH = 19 << MSG_SHIFT;
+    // BRCM end - add Dual SIM support
+
     public static final int FLAG_EXCLUDE_NONE = 0;
     public static final int FLAG_EXCLUDE_SEARCH_PANEL = 1 << 0;
     public static final int FLAG_EXCLUDE_RECENTS_PANEL = 1 << 1;
@@ -98,6 +103,11 @@ public class CommandQueue extends IStatusBar.Stub {
         public void hideSearchPanel();
         public void cancelPreloadRecentApps();
         public void setWindowState(int window, int state);
+
+        // BRCM start - add Dual SIM support
+        public void showSimSwitchUi(int type);
+        public void hideSimSwitchUi();
+        // BRCM end - add Dual SIM support
     }
 
     public CommandQueue(Callbacks callbacks, StatusBarIconList list) {
@@ -232,6 +242,22 @@ public class CommandQueue extends IStatusBar.Stub {
         }
     }
 
+    // BRCM start - add Dual SIM support
+    public void showSimSwitchUi(int type) {
+        synchronized (mList) {
+            mHandler.removeMessages(MSG_SHOW_SIM_SWITCH);
+            mHandler.obtainMessage(MSG_SHOW_SIM_SWITCH, type, 0, null).sendToTarget();
+        }
+    }
+
+    public void hideSimSwitchUi() {
+        synchronized (mList) {
+            mHandler.removeMessages(MSG_HIDE_SIM_SWITCH);
+            mHandler.obtainMessage(MSG_HIDE_SIM_SWITCH, 0, 0, null).sendToTarget();
+        }
+    }
+    // BRCM end - add Dual SIM support
+
     private final class H extends Handler {
         public void handleMessage(Message msg) {
             final int what = msg.what & MSG_MASK;
@@ -312,6 +338,14 @@ public class CommandQueue extends IStatusBar.Stub {
                 case MSG_SET_WINDOW_STATE:
                     mCallbacks.setWindowState(msg.arg1, msg.arg2);
                     break;
+                // BRCM start - add Dual SIM support
+                case MSG_SHOW_SIM_SWITCH:
+                    mCallbacks.showSimSwitchUi(msg.arg1);
+                    break;
+                case MSG_HIDE_SIM_SWITCH:
+                    mCallbacks.hideSimSwitchUi();
+                    break;
+                // BRCM end - add Dual SIM support
             }
         }
     }

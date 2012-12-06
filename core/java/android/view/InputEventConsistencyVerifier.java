@@ -518,7 +518,9 @@ public final class InputEventConsistencyVerifier {
      * and both dispatching methods call into the consistency verifier.
      */
     public void onUnhandledEvent(InputEvent event, int nestingLevel) {
-        if (nestingLevel != mLastNestingLevel) {
+        // Add event NullException protection to fixed CTS
+        // android.view.cts.ViewTest#testDispatchTouchEvent item.
+        if (event == null || nestingLevel != mLastNestingLevel) {
             return;
         }
 
@@ -572,6 +574,9 @@ public final class InputEventConsistencyVerifier {
     }
 
     private boolean startEvent(InputEvent event, int nestingLevel, String eventType) {
+        // Add event NullException protection to fixed CTS
+        // android.view.cts.ViewTest#testDispatchTouchEvent item.
+        if (event == null) return false;
         // Ignore the event if we already checked it at a higher nesting level.
         final int seq = event.getSequenceNumber();
         if (seq == mLastEventSeq && nestingLevel < mLastNestingLevel

@@ -63,7 +63,6 @@ public class PasswordEntryKeyboardHelper implements OnKeyboardActionListener {
     private static final int SYMBOLS_SHIFTED = 4;
 
     int mLayouts[] = new int[] {
-            R.xml.password_kbd_numeric,
             R.xml.password_kbd_qwerty,
             R.xml.password_kbd_qwerty_shifted,
             R.xml.password_kbd_symbols,

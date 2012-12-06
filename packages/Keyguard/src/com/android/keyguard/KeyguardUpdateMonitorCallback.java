@@ -24,6 +24,8 @@ import android.view.WindowManagerPolicy;
 
 import com.android.internal.telephony.IccCardConstants;
 
+import com.android.internal.telephony.RILConstants.SimCardID;
+
 /**
  * Callback for general information relevant to lock screen.
  */
@@ -54,6 +56,7 @@ class KeyguardUpdateMonitorCallback {
      * @param spn The service provider name.  May be null if it shouldn't be displayed.
      */
     void onRefreshCarrierInfo(CharSequence plmn, CharSequence spn) { }
+    void onRefreshCarrierInfo(CharSequence plmn, CharSequence spn, SimCardID simCardId) { }
 
     /**
      * Called when the ringer mode changes.
@@ -117,6 +120,7 @@ class KeyguardUpdateMonitorCallback {
      * @param simState
      */
     void onSimStateChanged(IccCardConstants.State simState) { }
+    void onSimStateChanged(IccCardConstants.State simState, SimCardID simCardId) { }
 
     /**
      * Called when a user is removed.

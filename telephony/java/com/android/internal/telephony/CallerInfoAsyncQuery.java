@@ -32,6 +32,8 @@ import android.telephony.PhoneNumberUtils;
 import android.text.TextUtils;
 import android.telephony.Rlog;
 
+import com.android.internal.telephony.RILConstants.SimCardID;
+
 /**
  * Helper class to make it easier to run asynchronous caller-id lookup queries.
  * @see CallerInfo
@@ -340,6 +342,19 @@ public class CallerInfoAsyncQuery {
             Rlog.d(LOG_TAG, "- number: " + /*number*/ "xxxxxxx");
             Rlog.d(LOG_TAG, "- cookie: " + cookie);
         }
+        return startQuery(token, context, number, listener, cookie, SimCardID.ID_ZERO);
+    }
+    /**
+    * Query for dual sim
+    * @hide
+    */
+    public static CallerInfoAsyncQuery startQuery(int token, Context context, String number,
+            OnQueryCompleteListener listener, Object cookie, SimCardID simCardId) {
+        if (DBG) {
+            Rlog.d(LOG_TAG, "##### CallerInfoAsyncQuery startQuery()... #####");
+            Rlog.d(LOG_TAG, "- number: " + /*number*/ "xxxxxxx");
+            Rlog.d(LOG_TAG, "- cookie: " + cookie);
+        }
 
         // Construct the URI object and query params, and start the query.
 
@@ -400,7 +415,7 @@ public class CallerInfoAsyncQuery {
         cw.number = number;
 
         // check to see if these are recognized numbers, and use shortcuts if we can.
-        if (PhoneNumberUtils.isLocalEmergencyNumber(number, context)) {
+        if (PhoneNumberUtils.isLocalEmergencyNumber(number, context, simCardId)) {
             cw.event = EVENT_EMERGENCY_NUMBER;
         } else if (PhoneNumberUtils.isVoiceMailNumber(number)) {
             cw.event = EVENT_VOICEMAIL_NUMBER;

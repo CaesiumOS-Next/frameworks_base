@@ -54,6 +54,11 @@ import com.android.internal.telephony.ServiceStateTracker;
 import com.android.internal.telephony.TelephonyIntents;
 import com.android.server.am.BatteryStatsService;
 
+import android.os.SystemProperties;
+import com.android.internal.telephony.TelephonyProperties;
+import com.android.internal.telephony.RILConstants.SimCardID;
+import java.util.HashMap;
+
 /**
  * Since phone process can be restarted, this class provides a centralized place
  * that applications can register and be called back from.
@@ -81,11 +86,64 @@ class TelephonyRegistry extends ITelephonyRegistry.Stub {
         }
     }
 
+    private static class DataStateNotification {
+        private int state;
+        private boolean isDataConnectivityPossible;
+        private String reason;
+        private String apn;
+        private LinkProperties linkProperties;
+        private LinkCapabilities linkCapabilities;
+        private int networkType;
+        private boolean roaming;
+
+        public DataStateNotification(int state, boolean isDataConnectivityPossible,
+                String reason, String apn, LinkProperties linkProperties,
+                LinkCapabilities linkCapabilities, int networkType, boolean roaming) {
+            if (DBG) Slog.i(TAG, "new DataStateNotification");
+            setValues(state, isDataConnectivityPossible, reason, apn, linkProperties,
+                    linkCapabilities, networkType, roaming);
+        }
+
+        // return true if notification needs be broadcasted
+        public boolean isNotificationNeeded(int state, boolean isDataConnectivityPossible,
+                String reason, String apn, LinkProperties linkProperties,
+                LinkCapabilities linkCapabilities, int networkType, boolean roaming) {
+            if ( state == TelephonyManager.DATA_DISCONNECTED && isDataConnectivityPossible ==
+                    this.isDataConnectivityPossible && state == this.state ) {
+                if (DBG) Slog.i(TAG, "toBeNotified = false");
+                return false;
+            } else {
+                if (DBG) Slog.i(TAG, "update dataStateNotification");
+                setValues(state, isDataConnectivityPossible, reason, apn, linkProperties,
+                        linkCapabilities, networkType, roaming);
+                return true;
+            }
+        }
+
+        private void setValues(int state, boolean isDataConnectivityPossible,
+                String reason, String apn, LinkProperties linkProperties,
+                LinkCapabilities linkCapabilities, int networkType, boolean roaming) {
+            this.state = state;
+            this.isDataConnectivityPossible = isDataConnectivityPossible;
+            this.reason = reason;
+            this.apn = apn;
+            this.linkProperties = linkProperties;
+            this.linkCapabilities = linkCapabilities;
+            this.networkType = networkType;
+            this.roaming = roaming;
+        }
+    }
+
+    private HashMap<String, DataStateNotification> mPreviousDataNotifications;
+
     private final Context mContext;
 
     // access should be inside synchronized (mRecords) for these two fields
     private final ArrayList<IBinder> mRemoveList = new ArrayList<IBinder>();
     private final ArrayList<Record> mRecords = new ArrayList<Record>();
+
+    static private final ArrayList<IBinder> mRemoveCallStateListenerList = new ArrayList<IBinder>();
+    static private final ArrayList<Record> mCallStateListeners = new ArrayList();
 
     private final IBatteryStats mBatteryStats;
 
@@ -132,6 +190,8 @@ class TelephonyRegistry extends ITelephonyRegistry.Stub {
                 PhoneStateListener.LISTEN_DATA_CONNECTION_STATE |
                 PhoneStateListener.LISTEN_MESSAGE_WAITING_INDICATOR;
 
+    private SimCardID mSimCardId;
+
     private static final int MSG_USER_SWITCHED = 1;
 
     private final Handler mHandler = new Handler() {
@@ -166,6 +226,11 @@ class TelephonyRegistry extends ITelephonyRegistry.Stub {
     // handler before they get to app code.
 
     TelephonyRegistry(Context context) {
+        if (SimCardID.ID_ONE.toInt() == SystemProperties.getInt(TelephonyProperties.PROPERTY_API_SIM, SimCardID.ID_ZERO.toInt())) {
+            mSimCardId = SimCardID.ID_ONE;
+        } else {
+            mSimCardId = SimCardID.ID_ZERO;
+        }
         CellLocation  location = CellLocation.getEmpty();
 
         // Note that location can be null for non-phone builds like
@@ -176,6 +241,22 @@ class TelephonyRegistry extends ITelephonyRegistry.Stub {
         mContext = context;
         mBatteryStats = BatteryStatsService.getService();
         mConnectedApns = new ArrayList<String>();
+    }
+
+    TelephonyRegistry(Context context, SimCardID simCardId) {
+
+        mSimCardId = simCardId;
+        CellLocation  location = CellLocation.getEmpty();
+
+        // Note that location can be null for non-phone builds like
+        // like the generic one.
+        if (location != null) {
+            location.fillInNotifierBundle(mCellLocation);
+        }
+        mContext = context;
+        mBatteryStats = BatteryStatsService.getService();
+        mConnectedApns = new ArrayList<String>();
+        mPreviousDataNotifications = new HashMap<String, DataStateNotification>();
     }
 
     public void systemRunning() {
@@ -203,6 +284,7 @@ class TelephonyRegistry extends ITelephonyRegistry.Stub {
             synchronized (mRecords) {
                 // register
                 Record r = null;
+                int oldEvents;
                 find_and_add: {
                     IBinder b = callback.asBinder();
                     final int N = mRecords.size();
@@ -213,6 +295,7 @@ class TelephonyRegistry extends ITelephonyRegistry.Stub {
                         }
                     }
                     r = new Record();
+                    r.events = 0;
                     r.binder = b;
                     r.callback = callback;
                     r.pkgForDebug = pkgForDebug;
@@ -221,7 +304,36 @@ class TelephonyRegistry extends ITelephonyRegistry.Stub {
                     if (DBG) Slog.i(TAG, "listen: add new record=" + r);
                 }
                 int send = events & (events ^ r.events);
+                oldEvents = r.events;
                 r.events = events;
+                if ((events & PhoneStateListener.LISTEN_CALL_STATE) != 0) {
+                    Record listener = null;
+                    boolean found = false;
+                    IBinder b = callback.asBinder();
+                    synchronized (mCallStateListeners) {
+                        final int listenerCount = mCallStateListeners.size();
+                        for (int i = 0; i < listenerCount; i++) {
+                            listener = mCallStateListeners.get(i);
+                            if (b == listener.binder) {
+                                found = true;
+                                break;
+                            }
+                        }
+                        if (!found) {
+                            listener = new Record();
+                            listener.binder = b;
+                            listener.callback = callback;
+                            listener.pkgForDebug = pkgForDebug;
+                            listener.events = PhoneStateListener.LISTEN_CALL_STATE;
+                            mCallStateListeners.add(listener);
+                        }
+                    }
+                } else {
+                    if ((oldEvents & PhoneStateListener.LISTEN_CALL_STATE) != 0) {
+                        removeCallStateListener(r.binder);
+                    }
+                }
+
                 if (notifyNow) {
                     if ((events & PhoneStateListener.LISTEN_SERVICE_STATE) != 0) {
                         try {
@@ -263,9 +375,10 @@ class TelephonyRegistry extends ITelephonyRegistry.Stub {
                     }
                     if ((events & PhoneStateListener.LISTEN_CALL_STATE) != 0) {
                         try {
-                            r.callback.onCallStateChanged(mCallState, mCallIncomingNumber);
+                            r.callback.onCallStateChanged(getCallStateForAllSims(), mCallIncomingNumber);
                         } catch (RemoteException ex) {
                             remove(r.binder);
+                            removeCallStateListener(r.binder);
                         }
                     }
                     if ((events & PhoneStateListener.LISTEN_DATA_CONNECTION_STATE) != 0) {
@@ -308,6 +421,21 @@ class TelephonyRegistry extends ITelephonyRegistry.Stub {
                 }
             }
         } else {
+            synchronized (mRecords) {
+                Record r = null;
+                IBinder b = callback.asBinder();
+                final int recordSize = mRecords.size();
+                for (int i = 0; i < recordSize; i++) {
+                    r = mRecords.get(i);
+                    if (b == r.binder) {
+                        if ((r.events & PhoneStateListener.LISTEN_CALL_STATE) != 0) {
+                            mRemoveCallStateListenerList.add(r.binder);
+                        }
+                    }
+                }
+                handleRemoveCallStateListenerListLocked();
+            }
+
             remove(callback.asBinder());
         }
     }
@@ -324,23 +452,55 @@ class TelephonyRegistry extends ITelephonyRegistry.Stub {
         }
     }
 
+    private void removeCallStateListener(IBinder binder) {
+        synchronized (mCallStateListeners) {
+            final int listenerCount = mCallStateListeners.size();
+            for (int i = 0; i < listenerCount; i++) {
+                if (mCallStateListeners.get(i).binder == binder) {
+                    mCallStateListeners.remove(i);
+                    return;
+                }
+            }
+        }
+    }
+    private int getCallStateForAllSims() {
+        int state;
+        TelephonyManager tm1 = TelephonyManager.getDefault(SimCardID.ID_ZERO);
+        TelephonyManager tm2 = TelephonyManager.getDefault(SimCardID.ID_ONE);
+        int state1 = tm1.getCallState();
+        int state2 = tm2.getCallState();
+        if ((TelephonyManager.CALL_STATE_RINGING == state1) || (TelephonyManager.CALL_STATE_RINGING == state2)) {
+            state = TelephonyManager.CALL_STATE_RINGING;
+        } else if ((TelephonyManager.CALL_STATE_OFFHOOK == state1) || (TelephonyManager.CALL_STATE_OFFHOOK == state2)) {
+            state = TelephonyManager.CALL_STATE_OFFHOOK;
+        } else {
+            state = TelephonyManager.CALL_STATE_IDLE;
+        }
+
+        return state;
+    }
+
     public void notifyCallState(int state, String incomingNumber) {
         if (!checkNotifyPermission("notifyCallState()")) {
             return;
         }
         synchronized (mRecords) {
-            mCallState = state;
-            mCallIncomingNumber = incomingNumber;
-            for (Record r : mRecords) {
-                if ((r.events & PhoneStateListener.LISTEN_CALL_STATE) != 0) {
-                    try {
-                        r.callback.onCallStateChanged(state, incomingNumber);
-                    } catch (RemoteException ex) {
-                        mRemoveList.add(r.binder);
+            synchronized (mCallStateListeners) {
+                mCallState = state;
+                mCallIncomingNumber = incomingNumber;
+                for (Record r : mCallStateListeners) {
+                    if ((r.events & PhoneStateListener.LISTEN_CALL_STATE) != 0) {
+                        try {
+                            r.callback.onCallStateChanged(state, incomingNumber);
+                        } catch (RemoteException ex) {
+                            mRemoveList.add(r.binder);
+                            mRemoveCallStateListenerList.add(r.binder);
+                        }
                     }
                 }
+                handleRemoveListLocked();
+                handleRemoveCallStateListenerListLocked();
             }
-            handleRemoveListLocked();
         }
         broadcastCallStateChanged(state, incomingNumber);
     }
@@ -486,7 +646,24 @@ class TelephonyRegistry extends ITelephonyRegistry.Stub {
                 + "' apn='" + apn + "' apnType=" + apnType + " networkType=" + networkType
                 + " mRecords.size()=" + mRecords.size() + " mRecords=" + mRecords);
         }
+
+        boolean toBeNotified = true;
         synchronized (mRecords) {
+            DataStateNotification dataStateNotification = mPreviousDataNotifications.get(apnType);
+            if (dataStateNotification == null) {
+                if (DBG) Slog.i(TAG, "dataStateNotification is null");
+                dataStateNotification = new DataStateNotification(state, isDataConnectivityPossible,
+                        reason, apn, linkProperties, linkCapabilities, networkType, roaming);
+                mPreviousDataNotifications.put(apnType, dataStateNotification);
+                if (DBG) Slog.i(TAG, "new DataStateNotification for type:" + apnType);
+            } else {
+                if (DBG) Slog.i(TAG, "dataStateNotification not null");
+                toBeNotified = dataStateNotification.isNotificationNeeded(state,
+                        isDataConnectivityPossible, reason, apn, linkProperties,
+                        linkCapabilities, networkType, roaming);
+            }
+            if (DBG) Slog.i(TAG, "toBeNotified=" + toBeNotified);
+
             boolean modified = false;
             if (state == TelephonyManager.DATA_CONNECTED) {
                 if (!mConnectedApns.contains(apnType)) {
@@ -534,8 +711,10 @@ class TelephonyRegistry extends ITelephonyRegistry.Stub {
                 handleRemoveListLocked();
             }
         }
-        broadcastDataConnectionStateChanged(state, isDataConnectivityPossible, reason, apn,
-                apnType, linkProperties, linkCapabilities, roaming);
+        if (toBeNotified) {
+            broadcastDataConnectionStateChanged(state, isDataConnectivityPossible, reason,
+                    apn, apnType, linkProperties, linkCapabilities, roaming);
+        }
     }
 
     public void notifyDataConnectionFailed(String reason, String apnType) {
@@ -632,6 +811,15 @@ class TelephonyRegistry extends ITelephonyRegistry.Stub {
             for (Record r : mRecords) {
                 pw.println("  " + r.pkgForDebug + " 0x" + Integer.toHexString(r.events));
             }
+            synchronized (mCallStateListeners) {
+                final int listenerCount = mCallStateListeners.size();
+                pw.println("call state listeners: count=" + listenerCount);
+                for (int i = 0; i < listenerCount; i++) {
+                    Record r = mCallStateListeners.get(i);
+                    pw.println("  " + r.pkgForDebug + " 0x" + Integer.toHexString(r.events));
+                }
+            }
+
         }
     }
 
@@ -653,6 +841,7 @@ class TelephonyRegistry extends ITelephonyRegistry.Stub {
         Bundle data = new Bundle();
         state.fillInNotifierBundle(data);
         intent.putExtras(data);
+        intent.putExtra("simId", mSimCardId);
         mContext.sendStickyBroadcastAsUser(intent, UserHandle.ALL);
     }
 
@@ -671,6 +860,7 @@ class TelephonyRegistry extends ITelephonyRegistry.Stub {
         Bundle data = new Bundle();
         signalStrength.fillInNotifierBundle(data);
         intent.putExtras(data);
+        intent.putExtra("simId", mSimCardId);
         mContext.sendStickyBroadcastAsUser(intent, UserHandle.ALL);
     }
 
@@ -694,6 +884,7 @@ class TelephonyRegistry extends ITelephonyRegistry.Stub {
         if (!TextUtils.isEmpty(incomingNumber)) {
             intent.putExtra(TelephonyManager.EXTRA_INCOMING_NUMBER, incomingNumber);
         }
+        intent.putExtra("simId", mSimCardId);
         mContext.sendBroadcastAsUser(intent, UserHandle.ALL,
                 android.Manifest.permission.READ_PHONE_STATE);
     }
@@ -728,6 +919,7 @@ class TelephonyRegistry extends ITelephonyRegistry.Stub {
 
         intent.putExtra(PhoneConstants.DATA_APN_KEY, apn);
         intent.putExtra(PhoneConstants.DATA_APN_TYPE_KEY, apnType);
+        intent.putExtra("simId", mSimCardId);
         mContext.sendStickyBroadcastAsUser(intent, UserHandle.ALL);
     }
 
@@ -735,6 +927,7 @@ class TelephonyRegistry extends ITelephonyRegistry.Stub {
         Intent intent = new Intent(TelephonyIntents.ACTION_DATA_CONNECTION_FAILED);
         intent.putExtra(PhoneConstants.FAILURE_REASON_KEY, reason);
         intent.putExtra(PhoneConstants.DATA_APN_TYPE_KEY, apnType);
+        intent.putExtra("simId", mSimCardId);
         mContext.sendStickyBroadcastAsUser(intent, UserHandle.ALL);
     }
 
@@ -774,6 +967,14 @@ class TelephonyRegistry extends ITelephonyRegistry.Stub {
                 remove(b);
             }
             mRemoveList.clear();
+        }
+    }
+    private void handleRemoveCallStateListenerListLocked() {
+        if (mRemoveCallStateListenerList.size() > 0) {
+            for (IBinder b: mRemoveCallStateListenerList) {
+                removeCallStateListener(b);
+            }
+            mRemoveCallStateListenerList.clear();
         }
     }
 

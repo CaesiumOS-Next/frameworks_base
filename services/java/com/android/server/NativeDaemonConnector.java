@@ -395,6 +395,51 @@ final class NativeDaemonConnector implements Runnable, Handler.Callback, Watchdo
     }
 
     /**
+     * Issue a command to the native daemon and return the raw responses.
+     *
+     * @deprecated callers should move to {@link #execute(String, Object...)}
+     *             which returns parsed {@link NativeDaemonEvent}.
+     */
+    @Deprecated
+    public ArrayList<String> doCommand(String cmd) throws NativeDaemonConnectorException {
+        final ArrayList<String> rawEvents = Lists.newArrayList();
+        final NativeDaemonEvent[] events = executeForList(cmd);
+        for (NativeDaemonEvent event : events) {
+            rawEvents.add(event.getRawEvent());
+        }
+        return rawEvents;
+    }
+
+    /**
+     * Issues a list command and returns the cooked list of all
+     * {@link NativeDaemonEvent#getMessage()} which match requested code.
+     */
+    @Deprecated
+    public String[] doListCommand(String cmd, int expectedCode)
+            throws NativeDaemonConnectorException {
+        final ArrayList<String> list = Lists.newArrayList();
+
+        final NativeDaemonEvent[] events = executeForList(cmd);
+        for (int i = 0; i < events.length - 1; i++) {
+            final NativeDaemonEvent event = events[i];
+            final int code = event.getCode();
+            if (code == expectedCode) {
+                list.add(event.getMessage());
+            } else {
+                throw new NativeDaemonConnectorException(
+                        "unexpected list response " + code + " instead of " + expectedCode);
+            }
+        }
+
+        final NativeDaemonEvent finalEvent = events[events.length - 1];
+        if (!finalEvent.isClassOk()) {
+            throw new NativeDaemonConnectorException("unexpected final event: " + finalEvent);
+        }
+
+        return list.toArray(new String[list.size()]);
+    }
+
+    /**
      * Append the given argument to {@link StringBuilder}, escaping as needed,
      * and surrounding with quotes when it contains spaces.
      */

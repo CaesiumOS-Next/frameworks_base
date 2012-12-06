@@ -111,6 +111,12 @@ import static android.view.WindowManagerPolicy.WindowManagerFuncs.LID_ABSENT;
 import static android.view.WindowManagerPolicy.WindowManagerFuncs.LID_OPEN;
 import static android.view.WindowManagerPolicy.WindowManagerFuncs.LID_CLOSED;
 
+import com.android.internal.telephony.RILConstants.SimCardID;
+import static com.android.internal.telephony.TelephonyProperties.*;
+import com.android.internal.telephony.TelephonyProperties;
+import com.android.internal.telephony.TelephonyIntents;
+
+
 /**
  * WindowManagerPolicy implementation for the Android phone UI.  This
  * introduces a new method suffix, Lp, for an internal lock of the
@@ -1351,11 +1357,11 @@ public class PhoneWindowManager implements WindowManagerPolicy {
                 break;
         }
     }
-    
+
     void readLidState() {
         mLidState = mWindowManagerFuncs.getLidState();
     }
-    
+
     private boolean isHidden(int accessibilityMode) {
         switch (accessibilityMode) {
             case 1:
@@ -1706,16 +1712,16 @@ public class PhoneWindowManager implements WindowManagerPolicy {
 
     /**
      * Preflight adding a window to the system.
-     * 
+     *
      * Currently enforces that three window types are singletons:
      * <ul>
      * <li>STATUS_BAR_TYPE</li>
      * <li>KEYGUARD_TYPE</li>
      * </ul>
-     * 
+     *
      * @param win The window to be added
      * @param attrs Information about the window to be added
-     * 
+     *
      * @return If ok, WindowManagerImpl.ADD_OKAY.  If too many singletons,
      * WindowManagerImpl.ADD_MULTIPLE_SINGLETON
      */
@@ -1797,7 +1803,7 @@ public class PhoneWindowManager implements WindowManagerPolicy {
     }
 
     static final boolean PRINT_ANIM = false;
-    
+
     /** {@inheritDoc} */
     @Override
     public int selectAnimationLw(WindowState win, int transit) {
@@ -1921,6 +1927,16 @@ public class PhoneWindowManager implements WindowManagerPolicy {
                 ServiceManager.checkService(Context.TELEPHONY_SERVICE));
     }
 
+    static ITelephony getTelephonyService(SimCardID simCardId) {
+        if(SimCardID.ID_ONE == simCardId) {
+            return ITelephony.Stub.asInterface(
+                    ServiceManager.checkService(Context.TELEPHONY_SERVICE2));
+        } else {
+            return ITelephony.Stub.asInterface(
+                    ServiceManager.checkService(Context.TELEPHONY_SERVICE1));
+        }
+    }
+
     static IAudioService getAudioService() {
         IAudioService audioService = IAudioService.Stub.asInterface(
                 ServiceManager.checkService(Context.AUDIO_SERVICE));
@@ -1954,6 +1970,20 @@ public class PhoneWindowManager implements WindowManagerPolicy {
             Log.d(TAG, "interceptKeyTi keyCode=" + keyCode + " down=" + down + " repeatCount="
                     + repeatCount + " keyguardOn=" + keyguardOn + " mHomePressed=" + mHomePressed
                     + " canceled=" + canceled);
+        }
+
+        int STK_UserActivity = SystemProperties.getInt(TelephonyProperties.PROPERTY_STK_USERACTIVITY, 0);
+        int STK_IdleScreen= SystemProperties.getInt(TelephonyProperties.PROPERTY_STK_IDLESCREEN, 0);
+        if(STK_UserActivity != 0 || STK_IdleScreen != 0) {
+            Intent intent = new Intent(TelephonyIntents.ACTION_STK_KEYEVENT, null);
+            intent.putExtra(TelephonyIntents.EXTRA_STK_KEYEVENT, keyCode);
+            mContext.sendOrderedBroadcast(intent, null);
+            Log.d(TAG, "Broadcast KeyEvent to STK");
+
+            if (STK_UserActivity != 0 && keyCode == KeyEvent.KEYCODE_HOME && down) {
+                Log.d(TAG, "Skip Home Key Event for STK User Activity");
+                return -1;
+            }
         }
 
         // If we think we might have a volume down & power key chord on the way
@@ -2001,14 +2031,31 @@ public class PhoneWindowManager implements WindowManagerPolicy {
                 // If an incoming call is ringing, HOME is totally disabled.
                 // (The user is already on the InCallScreen at this point,
                 // and his ONLY options are to answer or reject the call.)
+                boolean incomingRinging = false;
                 try {
-                    ITelephony telephonyService = getTelephonyService();
-                    if (telephonyService != null && telephonyService.isRinging()) {
-                        Log.i(TAG, "Ignoring HOME; there's a ringing incoming call.");
-                        return -1;
+                    ITelephony telephonyService = getTelephonyService(SimCardID.ID_ZERO);
+                    if (telephonyService != null) {
+                        incomingRinging = telephonyService.isRinging();
+                    } else {
+                        Log.w(TAG, "Unable to find ITelephony interface for SIM 1");
                     }
                 } catch (RemoteException ex) {
                     Log.w(TAG, "RemoteException from getPhoneInterface()", ex);
+                }
+                try {
+                     ITelephony telephonyService2 = getTelephonyService(SimCardID.ID_ONE);
+                     if (telephonyService2 != null) {
+                           incomingRinging |= telephonyService2.isRinging();
+                     } else {
+                           Log.w(TAG, "Unable to find ITelephony interface for SIM 2");
+                     }
+                } catch (RemoteException ex) {
+                            Log.w(TAG, "RemoteException from getTelephonyService() for SIM 2", ex);
+                }
+
+                if (incomingRinging) {
+                    Log.i(TAG, "Ignoring HOME; there's a ringing incoming call.");
+                    return -1;
                 }
 
                 // Delay handling home if a double-tap is possible.
@@ -2376,7 +2423,7 @@ public class PhoneWindowManager implements WindowManagerPolicy {
         Intent intent = new Intent(Intent.ACTION_SEARCH_LONG_PRESS);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         try {
-            // TODO: This only stops the factory-installed search manager.  
+            // TODO: This only stops the factory-installed search manager.
             // Need to formalize an API to handle others
             SearchManager searchManager = getSearchManager();
             if (searchManager != null) {
@@ -3036,7 +3083,7 @@ public class PhoneWindowManager implements WindowManagerPolicy {
 
             if ((fl & (FLAG_LAYOUT_IN_SCREEN | FLAG_LAYOUT_INSET_DECOR))
                     == (FLAG_LAYOUT_IN_SCREEN | FLAG_LAYOUT_INSET_DECOR)) {
-                if (DEBUG_LAYOUT) Slog.v(TAG, "layoutWindowLw(" + attrs.getTitle() 
+                if (DEBUG_LAYOUT) Slog.v(TAG, "layoutWindowLw(" + attrs.getTitle()
                             + "): IN_SCREEN, INSET_DECOR");
                 // This is the case for a normal activity window: we want it
                 // to cover all of the screen space, and it can take care of
@@ -3320,7 +3367,7 @@ public class PhoneWindowManager implements WindowManagerPolicy {
 
         if (DEBUG_LAYOUT) Slog.v(TAG, "Compute frame " + attrs.getTitle()
                 + ": sim=#" + Integer.toHexString(sim)
-                + " attach=" + attached + " type=" + attrs.type 
+                + " attach=" + attached + " type=" + attrs.type
                 + String.format(" flags=0x%08x", fl)
                 + " pf=" + pf.toShortString() + " df=" + df.toShortString()
                 + " of=" + of.toShortString()
@@ -3368,7 +3415,7 @@ public class PhoneWindowManager implements WindowManagerPolicy {
         mForceStatusBarFromKeyguard = false;
         mForcingShowNavBar = false;
         mForcingShowNavBarLayer = -1;
-        
+
         mHideLockScreen = false;
         mAllowLockscreenWhenOn = false;
         mDismissKeyguard = DISMISS_KEYGUARD_NONE;
@@ -3889,9 +3936,11 @@ public class PhoneWindowManager implements WindowManagerPolicy {
                 }
                 if (down) {
                     ITelephony telephonyService = getTelephonyService();
-                    if (telephonyService != null) {
+                    ITelephony phoneServ = getTelephonyService(SimCardID.ID_ZERO);
+                    ITelephony phoneServ2 = getTelephonyService(SimCardID.ID_ONE);
+                    if (phoneServ != null) {
                         try {
-                            if (telephonyService.isRinging()) {
+                            if (phoneServ.isRinging()) {
                                 // If an incoming call is ringing, either VOLUME key means
                                 // "silence ringer".  We handle these keys here, rather than
                                 // in the InCallScreen, to make sure we'll respond to them
@@ -3903,14 +3952,14 @@ public class PhoneWindowManager implements WindowManagerPolicy {
 
                                 // Silence the ringer.  (It's safe to call this
                                 // even if the ringer has already been silenced.)
-                                telephonyService.silenceRinger();
+                                phoneServ.silenceRinger();
 
                                 // And *don't* pass this key thru to the current activity
                                 // (which is probably the InCallScreen.)
                                 result &= ~ACTION_PASS_TO_USER;
                                 break;
                             }
-                            if (telephonyService.isOffhook()
+                            if (phoneServ.isOffhook()
                                     && (result & ACTION_PASS_TO_USER) == 0) {
                                 // If we are in call but we decided not to pass the key to
                                 // the application, handle the volume change here.
@@ -3918,7 +3967,40 @@ public class PhoneWindowManager implements WindowManagerPolicy {
                                 break;
                             }
                         } catch (RemoteException ex) {
-                            Log.w(TAG, "ITelephony threw RemoteException", ex);
+                            Log.w(TAG, "ITelephony phoneServ threw RemoteException", ex);
+                        }
+                }
+
+                if (phoneServ2 != null) {
+                        try {
+                            if (phoneServ2.isRinging()) {
+                                // If an incoming call is ringing, either VOLUME key means
+                                // "silence ringer".  We handle these keys here, rather than
+                                // in the InCallScreen, to make sure we'll respond to them
+                                // even if the InCallScreen hasn't come to the foreground yet.
+                                // Look for the DOWN event here, to agree with the "fallback"
+                                // behavior in the InCallScreen.
+                                Log.i(TAG, "interceptKeyBeforeQueueing:"
+                                      + " VOLUME key-down while ringing: Silence ringer!");
+
+                                // Silence the ringer.  (It's safe to call this
+                                // even if the ringer has already been silenced.)
+                                phoneServ2.silenceRinger();
+
+                                // And *don't* pass this key thru to the current activity
+                                // (which is probably the InCallScreen.)
+                                result &= ~ACTION_PASS_TO_USER;
+                                break;
+                            }
+                            if (phoneServ2.isOffhook()
+                                    && (result & ACTION_PASS_TO_USER) == 0) {
+                                // If we are in call but we decided not to pass the key to
+                                // the application, handle the volume change here.
+                                handleVolumeKey(AudioManager.STREAM_VOICE_CALL, keyCode);
+                                break;
+                            }
+                        } catch (RemoteException ex) {
+                            Log.w(TAG, "ITelephony phoneServ2 threw RemoteException", ex);
                         }
                     }
 
@@ -3937,13 +4019,35 @@ public class PhoneWindowManager implements WindowManagerPolicy {
                 if (down) {
                     ITelephony telephonyService = getTelephonyService();
                     boolean hungUp = false;
-                    if (telephonyService != null) {
-                        try {
-                            hungUp = telephonyService.endCall();
-                        } catch (RemoteException ex) {
-                            Log.w(TAG, "ITelephony threw RemoteException", ex);
+
+                    ITelephony phoneServ = getTelephonyService(SimCardID.ID_ZERO);
+                    ITelephony phoneServ2 = getTelephonyService(SimCardID.ID_ONE);
+                    try {
+                        int currentActivePhone = phoneServ.getActivePhoneId();
+
+                        if(currentActivePhone == SimCardID.ID_ZERO.toInt()){
+                            if (phoneServ != null) {
+                                //PHONE1 phone is active
+                                //special case: but also incoming call from PHONE2
+                                if(phoneServ2 != null && phoneServ2.isRinging())
+                                    hungUp = phoneServ2.endCall();
+                                else
+                                    hungUp = phoneServ.endCall();
+                            }
+                        } else if (currentActivePhone == SimCardID.ID_ONE.toInt()){
+                            if (phoneServ2 != null) {
+                                //PHONE2 phone is active
+                                //special case: but also incoming call from PHONE1
+                                if(phoneServ != null && phoneServ.isRinging())
+                                    hungUp = phoneServ.endCall();
+                                else
+                                    hungUp = phoneServ2.endCall();
+                            }
                         }
+                    } catch (RemoteException ex) {
+                        Log.w(TAG, "ITelephony phoneServ threw RemoteException", ex);
                     }
+
                     interceptPowerKeyDown(!isScreenOn || hungUp);
                 } else {
                     if (interceptPowerKeyUp(canceled)) {
@@ -3976,23 +4080,35 @@ public class PhoneWindowManager implements WindowManagerPolicy {
 
                     ITelephony telephonyService = getTelephonyService();
                     boolean hungUp = false;
-                    if (telephonyService != null) {
-                        try {
-                            if (telephonyService.isRinging()) {
+                    ITelephony phoneServ = getTelephonyService(SimCardID.ID_ZERO);
+                    ITelephony phoneServ2 = getTelephonyService(SimCardID.ID_ONE);
+                    ITelephony activePhone = null;
+
+                    try {
+                        int currentActivePhone = phoneServ.getActivePhoneId();
+                        if (phoneServ != null && SimCardID.ID_ZERO.toInt() == currentActivePhone) {
+                            activePhone = phoneServ;
+                        } else if(phoneServ2!= null && SimCardID.ID_ONE.toInt() == currentActivePhone){
+                            activePhone = phoneServ2;
+                        }
+
+                        if (activePhone != null) {
+                            if (activePhone.isRinging()) {
                                 // Pressing Power while there's a ringing incoming
                                 // call should silence the ringer.
-                                telephonyService.silenceRinger();
+                                activePhone.silenceRinger();
                             } else if ((mIncallPowerBehavior
                                     & Settings.Secure.INCALL_POWER_BUTTON_BEHAVIOR_HANGUP) != 0
-                                    && telephonyService.isOffhook()) {
+                                    && activePhone.isOffhook()) {
                                 // Otherwise, if "Power button ends call" is enabled,
                                 // the Power button will hang up any current active call.
-                                hungUp = telephonyService.endCall();
+                                hungUp = activePhone.endCall();
                             }
-                        } catch (RemoteException ex) {
-                            Log.w(TAG, "ITelephony threw RemoteException", ex);
                         }
+                    } catch (RemoteException ex) {
+                        Log.w(TAG, "ITelephony threw RemoteException", ex);
                     }
+
                     interceptPowerKeyDown(!isScreenOn || hungUp
                             || mVolumeDownKeyTriggered || mVolumeUpKeyTriggered);
                 } else {
@@ -4010,7 +4126,9 @@ public class PhoneWindowManager implements WindowManagerPolicy {
             case KeyEvent.KEYCODE_MEDIA_PAUSE:
             case KeyEvent.KEYCODE_MEDIA_PLAY_PAUSE:
                 if (down) {
-                    ITelephony telephonyService = getTelephonyService();
+                    ITelephony telephonyService = getTelephonyService(SimCardID.ID_ZERO);
+                    ITelephony telephonyService2 = getTelephonyService(SimCardID.ID_ONE);
+
                     if (telephonyService != null) {
                         try {
                             if (!telephonyService.isIdle()) {
@@ -4022,8 +4140,46 @@ public class PhoneWindowManager implements WindowManagerPolicy {
                             Log.w(TAG, "ITelephony threw RemoteException", ex);
                         }
                     }
+
+                    if (telephonyService2 != null) {
+                        try {
+                            if (!telephonyService2.isIdle()) {
+                                // Suppress PLAY/PAUSE toggle when phone is ringing or in-call
+                                // to avoid music playback.
+                                break;
+                            }
+                        } catch (RemoteException ex) {
+                            Log.w(TAG, "ITelephony threw RemoteException", ex);
+                        }
+                    }
                 }
             case KeyEvent.KEYCODE_HEADSETHOOK:
+            Log.d(TAG, "down:"+down+"result"+result);
+            if (down) {
+                ITelephony telephonyService = getTelephonyService(SimCardID.ID_ZERO);
+                ITelephony telephonyService2 = getTelephonyService(SimCardID.ID_ONE);
+                if (telephonyService != null)  {
+                    try {
+                        if (!telephonyService.isIdle() && result == 0 ) {
+                            result = ACTION_PASS_TO_USER;
+                            Log.d(TAG,"telephonyService result = ACTION_PASS_TO_USER");
+                        }
+                    } catch (RemoteException ex) {
+                        Log.w(TAG, "telephonyService threw RemoteException", ex);
+                    }
+                }
+
+                if (telephonyService2 != null) {
+                   try {
+                        if (!telephonyService2.isIdle() && result == 0 ) {
+                            result = ACTION_PASS_TO_USER;
+                            Log.d(TAG,"telephonyService2 result = ACTION_PASS_TO_USER");
+                        }
+                    } catch (RemoteException ex) {
+                        Log.w(TAG, "telephonyService2 threw RemoteException", ex);
+                    }
+                }
+            }
             case KeyEvent.KEYCODE_MUTE:
             case KeyEvent.KEYCODE_MEDIA_STOP:
             case KeyEvent.KEYCODE_MEDIA_NEXT:
@@ -4049,7 +4205,9 @@ public class PhoneWindowManager implements WindowManagerPolicy {
 
             case KeyEvent.KEYCODE_CALL: {
                 if (down) {
-                    ITelephony telephonyService = getTelephonyService();
+                    ITelephony telephonyService = getTelephonyService(SimCardID.ID_ZERO);
+                    ITelephony telephonyService2 = getTelephonyService(SimCardID.ID_ONE);
+
                     if (telephonyService != null) {
                         try {
                             if (telephonyService.isRinging()) {
@@ -4060,11 +4218,31 @@ public class PhoneWindowManager implements WindowManagerPolicy {
                                 // And *don't* pass this key thru to the current activity
                                 // (which is presumably the InCallScreen.)
                                 result &= ~ACTION_PASS_TO_USER;
+                                // We don't need to check the telephonyService2 case.
+                                // We should break out here.
+                                break;
                             }
                         } catch (RemoteException ex) {
                             Log.w(TAG, "ITelephony threw RemoteException", ex);
                         }
                     }
+                    /* dual sim */
+                    if (telephonyService2 != null) {
+                        try {
+                            if (telephonyService2.isRinging()) {
+                                Log.i(TAG, "interceptKeyBeforeQueueing:"
+                                      + " CALL key-down while ringing: Answer the SIM2 call!");
+                                telephonyService2.answerRingingCall();
+
+                                // And *don't* pass this key thru to the current activity
+                                // (which is presumably the InCallScreen.)
+                                result &= ~ACTION_PASS_TO_USER;
+                            }
+                        } catch (RemoteException ex) {
+                            Log.w(TAG, "ITelephony threw RemoteException", ex);
+                        }
+                    }
+
                 }
                 break;
             }
@@ -4392,7 +4570,7 @@ public class PhoneWindowManager implements WindowManagerPolicy {
     }
 
     public void dismissKeyguardLw() {
-        if (mKeyguardDelegate != null && mKeyguardDelegate.isShowing()) { 
+        if (mKeyguardDelegate != null && mKeyguardDelegate.isShowing()) {
             mHandler.post(new Runnable() {
                 public void run() {
                     if (mKeyguardDelegate.isDismissable()) {

@@ -47,6 +47,13 @@ public class StatusBarManager {
     public static final int DISABLE_CLOCK = View.STATUS_BAR_DISABLE_CLOCK;
     public static final int DISABLE_SEARCH = View.STATUS_BAR_DISABLE_SEARCH;
 
+    // BRCM start - add Dual SIM support
+    // SIM card switch type in dual sim
+    public static final int SWITCH_VOICE_CALL = 2003;
+    public static final int SWITCH_VIDEO_CALL = 2004;
+    public static final int SWITCH_MESSAGE = 2005;
+    // BRCM end - add Dual SIM support
+
     @Deprecated
     public static final int DISABLE_NAVIGATION = 
             View.STATUS_BAR_DISABLE_HOME | View.STATUS_BAR_DISABLE_RECENT;

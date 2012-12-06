@@ -38,6 +38,8 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import com.android.internal.telephony.RILConstants.SimCardID;
+
 /**
  * Provides access to information about the telephony services on
  * the device. Applications can use the methods in this class to
@@ -59,40 +61,93 @@ import java.util.regex.Pattern;
 public class TelephonyManager {
     private static final String TAG = "TelephonyManager";
 
-    private static ITelephonyRegistry sRegistry;
-    private final Context mContext;
+    private Context mContext;
+    private ITelephonyRegistry mRegistry;
+    private SimCardID mSimCardId;
 
     /** @hide */
     public TelephonyManager(Context context) {
-        Context appContext = context.getApplicationContext();
-        if (appContext != null) {
-            mContext = appContext;
-        } else {
-            mContext = context;
+        mSimCardId = SimCardID.ID_ZERO;
+        if (mContext == null) {
+            Context appContext = context.getApplicationContext();
+            if (appContext != null) {
+                    mContext = appContext;
+            } else {
+                    mContext = context;
+                }
         }
 
-        if (sRegistry == null) {
-            sRegistry = ITelephonyRegistry.Stub.asInterface(ServiceManager.getService(
+        if (mRegistry == null) {
+            mRegistry = ITelephonyRegistry.Stub.asInterface(ServiceManager.getService(
                     "telephony.registry"));
         }
     }
+    /** @hide */
+    public TelephonyManager(Context context, SimCardID simCardId) {
+        mSimCardId = simCardId;
+        if (mContext == null) {
+            Context appContext = context.getApplicationContext();
+            if (appContext != null) {
+                mContext = appContext;
+            } else {
+                mContext = context;
+            }
 
+            if (SimCardID.ID_ONE == simCardId) {
+                mRegistry = ITelephonyRegistry.Stub.asInterface(ServiceManager.getService(
+                    "telephony.registry2"));
+            } else if (SimCardID.ID_ZERO == simCardId){
+                mRegistry = ITelephonyRegistry.Stub.asInterface(ServiceManager.getService(
+                    "telephony.registry"));
+            } else {
+                throw new RuntimeException("Invalid sim card id");
+            }
+        }
+    }
     /** @hide */
     private TelephonyManager() {
         mContext = null;
+        mSimCardId = SimCardID.ID_ZERO;
     }
 
-    private static TelephonyManager sInstance = new TelephonyManager();
+    /** @hide */
+    private TelephonyManager(SimCardID simCardId) {
+        mSimCardId = simCardId;
+    }
+
+    private static TelephonyManager sInstance[] = {new TelephonyManager(SimCardID.ID_ZERO), new TelephonyManager(SimCardID.ID_ONE)};
 
     /** @hide
     /* @deprecated - use getSystemService as described above */
     public static TelephonyManager getDefault() {
-        return sInstance;
+        if (SimCardID.ID_ONE.toInt() == SystemProperties.getInt(TelephonyProperties.PROPERTY_API_SIM, SimCardID.ID_ZERO.toInt())) {
+            return sInstance[SimCardID.ID_ONE.toInt()];
+        } else {
+            return sInstance[SimCardID.ID_ZERO.toInt()];
+        }
+    }
+
+    /** @hide */
+    public static TelephonyManager getDefault(SimCardID simCardId) {
+        return sInstance[simCardId.toInt()];
     }
 
     /** {@hide} */
     public static TelephonyManager from(Context context) {
-        return (TelephonyManager) context.getSystemService(Context.TELEPHONY_SERVICE);
+        if (SimCardID.ID_ONE.toInt() == SystemProperties.getInt(TelephonyProperties.PROPERTY_API_SIM, SimCardID.ID_ZERO.toInt())) {
+            return (TelephonyManager) context.getSystemService(Context.TELEPHONY_SERVICE2);
+        } else {
+            return (TelephonyManager) context.getSystemService(Context.TELEPHONY_SERVICE1);
+        }
+    }
+
+    /** {@hide} */
+    public static TelephonyManager from(Context context, SimCardID simCardId) {
+        if (SimCardID.ID_ONE == simCardId) {
+            return (TelephonyManager) context.getSystemService(Context.TELEPHONY_SERVICE2);
+        } else {
+            return (TelephonyManager) context.getSystemService(Context.TELEPHONY_SERVICE1);
+        }
     }
 
     //
@@ -394,10 +449,26 @@ public class TelephonyManager {
         return getCurrentPhoneType();
     }
 
+    /**
+     * Returns a constant indicating the device phone name.
+     *
+     * @see #Phone.SimCardID
+     * @hide
+     */
+    public SimCardID getSimCardId() {
+        // in the future, we should really check this
+        return mSimCardId;
+    }
+
     private int getPhoneTypeFromProperty() {
-        int type =
-            SystemProperties.getInt(TelephonyProperties.CURRENT_ACTIVE_PHONE,
+        int type;
+        if (SimCardID.ID_ONE == mSimCardId) {
+            type = SystemProperties.getInt(TelephonyProperties.CURRENT_ACTIVE_PHONE + "_" + String.valueOf(mSimCardId.toInt()),
                     getPhoneTypeFromNetworkType());
+        } else {
+            type = SystemProperties.getInt(TelephonyProperties.CURRENT_ACTIVE_PHONE,
+                    getPhoneTypeFromNetworkType());
+        }
         return type;
     }
 
@@ -543,7 +614,11 @@ public class TelephonyManager {
      * on a CDMA network).
      */
     public String getNetworkOperatorName() {
-        return SystemProperties.get(TelephonyProperties.PROPERTY_OPERATOR_ALPHA);
+        if(SimCardID.ID_ONE == mSimCardId) {
+            return SystemProperties.get(TelephonyProperties.PROPERTY_OPERATOR_ALPHA + "_" + String.valueOf(mSimCardId.toInt()));
+        } else {
+            return SystemProperties.get(TelephonyProperties.PROPERTY_OPERATOR_ALPHA);
+        }
     }
 
     /**
@@ -554,7 +629,11 @@ public class TelephonyManager {
      * on a CDMA network).
      */
     public String getNetworkOperator() {
-        return SystemProperties.get(TelephonyProperties.PROPERTY_OPERATOR_NUMERIC);
+        if(SimCardID.ID_ONE == mSimCardId) {
+            return SystemProperties.get(TelephonyProperties.PROPERTY_OPERATOR_NUMERIC + "_" + String.valueOf(mSimCardId.toInt()));
+        } else {
+            return SystemProperties.get(TelephonyProperties.PROPERTY_OPERATOR_NUMERIC);
+        }
     }
 
     /**
@@ -564,7 +643,11 @@ public class TelephonyManager {
      * Availability: Only when user registered to a network.
      */
     public boolean isNetworkRoaming() {
-        return "true".equals(SystemProperties.get(TelephonyProperties.PROPERTY_OPERATOR_ISROAMING));
+        if(SimCardID.ID_ONE == mSimCardId) {
+            return "true".equals(SystemProperties.get(TelephonyProperties.PROPERTY_OPERATOR_ISROAMING + "_" + String.valueOf(mSimCardId.toInt())));
+        } else {
+            return "true".equals(SystemProperties.get(TelephonyProperties.PROPERTY_OPERATOR_ISROAMING));
+        }
     }
 
     /**
@@ -576,7 +659,11 @@ public class TelephonyManager {
      * on a CDMA network).
      */
     public String getNetworkCountryIso() {
-        return SystemProperties.get(TelephonyProperties.PROPERTY_OPERATOR_ISO_COUNTRY);
+        if(SimCardID.ID_ONE == mSimCardId) {
+            return SystemProperties.get(TelephonyProperties.PROPERTY_OPERATOR_ISO_COUNTRY + "_" + String.valueOf(mSimCardId.toInt()));
+        } else {
+            return SystemProperties.get(TelephonyProperties.PROPERTY_OPERATOR_ISO_COUNTRY);
+        }
     }
 
     /** Network type is unknown */
@@ -822,7 +909,12 @@ public class TelephonyManager {
      * @see #SIM_STATE_READY
      */
     public int getSimState() {
-        String prop = SystemProperties.get(TelephonyProperties.PROPERTY_SIM_STATE);
+        String prop;
+        if(SimCardID.ID_ONE == mSimCardId) {
+            prop = SystemProperties.get(TelephonyProperties.PROPERTY_SIM_STATE + "_" + String.valueOf(mSimCardId.toInt()));
+        } else {
+            prop = SystemProperties.get(TelephonyProperties.PROPERTY_SIM_STATE);
+        }
         if ("ABSENT".equals(prop)) {
             return SIM_STATE_ABSENT;
         }
@@ -852,7 +944,11 @@ public class TelephonyManager {
      * @see #getSimState
      */
     public String getSimOperator() {
-        return SystemProperties.get(TelephonyProperties.PROPERTY_ICC_OPERATOR_NUMERIC);
+        if(SimCardID.ID_ONE == mSimCardId) {
+            return SystemProperties.get(TelephonyProperties.PROPERTY_ICC_OPERATOR_NUMERIC + "_" + String.valueOf(mSimCardId.toInt()));
+        } else {
+            return SystemProperties.get(TelephonyProperties.PROPERTY_ICC_OPERATOR_NUMERIC);
+        }
     }
 
     /**
@@ -863,14 +959,22 @@ public class TelephonyManager {
      * @see #getSimState
      */
     public String getSimOperatorName() {
-        return SystemProperties.get(TelephonyProperties.PROPERTY_ICC_OPERATOR_ALPHA);
+        if(SimCardID.ID_ONE == mSimCardId) {
+            return SystemProperties.get(TelephonyProperties.PROPERTY_ICC_OPERATOR_ALPHA + "_" + String.valueOf(mSimCardId.toInt()));
+        } else {
+            return SystemProperties.get(TelephonyProperties.PROPERTY_ICC_OPERATOR_ALPHA);
+        }
     }
 
     /**
      * Returns the ISO country code equivalent for the SIM provider's country code.
      */
     public String getSimCountryIso() {
-        return SystemProperties.get(TelephonyProperties.PROPERTY_ICC_OPERATOR_ISO_COUNTRY);
+        if(SimCardID.ID_ONE == mSimCardId) {
+            return SystemProperties.get(TelephonyProperties.PROPERTY_ICC_OPERATOR_ISO_COUNTRY + "_" + String.valueOf(mSimCardId.toInt()));
+        } else {
+            return SystemProperties.get(TelephonyProperties.PROPERTY_ICC_OPERATOR_ISO_COUNTRY);
+        }
     }
 
     /**
@@ -1136,7 +1240,11 @@ public class TelephonyManager {
 
     private IPhoneSubInfo getSubscriberInfo() {
         // get it each time because that process crashes a lot
-        return IPhoneSubInfo.Stub.asInterface(ServiceManager.getService("iphonesubinfo"));
+        if(SimCardID.ID_ONE == mSimCardId) {
+            return IPhoneSubInfo.Stub.asInterface(ServiceManager.getService("iphonesubinfo2"));
+        } else {
+            return IPhoneSubInfo.Stub.asInterface(ServiceManager.getService("iphonesubinfo"));
+        }
     }
 
 
@@ -1238,7 +1346,11 @@ public class TelephonyManager {
     }
 
     private ITelephony getITelephony() {
-        return ITelephony.Stub.asInterface(ServiceManager.getService(Context.TELEPHONY_SERVICE));
+        if(SimCardID.ID_ONE == mSimCardId) {
+            return ITelephony.Stub.asInterface(ServiceManager.getService(Context.TELEPHONY_SERVICE2));
+        } else {
+            return ITelephony.Stub.asInterface(ServiceManager.getService(Context.TELEPHONY_SERVICE1));
+        }
     }
 
     //
@@ -1274,7 +1386,7 @@ public class TelephonyManager {
         String pkgForDebug = mContext != null ? mContext.getPackageName() : "<unknown>";
         try {
             Boolean notifyNow = true;
-            sRegistry.listen(pkgForDebug, listener.callback, events, notifyNow);
+            mRegistry.listen(pkgForDebug, listener.callback, events, notifyNow);
         } catch (RemoteException ex) {
             // system process dead
         } catch (NullPointerException ex) {

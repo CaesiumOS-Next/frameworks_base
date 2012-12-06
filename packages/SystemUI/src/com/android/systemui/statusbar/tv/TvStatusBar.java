@@ -148,4 +148,12 @@ public class TvStatusBar extends BaseStatusBar {
     protected void refreshLayout(int layoutDirection) {
     }
 
+    // BRCM start - add Dual SIM support
+    @Override
+    public void showSimSwitchUi(int type) {}
+    @Override
+
+    public void hideSimSwitchUi() {}
+    // BRCM end - add Dual SIM support
+
 }

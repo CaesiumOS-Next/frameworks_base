@@ -1540,6 +1540,11 @@ public class Instrumentation {
                         requestCode, 0, null, null, options);
             checkStartActivityResult(result, intent);
         } catch (RemoteException e) {
+        } catch (ActivityNotFoundException e) {
+            /*When no suitable activity founded to handle the intent, catch the exception
+            and print the error message. It can enable the below Toast alert to notify users  */
+            Log.e(TAG,"ActivityNotFoundException ");
+            //Toast.makeText(who, R.string.no_activity_found, Toast.LENGTH_SHORT).show();
         }
         return null;
     }

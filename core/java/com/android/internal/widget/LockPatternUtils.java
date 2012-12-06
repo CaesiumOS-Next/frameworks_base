@@ -48,6 +48,8 @@ import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
 import java.util.List;
 
+import com.android.internal.telephony.RILConstants.SimCardID;
+
 /**
  * Utilities for the lock pattern and its settings.
  */
@@ -1261,6 +1263,9 @@ public class LockPatternUtils {
      */
     public void updateEmergencyCallButtonState(Button button, int  phoneState, boolean shown,
             boolean showIcon) {
+        int newState = TelephonyManager.getDefault(SimCardID.ID_ZERO).getCallState();
+        int newState2 = TelephonyManager.getDefault(SimCardID.ID_ONE).getCallState();
+
         if (isEmergencyCallCapable() && shown) {
             button.setVisibility(View.VISIBLE);
         } else {
@@ -1269,7 +1274,9 @@ public class LockPatternUtils {
         }
 
         int textId;
-        if (phoneState == TelephonyManager.CALL_STATE_OFFHOOK) {
+        if (phoneState == TelephonyManager.CALL_STATE_OFFHOOK
+            || newState == TelephonyManager.CALL_STATE_OFFHOOK
+            || newState2 == TelephonyManager.CALL_STATE_OFFHOOK) {
             // show "return to call" text and show phone icon
             textId = R.string.lockscreen_return_to_call;
             int phoneCallIcon = showIcon ? R.drawable.stat_sys_phone_call : 0;
@@ -1289,7 +1296,7 @@ public class LockPatternUtils {
      * @return true if we were able to tell InCallScreen to show.
      */
     public boolean resumeCall() {
-        ITelephony phone = ITelephony.Stub.asInterface(ServiceManager.checkService("phone"));
+        ITelephony phone = ITelephony.Stub.asInterface(ServiceManager.checkService("phone1"));
         try {
             if (phone != null && phone.showCallScreen()) {
                 return true;

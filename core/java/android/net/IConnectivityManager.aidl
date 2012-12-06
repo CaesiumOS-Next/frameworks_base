@@ -141,6 +141,15 @@ interface IConnectivityManager
 
     String getMobileProvisioningUrl();
 
+    void switchToSim1DataNetwork();
+    void switchToSim2DataNetwork();
+    void switchToSim1DataNetworkEx(int networkType);
+    void switchToSim2DataNetworkEx(int networkType);
+    void onSwitchToSim1DataNetworkCallback(boolean success);
+    void onSwitchToSim2DataNetworkCallback(boolean success);
+    void onSwitchToSim1DataNetworkCallbackEx(boolean success, int networkType);
+    void onSwitchToSim2DataNetworkCallbackEx(boolean success, int networkType);
+
     String getMobileRedirectedProvisioningUrl();
 
     LinkQualityInfo getLinkQualityInfo(int networkType);
@@ -152,4 +161,6 @@ interface IConnectivityManager
     void setProvisioningNotificationVisible(boolean visible, int networkType, in String extraInfo, in String url);
 
     void setAirplaneMode(boolean enable);
+    NetworkInfo getNetworkInfoBySimId(int networkType, int simId);
+    void setMmsDataSim(int simId);
 }

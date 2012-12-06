@@ -49,6 +49,27 @@
         android:orientation="horizontal"
         >
 
+        <!-- BRCM start - add Dual SIM support -->
+        <!-- Sim card switch notification -->
+        <LinearLayout
+            android:id="@+id/simSwitchNotification"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:visibility="gone" >
+
+            <TextView
+                android:id="@+id/simSwitchNotificationText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="2dip"
+                android:maxWidth="100dip"
+                android:singleLine="true"
+                android:textAppearance="@style/TextAppearance.StatusBar.SimSwitchNotification" />
+        </LinearLayout>
+        <!-- BRCM end - add Dual SIM support -->
+
         <LinearLayout
             android:id="@+id/notification_icon_area"
             android:layout_width="0dip"
@@ -90,8 +111,8 @@
                 android:orientation="horizontal"
                 android:gravity="center"
                 >
-                <include layout="@layout/signal_cluster_view" 
-                    android:id="@+id/signal_cluster"
+                <include layout="@layout/signal_cluster_view_brcm"
+                    android:id="@+id/signal_cluster_brcm"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     />

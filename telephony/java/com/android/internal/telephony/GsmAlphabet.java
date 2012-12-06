@@ -21,7 +21,7 @@ import android.text.TextUtils;
 import android.util.SparseIntArray;
 
 import android.telephony.Rlog;
-
+import java.io.UnsupportedEncodingException;
 import java.nio.ByteBuffer;
 import java.nio.charset.Charset;
 import com.android.internal.telephony.SmsConstants;
@@ -270,6 +270,22 @@ public class GsmAlphabet {
             throws EncodeException {
         return stringToGsm7BitPackedWithHeader(data, header, 0, 0);
     }
+
+    public static byte[] stringToGsm8BitPackedWithHeader(String data, byte[] header)
+             throws EncodeException {
+
+           if (header == null || header.length == 0) {
+            return stringToGsm8BitPacked_noHead(data);
+        }
+
+         byte[] ret = stringToGsm8BitPacked(data, header.length);
+
+         // Paste in the header
+         ret[1] = (byte)header.length;
+         System.arraycopy(header, 0, ret, 2, header.length);
+
+         return ret;
+     }
 
     /**
      * Converts a String into a byte array containing the 7-bit packed
@@ -635,6 +651,29 @@ public class GsmAlphabet {
     }
 
     /**
+     * Convert a string into an 8-bit unpacked GSM alphabet byte
+     * array
+     */
+    public static byte[]
+    stringToGsm8BitPacked(String s,int offset)
+    throws EncodeException {
+        byte[] ret;
+
+        int septets = 0;
+
+        septets = countGsmSeptetsUsingTables(s, true, 0, 0);//countGsmSeptets(s);
+
+        // Enough for all the septets and the length byte prefix
+        ret = new byte[septets+offset+1];
+
+        ret[0] = (byte)(septets+offset);
+
+        stringToGsm8BitUnpackedField(s, ret, offset, ret.length);
+
+        return ret;
+    }
+
+    /**
      * Convert a string into an 8-bit unpacked GSM alphabet byte array.
      * Always uses GSM default 7-bit alphabet and extension table.
      * @param s the string to encode
@@ -654,6 +693,36 @@ public class GsmAlphabet {
         return ret;
     }
 
+    public static byte[]
+        stringToGsm8BitPacked_noHead(String s)
+        throws EncodeException {
+            byte[] ret;
+            byte[] new_ret;
+
+            int septets = 0;
+
+            septets = countGsmSeptetsUsingTables(s, true, 0, 0);
+
+            Rlog.w(TAG, " stringToGsm8BitPacked_noHead septets:"+septets);
+            ret = new byte[septets];
+            new_ret = new byte[septets+1];
+
+            //stringToGsm8BitUnpackedField(s, ret, 0, ret.length);
+            try{
+                ret = s.getBytes("iso-8859-1");
+                }
+            catch (UnsupportedEncodingException ex) {
+                ret = null;
+                Rlog.e(TAG, "stringToGsm8BitPacked_noHead :implausible UnsupportedEncodingException", ex);
+            }
+            new_ret[0] = (byte)(septets);
+            for (int i=0;i<ret.length;i++)
+            {
+                new_ret[i+1] = ret[i];
+                }
+
+        return new_ret;
+    }
 
     /**
      * Write a String into a GSM 8-bit unpacked field of

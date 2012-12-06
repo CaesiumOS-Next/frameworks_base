@@ -29,6 +29,9 @@ import android.util.Slog;
 import android.view.KeyEvent;
 import android.widget.FrameLayout;
 
+import static com.android.internal.telephony.TelephonyProperties.*;
+import android.os.SystemProperties;
+
 /**
  * Base class for keyguard view.  {@link #reset} is where you should
  * reset the state of your view.  Use the {@link KeyguardViewCallback} via
@@ -42,6 +45,7 @@ public abstract class KeyguardViewBase extends FrameLayout {
 
     private AudioManager mAudioManager;
     private TelephonyManager mTelephonyManager = null;
+    private TelephonyManager mTelephonyManager2 = null;
     protected KeyguardViewMediator.ViewMediatorCallback mViewMediatorCallback;
 
     // Whether the volume keys should be handled by keyguard. If true, then
@@ -118,10 +122,18 @@ public abstract class KeyguardViewBase extends FrameLayout {
                      * in-call to avoid music playback */
                     if (mTelephonyManager == null) {
                         mTelephonyManager = (TelephonyManager) getContext().getSystemService(
-                                Context.TELEPHONY_SERVICE);
+                                Context.TELEPHONY_SERVICE1);
                     }
                     if (mTelephonyManager != null &&
                             mTelephonyManager.getCallState() != TelephonyManager.CALL_STATE_IDLE) {
+                        return true;  // suppress key event
+                    }
+                    if (mTelephonyManager2 == null) {
+                        mTelephonyManager2 = (TelephonyManager) getContext().getSystemService(
+                            Context.TELEPHONY_SERVICE2);
+                    }
+                    if (mTelephonyManager2 != null &&
+                            mTelephonyManager2.getCallState() != TelephonyManager.CALL_STATE_IDLE) {
                         return true;  // suppress key event
                     }
                 case KeyEvent.KEYCODE_MUTE:

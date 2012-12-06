@@ -20,6 +20,7 @@ import android.os.Bundle;
 import java.util.List;
 import android.telephony.NeighboringCellInfo;
 import android.telephony.CellInfo;
+import android.os.Message;
 
 /**
  * Interface used to interact with the phone.  Mostly this is used by the
@@ -153,6 +154,14 @@ interface ITelephony {
      * @return whether the operation was a success.
      */
     boolean supplyPuk(String puk, String pin);
+
+    /* BRCM */
+    /**
+     * Get pin status related to the SIM.
+     * @param pin status type
+     * @return pin code input remaining count
+     */
+    int getPinRemainingStatus(int type);
 
     /**
      * Supply a pin to unlock the SIM.  Blocks until a result is determined.
@@ -314,6 +323,78 @@ interface ITelephony {
      * or {@link PHone#LTE_ON_CDMA_TRUE}
      */
     int getLteOnCdmaMode();
+
+
+    /**
+     * Returns the response APDU for a command APDU sent to a logical channel
+     */
+    String transmitIccLogicalChannel(int cla, int command, int channel,
+            int p1, int p2, int p3, String data);
+
+    /**
+     * Returns the response APDU for a command APDU sent to the basic channel
+     */
+    String transmitIccBasicChannel(int cla, int command,
+            int p1, int p2, int p3, String data);
+
+    /**
+     * Returns the channel id of the logical channel,
+     * Returns 0 on error.
+     */
+    int openIccLogicalChannel(String AID);
+
+    /**
+     * Return true if logical channel was closed successfully
+     */
+    boolean closeIccLogicalChannel(int channel);
+
+    /**
+     * Returns the error code of the last error occured.
+     * Currently only used for openIccLogicalChannel
+     */
+    int getLastError();
+
+    /**
+     * Get Active Phone Name.
+     * In generally, the interface only used in dual mode
+     * NOTE: for phone and phone2 service, the return is the same
+     * return: 0 if there is no active phone, otherwise RILConstants.PHONE1 or RILConstants.PHONE2;
+     */
+    int  getActivePhoneId();
+
+    /**
+     * default sim id for call without sim selection
+     */
+    int getDefaultSimForVoiceCalls();
+
+    /**
+     * preferred sim id for data connection
+     */
+    int getPreferredDataActivity();
+
+    /**
+     * Switch to sim 1 data network.
+     * This is just for dual sim version, and in single sim version, it should be empty implemented
+     */
+    void switchToSim1DataNetwork();
+
+    /**
+     * Switch to sim 2 data network.
+     * This is just for dual sim version, and in single sim version, it should be empty implemented
+     */
+    void switchToSim2DataNetwork();
+
+    /**
+     * Switch to sim 1 data network.
+     * This is just for dual sim version, and in single sim version, it should be empty implemented
+     */
+    void switchToSim1DataNetworkEx(in int networkType);
+
+    /**
+     * Switch to sim 2 data network.
+     * This is just for dual sim version, and in single sim version, it should be empty implemented
+     */
+    void switchToSim2DataNetworkEx(in int networkType);
 
     /**
      * Returns the all observed cell information of the device.

@@ -45,7 +45,7 @@ public final class PhoneStatusBarTransitions extends BarTransitions {
     public void init() {
         mLeftSide = mView.findViewById(R.id.notification_icon_area);
         mStatusIcons = mView.findViewById(R.id.statusIcons);
-        mSignalCluster = mView.findViewById(R.id.signal_cluster);
+        mSignalCluster = mView.findViewById(R.id.signal_cluster_brcm);
         mBattery = mView.findViewById(R.id.battery);
         mClock = mView.findViewById(R.id.clock);
         applyModeBackground(-1, getMode(), false /*animate*/);
@@ -89,7 +89,7 @@ public final class PhoneStatusBarTransitions extends BarTransitions {
             anims.playTogether(
                     animateTransitionTo(mLeftSide, newAlpha),
                     animateTransitionTo(mStatusIcons, newAlpha),
-                    animateTransitionTo(mSignalCluster, newAlpha),
+                    //animateTransitionTo(mSignalCluster, newAlpha),
                     animateTransitionTo(mBattery, newAlphaBC),
                     animateTransitionTo(mClock, newAlphaBC)
                     );

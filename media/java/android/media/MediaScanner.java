@@ -328,12 +328,16 @@ public class MediaScanner
     private boolean mWasEmptyPriorToScan = false;
     /** Whether the scanner has set a default sound for the ringer ringtone. */
     private boolean mDefaultRingtoneSet;
+    /** Whether the scanner has set a default sound for the SIM2 ringer ringtone. */
+    private boolean mDefaultRingtoneSet_2;
     /** Whether the scanner has set a default sound for the notification ringtone. */
     private boolean mDefaultNotificationSet;
     /** Whether the scanner has set a default sound for the alarm ringtone. */
     private boolean mDefaultAlarmSet;
     /** The filename for the default sound for the ringer ringtone. */
     private String mDefaultRingtoneFilename;
+    /** The filename for the default sound for the SIM2 ringer ringtone. */
+    private String mDefaultRingtoneFilename_2;
     /** The filename for the default sound for the notification ringtone. */
     private String mDefaultNotificationFilename;
     /** The filename for the default sound for the alarm ringtone. */
@@ -403,6 +407,8 @@ public class MediaScanner
     private void setDefaultRingtoneFileNames() {
         mDefaultRingtoneFilename = SystemProperties.get(DEFAULT_RINGTONE_PROPERTY_PREFIX
                 + Settings.System.RINGTONE);
+        mDefaultRingtoneFilename_2 = SystemProperties.get(DEFAULT_RINGTONE_PROPERTY_PREFIX
+                + Settings.System.RINGTONE_2);
         mDefaultNotificationFilename = SystemProperties.get(DEFAULT_RINGTONE_PROPERTY_PREFIX
                 + Settings.System.NOTIFICATION_SOUND);
         mDefaultAlarmAlertFilename = SystemProperties.get(DEFAULT_RINGTONE_PROPERTY_PREFIX
@@ -551,6 +557,7 @@ public class MediaScanner
                         boolean isaudio = MediaFile.isAudioFileType(mFileType);
                         boolean isvideo = MediaFile.isVideoFileType(mFileType);
                         boolean isimage = MediaFile.isImageFileType(mFileType);
+                        boolean isdrm = MediaFile.isDrmFileType(mFileType);
 
                         if (isaudio || isvideo || isimage) {
                             if (mExternalIsEmulated && path.startsWith(mExternalStoragePath)) {
@@ -565,7 +572,7 @@ public class MediaScanner
                         }
 
                         // we only extract metadata for audio and video files
-                        if (isaudio || isvideo) {
+                        if (isaudio || isvideo || isdrm) {
                             processFile(path, mimeType, this);
                         }
 
@@ -921,6 +928,8 @@ public class MediaScanner
             }
             Uri result = null;
             boolean needToSetSettings = false;
+            boolean needToSetRingtone1 = false;
+            boolean needToSetRingtone2 = false;
             if (rowId == 0) {
                 if (mMtpObjectHandle != 0) {
                     values.put(MediaStore.MediaColumns.MEDIA_SCANNER_NEW_OBJECT_ID, mMtpObjectHandle);
@@ -941,10 +950,20 @@ public class MediaScanner
                                 doesPathHaveFilename(entry.mPath, mDefaultNotificationFilename)) {
                             needToSetSettings = true;
                         }
-                    } else if (ringtones && !mDefaultRingtoneSet) {
-                        if (TextUtils.isEmpty(mDefaultRingtoneFilename) ||
-                                doesPathHaveFilename(entry.mPath, mDefaultRingtoneFilename)) {
-                            needToSetSettings = true;
+                    } else if (ringtones) {
+                        if (!mDefaultRingtoneSet) {
+                            if (TextUtils.isEmpty(mDefaultRingtoneFilename) ||
+                                    doesPathHaveFilename(entry.mPath, mDefaultRingtoneFilename)) {
+                                needToSetSettings = true;
+                                needToSetRingtone1 = true;
+                            }
+                        }
+                        if (!mDefaultRingtoneSet_2) {
+                            if (TextUtils.isEmpty(mDefaultRingtoneFilename_2) ||
+                                    doesPathHaveFilename(entry.mPath, mDefaultRingtoneFilename_2)) {
+                                needToSetSettings = true;
+                                needToSetRingtone2 = true;
+                            }
                         }
                     } else if (alarms && !mDefaultAlarmSet) {
                         if (TextUtils.isEmpty(mDefaultAlarmAlertFilename) ||
@@ -1003,8 +1022,14 @@ public class MediaScanner
                     setSettingIfNotSet(Settings.System.NOTIFICATION_SOUND, tableUri, rowId);
                     mDefaultNotificationSet = true;
                 } else if (ringtones) {
-                    setSettingIfNotSet(Settings.System.RINGTONE, tableUri, rowId);
-                    mDefaultRingtoneSet = true;
+                    if (needToSetRingtone1) {
+                        setSettingIfNotSet(Settings.System.RINGTONE, tableUri, rowId);
+                        mDefaultRingtoneSet = true;
+                    }
+                    if (needToSetRingtone2) {
+                        setSettingIfNotSet(Settings.System.RINGTONE_2, tableUri, rowId);
+                        mDefaultRingtoneSet_2 = true;
+                    }
                 } else if (alarms) {
                     setSettingIfNotSet(Settings.System.ALARM_ALERT, tableUri, rowId);
                     mDefaultAlarmSet = true;

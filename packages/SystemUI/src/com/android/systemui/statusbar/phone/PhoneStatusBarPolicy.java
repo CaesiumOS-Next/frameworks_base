@@ -99,6 +99,9 @@ public class PhoneStatusBarPolicy {
             else if (action.equals(TtyIntent.TTY_ENABLED_CHANGE_ACTION)) {
                 updateTTY(intent);
             }
+            else if (action.equals(Intent.ACTION_HEADSET_PLUG)) {
+                updateHeadset(intent);
+            }
         }
     };
 
@@ -115,11 +118,16 @@ public class PhoneStatusBarPolicy {
         filter.addAction(BluetoothAdapter.ACTION_CONNECTION_STATE_CHANGED);
         filter.addAction(TelephonyIntents.ACTION_SIM_STATE_CHANGED);
         filter.addAction(TtyIntent.TTY_ENABLED_CHANGE_ACTION);
+        filter.addAction(Intent.ACTION_HEADSET_PLUG);
         mContext.registerReceiver(mIntentReceiver, filter, null, mHandler);
 
         // TTY status
         mService.setIcon("tty",  R.drawable.stat_sys_tty_mode, 0, null);
         mService.setIconVisibility("tty", false);
+
+        // Headset
+        mService.setIcon("headset", R.drawable.stat_sys_headset_brcm, 0, null);
+        mService.setIconVisibility("headset", false);
 
         // Cdma Roaming Indicator, ERI
         mService.setIcon("cdma_eri", R.drawable.stat_sys_roaming_cdma_0, 0, null);
@@ -255,5 +263,21 @@ public class PhoneStatusBarPolicy {
             if (false) Log.v(TAG, "updateTTY: set TTY off");
             mService.setIconVisibility("tty", false);
         }
+    }
+
+    private final void updateHeadset(Intent intent) {
+        boolean HeadsetPlug = false;
+
+        if (intent.getExtras().getInt("state") == 0) {
+            /* HEADSET DISCONNECTED */
+            Log.v(TAG, "updateHeadset: set Headset OFF");
+            HeadsetPlug = false;
+        }else{
+            /* HEADSET CONNECTED */
+            Log.v(TAG, "updateHeadset: set Headset ON");
+            HeadsetPlug = true;
+        }
+
+        mService.setIconVisibility("headset", HeadsetPlug);
     }
 }

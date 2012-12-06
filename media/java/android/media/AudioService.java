@@ -558,6 +558,8 @@ public class AudioService extends IAudioService.Stub {
 
         context.registerReceiver(mReceiver, intentFilter);
 
+
+
         mUseMasterVolume = context.getResources().getBoolean(
                 com.android.internal.R.bool.config_useMasterVolume);
         restoreMasterVolume();
@@ -2623,8 +2625,10 @@ public class AudioService extends IAudioService.Stub {
 
         if (mVoiceCapable) {
             try {
-                ITelephony phone = ITelephony.Stub.asInterface(ServiceManager.checkService("phone"));
+                ITelephony phone = ITelephony.Stub.asInterface(ServiceManager.checkService("phone1"));
                 if (phone != null) isOffhook = phone.isOffhook();
+                ITelephony phone2 = ITelephony.Stub.asInterface(ServiceManager.checkService("phone2"));
+                if (phone2 != null) isOffhook |= phone2.isOffhook();
             } catch (RemoteException e) {
                 Log.w(TAG, "Couldn't connect to phone service", e);
             }

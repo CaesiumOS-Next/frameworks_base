@@ -127,6 +127,10 @@ import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import com.android.internal.telephony.RILConstants.SimCardID;
+import android.os.SystemProperties;
+import static com.android.internal.telephony.TelephonyProperties.*;
+
 class ReceiverRestrictedContext extends ContextWrapper {
     ReceiverRestrictedContext(Context base) {
         super(base);
@@ -500,6 +504,15 @@ class ContextImpl extends Context {
         registerService(TELEPHONY_SERVICE, new ServiceFetcher() {
                 public Object createService(ContextImpl ctx) {
                     return new TelephonyManager(ctx.getOuterContext());
+                }});
+
+        registerService(TELEPHONY_SERVICE1, new ServiceFetcher() {
+                public Object createService(ContextImpl ctx) {
+                    return new TelephonyManager(ctx.getOuterContext(), SimCardID.ID_ZERO);
+                }});
+        registerService(TELEPHONY_SERVICE2, new ServiceFetcher() {
+                public Object createService(ContextImpl ctx) {
+                    return new TelephonyManager(ctx.getOuterContext(), SimCardID.ID_ONE);
                 }});
 
         registerService(UI_MODE_SERVICE, new ServiceFetcher() {

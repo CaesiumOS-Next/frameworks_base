@@ -36,6 +36,7 @@ import android.text.TextUtils;
 import android.telephony.Rlog;
 import android.util.SparseIntArray;
 
+import com.android.internal.telephony.RILConstants.SimCardID;
 import static com.android.internal.telephony.TelephonyProperties.PROPERTY_ICC_OPERATOR_ISO_COUNTRY;
 import static com.android.internal.telephony.TelephonyProperties.PROPERTY_IDP_STRING;
 import static com.android.internal.telephony.TelephonyProperties.PROPERTY_OPERATOR_ISO_COUNTRY;
@@ -166,7 +167,8 @@ public class PhoneNumberUtils
         // TODO: We don't check for SecurityException here (requires
         // CALL_PRIVILEGED permission).
         if (scheme.equals("voicemail")) {
-            return TelephonyManager.getDefault().getCompleteVoiceMailNumber();
+            SimCardID simCardId = (SimCardID)(intent.getExtra("simId", SimCardID.ID_ZERO));
+            return TelephonyManager.getDefault(simCardId).getCompleteVoiceMailNumber();
         }
 
         if (context == null) {
@@ -1561,6 +1563,13 @@ public class PhoneNumberUtils
         return isEmergencyNumberInternal(number, true /* useExactMatch */);
     }
 
+    /** @hide */
+    public static boolean isEmergencyNumber(String number, SimCardID simCardId) {
+        // Return true only if the specified number *exactly* matches
+        // one of the emergency numbers listed by the RIL / SIM.
+        return isEmergencyNumberInternal(number, true /* useExactMatch */, simCardId);
+    }
+
     /**
      * Checks if given number might *potentially* result in
      * a call to an emergency service on the current network.
@@ -1587,6 +1596,13 @@ public class PhoneNumberUtils
         return isEmergencyNumberInternal(number, false /* useExactMatch */);
     }
 
+    /** @hide */
+    public static boolean isPotentialEmergencyNumber(String number, SimCardID simCardId) {
+        // Check against the emergency numbers listed by the RIL / SIM,
+        // and *don't* require an exact match.
+        return isEmergencyNumberInternal(number, false /* useExactMatch */, simCardId);
+    }
+
     /**
      * Helper function for isEmergencyNumber(String) and
      * isPotentialEmergencyNumber(String).
@@ -1610,6 +1626,10 @@ public class PhoneNumberUtils
         return isEmergencyNumberInternal(number, null, useExactMatch);
     }
 
+    private static boolean isEmergencyNumberInternal(String number, boolean useExactMatch, SimCardID simCardId) {
+        return isEmergencyNumberInternal(number, null, useExactMatch, simCardId);
+    }
+
     /**
      * Checks if a given number is an emergency number for a specific country.
      *
@@ -1624,6 +1644,14 @@ public class PhoneNumberUtils
         return isEmergencyNumberInternal(number,
                                          defaultCountryIso,
                                          true /* useExactMatch */);
+    }
+
+    /** @hide */
+    public static boolean isEmergencyNumber(String number, String defaultCountryIso, SimCardID simCardId) {
+        return isEmergencyNumberInternal(number,
+                                         defaultCountryIso,
+                                         true /* useExactMatch */,
+                                         simCardId);
     }
 
     /**
@@ -1651,6 +1679,14 @@ public class PhoneNumberUtils
         return isEmergencyNumberInternal(number,
                                          defaultCountryIso,
                                          false /* useExactMatch */);
+    }
+
+    /** @hide */
+    public static boolean isPotentialEmergencyNumber(String number, String defaultCountryIso, SimCardID simCardId) {
+        return isEmergencyNumberInternal(number,
+                                         defaultCountryIso,
+                                         false /* useExactMatch */,
+                                         simCardId);
     }
 
     /**
@@ -1735,6 +1771,75 @@ public class PhoneNumberUtils
             }
         }
     }
+    private static boolean isEmergencyNumberInternal(String number,
+                                                     String defaultCountryIso,
+                                                     boolean useExactMatch,
+                                                     SimCardID simCardId) {
+        // If the number passed in is null, just return false:
+        if (number == null) return false;
+
+        // If the number passed in is a SIP address, return false, since the
+        // concept of "emergency numbers" is only meaningful for calls placed
+        // over the cell network.
+        // (Be sure to do this check *before* calling extractNetworkPortionAlt(),
+        // since the whole point of extractNetworkPortionAlt() is to filter out
+        // any non-dialable characters (which would turn 'abc911def@example.com'
+        // into '911', for example.))
+        if (isUriNumber(number)) {
+            return false;
+        }
+
+        // Strip the separators from the number before comparing it
+        // to the list.
+        number = extractNetworkPortionAlt(number);
+
+        // retrieve the list of emergency numbers
+        // check read-write ecclist property first
+        String numbers = SystemProperties.get("ril.ecclist"+((SimCardID.ID_ZERO != simCardId)?("_"+String.valueOf(simCardId.toInt())):""));
+        if (TextUtils.isEmpty(numbers)) {
+            // then read-only ecclist property since old RIL only uses this
+            numbers = SystemProperties.get("ro.ril.ecclist"+((SimCardID.ID_ZERO != simCardId)?("_"+String.valueOf(simCardId.toInt())):""));
+        }
+
+        if (!TextUtils.isEmpty(numbers)) {
+            // searches through the comma-separated list for a match,
+            // return true if one is found.
+            for (String emergencyNum : numbers.split(",")) {
+                // It is not possible to append additional digits to an emergency number to dial
+                // the number in Brazil - it won't connect.
+                if (useExactMatch || "BR".equalsIgnoreCase(defaultCountryIso)) {
+                    if (number.equals(emergencyNum)) {
+                        return true;
+                    }
+                } else {
+                    if (number.startsWith(emergencyNum)) {
+                        return true;
+                    }
+                }
+            }
+            // no matches found against the list!
+            return false;
+        }
+
+        Rlog.w(LOG_TAG, "System property doesn't provide any emergency numbers."
+                + " Use embedded logic for determining ones.");
+
+        // No ecclist system property, so use our own list.
+        if (defaultCountryIso != null) {
+            ShortNumberUtil util = new ShortNumberUtil();
+            if (useExactMatch) {
+                return util.isEmergencyNumber(number, defaultCountryIso);
+            } else {
+                return util.connectsToEmergencyNumber(number, defaultCountryIso);
+            }
+        } else {
+            if (useExactMatch) {
+                return (number.equals("112") || number.equals("911"));
+            } else {
+                return (number.startsWith("112") || number.startsWith("911"));
+            }
+        }
+    }
 
     /**
      * Checks if a given number is an emergency number for the country that the user is in. The
@@ -1752,6 +1857,14 @@ public class PhoneNumberUtils
         return isLocalEmergencyNumberInternal(number,
                                               context,
                                               true /* useExactMatch */);
+    }
+
+    /** @hide */
+    public static boolean isLocalEmergencyNumber(String number, Context context, SimCardID simCardId) {
+        return isLocalEmergencyNumberInternal(number,
+                                              context,
+                                              true /* useExactMatch */,
+                                              simCardId);
     }
 
     /**
@@ -1780,6 +1893,14 @@ public class PhoneNumberUtils
         return isLocalEmergencyNumberInternal(number,
                                               context,
                                               false /* useExactMatch */);
+    }
+
+    /** @hide */
+    public static boolean isPotentialLocalEmergencyNumber(String number, Context context, SimCardID simCardId) {
+        return isLocalEmergencyNumberInternal(number,
+                                              context,
+                                              false /* useExactMatch */,
+                                              simCardId);
     }
 
     /**
@@ -1816,6 +1937,24 @@ public class PhoneNumberUtils
         return isEmergencyNumberInternal(number, countryIso, useExactMatch);
     }
 
+    private static boolean isLocalEmergencyNumberInternal(String number,
+                                                          Context context,
+                                                          boolean useExactMatch,
+                                                          SimCardID simCardId) {
+        String countryIso;
+        CountryDetector detector = (CountryDetector) context.getSystemService(
+                Context.COUNTRY_DETECTOR);
+        if (detector != null) {
+            countryIso = detector.detectCountry().getCountryIso();
+        } else {
+            Locale locale = context.getResources().getConfiguration().locale;
+            countryIso = locale.getCountry();
+            Rlog.w(LOG_TAG, "No CountryDetector; falling back to countryIso based on locale: "
+                    + countryIso);
+        }
+        return isEmergencyNumberInternal(number, countryIso, useExactMatch, simCardId);
+    }
+
     /**
      * isVoiceMailNumber: checks a given number against the voicemail
      *   number provided by the RIL and SIM card. The caller must have
@@ -1836,13 +1975,20 @@ public class PhoneNumberUtils
             return false;
         }
 
+        String vmNumber2 = null;
+        try {
+            vmNumber2 = TelephonyManager.getDefault(SimCardID.ID_ONE).getVoiceMailNumber();
+        } catch (SecurityException ex) {
+            vmNumber2 = null;
+        }
+
         // Strip the separators from the number before comparing it
         // to the list.
         number = extractNetworkPortionAlt(number);
 
         // compare tolerates null so we need to make sure that we
         // don't return true when both are null.
-        return !TextUtils.isEmpty(number) && compare(number, vmNumber);
+        return !TextUtils.isEmpty(number) && (compare(number, vmNumber) || compare(number, vmNumber2));
     }
 
     /**
@@ -1964,13 +2110,16 @@ public class PhoneNumberUtils
      * @return the converted dial string
      * @hide for internal use
      */
-    public static String cdmaCheckAndProcessPlusCodeForSms(String dialStr) {
+    public static String cdmaCheckAndProcessPlusCode(String dialStr, SimCardID simCardId) {
         if (!TextUtils.isEmpty(dialStr)) {
-            if (isReallyDialable(dialStr.charAt(0)) && isNonSeparator(dialStr)) {
-                String defaultIso = SystemProperties.get(PROPERTY_ICC_OPERATOR_ISO_COUNTRY, "");
-                if (!TextUtils.isEmpty(defaultIso)) {
-                    int format = getFormatTypeFromCountryCode(defaultIso);
-                    return cdmaCheckAndProcessPlusCodeByNumberFormat(dialStr, format, format);
+            if (isReallyDialable(dialStr.charAt(0)) &&
+                isNonSeparator(dialStr)) {
+                String currIso = SystemProperties.get(PROPERTY_OPERATOR_ISO_COUNTRY+((SimCardID.ID_ZERO != simCardId)?("_"+String.valueOf(simCardId.toInt())):""), "");
+                String defaultIso = SystemProperties.get(PROPERTY_ICC_OPERATOR_ISO_COUNTRY+((SimCardID.ID_ZERO != simCardId)?("_"+String.valueOf(simCardId.toInt())):""), "");
+                if (!TextUtils.isEmpty(currIso) && !TextUtils.isEmpty(defaultIso)) {
+                    return cdmaCheckAndProcessPlusCodeByNumberFormat(dialStr,
+                            getFormatTypeFromCountryCode(currIso),
+                            getFormatTypeFromCountryCode(defaultIso));
                 }
             }
         }

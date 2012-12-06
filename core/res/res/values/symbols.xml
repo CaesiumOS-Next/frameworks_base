@@ -1757,4 +1757,34 @@
   <java-symbol type="dimen" name="subtitle_shadow_radius" />
   <java-symbol type="dimen" name="subtitle_shadow_offset" />
   <java-symbol type="dimen" name="subtitle_outline_width" />
+  <!-- BRCM: From android.policy -->
+  <java-symbol type="id" name="carrier2" />
+  <java-symbol type="array" name="lockscreen_carrier_plmn_original" />
+  <java-symbol type="array" name="lockscreen_carrier_plmn_translated" />
+  <java-symbol type="string" name="keyguard_pin_code_dialog_sim_1" />
+  <java-symbol type="string" name="keyguard_pin_code_dialog_sim_2" />
+  <java-symbol type="string" name="keyguard_pin_code_dialog_sim_1_pinpuk" />
+  <java-symbol type="string" name="keyguard_pin_code_dialog_sim_2_pinpuk" />
+  <java-symbol type="string" name="keyguard_puk_code_dialog_sim_1_pinpuk" />
+  <java-symbol type="string" name="keyguard_puk_code_dialog_sim_2_pinpuk" />
+  <java-symbol type="string" name="keyguard_pin_code_dialog_choose_sim_msg" />
+  <java-symbol type="string" name="keyguard_pin_code_dialog_choose_sim" />
+  <java-symbol type="string" name="keyguard_password_enter_sim1_pin_code" />
+  <java-symbol type="string" name="keyguard_password_enter_sim2_pin_code" />
+  <java-symbol type="string" name="keyguard_password_enter_sim1_puk_code" />
+  <java-symbol type="string" name="keyguard_password_enter_sim2_puk_code" />
+  <java-symbol type="string" name="invalidPuk_8numbers" />
+  <java-symbol type="string" name="keyguard_password_wrong_sim1_pin_code" />
+  <java-symbol type="string" name="keyguard_password_wrong_sim2_pin_code" />
+  <java-symbol type="string" name="keyguard_password_wrong_sim1_puk_code" />
+  <java-symbol type="string" name="keyguard_password_wrong_sim2_puk_code" />
+  <java-symbol type="string" name="keyguard_sim_permanently_locked" />
+  <java-symbol type="string" name="kg_invalid_puk_sim1" />
+  <java-symbol type="string" name="kg_invalid_puk_sim2" />
+  <java-symbol type="xml" name="password_kbd_numeric_brcm" />
+  <java-symbol type="layout" name="keyguard_screen_password_landscape_dual_sim" />
+  <java-symbol type="layout" name="keyguard_screen_password_portrait_dual_sim" />
+  <java-symbol type="layout" name="keyguard_screen_tab_unlock_dual_sim" />
+  <java-symbol type="layout" name="keyguard_screen_unlock_landscape_dual_sim" />
+  <java-symbol type="layout" name="keyguard_screen_unlock_portrait_dual_sim" />
 </resources>

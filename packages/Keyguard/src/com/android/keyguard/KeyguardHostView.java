@@ -60,6 +60,10 @@ import java.io.File;
 import java.lang.ref.WeakReference;
 import java.util.List;
 
+/* dual sim */
+import com.android.internal.telephony.IccCardConstants;
+import com.android.internal.telephony.RILConstants.SimCardID;
+
 public class KeyguardHostView extends KeyguardViewBase {
     private static final String TAG = "KeyguardHostView";
 
@@ -933,6 +937,7 @@ public class KeyguardHostView extends KeyguardViewBase {
     }
 
     private KeyguardSecurityView getSecurityView(SecurityMode securityMode) {
+        if(DEBUG) Log.d(TAG, "getSecurityView(), securityMode:" + securityMode);
         final int securityViewIdForMode = getSecurityViewIdForMode(securityMode);
         KeyguardSecurityView view = null;
         final int children = mSecurityViewContainer.getChildCount();
@@ -978,7 +983,12 @@ public class KeyguardHostView extends KeyguardViewBase {
         // Enter full screen mode if we're in SIM or Account screen
         boolean fullScreenEnabled = getResources().getBoolean(R.bool.kg_sim_puk_account_full_screen);
         boolean isSimOrAccount = securityMode == SecurityMode.SimPin
+                || securityMode == SecurityMode.Sim2Pin
                 || securityMode == SecurityMode.SimPuk
+                || securityMode == SecurityMode.Sim2Puk
+                || securityMode == SecurityMode.SimsBothPin
+                || securityMode == SecurityMode.SimsBothPuk
+                || securityMode == SecurityMode.SimsPinPuk
                 || securityMode == SecurityMode.Account;
         mAppWidgetContainer.setVisibility(
                 isSimOrAccount && fullScreenEnabled ? View.GONE : View.VISIBLE);
@@ -1100,6 +1110,11 @@ public class KeyguardHostView extends KeyguardViewBase {
     }
 
     private int getSecurityViewIdForMode(SecurityMode securityMode) {
+        KeyguardUpdateMonitor updateMonitor = KeyguardUpdateMonitor.getInstance(mContext);
+        final IccCardConstants.State simState = updateMonitor.getSimState();
+        final IccCardConstants.State sim2State = updateMonitor.getSimState(SimCardID.ID_ONE);
+        if(DEBUG) Log.d(TAG,"getSecurityViewIdForMode(), simState:" + simState + ", sim2State:" + sim2State + ", securityMode:" + securityMode);
+
         switch (securityMode) {
             case None: return R.id.keyguard_selector_view;
             case Pattern: return R.id.keyguard_pattern_view;
@@ -1108,12 +1123,33 @@ public class KeyguardHostView extends KeyguardViewBase {
             case Biometric: return R.id.keyguard_face_unlock_view;
             case Account: return R.id.keyguard_account_view;
             case SimPin: return R.id.keyguard_sim_pin_view;
+            case Sim2Pin: return R.id.keyguard_sim_pin_view; //dual sim
             case SimPuk: return R.id.keyguard_sim_puk_view;
+            case Sim2Puk: return R.id.keyguard_sim_puk_view; //dual sim
+            case SimsBothPin: return R.id.keyguard_sim_pin_view; //dual sim
+            case SimsBothPuk: return R.id.keyguard_sim_puk_view; //dual sim
+            case SimsPinPuk: //dual sim
+            {
+                if(sim2State == IccCardConstants.State.PIN_REQUIRED) {
+                    return R.id.keyguard_sim_pin_view;
+                } else if (sim2State == IccCardConstants.State.PUK_REQUIRED) {
+                    return R.id.keyguard_sim_puk_view;
+                } else if (simState == IccCardConstants.State.PIN_REQUIRED) {
+                    return R.id.keyguard_sim_pin_view;
+                } else if (simState == IccCardConstants.State.PUK_REQUIRED) {
+                    return R.id.keyguard_sim_puk_view;
+                }
+            }
         }
         return 0;
     }
 
     private int getLayoutIdFor(SecurityMode securityMode) {
+        KeyguardUpdateMonitor updateMonitor = KeyguardUpdateMonitor.getInstance(mContext);
+        final IccCardConstants.State simState = updateMonitor.getSimState();
+        final IccCardConstants.State sim2State = updateMonitor.getSimState(SimCardID.ID_ONE);
+        if(DEBUG) Log.d(TAG,"getSecurityViewIdForMode(), simState:" + simState + ", sim2State:" + sim2State + ", securityMode:" + securityMode);
+
         switch (securityMode) {
             case None: return R.layout.keyguard_selector_view;
             case Pattern: return R.layout.keyguard_pattern_view;
@@ -1122,7 +1158,23 @@ public class KeyguardHostView extends KeyguardViewBase {
             case Biometric: return R.layout.keyguard_face_unlock_view;
             case Account: return R.layout.keyguard_account_view;
             case SimPin: return R.layout.keyguard_sim_pin_view;
+            case Sim2Pin: return R.layout.keyguard_sim_pin_view; //dual sim
             case SimPuk: return R.layout.keyguard_sim_puk_view;
+            case Sim2Puk: return R.layout.keyguard_sim_puk_view; //dual sim
+            case SimsBothPin: return R.layout.keyguard_sim_pin_view; //dual sim
+            case SimsBothPuk: return R.layout.keyguard_sim_puk_view; //dual sim
+            case SimsPinPuk: //dual sim
+            {
+                if(sim2State == IccCardConstants.State.PIN_REQUIRED) {
+                    return R.layout.keyguard_sim_pin_view;
+                } else if (sim2State == IccCardConstants.State.PUK_REQUIRED) {
+                    return R.layout.keyguard_sim_puk_view;
+                } else if (simState == IccCardConstants.State.PIN_REQUIRED) {
+                    return R.layout.keyguard_sim_pin_view;
+                } else if (simState == IccCardConstants.State.PUK_REQUIRED) {
+                    return R.layout.keyguard_sim_puk_view;
+                }
+            }
             default:
                 return 0;
         }

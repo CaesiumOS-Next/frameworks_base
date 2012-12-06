@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+/* //device/apps/common/assets/res/any/strings.xml
+**
+** Copyright 2006, The Android Open Source Project
+**
+** Licensed under the Apache License, Version 2.0 (the "License");
+** you may not use this file except in compliance with the License.
+** You may obtain a copy of the License at
+**
+**     http://www.apache.org/licenses/LICENSE-2.0
+**
+** Unless required by applicable law or agreed to in writing, software
+** distributed under the License is distributed on an "AS IS" BASIS,
+** WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+** See the License for the specific language governing permissions and
+** limitations under the License.
+*/
+-->
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <!-- Broadcom Customization Resource -->
+
+    <string name="keyguard_password_enter_new_pin_code">Enter new PIN code</string>
+
+    <string name="keyguard_password_reenter_new_pin_code">Reenter new PIN code</string>
+
+    <!-- PUK 10 times out, SIM card permanently locked-->
+    <string name="keyguard_sim_permanently_locked">This SIM card is permanently locked. Please see the User Guide or contact Customer Care.</string>
+
+    <!-- Instructions telling the user to enter their one of SIMs(dual sim mode) PIN to unlock the keyguard.
+         Displayed in one line in a large font.  -->
+    <string name="keyguard_password_enter_pin_code_either_sim">Enter SIM 1 or SIM 2 PIN code</string>
+
+    <!-- Dialog title telling the user to choose a sim card to unlock-->
+    <string name="keyguard_pin_code_dialog_choose_sim">Choose SIM card</string>
+
+    <!-- Dialog message telling the user to choose a sim card to unlock-->
+    <string name="keyguard_pin_code_dialog_choose_sim_msg">Choose a SIM card to unlock.</string>
+
+    <!-- Dialog button telling the user to choose sim 1 card to unlock-->
+    <string name="keyguard_pin_code_dialog_sim_1">SIM 1</string>
+
+    <!-- Dialog button telling the user to choose sim 2 card to unlock-->
+    <string name="keyguard_pin_code_dialog_sim_2">SIM 2</string>
+
+    <!-- Dialog button telling the user to choose sim 1 card to unlock pin-->
+    <string name="keyguard_pin_code_dialog_sim_1_pinpuk">SIM 1 (PIN)</string>
+
+    <!-- Dialog button telling the user to choose sim 1 card to unloc puk-->
+    <string name="keyguard_puk_code_dialog_sim_1_pinpuk">SIM 1 (PUK)</string>
+
+    <!-- Dialog button telling the user to choose sim 2 card to unlock pin-->
+    <string name="keyguard_pin_code_dialog_sim_2_pinpuk">SIM 2 (PIN)</string>
+
+    <!-- Dialog button telling the user to choose sim 2 card to unloc puk-->
+    <string name="keyguard_puk_code_dialog_sim_2_pinpuk">SIM 2 (PUK)</string>
+
+    <!-- Instructions telling the user to enter their SIM 1 PIN to unlock the keyguard.
+         Displayed in one line in a large font.  -->
+    <string name="keyguard_password_enter_sim1_pin_code">Enter SIM1 PIN</string>
+
+    <!-- Instructions telling the user to enter their SIM 2 PIN to unlock the keyguard.
+         Displayed in one line in a large font.  -->
+    <string name="keyguard_password_enter_sim2_pin_code">Enter SIM2 PIN</string>
+
+    <!-- Instructions telling the user to enter their SIM 1 PUK to unlock the keyguard.
+         Displayed in one line in a large font.  -->
+    <string name="keyguard_password_enter_sim1_puk_code">Enter SIM1 PUK and new PIN code</string>
+
+    <!-- Instructions telling the user to enter their SIM 2 PUK to unlock the keyguard.
+         Displayed in one line in a large font.  -->
+    <string name="keyguard_password_enter_sim2_puk_code">Enter SIM2 PUK and new PIN code</string>
+
+    <!-- Displayed when the length of SIM PUK password is not 8 digits long. -->
+    <string name="invalidPuk_8numbers">Type a PUK that is 8 numbers.</string>
+
+    <string name="keyguard_password_wrong_sim1_puk_code">Incorrect SIM1 PUK code!</string> 
+    <string name="keyguard_password_wrong_sim2_puk_code">Incorrect SIM2 PUK code!</string> 
+
+    <string name="keyguard_password_wrong_sim1_pin_code">Incorrect SIM1 PIN code!</string>
+    <string name="keyguard_password_wrong_sim2_pin_code">Incorrect SIM2 PIN code!</string>
+
+    <!-- No suitable activity founded to handle this intent.  It may need extra activity or GMS to handle this. 
+         Pop a notification to alert -->
+    <string name="no_activity_found">No Suitable Activity Founded to run this </string>
+
+    <!-- Title of an application permission, listed so the user can choose whether they want to allow the application to do this. -->
+    <string name="permlab_fm_receiver">access FM receiver</string>
+
+    <!-- Description of an application permission, listed so the user can choose whether they want to allow the application to do this. -->
+    <string name="permdesc_fm_receiver">Allows an application to access the FM receiver functions.</string>
+
+    <!-- Message shown when the user enters an invalid PUK code -->
+    <string name="kg_invalid_puk_sim1">Re-enter the correct PUK code. Repeated attempts will permanently disable the SIM1</string>
+    <string name="kg_invalid_puk_sim2">Re-enter the correct PUK code. Repeated attempts will permanently disable the SIM2</string>
+
+</resources>

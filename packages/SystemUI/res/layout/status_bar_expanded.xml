@@ -68,6 +68,13 @@
             android:visibility="gone"
             />
 
+        <!-- BRCM start - add Dual SIM support -->
+        <!--sim card switch ui -->
+        <include layout="@layout/sim_switch_view"
+            android:layout_width="match_parent"
+            />
+        <!-- BRCM end - add Dual SIM support -->
+
         <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
