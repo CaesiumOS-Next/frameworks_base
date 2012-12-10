@@ -128,13 +128,13 @@ static jobject android_emoji_EmojiFactory_newInstance(
   const jchar* jchars = env->GetStringChars(name, NULL);
   jsize len = env->GetStringLength(name);
   String8 str(String16(jchars, len));
+  env->ReleaseStringChars(name, jchars);
 
   EmojiFactory *factory = gCaller->TryCallGetImplementation(str.string());
   // EmojiFactory *factory = EmojiFactory::GetImplementation(str.string());
   if (NULL == factory) {
     return NULL;
   }
-  env->ReleaseStringChars(name, jchars);
 
   return create_java_EmojiFactory(env, factory, name);
 }
