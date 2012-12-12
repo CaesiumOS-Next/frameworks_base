@@ -4917,10 +4917,11 @@ public class WindowManagerService extends IWindowManager.Stub
 
     private final int reAddWindowLocked(int index, WindowState win) {
         final WindowList windows = win.getWindowList();
-        final int NCW = win.mChildWindows.size();
+        int NCW = win.mChildWindows.size();
         boolean added = false;
-        for (int j=0; j<NCW; j++) {
-            WindowState cwin = win.mChildWindows.get(j);
+        while (NCW > 0) {
+            NCW--;
+            WindowState cwin = win.mChildWindows.get(NCW);
             if (!added && cwin.mSubLayer >= 0) {
                 if (DEBUG_WINDOW_MOVEMENT) Slog.v(TAG, "Re-adding child window at "
                         + index + ": " + cwin);
