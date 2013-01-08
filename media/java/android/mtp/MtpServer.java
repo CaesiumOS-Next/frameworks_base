@@ -23,6 +23,7 @@ package android.mtp;
 public class MtpServer implements Runnable {
 
     private long mNativeContext; // accessed by native methods
+    private Thread mThread = new Thread(this, "MtpServer");
 
     static {
         System.loadLibrary("media_jni");
@@ -34,8 +35,11 @@ public class MtpServer implements Runnable {
     }
 
     public void start() {
-        Thread thread = new Thread(this, "MtpServer");
-        thread.start();
+        mThread.start();
+    }
+
+    public Thread.State getState() {
+        return mThread.getState();
     }
 
     @Override
