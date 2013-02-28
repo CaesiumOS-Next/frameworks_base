@@ -330,6 +330,7 @@ public class MtpDatabase {
             } else {
                 mMediaScanner.scanMtpFile(path, mVolumeName, handle, format);
             }
+            mContext.sendBroadcast(new Intent(MtpStorage.ACTION_MTP_STORAGE_STATE));
         } else {
             deleteFile(handle);
         }
@@ -950,6 +951,7 @@ public class MtpDatabase {
                         Log.e(TAG, "failed to unhide/rescan for " + path);
                     }
                 }
+                mContext.sendBroadcast(new Intent(MtpStorage.ACTION_MTP_STORAGE_STATE));
                 return MtpConstants.RESPONSE_OK;
             } else {
                 return MtpConstants.RESPONSE_INVALID_OBJECT_HANDLE;
