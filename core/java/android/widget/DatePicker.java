@@ -74,9 +74,9 @@ public class DatePicker extends FrameLayout {
 
     private static final String DATE_FORMAT = "MM/dd/yyyy";
 
-    private static final int DEFAULT_START_YEAR = 1900;
+    private static final int DEFAULT_START_YEAR = 1902;
 
-    private static final int DEFAULT_END_YEAR = 2100;
+    private static final int DEFAULT_END_YEAR = 2036;
 
     private static final boolean DEFAULT_CALENDAR_VIEW_SHOWN = true;
 
@@ -293,7 +293,7 @@ public class DatePicker extends FrameLayout {
      * milliseconds since January 1, 1970 00:00:00 in
      * {@link TimeZone#getDefault()} time zone.
      * <p>
-     * Note: The default minimal date is 01/01/1900.
+     * Note: The default minimal date is 01/01/1902.
      * <p>
      *
      * @return The minimal supported date.
@@ -329,7 +329,7 @@ public class DatePicker extends FrameLayout {
      * milliseconds since January 1, 1970 00:00:00 in
      * {@link TimeZone#getDefault()} time zone.
      * <p>
-     * Note: The default maximal date is 12/31/2100.
+     * Note: The default maximal date is 12/31/2036.
      * <p>
      *
      * @return The maximal supported date.
