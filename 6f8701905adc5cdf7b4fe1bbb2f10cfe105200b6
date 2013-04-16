@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "TXu07fdI",
+        "filename": "wifi/java/android/net/wifi/p2p/WifiP2pService.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 1332,
+      "author": {
+        "id": 1003344
+      },
+      "writtenOn": "2013-04-16T21:23:25Z",
+      "side": 1,
+      "message": "Have you tested this does not break autonomous GO scenario from framework API ?",
+      "revId": "6f8701905adc5cdf7b4fe1bbb2f10cfe105200b6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
