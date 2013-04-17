@@ -16,6 +16,24 @@
       "revId": "6f8701905adc5cdf7b4fe1bbb2f10cfe105200b6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "TfmRmqgQ",
+        "filename": "wifi/java/android/net/wifi/p2p/WifiP2pService.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 1332,
+      "author": {
+        "id": 1019508
+      },
+      "writtenOn": "2013-04-17T04:41:47Z",
+      "side": 1,
+      "message": "As you know that android framework does not support explicit autonomous GO creation, So I have tested with non autonomous GO which is working fine.Could you please elaborate on what is the problem in case of Autonomous GO?",
+      "parentUuid": "TXu07fdI",
+      "revId": "6f8701905adc5cdf7b4fe1bbb2f10cfe105200b6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
