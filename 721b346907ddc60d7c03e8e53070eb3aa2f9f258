@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "TeF5CVcQ",
+        "filename": "wifi/java/android/net/wifi/p2p/WifiP2pService.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 1317,
+      "author": {
+        "id": 1003344
+      },
+      "writtenOn": "2013-04-18T20:15:03Z",
+      "side": 1,
+      "message": "if () { \n  \u003cstatement\u003e\n}",
+      "revId": "721b346907ddc60d7c03e8e53070eb3aa2f9f258",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
