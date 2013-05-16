@@ -1819,7 +1819,7 @@ public class ActiveServices {
     void serviceTimeout(ProcessRecord proc) {
         String anrMessage = null;
 
-        synchronized(this) {
+        synchronized(mAm) {
             if (proc.executingServices.size() == 0 || proc.thread == null) {
                 return;
             }
