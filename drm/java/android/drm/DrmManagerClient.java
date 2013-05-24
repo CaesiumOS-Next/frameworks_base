@@ -369,7 +369,31 @@ public class DrmManagerClient {
         if (null == path || path.equals("") || !DrmStore.Action.isValid(action)) {
             throw new IllegalArgumentException("Given usage or path is invalid/null");
         }
-        return _getConstraints(mUniqueId, path, action);
+        ContentValues result = null;
+        if (path.startsWith("http", 0) == false && path.startsWith("https", 0) == false) {
+            FileInputStream is = null;
+            try {
+                FileDescriptor fd = null;
+                File file = new File(path);
+                if (file.exists()) {
+                    is = new FileInputStream(file);
+                    fd = is.getFD();
+                }
+                result = _getConstraints(mUniqueId, path, action, fd);
+            } catch (IOException ioe) {
+                result = _getConstraints(mUniqueId, path, action, null);
+            } finally {
+                if (is != null) {
+                    try {
+                        is.close();
+                    } catch(IOException e) {}
+                }
+            }
+        }
+        else {
+            result = _getConstraints(mUniqueId, path, action, null);
+        }
+        return result;
     }
 
    /**
@@ -384,7 +408,31 @@ public class DrmManagerClient {
         if (null == path || path.equals("")) {
             throw new IllegalArgumentException("Given path is invalid/null");
         }
-        return _getMetadata(mUniqueId, path);
+        ContentValues result = null;
+        if (path.startsWith("http", 0) == false && path.startsWith("https", 0) == false) {
+            FileInputStream is = null;
+            try {
+                FileDescriptor fd = null;
+                File file = new File(path);
+                if (file.exists()) {
+                    is = new FileInputStream(file);
+                    fd = is.getFD();
+                }
+                result = _getMetadata(mUniqueId, path, fd);
+            } catch (IOException ioe) {
+                result = _getMetadata(mUniqueId, path, null);
+            } finally {
+                if (is != null) {
+                    try {
+                        is.close();
+                    } catch(IOException e) {}
+                }
+            }
+        }
+        else {
+            result = _getMetadata(mUniqueId, path, null);
+        }
+        return result;
     }
 
     /**
@@ -471,7 +519,31 @@ public class DrmManagerClient {
         if ((null == path || path.equals("")) && (null == mimeType || mimeType.equals(""))) {
             throw new IllegalArgumentException("Path or the mimetype should be non null");
         }
-        return _canHandle(mUniqueId, path, mimeType);
+        boolean result = false;
+        if (path.startsWith("http", 0) == false && path.startsWith("https", 0) == false) {
+            FileInputStream is = null;
+            try {
+                FileDescriptor fd = null;
+                File file = new File(path);
+                if (file.exists()) {
+                    is = new FileInputStream(file);
+                    fd = is.getFD();
+                }
+                result = _canHandle(mUniqueId, path, mimeType, fd);
+            } catch (IOException ioe) {
+                result = _canHandle(mUniqueId, path, mimeType, null);
+            } finally {
+                if (is != null) {
+                    try {
+                        is.close();
+                    } catch(IOException e) {}
+                }
+            }
+        }
+        else {
+            result = _canHandle(mUniqueId, path, mimeType, null);
+        }
+        return result;
     }
 
     /**
@@ -558,7 +630,31 @@ public class DrmManagerClient {
         if ((null == path || path.equals("")) && (null == mimeType || mimeType.equals(""))) {
             throw new IllegalArgumentException("Path or the mimetype should be non null");
         }
-        return _getDrmObjectType(mUniqueId, path, mimeType);
+        int result = 0;
+        if (path.startsWith("http", 0) == false && path.startsWith("https", 0) == false) {
+            FileInputStream is = null;
+            try {
+                FileDescriptor fd = null;
+                File file = new File(path);
+                if (file.exists()) {
+                    is = new FileInputStream(file);
+                    fd = is.getFD();
+                }
+                result = _getDrmObjectType(mUniqueId, path, mimeType, fd);
+            } catch (IOException ioe) {
+                result = _getDrmObjectType(mUniqueId, path, mimeType, null);
+            } finally {
+                if (is != null) {
+                    try {
+                        is.close();
+                    } catch(IOException e) {}
+                }
+            }
+        }
+        else {
+            result = _getDrmObjectType(mUniqueId, path, mimeType, null);
+        }
+        return result;
     }
 
     /**
@@ -672,7 +768,31 @@ public class DrmManagerClient {
         if (null == path || path.equals("") || !DrmStore.Action.isValid(action)) {
             throw new IllegalArgumentException("Given path or action is not valid");
         }
-        return _checkRightsStatus(mUniqueId, path, action);
+        int result = 1;
+        if (path.startsWith("http", 0) == false && path.startsWith("https", 0) == false) {
+            FileInputStream is = null;
+            try {
+                FileDescriptor fd = null;
+                File file = new File(path);
+                if (file.exists()) {
+                    is = new FileInputStream(file);
+                    fd = is.getFD();
+                }
+                result = _checkRightsStatus(mUniqueId, path, action, fd);
+            } catch (IOException ioe) {
+                result = _checkRightsStatus(mUniqueId, path, action, null);
+            } finally {
+                if (is != null) {
+                    try {
+                        is.close();
+                    } catch(IOException e) {}
+                }
+            }
+        }
+        else {
+            result = _checkRightsStatus(mUniqueId, path, action, null);
+        }
+        return result;
     }
 
     /**
@@ -702,7 +822,31 @@ public class DrmManagerClient {
         if (null == path || path.equals("")) {
             throw new IllegalArgumentException("Given path should be non null");
         }
-        return _removeRights(mUniqueId, path);
+        int result = ERROR_UNKNOWN;
+        if (path.startsWith("http", 0) == false && path.startsWith("https", 0) == false) {
+            FileInputStream is = null;
+            try {
+                FileDescriptor fd = null;
+                File file = new File(path);
+                if (file.exists()) {
+                    is = new FileInputStream(file);
+                    fd = is.getFD();
+                }
+                result = _removeRights(mUniqueId, path, fd);
+            } catch (IOException ioe) {
+                result = _removeRights(mUniqueId, path, null);
+            } finally {
+                if (is != null) {
+                    try {
+                        is.close();
+                    } catch(IOException e) {}
+                }
+            }
+        }
+        else {
+            result = _removeRights(mUniqueId, path, null);
+        }
+        return result;
     }
 
     /**
@@ -868,11 +1012,11 @@ public class DrmManagerClient {
 
     private native void _installDrmEngine(int uniqueId, String engineFilepath);
 
-    private native ContentValues _getConstraints(int uniqueId, String path, int usage);
+    private native ContentValues _getConstraints(int uniqueId, String path, int usage, FileDescriptor fd);
 
-    private native ContentValues _getMetadata(int uniqueId, String path);
+    private native ContentValues _getMetadata(int uniqueId, String path, FileDescriptor fd);
 
-    private native boolean _canHandle(int uniqueId, String path, String mimeType);
+    private native boolean _canHandle(int uniqueId, String path, String mimeType, FileDescriptor fd);
 
     private native DrmInfoStatus _processDrmInfo(int uniqueId, DrmInfo drmInfo);
 
@@ -881,13 +1025,13 @@ public class DrmManagerClient {
     private native int _saveRights(
             int uniqueId, DrmRights drmRights, String rightsPath, String contentPath);
 
-    private native int _getDrmObjectType(int uniqueId, String path, String mimeType);
+    private native int _getDrmObjectType(int uniqueId, String path, String mimeType, FileDescriptor fd);
 
     private native String _getOriginalMimeType(int uniqueId, String path, FileDescriptor fd);
 
-    private native int _checkRightsStatus(int uniqueId, String path, int action);
+    private native int _checkRightsStatus(int uniqueId, String path, int action, FileDescriptor fd);
 
-    private native int _removeRights(int uniqueId, String path);
+    private native int _removeRights(int uniqueId, String path, FileDescriptor fd);
 
     private native int _removeAllRights(int uniqueId);
 

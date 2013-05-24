@@ -243,12 +243,17 @@ static void android_drm_DrmManagerClient_release(
 }
 
 static jobject android_drm_DrmManagerClient_getConstraintsFromContent(
-            JNIEnv* env, jobject thiz, jint uniqueId, jstring jpath, jint usage) {
+            JNIEnv* env, jobject thiz, jint uniqueId, 
+            jstring jpath, jint usage, jobject fileDescriptor) {
     ALOGV("GetConstraints - Enter");
+
+    int fd = (fileDescriptor == NULL)
+                ? -1
+                : jniGetFDFromFileDescriptor(env, fileDescriptor);
 
     const String8 pathString = Utility::getStringValue(env, jpath);
     DrmConstraints* pConstraints
-        = getDrmManagerClientImpl(env, thiz)->getConstraints(uniqueId, &pathString, usage);
+        = getDrmManagerClientImpl(env, thiz)->getConstraints(uniqueId, &pathString, usage, fd);
 
     jclass localRef = env->FindClass("android/content/ContentValues");
     jmethodID ContentValues_putByteArray =
@@ -292,11 +297,14 @@ static jobject android_drm_DrmManagerClient_getConstraintsFromContent(
 }
 
 static jobject android_drm_DrmManagerClient_getMetadataFromContent(
-            JNIEnv* env, jobject thiz, jint uniqueId, jstring jpath) {
+            JNIEnv* env, jobject thiz, jint uniqueId, jstring jpath, jobject fileDescriptor) {
     ALOGV("GetMetadata - Enter");
+    int fd = (fileDescriptor == NULL)
+                ? -1
+                : jniGetFDFromFileDescriptor(env, fileDescriptor);
     const String8 pathString = Utility::getStringValue(env, jpath);
     DrmMetadata* pMetadata =
-            getDrmManagerClientImpl(env, thiz)->getMetadata(uniqueId, &pathString);
+            getDrmManagerClientImpl(env, thiz)->getMetadata(uniqueId, &pathString, fd);
 
     jobject metadata = NULL;
 
@@ -410,12 +418,16 @@ static jint android_drm_DrmManagerClient_saveRights(
 }
 
 static jboolean android_drm_DrmManagerClient_canHandle(
-            JNIEnv* env, jobject thiz, jint uniqueId, jstring path, jstring mimeType) {
+            JNIEnv* env, jobject thiz, jint uniqueId, 
+            jstring path, jstring mimeType, jobject fileDescriptor) {
     ALOGV("canHandle - Enter");
+    int fd = (fileDescriptor == NULL)
+                ? -1
+                : jniGetFDFromFileDescriptor(env, fileDescriptor);
     jboolean result
         = getDrmManagerClientImpl(env, thiz)
             ->canHandle(uniqueId, Utility::getStringValue(env, path),
-                    Utility::getStringValue(env, mimeType));
+                    Utility::getStringValue(env, mimeType), fd);
     ALOGV("canHandle - Exit");
     return result;
 }
@@ -576,12 +588,16 @@ static jobject android_drm_DrmManagerClient_acquireDrmInfo(
 }
 
 static jint android_drm_DrmManagerClient_getDrmObjectType(
-            JNIEnv* env, jobject thiz, jint uniqueId, jstring path, jstring mimeType) {
+            JNIEnv* env, jobject thiz, jint uniqueId, 
+            jstring path, jstring mimeType, jobject fileDescriptor) {
     ALOGV("getDrmObjectType Enter");
+    int fd = (fileDescriptor == NULL)
+                ? -1
+                : jniGetFDFromFileDescriptor(env, fileDescriptor);
     int drmObjectType
         = getDrmManagerClientImpl(env, thiz)
             ->getDrmObjectType(uniqueId, Utility::getStringValue(env, path),
-                                Utility::getStringValue(env, mimeType));
+                                Utility::getStringValue(env, mimeType), fd);
     ALOGV("getDrmObjectType Exit");
     return drmObjectType;
 }
@@ -603,20 +619,27 @@ static jstring android_drm_DrmManagerClient_getOriginalMimeType(
 }
 
 static jint android_drm_DrmManagerClient_checkRightsStatus(
-            JNIEnv* env, jobject thiz, jint uniqueId, jstring path, int action) {
+            JNIEnv* env, jobject thiz, jint uniqueId, 
+            jstring path, int action, jobject fileDescriptor) {
     ALOGV("checkRightsStatus Enter");
+    int fd = (fileDescriptor == NULL)
+                ? -1
+                : jniGetFDFromFileDescriptor(env, fileDescriptor);
     int rightsStatus
         = getDrmManagerClientImpl(env, thiz)
-            ->checkRightsStatus(uniqueId, Utility::getStringValue(env, path), action);
+            ->checkRightsStatus(uniqueId, Utility::getStringValue(env, path), action, fd);
     ALOGV("checkRightsStatus Exit");
     return rightsStatus;
 }
 
 static jint android_drm_DrmManagerClient_removeRights(
-            JNIEnv* env, jobject thiz, jint uniqueId, jstring path) {
+            JNIEnv* env, jobject thiz, jint uniqueId, jstring path, jobject fileDescriptor) {
     ALOGV("removeRights");
+    int fd = (fileDescriptor == NULL)
+                ? -1
+                : jniGetFDFromFileDescriptor(env, fileDescriptor);
     return getDrmManagerClientImpl(env, thiz)
-               ->removeRights(uniqueId, Utility::getStringValue(env, path));
+               ->removeRights(uniqueId, Utility::getStringValue(env, path), fd);
 }
 
 static jint android_drm_DrmManagerClient_removeAllRights(
@@ -709,10 +732,10 @@ static JNINativeMethod nativeMethods[] = {
     {"_release", "(I)V",
                                     (void*)android_drm_DrmManagerClient_release},
 
-    {"_getConstraints", "(ILjava/lang/String;I)Landroid/content/ContentValues;",
+    {"_getConstraints", "(ILjava/lang/String;ILjava/io/FileDescriptor;)Landroid/content/ContentValues;",
                                     (void*)android_drm_DrmManagerClient_getConstraintsFromContent},
 
-    {"_getMetadata", "(ILjava/lang/String;)Landroid/content/ContentValues;",
+    {"_getMetadata", "(ILjava/lang/String;ILjava/io/FileDescriptor;)Landroid/content/ContentValues;",
                                     (void*)android_drm_DrmManagerClient_getMetadataFromContent},
 
     {"_getAllSupportInfo", "(I)[Landroid/drm/DrmSupportInfo;",
@@ -721,7 +744,7 @@ static JNINativeMethod nativeMethods[] = {
     {"_installDrmEngine", "(ILjava/lang/String;)V",
                                     (void*)android_drm_DrmManagerClient_installDrmEngine},
 
-    {"_canHandle", "(ILjava/lang/String;Ljava/lang/String;)Z",
+    {"_canHandle", "(ILjava/lang/String;Ljava/lang/String;Ljava/io/FileDescriptor;)Z",
                                     (void*)android_drm_DrmManagerClient_canHandle},
 
     {"_processDrmInfo", "(ILandroid/drm/DrmInfo;)Landroid/drm/DrmInfoStatus;",
@@ -733,16 +756,16 @@ static JNINativeMethod nativeMethods[] = {
     {"_saveRights", "(ILandroid/drm/DrmRights;Ljava/lang/String;Ljava/lang/String;)I",
                                     (void*)android_drm_DrmManagerClient_saveRights},
 
-    {"_getDrmObjectType", "(ILjava/lang/String;Ljava/lang/String;)I",
+    {"_getDrmObjectType", "(ILjava/lang/String;Ljava/lang/String;ILjava/io/FileDescriptor;)I",
                                     (void*)android_drm_DrmManagerClient_getDrmObjectType},
 
     {"_getOriginalMimeType", "(ILjava/lang/String;Ljava/io/FileDescriptor;)Ljava/lang/String;",
                                     (void*)android_drm_DrmManagerClient_getOriginalMimeType},
 
-    {"_checkRightsStatus", "(ILjava/lang/String;I)I",
+    {"_checkRightsStatus", "(ILjava/lang/String;ILjava/io/FileDescriptor;)I",
                                     (void*)android_drm_DrmManagerClient_checkRightsStatus},
 
-    {"_removeRights", "(ILjava/lang/String;)I",
+    {"_removeRights", "(ILjava/lang/String;Ljava/io/FileDescriptor;)I",
                                     (void*)android_drm_DrmManagerClient_removeRights},
 
     {"_removeAllRights", "(I)I",
