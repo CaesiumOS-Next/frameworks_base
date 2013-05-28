@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "VA24Y34Y",
+        "filename": "core/jni/android_util_Binder.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 957,
+      "author": {
+        "id": 1003957
+      },
+      "writtenOn": "2013-05-28T20:25:58Z",
+      "side": 1,
+      "message": "Possible buffer overrun here.  Should use snprintf.",
+      "revId": "edd40539fbaaf532c681794f8b22ed2c3f854ae3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "VA04NG0M",
+        "filename": "core/jni/android_util_Binder.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 960,
+      "author": {
+        "id": 1003957
+      },
+      "writtenOn": "2013-05-28T20:25:58Z",
+      "side": 1,
+      "message": "This function is getting really ugly.  Can you rewrite it to clean up the error handling and the above bug?",
+      "revId": "edd40539fbaaf532c681794f8b22ed2c3f854ae3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
