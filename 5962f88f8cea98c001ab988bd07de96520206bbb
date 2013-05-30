@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5d4915a3_81a9fe85",
+        "filename": "core/jni/android_util_Binder.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 953,
+      "author": {
+        "id": 1003957
+      },
+      "writtenOn": "2013-05-30T01:57:48Z",
+      "side": 1,
+      "message": "This function now has different results.  Does that matter?  In particular, we are no longer returning an error if the file is empty (which should never really happen...)",
+      "revId": "5962f88f8cea98c001ab988bd07de96520206bbb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
