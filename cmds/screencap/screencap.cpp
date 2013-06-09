@@ -39,9 +39,11 @@ static uint32_t DEFAULT_DISPLAY_ID = ISurfaceComposer::eDisplayIdMain;
 static void usage(const char* pname)
 {
     fprintf(stderr,
-            "usage: %s [-hp] [-d display-id] [FILENAME]\n"
+            "usage: %s [-hpqs] [-d display-id] [FILENAME]\n"
             "   -h: this message\n"
             "   -p: save the file as a png.\n"
+            "   -q: output in RGB888 format.\n"
+            "   -s: output in RGB565 format.\n"
             "   -d: specify the display id to capture, default %d.\n"
             "If FILENAME ends with .png it will be saved as a png.\n"
             "If FILENAME is not given, the results will be printed to stdout.\n",
@@ -87,16 +89,87 @@ static status_t vinfoToPixelFormat(const fb_var_screeninfo& vinfo,
     return NO_ERROR;
 }
 
+/* @alpha: 0 for rgb888,
+ *         1 for rgba8888
+ */
+static void convert_rgba32_rgb565(void const* src, off_t alpha,
+               off_t pixels, void *dst)
+{
+   off_t bpp = 3 + alpha;
+   volatile uint8_t *s = (uint8_t *) src;
+   volatile uint16_t *d = (uint16_t *) dst;
+   volatile uint16_t r, g, b;
+
+   while (pixels-- > 0) {
+       r = s[0];
+       g = s[1];
+       b = s[2];
+
+       *d = (((r >> 3 << 11)  & 0xFB00) | ((g >> 2 << 5) & 0x07E0) | (b >> 3));
+       d++;
+       s += bpp;
+   }
+}
+
+static void convert_rgba32_rgb888(void const* src, off_t alpha,
+        off_t pixels, void *dst)
+{
+    volatile uint8_t *s = (uint8_t *) src;
+    volatile uint8_t *d = (uint8_t *) dst;
+
+    while (pixels-- > 0) {
+        *d++ = *s++;
+        *d++ = *s++;
+        *d++ = *s++;
+        s++;
+    }
+}
+
+static int convert_rgbx(int fd, off_t alpha, uint32_t w, uint32_t h,
+               uint32_t f, void const* src)
+{
+    void *buf = NULL;
+    size_t size;
+
+    size = w * h * (3 + alpha);
+    buf = malloc(size);
+    if (buf == NULL)
+        return -ENOMEM;
+
+    if (f == PIXEL_FORMAT_RGB_565)
+        convert_rgba32_rgb565(src, alpha, w*h, buf);
+    else if (f == PIXEL_FORMAT_RGB_888)
+        convert_rgba32_rgb888(src, alpha, w*h, buf);
+    else {
+        free(buf);
+        return -EINVAL;
+    }
+
+    write(fd, &f, 4);
+    write(fd, buf, size);
+    free(buf);
+
+    return 0;
+}
+
 int main(int argc, char** argv)
 {
     const char* pname = argv[0];
     bool png = false;
+    bool rgb565 = false;
+    bool rgb888 = false;
     int32_t displayId = DEFAULT_DISPLAY_ID;
     int c;
-    while ((c = getopt(argc, argv, "phd:")) != -1) {
+    while ((c = getopt(argc, argv, "phqsd:")) != -1) {
         switch (c) {
             case 'p':
                 png = true;
+                break;
+            case 'q':
+                rgb888 = true;
+                break;
+            case 's':
+                rgb565 = true;
                 break;
             case 'd':
                 displayId = atoi(optarg);
@@ -183,8 +256,20 @@ int main(int argc, char** argv)
         } else {
             write(fd, &w, 4);
             write(fd, &h, 4);
-            write(fd, &f, 4);
-            write(fd, base, size);
+            if (f == PIXEL_FORMAT_RGBX_8888) {
+                if (rgb565) {
+                    convert_rgbx(fd, 1, w, h, PIXEL_FORMAT_RGB_565, base);
+                } else if (rgb888) {
+                    convert_rgbx(fd, 1, w, h, PIXEL_FORMAT_RGB_888, base);
+                }
+            } else if (f == PIXEL_FORMAT_RGB_888) {
+                if (rgb565) {
+                    convert_rgbx(fd, 0, w, h, PIXEL_FORMAT_RGB_565, base);
+                }
+            } else {
+                write(fd, &f, 4);
+                write(fd, base, size);
+            }
         }
     }
     close(fd);
