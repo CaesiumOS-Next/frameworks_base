@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6a760dc7_b69d06fa",
+        "filename": "core/jni/android_util_AssetManager.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1754,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2013-06-17T17:00:21Z",
+      "side": 1,
+      "message": "This line has more than 100 characters but the checks above don\u0027t honor that limit either.",
+      "revId": "aa5fe3d206f72c4e7ff6632e169de2d0df6672e2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
