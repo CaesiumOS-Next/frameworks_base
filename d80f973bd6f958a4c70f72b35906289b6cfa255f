@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0a583140_317ff2bb",
+        "filename": "core/jni/android_util_AssetManager.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1753,
+      "author": {
+        "id": 1003723
+      },
+      "writtenOn": "2013-06-17T16:09:26Z",
+      "side": 1,
+      "message": "everything here seems to be checked for initialization except the class you are using. perhaps add:\n\nLOG_FATAL_IF(g_stringClass \u003d\u003d NULL, \"Unable to create global reference for class java/lang/String\");",
+      "revId": "d80f973bd6f958a4c70f72b35906289b6cfa255f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
