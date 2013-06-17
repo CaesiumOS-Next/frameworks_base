@@ -16,6 +16,24 @@
       "revId": "d80f973bd6f958a4c70f72b35906289b6cfa255f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6a760dc7_96a00a2f",
+        "filename": "core/jni/android_util_AssetManager.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1753,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2013-06-17T17:00:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0a583140_317ff2bb",
+      "revId": "d80f973bd6f958a4c70f72b35906289b6cfa255f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
