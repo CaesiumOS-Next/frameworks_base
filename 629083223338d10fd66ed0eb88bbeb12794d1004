@@ -16,6 +16,24 @@
       "revId": "629083223338d10fd66ed0eb88bbeb12794d1004",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0a2cb179_4fd05e49",
+        "filename": "core/java/com/android/internal/util/XmlUtils.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 803,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2013-07-01T15:55:05Z",
+      "side": 1,
+      "message": "(and if this is really something like \"readPrimitive\", do we need to add the missing byte, char, and short?)",
+      "parentUuid": "a7204092_35435025",
+      "revId": "629083223338d10fd66ed0eb88bbeb12794d1004",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
