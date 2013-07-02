@@ -70,6 +70,24 @@
       "revId": "629083223338d10fd66ed0eb88bbeb12794d1004",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a7204092_75966845",
+        "filename": "core/java/com/android/internal/util/XmlUtils.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 803,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2013-07-02T09:22:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0a2cb179_0811fcce",
+      "revId": "629083223338d10fd66ed0eb88bbeb12794d1004",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
