@@ -88,6 +88,23 @@
       "revId": "629083223338d10fd66ed0eb88bbeb12794d1004",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a7204092_b5bac0c2",
+        "filename": "core/java/com/android/internal/util/XmlUtils.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 874,
+      "author": {
+        "id": 1014443
+      },
+      "writtenOn": "2013-07-02T09:28:37Z",
+      "side": 1,
+      "message": "FWIW. I don\u0027t really like the idea of catching a NullPointerException like this.\n\nHow about\n\n  String attribute \u003d parser.getAttributeValue( ....);\n  if (attribute \u003d\u003d null) {\n    throw new XmlPullParserException....;\n  }\n\n  try {\n  } catch (NumberFormatException nfe) {\n  }",
+      "revId": "629083223338d10fd66ed0eb88bbeb12794d1004",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
