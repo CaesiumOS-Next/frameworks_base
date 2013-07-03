@@ -105,6 +105,24 @@
       "revId": "629083223338d10fd66ed0eb88bbeb12794d1004",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c7ad346a_66682ecb",
+        "filename": "core/java/com/android/internal/util/XmlUtils.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 874,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2013-07-03T17:19:21Z",
+      "side": 1,
+      "message": "I initially did just that but then I decided to stick to the style of readThisIntArrayXml(). Now that I think of it, it would be incorrect to throw the exception if the tagName doesn\u0027t match a name of a primitive type.",
+      "parentUuid": "a7204092_b5bac0c2",
+      "revId": "629083223338d10fd66ed0eb88bbeb12794d1004",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
