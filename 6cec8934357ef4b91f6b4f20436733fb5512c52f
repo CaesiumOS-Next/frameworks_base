@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "87c33cca_a43922e0",
+        "filename": "packages/SystemUI/src/com/android/systemui/statusbar/BaseStatusBar.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 902,
+      "author": {
+        "id": 1003403
+      },
+      "writtenOn": "2013-07-12T19:00:39Z",
+      "side": 1,
+      "message": "If we want to do things this way we also need some plumbing to *cancel* this delayed dismissal, in case some other notification pops up in the next 225ms. We can probably do this in addNotificationViews.",
+      "revId": "6cec8934357ef4b91f6b4f20436733fb5512c52f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "87c33cca_441cae72",
+        "filename": "packages/SystemUI/src/com/android/systemui/statusbar/BaseStatusBar.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 907,
+      "author": {
+        "id": 1003403
+      },
+      "writtenOn": "2013-07-12T19:00:39Z",
+      "side": 1,
+      "message": "Not that the code isn\u0027t already full of magic numbers like this, but let\u0027s at least hoist this out into a constant in the file somewhere. COLLAPSE_AFTER_DISMISS_DELAY or somesuch.",
+      "revId": "6cec8934357ef4b91f6b4f20436733fb5512c52f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "87c33cca_843ea6c3",
+        "filename": "packages/SystemUI/src/com/android/systemui/statusbar/NotificationData.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 243,
+      "author": {
+        "id": 1003403
+      },
+      "writtenOn": "2013-07-12T19:00:39Z",
+      "side": 1,
+      "message": "For consistency:\n\nsetUserCleared(View row, boolean userCleared) {\n    return writeBooleanTag(row, R.id.user_cleared_tag, userCleared);\n}",
+      "revId": "6cec8934357ef4b91f6b4f20436733fb5512c52f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
