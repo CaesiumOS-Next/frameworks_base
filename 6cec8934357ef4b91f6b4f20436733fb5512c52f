@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "2780d078_0162aaea",
+        "filename": "packages/SystemUI/src/com/android/systemui/statusbar/BaseStatusBar.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 902,
+      "author": {
+        "id": 1010292
+      },
+      "writtenOn": "2013-07-12T19:04:47Z",
+      "side": 1,
+      "message": "OK, but doesn\u0027t the same thing apply to the close-after-clear-all thing?",
+      "parentUuid": "87c33cca_a43922e0",
+      "revId": "6cec8934357ef4b91f6b4f20436733fb5512c52f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "87c33cca_441cae72",
         "filename": "packages/SystemUI/src/com/android/systemui/statusbar/BaseStatusBar.java",
         "patchSetId": 2
@@ -47,6 +65,24 @@
       "writtenOn": "2013-07-12T19:00:39Z",
       "side": 1,
       "message": "For consistency:\n\nsetUserCleared(View row, boolean userCleared) {\n    return writeBooleanTag(row, R.id.user_cleared_tag, userCleared);\n}",
+      "revId": "6cec8934357ef4b91f6b4f20436733fb5512c52f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2780d078_e15ce631",
+        "filename": "packages/SystemUI/src/com/android/systemui/statusbar/NotificationData.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 243,
+      "author": {
+        "id": 1010292
+      },
+      "writtenOn": "2013-07-12T19:04:47Z",
+      "side": 1,
+      "message": "Is there any imaginable case where this would be called with user cleared as false?\nMy line of thinking was something like \u0027cleared is cleared, there\u0027s no reason to set it back\u0027.",
+      "parentUuid": "87c33cca_843ea6c3",
       "revId": "6cec8934357ef4b91f6b4f20436733fb5512c52f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
