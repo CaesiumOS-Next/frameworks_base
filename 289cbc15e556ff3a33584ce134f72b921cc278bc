@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2780d078_413112c1",
+        "filename": "packages/SystemUI/src/com/android/systemui/statusbar/phone/PhoneStatusBar.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 2171,
+      "author": {
+        "id": 1010292
+      },
+      "writtenOn": "2013-07-14T13:38:31Z",
+      "side": 1,
+      "message": "This is the part I don\u0027t really like yet. Should we factor out the collapse code into a method in BaseStatusBar and call that method here? Or disable the clear button if there\u0027s nothing to clear?",
+      "revId": "289cbc15e556ff3a33584ce134f72b921cc278bc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
