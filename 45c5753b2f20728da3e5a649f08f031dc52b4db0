@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d3189b2e_d8a7f1b1",
+        "filename": "core/java/android/service/wallpaper/WallpaperService.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 1032,
+      "author": {
+        "id": 1000559
+      },
+      "writtenOn": "2013-07-27T21:42:56Z",
+      "side": 1,
+      "message": "Can\u0027t call into the app code with this internal lock held.  There generally shouldn\u0027t be a need for locking on this, since all access is serialized through the looper.  I would guess that the only time this would be a problem is the situation where you are using WallpaperService in a separate looper, which we used to do for when it was running in the system process...  but now that it is in the system UI process, I think we no longer do that, and in fact does the API to do this even exist any more?",
+      "revId": "45c5753b2f20728da3e5a649f08f031dc52b4db0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
