@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "13d5d378_36972692",
+        "filename": "services/java/com/android/server/TextServicesManagerService.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1003530
+      },
+      "writtenOn": "2013-08-01T04:00:28Z",
+      "side": 1,
+      "message": "Let\u0027s just add\n\n if (sci \u003d\u003d null) {\n   sci \u003d findAvailSpellCheckerLocked(null, null);\n }\n\n here.",
+      "revId": "4d4ed6cb7b4a0b021d1a06564e57dcea28bf8c18",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
