@@ -16,6 +16,24 @@
       "revId": "37bc79d7677531049846802e45c2cb2fe14c09eb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f8fadc2e_3ef0c915",
+        "filename": "services/java/com/android/server/TextServicesManagerService.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1017042
+      },
+      "writtenOn": "2013-08-02T06:37:22Z",
+      "side": 1,
+      "message": "Oops, got it. Done",
+      "parentUuid": "9801e0f5_3e1fa524",
+      "revId": "37bc79d7677531049846802e45c2cb2fe14c09eb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
