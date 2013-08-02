@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9801e0f5_3e1fa524",
+        "filename": "services/java/com/android/server/TextServicesManagerService.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1003530
+      },
+      "writtenOn": "2013-08-02T05:34:13Z",
+      "side": 1,
+      "message": "No, please keep if (sci \u003d\u003d null) return; below",
+      "revId": "37bc79d7677531049846802e45c2cb2fe14c09eb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
