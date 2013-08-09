@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "78c0ac68_da6165e3",
+        "filename": "core/java/android/widget/TextView.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 1585,
+      "author": {
+        "id": 1005088
+      },
+      "writtenOn": "2013-08-09T01:43:23Z",
+      "side": 1,
+      "message": "If you do this, you need also to do it in getExtendedPaddingBottom() as the function follow the same pattern.",
+      "revId": "2713e0438d20a73b332070fdff5acd6b2d1a64a1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
