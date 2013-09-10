@@ -119,6 +119,7 @@ public class UsbHostManager {
             try {
                 // repackage interfaceValues as an array of UsbInterface
                 int intf, endp, ival = 0, eval = 0;
+                boolean hasValidInterface = false;
                 for (intf = 0; intf < numInterfaces; intf++) {
                     int interfaceId = interfaceValues[ival++];
                     int interfaceClass = interfaceValues[ival++];
@@ -136,12 +137,20 @@ public class UsbHostManager {
                                 maxPacketSize, interval);
                     }
 
-                    // don't allow if any interfaces are blacklisted
+                    // Hide blacklisted interface
                     if (isBlackListed(interfaceClass, interfaceSubclass, interfaceProtocol)) {
-                        return;
+                        interfaceClass = UsbConstants.USB_CLASS_VENDOR_SPEC;
+                        interfaceSubclass = UsbConstants.USB_SUBCLASS_VENDOR_SPEC;
+                    } else {
+                        hasValidInterface = true;
                     }
+
                     interfaces[intf] = new UsbInterface(interfaceId, interfaceClass,
                             interfaceSubclass, interfaceProtocol, endpoints);
+                }
+                if (!hasValidInterface) {
+                    // interfaces are all blacklisted
+                    return;
                 }
             } catch (Exception e) {
                 // beware of index out of bound exceptions, which might happen if
