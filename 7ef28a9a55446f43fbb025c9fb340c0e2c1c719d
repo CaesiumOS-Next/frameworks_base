@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "3e570543_d6bc55f3",
+        "filename": "services/java/com/android/server/ConnectivityService.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 1435,
+      "author": {
+        "id": 1002609
+      },
+      "writtenOn": "2013-11-08T18:47:30Z",
+      "side": 1,
+      "message": "init to DetailedState.DISCONNECTED",
+      "revId": "7ef28a9a55446f43fbb025c9fb340c0e2c1c719d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7e5dfd5e_38b4a0ba",
         "filename": "services/java/com/android/server/ConnectivityService.java",
         "patchSetId": 1
@@ -13,6 +30,23 @@
       "writtenOn": "2013-11-08T07:35:53Z",
       "side": 1,
       "message": "Code style: even single line if statements must be enclosed in brackets",
+      "revId": "7ef28a9a55446f43fbb025c9fb340c0e2c1c719d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7e5dfd5e_db2bdead",
+        "filename": "services/java/com/android/server/ConnectivityService.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 1439,
+      "author": {
+        "id": 1002609
+      },
+      "writtenOn": "2013-11-08T18:47:30Z",
+      "side": 1,
+      "message": "remove check for null - the state will be sufficient.",
       "revId": "7ef28a9a55446f43fbb025c9fb340c0e2c1c719d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
