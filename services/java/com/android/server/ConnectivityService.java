@@ -3114,6 +3114,14 @@ public class ConnectivityService extends IConnectivityManager.Stub {
             int port = 0;
             String exclList = "";
             if (proxyProperties != null && !TextUtils.isEmpty(proxyProperties.getHost())) {
+                try {
+                    validate(proxyProperties.getHost(), proxyProperties.getPort(),
+                            proxyProperties.getExclusionList());
+                } catch (IllegalArgumentException e) {
+                    if (DBG) log("Invalid proxy properties, ignoring.");
+                    e.printStackTrace();
+                    return;
+                }
                 mGlobalProxy = new ProxyProperties(proxyProperties);
                 host = mGlobalProxy.getHost();
                 port = mGlobalProxy.getPort();
@@ -3145,12 +3153,24 @@ public class ConnectivityService extends IConnectivityManager.Stub {
         int port = Settings.Global.getInt(res, Settings.Global.GLOBAL_HTTP_PROXY_PORT, 0);
         String exclList = Settings.Global.getString(res,
                 Settings.Global.GLOBAL_HTTP_PROXY_EXCLUSION_LIST);
+        try {
+            validate(host, port, exclList);
+        } catch (IllegalArgumentException e) {
+            if (DBG) log("Invalid global proxy, ignoring.");
+            e.printStackTrace();
+            return;
+        }
         if (!TextUtils.isEmpty(host)) {
             ProxyProperties proxyProperties = new ProxyProperties(host, port, exclList);
             synchronized (mProxyLock) {
                 mGlobalProxy = proxyProperties;
             }
         }
+    }
+
+    private void validate(String host, int port, String exclList) {
+        Proxy.validate(host == null ? "" : host, port == 0 ? "" : Integer.toString(port),
+                exclList == null ? "" : exclList);
     }
 
     public ProxyProperties getGlobalProxy() {

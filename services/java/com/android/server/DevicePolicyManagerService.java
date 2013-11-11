@@ -48,6 +48,7 @@ import android.content.pm.PackageManager;
 import android.content.pm.Signature;
 import android.content.pm.PackageManager.NameNotFoundException;
 import android.content.pm.ResolveInfo;
+import android.net.Proxy;
 import android.net.Uri;
 import android.os.Binder;
 import android.os.Bundle;
@@ -2159,12 +2160,23 @@ public class DevicePolicyManagerService extends IDevicePolicyManager.Stub {
         }
         exclusionList = exclusionList.trim();
         ContentResolver res = mContext.getContentResolver();
+        try {
+            validate(data[0], proxyPort, exclusionList);
+        } catch (IllegalArgumentException e) {
+            Slog.e(TAG, "Invalid proxy properties, ignoring.");
+            e.printStackTrace();
+            return;
+        }
         Settings.Global.putString(res, Settings.Global.GLOBAL_HTTP_PROXY_HOST, data[0]);
         Settings.Global.putInt(res, Settings.Global.GLOBAL_HTTP_PROXY_PORT, proxyPort);
         Settings.Global.putString(res, Settings.Global.GLOBAL_HTTP_PROXY_EXCLUSION_LIST,
                 exclusionList);
     }
 
+    private void validate(String host, int port, String exclList) {
+        Proxy.validate(host == null ? "" : host, port == 0 ? "" : Integer.toString(port),
+                exclList == null ? "" : exclList);
+    }
     /**
      * Set the storage encryption request for a single admin.  Returns the new total request
      * status (for all admins).
