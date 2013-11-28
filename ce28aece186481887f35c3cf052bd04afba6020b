@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "23dfee24_de14a55d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1014443
+      },
+      "writtenOn": "2013-11-28T10:03:05Z",
+      "side": 1,
+      "message": "Please fix your commit message.\n\nSigned-off-by: is optional and should appear at the end of the message.\n\nFollow the guidelines in http://source.android.com/source/submit-patches.html (See section titled \"Make your change\")",
+      "revId": "ce28aece186481887f35c3cf052bd04afba6020b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
