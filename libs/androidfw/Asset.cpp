@@ -860,7 +860,7 @@ const void* _CompressedAsset::getBuffer(bool wordAligned)
     }
 
     if (mMap != NULL) {
-        if (!ZipFileRO::inflateBuffer(buf, mMap->getDataPtr(),
+        if (!ZipUtils::inflateToBuffer(buf, mMap->getDataPtr(),
                 mUncompressedLen, mCompressedLen))
             goto bail;
     } else {
