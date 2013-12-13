@@ -43,7 +43,10 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Random;
 
+import junit.framework.Assert;
+
 import libcore.io.IoUtils;
+import libcore.io.Libcore;
 
 /**
  * Tests for {@link FileRotator}.
@@ -365,6 +368,26 @@ public class FileRotatorTest extends AndroidTestCase {
         // verify backup value was recovered; no_backup indicates that
         // corresponding file had no backup and should be discarded.
         assertReadAll(rotate, "bar");
+    }
+
+    public void testFileSystemInaccessible() throws Exception {
+        File inaccessibleDir = null;
+        boolean tcSuccessfull = true;
+
+        try {
+            String dirPath = getContext().getFilesDir() + File.separator + "inaccessible";
+            inaccessibleDir = new File(dirPath);
+            inaccessibleDir.mkdir();
+            final FileRotator rotate = new FileRotator(
+                    inaccessibleDir, PREFIX, SECOND_IN_MILLIS, SECOND_IN_MILLIS);
+            Libcore.os.chmod(inaccessibleDir.getPath(), 0);
+            rotate.maybeRotate(TEST_TIME);
+        } catch (Exception e) {
+            tcSuccessfull = false;
+        }
+
+        assertTrue("unable to delete directory", inaccessibleDir.delete());
+        assertTrue("test failed with an exception", tcSuccessfull);
     }
 
     private void touch(String... names) throws IOException {
