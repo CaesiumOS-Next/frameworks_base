@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "281a6bb4_668dee1a",
+        "filename": "core/java/android/app/NotificationManager.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1013823
+      },
+      "writtenOn": "2013-12-13T16:45:54Z",
+      "side": 1,
+      "message": "Remove extra line",
+      "revId": "0cd26d4d41b09b23fb0fd22044c3ca11acba3b2b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
