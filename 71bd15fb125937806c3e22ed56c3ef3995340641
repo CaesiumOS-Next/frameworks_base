@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "28d42b2d_39a62ba7",
+        "filename": "core/java/android/app/NotificationManager.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1013823
+      },
+      "writtenOn": "2013-12-16T17:52:40Z",
+      "side": 1,
+      "message": "Create a myUserHandle() helper to avoid the needless allocation for the common case (owner).  Check for owner using the pre-allocated UserHandle.OWNER.",
+      "range": {
+        "startLine": 125,
+        "startChar": 48,
+        "endLine": 125,
+        "endChar": 58
+      },
+      "revId": "71bd15fb125937806c3e22ed56c3ef3995340641",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "08d1273f_d89cd157",
+        "filename": "core/java/android/app/NotificationManager.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1013823
+      },
+      "writtenOn": "2013-12-16T17:52:40Z",
+      "side": 1,
+      "message": "Same comment as above.  Could use the same helper.",
+      "revId": "71bd15fb125937806c3e22ed56c3ef3995340641",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
