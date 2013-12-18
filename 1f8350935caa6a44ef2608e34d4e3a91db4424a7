@@ -16,6 +16,24 @@
       "revId": "1f8350935caa6a44ef2608e34d4e3a91db4424a7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a87bbb5e_22f16e0e",
+        "filename": "media/jni/android_media_MediaPlayer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 871,
+      "author": {
+        "id": 1017042
+      },
+      "writtenOn": "2013-12-18T23:17:28Z",
+      "side": 0,
+      "message": "Yes, you are right. GetStringUTFChars() checks if the first parameter is NULL or not in its implementation. Therefore, to just change \"exclusionListObj\" to \"exclusionList\" here would be enough to fix the crash.\n\nBut as you mentioned, it\u0027s meaningless to invoke GetStringUTFChars() if you already know exclusionListObj is NULL. Therefore,  we\u0027ve added NULL check before GetStringUTFChars() is invoked.",
+      "parentUuid": "085be7e1_4829ff6f",
+      "revId": "1f8350935caa6a44ef2608e34d4e3a91db4424a7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
