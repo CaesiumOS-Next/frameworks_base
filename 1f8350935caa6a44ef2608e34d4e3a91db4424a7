@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "085be7e1_4829ff6f",
+        "filename": "media/jni/android_media_MediaPlayer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 871,
+      "author": {
+        "id": 1001525
+      },
+      "writtenOn": "2013-12-18T16:45:36Z",
+      "side": 0,
+      "message": "Wouldn\u0027t it also be OK to just change \"exclusionListObj\" to \"exclusionList\" here, or am I missing something?\n(your change seems better because it avoids getting the exclusion list when it\u0027s not going to be used, but I\u0027m trying to understand what you\u0027re actually trying to fix here.)",
+      "revId": "1f8350935caa6a44ef2608e34d4e3a91db4424a7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
