@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "88db57ac_295eadd3",
+        "filename": "media/jni/android_media_MediaPlayer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 876,
+      "author": {
+        "id": 1001525
+      },
+      "writtenOn": "2013-12-19T00:00:54Z",
+      "side": 1,
+      "message": "What if exclusionList \u003d\u003d NULL ?\nShould there be another else block here that calls updateProxyConfig(host, port, \"\") like below?",
+      "revId": "af113d6eefedc288b1a717d7f02cfa9ccd45434e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
