@@ -16,6 +16,24 @@
       "revId": "af113d6eefedc288b1a717d7f02cfa9ccd45434e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8880b77a_21188e8e",
+        "filename": "media/jni/android_media_MediaPlayer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 876,
+      "author": {
+        "id": 1017042
+      },
+      "writtenOn": "2013-12-19T00:32:26Z",
+      "side": 1,
+      "message": "oh, year, thanks. i\u0027ll update patch set soon",
+      "parentUuid": "88db57ac_295eadd3",
+      "revId": "af113d6eefedc288b1a717d7f02cfa9ccd45434e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
