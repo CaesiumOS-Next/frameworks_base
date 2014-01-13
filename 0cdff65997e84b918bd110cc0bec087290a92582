@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6d3d554c_a606b275",
+        "filename": "services/java/com/android/server/WallpaperManagerService.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 693,
+      "author": {
+        "id": 1013823
+      },
+      "writtenOn": "2014-01-13T13:39:05Z",
+      "side": 1,
+      "message": "Please put common code into a common helper.",
+      "revId": "0cdff65997e84b918bd110cc0bec087290a92582",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8dea89ed_7aaa686d",
+        "filename": "services/java/com/android/server/WallpaperManagerService.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 730,
+      "author": {
+        "id": 1013823
+      },
+      "writtenOn": "2014-01-13T13:39:05Z",
+      "side": 1,
+      "message": "Do we need the same check here?  Perhaps call the same common method?",
+      "range": {
+        "startLine": 730,
+        "startChar": 16,
+        "endLine": 730,
+        "endChar": 25
+      },
+      "revId": "0cdff65997e84b918bd110cc0bec087290a92582",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
