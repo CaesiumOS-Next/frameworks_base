@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "4d909199_0f1545c4",
+        "filename": "services/java/com/android/server/WallpaperManagerService.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 693,
+      "author": {
+        "id": 1017042
+      },
+      "writtenOn": "2014-01-14T07:54:49Z",
+      "side": 1,
+      "message": "OK, will incorporate in the next patch set",
+      "parentUuid": "6d3d554c_a606b275",
+      "revId": "0cdff65997e84b918bd110cc0bec087290a92582",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8dea89ed_7aaa686d",
         "filename": "services/java/com/android/server/WallpaperManagerService.java",
         "patchSetId": 1
@@ -36,6 +54,24 @@
         "endLine": 730,
         "endChar": 25
       },
+      "revId": "0cdff65997e84b918bd110cc0bec087290a92582",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2d751d3e_0e154bc4",
+        "filename": "services/java/com/android/server/WallpaperManagerService.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 730,
+      "author": {
+        "id": 1017042
+      },
+      "writtenOn": "2014-01-14T07:54:49Z",
+      "side": 1,
+      "message": "Yes, we can use the same common method. I\u0027ll also apply the same common method to other place of this file to reduce another duplicate codes.",
+      "parentUuid": "8dea89ed_7aaa686d",
       "revId": "0cdff65997e84b918bd110cc0bec087290a92582",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
