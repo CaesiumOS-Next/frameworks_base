@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6d1635de_0c42272d",
+        "filename": "services/java/com/android/server/wm/StackTapPointerEventListener.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1003338
+      },
+      "writtenOn": "2014-01-14T02:11:55Z",
+      "side": 1,
+      "message": "I think this is not correct as we snow not have an invalid pointer stored in mPointerId in the first place :) Craig, this seems in your land...",
+      "range": {
+        "startLine": 59,
+        "startChar": 20,
+        "endLine": 59,
+        "endChar": 38
+      },
+      "revId": "b99f670c88c1b9b01a568bd4878f262db0a39f0f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
