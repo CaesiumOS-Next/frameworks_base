@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d2b1820e_1b2ebb70",
+        "filename": "tools/layoutlib/bridge/src/android/graphics/Canvas_Delegate.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 789,
+      "author": {
+        "id": 1037066
+      },
+      "writtenOn": "2014-01-29T14:58:52Z",
+      "side": 1,
+      "message": "Should path be declared as long?",
+      "revId": "84151432e7ead6666eb8cf6377bff577b2027694",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d2b1820e_db897313",
+        "filename": "tools/layoutlib/bridge/src/android/graphics/Matrix_Delegate.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 657,
+      "author": {
+        "id": 1037066
+      },
+      "writtenOn": "2014-01-29T14:58:52Z",
+      "side": 1,
+      "message": "Should inverse be long as well?",
+      "revId": "84151432e7ead6666eb8cf6377bff577b2027694",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
