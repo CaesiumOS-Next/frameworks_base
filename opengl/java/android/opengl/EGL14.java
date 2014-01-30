@@ -159,6 +159,12 @@ public static final int EGL_CORE_NATIVE_ENGINE             = 0x305B;
     public static native EGLDisplay eglGetDisplay(
         int display_id
     );
+    /**
+     * {@hide}
+     */
+    public static native EGLDisplay eglGetDisplay(
+        long display_id
+    );
 
     // C function EGLBoolean eglInitialize ( EGLDisplay dpy, EGLint *major, EGLint *minor )
 
@@ -333,7 +339,17 @@ public static final int EGL_CORE_NATIVE_ENGINE             = 0x305B;
         int[] attrib_list,
         int offset
     );
-
+    /**
+     * {@hide}
+     */
+    public static native EGLSurface eglCreatePbufferFromClientBuffer(
+        EGLDisplay dpy,
+        int buftype,
+        long buffer,
+        EGLConfig config,
+        int[] attrib_list,
+        int offset
+    );
     // C function EGLBoolean eglSurfaceAttrib ( EGLDisplay dpy, EGLSurface surface, EGLint attribute, EGLint value )
 
     public static native boolean eglSurfaceAttrib(
