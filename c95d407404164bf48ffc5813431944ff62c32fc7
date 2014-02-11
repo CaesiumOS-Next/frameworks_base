@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "0f405174_4037f065",
+        "filename": "core/jni/android_view_GLES20Canvas.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1014443
+      },
+      "writtenOn": "2014-02-11T19:44:29Z",
+      "side": 1,
+      "message": "uint64_t might be a better choice. This array contains either contains pointers of width or height values (yay, type safety!) all of which should be usigned values.\n\nccraik: what do you think ?",
+      "parentUuid": "4f3ec9eb_a296c0be",
+      "revId": "c95d407404164bf48ffc5813431944ff62c32fc7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0fabf157_e8c62b56",
         "filename": "libs/hwui/AssetAtlas.cpp",
         "patchSetId": 1
