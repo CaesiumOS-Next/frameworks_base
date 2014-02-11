@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "4f3ec9eb_a296c0be",
+        "filename": "core/jni/android_view_GLES20Canvas.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1037066
+      },
+      "writtenOn": "2014-02-11T19:41:58Z",
+      "side": 1,
+      "message": "Will change to int64_t",
+      "parentUuid": "0fabf157_28c5234c",
+      "revId": "c95d407404164bf48ffc5813431944ff62c32fc7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0fabf157_e8c62b56",
         "filename": "libs/hwui/AssetAtlas.cpp",
         "patchSetId": 1
@@ -42,6 +60,24 @@
     },
     {
       "key": {
+        "uuid": "0fabf157_0b1ce150",
+        "filename": "libs/hwui/AssetAtlas.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1037066
+      },
+      "writtenOn": "2014-02-11T19:41:58Z",
+      "side": 1,
+      "message": "Good catch. Will change to int64_t",
+      "parentUuid": "0fabf157_e8c62b56",
+      "revId": "c95d407404164bf48ffc5813431944ff62c32fc7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0f405174_c044a069",
         "filename": "libs/hwui/AssetAtlas.h",
         "patchSetId": 1
@@ -53,6 +89,24 @@
       "writtenOn": "2014-02-11T17:46:50Z",
       "side": 1,
       "message": "Sigh, is this a public API ?",
+      "revId": "c95d407404164bf48ffc5813431944ff62c32fc7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4f3ec9eb_228bd09a",
+        "filename": "libs/hwui/AssetAtlas.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1037066
+      },
+      "writtenOn": "2014-02-11T19:41:58Z",
+      "side": 1,
+      "message": "I think it is not. I was able to build 32 bit Android after making the change.",
+      "parentUuid": "0f405174_c044a069",
       "revId": "c95d407404164bf48ffc5813431944ff62c32fc7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
