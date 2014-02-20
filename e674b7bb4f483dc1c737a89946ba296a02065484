@@ -16,6 +16,24 @@
       "revId": "e674b7bb4f483dc1c737a89946ba296a02065484",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cfa71922_4b7205b8",
+        "filename": "core/jni/android_view_GLES20Canvas.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1037066
+      },
+      "writtenOn": "2014-02-20T10:24:36Z",
+      "side": 1,
+      "message": "Sure, No problem.",
+      "parentUuid": "cfa71922_cb6555f1",
+      "revId": "e674b7bb4f483dc1c737a89946ba296a02065484",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
