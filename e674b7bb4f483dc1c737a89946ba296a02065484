@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cfa71922_cb6555f1",
+        "filename": "core/jni/android_view_GLES20Canvas.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1014443
+      },
+      "writtenOn": "2014-02-20T10:16:22Z",
+      "side": 1,
+      "message": "Sorry, I didn\u0027t notice this loop earlier. It\u0027s probably easiest to make atlasMap int64_t* and then reinterpret_cast jAtlasMap to int64_t* . That conversion is safe because jlong is guaranteed to be a 64bit signed integer (and jni.h typedef jlong to int64_t.\n\nSince I gave the bad advice about uint64_t in the first place, I\u0027ll make this change on your behalf. What do you think ?",
+      "revId": "e674b7bb4f483dc1c737a89946ba296a02065484",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
