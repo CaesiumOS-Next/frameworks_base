@@ -45,6 +45,30 @@
       "revId": "ca098e8cdd296f70add8cd879aca5c99c8f15e24",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1c7df19f_9bd2730f",
+        "filename": "services/java/com/android/server/LocationManagerService.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 262,
+      "author": {
+        "id": 1014499
+      },
+      "writtenOn": "2014-03-04T03:44:34Z",
+      "side": 1,
+      "message": "We encounter it will come to here in CTS-verifier for GPS.\nalthough the user id is the same it can still reach here. According to original logic, it will do switchUser() and will\nquickly off/on GPS modules.",
+      "parentUuid": "3c971504_a1f7f8a3",
+      "range": {
+        "startLine": 262,
+        "startChar": 0,
+        "endLine": 262,
+        "endChar": 20
+      },
+      "revId": "ca098e8cdd296f70add8cd879aca5c99c8f15e24",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
