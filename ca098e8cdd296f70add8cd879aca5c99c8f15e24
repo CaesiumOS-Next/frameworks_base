@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7c0a6d15_82e89bd4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1018045
+      },
+      "writtenOn": "2014-03-04T02:23:02Z",
+      "side": 1,
+      "message": "In what case userId doesn\u0027t change? I think it shouldn\u0027t happen.",
+      "range": {
+        "startLine": 9,
+        "startChar": 40,
+        "endLine": 9,
+        "endChar": 50
+      },
+      "revId": "ca098e8cdd296f70add8cd879aca5c99c8f15e24",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3c971504_a1f7f8a3",
+        "filename": "services/java/com/android/server/LocationManagerService.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 262,
+      "author": {
+        "id": 1018045
+      },
+      "writtenOn": "2014-03-04T02:23:02Z",
+      "side": 1,
+      "message": "How can that happen? In ActivityManagerService.switchUser there is a specific check against such a case - no other way to reach here on run time. An error log should be added.",
+      "range": {
+        "startLine": 262,
+        "startChar": 0,
+        "endLine": 262,
+        "endChar": 20
+      },
+      "revId": "ca098e8cdd296f70add8cd879aca5c99c8f15e24",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
