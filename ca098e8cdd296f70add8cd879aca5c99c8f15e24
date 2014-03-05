@@ -93,6 +93,30 @@
       "revId": "ca098e8cdd296f70add8cd879aca5c99c8f15e24",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1c7df19f_cd4104c7",
+        "filename": "services/java/com/android/server/LocationManagerService.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 262,
+      "author": {
+        "id": 1014499
+      },
+      "writtenOn": "2014-03-05T07:47:52Z",
+      "side": 1,
+      "message": "Hi,elad, in fact, it is not related with CTS-verifier. The process is like: launch systemserver---\u003eLocationManagerService(register to receive ACTION_USER_SWITCHED)----\u003eActivityManagerService--\u003eSystemReady\nIn the end of SystemReady(), it will do one time sendUserSwitchBroadcastsLocked which will send out ACTION_USER_SWITCHED. Then LocationManagerService will get it and original logic here will do one time switchUser no matter UserId is changed or not. Then it will quickly switch off/on GPS modules one time. In our board, it will cause GPS module\nfail, you know there is no delay between off and on. Most of hardware will fail to init in such case. Then if you don\u0027t manually reopen GPS again, it will stay corrupted. In fact, if UserId is the same, this intent can be omitted.\nYou can add log here to see it will do once redundant switchUser when boot is ready.",
+      "parentUuid": "1cc2511e_306d868a",
+      "range": {
+        "startLine": 262,
+        "startChar": 0,
+        "endLine": 262,
+        "endChar": 20
+      },
+      "revId": "ca098e8cdd296f70add8cd879aca5c99c8f15e24",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
