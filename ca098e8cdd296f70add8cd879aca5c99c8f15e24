@@ -141,6 +141,30 @@
       "revId": "ca098e8cdd296f70add8cd879aca5c99c8f15e24",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1c7df19f_324810a3",
+        "filename": "services/java/com/android/server/LocationManagerService.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 262,
+      "author": {
+        "id": 1014499
+      },
+      "writtenOn": "2014-03-06T02:05:51Z",
+      "side": 1,
+      "message": "It won\u0027t do blocking on case of any. It is only a logic processing change for LocationManagerService when it gets the intent from SystemReady or ActivityManagerService. Indeed if the userId is the same with before, There is no need for LocationManagerService to do its own switchUser. It is redundant.",
+      "parentUuid": "fcce5d4a_d279a40b",
+      "range": {
+        "startLine": 262,
+        "startChar": 0,
+        "endLine": 262,
+        "endChar": 20
+      },
+      "revId": "ca098e8cdd296f70add8cd879aca5c99c8f15e24",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
