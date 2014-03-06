@@ -117,6 +117,30 @@
       "revId": "ca098e8cdd296f70add8cd879aca5c99c8f15e24",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fcce5d4a_d279a40b",
+        "filename": "services/java/com/android/server/LocationManagerService.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 262,
+      "author": {
+        "id": 1018045
+      },
+      "writtenOn": "2014-03-06T01:06:55Z",
+      "side": 1,
+      "message": "So you are saying that your new code will do the blocking on case of SystemReady? If true then, there is a scenario  1. On SystemReady - you might block \n2. Next, the API ActivityManagerService.switchUser might block because (oldUserId \u003d\u003d userId).\n\nThe result will be that nothing was done.\n\nAn other thing is that - I don\u0027t think it is ok to solve HW problems on framework layer, because there are many HW types each has its own \"walk around\"s needs.",
+      "parentUuid": "1c7df19f_cd4104c7",
+      "range": {
+        "startLine": 262,
+        "startChar": 0,
+        "endLine": 262,
+        "endChar": 20
+      },
+      "revId": "ca098e8cdd296f70add8cd879aca5c99c8f15e24",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
