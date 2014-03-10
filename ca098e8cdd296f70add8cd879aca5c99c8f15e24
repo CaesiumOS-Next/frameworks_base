@@ -165,6 +165,24 @@
       "revId": "ca098e8cdd296f70add8cd879aca5c99c8f15e24",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9c2ba1c2_c392caf9",
+        "filename": "services/java/com/android/server/LocationManagerService.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 262,
+      "author": {
+        "id": 1019174
+      },
+      "writtenOn": "2014-03-10T19:54:59Z",
+      "side": 1,
+      "message": "This looks good but I would recommend moving the logic inside switchUser for clarity (to keep the if statement closer to where mCurrentUserId is set).",
+      "parentUuid": "1c7df19f_324810a3",
+      "revId": "ca098e8cdd296f70add8cd879aca5c99c8f15e24",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
