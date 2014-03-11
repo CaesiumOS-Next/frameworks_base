@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9c2ba1c2_3ade5ff6",
+        "filename": "services/java/com/android/server/LocationManagerService.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 456,
+      "author": {
+        "id": 1019174
+      },
+      "writtenOn": "2014-03-11T18:46:42Z",
+      "side": 1,
+      "message": "Per the Android style guide, can you please reformat to one of the allowed styles:\nif (mCurrentUserId \u003d\u003d userId) return;\nOR\nif (mCurrentUserId \u003d\u003d userId) {\n    return;\n}\n\nhttp://source.android.com/source/code-style.html#use-standard-brace-style",
+      "revId": "ee4676d31bcb8ceecaf2c8c6064099d41a688a71",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
