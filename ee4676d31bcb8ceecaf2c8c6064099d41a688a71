@@ -16,6 +16,24 @@
       "revId": "ee4676d31bcb8ceecaf2c8c6064099d41a688a71",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fce81dcd_e6770f5c",
+        "filename": "services/java/com/android/server/LocationManagerService.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 456,
+      "author": {
+        "id": 1015194
+      },
+      "writtenOn": "2014-03-11T22:05:57Z",
+      "side": 1,
+      "message": "I agree with this and prefer braces. This is otherwise a pretty safe change to make, though I\u0027m curious what sort of situation leads to receiving a user changed broadcast with the same userID as current...",
+      "parentUuid": "9c2ba1c2_3ade5ff6",
+      "revId": "ee4676d31bcb8ceecaf2c8c6064099d41a688a71",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
