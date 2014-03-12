@@ -34,6 +34,24 @@
       "revId": "ee4676d31bcb8ceecaf2c8c6064099d41a688a71",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fce81dcd_f24425d9",
+        "filename": "services/java/com/android/server/LocationManagerService.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 456,
+      "author": {
+        "id": 1014499
+      },
+      "writtenOn": "2014-03-12T02:21:28Z",
+      "side": 1,
+      "message": "OK, got it, Thank you both.",
+      "parentUuid": "fce81dcd_e6770f5c",
+      "revId": "ee4676d31bcb8ceecaf2c8c6064099d41a688a71",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
