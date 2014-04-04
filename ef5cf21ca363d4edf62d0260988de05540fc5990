@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "99873329_e90b553b",
+        "filename": "services/java/com/android/server/pm/PackageManagerService.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 4720,
+      "author": {
+        "id": 1014443
+      },
+      "writtenOn": "2014-04-04T08:39:37Z",
+      "side": 1,
+      "message": "I think this needs a bit more work. \n\nI also think we should decouple the ro.cpu.abilist from the zygote support.\n\nI don\u0027t think it\u0027s necessarily a *bad* assumption that the primary zygote will be the first item on the list, but the secondary zygote need not be the secondary item on the list, take the example of a device whose abilist is \"armeabi-v7a,armeabi, armv8-a\"\n\nFor such a device, I was thinking of having something like :\n\nro.zygote.primary_abis\u003darmeabi-v7a,armeabi\nro.zygote.secondary_abis\u003darmv8-a\n\nWe will also guarantee that all items in ro.cpu.abilist are represented by one of the zygotes.\n\nThis code need not change, but the code in Process.java will need to.",
+      "revId": "ef5cf21ca363d4edf62d0260988de05540fc5990",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
