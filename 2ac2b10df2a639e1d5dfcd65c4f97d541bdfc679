@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f96f4f39_f81319b2",
+        "filename": "services/java/com/android/server/am/ActivityRecord.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 946,
+      "author": {
+        "id": 1013810
+      },
+      "writtenOn": "2014-04-07T17:01:56Z",
+      "side": 1,
+      "message": "Use local mStackSupervisor (remove service.). Then I\u0027ll approve it.",
+      "revId": "2ac2b10df2a639e1d5dfcd65c4f97d541bdfc679",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
