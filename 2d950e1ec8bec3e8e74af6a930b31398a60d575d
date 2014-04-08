@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "39d4872d_b9e91b68",
+        "filename": "services/java/com/android/server/pm/PackageManagerService.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 4703,
+      "author": {
+        "id": 1040283
+      },
+      "writtenOn": "2014-04-08T12:24:37Z",
+      "side": 1,
+      "message": "So if I understand correctly, you intend to store the copied Abi in requiredCpuAbi regardless of the decision about which Zygote can run it or regardless of whether it is the primary/secondary ABI. For example, you are not setting this to null even if the Abi returned is supported by the primary Zygote.\n\nI am only asking because this is tied to what is matched but the comment about requiredCpuAbi in ApplicationInfo.java might imply that we set this to what we decide rather than what the automatic selection process will come up with.\n\nJust a thought to make it clearer for anyone reading the comments.",
+      "revId": "2d950e1ec8bec3e8e74af6a930b31398a60d575d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
