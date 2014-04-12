@@ -140,10 +140,13 @@ public final class LoadedApk {
                 ActivityThread.mSystemContext =
                     ContextImpl.createSystemContext(mainThread);
                 ResourcesManager resourcesManager = ResourcesManager.getInstance();
+                DisplayMetrics dm = null;
+                synchronized(resourcesManager) {
+                    dm = resourcesManager.getDisplayMetricsLocked(
+                                 Display.DEFAULT_DISPLAY, mDisplayAdjustments),
+                }
                 ActivityThread.mSystemContext.getResources().updateConfiguration(
-                        resourcesManager.getConfiguration(),
-                        resourcesManager.getDisplayMetricsLocked(
-                                 Display.DEFAULT_DISPLAY, mDisplayAdjustments), compatInfo);
+                        resourcesManager.getConfiguration(), dm, compatInfo);
                 //Slog.i(TAG, "Created system resources "
                 //        + mSystemContext.getResources() + ": "
                 //        + mSystemContext.getResources().getConfiguration());
