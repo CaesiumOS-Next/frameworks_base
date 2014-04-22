@@ -740,6 +740,9 @@ public class LockPatternUtils {
      * @return The pattern.
      */
     public static List<LockPatternView.Cell> stringToPattern(String string) {
+        if (string == null || string.equals("")) {
+            return null;
+        }
         List<LockPatternView.Cell> result = Lists.newArrayList();
 
         final byte[] bytes = string.getBytes();
