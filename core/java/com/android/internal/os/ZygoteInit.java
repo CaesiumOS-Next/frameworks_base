@@ -35,6 +35,7 @@ import android.util.Log;
 
 import dalvik.system.VMRuntime;
 
+import libcore.io.ErrnoException;
 import libcore.io.IoUtils;
 
 import java.io.BufferedReader;
@@ -564,8 +565,21 @@ public class ZygoteInit {
         return result;
     }
 
+    private static void setNoNewPrivs() {
+        try {
+            Libcore.os.prctl(OsConstants.PR_SET_NO_NEW_PRIVS, 1, 0, 0, 0);
+        } catch (ErrnoException e) {
+            // Older kernels don't understand PR_SET_NO_NEW_PRIVS and return
+            // EINVAL. Don't die on such kernels.
+            if (e.errno != OsConstants.EINVAL) {
+                throw new RuntimeException(e);
+            }
+        }
+    }
+
     public static void main(String argv[]) {
         try {
+            setNoNewPrivs();
             // Start profiling the zygote initialization.
             SamplingProfilerIntegration.start();
 
