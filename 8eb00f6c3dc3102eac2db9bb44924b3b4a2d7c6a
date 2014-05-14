@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "aa9578be_fb772f14",
+        "filename": "libs/hwui/PixelBuffer.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1010333
+      },
+      "writtenOn": "2014-05-14T22:47:32Z",
+      "side": 1,
+      "message": "don\u0027t add trailing whitespace",
+      "revId": "8eb00f6c3dc3102eac2db9bb44924b3b4a2d7c6a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
