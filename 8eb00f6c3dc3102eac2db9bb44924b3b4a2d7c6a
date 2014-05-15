@@ -16,6 +16,24 @@
       "revId": "8eb00f6c3dc3102eac2db9bb44924b3b4a2d7c6a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ca71cc8d_7d530b4b",
+        "filename": "libs/hwui/PixelBuffer.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1030631
+      },
+      "writtenOn": "2014-05-15T03:32:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "aa9578be_fb772f14",
+      "revId": "8eb00f6c3dc3102eac2db9bb44924b3b4a2d7c6a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
