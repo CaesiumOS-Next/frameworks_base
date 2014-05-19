@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2a58a819_e36a1a6c",
+        "filename": "core/java/android/ddm/DdmHandleHello.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1014443
+      },
+      "writtenOn": "2014-05-19T15:17:25Z",
+      "side": 1,
+      "message": "Again, instructionSetDescription or similar ? This isn\u0027t really an ABI.",
+      "revId": "39fe944fcc9d72d23427be92b79e6cd4f8799c84",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
