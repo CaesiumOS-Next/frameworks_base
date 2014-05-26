@@ -810,10 +810,8 @@ public class WifiP2pService extends IWifiP2pManager.Stub {
                 case WifiStateMachine.CMD_ENABLE_P2P:
                     try {
                         mNwService.setInterfaceUp(mInterface);
-                    } catch (RemoteException re) {
-                        loge("Unable to change interface settings: " + re);
-                    } catch (IllegalStateException ie) {
-                        loge("Unable to change interface settings: " + ie);
+                    } catch (Exception e) {
+                        loge("Unable to change interface settings: " + e);
                     }
                     mWifiMonitor.startMonitoring();
                     transitionTo(mP2pEnablingState);
