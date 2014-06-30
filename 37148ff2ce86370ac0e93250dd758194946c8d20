@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a47bf135_4b6d85d2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2014-06-30T17:58:58Z",
+      "side": 1,
+      "message": "support",
+      "revId": "37148ff2ce86370ac0e93250dd758194946c8d20",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a47bf135_cbaad5a8",
+        "filename": "libs/androidfw/AssetManager.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 369,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2014-06-30T17:58:58Z",
+      "side": 1,
+      "message": "a comment above this block?",
+      "revId": "37148ff2ce86370ac0e93250dd758194946c8d20",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a47bf135_ab43c925",
+        "filename": "libs/androidfw/AssetManager.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 781,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2014-06-30T17:58:58Z",
+      "side": 1,
+      "message": "do we deliberately not do the fix at the ResTable level? is this the only caller of ResTable::getLocales?",
+      "revId": "37148ff2ce86370ac0e93250dd758194946c8d20",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
