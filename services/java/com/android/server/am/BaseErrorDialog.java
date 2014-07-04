@@ -41,7 +41,7 @@ class BaseErrorDialog extends AlertDialog {
 
     public void onStart() {
         super.onStart();
-        setEnabled(false);
+        mHandler.sendEmptyMessage(-1);
         mHandler.sendMessageDelayed(mHandler.obtainMessage(0), 1000);
     }
 
@@ -74,6 +74,8 @@ class BaseErrorDialog extends AlertDialog {
             if (msg.what == 0) {
                 mConsuming = false;
                 setEnabled(true);
+            } else if (msg.what == -1) {
+                setEnabled(false);
             }
         }
     };
