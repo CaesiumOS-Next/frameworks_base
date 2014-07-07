@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c4c385c9_38e1d1b1",
+        "filename": "services/java/com/android/server/am/ActivityManagerService.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 7724,
+      "author": {
+        "id": 1013810
+      },
+      "writtenOn": "2014-07-07T16:21:54Z",
+      "side": 1,
+      "message": "Doesn\u0027t this check here cover the same issue? The ContentProviderRecord will remain in mLaunchingProviders until it is fully published. We can\u0027t pass through the code below a second time.",
+      "range": {
+        "startLine": 7714,
+        "startChar": 0,
+        "endLine": 7724,
+        "endChar": 29
+      },
+      "revId": "b1a7e84cc07493c4bbfaf8c7038158837c7779dc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
