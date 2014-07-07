@@ -22,6 +22,24 @@
       "revId": "b1a7e84cc07493c4bbfaf8c7038158837c7779dc",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a46e91ae_48568be3",
+        "filename": "services/java/com/android/server/am/ActivityManagerService.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 7724,
+      "author": {
+        "id": 1023586
+      },
+      "writtenOn": "2014-07-07T21:02:26Z",
+      "side": 1,
+      "message": "If a process is launched by broadcast, the providers of the process will not be added to mLaunchingProviders, because there is no explicit access to provider, getContentProviderImpl will not be called.\n\nBut these providers will still be created during the process initialization: ActivityThread:handleBindApplication -\u003e installContentProviders.\n\nBefore installContentProviders published to ActivityManagerService, if someone try to access its provider in the timing, installContentProviders will be called again.",
+      "parentUuid": "c4c385c9_38e1d1b1",
+      "revId": "b1a7e84cc07493c4bbfaf8c7038158837c7779dc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
