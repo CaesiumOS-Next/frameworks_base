@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d9045004_99480c78",
+        "filename": "services/java/com/android/server/connectivity/Vpn.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 376,
+      "author": {
+        "id": 1002609
+      },
+      "writtenOn": "2014-07-10T15:42:57Z",
+      "side": 1,
+      "message": "I belive this is already handled by the setRoutes call on line 405.",
+      "range": {
+        "startLine": 376,
+        "startChar": 0,
+        "endLine": 376,
+        "endChar": 40
+      },
+      "revId": "09e5eac3010d12be1e82d6d2b7bf58357e7d846c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f9f75445_3aad681f",
+        "filename": "services/java/com/android/server/connectivity/Vpn.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 1144,
+      "author": {
+        "id": 1002609
+      },
+      "writtenOn": "2014-07-10T15:42:57Z",
+      "side": 1,
+      "message": "this is handled by the setRoutes call on line 1154",
+      "range": {
+        "startLine": 1144,
+        "startChar": 0,
+        "endLine": 1144,
+        "endChar": 60
+      },
+      "revId": "09e5eac3010d12be1e82d6d2b7bf58357e7d846c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
