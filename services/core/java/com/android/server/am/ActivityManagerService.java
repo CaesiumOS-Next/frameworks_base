@@ -1267,7 +1267,14 @@ public final class ActivityManagerService extends ActivityManagerNative
                         }
                         return;
                     }
-                    if (mShowDialogs && !mSleeping && !mShuttingDown) {
+
+                    // Do not show the dialog for system ui to not block keyguard from showing
+                    if (proc.processName.equals("com.android.systemui")) {
+                        Slog.w(TAG, "Skipping crash dialog of " + proc);
+                        if (res != null) {
+                            res.set(0);
+                        }
+                    } else if (mShowDialogs && !mSleeping && !mShuttingDown) {
                         Dialog d = new AppErrorDialog(mContext,
                                 ActivityManagerService.this, res, proc);
                         d.show();
