@@ -99,6 +99,24 @@
       "revId": "c91fac6120ed0c754384becf16af8e02fa844d8d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "96b467df_23d2d871",
+        "filename": "libs/androidfw/ZipFileRO.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2014-08-08T12:29:23Z",
+      "side": 1,
+      "message": "I was confused by the different meanings attached to the same \"cookie\" word. Sorry for this.",
+      "parentUuid": "96b467df_806b9af2",
+      "revId": "c91fac6120ed0c754384becf16af8e02fa844d8d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
