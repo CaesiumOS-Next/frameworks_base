@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "96b467df_205c8e63",
+        "filename": "libs/androidfw/ZipFileRO.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2014-08-08T12:12:32Z",
+      "side": 1,
+      "message": "This was allocated with new. You should use delete.",
+      "range": {
+        "startLine": 58,
+        "startChar": 8,
+        "endLine": 58,
+        "endChar": 12
+      },
+      "revId": "c91fac6120ed0c754384becf16af8e02fa844d8d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b6e5ebf4_816b9ef2",
+        "filename": "libs/androidfw/ZipFileRO.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2014-08-08T12:12:32Z",
+      "side": 1,
+      "message": "what about here?\n\n(you should set it to NULL, and eventually warn that this was not called when destructing maybe?)",
+      "range": {
+        "startLine": 168,
+        "startChar": 11,
+        "endLine": 168,
+        "endChar": 49
+      },
+      "revId": "c91fac6120ed0c754384becf16af8e02fa844d8d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
