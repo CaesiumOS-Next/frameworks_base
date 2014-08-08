@@ -81,6 +81,24 @@
       "revId": "c91fac6120ed0c754384becf16af8e02fa844d8d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d6e89fcd_85a648ab",
+        "filename": "libs/androidfw/ZipFileRO.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1014443
+      },
+      "writtenOn": "2014-08-08T12:17:34Z",
+      "side": 1,
+      "message": "I think the real issue here is that we should just get rid of the cookie field. It\u0027s useless and isn\u0027t used for anything. I think it\u0027s the remnants of some refactoring. The correct sequence of calls (which leaks no memory) is :\n\n   void *cookie;\n   startIteration(\u0026cookie);\n   nextEntry(cookie)\n   endIteration(cookie);\n\nThe cookie isn\u0027t supposed to be owned by the class.",
+      "parentUuid": "96b467df_806b9af2",
+      "revId": "c91fac6120ed0c754384becf16af8e02fa844d8d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
