@@ -117,6 +117,24 @@
       "revId": "c91fac6120ed0c754384becf16af8e02fa844d8d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d6e89fcd_4591a042",
+        "filename": "libs/androidfw/ZipFileRO.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1052243
+      },
+      "writtenOn": "2014-08-08T12:30:31Z",
+      "side": 1,
+      "message": "No worries. It took me a while to understand it too ;).",
+      "parentUuid": "96b467df_23d2d871",
+      "revId": "c91fac6120ed0c754384becf16af8e02fa844d8d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
