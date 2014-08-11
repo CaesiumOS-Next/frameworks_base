@@ -16,6 +16,24 @@
       "revId": "8e7202cb39f1112f254e80e010958a97c7d96132",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b6e5ebf4_30a20e84",
+        "filename": "libs/androidfw/ZipFileRO.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1052243
+      },
+      "writtenOn": "2014-08-11T07:35:16Z",
+      "side": 1,
+      "message": "I\u0027m happy to move it there. Could you just explain me why is it better there so that I know for the future please?",
+      "parentUuid": "9699c785_b587ea89",
+      "revId": "8e7202cb39f1112f254e80e010958a97c7d96132",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
