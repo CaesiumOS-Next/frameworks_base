@@ -34,6 +34,24 @@
       "revId": "8e7202cb39f1112f254e80e010958a97c7d96132",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "56a3cfb2_16e8bcc8",
+        "filename": "libs/androidfw/ZipFileRO.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1014443
+      },
+      "writtenOn": "2014-08-11T08:50:56Z",
+      "side": 1,
+      "message": "If you add another code path that deletes a _ZipEntryRO that has a cookie set, you won\u0027t have risk forgetting the call EndIteration.\n\nAlso, I don\u0027t think we want the cookie to be used independently of _ZipEntryRO, i.e its lifecycle is tied to it.\n\nOne thing that doesn\u0027t make it as clear cut is that _ZipEntryRO is used to hold data needed for startIteration as well as findEntryByName. I think the reason we chose to do that was because there\u0027s a large amount of overlap in the data required and it seemed overkill to have two different classes for that.",
+      "parentUuid": "b6e5ebf4_30a20e84",
+      "revId": "8e7202cb39f1112f254e80e010958a97c7d96132",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
