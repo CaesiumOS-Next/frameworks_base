@@ -1040,12 +1040,7 @@ static void conditionally_log_binder_call(int64_t start_millis,
 // have gettid, so we just ignore this and don't log if we can't
 // get the thread id.
 static bool should_time_binder_calls() {
-#ifdef HAVE_GETTID
-  return (getpid() == androidGetTid());
-#else
-#warning no gettid(), so not logging Binder calls...
-  return false;
-#endif
+  return (getpid() == gettid());
 }
 
 static jboolean android_os_BinderProxy_transact(JNIEnv* env, jobject obj,
