@@ -168,7 +168,7 @@ static void maybeCreateDalvikCache() {
     // We always perform these steps because the directory might
     // already exist, with wider permissions and a different owner
     // than we'd like.
-    result = chown(dalvikCacheDir, AID_SYSTEM, AID_SYSTEM);
+    result = chown(dalvikCacheDir, AID_ROOT, AID_ROOT);
     LOG_ALWAYS_FATAL_IF((result < 0), "Error changing dalvik-cache ownership : %s", strerror(errno));
 
     result = chmod(dalvikCacheDir, 0771);
