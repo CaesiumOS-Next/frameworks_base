@@ -451,6 +451,7 @@ public final class SystemServer {
         boolean disableNetwork = SystemProperties.getBoolean("config.disable_network", false);
         boolean disableNetworkTime = SystemProperties.getBoolean("config.disable_networktime", false);
         boolean isEmulator = SystemProperties.get("ro.kernel.qemu").equals("1");
+	boolean disableAtlas = SystemProperties.getBoolean("config.disable_atlas", true);
 
         try {
             Slog.i(TAG, "Reading configuration...");
@@ -986,7 +987,7 @@ public final class SystemServer {
                 mSystemServiceManager.startService(DreamManagerService.class);
             }
 
-            if (!disableNonCoreServices) {
+            if (!disableNonCoreServices && !disableAtlas) {
                 traceBeginAndSlog("StartAssetAtlasService");
                 try {
                     atlas = new AssetAtlasService(context);
