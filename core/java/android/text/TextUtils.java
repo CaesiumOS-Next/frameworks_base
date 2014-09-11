@@ -1140,8 +1140,8 @@ public class TextUtils {
 
             int remaining = len - (right - left);
             if (preserveLength) {
-                if (remaining > 0) { // else eliminate the ellipsis too
-                    buf[left++] = ellipsis.charAt(0);
+                for (int i = 0; i < remaining && i < ellipsis.length(); i++) {
+                    buf[left++] = ellipsis.charAt(i);
                 }
                 for (int i = left; i < right; i++) {
                     buf[i] = ZWNBS_CHAR;
