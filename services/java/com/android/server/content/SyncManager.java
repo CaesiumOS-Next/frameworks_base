@@ -272,6 +272,7 @@ public class SyncManager {
     }
 
     public void updateRunningAccounts() {
+        ArrayList<ActiveSyncContext> syncFinishedOrCanceledList = Lists.newArrayList();
         mRunningAccounts = AccountManagerService.getSingleton().getRunningAccounts();
 
         if (mBootCompleted) {
@@ -282,10 +283,14 @@ public class SyncManager {
             if (!containsAccountAndUser(mRunningAccounts,
                     currentSyncContext.mSyncOperation.account,
                     currentSyncContext.mSyncOperation.userId)) {
-                Log.d(TAG, "canceling sync since the account is no longer running");
-                sendSyncFinishedOrCanceledMessage(currentSyncContext,
-                        null /* no result since this is a cancel */);
+                syncFinishedOrCanceledList.add(currentSyncContext);
             }
+        }
+
+        for (ActiveSyncContext syncFinishedOrCanceledContext : syncFinishedOrCanceledList) {
+            Log.d(TAG, "canceling sync since the account is no longer running");
+            sendSyncFinishedOrCanceledMessage(syncFinishedOrCanceledContext,
+                        null /* no result since this is a cancel */);
         }
 
         // we must do this since we don't bother scheduling alarms when
