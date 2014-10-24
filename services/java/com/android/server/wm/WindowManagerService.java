@@ -4694,14 +4694,14 @@ public class WindowManagerService extends IWindowManager.Stub
                 }
             }
         }
-        // Never put an app window underneath wallpaper.
-        for (int pos = NW - 1; pos >= 0; pos--) {
-            if (windows.get(pos).mIsWallpaper) {
-                if (DEBUG_REORDER) Slog.v(TAG, "Found wallpaper @" + pos);
-                return pos + 1;
+        for (int pos = 0; pos < NW; pos++) {
+            int type = windows.get(pos).mAttrs.type;
+            if (type != TYPE_WALLPAPER && type != TYPE_UNIVERSE_BACKGROUND) {
+                if (DEBUG_REORDER) Slog.v(TAG, "Found first non-wallpaper window @" + pos);
+                return pos;
             }
         }
-        return 0;
+        return NW;
     }
 
     private final int reAddWindowLocked(int index, WindowState win) {
