@@ -228,7 +228,8 @@ check_filename(const char* filename, const char* package, buffer_type* name)
         }
 #endif
 
-#ifdef OS_CASE_SENSITIVE
+// Only linux filesystem is case sensitive.
+#if defined(__linux__)
         valid = (expected == p);
 #else
         valid = !strcasecmp(expected.c_str(), p);
