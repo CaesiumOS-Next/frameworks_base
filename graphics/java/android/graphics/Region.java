@@ -380,6 +380,10 @@ public class Region implements Parcelable {
     protected void finalize() throws Throwable {
         try {
             nativeDestructor(mNativeRegion);
+            // TODO: We should at least set mNativeRegion to zero
+            // to prevent accidents in case of a subsequent call from
+            // another finalizer.  But it's public and final, so
+            // that seems mildly dubious ...
         } finally {
             super.finalize();
         }

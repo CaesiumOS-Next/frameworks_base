@@ -121,6 +121,9 @@ public class NinePatch {
             if (mNativeChunk != 0) {
                 // only attempt to destroy correctly initilized chunks
                 nativeFinalize(mNativeChunk);
+                // TODO: We should clear mNativeChunk here to guard
+                // against late calls by other finalizers.  But it's
+                // public and final.
             }
         } finally {
             super.finalize();

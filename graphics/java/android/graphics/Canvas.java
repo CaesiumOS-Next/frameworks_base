@@ -97,25 +97,18 @@ public class Canvas {
     private final CanvasFinalizer mFinalizer;
 
     private static final class CanvasFinalizer {
-        private long mNativeCanvasWrapper;
+        private Canvas mCanvas;
 
-        public CanvasFinalizer(long nativeCanvas) {
-            mNativeCanvasWrapper = nativeCanvas;
+        public CanvasFinalizer(Canvas canvas) {
+            mCanvas = canvas;
         }
 
         @Override
         protected void finalize() throws Throwable {
             try {
-                dispose();
+                mCanvas.release();
             } finally {
                 super.finalize();
-            }
-        }
-
-        public void dispose() {
-            if (mNativeCanvasWrapper != 0) {
-                finalizer(mNativeCanvasWrapper);
-                mNativeCanvasWrapper = 0;
             }
         }
     }
@@ -130,7 +123,7 @@ public class Canvas {
         if (!isHardwareAccelerated()) {
             // 0 means no native bitmap
             mNativeCanvasWrapper = initRaster(0);
-            mFinalizer = new CanvasFinalizer(mNativeCanvasWrapper);
+            mFinalizer = new CanvasFinalizer(this);
         } else {
             mFinalizer = null;
         }
@@ -151,7 +144,7 @@ public class Canvas {
         }
         throwIfCannotDraw(bitmap);
         mNativeCanvasWrapper = initRaster(bitmap.ni());
-        mFinalizer = new CanvasFinalizer(mNativeCanvasWrapper);
+        mFinalizer = new CanvasFinalizer(this);
         mBitmap = bitmap;
         mDensity = bitmap.mDensity;
     }
@@ -162,7 +155,7 @@ public class Canvas {
             throw new IllegalStateException();
         }
         mNativeCanvasWrapper = nativeCanvas;
-        mFinalizer = new CanvasFinalizer(mNativeCanvasWrapper);
+        mFinalizer = new CanvasFinalizer(this);
         mDensity = Bitmap.getDefaultDensity();
     }
 
@@ -1883,7 +1876,12 @@ public class Canvas {
      * @hide
      */
     public void release() {
-        mFinalizer.dispose();
+        if (mNativeCanvasWrapper != 0) {
+            finalizer(mNativeCanvasWrapper);
+            // Die in a debuggable way if we get invoked
+            // from other finalizers after we are finalized.
+            mNativeCanvasWrapper = 0;
+        }
     }
 
     /**

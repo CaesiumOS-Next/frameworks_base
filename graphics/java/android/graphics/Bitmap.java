@@ -1576,7 +1576,7 @@ public final class Bitmap implements Parcelable {
     }
 
     private static class BitmapFinalizer {
-        private final long mNativeBitmap;
+        private long mNativeBitmap;
 
         // Native memory allocated for the duration of the Bitmap,
         // if pixel data allocated into native memory, instead of java byte[]
@@ -1602,6 +1602,7 @@ public final class Bitmap implements Parcelable {
                     VMRuntime.getRuntime().registerNativeFree(mNativeAllocationByteCount);
                 }
                 nativeDestructor(mNativeBitmap);
+                mNativeBitmap = 0;  // Other finalizers can still call us.
             }
         }
     }
