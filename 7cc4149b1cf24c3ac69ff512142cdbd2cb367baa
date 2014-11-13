@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7adfdb23_442442db",
+        "filename": "core/java/android/widget/Toolbar.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1044446
+      },
+      "writtenOn": "2014-11-13T17:34:02Z",
+      "side": 1,
+      "message": "AttributeSet wraps a mutable XmlPullParser and is not safe to cache.",
+      "range": {
+        "startLine": 193,
+        "startChar": 8,
+        "endLine": 193,
+        "endChar": 23
+      },
+      "revId": "7cc4149b1cf24c3ac69ff512142cdbd2cb367baa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3ac2c357_7459e8fa",
+        "filename": "core/java/android/widget/Toolbar.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 1008,
+      "author": {
+        "id": 1044446
+      },
+      "writtenOn": "2014-11-13T17:34:02Z",
+      "side": 1,
+      "message": "Why did you change this?",
+      "range": {
+        "startLine": 1008,
+        "startChar": 42,
+        "endLine": 1008,
+        "endChar": 50
+      },
+      "revId": "7cc4149b1cf24c3ac69ff512142cdbd2cb367baa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
