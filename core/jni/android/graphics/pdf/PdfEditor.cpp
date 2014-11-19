@@ -72,8 +72,8 @@ static jlong nativeOpen(JNIEnv* env, jclass thiz, jint fd, jlong size) {
 
     if (!document) {
         const long error = FPDF_GetLastError();
-        jniThrowException(env, "java/io/IOException",
-                "cannot create document. Error:" + error);
+        jniThrowExceptionFmt(env, "java/io/IOException",
+                "cannot create document. Error: %ld", error);
         destroyLibraryIfNeeded();
         return -1;
     }
@@ -124,7 +124,7 @@ static bool writeAllBytes(const int fd, const void* buffer, const size_t byteCou
 static int writeBlock(FPDF_FILEWRITE* owner, const void* buffer, unsigned long size) {
     const PdfToFdWriter* writer = reinterpret_cast<PdfToFdWriter*>(owner);
     const bool success = writeAllBytes(writer->dstFd, buffer, size);
-    if (success < 0) {
+    if (!success) {
         ALOGE("Cannot write to file descriptor. Error:%d", errno);
         return 0;
     }
@@ -138,8 +138,8 @@ static void nativeWrite(JNIEnv* env, jclass thiz, jlong documentPtr, jint fd) {
     writer.WriteBlock = &writeBlock;
     const bool success = FPDF_SaveAsCopy(document, &writer, FPDF_NO_INCREMENTAL);
     if (!success) {
-        jniThrowException(env, "java/io/IOException",
-                "cannot write to fd. Error:" + errno);
+        jniThrowExceptionFmt(env, "java/io/IOException",
+                "cannot write to fd. Error: %d", errno);
         destroyLibraryIfNeeded();
     }
 }
