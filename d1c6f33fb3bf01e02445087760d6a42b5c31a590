@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7f298d84_11506e1e",
+        "filename": "services/java/com/android/server/wm/WindowManagerService.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 623,
+      "author": {
+        "id": 1003957
+      },
+      "writtenOn": "2014-11-21T22:14:04Z",
+      "side": 1,
+      "message": "Don\u0027t override dispose() here.\nMake whatever is calling dispose() go ahead and post the message to the right thread.",
+      "revId": "d1c6f33fb3bf01e02445087760d6a42b5c31a590",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
