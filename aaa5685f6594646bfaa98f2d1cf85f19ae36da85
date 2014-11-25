@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bf394503_8372a0d3",
+        "filename": "services/core/java/com/android/server/wm/WindowManagerService.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 683,
+      "author": {
+        "id": 1013810
+      },
+      "writtenOn": "2014-11-25T18:47:25Z",
+      "side": 1,
+      "message": "Please rename mDragStateDisposed.",
+      "range": {
+        "startLine": 683,
+        "startChar": 20,
+        "endLine": 683,
+        "endChar": 29
+      },
+      "revId": "aaa5685f6594646bfaa98f2d1cf85f19ae36da85",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bf394503_a361a4f9",
+        "filename": "services/core/java/com/android/server/wm/WindowManagerService.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 691,
+      "author": {
+        "id": 1013810
+      },
+      "writtenOn": "2014-11-25T18:47:25Z",
+      "side": 1,
+      "message": "Don\u0027t call dispose() more than once.\n\n  if (mDisposed \u003d\u003d true) {\n    return;\n  }",
+      "range": {
+        "startLine": 691,
+        "startChar": 12,
+        "endLine": 691,
+        "endChar": 24
+      },
+      "revId": "aaa5685f6594646bfaa98f2d1cf85f19ae36da85",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5fc2091f_450e4528",
+        "filename": "services/core/java/com/android/server/wm/WindowManagerService.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 700,
+      "author": {
+        "id": 1013810
+      },
+      "writtenOn": "2014-11-25T18:47:25Z",
+      "side": 1,
+      "message": "Set to true at top of method. Otherwise the runnable could be posted and run before you get here. And then dispose() could be called multiple times.",
+      "range": {
+        "startLine": 700,
+        "startChar": 12,
+        "endLine": 700,
+        "endChar": 29
+      },
+      "revId": "aaa5685f6594646bfaa98f2d1cf85f19ae36da85",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
