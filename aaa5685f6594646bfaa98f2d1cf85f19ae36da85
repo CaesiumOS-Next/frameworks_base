@@ -48,6 +48,24 @@
     },
     {
       "key": {
+        "uuid": "1f633129_33ccc8c7",
+        "filename": "services/core/java/com/android/server/wm/WindowManagerService.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 691,
+      "author": {
+        "id": 1004424
+      },
+      "writtenOn": "2014-11-26T11:13:23Z",
+      "side": 1,
+      "message": "Regarding not calling dispose more than once this is something that is already covered in dispose method due to safety of always calling dispose when triggering finalize() code just to assure resources are released. As such dispose method is built to be called more than once without concern.\n\nAdditionally I figured the object/thread/process requesting to dispose an object needs to be the one assuring such a request is only made once, something already handled in the code. dispose function will however still handle case where caller makes an error calling function, dispose or requestDispose, twice.\n\nWe may change this but it would in no way prevent caller from disposing object more than once without overriding dispose method itself.",
+      "parentUuid": "bf394503_a361a4f9",
+      "revId": "aaa5685f6594646bfaa98f2d1cf85f19ae36da85",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5fc2091f_450e4528",
         "filename": "services/core/java/com/android/server/wm/WindowManagerService.java",
         "patchSetId": 2
