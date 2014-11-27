@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ff265df7_6ae017df",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1057059
+      },
+      "writtenOn": "2014-11-27T04:59:34Z",
+      "side": 1,
+      "message": "Reword to \"Prevent provider from been created twice.\"",
+      "range": {
+        "startLine": 7,
+        "startChar": 18,
+        "endLine": 7,
+        "endChar": 49
+      },
+      "revId": "6d8eb9fc9d2482f40f239f6e63c941945f01b205",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9fb9e1ac_4da0ad88",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1057059
+      },
+      "writtenOn": "2014-11-27T04:59:34Z",
+      "side": 1,
+      "message": "s/by/but",
+      "range": {
+        "startLine": 10,
+        "startChar": 49,
+        "endLine": 10,
+        "endChar": 51
+      },
+      "revId": "6d8eb9fc9d2482f40f239f6e63c941945f01b205",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bf2065df_687ca358",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1057059
+      },
+      "writtenOn": "2014-11-27T04:59:34Z",
+      "side": 1,
+      "message": "Reword to \"If there is an access call to process provider before the process completes publishing providers to ActivityManagerService, then the providers will be created again.\"",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 69
+      },
+      "revId": "6d8eb9fc9d2482f40f239f6e63c941945f01b205",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ff265df7_4afef378",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1057059
+      },
+      "writtenOn": "2014-11-27T04:59:34Z",
+      "side": 1,
+      "message": "Reword to \"Don\u0027t schedule install provider if the provider record already exist and will be published later.\"",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 59
+      },
+      "revId": "6d8eb9fc9d2482f40f239f6e63c941945f01b205",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bf2065df_c845cf0f",
+        "filename": "services/core/java/com/android/server/am/ActivityManagerService.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 9438,
+      "author": {
+        "id": 1057059
+      },
+      "writtenOn": "2014-11-27T04:59:34Z",
+      "side": 1,
+      "message": "I think it is better to add additional checks here (instead of below) to see if the provider is already in the launch list. Since the current reference compare is not sufficient for your case we should compare additional unique fields for the provider.",
+      "range": {
+        "startLine": 9436,
+        "startChar": 0,
+        "endLine": 9438,
+        "endChar": 21
+      },
+      "revId": "6d8eb9fc9d2482f40f239f6e63c941945f01b205",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
