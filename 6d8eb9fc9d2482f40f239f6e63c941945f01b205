@@ -132,6 +132,24 @@
       "revId": "6d8eb9fc9d2482f40f239f6e63c941945f01b205",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ff265df7_2aa0df87",
+        "filename": "services/core/java/com/android/server/am/ActivityManagerService.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 9438,
+      "author": {
+        "id": 1057059
+      },
+      "writtenOn": "2014-11-27T05:34:42Z",
+      "side": 1,
+      "message": "Thanks for the additional information.",
+      "parentUuid": "7f298d84_a321483f",
+      "revId": "6d8eb9fc9d2482f40f239f6e63c941945f01b205",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
