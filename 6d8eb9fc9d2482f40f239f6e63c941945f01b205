@@ -114,6 +114,24 @@
       "revId": "6d8eb9fc9d2482f40f239f6e63c941945f01b205",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7f298d84_a321483f",
+        "filename": "services/core/java/com/android/server/am/ActivityManagerService.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 9438,
+      "author": {
+        "id": 1023586
+      },
+      "writtenOn": "2014-11-27T05:16:34Z",
+      "side": 1,
+      "message": "Because when provider is not created by accessing. It will not be added to mLaunchingProviders. And also it still need to set cpr.launchingApp, otherwise below \"Wait for the provider to be published\" will return null directly.",
+      "parentUuid": "bf2065df_c845cf0f",
+      "revId": "6d8eb9fc9d2482f40f239f6e63c941945f01b205",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
