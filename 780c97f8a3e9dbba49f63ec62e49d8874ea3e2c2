@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dfb999d9_bcb0cdd2",
+        "filename": "services/core/java/com/android/server/am/ActivityManagerService.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 9375,
+      "author": {
+        "id": 1057059
+      },
+      "writtenOn": "2014-12-02T15:42:53Z",
+      "side": 1,
+      "message": "s/started/running",
+      "range": {
+        "startLine": 9375,
+        "startChar": 69,
+        "endLine": 9375,
+        "endChar": 76
+      },
+      "revId": "780c97f8a3e9dbba49f63ec62e49d8874ea3e2c2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dfb999d9_1c89b907",
+        "filename": "services/core/java/com/android/server/am/ActivityManagerService.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 15446,
+      "author": {
+        "id": 1057059
+      },
+      "writtenOn": "2014-12-02T15:42:53Z",
+      "side": 1,
+      "message": "Lets also update this location and the comment.",
+      "range": {
+        "startLine": 15446,
+        "startChar": 45,
+        "endLine": 15446,
+        "endChar": 78
+      },
+      "revId": "780c97f8a3e9dbba49f63ec62e49d8874ea3e2c2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
