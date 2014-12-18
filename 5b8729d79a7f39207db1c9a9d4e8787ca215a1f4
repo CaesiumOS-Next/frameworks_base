@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "01e678ff_9b406b84",
+        "filename": "core/tests/coretests/src/android/os/SELinuxTest.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1003966
+      },
+      "writtenOn": "2014-12-18T00:21:54Z",
+      "side": 1,
+      "message": "This should be toolbox_exec.",
+      "range": {
+        "startLine": 15,
+        "startChar": 38,
+        "endLine": 15,
+        "endChar": 49
+      },
+      "revId": "5b8729d79a7f39207db1c9a9d4e8787ca215a1f4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
