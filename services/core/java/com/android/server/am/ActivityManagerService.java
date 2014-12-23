@@ -12181,7 +12181,7 @@ public final class ActivityManagerService extends ActivityManagerNative
 
         if (r.crashing || r.forceCrashReport) {
             report.type = ApplicationErrorReport.TYPE_CRASH;
-            report.crashInfo = crashInfo;
+            report.crashInfo = crashInfo != null ? crashInfo : new ApplicationErrorReport.CrashInfo();
         } else if (r.notResponding) {
             report.type = ApplicationErrorReport.TYPE_ANR;
             report.anrInfo = new ApplicationErrorReport.AnrInfo();
