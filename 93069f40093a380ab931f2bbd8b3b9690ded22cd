@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "418cf0b9_d16174a7",
+        "filename": "core/java/android/provider/Settings.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 5806,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2014-12-24T18:15:25Z",
+      "side": 1,
+      "message": "maybe just write \"See RIL_PreferredNetworkType in ril.h\", since that seems to be the canonical source for these constants?",
+      "revId": "93069f40093a380ab931f2bbd8b3b9690ded22cd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
