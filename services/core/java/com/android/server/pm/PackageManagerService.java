@@ -13002,7 +13002,7 @@ public class PackageManagerService extends IPackageManager.Stub {
                     new IIntentReceiver.Stub() {
                 public void performReceive(Intent intent, int resultCode, String data,
                         Bundle extras, boolean ordered, boolean sticky,
-                        int sendingUser) throws RemoteException {
+                        int sendingUser, int queueId) throws RemoteException {
                     Message msg = mHandler.obtainMessage(UPDATED_MEDIA_STATUS,
                             reportStatus ? 1 : 0, 1, keys);
                     mHandler.sendMessage(msg);

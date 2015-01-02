@@ -37,6 +37,7 @@ import java.util.List;
  * An active intent broadcast.
  */
 final class BroadcastRecord extends Binder {
+    final BroadcastQueue queue;   // the outbound queue handling this broadcast
     final Intent intent;    // the original intent that generated us
     final ComponentName targetComp; // original component name set on the intent
     final ProcessRecord callerApp; // process that sent this
@@ -64,7 +65,6 @@ final class BroadcastRecord extends Binder {
     IBinder receiver;       // who is currently running, null if none.
     int state;
     int anrCount;           // has this broadcast record hit any ANRs?
-    BroadcastQueue queue;   // the outbound queue handling this broadcast
 
     static final int IDLE = 0;
     static final int APP_RECEIVE = 1;

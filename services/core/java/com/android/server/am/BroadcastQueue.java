@@ -68,6 +68,11 @@ public final class BroadcastQueue {
     final String mQueueName;
 
     /**
+     * Identifier to distinguish which queue
+     */
+    final int mQueueId;
+
+    /**
      * Timeout period for this queue's broadcasts
      */
     final long mTimeoutPeriod;
@@ -173,10 +178,11 @@ public final class BroadcastQueue {
     }
 
     BroadcastQueue(ActivityManagerService service, Handler handler,
-            String name, long timeoutPeriod, boolean allowDelayBehindServices) {
+            String name, int id, long timeoutPeriod, boolean allowDelayBehindServices) {
         mService = service;
         mHandler = new BroadcastHandler(handler.getLooper());
         mQueueName = name;
+        mQueueId = id;
         mTimeoutPeriod = timeoutPeriod;
         mDelayBehindServices = allowDelayBehindServices;
     }
@@ -245,7 +251,7 @@ public final class BroadcastQueue {
             app.thread.scheduleReceiver(new Intent(r.intent), r.curReceiver,
                     mService.compatibilityInfoForPackageLocked(r.curReceiver.applicationInfo),
                     r.resultCode, r.resultData, r.resultExtras, r.ordered, r.userId,
-                    app.repProcState);
+                    app.repProcState, mQueueId);
             if (DEBUG_BROADCAST)  Slog.v(TAG,
                     "Process cur broadcast " + r + " DELIVERED for app " + app);
             started = true;
@@ -422,21 +428,21 @@ public final class BroadcastQueue {
 
     private static void performReceiveLocked(ProcessRecord app, IIntentReceiver receiver,
             Intent intent, int resultCode, String data, Bundle extras,
-            boolean ordered, boolean sticky, int sendingUser) throws RemoteException {
+            boolean ordered, boolean sticky, int sendingUser, int queueId) throws RemoteException {
         // Send the intent to the receiver asynchronously using one-way binder calls.
         if (app != null) {
             if (app.thread != null) {
                 // If we have an app thread, do the call through that so it is
                 // correctly ordered with other one-way calls.
                 app.thread.scheduleRegisteredReceiver(receiver, intent, resultCode,
-                        data, extras, ordered, sticky, sendingUser, app.repProcState);
+                        data, extras, ordered, sticky, sendingUser, app.repProcState, queueId);
             } else {
                 // Application has died. Receiver doesn't exist.
                 throw new RemoteException("app.thread must not be null");
             }
         } else {
             receiver.performReceive(intent, resultCode, data, extras, ordered,
-                    sticky, sendingUser);
+                    sticky, sendingUser, queueId);
         }
     }
 
@@ -520,7 +526,7 @@ public final class BroadcastQueue {
                 }
                 performReceiveLocked(filter.receiverList.app, filter.receiverList.receiver,
                     new Intent(r.intent), r.resultCode, r.resultData,
-                    r.resultExtras, r.ordered, r.initialSticky, r.userId);
+                    r.resultExtras, r.ordered, r.initialSticky, r.userId, mQueueId);
                 if (ordered) {
                     r.state = BroadcastRecord.CALL_DONE_RECEIVE;
                 }
@@ -669,8 +675,8 @@ public final class BroadcastQueue {
                                         + " seq=" + seq + " app=" + r.callerApp);
                             }
                             performReceiveLocked(r.callerApp, r.resultTo,
-                                new Intent(r.intent), r.resultCode,
-                                r.resultData, r.resultExtras, false, false, r.userId);
+                                new Intent(r.intent), r.resultCode, r.resultData,
+                                r.resultExtras, false, false, r.userId, mQueueId);
                             // Set this to null so that the reference
                             // (local and remote) isn't kept in the mBroadcastHistory.
                             r.resultTo = null;

@@ -357,9 +357,9 @@ public final class ActivityThread {
 
     static final class ReceiverData extends BroadcastReceiver.PendingResult {
         public ReceiverData(Intent intent, int resultCode, String resultData, Bundle resultExtras,
-                boolean ordered, boolean sticky, IBinder token, int sendingUser) {
+                boolean ordered, boolean sticky, IBinder token, int sendingUser, int queueId) {
             super(resultCode, resultData, resultExtras, TYPE_COMPONENT, ordered, sticky,
-                    token, sendingUser);
+                    token, sendingUser, queueId);
             this.intent = intent;
         }
 
@@ -659,10 +659,10 @@ public final class ActivityThread {
 
         public final void scheduleReceiver(Intent intent, ActivityInfo info,
                 CompatibilityInfo compatInfo, int resultCode, String data, Bundle extras,
-                boolean sync, int sendingUser, int processState) {
+                boolean sync, int sendingUser, int processState, int queueId) {
             updateProcessState(processState, false);
             ReceiverData r = new ReceiverData(intent, resultCode, data, extras,
-                    sync, false, mAppThread.asBinder(), sendingUser);
+                    sync, false, mAppThread.asBinder(), sendingUser, queueId);
             r.info = info;
             r.compatInfo = compatInfo;
             sendMessage(H.RECEIVER, r);
@@ -857,11 +857,11 @@ public final class ActivityThread {
         // correctly ordered, since these are one-way calls and the binder driver
         // applies transaction ordering per object for such calls.
         public void scheduleRegisteredReceiver(IIntentReceiver receiver, Intent intent,
-                int resultCode, String dataStr, Bundle extras, boolean ordered,
-                boolean sticky, int sendingUser, int processState) throws RemoteException {
+                int resultCode, String dataStr, Bundle extras, boolean ordered, boolean sticky,
+                int sendingUser, int processState, int queueId) throws RemoteException {
             updateProcessState(processState, false);
             receiver.performReceive(intent, resultCode, dataStr, extras, ordered,
-                    sticky, sendingUser);
+                    sticky, sendingUser, queueId);
         }
 
         public void scheduleLowMemory() {

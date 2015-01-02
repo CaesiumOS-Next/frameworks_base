@@ -293,7 +293,7 @@ final class PendingIntentRecord extends IIntentSender.Stub {
                 if (sendFinish) {
                     try {
                         finishedReceiver.performReceive(new Intent(finalIntent), 0,
-                                null, null, false, false, key.userId);
+                                null, null, false, false, key.userId, 0);
                     } catch (RemoteException e) {
                     }
                 }

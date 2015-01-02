@@ -399,11 +399,13 @@ public final class ActivityManagerService extends ActivityManagerNative
         return (isFg) ? mFgBroadcastQueue : mBgBroadcastQueue;
     }
 
-    BroadcastRecord broadcastRecordForReceiverLocked(IBinder receiver) {
+    BroadcastRecord broadcastRecordForReceiverLocked(IBinder receiver, int queueId) {
         for (BroadcastQueue queue : mBroadcastQueues) {
-            BroadcastRecord r = queue.getMatchingOrderedReceiver(receiver);
-            if (r != null) {
-                return r;
+            if (queue.mQueueId == queueId) {
+                BroadcastRecord r = queue.getMatchingOrderedReceiver(receiver);
+                if (r != null) {
+                    return r;
+                }
             }
         }
         return null;
@@ -2278,9 +2280,9 @@ public final class ActivityManagerService extends ActivityManagerNative
         mHandler = new MainHandler(mHandlerThread.getLooper());
 
         mFgBroadcastQueue = new BroadcastQueue(this, mHandler,
-                "foreground", BROADCAST_FG_TIMEOUT, false);
+                "foreground", 0, BROADCAST_FG_TIMEOUT, false);
         mBgBroadcastQueue = new BroadcastQueue(this, mHandler,
-                "background", BROADCAST_BG_TIMEOUT, true);
+                "background", 1, BROADCAST_BG_TIMEOUT, true);
         mBroadcastQueues[0] = mFgBroadcastQueue;
         mBroadcastQueues[1] = mBgBroadcastQueue;
 
@@ -6391,11 +6393,9 @@ public final class ActivityManagerService extends ActivityManagerNative
                         intent.putExtra(Intent.EXTRA_USER_HANDLE, userId);
                         intent.addFlags(Intent.FLAG_RECEIVER_NO_ABORT);
                         broadcastIntentLocked(null, null, intent, null,
-                                new IIntentReceiver.Stub() {
+                                new InternalReceiver() {
                                     @Override
-                                    public void performReceive(Intent intent, int resultCode,
-                                            String data, Bundle extras, boolean ordered,
-                                            boolean sticky, int sendingUser) {
+                                    void onReceive() {
                                         synchronized (ActivityManagerService.this) {
                                             requestPssAllProcsLocked(SystemClock.uptimeMillis(),
                                                     true, false);
@@ -11193,10 +11193,9 @@ public final class ActivityManagerService extends ActivityManagerNative
                     IIntentReceiver finisher = null;
                     // On last receiver and user, set up a completion callback
                     if (i == ris.size() - 1 && j == users.length - 1 && onFinishCallback != null) {
-                        finisher = new IIntentReceiver.Stub() {
-                            public void performReceive(Intent intent, int resultCode,
-                                    String data, Bundle extras, boolean ordered,
-                                    boolean sticky, int sendingUser) {
+                        finisher = new InternalReceiver() {
+                            @Override
+                            void onReceive() {
                                 // The raw IIntentReceiver interface is called
                                 // with the AM lock held, so redispatch to
                                 // execute our code without the lock.
@@ -11404,11 +11403,9 @@ public final class ActivityManagerService extends ActivityManagerNative
                 intent.addFlags(Intent.FLAG_RECEIVER_REGISTERED_ONLY);
                 intent.putExtra(Intent.EXTRA_USER_HANDLE, mCurrentUserId);
                 broadcastIntentLocked(null, null, intent,
-                        null, new IIntentReceiver.Stub() {
+                        null, new InternalReceiver() {
                             @Override
-                            public void performReceive(Intent intent, int resultCode, String data,
-                                    Bundle extras, boolean ordered, boolean sticky, int sendingUser)
-                                    throws RemoteException {
+                            void onReceive() {
                             }
                         }, 0, null, null,
                         INTERACT_ACROSS_USERS, AppOpsManager.OP_NONE,
@@ -15313,11 +15310,11 @@ public final class ActivityManagerService extends ActivityManagerNative
             synchronized(this) {
                 ReceiverList rl = mRegisteredReceivers.get(receiver.asBinder());
                 if (rl != null) {
-                    if (rl.curBroadcast != null) {
-                        BroadcastRecord r = rl.curBroadcast;
-                        final boolean doNext = finishReceiverLocked(
-                                receiver.asBinder(), r.resultCode, r.resultData,
-                                r.resultExtras, r.resultAbort);
+                    final BroadcastRecord r = rl.curBroadcast;
+                    if (r != null && r == r.queue.getMatchingOrderedReceiver(r)) {
+                        final boolean doNext = r.queue.finishReceiverLocked(
+                                r, r.resultCode, r.resultData,
+                                r.resultExtras, r.resultAbort, false);
                         if (doNext) {
                             doTrim = true;
                             r.queue.processNextBroadcast(false);
@@ -15990,17 +15987,6 @@ public final class ActivityManagerService extends ActivityManagerNative
         }
     }
 
-    private final boolean finishReceiverLocked(IBinder receiver, int resultCode,
-            String resultData, Bundle resultExtras, boolean resultAbort) {
-        final BroadcastRecord r = broadcastRecordForReceiverLocked(receiver);
-        if (r == null) {
-            Slog.w(TAG, "finishReceiver called but not found on queue");
-            return false;
-        }
-
-        return r.queue.finishReceiverLocked(r, resultCode, resultData, resultExtras, resultAbort, false);
-    }
-
     void backgroundServicesFinishedLocked(int userId) {
         for (BroadcastQueue queue : mBroadcastQueues) {
             queue.backgroundServicesFinishedLocked(userId);
@@ -16008,7 +15994,7 @@ public final class ActivityManagerService extends ActivityManagerNative
     }
 
     public void finishReceiver(IBinder who, int resultCode, String resultData,
-            Bundle resultExtras, boolean resultAbort) {
+            Bundle resultExtras, boolean resultAbort, int queueId) {
         if (DEBUG_BROADCAST) Slog.v(TAG, "Finish receiver: " + who);
 
         // Refuse possible leaked file descriptors
@@ -16022,7 +16008,7 @@ public final class ActivityManagerService extends ActivityManagerNative
             BroadcastRecord r;
 
             synchronized(this) {
-                r = broadcastRecordForReceiverLocked(who);
+                r = broadcastRecordForReceiverLocked(who, queueId);
                 if (r != null) {
                     doNext = r.queue.finishReceiverLocked(r, resultCode,
                         resultData, resultExtras, resultAbort, true);
@@ -18482,10 +18468,9 @@ public final class ActivityManagerService extends ActivityManagerNative
                         Intent intent = new Intent(Intent.ACTION_USER_INITIALIZE);
                         intent.addFlags(Intent.FLAG_RECEIVER_FOREGROUND);
                         broadcastIntentLocked(null, null, intent, null,
-                                new IIntentReceiver.Stub() {
-                                    public void performReceive(Intent intent, int resultCode,
-                                            String data, Bundle extras, boolean ordered,
-                                            boolean sticky, int sendingUser) {
+                                new InternalReceiver() {
+                                    @Override
+                                    void onReceive() {
                                         onUserInitialized(uss, foreground, oldUserId, userId);
                                     }
                                 }, 0, null, null, null, AppOpsManager.OP_NONE,
@@ -18510,11 +18495,9 @@ public final class ActivityManagerService extends ActivityManagerNative
                     intent.addFlags(Intent.FLAG_RECEIVER_REGISTERED_ONLY);
                     intent.putExtra(Intent.EXTRA_USER_HANDLE, userId);
                     broadcastIntentLocked(null, null, intent,
-                            null, new IIntentReceiver.Stub() {
+                            null, new InternalReceiver() {
                                 @Override
-                                public void performReceive(Intent intent, int resultCode, String data,
-                                        Bundle extras, boolean ordered, boolean sticky, int sendingUser)
-                                        throws RemoteException {
+                                void onReceive() {
                                 }
                             }, 0, null, null,
                             INTERACT_ACROSS_USERS, AppOpsManager.OP_NONE,
@@ -18826,18 +18809,16 @@ public final class ActivityManagerService extends ActivityManagerNative
                 stoppingIntent.putExtra(Intent.EXTRA_SHUTDOWN_USERSPACE_ONLY, true);
                 final Intent shutdownIntent = new Intent(Intent.ACTION_SHUTDOWN);
                 // This is the result receiver for the final shutdown broadcast.
-                final IIntentReceiver shutdownReceiver = new IIntentReceiver.Stub() {
+                final IIntentReceiver shutdownReceiver = new InternalReceiver() {
                     @Override
-                    public void performReceive(Intent intent, int resultCode, String data,
-                            Bundle extras, boolean ordered, boolean sticky, int sendingUser) {
+                    void onReceive() {
                         finishUserStop(uss);
                     }
                 };
                 // This is the result receiver for the initial stopping broadcast.
-                final IIntentReceiver stoppingReceiver = new IIntentReceiver.Stub() {
+                final IIntentReceiver stoppingReceiver = new InternalReceiver() {
                     @Override
-                    public void performReceive(Intent intent, int resultCode, String data,
-                            Bundle extras, boolean ordered, boolean sticky, int sendingUser) {
+                    void onReceive() {
                         // On to the next.
                         synchronized (ActivityManagerService.this) {
                             if (uss.mState != UserStartedState.STATE_STOPPING) {
@@ -19062,6 +19043,18 @@ public final class ActivityManagerService extends ActivityManagerNative
         ActivityInfo info = new ActivityInfo(aInfo);
         info.applicationInfo = getAppInfoForUser(info.applicationInfo, userId);
         return info;
+    }
+
+    private static class InternalReceiver extends IIntentReceiver.Stub {
+        @Override
+        public void performReceive(Intent intent, int resultCode, String data,
+                Bundle extras, boolean ordered, boolean sticky, int sendingUser,
+                int queueId) throws RemoteException {
+            onReceive();
+        }
+
+        void onReceive() {
+        }
     }
 
     private final class LocalService extends ActivityManagerInternal {

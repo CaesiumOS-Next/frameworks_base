@@ -71,7 +71,7 @@ public interface IApplicationThread extends IInterface {
             int configChanges) throws RemoteException;
     void scheduleReceiver(Intent intent, ActivityInfo info, CompatibilityInfo compatInfo,
             int resultCode, String data, Bundle extras, boolean sync,
-            int sendingUser, int processState) throws RemoteException;
+            int sendingUser, int processState, int queueId) throws RemoteException;
     static final int BACKUP_MODE_INCREMENTAL = 0;
     static final int BACKUP_MODE_FULL = 1;
     static final int BACKUP_MODE_RESTORE = 2;
@@ -112,7 +112,7 @@ public interface IApplicationThread extends IInterface {
             throws RemoteException;
     void scheduleRegisteredReceiver(IIntentReceiver receiver, Intent intent,
             int resultCode, String data, Bundle extras, boolean ordered,
-            boolean sticky, int sendingUser, int processState) throws RemoteException;
+            boolean sticky, int sendingUser, int processState, int queueId) throws RemoteException;
     void scheduleLowMemory() throws RemoteException;
     void scheduleActivityConfigurationChanged(IBinder token) throws RemoteException;
     void profilerControl(boolean start, ProfilerInfo profilerInfo, int profileType)
