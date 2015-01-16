@@ -563,6 +563,7 @@ int AndroidRuntime::startVm(JavaVM** pJavaVM, JNIEnv** pEnv)
     char regionOption[sizeof("-Duser.region=") + 3];
     char lockProfThresholdBuf[sizeof("-Xlockprofthreshold:")-1 + PROPERTY_VALUE_MAX];
     char nativeBridgeLibrary[sizeof("-XX:NativeBridge=") + PROPERTY_VALUE_MAX];
+    char verboseOptsBuf[sizeof("-verbose:")-1 + PROPERTY_VALUE_MAX];
 
     bool checkJni = false;
     property_get("dalvik.vm.checkjni", propBuf, "");
@@ -579,9 +580,6 @@ int AndroidRuntime::startVm(JavaVM** pJavaVM, JNIEnv** pEnv)
     if (checkJni) {
         /* extended JNI checking */
         addOption("-Xcheck:jni");
-
-        /* with -Xcheck:jni, this provides a JNI function call trace */
-        //addOption("-verbose:jni");
     }
 
     property_get("dalvik.vm.execution-mode", propBuf, "");
@@ -609,10 +607,10 @@ int AndroidRuntime::startVm(JavaVM** pJavaVM, JNIEnv** pEnv)
     /* register the framework-specific "is sensitive thread" hook */
     addOption("sensitiveThread", (void*) runtime_isSensitiveThread);
 
-    /* enable verbose; standard options are { jni, gc, class } */
-    //addOption("-verbose:jni");
-    addOption("-verbose:gc");
-    //addOption("-verbose:class");
+    /* enable verbose; standard options are { jni, gc, class }
+     * EX: dalvik.vm.verbose=jni,gc,class...
+     */
+    parseRuntimeOption("dalvik.vm.verbose", verboseOptsBuf, "-verbose:", "gc");
 
     /*
      * The default starting and maximum size of the heap.  Larger
