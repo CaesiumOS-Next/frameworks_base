@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2bc27b57_dd4c9f40",
+        "filename": "telephony/java/android/telephony/PhoneNumberUtils.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 2289,
+      "author": {
+        "id": 1021145
+      },
+      "writtenOn": "2015-01-21T20:18:26Z",
+      "side": 1,
+      "message": "1. code standing looks not good;\n2. I\u0027m wondering in what case the PROPERTY_OPERATOR_IDP_STRING is different from NANP_IDP_STRING? if in international CDMA NANP country, the PROPERTY_OPERATOR_IDP_STRING should be \u0027011\u0027,  right? if it is not \u0027011\u0027, we need check the reason and find the root cause. I don\u0027t think this is the root cause.",
+      "range": {
+        "startLine": 2289,
+        "startChar": 0,
+        "endLine": 2289,
+        "endChar": 19
+      },
+      "revId": "a423a279f6297bb9422fc8841651348c2fcc7b7a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
