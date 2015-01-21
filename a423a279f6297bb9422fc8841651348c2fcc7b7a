@@ -46,6 +46,30 @@
       "revId": "a423a279f6297bb9422fc8841651348c2fcc7b7a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cb9c7f86_21cdce70",
+        "filename": "telephony/java/android/telephony/PhoneNumberUtils.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 2289,
+      "author": {
+        "id": 1021145
+      },
+      "writtenOn": "2015-01-21T22:47:03Z",
+      "side": 1,
+      "message": "sorry, I mean coding standard. the codes do not follow the android coding guideline.\nit should be like\nif (useNanp) {\n} else {\n}",
+      "parentUuid": "cb9c7f86_6166360e",
+      "range": {
+        "startLine": 2289,
+        "startChar": 0,
+        "endLine": 2289,
+        "endChar": 19
+      },
+      "revId": "a423a279f6297bb9422fc8841651348c2fcc7b7a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
