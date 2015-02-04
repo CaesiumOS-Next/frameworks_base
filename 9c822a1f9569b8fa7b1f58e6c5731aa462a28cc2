@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3c400875_9d37a35c",
+        "filename": "rs/java/android/renderscript/FieldPacker.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 838,
+      "author": {
+        "id": 1004537
+      },
+      "writtenOn": "2015-02-04T23:39:25Z",
+      "side": 1,
+      "message": "This is actually wrong.  All the vec3 types use the same size and alignment as Vec4.",
+      "range": {
+        "startLine": 838,
+        "startChar": 19,
+        "endLine": 838,
+        "endChar": 22
+      },
+      "revId": "9c822a1f9569b8fa7b1f58e6c5731aa462a28cc2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
