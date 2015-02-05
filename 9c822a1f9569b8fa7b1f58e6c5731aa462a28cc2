@@ -70,6 +70,30 @@
       "revId": "9c822a1f9569b8fa7b1f58e6c5731aa462a28cc2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bc5dd861_d9313367",
+        "filename": "rs/java/android/renderscript/FieldPacker.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 838,
+      "author": {
+        "id": 1050418
+      },
+      "writtenOn": "2015-02-05T00:43:27Z",
+      "side": 1,
+      "message": "Right, I realized that name was not accurate engough.\nDone.",
+      "parentUuid": "bc5dd861_39994f90",
+      "range": {
+        "startLine": 838,
+        "startChar": 19,
+        "endLine": 838,
+        "endChar": 22
+      },
+      "revId": "9c822a1f9569b8fa7b1f58e6c5731aa462a28cc2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
