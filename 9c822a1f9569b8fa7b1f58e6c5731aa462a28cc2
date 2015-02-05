@@ -46,6 +46,30 @@
       "revId": "9c822a1f9569b8fa7b1f58e6c5731aa462a28cc2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bc5dd861_39994f90",
+        "filename": "rs/java/android/renderscript/FieldPacker.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 838,
+      "author": {
+        "id": 1004537
+      },
+      "writtenOn": "2015-02-05T00:22:15Z",
+      "side": 1,
+      "message": "You are right, Can we rename this to \"getPackedSize()\" ?\n\nI think that will avoid the confusion.  As is developer will wonder why an fp Long3 size is different than the normal RS size.",
+      "parentUuid": "5c43fc80_846c6af1",
+      "range": {
+        "startLine": 838,
+        "startChar": 19,
+        "endLine": 838,
+        "endChar": 22
+      },
+      "revId": "9c822a1f9569b8fa7b1f58e6c5731aa462a28cc2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
