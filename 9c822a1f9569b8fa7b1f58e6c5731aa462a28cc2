@@ -22,6 +22,30 @@
       "revId": "9c822a1f9569b8fa7b1f58e6c5731aa462a28cc2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5c43fc80_846c6af1",
+        "filename": "rs/java/android/renderscript/FieldPacker.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 838,
+      "author": {
+        "id": 1050418
+      },
+      "writtenOn": "2015-02-05T00:10:29Z",
+      "side": 1,
+      "message": "This is the size for the data in a packed field. Look at addLong3. It only ends up taking 3 longs, i.e. 24 bytes. Am I missing something?",
+      "parentUuid": "3c400875_9d37a35c",
+      "range": {
+        "startLine": 838,
+        "startChar": 19,
+        "endLine": 838,
+        "endChar": 22
+      },
+      "revId": "9c822a1f9569b8fa7b1f58e6c5731aa462a28cc2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
