@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "16c405d1_e4e67a3a",
+        "filename": "services/core/java/com/android/server/am/ActivityManagerService.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 16298,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2015-02-12T17:55:28Z",
+      "side": 1,
+      "message": "unless gerrit\u0027s lying, you left a double space here.",
+      "revId": "87eaf3b1091255146b6c081fa4f35c2f6f1dcf64",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "16c405d1_04075641",
+        "filename": "services/core/java/com/android/server/am/ActivityManagerService.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 16408,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2015-02-12T17:55:28Z",
+      "side": 1,
+      "message": "this can go inside the isPersist too. at which point you have to wonder whether we should remove the argument and just move the if into the caller?",
+      "revId": "87eaf3b1091255146b6c081fa4f35c2f6f1dcf64",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
