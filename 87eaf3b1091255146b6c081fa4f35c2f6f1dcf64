@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "36c749d7_2549ae54",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1014443
+      },
+      "writtenOn": "2015-02-12T18:01:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "36c749d7_854d0285",
+      "revId": "87eaf3b1091255146b6c081fa4f35c2f6f1dcf64",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "16c405d1_e4e67a3a",
         "filename": "services/core/java/com/android/server/am/ActivityManagerService.java",
         "patchSetId": 2
@@ -47,6 +65,24 @@
       "writtenOn": "2015-02-12T17:55:28Z",
       "side": 1,
       "message": "this can go inside the isPersist too. at which point you have to wonder whether we should remove the argument and just move the if into the caller?",
+      "revId": "87eaf3b1091255146b6c081fa4f35c2f6f1dcf64",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "16c405d1_c499be8c",
+        "filename": "services/core/java/com/android/server/am/ActivityManagerService.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 16408,
+      "author": {
+        "id": 1014443
+      },
+      "writtenOn": "2015-02-12T18:01:28Z",
+      "side": 1,
+      "message": "I\u0027ve inlined the function into the only caller.",
+      "parentUuid": "16c405d1_04075641",
       "revId": "87eaf3b1091255146b6c081fa4f35c2f6f1dcf64",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
