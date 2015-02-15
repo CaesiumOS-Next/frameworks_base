@@ -161,12 +161,12 @@ status_t BootAnimation::initTexture(Texture* texture, AssetManager& assets,
     return NO_ERROR;
 }
 
-status_t BootAnimation::initTexture(const Animation::Frame& frame)
+status_t BootAnimation::initTexture(void* buffer, size_t len)
 {
     //StopWatch watch("blah");
 
     SkBitmap bitmap;
-    SkMemoryStream  stream(frame.map->getDataPtr(), frame.map->getDataLength());
+    SkMemoryStream  stream(buffer, len);
     SkImageDecoder* codec = SkImageDecoder::Factory(&stream);
     if (codec != NULL) {
         codec->setDitherImage(false);
@@ -175,11 +175,6 @@ status_t BootAnimation::initTexture(const Animation::Frame& frame)
                 SkImageDecoder::kDecodePixels_Mode);
         delete codec;
     }
-
-    // FileMap memory is never released until application exit.
-    // Release it now as the texture is already loaded and the memory used for
-    // the packed resource can be released.
-    frame.map->release();
 
     // ensure we can call getPixels(). No need to call unlock, since the
     // bitmap will go out of scope when we return from this method.
@@ -581,12 +576,15 @@ bool BootAnimation::movie()
     Region clearReg(Rect(mWidth, mHeight));
     clearReg.subtractSelf(Rect(xc, yc, xc+animation.width, yc+animation.height));
 
+    bool repeat = false;
+
     for (size_t i=0 ; i<pcount ; i++) {
         const Animation::Part& part(animation.parts[i]);
         const size_t fcount = part.frames.size();
         glBindTexture(GL_TEXTURE_2D, 0);
 
         for (int r=0 ; !part.count || r<part.count ; r++) {
+            repeat = false;
             // Exit any non playuntil complete parts immediately
             if(exitPending() && !part.playUntilComplete)
                 break;
@@ -609,13 +607,9 @@ bool BootAnimation::movie()
                 if (r > 0) {
                     glBindTexture(GL_TEXTURE_2D, frame.tid);
                 } else {
-                    if (part.count != 1) {
-                        glGenTextures(1, &frame.tid);
-                        glBindTexture(GL_TEXTURE_2D, frame.tid);
-                        glTexParameterx(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
-                        glTexParameterx(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-                    }
-                    initTexture(frame);
+                    initTexture(
+                            frame.map->getDataPtr(),
+                            frame.map->getDataLength());
                 }
 
                 if (!clearReg.isEmpty()) {
@@ -656,14 +650,15 @@ bool BootAnimation::movie()
             // For infinite parts, we've now played them at least once, so perhaps exit
             if(exitPending() && !part.count)
                 break;
+
+            repeat = true;
+            if (!part.count) {
+                break;
+            }
         }
 
-        // free the textures for this part
-        if (part.count != 1) {
-            for (size_t j=0 ; j<fcount ; j++) {
-                const Animation::Frame& frame(part.frames[j]);
-                glDeleteTextures(1, &frame.tid);
-            }
+        if (repeat && !part.count) {
+            i--;
         }
     }
 
