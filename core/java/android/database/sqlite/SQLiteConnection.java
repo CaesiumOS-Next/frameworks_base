@@ -26,6 +26,7 @@ import android.database.sqlite.SQLiteDebug.DbStats;
 import android.os.CancellationSignal;
 import android.os.OperationCanceledException;
 import android.os.ParcelFileDescriptor;
+import android.os.SystemClock;
 import android.util.Log;
 import android.util.LruCache;
 import android.util.Printer;
@@ -1308,7 +1309,8 @@ public final class SQLiteConnection implements CancellationSignal.OnCancelListen
                         operation.mBindArgs.clear();
                     }
                 }
-                operation.mStartTime = System.currentTimeMillis();
+                operation.mWallStartTime = System.currentTimeMillis();
+                operation.mStartTime = SystemClock.uptimeMillis();
                 operation.mKind = kind;
                 operation.mSql = sql;
                 if (bindArgs != null) {
@@ -1365,7 +1367,7 @@ public final class SQLiteConnection implements CancellationSignal.OnCancelListen
         private boolean endOperationDeferLogLocked(int cookie) {
             final Operation operation = getOperationLocked(cookie);
             if (operation != null) {
-                operation.mEndTime = System.currentTimeMillis();
+                operation.mEndTime = SystemClock.uptimeMillis();
                 operation.mFinished = true;
                 return SQLiteDebug.DEBUG_LOG_SLOW_QUERIES && SQLiteDebug.shouldLogSlowQuery(
                                 operation.mEndTime - operation.mStartTime);
@@ -1440,6 +1442,7 @@ public final class SQLiteConnection implements CancellationSignal.OnCancelListen
         private static final SimpleDateFormat sDateFormat =
                 new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS");
 
+        public long mWallStartTime;
         public long mStartTime;
         public long mEndTime;
         public String mKind;
@@ -1454,7 +1457,7 @@ public final class SQLiteConnection implements CancellationSignal.OnCancelListen
             if (mFinished) {
                 msg.append(" took ").append(mEndTime - mStartTime).append("ms");
             } else {
-                msg.append(" started ").append(System.currentTimeMillis() - mStartTime)
+                msg.append(" started ").append(SystemClock.uptimeMillis() - mStartTime)
                         .append("ms ago");
             }
             msg.append(" - ").append(getStatus());
@@ -1494,7 +1497,7 @@ public final class SQLiteConnection implements CancellationSignal.OnCancelListen
         }
 
         private String getFormattedStartTime() {
-            return sDateFormat.format(new Date(mStartTime));
+            return sDateFormat.format(new Date(mWallStartTime));
         }
     }
 }
