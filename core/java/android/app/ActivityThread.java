@@ -2393,6 +2393,9 @@ public final class ActivityThread {
     }
 
     private void handleLaunchActivity(ActivityClientRecord r, Intent customIntent) {
+        Trace.traceBegin(Trace.TRACE_TAG_BOOT,
+            "LaunchActivity_" + r.activityInfo.applicationInfo.packageName);
+
         // If we are getting ready to gc after going to the background, well
         // we are back active so skip it.
         unscheduleGcIdler();
@@ -2472,6 +2475,7 @@ public final class ActivityThread {
                 // Ignore
             }
         }
+        Trace.traceEnd(Trace.TRACE_TAG_BOOT);
     }
 
     private void deliverNewIntents(ActivityClientRecord r, List<ReferrerIntent> intents) {
@@ -2759,6 +2763,9 @@ public final class ActivityThread {
     }
 
     private void handleCreateService(CreateServiceData data) {
+        Trace.traceBegin(Trace.TRACE_TAG_BOOT,
+            "CreateService_" + data.info.applicationInfo.packageName);
+
         // If we are getting ready to gc after going to the background, well
         // we are back active so skip it.
         unscheduleGcIdler();
@@ -2801,6 +2808,7 @@ public final class ActivityThread {
                     + ": " + e.toString(), e);
             }
         }
+        Trace.traceEnd(Trace.TRACE_TAG_BOOT);
     }
 
     private void handleBindService(BindServiceData data) {
@@ -4317,6 +4325,9 @@ public final class ActivityThread {
     }
 
     private void handleBindApplication(AppBindData data) {
+        Trace.traceBegin(Trace.TRACE_TAG_BOOT,
+            "BindActivity_" + data.appInfo.packageName);
+
         mBoundApplication = data;
         mConfiguration = new Configuration(data.config);
         mCompatConfiguration = new Configuration(data.config);
@@ -4604,6 +4615,7 @@ public final class ActivityThread {
         } finally {
             StrictMode.setThreadPolicy(savedPolicy);
         }
+        Trace.traceEnd(Trace.TRACE_TAG_BOOT);
     }
 
     /*package*/ final void finishInstrumentation(int resultCode, Bundle results) {

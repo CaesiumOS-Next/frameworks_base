@@ -14,6 +14,7 @@
  * limitations under the License.
  */
 
+#define ATRACE_TAG ATRACE_TAG_BOOT
 #define LOG_TAG "AndroidRuntime"
 //#define LOG_NDEBUG 0
 
@@ -26,6 +27,7 @@
 #include <binder/Parcel.h>
 #include <utils/threads.h>
 #include <cutils/properties.h>
+#include <cutils/trace.h>
 
 #include <SkGraphics.h>
 #include <SkImageDecoder.h>
@@ -872,10 +874,12 @@ int AndroidRuntime::startVm(JavaVM** pJavaVM, JNIEnv** pEnv)
      * If this call succeeds, the VM is ready, and we can start issuing
      * JNI calls.
      */
+    ATRACE_BEGIN("CreateJavaVM");
     if (JNI_CreateJavaVM(pJavaVM, pEnv, &initArgs) < 0) {
         ALOGE("JNI_CreateJavaVM failed\n");
         return -1;
     }
+    ATRACE_END();
 
     return 0;
 }
@@ -946,6 +950,7 @@ void AndroidRuntime::start(const char* className, const Vector<String8>& options
     //ALOGD("Found LD_ASSUME_KERNEL='%s'\n", kernelHack);
 
     /* start the virtual machine */
+    ATRACE_BEGIN("StartVM");
     JniInvocation jni_invocation;
     jni_invocation.Init(NULL);
     JNIEnv* env;
@@ -953,14 +958,17 @@ void AndroidRuntime::start(const char* className, const Vector<String8>& options
         return;
     }
     onVmCreated(env);
+    ATRACE_END();
 
     /*
      * Register android functions.
      */
+    ATRACE_BEGIN("RegisterAndroidNatives");
     if (startReg(env) < 0) {
         ALOGE("Unable to register all android natives\n");
         return;
     }
+    ATRACE_END();
 
     /*
      * We want to call main() with a String array with arguments in it.
