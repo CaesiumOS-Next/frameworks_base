@@ -40,21 +40,23 @@ import java.util.Map;
 public class WifiEnterpriseConfig implements Parcelable {
 
     /** @hide */
-    public static final String EMPTY_VALUE         = "NULL";
+    public static final String EMPTY_VALUE          = "NULL";
     /** @hide */
-    public static final String EAP_KEY             = "eap";
+    public static final String EAP_KEY              = "eap";
     /** @hide */
-    public static final String PHASE2_KEY          = "phase2";
+    public static final String PHASE2_KEY           = "phase2";
     /** @hide */
-    public static final String IDENTITY_KEY        = "identity";
+    public static final String IDENTITY_KEY         = "identity";
     /** @hide */
-    public static final String ANON_IDENTITY_KEY   = "anonymous_identity";
+    public static final String ANON_IDENTITY_KEY    = "anonymous_identity";
     /** @hide */
-    public static final String PASSWORD_KEY        = "password";
+    public static final String PASSWORD_KEY         = "password";
     /** @hide */
-    public static final String SUBJECT_MATCH_KEY   = "subject_match";
+    public static final String SUBJECT_MATCH_KEY    = "subject_match";
     /** @hide */
-    public static final String OPP_KEY_CACHING     = "proactive_key_caching";
+    public static final String ALTSUBJECT_MATCH_KEY = "altsubject_match";
+    /** @hide */
+    public static final String OPP_KEY_CACHING      = "proactive_key_caching";
     /**
      * String representing the keystore OpenSSL ENGINE's ID.
      * @hide
@@ -544,6 +546,23 @@ public class WifiEnterpriseConfig implements Parcelable {
      */
     public String getSubjectMatch() {
         return getFieldValue(SUBJECT_MATCH_KEY, "");
+    }
+
+    /**
+     * Set subject alternative name match. This string is matched against the Subject Alternative
+     * Name of the authentication server certificate. Hostnames should be prefixed with the string
+     * "DNS:".
+     */
+    public void setSubjectAlternativeNameMatch(String altSubjectMatch) {
+        setFieldValue(ALTSUBJECT_MATCH_KEY, altSubjectMatch, "");
+    }
+
+    /**
+     * Get subject alternative name match.
+     * @return the subject alternative match string.
+     */
+    public String getSubjectAlternativeNameMatch() {
+        return getFieldValue(ALTSUBJECT_MATCH_KEY, "");
     }
 
     /** See {@link WifiConfiguration#getKeyIdForCredentials} @hide */
