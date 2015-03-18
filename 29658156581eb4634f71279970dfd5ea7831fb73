@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "067dbcec_fd794bc2",
+        "filename": "core/java/android/view/TextureView.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 750,
+      "author": {
+        "id": 1010103
+      },
+      "writtenOn": "2015-03-18T14:43:27Z",
+      "side": 1,
+      "message": "This should pass in mAttachInfo.mHandler as the explicit handler (see latest version of TextureView in aosp-master)",
+      "range": {
+        "startLine": 750,
+        "startChar": 64,
+        "endLine": 750,
+        "endChar": 66
+      },
+      "revId": "29658156581eb4634f71279970dfd5ea7831fb73",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
