@@ -1352,6 +1352,14 @@ public class RenderScript {
     }
 
     /**
+     * @hide
+     * Used by the RenderScriptThunker to maintain backward compatibility.
+     */
+    public static RenderScript create(Context ctx, int sdkVersion) {
+        return create(ctx);
+    }
+
+    /**
      * calls create(cts, ContextType.NORMAL, CREATE_FLAG_NONE)
      *
      * See documentation for @create for details
