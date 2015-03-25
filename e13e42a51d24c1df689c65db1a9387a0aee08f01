@@ -46,6 +46,30 @@
       "revId": "e13e42a51d24c1df689c65db1a9387a0aee08f01",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2362b2ee_f8dc9d11",
+        "filename": "services/core/java/com/android/server/am/ActivityManagerService.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 17118,
+      "author": {
+        "id": 1057059
+      },
+      "writtenOn": "2015-03-25T15:28:11Z",
+      "side": 1,
+      "message": "hmm, looks like we already added it on the internal branch. Go ahead the code snippet below to your patch and I will take care of the merge conflicts. Also change places where we are setting -1 to mean non-existent to use the new constant.\n\n    /** @hide Process does not exist. */\n    public static final int PROCESS_STATE_NONEXISTENT \u003d -1;",
+      "parentUuid": "a324e2ad_b082b6ff",
+      "range": {
+        "startLine": 17118,
+        "startChar": 38,
+        "endLine": 17118,
+        "endChar": 58
+      },
+      "revId": "e13e42a51d24c1df689c65db1a9387a0aee08f01",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
