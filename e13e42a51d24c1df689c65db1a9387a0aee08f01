@@ -22,6 +22,30 @@
       "revId": "e13e42a51d24c1df689c65db1a9387a0aee08f01",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a324e2ad_b082b6ff",
+        "filename": "services/core/java/com/android/server/am/ActivityManagerService.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 17118,
+      "author": {
+        "id": 1023586
+      },
+      "writtenOn": "2015-03-25T14:00:24Z",
+      "side": 1,
+      "message": "Does this mean add a new definition PROCESS_STATE_NONEXISTENT in ActivityManager, and modify the initial value of curProcState, repProcState setProcState, pssProcState of ProcessRecord to reference it?",
+      "parentUuid": "c3fb9632_94f7b1a4",
+      "range": {
+        "startLine": 17118,
+        "startChar": 38,
+        "endLine": 17118,
+        "endChar": 58
+      },
+      "revId": "e13e42a51d24c1df689c65db1a9387a0aee08f01",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
