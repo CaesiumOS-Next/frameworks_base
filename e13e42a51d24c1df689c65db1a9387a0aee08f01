@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "837a7ea8_a00daf6e",
+        "filename": "services/core/java/com/android/server/am/ActivityManagerService.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 17116,
+      "author": {
+        "id": 1057059
+      },
+      "writtenOn": "2015-03-30T22:02:42Z",
+      "side": 1,
+      "message": "add spaces between operators.",
+      "range": {
+        "startLine": 17116,
+        "startChar": 17,
+        "endLine": 17116,
+        "endChar": 47
+      },
+      "revId": "e13e42a51d24c1df689c65db1a9387a0aee08f01",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c3fb9632_94f7b1a4",
         "filename": "services/core/java/com/android/server/am/ActivityManagerService.java",
         "patchSetId": 3
@@ -109,6 +132,30 @@
       "side": 1,
       "message": "Good point! https://android-review.googlesource.com/#/c/144438",
       "parentUuid": "43116641_23467881",
+      "range": {
+        "startLine": 17118,
+        "startChar": 38,
+        "endLine": 17118,
+        "endChar": 58
+      },
+      "revId": "e13e42a51d24c1df689c65db1a9387a0aee08f01",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "03dccefb_7c967e27",
+        "filename": "services/core/java/com/android/server/am/ActivityManagerService.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 17118,
+      "author": {
+        "id": 1057059
+      },
+      "writtenOn": "2015-03-30T22:02:42Z",
+      "side": 1,
+      "message": "change has been merged, please rebase and use the new constant here and other places that currently use -1 for non-existent process state.",
+      "parentUuid": "03dccefb_b0388d4e",
       "range": {
         "startLine": 17118,
         "startChar": 38,
