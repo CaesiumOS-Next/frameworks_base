@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "a371421d_6e83e350",
+        "filename": "services/core/java/com/android/server/pm/PackageDexOptimizer.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1003723
+      },
+      "writtenOn": "2015-04-01T18:28:36Z",
+      "side": 1,
+      "message": "status might come from naming on the other side, because it originally was about the file status being up to date or not. \n\nperhaps dexoptReason is better now? dexoptMode?",
+      "parentUuid": "8370be19_6adf538e",
+      "range": {
+        "startLine": 112,
+        "startChar": 31,
+        "endLine": 112,
+        "endChar": 43
+      },
+      "revId": "d9c87bfd81cb3988f058aacbdc5eec6a3dfb823c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8370be19_8aec8f3b",
         "filename": "services/core/java/com/android/server/pm/PackageDexOptimizer.java",
         "patchSetId": 1
@@ -59,6 +83,30 @@
       "writtenOn": "2015-04-01T18:04:07Z",
       "side": 1,
       "message": "For cleanliness, put an else branch throwing an exception.",
+      "range": {
+        "startLine": 130,
+        "startChar": 24,
+        "endLine": 136,
+        "endChar": 25
+      },
+      "revId": "d9c87bfd81cb3988f058aacbdc5eec6a3dfb823c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e37fbae4_50d402c3",
+        "filename": "services/core/java/com/android/server/pm/PackageDexOptimizer.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1003723
+      },
+      "writtenOn": "2015-04-01T18:28:36Z",
+      "side": 1,
+      "message": "+1",
+      "parentUuid": "e37fbae4_8d6ae55c",
       "range": {
         "startLine": 130,
         "startChar": 24,
