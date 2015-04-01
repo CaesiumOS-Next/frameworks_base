@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "e37fbae4_3c204599",
+        "filename": "services/core/java/com/android/server/pm/PackageDexOptimizer.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1059418
+      },
+      "writtenOn": "2015-04-01T21:05:17Z",
+      "side": 1,
+      "message": "Probably isDexOptNeededInternal should also be renamed to getDexOptReason. By convention, \"is\" prefix is only used for boolean types. And maybe also change the return type to \"int\". There is no benefit in using byte type for enums.",
+      "parentUuid": "a371421d_6e83e350",
+      "range": {
+        "startLine": 112,
+        "startChar": 31,
+        "endLine": 112,
+        "endChar": 43
+      },
+      "revId": "d9c87bfd81cb3988f058aacbdc5eec6a3dfb823c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8370be19_8aec8f3b",
         "filename": "services/core/java/com/android/server/pm/PackageDexOptimizer.java",
         "patchSetId": 1
