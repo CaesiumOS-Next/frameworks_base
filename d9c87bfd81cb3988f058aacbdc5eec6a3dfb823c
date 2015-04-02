@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "e3bdfae6_52208399",
+        "filename": "services/core/java/com/android/server/pm/PackageDexOptimizer.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1057373
+      },
+      "writtenOn": "2015-04-02T23:30:03Z",
+      "side": 1,
+      "message": "The problem is, getDexOptReason doesn\u0027t make sense for checking the status of a dex location.\n\nSo I did getDexOptNeeded, which hopefully works both ways, to ask what dexopt is needed, and to tell what dexopt is needed.",
+      "parentUuid": "e37fbae4_3c204599",
+      "range": {
+        "startLine": 112,
+        "startChar": 31,
+        "endLine": 112,
+        "endChar": 43
+      },
+      "revId": "d9c87bfd81cb3988f058aacbdc5eec6a3dfb823c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8370be19_8aec8f3b",
         "filename": "services/core/java/com/android/server/pm/PackageDexOptimizer.java",
         "patchSetId": 1
@@ -96,6 +120,30 @@
     },
     {
       "key": {
+        "uuid": "23c4727c_f6c9d058",
+        "filename": "services/core/java/com/android/server/pm/PackageDexOptimizer.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1057373
+      },
+      "writtenOn": "2015-04-02T23:30:03Z",
+      "side": 1,
+      "message": "I want it to report the type of dexopt being done (not why we are doing the dexopt). If forceDex is true, we always want to do dex2oat, so we should say that we are doing dex2oat.",
+      "parentUuid": "8370be19_8aec8f3b",
+      "range": {
+        "startLine": 114,
+        "startChar": 39,
+        "endLine": 114,
+        "endChar": 60
+      },
+      "revId": "d9c87bfd81cb3988f058aacbdc5eec6a3dfb823c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "83e35e1e_4cb7ff38",
         "filename": "services/core/java/com/android/server/pm/PackageDexOptimizer.java",
         "patchSetId": 1
@@ -107,6 +155,24 @@
       "writtenOn": "2015-04-02T14:20:33Z",
       "side": 1,
       "message": "what happens here if dexoptStatus \u003d\u003d PATCHOAT_NEEDED or SELF_PATCHOAT_NEEDED ? do we correctly call isDexOptNeededInternal and decide what to do (again) ?",
+      "revId": "d9c87bfd81cb3988f058aacbdc5eec6a3dfb823c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "63de6a5c_f9c09acf",
+        "filename": "services/core/java/com/android/server/pm/PackageDexOptimizer.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1057373
+      },
+      "writtenOn": "2015-04-02T23:30:03Z",
+      "side": 1,
+      "message": "If it gets added to addPackageForDeferredDexopt, eventually it will come back to this same routine, we will call isDexOptNeededInternal again, and do the right thing.",
+      "parentUuid": "83e35e1e_4cb7ff38",
       "revId": "d9c87bfd81cb3988f058aacbdc5eec6a3dfb823c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -172,6 +238,78 @@
       "side": 1,
       "message": "and then dexoptType can be final and doesn\u0027t have to be nitialized with \"???\"",
       "parentUuid": "e37fbae4_50d402c3",
+      "range": {
+        "startLine": 130,
+        "startChar": 24,
+        "endLine": 136,
+        "endChar": 25
+      },
+      "revId": "d9c87bfd81cb3988f058aacbdc5eec6a3dfb823c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e3bdfae6_7296e726",
+        "filename": "services/core/java/com/android/server/pm/PackageDexOptimizer.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1057373
+      },
+      "writtenOn": "2015-04-02T23:30:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e37fbae4_8d6ae55c",
+      "range": {
+        "startLine": 130,
+        "startChar": 24,
+        "endLine": 136,
+        "endChar": 25
+      },
+      "revId": "d9c87bfd81cb3988f058aacbdc5eec6a3dfb823c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "63de6a5c_99b07672",
+        "filename": "services/core/java/com/android/server/pm/PackageDexOptimizer.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1057373
+      },
+      "writtenOn": "2015-04-02T23:30:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e37fbae4_50d402c3",
+      "range": {
+        "startLine": 130,
+        "startChar": 24,
+        "endLine": 136,
+        "endChar": 25
+      },
+      "revId": "d9c87bfd81cb3988f058aacbdc5eec6a3dfb823c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "23c4727c_36e988ae",
+        "filename": "services/core/java/com/android/server/pm/PackageDexOptimizer.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1057373
+      },
+      "writtenOn": "2015-04-02T23:30:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2312b2d8_099a09ba",
       "range": {
         "startLine": 130,
         "startChar": 24,
