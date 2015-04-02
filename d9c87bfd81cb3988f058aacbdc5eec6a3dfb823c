@@ -96,6 +96,23 @@
     },
     {
       "key": {
+        "uuid": "83e35e1e_4cb7ff38",
+        "filename": "services/core/java/com/android/server/pm/PackageDexOptimizer.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1014443
+      },
+      "writtenOn": "2015-04-02T14:20:33Z",
+      "side": 1,
+      "message": "what happens here if dexoptStatus \u003d\u003d PATCHOAT_NEEDED or SELF_PATCHOAT_NEEDED ? do we correctly call isDexOptNeededInternal and decide what to do (again) ?",
+      "revId": "d9c87bfd81cb3988f058aacbdc5eec6a3dfb823c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e37fbae4_8d6ae55c",
         "filename": "services/core/java/com/android/server/pm/PackageDexOptimizer.java",
         "patchSetId": 1
@@ -131,6 +148,30 @@
       "side": 1,
       "message": "+1",
       "parentUuid": "e37fbae4_8d6ae55c",
+      "range": {
+        "startLine": 130,
+        "startChar": 24,
+        "endLine": 136,
+        "endChar": 25
+      },
+      "revId": "d9c87bfd81cb3988f058aacbdc5eec6a3dfb823c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2312b2d8_099a09ba",
+        "filename": "services/core/java/com/android/server/pm/PackageDexOptimizer.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1014443
+      },
+      "writtenOn": "2015-04-02T14:20:33Z",
+      "side": 1,
+      "message": "and then dexoptType can be final and doesn\u0027t have to be nitialized with \"???\"",
+      "parentUuid": "e37fbae4_50d402c3",
       "range": {
         "startLine": 130,
         "startChar": 24,
