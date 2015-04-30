@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "90fd66eb_11fbf68e",
+        "filename": "docs/html/guide/topics/renderscript/reference/index.jd",
+        "patchSetId": 4
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 1014403
+      },
+      "writtenOn": "2015-04-30T03:17:22Z",
+      "side": 1,
+      "message": "So, I chatted with Scott about the in-page links getting hidden by the breadcrumb header, and we have a solution. Please add an enclosing \u003cdiv\u003e to the renderscript output pages as described in:\n\nhttps://b.corp.google.com/issues/20637508#comment6",
+      "revId": "ebc3534da92f3ab3edd6ce7e588fd5de3ace54e5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
