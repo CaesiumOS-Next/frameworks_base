@@ -674,13 +674,13 @@ public class KeyguardViewMediator extends SystemUI {
         final ContentResolver cr = mContext.getContentResolver();
 
         // From DisplaySettings
-        long displayTimeout = Settings.System.getInt(cr, SCREEN_OFF_TIMEOUT,
-                KEYGUARD_DISPLAY_TIMEOUT_DELAY_DEFAULT);
+        long displayTimeout = Settings.System.getIntForUser(cr, SCREEN_OFF_TIMEOUT,
+                KEYGUARD_DISPLAY_TIMEOUT_DELAY_DEFAULT, UserHandle.USER_CURRENT);
 
         // From SecuritySettings
-        final long lockAfterTimeout = Settings.Secure.getInt(cr,
+        final long lockAfterTimeout = Settings.Secure.getIntForUser(cr,
                 Settings.Secure.LOCK_SCREEN_LOCK_AFTER_TIMEOUT,
-                KEYGUARD_LOCK_AFTER_DELAY_DEFAULT);
+                KEYGUARD_LOCK_AFTER_DELAY_DEFAULT, UserHandle.USER_CURRENT);
 
         // From DevicePolicyAdmin
         final long policyTimeout = mLockPatternUtils.getDevicePolicyManager()
