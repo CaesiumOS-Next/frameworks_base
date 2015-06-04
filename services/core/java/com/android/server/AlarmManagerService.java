@@ -75,9 +75,6 @@ class AlarmManagerService extends SystemService {
     // warning message.  The time duration is in milliseconds.
     private static final long LATE_ALARM_THRESHOLD = 10 * 1000;
 
-    // Minimum futurity of a new alarm
-    private static final long MIN_FUTURITY = 5 * 1000;  // 5 seconds, in millis
-
     // Minimum alarm recurrence interval
     private static final long MIN_INTERVAL = 60 * 1000;  // one minute, in millis
 
@@ -724,10 +721,7 @@ class AlarmManagerService extends SystemService {
         }
 
         final long nowElapsed = SystemClock.elapsedRealtime();
-        final long nominalTrigger = convertToElapsed(triggerAtTime, type);
-        // Try to prevent spamming by making sure we aren't firing alarms in the immediate future
-        final long minTrigger = nowElapsed + MIN_FUTURITY;
-        final long triggerElapsed = (nominalTrigger > minTrigger) ? nominalTrigger : minTrigger;
+        final long triggerElapsed = convertToElapsed(triggerAtTime, type);
 
         final long maxElapsed;
         if (windowLength == AlarmManager.WINDOW_EXACT) {
