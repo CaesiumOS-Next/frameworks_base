@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "796b8031_8591d9a6",
+        "filename": "libs/hwui/Caches.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 376,
+      "author": {
+        "id": 1010103
+      },
+      "writtenOn": "2015-06-08T22:17:32Z",
+      "side": 1,
+      "message": "glGetError() needs to be called in a loop to clear all errors. Switch this to call GLUtils::dumpGLErrors() instead which does that.",
+      "range": {
+        "startLine": 376,
+        "startChar": 4,
+        "endLine": 376,
+        "endChar": 14
+      },
+      "revId": "0bce772958effc5c6e62246bf52896f4046824aa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
