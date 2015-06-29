@@ -109,6 +109,7 @@ public class IdleController extends StateController {
         private AlarmManager mAlarm;
         private PendingIntent mIdleTriggerIntent;
         boolean mIdle;
+        boolean mIdleInProgress;
 
         public IdlenessTracker() {
             mAlarm = (AlarmManager) mContext.getSystemService(Context.ALARM_SERVICE);
@@ -121,6 +122,7 @@ public class IdleController extends StateController {
             // At boot we presume that the user has just "interacted" with the
             // device in some meaningful way.
             mIdle = false;
+            mIdleInProgress = false;
         }
 
         public boolean isIdle() {
@@ -150,12 +152,15 @@ public class IdleController extends StateController {
 
             if (action.equals(Intent.ACTION_SCREEN_ON)
                     || action.equals(Intent.ACTION_DREAMING_STOPPED)) {
+                if (DEBUG) {
+                    Slog.v(TAG,"exiting idle : " + action);
+                }
+                //cancel the alarm
+                mAlarm.cancel(mIdleTriggerIntent);
+                if (mIdleInProgress) {
+                    mIdleInProgress = false;
+                } else if (mIdle) {
                 // possible transition to not-idle
-                if (mIdle) {
-                    if (DEBUG) {
-                        Slog.v(TAG, "exiting idle : " + action);
-                    }
-                    mAlarm.cancel(mIdleTriggerIntent);
                     mIdle = false;
                     reportNewIdleState(mIdle);
                 }
@@ -170,9 +175,11 @@ public class IdleController extends StateController {
                     Slog.v(TAG, "Scheduling idle : " + action + " now:" + nowElapsed + " when="
                             + when);
                 }
+                mIdleInProgress = true;
                 mAlarm.setWindow(AlarmManager.ELAPSED_REALTIME_WAKEUP,
                         when, IDLE_WINDOW_SLOP, mIdleTriggerIntent);
             } else if (action.equals(ACTION_TRIGGER_IDLE)) {
+                mIdleInProgress = false;
                 // idle time starts now
                 if (!mIdle) {
                     if (DEBUG) {
