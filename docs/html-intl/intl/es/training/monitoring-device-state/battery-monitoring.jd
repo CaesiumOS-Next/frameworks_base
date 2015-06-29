@@ -109,8 +109,8 @@ float batteryPct = level / (float)scale;</pre>
 
 <pre>&lt;receiver android:name=".BatteryLevelReceiver">
 &lt;intent-filter>
-  &lt;action android:name="android.intent.action.ACTION_BATTERY_LOW"/>
-  &lt;action android:name="android.intent.action.ACTION_BATTERY_OKAY"/>
+  &lt;action android:name="android.intent.action.BATTERY_LOW"/>
+  &lt;action android:name="android.intent.action.BATTERY_OKAY"/>
   &lt;/intent-filter>
 &lt;/receiver></pre>
 
