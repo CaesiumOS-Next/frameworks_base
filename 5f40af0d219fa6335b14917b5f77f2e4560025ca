@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "339be98e_7b081fe0",
+        "filename": "core/java/android/view/ViewRootImpl.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 2458,
+      "author": {
+        "id": 1010103
+      },
+      "writtenOn": "2015-07-01T14:57:22Z",
+      "side": 1,
+      "message": "How is it getting to this point? drawSoftware() is only called by ViewRootImpl#draw(), and the first thing #draw() does is check if the surface is valid. How is the surface going from valid (so mNativeObj !\u003d 0), to invalid (mNativeObj \u003d\u003d 0) between that check and this method?",
+      "range": {
+        "startLine": 2458,
+        "startChar": 15,
+        "endLine": 2458,
+        "endChar": 88
+      },
+      "revId": "5f40af0d219fa6335b14917b5f77f2e4560025ca",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
