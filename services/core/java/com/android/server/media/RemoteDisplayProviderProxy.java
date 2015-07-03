@@ -279,7 +279,7 @@ final class RemoteDisplayProviderProxy implements ServiceConnection {
         }
     }
 
-    private void disconnect() {
+    private synchronized void disconnect() {
         if (mActiveConnection != null) {
             if (mSelectedDisplayId != null) {
                 mActiveConnection.disconnect(mSelectedDisplayId);
