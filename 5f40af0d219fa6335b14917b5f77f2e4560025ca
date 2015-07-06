@@ -46,6 +46,30 @@
       "revId": "5f40af0d219fa6335b14917b5f77f2e4560025ca",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f36151bc_bd0be75f",
+        "filename": "core/java/android/view/ViewRootImpl.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 2458,
+      "author": {
+        "id": 1010103
+      },
+      "writtenOn": "2015-07-06T16:25:00Z",
+      "side": 1,
+      "message": "Yes, but that will throw an IAE when either lock or unlock is called which is caught by the above catch. This comment is claiming that lockCanvas() was called on a Surface that already threw an IAE in the above but was then used again to trigger the ISE.\n\nISE is only thrown if Surface\u0027s mNativeObject is 0, in which case isValid() returns false. So what path leads to this result?",
+      "parentUuid": "33da09aa_496cc1fd",
+      "range": {
+        "startLine": 2458,
+        "startChar": 15,
+        "endLine": 2458,
+        "endChar": 88
+      },
+      "revId": "5f40af0d219fa6335b14917b5f77f2e4560025ca",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
