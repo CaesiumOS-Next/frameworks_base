@@ -70,6 +70,30 @@
       "revId": "5f40af0d219fa6335b14917b5f77f2e4560025ca",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "383906d1_318b7078",
+        "filename": "core/java/android/view/ViewRootImpl.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 2458,
+      "author": {
+        "id": 1052496
+      },
+      "writtenOn": "2015-07-07T05:15:05Z",
+      "side": 1,
+      "message": "This issue is fixed in Surface.java, so abandon this patch.\n\nSurface: Leave object in unlocked state when unlockCanvasAndPost fails",
+      "parentUuid": "f36151bc_bd0be75f",
+      "range": {
+        "startLine": 2458,
+        "startChar": 15,
+        "endLine": 2458,
+        "endChar": 88
+      },
+      "revId": "5f40af0d219fa6335b14917b5f77f2e4560025ca",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
