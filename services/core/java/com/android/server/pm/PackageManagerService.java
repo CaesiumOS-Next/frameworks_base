@@ -10456,7 +10456,7 @@ public class PackageManagerService extends IPackageManager.Stub {
             int result = mPackageDexOptimizer
                     .performDexOpt(pkg, null /* instruction sets */, false /* forceDex */,
                             false /* defer */, false /* inclDependencies */,
-                            true /*bootComplete*/);
+                            true /*bootComplete*/, false /*useJit*/);
             if (result == PackageDexOptimizer.DEX_OPT_FAILED) {
                 res.setError(INSTALL_FAILED_DEXOPT, "Dexopt failed for " + pkg.codePath);
                 return;
