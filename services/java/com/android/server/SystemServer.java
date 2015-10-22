@@ -138,7 +138,6 @@ public final class SystemServer {
             "com.android.server.job.JobSchedulerService";
     private static final String MOUNT_SERVICE_CLASS =
             "com.android.server.MountService$Lifecycle";
-    private static final String PERSISTENT_DATA_BLOCK_PROP = "ro.frp.pst";
 
     private final int mFactoryTestMode;
     private Timer mProfilerSnapshotTimer;
@@ -641,7 +640,7 @@ public final class SystemServer {
                 }
                 Trace.traceEnd(Trace.TRACE_TAG_SYSTEM_SERVER);
 
-                if (!SystemProperties.get(PERSISTENT_DATA_BLOCK_PROP).equals("")) {
+                if (PersistentDataBlockService.isPersistentDataBlockSet()) {
                     mSystemServiceManager.startService(PersistentDataBlockService.class);
                 }
 

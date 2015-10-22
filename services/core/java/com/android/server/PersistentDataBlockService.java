@@ -82,9 +82,17 @@ public class PersistentDataBlockService extends SystemService {
     public PersistentDataBlockService(Context context) {
         super(context);
         mContext = context;
-        mDataBlockFile = SystemProperties.get(PERSISTENT_DATA_BLOCK_PROP);
+        mDataBlockFile = getPersistentBlock();
         mBlockDeviceSize = -1; // Load lazily
         mAllowedUid = getAllowedUid(UserHandle.USER_OWNER);
+    }
+
+    private static String getPersistentBlock() {
+        return SystemProperties.get(PERSISTENT_DATA_BLOCK_PROP);
+    }
+
+    public static boolean isPersistentDataBlockSet() {
+        return !getPersistentBlock().equals("");
     }
 
     private int getAllowedUid(int userHandle) {
