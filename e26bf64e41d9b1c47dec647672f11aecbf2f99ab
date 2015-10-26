@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "36e4cdf6_d0b64a62",
+        "filename": "rs/java/android/renderscript/RenderScript.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1063563
+      },
+      "writtenOn": "2015-10-26T19:03:56Z",
+      "side": 1,
+      "message": "Perhaps this is overly pedantic, but I don\u0027t think \"sequentially\" and \"single threaded\" are necessarily the same.  I take \"sequentially\" to indicate some particular well defined sequence through the iteration space, whereas \"single threaded\" merely indicates that only a single point in the iteration space is processed at a time, without indicating what the path through the iteration space may be.\n\nWhat is the intention here?",
+      "range": {
+        "startLine": 108,
+        "startChar": 0,
+        "endLine": 113,
+        "endChar": 65
+      },
+      "revId": "e26bf64e41d9b1c47dec647672f11aecbf2f99ab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
