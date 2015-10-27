@@ -1223,6 +1223,17 @@ nAllocationSyncAll(JNIEnv *_env, jobject _this, jlong con, jlong a, jint bits)
     rsAllocationSyncAll((RsContext)con, (RsAllocation)a, (RsAllocationUsageType)bits);
 }
 
+static void
+nAllocationShareBufferQueue(JNIEnv *_env, jobject _this, jlong con, jlong alloc1, jlong alloc2)
+{
+    if (kLogApi) {
+        ALOGD("nAllocationShareBufferQueue, con(%p), alloc1(%p), alloc2(%p)", (RsContext)con,
+              (RsAllocation)alloc1, (RsAllocation)alloc2);
+    }
+
+    rsAllocationShareBufferQueue((RsContext)con, (RsAllocation)alloc1, (RsAllocation)alloc2);
+}
+
 static jobject
 nAllocationGetSurface(JNIEnv *_env, jobject _this, jlong con, jlong a)
 {
@@ -1274,6 +1285,15 @@ nAllocationIoReceive(JNIEnv *_env, jobject _this, jlong con, jlong alloc)
     rsAllocationIoReceive((RsContext)con, (RsAllocation)alloc);
 }
 
+static void
+nAllocationGetTimeStamp(JNIEnv *_env, jobject _this, jlong con, jlong alloc1, jlong alloc2)
+{
+    if (kLogApi) {
+        ALOGD("nAllocationGetTimeStamp, con(%p), alloc(%p)", (RsContext)con, (RsAllocation)alloc);
+    }
+
+    rsAllocationGetTimeStamp((RsContext)con, (RsAllocation)alloc);
+}
 
 static void
 nAllocationGenerateMipmaps(JNIEnv *_env, jobject _this, jlong con, jlong alloc)
@@ -2726,10 +2746,12 @@ static const JNINativeMethod methods[] = {
 {"rsnAllocationCopyToBitmap",        "(JJLandroid/graphics/Bitmap;)V",        (void*)nAllocationCopyToBitmap },
 
 {"rsnAllocationSyncAll",             "(JJI)V",                                (void*)nAllocationSyncAll },
+{"rsnAllocationShareBufferQueue",    "(JJJ)V",                                (void*)nAllocationShareBufferQueue },
 {"rsnAllocationGetSurface",          "(JJ)Landroid/view/Surface;",            (void*)nAllocationGetSurface },
 {"rsnAllocationSetSurface",          "(JJLandroid/view/Surface;)V",           (void*)nAllocationSetSurface },
 {"rsnAllocationIoSend",              "(JJ)V",                                 (void*)nAllocationIoSend },
 {"rsnAllocationIoReceive",           "(JJ)V",                                 (void*)nAllocationIoReceive },
+{"rsnAllocationGetTimeStamp",        "(JJ)V",                                 (void*)nAllocationGetTimeStamp },
 {"rsnAllocationData1D",              "(JJIIILjava/lang/Object;IIIZ)V",        (void*)nAllocationData1D },
 {"rsnAllocationElementData",         "(JJIIIII[BI)V",                         (void*)nAllocationElementData },
 {"rsnAllocationData2D",              "(JJIIIIIILjava/lang/Object;IIIZ)V",     (void*)nAllocationData2D },
