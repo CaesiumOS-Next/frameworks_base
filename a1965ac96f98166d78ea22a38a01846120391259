@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "98fcb2c6_67c2cc2b",
+        "filename": "core/java/android/content/ContentResolver.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 966,
+      "author": {
+        "id": 1006484
+      },
+      "writtenOn": "2015-11-11T19:36:14Z",
+      "side": 1,
+      "message": "Is it better to just remove function call of releaseUnstableProvider as it will be finally called in finally clause.",
+      "range": {
+        "startLine": 966,
+        "startChar": 43,
+        "endLine": 966,
+        "endChar": 44
+      },
+      "revId": "a1965ac96f98166d78ea22a38a01846120391259",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
