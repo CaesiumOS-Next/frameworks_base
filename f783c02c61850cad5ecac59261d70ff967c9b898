@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3953decb_03d68e24",
+        "filename": "core/java/android/content/ContentResolver.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 987,
+      "author": {
+        "id": 1006484
+      },
+      "writtenOn": "2015-11-11T19:36:14Z",
+      "side": 1,
+      "message": "I think the better way is to remove call of releaseUnstableProvider here as it is called in finally clause.",
+      "range": {
+        "startLine": 987,
+        "startChar": 43,
+        "endLine": 987,
+        "endChar": 44
+      },
+      "revId": "f783c02c61850cad5ecac59261d70ff967c9b898",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
