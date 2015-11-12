@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b6da7ea7_37f8ba6e",
+        "filename": "rs/jni/android_renderscript_RenderScript.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 550,
+      "author": {
+        "id": 1010056
+      },
+      "writtenOn": "2015-11-12T21:58:23Z",
+      "side": 1,
+      "message": "This explains part of the size_t -\u003e int change, but I think we might still want to stick with size_t for the driver side (for clarity - I hate signed int being used to represent the length of something).",
+      "range": {
+        "startLine": 550,
+        "startChar": 46,
+        "endLine": 550,
+        "endChar": 50
+      },
+      "revId": "1d4c38a7e430df37d7a89c0cdc95d13e02d66bde",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
