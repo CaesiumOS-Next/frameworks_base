@@ -50,6 +50,9 @@ import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.content.res.XmlResourceParser;
 import android.database.ContentObserver;
+import android.hardware.camera2.CameraAccessException;
+import android.hardware.camera2.CameraCharacteristics;
+import android.hardware.camera2.CameraManager;
 import android.hardware.hdmi.HdmiControlManager;
 import android.hardware.hdmi.HdmiPlaybackClient;
 import android.hardware.hdmi.HdmiTvClient;
@@ -624,6 +627,10 @@ public class AudioService extends IAudioService.Stub
         }
     }
 
+    private String mFrontCameraId;
+    private String mBackCameraId;
+    private CameraManager mCameraManager;
+
     ///////////////////////////////////////////////////////////////////////////
     // Construction
     ///////////////////////////////////////////////////////////////////////////
@@ -815,6 +822,11 @@ public class AudioService extends IAudioService.Stub
 
         initA11yMonitoring();
         onIndicateSystemReady();
+
+        mCameraManager = (CameraManager) mContext.getSystemService(Context.CAMERA_SERVICE);
+        if (mCameraManager != null) {
+            InitializeCameraAvailability();
+        }
     }
 
     void onIndicateSystemReady() {
@@ -6944,4 +6956,86 @@ public class AudioService extends IAudioService.Stub
     private HashMap<IBinder, AudioPolicyProxy> mAudioPolicies =
             new HashMap<IBinder, AudioPolicyProxy>();
     private int mAudioPolicyCounter = 0; // always accessed synchronized on mAudioPolicies
+
+    //==========================================================================================
+    // Camera Availability
+    //==========================================================================================
+    private String getCameraId(Integer characteristic) throws CameraAccessException {
+        String[] ids = mCameraManager.getCameraIdList();
+        for (String id : ids) {
+            CameraCharacteristics c = mCameraManager.getCameraCharacteristics(id);
+            Integer lensFacing = c.get(CameraCharacteristics.LENS_FACING);
+            if (lensFacing != null && lensFacing == characteristic) {
+                return id;
+            }
+        }
+        return null;
+    }
+
+    private final CameraManager.AvailabilityCallback mAvailabilityCallback =
+            new CameraManager.AvailabilityCallback() {
+        @Override
+        public void onCameraAvailable(String cameraId) {
+            if (DEBUG_AP) Log.d(TAG, "onCameraAvailable(" + cameraId + ")");
+            if (cameraId.equals(mFrontCameraId)) {
+                setFrontCameraAvailable(true);
+            }
+            if (cameraId.equals(mBackCameraId)) {
+                setBackCameraAvailable(true);
+            }
+        }
+
+        @Override
+        public void onCameraUnavailable(String cameraId) {
+            if (DEBUG_AP) Log.d(TAG, "onCameraUnavailable(" + cameraId + ")");
+            if (cameraId.equals(mFrontCameraId)) {
+                setFrontCameraAvailable(false);
+            }
+            if (cameraId.equals(mBackCameraId)) {
+                setBackCameraAvailable(false);
+            }
+        }
+
+        private void setFrontCameraAvailable(boolean available) {
+            synchronized (AudioService.this) {
+            }
+            if (available) {
+                // the camera is now released and therefore available
+                if (DEBUG_AP) Log.d(TAG, "camera_sub=off");
+                AudioSystem.setParameters("camera_sub=off");
+            } else {
+                // the camera is now occupied and therefore unavailable
+                if (DEBUG_AP) Log.d(TAG, "camera_sub=on");
+                AudioSystem.setParameters("camera_sub=on");
+            }
+        }
+
+        private void setBackCameraAvailable(boolean available) {
+            synchronized (AudioService.this) {
+            }
+            if (available) {
+                // the camera is now released and therefore available
+                if (DEBUG_AP) Log.d(TAG, "camera_main=off");
+                AudioSystem.setParameters("camera_main=off");
+            } else {
+                // the camera is now occupied and therefore unavailable
+                if (DEBUG_AP) Log.d(TAG, "camera_main=on");
+                AudioSystem.setParameters("camera_main=on");
+            }
+        }
+    };
+
+    private void InitializeCameraAvailability() {
+        try {
+            mFrontCameraId = getCameraId(CameraCharacteristics.LENS_FACING_FRONT);
+            mBackCameraId = getCameraId(CameraCharacteristics.LENS_FACING_BACK);
+        } catch (Throwable e) {
+            Log.e(TAG, "Error calling getCameraId", e);
+            return;
+        }
+
+        if ((mFrontCameraId != null) || (mBackCameraId != null)) {
+            mCameraManager.registerAvailabilityCallback(mAvailabilityCallback, mAudioHandler);
+        }
+    }
 }
