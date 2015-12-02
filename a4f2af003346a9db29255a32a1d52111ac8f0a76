@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9bb8433f_e44e826a",
+        "filename": "services/core/java/com/android/server/WiredAccessoryManager.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 413,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2015-12-02T16:56:22Z",
+      "side": 1,
+      "message": "do we have platforms were some devices use extcon and others switch? If not we should do one or the other method otherwise we will have systematic error messages in  the logcat each time a device is connected.",
+      "range": {
+        "startLine": 413,
+        "startChar": 39,
+        "endLine": 413,
+        "endChar": 44
+      },
+      "revId": "a4f2af003346a9db29255a32a1d52111ac8f0a76",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9bb8433f_846976ce",
+        "filename": "services/core/java/com/android/server/WiredAccessoryManager.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 449,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2015-12-02T16:56:22Z",
+      "side": 1,
+      "message": "line length",
+      "range": {
+        "startLine": 449,
+        "startChar": 96,
+        "endLine": 449,
+        "endChar": 104
+      },
+      "revId": "a4f2af003346a9db29255a32a1d52111ac8f0a76",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
