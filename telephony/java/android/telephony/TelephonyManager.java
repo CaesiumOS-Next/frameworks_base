@@ -3299,10 +3299,11 @@ public class TelephonyManager {
      * Or the calling app has carrier privileges. @see #hasCarrierPrivileges
      *
      * @param AID Application id. See ETSI 102.221 and 101.220.
+     @ @param p2 P2 paramter.
      * @return an IccOpenLogicalChannelResponse object.
      */
-    public IccOpenLogicalChannelResponse iccOpenLogicalChannel(String AID) {
-        return iccOpenLogicalChannel(getSubId(), AID);
+    public IccOpenLogicalChannelResponse iccOpenLogicalChannel(String AID, byte p2) {
+        return iccOpenLogicalChannel(getSubId(), AID, p2);
     }
 
     /**
@@ -3316,14 +3317,15 @@ public class TelephonyManager {
      *
      * @param subId The subscription to use.
      * @param AID Application id. See ETSI 102.221 and 101.220.
+     * @param p2 P2 parameter
      * @return an IccOpenLogicalChannelResponse object.
      * @hide
      */
-    public IccOpenLogicalChannelResponse iccOpenLogicalChannel(int subId, String AID) {
+    public IccOpenLogicalChannelResponse iccOpenLogicalChannel(int subId, String AID, byte p2) {
         try {
             ITelephony telephony = getITelephony();
             if (telephony != null)
-                return telephony.iccOpenLogicalChannel(subId, AID);
+                return telephony.iccOpenLogicalChannel(subId, AID, p2);
         } catch (RemoteException ex) {
         } catch (NullPointerException ex) {
         }
