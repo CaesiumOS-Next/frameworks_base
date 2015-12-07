@@ -131,7 +131,7 @@ public class QSTileView extends ViewGroup {
         }
         if (mDualLabel != null) {
             labelText = mDualLabel.getText();
-            labelDescription = mLabel.getContentDescription();
+            labelDescription = mDualLabel.getContentDescription();
             removeView(mDualLabel);
             mDualLabel = null;
         }
@@ -318,7 +318,7 @@ public class QSTileView extends ViewGroup {
             iv.setTag(R.id.qs_icon_tag, state.icon);
             if (d instanceof Animatable) {
                 Animatable a = (Animatable) d;
-                if (state.icon instanceof AnimationIcon && !iv.isShown()) {
+                if (state.icon instanceof QSTile.AnimationIcon && !iv.isShown()) {
                     a.stop(); // skip directly to end state
                 }
             }
