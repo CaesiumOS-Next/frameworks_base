@@ -6848,6 +6848,17 @@ public class PackageManagerService extends IPackageManager.Stub {
                                     + pkg.applicationInfo.uid;
                             reportSettingsProblem(Log.WARN, msg);
                         }
+                    } else {
+                        Object obj = mSettings.getUserIdLPr(currentUid);
+                        if (obj instanceof SharedUserSetting) {
+                            SharedUserSetting sus = (SharedUserSetting)obj;
+                            PackageSetting tmp = mSettings.mPackages.get(pkgName);
+                            if (tmp != null) {
+                                Slog.w(TAG, "Uid changed : Remove " + pkgName
+                                        + " PackageSetting from uid " + currentUid);
+                                sus.removePackage(tmp);
+                            }
+                        }
                     }
                     if (!recovered && ((parseFlags&PackageParser.PARSE_IS_SYSTEM) != 0
                             || (scanFlags&SCAN_BOOTING) != 0)) {
