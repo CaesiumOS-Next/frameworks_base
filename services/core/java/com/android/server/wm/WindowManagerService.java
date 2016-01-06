@@ -7839,23 +7839,22 @@ public class WindowManagerService extends IWindowManager.Stub
                         // Animation has been canceled... do nothing.
                         return;
                     }
+                    synchronized(mWindowMap) {
+                        if (DEBUG_STARTING_WINDOW) Slog.v(TAG, "Add starting "
+                                + wtoken + ": pkg=" + sd.pkg);
 
-                    if (DEBUG_STARTING_WINDOW) Slog.v(TAG, "Add starting "
-                            + wtoken + ": pkg=" + sd.pkg);
+                        View view = null;
+                        try {
+                            view = mPolicy.addStartingWindow(
+                                wtoken.token, sd.pkg, sd.theme, sd.compatInfo,
+                                sd.nonLocalizedLabel, sd.labelRes, sd.icon, sd.logo, sd.windowFlags);
+                        } catch (Exception e) {
+                            Slog.w(TAG, "Exception when adding starting window", e);
+                        }
 
-                    View view = null;
-                    try {
-                        view = mPolicy.addStartingWindow(
-                            wtoken.token, sd.pkg, sd.theme, sd.compatInfo,
-                            sd.nonLocalizedLabel, sd.labelRes, sd.icon, sd.logo, sd.windowFlags);
-                    } catch (Exception e) {
-                        Slog.w(TAG, "Exception when adding starting window", e);
-                    }
+                        if (view != null) {
+                            boolean abort = false;
 
-                    if (view != null) {
-                        boolean abort = false;
-
-                        synchronized(mWindowMap) {
                             if (wtoken.removed || wtoken.startingData == null) {
                                 // If the window was successfully added, then
                                 // we need to remove it.
@@ -7876,13 +7875,14 @@ public class WindowManagerService extends IWindowManager.Stub
                                     + ": startingWindow="
                                     + wtoken.startingWindow + " startingView="
                                     + wtoken.startingView);
-                        }
 
-                        if (abort) {
-                            try {
-                                mPolicy.removeStartingWindow(wtoken.token, view);
-                            } catch (Exception e) {
-                                Slog.w(TAG, "Exception when removing starting window", e);
+
+                            if (abort) {
+                                try {
+                                    mPolicy.removeStartingWindow(wtoken.token, view);
+                                } catch (Exception e) {
+                                    Slog.w(TAG, "Exception when removing starting window", e);
+                                }
                             }
                         }
                     }
