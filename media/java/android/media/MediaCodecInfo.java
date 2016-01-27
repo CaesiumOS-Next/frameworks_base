@@ -1113,6 +1113,16 @@ public final class MediaCodecInfo {
                 sampleRates = new int[] { 8000 };
                 bitRates = Range.create(13000, 13000);
                 maxChannels = 1;
+            } else if (mime.equalsIgnoreCase(MediaFormat.MIMETYPE_AUDIO_AC3)) {
+                sampleRates = new int[] {
+                    32000, 44100, 48000};
+                bitRates = Range.create(32000, 640000);
+                maxChannels = 6;
+            } else if (mime.equalsIgnoreCase(MediaFormat.MIMETYPE_AUDIO_EAC3)) {
+                sampleRates = new int[] {
+                    32000, 44100, 48000};
+                bitRates = Range.create(32000, 6144000);
+                maxChannels = 8;
             } else {
                 Log.w(TAG, "Unsupported mime " + mime);
                 mParent.mError |= ERROR_UNSUPPORTED;
