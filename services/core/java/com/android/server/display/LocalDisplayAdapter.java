@@ -191,6 +191,10 @@ final class LocalDisplayAdapter extends DisplayAdapter {
                 for (int j = 0; j < colorTransforms.size(); j++) {
                     if (colorTransforms.get(j).getColorTransform() == info.colorTransform) {
                         existingMode = true;
+                        // Make sure we have activeColorTransform
+                        if (i == activeDisplayInfo) {
+                            activeColorTransform = colorTransforms.get(j);
+                        }
                         break;
                     }
                 }
