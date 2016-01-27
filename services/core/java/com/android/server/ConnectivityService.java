@@ -4860,6 +4860,11 @@ public class ConnectivityService extends IConnectivityManager.Stub
         }
 
         if (!mUserManager.hasUserRestriction(UserManager.DISALLOW_CONFIG_VPN)) {
+            // Turn Always-on VPN off
+            if (mLockdownEnabled) {
+                mKeyStore.delete(Credentials.LOCKDOWN_VPN);
+                updateLockdownVpn();
+            }
             // Turn VPN off
             VpnConfig vpnConfig = getVpnConfig(userId);
             if (vpnConfig != null) {
