@@ -62,7 +62,7 @@ class KeyStoreCryptoOperationChunkedStreamer implements KeyStoreCryptoOperationS
          * Returns the result of the KeyStore {@code finish} operation or null if keystore couldn't
          * be reached.
          */
-        OperationResult finish(byte[] siganture, byte[] additionalEntropy);
+        OperationResult finish(byte[] input, byte[] signature, byte[] additionalEntropy);
     }
 
     // Binder buffer is about 1MB, but it's shared between all active transactions of the process.
@@ -213,11 +213,7 @@ class KeyStoreCryptoOperationChunkedStreamer implements KeyStoreCryptoOperationS
             inputOffset = 0;
         }
 
-        // Flush all buffered input and provided input into keystore/keymaster.
-        byte[] output = update(input, inputOffset, inputLength);
-        output = ArrayUtils.concat(output, flush());
-
-        OperationResult opResult = mKeyStoreStream.finish(signature, additionalEntropy);
+        OperationResult opResult = mKeyStoreStream.finish(input, signature, additionalEntropy);
         if (opResult == null) {
             throw new KeyStoreConnectException();
         } else if (opResult.resultCode != KeyStore.NO_ERROR) {
@@ -225,81 +221,7 @@ class KeyStoreCryptoOperationChunkedStreamer implements KeyStoreCryptoOperationS
         }
         mProducedOutputSizeBytes += opResult.output.length;
 
-        return ArrayUtils.concat(output, opResult.output);
-    }
-
-    public byte[] flush() throws KeyStoreException {
-        if (mBufferedLength <= 0) {
-            return EmptyArray.BYTE;
-        }
-
-        // Keep invoking the update operation with remaining buffered data until either all of the
-        // buffered data is consumed or until update fails to consume anything.
-        ByteArrayOutputStream bufferedOutput = null;
-        while (mBufferedLength > 0) {
-            byte[] chunk = ArrayUtils.subarray(mBuffered, mBufferedOffset, mBufferedLength);
-            OperationResult opResult = mKeyStoreStream.update(chunk);
-            if (opResult == null) {
-                throw new KeyStoreConnectException();
-            } else if (opResult.resultCode != KeyStore.NO_ERROR) {
-                throw KeyStore.getKeyStoreException(opResult.resultCode);
-            }
-
-            if (opResult.inputConsumed <= 0) {
-                // Nothing was consumed. Break out of the loop to avoid an infinite loop.
-                break;
-            }
-
-            if (opResult.inputConsumed >= chunk.length) {
-                // All of the input was consumed
-                mBuffered = EmptyArray.BYTE;
-                mBufferedOffset = 0;
-                mBufferedLength = 0;
-            } else {
-                // Some of the input was not consumed
-                mBuffered = chunk;
-                mBufferedOffset = opResult.inputConsumed;
-                mBufferedLength = chunk.length - opResult.inputConsumed;
-            }
-
-            if (opResult.inputConsumed > chunk.length) {
-                throw new KeyStoreException(KeymasterDefs.KM_ERROR_UNKNOWN_ERROR,
-                        "Keystore consumed more input than provided. Provided: "
-                                + chunk.length + ", consumed: " + opResult.inputConsumed);
-            }
-
-            if ((opResult.output != null) && (opResult.output.length > 0)) {
-                // Some output was produced by this update operation
-                if (bufferedOutput == null) {
-                    // No output buffered yet.
-                    if (mBufferedLength == 0) {
-                        // No more output will be produced by this flush operation
-                        mProducedOutputSizeBytes += opResult.output.length;
-                        return opResult.output;
-                    } else {
-                        // More output might be produced by this flush operation -- buffer output.
-                        bufferedOutput = new ByteArrayOutputStream();
-                    }
-                }
-                // Buffer the output from this update operation
-                try {
-                    bufferedOutput.write(opResult.output);
-                } catch (IOException e) {
-                    throw new ProviderException("Failed to buffer output", e);
-                }
-            }
-        }
-
-        if (mBufferedLength > 0) {
-            throw new KeyStoreException(KeymasterDefs.KM_ERROR_INVALID_INPUT_LENGTH,
-                    "Keystore failed to consume last "
-                            + ((mBufferedLength != 1) ? (mBufferedLength + " bytes") : "byte")
-                            + " of input");
-        }
-
-        byte[] result = (bufferedOutput != null) ? bufferedOutput.toByteArray() : EmptyArray.BYTE;
-        mProducedOutputSizeBytes += result.length;
-        return result;
+        return opResult.output;
     }
 
     @Override
@@ -334,8 +256,8 @@ class KeyStoreCryptoOperationChunkedStreamer implements KeyStoreCryptoOperationS
         }
 
         @Override
-        public OperationResult finish(byte[] signature, byte[] additionalEntropy) {
-            return mKeyStore.finish(mOperationToken, null, signature, additionalEntropy);
+        public OperationResult finish(byte[] input, byte[] signature, byte[] additionalEntropy) {
+            return mKeyStore.finish(mOperationToken, null, input, signature, additionalEntropy);
         }
     }
 }

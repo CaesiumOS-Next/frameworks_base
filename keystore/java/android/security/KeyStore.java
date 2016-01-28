@@ -477,18 +477,14 @@ public class KeyStore {
         }
     }
 
-    public OperationResult finish(IBinder token, KeymasterArguments arguments, byte[] signature,
-            byte[] entropy) {
+    public OperationResult finish(IBinder token, KeymasterArguments arguments, byte[] input,
+            byte[] signature, byte[] entropy) {
         try {
-            return mBinder.finish(token, arguments, signature, entropy);
+            return mBinder.finish(token, arguments, input, signature, entropy);
         } catch (RemoteException e) {
             Log.w(TAG, "Cannot connect to keystore", e);
             return null;
         }
-    }
-
-    public OperationResult finish(IBinder token, KeymasterArguments arguments, byte[] signature) {
-        return finish(token, arguments, signature, null);
     }
 
     public int abort(IBinder token) {

@@ -816,7 +816,7 @@ public class KeyStoreTest extends ActivityUnitTestCase<Activity> {
         result = mKeyStore.update(token, null, new byte[] {0x01, 0x02, 0x03, 0x04});
         assertEquals("Update should succeed", KeyStore.NO_ERROR, result.resultCode);
         assertEquals("Finish should succeed", KeyStore.NO_ERROR,
-                mKeyStore.finish(token, null, null).resultCode);
+                mKeyStore.finish(token, null, null, null).resultCode);
         // TODO: Assert that an AEAD tag was returned by finish
     }
 
@@ -848,7 +848,7 @@ public class KeyStoreTest extends ActivityUnitTestCase<Activity> {
         assertEquals("Update should succeed", KeyStore.NO_ERROR, result.resultCode);
         assertEquals("All data should be consumed", in.length, result.inputConsumed);
         assertEquals("Finish should succeed", KeyStore.NO_ERROR,
-                mKeyStore.finish(token, null, null).resultCode);
+                mKeyStore.finish(token, null, null, null).resultCode);
         return result.output;
     }
 
