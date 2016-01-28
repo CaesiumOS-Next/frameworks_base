@@ -520,6 +520,15 @@ public class NotificationPanelView extends PanelView implements
     }
 
     @Override
+    public void expand() {
+        if (mHeadsUpManager.hasPinnedHeadsUp()) {
+            setTrackingHeadsUp(true);
+            mIsExpansionFromHeadsUp = true;
+        }
+        super.expand();
+    }
+
+    @Override
     public void fling(float vel, boolean expand) {
         GestureRecorder gr = ((PhoneStatusBarView) mBar).mBar.getGestureRecorder();
         if (gr != null) {

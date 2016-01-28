@@ -841,6 +841,12 @@ public abstract class PanelView extends FrameLayout {
         if (isFullyCollapsed()) {
             mBar.startOpeningPanel(this);
             notifyExpandingStarted();
+            if (mHeadsUpManager.hasPinnedHeadsUp()) {
+                int expandedHeight = mHeadsUpManager.getTopHeadsUpHeight()
+                        + getResources().getDimensionPixelSize(R.dimen.notifications_top_padding);
+                setExpandedHeightInternal(expandedHeight);
+                mHeadsUpManager.unpinAll();
+            }
             fling(0, true /* expand */);
         } else if (DEBUG) {
             if (DEBUG) logf("skipping expansion: is expanded");
