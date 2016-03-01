@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "62be89e4_8236c0e2",
+        "filename": "core/java/android/bluetooth/BluetoothAdapter.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 1022,
+      "author": {
+        "id": 1071489
+      },
+      "writtenOn": "2016-03-01T01:40:58Z",
+      "side": 1,
+      "message": "Can you confirm that the property\u0027s new value stored \"on disk\"?\nOtherwise, it won\u0027t work if the device is rebooted right after\nthe reset.",
+      "range": {
+        "startLine": 1022,
+        "startChar": 16,
+        "endLine": 1022,
+        "endChar": 80
+      },
+      "revId": "141a8c389a6f59824fd16ddc94e25e17cdb68d67",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
