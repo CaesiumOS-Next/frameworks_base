@@ -410,6 +410,15 @@ public class CarrierConfigManager {
     public static final String KEY_SUPPORT_CONFERENCE_CALL_BOOL = "support_conference_call_bool";
 
     /**
+     * Determines whether High Definition audio property is supported by a carrier.
+     * If {@code false}, forcibly remove HD audio property from connection so that HD audio related
+     * UI is not displayed. If {@code true}, keep HD audio property as it is configured.
+     * @hide
+     */
+    public static final String KEY_SUPPORT_HD_AUDIO_PROPERTY_BOOL =
+            "support_hd_audio_property_bool";
+
+    /**
      * Determine whether user can toggle Enhanced 4G LTE Mode in Settings.
      * @hide
      */
@@ -574,6 +583,7 @@ public class CarrierConfigManager {
         sDefaults.putInt(KEY_GSM_DTMF_TONE_DELAY_INT, 0);
         sDefaults.putInt(KEY_IMS_DTMF_TONE_DELAY_INT, 0);
         sDefaults.putBoolean(KEY_SUPPORT_CONFERENCE_CALL_BOOL, true);
+        sDefaults.putBoolean(KEY_SUPPORT_HD_AUDIO_PROPERTY_BOOL, true);
         sDefaults.putBoolean(KEY_EDITABLE_ENHANCED_4G_LTE_BOOL, true);
         sDefaults.putBoolean(KEY_HIDE_IMS_APN_BOOL, false);
         sDefaults.putBoolean(KEY_HIDE_PREFERRED_NETWORK_TYPE_BOOL, false);
