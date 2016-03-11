@@ -1737,18 +1737,22 @@ public class NetworkPolicyManagerService extends INetworkPolicyManager.Stub {
 
         maybeRefreshTrustedTime();
         synchronized (mRulesLock) {
-            normalizePoliciesLocked(policies);
-            updateNetworkEnabledLocked();
-            updateNetworkRulesLocked();
-            updateNotificationsLocked();
-            writePolicyLocked();
+            updateNetworkPoliciesLocked(policies);
         }
+    }
+
+    void updateNetworkPoliciesLocked(NetworkPolicy[] policies) {
+        normalizePoliciesLocked(policies);
+        updateNetworkEnabledLocked();
+        updateNetworkRulesLocked();
+        updateNotificationsLocked();
+        writePolicyLocked();
     }
 
     void addNetworkPolicyLocked(NetworkPolicy policy) {
         NetworkPolicy[] policies = getNetworkPolicies(mContext.getOpPackageName());
         policies = ArrayUtils.appendElement(NetworkPolicy.class, policies, policy);
-        setNetworkPolicies(policies);
+        updateNetworkPoliciesLocked(policies);
     }
 
     @Override
