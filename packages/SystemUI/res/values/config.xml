@@ -290,5 +290,9 @@
     <!-- Duration of the expansion animation in the volume dialog -->
     <item name="volume_expand_animation_duration" type="integer">300</item>
 
+    <!-- Enable showing cell max capabilities in bearer icon.
+         This config is supported only for EDGE, GPRS, HSDPA, HSUPA, HSPA, HSPAP,
+         LTE technologies -->
+    <bool name="config_updateDataNetIconBaseOnLocation">false</bool>
 </resources>
 

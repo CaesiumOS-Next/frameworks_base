@@ -19,15 +19,18 @@ import android.content.Context;
 import android.content.Intent;
 import android.net.NetworkCapabilities;
 import android.os.Looper;
+import android.telephony.CellLocation;
 import android.telephony.PhoneStateListener;
 import android.telephony.ServiceState;
 import android.telephony.SignalStrength;
 import android.telephony.SubscriptionInfo;
 import android.telephony.SubscriptionManager;
 import android.telephony.TelephonyManager;
+import android.telephony.gsm.GsmCellLocation;
 import android.text.TextUtils;
 import android.util.Log;
 import android.util.SparseArray;
+import android.util.SparseIntArray;
 
 import com.android.internal.annotations.VisibleForTesting;
 import com.android.internal.telephony.TelephonyIntents;
@@ -48,6 +51,7 @@ public class MobileSignalController extends SignalController<
     private final SubscriptionDefaults mDefaults;
     private final String mNetworkNameDefault;
     private final String mNetworkNameSeparator;
+    private final MobileCellDataCapability mMobileCellDataCapability;
     @VisibleForTesting
     final PhoneStateListener mPhoneStateListener;
     // Save entire info for logging, we only use the id.
@@ -85,6 +89,9 @@ public class MobileSignalController extends SignalController<
         mNetworkNameSeparator = getStringIfExists(R.string.status_bar_network_name_separator);
         mNetworkNameDefault = getStringIfExists(
                 com.android.internal.R.string.lockscreen_carrier_default);
+
+        mMobileCellDataCapability = new MobileCellDataCapability(info.getSubscriptionId(),
+                config.dataNetIconBaseOnLocation);
 
         mapIconSets();
 
@@ -137,7 +144,10 @@ public class MobileSignalController extends SignalController<
                         | PhoneStateListener.LISTEN_CALL_STATE
                         | PhoneStateListener.LISTEN_DATA_CONNECTION_STATE
                         | PhoneStateListener.LISTEN_DATA_ACTIVITY
-                        | PhoneStateListener.LISTEN_CARRIER_NETWORK_CHANGE);
+                        | PhoneStateListener.LISTEN_CARRIER_NETWORK_CHANGE
+                        | (mConfig.dataNetIconBaseOnLocation
+                                ? PhoneStateListener.LISTEN_CELL_LOCATION
+                                : PhoneStateListener.LISTEN_NONE));
     }
 
     /**
@@ -440,7 +450,8 @@ public class MobileSignalController extends SignalController<
                         + " dataState=" + state.getDataRegState());
             }
             mServiceState = state;
-            mDataNetType = state.getDataNetworkType();
+            mDataNetType = mMobileCellDataCapability.getDateNetTypeByOrigNetType(
+                    state.getDataNetworkType());
             updateTelephony();
         }
 
@@ -451,7 +462,7 @@ public class MobileSignalController extends SignalController<
                         + " type=" + networkType);
             }
             mDataState = state;
-            mDataNetType = networkType;
+            mDataNetType = mMobileCellDataCapability.getDateNetTypeByOrigNetType(networkType);
             updateTelephony();
         }
 
@@ -470,6 +481,25 @@ public class MobileSignalController extends SignalController<
             }
             mCurrentState.carrierNetworkChangeMode = active;
 
+            updateTelephony();
+        }
+
+        @Override
+        public void onCallStateChanged(int state, String incomingNumber) {
+            if (DEBUG) {
+                Log.d(mTag, "onCallStateChanged: state="+ state
+                        + " incomingNumber=" + incomingNumber);
+            }
+            mDataNetType = mMobileCellDataCapability.getDateNetTypeByCallState(state);
+            updateTelephony();
+        }
+
+        @Override
+        public void onCellLocationChanged(CellLocation location) {
+            if (DEBUG) {
+                Log.d(mTag, "onCellLocationChanged: location="+ location);
+            }
+            mDataNetType = mMobileCellDataCapability.getDateNetTypeByCellLocation(location);
             updateTelephony();
         }
     };
@@ -544,4 +574,123 @@ public class MobileSignalController extends SignalController<
                     && ((MobileState) o).isDefault == isDefault;
         }
     }
+
+    class MobileCellDataCapability {
+        private final boolean mIsFeatureEnabled;
+        // Lac and cid of current cell come from GsmCellLocation
+        private int mLac = -1;
+        private int mCid = -1;
+
+        private int mCallState = TelephonyManager.CALL_STATE_IDLE;
+
+        // The original data net type, comes from modem event:
+        // (1) onServiceStateChanged
+        // (2) onDataConnectionStateChanged
+        private int mOrigDataNetType = TelephonyManager.NETWORK_TYPE_UNKNOWN;
+        // The recorded max capabilities of current cell
+        private int mMaxDataNetType = TelephonyManager.NETWORK_TYPE_UNKNOWN;
+
+        // The rank of the data nework type - higher rank indicates better data capability
+        private SparseIntArray mDataNetworkTypeRank;
+        private int mMaxRank = 0;
+
+        public MobileCellDataCapability(int subId, boolean enabled) {
+            mIsFeatureEnabled = enabled;
+            if (mIsFeatureEnabled) {
+                CellLocation.requestLocationUpdate(subId);
+                mDataNetworkTypeRank = new SparseIntArray();
+                // GPRS=G
+                mDataNetworkTypeRank.put(TelephonyManager.NETWORK_TYPE_GPRS, mMaxRank++);
+                // EDGE=E
+                mDataNetworkTypeRank.put(TelephonyManager.NETWORK_TYPE_EDGE, mMaxRank++);
+                // UMTS=3G
+                mDataNetworkTypeRank.put(TelephonyManager.NETWORK_TYPE_UMTS, mMaxRank++);
+                // HSDPA/HSUPA=3G+
+                mDataNetworkTypeRank.put(TelephonyManager.NETWORK_TYPE_HSDPA, mMaxRank);
+                mDataNetworkTypeRank.put(TelephonyManager.NETWORK_TYPE_HSUPA, mMaxRank);
+                mDataNetworkTypeRank.put(TelephonyManager.NETWORK_TYPE_HSPA, mMaxRank++);
+                // HSPA+ Single Carrier (21Mbps) and/or Dual Carrier (42Mbps)=H+
+                mDataNetworkTypeRank.put(TelephonyManager.NETWORK_TYPE_HSPAP, mMaxRank++);
+                // LTE=4G
+                mDataNetworkTypeRank.put(TelephonyManager.NETWORK_TYPE_LTE, mMaxRank);
+            }
+        }
+
+        private void saveCellLacAndCid(int lac, int cid) {
+            mLac = lac;
+            mCid = cid;
+        }
+
+        private boolean isEmptyLacAndCid() {
+            return isEmptyLacAndCid(mLac, mCid);
+        }
+
+        private boolean isEmptyLacAndCid(int lac, int cid) {
+            return (lac == -1 && cid == -1);
+        }
+
+        private boolean isSameLacAndCid(int lac, int cid) {
+            return (mLac == lac && mCid == cid);
+        }
+
+        private int getDateNetTypeByLacAndCid(int lac, int cid) {
+            // Feature is disabled, return the original data network type
+            if (!mIsFeatureEnabled) {
+                return mOrigDataNetType;
+            }
+
+            // Device has ongoing call, use original data network type
+            // (1) For CSFB case, we must use original data network type, otherwise LTE might be
+            //     shown during voice call
+            // (2) For non-CSFB case, it is ok to use original data network type, because best
+            //     data capability will be restored after call is ended
+            if (mCallState == TelephonyManager.CALL_STATE_OFFHOOK) {
+                return mOrigDataNetType;
+            }
+
+            // Reset best data network type to original networktype, save lac and cid
+            // when meet any of below conditions:
+            // (1) The original data network type is unknown
+            // (2) The best data network type is unknown
+            // (3) The saved lac and cid are invalid
+            // (4) The new lac and cid are invalid
+            // (5) The cell location is changed
+            if (mOrigDataNetType == TelephonyManager.NETWORK_TYPE_UNKNOWN
+                    || mMaxDataNetType == TelephonyManager.NETWORK_TYPE_UNKNOWN
+                    || isEmptyLacAndCid()
+                    || isEmptyLacAndCid(lac, cid)
+                    || !isSameLacAndCid(lac, cid)) {
+                mMaxDataNetType = mOrigDataNetType;
+                saveCellLacAndCid(lac, cid);
+                return mOrigDataNetType;
+            }
+
+            // Update cell best data network type if rank of original data network type is higher
+            if (mDataNetworkTypeRank.get(mOrigDataNetType, mMaxRank)
+                    >= mDataNetworkTypeRank.get(mMaxDataNetType, mMaxRank)) {
+                mMaxDataNetType = mOrigDataNetType;
+            }
+            return mMaxDataNetType;
+        }
+
+        public int getDateNetTypeByCellLocation(CellLocation cellLocation) {
+            GsmCellLocation gsmCellLocation;
+            if (cellLocation != null && cellLocation instanceof GsmCellLocation) {
+                gsmCellLocation = (GsmCellLocation) cellLocation;
+            } else {
+                gsmCellLocation = new GsmCellLocation();
+            }
+            return getDateNetTypeByLacAndCid(gsmCellLocation.getLac(), gsmCellLocation.getCid());
+        }
+
+        public int getDateNetTypeByOrigNetType(int origDataNetType) {
+            mOrigDataNetType = origDataNetType;
+            return getDateNetTypeByLacAndCid(mLac, mCid);
+        }
+
+        public int getDateNetTypeByCallState(int callState) {
+            mCallState = callState;
+            return getDateNetTypeByLacAndCid(mLac, mCid);
+        }
+    };
 }
