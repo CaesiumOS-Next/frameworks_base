@@ -34,7 +34,7 @@ import android.bluetooth.IBluetoothGattServerCallback;
 interface IBluetoothGatt {
     List<BluetoothDevice> getDevicesMatchingConnectionStates(in int[] states);
 
-    void startScan(in int appIf, in boolean isServer, in ScanSettings settings,
+    int startScan(in int appIf, in boolean isServer, in ScanSettings settings,
                    in List<ScanFilter> filters,
                    in List scanStorages, in String callingPackage);
     void stopScan(in int appIf, in boolean isServer);

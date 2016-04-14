@@ -233,6 +233,9 @@ public final class BluetoothLeScanner {
     private class BleScanCallbackWrapper extends BluetoothGattCallbackWrapper {
         private static final int REGISTRATION_CALLBACK_TIMEOUT_MILLIS = 2000;
 
+        private static final int SERVICE_NOT_AVAILABLE = 0;
+        private static final int SCANNING_TOO_FREQUENTLY = -1;
+
         private final ScanCallback mScanCallback;
         private final List<ScanFilter> mFilters;
         private ScanSettings mSettings;
@@ -321,8 +324,12 @@ public final class BluetoothLeScanner {
                 if (status == BluetoothGatt.GATT_SUCCESS) {
                     mClientIf = clientIf;
                     try {
-                        mBluetoothGatt.startScan(mClientIf, false, mSettings, mFilters,
+                        int ret = mBluetoothGatt.startScan(mClientIf, false, mSettings, mFilters,
                                 mResultStorages, ActivityThread.currentOpPackageName());
+                        if (ret == SCANNING_TOO_FREQUENTLY) {
+                            postCallbackError(mScanCallback,
+                                ScanCallback.SCAN_FAILED_SCANNING_TOO_FREQUENTLY);
+                        }
                     } catch (RemoteException e) {
                         Log.e(TAG, "fail to start le scan: " + e);
                         mClientIf = -1;
