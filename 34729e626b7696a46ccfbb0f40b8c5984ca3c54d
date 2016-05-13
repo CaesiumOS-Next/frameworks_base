@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f247b43c_f38e503f",
+        "filename": "services/core/java/com/android/server/net/NetworkStatsService.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 1025,
+      "author": {
+        "id": 1002609
+      },
+      "writtenOn": "2016-05-13T18:03:35Z",
+      "side": 1,
+      "message": "which of the two bcast receivers is getting ordered broadcasts?  I think there are only two bcast reciever: mTetherReceiver and mPollReciever.\n\nIt may help if you include a bugreport showing the problem.\n\nI think this may cause problem in cases like create session, where after performPoll is called we expect stats to be updated.",
+      "range": {
+        "startLine": 1025,
+        "startChar": 41,
+        "endLine": 1025,
+        "endChar": 58
+      },
+      "revId": "34729e626b7696a46ccfbb0f40b8c5984ca3c54d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
