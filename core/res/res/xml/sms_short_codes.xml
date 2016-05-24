@@ -188,7 +188,7 @@
     <shortcode country="ro" pattern="\\d{4}" premium="12(?:63|66|88)|13(?:14|80)" free="116\\d{3}|3654" />
 
     <!-- Russia: 4 digits, known premium codes listed: http://smscoin.net/info/pricing-russia/ -->
-    <shortcode country="ru" pattern="\\d{4}" premium="1(?:1[56]1|899)|2(?:09[57]|322|47[46]|880|990)|3[589]33|4161|44(?:4[3-9]|81)|77(?:33|81)|8424" />
+    <shortcode country="ru" pattern="\\d{4}|900" premium="1(?:1[56]1|899)|2(?:09[57]|322|47[46]|880|990)|3[589]33|4161|44(?:4[3-9]|81)|77(?:33|81)|8424" />
 
     <!-- Saudi Arabia -->
     <shortcode country="sa" free="8145" />
