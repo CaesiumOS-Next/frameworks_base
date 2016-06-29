@@ -1548,6 +1548,8 @@ public final class ActivityManagerService extends ActivityManagerNative
     static ServiceThread sKillThread = null;
     static KillHandler sKillHandler = null;
 
+    static final int UPDATE_OOMADJ_MSG = 99999;
+
     CompatModeDialog mCompatModeDialog;
     UnsupportedDisplaySizeDialog mUnsupportedDisplaySizeDialog;
     long mLastMemUsageReportTime = 0;
@@ -2361,6 +2363,11 @@ public final class ActivityManagerService extends ActivityManagerNative
                 if (needsVrMode) {
                     applyVrMode(msg.arg1 == 1, r.requestedVrComponent, r.userId,
                             r.info.getComponentName(), false);
+                }
+            } break;
+            case UPDATE_OOMADJ_MSG: {
+                synchronized (ActivityManagerService.this) {
+                    updateOomAdjLocked();
                 }
             } break;
             }
@@ -5271,7 +5278,8 @@ public final class ActivityManagerService extends ActivityManagerNative
             handleAppDiedLocked(app, false, true);
 
             if (doOomAdj) {
-                updateOomAdjLocked();
+                mHandler.removeMessages(UPDATE_OOMADJ_MSG);
+                mHandler.sendEmptyMessage(UPDATE_OOMADJ_MSG);
             }
             if (doLowMem) {
                 doLowMemReportIfNeededLocked(app);
