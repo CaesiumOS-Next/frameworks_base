@@ -34,6 +34,8 @@ LOCAL_JACK_FLAGS := -D jack.dex.output.policy=minimal-multidex -D jack.preproces
 
 LOCAL_ADDITIONAL_DEPENDENCIES := $(LOCAL_PATH)/test.jpp
 
+LOCAL_MIN_SDK_VERSION := 8
+
 include $(BUILD_PACKAGE)
 
 ## The application with a full main dex
@@ -55,5 +57,7 @@ LOCAL_JACK_FLAGS := -D jack.dex.output.policy=multidex -D jack.preprocessor=true
     -D jack.preprocessor.file=$(LOCAL_PATH)/test.jpp -D jack.dex.output.multidex.legacy=true
 
 LOCAL_ADDITIONAL_DEPENDENCIES := $(LOCAL_PATH)/test.jpp
+
+LOCAL_MIN_SDK_VERSION := 8
 
 include $(BUILD_PACKAGE)
