@@ -259,7 +259,7 @@ public class AssistManager {
 
     @Nullable
     private ComponentName getAssistInfo() {
-        return mAssistUtils.getAssistComponentForUser(UserHandle.USER_CURRENT);
+        return mAssistUtils.getAssistComponentForUser(ActivityManager.getCurrentUser());
     }
 
     public void showDisclosure() {
