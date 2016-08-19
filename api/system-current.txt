@@ -52210,6 +52210,7 @@ package java.lang.reflect {
 
   public class GenericSignatureFormatError extends java.lang.ClassFormatError {
     ctor public GenericSignatureFormatError();
+    ctor public GenericSignatureFormatError(java.lang.String);
   }
 
   public abstract interface InvocationHandler {
@@ -52314,6 +52315,7 @@ package java.lang.reflect {
   }
 
   public abstract interface Type {
+    method public default java.lang.String getTypeName();
   }
 
   public abstract interface TypeVariable implements java.lang.reflect.Type {
