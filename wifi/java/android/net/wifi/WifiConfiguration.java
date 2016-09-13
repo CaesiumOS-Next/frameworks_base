@@ -1756,7 +1756,8 @@ public class WifiConfiguration implements Parcelable {
                 key += "-" + Integer.toString(UserHandle.getUserId(creatorUid));
             }
         } else {
-            if (allowedKeyManagement.get(KeyMgmt.WPA_PSK)) {
+            if (allowedKeyManagement.get(KeyMgmt.WPA_PSK) ||
+                            allowedKeyManagement.isEmpty()) {
                 key = SSID + KeyMgmt.strings[KeyMgmt.WPA_PSK];
             } else if (allowedKeyManagement.get(KeyMgmt.WPA_EAP) ||
                     allowedKeyManagement.get(KeyMgmt.IEEE8021X)) {
