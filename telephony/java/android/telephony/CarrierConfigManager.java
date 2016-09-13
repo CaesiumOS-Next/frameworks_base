@@ -269,6 +269,16 @@ public class CarrierConfigManager {
      */
     public static final String KEY_CARRIER_DEFAULT_WFC_IMS_MODE_INT =
             "carrier_default_wfc_ims_mode_int";
+
+    /**
+     * Flag indicating whether strict or lenient threshold is used when evaluating RSRP for LTE
+     * antenna bar display 0: Strict threshold
+     *                     1: Lenient threshold
+     * @hide
+     */
+    public static final String KEY_LTE_RSRP_THRESHOLD_TYPE_INT =
+            "LTE_RSRP_threshold_type_int";
+
     /**
      * Default WFC_IMS_enabled: true VoWiFi by default is on
      *                          false VoWiFi by default is off
@@ -736,6 +746,7 @@ public class CarrierConfigManager {
         sDefaults.putBoolean(KEY_CARRIER_DEFAULT_WFC_IMS_ENABLED_BOOL, false);
         sDefaults.putBoolean(KEY_CARRIER_DEFAULT_WFC_IMS_ROAMING_ENABLED_BOOL, false);
         sDefaults.putInt(KEY_CARRIER_DEFAULT_WFC_IMS_MODE_INT, 2);
+        sDefaults.putInt(KEY_LTE_RSRP_THRESHOLD_TYPE_INT, 1);
         sDefaults.putBoolean(KEY_CARRIER_FORCE_DISABLE_ETWS_CMAS_TEST_BOOL, false);
         sDefaults.putBoolean(KEY_CARRIER_VOLTE_PROVISIONING_REQUIRED_BOOL, false);
         sDefaults.putBoolean(KEY_CARRIER_VOLTE_TTY_SUPPORTED_BOOL, true);
