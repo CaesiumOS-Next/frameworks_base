@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cb1db24e_10eda1b5",
+        "filename": "core/java/com/android/internal/widget/ImageFloatingTextView.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1059880
+      },
+      "writtenOn": "2016-09-16T17:29:37Z",
+      "side": 1,
+      "message": "why don\u0027t we just set the mIndentDirection here and leave the other layout creation as it is?",
+      "revId": "9e60e2d69e70fb532bb4d4b74a0594ae8c9dfa25",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
