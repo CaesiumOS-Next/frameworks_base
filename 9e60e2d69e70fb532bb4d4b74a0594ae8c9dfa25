@@ -16,6 +16,24 @@
       "revId": "9e60e2d69e70fb532bb4d4b74a0594ae8c9dfa25",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1099bb37_fef5a14a",
+        "filename": "core/java/com/android/internal/widget/ImageFloatingTextView.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1094240
+      },
+      "writtenOn": "2016-09-17T05:54:33Z",
+      "side": 1,
+      "message": "If then, issue can occur in the below case.\n(that I\u0027ve reproduced, maybe especially in updating notification from new process.)\n\n\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\n(under RTL configurations, while update existing view)\ncalled makeSingleLayout() FIRST\n| with getLayoutDirection() \u003d LAYOUT_DIRECTION_LTR\n| with isLayoutDirectionResolved() \u003d false\n| mIndentDirection \u003d LAYOUT_DIRECTION_RTL (previous value)\n\u003d\u003e Indentation was applied in LTR.\n\ncalled onRtlPropertiesChanged() LATER (after resolved)\n| with getLayoutDirection \u003d LAYOUT_DIRECTION_RTL\n| with isLayoutDirectionResolved() \u003d true\n| new layoutDirection is equal to previous value (mIndentDirection)\n\u003d\u003e It does not re-build. Indentation remains in LTR.\n\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d",
+      "parentUuid": "cb1db24e_10eda1b5",
+      "revId": "9e60e2d69e70fb532bb4d4b74a0594ae8c9dfa25",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
