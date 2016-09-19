@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cb1db24e_679c4fbb",
+        "filename": "core/java/com/android/internal/widget/ImageFloatingTextView.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1059880
+      },
+      "writtenOn": "2016-09-19T18:39:39Z",
+      "side": 1,
+      "message": "can we leave this as getLayoutDirection to always get the freshest data? I don\u0027t see a reason we should cache it like this.",
+      "revId": "6e8acef52f96b48259803745f49d239d0b11e414",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cb1db24e_c768a38c",
+        "filename": "core/java/com/android/internal/widget/ImageFloatingTextView.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1059880
+      },
+      "writtenOn": "2016-09-19T18:39:39Z",
+      "side": 1,
+      "message": "how about we don\u0027t even cache the mIndentDirection and have just this clause. onRTLProperties changed should be called very rarely.\nI thought isLayoutDIrectionResolved should usually be true when this is called here.",
+      "range": {
+        "startLine": 104,
+        "startChar": 12,
+        "endLine": 107,
+        "endChar": 13
+      },
+      "revId": "6e8acef52f96b48259803745f49d239d0b11e414",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
