@@ -39,6 +39,30 @@
       "revId": "6e8acef52f96b48259803745f49d239d0b11e414",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1099bb37_9e825d36",
+        "filename": "core/java/com/android/internal/widget/ImageFloatingTextView.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1094240
+      },
+      "writtenOn": "2016-09-20T00:38:16Z",
+      "side": 1,
+      "message": "I got it. I intended to reduce unnecessary re-layouting.\nBut as you mentioned, generally, onRtlPropertiesChanged() is rarely called after makeSingleLayout(). (actually it is called twice at least before makeSingleLayout().)\nBefore makeSingleLayout(), the mLayout is null, so setHint() will do nothing.\nI\u0027ll upload a new patchset as you mentioned.\nThanks a lot for your reviewing again.",
+      "parentUuid": "cb1db24e_c768a38c",
+      "range": {
+        "startLine": 104,
+        "startChar": 12,
+        "endLine": 107,
+        "endChar": 13
+      },
+      "revId": "6e8acef52f96b48259803745f49d239d0b11e414",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
