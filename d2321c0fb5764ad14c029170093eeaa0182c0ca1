@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "02aa519b_91a3ccfb",
+        "filename": "packages/SettingsLib/src/com/android/settingslib/deviceinfo/StorageMeasurement.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1013984
+      },
+      "writtenOn": "2016-10-04T16:28:39Z",
+      "side": 1,
+      "message": "I don\u0027t see onCreate() being called anywhere other than the constructor call on https://android-review.googlesource.com/#/c/245671 - wouldn\u0027t just adding the getLooper().quit() call on invalidate() enough?\n\nJeff, what do you think?",
+      "range": {
+        "startLine": 169,
+        "startChar": 16,
+        "endLine": 169,
+        "endChar": 24
+      },
+      "revId": "d2321c0fb5764ad14c029170093eeaa0182c0ca1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
