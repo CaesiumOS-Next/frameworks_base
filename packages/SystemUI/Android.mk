@@ -52,6 +52,7 @@ LOCAL_AAPT_FLAGS := --auto-add-overlay \
     --extra-packages android.support.v17.leanback
 
 ifneq ($(SYSTEM_UI_INCREMENTAL_BUILDS),)
+    LOCAL_JACK_FLAGS := --multi-dex native
     LOCAL_PROGUARD_ENABLED := disabled
     LOCAL_JACK_ENABLED := incremental
 endif
