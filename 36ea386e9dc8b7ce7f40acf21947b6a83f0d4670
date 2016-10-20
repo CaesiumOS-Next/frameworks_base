@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "3c913fcf_9e29bdbd",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1079868
+      },
+      "writtenOn": "2016-10-20T23:07:12Z",
+      "side": 1,
+      "message": "Will update.",
+      "parentUuid": "3c777f48_2916f66f",
+      "range": {
+        "startLine": 7,
+        "startChar": 47,
+        "endLine": 7,
+        "endChar": 53
+      },
+      "revId": "36ea386e9dc8b7ce7f40acf21947b6a83f0d4670",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3c777f48_5f0c5457",
         "filename": "wifi/java/android/net/wifi/hotspot2/omadm/PPSMOParser.java",
         "patchSetId": 3
@@ -36,6 +60,30 @@
       "writtenOn": "2016-10-20T22:39:41Z",
       "side": 1,
       "message": "a?",
+      "range": {
+        "startLine": 35,
+        "startChar": 66,
+        "endLine": 35,
+        "endChar": 68
+      },
+      "revId": "36ea386e9dc8b7ce7f40acf21947b6a83f0d4670",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3c913fcf_be475990",
+        "filename": "wifi/java/android/net/wifi/hotspot2/omadm/PPSMOParser.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1079868
+      },
+      "writtenOn": "2016-10-20T23:07:12Z",
+      "side": 1,
+      "message": "Will update.",
+      "parentUuid": "3c777f48_5f0c5457",
       "range": {
         "startLine": 35,
         "startChar": 66,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "3c913fcf_7e87919b",
+        "filename": "wifi/java/android/net/wifi/hotspot2/omadm/PPSMOParser.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 286,
+      "author": {
+        "id": 1079868
+      },
+      "writtenOn": "2016-10-20T23:07:12Z",
+      "side": 1,
+      "message": "Yes, we don\u0027t really used this field right now. Will add a comment to clarify.",
+      "parentUuid": "3c777f48_8907eac5",
+      "range": {
+        "startLine": 286,
+        "startChar": 8,
+        "endLine": 286,
+        "endChar": 28
+      },
+      "revId": "36ea386e9dc8b7ce7f40acf21947b6a83f0d4670",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3c777f48_4907c2f4",
         "filename": "wifi/java/android/net/wifi/hotspot2/omadm/PPSMOParser.java",
         "patchSetId": 3
@@ -82,6 +154,30 @@
       "writtenOn": "2016-10-20T22:39:41Z",
       "side": 1,
       "message": "Unexpected multiple child nodes ...on root?",
+      "range": {
+        "startLine": 299,
+        "startChar": 36,
+        "endLine": 299,
+        "endChar": 67
+      },
+      "revId": "36ea386e9dc8b7ce7f40acf21947b6a83f0d4670",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3c913fcf_de7ee5d2",
+        "filename": "wifi/java/android/net/wifi/hotspot2/omadm/PPSMOParser.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 299,
+      "author": {
+        "id": 1079868
+      },
+      "writtenOn": "2016-10-20T23:07:12Z",
+      "side": 1,
+      "message": "It is referring to multiple \u003cNode\u003e. Will update to make it more clearer.",
+      "parentUuid": "3c777f48_4907c2f4",
       "range": {
         "startLine": 299,
         "startChar": 36,
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "3c913fcf_dec7c5f6",
+        "filename": "wifi/java/android/net/wifi/hotspot2/omadm/PPSMOParser.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 343,
+      "author": {
+        "id": 1079868
+      },
+      "writtenOn": "2016-10-20T23:07:12Z",
+      "side": 1,
+      "message": "Yup, just saw that in the style guideline :) Will update.",
+      "parentUuid": "3c777f48_846b4f9f",
+      "range": {
+        "startLine": 343,
+        "startChar": 24,
+        "endLine": 343,
+        "endChar": 93
+      },
+      "revId": "36ea386e9dc8b7ce7f40acf21947b6a83f0d4670",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3c777f48_df0124b4",
         "filename": "wifi/java/android/net/wifi/hotspot2/omadm/PPSMOParser.java",
         "patchSetId": 3
@@ -140,6 +260,30 @@
     },
     {
       "key": {
+        "uuid": "3c913fcf_9ea61d61",
+        "filename": "wifi/java/android/net/wifi/hotspot2/omadm/PPSMOParser.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 728,
+      "author": {
+        "id": 1079868
+      },
+      "writtenOn": "2016-10-20T23:07:12Z",
+      "side": 1,
+      "message": "Good catch. We\u0027re expecting this string to always have even number of characters.  Will add a check to enforce it .",
+      "parentUuid": "3c777f48_df0124b4",
+      "range": {
+        "startLine": 728,
+        "startChar": 33,
+        "endLine": 728,
+        "endChar": 49
+      },
+      "revId": "36ea386e9dc8b7ce7f40acf21947b6a83f0d4670",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3c777f48_7a927e72",
         "filename": "wifi/tests/src/android/net/wifi/hotspot2/omadm/PPSMOParserTest.java",
         "patchSetId": 3
@@ -151,6 +295,24 @@
       "writtenOn": "2016-10-20T22:39:41Z",
       "side": 1,
       "message": "You should add more XML assets containing invalid edge cases.\nTo name a few:\nMultiple Home SP objects\nLeaf nodes with values.\nMissing necessary nodes",
+      "revId": "36ea386e9dc8b7ce7f40acf21947b6a83f0d4670",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3c913fcf_7e5eb15b",
+        "filename": "wifi/tests/src/android/net/wifi/hotspot2/omadm/PPSMOParserTest.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1079868
+      },
+      "writtenOn": "2016-10-20T23:07:12Z",
+      "side": 1,
+      "message": "Good idea. Will do :)",
+      "parentUuid": "3c777f48_7a927e72",
       "revId": "36ea386e9dc8b7ce7f40acf21947b6a83f0d4670",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
