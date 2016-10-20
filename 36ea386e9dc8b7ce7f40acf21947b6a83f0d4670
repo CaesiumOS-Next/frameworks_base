@@ -1,0 +1,159 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3c777f48_2916f66f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1094298
+      },
+      "writtenOn": "2016-10-20T22:39:41Z",
+      "side": 1,
+      "message": "Replace this with unabbreviated name",
+      "range": {
+        "startLine": 7,
+        "startChar": 47,
+        "endLine": 7,
+        "endChar": 53
+      },
+      "revId": "36ea386e9dc8b7ce7f40acf21947b6a83f0d4670",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3c777f48_5f0c5457",
+        "filename": "wifi/java/android/net/wifi/hotspot2/omadm/PPSMOParser.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1094298
+      },
+      "writtenOn": "2016-10-20T22:39:41Z",
+      "side": 1,
+      "message": "a?",
+      "range": {
+        "startLine": 35,
+        "startChar": 66,
+        "endLine": 35,
+        "endChar": 68
+      },
+      "revId": "36ea386e9dc8b7ce7f40acf21947b6a83f0d4670",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3c777f48_8907eac5",
+        "filename": "wifi/java/android/net/wifi/hotspot2/omadm/PPSMOParser.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 286,
+      "author": {
+        "id": 1094298
+      },
+      "writtenOn": "2016-10-20T22:39:41Z",
+      "side": 1,
+      "message": "This is essentially just a boolean, is that intended? (Not suggesting you change it, just clarifying)",
+      "range": {
+        "startLine": 286,
+        "startChar": 8,
+        "endLine": 286,
+        "endChar": 28
+      },
+      "revId": "36ea386e9dc8b7ce7f40acf21947b6a83f0d4670",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3c777f48_4907c2f4",
+        "filename": "wifi/java/android/net/wifi/hotspot2/omadm/PPSMOParser.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 299,
+      "author": {
+        "id": 1094298
+      },
+      "writtenOn": "2016-10-20T22:39:41Z",
+      "side": 1,
+      "message": "Unexpected multiple child nodes ...on root?",
+      "range": {
+        "startLine": 299,
+        "startChar": 36,
+        "endLine": 299,
+        "endChar": 67
+      },
+      "revId": "36ea386e9dc8b7ce7f40acf21947b6a83f0d4670",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3c777f48_846b4f9f",
+        "filename": "wifi/java/android/net/wifi/hotspot2/omadm/PPSMOParser.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 343,
+      "author": {
+        "id": 1094298
+      },
+      "writtenOn": "2016-10-20T22:39:41Z",
+      "side": 1,
+      "message": "Brace this, and all other conditions in this CL (I see more further down this file...). Or convert them to single line.",
+      "range": {
+        "startLine": 343,
+        "startChar": 24,
+        "endLine": 343,
+        "endChar": 93
+      },
+      "revId": "36ea386e9dc8b7ce7f40acf21947b6a83f0d4670",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3c777f48_df0124b4",
+        "filename": "wifi/java/android/net/wifi/hotspot2/omadm/PPSMOParser.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 728,
+      "author": {
+        "id": 1094298
+      },
+      "writtenOn": "2016-10-20T22:39:41Z",
+      "side": 1,
+      "message": "This may break if you don\u0027t receive a leading zero:\nexample:\nInstead of \"04031a\" (6/2 \u003d 3 bytes),\n[ 4,  3, 26]\nyou get:    \"4031a\" (5/2 \u003d 2 bytes) which becomes:\n[64, 49]",
+      "range": {
+        "startLine": 728,
+        "startChar": 33,
+        "endLine": 728,
+        "endChar": 49
+      },
+      "revId": "36ea386e9dc8b7ce7f40acf21947b6a83f0d4670",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3c777f48_7a927e72",
+        "filename": "wifi/tests/src/android/net/wifi/hotspot2/omadm/PPSMOParserTest.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1094298
+      },
+      "writtenOn": "2016-10-20T22:39:41Z",
+      "side": 1,
+      "message": "You should add more XML assets containing invalid edge cases.\nTo name a few:\nMultiple Home SP objects\nLeaf nodes with values.\nMissing necessary nodes",
+      "revId": "36ea386e9dc8b7ce7f40acf21947b6a83f0d4670",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
