@@ -16,7 +16,6 @@
 
 package com.android.server;
 
-import android.Manifest;
 import android.app.ActivityManager;
 import android.app.AppOpsManager;
 import android.content.BroadcastReceiver;
@@ -141,6 +140,10 @@ class TelephonyRegistry extends ITelephonyRegistry.Stub {
     private String[] mCallIncomingNumber;
 
     private ServiceState[] mServiceState;
+
+    private int[] mVoiceActivationState;
+
+    private int[] mDataActivationState;
 
     private SignalStrength[] mSignalStrength;
 
@@ -301,6 +304,8 @@ class TelephonyRegistry extends ITelephonyRegistry.Stub {
         mDataConnectionNetworkType = new int[numPhones];
         mCallIncomingNumber = new String[numPhones];
         mServiceState = new ServiceState[numPhones];
+        mVoiceActivationState = new int[numPhones];
+        mDataActivationState = new int[numPhones];
         mSignalStrength = new SignalStrength[numPhones];
         mMessageWaiting = new boolean[numPhones];
         mDataConnectionPossible = new boolean[numPhones];
@@ -315,6 +320,8 @@ class TelephonyRegistry extends ITelephonyRegistry.Stub {
             mCallState[i] =  TelephonyManager.CALL_STATE_IDLE;
             mDataActivity[i] = TelephonyManager.DATA_ACTIVITY_NONE;
             mDataConnectionState[i] = TelephonyManager.DATA_UNKNOWN;
+            mVoiceActivationState[i] = TelephonyManager.SIM_ACTIVATION_STATE_UNKNOWN;
+            mDataActivationState[i] = TelephonyManager.SIM_ACTIVATION_STATE_UNKNOWN;
             mCallIncomingNumber[i] =  "";
             mServiceState[i] =  new ServiceState();
             mSignalStrength[i] =  new SignalStrength();
@@ -644,6 +651,20 @@ class TelephonyRegistry extends ITelephonyRegistry.Stub {
                             remove(r.binder);
                         }
                     }
+                    if ((events & PhoneStateListener.LISTEN_VOICE_ACTIVATION_STATE) !=0) {
+                        try {
+                            r.callback.onVoiceActivationStateChanged(mVoiceActivationState[phoneId]);
+                        } catch (RemoteException ex) {
+                            remove(r.binder);
+                        }
+                    }
+                    if ((events & PhoneStateListener.LISTEN_DATA_ACTIVATION_STATE) !=0) {
+                        try {
+                            r.callback.onDataActivationStateChanged(mDataActivationState[phoneId]);
+                        } catch (RemoteException ex) {
+                            remove(r.binder);
+                        }
+                    }
                 }
             }
         } else {
@@ -793,6 +814,84 @@ class TelephonyRegistry extends ITelephonyRegistry.Stub {
             handleRemoveListLocked();
         }
         broadcastServiceStateChanged(state, phoneId, subId);
+    }
+
+    public void notifyVoiceActivationStateChangedForPhoneId(int phoneId, int subId,
+                                                            int activationState) {
+        if (!checkNotifyPermission("notifyVoiceActivationState()")){
+            return;
+        }
+        if (VDBG) {
+            log("notifyVoiceActivationStateForPhoneId: subId=" + subId + " phoneId=" + phoneId
+                    + " state=" + activationState);
+        }
+        synchronized (mRecords) {
+            if (validatePhoneId(phoneId)) {
+                mVoiceActivationState[phoneId] = activationState;
+                for (Record r : mRecords) {
+                    if (VDBG) {
+                        log("notifyVoiceActivationStateForPhoneId: r=" + r + " subId=" + subId
+                                + " phoneId=" + phoneId + " state=" + activationState);
+                    }
+                    if (r.matchPhoneStateListenerEvent(
+                            PhoneStateListener.LISTEN_VOICE_ACTIVATION_STATE) &&
+                            idMatch(r.subId, subId, phoneId)) {
+                        try {
+                            if (DBG) {
+                                log("notifyVoiceActivationStateForPhoneId: callback.onVASC r=" + r
+                                        + " subId=" + subId + " phoneId=" + phoneId
+                                        + " state=" + activationState);
+                            }
+                            r.callback.onVoiceActivationStateChanged(activationState);
+                        } catch (RemoteException ex) {
+                            mRemoveList.add(r.binder);
+                        }
+                    }
+                }
+            } else {
+                log("notifyVoiceActivationStateForPhoneId: INVALID phoneId=" + phoneId);
+            }
+            handleRemoveListLocked();
+        }
+    }
+
+    public void notifyDataActivationStateChangedForPhoneId(int phoneId, int subId,
+                                                           int activationState) {
+        if (!checkNotifyPermission("notifyDataActivationState()")){
+            return;
+        }
+        if (VDBG) {
+            log("notifyDataActivationStateForPhoneId: subId=" + subId + " phoneId=" + phoneId
+                    + " state=" + activationState);
+        }
+        synchronized (mRecords) {
+            if (validatePhoneId(phoneId)) {
+                mDataActivationState[phoneId] = activationState;
+                for (Record r : mRecords) {
+                    if (VDBG) {
+                        log("notifyDataActivationStateForPhoneId: r=" + r + " subId=" + subId
+                                + " phoneId=" + phoneId + " state=" + activationState);
+                    }
+                    if (r.matchPhoneStateListenerEvent(
+                            PhoneStateListener.LISTEN_DATA_ACTIVATION_STATE) &&
+                            idMatch(r.subId, subId, phoneId)) {
+                        try {
+                            if (DBG) {
+                                log("notifyDataActivationStateForPhoneId: callback.onDASC r=" + r
+                                        + " subId=" + subId + " phoneId=" + phoneId
+                                        + " state=" + activationState);
+                            }
+                            r.callback.onDataActivationStateChanged(activationState);
+                        } catch (RemoteException ex) {
+                            mRemoveList.add(r.binder);
+                        }
+                    }
+                }
+            } else {
+                log("notifyDataActivationStateForPhoneId: INVALID phoneId=" + phoneId);
+            }
+            handleRemoveListLocked();
+        }
     }
 
     public void notifySignalStrengthForPhoneId(int phoneId, int subId,
@@ -1324,6 +1423,8 @@ class TelephonyRegistry extends ITelephonyRegistry.Stub {
                 pw.println("  mCallState=" + mCallState[i]);
                 pw.println("  mCallIncomingNumber=" + mCallIncomingNumber[i]);
                 pw.println("  mServiceState=" + mServiceState[i]);
+                pw.println("  mVoiceActivationState= " + mVoiceActivationState[i]);
+                pw.println("  mDataActivationState= " + mDataActivationState[i]);
                 pw.println("  mSignalStrength=" + mSignalStrength[i]);
                 pw.println("  mMessageWaiting=" + mMessageWaiting[i]);
                 pw.println("  mCallForwarding=" + mCallForwarding[i]);
