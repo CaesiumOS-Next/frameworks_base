@@ -3783,6 +3783,31 @@ public class TelephonyManager {
     }
 
     /**
+     * Returns a list of Forbidden PLMNs from the specified SIM App
+     * Returns null if the query fails.
+     *
+     *
+     * <p>Requires that the calling app has READ_PRIVILEGED_PHONE_STATE
+     *
+     * @param subId subscription ID used for authentication
+     * @param appType the icc application type, like {@link #APPTYPE_USIM}
+     * @hide
+     */
+    public String[] getForbiddenPlmns(int subId, int appType) {
+        try {
+            IPhoneSubInfo info = getSubscriberInfo();
+            if (info == null)
+                return null;
+            return info.getForbiddenPlmns(subId, appType, authType, data);
+        } catch (RemoteException ex) {
+            return null;
+        } catch (NullPointerException ex) {
+            // This could happen before phone starts
+            return null;
+        }
+    }
+
+    /**
      * Get P-CSCF address from PCO after data connection is established or modified.
      * @param apnType the apnType, "ims" for IMS APN, "emergency" for EMERGENCY APN
      * @return array of P-CSCF address
