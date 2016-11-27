@@ -39002,6 +39002,7 @@ package android.telecom {
     field public static final int PROPERTY_HAS_CDMA_VOICE_PRIVACY = 128; // 0x80
     field public static final int PROPERTY_HIGH_DEF_AUDIO = 16; // 0x10
     field public static final int PROPERTY_IS_EXTERNAL_CALL = 64; // 0x40
+    field public static final int PROPERTY_LTE = 512; // 0x200
     field public static final int PROPERTY_SELF_MANAGED = 256; // 0x100
     field public static final int PROPERTY_WIFI = 8; // 0x8
   }

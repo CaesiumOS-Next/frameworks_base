@@ -417,8 +417,13 @@ public final class Call {
          */
         public static final int PROPERTY_SELF_MANAGED = 0x00000100;
 
+        /**
+         * Indicates that the call is being made over LTE, that is VoLTE.
+         */
+        public static final int PROPERTY_LTE = 0x00000200;
+
         //******************************************************************************************
-        // Next PROPERTY value: 0x00000200
+        // Next PROPERTY value: 0x00000400
         //******************************************************************************************
 
         private final String mTelecomCallId;
@@ -577,6 +582,9 @@ public final class Call {
             }
             if(hasProperty(properties, PROPERTY_HAS_CDMA_VOICE_PRIVACY)) {
                 builder.append(" PROPERTY_HAS_CDMA_VOICE_PRIVACY");
+            }
+            if (hasProperty(properties, PROPERTY_LTE)) {
+                builder.append(" PROPERTY_LTE");
             }
             builder.append("]");
             return builder.toString();

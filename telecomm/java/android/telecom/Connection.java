@@ -401,8 +401,14 @@ public abstract class Connection extends Conferenceable {
     @TestApi
     public static final int PROPERTY_IS_RTT = 1 << 8;
 
+    /**
+     * Indicates that the call is being made over LTE, that is VoLTE.
+     * @hide
+     */
+    public static final int PROPERTY_LTE = 1<<9;
+
     //**********************************************************************************************
-    // Next PROPERTY value: 1<<9
+    // Next PROPERTY value: 1<<10
     //**********************************************************************************************
 
     /**
@@ -781,6 +787,10 @@ public abstract class Connection extends Conferenceable {
 
         if (can(properties, PROPERTY_HAS_CDMA_VOICE_PRIVACY)) {
             builder.append(isLong ? " PROPERTY_HAS_CDMA_VOICE_PRIVACY" : " priv");
+        }
+
+        if (can(properties, PROPERTY_LTE)) {
+            builder.append(isLong ? " PROPERTY_LTE" : " lte");
         }
 
         builder.append("]");
