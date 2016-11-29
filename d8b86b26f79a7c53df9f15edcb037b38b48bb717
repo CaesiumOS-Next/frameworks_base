@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "30288869_d4a5beea",
+        "filename": "wifi/java/android/net/wifi/WifiManager.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 793,
+      "author": {
+        "id": 1094298
+      },
+      "writtenOn": "2016-11-29T20:55:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "30288869_742c0aaa",
+      "range": {
+        "startLine": 793,
+        "startChar": 33,
+        "endLine": 793,
+        "endChar": 34
+      },
+      "revId": "d8b86b26f79a7c53df9f15edcb037b38b48bb717",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "30288869_d4413e5b",
         "filename": "wifi/java/android/net/wifi/WifiManager.java",
         "patchSetId": 4
@@ -36,6 +60,30 @@
       "writtenOn": "2016-11-29T20:50:25Z",
       "side": 1,
       "message": "must be",
+      "range": {
+        "startLine": 815,
+        "startChar": 33,
+        "endLine": 815,
+        "endChar": 34
+      },
+      "revId": "d8b86b26f79a7c53df9f15edcb037b38b48bb717",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "30288869_f4aabab9",
+        "filename": "wifi/java/android/net/wifi/WifiManager.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 815,
+      "author": {
+        "id": 1094298
+      },
+      "writtenOn": "2016-11-29T20:55:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "30288869_d4413e5b",
       "range": {
         "startLine": 815,
         "startChar": 33,
