@@ -45,6 +45,14 @@ public class ScoredNetwork implements Parcelable {
      */
     public static final String EXTRA_HAS_CAPTIVE_PORTAL = "android.net.extra.HAS_CAPTIVE_PORTAL";
 
+    /**
+     * Key used with the {@link #attributes} bundle to define the rankingScoreOffset byte value.
+     *
+     * <p>The rankingScoreOffset is used when calculating the ranking score used to rank networks
+     * against one another. See {@link #calculateRankingScore} for more information.
+     */
+    public static final String RANKING_SCORE_OFFSET_KEY = "rankingScoreOffset";
+
     /** A {@link NetworkKey} uniquely identifying this network. */
     public final NetworkKey networkKey;
 
@@ -74,6 +82,9 @@ public class ScoredNetwork implements Parcelable {
      * @see #EXTRA_HAS_CAPTIVE_PORTAL
      */
     public final Bundle attributes;
+
+    /** The multiplier to apply to the RssiCurve score when calculating the ranking score. */
+    private static final QUALITY_SCORE_MULTIPLIER = 1000;
 
     /**
      * Construct a new {@link ScoredNetwork}.
@@ -185,6 +196,25 @@ public class ScoredNetwork implements Parcelable {
                 ", meteredHint=" + meteredHint +
                 ", attributes=" + attributes +
                 '}';
+    }
+
+    /**
+     * Returns a ranking score for a given RSSI which can be used to comparatively
+     * rank networks.
+     *
+     * <p>If there is no RssiCurve or rankingScoreOffset for this network, this function
+     * will return 0.
+     *
+     * @hide
+     */
+    public int calculateRankingScore(int rssi) {
+      int score = attributes.getByte(RANKING_SCORE_OFFSET_KEY); // returns 0 if key not present
+
+      if (rssiCurve != null) {
+        score += rssiCurve.lookupScore(rssi) * QUALITY_SCORE_MULTIPLIER;
+      }
+
+      return score;
     }
 
     public static final Parcelable.Creator<ScoredNetwork> CREATOR =
