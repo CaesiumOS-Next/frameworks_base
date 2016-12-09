@@ -17,9 +17,13 @@
 #define LOG_TAG "NetworkStats"
 
 #include <errno.h>
+#include <fcntl.h>
 #include <inttypes.h>
 #include <sys/stat.h>
 #include <sys/types.h>
+#include <unistd.h>
+
+#include <sstream>
 
 #include <core_jni_helpers.h>
 #include <jni.h>
@@ -28,6 +32,8 @@
 #include <ScopedLocalRef.h>
 #include <ScopedPrimitiveArray.h>
 
+#include <android-base/file.h>
+#include <android-base/unique_fd.h>
 #include <utils/Log.h>
 #include <utils/misc.h>
 #include <utils/Vector.h>
@@ -96,44 +102,42 @@ static jlongArray get_long_array(JNIEnv* env, jobject obj, jfieldID field, int s
     return env->NewLongArray(size);
 }
 
-static int readNetworkStatsDetail(JNIEnv* env, jclass clazz, jobject stats,
-        jstring path, jint limitUid, jobjectArray limitIfacesObj, jint limitTag) {
-    ScopedUtfChars path8(env, path);
-    if (path8.c_str() == NULL) {
-        return -1;
+/*
+ * helper function used to read the data from proc/net/xt_qtaguid/stats and store
+ * in a string. The buffer size is set to 4k to read as close as to a page size at a
+ * time to reduce the possibility of getting corrupted data.
+ */
+static ssize_t readtostring(ScopedUtfChars &path, std::string& content) {
+    content.clear();
+    int flags = O_RDONLY | O_CLOEXEC | O_BINARY | O_NOFOLLOW;
+    android::base::unique_fd fd(TEMP_FAILURE_RETRY(open(path.c_str(), flags)));
+    if (fd == -1) {
+        return fd;
     }
-
-    FILE *fp = fopen(path8.c_str(), "r");
-    if (fp == NULL) {
-        return -1;
+    // use a buffer as large as possible to read out the stats from kernel to
+    // reduce the chance of having corrupted data;
+    char buf[4096];
+    ssize_t n;
+    while ((n = TEMP_FAILURE_RETRY(read(fd, &buf[0], sizeof(buf)))) > 0) {
+        content.append(buf, n);
     }
+    return content.length();
+}
 
-    Vector<String8> limitIfaces;
-    if (limitIfacesObj != NULL && env->GetArrayLength(limitIfacesObj) > 0) {
-        int num = env->GetArrayLength(limitIfacesObj);
-        limitIfaces.setCapacity(num);
-        for (int i=0; i<num; i++) {
-            jstring string = (jstring)env->GetObjectArrayElement(limitIfacesObj, i);
-            ScopedUtfChars string8(env, string);
-            if (string8.c_str() != NULL) {
-                limitIfaces.add(String8(string8.c_str()));
-            }
-        }
-    }
-
-    Vector<stats_line> lines;
-
+static ssize_t parseStatsFromString(const std::string& statsString, Vector<stats_line>& lines,
+                                const Vector<String8>& limitIfaces, jint limitUid, jint limitTag) {
     int lastIdx = 1;
-    int idx;
     char buffer[384];
-    while (fgets(buffer, sizeof(buffer), fp) != NULL) {
-        stats_line s;
-        int64_t rawTag;
+    std::string statsLine;
+    std::istringstream stream{statsString};
+    lines.clear();
+    while (std::getline(stream, statsLine)) {
+        snprintf(buffer, statsLine.size(), "%s", statsLine.c_str());
         char* pos = buffer;
         char* endPos;
         // First field is the index.
-        idx = (int)strtol(pos, &endPos, 10);
-        //ALOGI("Index #%d: %s", idx, buffer);
+        int idx = static_cast<int>(strtol(pos, &endPos, 10));
+        // ALOGI("Index #%d: %s", idx, buffer);
         if (pos == endPos) {
             // Skip lines that don't start with in index.  In particular,
             // this will skip the initial header line.
@@ -141,7 +145,6 @@ static int readNetworkStatsDetail(JNIEnv* env, jclass clazz, jobject stats,
         }
         if (idx != lastIdx + 1) {
             ALOGE("inconsistent idx=%d after lastIdx=%d: %s", idx, lastIdx, buffer);
-            fclose(fp);
             return -1;
         }
         lastIdx = idx;
@@ -151,6 +154,7 @@ static int readNetworkStatsDetail(JNIEnv* env, jclass clazz, jobject stats,
             pos++;
         }
         // Next field is iface.
+        stats_line s;
         int ifaceIdx = 0;
         while (*pos != ' ' && *pos != 0 && ifaceIdx < (int)(sizeof(s.iface)-1)) {
             s.iface[ifaceIdx] = *pos;
@@ -159,7 +163,6 @@ static int readNetworkStatsDetail(JNIEnv* env, jclass clazz, jobject stats,
         }
         if (*pos != ' ') {
             ALOGE("bad iface: %s", buffer);
-            fclose(fp);
             return -1;
         }
         s.iface[ifaceIdx] = 0;
@@ -174,7 +177,7 @@ static int readNetworkStatsDetail(JNIEnv* env, jclass clazz, jobject stats,
             }
             if (i >= (int)limitIfaces.size()) {
                 // Nothing matched; skip this line.
-                //ALOGI("skipping due to iface: %s", buffer);
+                // ALOGI("skipping due to iface: %s", buffer);
                 continue;
             }
         }
@@ -185,20 +188,19 @@ static int readNetworkStatsDetail(JNIEnv* env, jclass clazz, jobject stats,
         // Find end of tag field
         endPos = pos;
         while (*endPos != ' ') endPos++;
-
+        int64_t rawTag;
         // Three digit field is always 0x0, otherwise parse
         if (endPos - pos == 3) {
             rawTag = 0;
         } else {
             if (sscanf(pos, "%" PRIx64, &rawTag) != 1) {
                 ALOGE("bad tag: %s", pos);
-                fclose(fp);
                 return -1;
             }
         }
         s.tag = rawTag >> 32;
         if (limitTag != -1 && s.tag != limitTag) {
-            //ALOGI("skipping due to tag: %s", buffer);
+            // ALOGI("skipping due to tag: %s", buffer);
             continue;
         }
         pos = endPos;
@@ -211,7 +213,7 @@ static int readNetworkStatsDetail(JNIEnv* env, jclass clazz, jobject stats,
                 &s.uid, &s.set, &s.rxBytes, &s.rxPackets,
                 &s.txBytes, &s.txPackets) == 6) {
             if (limitUid != -1 && limitUid != s.uid) {
-                //ALOGI("skipping due to uid: %s", buffer);
+                // ALOGI("skipping due to uid: %s", buffer);
                 continue;
             }
             lines.push_back(s);
@@ -219,13 +221,62 @@ static int readNetworkStatsDetail(JNIEnv* env, jclass clazz, jobject stats,
             //ALOGI("skipping due to bad remaining fields: %s", pos);
         }
     }
+    return lines.size();
+};
 
-    if (fclose(fp) != 0) {
-        ALOGE("Failed to close netstats file");
+
+static int readNetworkStatsDetail(JNIEnv* env, jclass clazz, jobject stats,
+        jstring path, jint limitUid, jobjectArray limitIfacesObj, jint limitTag) {
+    ScopedUtfChars path8(env, path);
+    if (path8.c_str() == NULL) {
         return -1;
     }
 
-    int size = lines.size();
+    Vector<String8> limitIfaces;
+    if (limitIfacesObj != NULL && env->GetArrayLength(limitIfacesObj) > 0) {
+        int num = env->GetArrayLength(limitIfacesObj);
+        limitIfaces.setCapacity(num);
+        for (int i = 0; i < num; i++) {
+            jstring string = (jstring)env->GetObjectArrayElement(limitIfacesObj, i);
+            ScopedUtfChars string8(env, string);
+            if (string8.c_str() != NULL) {
+                limitIfaces.add(String8(string8.c_str()));
+            }
+        }
+    }
+
+    std::string statsString;
+    ssize_t stats_size = readtostring(path8, statsString);
+    if (stats_size < 0) {
+        return -1;
+    }
+    Vector<stats_line> lines;
+    // if the first read returned the error message, the output of proc file
+    // might be truncated or corrupted. Do hash and lenght compare for
+    // consistent result.
+    ssize_t size = parseStatsFromString(statsString, lines, limitIfaces, limitUid, limitTag);
+    if (size < 0) {
+        // Comparing the hash and file length of two consecutive read result
+        // from proc file system and proceed only if the result is consistent.
+        ssize_t verify_size = 0;
+        size_t hashtwo = 0;
+        size_t hashone = std::hash<std::string>()(statsString);
+        while ((stats_size != verify_size ) || (hashone != hashtwo)) {
+            hashtwo = hashone;
+            verify_size = stats_size;
+            stats_size = readtostring(path8, statsString);
+            if (stats_size < 0) return -1;
+            hashone = std::hash<std::string>()(statsString);
+        }
+        size = parseStatsFromString(statsString, lines, limitIfaces, limitUid, limitTag);
+        // if the read output is still error when the proc file result is
+        // consistent. Error happend inside the kernel proc fs.
+        if (size < 0) {
+            ALOGE("The proc stats file in kernel is incorrect\n");
+            return -1;
+        }
+    }
+
     bool grow = size > env->GetIntField(stats, gNetworkStatsClassInfo.capacity);
 
     ScopedLocalRef<jobjectArray> iface(env, get_string_array(env, stats,
@@ -327,4 +378,4 @@ int register_com_android_internal_net_NetworkStatsFactory(JNIEnv* env) {
     return err;
 }
 
-}
+}// namespace android
