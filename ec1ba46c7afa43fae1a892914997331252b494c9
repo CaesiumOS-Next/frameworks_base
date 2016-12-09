@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3a2b0780_95bb23a7",
+        "filename": "core/jni/android_os_HwBinder.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 245,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2016-12-09T19:24:22Z",
+      "side": 1,
+      "message": "can we use fromBinder here?",
+      "range": {
+        "startLine": 245,
+        "startChar": 39,
+        "endLine": 245,
+        "endChar": 75
+      },
+      "revId": "ec1ba46c7afa43fae1a892914997331252b494c9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
