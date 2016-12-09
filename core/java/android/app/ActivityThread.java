@@ -5302,7 +5302,7 @@ public final class ActivityThread {
         updateLocaleListFromAppContext(appContext,
                 mResourcesManager.getConfiguration().getLocales());
 
-        if (!Process.isIsolated() && !"android".equals(appContext.getPackageName())) {
+        if (!Process.isIsolated()) {
             // This cache location probably points at credential-encrypted
             // storage which may not be accessible yet; assign it anyway instead
             // of pointing at device-encrypted storage.
@@ -5986,6 +5986,15 @@ public final class ActivityThread {
                         this, getSystemContext().mPackageInfo);
                 mInitialApplication = context.mPackageInfo.makeApplication(true, null);
                 mInitialApplication.onCreate();
+                // Setup a location to store generated/compiled graphics code for "system_process".
+                final Context deviceContext = context.createDeviceProtectedStorageContext();
+                final File codeCacheDir = deviceContext.getCodeCacheDir();
+                if (codeCacheDir != null) {
+                    ThreadedRenderer.setupDiskCache(codeCacheDir);
+                    RenderScriptCacheDir.setupDiskCache(codeCacheDir);
+                } else {
+                    Log.e(TAG, "Unable to setupGraphicsSupport in system_process due to missing code-cache directory");
+                }
             } catch (Exception e) {
                 throw new RuntimeException(
                         "Unable to instantiate Application():" + e.toString(), e);
