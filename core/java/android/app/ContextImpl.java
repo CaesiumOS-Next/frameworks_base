@@ -579,7 +579,11 @@ class ContextImpl extends Context {
     public File getCacheDir() {
         synchronized (mSync) {
             if (mCacheDir == null) {
-                mCacheDir = new File(getDataDir(), "cache");
+                if ("android".equals(getPackageName())) {
+                    mCacheDir = new File("/data/system");
+                } else {
+                    mCacheDir = new File(getDataDir(), "cache");
+                }
             }
             return ensurePrivateDirExists(mCacheDir);
         }
@@ -589,7 +593,11 @@ class ContextImpl extends Context {
     public File getCodeCacheDir() {
         synchronized (mSync) {
             if (mCodeCacheDir == null) {
-                mCodeCacheDir = new File(getDataDir(), "code_cache");
+                if ("android".equals(getPackageName())) {
+                    mCodeCacheDir = new File("/data/system");
+                } else {
+                    mCodeCacheDir = new File(getDataDir(), "code_cache");
+                }
             }
             return ensurePrivateDirExists(mCodeCacheDir);
         }
