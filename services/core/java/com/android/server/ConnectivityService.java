@@ -3728,6 +3728,18 @@ public class ConnectivityService extends IConnectivityManager.Stub
         }
     }
 
+    /**
+     * Internally, shutdown any existing Lockdown VPN(Always-On VPN) tracker.
+     */
+    private void shutdownLockdownTracker() {
+        // Shutdown any existing tracker
+        final LockdownVpnTracker existing = mLockdownTracker;
+        mLockdownTracker = null;
+        if (existing != null) {
+            existing.shutdown();
+        }
+    }
+
     private void throwIfLockdownEnabled() {
         if (mLockdownEnabled) {
             throw new IllegalStateException("Unavailable in lockdown mode");
@@ -5512,6 +5524,9 @@ public class ConnectivityService extends IConnectivityManager.Stub
         }
 
         final int userId = UserHandle.getCallingUserId();
+
+        // shutdown Lockdown VPN tracker
+        shutdownLockdownTracker();
 
         // Turn airplane mode off
         setAirplaneMode(false);
