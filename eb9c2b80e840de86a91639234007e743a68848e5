@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ba3457bf_aa446f6b",
+        "filename": "core/java/android/widget/ListPopupWindow.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 631,
+      "author": {
+        "id": 1044446
+      },
+      "writtenOn": "2016-12-16T15:52:26Z",
+      "side": 1,
+      "message": "Setting an invalid (e.g. \u003c -2) height is a developer error. We should throw an IAE from setHeight(int) rather than silently clamping the value.",
+      "range": {
+        "startLine": 631,
+        "startChar": 41,
+        "endLine": 631,
+        "endChar": 56
+      },
+      "revId": "eb9c2b80e840de86a91639234007e743a68848e5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
