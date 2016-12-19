@@ -22,6 +22,30 @@
       "revId": "eb9c2b80e840de86a91639234007e743a68848e5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ba7d3755_4264b23a",
+        "filename": "core/java/android/widget/ListPopupWindow.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 631,
+      "author": {
+        "id": 1102318
+      },
+      "writtenOn": "2016-12-19T03:39:53Z",
+      "side": 1,
+      "message": "I got it, in that case, CTS will fail since it checks minus value. So I will upload a CTS patch. Thank you!\nhttps://android.googlesource.com/platform/cts/+/b0a710c/tests/tests/widget/src/android/widget/cts/ListPopupWindowTest.java#97",
+      "parentUuid": "ba3457bf_aa446f6b",
+      "range": {
+        "startLine": 631,
+        "startChar": 41,
+        "endLine": 631,
+        "endChar": 56
+      },
+      "revId": "eb9c2b80e840de86a91639234007e743a68848e5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
