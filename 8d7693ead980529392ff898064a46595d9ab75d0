@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "372b2280_74ba00a4",
+        "filename": "core/jni/android_os_HwRemoteBinder.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 354,
+      "author": {
+        "id": 1013030
+      },
+      "writtenOn": "2016-12-27T15:54:06Z",
+      "side": 1,
+      "message": "TODO this needs a corresponding dec() still.",
+      "range": {
+        "startLine": 354,
+        "startChar": 4,
+        "endLine": 354,
+        "endChar": 28
+      },
+      "revId": "8d7693ead980529392ff898064a46595d9ab75d0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
