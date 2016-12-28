@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "d7180671_e21cf8de",
+        "filename": "core/java/android/os/HwBinder.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1013030
+      },
+      "writtenOn": "2016-12-28T22:54:46Z",
+      "side": 1,
+      "message": "hidl-gen does generate these methods on IFoo, IFoo.Proxy and IFoo.Stub as well. But the implementation we care about, the one in the proxy, does need to call through into the actual native transport object, since that is where the magic happens. IFoo.Proxy doesn\u0027t implement a HwRemoteBinder proxy object directly (no multiple inheritance in Java). Instead, it holds a reference to an IHwBinder object in member variable mRemote. So IHwBinder needs these methods, as does HwRemoteBinder (the proxy) - which links them to native method calls.\n\nThis class, the stub base class, does not necessarily need them, since all auto-generated Stub classes already implement (un)linkToDeath. So I\u0027ve removed them here from the new PS.\n\nI do wonder if IFoo.Proxy couldn\u0027t hold a reference to a HwRemoteBinder - since that\u0027s what it is - and in that case we wouldn\u0027t even need these on IHwBinder.",
+      "parentUuid": "f7a50a83_0bb028d9",
+      "revId": "f200d6900bb8e9ec0bf6749ee52565f0a6139489",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f7a50a83_266e7970",
         "filename": "core/jni/android_os_HwRemoteBinder.cpp",
         "patchSetId": 3
@@ -30,6 +48,30 @@
       "writtenOn": "2016-12-28T18:11:51Z",
       "side": 1,
       "message": "Is this just to prevent extra allocation on the stack if the list is zero length? I think you could just remove this check.",
+      "range": {
+        "startLine": 177,
+        "startChar": 4,
+        "endLine": 177,
+        "endChar": 27
+      },
+      "revId": "f200d6900bb8e9ec0bf6749ee52565f0a6139489",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "17237e9f_89720902",
+        "filename": "core/jni/android_os_HwRemoteBinder.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1013030
+      },
+      "writtenOn": "2016-12-28T22:54:46Z",
+      "side": 1,
+      "message": "Not sure, I don\u0027t see a good reason to keep it, so will remove.",
+      "parentUuid": "f7a50a83_266e7970",
       "range": {
         "startLine": 177,
         "startChar": 4,
@@ -65,6 +107,30 @@
     },
     {
       "key": {
+        "uuid": "f71b4a68_ba0bc905",
+        "filename": "core/jni/android_os_HwRemoteBinder.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1013030
+      },
+      "writtenOn": "2016-12-28T22:54:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f7a50a83_4b9dc04e",
+      "range": {
+        "startLine": 178,
+        "startChar": 8,
+        "endLine": 178,
+        "endChar": 12
+      },
+      "revId": "f200d6900bb8e9ec0bf6749ee52565f0a6139489",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f7a50a83_a6790932",
         "filename": "core/jni/android_os_HwRemoteBinder.cpp",
         "patchSetId": 3
@@ -82,6 +148,24 @@
     },
     {
       "key": {
+        "uuid": "376ec20e_b6a2888f",
+        "filename": "core/jni/android_os_HwRemoteBinder.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1013030
+      },
+      "writtenOn": "2016-12-28T22:54:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f7a50a83_a6790932",
+      "revId": "f200d6900bb8e9ec0bf6749ee52565f0a6139489",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f7a50a83_469ff538",
         "filename": "core/jni/android_os_HwRemoteBinder.h",
         "patchSetId": 3
@@ -93,6 +177,30 @@
       "writtenOn": "2016-12-28T18:11:51Z",
       "side": 1,
       "message": "Why expose HwBinderDeathRecipientList if we don\u0027t expose HwBinderDeathRecipient? That means the only method we can actually use is lock() and find. And, we can\u0027t use the results from find either. Why not just expose getDeathLock instead of getDeathRecipientList in JHwRemoteBinder and move this class definition to the cpp?",
+      "range": {
+        "startLine": 33,
+        "startChar": 6,
+        "endLine": 33,
+        "endChar": 28
+      },
+      "revId": "f200d6900bb8e9ec0bf6749ee52565f0a6139489",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "17237e9f_a9d385bb",
+        "filename": "core/jni/android_os_HwRemoteBinder.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1013030
+      },
+      "writtenOn": "2016-12-28T22:54:46Z",
+      "side": 1,
+      "message": "I exposed the class because sp\u003cclass\u003e needs a full definition of class - it can\u0027t do with a forward declaration.\n\ngetDeathRecipientList() is needed because, when you enter from Java, all you have is a pointer to the native context (a JHwRemoteBinder object), and you need a way to get at the death recipient list from there.",
+      "parentUuid": "f7a50a83_469ff538",
       "range": {
         "startLine": 33,
         "startChar": 6,
