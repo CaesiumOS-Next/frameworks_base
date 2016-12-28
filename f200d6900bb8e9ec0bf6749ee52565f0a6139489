@@ -1,0 +1,107 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f7a50a83_0bb028d9",
+        "filename": "core/java/android/os/HwBinder.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2016-12-28T18:11:51Z",
+      "side": 1,
+      "message": "why not make these abstract and implement them in hidl like we do in C++ (and for other methods)?\n\nThey should be methods on IFoo, not HwBinder, right?",
+      "revId": "f200d6900bb8e9ec0bf6749ee52565f0a6139489",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f7a50a83_266e7970",
+        "filename": "core/jni/android_os_HwRemoteBinder.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2016-12-28T18:11:51Z",
+      "side": 1,
+      "message": "Is this just to prevent extra allocation on the stack if the list is zero length? I think you could just remove this check.",
+      "range": {
+        "startLine": 177,
+        "startChar": 4,
+        "endLine": 177,
+        "endChar": 27
+      },
+      "revId": "f200d6900bb8e9ec0bf6749ee52565f0a6139489",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f7a50a83_4b9dc04e",
+        "filename": "core/jni/android_os_HwRemoteBinder.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2016-12-28T18:11:51Z",
+      "side": 1,
+      "message": "nit:\n\nfor(const \u0026sp\u003c*\u003e item : list)\n\nhttps://cs.corp.google.com/android/system/core/include/utils/List.h?q\u003dp:android+List\u0026l\u003d196\n\nThis should work",
+      "range": {
+        "startLine": 178,
+        "startChar": 8,
+        "endLine": 178,
+        "endChar": 12
+      },
+      "revId": "f200d6900bb8e9ec0bf6749ee52565f0a6139489",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f7a50a83_a6790932",
+        "filename": "core/jni/android_os_HwRemoteBinder.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2016-12-28T18:11:51Z",
+      "side": 1,
+      "message": "same",
+      "revId": "f200d6900bb8e9ec0bf6749ee52565f0a6139489",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f7a50a83_469ff538",
+        "filename": "core/jni/android_os_HwRemoteBinder.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2016-12-28T18:11:51Z",
+      "side": 1,
+      "message": "Why expose HwBinderDeathRecipientList if we don\u0027t expose HwBinderDeathRecipient? That means the only method we can actually use is lock() and find. And, we can\u0027t use the results from find either. Why not just expose getDeathLock instead of getDeathRecipientList in JHwRemoteBinder and move this class definition to the cpp?",
+      "range": {
+        "startLine": 33,
+        "startChar": 6,
+        "endLine": 33,
+        "endChar": 28
+      },
+      "revId": "f200d6900bb8e9ec0bf6749ee52565f0a6139489",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
