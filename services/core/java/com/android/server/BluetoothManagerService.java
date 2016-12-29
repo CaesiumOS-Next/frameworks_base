@@ -800,13 +800,37 @@ class BluetoothManagerService extends IBluetoothManager.Stub {
         synchronized(mReceiver) {
             if (persist) {
                 persistBluetoothSetting(BLUETOOTH_OFF);
+                mEnableExternal = false;
+                sendDisableMsg(packageName);
+            } else {
+                /* It means disable is called by shutdown thread */
+                int btState = BluetoothAdapter.STATE_OFF;
+                synchronized (this) {
+                    clearBleApps();
+                }
+
+                try {
+                    mBluetoothLock.readLock().lock();
+                    mEnableExternal = false;
+                    if (mBluetooth != null) {
+                        btState = mBluetooth.getState();
+                    }
+                } catch (RemoteException e) {
+                    Slog.e(TAG, "Unable to initiate disable", e);
+                } finally {
+                    mBluetoothLock.readLock().unlock();
+                }
+
+                if(btState == BluetoothAdapter.STATE_BLE_ON) {
+                    mEnable = false;
+                    sendBrEdrDownCallback();
+                } else {
+                    sendDisableMsg(packageName);
+                }
             }
-            mEnableExternal = false;
-            sendDisableMsg(packageName);
         }
         return true;
     }
-
     private void startConsentUi(String packageName, int callingUid, String intentAction)
             throws RemoteException {
         try {
