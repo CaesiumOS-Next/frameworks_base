@@ -210,6 +210,24 @@
       "revId": "f200d6900bb8e9ec0bf6749ee52565f0a6139489",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f7a50a83_b24f0037",
+        "filename": "core/jni/android_os_HwRemoteBinder.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2016-12-29T01:45:01Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "17237e9f_a9d385bb",
+      "revId": "f200d6900bb8e9ec0bf6749ee52565f0a6139489",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
