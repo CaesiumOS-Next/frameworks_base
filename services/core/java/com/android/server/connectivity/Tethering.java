@@ -50,6 +50,7 @@ import android.os.INetworkManagementService;
 import android.os.Looper;
 import android.os.Message;
 import android.os.Parcel;
+import android.os.PersistableBundle;
 import android.os.RemoteException;
 import android.os.ResultReceiver;
 import android.os.UserHandle;
@@ -393,6 +394,11 @@ public class Tethering extends BaseNetworkObserver implements IControlsTethering
         }
     }
 
+    // Return whether tether provisioning is disabled by system properties
+    private boolean isProvisioningDisabled() {
+        return mSystemProperties.getBoolean(DISABLE_PROVISIONING_SYSPROP_KEY, false) ;
+    }
+
     /**
      * Check if the device requires a provisioning check in order to enable tethering.
      *
@@ -400,25 +406,35 @@ public class Tethering extends BaseNetworkObserver implements IControlsTethering
      */
     @VisibleForTesting
     protected boolean isTetherProvisioningRequired() {
-        String[] provisionApp = mContext.getResources().getStringArray(
-                com.android.internal.R.array.config_mobile_hotspot_provision_app);
-        if (mSystemProperties.getBoolean(DISABLE_PROVISIONING_SYSPROP_KEY, false)
-                || provisionApp == null) {
+        // If tether provisioning is disabled, return false without fetching CarrierConfig
+        if (isProvisioningDisabled()){
             return false;
         }
 
-        // Check carrier config for entitlement checks
-        final CarrierConfigManager configManager = (CarrierConfigManager) mContext
-             .getSystemService(Context.CARRIER_CONFIG_SERVICE);
-        if (configManager != null && configManager.getConfig() != null) {
-            // we do have a CarrierConfigManager and it has a config.
-            boolean isEntitlementCheckRequired = configManager.getConfig().getBoolean(
-                    CarrierConfigManager.KEY_REQUIRE_ENTITLEMENT_CHECKS_BOOL);
-            if (!isEntitlementCheckRequired) {
-                return false;
+        // These are default config values in case configManager or config is null
+        boolean hasProvisioningApp = false;
+        boolean isEntitlementCheckRequired = true;
+
+        final CarrierConfigManager configManager = (CarrierConfigManager)
+                mContext.getSystemService(Context.CARRIER_CONFIG_SERVICE);
+        if (configManager != null) {
+            PersistableBundle b = configManager.getConfig();
+            if (b != null) {
+                String[] provisionApp = b.getStringArray(CarrierConfigManager.
+                        KEY_MOBILE_HOTSPOT_PROVISION_APP_STRING_ARRAY);
+                if (provisionApp != null && provisionApp.length == 2) {
+                    hasProvisioningApp = true;
+                }
+                isEntitlementCheckRequired = b.getBoolean(
+                        CarrierConfigManager.KEY_REQUIRE_ENTITLEMENT_CHECKS_BOOL);
             }
         }
-        return (provisionApp.length == 2);
+
+        if (!hasProvisioningApp || !isEntitlementCheckRequired) {
+            return false;
+        } else {
+            return true;
+        }
     }
 
     /**
@@ -1575,8 +1591,21 @@ public class Tethering extends BaseNetworkObserver implements IControlsTethering
                 if (mSimAbsentSeen && IccCardConstants.INTENT_VALUE_ICC_LOADED.equals(state)) {
                     mSimAbsentSeen = false;
                     try {
-                        if (mContext.getResources().getString(com.android.internal.R.string.
-                                config_mobile_hotspot_provision_app_no_ui).isEmpty() == false) {
+                        boolean hasProvisioningAppNoUi = false;
+                        final CarrierConfigManager configManager = (CarrierConfigManager)
+                                mContext.getSystemService(Context.CARRIER_CONFIG_SERVICE);
+                        if (configManager != null) {
+                            PersistableBundle b = configManager.getConfig();
+                            if (b != null) {
+                                String provisionAppNoUi = b.getString(CarrierConfigManager.
+                                        KEY_MOBILE_HOTSPOT_PROVISION_APP_NO_UI_STRING);
+                                if (provisionAppNoUi != null && !provisionAppNoUi.isEmpty()) {
+                                    hasProvisioningAppNoUi = true;
+                                }
+                            }
+                        }
+                        Log.d(TAG, "onReceive hasProvisioningAppNoUi=" + hasProvisioningAppNoUi);
+                        if (hasProvisioningAppNoUi) {
                             ArrayList<Integer> tethered = new ArrayList<Integer>();
                             synchronized (mPublicSync) {
                                 for (int i = 0; i < mTetherStates.size(); i++) {
