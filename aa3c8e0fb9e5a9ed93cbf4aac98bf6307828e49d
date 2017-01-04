@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b7b632e5_4fa52d53",
+        "filename": "obex/javax/obex/ObexHelper.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 1076123
+      },
+      "writtenOn": "2017-01-04T17:20:20Z",
+      "side": 1,
+      "message": "how about something like:\n\nlength \u003d (headerArray[index] \u003c\u003c 8) + headerArray[index + 1];\nindex +\u003d 2;\n\nif (length \u003d\u003d 0) {\n    Log.e(TAG, \"Remote sent an Obex connect response of length zero\");\n    break;\n}\n\nlength -\u003d3;\n\n\nI think moving the message before the -3 makes it more readable.",
+      "range": {
+        "startLine": 208,
+        "startChar": 24,
+        "endLine": 217,
+        "endChar": 25
+      },
+      "revId": "aa3c8e0fb9e5a9ed93cbf4aac98bf6307828e49d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
