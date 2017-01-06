@@ -26,6 +26,7 @@ import android.accounts.IAccountManager;
 import android.app.admin.DevicePolicyManager;
 import android.app.job.IJobScheduler;
 import android.app.job.JobScheduler;
+import android.app.timezone.TimeZoneRulesManager;
 import android.app.trust.TrustManager;
 import android.app.usage.IUsageStatsManager;
 import android.app.usage.NetworkStatsManager;
@@ -774,6 +775,13 @@ final class SystemServiceRegistry {
             public ContextHubManager createService(ContextImpl ctx) {
                 return new ContextHubManager(ctx.getOuterContext(),
                   ctx.mMainThread.getHandler().getLooper());
+            }});
+
+        registerService(Context.TIME_ZONE_RULES_MANAGER, TimeZoneRulesManager.class,
+                new CachedServiceFetcher<TimeZoneRulesManager>() {
+            @Override
+            public TimeZoneRulesManager createService(ContextImpl ctx) {
+                return new TimeZoneRulesManager(ctx.getOuterContext());
             }});
     }
 

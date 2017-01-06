@@ -235,6 +235,7 @@ package android {
     field public static final java.lang.String UPDATE_APP_OPS_STATS = "android.permission.UPDATE_APP_OPS_STATS";
     field public static final java.lang.String UPDATE_DEVICE_STATS = "android.permission.UPDATE_DEVICE_STATS";
     field public static final java.lang.String UPDATE_LOCK = "android.permission.UPDATE_LOCK";
+    field public static final java.lang.String UPDATE_TIME_ZONE_RULES = "android.permission.UPDATE_TIME_ZONE_RULES";
     field public static final java.lang.String USER_ACTIVITY = "android.permission.USER_ACTIVITY";
     field public static final java.lang.String USE_FINGERPRINT = "android.permission.USE_FINGERPRINT";
     field public static final java.lang.String USE_SIP = "android.permission.USE_SIP";
@@ -6717,6 +6718,37 @@ package android.app.job {
 
 }
 
+package android.app.timezone {
+
+  public abstract class Observer {
+    ctor public Observer();
+    method public abstract void onFinished(int);
+  }
+
+  public final class RulesState implements android.os.Parcelable {
+    ctor public RulesState(java.lang.String, java.lang.String, boolean, boolean, java.lang.String, java.lang.String);
+    method public int describeContents();
+    method public java.lang.String getBundleAndroidRevision();
+    method public java.lang.String getBundleFormatVersionSupported();
+    method public java.lang.String getBundleRulesVersion();
+    method public java.lang.String getSystemRulesVersion();
+    method public boolean isBundleInstalled();
+    method public boolean isOperationInProgress();
+    method public void writeToParcel(android.os.Parcel, int);
+    field public static final android.os.Parcelable.Creator<android.app.timezone.RulesState> CREATOR;
+  }
+
+  public class TimeZoneRulesManager {
+    method public android.app.timezone.RulesState getRulesState() throws android.os.RemoteException;
+    method public int requestInstall(java.io.File, android.app.timezone.Observer) throws java.io.IOException, android.os.RemoteException;
+    method public int requestUninstall(android.app.timezone.Observer) throws android.os.RemoteException;
+    field public static final int ERROR_GENERAL_FAILURE = 2; // 0x2
+    field public static final int ERROR_OPERATION_IN_PROGRESS = 1; // 0x1
+    field public static final int SUCCESS = 0; // 0x0
+  }
+
+}
+
 package android.app.usage {
 
   public final class ConfigurationStats implements android.os.Parcelable {
@@ -8554,6 +8586,7 @@ package android.content {
     field public static final java.lang.String TELEPHONY_SERVICE = "phone";
     field public static final java.lang.String TELEPHONY_SUBSCRIPTION_SERVICE = "telephony_subscription_service";
     field public static final java.lang.String TEXT_SERVICES_MANAGER_SERVICE = "textservices";
+    field public static final java.lang.String TIME_ZONE_RULES_MANAGER_SERVICE = "timezone";
     field public static final java.lang.String TV_INPUT_SERVICE = "tv_input";
     field public static final java.lang.String UI_MODE_SERVICE = "uimode";
     field public static final java.lang.String USAGE_STATS_SERVICE = "usagestats";
