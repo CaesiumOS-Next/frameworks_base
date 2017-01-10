@@ -22,6 +22,30 @@
       "revId": "311ba63222b32b6ed8f52a272ef01b6c71e0b543",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b7b632e5_71945a93",
+        "filename": "obex/javax/obex/ObexHelper.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1076123
+      },
+      "writtenOn": "2017-01-10T14:36:19Z",
+      "side": 1,
+      "message": "I just reconsidered the last bit.  I think it\u0027s best for debugging to report the length as the remote sent it.",
+      "parentUuid": "b7b632e5_f15eaa2d",
+      "range": {
+        "startLine": 210,
+        "startChar": 38,
+        "endLine": 210,
+        "endChar": 39
+      },
+      "revId": "311ba63222b32b6ed8f52a272ef01b6c71e0b543",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
