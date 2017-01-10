@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b7b632e5_f15eaa2d",
+        "filename": "obex/javax/obex/ObexHelper.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1076123
+      },
+      "writtenOn": "2017-01-10T14:34:15Z",
+      "side": 1,
+      "message": "Shouldn\u0027t this be 3 if we\u0027re trying to avoid a negative number?  It could also be 4 to make sure at least one byte gets copied.  Is there a minimum size defined by the spec?\n\nIf there is a minimum size, it seems like that should be used here.  If not, maybe it would be best to go back to subtracting 3 before the check and checking to make sure the length is positive.",
+      "range": {
+        "startLine": 210,
+        "startChar": 38,
+        "endLine": 210,
+        "endChar": 39
+      },
+      "revId": "311ba63222b32b6ed8f52a272ef01b6c71e0b543",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
