@@ -70,6 +70,30 @@
       "revId": "311ba63222b32b6ed8f52a272ef01b6c71e0b543",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a3d9950f_0dc066db",
+        "filename": "obex/javax/obex/ObexHelper.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1076123
+      },
+      "writtenOn": "2017-01-11T21:59:11Z",
+      "side": 1,
+      "message": "I\u0027d prefer to have the same magic number in both places.  I also think it makes more sense to bail out here than to call arraycopy with length 0.",
+      "parentUuid": "7783da87_6689cab5",
+      "range": {
+        "startLine": 210,
+        "startChar": 38,
+        "endLine": 210,
+        "endChar": 39
+      },
+      "revId": "311ba63222b32b6ed8f52a272ef01b6c71e0b543",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
