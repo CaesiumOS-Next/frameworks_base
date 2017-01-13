@@ -22,6 +22,30 @@
       "revId": "d80900611500bd7c8d2ca0574f51a9cb7ef338cb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e39b8d7a_18546dbf",
+        "filename": "core/java/android/bluetooth/BluetoothAdapter.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1073753
+      },
+      "writtenOn": "2017-01-13T18:59:57Z",
+      "side": 1,
+      "message": "It was unclear to me what method is preferred so I presented both as equal with the one that is here first. There isn\u0027t a clear winner based on the API.  Also BluetoothManager.getAdapter just calls BluetoothAdapter.getDefaultAdapter.",
+      "parentUuid": "e39b8d7a_d2ef24c8",
+      "range": {
+        "startLine": 73,
+        "startChar": 71,
+        "endLine": 73,
+        "endChar": 84
+      },
+      "revId": "d80900611500bd7c8d2ca0574f51a9cb7ef338cb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
