@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e39b8d7a_d2ef24c8",
+        "filename": "core/java/android/bluetooth/BluetoothAdapter.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1076123
+      },
+      "writtenOn": "2017-01-13T16:58:47Z",
+      "side": 1,
+      "message": "Isn\u0027t the new API preferred?  The new wording removes that meaning.\n\nMaybe it would be clearer to state the preferred method first.\n\nTo get a ... call the {@link BluetoothManager#getAdapter} method.  On JELLY_BEAN_MR1 and below, call the static {@link #getDefaultAdapter} method.",
+      "range": {
+        "startLine": 73,
+        "startChar": 71,
+        "endLine": 73,
+        "endChar": 84
+      },
+      "revId": "d80900611500bd7c8d2ca0574f51a9cb7ef338cb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
