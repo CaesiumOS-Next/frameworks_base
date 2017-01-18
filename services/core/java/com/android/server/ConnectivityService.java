@@ -3669,22 +3669,27 @@ public class ConnectivityService extends IConnectivityManager.Stub
         // Tear down existing lockdown if profile was removed
         mLockdownEnabled = LockdownVpnTracker.isEnabled();
         if (mLockdownEnabled) {
-            final String profileName = new String(mKeyStore.get(Credentials.LOCKDOWN_VPN));
-            final VpnProfile profile = VpnProfile.decode(
-                    profileName, mKeyStore.get(Credentials.VPN + profileName));
-            if (profile == null) {
-                Slog.e(TAG, "Lockdown VPN configured invalid profile " + profileName);
-                setLockdownTracker(null);
-                return true;
-            }
-            int user = UserHandle.getUserId(Binder.getCallingUid());
-            synchronized(mVpns) {
-                Vpn vpn = mVpns.get(user);
-                if (vpn == null) {
-                    Slog.w(TAG, "VPN for user " + user + " not ready yet. Skipping lockdown");
-                    return false;
+            try {
+                final String profileName = new String(mKeyStore.get(Credentials.LOCKDOWN_VPN));
+                final VpnProfile profile = VpnProfile.decode(
+                        profileName, mKeyStore.get(Credentials.VPN + profileName));
+                if (profile == null) {
+                    Slog.e(TAG, "Lockdown VPN configured invalid profile " + profileName);
+                    setLockdownTracker(null);
+                    return true;
                 }
-                setLockdownTracker(new LockdownVpnTracker(mContext, mNetd, this, vpn, profile));
+                int user = UserHandle.getUserId(Binder.getCallingUid());
+                synchronized(mVpns) {
+                    Vpn vpn = mVpns.get(user);
+                    if (vpn == null) {
+                        Slog.w(TAG, "VPN for user " + user + " not ready yet. Skipping lockdown");
+                        return false;
+                    }
+                    setLockdownTracker(new LockdownVpnTracker(mContext, mNetd, this, vpn, profile));
+                }
+            } catch (NullPointerException e) {
+                Slog.e(TAG, "Couldn't read LOCKDOWN_VPN blob from KeyStore(maybe oldblob)");
+                return false;
             }
         } else {
             setLockdownTracker(null);
