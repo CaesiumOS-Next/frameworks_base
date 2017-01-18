@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "433c59a4_2dfb2d52",
+        "filename": "obex/javax/obex/ObexHelper.java",
+        "patchSetId": 9
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1043980
+      },
+      "writtenOn": "2017-01-18T16:11:53Z",
+      "side": 1,
+      "message": "make the above statement length \u003c\u003d OBEX_BYTE_SEQ_HEADER_LEN to bail out if the length is becoming 0 as well.",
+      "range": {
+        "startLine": 213,
+        "startChar": 37,
+        "endLine": 213,
+        "endChar": 61
+      },
+      "revId": "0d5c1432bb66eee432ee63310e32f05ad9825a2a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
