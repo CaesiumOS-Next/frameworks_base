@@ -179,6 +179,7 @@ public class ImsCallProfile implements Parcelable {
      *  DisplayText: Display text for the call.
      *  AdditionalCallInfo: Additional call info.
      *  CallPull: Boolean value specifying if the call is a pulled call.
+     *  IsRttCall: Boolean value specifying if call is RTT call.
      */
     public static final String EXTRA_OI = "oi";
     public static final String EXTRA_CNA = "cna";
@@ -189,6 +190,17 @@ public class ImsCallProfile implements Parcelable {
     public static final String EXTRA_DISPLAY_TEXT = "DisplayText";
     public static final String EXTRA_ADDITIONAL_CALL_INFO = "AdditionalCallInfo";
     public static final String EXTRA_IS_CALL_PULL = "CallPull";
+    public static final String EXTRA_IS_RTT_CALL = "IsRttCall";
+
+    /**
+     * Values for RTT Upgrade request
+     */
+    // MO sends RTT upgrade request
+    public static final int RTT_MODIFY_CALL_INITIATE = 0;
+    // MO accepts the upgrade request received from MT
+    public static final int RTT_MODIFY_CALL_CONFIRM = 1;
+    // MO rejects the upgrade request received from MT
+    public static final int RTT_MODIFY_CALL_REJECT = 2;
 
     /**
      * Extra key which the RIL can use to indicate the radio technology used for a call.
