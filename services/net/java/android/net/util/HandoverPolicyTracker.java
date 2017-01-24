@@ -51,8 +51,8 @@ import static android.provider.Settings.Global.NETWORK_AVOID_BAD_WIFI;
  *
  * @hide
  */
-public class AvoidBadWifiTracker {
-    private static String TAG = AvoidBadWifiTracker.class.getSimpleName();
+public class HandoverPolicyTracker {
+    private static String TAG = HandoverPolicyTracker.class.getSimpleName();
 
     private final Context mContext;
     private final Handler mHandler;
@@ -64,11 +64,11 @@ public class AvoidBadWifiTracker {
 
     private volatile boolean mAvoidBadWifi = true;
 
-    public AvoidBadWifiTracker(Context ctx, Handler handler) {
+    public HandoverPolicyTracker(Context ctx, Handler handler) {
         this(ctx, handler, null);
     }
 
-    public AvoidBadWifiTracker(Context ctx, Handler handler, Runnable cb) {
+    public HandoverPolicyTracker(Context ctx, Handler handler, Runnable cb) {
         mContext = ctx;
         mHandler = handler;
         mReevaluateRunnable = () -> { if (update() && cb != null) cb.run(); };
