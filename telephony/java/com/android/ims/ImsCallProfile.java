@@ -230,6 +230,7 @@ public class ImsCallProfile implements Parcelable {
     public int mRestrictCause = CALL_RESTRICT_CAUSE_NONE;
     public Bundle mCallExtras;
     public ImsStreamMediaProfile mMediaProfile;
+    public boolean mIsRttCall = false;
 
     public ImsCallProfile(Parcel in) {
         readFromParcel(in);
@@ -317,7 +318,8 @@ public class ImsCallProfile implements Parcelable {
         return "{ serviceType=" + mServiceType +
                 ", callType=" + mCallType +
                 ", restrictCause=" + mRestrictCause +
-                ", mediaProfile=" + mMediaProfile.toString() + " }";
+                ", mediaProfile=" + mMediaProfile.toString() +
+                ", mIsRttCall=" + mIsRttCall + " }";
     }
 
     @Override
@@ -486,4 +488,20 @@ public class ImsCallProfile implements Parcelable {
     private static boolean isVideoStateSet(int videoState, int videoStateToCheck) {
         return (videoState & videoStateToCheck) == videoStateToCheck;
     }
+
+    /**
+     * Determines if it's RTT call
+     * @return true if RTT call, false otherwise.
+     */
+    public boolean isRttCall() {
+        return mIsRttCall;
+    }
+
+    /**
+     * Updates the RttCall attribute
+     */
+    public void setIsRttCall(boolean isRttCall) {
+        mIsRttCall = isRttCall;
+    }
+
 }

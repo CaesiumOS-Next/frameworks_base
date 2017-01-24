@@ -130,4 +130,14 @@ interface IImsCallSessionListener {
      */
     void callSessionSuppServiceReceived(in IImsCallSession session,
          in ImsSuppServiceNotification suppSrvNotification);
+
+    // Device received RTT modify request from MT.
+    void callSessionRttModifyRequestReceived(in IImsCallSession session);
+
+    /* Device issued RTT modify request and inturn received response
+     * from MT side.
+     * @status : Success or Failure
+     */
+    void callSessionRttModifyResponseReceived(in int status);
+
 }

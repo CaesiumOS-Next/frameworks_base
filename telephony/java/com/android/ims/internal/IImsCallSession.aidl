@@ -255,4 +255,16 @@ interface IImsCallSession {
      * @return {@code True} if the session is multiparty.
      */
     boolean isMultiparty();
+
+    /**
+     * Device issues RTT modify request
+     */
+    void sendRttModifyRequest(in ImsCallProfile profile);
+
+    /*
+     * Device responds to MT RTT modify request
+     * status = true : Accepted the request
+     * status = false : Declined the request
+     */
+    void sendRttModifyResponse(in boolean status);
 }
