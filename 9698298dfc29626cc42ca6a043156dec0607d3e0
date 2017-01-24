@@ -1,0 +1,95 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "111fc029_291120dd",
+        "filename": "libs/hwui/BakedOpRenderer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1010334
+      },
+      "writtenOn": "2017-01-24T20:11:14Z",
+      "side": 1,
+      "message": "move mHasDrawn below the render command, so you can just do:\n\n    bool overrideDisableBlending \u003d !mHasDrawn \u0026\u0026 mOpaque \u0026\u0026 !mRenderTarget.frameBufferId;\n\nand copy your comment from below",
+      "revId": "9698298dfc29626cc42ca6a043156dec0607d3e0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "670ee488_e9925878",
+        "filename": "libs/hwui/BakedOpRenderer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 354,
+      "author": {
+        "id": 1010334
+      },
+      "writtenOn": "2017-01-24T20:11:14Z",
+      "side": 1,
+      "message": "All other FBOs always start their draws with a glClear, and FBO 0 will sometimes.\n\nThere are a two cases in which we can disable blending:\n\n1) First draw on FBO without GL clear. This only applies to FBO 0 when app window is opaque, which is most apps.\n\n2) First draw on FBO with GL clear, if disabling is equivalent to drawing. Really just need to cover SRC_OVER, since that\u0027s most content.\n\nI\u0027ve left comments suggesting how to handle just the first case, but we could also add more complexity to handle the 2nd case too. Do you know how frequently, or how much that case would help?",
+      "revId": "9698298dfc29626cc42ca6a043156dec0607d3e0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6d785ee3_b2c140b1",
+        "filename": "libs/hwui/BakedOpRenderer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 355,
+      "author": {
+        "id": 1010334
+      },
+      "writtenOn": "2017-01-24T20:11:14Z",
+      "side": 1,
+      "message": "use the bool definition suggested above, also checking mOpaque",
+      "revId": "9698298dfc29626cc42ca6a043156dec0607d3e0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cd2955a8_2c88ed0a",
+        "filename": "libs/hwui/renderstate/RenderState.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 365,
+      "author": {
+        "id": 1010334
+      },
+      "writtenOn": "2017-01-24T20:11:14Z",
+      "side": 1,
+      "message": "rename firstDraw -\u003e overrideDisableBlending, and remove the comment, since the callers that pass true comment about why they do it",
+      "revId": "9698298dfc29626cc42ca6a043156dec0607d3e0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "52734f20_063a88ef",
+        "filename": "libs/hwui/renderstate/RenderState.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1010334
+      },
+      "writtenOn": "2017-01-24T20:11:14Z",
+      "side": 1,
+      "message": "overrideDisableBlending",
+      "range": {
+        "startLine": 97,
+        "startChar": 67,
+        "endLine": 97,
+        "endChar": 76
+      },
+      "revId": "9698298dfc29626cc42ca6a043156dec0607d3e0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
