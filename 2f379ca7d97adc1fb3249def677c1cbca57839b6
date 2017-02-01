@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f09c1d6c_a6c0cb9b",
+        "filename": "core/jni/android_os_HwBinder.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 337,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2017-02-01T19:28:31Z",
+      "side": 1,
+      "message": "this is the biggest change",
+      "range": {
+        "startLine": 337,
+        "startChar": 8,
+        "endLine": 337,
+        "endChar": 20
+      },
+      "revId": "2f379ca7d97adc1fb3249def677c1cbca57839b6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
