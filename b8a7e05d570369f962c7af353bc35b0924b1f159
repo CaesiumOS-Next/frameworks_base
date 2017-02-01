@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "94117f96_1475efd5",
+        "filename": "core/java/android/bluetooth/BluetoothAdapter.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1077498
+      },
+      "writtenOn": "2017-02-01T18:18:06Z",
+      "side": 1,
+      "message": "Nit: Could we reverse it so that we have the most up to date method first? So something like \"call the static getAdapter(); when running on JELLY_BEAN_MR1 and below use getDefaultAdapter}\" ?",
+      "range": {
+        "startLine": 72,
+        "startChar": 0,
+        "endLine": 74,
+        "endChar": 46
+      },
+      "revId": "b8a7e05d570369f962c7af353bc35b0924b1f159",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
