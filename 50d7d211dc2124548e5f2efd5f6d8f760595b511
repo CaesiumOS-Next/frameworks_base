@@ -22,6 +22,29 @@
       "revId": "50d7d211dc2124548e5f2efd5f6d8f760595b511",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a49607b_745be825",
+        "filename": "core/res/res/values/strings.xml",
+        "patchSetId": 3
+      },
+      "lineNbr": 4444,
+      "author": {
+        "id": 1097598
+      },
+      "writtenOn": "2017-02-01T22:08:25Z",
+      "side": 1,
+      "message": "Thanks for review. This string is based on a carrier\u0027s requirement written in specification, so it is necessary to fulfill the requirement for that carrier.",
+      "range": {
+        "startLine": 4444,
+        "startChar": 64,
+        "endLine": 4444,
+        "endChar": 69
+      },
+      "revId": "50d7d211dc2124548e5f2efd5f6d8f760595b511",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
