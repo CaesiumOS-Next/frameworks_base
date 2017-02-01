@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "91e48f1e_8025410f",
+        "filename": "core/res/res/values/strings.xml",
+        "patchSetId": 3
+      },
+      "lineNbr": 4444,
+      "author": {
+        "id": 1098053
+      },
+      "writtenOn": "2017-02-01T17:45:37Z",
+      "side": 1,
+      "message": "What are these for? If they are user facing, are they needed?",
+      "range": {
+        "startLine": 4444,
+        "startChar": 64,
+        "endLine": 4444,
+        "endChar": 69
+      },
+      "revId": "50d7d211dc2124548e5f2efd5f6d8f760595b511",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
