@@ -68,6 +68,29 @@
       "revId": "50d7d211dc2124548e5f2efd5f6d8f760595b511",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c536d319_5fec4bef",
+        "filename": "core/res/res/values/strings.xml",
+        "patchSetId": 3
+      },
+      "lineNbr": 4444,
+      "author": {
+        "id": 1098053
+      },
+      "writtenOn": "2017-02-02T17:43:51Z",
+      "side": 1,
+      "message": "We shouldn\u0027t have this committed into the framework as the default value if it is a requirement for specific carriers. For example, as a user in the US, if I saw this on my device, I would have no idea what \"MM#X\" means.\n\nInstead, in values/strings.xml, we should include the generic string \"SIM not provisioned\" and then in the carrier specific values-mccXXX-mncXXX file you can override it with the message highlighted here for all carriers where this requirement applies.",
+      "range": {
+        "startLine": 4444,
+        "startChar": 64,
+        "endLine": 4444,
+        "endChar": 69
+      },
+      "revId": "50d7d211dc2124548e5f2efd5f6d8f760595b511",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
