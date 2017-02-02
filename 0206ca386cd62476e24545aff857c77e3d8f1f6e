@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "686cc516_f1d03451",
+        "filename": "obex/javax/obex/ObexHelper.java",
+        "patchSetId": 12
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1076123
+      },
+      "writtenOn": "2017-02-02T12:16:35Z",
+      "side": 1,
+      "message": "I prefer not having this.  headerArray is a byte array, so it just makes the code harder to read.  Can we go back to the version in patch set #11?",
+      "range": {
+        "startLine": 211,
+        "startChar": 35,
+        "endLine": 211,
+        "endChar": 39
+      },
+      "revId": "0206ca386cd62476e24545aff857c77e3d8f1f6e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
