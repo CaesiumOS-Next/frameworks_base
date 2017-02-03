@@ -46,6 +46,29 @@
       "revId": "0206ca386cd62476e24545aff857c77e3d8f1f6e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0847d620_326b2c1e",
+        "filename": "obex/javax/obex/ObexHelper.java",
+        "patchSetId": 12
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1043980
+      },
+      "writtenOn": "2017-02-03T07:50:55Z",
+      "side": 1,
+      "message": "remove this as this API is not called exclusively for OBEX connect",
+      "range": {
+        "startLine": 215,
+        "startChar": 55,
+        "endLine": 215,
+        "endChar": 76
+      },
+      "revId": "0206ca386cd62476e24545aff857c77e3d8f1f6e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
