@@ -22,6 +22,30 @@
       "revId": "0206ca386cd62476e24545aff857c77e3d8f1f6e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "85ad8c37_9ef1d808",
+        "filename": "obex/javax/obex/ObexHelper.java",
+        "patchSetId": 12
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1043980
+      },
+      "writtenOn": "2017-02-03T07:48:56Z",
+      "side": 1,
+      "message": "Hi Myles,\n\nWithout this check we are getting regressions in code. File transfer does not work over rfcomm if tried repeatedly, and we are getting below error logs.\n\nLine 10524: 02/02/17 01:10:57.176:           02-01 13:10:55.851  3248  3248 D CST:BASE: ConnectivitySystemTest stopped\nLine 10535: 02/02/17 01:10:57.260:           02-01 13:10:55.936  2459  2459 D BtOppService:  action :android.bluetooth.a2dp.profile.action.PLAYING_STATE_CHANGED\nLine 11227: 02/02/17 01:10:58.885:           02-01 13:10:57.359  2459 14433 E ObexHelper: Remote sent an OBEX Connect response with incorrect header length \u003d -295\nLine 11228: 02/02/17 01:10:58.885:           02-01 13:10:57.360  2459 14433 D Obex ServerSession: Exception occured - ignoring\nLine 11229: 02/02/17 01:10:58.885:           02-01 13:10:57.360  2459 14433 D Obex ServerSession: java.lang.IllegalArgumentException: Byte array not of a valid form\nLine 11230: 02/02/17 01:10:58.886:           02-01 13:10:57.360  2459 14433 D Obex ServerSession:    at javax.obex.ObexHelper.convertToUnicode(ObexHelper.java:968)\nLine 11230: 02/02/17 01:10:58.886:           02-01 13:10:57.360  2459 14433 D Obex ServerSession:    at javax.obex.ObexHelper.convertToUnicode(ObexHelper.java:968)",
+      "parentUuid": "686cc516_f1d03451",
+      "range": {
+        "startLine": 211,
+        "startChar": 35,
+        "endLine": 211,
+        "endChar": 39
+      },
+      "revId": "0206ca386cd62476e24545aff857c77e3d8f1f6e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
