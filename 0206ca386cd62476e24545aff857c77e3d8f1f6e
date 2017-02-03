@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "6e03bff4_0a95af8f",
+        "filename": "obex/javax/obex/ObexHelper.java",
+        "patchSetId": 12
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1076123
+      },
+      "writtenOn": "2017-02-03T12:31:46Z",
+      "side": 1,
+      "message": "I was wrong.  Java bytes get sign extended.",
+      "parentUuid": "85ad8c37_9ef1d808",
+      "range": {
+        "startLine": 211,
+        "startChar": 35,
+        "endLine": 211,
+        "endChar": 39
+      },
+      "revId": "0206ca386cd62476e24545aff857c77e3d8f1f6e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0847d620_326b2c1e",
         "filename": "obex/javax/obex/ObexHelper.java",
         "patchSetId": 12
