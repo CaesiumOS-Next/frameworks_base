@@ -91,6 +91,30 @@
       "revId": "50d7d211dc2124548e5f2efd5f6d8f760595b511",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d1fb2cc2_37027778",
+        "filename": "core/res/res/values/strings.xml",
+        "patchSetId": 3
+      },
+      "lineNbr": 4444,
+      "author": {
+        "id": 1097598
+      },
+      "writtenOn": "2017-02-04T06:14:08Z",
+      "side": 1,
+      "message": "Hi Brad, thank for your review! I agree and have uploaded new patch-set without these MM rejection code - I have also applied a bit change in the definition order of strings. For carrier specific string customization via values-mcc-mnc, once we consolidate all the requirements we are aware of, will upload to AOSP. Thus, could you review?\n\nJFYI: Although this string is required by a carrier, the number is not carrier-specific and is defined as 3gpp as attach rejection code, but anyway I agree removing these values so end-user do not have to care the values. Thanks.",
+      "parentUuid": "c536d319_5fec4bef",
+      "range": {
+        "startLine": 4444,
+        "startChar": 64,
+        "endLine": 4444,
+        "endChar": 69
+      },
+      "revId": "50d7d211dc2124548e5f2efd5f6d8f760595b511",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
