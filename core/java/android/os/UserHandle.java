@@ -62,6 +62,12 @@ public final class UserHandle implements Parcelable {
     /** @hide A user handle to indicate the primary/owner user of the device */
     public static final UserHandle OWNER = new UserHandle(USER_OWNER);
 
+    /** @hide A user id constant to indicate the "system" user of the device */
+    public static final int USER_SYSTEM = 0;
+
+    /** @hide A user handle to indicate the "system" user of the device */
+    public static final UserHandle SYSTEM = new UserHandle(USER_SYSTEM);
+
     /**
      * @hide Enable multi-user related side effects. Set this to false if
      * there are problems with single user use-cases.
@@ -128,6 +134,12 @@ public final class UserHandle implements Parcelable {
     /** @hide */
     public static final int getCallingUserId() {
         return getUserId(Binder.getCallingUid());
+    }
+
+    /** @hide */
+    @SystemApi
+    public static UserHandle of(int userId) {
+        return userId == USER_SYSTEM ? SYSTEM : new UserHandle(userId);
     }
 
     /** @hide */

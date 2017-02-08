@@ -330,6 +330,14 @@
 
     <!-- SSL CA cert notification --> <skip />
     <!-- Shows up when there is a user SSL CA Cert installed on the
+    device.  Indicates to the user that SSL traffic can be intercepted.  [CHAR LIMIT=NONE] -->
+    <plurals name="ssl_ca_cert_warning">
+        <item quantity="one">Certificate authority installed</item>
+        <item quantity="other">Certificate authorities installed</item>
+    </plurals>
+
+    <!-- SSL CA cert notification --> <skip />
+    <!-- Shows up when there is a user SSL CA Cert installed on the
          device.  Indicates to the user that SSL traffic can be intercepted.  [CHAR LIMIT=NONE] -->
     <string name="ssl_ca_cert_warning">Network may be monitored</string>
     <!-- Content text for a notification. The Title of the notification is "ssl_ca_cert_warning",
