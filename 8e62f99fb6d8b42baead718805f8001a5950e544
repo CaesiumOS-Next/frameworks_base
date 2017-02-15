@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "e1154ad3_5b468076",
+        "filename": "packages/PrintSpooler/res/layout/no_print_services_message.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1061585
+      },
+      "writtenOn": "2017-02-15T05:20:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fcdca1f1_ebbf054a",
+      "revId": "8e62f99fb6d8b42baead718805f8001a5950e544",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "88fea9c9_f27c8d0e",
         "filename": "packages/PrintSpooler/src/com/android/printspooler/ui/AddPrinterActivity.java",
         "patchSetId": 1
@@ -47,6 +65,24 @@
       "writtenOn": "2017-02-13T19:28:15Z",
       "side": 1,
       "message": "The recommended services adapter is quite involved as it starts a process scanning the network for printers that might need a new print service to be installed. Hence we do not want it to run if there is no market installed.",
+      "revId": "8e62f99fb6d8b42baead718805f8001a5950e544",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6504831b_7241f555",
+        "filename": "packages/PrintSpooler/src/com/android/printspooler/ui/AddPrinterActivity.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1061585
+      },
+      "writtenOn": "2017-02-15T05:20:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9b5c631b_a0f5ed4b",
       "revId": "8e62f99fb6d8b42baead718805f8001a5950e544",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
