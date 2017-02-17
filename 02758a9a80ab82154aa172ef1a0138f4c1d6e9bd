@@ -22,6 +22,30 @@
       "revId": "02758a9a80ab82154aa172ef1a0138f4c1d6e9bd",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "93c9282e_c27e5a62",
+        "filename": "core/java/android/app/ActivityThread.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 1726,
+      "author": {
+        "id": 1110533
+      },
+      "writtenOn": "2017-02-17T17:44:09Z",
+      "side": 1,
+      "message": "Good catch, thanks Narayan. I\u0027ll get a fix ready.",
+      "parentUuid": "496f6883_4134d434",
+      "range": {
+        "startLine": 1726,
+        "startChar": 72,
+        "endLine": 1726,
+        "endChar": 73
+      },
+      "revId": "02758a9a80ab82154aa172ef1a0138f4c1d6e9bd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
