@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "496f6883_4134d434",
+        "filename": "core/java/android/app/ActivityThread.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 1726,
+      "author": {
+        "id": 1014443
+      },
+      "writtenOn": "2017-02-17T10:39:21Z",
+      "side": 1,
+      "message": "this code is wrong; it is missing a break statement.",
+      "range": {
+        "startLine": 1726,
+        "startChar": 72,
+        "endLine": 1726,
+        "endChar": 73
+      },
+      "revId": "02758a9a80ab82154aa172ef1a0138f4c1d6e9bd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
