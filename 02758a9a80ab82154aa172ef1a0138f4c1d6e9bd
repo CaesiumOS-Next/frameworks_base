@@ -46,6 +46,29 @@
       "revId": "02758a9a80ab82154aa172ef1a0138f4c1d6e9bd",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "84b6d4b9_2c2c933d",
+        "filename": "services/core/java/com/android/server/am/ActivityManagerService.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 22293,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2017-02-20T09:59:53Z",
+      "side": 1,
+      "message": "Note that this doesn\u0027t make your Java app debuggable. So with this change you may be able to attach an agent, but there are some jvmti/jdwp commands that will have undefined behavior if the Java app is not debuggable.",
+      "range": {
+        "startLine": 22293,
+        "startChar": 16,
+        "endLine": 22293,
+        "endChar": 96
+      },
+      "revId": "02758a9a80ab82154aa172ef1a0138f4c1d6e9bd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
