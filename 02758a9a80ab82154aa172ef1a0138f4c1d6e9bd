@@ -141,6 +141,30 @@
       "revId": "02758a9a80ab82154aa172ef1a0138f4c1d6e9bd",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a74185f_83b64834",
+        "filename": "services/core/java/com/android/server/am/ActivityManagerService.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 22293,
+      "author": {
+        "id": 1110533
+      },
+      "writtenOn": "2017-02-21T18:13:06Z",
+      "side": 1,
+      "message": "1. What do you mean by \"fail on *all* user builds\"? (user build + debuggable app \u003d\u003d ok)\n\n2. Yes, we talked about BCI + optimizations \u003d\u003d inconvenient, but I don\u0027t remember agreeing that we scope down to debuggable apps. The only reason we use the debuggable flag is to avoid the mess associated with adding a new flag, but the intention is to be able to use JVMTI on everything - a key point is that the ideal scenario is to profile optimized apps. \n\nLet\u0027s chat about #2 tomorrow.",
+      "parentUuid": "8bf52ebe_2b70368c",
+      "range": {
+        "startLine": 22293,
+        "startChar": 16,
+        "endLine": 22293,
+        "endChar": 96
+      },
+      "revId": "02758a9a80ab82154aa172ef1a0138f4c1d6e9bd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
