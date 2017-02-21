@@ -117,6 +117,30 @@
       "revId": "02758a9a80ab82154aa172ef1a0138f4c1d6e9bd",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8bf52ebe_2b70368c",
+        "filename": "services/core/java/com/android/server/am/ActivityManagerService.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 22293,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2017-02-21T18:03:33Z",
+      "side": 1,
+      "message": "And no, JVMTI will not reliably work when the app is not debuggable. There is currently no intent to make this work for late-attach to a non-debuggable app, there are incompatible performance optimizations in code.",
+      "parentUuid": "14ce8e01_83709dc3",
+      "range": {
+        "startLine": 22293,
+        "startChar": 16,
+        "endLine": 22293,
+        "endChar": 96
+      },
+      "revId": "02758a9a80ab82154aa172ef1a0138f4c1d6e9bd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
