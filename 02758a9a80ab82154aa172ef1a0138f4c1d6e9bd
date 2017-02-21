@@ -69,6 +69,30 @@
       "revId": "02758a9a80ab82154aa172ef1a0138f4c1d6e9bd",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a0b3b0c2_2e7c6f76",
+        "filename": "services/core/java/com/android/server/am/ActivityManagerService.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 22293,
+      "author": {
+        "id": 1110533
+      },
+      "writtenOn": "2017-02-21T17:52:19Z",
+      "side": 1,
+      "message": "Correct, the check here is intended to be just a basic gate for attach-agent.\n\nOn the other hand, JMVTI should work regardless if the app is debuggable or not (perhaps with additional limitations if it\u0027s not debuggable). Undefined sounds a bit alarming, can you clarify? The design, as far as I remember, does not allow for any underdefined behavior relative to the JVMTI specification.",
+      "parentUuid": "84b6d4b9_2c2c933d",
+      "range": {
+        "startLine": 22293,
+        "startChar": 16,
+        "endLine": 22293,
+        "endChar": 96
+      },
+      "revId": "02758a9a80ab82154aa172ef1a0138f4c1d6e9bd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
