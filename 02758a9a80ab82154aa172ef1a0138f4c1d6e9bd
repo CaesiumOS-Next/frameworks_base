@@ -93,6 +93,30 @@
       "revId": "02758a9a80ab82154aa172ef1a0138f4c1d6e9bd",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "14ce8e01_83709dc3",
+        "filename": "services/core/java/com/android/server/am/ActivityManagerService.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 22293,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2017-02-21T18:01:27Z",
+      "side": 1,
+      "message": "I\u0027m sorry I didn\u0027t catch this. You\u0027re reading global debuggable state. This actually means that this will fail on *all* user builds.\n\nPlease remove this check, and check against the package state.",
+      "parentUuid": "a0b3b0c2_2e7c6f76",
+      "range": {
+        "startLine": 22293,
+        "startChar": 16,
+        "endLine": 22293,
+        "endChar": 96
+      },
+      "revId": "02758a9a80ab82154aa172ef1a0138f4c1d6e9bd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
