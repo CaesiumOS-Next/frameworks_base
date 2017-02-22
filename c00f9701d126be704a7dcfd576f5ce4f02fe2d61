@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "a72a6e4d_dde51bd2",
+        "filename": "core/java/android/widget/ListPopupWindow.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 526,
+      "author": {
+        "id": 1102318
+      },
+      "writtenOn": "2017-02-22T15:33:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f49a5752_e3b93024",
+      "revId": "c00f9701d126be704a7dcfd576f5ce4f02fe2d61",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1e2f92cd_83f72472",
         "filename": "core/java/android/widget/ListPopupWindow.java",
         "patchSetId": 5
@@ -30,6 +48,30 @@
       "writtenOn": "2017-02-22T15:30:48Z",
       "side": 1,
       "message": "Replace this with exactly:\n\n\"Invalid height. Must be a positive value, MATCH_PARENT, or WRAP_CONTENT.\"",
+      "range": {
+        "startLine": 534,
+        "startChar": 19,
+        "endLine": 534,
+        "endChar": 83
+      },
+      "revId": "c00f9701d126be704a7dcfd576f5ce4f02fe2d61",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "be35bb80_3d145179",
+        "filename": "core/java/android/widget/ListPopupWindow.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 534,
+      "author": {
+        "id": 1102318
+      },
+      "writtenOn": "2017-02-22T15:33:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1e2f92cd_83f72472",
       "range": {
         "startLine": 534,
         "startChar": 19,
