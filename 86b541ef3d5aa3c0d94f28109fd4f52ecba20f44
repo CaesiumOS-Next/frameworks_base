@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "72509749_c94d0e8a",
+        "filename": "core/java/android/widget/ListPopupWindow.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 524,
+      "author": {
+        "id": 1044446
+      },
+      "writtenOn": "2017-02-22T15:12:20Z",
+      "side": 1,
+      "message": "While you\u0027re here, remove this extra space.",
+      "range": {
+        "startLine": 524,
+        "startChar": 6,
+        "endLine": 524,
+        "endChar": 7
+      },
+      "revId": "86b541ef3d5aa3c0d94f28109fd4f52ecba20f44",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "be59d929_5ae5c7d6",
+        "filename": "core/java/android/widget/ListPopupWindow.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 525,
+      "author": {
+        "id": 1044446
+      },
+      "writtenOn": "2017-02-22T15:12:20Z",
+      "side": 1,
+      "message": "@param must explain input value constraints, e.g.\n\nHeight of the popup window. Must be a positive value, {@link MATCH_PARENT}, or {@link WRAP_CONTENT}.",
+      "range": {
+        "startLine": 525,
+        "startChar": 14,
+        "endLine": 525,
+        "endChar": 48
+      },
+      "revId": "86b541ef3d5aa3c0d94f28109fd4f52ecba20f44",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "eae889ea_c80f99a3",
+        "filename": "core/java/android/widget/ListPopupWindow.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 530,
+      "author": {
+        "id": 1044446
+      },
+      "writtenOn": "2017-02-22T15:12:20Z",
+      "side": 1,
+      "message": "Operators wrap on next line.",
+      "range": {
+        "startLine": 530,
+        "startChar": 71,
+        "endLine": 530,
+        "endChar": 74
+      },
+      "revId": "86b541ef3d5aa3c0d94f28109fd4f52ecba20f44",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5016e6ee_afc3500a",
+        "filename": "core/java/android/widget/ListPopupWindow.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 533,
+      "author": {
+        "id": 1044446
+      },
+      "writtenOn": "2017-02-22T15:12:20Z",
+      "side": 1,
+      "message": "\"Invalid height. Must be a positive value, ...\"\n\nSame as the constraints explained in the @param.",
+      "range": {
+        "startLine": 533,
+        "startChar": 19,
+        "endLine": 533,
+        "endChar": 62
+      },
+      "revId": "86b541ef3d5aa3c0d94f28109fd4f52ecba20f44",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
