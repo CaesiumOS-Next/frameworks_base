@@ -16,6 +16,24 @@
       "revId": "9c1b0bc53f31c71405a2bef45dd3512c8faf300c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5657c534_50c0e62c",
+        "filename": "packages/SystemUI/src/com/android/systemui/tuner/DemoModeFragment.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1077031
+      },
+      "writtenOn": "2017-02-23T04:16:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9a632a24_ec8fce34",
+      "revId": "9c1b0bc53f31c71405a2bef45dd3512c8faf300c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
