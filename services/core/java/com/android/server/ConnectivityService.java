@@ -2323,7 +2323,7 @@ public class ConnectivityService extends IConnectivityManager.Stub
             if (DBG) log("Lingering " + nai.name() + " for " + lingerTime + "ms");
             nai.linger();
             logNetworkEvent(nai, NetworkEvent.NETWORK_LINGER);
-            notifyNetworkCallbacks(nai, ConnectivityManager.CALLBACK_LOSING, lingerTime);
+            notifyNetworkCallbacks(nai, ConnectivityManager.CALLBACK_LOSING, lingerTime, null);
         }
     }
 
@@ -4636,12 +4636,12 @@ public class ConnectivityService extends IConnectivityManager.Stub
             // the change we're processing can't affect any requests, it can only affect the listens
             // on this network. We might have been called by rematchNetworkAndRequests when a
             // network changed foreground state.
-            processListenRequests(nai, true);
+            processListenRequests(nai, prevNc);
         } else {
             // If the requestable capabilities have changed or the score changed, we can't have been
             // called by rematchNetworkAndRequests, so it's safe to start a rematch.
             rematchAllNetworksAndRequests(nai, oldScore);
-            notifyNetworkCallbacks(nai, ConnectivityManager.CALLBACK_CAP_CHANGED);
+            notifyNetworkCallbacks(nai, ConnectivityManager.CALLBACK_CAP_CHANGED, 0, prevNc);
         }
     }
 
@@ -4785,7 +4785,7 @@ public class ConnectivityService extends IConnectivityManager.Stub
         updateTcpBufferSizes(newNetwork);
     }
 
-    private void processListenRequests(NetworkAgentInfo nai, boolean capabilitiesChanged) {
+    private void processListenRequests(NetworkAgentInfo nai, NetworkCapabilities prevNc) {
         // For consistency with previous behaviour, send onLost callbacks before onAvailable.
         for (NetworkRequestInfo nri : mNetworkRequests.values()) {
             NetworkRequest nr = nri.request;
@@ -4796,8 +4796,8 @@ public class ConnectivityService extends IConnectivityManager.Stub
             }
         }
 
-        if (capabilitiesChanged) {
-            notifyNetworkCallbacks(nai, ConnectivityManager.CALLBACK_CAP_CHANGED);
+        if (!nai.networkCapabilities.equals(prevNc)) {
+            notifyNetworkCallbacks(nai, ConnectivityManager.CALLBACK_CAP_CHANGED, 0, prevNc);
         }
 
         for (NetworkRequestInfo nri : mNetworkRequests.values()) {
@@ -4982,7 +4982,7 @@ public class ConnectivityService extends IConnectivityManager.Stub
             // capability and does not affect the network's score (see the Slog.wtf call above).
             updateCapabilities(score, newNetwork, newNetwork.networkCapabilities);
         } else {
-            processListenRequests(newNetwork, false);
+            processListenRequests(newNetwork, newNetwork.networkCapabilities);
         }
 
         // do this after the default net is switched, but
@@ -5346,11 +5346,27 @@ public class ConnectivityService extends IConnectivityManager.Stub
         }
     }
 
-    protected void notifyNetworkCallbacks(NetworkAgentInfo networkAgent, int notifyType, int arg1) {
+    protected void notifyNetworkCallbacks(NetworkAgentInfo networkAgent, int notifyType, int arg1,
+            NetworkCapabilities prevCapabilities) {
         if (VDBG) log("notifyType " + notifyTypeToName(notifyType) + " for " + networkAgent.name());
         for (int i = 0; i < networkAgent.numNetworkRequests(); i++) {
             NetworkRequest nr = networkAgent.requestAt(i);
             NetworkRequestInfo nri = mNetworkRequests.get(nr);
+
+            if (notifyType == ConnectivityManager.CALLBACK_CAP_CHANGED) {
+                if (prevCapabilities != null &&
+                    !nr.networkCapabilities.satisfiedByNetworkCapabilities(prevCapabilities)) {
+                    // Before the capabilities changed, this request was not satisfied by this network.
+                    // Don't call onCapabilitiesChanged, because we've already sent onAvailable.
+                    continue;
+                }
+                if (!networkAgent.satisfies(nr)) {
+                    throw new IllegalStateException(
+                        "CAP_CHANGED callback to network that no longer satisfies");
+                }
+                
+            }
+
             if (VDBG) log(" sending notification for " + nr);
             // TODO: if we're in the middle of a rematch, can we send a CAP_CHANGED callback for
             // a network that no longer satisfies the listen?
@@ -5363,7 +5379,7 @@ public class ConnectivityService extends IConnectivityManager.Stub
     }
 
     protected void notifyNetworkCallbacks(NetworkAgentInfo networkAgent, int notifyType) {
-        notifyNetworkCallbacks(networkAgent, notifyType, 0);
+        notifyNetworkCallbacks(networkAgent, notifyType, 0, null);
     }
 
     private String notifyTypeToName(int notifyType) {
