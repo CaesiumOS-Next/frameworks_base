@@ -289,33 +289,35 @@ public class GpsNetInitiatedHandler {
                         + " mInEmergency: " + getInEmergency());
 
         if (!getLocationEnabled() && !getInEmergency()) {
-            // Location is currently disabled, ignore all NI requests.
+            // Location is currently disabled, deny all NI requests.
             try {
                 mNetInitiatedListener.sendNiResponse(notif.notificationId,
-                                                     GPS_NI_RESPONSE_IGNORE);
+                                                     GPS_NI_RESPONSE_DENY);
+                Log.d(TAG, "Deny supl ni");
             } catch (RemoteException e) {
                 Log.e(TAG, "RemoteException in sendNiResponse");
             }
-        }
-        if (notif.needNotify) {
-        // If NI does not need verify or the dialog is not requested
-        // to pop up immediately, the dialog box will not pop up.
-            if (notif.needVerify && mPopupImmediately) {
-                // Popup the dialog box now
-                openNiDialog(notif);
-            } else {
-                // Show the notification
-                setNiNotification(notif);
+        } else {
+            if (notif.needNotify) {
+            // If NI does not need verify or the dialog is not requested
+            // to pop up immediately, the dialog box will not pop up.
+                if (notif.needVerify && mPopupImmediately) {
+                    // Popup the dialog box now
+                    openNiDialog(notif);
+                } else {
+                    // Show the notification
+                    setNiNotification(notif);
+                }
             }
-        }
-        // ACCEPT cases: 1. Notify, no verify; 2. no notify, no verify;
-        // 3. privacy override.
-        if (!notif.needVerify || notif.privacyOverride) {
-            try {
-                mNetInitiatedListener.sendNiResponse(notif.notificationId,
+            // ACCEPT cases: 1. Notify, no verify; 2. no notify, no verify;
+            // 3. privacy override.
+            if (!notif.needVerify || notif.privacyOverride) {
+                try {
+                    mNetInitiatedListener.sendNiResponse(notif.notificationId,
                                                      GPS_NI_RESPONSE_ACCEPT);
-            } catch (RemoteException e) {
-                Log.e(TAG, "RemoteException in sendNiResponse");
+                } catch (RemoteException e) {
+                    Log.e(TAG, "RemoteException in sendNiResponse");
+                }
             }
         }
     }
