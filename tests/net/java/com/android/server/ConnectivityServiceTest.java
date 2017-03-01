@@ -2097,7 +2097,7 @@ public class ConnectivityServiceTest {
         captivePortalCallback.expectCallback(CallbackState.LOST, mWiFiNetworkAgent);
 
         // Expect NET_CAPABILITY_VALIDATED onAvailable callback.
-        validatedCallback.expectAvailableDoubleValidatedCallbacks(mWiFiNetworkAgent);
+        validatedCallback.expectAvailableCallbacksValidated(mWiFiNetworkAgent);
 
         // Break network connectivity.
         // Expect NET_CAPABILITY_VALIDATED onLost callback.
@@ -2121,7 +2121,7 @@ public class ConnectivityServiceTest {
         // Bring up wifi.
         mWiFiNetworkAgent = new MockNetworkAgent(TRANSPORT_WIFI);
         mWiFiNetworkAgent.connect(true);
-        validatedCallback.expectAvailableDoubleValidatedCallbacks(mWiFiNetworkAgent);
+        validatedCallback.expectAvailableCallbacksValidated(mWiFiNetworkAgent);
         Network wifiNetwork = mWiFiNetworkAgent.getNetwork();
 
         // Check that calling startCaptivePortalApp does nothing.
@@ -2237,7 +2237,6 @@ public class ConnectivityServiceTest {
         for (TestNetworkCallback c: emptyCallbacks) {
             c.expectCallback(CallbackState.NETWORK_CAPABILITIES, mWiFiNetworkAgent);
         }
-        cFoo.expectCallback(CallbackState.NETWORK_CAPABILITIES, mWiFiNetworkAgent);
         cFoo.assertNoCallback();
 
         mWiFiNetworkAgent.setNetworkSpecifier(new StringNetworkSpecifier("bar"));
@@ -2246,7 +2245,6 @@ public class ConnectivityServiceTest {
         for (TestNetworkCallback c: emptyCallbacks) {
             c.expectCallback(CallbackState.NETWORK_CAPABILITIES, mWiFiNetworkAgent);
         }
-        cBar.expectCallback(CallbackState.NETWORK_CAPABILITIES, mWiFiNetworkAgent);
         cBar.assertNoCallback();
 
         mWiFiNetworkAgent.setNetworkSpecifier(null);
@@ -2773,7 +2771,7 @@ public class ConnectivityServiceTest {
         mWiFiNetworkAgent = new MockNetworkAgent(TRANSPORT_WIFI);
         mWiFiNetworkAgent.connect(true);
         defaultCallback.expectAvailableDoubleValidatedCallbacks(mWiFiNetworkAgent);
-        validatedWifiCallback.expectAvailableDoubleValidatedCallbacks(mWiFiNetworkAgent);
+        validatedWifiCallback.expectAvailableCallbacksValidated(mWiFiNetworkAgent);
         Network wifiNetwork = mWiFiNetworkAgent.getNetwork();
 
         // Fail validation on wifi.
@@ -2817,7 +2815,7 @@ public class ConnectivityServiceTest {
         mWiFiNetworkAgent = new MockNetworkAgent(TRANSPORT_WIFI);
         mWiFiNetworkAgent.connect(true);
         defaultCallback.expectAvailableDoubleValidatedCallbacks(mWiFiNetworkAgent);
-        validatedWifiCallback.expectAvailableDoubleValidatedCallbacks(mWiFiNetworkAgent);
+        validatedWifiCallback.expectAvailableCallbacksValidated(mWiFiNetworkAgent);
         wifiNetwork = mWiFiNetworkAgent.getNetwork();
 
         // Fail validation on wifi and expect the dialog to appear.
