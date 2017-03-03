@@ -66,4 +66,12 @@
             <mdns-name>FUJI XEROX</mdns-name>
         </mdns-names>
     </vendor>
+
+    <vendor>
+        <name>@string/plugin_vendor_kyocera</name>
+        <package>com.kyocera.print.service.plugin</package>
+        <mdns-names>
+            <mdns-name>Kyocera</mdns-name>
+        </mdns-names>
+    </vendor>
 </vendors>

@@ -28,4 +28,5 @@
     <string name="plugin_vendor_konica_minolta">Konica Minolta</string>
     <string name="plugin_vendor_fuji_xerox">Fuji Xerox</string>
     <string name="plugin_vendor_morpia">Mopria</string>
+    <string name="plugin_vendor_kyocera">Kyocera</string>
 </resources>
