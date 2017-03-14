@@ -196,4 +196,9 @@ public class ISmsBaseImpl extends ISms.Stub {
             throws UnsupportedOperationException {
         throw new UnsupportedOperationException();
     }
+
+    @Override
+    public int getSmsCapacityOnIccForSubscriber(int subId) {
+        throw new UnsupportedOperationException();
+    }
 }
