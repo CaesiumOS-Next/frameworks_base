@@ -25,7 +25,7 @@ oneway interface IAdvertisingSetCallback {
   void onAdvertisingEnabled(in int advertiserId, in boolean enable, in int status);
   void onAdvertisingDataSet(in int advertiserId, in int status);
   void onScanResponseDataSet(in int advertiserId, in int status);
-  void onAdvertisingParametersUpdated(in int advertiserId, in int status);
+  void onAdvertisingParametersUpdated(in int advertiserId, in int status, in int tx_power);
   void onPeriodicAdvertisingParametersUpdated(in int advertiserId, in int status);
   void onPeriodicAdvertisingDataSet(in int advertiserId, in int status);
   void onPeriodicAdvertisingEnable(in int advertiserId, in boolean enable, in int status);

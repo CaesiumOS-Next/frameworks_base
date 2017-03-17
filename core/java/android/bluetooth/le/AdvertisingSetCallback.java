@@ -107,9 +107,10 @@ public abstract class AdvertisingSetCallback {
      *
      * @param advertisingSet The advertising set.
      * @param status Status of the operation.
+     * @param txPower tx power that will be used for this set.
      */
     public void onAdvertisingParametersUpdated(AdvertisingSet advertisingSet,
-                                               int status) {}
+                                               int status, int txPower) {}
 
     /**
      * Callback triggered in response to {@link AdvertisingSet#setPeriodicAdvertisingParameters}
@@ -133,7 +134,7 @@ public abstract class AdvertisingSetCallback {
                                              int status) {}
 
     /**
-     * Callback triggered in response to {@link AdvertisingSet#periodicAdvertisingEnable}
+     * Callback triggered in response to {@link AdvertisingSet#setPeriodicAdvertisingEnable}
      * indicating result of the operation.
      *
      * @param advertisingSet The advertising set.

@@ -460,12 +460,12 @@ public final class BluetoothLeAdvertiser {
                 });
             }
 
-            public void onAdvertisingParametersUpdated(int advertiserId, int status) {
+            public void onAdvertisingParametersUpdated(int advertiserId, int status, int txPower) {
                 handler.post(new Runnable() {
                     @Override
                     public void run() {
                         AdvertisingSet advertisingSet = mAdvertisingSets.get(advertiserId);
-                        callback.onAdvertisingParametersUpdated(advertisingSet, status);
+                        callback.onAdvertisingParametersUpdated(advertisingSet, status, txPower);
                     }
                 });
             }
