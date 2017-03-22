@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b5342202_54576bc7",
+        "filename": "core/java/com/android/internal/os/RuntimeInit.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1038039
+      },
+      "writtenOn": "2017-03-22T15:57:28Z",
+      "side": 1,
+      "message": "Not sure the best way to go about this. A few things running through my head, though I\u0027m not sure if any of them are issues.\n\n1) Because SystemProperties is effectively device-global state, there\u0027s a race here to set the value across processes. By setting it to GMT it\u0027ll not be possible to tell if the value is \"unset\", \"explicitly set to GMT\" or \"set to GMT because we found it unset\".\n2) Every time we call RuntimeInit we\u0027ll now do a SystemProperties.get().\n3) We\u0027re assuming that it cannot be set to null explicitly after RuntimeInit has executed.\n4) This means we have \"default to GMT\" behavior in two places. Here and TimeZone.getDefaultRef(). Some of the comments in getDefaultRef() should be adjusted.\n\nAlternatives I think we should consider...\n\nThere may be only one host usecase we need to deal with, which is when there\u0027s no TimezoneGetter set (true for both mode\u003dhost and mode\u003ddevice). The host / file access code could be shoved behind the \"if (tzGetter !\u003d null)\" case so it never triggers when running in a \"real\" Android runtime.\n\nWe could put the \"default to GMT\" behavior in the TimezoneGetter itself and change the contract on TimeZoneGetter to be \"never return null\". It\u0027s optional whether we write back the \"GMT\" if we find the property missing.\n\nWe could put the \"default to GMT\" behavior in the TimeZone class if TimeZoneGetter returns null (but couldn\u0027t write it back).\n\nIf it wasn\u0027t for Narayan\u0027s comments in the bug I would be suggesting we shouldn\u0027t be writing back if we find it unset. Mostly because of the potential issues around (1), (2), (3).",
+      "range": {
+        "startLine": 148,
+        "startChar": 35,
+        "endLine": 148,
+        "endChar": 51
+      },
+      "revId": "dea94ee355951e2841d212165da1d5b4c4eb4c22",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
