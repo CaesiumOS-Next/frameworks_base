@@ -22,6 +22,30 @@
       "revId": "19698222dfa4622e324abfc1c46fcc2c2bf766cf",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d718e93f_53b76c9e",
+        "filename": "core/res/AndroidManifest.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 1298,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2017-03-23T07:08:32Z",
+      "side": 1,
+      "message": "Ouch. Done.",
+      "parentUuid": "23d352b6_f2ded924",
+      "range": {
+        "startLine": 1298,
+        "startChar": 9,
+        "endLine": 1298,
+        "endChar": 19
+      },
+      "revId": "19698222dfa4622e324abfc1c46fcc2c2bf766cf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }

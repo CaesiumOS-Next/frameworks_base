@@ -22,6 +22,30 @@
       "revId": "58ba53bd53d08c8d23f8fa338aa4c4bb6bc86c91",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f497344d_3bfeb64b",
+        "filename": "api/current.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 23828,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2017-03-23T07:08:32Z",
+      "side": 0,
+      "message": "No, I think \"make update-api\" did it by itself. Manually removed.",
+      "parentUuid": "66f87f8e_93ffdea9",
+      "range": {
+        "startLine": 23828,
+        "startChar": 4,
+        "endLine": 23828,
+        "endChar": 120
+      },
+      "revId": "58ba53bd53d08c8d23f8fa338aa4c4bb6bc86c91",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
