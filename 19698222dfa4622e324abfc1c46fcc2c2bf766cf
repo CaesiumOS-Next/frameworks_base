@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "23d352b6_f2ded924",
+        "filename": "core/res/AndroidManifest.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 1298,
+      "author": {
+        "id": 1000451
+      },
+      "writtenOn": "2017-03-23T05:04:32Z",
+      "side": 1,
+      "message": "You don\u0027t need one of these decorators?",
+      "range": {
+        "startLine": 1298,
+        "startChar": 9,
+        "endLine": 1298,
+        "endChar": 19
+      },
+      "revId": "19698222dfa4622e324abfc1c46fcc2c2bf766cf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
