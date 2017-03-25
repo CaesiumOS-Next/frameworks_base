@@ -1713,6 +1713,74 @@ public class WifiManager {
     }
 
     /**
+     * Starts a local only hotspot that applications can use to share files between co-located
+     * devices connected to the created WiFi hotspot.  The network created by this method will not
+     * have Internet access.  The devices connected will be able to communicate amongst themselves.
+     *
+     * Each call to this method will return a WifiConfiguration with the SSID, security type and
+     * credentials needed to connect to the hotspot.  Communicating this information is up to the
+     * application.  The method will return null if the Local Only Hotspot cannot be created.  This
+     * can happen if the user has already started WiFi tethering in the Settings App.
+     *
+     * Internally, requests will be tracked to prevent the hotspot from being torn down while apps
+     * are still using it.  The application will call stopLocalOnlyHotspot when it is finished.  If
+     * the application was the final user of the hotspot, it will be torn down completely.
+     *
+     * Applications should be aware that the user may also stop the local only hotspot through the
+     * Settings UI, it is not guaranteed to stay up as long as there is a requesting application.
+     * Applications should also be aware that this network will be shared with other applications.
+     * Applications are responsible for protecting their data on this network (e.g., TLS).
+     *
+     * @return WifiConfiguration configuration with necessary information for clients to connect to
+     * the WiFi hotspot.
+     *
+     * @hide
+     */
+    public WifiConfiguration startLocalOnlyHotspot() {
+        try {
+            return mService.startLocalOnlyHotspot();
+        } catch (RemoteException e) {
+            throw e.rethrowFromSystemServer();
+        }
+    }
+
+    /**
+     *  Stops a local only hotspot when there are no remaining applications using it.  This method
+     *  removes the internal tracking for the hotspot request.  When all requesting applications are
+     *  finished using the hotspot, it will be stopped and WiFi will return to the previous
+     *  operational mode.
+     *
+     *  @return {@code true} if the application successfully unregistered their request for the
+     *  hotspot.  {@code false} if the hotspot was already deregistered.
+     *
+     *  @hide
+     */
+    public boolean stopLocalOnlyHotspot() {
+        try {
+            return mService.stopLocalOnlyHotspot();
+        } catch (RemoteException e) {
+            throw e.rethrowFromSystemServer();
+        }
+    }
+
+    /**
+     * Method to return the WifiConfiguration of the active Local Only Hotspot.  If Local Only
+     * Hotspot is not active, this method will return null.
+     *
+     * @return WifiConfiguration configuration with necessary information for clients to connect to
+     * the WiFi hotspot if one is active, null otherwise.
+     *
+     * @hide
+     */
+    public WifiConfiguration getLocalOnlyHotspotConfig() {
+        try {
+            return mService.getLocalOnlyHotspotConfig();
+        } catch (RemoteException e) {
+            throw e.rethrowFromSystemServer();
+        }
+    }
+
+    /**
      * Gets the Wi-Fi enabled state.
      * @return One of {@link #WIFI_AP_STATE_DISABLED},
      *         {@link #WIFI_AP_STATE_DISABLING}, {@link #WIFI_AP_STATE_ENABLED},
