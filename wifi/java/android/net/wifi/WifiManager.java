@@ -40,6 +40,7 @@ import android.os.WorkSource;
 import android.util.Log;
 import android.util.SparseArray;
 
+import com.android.internal.annotations.GuardedBy;
 import com.android.internal.util.AsyncChannel;
 import com.android.internal.util.Protocol;
 import com.android.server.net.NetworkPinner;
@@ -851,15 +852,22 @@ public class WifiManager {
     private CountDownLatch mConnected;
     private Looper mLooper;
 
+    private final Object mLock = new Object(); // lock guarding access to the following vars
+
     /* LocalOnlyHotspot callback message types */
     /** @hide */
-    private static final int HOTSPOT_STARTED = 0;
+    public static final int HOTSPOT_STARTED = 0;
     /** @hide */
-    private static final int HOTSPOT_STOPPED = 1;
+    public static final int HOTSPOT_STOPPED = 1;
     /** @hide */
-    private static final int HOTSPOT_FAILED = 2;
+    public static final int HOTSPOT_FAILED = 2;
     /** @hide */
-    private static final int HOTSPOT_OBSERVER_REGISTERED = 3;
+    public static final int HOTSPOT_OBSERVER_REGISTERED = 3;
+
+    @GuardedBy("mLock")
+    private LocalOnlyHotspotCallbackProxy mLOHSCallbackProxy;
+    @GuardedBy("mLock")
+    private LocalOnlyHotspotObserverProxy mLOHSObserverProxy;
 
     /**
      * Create a new WifiManager instance.
@@ -1858,7 +1866,25 @@ public class WifiManager {
      */
     public void startLocalOnlyHotspot(LocalOnlyHotspotCallback callback,
             @Nullable Handler handler) {
-        throw new UnsupportedOperationException("LocalOnlyHotspot is still in development");
+        synchronized (mLock) {
+            Looper looper = (handler == null) ? mContext.getMainLooper() : handler.getLooper();
+            mLOHSCallbackProxy =
+                new LocalOnlyHotspotCallbackProxy(this, looper, callback);
+            try {
+                WifiConfiguration config = mService.startLocalOnlyHotspot(
+                        mLOHSCallbackProxy.getMessenger(), new Binder());
+                if (config == null) {
+                    // Send message to the proxy to make sure we call back on the correct thread
+                    Message msg = Message.obtain();
+                    msg.what = HOTSPOT_FAILED;
+                    msg.arg1 = LocalOnlyHotspotCallback.ERROR_INCOMPATIBLE_MODE;
+                    mLOHSCallbackProxy.getMessenger().send(msg);
+                    mLOHSCallbackProxy = null;
+                }
+            } catch (RemoteException e) {
+                throw e.rethrowFromSystemServer();
+            }
+        }
     }
 
     /**
@@ -1875,7 +1901,14 @@ public class WifiManager {
      * @hide
      */
     public void cancelLocalOnlyHotspotRequest() {
-        throw new UnsupportedOperationException("LocalOnlyHotspot is still in development");
+        synchronized (mLock) {
+            if (mLOHSCallbackProxy == null) {
+                // nothing to do, the callback was already cleaned up.
+                return;
+            }
+            mLOHSCallbackProxy = null;
+            stopLocalOnlyHotspot();
+        }
     }
 
     /**
@@ -1891,7 +1924,11 @@ public class WifiManager {
      *  @hide
      */
     public void stopLocalOnlyHotspot() {
-        throw new UnsupportedOperationException("LocalOnlyHotspot is still in development");
+        try {
+            mService.stopLocalOnlyHotspot();
+        } catch (RemoteException e) {
+            throw e.rethrowFromSystemServer();
+        }
     }
 
     /**
@@ -2182,6 +2219,28 @@ public class WifiManager {
         public void onFailure(int reason);
     }
 
+    /*
+    // TODO: move to WifiServiceImpl
+    private class SoftApStateChangeReceiver extends BroadcastReceiver {
+        @Override
+        public void onReceive(Context content, Intent intent) {
+            String action = intent.getAction();
+            if (action.equals(WifiManager.WIFI_AP_STATE_CHANGED_ACTION)) {
+                int state = intent.getIntExtra(WifiManager.EXTRA_WIFI_AP_STATE,
+                                               WifiManager.WIFI_AP_STATE_FAILED);
+                if (state == WifiManager.WIFI_AP_STATE_FAILED) {
+                    int reason = intent.getIntExtra(EXTRA_WIFI_AP_FAILURE_REASON);
+                    Log.d(TAG, "SoftAp state change: failed reason: " + reason);
+                    // call onFailed callback here for requestors
+                } else if (state == WifiManager.WIFI_AP_STATE_DISABLED) {
+                    Log.d(TAG, "SoftAp stat change: stopped");
+                    // call onStopped callback here for requestors
+                }
+            }
+        }
+    }
+    */
+
     /**
      * LocalOnlyHotspotReservation that contains the WifiConfiguration for the active
      * LocalOnlyHotspot and is AutoCloseable to clean up LocalOnlyHotspot requests.
@@ -2268,10 +2327,11 @@ public class WifiManager {
     /**
      * Callback proxy for LocalOnlyHotspotCallback objects.
      */
-    private static class LocalOnlyHotspotCallbackProxy extends LocalOnlyHotspotCallback {
+    private static class LocalOnlyHotspotCallbackProxy {
         private final Handler mHandler;
         private final WeakReference<WifiManager> mWifiManager;
         private final Looper mLooper;
+        private final Messenger mMessenger;
 
         /**
          * Constructs a {@link LocalOnlyHotspotCallback} using the specified looper.  All callbacks
@@ -2325,8 +2385,10 @@ public class WifiManager {
                     }
                 }
             };
+            mMessenger = new Messenger(mHandler);
         }
-
+// TODO: delete these and remove extends
+/*
         @Override
         public void onStarted(LocalOnlyHotspotReservation rsv) {
             Log.d(TAG, "in CallbackProxy - LOHS onStarted");
@@ -2347,6 +2409,10 @@ public class WifiManager {
             Message msg = mHandler.obtainMessage(HOTSPOT_FAILED);
             msg.arg1 = reasonCode;
             mHandler.sendMessage(msg);
+        }
+*/
+        public Messenger getMessenger() {
+            return mMessenger;
         }
     }
 
@@ -2496,6 +2562,7 @@ public class WifiManager {
             Object listener = removeListener(message.arg2);
             switch (message.what) {
                 case AsyncChannel.CMD_CHANNEL_HALF_CONNECTED:
+                    Log.w(TAG, "Just got Half connected");
                     if (message.arg1 == AsyncChannel.STATUS_SUCCESSFUL) {
                         mAsyncChannel.sendMessage(AsyncChannel.CMD_CHANNEL_FULL_CONNECTION);
                     } else {
@@ -2507,6 +2574,7 @@ public class WifiManager {
                     mConnected.countDown();
                     break;
                 case AsyncChannel.CMD_CHANNEL_FULLY_CONNECTED:
+                    Log.w(TAG, "got fully connected");
                     // Ignore
                     break;
                 case AsyncChannel.CMD_CHANNEL_DISCONNECTED:
@@ -2579,6 +2647,7 @@ public class WifiManager {
                     }
                     break;
                 default:
+                    Log.w(TAG, "handling unknown message type: " + message);
                     //ignore
                     break;
             }

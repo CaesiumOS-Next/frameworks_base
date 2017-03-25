@@ -131,7 +131,7 @@ interface IWifiManager
 
     boolean stopSoftAp();
 
-    WifiConfiguration startLocalOnlyHotspot();
+    WifiConfiguration startLocalOnlyHotspot(in Messenger messenger, in IBinder binder);
 
     void stopLocalOnlyHotspot();
 
