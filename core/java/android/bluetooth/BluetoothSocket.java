@@ -85,7 +85,7 @@ import java.nio.ByteBuffer;
  */
 public final class BluetoothSocket implements Closeable {
     private static final String TAG = "BluetoothSocket";
-    private static final boolean DBG = Log.isLoggable(TAG, Log.DEBUG);
+    private static final boolean DBG = true;
     private static final boolean VDBG = Log.isLoggable(TAG, Log.VERBOSE);
 
     /** @hide */
@@ -416,6 +416,11 @@ public final class BluetoothSocket implements Closeable {
                 if(mSocketState != SocketState.INIT) return EBADFD;
                 if(mPfd == null) return -1;
                 FileDescriptor fd = mPfd.getFileDescriptor();
+                if (fd == null) {
+                    Log.e(TAG, "bindListen(), null file descriptor");
+                    return -1;
+                }
+
                 if (DBG) Log.d(TAG, "bindListen(), Create LocalSocket");
                 mSocket = LocalSocket.createConnectedLocalSocket(fd);
                 if (DBG) Log.d(TAG, "bindListen(), new LocalSocket.getInputStream()");
@@ -569,7 +574,7 @@ public final class BluetoothSocket implements Closeable {
                  mSocketState = SocketState.CLOSED;
                  if (DBG) Log.d(TAG, "close() this: " + this + ", channel: " + mPort +
                          ", mSocketIS: " + mSocketIS + ", mSocketOS: " + mSocketOS +
-                         "mSocket: " + mSocket);
+                         "mSocket: " + mSocket + ", mSocketState: " + mSocketState);
                  if(mSocket != null) {
                     if (DBG) Log.d(TAG, "Closing mSocket: " + mSocket);
                     mSocket.shutdownInput();
