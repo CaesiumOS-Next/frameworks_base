@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "eb837d25_b0b15e3e",
+        "filename": "core/java/android/net/IpSecTransform.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 310,
+      "author": {
+        "id": 1060151
+      },
+      "writtenOn": "2017-04-01T02:07:28Z",
+      "side": 1,
+      "message": "Fixing.",
+      "parentUuid": "d30ed1c0_23af4894",
+      "range": {
+        "startLine": 310,
+        "startChar": 101,
+        "endLine": 310,
+        "endChar": 105
+      },
+      "revId": "c6145cbb4a0eea3f840a7590c46a29e181a1ff90",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d11e8ca6_8771bf10",
         "filename": "core/java/android/net/IpSecTransform.java",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2017-03-31T14:17:07Z",
       "side": 1,
       "message": "This sentence break looks incorrect. Copy/paste artifact?",
+      "range": {
+        "startLine": 311,
+        "startChar": 0,
+        "endLine": 313,
+        "endChar": 33
+      },
+      "revId": "c6145cbb4a0eea3f840a7590c46a29e181a1ff90",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "11dc913d_c8b73504",
+        "filename": "core/java/android/net/IpSecTransform.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 313,
+      "author": {
+        "id": 1060151
+      },
+      "writtenOn": "2017-04-01T02:07:28Z",
+      "side": 1,
+      "message": "Rebase artifact. Let me fix.",
+      "parentUuid": "d11e8ca6_8771bf10",
       "range": {
         "startLine": 311,
         "startChar": 0,
