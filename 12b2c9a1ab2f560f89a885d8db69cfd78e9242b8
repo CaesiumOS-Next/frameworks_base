@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3269617b_374d0a04",
+        "filename": "packages/SettingsLib/src/com/android/settingslib/datetime/ZoneGetter.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1099044
+      },
+      "writtenOn": "2017-04-04T22:55:08Z",
+      "side": 1,
+      "message": "I\u0027m pretty sure that that getExemplarLocationName will return null in this case anyway. But then again, it\u0027s not worse than before and that method returning null is handled below.",
+      "range": {
+        "startLine": 149,
+        "startChar": 20,
+        "endLine": 149,
+        "endChar": 48
+      },
+      "revId": "12b2c9a1ab2f560f89a885d8db69cfd78e9242b8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
