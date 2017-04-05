@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "b5af84fa_fb761959",
+        "filename": "services/core/java/com/android/server/ConnectivityService.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 4136,
+      "author": {
+        "id": 1039103
+      },
+      "writtenOn": "2017-04-05T16:02:37Z",
+      "side": 1,
+      "message": "1. CS cannot reject requests based on UID - it doesn\u0027t have any additional information based on which to reject them. The additional context is within the custom network request and the factory is the one to be able to interpret it.\n\n2. It isn\u0027t about which object generates the UID. It is about which process does it. The UID generation must be done on the service side - since you cannot trust any information coming from the app.",
+      "parentUuid": "1baa6ecb_be3a1da2",
+      "range": {
+        "startLine": 4136,
+        "startChar": 20,
+        "endLine": 4136,
+        "endChar": 61
+      },
+      "revId": "c9cb890dfde49bece3f878d4e7a429a6c9fe4994",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "934f3345_6b6341fe",
         "filename": "services/core/java/com/android/server/ConnectivityService.java",
         "patchSetId": 7
