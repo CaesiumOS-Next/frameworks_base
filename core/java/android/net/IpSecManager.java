@@ -56,13 +56,20 @@ public final class IpSecManager {
     }
 
     /** @hide */
+    public static final int INVALID_RESOURCE_ID = 0;
+
+    /** @hide */
     public static final String KEY_STATUS = "status";
     /** @hide */
     public static final String KEY_RESOURCE_ID = "resourceId";
+
     /** @hide */
     public static final String KEY_SPI = "spi";
+
     /** @hide */
-    public static final int INVALID_RESOURCE_ID = 0;
+    public static final String KEY_SOCKET = "socket";
+    /** @hide */
+    public static final String KEY_PORT = "port";
 
     /**
      * Indicates that the combination of remote InetAddress and SPI was non-unique for a given
@@ -183,6 +190,11 @@ public final class IpSecManager {
             }
             mCloseGuard.open("open");
         }
+
+        /** @hide */
+        int getResourceId() {
+            return mResourceId;
+        }
     }
 
     /**
@@ -199,8 +211,7 @@ public final class IpSecManager {
      * @throws SpiUnavailableException indicating that a particular SPI cannot be reserved
      */
     public SecurityParameterIndex reserveSecurityParameterIndex(
-            int direction, InetAddress remoteAddress)
-            throws ResourceUnavailableException {
+            int direction, InetAddress remoteAddress) throws ResourceUnavailableException {
         try {
             return new SecurityParameterIndex(
                     mService,
@@ -278,12 +289,12 @@ public final class IpSecManager {
     }
 
     /**
-     * Apply an active Transport Mode IPsec Transform to a stream socket to perform IPsec
-     * encapsulation of the traffic flowing between the socket and the remote InetAddress of that
-     * transform. For security reasons, attempts to send traffic to any IP address other than the
-     * address associated with that transform will throw an IOException. In addition, if the
-     * IpSecTransform is later deactivated, the socket will throw an IOException on any calls to
-     * send() or receive() until the transform is removed from the socket by calling {@link
+     * Apply an active Transport Mode IPsec Transform to a socket to perform IPsec encapsulation of
+     * the traffic flowing between the socket and the remote InetAddress of that transform. For
+     * security reasons, attempts to send traffic to any IP address other than the address
+     * associated with that transform will throw an IOException. In addition, if the IpSecTransform
+     * is later deactivated, the socket will throw an IOException on any calls to send() or
+     * receive() until the transform is removed from the socket by calling {@link
      * #removeTransportModeTransform(Socket, IpSecTransform)};
      *
      * @param socket a socket file descriptor
@@ -379,33 +390,56 @@ public final class IpSecManager {
      * FileDescriptor. Instead, disposing of this socket requires a call to close().
      */
     public static final class UdpEncapsulationSocket implements AutoCloseable {
-        private final FileDescriptor mFd;
+        private final ParcelFileDescriptor mFd;
         private final IIpSecService mService;
+        private final int mResourceId;
+        private final int mPort;
         private final CloseGuard mCloseGuard = CloseGuard.get();
 
         private UdpEncapsulationSocket(@NonNull IIpSecService service, int port)
                 throws ResourceUnavailableException {
             mService = service;
+            try {
+                Bundle result = mService.openUdpEncapsulationSocket(port, new Binder());
+                int status = result.getInt(KEY_STATUS);
+                switch (status) {
+                    case Status.OK:
+                        break;
+                    case Status.RESOURCE_UNAVAILABLE:
+                        throw new ResourceUnavailableException(
+                                "No more Sockets may be allocated by this requester.");
+                    default:
+                        throw new RuntimeException(
+                                "Unknown status returned by IpSecService: " + status);
+                }
+                ParcelFileDescriptor sockPfd =
+                        (ParcelFileDescriptor) result.getParcelable(KEY_SOCKET);
+                mFd = sockPfd;
+                // TODO: get and stash bound port
+                mResourceId = result.getInt(KEY_RESOURCE_ID);
+                mPort = result.getInt(KEY_PORT);
+                /*
+                try {
+                    InetSocketAddress s = (InetSocketAddress) Os.getsockname(mFd);
+                    mPort = s.getPort();
+                } catch (ErrnoException e) {
+                    throw new RuntimeException(
+                            "Invalid InetSocketAddress returned from UdpEncapsulationSocket" + e);
+                } */
+            } catch (RemoteException e) {
+                throw e.rethrowFromSystemServer();
+            }
             mCloseGuard.open("constructor");
-            // TODO: go down to the kernel and get a socket on the specified
-            mFd = new FileDescriptor();
-        }
-
-        private UdpEncapsulationSocket(IIpSecService service) throws ResourceUnavailableException {
-            mService = service;
-            mCloseGuard.open("constructor");
-            // TODO: go get a random socket on a random port
-            mFd = new FileDescriptor();
         }
 
         /** Access the inner UDP Encapsulation Socket */
         public FileDescriptor getSocket() {
-            return mFd;
+            return mFd.getFileDescriptor();
         }
 
         /** Retrieve the port number of the inner encapsulation socket */
         public int getPort() {
-            return 0; // TODO get the port number from the Socket;
+            return mPort; // TODO get the port number from the Socket;
         }
 
         @Override
@@ -431,6 +465,11 @@ public final class IpSecManager {
             }
 
             close();
+        }
+
+        /** @hide */
+        int getResourceId() {
+            return mResourceId;
         }
     };
 
@@ -458,7 +497,11 @@ public final class IpSecManager {
     // socket.
     public UdpEncapsulationSocket openUdpEncapsulationSocket(int port)
             throws IOException, ResourceUnavailableException {
-        // Temporary code
+
+        // MAGIC!!!
+        if (port < 1 || port > 0xFFFF) {
+            throw new IllegalArgumentException("Specified port number must be a valid UDP port");
+        }
         return new UdpEncapsulationSocket(mService, port);
     }
 
@@ -482,8 +525,7 @@ public final class IpSecManager {
     // socket.
     public UdpEncapsulationSocket openUdpEncapsulationSocket()
             throws IOException, ResourceUnavailableException {
-        // Temporary code
-        return new UdpEncapsulationSocket(mService);
+        return new UdpEncapsulationSocket(mService, 0);
     }
 
     /**
