@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4417557d_3d35bfa7",
+        "filename": "services/core/java/com/android/server/ConnectivityService.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 4136,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2017-04-05T14:44:46Z",
+      "side": 1,
+      "message": "I\u0027m not a fan of making NetworkSpecifiers mutable. How about setting the UID inside WifiAwareNetworkSpecifier, and just enforcing it here? Something like something like:\n\n    NetworkSpecifier ns \u003d networkCapabilities.getNetworkSpecifier();\n    if (ns !\u003d null \u0026\u0026 ns.hasUid() \u0026\u0026 ns.getUid() !\u003d Binder.getCallingUid()) {\n        throw new SecurityException(...);\n    }\n\nand making the WifiAwareNetworkSpecifier constructor take a UID? (The manager can just get one the UID via Process.myUid())\n\nIn the base NetworkSpecifier class, hasUid() would just return false and getUid() would throw UnsupportedOperationException.",
+      "range": {
+        "startLine": 4136,
+        "startChar": 20,
+        "endLine": 4136,
+        "endChar": 61
+      },
+      "revId": "c9cb890dfde49bece3f878d4e7a429a6c9fe4994",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "934f3345_6b6341fe",
+        "filename": "services/core/java/com/android/server/ConnectivityService.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 4137,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2017-04-05T14:44:46Z",
+      "side": 1,
+      "message": "For correctness, this operation needs to be performed in the other request and listen codepaths too.",
+      "range": {
+        "startLine": 4134,
+        "startChar": 0,
+        "endLine": 4137,
+        "endChar": 9
+      },
+      "revId": "c9cb890dfde49bece3f878d4e7a429a6c9fe4994",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
