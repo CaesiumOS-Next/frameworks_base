@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "1baa6ecb_be3a1da2",
+        "filename": "services/core/java/com/android/server/ConnectivityService.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 4136,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2017-04-05T15:48:37Z",
+      "side": 1,
+      "message": "1. The factory gets the UID in the specifier via CS, right?\n   If so, masqueraded requests will never get to the factory\n   because CS would have rejected them.\n2. How does the service get the UID? Via ConnectivityService?\n   If so then the same argument applies.\n\nI agree that the system can\u0027t trust anything sent by the app. But there is only one entry point for NetworkSpecifier objects, and that\u0027s CS, right?",
+      "parentUuid": "9aee17aa_ae741b42",
+      "range": {
+        "startLine": 4136,
+        "startChar": 20,
+        "endLine": 4136,
+        "endChar": 61
+      },
+      "revId": "c9cb890dfde49bece3f878d4e7a429a6c9fe4994",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "934f3345_6b6341fe",
         "filename": "services/core/java/com/android/server/ConnectivityService.java",
         "patchSetId": 7
