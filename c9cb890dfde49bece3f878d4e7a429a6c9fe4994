@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "9aee17aa_ae741b42",
+        "filename": "services/core/java/com/android/server/ConnectivityService.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 4136,
+      "author": {
+        "id": 1039103
+      },
+      "writtenOn": "2017-04-05T14:50:19Z",
+      "side": 1,
+      "message": "Location: the UID is needed to be enforced elsewhere as well. There are 2 places:\n\n1. In the factory (don\u0027t create network for a masquerading requestor): so the NS has to contain the UID to be used in the factory\n\n2. In the service (don\u0027t return a created network to a masquerading requestor)\n\nMutability: it isn\u0027t NetworkSpecifier which is abstract - it is whatever concrete derived class.\n\nSetting: having WifiAwareNetworkSpecifier constructed on the app side with the correct ID is invalid. You can\u0027t trust anything the app sends you. It must be done on the service side.",
+      "parentUuid": "4417557d_3d35bfa7",
+      "range": {
+        "startLine": 4136,
+        "startChar": 20,
+        "endLine": 4136,
+        "endChar": 61
+      },
+      "revId": "c9cb890dfde49bece3f878d4e7a429a6c9fe4994",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "934f3345_6b6341fe",
         "filename": "services/core/java/com/android/server/ConnectivityService.java",
         "patchSetId": 7
