@@ -18,6 +18,7 @@ package android.net;
 
 import android.net.Network;
 import android.net.IpSecConfig;
+import android.net.IpSecUdpEncap;
 import android.os.Bundle;
 import android.os.IBinder;
 import android.os.ParcelFileDescriptor;
@@ -32,9 +33,9 @@ interface IIpSecService
 
     void releaseSecurityParameterIndex(int resourceId);
 
-    Bundle openUdpEncapsulationSocket(int port, in IBinder binder);
+    IpSecUdpEncap openUdpEncapsulationSocket(int port, in IBinder binder);
 
-    void closeUdpEncapsulationSocket(in ParcelFileDescriptor socket);
+    void closeUdpEncapsulationSocket(int resourceId);
 
     Bundle createTransportModeTransform(in IpSecConfig c, in IBinder binder);
 
