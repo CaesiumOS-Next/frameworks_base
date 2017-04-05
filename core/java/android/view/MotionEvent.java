@@ -2025,8 +2025,6 @@ public final class MotionEvent extends InputEvent implements Parcelable {
      * @return Returns the time this event occurred,
      * in the {@link android.os.SystemClock#uptimeMillis} time base but with
      * nanosecond precision.
-     *
-     * @hide
      */
     @Override
     public final long getEventTimeNano() {
@@ -2541,8 +2539,6 @@ public final class MotionEvent extends InputEvent implements Parcelable {
      *
      * @see #getHistorySize
      * @see #getEventTime
-     *
-     * @hide
      */
     public final long getHistoricalEventTimeNano(int pos) {
         return nativeGetEventTimeNanos(mNativePtr, pos);
