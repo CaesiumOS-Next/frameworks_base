@@ -22,6 +22,30 @@
       "revId": "12b2c9a1ab2f560f89a885d8db69cfd78e9242b8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bfd680d8_3b0945f3",
+        "filename": "packages/SettingsLib/src/com/android/settingslib/datetime/ZoneGetter.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1038039
+      },
+      "writtenOn": "2017-04-05T12:48:38Z",
+      "side": 1,
+      "message": "At least in some cases getExemplarLocationName() was using the ID it was given to synthesize an ASCII version of the ID. e.g. America/Buenos_Aires would return \"Buenos Aires\" (but only by magic, not because it had found the localized string).\n\nThe Buenos Aires case is solved by this, but I didn\u0027t particularly want to modify the behavior unless I had to. \n\nUsing the getZoneLongName() may be better in the long run.",
+      "parentUuid": "3269617b_374d0a04",
+      "range": {
+        "startLine": 149,
+        "startChar": 20,
+        "endLine": 149,
+        "endChar": 48
+      },
+      "revId": "12b2c9a1ab2f560f89a885d8db69cfd78e9242b8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
