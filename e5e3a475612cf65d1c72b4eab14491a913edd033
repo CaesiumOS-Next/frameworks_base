@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d030ee29_4baca4a2",
+        "filename": "core/java/android/view/ViewRootImpl.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 4554,
+      "author": {
+        "id": 1010077
+      },
+      "writtenOn": "2017-04-06T13:59:38Z",
+      "side": 1,
+      "message": "Braces around this line. Gets slightly confusing.",
+      "revId": "e5e3a475612cf65d1c72b4eab14491a913edd033",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
