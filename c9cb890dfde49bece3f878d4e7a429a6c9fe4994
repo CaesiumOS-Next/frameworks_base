@@ -97,6 +97,30 @@
     },
     {
       "key": {
+        "uuid": "ce8e6c14_dbd5bab5",
+        "filename": "services/core/java/com/android/server/ConnectivityService.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 4136,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2017-04-06T15:17:26Z",
+      "side": 1,
+      "message": "Perhaps I am not making myself clear. What I am suggesting is:\n\n- The Framework API that returns a WifiAwareNetworkSpecifier (or any other\n  specifier type for which hasUid() returns true) writes the UID into the\n  specifier before returning it.\n- The app does whatever it wants with that specifier, including attempting\n  to impersonate a privileged app by changing the UID.\n- When the app passes the specifier to ConnectivityService via RequestNetwork,\n  ConnectivityService rejects the specifier if the UID written inside it does\n  not match the UID of the app that called RequestNetwork.",
+      "parentUuid": "b5af84fa_fb761959",
+      "range": {
+        "startLine": 4136,
+        "startChar": 20,
+        "endLine": 4136,
+        "endChar": 61
+      },
+      "revId": "c9cb890dfde49bece3f878d4e7a429a6c9fe4994",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "934f3345_6b6341fe",
         "filename": "services/core/java/com/android/server/ConnectivityService.java",
         "patchSetId": 7
