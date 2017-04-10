@@ -2311,7 +2311,7 @@ public abstract class ViewGroup extends View implements ViewParent, ViewManager 
                 // dispatched to it.  Cancel touch targets if necessary.
                 TouchTarget predecessor = null;
                 TouchTarget target = mFirstTouchTarget;
-                while (target != null) {
+                while (target != null && mFirstTouchTarget != null) {
                     final TouchTarget next = target.next;
                     if (alreadyDispatchedToNewTouchTarget && target == newTouchTarget) {
                         handled = true;
@@ -2322,7 +2322,7 @@ public abstract class ViewGroup extends View implements ViewParent, ViewManager 
                                 target.child, target.pointerIdBits)) {
                             handled = true;
                         }
-                        if (cancelChild) {
+                        if (cancelChild)) {
                             if (predecessor == null) {
                                 mFirstTouchTarget = next;
                             } else {
