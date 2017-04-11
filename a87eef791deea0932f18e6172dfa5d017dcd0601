@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "055310b3_893340d4",
+        "filename": "services/core/java/com/android/server/ConnectivityService.java",
+        "patchSetId": 12
+      },
+      "lineNbr": 4138,
+      "author": {
+        "id": 1107893
+      },
+      "writtenOn": "2017-04-11T00:55:11Z",
+      "side": 1,
+      "message": "This is exactly the kind of boilerplate that a class hierarchy is supposed to get rid of, yet we now pay the cost of the classes plus the cost of that kind of stuff.\n\n\nIf there is a class hierarchy please consider using *virtual dispatch* on the opaque objects instead of manually inspecting types.\n\n\nclass NetworkSpecifier {\n  public boolean matchesUid(int uid) { return true; /* by default do not check uid. */ }\n}\n\nclass WifiAwareNetworkSpecifier extends NetworkSpecifier {\n  public final int myUid;\n  @Override public boolean matchesUid(int uid) { return uid \u003d\u003d myUid; }\n}\n\nThen this call site becomes (minus the null guard):\n\nif (!networkCapabilities.getNetworkSpecifier().matchesUid(Binder.getCallingUid()) { throw new SecurityException(); }\n\n(if we have a NullSpecifier like suggested in the base patch, we don\u0027t even need a null guard).",
+      "range": {
+        "startLine": 4133,
+        "startChar": 0,
+        "endLine": 4138,
+        "endChar": 9
+      },
+      "revId": "a87eef791deea0932f18e6172dfa5d017dcd0601",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "00c3ffa7_1275a5d9",
+        "filename": "services/core/java/com/android/server/ConnectivityService.java",
+        "patchSetId": 12
+      },
+      "lineNbr": 4218,
+      "author": {
+        "id": 1107893
+      },
+      "writtenOn": "2017-04-11T00:55:11Z",
+      "side": 1,
+      "message": "At least if not implementing the virtual dispatch solution with a method on the base class, please regroup duplicated checks here into common utility method.",
+      "range": {
+        "startLine": 4213,
+        "startChar": 8,
+        "endLine": 4218,
+        "endChar": 9
+      },
+      "revId": "a87eef791deea0932f18e6172dfa5d017dcd0601",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d16975c4_c065bd10",
+        "filename": "wifi/java/android/net/wifi/aware/WifiAwareNetworkSpecifier.java",
+        "patchSetId": 12
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1107893
+      },
+      "writtenOn": "2017-04-11T00:55:11Z",
+      "side": 1,
+      "message": "Is this interface really needed ? What does it bring ?\n\nSince is it not on the base NetworkSpecifier class, the caller will always have to know the object is of type WifiAwareNetworkSpecifier to be able to see getUid() to see it anyway.",
+      "range": {
+        "startLine": 37,
+        "startChar": 8,
+        "endLine": 37,
+        "endChar": 37
+      },
+      "revId": "a87eef791deea0932f18e6172dfa5d017dcd0601",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
