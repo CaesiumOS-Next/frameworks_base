@@ -19,3 +19,74 @@ ndk_library {
     first_version: "9",
     unversioned_until: "current",
 }
+
+common_cflags = [
+    "-Wall",
+    "-Werror",
+    "-Wunused",
+    "-Wunreachable-code",
+]
+
+cc_library_shared {
+
+    // our source files
+    //
+    srcs: [
+        "asset_manager.cpp",
+        "choreographer.cpp",
+        "configuration.cpp",
+        "input.cpp",
+        "looper.cpp",
+        "native_activity.cpp",
+        "native_window.cpp",
+        "net.c",
+        "obb.cpp",
+        "sensor.cpp",
+        "storage_manager.cpp",
+        "trace.cpp",
+    ],
+
+    shared_libs: [
+        "liblog",
+        "libcutils",
+        "libandroidfw",
+        "libinput",
+        "libutils",
+        "libbinder",
+        "libui",
+        "libgui",
+        "libandroid_runtime",
+        "libnetd_client",
+    ],
+
+    static_libs: ["libstorage"],
+
+    include_dirs: [
+        "frameworks/base/native/include",
+        "frameworks/base/core/jni/android",
+        "bionic/libc/dns/include",
+        "system/netd/include",
+    ],
+
+    name: "libandroid",
+
+    cflags: common_cflags,
+
+}
+
+// Network library.
+cc_library_shared {
+    name: "libandroid_net",
+    cflags: common_cflags,
+    srcs: ["net.c"],
+
+    shared_libs: ["libnetd_client"],
+
+    local_include_dirs: ["."],
+
+    include_dirs: [
+        "frameworks/base/native/include",
+        "bionic/libc/dns/include",
+    ],
+
+}
