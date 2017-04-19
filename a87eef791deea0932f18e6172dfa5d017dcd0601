@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "ed0bebc6_f0dc8184",
+        "filename": "services/core/java/com/android/server/ConnectivityService.java",
+        "patchSetId": 12
+      },
+      "lineNbr": 4138,
+      "author": {
+        "id": 1039103
+      },
+      "writtenOn": "2017-04-19T21:21:30Z",
+      "side": 1,
+      "message": "Agreed. Actually delegated the SecurityException downward as well.",
+      "parentUuid": "055310b3_893340d4",
+      "range": {
+        "startLine": 4133,
+        "startChar": 0,
+        "endLine": 4138,
+        "endChar": 9
+      },
+      "revId": "a87eef791deea0932f18e6172dfa5d017dcd0601",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "00c3ffa7_1275a5d9",
         "filename": "services/core/java/com/android/server/ConnectivityService.java",
         "patchSetId": 12
@@ -59,6 +83,30 @@
       "writtenOn": "2017-04-11T00:55:11Z",
       "side": 1,
       "message": "Is this interface really needed ? What does it bring ?\n\nSince is it not on the base NetworkSpecifier class, the caller will always have to know the object is of type WifiAwareNetworkSpecifier to be able to see getUid() to see it anyway.",
+      "range": {
+        "startLine": 37,
+        "startChar": 8,
+        "endLine": 37,
+        "endChar": 37
+      },
+      "revId": "a87eef791deea0932f18e6172dfa5d017dcd0601",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ac011beb_7d08ff4f",
+        "filename": "wifi/java/android/net/wifi/aware/WifiAwareNetworkSpecifier.java",
+        "patchSetId": 12
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1039103
+      },
+      "writtenOn": "2017-04-19T21:21:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d16975c4_c065bd10",
       "range": {
         "startLine": 37,
         "startChar": 8,
