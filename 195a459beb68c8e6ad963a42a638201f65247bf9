@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "ba786f56_2d5ae3bf",
+        "filename": "core/java/android/net/NetworkSpecifier.java",
+        "patchSetId": 13
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1039103
+      },
+      "writtenOn": "2017-04-20T18:31:04Z",
+      "side": 1,
+      "message": "I prefer the first. Done.",
+      "parentUuid": "b81a9b80_cd675f11",
+      "range": {
+        "startLine": 49,
+        "startChar": 16,
+        "endLine": 49,
+        "endChar": 35
+      },
+      "revId": "195a459beb68c8e6ad963a42a638201f65247bf9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "629a6d38_6b32fbd3",
         "filename": "services/core/java/com/android/server/ConnectivityService.java",
         "patchSetId": 13
@@ -36,6 +60,30 @@
       "writtenOn": "2017-04-20T14:39:23Z",
       "side": 1,
       "message": "Looks like there are 4 of these code blocks. Can you refactor them checks out to a function, and put it at the beginning of every place that handles a user NetworkRequest? Perhaps:\n\n    ensureValidNetworkSpecifier(NetworkCapabilities nc) {\n        if (nc \u003d\u003d null || nc.getNetworkSpecifier \u003d\u003d null) {\n            return true;\n        }\n        NetworkSpecifier ns \u003d nc.getNetworkSpecifier();\n        MatchAllNetworkSpecifier.checkNotMatchAllNetworkSpecifier(ns);\n        ns.checkUidIfNecessary(Binder.getCallingUid);\n    }",
+      "range": {
+        "startLine": 4150,
+        "startChar": 0,
+        "endLine": 4154,
+        "endChar": 9
+      },
+      "revId": "195a459beb68c8e6ad963a42a638201f65247bf9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "03910141_03f94da3",
+        "filename": "services/core/java/com/android/server/ConnectivityService.java",
+        "patchSetId": 13
+      },
+      "lineNbr": 4154,
+      "author": {
+        "id": 1039103
+      },
+      "writtenOn": "2017-04-20T18:31:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "629a6d38_6b32fbd3",
       "range": {
         "startLine": 4150,
         "startChar": 0,
