@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b81a9b80_cd675f11",
+        "filename": "core/java/android/net/NetworkSpecifier.java",
+        "patchSetId": 13
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2017-04-20T14:39:23Z",
+      "side": 1,
+      "message": "I\u0027m not a fan of the name. I think the \"IfNecessary\" part is what bothers me about it, even though it\u0027s correct. I don\u0027t have very good alternative suggestions, either. What about one of:\n\n    ns.assertValidFromUid(Binder.getCallingUid());\n    ns.assertValidCaller(Binder.getCallingUid());",
+      "range": {
+        "startLine": 49,
+        "startChar": 16,
+        "endLine": 49,
+        "endChar": 35
+      },
+      "revId": "195a459beb68c8e6ad963a42a638201f65247bf9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "629a6d38_6b32fbd3",
+        "filename": "services/core/java/com/android/server/ConnectivityService.java",
+        "patchSetId": 13
+      },
+      "lineNbr": 4154,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2017-04-20T14:39:23Z",
+      "side": 1,
+      "message": "Looks like there are 4 of these code blocks. Can you refactor them checks out to a function, and put it at the beginning of every place that handles a user NetworkRequest? Perhaps:\n\n    ensureValidNetworkSpecifier(NetworkCapabilities nc) {\n        if (nc \u003d\u003d null || nc.getNetworkSpecifier \u003d\u003d null) {\n            return true;\n        }\n        NetworkSpecifier ns \u003d nc.getNetworkSpecifier();\n        MatchAllNetworkSpecifier.checkNotMatchAllNetworkSpecifier(ns);\n        ns.checkUidIfNecessary(Binder.getCallingUid);\n    }",
+      "range": {
+        "startLine": 4150,
+        "startChar": 0,
+        "endLine": 4154,
+        "endChar": 9
+      },
+      "revId": "195a459beb68c8e6ad963a42a638201f65247bf9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
