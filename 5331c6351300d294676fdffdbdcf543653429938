@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d614114e_8f73a75b",
+        "filename": "services/core/java/com/android/server/ConnectivityService.java",
+        "patchSetId": 14
+      },
+      "lineNbr": 4124,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2017-04-21T14:30:12Z",
+      "side": 1,
+      "message": "Nit: \"nc\" -\u003e \"ns\".",
+      "range": {
+        "startLine": 4124,
+        "startChar": 62,
+        "endLine": 4124,
+        "endChar": 64
+      },
+      "revId": "5331c6351300d294676fdffdbdcf543653429938",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7e24bf92_a8960a2e",
+        "filename": "services/core/java/com/android/server/ConnectivityService.java",
+        "patchSetId": 14
+      },
+      "lineNbr": 4144,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2017-04-21T14:30:12Z",
+      "side": 1,
+      "message": "Good thing our NetworkSpecifiers are immutable. Otherwise we would have had to update this copy constructor to call clone() on the mNetworkSpecifier and ensure that all NetworkSpecifiers implemented clone.",
+      "range": {
+        "startLine": 4144,
+        "startChar": 34,
+        "endLine": 4144,
+        "endChar": 78
+      },
+      "revId": "5331c6351300d294676fdffdbdcf543653429938",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a50c2bf4_04c6668f",
+        "filename": "services/core/java/com/android/server/ConnectivityService.java",
+        "patchSetId": 14
+      },
+      "lineNbr": 4304,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2017-04-21T14:30:12Z",
+      "side": 1,
+      "message": "Nit: suggest adding a checkNotNull for networkCapabilities as well.\n\nThis is just for readability purposes. Passing in an null nc is both really hard (since CM won\u0027t let you do that using public methods) and harmless (since the NPE at line 4308 will just go straight back to the app that did something invalid), but readers of this code might not immediately realize that.",
+      "range": {
+        "startLine": 4304,
+        "startChar": 8,
+        "endLine": 4304,
+        "endChar": 20
+      },
+      "revId": "5331c6351300d294676fdffdbdcf543653429938",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
