@@ -1,0 +1,487 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "940aabaf_8be5053a",
+        "filename": "telephony/java/android/telephony/MbmsDownloadManager.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1056478
+      },
+      "writtenOn": "2017-04-26T22:52:38Z",
+      "side": 1,
+      "message": "Should this be in the mbms namespace as well?",
+      "range": {
+        "startLine": 17,
+        "startChar": 1,
+        "endLine": 17,
+        "endChar": 26
+      },
+      "revId": "8de31ce9792f7d596eeff7eb8ae7e47f66988309",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9bdd4f9d_c102f218",
+        "filename": "telephony/java/android/telephony/MbmsDownloadManager.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1056478
+      },
+      "writtenOn": "2017-04-26T22:52:38Z",
+      "side": 1,
+      "message": "Naming convention for these is (might be easier to clean these up now than later when its hardcoded in the bowels of vendor code):\nandroid.telephony.mbms.action.DOWNLOAD_RESULT_INTERNAL\n\nAlso, suggest:\nACTION_DOWNLOAD_COMPLETE",
+      "range": {
+        "startLine": 50,
+        "startChar": 12,
+        "endLine": 50,
+        "endChar": 67
+      },
+      "revId": "8de31ce9792f7d596eeff7eb8ae7e47f66988309",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5909371b_c7605591",
+        "filename": "telephony/java/android/telephony/MbmsDownloadManager.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1056478
+      },
+      "writtenOn": "2017-04-26T22:52:38Z",
+      "side": 1,
+      "message": "These seem like two different things; would be make sense to have\nACTION_REQUEST_TEMPORARY_FILE_DESCRIPTOR\nand\nACTION_RESUME_PAUSED_DOWNLOAD\nseparated?",
+      "range": {
+        "startLine": 53,
+        "startChar": 52,
+        "endLine": 54,
+        "endChar": 85
+      },
+      "revId": "8de31ce9792f7d596eeff7eb8ae7e47f66988309",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8f020900_903b76e2",
+        "filename": "telephony/java/android/telephony/MbmsDownloadManager.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1056478
+      },
+      "writtenOn": "2017-04-26T22:52:38Z",
+      "side": 1,
+      "message": "EXTRA_REQUEST is for the result code of a download; is this required here?",
+      "range": {
+        "startLine": 56,
+        "startChar": 7,
+        "endLine": 56,
+        "endChar": 29
+      },
+      "revId": "8de31ce9792f7d596eeff7eb8ae7e47f66988309",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "929e79da_23a78643",
+        "filename": "telephony/java/android/telephony/MbmsDownloadManager.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1056478
+      },
+      "writtenOn": "2017-04-26T22:52:38Z",
+      "side": 1,
+      "message": "This is just to cleanup a specified list of temp files, right? \nMight make more sense to just say\nThe MBMS middleware sends this when it wishes to cleanup temporary files in the app\u0027s filesystem.",
+      "range": {
+        "startLine": 68,
+        "startChar": 87,
+        "endLine": 69,
+        "endChar": 36
+      },
+      "revId": "8de31ce9792f7d596eeff7eb8ae7e47f66988309",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ddfe1e8b_d85ba248",
+        "filename": "telephony/java/android/telephony/MbmsDownloadManager.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1056478
+      },
+      "writtenOn": "2017-04-26T22:52:38Z",
+      "side": 1,
+      "message": "EXTRA_TEMP_FILES_IN_USE indicates it contains a list of URIs for temp files which are in use.  Perhaps rename that to EXTRA_TEMP_FILES?",
+      "range": {
+        "startLine": 70,
+        "startChar": 15,
+        "endLine": 70,
+        "endChar": 38
+      },
+      "revId": "8de31ce9792f7d596eeff7eb8ae7e47f66988309",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c9b7ca0c_e87835ab",
+        "filename": "telephony/java/android/telephony/MbmsDownloadManager.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1056478
+      },
+      "writtenOn": "2017-04-26T22:52:38Z",
+      "side": 1,
+      "message": ".action.CLEANUP_TEMP_FILES",
+      "range": {
+        "startLine": 75,
+        "startChar": 36,
+        "endLine": 75,
+        "endChar": 50
+      },
+      "revId": "8de31ce9792f7d596eeff7eb8ae7e47f66988309",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4316aba3_6e17ef18",
+        "filename": "telephony/java/android/telephony/MbmsDownloadManager.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1056478
+      },
+      "writtenOn": "2017-04-26T22:52:38Z",
+      "side": 1,
+      "message": "Convention is:\nandroid.telephony.mbms.extra.RESULT",
+      "range": {
+        "startLine": 82,
+        "startChar": 47,
+        "endLine": 82,
+        "endChar": 82
+      },
+      "revId": "8de31ce9792f7d596eeff7eb8ae7e47f66988309",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6ef6ccf5_ba68a356",
+        "filename": "telephony/java/android/telephony/MbmsDownloadManager.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1056478
+      },
+      "writtenOn": "2017-04-26T22:52:38Z",
+      "side": 1,
+      "message": "{@link List}?",
+      "range": {
+        "startLine": 97,
+        "startChar": 26,
+        "endLine": 97,
+        "endChar": 30
+      },
+      "revId": "8de31ce9792f7d596eeff7eb8ae7e47f66988309",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b74856d2_15893486",
+        "filename": "telephony/java/android/telephony/MbmsDownloadManager.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1056478
+      },
+      "writtenOn": "2017-04-26T22:52:38Z",
+      "side": 1,
+      "message": "a",
+      "range": {
+        "startLine": 97,
+        "startChar": 80,
+        "endLine": 97,
+        "endChar": 84
+      },
+      "revId": "8de31ce9792f7d596eeff7eb8ae7e47f66988309",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ce01fec2_c8659707",
+        "filename": "telephony/java/android/telephony/MbmsDownloadManager.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1056478
+      },
+      "writtenOn": "2017-04-26T22:52:38Z",
+      "side": 1,
+      "message": "The temp files will be deleted?",
+      "range": {
+        "startLine": 98,
+        "startChar": 72,
+        "endLine": 98,
+        "endChar": 76
+      },
+      "revId": "8de31ce9792f7d596eeff7eb8ae7e47f66988309",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "71de285f_7952a320",
+        "filename": "telephony/java/android/telephony/MbmsDownloadManager.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1056478
+      },
+      "writtenOn": "2017-04-26T22:52:38Z",
+      "side": 1,
+      "message": "will resume downloading?",
+      "range": {
+        "startLine": 116,
+        "startChar": 70,
+        "endLine": 116,
+        "endChar": 96
+      },
+      "revId": "8de31ce9792f7d596eeff7eb8ae7e47f66988309",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5cc3ed40_3460e1cf",
+        "filename": "telephony/java/android/telephony/MbmsDownloadManager.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1056478
+      },
+      "writtenOn": "2017-04-26T22:52:38Z",
+      "side": 1,
+      "message": "Extra used with {@link #ACTION_FILE_DESCRIPTOR_REQUEST}",
+      "range": {
+        "startLine": 116,
+        "startChar": 7,
+        "endLine": 116,
+        "endChar": 12
+      },
+      "revId": "8de31ce9792f7d596eeff7eb8ae7e47f66988309",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6be943c6_bd54f213",
+        "filename": "telephony/java/android/telephony/MbmsDownloadManager.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1056478
+      },
+      "writtenOn": "2017-04-26T22:52:38Z",
+      "side": 1,
+      "message": "Convention is to use \"Callback\" when there are multiple methods; eg. DownloadManagerCallback",
+      "range": {
+        "startLine": 152,
+        "startChar": 18,
+        "endLine": 152,
+        "endChar": 46
+      },
+      "revId": "8de31ce9792f7d596eeff7eb8ae7e47f66988309",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bee8c99c_cab6ef42",
+        "filename": "telephony/java/android/telephony/MbmsDownloadManager.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1056478
+      },
+      "writtenOn": "2017-04-26T22:52:38Z",
+      "side": 1,
+      "message": "If you envision only using the createManager method, this should be private",
+      "range": {
+        "startLine": 155,
+        "startChar": 4,
+        "endLine": 155,
+        "endChar": 30
+      },
+      "revId": "8de31ce9792f7d596eeff7eb8ae7e47f66988309",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7d908ca2_91243c45",
+        "filename": "telephony/java/android/telephony/MbmsStreamingManager.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1056478
+      },
+      "writtenOn": "2017-04-26T22:52:38Z",
+      "side": 1,
+      "message": "private if the static are always doing to be used.",
+      "range": {
+        "startLine": 45,
+        "startChar": 4,
+        "endLine": 45,
+        "endChar": 10
+      },
+      "revId": "8de31ce9792f7d596eeff7eb8ae7e47f66988309",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "76e8c141_b05d81c9",
+        "filename": "telephony/java/android/telephony/MbmsStreamingManager.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1056478
+      },
+      "writtenOn": "2017-04-26T22:52:38Z",
+      "side": 1,
+      "message": "subscriptionId (Telephony convention is to use it in full).",
+      "range": {
+        "startLine": 46,
+        "startChar": 49,
+        "endLine": 46,
+        "endChar": 54
+      },
+      "revId": "8de31ce9792f7d596eeff7eb8ae7e47f66988309",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a6943b75_2c084521",
+        "filename": "telephony/java/android/telephony/mbms/DownloadRequest.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1056478
+      },
+      "writtenOn": "2017-04-26T22:52:38Z",
+      "side": 1,
+      "message": "Should make these private and add getters.\n\nNo setters; move the builder into here as I mention in that file.",
+      "range": {
+        "startLine": 29,
+        "startChar": 4,
+        "endLine": 34,
+        "endChar": 53
+      },
+      "revId": "8de31ce9792f7d596eeff7eb8ae7e47f66988309",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4a5d9e0c_558de975",
+        "filename": "telephony/java/android/telephony/mbms/DownloadRequestBuilder.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1056478
+      },
+      "writtenOn": "2017-04-26T22:52:38Z",
+      "side": 1,
+      "message": "Aaah, here is it; can make an inner class in DownloadRequest and just call it Builder.",
+      "range": {
+        "startLine": 23,
+        "startChar": 13,
+        "endLine": 23,
+        "endChar": 35
+      },
+      "revId": "8de31ce9792f7d596eeff7eb8ae7e47f66988309",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3191d868_05ccfd33",
+        "filename": "telephony/java/android/telephony/mbms/DownloadRequestBuilder.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1056478
+      },
+      "writtenOn": "2017-04-26T22:52:38Z",
+      "side": 1,
+      "message": "build",
+      "range": {
+        "startLine": 61,
+        "startChar": 27,
+        "endLine": 61,
+        "endChar": 48
+      },
+      "revId": "8de31ce9792f7d596eeff7eb8ae7e47f66988309",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dd8b544e_54150ce6",
+        "filename": "telephony/java/android/telephony/mbms/StreamingServiceListener.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1056478
+      },
+      "writtenOn": "2017-04-26T22:52:38Z",
+      "side": 1,
+      "message": "Usually call this something like StreamingServiceCallback",
+      "range": {
+        "startLine": 26,
+        "startChar": 13,
+        "endLine": 26,
+        "endChar": 37
+      },
+      "revId": "8de31ce9792f7d596eeff7eb8ae7e47f66988309",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
