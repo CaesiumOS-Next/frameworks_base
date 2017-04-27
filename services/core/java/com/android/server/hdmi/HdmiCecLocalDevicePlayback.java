@@ -25,6 +25,9 @@ import android.os.RemoteException;
 import android.os.SystemProperties;
 import android.provider.Settings.Global;
 import android.util.Slog;
+import android.content.Context;
+import android.media.AudioSystem;
+
 
 import com.android.internal.app.LocalePicker;
 import com.android.internal.app.LocalePicker.LocaleInfo;
@@ -159,6 +162,10 @@ final class HdmiCecLocalDevicePlayback extends HdmiCecLocalDevice {
         if (!connected) {
             getWakeLock().release();
         }
+
+        mService.getAudioManager().setWiredDeviceConnectionState(
+                AudioSystem.DEVICE_OUT_HDMI_ARC,
+                connected ? 1 : 0, "", "");
     }
 
     @Override
