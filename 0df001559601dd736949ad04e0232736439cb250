@@ -22,6 +22,30 @@
       "revId": "0df001559601dd736949ad04e0232736439cb250",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "458edf44_f82d4569",
+        "filename": "services/core/java/com/android/server/NsdService.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 585,
+      "author": {
+        "id": 1107893
+      },
+      "writtenOn": "2017-04-27T07:40:48Z",
+      "side": 1,
+      "message": "Good catch. That\u0027s incorrect. Fixed.",
+      "parentUuid": "42c1f425_e10c1312",
+      "range": {
+        "startLine": 585,
+        "startChar": 52,
+        "endLine": 585,
+        "endChar": 66
+      },
+      "revId": "0df001559601dd736949ad04e0232736439cb250",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
