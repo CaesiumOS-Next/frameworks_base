@@ -44399,6 +44399,7 @@ package android.util {
     method public int getTag();
     method public int getThreadId();
     method public long getTimeNanos();
+    method public int getUid();
   }
 
   public deprecated class EventLogTags {
