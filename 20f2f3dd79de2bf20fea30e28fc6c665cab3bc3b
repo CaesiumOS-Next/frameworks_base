@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a48b509e_4b773b99",
+        "filename": "services/core/jni/com_android_server_connectivity_tethering_OffloadController.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1121773
+      },
+      "writtenOn": "2017-05-09T00:52:09Z",
+      "side": 1,
+      "message": "consider taking base::unique_fd fd as an parameter and std::move into the function. This will make clear that ownership is being transferred at the call site.",
+      "revId": "20f2f3dd79de2bf20fea30e28fc6c665cab3bc3b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
