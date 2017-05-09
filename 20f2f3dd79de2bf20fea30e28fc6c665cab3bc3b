@@ -16,6 +16,24 @@
       "revId": "20f2f3dd79de2bf20fea30e28fc6c665cab3bc3b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "54917cb8_4ec778b8",
+        "filename": "services/core/jni/com_android_server_connectivity_tethering_OffloadController.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1000451
+      },
+      "writtenOn": "2017-05-09T04:54:30Z",
+      "side": 1,
+      "message": "Done\n\nMuch nicer.",
+      "parentUuid": "a48b509e_4b773b99",
+      "revId": "20f2f3dd79de2bf20fea30e28fc6c665cab3bc3b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
