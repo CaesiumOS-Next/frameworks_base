@@ -26,6 +26,7 @@ import android.content.IntentFilter;
 import android.content.pm.PackageManager;
 import android.database.ContentObserver;
 import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Binder;
 import android.os.Handler;
 import android.os.HandlerThread;
@@ -73,6 +74,7 @@ public class NetworkTimeUpdateService extends Binder {
     private long mNitzTimeSetTime = NOT_SET;
     // TODO: Have a way to look up the timezone we are in
     private long mNitzZoneSetTime = NOT_SET;
+    private boolean mNetworkValidated = false;
 
     private Context mContext;
     private TrustedTime mTime;
@@ -82,6 +84,8 @@ public class NetworkTimeUpdateService extends Binder {
     private AlarmManager mAlarmManager;
     private PendingIntent mPendingPollIntent;
     private SettingsObserver mSettingsObserver;
+    private ConnectivityManager mConnManager;
+    private NetworkCallback mNetworkCallback;
     // The last time that we successfully fetched the NTP time.
     private long mLastNtpFetchTime = NOT_SET;
     private final PowerManager.WakeLock mWakeLock;
@@ -103,6 +107,7 @@ public class NetworkTimeUpdateService extends Binder {
         mContext = context;
         mTime = NtpTrustedTime.getInstance(context);
         mAlarmManager = (AlarmManager) mContext.getSystemService(Context.ALARM_SERVICE);
+        mConnManager = (ConnectivityManager) mContext.getSystemService(Context.CONNECTIVITY_SERVICE);
         Intent pollIntent = new Intent(ACTION_POLL, null);
         mPendingPollIntent = PendingIntent.getBroadcast(mContext, POLL_REQUEST, pollIntent, 0);
 
@@ -128,6 +133,8 @@ public class NetworkTimeUpdateService extends Binder {
         HandlerThread thread = new HandlerThread(TAG);
         thread.start();
         mHandler = new MyHandler(thread.getLooper());
+        mNetworkCallback = new NetworkCallback();
+        mConnManager.registerDefaultNetworkCallback(mNetworkCallback, mHandler);
         // Check the network time on the new thread
         mHandler.obtainMessage(EVENT_POLL_NETWORK_TIME).sendToTarget();
 
@@ -160,7 +167,7 @@ public class NetworkTimeUpdateService extends Binder {
 
     private void onPollNetworkTime(int event) {
         // If Automatic time is not set, don't bother.
-        if (!isAutomaticTimeRequested()) return;
+        if (!isAutomaticTimeRequested() || !mNetworkValidated) return;
         mWakeLock.acquire();
         try {
             onPollNetworkTimeUnderWakeLock(event);
@@ -293,6 +300,18 @@ public class NetworkTimeUpdateService extends Binder {
                 case EVENT_NETWORK_CHANGED:
                     onPollNetworkTime(msg.what);
                     break;
+            }
+        }
+    }
+
+    private class NetworkCallback extends ConnectivityManager.NetworkCallback{
+
+        @Override
+        public void onCapabilitiesChanged(Network network, NetworkCapabilities networkCapabilities) {
+            if (networkCapabilities.hasCapability(NetworkCapabilities.NET_CAPABILITY_VALIDATED)){
+                mNetworkValidated = true;
+            }else {
+                mNetworkValidated = false;
             }
         }
     }
