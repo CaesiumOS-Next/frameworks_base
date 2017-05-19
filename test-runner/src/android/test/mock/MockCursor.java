@@ -179,7 +179,6 @@ public class MockCursor implements Cursor {
     }
 
     @Override
-    @Deprecated
     public void deactivate() {
         throw new UnsupportedOperationException("unimplemented mock method");
     }
@@ -195,7 +194,6 @@ public class MockCursor implements Cursor {
     }
 
     @Override
-    @Deprecated
     public boolean requery() {
         throw new UnsupportedOperationException("unimplemented mock method");
     }
