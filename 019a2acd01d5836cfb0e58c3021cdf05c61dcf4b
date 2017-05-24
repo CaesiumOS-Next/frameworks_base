@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c2906734_95d25c42",
+        "filename": "telephony/java/android/telephony/NetworkScan.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1002609
+      },
+      "writtenOn": "2017-05-24T00:04:05Z",
+      "side": 1,
+      "message": "this is pretty close to the numbers above.  10000?",
+      "range": {
+        "startLine": 49,
+        "startChar": 44,
+        "endLine": 49,
+        "endChar": 47
+      },
+      "revId": "019a2acd01d5836cfb0e58c3021cdf05c61dcf4b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "503fd1bf_f27c8bb4",
+        "filename": "telephony/java/android/telephony/NetworkScan.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1002609
+      },
+      "writtenOn": "2017-05-24T00:04:05Z",
+      "side": 1,
+      "message": "ERROR_RIL_ERROR?  we\u0027d like to avoid unknown",
+      "range": {
+        "startLine": 49,
+        "startChar": 28,
+        "endLine": 49,
+        "endChar": 41
+      },
+      "revId": "019a2acd01d5836cfb0e58c3021cdf05c61dcf4b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
