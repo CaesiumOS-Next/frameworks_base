@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1f9bd6b5_c337d355",
+        "filename": "core/java/android/net/ConnectivityManager.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 3348,
+      "author": {
+        "id": 1107893
+      },
+      "writtenOn": "2017-05-24T23:28:15Z",
+      "side": 1,
+      "message": "This is where the exception causing b/62045451 is thrown.",
+      "range": {
+        "startLine": 3347,
+        "startChar": 0,
+        "endLine": 3348,
+        "endChar": 90
+      },
+      "revId": "3e46b00097713469bcc4e9929775d142e07fe7d3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
