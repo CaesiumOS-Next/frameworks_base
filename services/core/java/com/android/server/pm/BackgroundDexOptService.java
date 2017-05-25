@@ -18,7 +18,6 @@ package com.android.server.pm;
 
 import static com.android.server.pm.PackageManagerService.DEBUG_DEXOPT;
 
-import android.app.AlarmManager;
 import android.app.job.JobInfo;
 import android.app.job.JobParameters;
 import android.app.job.JobScheduler;
@@ -27,17 +26,25 @@ import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageParser.Package;
 import android.os.BatteryManager;
+import android.os.Binder;
 import android.os.Environment;
 import android.os.ServiceManager;
 import android.os.SystemProperties;
+import android.os.UserHandle;
 import android.os.storage.StorageManager;
 import android.util.ArraySet;
 import android.util.Log;
 
 import com.android.server.pm.dex.DexManager;
 
+import com.android.server.pm.dex.PackageDexUsage;
 import java.io.File;
+import java.util.Collection;
+import java.util.HashSet;
+import java.util.Set;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.TimeUnit;
 
@@ -212,7 +219,8 @@ public class BackgroundDexOptService extends JobService {
                     /* checkProfiles */ false,
                     PackageManagerService.REASON_BOOT,
                     /* force */ false,
-                    /* bootComplete */ true);
+                    /* bootComplete */ true,
+                    /* downgrade */ false);
         }
         // Ran to completion, so we abandon our timeslice and do not reschedule.
         jobFinished(jobParams, /* reschedule */ false);
@@ -266,34 +274,84 @@ public class BackgroundDexOptService extends JobService {
     private int optimizePackages(PackageManagerService pm, ArraySet<String> pkgs,
             long lowStorageThreshold, boolean is_for_primary_dex,
             ArraySet<String> failedPackageNames) {
-        for (String pkg : pkgs) {
+        // packages is the set of all the available packages in contrast to pkgs which is a set
+        // of "package name" which are optimizable.
+        Collection<Package> packages;
+        synchronized (pm.mPackages) {
+            packages = pm.mPackages.values();
+        }
+        Set<String> unusedPackages = new HashSet<>();
+        analyzeUnusedPackages(pm, packages, unusedPackages);
+
+        // Only downgrade apps when space is low on device.
+        // Threshold is selected above the lowStorageThreshold so that we can pro-actively clean
+        // up disk before user hits the actual lowStorageThreshold.
+        boolean shouldDowngrade = shouldDowngrade(2 * lowStorageThreshold);
+        for (Package pkg : packages) {
+            if (!pkgs.contains(pkg.packageName)) {
+                // Package is non optimizable.
+                continue;
+            }
             int abort_code = abortIdleOptimizations(lowStorageThreshold);
-            if (abort_code != OPTIMIZE_CONTINUE) {
+            if (abort_code != OPTIMIZE_ABORT_BY_JOB_SCHEDULER) {
                 return abort_code;
             }
-
             synchronized (failedPackageNames) {
-                if (failedPackageNames.contains(pkg)) {
+                if (failedPackageNames.contains(pkg.packageName)) {
                     // Skip previously failing package
                     continue;
-                } else {
-                    // Conservatively add package to the list of failing ones in case performDexOpt
-                    // never returns.
-                    failedPackageNames.add(pkg);
                 }
             }
 
+            int reason;
+            boolean downgrade;
+            if (unusedPackages.contains(pkg.packageName)) {
+                // Downgrade unused packages.
+                if (shouldDowngrade) {
+                    if (!pkg.canHaveOatDir()) {
+                        // For apps that don't have the oat directory, instead of downgrading,
+                        // remove their compiler artifacts from dalvik cache.
+                        pm.mInstaller.deleteOatArtifactsOfPackage(pkg);
+                        continue;
+                    } else {
+                        reason = PackageManagerService.REASON_INACTIVE_PACKAGE_DOWNGRADE;
+                        downgrade = true;
+                    }
+                } else {
+                    // The app was inactive. No need to optimize.
+                    continue;
+                }
+            } else if (abort_code != OPTIMIZE_ABORT_NO_SPACE_LEFT){
+                reason = PackageManagerService.REASON_BACKGROUND_DEXOPT;
+                downgrade = false;
+            } else {
+                // can't dexopt because of low space.
+                continue;
+            }
+
+            synchronized (failedPackageNames) {
+                // Conservatively add package to the list of failing ones in case
+                // performDexOpt never returns.
+                failedPackageNames.add(pkg.packageName);
+            }
+
+            boolean success;
             // Optimize package if needed. Note that there can be no race between
             // concurrent jobs because PackageDexOptimizer.performDexOpt is synchronized.
-            boolean success = is_for_primary_dex
-                    ? pm.performDexOpt(pkg,
-                            /* checkProfiles */ true,
-                            PackageManagerService.REASON_BACKGROUND_DEXOPT,
-                            /* force */ false,
-                            /* bootComplete */ true)
-                    : pm.performDexOptSecondary(pkg,
-                            PackageManagerService.REASON_BACKGROUND_DEXOPT,
-                            /* force */ false);
+            if (is_for_primary_dex) {
+                success = pm.performDexOpt(pkg.packageName,
+                        /* checkProfiles */ true,
+                        reason,
+                        false /* forceCompile*/,
+                        true /* bootComplete */,
+                        downgrade);
+            } else {
+                success = pm.performDexOptSecondary(pkg.packageName,
+                        reason,
+                        false /* force */,
+                        downgrade);
+            }
+
             if (success) {
                 // Dexopt succeeded, remove package from the list of failing ones.
                 synchronized (failedPackageNames) {
@@ -302,6 +360,57 @@ public class BackgroundDexOptService extends JobService {
             }
         }
         return OPTIMIZE_PROCESSED;
+    }
+
+    private void analyzeUnusedPackages(PackageManagerService pm, Collection<Package> pkgs,
+            Set<String> unusedPackages) {
+        long currentTimeInMillis = System.currentTimeMillis();
+        long downgradeTimeThresholdMillis = getDowngradeUnusedAppsThresholdInMillis();
+        int user = UserHandle.getUserId(Binder.getCallingUid());
+        for (Package pkg : pkgs) {
+            PackageInfo packageInfo = pm.getPackageInfo(pkg.packageName, 0, user);
+            if (isUnusedSinceTimeInMillis(pkg, packageInfo, currentTimeInMillis,
+                    downgradeTimeThresholdMillis)) {
+                unusedPackages.add(pkg.packageName);
+            }
+        }
+    }
+
+    private boolean isUnusedSinceTimeInMillis(Package pkg, PackageInfo packageInfo,
+            long currentTimeInMillis, long thresholdTimeinMillis) {
+        PackageDexUsage packageDexUsage = new PackageDexUsage();
+
+        // If the app was installed within the thresholdTime, then we don't consider it as inactive.
+        long firstInstallTime = packageInfo.firstInstallTime;
+        if (currentTimeInMillis - firstInstallTime < thresholdTimeinMillis) {
+            return false;
+        }
+
+        // If the app was active in foreground during the threshold period.
+        boolean isActiveInForeground = (currentTimeInMillis
+                - pkg.getLatestForegroundPackageUseTimeInMills())
+                < thresholdTimeinMillis;
+
+        if (isActiveInForeground) {
+            return false;
+        }
+
+        PackageDexUsage.PackageUseInfo packageUseInfo =
+                packageDexUsage.getPackageUseInfo(pkg.packageName);
+
+        if (packageUseInfo == null) {
+            // We don't have sufficient info about the app.
+            return false;
+        }
+
+        // If the app was active in background during the threshold period and was used
+        // by other packages.
+        boolean isActiveInBackgroundAndUsedByOtherPackages = ((currentTimeInMillis
+                - pkg.getLatestPackageUseTimeInMills())
+                < thresholdTimeinMillis)
+                && packageDexUsage.getPackageUseInfo(pkg.packageName).isUsedByOtherApps();
+
+        return !isActiveInBackgroundAndUsedByOtherPackages;
     }
 
     private int reconcileSecondaryDexFiles(DexManager dm) {
@@ -329,6 +438,16 @@ public class BackgroundDexOptService extends JobService {
         }
 
         return OPTIMIZE_CONTINUE;
+    }
+
+    // Evaluate whether apps should be downgraded.
+    private boolean shouldDowngrade(long lowStorageThresholdForDowngrade) {
+        long usableSpace = mDataDir.getUsableSpace();
+        if (usableSpace < lowStorageThresholdForDowngrade) {
+            return true;
+        }
+
+        return false;
     }
 
     /**
@@ -387,5 +506,21 @@ public class BackgroundDexOptService extends JobService {
             mAbortIdleOptimization.set(true);
         }
         return false;
+    }
+
+    private static long getDowngradeUnusedAppsThresholdInMillis() {
+        final String sysPropKey = "pm.dexopt.downgrade_after_inactive_days";
+        String sysPropValue = SystemProperties.get(sysPropKey);
+        if (sysPropValue == null || sysPropValue.isEmpty()) {
+            Log.w(TAG, "SysProp " + sysPropKey + " not set");
+            return Long.MAX_VALUE;
+        }
+        try {
+            return TimeUnit.DAYS.toMillis(Long.parseLong(sysPropValue));
+        } catch (NumberFormatException nfe) {
+            Log.w(TAG, "Illegal value for " + sysPropKey + " : " +
+                sysPropValue);
+            return Long.MAX_VALUE;
+        }
     }
 }
