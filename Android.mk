@@ -535,6 +535,13 @@ ifeq ($(EMMA_INSTRUMENT_FRAMEWORK),true)
 LOCAL_EMMA_INSTRUMENT := true
 endif
 
+ifeq ($(ANDROID_ENABLE_CORE_OBFUSCATION),true)
+# Strip LocalVariableTable,LocalVariableTypeTable and SourceFile attributes, everything else stays.
+LOCAL_PROGUARD_ENABLED := obfuscation nosystem
+LOCAL_PROGUARD_FLAGS := -dontshrink -ignorewarnings -keepattributes Exceptions,InnerClasses,\
+Signature,Deprecated,SourceFile,LineNumberTable,*Annotation*,EnclosingMethod -keep class \*\* {\*\;}
+endif
+
 include $(BUILD_JAVA_LIBRARY)
 
 framework_module := $(LOCAL_INSTALLED_MODULE)
