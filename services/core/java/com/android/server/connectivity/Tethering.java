@@ -18,7 +18,12 @@ package com.android.server.connectivity;
 
 import static android.hardware.usb.UsbManager.USB_CONNECTED;
 import static android.hardware.usb.UsbManager.USB_FUNCTION_RNDIS;
+import static android.net.wifi.WifiManager.EXTRA_WIFI_AP_INTERFACE_NAME;
+import static android.net.wifi.WifiManager.EXTRA_WIFI_AP_MODE;
 import static android.net.wifi.WifiManager.EXTRA_WIFI_AP_STATE;
+import static android.net.wifi.WifiManager.IFACE_IP_MODE_CONFIGURATION_ERROR;
+import static android.net.wifi.WifiManager.IFACE_IP_MODE_LOCAL_ONLY;
+import static android.net.wifi.WifiManager.IFACE_IP_MODE_TETHERED;
 import static android.net.wifi.WifiManager.WIFI_AP_STATE_DISABLED;
 import static com.android.server.ConnectivityService.SHORT_ARG;
 
@@ -788,12 +793,27 @@ public class Tethering extends BaseNetworkObserver implements IControlsTethering
 
         private void handleWifiApAction(Intent intent) {
             final int curState =  intent.getIntExtra(EXTRA_WIFI_AP_STATE, WIFI_AP_STATE_DISABLED);
+            final String ifname = intent.getStringExtra(EXTRA_WIFI_AP_STATE);
+            final int ipmode = intent.getIntExtra(EXTRA_WIFI_AP_MODE, Integer.MIN_VALUE);
+
             synchronized (Tethering.this.mPublicSync) {
                 switch (curState) {
                     case WifiManager.WIFI_AP_STATE_ENABLING:
                         // We can see this state on the way to both enabled and failure states.
                         break;
                     case WifiManager.WIFI_AP_STATE_ENABLED:
+                        if (!TextUtils.isEmpty(ifname)) {
+                            if (ipmode == IFACE_IP_MODE_TETHERED) {
+                                changeInterfaceState(ifname, IControlsTethering.STATE_TETHERED);
+                                break;
+                            } else if (ipmode == IFACE_IP_MODE_LOCAL_ONLY) {
+                                changeInterfaceState(ifname, IControlsTethering.STATE_LOCAL_ONLY);
+                                break;
+                            } else {
+                                mLog.e("Unknown IP mode from WiFi: " + ipmode);
+                                // Fall-through to legacy "guessing" behaviour.
+                            }
+                        }
                         // When the AP comes up and we've been requested to tether it, do so.
                         // Otherwise, assume it's a local-only hotspot request.
                         final int state = mWifiTetherRequested
@@ -861,22 +881,26 @@ public class Tethering extends BaseNetworkObserver implements IControlsTethering
             return;
         }
 
+        changeInterfaceState(chosenIface, requestedState);
+    }
+
+    private void changeInterfaceState(String ifname, int requestedState) {
         final int result;
         switch (requestedState) {
             case IControlsTethering.STATE_UNAVAILABLE:
             case IControlsTethering.STATE_AVAILABLE:
-                result = untether(chosenIface);
+                result = untether(ifname);
                 break;
             case IControlsTethering.STATE_TETHERED:
             case IControlsTethering.STATE_LOCAL_ONLY:
-                result = tether(chosenIface, requestedState);
+                result = tether(ifname, requestedState);
                 break;
             default:
                 Log.wtf(TAG, "Unknown interface state: " + requestedState);
                 return;
         }
         if (result != ConnectivityManager.TETHER_ERROR_NO_ERROR) {
-            Log.e(TAG, "unable start or stop tethering on iface " + chosenIface);
+            Log.e(TAG, "unable start or stop tethering on iface " + ifname);
             return;
         }
     }
@@ -1359,10 +1383,10 @@ public class Tethering extends BaseNetworkObserver implements IControlsTethering
                 final String iface = who.interfaceName();
                 switch (mode) {
                     case IControlsTethering.STATE_TETHERED:
-                        mgr.updateInterfaceIpState(iface, WifiManager.IFACE_IP_MODE_TETHERED);
+                        mgr.updateInterfaceIpState(iface, IFACE_IP_MODE_TETHERED);
                         break;
                     case IControlsTethering.STATE_LOCAL_ONLY:
-                        mgr.updateInterfaceIpState(iface, WifiManager.IFACE_IP_MODE_LOCAL_ONLY);
+                        mgr.updateInterfaceIpState(iface, IFACE_IP_MODE_LOCAL_ONLY);
                         break;
                     default:
                         Log.wtf(TAG, "Unknown active serving mode: " + mode);
@@ -1380,7 +1404,7 @@ public class Tethering extends BaseNetworkObserver implements IControlsTethering
             if (who.interfaceType() == ConnectivityManager.TETHERING_WIFI) {
                 if (who.lastError() != ConnectivityManager.TETHER_ERROR_NO_ERROR) {
                     getWifiManager().updateInterfaceIpState(
-                            who.interfaceName(), WifiManager.IFACE_IP_MODE_CONFIGURATION_ERROR);
+                            who.interfaceName(), IFACE_IP_MODE_CONFIGURATION_ERROR);
                 }
             }
         }
