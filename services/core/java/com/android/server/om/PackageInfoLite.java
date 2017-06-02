@@ -37,4 +37,8 @@ final class PackageInfoLite {
         this.overlayPriority = overlayPriority;
         this.codePath = codePath;
     }
+
+    public String toString() {
+        return String.format("PackageInfoLite {packageName=%s codePath=%s}", packageName, codePath);
+    }
 }

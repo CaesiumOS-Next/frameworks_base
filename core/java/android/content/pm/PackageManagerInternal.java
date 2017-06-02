@@ -312,14 +312,6 @@ public abstract class PackageManagerInternal {
     public abstract boolean isPackagePersistent(String packageName);
 
     /**
-     * Get all overlay packages for a user.
-     * @param userId The user for which to get the overlays.
-     * @return A list of overlay packages. An empty list is returned if the
-     *         user has no installed overlay packages.
-     */
-    public abstract List<PackageInfo> getOverlayPackages(int userId);
-
-    /**
      * Get the names of all target packages for a user.
      * @param userId The user for which to get the package names.
      * @return A list of target package names. This list includes the "android" package.

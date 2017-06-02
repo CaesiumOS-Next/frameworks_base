@@ -28,7 +28,7 @@ import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.LinkedBlockingQueue;
 
 class PackageUtils {
-    public static void install(@NonNull final Context ctx, @NonNull final Uri uri)
+    public static void install(@NonNull final Context ctx, @NonNull final Uri... uris)
             throws Exception {
         final PackageInstaller installer = ctx.getPackageManager().getPackageInstaller();
         SessionParams params = new SessionParams(MODE_FULL_INSTALL);
@@ -36,14 +36,17 @@ class PackageUtils {
         final int sessionId = installer.createSession(params);
         final PackageInstaller.Session session = installer.openSession(sessionId);
 
-        try (
-            final InputStream is = ctx.getContentResolver().openInputStream(uri);
-            final OutputStream os = session.openWrite(PackageUtils.class.getSimpleName(), 0, -1);
-        ) {
-            int c;
-            byte[] buffer = new byte[1024];
-            while ((c = is.read(buffer)) != -1) {
-                os.write(buffer, 0, c);
+        for (int i = 0; i < uris.length; i++) {
+            final Uri uri = uris[i];
+            try (
+                final InputStream is = ctx.getContentResolver().openInputStream(uri);
+                final OutputStream os = session.openWrite(String.format("apk-%d", i), 0, -1);
+            ) {
+                int c;
+                byte[] buffer = new byte[1024];
+                while ((c = is.read(buffer)) != -1) {
+                    os.write(buffer, 0, c);
+                }
             }
         }
 

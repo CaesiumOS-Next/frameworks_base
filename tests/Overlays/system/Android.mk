@@ -9,4 +9,6 @@ LOCAL_MODULE_TAGS := tests
 
 LOCAL_CERTIFICATE := platform
 
-include $(BUILD_RRO_PACKAGE)
+LOCAL_USE_AAPT2 := true
+
+include $(BUILD_PACKAGE)

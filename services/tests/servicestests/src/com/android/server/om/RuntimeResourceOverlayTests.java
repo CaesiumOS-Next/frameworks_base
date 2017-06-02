@@ -2,6 +2,8 @@ package com.android.server.om;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assume.assumeTrue;
 
@@ -54,6 +56,9 @@ public class RuntimeResourceOverlayTests {
 
     private static final String SOME_OTHER_APP_URI = URI_PREFIX + "some_other_app";
     private static final String APP_OVERLAY_1_V2_URI = URI_PREFIX + "app_overlay_1_v2";
+    private static final String SPLIT_BASE = URI_PREFIX + "split_base";
+    private static final String SPLIT_STRING = URI_PREFIX + "split_string";
+    private static final String SPLIT_INTEGER = URI_PREFIX + "split_integer";
 
     private static HashMap<String, Integer> OVERLAY_PACKAGES = new HashMap<>();
 
@@ -502,6 +507,55 @@ public class RuntimeResourceOverlayTests {
         assertResource(0, R.integer.i);
         OverlayUtils.enable(mContext, APP_OVERLAY_OTHER_SIG, mUserId);
         assertResource(0, R.integer.i); // resource should be unmodified
+    }
+
+    @Test
+    public void testSplitOverlay() throws Exception {
+        assertNull(OverlayUtils.getOverlayInfo(mContext,
+                    "com.android.rrotests.split:string", mUserId));
+        assertNull(OverlayUtils.getOverlayInfo(mContext,
+                    "com.android.rrotests.split:integer", mUserId));
+        try {
+            PackageUtils.install(mContext,
+                    Uri.parse(SPLIT_BASE),
+                    Uri.parse(SPLIT_STRING),
+                    Uri.parse(SPLIT_INTEGER));
+            OverlayUtils.pollUntilOverlayAppears(mContext,
+                    "com.android.rrotests.split:string", mUserId);
+            OverlayUtils.pollUntilOverlayAppears(mContext,
+                    "com.android.rrotests.split:integer", mUserId);
+
+            assertNotNull(OverlayUtils.getOverlayInfo(mContext,
+                        "com.android.rrotests.split:string", mUserId));
+            assertNotNull(OverlayUtils.getOverlayInfo(mContext,
+                        "com.android.rrotests.split:integer", mUserId));
+
+            assertResource("a", R.string.s);
+            assertResource(0, R.integer.i);
+
+            OverlayUtils.enable(mContext, "com.android.rrotests.split:string", mUserId);
+            assertResource("split", R.string.s);
+            assertResource(0, R.integer.i);
+
+            OverlayUtils.enable(mContext, "com.android.rrotests.split:integer", mUserId);
+            assertResource("split", R.string.s);
+            assertResource(-1, R.integer.i);
+
+            OverlayUtils.disable(mContext, "com.android.rrotests.split:string", mUserId);
+            assertResource("a", R.string.s);
+            assertResource(-1, R.integer.i);
+
+            OverlayUtils.disable(mContext, "com.android.rrotests.split:integer", mUserId);
+            assertResource("a", R.string.s);
+            assertResource(0, R.integer.i);
+        } finally {
+            PackageUtils.uninstall(mContext, "com.android.rrotests.split");
+            SystemClock.sleep(1000);
+        }
+        assertNull(OverlayUtils.getOverlayInfo(mContext,
+                    "com.android.rrotests.split:string", mUserId));
+        assertNull(OverlayUtils.getOverlayInfo(mContext,
+                    "com.android.rrotests.split:integer", mUserId));
     }
 
     private void assertResource(boolean expected, int resid) throws Exception {

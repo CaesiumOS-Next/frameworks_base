@@ -23,6 +23,12 @@ class OverlayUtils {
     private static final int DELAY_MS = 100;
     private static final int MAX_WAIT_TIME = 10 * 1000;
 
+    public static OverlayInfo getOverlayInfo(@NonNull final Context ctx,
+            @NonNull final String packageName, final int userId) throws Exception {
+        final IOverlayManager om = getOverlayManager(ctx);
+        return om.getOverlayInfo(packageName, userId);
+    }
+
     public static void enable(@NonNull final Context ctx, @NonNull final String packageName,
             final int userId) throws Exception {
         if (isEnabled(ctx, packageName, userId)) {

@@ -36,13 +36,13 @@ public class MainActivity extends Activity {
     };
 
     private static final Overlay OVERLAY_RED =
-            new Overlay("com.android.test.overlay.red", USER_CURRENT);
+            new Overlay("com.android.test.overlay:red", USER_CURRENT);
     private static final Overlay OVERLAY_GREEN =
-            new Overlay("com.android.test.overlay.green", USER_CURRENT);
+            new Overlay("com.android.test.overlay:green", USER_CURRENT);
     private static final Overlay OVERLAY_BLUE =
-            new Overlay("com.android.test.overlay.blue", USER_CURRENT);
+            new Overlay("com.android.test.overlay:blue", USER_CURRENT);
     private static final Overlay OVERLAY_SYSTEM =
-            new Overlay("com.android.test.overlay.system", USER_SYSTEM);
+            new Overlay("com.android.test.overlay:system", USER_SYSTEM);
 
     private static final Overlay[] ALL_OVERLAY_PACKAGES = {
         OVERLAY_RED,

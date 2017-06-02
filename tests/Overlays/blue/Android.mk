@@ -7,4 +7,8 @@ LOCAL_PACKAGE_NAME := OverlaysBlue
 
 LOCAL_MODULE_TAGS := tests
 
-include $(BUILD_RRO_PACKAGE)
+LOCAL_CERTIFICATE := platform
+
+LOCAL_USE_AAPT2 := true
+
+include $(BUILD_PACKAGE)

@@ -37,6 +37,7 @@ import android.content.om.OverlayInfo;
 import android.content.pm.IPackageManager;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManagerInternal;
+import android.content.pm.ParceledListSlice;
 import android.content.pm.UserInfo;
 import android.net.Uri;
 import android.os.Binder;
@@ -81,6 +82,8 @@ import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.Future;
 import java.util.concurrent.atomic.AtomicBoolean;
+import java.util.function.BiConsumer;
+import java.util.stream.Collectors;
 
 /**
  * Service to manage asset overlays.
@@ -341,19 +344,46 @@ public final class OverlayManagerService extends SystemService {
             switch (intent.getAction()) {
                 case ACTION_PACKAGE_ADDED:
                     if (replacing) {
-                        onPackageUpgraded(packageName, userIds);
+                        // a package just finished upgrading
+                        handlePackageEvent(packageName, userIds,
+                                mImpl::onTargetPackageAdded,
+                                mImpl::onOverlayPackageAdded,
+                                mImpl::onTargetPackageUpgraded,
+                                mImpl::onOverlayPackageUpgraded,
+                                mImpl::onTargetPackageRemoved,
+                                mImpl::onOverlayPackageRemoved);
                     } else {
-                        onPackageAdded(packageName, userIds);
+                        // a package was just installed
+                        handlePackageEvent(packageName, userIds,
+                                mImpl::onTargetPackageAdded,
+                                mImpl::onOverlayPackageAdded,
+                                mImpl::onTargetPackageChanged,
+                                mImpl::onOverlayPackageChanged,
+                                mImpl::onTargetPackageRemoved,
+                                mImpl::onOverlayPackageRemoved);
                     }
                     break;
                 case ACTION_PACKAGE_CHANGED:
-                    onPackageChanged(packageName, userIds);
+                        // a component in a package was just changed
+                    handlePackageEvent(packageName, userIds,
+                            mImpl::onTargetPackageAdded,
+                            mImpl::onOverlayPackageAdded,
+                            mImpl::onTargetPackageChanged,
+                            mImpl::onOverlayPackageChanged,
+                            mImpl::onTargetPackageRemoved,
+                            mImpl::onOverlayPackageRemoved);
                     break;
                 case ACTION_PACKAGE_REMOVED:
                     if (replacing) {
-                        onPackageUpgrading(packageName, userIds);
+                        // a package just started upgrading
+                        handlePackageEvent(packageName, userIds,
+                                mImpl::onTargetPackageUpgrading,
+                                mImpl::onOverlayPackageUpgrading);
                     } else {
-                        onPackageRemoved(packageName, userIds);
+                        // a package was just uninstalled
+                        handlePackageEvent(packageName, userIds,
+                                mImpl::onTargetPackageRemoved,
+                                mImpl::onOverlayPackageRemoved);
                     }
                     break;
                 default:
@@ -362,91 +392,75 @@ public final class OverlayManagerService extends SystemService {
             }
         }
 
-        private void onPackageAdded(@NonNull final String packageName,
-                @NonNull final int[] userIds) {
-            for (final int userId : userIds) {
+        private void handlePackageEvent(@NonNull final String packageName,
+                @NonNull final int[] userIds,
+                @NonNull BiConsumer<String, Integer> removedTargetPackageMethod,
+                @NonNull BiConsumer<String, Integer> removedOverlayPackageMethod) {
+            handlePackageEvent(packageName, userIds, null, null, null, null,
+                    removedTargetPackageMethod, removedOverlayPackageMethod);
+        }
+
+        private void handlePackageEvent(@NonNull final String packageName,
+                @NonNull final int[] userIds,
+                @Nullable BiConsumer<String, Integer> addedTargetPackageMethod,
+                @Nullable BiConsumer<String, Integer> addedOverlayPackageMethod,
+                @Nullable BiConsumer<String, Integer> changedTargetPackageMethod,
+                @Nullable BiConsumer<String, Integer> changedOverlayPackageMethod,
+                @NonNull BiConsumer<String, Integer> removedTargetPackageMethod,
+                @NonNull BiConsumer<String, Integer> removedOverlayPackageMethod) {
+            for (int userId : userIds) {
                 synchronized (mLock) {
-                    final PackageInfo pi = mPackageManager.getPackageInfo(packageName, userId);
-                    if (pi == null) {
-                        continue;
+                    final List<String> known = getKnownPackageNames(packageName, userId);
+
+                    if (addedTargetPackageMethod != null) {
+                        final PackageInfo pi = mPackageManager.getPackageInfo(packageName, userId);
+                        final List<PackageInfoLite> existing = pi != null ?
+                            mPackageManager.parsePackageInfo(pi) : Collections.emptyList();
+                        for (int i = 0; i < existing.size(); i++) {
+                            final PackageInfoLite pil = existing.get(i);
+                            mPackageManager.cachePackageInfoLite(pil.packageName, userId, pil);
+                            if (known.contains(pil.packageName)) {
+                                // changed*PackageMethod
+                                known.remove(pil.packageName);
+                                if (!isOverlayPackage(pil)) {
+                                    changedTargetPackageMethod.accept(pil.packageName, userId);
+                                } else {
+                                    changedOverlayPackageMethod.accept(pil.packageName, userId);
+                                }
+                            } else {
+                                // added*PackageMethod
+                                if (!isOverlayPackage(pil)) {
+                                    addedTargetPackageMethod.accept(pil.packageName, userId);
+                                } else {
+                                    addedOverlayPackageMethod.accept(pil.packageName, userId);
+                                }
+                            }
+                        }
                     }
-                    final PackageInfoLite pil = mPackageManager.parsePackageInfo(pi);
-                    mPackageManager.cachePackageInfoLite(packageName, userId, pil);
-                    if (!isOverlayPackage(pil)) {
-                        mImpl.onTargetPackageAdded(packageName, userId);
-                    } else {
-                        mImpl.onOverlayPackageAdded(packageName, userId);
+                    for (int i = 0; i < known.size(); i++) {
+                        final String name = known.get(i);
+                        mPackageManager.forgetPackageInfoLite(name, userId);
+                        final OverlayInfo oi = mImpl.getOverlayInfo(name, userId);
+                        // removed*PackageMethod
+                        if (oi == null) {
+                            removedTargetPackageMethod.accept(name, userId);
+                        } else {
+                            removedOverlayPackageMethod.accept(name, userId);
+                        }
                     }
                 }
             }
         }
 
-        private void onPackageChanged(@NonNull final String packageName,
-                @NonNull final int[] userIds) {
-            for (int userId : userIds) {
-                synchronized (mLock) {
-                    final PackageInfo pi = mPackageManager.getPackageInfo(packageName, userId);
-                    if (pi == null) {
-                        continue;
-                    }
-                    final PackageInfoLite pil = mPackageManager.parsePackageInfo(pi);
-                    mPackageManager.cachePackageInfoLite(packageName, userId, pil);
-                    if (!isOverlayPackage(pil)) {
-                        mImpl.onTargetPackageChanged(packageName, userId);
-                    } else {
-                        mImpl.onOverlayPackageChanged(packageName, userId);
-                    }
-                }
-            }
-        }
-
-        private void onPackageUpgrading(@NonNull final String packageName,
-                @NonNull final int[] userIds) {
-            for (int userId : userIds) {
-                synchronized (mLock) {
-                    mPackageManager.forgetPackageInfoLite(packageName, userId);
-                    final OverlayInfo oi = mImpl.getOverlayInfo(packageName, userId);
-                    if (oi == null) {
-                        mImpl.onTargetPackageUpgrading(packageName, userId);
-                    } else {
-                        mImpl.onOverlayPackageUpgrading(packageName, userId);
-                    }
-                }
-            }
-        }
-
-        private void onPackageUpgraded(@NonNull final String packageName,
-                @NonNull final int[] userIds) {
-            for (int userId : userIds) {
-                synchronized (mLock) {
-                    final PackageInfo pi = mPackageManager.getPackageInfo(packageName, userId);
-                    if (pi == null) {
-                        continue;
-                    }
-                    final PackageInfoLite pil = mPackageManager.parsePackageInfo(pi);
-                    mPackageManager.cachePackageInfoLite(packageName, userId, pil);
-                    if (!isOverlayPackage(pil)) {
-                        mImpl.onTargetPackageUpgraded(packageName, userId);
-                    } else {
-                        mImpl.onOverlayPackageUpgraded(packageName, userId);
-                    }
-                }
-            }
-        }
-
-        private void onPackageRemoved(@NonNull final String packageName,
-                @NonNull final int[] userIds) {
-            for (int userId : userIds) {
-                synchronized (mLock) {
-                    mPackageManager.forgetPackageInfoLite(packageName, userId);
-                    final OverlayInfo oi = mImpl.getOverlayInfo(packageName, userId);
-                    if (oi == null) {
-                        mImpl.onTargetPackageRemoved(packageName, userId);
-                    } else {
-                        mImpl.onOverlayPackageRemoved(packageName, userId);
-                    }
-                }
-            }
+        private List<String> getKnownPackageNames(@NonNull final String packageName,
+                final int userId) {
+            final String prefix = packageName + ":";
+            return mSettings.getOverlaysForUser(userId).values().stream()
+                .flatMap(items -> items.stream())
+                .filter(item -> item.packageName.equals(packageName) ||
+                        item.packageName.startsWith(prefix))
+                .map(item -> item.packageName)
+                .collect(Collectors.toList());
         }
     }
 
@@ -671,7 +685,7 @@ public final class OverlayManagerService extends SystemService {
         }
     };
 
-    private boolean isOverlayPackage(@NonNull final PackageInfoLite pil) {
+    private static boolean isOverlayPackage(@NonNull final PackageInfoLite pil) {
         return pil != null && pil.overlayTarget != null;
     }
 
@@ -833,9 +847,24 @@ public final class OverlayManagerService extends SystemService {
             mPackageManagerInternal = LocalServices.getService(PackageManagerInternal.class);
         }
 
-        public PackageInfoLite parsePackageInfo(@NonNull final PackageInfo pi) {
-            return new PackageInfoLite(pi.packageName, pi.overlayTarget, pi.applicationInfo.uid,
-                    pi.isStaticOverlay, pi.overlayPriority, pi.applicationInfo.getBaseCodePath());
+        public List<PackageInfoLite> parsePackageInfo(@NonNull final PackageInfo pi) {
+            final int numberOfSplits = pi.splitNames != null ? pi.splitNames.length : 0;
+            List<PackageInfoLite> pkgs = new ArrayList<>(1 + numberOfSplits);
+
+            final PackageInfoLite base = new PackageInfoLite(pi.packageName, pi.overlayTarget,
+                    pi.applicationInfo.uid, pi.isStaticOverlay, pi.overlayPriority,
+                    pi.applicationInfo.getBaseCodePath());
+            pkgs.add(base);
+
+            for (int i = 0; i < numberOfSplits; i++) {
+                final String name = String.format("%s:%s", pi.packageName, pi.splitNames[i]);
+                final PackageInfoLite split = new PackageInfoLite(name,
+                        pi.splitOverlayTargetPackageNames[i], pi.applicationInfo.uid,
+                        false, 0, pi.splitCodePaths[i]);
+                pkgs.add(split);
+            }
+
+            return pkgs;
         }
 
         public PackageInfo getPackageInfo(@NonNull final String packageName, final int userId) {
@@ -870,8 +899,8 @@ public final class OverlayManagerService extends SystemService {
             // The package manager does not support different versions of packages
             // to be installed for different users: ignore userId for now.
             try {
-                return mPackageManager.checkSignatures(
-                        packageName1, packageName2) == SIGNATURE_MATCH;
+                return mPackageManager.checkSignatures(convertToBasePackageName(packageName1),
+                        convertToBasePackageName(packageName2)) == SIGNATURE_MATCH;
             } catch (RemoteException e) {
                 // Intentionally left blank
             }
@@ -880,14 +909,27 @@ public final class OverlayManagerService extends SystemService {
 
         @Override
         public List<PackageInfoLite> getOverlayPackages(final int userId) {
-            List<PackageInfo> pis = mPackageManagerInternal.getOverlayPackages(userId);
-            final int N = pis.size();
-            if (N == 0) {
+            ParceledListSlice<PackageInfo> parceledList = null;
+            try {
+                parceledList = mPackageManager.getInstalledPackages(0, userId);
+            } catch (RemoteException e) {
+                // Intentionally left blank
+            }
+            if (parceledList == null) {
                 return Collections.emptyList();
             }
-            List<PackageInfoLite> pils = new ArrayList<>(N);
+            List<PackageInfo> allPackages = parceledList.getList();
+            final int N = allPackages.size();
+            List<PackageInfoLite> pils = new ArrayList<>();
             for (int i = 0; i < N; i++) {
-                pils.add(parsePackageInfo(pis.get(i)));
+                List<PackageInfoLite> tmp = parsePackageInfo(allPackages.get(i));
+                for (int j = 0; j < tmp.size(); j++) {
+                    PackageInfoLite pil = tmp.get(j);
+                    if (isOverlayPackage(pil)) {
+                        pils.add(pil);
+                        cachePackageInfoLite(pil.packageName, userId, pil);
+                    }
+                }
             }
             return pils;
         }
@@ -921,6 +963,11 @@ public final class OverlayManagerService extends SystemService {
                 final int userId) {
             final HashMap<String, PackageInfoLite> map = mCache.get(userId);
             return map == null ? null : map.get(packageName);
+        }
+
+        private String convertToBasePackageName(final String name) {
+            final int index = name.indexOf(":");
+            return index < 0 ? name : name.substring(0, index);
         }
 
         private static final String TAB1 = "    ";

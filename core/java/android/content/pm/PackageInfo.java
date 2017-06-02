@@ -66,6 +66,28 @@ public class PackageInfo implements Parcelable {
     public int[] splitRevisionCodes;
 
     /**
+     * The path to any split APKs for this package. Indexes are a 1:1 mapping
+     * against {@link #splitNames}.
+     *
+     * For splits that are not overlays, the corresponding value is null.
+     *
+     * @hide
+     */
+    public String[] splitCodePaths;
+
+    /**
+     * The name of the target package of any split which is an overlay, as
+     * specified by the %lt;overlay&gt; tag's
+     * {@link android.R.styleable#AndroidManifest_targetPackage targetPackage}
+     * attribute. Indexes are a 1:1 mapping against {@link #splitNames}.
+     *
+     * For splits that are not overlays, the corresponding value is null.
+     *
+     * @hide
+     */
+    public String[] splitOverlayTargetPackageNames;
+
+    /**
      * The shared user ID name of this package, as specified by the &lt;manifest&gt;
      * tag's {@link android.R.styleable#AndroidManifest_sharedUserId sharedUserId}
      * attribute.
@@ -300,6 +322,8 @@ public class PackageInfo implements Parcelable {
         dest.writeString(versionName);
         dest.writeInt(baseRevisionCode);
         dest.writeIntArray(splitRevisionCodes);
+        dest.writeStringArray(splitCodePaths);
+        dest.writeStringArray(splitOverlayTargetPackageNames);
         dest.writeString(sharedUserId);
         dest.writeInt(sharedUserLabel);
         if (applicationInfo != null) {
@@ -353,6 +377,8 @@ public class PackageInfo implements Parcelable {
         versionName = source.readString();
         baseRevisionCode = source.readInt();
         splitRevisionCodes = source.createIntArray();
+        splitCodePaths = source.createStringArray();
+        splitOverlayTargetPackageNames = source.createStringArray();
         sharedUserId = source.readString();
         sharedUserLabel = source.readInt();
         int hasApp = source.readInt();

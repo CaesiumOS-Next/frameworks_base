@@ -407,6 +407,9 @@ public class PackageParser {
         /** Revision codes of any split APKs, ordered by parsed splitName */
         public final int[] splitRevisionCodes;
 
+        /** Overlay target package names, ordered by parsed splitName */
+        public final String[] splitOverlayTargetPackageNames;
+
         public final boolean coreApp;
         public final boolean debuggable;
         public final boolean multiArch;
@@ -416,7 +419,8 @@ public class PackageParser {
 
         public PackageLite(String codePath, ApkLite baseApk, String[] splitNames,
                 boolean[] isFeatureSplits, String[] usesSplitNames, String[] configForSplit,
-                String[] splitCodePaths, int[] splitRevisionCodes) {
+                String[] splitCodePaths, int[] splitRevisionCodes,
+                String[] splitOverlayTargetPackageNames) {
             this.packageName = baseApk.packageName;
             this.versionCode = baseApk.versionCode;
             this.installLocation = baseApk.installLocation;
@@ -430,6 +434,7 @@ public class PackageParser {
             this.splitCodePaths = splitCodePaths;
             this.baseRevisionCode = baseApk.revisionCode;
             this.splitRevisionCodes = splitRevisionCodes;
+            this.splitOverlayTargetPackageNames = splitOverlayTargetPackageNames;
             this.coreApp = baseApk.coreApp;
             this.debuggable = baseApk.debuggable;
             this.multiArch = baseApk.multiArch;
@@ -470,13 +475,14 @@ public class PackageParser {
         public final boolean use32bitAbi;
         public final boolean extractNativeLibs;
         public final boolean isolatedSplits;
+        public final String overlayTargetPackageName;
 
         public ApkLite(String codePath, String packageName, String splitName, boolean isFeatureSplit,
                 String configForSplit, String usesSplitName, int versionCode, int revisionCode,
                 int installLocation, List<VerifierInfo> verifiers, Signature[] signatures,
                 Certificate[][] certificates, boolean coreApp, boolean debuggable,
                 boolean multiArch, boolean use32bitAbi, boolean extractNativeLibs,
-                boolean isolatedSplits) {
+                boolean isolatedSplits, String overlayTargetPackageName) {
             this.codePath = codePath;
             this.packageName = packageName;
             this.splitName = splitName;
@@ -495,6 +501,7 @@ public class PackageParser {
             this.use32bitAbi = use32bitAbi;
             this.extractNativeLibs = extractNativeLibs;
             this.isolatedSplits = isolatedSplits;
+            this.overlayTargetPackageName = overlayTargetPackageName;
         }
     }
 
@@ -634,6 +641,8 @@ public class PackageParser {
         pi.versionCode = p.mVersionCode;
         pi.baseRevisionCode = p.baseRevisionCode;
         pi.splitRevisionCodes = p.splitRevisionCodes;
+        pi.splitCodePaths = p.splitCodePaths;
+        pi.splitOverlayTargetPackageNames = p.splitOverlayTargetPackageNames;
         pi.versionName = p.mVersionName;
         pi.sharedUserId = p.mSharedUserId;
         pi.sharedUserLabel = p.mSharedUserLabel;
@@ -847,7 +856,7 @@ public class PackageParser {
         final ApkLite baseApk = parseApkLite(packageFile, flags);
         final String packagePath = packageFile.getAbsolutePath();
         Trace.traceEnd(TRACE_TAG_PACKAGE_MANAGER);
-        return new PackageLite(packagePath, baseApk, null, null, null, null, null, null);
+        return new PackageLite(packagePath, baseApk, null, null, null, null, null, null, null);
     }
 
     static PackageLite parseClusterPackageLite(File packageDir, int flags)
@@ -910,6 +919,7 @@ public class PackageParser {
         String[] configForSplits = null;
         String[] splitCodePaths = null;
         int[] splitRevisionCodes = null;
+        String[] splitOverlayTargetPackageNames = null;
         if (size > 0) {
             splitNames = new String[size];
             isFeatureSplits = new boolean[size];
@@ -917,6 +927,7 @@ public class PackageParser {
             configForSplits = new String[size];
             splitCodePaths = new String[size];
             splitRevisionCodes = new int[size];
+            splitOverlayTargetPackageNames = new String[size];
 
             splitNames = apks.keySet().toArray(splitNames);
             Arrays.sort(splitNames, sSplitNameComparator);
@@ -928,12 +939,14 @@ public class PackageParser {
                 configForSplits[i] = apk.configForSplit;
                 splitCodePaths[i] = apk.codePath;
                 splitRevisionCodes[i] = apk.revisionCode;
+                splitOverlayTargetPackageNames[i] = apk.overlayTargetPackageName;
             }
         }
 
         final String codePath = packageDir.getAbsolutePath();
         return new PackageLite(codePath, baseApk, splitNames, isFeatureSplits, usesSplitNames,
-                configForSplits, splitCodePaths, splitRevisionCodes);
+                configForSplits, splitCodePaths, splitRevisionCodes,
+                splitOverlayTargetPackageNames);
     }
 
     /**
@@ -1167,6 +1180,7 @@ public class PackageParser {
                 pkg.splitNames = lite.splitNames;
                 pkg.splitCodePaths = lite.splitCodePaths;
                 pkg.splitRevisionCodes = lite.splitRevisionCodes;
+                pkg.splitOverlayTargetPackageNames = lite.splitOverlayTargetPackageNames;
                 pkg.splitFlags = new int[num];
                 pkg.splitPrivateFlags = new int[num];
                 pkg.applicationInfo.splitNames = pkg.splitNames;
@@ -1787,6 +1801,7 @@ public class PackageParser {
         boolean isFeatureSplit = false;
         String configForSplit = null;
         String usesSplitName = null;
+        String overlayTargetPackageName = null;
 
         for (int i = 0; i < attrs.getAttributeCount(); i++) {
             final String attr = attrs.getAttributeName(i);
@@ -1856,13 +1871,20 @@ public class PackageParser {
                             PackageManager.INSTALL_PARSE_FAILED_MANIFEST_MALFORMED,
                             "<uses-split> tag requires 'android:name' attribute");
                 }
+            } else if (TAG_OVERLAY.equals(parser.getName())) {
+                for (int i = 0; i < attrs.getAttributeCount(); ++i) {
+                    final String attr = attrs.getAttributeName(i);
+                    if ("targetPackage".equals(attr)) {
+                        overlayTargetPackageName = attrs.getAttributeValue(i);
+                    }
+                }
             }
         }
 
         return new ApkLite(codePath, packageSplit.first, packageSplit.second, isFeatureSplit,
                 configForSplit, usesSplitName, versionCode, revisionCode, installLocation,
                 verifiers, signatures, certificates, coreApp, debuggable, multiArch, use32bitAbi,
-                extractNativeLibs, isolatedSplits);
+                extractNativeLibs, isolatedSplits, overlayTargetPackageName);
     }
 
     /**
@@ -5692,6 +5714,9 @@ public class PackageParser {
         /** Revision codes of any split APKs, ordered by parsed splitName */
         public int[] splitRevisionCodes;
 
+        /** Names of overlay target packages, orderd by parsed splitName */
+        public String[] splitOverlayTargetPackageNames;
+
         /** Flags of any split APKs; ordered by parsed splitName */
         public int[] splitFlags;
 
@@ -6166,6 +6191,7 @@ public class PackageParser {
             splitCodePaths = dest.readStringArray();
             baseRevisionCode = dest.readInt();
             splitRevisionCodes = dest.createIntArray();
+            splitOverlayTargetPackageNames = dest.createStringArray();
             splitFlags = dest.createIntArray();
             splitPrivateFlags = dest.createIntArray();
             baseHardwareAccelerated = (dest.readInt() == 1);
@@ -6338,6 +6364,7 @@ public class PackageParser {
             dest.writeStringArray(splitCodePaths);
             dest.writeInt(baseRevisionCode);
             dest.writeIntArray(splitRevisionCodes);
+            dest.writeStringArray(splitOverlayTargetPackageNames);
             dest.writeIntArray(splitFlags);
             dest.writeIntArray(splitPrivateFlags);
             dest.writeInt(baseHardwareAccelerated ? 1 : 0);
