@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fb025947_d2411028",
+        "filename": "services/core/java/com/android/server/connectivity/Tethering.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 1834,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2017-06-06T15:32:00Z",
+      "side": 1,
+      "message": "Can/should the OffloadController be notified of the fact when we delete the state from mTetherStates, instead of here?",
+      "range": {
+        "startLine": 1832,
+        "startChar": 0,
+        "endLine": 1834,
+        "endChar": 66
+      },
+      "revId": "c77c0226552accae34e1464cc5d0c386a7847f61",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "77ee9dad_1758bf4a",
+        "filename": "services/core/java/com/android/server/connectivity/Tethering.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 1847,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2017-06-06T15:32:00Z",
+      "side": 1,
+      "message": "Instead of converting STATE_xxx constants to booleans and then to integers, does it make sense to pass the STATE_xxx constants all the way through to notifyDownstreamLinkProperties in msg.arg1?",
+      "range": {
+        "startLine": 1847,
+        "startChar": 43,
+        "endLine": 1847,
+        "endChar": 62
+      },
+      "revId": "c77c0226552accae34e1464cc5d0c386a7847f61",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
