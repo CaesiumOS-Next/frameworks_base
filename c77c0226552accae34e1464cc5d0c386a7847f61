@@ -96,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "12751d24_6392d4fd",
+        "filename": "services/core/java/com/android/server/connectivity/Tethering.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 1826,
+      "author": {
+        "id": 1000451
+      },
+      "writtenOn": "2017-06-07T06:33:49Z",
+      "side": 1,
+      "message": "Actually, that explodes and complicates this CL so I\u0027ll have to queue that up for future improvements.",
+      "parentUuid": "07ab42ac_0b376824",
+      "range": {
+        "startLine": 1826,
+        "startChar": 17,
+        "endLine": 1826,
+        "endChar": 44
+      },
+      "revId": "c77c0226552accae34e1464cc5d0c386a7847f61",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fb025947_d2411028",
         "filename": "services/core/java/com/android/server/connectivity/Tethering.java",
         "patchSetId": 1
