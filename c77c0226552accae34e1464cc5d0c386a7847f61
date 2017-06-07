@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "5cc91c3f_e9aeb5dd",
+        "filename": "services/core/java/com/android/server/connectivity/Tethering.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 1763,
+      "author": {
+        "id": 1000451
+      },
+      "writtenOn": "2017-06-07T06:26:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "af4b843b_92b9a7f5",
+      "range": {
+        "startLine": 1763,
+        "startChar": 12,
+        "endLine": 1763,
+        "endChar": 50
+      },
+      "revId": "c77c0226552accae34e1464cc5d0c386a7847f61",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5f7f0ae3_badf6caf",
         "filename": "services/core/java/com/android/server/connectivity/Tethering.java",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2017-06-07T02:55:08Z",
       "side": 1,
       "message": "just curious: are you planning to wrap this callback method into a runnable and post it to the handler from the callback ?",
+      "range": {
+        "startLine": 1826,
+        "startChar": 17,
+        "endLine": 1826,
+        "endChar": 44
+      },
+      "revId": "c77c0226552accae34e1464cc5d0c386a7847f61",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "07ab42ac_0b376824",
+        "filename": "services/core/java/com/android/server/connectivity/Tethering.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 1826,
+      "author": {
+        "id": 1000451
+      },
+      "writtenOn": "2017-06-07T06:26:37Z",
+      "side": 1,
+      "message": "Right now these all run on the main Looper, because every downstream TetherInterfaceStateMachine inherits (and uses)( the same Looper.\n\nSo I don\u0027t see the need to post to a handler on the same thread on which it\u0027s already running.\n\nBut...I do think these notify() messages should be a part of the Master state machine class.  I\u0027ll move them.",
+      "parentUuid": "5f7f0ae3_badf6caf",
       "range": {
         "startLine": 1826,
         "startChar": 17,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "5b5dbaa3_adee0f0f",
+        "filename": "services/core/java/com/android/server/connectivity/Tethering.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 1834,
+      "author": {
+        "id": 1000451
+      },
+      "writtenOn": "2017-06-07T06:26:37Z",
+      "side": 1,
+      "message": "Moved into the handling of the EVENT_IFACE_SERVING_STATE_* messages.",
+      "parentUuid": "fb025947_d2411028",
+      "range": {
+        "startLine": 1832,
+        "startChar": 0,
+        "endLine": 1834,
+        "endChar": 66
+      },
+      "revId": "c77c0226552accae34e1464cc5d0c386a7847f61",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "77ee9dad_1758bf4a",
         "filename": "services/core/java/com/android/server/connectivity/Tethering.java",
         "patchSetId": 1
@@ -82,6 +154,30 @@
       "writtenOn": "2017-06-06T15:32:00Z",
       "side": 1,
       "message": "Instead of converting STATE_xxx constants to booleans and then to integers, does it make sense to pass the STATE_xxx constants all the way through to notifyDownstreamLinkProperties in msg.arg1?",
+      "range": {
+        "startLine": 1847,
+        "startChar": 43,
+        "endLine": 1847,
+        "endChar": 62
+      },
+      "revId": "c77c0226552accae34e1464cc5d0c386a7847f61",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a65cb2b_3ce8c1ad",
+        "filename": "services/core/java/com/android/server/connectivity/Tethering.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 1847,
+      "author": {
+        "id": 1000451
+      },
+      "writtenOn": "2017-06-07T06:26:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "77ee9dad_1758bf4a",
       "range": {
         "startLine": 1847,
         "startChar": 43,
