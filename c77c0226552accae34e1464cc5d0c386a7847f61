@@ -2,6 +2,52 @@
   "comments": [
     {
       "key": {
+        "uuid": "af4b843b_92b9a7f5",
+        "filename": "services/core/java/com/android/server/connectivity/Tethering.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 1763,
+      "author": {
+        "id": 1107893
+      },
+      "writtenOn": "2017-06-07T02:55:08Z",
+      "side": 1,
+      "message": "Is this necessary ? The callback should be able to close directly over ifname. If the compiler complains about ifname, you can try to tag it final: makeControlCallback(final String ifname) { ...",
+      "range": {
+        "startLine": 1763,
+        "startChar": 12,
+        "endLine": 1763,
+        "endChar": 50
+      },
+      "revId": "c77c0226552accae34e1464cc5d0c386a7847f61",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5f7f0ae3_badf6caf",
+        "filename": "services/core/java/com/android/server/connectivity/Tethering.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 1826,
+      "author": {
+        "id": 1107893
+      },
+      "writtenOn": "2017-06-07T02:55:08Z",
+      "side": 1,
+      "message": "just curious: are you planning to wrap this callback method into a runnable and post it to the handler from the callback ?",
+      "range": {
+        "startLine": 1826,
+        "startChar": 17,
+        "endLine": 1826,
+        "endChar": 44
+      },
+      "revId": "c77c0226552accae34e1464cc5d0c386a7847f61",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fb025947_d2411028",
         "filename": "services/core/java/com/android/server/connectivity/Tethering.java",
         "patchSetId": 1
