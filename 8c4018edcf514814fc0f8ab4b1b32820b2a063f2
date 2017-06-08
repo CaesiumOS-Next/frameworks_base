@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "479f59b8_82bef1dd",
+        "filename": "core/res/res/values/config.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 284,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2017-06-08T13:17:41Z",
+      "side": 1,
+      "message": "Would say something about device support.\n\n\u003c!-- If the hardware supports specially marking packets that caused a wakeup of the main CPU, set this value to the mark used. --\u003e\n\nAlso, should the default be 0 instead? 0xffffffff/0x0 is the same as 0x0/0x0, and the convention for marks is that 0 means \"unset\".",
+      "range": {
+        "startLine": 284,
+        "startChar": 46,
+        "endLine": 284,
+        "endChar": 69
+      },
+      "revId": "8c4018edcf514814fc0f8ab4b1b32820b2a063f2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2c559112_5fe0d297",
+        "filename": "core/res/res/values/config.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 287,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2017-06-08T13:17:41Z",
+      "side": 1,
+      "message": "?",
+      "range": {
+        "startLine": 287,
+        "startChar": 55,
+        "endLine": 287,
+        "endChar": 81
+      },
+      "revId": "8c4018edcf514814fc0f8ab4b1b32820b2a063f2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bd073049_4fad8424",
+        "filename": "services/core/java/com/android/server/ConnectivityService.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 4536,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2017-06-08T13:17:41Z",
+      "side": 1,
+      "message": "Should we skip this operation if mark/mask are 0?",
+      "range": {
+        "startLine": 4536,
+        "startChar": 8,
+        "endLine": 4536,
+        "endChar": 87
+      },
+      "revId": "8c4018edcf514814fc0f8ab4b1b32820b2a063f2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "075a60dd_0f59608c",
+        "filename": "services/core/java/com/android/server/ConnectivityService.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 4547,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2017-06-08T13:17:41Z",
+      "side": 1,
+      "message": "Consider factoring out this duplicate code to a method that takes a \"boolean add\" parameter.",
+      "range": {
+        "startLine": 4540,
+        "startChar": 0,
+        "endLine": 4547,
+        "endChar": 87
+      },
+      "revId": "8c4018edcf514814fc0f8ab4b1b32820b2a063f2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
