@@ -36,6 +36,7 @@ import android.util.ArraySet;
 import android.util.Log;
 
 import com.android.server.pm.dex.DexManager;
+import com.android.server.pm.dex.PackageDexUsage;
 
 import java.io.File;
 import java.util.concurrent.atomic.AtomicBoolean;
