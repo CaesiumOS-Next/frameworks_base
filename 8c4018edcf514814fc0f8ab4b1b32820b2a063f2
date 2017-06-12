@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "123c1e6b_4ecae08c",
+        "filename": "core/res/res/values/config.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 284,
+      "author": {
+        "id": 1121773
+      },
+      "writtenOn": "2017-06-12T03:08:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "479f59b8_82bef1dd",
+      "range": {
+        "startLine": 284,
+        "startChar": 46,
+        "endLine": 284,
+        "endChar": 69
+      },
+      "revId": "8c4018edcf514814fc0f8ab4b1b32820b2a063f2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2c559112_5fe0d297",
         "filename": "core/res/res/values/config.xml",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2017-06-08T13:17:41Z",
       "side": 1,
       "message": "?",
+      "range": {
+        "startLine": 287,
+        "startChar": 55,
+        "endLine": 287,
+        "endChar": 81
+      },
+      "revId": "8c4018edcf514814fc0f8ab4b1b32820b2a063f2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a0b9cec8_7ecbb6c0",
+        "filename": "core/res/res/values/config.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 287,
+      "author": {
+        "id": 1121773
+      },
+      "writtenOn": "2017-06-12T03:08:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2c559112_5fe0d297",
       "range": {
         "startLine": 287,
         "startChar": 55,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "007390f0_ec6df1c8",
+        "filename": "services/core/java/com/android/server/ConnectivityService.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 4536,
+      "author": {
+        "id": 1121773
+      },
+      "writtenOn": "2017-06-12T03:08:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bd073049_4fad8424",
+      "range": {
+        "startLine": 4536,
+        "startChar": 8,
+        "endLine": 4536,
+        "endChar": 87
+      },
+      "revId": "8c4018edcf514814fc0f8ab4b1b32820b2a063f2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "075a60dd_0f59608c",
         "filename": "services/core/java/com/android/server/ConnectivityService.java",
         "patchSetId": 1
@@ -82,6 +154,30 @@
       "writtenOn": "2017-06-08T13:17:41Z",
       "side": 1,
       "message": "Consider factoring out this duplicate code to a method that takes a \"boolean add\" parameter.",
+      "range": {
+        "startLine": 4540,
+        "startChar": 0,
+        "endLine": 4547,
+        "endChar": 87
+      },
+      "revId": "8c4018edcf514814fc0f8ab4b1b32820b2a063f2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ae2c7bd1_3db22cbe",
+        "filename": "services/core/java/com/android/server/ConnectivityService.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 4547,
+      "author": {
+        "id": 1121773
+      },
+      "writtenOn": "2017-06-12T03:08:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "075a60dd_0f59608c",
       "range": {
         "startLine": 4540,
         "startChar": 0,
