@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "56e9a52d_32fa94f2",
+        "filename": "services/core/java/com/android/server/pm/OtaDexoptService.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 321,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2017-06-13T03:28:50Z",
+      "side": 1,
+      "message": "and only the ones belonging to system apps.",
+      "range": {
+        "startLine": 321,
+        "startChar": 8,
+        "endLine": 321,
+        "endChar": 44
+      },
+      "revId": "45e79f25f0dec9dc34471df15f9000aaeadeecd9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
