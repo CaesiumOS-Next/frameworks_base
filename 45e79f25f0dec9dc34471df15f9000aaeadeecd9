@@ -69,6 +69,30 @@
       "revId": "45e79f25f0dec9dc34471df15f9000aaeadeecd9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1080e519_f8f36c58",
+        "filename": "services/core/java/com/android/server/pm/OtaDexoptService.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 321,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2017-06-13T04:08:03Z",
+      "side": 1,
+      "message": "Not a super strong reason. We want to make sure that the OTA is not extended by an arbitrary  amount of time. see b/38413085#8.\n\nFor A/B we can be more generous I guess.",
+      "parentUuid": "3b939241_35751d1c",
+      "range": {
+        "startLine": 321,
+        "startChar": 8,
+        "endLine": 321,
+        "endChar": 44
+      },
+      "revId": "45e79f25f0dec9dc34471df15f9000aaeadeecd9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
