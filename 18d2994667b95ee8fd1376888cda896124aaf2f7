@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "05317549_7c679fac",
+        "filename": "telephony/java/android/telephony/MbmsDownloadManager.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 327,
+      "author": {
+        "id": 1087703
+      },
+      "writtenOn": "2017-06-14T03:02:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "805a8972_e6700d95",
+      "range": {
+        "startLine": 327,
+        "startChar": 74,
+        "endLine": 327,
+        "endChar": 80
+      },
+      "revId": "18d2994667b95ee8fd1376888cda896124aaf2f7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f89df858_2ee67191",
         "filename": "telephony/java/android/telephony/MbmsDownloadManager.java",
         "patchSetId": 3
@@ -36,6 +60,30 @@
       "writtenOn": "2017-06-14T01:10:25Z",
       "side": 1,
       "message": "any download requests are still alive.",
+      "range": {
+        "startLine": 335,
+        "startChar": 43,
+        "endLine": 335,
+        "endChar": 85
+      },
+      "revId": "18d2994667b95ee8fd1376888cda896124aaf2f7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2e34b4d6_a0ec756d",
+        "filename": "telephony/java/android/telephony/MbmsDownloadManager.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 335,
+      "author": {
+        "id": 1087703
+      },
+      "writtenOn": "2017-06-14T03:02:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f89df858_2ee67191",
       "range": {
         "startLine": 335,
         "startChar": 43,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "b68dc51e_ee23754d",
+        "filename": "telephony/java/android/telephony/MbmsDownloadManager.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 347,
+      "author": {
+        "id": 1087703
+      },
+      "writtenOn": "2017-06-14T03:02:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c99a0719_fd59230e",
+      "range": {
+        "startLine": 345,
+        "startChar": 6,
+        "endLine": 347,
+        "endChar": 9
+      },
+      "revId": "18d2994667b95ee8fd1376888cda896124aaf2f7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7c601f46_071b6ab1",
         "filename": "telephony/java/android/telephony/MbmsDownloadManager.java",
         "patchSetId": 3
@@ -82,6 +154,30 @@
       "writtenOn": "2017-06-14T01:10:25Z",
       "side": 1,
       "message": "I\u0027m not sure we need this.  If we do, it should get it from the service and verify it matches shared pref.\n\nThe Shared pref is just a security measure, it\u0027s not the source of truth.",
+      "range": {
+        "startLine": 374,
+        "startChar": 1,
+        "endLine": 379,
+        "endChar": 7
+      },
+      "revId": "18d2994667b95ee8fd1376888cda896124aaf2f7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "495a1dd4_7851857e",
+        "filename": "telephony/java/android/telephony/MbmsDownloadManager.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 379,
+      "author": {
+        "id": 1087703
+      },
+      "writtenOn": "2017-06-14T03:02:50Z",
+      "side": 1,
+      "message": "It\u0027s not being used by anything. I\u0027ll remove the method in the meantime and put it back if it turns out to be necessary.",
+      "parentUuid": "7c601f46_071b6ab1",
       "range": {
         "startLine": 374,
         "startChar": 1,
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "1aec4faf_2f7302e7",
+        "filename": "telephony/java/android/telephony/MbmsDownloadManager.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 425,
+      "author": {
+        "id": 1087703
+      },
+      "writtenOn": "2017-06-14T03:02:50Z",
+      "side": 1,
+      "message": "What\u0027s the exact syntax used for wildcards? I\u0027ll change it to check for stars and question marks in the last path segment for now, but we should ask qualcomm about this.",
+      "parentUuid": "2e78ccac_cc43c0a1",
+      "range": {
+        "startLine": 425,
+        "startChar": 9,
+        "endLine": 425,
+        "endChar": 64
+      },
+      "revId": "18d2994667b95ee8fd1376888cda896124aaf2f7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "56fadd9b_478832b6",
         "filename": "telephony/java/android/telephony/MbmsDownloadManager.java",
         "patchSetId": 3
@@ -128,6 +248,30 @@
       "writtenOn": "2017-06-14T01:10:25Z",
       "side": 1,
       "message": "do you really think this should be exported in the future?  I was leaning towards trying to make it internal",
+      "range": {
+        "startLine": 513,
+        "startChar": 14,
+        "endLine": 513,
+        "endChar": 23
+      },
+      "revId": "18d2994667b95ee8fd1376888cda896124aaf2f7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "34c317b0_f16f8f18",
+        "filename": "telephony/java/android/telephony/MbmsDownloadManager.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 513,
+      "author": {
+        "id": 1087703
+      },
+      "writtenOn": "2017-06-14T03:02:50Z",
+      "side": 1,
+      "message": "Middleware needs to know the component name of the receiver inside the frontend app to send it explicit intents. They could do it themselves but I figured this\u0027d be a nice utility method.",
+      "parentUuid": "56fadd9b_478832b6",
       "range": {
         "startLine": 513,
         "startChar": 14,
@@ -163,6 +307,30 @@
     },
     {
       "key": {
+        "uuid": "96cc5445_d02762be",
+        "filename": "telephony/java/android/telephony/mbms/FileServiceInfo.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1087703
+      },
+      "writtenOn": "2017-06-14T03:02:50Z",
+      "side": 1,
+      "message": "works for \u003e\u003d 7. I think it\u0027s only java 8 that they had a problem with.",
+      "parentUuid": "7d86796a_4d1789d7",
+      "range": {
+        "startLine": 39,
+        "startChar": 29,
+        "endLine": 39,
+        "endChar": 32
+      },
+      "revId": "18d2994667b95ee8fd1376888cda896124aaf2f7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f0791f75_8f7fb44f",
         "filename": "telephony/java/android/telephony/mbms/MbmsDownloadReceiver.java",
         "patchSetId": 3
@@ -174,6 +342,30 @@
       "writtenOn": "2017-06-14T01:10:25Z",
       "side": 1,
       "message": "could use a comment - what\u0027s it do - what are params..",
+      "range": {
+        "startLine": 290,
+        "startChar": 23,
+        "endLine": 290,
+        "endChar": 35
+      },
+      "revId": "18d2994667b95ee8fd1376888cda896124aaf2f7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d76a6383_c7030da8",
+        "filename": "telephony/java/android/telephony/mbms/MbmsDownloadReceiver.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 290,
+      "author": {
+        "id": 1087703
+      },
+      "writtenOn": "2017-06-14T03:02:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f0791f75_8f7fb44f",
       "range": {
         "startLine": 290,
         "startChar": 23,
@@ -209,6 +401,30 @@
     },
     {
       "key": {
+        "uuid": "33be348b_11e065b2",
+        "filename": "telephony/java/android/telephony/mbms/MbmsDownloadReceiver.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 309,
+      "author": {
+        "id": 1087703
+      },
+      "writtenOn": "2017-06-14T03:02:50Z",
+      "side": 1,
+      "message": "the method uses O apis:\nhttps://developer.android.com/reference/java/nio/file/Path.html\nQualcomm wouldn\u0027t be able to compile.",
+      "parentUuid": "04b01c3e_98b1d03d",
+      "range": {
+        "startLine": 309,
+        "startChar": 21,
+        "endLine": 309,
+        "endChar": 29
+      },
+      "revId": "18d2994667b95ee8fd1376888cda896124aaf2f7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d8683d7e_a1e425da",
         "filename": "telephony/java/android/telephony/mbms/vendor/IMbmsDownloadService.aidl",
         "patchSetId": 3
@@ -220,6 +436,30 @@
       "writtenOn": "2017-06-14T01:10:25Z",
       "side": 1,
       "message": "Are we getting this value back at temp-file request time to compare with our local value?",
+      "range": {
+        "startLine": 50,
+        "startChar": 8,
+        "endLine": 50,
+        "endChar": 32
+      },
+      "revId": "18d2994667b95ee8fd1376888cda896124aaf2f7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ff325de6_ba0f9954",
+        "filename": "telephony/java/android/telephony/mbms/vendor/IMbmsDownloadService.aidl",
+        "patchSetId": 3
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1087703
+      },
+      "writtenOn": "2017-06-14T03:02:50Z",
+      "side": 1,
+      "message": "Will implement, though ultimately the local value needs to be the source of truth. The middleware has no way of providing their cached path when they\u0027re trying to get a filedescriptor via our content provider.",
+      "parentUuid": "d8683d7e_a1e425da",
       "range": {
         "startLine": 50,
         "startChar": 8,
