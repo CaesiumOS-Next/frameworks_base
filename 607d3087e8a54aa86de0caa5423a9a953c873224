@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "93887d4d_a65a8a06",
+        "filename": "services/core/java/com/android/server/ConnectivityService.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 2410,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2017-06-16T07:21:02Z",
+      "side": 1,
+      "message": "If all you do with RemoteExceptions is log an error, I\u0027d suggest catching and logging inside wakeupModifyInterface. See subsequent comment for a reason why.",
+      "range": {
+        "startLine": 2410,
+        "startChar": 16,
+        "endLine": 2410,
+        "endChar": 45
+      },
+      "revId": "607d3087e8a54aa86de0caa5423a9a953c873224",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8f5466c8_23b9ee19",
+        "filename": "services/core/java/com/android/server/ConnectivityService.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 4553,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2017-06-16T07:21:02Z",
+      "side": 1,
+      "message": "This can throw ServiceSpecificException, right? Is that properly caught by all this function\u0027s callers?",
+      "range": {
+        "startLine": 4553,
+        "startChar": 34,
+        "endLine": 4553,
+        "endChar": 53
+      },
+      "revId": "607d3087e8a54aa86de0caa5423a9a953c873224",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "911fede7_ea8e6de3",
+        "filename": "services/core/java/com/android/server/ConnectivityService.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 4580,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2017-06-16T07:21:02Z",
+      "side": 1,
+      "message": "If an exception happens when modifying the wakeup rule, we won\u0027t remove the interface from the network, and that is very bad because that interface can never be used in any other network.",
+      "range": {
+        "startLine": 4579,
+        "startChar": 0,
+        "endLine": 4580,
+        "endChar": 63
+      },
+      "revId": "607d3087e8a54aa86de0caa5423a9a953c873224",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
