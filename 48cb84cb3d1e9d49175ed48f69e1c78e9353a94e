@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "f2440b69_9aca7b56",
+        "filename": "telephony/java/android/telephony/MbmsDownloadManager.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1087703
+      },
+      "writtenOn": "2017-06-17T01:11:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7d36e801_45291d9d",
+      "range": {
+        "startLine": 158,
+        "startChar": 26,
+        "endLine": 158,
+        "endChar": 27
+      },
+      "revId": "48cb84cb3d1e9d49175ed48f69e1c78e9353a94e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "eb8c1329_da2b3cd4",
         "filename": "telephony/java/android/telephony/mbms/MbmsDownloadReceiver.java",
         "patchSetId": 6
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "7b1c6842_9cc00beb",
+        "filename": "telephony/java/android/telephony/mbms/MbmsDownloadReceiver.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1087703
+      },
+      "writtenOn": "2017-06-17T01:11:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "eb8c1329_da2b3cd4",
+      "range": {
+        "startLine": 137,
+        "startChar": 73,
+        "endLine": 137,
+        "endChar": 83
+      },
+      "revId": "48cb84cb3d1e9d49175ed48f69e1c78e9353a94e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e25c829a_13afd77c",
         "filename": "telephony/java/android/telephony/mbms/MbmsTempFileProvider.java",
         "patchSetId": 6
@@ -59,6 +107,30 @@
       "writtenOn": "2017-06-17T00:35:34Z",
       "side": 1,
       "message": "unused?",
+      "range": {
+        "startLine": 46,
+        "startChar": 24,
+        "endLine": 46,
+        "endChar": 42
+      },
+      "revId": "48cb84cb3d1e9d49175ed48f69e1c78e9353a94e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1d1f29f1_6572042c",
+        "filename": "telephony/java/android/telephony/mbms/MbmsTempFileProvider.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1087703
+      },
+      "writtenOn": "2017-06-17T01:11:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e25c829a_13afd77c",
       "range": {
         "startLine": 46,
         "startChar": 24,
