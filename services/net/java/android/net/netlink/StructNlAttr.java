@@ -49,7 +49,7 @@ public class StructNlAttr {
         final StructNlAttr struct = new StructNlAttr();
         struct.nla_len = byteBuffer.getShort();
         struct.nla_type = byteBuffer.getShort();
-        struct.mByteOrder = byteBuffer.order();
+        struct.byteOrder = byteBuffer.order();
 
         byteBuffer.position(baseOffset);
         if (struct.nla_len < NLA_HEADERLEN) {
@@ -78,13 +78,41 @@ public class StructNlAttr {
         return struct;
     }
 
+    public static void pack(ByteBuffer byteBuffer, short nla_type, byte value) {
+        final StructNlAttr nlattr = new StructNlAttr();
+        nlattr.nla_len = NLA_HEADERLEN + 1;
+        nlattr.nla_type = nla_type;
+        nlattr.mByte = value;
+        nlattr.pack(byteBuffer);
+    }
+
+    public static void pack(ByteBuffer byteBuffer, short nla_type, short value) {
+        final StructNlAttr nlattr = new StructNlAttr();
+        nlattr.nla_len = NLA_HEADERLEN + SizeOf.SHORT;
+        nlattr.nla_type = nla_type;
+        nlattr.mShort = value;
+        nlattr.pack(byteBuffer);
+    }
+
+    public static void pack(ByteBuffer byteBuffer, short nla_type, int value) {
+        final StructNlAttr nlattr = new StructNlAttr();
+        nlattr.nla_len = NLA_HEADERLEN + SizeOf.INT;
+        nlattr.nla_type = nla_type;
+        nlattr.mInt = value;
+        nlattr.pack(byteBuffer);
+    }
+
     public short nla_len;
     public short nla_type;
     public byte[] nla_value;
-    public ByteOrder mByteOrder;
+    public ByteOrder byteOrder;
+
+    private Byte mByte;
+    private Short mShort;
+    private Integer mInt;
 
     public StructNlAttr() {
-        mByteOrder = ByteOrder.nativeOrder();
+        byteOrder = ByteOrder.nativeOrder();
     }
 
     public int getAlignedLength() {
@@ -94,7 +122,7 @@ public class StructNlAttr {
     public ByteBuffer getValueAsByteBuffer() {
         if (nla_value == null) { return null; }
         final ByteBuffer byteBuffer = ByteBuffer.wrap(nla_value);
-        byteBuffer.order(mByteOrder);
+        byteBuffer.order(byteOrder);
         return byteBuffer;
     }
 
@@ -117,10 +145,25 @@ public class StructNlAttr {
     }
 
     public void pack(ByteBuffer byteBuffer) {
+        final ByteOrder originalOrder = byteBuffer.order();
         final int originalPosition = byteBuffer.position();
+
+        byteBuffer.order(ByteOrder.nativeOrder());
         byteBuffer.putShort(nla_len);
         byteBuffer.putShort(nla_type);
-        byteBuffer.put(nla_value);
+
+        byteBuffer.order(byteOrder);
+        if (nla_value != null) {
+            byteBuffer.put(nla_value);
+        } else if (mByte != null) {
+            byteBuffer.put(mByte);
+        } else if (mShort != null) {
+            byteBuffer.putShort(mShort);
+        } else if (mInt != null) {
+            byteBuffer.putInt(mInt);
+        }
+
+        byteBuffer.order(originalOrder);
         byteBuffer.position(originalPosition + getAlignedLength());
     }
 

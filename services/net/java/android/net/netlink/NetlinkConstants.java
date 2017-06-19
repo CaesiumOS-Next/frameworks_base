@@ -35,6 +35,9 @@ import java.nio.ByteBuffer;
 public class NetlinkConstants {
     private NetlinkConstants() {}
 
+    // Until OsContants picks up a non-zero value for its placeholder entry...
+    public static final int NETLINK_NETFILTER = 12;
+
     public static final int NLA_ALIGNTO = 4;
 
     public static final int alignedLengthOf(short length) {
