@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da6cc9cb_c700c65a",
+        "filename": "services/core/java/com/android/server/pm/OtaDexoptService.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 338,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2017-06-27T11:58:53Z",
+      "side": 1,
+      "message": "This looks arbitrary. For A/B OTA why not doing all secondary dexes?",
+      "range": {
+        "startLine": 322,
+        "startChar": 0,
+        "endLine": 338,
+        "endChar": 9
+      },
+      "revId": "55ff766b3d39957cbd2be34840a52594a5d90fa9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
