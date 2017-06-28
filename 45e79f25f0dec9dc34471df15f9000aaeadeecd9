@@ -93,6 +93,30 @@
       "revId": "45e79f25f0dec9dc34471df15f9000aaeadeecd9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e8e05f45_f4a799be",
+        "filename": "services/core/java/com/android/server/pm/OtaDexoptService.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 321,
+      "author": {
+        "id": 1084268
+      },
+      "writtenOn": "2017-06-28T00:41:34Z",
+      "side": 1,
+      "message": "As Calin said, for A/B I have enabled dexopt for all the secondary dex files.",
+      "parentUuid": "1080e519_f8f36c58",
+      "range": {
+        "startLine": 321,
+        "startChar": 8,
+        "endLine": 321,
+        "endChar": 44
+      },
+      "revId": "45e79f25f0dec9dc34471df15f9000aaeadeecd9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
