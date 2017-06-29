@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "19e9a16b_7ff2b0a6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1000451
+      },
+      "writtenOn": "2017-06-29T05:07:24Z",
+      "side": 1,
+      "message": "Can you add a comment about why this is safe to do?",
+      "range": {
+        "startLine": 7,
+        "startChar": 49,
+        "endLine": 7,
+        "endChar": 50
+      },
+      "revId": "23416bcbb8495626121a9c33218c6ce4629bc415",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
