@@ -264,6 +264,7 @@ cc_library_shared {
         "libhidltransport",
         "libhwbinder",
         "libvintf",
+        "libziparchive",
 
         "libhwui",
         "libdl",
