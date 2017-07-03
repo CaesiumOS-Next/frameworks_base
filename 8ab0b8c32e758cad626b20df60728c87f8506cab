@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4921d9e8_8304415f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1000451
+      },
+      "writtenOn": "2017-07-03T13:09:40Z",
+      "side": 1,
+      "message": "t",
+      "range": {
+        "startLine": 11,
+        "startChar": 36,
+        "endLine": 11,
+        "endChar": 37
+      },
+      "revId": "8ab0b8c32e758cad626b20df60728c87f8506cab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2f982a21_9269665c",
+        "filename": "services/core/java/com/android/server/ConnectivityService.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 4507,
+      "author": {
+        "id": 1000451
+      },
+      "writtenOn": "2017-07-03T13:09:40Z",
+      "side": 1,
+      "message": "Are you sure this is functionally identical?\n\nThe old could could also have stopped clatd.  We do this, for example, when an IPv4 address arrives on the main interface.\n\nAt least that\u0027s how I thought it worked.  Where is that logic now?",
+      "range": {
+        "startLine": 4507,
+        "startChar": 8,
+        "endLine": 4507,
+        "endChar": 9
+      },
+      "revId": "8ab0b8c32e758cad626b20df60728c87f8506cab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
