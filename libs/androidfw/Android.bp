@@ -64,7 +64,10 @@ cc_library {
             shared: {
                 enabled: false,
             },
-            shared_libs: ["libz-host"],
+            shared_libs: [
+                "libz-host",
+                "libziparchive",
+            ],
         },
         windows: {
             enabled: true,
