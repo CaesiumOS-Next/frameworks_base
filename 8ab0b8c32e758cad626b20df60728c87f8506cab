@@ -45,6 +45,30 @@
       "revId": "8ab0b8c32e758cad626b20df60728c87f8506cab",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c9d32240_13744e1d",
+        "filename": "services/core/java/com/android/server/ConnectivityService.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 4507,
+      "author": {
+        "id": 1107893
+      },
+      "writtenOn": "2017-07-04T02:01:04Z",
+      "side": 1,
+      "message": "I totally missed that this codepath could stop clatd. To be honest it very to miss because this depends on a single \"!hasIpv4Address\" in requiresClat and comes without explanation that this also turns off clatd when the ipv4 arrive after.\n\nI am going to put more explicit comments about this.",
+      "parentUuid": "2f982a21_9269665c",
+      "range": {
+        "startLine": 4507,
+        "startChar": 8,
+        "endLine": 4507,
+        "endChar": 9
+      },
+      "revId": "8ab0b8c32e758cad626b20df60728c87f8506cab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
