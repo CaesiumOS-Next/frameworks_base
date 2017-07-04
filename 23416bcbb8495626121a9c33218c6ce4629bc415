@@ -22,6 +22,30 @@
       "revId": "23416bcbb8495626121a9c33218c6ce4629bc415",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d1db472a_fcc83937",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1107893
+      },
+      "writtenOn": "2017-07-04T07:27:46Z",
+      "side": 1,
+      "message": "Done. I added rationals to the commit msg.",
+      "parentUuid": "19e9a16b_7ff2b0a6",
+      "range": {
+        "startLine": 7,
+        "startChar": 49,
+        "endLine": 7,
+        "endChar": 50
+      },
+      "revId": "23416bcbb8495626121a9c33218c6ce4629bc415",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
