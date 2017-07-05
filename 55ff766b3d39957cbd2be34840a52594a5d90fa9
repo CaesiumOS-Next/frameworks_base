@@ -22,6 +22,30 @@
       "revId": "55ff766b3d39957cbd2be34840a52594a5d90fa9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5d0ae95e_ca1d723c",
+        "filename": "services/core/java/com/android/server/pm/OtaDexoptService.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 338,
+      "author": {
+        "id": 1084268
+      },
+      "writtenOn": "2017-07-05T20:50:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "da6cc9cb_c700c65a",
+      "range": {
+        "startLine": 322,
+        "startChar": 0,
+        "endLine": 338,
+        "endChar": 9
+      },
+      "revId": "55ff766b3d39957cbd2be34840a52594a5d90fa9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
