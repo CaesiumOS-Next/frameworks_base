@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "efb6e8df_60610902",
+        "filename": "services/core/java/com/android/server/pm/PackageManagerService.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 7391,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2017-07-06T14:58:52Z",
+      "side": 1,
+      "message": "... to not slow down too much boot after an OTA.",
+      "range": {
+        "startLine": 7391,
+        "startChar": 17,
+        "endLine": 7391,
+        "endChar": 83
+      },
+      "revId": "3b5d7efaed37a7a7f71d9a81a934c3e9cd97f75e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
