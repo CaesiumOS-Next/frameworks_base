@@ -429,12 +429,14 @@ public class ConnectivityService extends IConnectivityManager.Stub
     private int mNetTransitionWakeLockTimeout;
     private final PowerManager.WakeLock mPendingIntentWakeLock;
 
+    private final Object mProxyLock = new Object();
+
     // track the current default http proxy - tell the world if we get a new one (real change)
     private volatile ProxyInfo mDefaultProxy = null;
-    private Object mProxyLock = new Object();
     private boolean mDefaultProxyDisabled = false;
 
     // track the global proxy.
+    @GuardedBy("mProxyLock")
     private ProxyInfo mGlobalProxy = null;
 
     private PacManager mPacManager = null;
@@ -3370,6 +3372,7 @@ public class ConnectivityService extends IConnectivityManager.Stub
 
             synchronized (mProxyLock) {
                 mGlobalProxy = proxyProperties;
+                sendProxyBroadcast(mGlobalProxy);
             }
         }
     }
