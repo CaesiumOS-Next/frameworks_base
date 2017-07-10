@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "adbeb01d_0e9a7d71",
+        "filename": "services/core/java/com/android/server/ConnectivityService.java",
+        "patchSetId": 8
+      },
+      "lineNbr": 4530,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2017-07-10T02:42:15Z",
+      "side": 1,
+      "message": "Would prefer this to be called maybeStartClat because it only starts clat if it\u0027s not already started.",
+      "range": {
+        "startLine": 4530,
+        "startChar": 17,
+        "endLine": 4530,
+        "endChar": 26
+      },
+      "revId": "02ce49da60c0f55652917d7f72dfc3ab72d2a5b1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2130d658_7e353910",
+        "filename": "services/core/java/com/android/server/ConnectivityService.java",
+        "patchSetId": 8
+      },
+      "lineNbr": 4539,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2017-07-10T02:42:15Z",
+      "side": 1,
+      "message": "Ditto, maybe call this maybeStopClat?",
+      "range": {
+        "startLine": 4539,
+        "startChar": 17,
+        "endLine": 4539,
+        "endChar": 25
+      },
+      "revId": "02ce49da60c0f55652917d7f72dfc3ab72d2a5b1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a64f8c07_1754bcab",
+        "filename": "services/core/java/com/android/server/connectivity/Nat464Xlat.java",
+        "patchSetId": 8
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2017-07-10T02:42:15Z",
+      "side": 1,
+      "message": "Typo",
+      "range": {
+        "startLine": 91,
+        "startChar": 28,
+        "endLine": 91,
+        "endChar": 47
+      },
+      "revId": "02ce49da60c0f55652917d7f72dfc3ab72d2a5b1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
