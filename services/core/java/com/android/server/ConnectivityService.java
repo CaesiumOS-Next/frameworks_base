@@ -57,6 +57,7 @@ import android.net.INetworkManagementEventObserver;
 import android.net.INetworkPolicyListener;
 import android.net.INetworkPolicyManager;
 import android.net.INetworkStatsService;
+import android.net.IpPrefix;
 import android.net.LinkProperties;
 import android.net.LinkProperties.CompareResult;
 import android.net.Network;
@@ -163,6 +164,8 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.net.Inet4Address;
 import java.net.InetAddress;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.net.UnknownHostException;
 import java.util.ArrayDeque;
 import java.util.ArrayList;
@@ -4637,12 +4640,64 @@ public class ConnectivityService extends IConnectivityManager.Stub
         return !routeDiff.added.isEmpty() || !routeDiff.removed.isEmpty();
     }
 
+    private void syncPrivateDns(Collection<InetAddress> dnses) {
+        ContentResolver res = mContext.getContentResolver();
+
+        // Sync the mode.
+        int mode = Settings.Global.getInt(res, Settings.Global.DNS_TLS_ENABLED, 0);
+        try {
+            mNetd.getNetdService().setPrivateDnsMode(mode);
+        } catch (Exception e) {
+            loge("Exception in setPrivateDnsMode: " + e);
+        }
+
+        // Sync all relevant elements of the whitelist.
+        String whitelist = Settings.Global.getString(res, Settings.Global.DNS_TLS_WHITELIST);
+        List<URI> uris = new ArrayList();
+        if (whitelist != null) {
+            for (String element : whitelist.split(",")) {
+                try {
+                    uris.add(new URI(element));
+                } catch (URISyntaxException e) {
+                    loge("Invalid DNS URI '" + element + "': " + e);
+                }
+            }
+        }
+        for (InetAddress dns : dnses) {
+            String address = dns.getHostName();
+            boolean matched = false;
+            for (URI uri : uris) {
+                if (uri.getHost() == address) {
+                    matched = true;
+                    final int DNS_OVER_TLS_PORT = 853;
+                    int port = uri.getPort();
+                    port = port > 0 ? port : DNS_OVER_TLS_PORT;
+                    try {
+                        mNetd.getNetdService().addPrivateDnsServer(
+                                address, port, "", new String[0]);
+                    } catch (Exception e) {
+                        loge("addPrivateDnsServer failed: " + e);
+                    }
+                    break;
+                }
+            }
+            if (!matched) {
+                try {
+                    mNetd.getNetdService().removePrivateDnsServer(address);
+                } catch (Exception e) {
+                    loge("removePrivateDnsServer failed: " + e);
+                }
+            }
+        }
+    }
+
     private void updateDnses(LinkProperties newLp, LinkProperties oldLp, int netId) {
         if (oldLp != null && newLp.isIdenticalDnses(oldLp)) {
             return;  // no updating necessary
         }
 
         Collection<InetAddress> dnses = newLp.getDnsServers();
+        syncPrivateDns(dnses);
         if (DBG) log("Setting DNS servers for network " + netId + " to " + dnses);
         try {
             mNetd.setDnsConfigurationForNetwork(
