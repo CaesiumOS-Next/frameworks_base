@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "666d9ea0_7cbdb063",
+        "filename": "services/core/java/com/android/server/timezone/RulesManagerServiceHelperImpl.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1006497
+      },
+      "writtenOn": "2017-07-18T13:19:47Z",
+      "side": 1,
+      "message": "It depends on what kind of timing guarantees you want. If you don\u0027t care that process can get suspending for O(minutes), then no need to hold a wakelock, eventually something will wake up the device and you\u0027ll complete. If you do, then hold a partial wakelock here.",
+      "revId": "17ee5dbc05424b24377b3ee326de39184cfce290",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
