@@ -16,6 +16,24 @@
       "revId": "17ee5dbc05424b24377b3ee326de39184cfce290",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3ec98830_7e986afa",
+        "filename": "services/core/java/com/android/server/timezone/RulesManagerServiceHelperImpl.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1038039
+      },
+      "writtenOn": "2017-07-18T13:22:36Z",
+      "side": 1,
+      "message": "Probably worth speaking about this one in person (as there are two I\u0027d like to check and some similar things) - I was just cleaning up the TODO here.\n\nIt\u0027s the one below I wanted to fix here.",
+      "parentUuid": "666d9ea0_7cbdb063",
+      "revId": "17ee5dbc05424b24377b3ee326de39184cfce290",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
