@@ -316,7 +316,8 @@ public class OtaDexoptService extends IOtaDexopt.Stub {
                 getCompilerFilterForReason(compilationReason),
                 null /* CompilerStats.PackageStats */,
                 mPackageManagerService.getDexManager().isUsedByOtherApps(pkg.packageName),
-                true /* bootComplete */);
+                true /* bootComplete */,
+                false /* downgrade */);
 
         return commands;
     }

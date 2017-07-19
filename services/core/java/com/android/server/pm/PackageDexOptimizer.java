@@ -105,7 +105,7 @@ public class PackageDexOptimizer {
     int performDexOpt(PackageParser.Package pkg, String[] sharedLibraries,
             String[] instructionSets, boolean checkProfiles, String targetCompilationFilter,
             CompilerStats.PackageStats packageStats, boolean isUsedByOtherApps,
-            boolean bootComplete) {
+            boolean bootComplete, boolean downgrade) {
         if (!canOptimizePackage(pkg)) {
             return DEX_OPT_SKIPPED;
         }
@@ -120,7 +120,8 @@ public class PackageDexOptimizer {
             }
             try {
                 return performDexOptLI(pkg, sharedLibraries, instructionSets, checkProfiles,
-                        targetCompilationFilter, packageStats, isUsedByOtherApps, bootComplete);
+                        targetCompilationFilter, packageStats, isUsedByOtherApps, bootComplete,
+                        downgrade);
             } finally {
                 if (useLock) {
                     mDexoptWakeLock.release();
@@ -137,7 +138,7 @@ public class PackageDexOptimizer {
     private int performDexOptLI(PackageParser.Package pkg, String[] sharedLibraries,
             String[] targetInstructionSets, boolean checkForProfileUpdates,
             String targetCompilerFilter, CompilerStats.PackageStats packageStats,
-            boolean isUsedByOtherApps, boolean bootComplete) {
+            boolean isUsedByOtherApps, boolean bootComplete, boolean downgrade) {
         final String[] instructionSets = targetInstructionSets != null ?
                 targetInstructionSets : getAppDexInstructionSets(pkg.applicationInfo);
         final String[] dexCodeInstructionSets = getDexCodeInstructionSets(instructionSets);
@@ -162,7 +163,7 @@ public class PackageDexOptimizer {
         for (String path : paths) {
             for (String dexCodeIsa : dexCodeInstructionSets) {
                 int newResult = dexOptPath(pkg, path, dexCodeIsa, compilerFilter, profileUpdated,
-                        sharedLibrariesPath, dexoptFlags, sharedGid, packageStats);
+                        sharedLibrariesPath, dexoptFlags, sharedGid, packageStats, downgrade);
                 // The end result is:
                 //  - FAILED if any path failed,
                 //  - PERFORMED if at least one path needed compilation,
@@ -202,8 +203,8 @@ public class PackageDexOptimizer {
     @GuardedBy("mInstallLock")
     private int dexOptPath(PackageParser.Package pkg, String path, String isa,
             String compilerFilter, boolean profileUpdated, String sharedLibrariesPath,
-            int dexoptFlags, int uid, CompilerStats.PackageStats packageStats) {
-        int dexoptNeeded = getDexoptNeeded(path, isa, compilerFilter, profileUpdated);
+            int dexoptFlags, int uid, CompilerStats.PackageStats packageStats, boolean downgrade) {
+        int dexoptNeeded = getDexoptNeeded(path, isa, compilerFilter, profileUpdated, downgrade);
         if (Math.abs(dexoptNeeded) == DexFile.NO_DEXOPT_NEEDED) {
             return DEX_OPT_SKIPPED;
         }
@@ -402,10 +403,10 @@ public class PackageDexOptimizer {
      * configuration (isa, compiler filter, profile).
      */
     private int getDexoptNeeded(String path, String isa, String compilerFilter,
-            boolean newProfile) {
+            boolean newProfile, boolean downgrade) {
         int dexoptNeeded;
         try {
-            dexoptNeeded = DexFile.getDexOptNeeded(path, isa, compilerFilter, newProfile);
+            dexoptNeeded = DexFile.getDexOptNeeded(path, isa, compilerFilter, newProfile, downgrade);
         } catch (IOException ioe) {
             Slog.w(TAG, "IOException reading apk: " + path, ioe);
             return DEX_OPT_FAILED;
