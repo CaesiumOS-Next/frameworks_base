@@ -1721,6 +1721,7 @@ public class LocationManagerService extends ILocationManager.Stub {
                 Binder.restoreCallingIdentity(identity);
             }
         }
+        Runtime.getRuntime().gc();
     }
 
     private void removeUpdatesLocked(Receiver receiver) {
