@@ -424,13 +424,13 @@ public class HeapTest extends TestCase {
         /* Just shy of the typical max heap size so that it will actually
          * try to allocate it instead of short-circuiting.
          */
-        final int SIXTEEN_MB = (16 * 1024 * 1024 - 32);
+        final int ALMOST_MAX_HEAP_SIZE = (int)Runtime.getRuntime().maxMemory() - 32;
 
         Boolean sawEx = false;
         byte a[];
 
         try {
-            a = new byte[SIXTEEN_MB];
+            a = new byte[ALMOST_MAX_HEAP_SIZE];
         } catch (OutOfMemoryError oom) {
             //Log.i(TAG, "HeapTest/OomeLarge caught " + oom);
             sawEx = true;
