@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7bb706f1_f2c62917",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1000451
+      },
+      "writtenOn": "2017-07-26T08:48:17Z",
+      "side": 1,
+      "message": "\"take\"",
+      "range": {
+        "startLine": 10,
+        "startChar": 4,
+        "endLine": 10,
+        "endChar": 8
+      },
+      "revId": "33b49b4a144b6c5519ccd8a98cb8ae2bd6238e51",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d3f4b3a7_108d4a57",
+        "filename": "services/core/java/com/android/server/connectivity/NetworkNotificationManager.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1000451
+      },
+      "writtenOn": "2017-07-26T08:48:17Z",
+      "side": 1,
+      "message": "Can we just use the notifyType enum value here?  Or are enums only testable for equality/non-equality and not orderable?",
+      "revId": "33b49b4a144b6c5519ccd8a98cb8ae2bd6238e51",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a73dc365_9fae9ee3",
+        "filename": "services/core/java/com/android/server/connectivity/NetworkNotificationManager.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 285,
+      "author": {
+        "id": 1000451
+      },
+      "writtenOn": "2017-07-26T08:48:17Z",
+      "side": 1,
+      "message": "static probably works here",
+      "range": {
+        "startLine": 285,
+        "startChar": 12,
+        "endLine": 285,
+        "endChar": 15
+      },
+      "revId": "33b49b4a144b6c5519ccd8a98cb8ae2bd6238e51",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
