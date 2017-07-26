@@ -42,6 +42,24 @@
     },
     {
       "key": {
+        "uuid": "a53bf68a_20c57657",
+        "filename": "services/core/java/com/android/server/connectivity/NetworkNotificationManager.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1107893
+      },
+      "writtenOn": "2017-07-26T13:28:25Z",
+      "side": 1,
+      "message": "An enum class can totally implement Comparable, but the syntax for the user is kind of crappy ... foo.compareTo(bar) \u003c 0 plus I need to define compareTo(). Unfortunately implementing Comparable does not allow you to use the \u003c, \u003c\u003d, \u003e, \u003e\u003d operators.\n\nI could put the priority values on the enum as I do with the TRON event id, but then I need to map the eventId I keep in the map to a NotificationType, and this gets ugly because I would need to return something by default when it is not in the map, and I can\u0027t use null if I try to access a priority field on the NotificationType objects.\n\nThat imo works better if I have native ints, but not well if I have an enum type.",
+      "parentUuid": "d3f4b3a7_108d4a57",
+      "revId": "33b49b4a144b6c5519ccd8a98cb8ae2bd6238e51",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a73dc365_9fae9ee3",
         "filename": "services/core/java/com/android/server/connectivity/NetworkNotificationManager.java",
         "patchSetId": 1
@@ -53,6 +71,30 @@
       "writtenOn": "2017-07-26T08:48:17Z",
       "side": 1,
       "message": "static probably works here",
+      "range": {
+        "startLine": 285,
+        "startChar": 12,
+        "endLine": 285,
+        "endChar": 15
+      },
+      "revId": "33b49b4a144b6c5519ccd8a98cb8ae2bd6238e51",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bd94b7ed_66edd759",
+        "filename": "services/core/java/com/android/server/connectivity/NetworkNotificationManager.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 285,
+      "author": {
+        "id": 1107893
+      },
+      "writtenOn": "2017-07-26T13:28:25Z",
+      "side": 1,
+      "message": "will do.",
+      "parentUuid": "a73dc365_9fae9ee3",
       "range": {
         "startLine": 285,
         "startChar": 12,
