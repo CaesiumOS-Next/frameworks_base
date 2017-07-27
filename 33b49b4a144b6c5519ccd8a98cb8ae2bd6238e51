@@ -60,6 +60,24 @@
     },
     {
       "key": {
+        "uuid": "084a78bd_90c7410d",
+        "filename": "services/core/java/com/android/server/connectivity/NetworkNotificationManager.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1107893
+      },
+      "writtenOn": "2017-07-27T12:08:50Z",
+      "side": 1,
+      "message": "I ended up with the middle ground of using the enum type for priority(), in order to handle the failing build on internal branches: the class holding all the TRON counter changed from MetricsConstants to SystemMessage.\n\nI am still keeping it as a static function for better handling null values.",
+      "parentUuid": "a53bf68a_20c57657",
+      "revId": "33b49b4a144b6c5519ccd8a98cb8ae2bd6238e51",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a73dc365_9fae9ee3",
         "filename": "services/core/java/com/android/server/connectivity/NetworkNotificationManager.java",
         "patchSetId": 1
