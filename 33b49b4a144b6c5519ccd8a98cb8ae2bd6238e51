@@ -104,6 +104,30 @@
       "revId": "33b49b4a144b6c5519ccd8a98cb8ae2bd6238e51",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9b3c2250_87a539ed",
+        "filename": "services/core/java/com/android/server/connectivity/NetworkNotificationManager.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 285,
+      "author": {
+        "id": 1107893
+      },
+      "writtenOn": "2017-07-27T05:33:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bd94b7ed_66edd759",
+      "range": {
+        "startLine": 285,
+        "startChar": 12,
+        "endLine": 285,
+        "endChar": 15
+      },
+      "revId": "33b49b4a144b6c5519ccd8a98cb8ae2bd6238e51",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
