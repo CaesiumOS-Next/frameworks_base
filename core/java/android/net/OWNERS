@@ -4,3 +4,27 @@ jsharkey@google.com
 lorenzo@google.com
 satk@google.com
 silberst@google.com
+
+per-file *NetworkRecommendationProvider.*=jjoslin@google.com
+per-file *NetworkRecommendationProvider.*=jlapenna@google.com
+
+per-file INetworkScoreCache.aidl=jjoslin@google.com
+per-file INetworkScoreCache.aidl=jlapenna@google.com
+
+per-file INetworkScoreService.aidl=jjoslin@google.com
+per-file INetworkScoreService.aidl=jlapenna@google.com
+
+per-file NetworkKey.*=jjoslin@google.com
+per-file NetworkKey.*=jlapenna@google.com
+
+per-file NetworkScoreManager.java=jjoslin@google.com
+per-file NetworkScoreManager.java=jlapenna@google.com
+
+per-file NetworkScorerAppData.*=jjoslin@google.com
+per-file NetworkScorerAppData.*=jlapenna@google.com
+
+per-file RssiCurve.java=jjoslin@google.com
+per-file RssiCurve.java=jlapenna@google.com
+
+per-file ScoredNetwork.*=jjoslin@google.com
+per-file ScoredNetwork.*=jlapenna@google.com
