@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1e0cf2ee_751f3d59",
+        "filename": "telephony/java/android/telephony/MbmsDownloadManager.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 275,
+      "author": {
+        "id": 1002609
+      },
+      "writtenOn": "2017-08-01T22:11:09Z",
+      "side": 1,
+      "message": "synchronization - sIsIntialized should probably be AtomicBoolean so you can do compare\u0026set in one go.",
+      "range": {
+        "startLine": 270,
+        "startChar": 0,
+        "endLine": 275,
+        "endChar": 30
+      },
+      "revId": "ee798819d9952a86d46a2db54fe647738b6cf75e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e8a970ad_7eb5fe4c",
+        "filename": "telephony/java/android/telephony/MbmsStreamingManager.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1002609
+      },
+      "writtenOn": "2017-08-01T22:11:09Z",
+      "side": 1,
+      "message": "ditto on sync",
+      "range": {
+        "startLine": 105,
+        "startChar": 7,
+        "endLine": 110,
+        "endChar": 30
+      },
+      "revId": "ee798819d9952a86d46a2db54fe647738b6cf75e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
