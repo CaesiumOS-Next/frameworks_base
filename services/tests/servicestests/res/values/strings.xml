@@ -25,4 +25,5 @@
     <string name="test_account_type2_authenticator_label">AccountManagerService Test Account Type2</string>
     <string name="test_account_type1">com.android.server.accounts.account_manager_service_test.account.type1</string>
     <string name="test_account_type2">com.android.server.accounts.account_manager_service_test.account.type2</string>
+    <string name="search_label">Android Frameworks Service Tests</string>
 </resources>
