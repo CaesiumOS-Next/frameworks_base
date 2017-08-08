@@ -2029,10 +2029,11 @@ public class ConnectivityService extends IConnectivityManager.Stub
                                 "; everConnected=" + nai.everConnected);
                     }
                     LinkProperties oldLp = nai.linkProperties;
+                    LinkProperties newLp = (LinkProperties) msg.obj;
                     synchronized (nai) {
-                        nai.linkProperties = (LinkProperties)msg.obj;
+                        nai.linkProperties = newLp;
                     }
-                    if (nai.everConnected) updateLinkProperties(nai, oldLp);
+                    if (nai.created) updateLinkProperties(nai, oldLp);
                     break;
                 }
                 case NetworkAgent.EVENT_NETWORK_INFO_CHANGED: {
@@ -4434,7 +4435,7 @@ public class ConnectivityService extends IConnectivityManager.Stub
 
     private void updateInterfaces(LinkProperties newLp, LinkProperties oldLp, int netId,
                                   NetworkCapabilities caps) {
-        CompareResult<String> interfaceDiff = new CompareResult<String>();
+        CompareResult<String> interfaceDiff = new CompareResult<>();
         if (oldLp != null) {
             interfaceDiff = oldLp.compareAllInterfaceNames(newLp);
         } else if (newLp != null) {
@@ -5158,10 +5159,7 @@ public class ConnectivityService extends IConnectivityManager.Stub
                     " to " + state);
         }
 
-        if (!networkAgent.created
-                && (state == NetworkInfo.State.CONNECTED
-                || (state == NetworkInfo.State.CONNECTING && networkAgent.isVPN()))) {
-
+        if (!networkAgent.created) {
             // A network that has just connected has zero requests and is thus a foreground network.
             networkAgent.networkCapabilities.addCapability(NET_CAPABILITY_FOREGROUND);
 
@@ -5182,13 +5180,11 @@ public class ConnectivityService extends IConnectivityManager.Stub
                 return;
             }
             networkAgent.created = true;
+            updateLinkProperties(networkAgent, null);
         }
 
         if (!networkAgent.everConnected && state == NetworkInfo.State.CONNECTED) {
             networkAgent.everConnected = true;
-
-            updateLinkProperties(networkAgent, null);
-            notifyIfacesChangedForNetworkStats();
 
             networkAgent.networkMonitor.sendMessage(NetworkMonitor.CMD_NETWORK_CONNECTED);
             scheduleUnvalidatedPrompt(networkAgent);
