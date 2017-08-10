@@ -196,9 +196,14 @@ public final class StrictMode {
      */
     public static final int DETECT_UNBUFFERED_IO = 0x20;  // for ThreadPolicy
 
+    /**
+     * @hide
+     */
+    public static final int DETECT_EXPLICIT_GC = 0x40;  // for ThreadPolicy
+
     private static final int ALL_THREAD_DETECT_BITS =
             DETECT_DISK_WRITE | DETECT_DISK_READ | DETECT_NETWORK | DETECT_CUSTOM |
-            DETECT_RESOURCE_MISMATCH | DETECT_UNBUFFERED_IO;
+            DETECT_RESOURCE_MISMATCH | DETECT_UNBUFFERED_IO | DETECT_EXPLICIT_GC;
 
     // Byte 2: Process-policy
 
@@ -481,6 +486,20 @@ public final class StrictMode {
              */
             public Builder permitUnbufferedIo() {
                 return disable(DETECT_UNBUFFERED_IO);
+            }
+
+            /**
+             * Detect calls to {@link System#gc()} or {@link Runtime#gc()}
+             */
+            public Builder detectExplicitGC() {
+                return enable(DETECT_EXPLICIT_GC);
+            }
+
+            /**
+             * Disable detection of calls to {@link System#gc()} or {@link Runtime#gc()}
+             */
+            public Builder permitExplicitGC() {
+                return disable(DETECT_EXPLICIT_GC);
             }
 
             /**
@@ -1002,6 +1021,15 @@ public final class StrictMode {
     }
 
     /**
+     * @hide
+     */
+    private static class StrictModeExplicitGCViolation extends StrictModeViolation {
+        public StrictModeExplicitGCViolation(int policyMask) {
+            super(policyMask, DETECT_EXPLICIT_GC, null);
+        }
+    }
+
+    /**
      * Returns the bitmask of the current thread's policy.
      *
      * @return the bitmask of all the DETECT_* and PENALTY_* bits currently enabled
@@ -1319,6 +1347,20 @@ public final class StrictMode {
             }
             BlockGuard.BlockGuardPolicyException e =
                     new StrictModeUnbufferedIOViolation(mPolicyMask);
+            e.fillInStackTrace();
+            startHandlingViolationException(e);
+        }
+
+        // Part of BlockGuard.Policy; just part of StrictMode:
+        public void onExplicitGC() {
+            if ((mPolicyMask & DETECT_EXPLICIT_GC) == 0) {
+                return;
+            }
+            if (tooManyViolationsThisLoop()) {
+                return;
+            }
+            BlockGuard.BlockGuardPolicyException e =
+                    new StrictModeExplicitGCViolation(mPolicyMask);
             e.fillInStackTrace();
             startHandlingViolationException(e);
         }
