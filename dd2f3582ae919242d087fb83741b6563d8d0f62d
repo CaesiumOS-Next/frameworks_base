@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "84a80ef0_b95b4d20",
+        "filename": "services/core/java/com/android/server/NetworkManagementService.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 1538,
+      "author": {
+        "id": 1000451
+      },
+      "writtenOn": "2017-08-11T22:14:43Z",
+      "side": 1,
+      "message": "Need to iterate over providers here.",
+      "range": {
+        "startLine": 1538,
+        "startChar": 12,
+        "endLine": 1538,
+        "endChar": 13
+      },
+      "revId": "dd2f3582ae919242d087fb83741b6563d8d0f62d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3f7de505_0e6198dc",
+        "filename": "services/core/java/com/android/server/NetworkManagementService.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 1564,
+      "author": {
+        "id": 1000451
+      },
+      "writtenOn": "2017-08-11T22:14:43Z",
+      "side": 1,
+      "message": "Need to iterate over providers here and call with Long.max (SubscriptionPlan.BYTES_UNLIMITED).",
+      "range": {
+        "startLine": 1564,
+        "startChar": 12,
+        "endLine": 1564,
+        "endChar": 13
+      },
+      "revId": "dd2f3582ae919242d087fb83741b6563d8d0f62d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9778dbed_92d81a25",
+        "filename": "services/core/java/com/android/server/connectivity/tethering/OffloadController.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 259,
+      "author": {
+        "id": 1000451
+      },
+      "writtenOn": "2017-08-11T22:14:43Z",
+      "side": 1,
+      "message": "We need to translate -1 (unlimited) in to LONG_MAX here.",
+      "range": {
+        "startLine": 259,
+        "startChar": 48,
+        "endLine": 259,
+        "endChar": 53
+      },
+      "revId": "dd2f3582ae919242d087fb83741b6563d8d0f62d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
