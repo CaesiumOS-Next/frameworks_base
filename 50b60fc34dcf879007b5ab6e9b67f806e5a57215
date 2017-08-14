@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a29e1008_080d2e82",
+        "filename": "services/core/java/com/android/server/connectivity/tethering/OffloadController.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1000451
+      },
+      "writtenOn": "2017-08-14T18:18:54Z",
+      "side": 1,
+      "message": "Does this have the same runWithScissors() concern?",
+      "range": {
+        "startLine": 208,
+        "startChar": 21,
+        "endLine": 208,
+        "endChar": 25
+      },
+      "revId": "50b60fc34dcf879007b5ab6e9b67f806e5a57215",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
