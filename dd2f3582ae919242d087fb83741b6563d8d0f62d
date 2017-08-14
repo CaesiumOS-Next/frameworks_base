@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "ce9ec77b_37678f36",
+        "filename": "services/core/java/com/android/server/NetworkManagementService.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 1538,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2017-08-14T04:21:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "84a80ef0_b95b4d20",
+      "range": {
+        "startLine": 1538,
+        "startChar": 12,
+        "endLine": 1538,
+        "endChar": 13
+      },
+      "revId": "dd2f3582ae919242d087fb83741b6563d8d0f62d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3f7de505_0e6198dc",
         "filename": "services/core/java/com/android/server/NetworkManagementService.java",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2017-08-11T22:14:43Z",
       "side": 1,
       "message": "Need to iterate over providers here and call with Long.max (SubscriptionPlan.BYTES_UNLIMITED).",
+      "range": {
+        "startLine": 1564,
+        "startChar": 12,
+        "endLine": 1564,
+        "endChar": 13
+      },
+      "revId": "dd2f3582ae919242d087fb83741b6563d8d0f62d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "130fbd9c_e0dccfde",
+        "filename": "services/core/java/com/android/server/NetworkManagementService.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 1564,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2017-08-14T04:21:10Z",
+      "side": 1,
+      "message": "Done, but defined a new ITetheringStatsProvider.QUOTA_UNLIMITED for this. It seems more appropriate for this value to be defined in that interface, where it is used.",
+      "parentUuid": "3f7de505_0e6198dc",
       "range": {
         "startLine": 1564,
         "startChar": 12,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "c61c5315_83c02abf",
+        "filename": "services/core/java/com/android/server/connectivity/tethering/OffloadController.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2017-08-14T04:21:10Z",
+      "side": 1,
+      "message": "You\u0027re correct, but actually I don\u0027t think there\u0027s a need for this to be synchronous. Removed the latch.\n\nThis comment does affect getTetherStats above, though. Worse, that function will return zeroes if the fetch times out, and it occurs to me now that doing so that will make various NonMonotonicObservers rather unhappy.\n\nIn hindsight, I think it was a mistake to make that function non-blocking, so I\u0027ve changed it to block.",
+      "parentUuid": "6c1a1d4a_1621c40e",
+      "range": {
+        "startLine": 230,
+        "startChar": 12,
+        "endLine": 234,
+        "endChar": 13
+      },
+      "revId": "dd2f3582ae919242d087fb83741b6563d8d0f62d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9778dbed_92d81a25",
         "filename": "services/core/java/com/android/server/connectivity/tethering/OffloadController.java",
         "patchSetId": 1
@@ -82,6 +154,30 @@
       "writtenOn": "2017-08-11T22:14:43Z",
       "side": 1,
       "message": "We need to translate -1 (unlimited) in to LONG_MAX here.",
+      "range": {
+        "startLine": 259,
+        "startChar": 48,
+        "endLine": 259,
+        "endChar": 53
+      },
+      "revId": "dd2f3582ae919242d087fb83741b6563d8d0f62d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "985f74cf_86e5b010",
+        "filename": "services/core/java/com/android/server/connectivity/tethering/OffloadController.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 259,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2017-08-14T04:21:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9778dbed_92d81a25",
       "range": {
         "startLine": 259,
         "startChar": 48,
