@@ -22,6 +22,30 @@
       "revId": "50b60fc34dcf879007b5ab6e9b67f806e5a57215",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "290979dd_9c992bf9",
+        "filename": "services/core/java/com/android/server/connectivity/tethering/OffloadController.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2017-08-15T00:20:59Z",
+      "side": 1,
+      "message": "No, because we don\u0027t block on the result.",
+      "parentUuid": "a29e1008_080d2e82",
+      "range": {
+        "startLine": 208,
+        "startChar": 21,
+        "endLine": 208,
+        "endChar": 25
+      },
+      "revId": "50b60fc34dcf879007b5ab6e9b67f806e5a57215",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
