@@ -41365,18 +41365,14 @@ package android.telephony {
   }
 
   public class TelephonyManager {
-    method public void answerRingingCall();
-    method public void call(java.lang.String, java.lang.String);
     method public boolean canChangeDtmfToneLength();
     method public int checkCarrierPrivilegesForPackage(java.lang.String);
     method public int checkCarrierPrivilegesForPackageAnyPhone(java.lang.String);
     method public android.telephony.TelephonyManager createForPhoneAccountHandle(android.telecom.PhoneAccountHandle);
     method public android.telephony.TelephonyManager createForSubscriptionId(int);
-    method public void dial(java.lang.String);
     method public boolean disableDataConnectivity();
     method public boolean enableDataConnectivity();
     method public void enableVideoCalling(boolean);
-    method public boolean endCall();
     method public java.util.List<android.telephony.CellInfo> getAllCellInfo();
     method public java.util.List<android.service.carrier.CarrierIdentifier> getAllowedCarriers(int);
     method public int getCallState();
@@ -41444,11 +41440,8 @@ package android.telephony {
     method public boolean isDataConnectivityPossible();
     method public boolean isDataEnabled();
     method public boolean isHearingAidCompatibilitySupported();
-    method public boolean isIdle();
     method public boolean isNetworkRoaming();
-    method public boolean isOffhook();
     method public boolean isRadioOn();
-    method public boolean isRinging();
     method public boolean isSmsCapable();
     method public boolean isTtyModeSupported();
     method public boolean isVideoCallingEnabled();
@@ -41470,7 +41463,6 @@ package android.telephony {
     method public boolean setRadioPower(boolean);
     method public void setVisualVoicemailEnabled(android.telecom.PhoneAccountHandle, boolean);
     method public boolean setVoiceMailNumber(java.lang.String, java.lang.String);
-    method public void silenceRinger();
     method public boolean supplyPin(java.lang.String);
     method public int[] supplyPinReportResult(java.lang.String);
     method public boolean supplyPuk(java.lang.String, java.lang.String);
