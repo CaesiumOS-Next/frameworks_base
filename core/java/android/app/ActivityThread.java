@@ -3168,6 +3168,7 @@ public final class ActivityThread {
 
     static final void handleAttachAgent(String agent) {
         try {
+            VMDebug.loadJvmti();
             VMDebug.attachAgent(agent);
         } catch (IOException e) {
             Slog.e(TAG, "Attaching agent failed: " + agent);

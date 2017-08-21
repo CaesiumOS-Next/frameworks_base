@@ -2061,6 +2061,14 @@ public final class Debug
         }
     }
 
+    /**
+     * Loads the Jvmti plugin or does nothing if the plugin is already loaded.
+     *
+     * @throws IOException if the plugin cannot be loaded, e.g. if the process is not debuggable
+     */
+    public static void loadJvmti() throws IOException {
+        VMDebug.loadJvmti();
+    }
 
     /**
      * Returns true if the type of the field matches the specified class.
