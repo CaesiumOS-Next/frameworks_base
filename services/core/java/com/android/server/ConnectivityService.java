@@ -4341,6 +4341,9 @@ public class ConnectivityService extends IConnectivityManager.Stub
         na.asyncChannel.connect(mContext, mTrackerHandler, na.messenger);
         NetworkInfo networkInfo = na.networkInfo;
         na.networkInfo = null;
+        if (na.linkProperties != null) {
+            na.linkProperties.ensureDirectlyConnectedRoutes();
+        }
         updateNetworkInfo(na, networkInfo);
     }
 
@@ -4445,12 +4448,10 @@ public class ConnectivityService extends IConnectivityManager.Stub
      * @return true if routes changed between oldLp and newLp
      */
     private boolean updateRoutes(LinkProperties newLp, LinkProperties oldLp, int netId) {
-        CompareResult<RouteInfo> routeDiff = new CompareResult<RouteInfo>();
-        if (oldLp != null) {
-            routeDiff = oldLp.compareAllRoutes(newLp);
-        } else if (newLp != null) {
-            routeDiff.added = newLp.getAllRoutes();
-        }
+        // Compare the route diff to determine which routes should be added and removed.
+        CompareResult<RouteInfo> routeDiff = new CompareResult<RouteInfo>(
+                newLp != null ? newLp.getAllRoutes() : null,
+                oldLp != null ? oldLp.getAllRoutes() : null);
 
         // add routes before removing old in case it helps with continuous connectivity
 
@@ -4630,6 +4631,8 @@ public class ConnectivityService extends IConnectivityManager.Stub
         synchronized (nai) {
             nai.linkProperties = newLp;
         }
+        // msg.obj is already a defensive copy.
+        nai.linkProperties.ensureDirectlyConnectedRoutes();
         if (nai.everConnected) {
             updateLinkProperties(nai, oldLp);
         }

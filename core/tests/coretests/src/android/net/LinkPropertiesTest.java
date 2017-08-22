@@ -19,15 +19,22 @@ package android.net;
 import android.net.IpPrefix;
 import android.net.LinkAddress;
 import android.net.LinkProperties;
+import android.net.LinkProperties.CompareResult;
 import android.net.LinkProperties.ProvisioningChange;
 import android.net.RouteInfo;
 import android.system.OsConstants;
 import android.test.suitebuilder.annotation.SmallTest;
 import android.test.suitebuilder.annotation.Suppress;
+import android.util.ArraySet;
+
 import junit.framework.TestCase;
 
 import java.net.InetAddress;
-import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.List;
+import java.util.Set;
 
 
 public class LinkPropertiesTest extends TestCase {
@@ -677,5 +684,84 @@ public class LinkPropertiesTest extends TestCase {
         assertFalse(v6lp.isReachable(DNS1));
         stacked.addRoute(new RouteInfo((IpPrefix) null, stackedAddress));
         assertTrue(v6lp.isReachable(DNS1));
+    }
+
+    @SmallTest
+    public void testLinkPropertiesLocalRoutes() {
+        LinkProperties rmnet0 = new LinkProperties();
+        rmnet0.setInterfaceName("rmnet0");
+        rmnet0.addLinkAddress(new LinkAddress(Address("10.0.0.2"), 8));
+        RouteInfo directRoute0 = new RouteInfo(new LinkAddress(Address("10.0.0.0"), 8), null,
+                rmnet0.getInterfaceName());
+
+        // Since no routes is added explicitly, getAllRoutes() should return empty.
+        assertTrue(rmnet0.getAllRoutes().isEmpty());
+
+        rmnet0.ensureDirectlyConnectedRoutes();
+        // ensureDirectlyConnectedRoutes() should have added the missing local route.
+        assertEqualRoutes(Collections.singletonList(directRoute0), rmnet0.getAllRoutes());
+
+        LinkProperties rmnet1 = new LinkProperties();
+        rmnet1.setInterfaceName("rmnet1");
+        rmnet1.addLinkAddress(new LinkAddress(Address("10.0.0.3"), 8));
+        RouteInfo defaultRoute1 = new RouteInfo((IpPrefix) null,
+                NetworkUtils.numericToInetAddress("10.0.0.1"), rmnet1.getInterfaceName());
+        RouteInfo directRoute1 = new RouteInfo(new LinkAddress(Address("10.0.0.0"), 8), null,
+                rmnet1.getInterfaceName());
+
+        rmnet1.addRoute(defaultRoute1);
+        rmnet1.addRoute(directRoute1);
+
+        // Check added routes
+        assertEqualRoutes(Arrays.asList(defaultRoute1, directRoute1), rmnet1.getAllRoutes());
+        // ensureDirectlyConnectedRoutes() shouldn't change the routes since direct connected
+        // route is already part of the configuration.
+        rmnet1.ensureDirectlyConnectedRoutes();
+        assertEqualRoutes(Arrays.asList(defaultRoute1, directRoute1), rmnet1.getAllRoutes());
+    }
+
+    @SmallTest
+    public void testCompareResult() {
+        // Either adding or removing items
+        testCompareResult(Arrays.asList(1, 2, 3, 4), Arrays.asList(1),
+                Arrays.asList(2, 3, 4), null);
+        testCompareResult(Arrays.asList(1, 2), Arrays.asList(3, 2, 1, 4),
+                null, Arrays.asList(3, 4));
+
+
+        // adding and removing items at the same time
+        testCompareResult(Arrays.asList(1, 2, 3, 4), Arrays.asList(2, 3, 4, 5),
+                Arrays.asList(1), Arrays.asList(5));
+        testCompareResult(Arrays.asList(1, 2, 3), Arrays.asList(4, 5, 6),
+                Arrays.asList(1, 2, 3), Arrays.asList(4, 5, 6));
+
+        // null cases
+        testCompareResult(Arrays.asList(1, 2, 3), null, Arrays.asList(1, 2, 3), null);
+        testCompareResult(null, Arrays.asList(3, 2, 1), null, Arrays.asList(1, 2, 3));
+        testCompareResult(null, null, null, null);
+    }
+
+    private void assertEqualRoutes(Collection<RouteInfo> expected, Collection<RouteInfo> actual) {
+        Set<RouteInfo> expectedSet = new ArraySet<>(expected);
+        Set<RouteInfo> actualSet = new ArraySet<>(actual);
+        // Duplicated entries in actual routes are considered failures
+        assertEquals(actual.size(), actualSet.size());
+
+        assertEquals(expectedSet, actualSet);
+    }
+
+    private <T> void testCompareResult(List<T> newItems, List<T> oldItems, List<T> expectAdded,
+            List<T> expectRemoved) {
+        CompareResult<T> result = new CompareResult<>(newItems, oldItems);
+        if (expectAdded != null) {
+            assertEquals(new ArraySet<T>(expectAdded), new ArraySet<T>(result.added));
+        } else {
+            assertTrue(result.added.isEmpty());
+        }
+        if (expectRemoved != null) {
+            assertEquals(new ArraySet<T>(expectRemoved), (new ArraySet<T>(result.removed)));
+        } else {
+            assertTrue(result.removed.isEmpty());
+        }
     }
 }
