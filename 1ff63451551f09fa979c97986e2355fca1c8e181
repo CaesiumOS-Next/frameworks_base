@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dbbac574_86d6610b",
+        "filename": "core/java/android/bluetooth/BluetoothGattCharacteristic.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 286,
+      "author": {
+        "id": 1076123
+      },
+      "writtenOn": "2017-08-23T13:29:42Z",
+      "side": 0,
+      "message": "?\n\nI don\u0027t see this on the list of fixes",
+      "range": {
+        "startLine": 286,
+        "startChar": 4,
+        "endLine": 286,
+        "endChar": 7
+      },
+      "revId": "1ff63451551f09fa979c97986e2355fca1c8e181",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c5357ddd_07ce2964",
+        "filename": "core/java/android/bluetooth/BluetoothGattDescriptor.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1076123
+      },
+      "writtenOn": "2017-08-23T13:29:42Z",
+      "side": 0,
+      "message": "?",
+      "range": {
+        "startLine": 166,
+        "startChar": 5,
+        "endLine": 166,
+        "endChar": 12
+      },
+      "revId": "1ff63451551f09fa979c97986e2355fca1c8e181",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}

@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1789d930_ef56ca02",
+        "filename": "core/java/android/bluetooth/BluetoothHeadsetClient.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 1084,
+      "author": {
+        "id": 1076123
+      },
+      "writtenOn": "2017-08-23T13:29:42Z",
+      "side": 1,
+      "message": "This one seems different, since it\u0027s not a reordering.",
+      "range": {
+        "startLine": 1084,
+        "startChar": 4,
+        "endLine": 1084,
+        "endChar": 17
+      },
+      "revId": "6595be8d683612be266d80f57e23da357ca67226",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c07bd1a5_02ddc824",
+        "filename": "core/java/android/bluetooth/BluetoothMasInstance.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1076123
+      },
+      "writtenOn": "2017-08-23T13:29:42Z",
+      "side": 1,
+      "message": "?",
+      "range": {
+        "startLine": 103,
+        "startChar": 4,
+        "endLine": 103,
+        "endChar": 9
+      },
+      "revId": "6595be8d683612be266d80f57e23da357ca67226",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c005ab63_7184c5ce",
+        "filename": "core/java/android/bluetooth/BluetoothUuid.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1076123
+      },
+      "writtenOn": "2017-08-23T13:29:42Z",
+      "side": 1,
+      "message": "?",
+      "range": {
+        "startLine": 97,
+        "startChar": 0,
+        "endLine": 97,
+        "endChar": 0
+      },
+      "revId": "6595be8d683612be266d80f57e23da357ca67226",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9005d7c2_e8edf445",
+        "filename": "core/java/android/bluetooth/OobData.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1076123
+      },
+      "writtenOn": "2017-08-23T13:29:42Z",
+      "side": 1,
+      "message": "still needed?",
+      "range": {
+        "startLine": 46,
+        "startChar": 8,
+        "endLine": 46,
+        "endChar": 13
+      },
+      "revId": "6595be8d683612be266d80f57e23da357ca67226",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
