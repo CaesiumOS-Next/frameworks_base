@@ -70,10 +70,8 @@ public final class BluetoothHealthAppConfiguration implements Parcelable {
 
             if (mName == null) return false;
 
-            return mName.equals(config.getName()) &&
-                    mDataType == config.getDataType() &&
-                    mRole == config.getRole() &&
-                    mChannelType == config.getChannelType();
+            return mName.equals(config.getName()) && mDataType == config.getDataType()
+                    && mRole == config.getRole() && mChannelType == config.getChannelType();
         }
         return false;
     }
@@ -90,11 +88,11 @@ public final class BluetoothHealthAppConfiguration implements Parcelable {
 
     @Override
     public String toString() {
-        return "BluetoothHealthAppConfiguration [mName = " + mName +
-                ",mDataType = " + mDataType + ", mRole = " + mRole + ",mChannelType = " +
-                mChannelType + "]";
+        return "BluetoothHealthAppConfiguration [mName = " + mName + ",mDataType = " + mDataType
+                + ", mRole = " + mRole + ",mChannelType = " + mChannelType + "]";
     }
 
+    @Override
     public int describeContents() {
         return 0;
     }
@@ -157,6 +155,7 @@ public final class BluetoothHealthAppConfiguration implements Parcelable {
                 }
             };
 
+    @Override
     public void writeToParcel(Parcel out, int flags) {
         out.writeString(mName);
         out.writeInt(mDataType);

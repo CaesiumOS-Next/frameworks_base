@@ -57,7 +57,7 @@ public final class PeriodicAdvertisingManager {
 
     /* maps callback, to callback wrapper and sync handle */
     Map<PeriodicAdvertisingCallback,
-            IPeriodicAdvertisingCallback /* callbackWrapper */> callbackWrappers;
+            IPeriodicAdvertisingCallback /* callbackWrapper */> mCallbackWrappers;
 
     /**
      * Use {@link BluetoothAdapter#getBluetoothLeScanner()} instead.
@@ -68,7 +68,7 @@ public final class PeriodicAdvertisingManager {
     public PeriodicAdvertisingManager(IBluetoothManager bluetoothManager) {
         mBluetoothManager = bluetoothManager;
         mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        callbackWrappers = new IdentityHashMap<>();
+        mCallbackWrappers = new IdentityHashMap<>();
     }
 
     /**
@@ -155,7 +155,7 @@ public final class PeriodicAdvertisingManager {
         }
 
         IPeriodicAdvertisingCallback wrapped = wrap(callback, handler);
-        callbackWrappers.put(callback, wrapped);
+        mCallbackWrappers.put(callback, wrapped);
 
         try {
             gatt.registerSync(scanResult, skip, timeout, wrapped);
@@ -185,7 +185,7 @@ public final class PeriodicAdvertisingManager {
             return;
         }
 
-        IPeriodicAdvertisingCallback wrapper = callbackWrappers.remove(callback);
+        IPeriodicAdvertisingCallback wrapper = mCallbackWrappers.remove(callback);
         if (wrapper == null) {
             throw new IllegalArgumentException("callback was not properly registered");
         }
@@ -215,7 +215,7 @@ public final class PeriodicAdvertisingManager {
                             // App can still unregister the sync until notified it failed. Remove
                             // callback
                             // after app was notifed.
-                            callbackWrappers.remove(callback);
+                            mCallbackWrappers.remove(callback);
                         }
                     }
                 });
@@ -235,9 +235,9 @@ public final class PeriodicAdvertisingManager {
                     @Override
                     public void run() {
                         callback.onSyncLost(syncHandle);
-                        // App can still unregister the sync until notified it's lost. Remove callback after
-                        // app was notifed.
-                        callbackWrappers.remove(callback);
+                        // App can still unregister the sync until notified it's lost.
+                        // Remove callback after app was notifed.
+                        mCallbackWrappers.remove(callback);
                     }
                 });
             }

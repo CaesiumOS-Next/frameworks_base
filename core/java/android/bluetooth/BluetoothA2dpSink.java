@@ -120,15 +120,15 @@ public final class BluetoothA2dpSink implements BluetoothProfile {
      * This extra represents the current audio configuration of the A2DP source device.
      * {@see BluetoothAudioConfig}
      */
-    public static final String EXTRA_AUDIO_CONFIG
-            = "android.bluetooth.a2dp-sink.profile.extra.AUDIO_CONFIG";
+    public static final String EXTRA_AUDIO_CONFIG =
+            "android.bluetooth.a2dp-sink.profile.extra.AUDIO_CONFIG";
 
     private Context mContext;
     private ServiceListener mServiceListener;
     private IBluetoothA2dpSink mService;
     private BluetoothAdapter mAdapter;
 
-    final private IBluetoothStateChangeCallback mBluetoothStateChangeCallback =
+    private final IBluetoothStateChangeCallback mBluetoothStateChangeCallback =
             new IBluetoothStateChangeCallback.Stub() {
                 public void onBluetoothStateChange(boolean up) {
                     if (DBG) Log.d(TAG, "onBluetoothStateChange: up=" + up);
@@ -212,6 +212,7 @@ public final class BluetoothA2dpSink implements BluetoothProfile {
         }
     }
 
+    @Override
     public void finalize() {
         close();
     }
@@ -240,8 +241,7 @@ public final class BluetoothA2dpSink implements BluetoothProfile {
      */
     public boolean connect(BluetoothDevice device) {
         if (DBG) log("connect(" + device + ")");
-        if (mService != null && isEnabled() &&
-                isValidDevice(device)) {
+        if (mService != null && isEnabled() && isValidDevice(device)) {
             try {
                 return mService.connect(device);
             } catch (RemoteException e) {
@@ -281,8 +281,7 @@ public final class BluetoothA2dpSink implements BluetoothProfile {
      */
     public boolean disconnect(BluetoothDevice device) {
         if (DBG) log("disconnect(" + device + ")");
-        if (mService != null && isEnabled() &&
-                isValidDevice(device)) {
+        if (mService != null && isEnabled() && isValidDevice(device)) {
             try {
                 return mService.disconnect(device);
             } catch (RemoteException e) {
@@ -297,6 +296,7 @@ public final class BluetoothA2dpSink implements BluetoothProfile {
     /**
      * {@inheritDoc}
      */
+    @Override
     public List<BluetoothDevice> getConnectedDevices() {
         if (VDBG) log("getConnectedDevices()");
         if (mService != null && isEnabled()) {
@@ -314,6 +314,7 @@ public final class BluetoothA2dpSink implements BluetoothProfile {
     /**
      * {@inheritDoc}
      */
+    @Override
     public List<BluetoothDevice> getDevicesMatchingConnectionStates(int[] states) {
         if (VDBG) log("getDevicesMatchingStates()");
         if (mService != null && isEnabled()) {
@@ -331,6 +332,7 @@ public final class BluetoothA2dpSink implements BluetoothProfile {
     /**
      * {@inheritDoc}
      */
+    @Override
     public int getConnectionState(BluetoothDevice device) {
         if (VDBG) log("getState(" + device + ")");
         if (mService != null && isEnabled()
@@ -390,8 +392,8 @@ public final class BluetoothA2dpSink implements BluetoothProfile {
         if (DBG) log("setPriority(" + device + ", " + priority + ")");
         if (mService != null && isEnabled()
                 && isValidDevice(device)) {
-            if (priority != BluetoothProfile.PRIORITY_OFF &&
-                    priority != BluetoothProfile.PRIORITY_ON) {
+            if (priority != BluetoothProfile.PRIORITY_OFF
+                    && priority != BluetoothProfile.PRIORITY_ON) {
                 return false;
             }
             try {

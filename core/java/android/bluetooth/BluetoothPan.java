@@ -183,7 +183,7 @@ public final class BluetoothPan implements BluetoothProfile {
         close();
     }
 
-    final private IBluetoothStateChangeCallback mStateChangeCallback =
+    private final IBluetoothStateChangeCallback mStateChangeCallback =
             new IBluetoothStateChangeCallback.Stub() {
 
                 @Override
@@ -239,8 +239,7 @@ public final class BluetoothPan implements BluetoothProfile {
      */
     public boolean connect(BluetoothDevice device) {
         if (DBG) log("connect(" + device + ")");
-        if (mPanService != null && isEnabled() &&
-                isValidDevice(device)) {
+        if (mPanService != null && isEnabled() && isValidDevice(device)) {
             try {
                 return mPanService.connect(device);
             } catch (RemoteException e) {
@@ -280,8 +279,7 @@ public final class BluetoothPan implements BluetoothProfile {
      */
     public boolean disconnect(BluetoothDevice device) {
         if (DBG) log("disconnect(" + device + ")");
-        if (mPanService != null && isEnabled() &&
-                isValidDevice(device)) {
+        if (mPanService != null && isEnabled() && isValidDevice(device)) {
             try {
                 return mPanService.disconnect(device);
             } catch (RemoteException e) {
@@ -296,6 +294,7 @@ public final class BluetoothPan implements BluetoothProfile {
     /**
      * {@inheritDoc}
      */
+    @Override
     public List<BluetoothDevice> getConnectedDevices() {
         if (VDBG) log("getConnectedDevices()");
         if (mPanService != null && isEnabled()) {
@@ -313,6 +312,7 @@ public final class BluetoothPan implements BluetoothProfile {
     /**
      * {@inheritDoc}
      */
+    @Override
     public List<BluetoothDevice> getDevicesMatchingConnectionStates(int[] states) {
         if (VDBG) log("getDevicesMatchingStates()");
         if (mPanService != null && isEnabled()) {
@@ -330,6 +330,7 @@ public final class BluetoothPan implements BluetoothProfile {
     /**
      * {@inheritDoc}
      */
+    @Override
     public int getConnectionState(BluetoothDevice device) {
         if (VDBG) log("getState(" + device + ")");
         if (mPanService != null && isEnabled()

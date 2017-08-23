@@ -2195,7 +2195,7 @@ public final class BluetoothAdapter {
         }
     }
 
-    final private IBluetoothManagerCallback mManagerCallback =
+    private final IBluetoothManagerCallback mManagerCallback =
             new IBluetoothManagerCallback.Stub() {
                 public void onBluetoothServiceUp(IBluetooth bluetoothService) {
                     if (DBG) Log.d(TAG, "onBluetoothServiceUp: " + bluetoothService);
@@ -2259,7 +2259,7 @@ public final class BluetoothAdapter {
      * @hide
      */
     public boolean enableNoAutoConnect() {
-        if (isEnabled() == true) {
+        if (isEnabled()) {
             if (DBG) Log.d(TAG, "enableNoAutoConnect(): BT already enabled!");
             return true;
         }
@@ -2380,7 +2380,7 @@ public final class BluetoothAdapter {
         return mManagerService;
     }
 
-    final private ArrayList<IBluetoothManagerCallback> mProxyServiceStateCallbacks =
+    private final ArrayList<IBluetoothManagerCallback> mProxyServiceStateCallbacks =
             new ArrayList<IBluetoothManagerCallback>();
 
     /*package*/ IBluetooth getBluetoothService(IBluetoothManagerCallback cb) {

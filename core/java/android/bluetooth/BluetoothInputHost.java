@@ -164,7 +164,7 @@ public final class BluetoothInputHost implements BluetoothProfile {
         }
     }
 
-    final private IBluetoothStateChangeCallback mBluetoothStateChangeCallback =
+    private final IBluetoothStateChangeCallback mBluetoothStateChangeCallback =
             new IBluetoothStateChangeCallback.Stub() {
 
                 public void onBluetoothStateChange(boolean up) {
@@ -288,6 +288,7 @@ public final class BluetoothInputHost implements BluetoothProfile {
     /**
      * {@inheritDoc}
      */
+    @Override
     public List<BluetoothDevice> getConnectedDevices() {
         Log.v(TAG, "getConnectedDevices()");
 
@@ -307,6 +308,7 @@ public final class BluetoothInputHost implements BluetoothProfile {
     /**
      * {@inheritDoc}
      */
+    @Override
     public List<BluetoothDevice> getDevicesMatchingConnectionStates(int[] states) {
         Log.v(TAG, "getDevicesMatchingConnectionStates(): states=" + Arrays.toString(states));
 
@@ -326,6 +328,7 @@ public final class BluetoothInputHost implements BluetoothProfile {
     /**
      * {@inheritDoc}
      */
+    @Override
     public int getConnectionState(BluetoothDevice device) {
         Log.v(TAG, "getConnectionState(): device=" + device);
 

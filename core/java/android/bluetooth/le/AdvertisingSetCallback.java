@@ -126,9 +126,7 @@ public abstract class AdvertisingSetCallback {
      * @param advertisingSet The advertising set.
      * @param status         Status of the operation.
      */
-    public void
-    onPeriodicAdvertisingParametersUpdated(AdvertisingSet advertisingSet,
-            int status) {
+    public void onPeriodicAdvertisingParametersUpdated(AdvertisingSet advertisingSet, int status) {
     }
 
     /**
