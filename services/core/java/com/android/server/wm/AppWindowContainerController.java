@@ -270,6 +270,7 @@ public class AppWindowContainerController
     }
 
     public void removeContainer(int displayId) {
+        StartingSurface surface = null;
         synchronized(mWindowMap) {
             final DisplayContent dc = mRoot.getDisplayContent(displayId);
             if (dc == null) {
@@ -278,7 +279,28 @@ public class AppWindowContainerController
                 return;
             }
             dc.removeAppToken(mToken.asBinder());
+            if (mContainer != null && mContainer.startingData != null) {
+                if (DEBUG_STARTING_WINDOW) Slog.v(TAG_WM, "Force Remove starting " + mContainer
+                        + ": startingWindow=" + mContainer.startingWindow
+                        + " startingView=" + mContainer.startingSurface);
+                surface = mContainer.startingSurface;
+                mContainer.startingData = null;
+                mContainer.startingSurface = null;
+                mContainer.startingWindow = null;
+                mContainer.startingDisplayed = false;
+                if (surface == null && DEBUG_STARTING_WINDOW) {
+                    Slog.v(TAG_WM, "startingWindow was set but startingSurface==null, couldn't "
+                            + "remove");
+                }
+            }
             super.removeContainer();
+        }
+        if (surface != null) {
+            try {
+                surface.remove();
+            } catch (Exception e) {
+                Slog.w(TAG_WM, "Exception when removing starting window", e);
+            }
         }
     }
 
@@ -662,7 +684,7 @@ public class AppWindowContainerController
 
     public void removeStartingWindow() {
         synchronized (mWindowMap) {
-            if (mHandler.hasCallbacks(mRemoveStartingWindow)) {
+            if (mService.mAnimationHandler.hasCallbacks(mRemoveStartingWindow)) {
                 // Already scheduled.
                 if (DEBUG_STARTING_WINDOW) Slog.v(TAG_WM, "Trying to remove starting window but "
                         + "already scheduled");
@@ -682,7 +704,7 @@ public class AppWindowContainerController
 
             if (DEBUG_STARTING_WINDOW) Slog.v(TAG_WM, "Schedule remove starting " + mContainer
                     + " startingWindow=" + mContainer.startingWindow);
-            mHandler.post(mRemoveStartingWindow);
+            mService.mAnimationHandler.post(mRemoveStartingWindow);
         }
     }
 
