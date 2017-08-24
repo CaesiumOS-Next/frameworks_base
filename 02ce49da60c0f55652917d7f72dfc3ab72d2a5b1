@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "44b94fc4_3d50cc7f",
+        "filename": "services/core/java/com/android/server/ConnectivityService.java",
+        "patchSetId": 8
+      },
+      "lineNbr": 4530,
+      "author": {
+        "id": 1107893
+      },
+      "writtenOn": "2017-08-24T05:45:16Z",
+      "side": 1,
+      "message": "Done.\n\nAlthough \"maybe\" is the convention in the networking code, which I am using here as well, I personally don\u0027t like it very much. I just wanted to use the opportunity to explain why:\n\n\"maybe\" is imo descriptive of the implementation but not of its intent, which create a lot of ambiguity.\n\nHere the intent is not that the function returns early or may be a noop. Instead the intent is do some idempotent action.\n\nI feel that nuance is lost with \"maybe\". Instead I personally prefer name hints like \"ensureClatStarted\" that points better to idempotent semantics.",
+      "parentUuid": "adbeb01d_0e9a7d71",
+      "range": {
+        "startLine": 4530,
+        "startChar": 17,
+        "endLine": 4530,
+        "endChar": 26
+      },
+      "revId": "02ce49da60c0f55652917d7f72dfc3ab72d2a5b1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2130d658_7e353910",
         "filename": "services/core/java/com/android/server/ConnectivityService.java",
         "patchSetId": 8
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "8c649221_a62591fb",
+        "filename": "services/core/java/com/android/server/ConnectivityService.java",
+        "patchSetId": 8
+      },
+      "lineNbr": 4539,
+      "author": {
+        "id": 1107893
+      },
+      "writtenOn": "2017-08-24T05:45:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2130d658_7e353910",
+      "range": {
+        "startLine": 4539,
+        "startChar": 17,
+        "endLine": 4539,
+        "endChar": 25
+      },
+      "revId": "02ce49da60c0f55652917d7f72dfc3ab72d2a5b1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a64f8c07_1754bcab",
         "filename": "services/core/java/com/android/server/connectivity/Nat464Xlat.java",
         "patchSetId": 8
@@ -59,6 +107,30 @@
       "writtenOn": "2017-07-10T02:42:15Z",
       "side": 1,
       "message": "Typo",
+      "range": {
+        "startLine": 91,
+        "startChar": 28,
+        "endLine": 91,
+        "endChar": 47
+      },
+      "revId": "02ce49da60c0f55652917d7f72dfc3ab72d2a5b1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "62ea3ee1_6583b34c",
+        "filename": "services/core/java/com/android/server/connectivity/Nat464Xlat.java",
+        "patchSetId": 8
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1107893
+      },
+      "writtenOn": "2017-08-24T05:45:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a64f8c07_1754bcab",
       "range": {
         "startLine": 91,
         "startChar": 28,
