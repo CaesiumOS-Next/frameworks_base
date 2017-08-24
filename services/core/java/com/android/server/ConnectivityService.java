@@ -4347,12 +4347,6 @@ public class ConnectivityService extends IConnectivityManager.Stub
         LinkProperties newLp = networkAgent.linkProperties;
         int netId = networkAgent.network.netId;
 
-        // The NetworkAgentInfo does not know whether clatd is running on its network or not. Before
-        // we do anything else, make sure its LinkProperties are accurate.
-        if (networkAgent.clatd != null) {
-            networkAgent.clatd.fixupLinkProperties(oldLp);
-        }
-
         updateInterfaces(newLp, oldLp, netId, networkAgent.networkCapabilities);
         updateMtu(newLp, oldLp);
         // TODO - figure out what to do for clat
