@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ffcb4b4d_1b37cc24",
+        "filename": "services/core/java/com/android/server/ConnectivityService.java",
+        "patchSetId": 13
+      },
+      "lineNbr": 4412,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2017-08-25T06:59:45Z",
+      "side": 1,
+      "message": "Note: the previous code, in effect, did:\n\n    if (nai.clatd \u003d\u003d null || !nai.clatd.isStarted()) {\n        return;\n    }\n\n... so now, if nai.clatd is not null, but it\u0027s not started (e.g., if it crashed), instead of silently returning we\u0027ll call stop(). However, that will just do:\n\n    Slog.e(TAG, \"clatd: already stopped\");\n\nwhich is arguably more correct.",
+      "range": {
+        "startLine": 4412,
+        "startChar": 8,
+        "endLine": 4412,
+        "endChar": 32
+      },
+      "revId": "0f79cff191549c8fc8be4632295a06682f22ec60",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
