@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bcff5702_faf70fc6",
+        "filename": "services/core/java/com/android/server/ConnectivityService.java",
+        "patchSetId": 12
+      },
+      "lineNbr": 4405,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2017-08-25T04:51:45Z",
+      "side": 1,
+      "message": "I think this is a change in behaviour. If the following happens:\n\n1. updateClat() starts clatd.\n2. clatd starts up correctly and creates its interface.\n3. clatd crashes.\n4. The interface is removed, clear() is called, and isStarted() starts returning false.\n5. updateClat() is called again.\n\nThe previous code would replace nai.clatd with a new Nat464Xlat object and call start() on it. The new code will not do anything.\n\nNot sure yet what the impact of this change is.\n\nNote that in the slightly different case where clatd crashes before it comes up and creates its interface, we would not restart it. That would match the new code.",
+      "range": {
+        "startLine": 4403,
+        "startChar": 0,
+        "endLine": 4405,
+        "endChar": 9
+      },
+      "revId": "52a10455582771c84189daebef62119ca22e6e38",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e94e4d58_49a4c61a",
+        "filename": "services/core/java/com/android/server/connectivity/Nat464Xlat.java",
+        "patchSetId": 12
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2017-08-25T04:51:45Z",
+      "side": 1,
+      "message": "Typo, capabilities.",
+      "range": {
+        "startLine": 91,
+        "startChar": 28,
+        "endLine": 91,
+        "endChar": 47
+      },
+      "revId": "52a10455582771c84189daebef62119ca22e6e38",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "93a18f0c_ad012999",
+        "filename": "services/core/java/com/android/server/connectivity/Nat464Xlat.java",
+        "patchSetId": 12
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2017-08-25T04:51:45Z",
+      "side": 1,
+      "message": "This is also used to determine whether to start clat, not just whether to stop it if it\u0027s already started. Would change this comment to:\n\n    // We only run clat on networks that don\u0027t have a native IPv4 address.",
+      "range": {
+        "startLine": 95,
+        "startChar": 8,
+        "endLine": 95,
+        "endChar": 81
+      },
+      "revId": "52a10455582771c84189daebef62119ca22e6e38",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
