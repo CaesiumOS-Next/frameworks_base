@@ -530,6 +530,11 @@ public class RecoverySystem {
             String filename = packageFile.getCanonicalPath();
             Log.w(TAG, "!!! REBOOTING TO INSTALL " + filename + " !!!");
 
+            if (!packageFile.isFile()) {
+              Log.e(TAG, "Failed to find " + filename);
+              throw new IOException("Package file " + filename + " doesn't exist.");
+            }
+
             // If the package name ends with "_s.zip", it's a security update.
             boolean securityUpdate = filename.endsWith("_s.zip");
 
