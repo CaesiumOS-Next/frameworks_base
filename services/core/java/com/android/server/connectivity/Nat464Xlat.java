@@ -18,6 +18,7 @@ package com.android.server.connectivity;
 
 import java.net.Inet4Address;
 
+import android.content.Context;
 import android.net.InterfaceConfiguration;
 import android.net.ConnectivityManager;
 import android.net.LinkAddress;
@@ -34,18 +35,17 @@ import com.android.server.net.BaseNetworkObserver;
 import com.android.internal.util.ArrayUtils;
 
 /**
- * Class to manage a 464xlat CLAT daemon.
- *
  * @hide
+ *
+ * Class to manage a 464xlat CLAT daemon.
  */
 public class Nat464Xlat extends BaseNetworkObserver {
-    private static final String TAG = Nat464Xlat.class.getSimpleName();
+    private static final String TAG = "Nat464Xlat";
 
     // This must match the interface prefix in clatd.c.
     private static final String CLAT_PREFIX = "v4-";
 
-    // The network types we will start clatd on,
-    // allowing clat only on networks for which we can support IPv6-only.
+    // The network types we will start clatd on.
     private static final int[] NETWORK_TYPES = {
             ConnectivityManager.TYPE_MOBILE,
             ConnectivityManager.TYPE_WIFI,
@@ -76,7 +76,9 @@ public class Nat464Xlat extends BaseNetworkObserver {
     private String mIface;
     private boolean mIsRunning;
 
-    public Nat464Xlat(INetworkManagementService nmService, Handler handler, NetworkAgentInfo nai) {
+    public Nat464Xlat(
+            Context context, INetworkManagementService nmService,
+            Handler handler, NetworkAgentInfo nai) {
         mNMService = nmService;
         mHandler = handler;
         mNetwork = nai;
@@ -88,14 +90,13 @@ public class Nat464Xlat extends BaseNetworkObserver {
      * @return true if the network requires clat, false otherwise.
      */
     public static boolean requiresClat(NetworkAgentInfo nai) {
-        // TODO: migrate to NetworkCapabilities.TRANSPORT_*.
         final int netType = nai.networkInfo.getType();
-        final boolean supported = ArrayUtils.contains(NETWORK_TYPES, nai.networkInfo.getType());
         final boolean connected = nai.networkInfo.isConnected();
-        // We only run clat on networks that don't have a native IPv4 address.
         final boolean hasIPv4Address =
-                (nai.linkProperties != null) && nai.linkProperties.hasIPv4Address();
-        return supported && connected && !hasIPv4Address;
+                (nai.linkProperties != null) ? nai.linkProperties.hasIPv4Address() : false;
+        // Only support clat on mobile and wifi for now, because these are the only IPv6-only
+        // networks we can connect to.
+        return connected && !hasIPv4Address && ArrayUtils.contains(NETWORK_TYPES, netType);
     }
 
     /**
@@ -226,7 +227,6 @@ public class Nat464Xlat extends BaseNetworkObserver {
     }
 
     private void maybeSetIpv6NdOffload(String iface, boolean on) {
-        // TODO: migrate to NetworkCapabilities.TRANSPORT_*.
         if (mNetwork.networkInfo.getType() != ConnectivityManager.TYPE_WIFI) {
             return;
         }
@@ -285,10 +285,5 @@ public class Nat464Xlat extends BaseNetworkObserver {
                 updateConnectivityService(lp);
             }
         }
-    }
-
-    @Override
-    public String toString() {
-        return "mBaseIface: " + mBaseIface + ", mIface: " + mIface + ", mIsRunning: " + mIsRunning;
     }
 }
