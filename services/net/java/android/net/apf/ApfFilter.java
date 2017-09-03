@@ -63,6 +63,8 @@ import java.nio.ByteBuffer;
 import java.nio.BufferUnderflowException;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.EnumMap;
+import java.util.Objects;
 import java.util.function.Predicate;
 
 import libcore.io.IoBridge;
@@ -356,6 +358,28 @@ public class ApfFilter {
         }
     }
 
+    enum RaLifetimeType {
+        DNSSL,
+        PREFIX_PREFERRED,
+        PREFIX_VALID,
+        RDNSS,
+        ROUTER,
+        ROUTE_INFO;
+    }
+
+    static boolean oppositeLifetimes(RaLifetimeType t, Ra newRa, Ra oldRa) {
+        // TODO: consider the case where one ra has lifetime > 0, but the other has -1
+        // TODO: consider the case where one ra has lifetime == 0, but the other has -1
+        boolean isNewLifetimeZero = (newRa.getLifetime(t) == 0);
+        boolean isOldLifetimeZero = (oldRa.getLifetime(t) == 0);
+        if (isNewLifetimeZero == isOldLifetimeZero) {
+            return false;
+        }
+        return (t != RaLifetimeType.ROUTER)
+              || (t != RaLifetimeType.ROUTE_INFO)
+              || !Objects.equals(newRa.srcAddr, oldRa.srcAddr);
+    }
+
     // A class to hold information about an RA.
     @VisibleForTesting
     class Ra {
@@ -411,8 +435,25 @@ public class ApfFilter {
         // For debugging only. Offsets into the packet where RDNSS options are.
         private final ArrayList<Integer> mRdnssOptionOffsets = new ArrayList<>();
 
+        // DOCME
+        private final EnumMap<RaLifetimeType, Long> lifetimes = new EnumMap<>(RaLifetimeType.class);
+
+        private String srcAddr = "FXIME";
+
         // For debugging only. How many times this RA was seen.
         int seenCount = 0;
+
+        void addLifetime(RaLifetimeType t, long lifetime) {
+            lifetimes.put(t, lifetime);
+        }
+
+        long getLifetime(RaLifetimeType t) {
+            Long l = lifetimes.get(t);
+            if (l == null) {
+                return -1;
+            }
+            return l;
+        }
 
         // For debugging only. Returns the hex representation of the last matching packet.
         String getLastMatchingPacket() {
@@ -557,6 +598,8 @@ public class ApfFilter {
             // Parse router lifetime
             long lifetime = processLifetime2B(ICMP6_RA_ROUTER_LIFETIME_OFFSET);
             builder.updateRouterLifetime(lifetime);
+            // TODO: put lifetime in lifetimes, add key
+            addLifetime(RaLifetimeType.ROUTER, lifetime);
 
             // Ensures that the RA is not truncated.
             mPacket.position(ICMP6_RA_OPTION_OFFSET);
@@ -569,9 +612,11 @@ public class ApfFilter {
                         // Parse valid lifetime
                         lifetime = processLifetime4B(ICMP6_PREFIX_OPTION_VALID_LIFETIME_OFFSET);
                         builder.updatePrefixValidLifetime(lifetime);
+                        addLifetime(RaLifetimeType.PREFIX_VALID, lifetime);
                         // Parse preferred lifetime
                         lifetime = processLifetime4B(ICMP6_PREFIX_OPTION_PREFERRED_LIFETIME_OFFSET);
                         builder.updatePrefixPreferredLifetime(lifetime);
+                        addLifetime(RaLifetimeType.PREFIX_PREFERRED, lifetime);
                         mPrefixOptionOffsets.add(position);
                         break;
                     // These three options have the same lifetime offset and size, and
@@ -580,14 +625,17 @@ public class ApfFilter {
                         mRdnssOptionOffsets.add(position);
                         lifetime = processLifetime4B(ICMP6_4_BYTE_LIFETIME_OFFSET);
                         builder.updateRdnssLifetime(lifetime);
+                        addLifetime(RaLifetimeType.RDNSS, lifetime);
                         break;
                     case ICMP6_ROUTE_INFO_OPTION_TYPE:
                         lifetime = processLifetime4B(ICMP6_4_BYTE_LIFETIME_OFFSET);
                         builder.updateRouteInfoLifetime(lifetime);
+                        addLifetime(RaLifetimeType.ROUTE_INFO, lifetime);
                         break;
                     case ICMP6_DNSSL_OPTION_TYPE:
                         lifetime = processLifetime4B(ICMP6_4_BYTE_LIFETIME_OFFSET);
                         builder.updateDnsslLifetime(lifetime);
+                        addLifetime(RaLifetimeType.DNSSL, lifetime);
                         break;
                     default:
                         // RFC4861 section 4.2 dictates we ignore unknown options for fowards
@@ -1134,9 +1182,20 @@ public class ApfFilter {
 
         // Ensure at any time that all filtered RAs have either only non zero lifetimes, or all at
         // least one zero lifetime. http://b/62209513.
-        Predicate<Ra> condition = ra -> newRa.hasZeroLifetime() != ra.hasZeroLifetime();
-        String reason = newRa.hasZeroLifetime() ? "has no zero lifetime" : "has zero lifetime";
-        purgeRaIf(condition, reason);
+        //
+        // here, I should do
+        // newRa.allKeys
+        //      .map(k -> oldRa -> oldRa.keys.contains(k) && oppositelifetime(k, newRa, oldRa))
+        //      .foreach(purgeRaIf)
+        //
+        //  TODO: - contains requires a hashCode / equal methods
+        //          or I can key by RaLifetimeType only, with an enum map
+        //        - oppositeLifetime would be easy to implement if I can immediately get the srcAddr
+        //          i.e I don't need to store the src addr in the RaLifetimeKey
+        for (RaLifetimeType t : newRa.lifetimes.keySet()) {
+            Predicate<Ra> condition = oldRa -> oppositeLifetimes(t, newRa, oldRa);
+            purgeRaIf(condition, "bla");
+        }
 
         // Have we seen this RA before?
         for (int i = 0; i < mRas.size(); i++) {
