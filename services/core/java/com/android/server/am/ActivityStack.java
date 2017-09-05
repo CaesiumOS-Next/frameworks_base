@@ -5024,7 +5024,7 @@ class ActivityStack<T extends StackWindowController> extends ConfigurationContai
     void handleAppCrashLocked(ProcessRecord app) {
         for (int taskNdx = mTaskHistory.size() - 1; taskNdx >= 0; --taskNdx) {
             final ArrayList<ActivityRecord> activities = mTaskHistory.get(taskNdx).mActivities;
-            for (int activityNdx = activities.size() - 1; activityNdx >= 0; --activityNdx) {
+            for (int activityNdx = activities.size() - 1; activityNdx >= 0 && (activities.size() > 0 && activityNdx < activities.size()); --activityNdx) {
                 final ActivityRecord r = activities.get(activityNdx);
                 if (r.app == app) {
                     Slog.w(TAG, "  Force finishing activity "
