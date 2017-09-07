@@ -4368,6 +4368,15 @@ public class CarrierConfigManager {
     public static final String KEY_DISPLAY_NO_DATA_NOTIFICATION_ON_PERMANENT_FAILURE_BOOL =
             "display_no_data_notification_on_permanent_failure_bool";
 
+    /**
+     * Indicates APN types using specified APN for IWLAN network by the carrier during VoWiFi.
+     * Specified APN is only valid when required APN type matches.
+     *
+     * @hide
+     */
+    public static final String KEY_APN_TYPES_USING_SPECIFIED_IWLAN_APN_DURING_VOWIFI_STRINGS =
+            "apn_types_using_specified_iwlan_apn_during_vowifi_strings";
+
     /** The default value for every variable. */
     private final static PersistableBundle sDefaults;
 
@@ -4935,6 +4944,8 @@ public class CarrierConfigManager {
         sDefaults.putBoolean(KEY_STORE_SIM_PIN_FOR_UNATTENDED_REBOOT_BOOL, true);
         sDefaults.putBoolean(KEY_HIDE_ENABLE_2G, false);
         sDefaults.putBoolean(KEY_DISPLAY_NO_DATA_NOTIFICATION_ON_PERMANENT_FAILURE_BOOL, false);
+        sDefaults.putStringArray(KEY_APN_TYPES_USING_SPECIFIED_IWLAN_APN_DURING_VOWIFI_STRINGS,
+                null);
     }
 
     /**
