@@ -79,10 +79,19 @@ final class UsageStatsXmlV1 {
         final UsageStats stats = statsOut.getOrCreateUsageStats(pkg);
 
         // Apply the offset to the beginTime to find the absolute time.
-        stats.mLastTimeUsed = statsOut.beginTime + XmlUtils.readLongAttribute(
-                parser, LAST_TIME_ACTIVE_ATTR);
         stats.mTotalTimeInForeground = XmlUtils.readLongAttribute(parser, TOTAL_TIME_ACTIVE_ATTR);
         stats.mLastEvent = XmlUtils.readIntAttribute(parser, LAST_EVENT_ATTR);
+
+        // This will fix, when System time changed, for some events,
+        // like UsageEvents.Event.SYSTEM_INTERACTION, its mLastTimeUsed always be zero.
+        // And this time will show 1970/1/1 in UI
+        if (stats.mLastEvent == 0 && stats.mTotalTimeInForeground == 0) {
+            stats.mLastTimeUsed = 0;
+        } else {
+            stats.mLastTimeUsed = statsOut.beginTime + XmlUtils.readLongAttribute(
+                    parser, LAST_TIME_ACTIVE_ATTR);
+        }
+
         int eventCode;
         while ((eventCode = parser.next()) != XmlPullParser.END_DOCUMENT) {
             final String tag = parser.getName();
