@@ -20,7 +20,6 @@
 #include <stdint.h>
 #include <inttypes.h>
 #include <sys/inotify.h>
-#include <sys/poll.h>
 #include <sys/stat.h>
 #include <sys/types.h>
 #include <math.h>
@@ -38,6 +37,7 @@
 #include <utils/Log.h>
 #include <utils/SystemClock.h>
 
+#include <android-base/file.h>
 #include <android-base/properties.h>
 
 #include <ui/PixelFormat.h>
@@ -65,6 +65,9 @@
 #include "audioplay.h"
 
 namespace android {
+
+using namespace std::literals;
+using namespace android::base;
 
 static const char OEM_BOOTANIMATION_FILE[] = "/oem/media/bootanimation.zip";
 static const char SYSTEM_BOOTANIMATION_FILE[] = "/system/media/bootanimation.zip";
@@ -111,8 +114,8 @@ BootAnimation::BootAnimation() : Thread(false), mClockEnabled(true), mTimeIsAccu
     mSession = new SurfaceComposerClient();
 
     // If the system has already booted, the animation is not being used for a boot.
-    mSystemBoot = !android::base::GetBoolProperty(BOOT_COMPLETED_PROP_NAME, false);
-    std::string powerCtl = android::base::GetProperty("sys.powerctl", "");
+    mSystemBoot = !GetBoolProperty(BOOT_COMPLETED_PROP_NAME, false);
+    std::string powerCtl = GetProperty("sys.powerctl", "");
     if (powerCtl.empty()) {
         mShuttingDown = false;
     } else {
@@ -1147,30 +1150,17 @@ bool BootAnimation::TimeCheckThread::threadLoop() {
 }
 
 bool BootAnimation::TimeCheckThread::doThreadLoop() {
-    static constexpr int BUFF_LEN (10 * (sizeof(struct inotify_event) + NAME_MAX + 1));
-
-    // Poll instead of doing a blocking read so the Thread can exit if requested.
-    struct pollfd pfd = { mInotifyFd, POLLIN, 0 };
-    ssize_t pollResult = poll(&pfd, 1, 1000);
-
-    if (pollResult == 0) {
-        return true;
-    } else if (pollResult < 0) {
-        ALOGE("Could not poll inotify events");
-        return false;
-    }
-
-    char buff[BUFF_LEN] __attribute__ ((aligned(__alignof__(struct inotify_event))));;
-    ssize_t length = read(mInotifyFd, buff, BUFF_LEN);
-    if (length == 0) {
-        return true;
-    } else if (length < 0) {
+    std::string content;
+    if (!ReadFdToString(mInotifyFd, &content, 1s)) {
+        if (content.length() == 0) return true;
         ALOGE("Could not read inotify events");
         return false;
     }
 
     const struct inotify_event *event;
-    for (char* ptr = buff; ptr < buff + length; ptr += sizeof(struct inotify_event) + event->len) {
+    for (const char* ptr = content.c_str();
+         ptr < content.c_str() + content.length();
+         ptr += sizeof(struct inotify_event) + event->len) {
         event = (const struct inotify_event *) ptr;
         if (event->wd == mSystemWd && strcmp(SYSTEM_TIME_DIR_NAME, event->name) == 0) {
             addTimeDirWatch();
