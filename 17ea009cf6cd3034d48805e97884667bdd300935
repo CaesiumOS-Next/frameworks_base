@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7dc1e765_fa9b5673",
+        "filename": "core/java/android/bluetooth/BluetoothInputHost.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 1220282
+      },
+      "writtenOn": "2017-09-28T03:15:55Z",
+      "side": 1,
+      "message": "This is a wrapper for obtaining the bluetooth profile system service  and connecting the service to mConnection. This method provides abstraction layer and should be preferred.",
+      "range": {
+        "startLine": 234,
+        "startChar": 50,
+        "endLine": 234,
+        "endChar": 77
+      },
+      "revId": "17ea009cf6cd3034d48805e97884667bdd300935",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
