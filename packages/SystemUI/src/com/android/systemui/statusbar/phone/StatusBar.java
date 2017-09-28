@@ -1427,9 +1427,11 @@ public class StatusBar extends SystemUI implements DemoMode,
                 } catch (Exception ex) { }
             }
         });
-
-        performDismissAllAnimations(viewsToHide);
-
+        if (viewsToHide.isEmpty()) {
+            animateCollapsePanels(CommandQueue.FLAG_EXCLUDE_NONE);
+        } else {
+            performDismissAllAnimations(viewsToHide);
+        }
     }
 
     private void performDismissAllAnimations(ArrayList<View> hideAnimatedList) {
