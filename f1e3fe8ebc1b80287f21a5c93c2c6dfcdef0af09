@@ -46,6 +46,30 @@
       "revId": "f1e3fe8ebc1b80287f21a5c93c2c6dfcdef0af09",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "70e8671f_9262ceca",
+        "filename": "core/java/android/bluetooth/BluetoothInputHost.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 359,
+      "author": {
+        "id": 1220282
+      },
+      "writtenOn": "2017-09-29T20:19:21Z",
+      "side": 1,
+      "message": "Thanks for the advice! Makes sense to me! Yes, I will follow the same logic as the getProfileProxy(). It is nice and clean. \n\nYes, the callback parameter is mandatory, but we may still want to remind developers that they have to obtain the configuration during onAppStatusChanged(), or they won\u0027t be able to unregister. \n\nI will fix the unbind logic then.\n\nThanks a lot!",
+      "parentUuid": "33b5d8ee_f960b222",
+      "range": {
+        "startLine": 359,
+        "startChar": 11,
+        "endLine": 359,
+        "endChar": 45
+      },
+      "revId": "f1e3fe8ebc1b80287f21a5c93c2c6dfcdef0af09",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
