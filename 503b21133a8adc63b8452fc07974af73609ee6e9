@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d72605af_ed5b972f",
+        "filename": "core/java/android/bluetooth/BluetoothInputHost.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 398,
+      "author": {
+        "id": 1086529
+      },
+      "writtenOn": "2017-09-29T10:15:09Z",
+      "side": 1,
+      "message": "I don\u0027t think keeping the registration state here is a good idea, to be honest. The whole API starts making somewhat less sense: there\u0027s now no need for the config parameter in unregisterApp(), and having getAppConfiguration() at all is somewhat redundant.\nBefore, API was consistent enough and didn\u0027t rely on the actual implementation. Here, we start demanding that the registration is synchronous (i.e. there\u0027s guaranteed to be no change in config between creating it here and calling onAppStatusChanged() callback) and theoretically there\u0027s a limit of only one app that can be registered. In practice, all of that is true for our *current* implementation, but I wouldn\u0027t put such a restriction in the API itself: in the future we might want to register multiple apps, cleverly combine their SDPs, choose the better QoS of them all, or something like that.\nSo, I would rather keep the API here as it is.",
+      "range": {
+        "startLine": 398,
+        "startChar": 0,
+        "endLine": 398,
+        "endChar": 69
+      },
+      "revId": "503b21133a8adc63b8452fc07974af73609ee6e9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
