@@ -22,6 +22,30 @@
       "revId": "f1e3fe8ebc1b80287f21a5c93c2c6dfcdef0af09",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "33b5d8ee_f960b222",
+        "filename": "core/java/android/bluetooth/BluetoothInputHost.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 359,
+      "author": {
+        "id": 1086529
+      },
+      "writtenOn": "2017-09-29T19:27:45Z",
+      "side": 1,
+      "message": "Think of it this way: when you call BluetoothAdapter.getProfileProxy(), you provide a callback and get returned a boolean. The callback then receives a parameter which you\u0027ll pass to BluetoothAdapter.closeProfileProxy() when you\u0027re done with it.\nThis API here follows exactly the same pattern, which allows for some additional flexibility if necessary and looks a bit more consistent. :)",
+      "parentUuid": "81da8846_ecf1734f",
+      "range": {
+        "startLine": 359,
+        "startChar": 11,
+        "endLine": 359,
+        "endChar": 45
+      },
+      "revId": "f1e3fe8ebc1b80287f21a5c93c2c6dfcdef0af09",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
