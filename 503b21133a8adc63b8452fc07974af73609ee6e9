@@ -22,6 +22,30 @@
       "revId": "503b21133a8adc63b8452fc07974af73609ee6e9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cc3f1764_393a455c",
+        "filename": "core/java/android/bluetooth/BluetoothInputHost.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 398,
+      "author": {
+        "id": 1220282
+      },
+      "writtenOn": "2017-09-29T16:41:19Z",
+      "side": 1,
+      "message": "Hi Ivan! Thanks for pointing out - I didn\u0027t consider the future multiple apps case. I will remove this part.",
+      "parentUuid": "d72605af_ed5b972f",
+      "range": {
+        "startLine": 398,
+        "startChar": 0,
+        "endLine": 398,
+        "endChar": 69
+      },
+      "revId": "503b21133a8adc63b8452fc07974af73609ee6e9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
