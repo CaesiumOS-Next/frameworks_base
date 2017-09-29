@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "81da8846_ecf1734f",
+        "filename": "core/java/android/bluetooth/BluetoothInputHost.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 359,
+      "author": {
+        "id": 1086529
+      },
+      "writtenOn": "2017-09-29T19:09:41Z",
+      "side": 1,
+      "message": "Still, let\u0027s keep it the way it was before for now: the callback parameter is mandatory anyway, and, like I described before, it allows asynchronous registration (which is what basically being done already).",
+      "range": {
+        "startLine": 359,
+        "startChar": 11,
+        "endLine": 359,
+        "endChar": 45
+      },
+      "revId": "f1e3fe8ebc1b80287f21a5c93c2c6dfcdef0af09",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
