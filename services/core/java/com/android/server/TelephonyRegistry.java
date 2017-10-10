@@ -404,6 +404,8 @@ public class TelephonyRegistry extends ITelephonyRegistry.Stub {
             LinkCapacityEstimate.INVALID, LinkCapacityEstimate.INVALID)));
     private List<List<LinkCapacityEstimate>> mLinkCapacityEstimateLists;
 
+    private boolean[] mVideoCallForwarding;
+
     /**
      * Per-phone map of precise data connection state. The key of the map is the pair of transport
      * type and APN setting. This is the cache to prevent redundant callbacks to the listeners.
@@ -487,6 +489,7 @@ public class TelephonyRegistry extends ITelephonyRegistry.Stub {
     private boolean isPhoneStatePermissionRequired(Set<Integer> events, String callingPackage,
             UserHandle userHandle) {
         if (events.contains(TelephonyCallback.EVENT_CALL_FORWARDING_INDICATOR_CHANGED)
+                || events.contains(TelephonyCallback.EVENT_VIDEO_CALL_FORWARDING_INDICATOR_CHANGED)
                 || events.contains(TelephonyCallback.EVENT_MESSAGE_WAITING_INDICATOR_CHANGED)
                 || events.contains(TelephonyCallback.EVENT_EMERGENCY_NUMBER_LIST_CHANGED)) {
             return true;
@@ -697,6 +700,7 @@ public class TelephonyRegistry extends ITelephonyRegistry.Stub {
             mDataEnabledReason = copyOf(mDataEnabledReason, mNumPhones);
             mAllowedNetworkTypeReason = copyOf(mAllowedNetworkTypeReason, mNumPhones);
             mAllowedNetworkTypeValue = copyOf(mAllowedNetworkTypeValue, mNumPhones);
+            mVideoCallForwarding = copyOf(mVideoCallForwarding, mNumPhones);
 
             // ds -> ss switch.
             if (mNumPhones < oldNumPhones) {
@@ -750,6 +754,7 @@ public class TelephonyRegistry extends ITelephonyRegistry.Stub {
                 mLinkCapacityEstimateLists.add(i, INVALID_LCE_LIST);
                 mCarrierPrivilegeStates.add(i, new Pair<>(Collections.emptyList(), new int[0]));
                 mCarrierServiceStates.add(i, new Pair<>(null, Process.INVALID_UID));
+                mVideoCallForwarding[i] =  false;
             }
         }
     }
@@ -818,6 +823,7 @@ public class TelephonyRegistry extends ITelephonyRegistry.Stub {
         mLinkCapacityEstimateLists = new ArrayList<>();
         mCarrierPrivilegeStates = new ArrayList<>();
         mCarrierServiceStates = new ArrayList<>();
+        mVideoCallForwarding = new boolean[numPhones];
 
         for (int i = 0; i < numPhones; i++) {
             mCallState[i] =  TelephonyManager.CALL_STATE_IDLE;
@@ -857,6 +863,7 @@ public class TelephonyRegistry extends ITelephonyRegistry.Stub {
             mLinkCapacityEstimateLists.add(i, INVALID_LCE_LIST);
             mCarrierPrivilegeStates.add(i, new Pair<>(Collections.emptyList(), new int[0]));
             mCarrierServiceStates.add(i, new Pair<>(null, Process.INVALID_UID));
+            mVideoCallForwarding[i] =  false;
         }
 
         mAppOps = mContext.getSystemService(AppOpsManager.class);
@@ -1374,6 +1381,15 @@ public class TelephonyRegistry extends ITelephonyRegistry.Stub {
                             r.callback.onLinkCapacityEstimateChanged(mLinkCapacityEstimateLists
                                     .get(r.phoneId));
                         }
+                    } catch (RemoteException ex) {
+                        remove(r.binder);
+                    }
+                }
+                if (events.contains(
+                        TelephonyCallback.EVENT_VIDEO_CALL_FORWARDING_INDICATOR_CHANGED)) {
+                    try {
+                        r.callback.onVideoCallForwardingIndicatorChanged(
+                                mVideoCallForwarding[r.phoneId]);
                     } catch (RemoteException ex) {
                         remove(r.binder);
                     }
@@ -2914,6 +2930,33 @@ public class TelephonyRegistry extends ITelephonyRegistry.Stub {
         }
     }
 
+    public void notifyVideoCallForwardingChangedForSubscriber(int subId, boolean cfi) {
+        if (!checkNotifyPermission("notifyVideoCallForwardingChanged()")) {
+            return;
+        }
+        if (VDBG) {
+            log("notifyVideoCallForwardingChangedForSubscriber: subId=" + subId + " cfi=" + cfi);
+        }
+        int phoneId = getPhoneIdFromSubId(subId);
+        synchronized (mRecords) {
+            if (validatePhoneId(phoneId)) {
+                mVideoCallForwarding[phoneId] = cfi;
+                for (Record r : mRecords) {
+                    if (r.matchTelephonyCallbackEvent(
+                            TelephonyCallback.EVENT_VIDEO_CALL_FORWARDING_INDICATOR_CHANGED)
+                            && idMatch(r, subId, phoneId)) {
+                        try {
+                            r.callback.onVideoCallForwardingIndicatorChanged(cfi);
+                        } catch (RemoteException ex) {
+                            mRemoveList.add(r.binder);
+                        }
+                    }
+                }
+            }
+            handleRemoveListLocked();
+        }
+    }
+
     @Override
     public void notifyCarrierServiceChanged(int phoneId, @Nullable String packageName, int uid) {
         if (!checkNotifyPermission("notifyCarrierServiceChanged")) return;
@@ -3005,6 +3048,7 @@ public class TelephonyRegistry extends ITelephonyRegistry.Stub {
                 Pair<String, Integer> carrierServiceState = mCarrierServiceStates.get(i);
                 pw.println("mCarrierServiceState=<package=" + pii(carrierServiceState.first)
                         + ", uid=" + carrierServiceState.second + ">");
+                pw.println("mVideoCallForwarding=" + mVideoCallForwarding[i]);
                 pw.decreaseIndent();
             }
 
