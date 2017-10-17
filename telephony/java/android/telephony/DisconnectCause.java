@@ -273,6 +273,12 @@ public class DisconnectCause {
      * {@hide}
      */
     public static final int EMERGENCY_PERM_FAILURE = 64;
+
+    /**
+     * Sometimes Emergency call failed with normal unspecified and should not be redialed.
+     * {@hide}
+     */
+    public static final int NORMAL_UNSPECIFIED = 65;
     //*********************************************************************************************
     // When adding a disconnect type:
     // 1) Update toString() with the newly added disconnect type.
@@ -413,6 +419,8 @@ public class DisconnectCause {
             return "EMERGENCY_TEMP_FAILURE";
         case EMERGENCY_PERM_FAILURE:
             return "EMERGENCY_PERM_FAILURE";
+        case NORMAL_UNSPECIFIED:
+            return "NORMAL_UNSPECIFIED";
         default:
             return "INVALID: " + cause;
         }
