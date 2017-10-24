@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5c244356_d2895909",
+        "filename": "services/core/java/com/android/server/connectivity/IpConnectivityMetrics.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 259,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2017-10-24T08:27:31Z",
+      "side": 1,
+      "message": "stored",
+      "range": {
+        "startLine": 259,
+        "startChar": 39,
+        "endLine": 259,
+        "endChar": 46
+      },
+      "revId": "5818e3faca7e52cbfb02debda2b67bf22ae74554",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4566d29f_c5a1ee45",
+        "filename": "services/core/java/com/android/server/connectivity/IpConnectivityMetrics.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 275,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2017-10-24T08:27:31Z",
+      "side": 1,
+      "message": "Shouldn\u0027t we keep the LIST constant as \"list\" though ? IIUC this code, this works because now dumpsys and list do the same thing, \"-a dumpsys\" are the args for dumpsys and \"list\" will go to the default: case. Which of course is not incorrect but it\u0027s a bit surprising.",
+      "range": {
+        "startLine": 275,
+        "startChar": 28,
+        "endLine": 275,
+        "endChar": 36
+      },
+      "revId": "5818e3faca7e52cbfb02debda2b67bf22ae74554",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
