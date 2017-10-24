@@ -71,6 +71,54 @@
     },
     {
       "key": {
+        "uuid": "04dc1ac5_a037fb1b",
+        "filename": "services/core/java/com/android/server/connectivity/IpConnectivityMetrics.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 268,
+      "author": {
+        "id": 1107893
+      },
+      "writtenOn": "2017-10-24T14:30:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1f425ecd_7b76dad2",
+      "range": {
+        "startLine": 268,
+        "startChar": 62,
+        "endLine": 268,
+        "endChar": 79
+      },
+      "revId": "5818e3faca7e52cbfb02debda2b67bf22ae74554",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cf80630e_1a1a4964",
+        "filename": "services/core/java/com/android/server/connectivity/IpConnectivityMetrics.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 268,
+      "author": {
+        "id": 1107893
+      },
+      "writtenOn": "2017-10-24T14:30:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "27ee5d8c_bb4c90a6",
+      "range": {
+        "startLine": 268,
+        "startChar": 20,
+        "endLine": 268,
+        "endChar": 26
+      },
+      "revId": "5818e3faca7e52cbfb02debda2b67bf22ae74554",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4566d29f_c5a1ee45",
         "filename": "services/core/java/com/android/server/connectivity/IpConnectivityMetrics.java",
         "patchSetId": 2
@@ -82,6 +130,30 @@
       "writtenOn": "2017-10-24T08:27:31Z",
       "side": 1,
       "message": "Shouldn\u0027t we keep the LIST constant as \"list\" though ? IIUC this code, this works because now dumpsys and list do the same thing, \"-a dumpsys\" are the args for dumpsys and \"list\" will go to the default: case. Which of course is not incorrect but it\u0027s a bit surprising.",
+      "range": {
+        "startLine": 275,
+        "startChar": 28,
+        "endLine": 275,
+        "endChar": 36
+      },
+      "revId": "5818e3faca7e52cbfb02debda2b67bf22ae74554",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5f1e0e41_448fd772",
+        "filename": "services/core/java/com/android/server/connectivity/IpConnectivityMetrics.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 275,
+      "author": {
+        "id": 1107893
+      },
+      "writtenOn": "2017-10-24T14:30:12Z",
+      "side": 1,
+      "message": "Yeah that would make more sense, good point.\n\nI kept the comment about dumpsys.cpp using -a arg for bug reports.",
+      "parentUuid": "4566d29f_c5a1ee45",
       "range": {
         "startLine": 275,
         "startChar": 28,
