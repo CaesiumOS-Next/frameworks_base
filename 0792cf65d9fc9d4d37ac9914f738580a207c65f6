@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c47aceb5_9699f014",
+        "filename": "core/java/android/bluetooth/BluetoothHidDevice.java",
+        "patchSetId": 17
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1076123
+      },
+      "writtenOn": "2017-10-24T22:51:56Z",
+      "side": 1,
+      "message": "We don\u0027t change copyright dates.",
+      "range": {
+        "startLine": 2,
+        "startChar": 20,
+        "endLine": 2,
+        "endChar": 21
+      },
+      "revId": "0792cf65d9fc9d4d37ac9914f738580a207c65f6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3ec41801_83652081",
+        "filename": "core/java/android/bluetooth/BluetoothHidDevice.java",
+        "patchSetId": 17
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1076123
+      },
+      "writtenOn": "2017-10-24T22:51:56Z",
+      "side": 1,
+      "message": "Provides",
+      "range": {
+        "startLine": 34,
+        "startChar": 3,
+        "endLine": 34,
+        "endChar": 15
+      },
+      "revId": "0792cf65d9fc9d4d37ac9914f738580a207c65f6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b22477a6_9145fdc9",
+        "filename": "core/java/android/bluetooth/BluetoothHidDevice.java",
+        "patchSetId": 17
+      },
+      "lineNbr": 258,
+      "author": {
+        "id": 1076123
+      },
+      "writtenOn": "2017-10-24T22:51:56Z",
+      "side": 1,
+      "message": "the original code set mService \u003d null here",
+      "range": {
+        "startLine": 258,
+        "startChar": 15,
+        "endLine": 258,
+        "endChar": 21
+      },
+      "revId": "0792cf65d9fc9d4d37ac9914f738580a207c65f6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a2e9307_d18ab5ab",
+        "filename": "core/java/android/bluetooth/BluetoothHidDeviceAppQosSettings.java",
+        "patchSetId": 17
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1076123
+      },
+      "writtenOn": "2017-10-24T22:51:56Z",
+      "side": 1,
+      "message": "Spell it out here? \"Quality of Service (Qos)\"",
+      "range": {
+        "startLine": 23,
+        "startChar": 18,
+        "endLine": 23,
+        "endChar": 21
+      },
+      "revId": "0792cf65d9fc9d4d37ac9914f738580a207c65f6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8c2f7106_046a5269",
+        "filename": "core/java/android/bluetooth/BluetoothHidDeviceAppSdpSettings.java",
+        "patchSetId": 17
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1076123
+      },
+      "writtenOn": "2017-10-24T22:51:56Z",
+      "side": 1,
+      "message": "Service Discovery Protocol (SDP)",
+      "range": {
+        "startLine": 23,
+        "startChar": 18,
+        "endLine": 23,
+        "endChar": 21
+      },
+      "revId": "0792cf65d9fc9d4d37ac9914f738580a207c65f6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
