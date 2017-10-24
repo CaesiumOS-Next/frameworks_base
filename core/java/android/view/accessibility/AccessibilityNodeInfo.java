@@ -1072,7 +1072,7 @@ public class AccessibilityNodeInfo implements Parcelable {
     /**
      * Gets the actions that can be performed on the node.
      */
-    public List<AccessibilityAction> getActionList() {
+    public synchronized List<AccessibilityAction> getActionList() {
         return CollectionUtils.emptyIfNull(mActions);
     }
 
@@ -1099,7 +1099,7 @@ public class AccessibilityNodeInfo implements Parcelable {
      * @deprecated Use {@link #getActionList()}.
      */
     @Deprecated
-    public int getActions() {
+    public synchronized int getActions() {
         int returnValue = 0;
 
         if (mActions == null) {
@@ -1148,12 +1148,14 @@ public class AccessibilityNodeInfo implements Parcelable {
             return;
         }
 
-        if (mActions == null) {
-            mActions = new ArrayList<>();
-        }
+        synchronized (this) {
+            if (mActions == null) {
+                mActions = new ArrayList<>();
+            }
 
-        mActions.remove(action);
-        mActions.add(action);
+            mActions.remove(action);
+            mActions.add(action);
+        }
     }
 
     /**
@@ -1218,7 +1220,7 @@ public class AccessibilityNodeInfo implements Parcelable {
      *
      * @throws IllegalStateException If called from an AccessibilityService.
      */
-    public boolean removeAction(AccessibilityAction action) {
+    public synchronized boolean removeAction(AccessibilityAction action) {
         enforceNotSealed();
 
         if (mActions == null || action == null) {
@@ -1233,7 +1235,7 @@ public class AccessibilityNodeInfo implements Parcelable {
      *
      * @hide
      */
-    public void removeAllActions() {
+    public synchronized void removeAllActions() {
         if (mActions != null) {
             mActions.clear();
         }
@@ -3084,7 +3086,9 @@ public class AccessibilityNodeInfo implements Parcelable {
             nonDefaultFields |= bitAt(fieldIndex);
         }
         fieldIndex++;
-        if (!Objects.equals(mActions, DEFAULT.mActions)) nonDefaultFields |= bitAt(fieldIndex);
+        synchronized (this) {
+            if (!Objects.equals(mActions, DEFAULT.mActions)) nonDefaultFields |= bitAt(fieldIndex);
+        }
         fieldIndex++;
         if (mMaxTextLength != DEFAULT.mMaxTextLength) nonDefaultFields |= bitAt(fieldIndex);
         fieldIndex++;
@@ -3190,32 +3194,34 @@ public class AccessibilityNodeInfo implements Parcelable {
         }
 
         if (isBitSet(nonDefaultFields, fieldIndex++)) {
-            if (mActions != null && !mActions.isEmpty()) {
-                final int actionCount = mActions.size();
+            synchronized (this) {
+                if (mActions != null && !mActions.isEmpty()) {
+                    final int actionCount = mActions.size();
 
-                int nonLegacyActionCount = 0;
-                int defaultLegacyStandardActions = 0;
-                for (int i = 0; i < actionCount; i++) {
-                    AccessibilityAction action = mActions.get(i);
-                    if (isDefaultLegacyStandardAction(action)) {
-                        defaultLegacyStandardActions |= action.getId();
-                    } else {
-                        nonLegacyActionCount++;
+                    int nonLegacyActionCount = 0;
+                    int defaultLegacyStandardActions = 0;
+                    for (int i = 0; i < actionCount; i++) {
+                        AccessibilityAction action = mActions.get(i);
+                        if (isDefaultLegacyStandardAction(action)) {
+                            defaultLegacyStandardActions |= action.getId();
+                        } else {
+                            nonLegacyActionCount++;
+                        }
                     }
-                }
-                parcel.writeInt(defaultLegacyStandardActions);
-                parcel.writeInt(nonLegacyActionCount);
+                    parcel.writeInt(defaultLegacyStandardActions);
+                    parcel.writeInt(nonLegacyActionCount);
 
-                for (int i = 0; i < actionCount; i++) {
-                    AccessibilityAction action = mActions.get(i);
-                    if (!isDefaultLegacyStandardAction(action)) {
-                        parcel.writeInt(action.getId());
-                        parcel.writeCharSequence(action.getLabel());
+                    for (int i = 0; i < actionCount; i++) {
+                        AccessibilityAction action = mActions.get(i);
+                        if (!isDefaultLegacyStandardAction(action)) {
+                            parcel.writeInt(action.getId());
+                            parcel.writeCharSequence(action.getLabel());
+                        }
                     }
+                } else {
+                    parcel.writeInt(0);
+                    parcel.writeInt(0);
                 }
-            } else {
-                parcel.writeInt(0);
-                parcel.writeInt(0);
             }
         }
 
@@ -3304,13 +3310,15 @@ public class AccessibilityNodeInfo implements Parcelable {
         mContentDescription = other.mContentDescription;
         mViewIdResourceName = other.mViewIdResourceName;
 
-        if (mActions != null) mActions.clear();
-        final ArrayList<AccessibilityAction> otherActions = other.mActions;
-        if (otherActions != null && otherActions.size() > 0) {
-            if (mActions == null) {
-                mActions = new ArrayList(otherActions);
-            } else {
-                mActions.addAll(other.mActions);
+        synchronized (this) {
+            if (mActions != null) mActions.clear();
+            final ArrayList<AccessibilityAction> otherActions = other.mActions;
+            if (otherActions != null && otherActions.size() > 0) {
+                if (mActions == null) {
+                    mActions = new ArrayList(otherActions);
+                } else {
+                    mActions.addAll(other.mActions);
+                }
             }
         }
 
