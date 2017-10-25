@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "ced13cda_4bdece46",
+        "filename": "core/java/android/net/NetworkCapabilities.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1013508
+      },
+      "writtenOn": "2017-10-25T04:09:23Z",
+      "side": 1,
+      "message": "Yep, doclava ignores @hide/@removed things:\n\nhttps://android.googlesource.com/platform/external/doclava/+/master/src/com/google/doclava/AndroidAuxSource.java#224",
+      "parentUuid": "918cd0f6_bcbd147d",
+      "range": {
+        "startLine": 104,
+        "startChar": 12,
+        "endLine": 104,
+        "endChar": 37
+      },
+      "revId": "de570313bbdef3f2bc6b067f8eb83f174f9fccad",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "eb603559_cd7aef6e",
         "filename": "core/java/android/net/NetworkCapabilities.java",
         "patchSetId": 1
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "d94c48cf_c005f99d",
+        "filename": "core/java/android/net/NetworkCapabilities.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 418,
+      "author": {
+        "id": 1013508
+      },
+      "writtenOn": "2017-10-25T04:09:23Z",
+      "side": 1,
+      "message": "This output is what the Eclipse formatter rules do.  :)\n\nhttps://android.googlesource.com/platform/development/+/master/ide/eclipse/android-formatting.xml#57",
+      "parentUuid": "eb603559_cd7aef6e",
+      "range": {
+        "startLine": 418,
+        "startChar": 0,
+        "endLine": 418,
+        "endChar": 12
+      },
+      "revId": "de570313bbdef3f2bc6b067f8eb83f174f9fccad",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e34d301b_9e7f7e6b",
         "filename": "core/java/android/net/NetworkCapabilities.java",
         "patchSetId": 1
@@ -59,6 +107,30 @@
       "writtenOn": "2017-10-25T03:32:50Z",
       "side": 1,
       "message": "I notice this is Transport and the other is NetCapability, which is inconsistent. Should we rename the other to Capability?",
+      "range": {
+        "startLine": 426,
+        "startChar": 22,
+        "endLine": 426,
+        "endChar": 31
+      },
+      "revId": "de570313bbdef3f2bc6b067f8eb83f174f9fccad",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e86d8a4d_debbb479",
+        "filename": "core/java/android/net/NetworkCapabilities.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 426,
+      "author": {
+        "id": 1013508
+      },
+      "writtenOn": "2017-10-25T04:09:23Z",
+      "side": 1,
+      "message": "They\u0027re named consistently with the constant prefixes:\n\nTRANSPORT_* -\u003e Transport\nNET_CAPABILITIES_* -\u003e NetCapabilities",
+      "parentUuid": "e34d301b_9e7f7e6b",
       "range": {
         "startLine": 426,
         "startChar": 22,
