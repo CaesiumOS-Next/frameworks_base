@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "918cd0f6_bcbd147d",
+        "filename": "core/java/android/net/NetworkCapabilities.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2017-10-25T03:32:50Z",
+      "side": 1,
+      "message": "This, and others in this list, are @hide. I assume it\u0027s OK to have @hide values in this IntDef?",
+      "range": {
+        "startLine": 104,
+        "startChar": 12,
+        "endLine": 104,
+        "endChar": 37
+      },
+      "revId": "de570313bbdef3f2bc6b067f8eb83f174f9fccad",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "eb603559_cd7aef6e",
+        "filename": "core/java/android/net/NetworkCapabilities.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 418,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2017-10-25T03:32:50Z",
+      "side": 1,
+      "message": "Should this be a 4-space indent instead of 8?",
+      "range": {
+        "startLine": 418,
+        "startChar": 0,
+        "endLine": 418,
+        "endChar": 12
+      },
+      "revId": "de570313bbdef3f2bc6b067f8eb83f174f9fccad",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e34d301b_9e7f7e6b",
+        "filename": "core/java/android/net/NetworkCapabilities.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 426,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2017-10-25T03:32:50Z",
+      "side": 1,
+      "message": "I notice this is Transport and the other is NetCapability, which is inconsistent. Should we rename the other to Capability?",
+      "range": {
+        "startLine": 426,
+        "startChar": 22,
+        "endLine": 426,
+        "endChar": 31
+      },
+      "revId": "de570313bbdef3f2bc6b067f8eb83f174f9fccad",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
