@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d7bdb1ab_4cb81650",
+        "filename": "core/java/android/bluetooth/BluetoothHidDevice.java",
+        "patchSetId": 19
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1220282
+      },
+      "writtenOn": "2017-10-26T22:34:39Z",
+      "side": 1,
+      "message": "Try to make it more symmetric.",
+      "range": {
+        "startLine": 199,
+        "startChar": 23,
+        "endLine": 199,
+        "endChar": 35
+      },
+      "revId": "7c98da6dc18628c59f3f87d60b605156373ac5e5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
