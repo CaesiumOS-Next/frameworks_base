@@ -30,15 +30,22 @@ import java.util.Objects;
 import java.util.StringJoiner;
 
 /**
- * This class represents the capabilities of a network.  This is used both to specify
- * needs to {@link ConnectivityManager} and when inspecting a network.
- *
- * Note that this replaces the old {@link ConnectivityManager#TYPE_MOBILE} method
- * of network selection.  Rather than indicate a need for Wi-Fi because an application
- * needs high bandwidth and risk obsolescence when a new, fast network appears (like LTE),
- * the application should specify it needs high bandwidth.  Similarly if an application
- * needs an unmetered network for a bulk transfer it can specify that rather than assuming
- * all cellular based connections are metered and all Wi-Fi based connections are not.
+ * Representation of the capabilities of a network. This object serves two
+ * purposes:
+ * <ul>
+ * <li>An expression of the current capabilities of an active network, typically
+ * returned from {@link ConnectivityManager#getNetworkCapabilities(Network)}.
+ * <li>An expression of the future capabilities of a desired network, typically
+ * expressed through {@link NetworkRequest}.
+ * </ul>
+ * <p>
+ * This replaces the old {@link ConnectivityManager#TYPE_MOBILE} method of
+ * network selection. Rather than indicate a need for Wi-Fi because an
+ * application needs high bandwidth and risk obsolescence when a new, fast
+ * network appears (like LTE), the application should specify it needs high
+ * bandwidth. Similarly if an application needs an unmetered network for a bulk
+ * transfer it can specify that rather than assuming all cellular based
+ * connections are metered and all Wi-Fi based connections are not.
  */
 public final class NetworkCapabilities implements Parcelable {
     private static final String TAG = "NetworkCapabilities";
@@ -101,6 +108,7 @@ public final class NetworkCapabilities implements Parcelable {
             NET_CAPABILITY_NOT_VPN,
             NET_CAPABILITY_VALIDATED,
             NET_CAPABILITY_CAPTIVE_PORTAL,
+            NET_CAPABILITY_NOT_ROAMING,
             NET_CAPABILITY_FOREGROUND,
     })
     public @interface NetCapability { }
@@ -218,11 +226,17 @@ public final class NetworkCapabilities implements Parcelable {
     public static final int NET_CAPABILITY_CAPTIVE_PORTAL = 17;
 
     /**
+     * Indicates that this network is not roaming.
+     * @hide
+     */
+    public static final int NET_CAPABILITY_NOT_ROAMING = 18;
+
+    /**
      * Indicates that this network is available for use by apps, and not a network that is being
      * kept up in the background to facilitate fast network switching.
      * @hide
      */
-    public static final int NET_CAPABILITY_FOREGROUND = 18;
+    public static final int NET_CAPABILITY_FOREGROUND = 19;
 
     private static final int MIN_NET_CAPABILITY = NET_CAPABILITY_MMS;
     private static final int MAX_NET_CAPABILITY = NET_CAPABILITY_FOREGROUND;
@@ -237,6 +251,7 @@ public final class NetworkCapabilities implements Parcelable {
             (1 << NET_CAPABILITY_TRUSTED) |
             (1 << NET_CAPABILITY_VALIDATED) |
             (1 << NET_CAPABILITY_CAPTIVE_PORTAL) |
+            (1 << NET_CAPABILITY_NOT_ROAMING) |
             (1 << NET_CAPABILITY_FOREGROUND);
 
     /**
@@ -549,12 +564,18 @@ public final class NetworkCapabilities implements Parcelable {
     }
 
     /**
+     * Value indicating that link bandwidth is unspecified.
+     * @hide
+     */
+    public static final int LINK_BANDWIDTH_UNSPECIFIED = 0;
+
+    /**
      * Passive link bandwidth.  This is a rough guide of the expected peak bandwidth
      * for the first hop on the given transport.  It is not measured, but may take into account
      * link parameters (Radio technology, allocated channels, etc).
      */
-    private int mLinkUpBandwidthKbps;
-    private int mLinkDownBandwidthKbps;
+    private int mLinkUpBandwidthKbps = LINK_BANDWIDTH_UNSPECIFIED;
+    private int mLinkDownBandwidthKbps = LINK_BANDWIDTH_UNSPECIFIED;
 
     /**
      * Sets the upstream bandwidth for this network in Kbps.  This always only refers to
@@ -571,8 +592,9 @@ public final class NetworkCapabilities implements Parcelable {
      * @param upKbps the estimated first hop upstream (device to network) bandwidth.
      * @hide
      */
-    public void setLinkUpstreamBandwidthKbps(int upKbps) {
+    public NetworkCapabilities setLinkUpstreamBandwidthKbps(int upKbps) {
         mLinkUpBandwidthKbps = upKbps;
+        return this;
     }
 
     /**
@@ -600,8 +622,9 @@ public final class NetworkCapabilities implements Parcelable {
      * @param downKbps the estimated first hop downstream (network to device) bandwidth.
      * @hide
      */
-    public void setLinkDownstreamBandwidthKbps(int downKbps) {
+    public NetworkCapabilities setLinkDownstreamBandwidthKbps(int downKbps) {
         mLinkDownBandwidthKbps = downKbps;
+        return this;
     }
 
     /**
@@ -627,6 +650,22 @@ public final class NetworkCapabilities implements Parcelable {
     private boolean equalsLinkBandwidths(NetworkCapabilities nc) {
         return (this.mLinkUpBandwidthKbps == nc.mLinkUpBandwidthKbps &&
                 this.mLinkDownBandwidthKbps == nc.mLinkDownBandwidthKbps);
+    }
+    /** @hide */
+    public static int minBandwidth(int a, int b) {
+        if (a == LINK_BANDWIDTH_UNSPECIFIED && b == LINK_BANDWIDTH_UNSPECIFIED) {
+            return LINK_BANDWIDTH_UNSPECIFIED;
+        } else if (a == LINK_BANDWIDTH_UNSPECIFIED)  {
+            return b;
+        } else if (b == LINK_BANDWIDTH_UNSPECIFIED) {
+            return a;
+        } else {
+            return Math.min(a, b);
+        }
+    }
+    /** @hide */
+    public static int maxBandwidth(int a, int b) {
+        return Math.max(a, b);
     }
 
     private NetworkSpecifier mNetworkSpecifier = null;
@@ -708,8 +747,9 @@ public final class NetworkCapabilities implements Parcelable {
      * @param signalStrength the bearer-specific signal strength.
      * @hide
      */
-    public void setSignalStrength(int signalStrength) {
+    public NetworkCapabilities setSignalStrength(int signalStrength) {
         mSignalStrength = signalStrength;
+        return this;
     }
 
     /**
@@ -968,6 +1008,7 @@ public final class NetworkCapabilities implements Parcelable {
             case NET_CAPABILITY_NOT_VPN:        return "NOT_VPN";
             case NET_CAPABILITY_VALIDATED:      return "VALIDATED";
             case NET_CAPABILITY_CAPTIVE_PORTAL: return "CAPTIVE_PORTAL";
+            case NET_CAPABILITY_NOT_ROAMING:    return "NOT_ROAMING";
             case NET_CAPABILITY_FOREGROUND:     return "FOREGROUND";
             default:                            return Integer.toString(capability);
         }

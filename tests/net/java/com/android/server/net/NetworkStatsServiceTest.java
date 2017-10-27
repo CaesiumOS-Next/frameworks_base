@@ -1159,6 +1159,14 @@ public class NetworkStatsServiceTest {
         assertEquals("unexpected operations", operations, entry.operations);
     }
 
+    private static void setCapability(NetworkCapabilities caps, int cap, boolean value) {
+        if (value) {
+            caps.addCapability(cap);
+        } else {
+            caps.removeCapability(cap);
+        }
+    }
+
     private static NetworkState buildWifiState() {
         return buildWifiState(false);
     }
@@ -1169,9 +1177,8 @@ public class NetworkStatsServiceTest {
         final LinkProperties prop = new LinkProperties();
         prop.setInterfaceName(TEST_IFACE);
         final NetworkCapabilities capabilities = new NetworkCapabilities();
-        if (!isMetered) {
-            capabilities.addCapability(NetworkCapabilities.NET_CAPABILITY_NOT_METERED);
-        }
+        setCapability(capabilities, NetworkCapabilities.NET_CAPABILITY_NOT_METERED, !isMetered);
+        setCapability(capabilities, NetworkCapabilities.NET_CAPABILITY_NOT_ROAMING, true);
         return new NetworkState(info, prop, capabilities, null, null, TEST_SSID);
     }
 
@@ -1187,6 +1194,8 @@ public class NetworkStatsServiceTest {
         final LinkProperties prop = new LinkProperties();
         prop.setInterfaceName(TEST_IFACE);
         final NetworkCapabilities capabilities = new NetworkCapabilities();
+        setCapability(capabilities, NetworkCapabilities.NET_CAPABILITY_NOT_METERED, false);
+        setCapability(capabilities, NetworkCapabilities.NET_CAPABILITY_NOT_ROAMING, !isRoaming);
         return new NetworkState(info, prop, capabilities, null, subscriberId, null);
     }
 
@@ -1196,6 +1205,8 @@ public class NetworkStatsServiceTest {
         final LinkProperties prop = new LinkProperties();
         prop.setInterfaceName(iface);
         final NetworkCapabilities capabilities = new NetworkCapabilities();
+        setCapability(capabilities, NetworkCapabilities.NET_CAPABILITY_NOT_METERED, false);
+        setCapability(capabilities, NetworkCapabilities.NET_CAPABILITY_NOT_ROAMING, true);
         return new NetworkState(info, prop, capabilities, null, null, null);
     }
 
