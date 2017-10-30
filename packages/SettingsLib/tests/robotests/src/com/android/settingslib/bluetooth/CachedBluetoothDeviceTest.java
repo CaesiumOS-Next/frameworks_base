@@ -51,7 +51,7 @@ public class CachedBluetoothDeviceTest {
     @Mock
     private A2dpProfile mA2dpProfile;
     @Mock
-    private HidProfile mHidProfile;
+    private HidProfileWrapper mHidProfile;
     @Mock
     private BluetoothDevice mDevice;
     private CachedBluetoothDevice mCachedDevice;
