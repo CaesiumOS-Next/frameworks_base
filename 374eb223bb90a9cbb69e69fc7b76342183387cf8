@@ -96,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "44bd9110_7bb1f1ff",
+        "filename": "core/jni/android_os_HwBlob.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 383,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2017-10-31T21:25:11Z",
+      "side": 1,
+      "message": "I see. Would be nice if we could do:\n\n#if sizeof(bool) \u003d\u003d sizeof(jboolean)\nDEFINE_BLOB_ARRAY_COPIER(Bool,jboolean,Boolean)\n#else\n...\n#endif\n\nbut, no one is using bool. Up to you",
+      "parentUuid": "394bef44_d374a72e",
+      "range": {
+        "startLine": 381,
+        "startChar": 4,
+        "endLine": 383,
+        "endChar": 5
+      },
+      "revId": "374eb223bb90a9cbb69e69fc7b76342183387cf8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "9b173a9b_639116c4",
         "filename": "core/jni/android_os_HwBlob.cpp",
         "patchSetId": 1
