@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "cb59ad7a_1bc300ac",
+        "filename": "core/jni/android_os_HwBlob.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 320,
+      "author": {
+        "id": 1014088
+      },
+      "writtenOn": "2017-10-31T21:19:39Z",
+      "side": 1,
+      "message": "feel free to make that change. but afterwards you maintain it.",
+      "parentUuid": "6c677a1e_43d5a638",
+      "range": {
+        "startLine": 320,
+        "startChar": 0,
+        "endLine": 320,
+        "endChar": 54
+      },
+      "revId": "374eb223bb90a9cbb69e69fc7b76342183387cf8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1342917b_c73c2bcc",
         "filename": "core/jni/android_os_HwBlob.cpp",
         "patchSetId": 1
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "394bef44_d374a72e",
+        "filename": "core/jni/android_os_HwBlob.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 383,
+      "author": {
+        "id": 1014088
+      },
+      "writtenOn": "2017-10-31T21:19:39Z",
+      "side": 1,
+      "message": "the whole point of this special case is that there\u0027s no guarantee that sizeof(bool) \u003d\u003d sizeof(jboolean).",
+      "parentUuid": "1342917b_c73c2bcc",
+      "range": {
+        "startLine": 381,
+        "startChar": 4,
+        "endLine": 383,
+        "endChar": 5
+      },
+      "revId": "374eb223bb90a9cbb69e69fc7b76342183387cf8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "9b173a9b_639116c4",
         "filename": "core/jni/android_os_HwBlob.cpp",
         "patchSetId": 1
@@ -59,6 +107,30 @@
       "writtenOn": "2017-10-31T21:18:15Z",
       "side": 1,
       "message": "same",
+      "range": {
+        "startLine": 514,
+        "startChar": 4,
+        "endLine": 516,
+        "endChar": 5
+      },
+      "revId": "374eb223bb90a9cbb69e69fc7b76342183387cf8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c9b00108_78a3ac84",
+        "filename": "core/jni/android_os_HwBlob.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 516,
+      "author": {
+        "id": 1014088
+      },
+      "writtenOn": "2017-10-31T21:19:39Z",
+      "side": 1,
+      "message": "see above.",
+      "parentUuid": "9b173a9b_639116c4",
       "range": {
         "startLine": 514,
         "startChar": 4,
