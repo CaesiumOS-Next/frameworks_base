@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0a17fde3_c4b5af46",
+        "filename": "core/res/res/values/config.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 353,
+      "author": {
+        "id": 1000451
+      },
+      "writtenOn": "2017-11-07T04:27:08Z",
+      "side": 1,
+      "message": "|mac:addr:ess",
+      "range": {
+        "startLine": 353,
+        "startChar": 24,
+        "endLine": 353,
+        "endChar": 25
+      },
+      "revId": "529e754f02d6e1e73a19574fc65bf5fb19fe0b89",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d41f070c_86bf98cd",
+        "filename": "core/res/res/values/config.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 362,
+      "author": {
+        "id": 1000451
+      },
+      "writtenOn": "2017-11-07T04:27:08Z",
+      "side": 1,
+      "message": "We should definitely use names.",
+      "range": {
+        "startLine": 362,
+        "startChar": 19,
+        "endLine": 362,
+        "endChar": 30
+      },
+      "revId": "529e754f02d6e1e73a19574fc65bf5fb19fe0b89",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
