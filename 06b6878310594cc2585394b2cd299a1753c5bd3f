@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3de93df9_8efee001",
+        "filename": "telephony/java/android/telephony/ims/ImsServiceProxy.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 317,
+      "author": {
+        "id": 1056478
+      },
+      "writtenOn": "2017-11-07T20:52:49Z",
+      "side": 1,
+      "message": "Sooooo, don\u0027t use this method, but... use this method? wat?",
+      "range": {
+        "startLine": 317,
+        "startChar": 15,
+        "endLine": 317,
+        "endChar": 28
+      },
+      "revId": "06b6878310594cc2585394b2cd299a1753c5bd3f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
