@@ -19,6 +19,7 @@ package android.net;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.fail;
 
 import android.os.Parcel;
 import android.support.test.filters.SmallTest;
@@ -31,6 +32,103 @@ import org.junit.runners.JUnit4;
 @SmallTest
 @RunWith(JUnit4.class)
 public class IpSecConfigTest {
+
+    private static final byte[] AEAD_KEY = {
+        0x00, 0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07,
+        0x08, 0x09, 0x0A, 0x0B, 0x0C, 0x0D, 0x0E, 0x0F,
+        0x10, 0x11, 0x12, 0x13, 0x14, 0x15, 0x16, 0x17,
+        0x18, 0x19, 0x1A, 0x1B, 0x1C, 0x1D, 0x1E, 0x1F,
+        0x73, 0x61, 0x6C, 0x74
+    };
+    private static final byte[] CRYPT_KEY = {
+        0x00, 0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07,
+        0x08, 0x09, 0x0A, 0x0B, 0x0C, 0x0D, 0x0E, 0x0F,
+        0x10, 0x11, 0x12, 0x13, 0x14, 0x15, 0x16, 0x17,
+        0x18, 0x19, 0x1A, 0x1B, 0x1C, 0x1D, 0x1E, 0x1F
+    };
+    private static final byte[] AUTH_KEY = {
+        0x7A, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+        0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x7F,
+        0x7A, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+        0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x7F
+    };
+
+    private static final IpSecAlgorithm AUTH_ALGO =
+            new IpSecAlgorithm(IpSecAlgorithm.AUTH_HMAC_SHA256, AUTH_KEY, AUTH_KEY.length * 4);
+    private static final IpSecAlgorithm CRYPT_ALGO =
+            new IpSecAlgorithm(IpSecAlgorithm.CRYPT_AES_CBC, CRYPT_KEY);
+    private static final IpSecAlgorithm AEAD_ALGO =
+            new IpSecAlgorithm(IpSecAlgorithm.AUTH_CRYPT_AES_GCM, AEAD_KEY, 128);
+
+    private static final IpSecAlgorithm[] ALGOS =
+            new IpSecAlgorithm[] {AUTH_ALGO, CRYPT_ALGO, AEAD_ALGO};
+    private static final int[] DIRECTIONS =
+            new int[] {IpSecTransform.DIRECTION_IN, IpSecTransform.DIRECTION_OUT};
+
+    @Test
+    public void testSetAuthenticationValidation() {
+        for (IpSecAlgorithm algo : ALGOS) {
+            for (int direction : DIRECTIONS) {
+                IpSecConfig config = new IpSecConfig();
+                try {
+                    config.setAuthentication(direction, algo);
+
+                    if (algo != AUTH_ALGO) {
+                        fail("Expected error on attempting to set authentication algorithm " +
+                                "with incorrect algorithm type: " + algo.getName());
+                    }
+                } catch (IllegalArgumentException e) {
+                    if (algo == AUTH_ALGO) {
+                        fail("Failed to set authentication algorithm despite correct type");
+                    }
+                }
+            }
+        }
+    }
+
+    @Test
+    public void testSetEncryptionValidation() {
+        for (IpSecAlgorithm algo : ALGOS) {
+            for (int direction : DIRECTIONS) {
+                IpSecConfig config = new IpSecConfig();
+                try {
+                    config.setEncryption(direction, algo);
+
+                    if (algo != CRYPT_ALGO) {
+                        fail("Expected error on attempting to set encryption algorithm " + 
+                                "with incorrect algorithm type: " + algo.getName());
+                    }
+                } catch (IllegalArgumentException e) {
+                    if (algo == CRYPT_ALGO) {
+                        fail("Failed to set encryption algorithm despite correct type");
+                    }
+                }
+            }
+        }
+    }
+
+    @Test
+    public void testSetAuthenticatedEncryptionValidation() {
+        for (IpSecAlgorithm algo : ALGOS) {
+            for (int direction : DIRECTIONS) {
+                IpSecConfig config = new IpSecConfig();
+                try {
+                    config.setAuthenticatedEncryption(direction, algo);
+
+                    if (algo != AEAD_ALGO) {
+                        fail("Expected error on attempting to set authenticated encryption " +
+                                "algorithm with incorrect algorithm type: " + algo.getName());
+                    }
+                } catch (IllegalArgumentException e) {
+                    if (algo == AEAD_ALGO) {
+                        fail(
+                                "Failed to set authenticated encryption algorithm despite " +
+                                        "correct type");
+                    }
+                }
+            }
+        }
+    }
 
     @Test
     public void testDefaults() throws Exception {
