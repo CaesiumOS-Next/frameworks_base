@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e9d00cf9_88d58a4f",
+        "filename": "core/java/android/bluetooth/BluetoothHidDeviceAppQosSettings.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1086529
+      },
+      "writtenOn": "2017-11-08T18:19:42Z",
+      "side": 1,
+      "message": "How about using L2CAP defaults from system/bt/stack/include/l2cdefs.h?\n\n#define L2CAP_DEFAULT_SERV_TYPE 1 // (a.k.a. SERVICE_BEST_EFFORT)\n#define L2CAP_DEFAULT_TOKEN_RATE 0\n#define L2CAP_DEFAULT_BUCKET_SIZE 0\n#define L2CAP_DEFAULT_PEAK_BANDWIDTH 0\n#define L2CAP_DEFAULT_LATENCY 0xFFFFFFFF // (a.k.a. MAX)\n#define L2CAP_DEFAULT_DELAY 0xFFFFFFFF // (a.k.a. MAX)\n\nWith these, mServiceType can also be an optional parameter.",
+      "range": {
+        "startLine": 130,
+        "startChar": 0,
+        "endLine": 131,
+        "endChar": 40
+      },
+      "revId": "5c66b77a42187424c81be49faa105ddfe327e3fe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
