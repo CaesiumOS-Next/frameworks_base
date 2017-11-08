@@ -22,6 +22,76 @@
       "revId": "612b29e6721d5d2c576df215587fa91325383bbb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0954da80_4cfe3a9f",
+        "filename": "core/java/android/bluetooth/BluetoothHidDeviceAppQosSettings.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1086529
+      },
+      "writtenOn": "2017-11-08T20:39:06Z",
+      "side": 1,
+      "message": "A bug and a good catch. I\u0027m not sure if there\u0027s any code that uses it (I guess not), so it should be either deleted or properly implemented.",
+      "parentUuid": "a85a74da_f9d54648",
+      "range": {
+        "startLine": 67,
+        "startChar": 0,
+        "endLine": 74,
+        "endChar": 5
+      },
+      "revId": "612b29e6721d5d2c576df215587fa91325383bbb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "06a3bcb9_5bfacd40",
+        "filename": "core/java/android/bluetooth/BluetoothHidDeviceAppQosSettings.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1086529
+      },
+      "writtenOn": "2017-11-08T20:39:06Z",
+      "side": 1,
+      "message": "Nit: It would be nice to mention that this value should be one of {SERVICE_NO_TRAFFIC, SERVICE_BEST_EFFORT, SERVICE_GUARANTEED}, with SERVICE_BEST_EFFORT being the default one.",
+      "range": {
+        "startLine": 133,
+        "startChar": 22,
+        "endLine": 133,
+        "endChar": 34
+      },
+      "revId": "612b29e6721d5d2c576df215587fa91325383bbb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7e65f5b2_b3a4d640",
+        "filename": "core/java/android/bluetooth/BluetoothHidDeviceAppQosSettings.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1086529
+      },
+      "writtenOn": "2017-11-08T20:39:06Z",
+      "side": 1,
+      "message": "I think it would be better to change this to\n\nreturn new BluetoothHidDeviceAppQosSettings(mServiceType, mTokenRate, mTokenBucketSize, mPeakBandwidth, mLatency, mDelayVariation);\n\nand remove the second constructor. This way we\u0027ll have less copy-paste, a single constructor (and certainty that all fields are assigned), and less code in general. What do you think? :)",
+      "range": {
+        "startLine": 194,
+        "startChar": 0,
+        "endLine": 194,
+        "endChar": 62
+      },
+      "revId": "612b29e6721d5d2c576df215587fa91325383bbb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
