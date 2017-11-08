@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a85a74da_f9d54648",
+        "filename": "core/java/android/bluetooth/BluetoothHidDeviceAppQosSettings.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1220282
+      },
+      "writtenOn": "2017-11-08T18:33:36Z",
+      "side": 1,
+      "message": "?",
+      "range": {
+        "startLine": 67,
+        "startChar": 0,
+        "endLine": 74,
+        "endChar": 5
+      },
+      "revId": "612b29e6721d5d2c576df215587fa91325383bbb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
