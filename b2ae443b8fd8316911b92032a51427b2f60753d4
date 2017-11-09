@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "37434fd4_87f8bfb1",
+        "filename": "telecomm/java/android/telecom/CallAudioState.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1056478
+      },
+      "writtenOn": "2017-11-09T23:17:09Z",
+      "side": 1,
+      "message": "You can avoid using String.join if you use the joining collector:\n\nString bluetoothDeviceList \u003d supportedBluetoothDevices.stream()                        .map(BluetoothDevice::getAddress).collect(Collectors.joining(\", \"));",
+      "range": {
+        "startLine": 157,
+        "startChar": 37,
+        "endLine": 159,
+        "endChar": 88
+      },
+      "revId": "b2ae443b8fd8316911b92032a51427b2f60753d4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bec535c4_a694a79d",
+        "filename": "telecomm/java/android/telecom/Connection.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 2601,
+      "author": {
+        "id": 1056478
+      },
+      "writtenOn": "2017-11-09T23:17:09Z",
+      "side": 1,
+      "message": "Does it make sense to use a name like setAudioRouteBluetooth to be more consistent with setAudioRoute?",
+      "range": {
+        "startLine": 2601,
+        "startChar": 16,
+        "endLine": 2601,
+        "endChar": 37
+      },
+      "revId": "b2ae443b8fd8316911b92032a51427b2f60753d4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0f217958_49cb8182",
+        "filename": "telecomm/java/android/telecom/InCallAdapter.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1056478
+      },
+      "writtenOn": "2017-11-09T23:17:09Z",
+      "side": 1,
+      "message": "When would this happen?",
+      "range": {
+        "startLine": 138,
+        "startChar": 81,
+        "endLine": 139,
+        "endChar": 86
+      },
+      "revId": "b2ae443b8fd8316911b92032a51427b2f60753d4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d075e844_7166ed80",
+        "filename": "telecomm/java/android/telecom/InCallAdapter.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1056478
+      },
+      "writtenOn": "2017-11-09T23:17:09Z",
+      "side": 1,
+      "message": "Is it possible to explain how it would chose the device in this case?  Would it just be the one that is configured for the HFP profile in Bluetooth?",
+      "range": {
+        "startLine": 143,
+        "startChar": 61,
+        "endLine": 143,
+        "endChar": 86
+      },
+      "revId": "b2ae443b8fd8316911b92032a51427b2f60753d4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
