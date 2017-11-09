@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "600fb1d5_7e948fd8",
+        "filename": "Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-11-09T22:36:39Z",
+      "side": 1,
+      "message": "The name of this module is going to conflict with the name of the fontchain_lint phony target.  I\u0027d suggest renaming the python script to fontchain_linter.",
+      "revId": "bd3367e4bd853af0211642307e22e90085874427",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
