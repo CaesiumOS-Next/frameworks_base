@@ -22,6 +22,30 @@
       "revId": "be4f2f719d8d392fdff8333e00c30760ffb78e94",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b01b472d_854bb82e",
+        "filename": "core/jni/android_opengl_EGL14.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1058860
+      },
+      "writtenOn": "2017-11-10T23:51:22Z",
+      "side": 1,
+      "message": "Yes, I am porting these back to the stubs \u003csigh\u003e.",
+      "parentUuid": "3d99b18c_913a6c81",
+      "range": {
+        "startLine": 23,
+        "startChar": 9,
+        "endLine": 23,
+        "endChar": 20
+      },
+      "revId": "be4f2f719d8d392fdff8333e00c30760ffb78e94",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
