@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3d99b18c_913a6c81",
+        "filename": "core/jni/android_opengl_EGL14.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2017-11-10T23:46:18Z",
+      "side": 1,
+      "message": "This should not work anymore. Please update the script.",
+      "range": {
+        "startLine": 23,
+        "startChar": 9,
+        "endLine": 23,
+        "endChar": 20
+      },
+      "revId": "be4f2f719d8d392fdff8333e00c30760ffb78e94",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
