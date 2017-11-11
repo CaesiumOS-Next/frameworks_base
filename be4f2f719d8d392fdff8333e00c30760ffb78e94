@@ -46,6 +46,30 @@
       "revId": "be4f2f719d8d392fdff8333e00c30760ffb78e94",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c8de33bf_030bcb44",
+        "filename": "core/jni/android_opengl_EGL14.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2017-11-11T00:00:00Z",
+      "side": 1,
+      "message": "Should complain to smoreland and his reviewer. :-)",
+      "parentUuid": "b01b472d_854bb82e",
+      "range": {
+        "startLine": 23,
+        "startChar": 9,
+        "endLine": 23,
+        "endChar": 20
+      },
+      "revId": "be4f2f719d8d392fdff8333e00c30760ffb78e94",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
