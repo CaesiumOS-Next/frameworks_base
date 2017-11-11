@@ -21,15 +21,18 @@ import android.annotation.Nullable;
 import android.hardware.camera2.impl.CameraMetadataNative;
 import android.hardware.camera2.impl.PublicKey;
 import android.hardware.camera2.impl.SyntheticKey;
+import android.hardware.camera2.params.OutputConfiguration;
 import android.hardware.camera2.utils.HashCodeHelpers;
 import android.hardware.camera2.utils.TypeReference;
 import android.os.Parcel;
 import android.os.Parcelable;
+import android.util.ArraySet;
+import android.util.Log;
+import android.util.SparseArray;
 import android.view.Surface;
 
 import java.util.Collection;
 import java.util.Collections;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Objects;
 
@@ -198,7 +201,25 @@ public final class CaptureRequest extends CameraMetadata<CaptureRequest.Key<?>>
         }
     }
 
-    private final HashSet<Surface> mSurfaceSet;
+    private final String           TAG = "CaptureRequest-JV";
+
+    private ArraySet<Surface>      mSurfaceSet;
+
+    // Speed up sending CaptureRequest across IPC:
+    // mSurfaceConverted should only be set to true during capture request
+    // submission by {@link #convertSurfaceToStreamId}. The method will convert
+    // surfaces to stream/surface indexes based on passed in stream configuration at that time.
+    // This will save significant unparcel time for remote camera device.
+    // Once the request is submitted, camera device will call {@link #recoverStreamIdToSurface}
+    // to reset the capture request back to its original state.
+    private final Object           mSurfacesLock = new Object();
+    private boolean                mSurfaceConverted = false;
+    private ArraySet<Surface>      mSurfaceSetCache; // cached mSurfaceSet during request submission
+    private int[]                  mStreamIdxArray;
+    private int[]                  mSurfaceIdxArray;
+
+    private static final ArraySet<Surface> mEmptySurfaceSet = new ArraySet<Surface>();
+
     private final CameraMetadataNative mSettings;
     private boolean mIsReprocess;
     // If this request is part of constrained high speed request list that was created by
@@ -218,7 +239,7 @@ public final class CaptureRequest extends CameraMetadata<CaptureRequest.Key<?>>
     private CaptureRequest() {
         mSettings = new CameraMetadataNative();
         setNativeInstance(mSettings);
-        mSurfaceSet = new HashSet<Surface>();
+        mSurfaceSet = new ArraySet<Surface>();
         mIsReprocess = false;
         mReprocessableSessionId = CameraCaptureSession.SESSION_ID_NONE;
     }
@@ -232,7 +253,7 @@ public final class CaptureRequest extends CameraMetadata<CaptureRequest.Key<?>>
     private CaptureRequest(CaptureRequest source) {
         mSettings = new CameraMetadataNative(source.mSettings);
         setNativeInstance(mSettings);
-        mSurfaceSet = (HashSet<Surface>) source.mSurfaceSet.clone();
+        mSurfaceSet = new ArraySet<Surface>(source.mSurfaceSet);
         mIsReprocess = source.mIsReprocess;
         mIsPartOfCHSRequestList = source.mIsPartOfCHSRequestList;
         mReprocessableSessionId = source.mReprocessableSessionId;
@@ -263,7 +284,7 @@ public final class CaptureRequest extends CameraMetadata<CaptureRequest.Key<?>>
             int reprocessableSessionId) {
         mSettings = CameraMetadataNative.move(settings);
         setNativeInstance(mSettings);
-        mSurfaceSet = new HashSet<Surface>();
+        mSurfaceSet = new ArraySet<Surface>();
         mIsReprocess = isReprocess;
         if (isReprocess) {
             if (reprocessableSessionId == CameraCaptureSession.SESSION_ID_NONE) {
@@ -479,6 +500,22 @@ public final class CaptureRequest extends CameraMetadata<CaptureRequest.Key<?>>
 
         mIsReprocess = (in.readInt() == 0) ? false : true;
         mReprocessableSessionId = CameraCaptureSession.SESSION_ID_NONE;
+
+        int streamSurfaceSize = in.readInt();
+        int remainingDataSize = 4 * 2 * streamSurfaceSize;
+        if (remainingDataSize > in.dataAvail()) {
+            throw new RuntimeException(
+                "Bad CaptureRequest Parcel: streamSurfaceSize:" + streamSurfaceSize +
+                ", remaining data:" + in.dataAvail());
+        }
+
+        mStreamIdxArray = new int[streamSurfaceSize];
+        mSurfaceIdxArray = new int[streamSurfaceSize];
+        for (int i = 0; i < streamSurfaceSize; i++) {
+            mStreamIdxArray[i] = in.readInt();
+            mSurfaceIdxArray[i] = in.readInt();
+        }
+
     }
 
     @Override
@@ -491,6 +528,11 @@ public final class CaptureRequest extends CameraMetadata<CaptureRequest.Key<?>>
         mSettings.writeToParcel(dest, flags);
         dest.writeParcelableArray(mSurfaceSet.toArray(new Surface[mSurfaceSet.size()]), flags);
         dest.writeInt(mIsReprocess ? 1 : 0);
+        dest.writeInt(mStreamIdxArray.length);
+        for (int i = 0; i < mStreamIdxArray.length; i++) {
+            dest.writeInt(mStreamIdxArray[i]);
+            dest.writeInt(mSurfaceIdxArray[i]);
+        }
     }
 
     /**
@@ -505,6 +547,71 @@ public final class CaptureRequest extends CameraMetadata<CaptureRequest.Key<?>>
      */
     public Collection<Surface> getTargets() {
         return Collections.unmodifiableCollection(mSurfaceSet);
+    }
+
+    /**
+     * @hide
+     */
+    public void convertSurfaceToStreamId(
+            final SparseArray<OutputConfiguration> configuredOutputs) {
+        synchronized (mSurfacesLock) {
+            if (mSurfaceConverted) {
+                Log.v(TAG, "Cannot convert already converted surfaces!");
+                return;
+            }
+
+            mStreamIdxArray = new int[mSurfaceSet.size()];
+            mSurfaceIdxArray = new int[mSurfaceSet.size()];
+            int i = 0;
+            for (Surface s : mSurfaceSet) {
+                boolean streamFound = false;
+                for (int j = 0; j < configuredOutputs.size(); ++j) {
+                    int streamId = configuredOutputs.keyAt(j);
+                    OutputConfiguration outConfig = configuredOutputs.valueAt(j);
+                    int surfaceId = 0;
+                    for (Surface outSurface : outConfig.getSurfaces()) {
+                        if (s == outSurface) {
+                            streamFound = true;
+                            mStreamIdxArray[i] = streamId;
+                            mSurfaceIdxArray[i] = surfaceId;
+                            i++;
+                            break;
+                        }
+                        surfaceId++;
+                    }
+                    if (streamFound) {
+                        break;
+                    }
+                }
+                if (!streamFound) {
+                    mStreamIdxArray = null;
+                    mSurfaceIdxArray = null;
+                    throw new IllegalArgumentException(
+                            "CaptureRequest contains unconfigured Input/Output Surface!");
+                }
+            }
+            mSurfaceConverted = true;
+            mSurfaceSetCache = mSurfaceSet;
+            mSurfaceSet = mEmptySurfaceSet; // To save unparcel time
+        }
+    }
+
+    /**
+     * @hide
+     */
+    public void recoverStreamIdToSurface() {
+        synchronized (mSurfacesLock) {
+            if (!mSurfaceConverted) {
+                Log.v(TAG, "Cannot convert already converted surfaces!");
+                return;
+            }
+
+            mSurfaceSet = mSurfaceSetCache;
+            mSurfaceSetCache = null;
+            mStreamIdxArray = null;
+            mSurfaceIdxArray = null;
+            mSurfaceConverted = false;
+        }
     }
 
     /**
