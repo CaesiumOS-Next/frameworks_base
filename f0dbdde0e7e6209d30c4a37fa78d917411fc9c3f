@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "17a41555_4ed2d7a7",
+        "filename": "Android.bp",
+        "patchSetId": 3
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-11-17T04:01:27Z",
+      "side": 1,
+      "message": "This needs to be fontchain_linter too",
+      "range": {
+        "startLine": 125,
+        "startChar": 21,
+        "endLine": 125,
+        "endChar": 35
+      },
+      "revId": "f0dbdde0e7e6209d30c4a37fa78d917411fc9c3f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
