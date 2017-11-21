@@ -896,7 +896,7 @@ public class Intent implements Parcelable, Cloneable {
      * </ul>
      * <p>
      * This action should be used when the user will naturally expect to
-     * select an activity in order to proceed.  An example if when not to use
+     * select an activity in order to proceed.  An example when not to use
      * it is when the user clicks on a "mailto:" link.  They would naturally
      * expect to go directly to their mail app, so startActivity() should be
      * called directly: it will

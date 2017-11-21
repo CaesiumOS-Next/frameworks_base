@@ -48,7 +48,7 @@ import java.util.ArrayList;
  * The size of the FrameLayout is the size of its largest child (plus padding), visible
  * or not (if the FrameLayout's parent permits). Views that are {@link android.view.View#GONE} are
  * used for sizing
- * only if {@link #setMeasureAllChildren(boolean) setConsiderGoneChildrenWhenMeasuring()}
+ * only if {@link #setMeasureAllChildren(boolean) setMeasureAllChildren()}
  * is set to true.
  *
  * @attr ref android.R.styleable#FrameLayout_measureAllChildren
