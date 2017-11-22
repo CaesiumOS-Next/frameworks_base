@@ -366,6 +366,9 @@ public class ImsReasonInfo implements Parcelable {
     /** Call/IMS registration is failed/dropped because of a network detach */
     public static final int CODE_NETWORK_DETACH = 1513;
 
+    /** Call failed because of unobtainable number */
+    public static final int CODE_UNOBTAINABLE_NUMBER = 1514;
+
     /* OEM specific error codes. To be used by OEMs when they don't want to
    reveal error code which would be replaced by ERROR_UNSPECIFIED */
     public static final int CODE_OEM_CAUSE_1 = 0xf001;
