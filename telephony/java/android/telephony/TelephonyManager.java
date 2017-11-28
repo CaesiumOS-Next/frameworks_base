@@ -831,6 +831,28 @@ public class TelephonyManager {
             "android.telephony.event.EVENT_HANDOVER_TO_WIFI_FAILED";
 
     /**
+     * {@link android.telecom.Connection} event used to indicate when in
+     * emergency redial if phone account changed then inform InCallService
+     * with new phone account to update InCallUI,
+     * Sent via {@link android.telecom.Connection#sendConnectionEvent(String, Bundle)}.
+     * The {@link Bundle} parameter is expected to be null when this connection event is used.
+     * @hide
+     */
+    public static final String EVENT_PHONE_ACCOUNT_CHANGED =
+            "org.codeaurora.event.PHONE_ACCOUNT_CHANGED";
+
+    /**
+     * {@link android.telecom.Connection} event used to indicate SS notification
+     * text should show to user, so that dialer displays toast with message
+     * Sent via {@link android.telecom.Connection#sendConnectionEvent(String, Bundle)}.
+     * The {@link Bundle} parameter is expected to be null when this connection event is used.
+     * @hide
+     */
+
+    public static final String EVENT_DISPLAY_SS_NOTIFICATION_MESSAGE =
+            "android.telephony.event.DISPLAY_SS_NOTIFICATION_MESSAGE";
+
+    /**
      * {@link android.telecom.Connection} event used to indicate that a video call was downgraded to
      * audio because the data limit was reached.
      * <p>
@@ -944,6 +966,10 @@ public class TelephonyManager {
      * TelephonyManager, String, int)}.
      */
     public static final int USSD_ERROR_SERVICE_UNAVAIL = -2;
+
+    /** {@hide} */
+    public static final String EXTRA_SS_NOTIFICATION_TEXT =
+            "android.telephony.extra.SS_NOTIFICATION_TEXT";
 
     //
     //
