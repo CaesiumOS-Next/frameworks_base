@@ -448,6 +448,190 @@
     },
     {
       "key": {
+        "uuid": "a837992e_3df4197a",
+        "filename": "telephony/java/android/telephony/ims/internal/aidl/IImsConfig.aidl",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1060151
+      },
+      "writtenOn": "2017-11-30T20:56:37Z",
+      "side": 1,
+      "message": "*sigh*",
+      "range": {
+        "startLine": 26,
+        "startChar": 29,
+        "endLine": 26,
+        "endChar": 30
+      },
+      "revId": "e02b8f8fd79fa9dc6340e1f5c6cef44fee273f5f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b63c1d14_aa32f79f",
+        "filename": "telephony/java/android/telephony/ims/internal/aidl/IImsConfig.aidl",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1060151
+      },
+      "writtenOn": "2017-11-30T20:56:37Z",
+      "side": 1,
+      "message": "This will support multiple registered callbacks?",
+      "range": {
+        "startLine": 32,
+        "startChar": 9,
+        "endLine": 32,
+        "endChar": 29
+      },
+      "revId": "e02b8f8fd79fa9dc6340e1f5c6cef44fee273f5f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d64edd9f_79657750",
+        "filename": "telephony/java/android/telephony/ims/internal/aidl/IImsConfig.aidl",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1060151
+      },
+      "writtenOn": "2017-11-30T20:56:37Z",
+      "side": 1,
+      "message": "Suggest that we be consistent and use the semantics of bundle...\n\nThe other files drop the \"provisioned\" keyword and since this is the \"ImsConfig\", it seems semantically like you can make this pretty lean. The word \"value\" is absolutely meaningless, but if we want to clarify what they are then I suggest we use the word \"Config\".\n\ngetConfigInt() / getIntConfig()... whichever, so long as it\u0027s consistent.\ngetConfigString()\n\nsetConfigInt()\nsetConfigString()\n\nOn the setters, we can always just use the overloads as well?",
+      "range": {
+        "startLine": 34,
+        "startChar": 0,
+        "endLine": 35,
+        "endChar": 47
+      },
+      "revId": "e02b8f8fd79fa9dc6340e1f5c6cef44fee273f5f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "64c92264_fb6b2eff",
+        "filename": "telephony/java/android/telephony/ims/internal/aidl/IImsConfig.aidl",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1060151
+      },
+      "writtenOn": "2017-11-30T20:56:37Z",
+      "side": 1,
+      "message": "What are these setters returning? Should they not simply be void? If this is an unreliable operation, then I would request some non-trivial documentation explaining what the deal is with this.",
+      "range": {
+        "startLine": 36,
+        "startChar": 0,
+        "endLine": 37,
+        "endChar": 58
+      },
+      "revId": "e02b8f8fd79fa9dc6340e1f5c6cef44fee273f5f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ec5680a9_b2e4bab5",
+        "filename": "telephony/java/android/telephony/ims/internal/aidl/IImsConfigCallback.aidl",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1060151
+      },
+      "writtenOn": "2017-11-30T20:56:37Z",
+      "side": 1,
+      "message": "onIntConfigChanged()\n...",
+      "range": {
+        "startLine": 27,
+        "startChar": 9,
+        "endLine": 27,
+        "endChar": 26
+      },
+      "revId": "e02b8f8fd79fa9dc6340e1f5c6cef44fee273f5f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "569598a8_85375216",
+        "filename": "telephony/java/android/telephony/ims/internal/aidl/IImsMMTelFeature.aidl",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1060151
+      },
+      "writtenOn": "2017-11-30T20:56:37Z",
+      "side": 1,
+      "message": "From an API naming guidelines standpoint, the version we expose should be Mmtel or MmTel, but definitely not MMTel.",
+      "range": {
+        "startLine": 35,
+        "startChar": 10,
+        "endLine": 35,
+        "endChar": 26
+      },
+      "revId": "e02b8f8fd79fa9dc6340e1f5c6cef44fee273f5f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d634c593_997bff89",
+        "filename": "telephony/java/android/telephony/ims/internal/aidl/IImsMMTelFeature.aidl",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1060151
+      },
+      "writtenOn": "2017-11-30T20:56:37Z",
+      "side": 1,
+      "message": "Tty... interestingly it\u0027s done both ways in this same signature.",
+      "range": {
+        "startLine": 44,
+        "startChar": 9,
+        "endLine": 44,
+        "endChar": 21
+      },
+      "revId": "e02b8f8fd79fa9dc6340e1f5c6cef44fee273f5f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d30cff27_6e5d831d",
+        "filename": "telephony/java/android/telephony/ims/internal/aidl/IImsRegistrationCallback.aidl",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1060151
+      },
+      "writtenOn": "2017-11-30T20:56:37Z",
+      "side": 1,
+      "message": "what is the expected behavior when this is called? I\u0027m not sure the registrationconfiguration should change mid-stream, in which case, does this somehow get called once to notify listeners of the config? But I thought the config was pushed from the framework. basically, I\u0027m confused on this.",
+      "range": {
+        "startLine": 37,
+        "startChar": 3,
+        "endLine": 37,
+        "endChar": 68
+      },
+      "revId": "e02b8f8fd79fa9dc6340e1f5c6cef44fee273f5f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ae334704_bc000133",
         "filename": "telephony/java/android/telephony/ims/internal/feature/ImsFeature.java",
         "patchSetId": 1
@@ -1270,6 +1454,92 @@
     },
     {
       "key": {
+        "uuid": "fcb66d1f_2c0c6635",
+        "filename": "telephony/java/android/telephony/ims/internal/feature/MMTelFeature.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1060151
+      },
+      "writtenOn": "2017-11-30T20:56:37Z",
+      "side": 1,
+      "message": "now with SMS.",
+      "revId": "e02b8f8fd79fa9dc6340e1f5c6cef44fee273f5f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "126fc411_d391ab16",
+        "filename": "telephony/java/android/telephony/ims/internal/feature/MMTelFeature.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1060151
+      },
+      "writtenOn": "2017-11-30T20:56:37Z",
+      "side": 1,
+      "message": "Now is the time to fix this. Having capability be a composite of \"service\" + access network is a dumpster fire of a design. It creates a lot of redundancy because we also have things like the access technology in the other APIs. It\u0027s at the absolute top of my list to remove. compatibility-shmatibility. This must go.",
+      "range": {
+        "startLine": 189,
+        "startChar": 0,
+        "endLine": 194,
+        "endChar": 65
+      },
+      "revId": "e02b8f8fd79fa9dc6340e1f5c6cef44fee273f5f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3b8bb8bf_f3c7b992",
+        "filename": "telephony/java/android/telephony/ims/internal/feature/MMTelFeature.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 1060151
+      },
+      "writtenOn": "2017-11-30T20:56:37Z",
+      "side": 1,
+      "message": "The fun continues.",
+      "range": {
+        "startLine": 228,
+        "startChar": 14,
+        "endLine": 228,
+        "endChar": 16
+      },
+      "revId": "e02b8f8fd79fa9dc6340e1f5c6cef44fee273f5f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fdc2f8af_73453b00",
+        "filename": "telephony/java/android/telephony/ims/internal/feature/MMTelFeature.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1060151
+      },
+      "writtenOn": "2017-11-30T20:56:37Z",
+      "side": 1,
+      "message": "Notifying the framework shouldn\u0027t be optional or aspirational.",
+      "range": {
+        "startLine": 228,
+        "startChar": 88,
+        "endLine": 229,
+        "endChar": 31
+      },
+      "revId": "e02b8f8fd79fa9dc6340e1f5c6cef44fee273f5f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ed084068_a940f943",
         "filename": "telephony/java/android/telephony/ims/internal/feature/MMTelFeature.java",
         "patchSetId": 1
@@ -1352,6 +1622,30 @@
       "side": 1,
       "message": "Done",
       "parentUuid": "d2a87637_e8347b45",
+      "range": {
+        "startLine": 278,
+        "startChar": 26,
+        "endLine": 278,
+        "endChar": 41
+      },
+      "revId": "e02b8f8fd79fa9dc6340e1f5c6cef44fee273f5f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6930f874_703b5eb3",
+        "filename": "telephony/java/android/telephony/ims/internal/feature/MMTelFeature.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 278,
+      "author": {
+        "id": 1060151
+      },
+      "writtenOn": "2017-11-30T20:56:37Z",
+      "side": 1,
+      "message": "I\u0027ve made similar comments as well. I think it\u0027s worth doing a full scrub of the exception types with a skeptical look at anything which throws RemoteException.",
+      "parentUuid": "915a01ff_d73c529a",
       "range": {
         "startLine": 278,
         "startChar": 26,
@@ -1451,6 +1745,276 @@
         "startChar": 14,
         "endLine": 370,
         "endChar": 24
+      },
+      "revId": "e02b8f8fd79fa9dc6340e1f5c6cef44fee273f5f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e2201114_992ba5c4",
+        "filename": "telephony/java/android/telephony/ims/internal/stub/ImsConfigImplBase.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1060151
+      },
+      "writtenOn": "2017-11-30T20:56:37Z",
+      "side": 1,
+      "message": "should these throw an UnsupportedOperationException",
+      "range": {
+        "startLine": 49,
+        "startChar": 12,
+        "endLine": 49,
+        "endChar": 21
+      },
+      "revId": "e02b8f8fd79fa9dc6340e1f5c6cef44fee273f5f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "afd85b8d_9e08e26d",
+        "filename": "telephony/java/android/telephony/ims/internal/stub/ImsConfigImplBase.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1060151
+      },
+      "writtenOn": "2017-11-30T20:56:37Z",
+      "side": 1,
+      "message": "nit nit",
+      "revId": "e02b8f8fd79fa9dc6340e1f5c6cef44fee273f5f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ea8d07f6_6073ed1a",
+        "filename": "telephony/java/android/telephony/ims/internal/stub/ImsConfigImplBase.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1060151
+      },
+      "writtenOn": "2017-11-30T20:56:37Z",
+      "side": 1,
+      "message": "c",
+      "range": {
+        "startLine": 114,
+        "startChar": 15,
+        "endLine": 114,
+        "endChar": 17
+      },
+      "revId": "e02b8f8fd79fa9dc6340e1f5c6cef44fee273f5f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "08d2a735_6d4a6165",
+        "filename": "telephony/java/android/telephony/ims/internal/stub/ImsConfigImplBase.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1060151
+      },
+      "writtenOn": "2017-11-30T20:56:37Z",
+      "side": 1,
+      "message": "weird",
+      "range": {
+        "startLine": 129,
+        "startChar": 18,
+        "endLine": 129,
+        "endChar": 19
+      },
+      "revId": "e02b8f8fd79fa9dc6340e1f5c6cef44fee273f5f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "56286d3e_4f4e50d0",
+        "filename": "telephony/java/android/telephony/ims/internal/stub/ImsConfigImplBase.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1060151
+      },
+      "writtenOn": "2017-11-30T20:56:37Z",
+      "side": 1,
+      "message": "should these throw something in case they are unimplemented? Alternatively, is there an OperationStatusConstants that says dis ain\u0027 gon\u0027 werk?",
+      "range": {
+        "startLine": 134,
+        "startChar": 9,
+        "endLine": 134,
+        "endChar": 17
+      },
+      "revId": "e02b8f8fd79fa9dc6340e1f5c6cef44fee273f5f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "88f85734_ea7e6bf2",
+        "filename": "telephony/java/android/telephony/ims/internal/stub/ImsConfigImplBase.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1060151
+      },
+      "writtenOn": "2017-11-30T20:56:37Z",
+      "side": 1,
+      "message": "IMS... this will be the final comment I make on the docstrings. I suggest a thorough sweep and cleanup.",
+      "range": {
+        "startLine": 151,
+        "startChar": 26,
+        "endLine": 151,
+        "endChar": 29
+      },
+      "revId": "e02b8f8fd79fa9dc6340e1f5c6cef44fee273f5f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e0aafbf2_e91bf81a",
+        "filename": "telephony/java/android/telephony/ims/internal/stub/ImsRegistrationConfiguration.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1060151
+      },
+      "writtenOn": "2017-11-30T20:56:37Z",
+      "side": 1,
+      "message": "oh preposition, how you dangle., also, \";\" for delimited list.\n\nOk, I lied... I\u0027m making more comment comments. I promise, this is really the last one.",
+      "range": {
+        "startLine": 26,
+        "startChar": 78,
+        "endLine": 26,
+        "endChar": 81
+      },
+      "revId": "e02b8f8fd79fa9dc6340e1f5c6cef44fee273f5f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d1648990_6668151c",
+        "filename": "telephony/java/android/telephony/ims/internal/stub/ImsRegistrationConfiguration.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1060151
+      },
+      "writtenOn": "2017-11-30T20:56:37Z",
+      "side": 1,
+      "message": "nit line length",
+      "range": {
+        "startLine": 72,
+        "startChar": 80,
+        "endLine": 72,
+        "endChar": 107
+      },
+      "revId": "e02b8f8fd79fa9dc6340e1f5c6cef44fee273f5f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0a0207ee_7c3a6c3f",
+        "filename": "telephony/java/android/telephony/ims/internal/stub/ImsRegistrationConfiguration.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1060151
+      },
+      "writtenOn": "2017-11-30T20:56:37Z",
+      "side": 1,
+      "message": "nit line length",
+      "range": {
+        "startLine": 84,
+        "startChar": 83,
+        "endLine": 84,
+        "endChar": 117
+      },
+      "revId": "e02b8f8fd79fa9dc6340e1f5c6cef44fee273f5f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f828f679_1d839eac",
+        "filename": "telephony/java/android/telephony/ims/internal/stub/ImsRegistrationImplBase.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1060151
+      },
+      "writtenOn": "2017-11-30T20:56:37Z",
+      "side": 1,
+      "message": "The RIL_RADIO_TECHNOLOGY_ integers are hidden and are definitely not suited to be exposed (thus we shouldn\u0027t expose them in any official interfaces). We should spend some time and come up with the correct set of these... and while we\u0027re at it, we should probably consider whether every single method needs a radio tech, or whether there\u0027s a better way to meet the need here.",
+      "range": {
+        "startLine": 61,
+        "startChar": 49,
+        "endLine": 61,
+        "endChar": 61
+      },
+      "revId": "e02b8f8fd79fa9dc6340e1f5c6cef44fee273f5f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c44f6553_15bcc823",
+        "filename": "telephony/java/android/telephony/ims/internal/stub/ImsRegistrationImplBase.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 240,
+      "author": {
+        "id": 1060151
+      },
+      "writtenOn": "2017-11-30T20:56:37Z",
+      "side": 1,
+      "message": "Names aren\u0027t great here. Suggest that \"we\" sit down and think about how this procedure should be described.",
+      "range": {
+        "startLine": 240,
+        "startChar": 22,
+        "endLine": 240,
+        "endChar": 44
+      },
+      "revId": "e02b8f8fd79fa9dc6340e1f5c6cef44fee273f5f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "77523fbd_f9d3eebf",
+        "filename": "telephony/java/android/telephony/ims/internal/stub/ImsRegistrationImplBase.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 271,
+      "author": {
+        "id": 1060151
+      },
+      "writtenOn": "2017-11-30T20:56:37Z",
+      "side": 1,
+      "message": "What? This seems like a strange way to indicat",
+      "range": {
+        "startLine": 270,
+        "startChar": 5,
+        "endLine": 271,
+        "endChar": 25
       },
       "revId": "e02b8f8fd79fa9dc6340e1f5c6cef44fee273f5f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
