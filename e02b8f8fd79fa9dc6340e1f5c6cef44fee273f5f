@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "3a913326_77bfbc50",
+        "filename": "telephony/java/android/telephony/ims/internal/ImsCallSessionListener.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1098053
+      },
+      "writtenOn": "2017-11-30T17:51:19Z",
+      "side": 1,
+      "message": "Oops, copy/paste error :)\n\nThis class is just a wrapper around the IImsCallSessionListener, so i will modify the comment to reflect this.",
+      "parentUuid": "6c1af088_85384a21",
+      "range": {
+        "startLine": 30,
+        "startChar": 2,
+        "endLine": 30,
+        "endChar": 51
+      },
+      "revId": "e02b8f8fd79fa9dc6340e1f5c6cef44fee273f5f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6ef5d342_45ebd151",
         "filename": "telephony/java/android/telephony/ims/internal/ImsCallSessionListener.java",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2017-11-30T03:35:24Z",
       "side": 1,
       "message": "semantics... I think Initiate/Terminate and Start/Stop.",
+      "range": {
+        "startLine": 62,
+        "startChar": 16,
+        "endLine": 62,
+        "endChar": 34
+      },
+      "revId": "e02b8f8fd79fa9dc6340e1f5c6cef44fee273f5f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7ce5551c_6ca13570",
+        "filename": "telephony/java/android/telephony/ims/internal/ImsCallSessionListener.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1098053
+      },
+      "writtenOn": "2017-11-30T17:51:19Z",
+      "side": 1,
+      "message": "this code has been copied wholesale from the existing APIs in order to quickly wrap AIDL functionality. I agree, with that, I can try to clean up some method names in follow up CLs.",
+      "parentUuid": "6ef5d342_45ebd151",
       "range": {
         "startLine": 62,
         "startChar": 16,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "e336425b_b281bb6d",
+        "filename": "telephony/java/android/telephony/ims/internal/ImsCallSessionListener.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1098053
+      },
+      "writtenOn": "2017-11-30T17:51:19Z",
+      "side": 1,
+      "message": "Removed this check entirely",
+      "parentUuid": "d1c3f5c6_fcddd75a",
+      "range": {
+        "startLine": 64,
+        "startChar": 22,
+        "endLine": 64,
+        "endChar": 37
+      },
+      "revId": "e02b8f8fd79fa9dc6340e1f5c6cef44fee273f5f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "adc1af46_d81a2de2",
         "filename": "telephony/java/android/telephony/ims/internal/ImsCallSessionListener.java",
         "patchSetId": 1
@@ -82,6 +154,30 @@
       "writtenOn": "2017-11-30T03:35:24Z",
       "side": 1,
       "message": "You can reduce this boilerplate by having a small assertListenerIsRegistered() method. :-)",
+      "range": {
+        "startLine": 75,
+        "startChar": 0,
+        "endLine": 77,
+        "endChar": 9
+      },
+      "revId": "e02b8f8fd79fa9dc6340e1f5c6cef44fee273f5f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e6722cf2_bc8be45f",
+        "filename": "telephony/java/android/telephony/ims/internal/ImsCallSessionListener.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1098053
+      },
+      "writtenOn": "2017-11-30T17:51:19Z",
+      "side": 1,
+      "message": "I removed this because there is no way for the listener to be null anyways.",
+      "parentUuid": "adc1af46_d81a2de2",
       "range": {
         "startLine": 75,
         "startChar": 0,
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "842e770c_370eab97",
+        "filename": "telephony/java/android/telephony/ims/internal/ImsCallSessionListener.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 317,
+      "author": {
+        "id": 1098053
+      },
+      "writtenOn": "2017-11-30T17:51:19Z",
+      "side": 1,
+      "message": "hahaha i am tempted to leave this javadoc",
+      "parentUuid": "324b85ab_b4394c26",
+      "range": {
+        "startLine": 317,
+        "startChar": 7,
+        "endLine": 317,
+        "endChar": 75
+      },
+      "revId": "e02b8f8fd79fa9dc6340e1f5c6cef44fee273f5f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7c466fb2_a769d70e",
         "filename": "telephony/java/android/telephony/ims/internal/ImsCallSessionListener.java",
         "patchSetId": 1
@@ -128,6 +248,24 @@
       "writtenOn": "2017-11-30T03:35:24Z",
       "side": 1,
       "message": "nit: space.",
+      "revId": "e02b8f8fd79fa9dc6340e1f5c6cef44fee273f5f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1e6be3eb_42e395c4",
+        "filename": "telephony/java/android/telephony/ims/internal/ImsCallSessionListener.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 329,
+      "author": {
+        "id": 1098053
+      },
+      "writtenOn": "2017-11-30T17:51:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7c466fb2_a769d70e",
       "revId": "e02b8f8fd79fa9dc6340e1f5c6cef44fee273f5f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -151,6 +289,24 @@
     },
     {
       "key": {
+        "uuid": "b9b11aa2_71897d7c",
+        "filename": "telephony/java/android/telephony/ims/internal/ImsCallSessionListener.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 360,
+      "author": {
+        "id": 1098053
+      },
+      "writtenOn": "2017-11-30T17:51:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ed48d825_06522d2d",
+      "revId": "e02b8f8fd79fa9dc6340e1f5c6cef44fee273f5f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cfefc145_b2497faf",
         "filename": "telephony/java/android/telephony/ims/internal/ImsCallSessionListener.java",
         "patchSetId": 1
@@ -162,6 +318,30 @@
       "writtenOn": "2017-11-30T03:35:24Z",
       "side": 1,
       "message": "nit: caps, also omitting the word \"the\" from phrases is OK, but it\u0027s not being done consistently. I\u0027m not sure if we\u0027re commenting in tweets or in phrases.",
+      "range": {
+        "startLine": 432,
+        "startChar": 40,
+        "endLine": 432,
+        "endChar": 52
+      },
+      "revId": "e02b8f8fd79fa9dc6340e1f5c6cef44fee273f5f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ea1748cd_9dda6d1d",
+        "filename": "telephony/java/android/telephony/ims/internal/ImsCallSessionListener.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 432,
+      "author": {
+        "id": 1098053
+      },
+      "writtenOn": "2017-11-30T17:51:19Z",
+      "side": 1,
+      "message": "i agree",
+      "parentUuid": "cfefc145_b2497faf",
       "range": {
         "startLine": 432,
         "startChar": 40,
@@ -197,6 +377,30 @@
     },
     {
       "key": {
+        "uuid": "d1325585_be4d079b",
+        "filename": "telephony/java/android/telephony/ims/internal/ImsCallSessionListener.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 448,
+      "author": {
+        "id": 1098053
+      },
+      "writtenOn": "2017-11-30T17:51:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7d954736_021c253c",
+      "range": {
+        "startLine": 447,
+        "startChar": 1,
+        "endLine": 448,
+        "endChar": 49
+      },
+      "revId": "e02b8f8fd79fa9dc6340e1f5c6cef44fee273f5f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c10f2581_9b7f2390",
         "filename": "telephony/java/android/telephony/ims/internal/ImsService.java",
         "patchSetId": 1
@@ -208,6 +412,30 @@
       "writtenOn": "2017-11-30T03:35:24Z",
       "side": 1,
       "message": "Do we still want to use a device overlay for the default setting?",
+      "range": {
+        "startLine": 60,
+        "startChar": 0,
+        "endLine": 61,
+        "endChar": 27
+      },
+      "revId": "e02b8f8fd79fa9dc6340e1f5c6cef44fee273f5f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "75b93615_75219268",
+        "filename": "telephony/java/android/telephony/ims/internal/ImsService.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1098053
+      },
+      "writtenOn": "2017-11-30T17:51:19Z",
+      "side": 1,
+      "message": "Hmm what do you have in mind as an alternative? We need a \"default\" OEM provided ImsService.",
+      "parentUuid": "c10f2581_9b7f2390",
       "range": {
         "startLine": 60,
         "startChar": 0,
@@ -243,6 +471,30 @@
     },
     {
       "key": {
+        "uuid": "928c2a8e_d38c06ca",
+        "filename": "telephony/java/android/telephony/ims/internal/feature/ImsFeature.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1098053
+      },
+      "writtenOn": "2017-11-30T17:51:19Z",
+      "side": 1,
+      "message": "oops :)",
+      "parentUuid": "ae334704_bc000133",
+      "range": {
+        "startLine": 95,
+        "startChar": 4,
+        "endLine": 95,
+        "endChar": 71
+      },
+      "revId": "e02b8f8fd79fa9dc6340e1f5c6cef44fee273f5f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "aa46d1f2_470c5d97",
         "filename": "telephony/java/android/telephony/ims/internal/feature/ImsFeature.java",
         "patchSetId": 1
@@ -254,6 +506,30 @@
       "writtenOn": "2017-11-30T03:35:24Z",
       "side": 1,
       "message": "Que?",
+      "range": {
+        "startLine": 100,
+        "startChar": 20,
+        "endLine": 100,
+        "endChar": 32
+      },
+      "revId": "e02b8f8fd79fa9dc6340e1f5c6cef44fee273f5f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "19b6b520_fab34202",
+        "filename": "telephony/java/android/telephony/ims/internal/feature/ImsFeature.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1098053
+      },
+      "writtenOn": "2017-11-30T17:51:19Z",
+      "side": 1,
+      "message": "oops :)",
+      "parentUuid": "aa46d1f2_470c5d97",
       "range": {
         "startLine": 100,
         "startChar": 20,
@@ -283,6 +559,24 @@
     },
     {
       "key": {
+        "uuid": "8e1e0c52_c4206486",
+        "filename": "telephony/java/android/telephony/ims/internal/feature/ImsFeature.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1098053
+      },
+      "writtenOn": "2017-11-30T17:51:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e53deed2_40b0d1be",
+      "revId": "e02b8f8fd79fa9dc6340e1f5c6cef44fee273f5f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bc73aa46_f92eb8d1",
         "filename": "telephony/java/android/telephony/ims/internal/feature/ImsFeature.java",
         "patchSetId": 1
@@ -294,6 +588,24 @@
       "writtenOn": "2017-11-30T03:35:24Z",
       "side": 1,
       "message": "nit: moar whitespace.",
+      "revId": "e02b8f8fd79fa9dc6340e1f5c6cef44fee273f5f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "29d50599_4fe07c75",
+        "filename": "telephony/java/android/telephony/ims/internal/feature/ImsFeature.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1098053
+      },
+      "writtenOn": "2017-11-30T17:51:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bc73aa46_f92eb8d1",
       "revId": "e02b8f8fd79fa9dc6340e1f5c6cef44fee273f5f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -323,6 +635,30 @@
     },
     {
       "key": {
+        "uuid": "bc5ba747_9d6841a2",
+        "filename": "telephony/java/android/telephony/ims/internal/feature/ImsFeature.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1098053
+      },
+      "writtenOn": "2017-11-30T17:51:19Z",
+      "side": 1,
+      "message": "eh? bit.. mask?",
+      "parentUuid": "16fcc341_1f6f1043",
+      "range": {
+        "startLine": 142,
+        "startChar": 89,
+        "endLine": 142,
+        "endChar": 96
+      },
+      "revId": "e02b8f8fd79fa9dc6340e1f5c6cef44fee273f5f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "45393627_af8d2181",
         "filename": "telephony/java/android/telephony/ims/internal/feature/ImsFeature.java",
         "patchSetId": 1
@@ -340,6 +676,24 @@
     },
     {
       "key": {
+        "uuid": "3fc2d55a_8d1d7442",
+        "filename": "telephony/java/android/telephony/ims/internal/feature/ImsFeature.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1098053
+      },
+      "writtenOn": "2017-11-30T17:51:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "45393627_af8d2181",
+      "revId": "e02b8f8fd79fa9dc6340e1f5c6cef44fee273f5f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a957886b_94b3d36c",
         "filename": "telephony/java/android/telephony/ims/internal/feature/ImsFeature.java",
         "patchSetId": 1
@@ -351,6 +705,30 @@
       "writtenOn": "2017-11-30T03:35:24Z",
       "side": 1,
       "message": "since there\u0027s no protection here, should this be addCapabilities?",
+      "range": {
+        "startLine": 155,
+        "startChar": 20,
+        "endLine": 155,
+        "endChar": 33
+      },
+      "revId": "e02b8f8fd79fa9dc6340e1f5c6cef44fee273f5f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "865e3716_4364a4e3",
+        "filename": "telephony/java/android/telephony/ims/internal/feature/ImsFeature.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1098053
+      },
+      "writtenOn": "2017-11-30T17:51:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a957886b_94b3d36c",
       "range": {
         "startLine": 155,
         "startChar": 20,
@@ -386,6 +764,30 @@
     },
     {
       "key": {
+        "uuid": "7f947a66_cca60d05",
+        "filename": "telephony/java/android/telephony/ims/internal/feature/ImsFeature.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1098053
+      },
+      "writtenOn": "2017-11-30T17:51:19Z",
+      "side": 1,
+      "message": "No, it doesn\u0027t really build, it just copies the current capabilities into a new structure.",
+      "parentUuid": "35fc23dd_cd4db381",
+      "range": {
+        "startLine": 165,
+        "startChar": 15,
+        "endLine": 165,
+        "endChar": 38
+      },
+      "revId": "e02b8f8fd79fa9dc6340e1f5c6cef44fee273f5f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "193d7991_2aa5b639",
         "filename": "telephony/java/android/telephony/ims/internal/feature/ImsFeature.java",
         "patchSetId": 1
@@ -397,6 +799,30 @@
       "writtenOn": "2017-11-30T03:35:24Z",
       "side": 1,
       "message": "is it unworkable to make these final and set these in the constructor? Alternatively should there be an initialize() method that can only be called once? Having independent setters sends a weird message to me-the-reader.",
+      "range": {
+        "startLine": 181,
+        "startChar": 0,
+        "endLine": 187,
+        "endChar": 5
+      },
+      "revId": "e02b8f8fd79fa9dc6340e1f5c6cef44fee273f5f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b0992087_75c61a0b",
+        "filename": "telephony/java/android/telephony/ims/internal/feature/ImsFeature.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1098053
+      },
+      "writtenOn": "2017-11-30T17:51:19Z",
+      "side": 1,
+      "message": "The base ImsService doesn\u0027t actually call \"new MMTelFeature()\", that is up to the implementer of ImsService. ImsFeature needs a way to set the context and slot, which aren\u0027t used by the subclasses, so I didnt want them to need to pass in those parameters. i can change this to an initialize method instead.",
+      "parentUuid": "193d7991_2aa5b639",
       "range": {
         "startLine": 181,
         "startChar": 0,
@@ -432,6 +858,30 @@
     },
     {
       "key": {
+        "uuid": "2857e325_8032b554",
+        "filename": "telephony/java/android/telephony/ims/internal/feature/ImsFeature.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1098053
+      },
+      "writtenOn": "2017-11-30T17:51:19Z",
+      "side": 1,
+      "message": "Hmm not sure why i didn\u0027t sync mState... Will fix.",
+      "parentUuid": "d6c7a2e0_e3748f91",
+      "range": {
+        "startLine": 193,
+        "startChar": 25,
+        "endLine": 193,
+        "endChar": 40
+      },
+      "revId": "e02b8f8fd79fa9dc6340e1f5c6cef44fee273f5f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e7ea6957_537c35c9",
         "filename": "telephony/java/android/telephony/ims/internal/feature/ImsFeature.java",
         "patchSetId": 1
@@ -449,6 +899,24 @@
     },
     {
       "key": {
+        "uuid": "5ef9a885_6bb85218",
+        "filename": "telephony/java/android/telephony/ims/internal/feature/ImsFeature.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1098053
+      },
+      "writtenOn": "2017-11-30T17:51:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e7ea6957_537c35c9",
+      "revId": "e02b8f8fd79fa9dc6340e1f5c6cef44fee273f5f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1d236d07_4a3bd90c",
         "filename": "telephony/java/android/telephony/ims/internal/feature/ImsFeature.java",
         "patchSetId": 1
@@ -460,6 +928,30 @@
       "writtenOn": "2017-11-30T03:35:24Z",
       "side": 1,
       "message": "suggest throws HoldingItWrongException()",
+      "range": {
+        "startLine": 202,
+        "startChar": 12,
+        "endLine": 202,
+        "endChar": 18
+      },
+      "revId": "e02b8f8fd79fa9dc6340e1f5c6cef44fee273f5f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "02b9bac2_0b28a585",
+        "filename": "telephony/java/android/telephony/ims/internal/feature/ImsFeature.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1098053
+      },
+      "writtenOn": "2017-11-30T17:51:19Z",
+      "side": 1,
+      "message": "good idea :)",
+      "parentUuid": "1d236d07_4a3bd90c",
       "range": {
         "startLine": 202,
         "startChar": 12,
@@ -495,6 +987,30 @@
     },
     {
       "key": {
+        "uuid": "e58bccf3_838565f2",
+        "filename": "telephony/java/android/telephony/ims/internal/feature/ImsFeature.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 233,
+      "author": {
+        "id": 1098053
+      },
+      "writtenOn": "2017-11-30T17:51:19Z",
+      "side": 1,
+      "message": "I need the iterator to do iter.remove() below.",
+      "parentUuid": "66cbccfe_cb2a3be4",
+      "range": {
+        "startLine": 231,
+        "startChar": 12,
+        "endLine": 233,
+        "endChar": 65
+      },
+      "revId": "e02b8f8fd79fa9dc6340e1f5c6cef44fee273f5f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "397bfdd0_789024b7",
         "filename": "telephony/java/android/telephony/ims/internal/feature/ImsFeature.java",
         "patchSetId": 1
@@ -506,6 +1022,30 @@
       "writtenOn": "2017-11-30T16:56:39Z",
       "side": 1,
       "message": "docs?",
+      "range": {
+        "startLine": 291,
+        "startChar": 15,
+        "endLine": 291,
+        "endChar": 30
+      },
+      "revId": "e02b8f8fd79fa9dc6340e1f5c6cef44fee273f5f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "15e055c4_cc855e3c",
+        "filename": "telephony/java/android/telephony/ims/internal/feature/ImsFeature.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 291,
+      "author": {
+        "id": 1098053
+      },
+      "writtenOn": "2017-11-30T17:51:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "397bfdd0_789024b7",
       "range": {
         "startLine": 291,
         "startChar": 15,
@@ -565,6 +1105,30 @@
     },
     {
       "key": {
+        "uuid": "5b94e34e_e7167f57",
+        "filename": "telephony/java/android/telephony/ims/internal/feature/ImsFeature.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 294,
+      "author": {
+        "id": 1098053
+      },
+      "writtenOn": "2017-11-30T17:51:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "40721125_43994d21",
+      "range": {
+        "startLine": 294,
+        "startChar": 22,
+        "endLine": 294,
+        "endChar": 37
+      },
+      "revId": "e02b8f8fd79fa9dc6340e1f5c6cef44fee273f5f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5dd3e60a_5dd4332b",
         "filename": "telephony/java/android/telephony/ims/internal/feature/ImsFeature.java",
         "patchSetId": 1
@@ -576,6 +1140,30 @@
       "writtenOn": "2017-11-30T16:56:39Z",
       "side": 1,
       "message": "why not also notify on success?",
+      "range": {
+        "startLine": 301,
+        "startChar": 12,
+        "endLine": 301,
+        "endChar": 37
+      },
+      "revId": "e02b8f8fd79fa9dc6340e1f5c6cef44fee273f5f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "baed6d10_56aee132",
+        "filename": "telephony/java/android/telephony/ims/internal/feature/ImsFeature.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 301,
+      "author": {
+        "id": 1098053
+      },
+      "writtenOn": "2017-11-30T17:51:19Z",
+      "side": 1,
+      "message": "This code is incorrect, i have fixed it in the patch",
+      "parentUuid": "5dd3e60a_5dd4332b",
       "range": {
         "startLine": 301,
         "startChar": 12,
@@ -611,6 +1199,30 @@
     },
     {
       "key": {
+        "uuid": "e8f30bf3_e02a52b4",
+        "filename": "telephony/java/android/telephony/ims/internal/feature/ImsFeature.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 306,
+      "author": {
+        "id": 1098053
+      },
+      "writtenOn": "2017-11-30T17:51:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3a3b6a96_07368640",
+      "range": {
+        "startLine": 306,
+        "startChar": 20,
+        "endLine": 306,
+        "endChar": 21
+      },
+      "revId": "e02b8f8fd79fa9dc6340e1f5c6cef44fee273f5f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4d96335b_44063f2b",
         "filename": "telephony/java/android/telephony/ims/internal/feature/ImsFeature.java",
         "patchSetId": 1
@@ -622,6 +1234,30 @@
       "writtenOn": "2017-11-30T03:35:24Z",
       "side": 1,
       "message": "another place where having CapabilityConfiguration return itself might be tidy. This is a very casual suggestion though.",
+      "range": {
+        "startLine": 313,
+        "startChar": 8,
+        "endLine": 314,
+        "endChar": 37
+      },
+      "revId": "e02b8f8fd79fa9dc6340e1f5c6cef44fee273f5f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0da8d276_b8c8d3af",
+        "filename": "telephony/java/android/telephony/ims/internal/feature/ImsFeature.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 314,
+      "author": {
+        "id": 1098053
+      },
+      "writtenOn": "2017-11-30T17:51:19Z",
+      "side": 1,
+      "message": "Hmm not sure what this would look like...\n\nI am cloning  the current capabilities, adding the new capability and then calling set to notify the implementer of the new capability.",
+      "parentUuid": "4d96335b_44063f2b",
       "range": {
         "startLine": 313,
         "startChar": 8,
@@ -657,6 +1293,30 @@
     },
     {
       "key": {
+        "uuid": "c93b89c9_b3fedfc6",
+        "filename": "telephony/java/android/telephony/ims/internal/feature/MMTelFeature.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 242,
+      "author": {
+        "id": 1098053
+      },
+      "writtenOn": "2017-11-30T17:51:19Z",
+      "side": 1,
+      "message": "The reason why this is overridden is only to return a MMTelCapabilityConfiguration instead of a CapabilityConfiguration... I wanted to make sure the implementer knows that they should be using the constants defined in MMTelCapabilityConfiguration.",
+      "parentUuid": "ed084068_a940f943",
+      "range": {
+        "startLine": 242,
+        "startChar": 20,
+        "endLine": 242,
+        "endChar": 48
+      },
+      "revId": "e02b8f8fd79fa9dc6340e1f5c6cef44fee273f5f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d2a87637_e8347b45",
         "filename": "telephony/java/android/telephony/ims/internal/feature/MMTelFeature.java",
         "patchSetId": 1
@@ -668,6 +1328,30 @@
       "writtenOn": "2017-11-30T16:56:39Z",
       "side": 1,
       "message": "As we discussed offline in context of sms feature, this should be IllegalStateException",
+      "range": {
+        "startLine": 278,
+        "startChar": 26,
+        "endLine": 278,
+        "endChar": 41
+      },
+      "revId": "e02b8f8fd79fa9dc6340e1f5c6cef44fee273f5f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "915a01ff_d73c529a",
+        "filename": "telephony/java/android/telephony/ims/internal/feature/MMTelFeature.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 278,
+      "author": {
+        "id": 1098053
+      },
+      "writtenOn": "2017-11-30T17:51:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d2a87637_e8347b45",
       "range": {
         "startLine": 278,
         "startChar": 26,
@@ -703,6 +1387,30 @@
     },
     {
       "key": {
+        "uuid": "cfac6ab2_89b93641",
+        "filename": "telephony/java/android/telephony/ims/internal/feature/MMTelFeature.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 369,
+      "author": {
+        "id": 1098053
+      },
+      "writtenOn": "2017-11-30T17:51:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fe0fb042_25cbde69",
+      "range": {
+        "startLine": 369,
+        "startChar": 14,
+        "endLine": 369,
+        "endChar": 18
+      },
+      "revId": "e02b8f8fd79fa9dc6340e1f5c6cef44fee273f5f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "73e8874a_5c4fa3a0",
         "filename": "telephony/java/android/telephony/ims/internal/feature/MMTelFeature.java",
         "patchSetId": 1
@@ -714,6 +1422,30 @@
       "writtenOn": "2017-11-30T16:56:39Z",
       "side": 1,
       "message": "suggest onCompleteMessage",
+      "range": {
+        "startLine": 370,
+        "startChar": 14,
+        "endLine": 370,
+        "endChar": 24
+      },
+      "revId": "e02b8f8fd79fa9dc6340e1f5c6cef44fee273f5f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d457ffdd_a7904a21",
+        "filename": "telephony/java/android/telephony/ims/internal/feature/MMTelFeature.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 370,
+      "author": {
+        "id": 1098053
+      },
+      "writtenOn": "2017-11-30T17:51:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "73e8874a_5c4fa3a0",
       "range": {
         "startLine": 370,
         "startChar": 14,
