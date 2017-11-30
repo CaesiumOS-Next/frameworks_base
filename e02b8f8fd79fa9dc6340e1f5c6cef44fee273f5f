@@ -634,6 +634,29 @@
     },
     {
       "key": {
+        "uuid": "ed084068_a940f943",
+        "filename": "telephony/java/android/telephony/ims/internal/feature/MMTelFeature.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 242,
+      "author": {
+        "id": 1061207
+      },
+      "writtenOn": "2017-11-30T17:48:01Z",
+      "side": 1,
+      "message": "These methods will also be overridden by sms so I suggest we move documentation to ImsFeature and inherit docs.",
+      "range": {
+        "startLine": 242,
+        "startChar": 20,
+        "endLine": 242,
+        "endChar": 48
+      },
+      "revId": "e02b8f8fd79fa9dc6340e1f5c6cef44fee273f5f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d2a87637_e8347b45",
         "filename": "telephony/java/android/telephony/ims/internal/feature/MMTelFeature.java",
         "patchSetId": 1
