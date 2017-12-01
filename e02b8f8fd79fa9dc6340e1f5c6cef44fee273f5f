@@ -2008,6 +2008,24 @@
     },
     {
       "key": {
+        "uuid": "82f8a0f1_699934fa",
+        "filename": "telephony/java/android/telephony/ims/internal/stub/ImsConfigImplBase.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1098053
+      },
+      "writtenOn": "2017-12-01T00:25:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "afd85b8d_9e08e26d",
+      "revId": "e02b8f8fd79fa9dc6340e1f5c6cef44fee273f5f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ea8d07f6_6073ed1a",
         "filename": "telephony/java/android/telephony/ims/internal/stub/ImsConfigImplBase.java",
         "patchSetId": 1
@@ -2019,6 +2037,30 @@
       "writtenOn": "2017-11-30T20:56:37Z",
       "side": 1,
       "message": "c",
+      "range": {
+        "startLine": 114,
+        "startChar": 15,
+        "endLine": 114,
+        "endChar": 17
+      },
+      "revId": "e02b8f8fd79fa9dc6340e1f5c6cef44fee273f5f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cfca80e1_830b7dd4",
+        "filename": "telephony/java/android/telephony/ims/internal/stub/ImsConfigImplBase.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1098053
+      },
+      "writtenOn": "2017-12-01T00:25:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ea8d07f6_6073ed1a",
       "range": {
         "startLine": 114,
         "startChar": 15,
@@ -2054,6 +2096,30 @@
     },
     {
       "key": {
+        "uuid": "f7ed997f_c3b7bfb8",
+        "filename": "telephony/java/android/telephony/ims/internal/stub/ImsConfigImplBase.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1098053
+      },
+      "writtenOn": "2017-12-01T00:25:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "08d2a735_6d4a6165",
+      "range": {
+        "startLine": 129,
+        "startChar": 18,
+        "endLine": 129,
+        "endChar": 19
+      },
+      "revId": "e02b8f8fd79fa9dc6340e1f5c6cef44fee273f5f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "56286d3e_4f4e50d0",
         "filename": "telephony/java/android/telephony/ims/internal/stub/ImsConfigImplBase.java",
         "patchSetId": 1
@@ -2065,6 +2131,30 @@
       "writtenOn": "2017-11-30T20:56:37Z",
       "side": 1,
       "message": "should these throw something in case they are unimplemented? Alternatively, is there an OperationStatusConstants that says dis ain\u0027 gon\u0027 werk?",
+      "range": {
+        "startLine": 134,
+        "startChar": 9,
+        "endLine": 134,
+        "endChar": 17
+      },
+      "revId": "e02b8f8fd79fa9dc6340e1f5c6cef44fee273f5f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2d9ec081_d5791cd1",
+        "filename": "telephony/java/android/telephony/ims/internal/stub/ImsConfigImplBase.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1098053
+      },
+      "writtenOn": "2017-12-01T00:25:11Z",
+      "side": 1,
+      "message": "I used the OperationStatusConstants.FAILED param for now",
+      "parentUuid": "56286d3e_4f4e50d0",
       "range": {
         "startLine": 134,
         "startChar": 9,
