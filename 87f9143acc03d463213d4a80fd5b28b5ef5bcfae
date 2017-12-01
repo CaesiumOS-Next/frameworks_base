@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "81134632_ab70c686",
+        "filename": "telephony/java/android/telephony/ims/internal/feature/MmTelFeature.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1061207
+      },
+      "writtenOn": "2017-12-01T23:49:06Z",
+      "side": 1,
+      "message": "unused.",
+      "range": {
+        "startLine": 182,
+        "startChar": 15,
+        "endLine": 182,
+        "endChar": 43
+      },
+      "revId": "87f9143acc03d463213d4a80fd5b28b5ef5bcfae",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cc64c7e5_6398a596",
+        "filename": "telephony/java/android/telephony/ims/internal/feature/MmTelFeature.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1061207
+      },
+      "writtenOn": "2017-12-01T23:49:06Z",
+      "side": 1,
+      "message": "nit: extra line",
+      "range": {
+        "startLine": 221,
+        "startChar": 0,
+        "endLine": 222,
+        "endChar": 13
+      },
+      "revId": "87f9143acc03d463213d4a80fd5b28b5ef5bcfae",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}

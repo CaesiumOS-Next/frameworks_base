@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3f62d315_e547f0f7",
+        "filename": "telephony/java/android/telephony/ims/internal/feature/MmTelFeature.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 404,
+      "author": {
+        "id": 1061207
+      },
+      "writtenOn": "2017-12-01T23:49:06Z",
+      "side": 1,
+      "message": "If we plan to do the interface split, shall we move this and simillar methods here out of mmtelfeature?",
+      "range": {
+        "startLine": 400,
+        "startChar": 3,
+        "endLine": 404,
+        "endChar": 5
+      },
+      "revId": "504b2d0331d66481a2b6bb877395bdb7ea23b5e0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
