@@ -1709,6 +1709,30 @@
     },
     {
       "key": {
+        "uuid": "7ba75bf5_35649079",
+        "filename": "telephony/java/android/telephony/ims/internal/feature/MMTelFeature.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 1098053
+      },
+      "writtenOn": "2017-12-01T00:26:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3b8bb8bf_f3c7b992",
+      "range": {
+        "startLine": 228,
+        "startChar": 14,
+        "endLine": 228,
+        "endChar": 16
+      },
+      "revId": "e02b8f8fd79fa9dc6340e1f5c6cef44fee273f5f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fdc2f8af_73453b00",
         "filename": "telephony/java/android/telephony/ims/internal/feature/MMTelFeature.java",
         "patchSetId": 1
@@ -1720,6 +1744,30 @@
       "writtenOn": "2017-11-30T20:56:37Z",
       "side": 1,
       "message": "Notifying the framework shouldn\u0027t be optional or aspirational.",
+      "range": {
+        "startLine": 228,
+        "startChar": 88,
+        "endLine": 229,
+        "endChar": 31
+      },
+      "revId": "e02b8f8fd79fa9dc6340e1f5c6cef44fee273f5f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2a6a8ced_daba623e",
+        "filename": "telephony/java/android/telephony/ims/internal/feature/MMTelFeature.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1098053
+      },
+      "writtenOn": "2017-12-01T00:26:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fdc2f8af_73453b00",
       "range": {
         "startLine": 228,
         "startChar": 88,
@@ -1838,6 +1886,30 @@
       "side": 1,
       "message": "I\u0027ve made similar comments as well. I think it\u0027s worth doing a full scrub of the exception types with a skeptical look at anything which throws RemoteException.",
       "parentUuid": "915a01ff_d73c529a",
+      "range": {
+        "startLine": 278,
+        "startChar": 26,
+        "endLine": 278,
+        "endChar": 41
+      },
+      "revId": "e02b8f8fd79fa9dc6340e1f5c6cef44fee273f5f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4a559439_48841dbe",
+        "filename": "telephony/java/android/telephony/ims/internal/feature/MMTelFeature.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 278,
+      "author": {
+        "id": 1098053
+      },
+      "writtenOn": "2017-12-01T00:26:56Z",
+      "side": 1,
+      "message": "I agree.",
+      "parentUuid": "6930f874_703b5eb3",
       "range": {
         "startLine": 278,
         "startChar": 26,
