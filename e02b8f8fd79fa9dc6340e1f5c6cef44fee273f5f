@@ -448,6 +448,30 @@
     },
     {
       "key": {
+        "uuid": "2b0cbff9_49b9c144",
+        "filename": "telephony/java/android/telephony/ims/internal/ImsService.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1060151
+      },
+      "writtenOn": "2017-12-02T00:30:21Z",
+      "side": 1,
+      "message": "At some point I was thinking that the default carrier config value would handle this... but I no longer believe that works. Overlays are not great, but maybe we do need it in this case. I\u0027ll continue to noodle. For now, please disregard my comment.",
+      "parentUuid": "75b93615_75219268",
+      "range": {
+        "startLine": 60,
+        "startChar": 0,
+        "endLine": 61,
+        "endChar": 27
+      },
+      "revId": "e02b8f8fd79fa9dc6340e1f5c6cef44fee273f5f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a837992e_3df4197a",
         "filename": "telephony/java/android/telephony/ims/internal/aidl/IImsConfig.aidl",
         "patchSetId": 1
@@ -624,6 +648,30 @@
       "side": 1,
       "message": "Results of setting these values. They are synchronous.",
       "parentUuid": "64c92264_fb6b2eff",
+      "range": {
+        "startLine": 36,
+        "startChar": 0,
+        "endLine": 37,
+        "endChar": 58
+      },
+      "revId": "e02b8f8fd79fa9dc6340e1f5c6cef44fee273f5f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "65064686_a2778311",
+        "filename": "telephony/java/android/telephony/ims/internal/aidl/IImsConfig.aidl",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1060151
+      },
+      "writtenOn": "2017-12-02T00:30:21Z",
+      "side": 1,
+      "message": "Oh... so these are \"flaky\" operations that may fail. I\u0027m now looking at OperationStatusConstants and wondering out loud... can we not? Setting configs like this shouldn\u0027t fail, at least not here. I\u0027m sure there are other places where it can, but I don\u0027t think setting a config should fail for any \"normal\" reason. suggest we convert to void.\n\nIf we do need to define failures, I suggest that OperationStatusConstants is not the right list of failures for setting a config value.",
+      "parentUuid": "4f470fa4_1a34a03c",
       "range": {
         "startLine": 36,
         "startChar": 0,
