@@ -708,6 +708,30 @@
     },
     {
       "key": {
+        "uuid": "87a49ef6_4944f3f7",
+        "filename": "telephony/java/android/telephony/ims/internal/aidl/IImsConfig.aidl",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1060151
+      },
+      "writtenOn": "2017-12-04T20:33:57Z",
+      "side": 1,
+      "message": "I\u0027m suggesting that setting the IMS config shouldn\u0027t be a flaky operation. This looks like it was built around the idea that communicating with the modem doesn\u0027t work in certain instances and that the caller needs to handle it. I think we should revisit that assertion and treat failures as unexpected and catastrophic.\n\nIt it turns out (contrary to my expectation) that\u0027s asserting this operation is reliable isn\u0027t possible, the list of OperationStatusConstants looks like RIL_Error or posix ERRNO where it defines a super-set of all the possible failures and requires each API to explicitly document which subset of errors is valid for a given call: it\u0027s a very error-prone (no pun intended) design, which I wouldn\u0027t want to use in anything we\u0027re exposing.",
+      "parentUuid": "52c0f483_b85b5f8f",
+      "range": {
+        "startLine": 36,
+        "startChar": 0,
+        "endLine": 37,
+        "endChar": 58
+      },
+      "revId": "e02b8f8fd79fa9dc6340e1f5c6cef44fee273f5f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ec5680a9_b2e4bab5",
         "filename": "telephony/java/android/telephony/ims/internal/aidl/IImsConfigCallback.aidl",
         "patchSetId": 1
