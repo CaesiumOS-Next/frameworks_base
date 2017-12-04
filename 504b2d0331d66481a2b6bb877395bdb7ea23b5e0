@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "26c57a9a_c1249342",
+        "filename": "telephony/java/android/telephony/ims/internal/feature/MmTelFeature.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1098053
+      },
+      "writtenOn": "2017-12-04T22:16:17Z",
+      "side": 1,
+      "message": "Changes uploaded. the tech type can now be queried from IImsRegistration, so i have squished the capability types",
+      "parentUuid": "859c1074_8e62acb0",
+      "range": {
+        "startLine": 192,
+        "startChar": 24,
+        "endLine": 197,
+        "endChar": 52
+      },
+      "revId": "504b2d0331d66481a2b6bb877395bdb7ea23b5e0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3f62d315_e547f0f7",
         "filename": "telephony/java/android/telephony/ims/internal/feature/MmTelFeature.java",
         "patchSetId": 5
