@@ -732,6 +732,30 @@
     },
     {
       "key": {
+        "uuid": "18416282_826477dc",
+        "filename": "telephony/java/android/telephony/ims/internal/aidl/IImsConfig.aidl",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1098053
+      },
+      "writtenOn": "2017-12-04T21:16:34Z",
+      "side": 1,
+      "message": "The only thing that would happen is now we would have to switch to:\n...\nsetValue(...., int newValue)\n// Make sure config was set\nif(getValue() !\u003d newValue) {\n// Retry or report failure\n..\nIs that a better solution?\n\nCommunication with the modem can be flaky, so should we just define a {SUCCESS, FAIL} return, where FAIL means something really bad happened? Even if we should treat a set failing as catastrophic, we have to handle it somehow in the platform. I could also implement a callback (onSetValueFailed) that gets passed into the set(..., ImsConfigCallback c) method and only gets called if a config change fails.. Would that be better? Perhaps it just throws a RemoteException, saying \"communication isn\u0027t available\".\n\nEither way, i don\u0027t think we can remove error propagation back to the framework upon error.",
+      "parentUuid": "87a49ef6_4944f3f7",
+      "range": {
+        "startLine": 36,
+        "startChar": 0,
+        "endLine": 37,
+        "endChar": 58
+      },
+      "revId": "e02b8f8fd79fa9dc6340e1f5c6cef44fee273f5f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ec5680a9_b2e4bab5",
         "filename": "telephony/java/android/telephony/ims/internal/aidl/IImsConfigCallback.aidl",
         "patchSetId": 1
