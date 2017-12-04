@@ -24,4 +24,8 @@ import com.android.ims.internal.IImsCallSession;
  */
 oneway interface IImsMmTelListener {
     void onIncomingCall(IImsCallSession c);
+    // SMS APIs
+    void setSentSmsResult(in int messageRef, in int result);
+    void setSentSmsStatusReport(in int format, in byte[] pdu);
+    void deliverSms(in int format, in byte[] pdu);
 }

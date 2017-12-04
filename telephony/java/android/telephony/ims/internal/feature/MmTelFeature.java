@@ -21,6 +21,7 @@ import android.os.Message;
 import android.os.RemoteException;
 import android.telecom.TelecomManager;
 import android.telephony.ims.internal.ImsCallSessionListener;
+import android.telephony.ims.internal.SmsImplBase;
 import android.telephony.ims.internal.aidl.IImsCallSessionListener;
 import android.telephony.ims.internal.aidl.IImsCapabilityCallback;
 import android.telephony.ims.internal.aidl.IImsMmTelFeature;
@@ -164,6 +165,27 @@ public class MmTelFeature extends ImsFeature {
         public long queryCapabilityStatus() throws RemoteException {
             return MmTelFeature.this.queryCapabilityStatus().mCapabilities;
         }
+
+        @Override
+        public void sendSms(int format, int messageRef, boolean retry, byte[] pdu) {
+            synchronized (mLock) {
+                MmTelFeature.this.sendSms(format, messageRef, retry, pdu);
+            }
+        }
+
+        @Override
+        public void acknowledgeSms(int messageRef, int result) {
+            synchronized (mLock) {
+                SmsImplBase.this.acknowledgeSms(messageRef, result);
+            }
+        }
+
+        @Override
+        public int getSmsFormat() {
+            synchronized (mLock) {
+                return SmsImplBase.this.getSmsFormat();
+            }
+        }
     };
 
     /**
@@ -194,7 +216,8 @@ public class MmTelFeature extends ImsFeature {
                         CAPABILITY_TYPE_VOICE_OVER_WIFI,
                         CAPABILITY_TYPE_VIDEO_OVER_WIFI,
                         CAPABILITY_TYPE_UT_OVER_LTE,
-                        CAPABILITY_TYPE_UT_OVER_WIFI
+                        CAPABILITY_TYPE_UT_OVER_WIFI,
+                        CAPABILITY_TYPE_SMS_OVER_IMS
                 })
         @Retention(RetentionPolicy.SOURCE)
         public @interface MMTelCapability {}
@@ -224,6 +247,10 @@ public class MmTelFeature extends ImsFeature {
          * This MmTelFeature supports UT over WiFi
          */
         public static final int CAPABILITY_TYPE_UT_OVER_WIFI = 1 << 5;
+        /**
+         * This MmTelFeature supports SMS over IMS
+         */
+        public static final int CAPABILITY_TYPE_SMS_OVER_IMS = 1 << 6;
 
         @Override
         public final void addCapabilities(@MMTelCapability long capabilities) {
@@ -438,6 +465,45 @@ public class MmTelFeature extends ImsFeature {
      */
     void setUiTtyMode(int mode, Message onCompleteMessage) {
         // Base Implementation - Should be overridden
+    }
+
+    private void sendSms(int format, int messageRef, boolean isRetry, byte[] pdu) {
+
+    }
+
+    private void acknowledgeSms(int messageRef, int result) {
+
+    }
+
+    public final void deliverSms(int format, byte[] pdu) throws IllegalStateException {
+        // TODO: Guard against NPE/ Check if feature is ready and thrown an exception
+        // otherwise.
+        try {
+            mListener.deliverSms(format, pdu);
+        } catch (RemoteException e) {
+        }
+    }
+
+    public final void setSentSmsResult(int messageRef, int result) throws IllegalStateException {
+        // TODO: Guard against NPE/ Check if feature is ready and thrown an exception
+        // otherwise.
+        try {
+            mListener.setSentSmsResult(messageRef, result);
+        } catch (RemoteException e) {
+        }
+    }
+
+    public final void setSentSmsStatusReport(int format, byte[] pdu) {
+        // TODO: Guard against NPE/ Check if feature is ready and thrown an exception
+        // otherwise.
+        try {
+            mListener.setSentSmsStatusReport(format, pdu);
+        } catch (RemoteException e) {
+        }
+    }
+
+    public int getSmsFormat() {
+        return IMS_SMS_FORMAT_3GPP;
     }
 
     /**{@inheritDoc}*/
