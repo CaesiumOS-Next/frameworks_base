@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "f4cf8786_bc04619d",
+        "filename": "telephony/java/android/telephony/ims/internal/feature/MMTelFeature.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 283,
+      "author": {
+        "id": 1098053
+      },
+      "writtenOn": "2017-12-04T18:30:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "935e2cdf_81ce25ce",
+      "range": {
+        "startLine": 283,
+        "startChar": 70,
+        "endLine": 283,
+        "endChar": 81
+      },
+      "revId": "a05acabca8f31f284dccbe88649664abb9f08113",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2dbbe85a_070c58c8",
         "filename": "telephony/java/android/telephony/ims/internal/feature/MMTelFeature.java",
         "patchSetId": 2
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "a9f51e03_ab012033",
+        "filename": "telephony/java/android/telephony/ims/internal/feature/MMTelFeature.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 317,
+      "author": {
+        "id": 1098053
+      },
+      "writtenOn": "2017-12-04T18:30:33Z",
+      "side": 1,
+      "message": "This is still needed.",
+      "parentUuid": "2dbbe85a_070c58c8",
+      "range": {
+        "startLine": 317,
+        "startChar": 15,
+        "endLine": 317,
+        "endChar": 30
+      },
+      "revId": "a05acabca8f31f284dccbe88649664abb9f08113",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "036b7857_3e2bf909",
         "filename": "telephony/java/android/telephony/ims/internal/feature/MMTelFeature.java",
         "patchSetId": 2
@@ -59,6 +107,30 @@
       "writtenOn": "2017-12-01T23:49:06Z",
       "side": 1,
       "message": "update.",
+      "range": {
+        "startLine": 320,
+        "startChar": 69,
+        "endLine": 320,
+        "endChar": 84
+      },
+      "revId": "a05acabca8f31f284dccbe88649664abb9f08113",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "297332c1_950b8d47",
+        "filename": "telephony/java/android/telephony/ims/internal/feature/MMTelFeature.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 320,
+      "author": {
+        "id": 1098053
+      },
+      "writtenOn": "2017-12-04T18:30:33Z",
+      "side": 1,
+      "message": "Still need this for onIncomingCall. I still want to throw the RemoteException in the case of Telephony crashing.",
+      "parentUuid": "036b7857_3e2bf909",
       "range": {
         "startLine": 320,
         "startChar": 69,

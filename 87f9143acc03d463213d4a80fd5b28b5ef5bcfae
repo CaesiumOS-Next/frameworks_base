@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "97d13090_1fe293f6",
+        "filename": "telephony/java/android/telephony/ims/internal/ImsCallSessionListener.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 307,
+      "author": {
+        "id": 1098053
+      },
+      "writtenOn": "2017-12-04T18:30:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "68ce22ef_c04f88ce",
+      "range": {
+        "startLine": 307,
+        "startChar": 7,
+        "endLine": 307,
+        "endChar": 56
+      },
+      "revId": "87f9143acc03d463213d4a80fd5b28b5ef5bcfae",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "04387250_c9609e02",
         "filename": "telephony/java/android/telephony/ims/internal/ImsCallSessionListener.java",
         "patchSetId": 4
@@ -36,6 +60,30 @@
       "writtenOn": "2017-12-02T00:30:21Z",
       "side": 1,
       "message": "Called when the multiparty state is changed for this ...",
+      "range": {
+        "startLine": 320,
+        "startChar": 0,
+        "endLine": 321,
+        "endChar": 30
+      },
+      "revId": "87f9143acc03d463213d4a80fd5b28b5ef5bcfae",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "03fab287_e5b3b53a",
+        "filename": "telephony/java/android/telephony/ims/internal/ImsCallSessionListener.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 321,
+      "author": {
+        "id": 1098053
+      },
+      "writtenOn": "2017-12-04T18:30:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "04387250_c9609e02",
       "range": {
         "startLine": 320,
         "startChar": 0,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "729c7930_1cbc80fe",
+        "filename": "telephony/java/android/telephony/ims/internal/ImsCallSessionListener.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 332,
+      "author": {
+        "id": 1098053
+      },
+      "writtenOn": "2017-12-04T18:30:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "447e5c37_8028301f",
+      "range": {
+        "startLine": 332,
+        "startChar": 7,
+        "endLine": 332,
+        "endChar": 78
+      },
+      "revId": "87f9143acc03d463213d4a80fd5b28b5ef5bcfae",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "81134632_ab70c686",
         "filename": "telephony/java/android/telephony/ims/internal/feature/MmTelFeature.java",
         "patchSetId": 4
@@ -94,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "456266f9_d8d0d5c4",
+        "filename": "telephony/java/android/telephony/ims/internal/feature/MmTelFeature.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1098053
+      },
+      "writtenOn": "2017-12-04T18:30:33Z",
+      "side": 1,
+      "message": "Used for testing, added @VisibleForTesting",
+      "parentUuid": "81134632_ab70c686",
+      "range": {
+        "startLine": 182,
+        "startChar": 15,
+        "endLine": 182,
+        "endChar": 43
+      },
+      "revId": "87f9143acc03d463213d4a80fd5b28b5ef5bcfae",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cc64c7e5_6398a596",
         "filename": "telephony/java/android/telephony/ims/internal/feature/MmTelFeature.java",
         "patchSetId": 4
@@ -105,6 +201,30 @@
       "writtenOn": "2017-12-01T23:49:06Z",
       "side": 1,
       "message": "nit: extra line",
+      "range": {
+        "startLine": 221,
+        "startChar": 0,
+        "endLine": 222,
+        "endChar": 13
+      },
+      "revId": "87f9143acc03d463213d4a80fd5b28b5ef5bcfae",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d789ee6a_be476961",
+        "filename": "telephony/java/android/telephony/ims/internal/feature/MmTelFeature.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1098053
+      },
+      "writtenOn": "2017-12-04T18:30:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cc64c7e5_6398a596",
       "range": {
         "startLine": 221,
         "startChar": 0,

@@ -684,6 +684,30 @@
     },
     {
       "key": {
+        "uuid": "52c0f483_b85b5f8f",
+        "filename": "telephony/java/android/telephony/ims/internal/aidl/IImsConfig.aidl",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1098053
+      },
+      "writtenOn": "2017-12-04T18:30:33Z",
+      "side": 1,
+      "message": "Not sure what you mean, should we ignore that setProvisionedValue failed at this level, even though the provisioned value wasn\u0027t set? We use a failure to perform retries in telephony or notify the server that the set failed (in the case of OMA-DM).\n\nI have seen cases where setting these values fails, for example in cases when the radio is coming up and OMA is simultaneously trying to update WFC provisioning.\n\nAre you suggesting more fine-grained errors than the ones that are defined in OperationStatusConstants?",
+      "parentUuid": "65064686_a2778311",
+      "range": {
+        "startLine": 36,
+        "startChar": 0,
+        "endLine": 37,
+        "endChar": 58
+      },
+      "revId": "e02b8f8fd79fa9dc6340e1f5c6cef44fee273f5f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ec5680a9_b2e4bab5",
         "filename": "telephony/java/android/telephony/ims/internal/aidl/IImsConfigCallback.aidl",
         "patchSetId": 1
