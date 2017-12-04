@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9029cac9_c18c634c",
+        "filename": "telephony/java/android/telephony/ims/internal/feature/MmTelFeature.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 437,
+      "author": {
+        "id": 1127148
+      },
+      "writtenOn": "2017-12-04T22:06:49Z",
+      "side": 1,
+      "message": "What is the purpose of this API? I don\u0027t see this in the API doc as well. Can you please add new APIs to the doc? That way, the discussion about their purpose can be captured in the document\u0027s comments as opposed to getting buried in gerrit comments :-)",
+      "range": {
+        "startLine": 437,
+        "startChar": 16,
+        "endLine": 437,
+        "endChar": 32
+      },
+      "revId": "cbbac7ba1aa1e23e1c8af9ff5b7f6c3358c2690d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
