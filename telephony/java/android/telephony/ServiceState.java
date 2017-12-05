@@ -173,6 +173,12 @@ public class ServiceState implements Parcelable {
                     | (1 << (RIL_RADIO_TECHNOLOGY_EHRPD - 1));
 
     /**
+     * Number of radio technologies for GSM, UMTS and CDMA.
+     * @hide
+     */
+    public static final int NUMBER_OF_RADIO_TECHNOLOGY = 20;
+
+    /**
      * Available registration states for GSM, UMTS and CDMA.
      */
     /** @hide */
@@ -1153,7 +1159,8 @@ public class ServiceState implements Parcelable {
         return getRilDataRadioTechnology();
     }
 
-    private int rilRadioTechnologyToNetworkType(int rt) {
+    /** @hide */
+    public static int rilRadioTechnologyToNetworkType(int rt) {
         switch(rt) {
         case ServiceState.RIL_RADIO_TECHNOLOGY_GPRS:
             return TelephonyManager.NETWORK_TYPE_GPRS;
@@ -1298,6 +1305,51 @@ public class ServiceState implements Parcelable {
             bearerBitmask |= getBitmaskForTech(bearerInt);
         }
         return bearerBitmask;
+    }
+
+    /** @hide */
+    public static int getNetworkTypeBitmaskFromString(String networkTypeList) {
+        String[] networkTypes = networkTypeList.split("\\|");
+        int networkTypeBitmask = 0;
+        for (String networkType : networkTypes) {
+            int networkTypeInt = 0;
+            try {
+                networkTypeInt = Integer.parseInt(networkType.trim());
+            } catch (NumberFormatException nfe) {
+                return 0;
+            }
+
+            if (networkTypeInt == 0) {
+                return 0;
+            }
+
+            networkTypeBitmask |= getBitmaskForTech(networkTypeInt);
+        }
+        return networkTypeBitmask;
+    }
+
+    /** @hide */
+    public static int convertNetworkTypeBitmaskToBearerBitmask(int networkTypeBitmask) {
+        int bearerBitmask = 0;
+        for (int i = 0; i < NUMBER_OF_RADIO_TECHNOLOGY; i++) {
+            int bearerInt = i;
+            if (bitmaskHasTech(networkTypeBitmask, rilRadioTechnologyToNetworkType(bearerInt))) {
+                bearerBitmask |= getBitmaskForTech(bearerInt);
+            }
+        }
+        return bearerBitmask;
+    }
+
+    /** @hide */
+    public static int convertBearerBitmaskToNetworkTypeBitmask(int bearerBitmask) {
+        int networkTypeBitmask = 0;
+        for (int i = 0; i < NUMBER_OF_RADIO_TECHNOLOGY; i++) {
+            int bearerInt = i;
+            if (bitmaskHasTech(bearerBitmask, bearerInt)) {
+                networkTypeBitmask |= getBitmaskForTech(rilRadioTechnologyToNetworkType(bearerInt));
+            }
+        }
+        return networkTypeBitmask;
     }
 
     /**
