@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "caf17fae_f2a45fea",
+        "filename": "services/core/jni/com_android_server_GraphicsStatsService.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1062848
+      },
+      "writtenOn": "2017-12-06T22:03:29Z",
+      "side": 1,
+      "message": "No.\nScopedByteArrayRO needs to be alive until end of this function. Otherwise |data| could be a dangling pointer.",
+      "parentUuid": "e05f91e8_369eecc1",
+      "revId": "2f15dd0249b4826b8245531c72e926e1d5af2e6b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8ffbad3c_217e91e4",
         "filename": "services/core/jni/com_android_server_GraphicsStatsService.cpp",
         "patchSetId": 1
@@ -39,6 +57,30 @@
       "revId": "2f15dd0249b4826b8245531c72e926e1d5af2e6b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5b9789e5_3d8b5568",
+        "filename": "services/core/jni/com_android_server_GraphicsStatsService.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1062848
+      },
+      "writtenOn": "2017-12-06T22:03:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8ffbad3c_217e91e4",
+      "range": {
+        "startLine": 49,
+        "startChar": 29,
+        "endLine": 49,
+        "endChar": 32
+      },
+      "revId": "2f15dd0249b4826b8245531c72e926e1d5af2e6b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
