@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e71019e3_7b91dda4",
+        "filename": "services/core/java/com/android/server/pm/PackageManagerService.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 10163,
+      "author": {
+        "id": 1060678
+      },
+      "writtenOn": "2017-12-06T15:39:22Z",
+      "side": 1,
+      "message": "change this to \"needToDeriveAbi\" and set its initial value to (scanFlags \u0026 SCAN_FIRST_BOOT_OR_UPGRADE) !\u003d 0",
+      "range": {
+        "startLine": 10163,
+        "startChar": 16,
+        "endLine": 10163,
+        "endChar": 32
+      },
+      "revId": "0b6fae50895d0c8011f2763090be451d5be178c1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b58bd885_1a7b3a30",
+        "filename": "services/core/java/com/android/server/pm/PackageManagerService.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 10451,
+      "author": {
+        "id": 1060678
+      },
+      "writtenOn": "2017-12-06T15:39:22Z",
+      "side": 1,
+      "message": "make this test simply \"if (needToDeriveAbi)\"",
+      "range": {
+        "startLine": 10451,
+        "startChar": 16,
+        "endLine": 10451,
+        "endChar": 82
+      },
+      "revId": "0b6fae50895d0c8011f2763090be451d5be178c1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
