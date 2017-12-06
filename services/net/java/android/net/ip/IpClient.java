@@ -166,7 +166,7 @@ public class IpClient extends StateMachine {
         private Callback mCallback;
 
         public LoggingCallbackWrapper(Callback callback) {
-            mCallback = callback;
+            mCallback = (callback != null) ? callback : new Callback();
         }
 
         private void log(String msg) {
@@ -1273,6 +1273,7 @@ public class IpClient extends StateMachine {
             stopAllIP();
 
             resetLinkProperties();
+            mCallback.onLinkPropertiesChange(new LinkProperties(mLinkProperties));
             if (mStartTimeMillis > 0) {
                 recordMetric(IpManagerEvent.COMPLETE_LIFECYCLE);
                 mStartTimeMillis = 0;
