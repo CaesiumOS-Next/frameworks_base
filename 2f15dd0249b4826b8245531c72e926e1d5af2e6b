@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "b71aff02_3b648f14",
+        "filename": "services/core/jni/com_android_server_GraphicsStatsService.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-12-06T22:07:51Z",
+      "side": 1,
+      "message": "Ah, I see, good catch.\n\nThis is unfortunate, the code was hiding the required lifetime of the scoped array. Can you change L63 to use \"buffer.get()\" and delete the data variable?",
+      "parentUuid": "caf17fae_f2a45fea",
+      "revId": "2f15dd0249b4826b8245531c72e926e1d5af2e6b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8ffbad3c_217e91e4",
         "filename": "services/core/jni/com_android_server_GraphicsStatsService.cpp",
         "patchSetId": 1
