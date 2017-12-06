@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e05f91e8_369eecc1",
+        "filename": "services/core/jni/com_android_server_GraphicsStatsService.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-12-06T21:56:11Z",
+      "side": 1,
+      "message": "Don\u0027t need nullable here.\n\nInstead, move ScopedByteArrayRO buffer{env, data} to line 48\n\n  if (jdata !\u003d nullptr) { \n     ScopedByteArrayRO buffer{env, data};\n      ....\n  }",
+      "revId": "2f15dd0249b4826b8245531c72e926e1d5af2e6b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8ffbad3c_217e91e4",
+        "filename": "services/core/jni/com_android_server_GraphicsStatsService.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-12-06T21:56:11Z",
+      "side": 1,
+      "message": "%zd",
+      "range": {
+        "startLine": 49,
+        "startChar": 29,
+        "endLine": 49,
+        "endChar": 32
+      },
+      "revId": "2f15dd0249b4826b8245531c72e926e1d5af2e6b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
