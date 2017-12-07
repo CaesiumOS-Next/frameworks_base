@@ -401,6 +401,75 @@
     },
     {
       "key": {
+        "uuid": "609137c3_46c09aa2",
+        "filename": "telephony/java/android/telephony/ims/internal/aidl/IImsConfig.aidl",
+        "patchSetId": 9
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1135723
+      },
+      "writtenOn": "2017-12-07T22:40:52Z",
+      "side": 1,
+      "message": "nit: do we need comments about item and value too?",
+      "range": {
+        "startLine": 39,
+        "startChar": 23,
+        "endLine": 39,
+        "endChar": 46
+      },
+      "revId": "a82c0fc21355ed8a293ac0f5b6fe3d151dfd13bc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "27e12b8f_a74b66bd",
+        "filename": "telephony/java/android/telephony/ims/internal/aidl/IImsConfig.aidl",
+        "patchSetId": 9
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1135723
+      },
+      "writtenOn": "2017-12-07T22:40:52Z",
+      "side": 1,
+      "message": "nit: do we need comments about item and value too?",
+      "range": {
+        "startLine": 39,
+        "startChar": 23,
+        "endLine": 39,
+        "endChar": 46
+      },
+      "revId": "a82c0fc21355ed8a293ac0f5b6fe3d151dfd13bc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2978ed4d_191af056",
+        "filename": "telephony/java/android/telephony/ims/internal/aidl/IImsMmTelFeature.aidl",
+        "patchSetId": 9
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1135723
+      },
+      "writtenOn": "2017-12-07T22:40:52Z",
+      "side": 1,
+      "message": "can you please clarify under which scenarios will these APIS be used?Both seem to be doing the same",
+      "range": {
+        "startLine": 51,
+        "startChar": 9,
+        "endLine": 52,
+        "endChar": 31
+      },
+      "revId": "a82c0fc21355ed8a293ac0f5b6fe3d151dfd13bc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f7c385b9_028f2f5b",
         "filename": "telephony/java/android/telephony/ims/internal/feature/ImsFeature.java",
         "patchSetId": 9
