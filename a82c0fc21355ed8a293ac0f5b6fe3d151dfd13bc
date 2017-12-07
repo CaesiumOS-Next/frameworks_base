@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "38851b51_2d82b0fa",
+        "filename": "telephony/java/android/telephony/ims/internal/aidl/IImsCapabilityCallback.aidl",
+        "patchSetId": 9
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1098053
+      },
+      "writtenOn": "2017-12-07T19:36:24Z",
+      "side": 1,
+      "message": "We are discouraged from using Enums in Android framework code. The long is only used in the internal AIDL implementation, it is wrapped by a MmTelCapabilityConfiguration for users of the API.",
+      "parentUuid": "df0228bd_869907b9",
+      "range": {
+        "startLine": 24,
+        "startChar": 29,
+        "endLine": 24,
+        "endChar": 40
+      },
+      "revId": "a82c0fc21355ed8a293ac0f5b6fe3d151dfd13bc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "7f93f76f_7a9a8440",
         "filename": "telephony/java/android/telephony/ims/internal/aidl/IImsCapabilityCallback.aidl",
         "patchSetId": 9
@@ -84,6 +108,30 @@
       "side": 1,
       "message": "Is there any use case for onCapabilitiesChanged to be invoked from an IMS Service? Can you please update the API doc with the new methods? Is IImsCapabilityCallback a refactor of FeatureConfigCallback?",
       "parentUuid": "bea46aa2_ba3e9c28",
+      "range": {
+        "startLine": 27,
+        "startChar": 9,
+        "endLine": 27,
+        "endChar": 36
+      },
+      "revId": "a82c0fc21355ed8a293ac0f5b6fe3d151dfd13bc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "710f6cbc_e2fadb83",
+        "filename": "telephony/java/android/telephony/ims/internal/aidl/IImsCapabilityCallback.aidl",
+        "patchSetId": 9
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1098053
+      },
+      "writtenOn": "2017-12-07T19:36:24Z",
+      "side": 1,
+      "message": "No, the ImsService only uses onCapabilitiesChanged internally to notify other processes when one process has changed it. \n\nI will update the doc and provide more explanation.\n\nI also am going to work on a more formal doc that will be given to IMS providers that provides more explanation and sequence diagrams as well.",
+      "parentUuid": "558e1761_64eb070f",
       "range": {
         "startLine": 27,
         "startChar": 9,
