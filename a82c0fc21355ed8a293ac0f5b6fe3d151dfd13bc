@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "df0228bd_869907b9",
+        "filename": "telephony/java/android/telephony/ims/internal/aidl/IImsCapabilityCallback.aidl",
+        "patchSetId": 9
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1127148
+      },
+      "writtenOn": "2017-12-07T19:23:26Z",
+      "side": 1,
+      "message": "Will using an EnumSet instead of using a long be better for readability? EnumSet internal implementation is also a bit-vector I believe.",
+      "range": {
+        "startLine": 24,
+        "startChar": 29,
+        "endLine": 24,
+        "endChar": 40
+      },
+      "revId": "a82c0fc21355ed8a293ac0f5b6fe3d151dfd13bc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "7f93f76f_7a9a8440",
         "filename": "telephony/java/android/telephony/ims/internal/aidl/IImsCapabilityCallback.aidl",
         "patchSetId": 9
@@ -37,6 +60,30 @@
       "side": 1,
       "message": "onCapabilitiesChanged will be called when the framework updates the user settings for the capabilities available for the feature, {Voice, Video, UT} to {Voice, UT}, for example. This can happen in one process (settings process) and we will need to be notified in the other processes, like telephony. Also, the process that changed the user defined capabilities should use this callback as verification for their change.\n\nonCapabilitiesStatusChanged is used by MmTtelFeature to notify the framework that the status of those capabilities (whether or not they are currently available) have changed. This is basically equivalent to the featureCapabilitiesChanged method that notifies the framework of this now.",
       "parentUuid": "7f93f76f_7a9a8440",
+      "range": {
+        "startLine": 27,
+        "startChar": 9,
+        "endLine": 27,
+        "endChar": 36
+      },
+      "revId": "a82c0fc21355ed8a293ac0f5b6fe3d151dfd13bc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "558e1761_64eb070f",
+        "filename": "telephony/java/android/telephony/ims/internal/aidl/IImsCapabilityCallback.aidl",
+        "patchSetId": 9
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1127148
+      },
+      "writtenOn": "2017-12-07T19:23:26Z",
+      "side": 1,
+      "message": "Is there any use case for onCapabilitiesChanged to be invoked from an IMS Service? Can you please update the API doc with the new methods? Is IImsCapabilityCallback a refactor of FeatureConfigCallback?",
+      "parentUuid": "bea46aa2_ba3e9c28",
       "range": {
         "startLine": 27,
         "startChar": 9,
