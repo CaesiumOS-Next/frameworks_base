@@ -2,6 +2,144 @@
   "comments": [
     {
       "key": {
+        "uuid": "45dd9555_9615628e",
+        "filename": "telephony/java/android/telephony/ims/internal/ImsService.java",
+        "patchSetId": 9
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1135723
+      },
+      "writtenOn": "2017-12-07T21:27:27Z",
+      "side": 1,
+      "message": "nit: move up",
+      "range": {
+        "startLine": 29,
+        "startChar": 38,
+        "endLine": 29,
+        "endChar": 42
+      },
+      "revId": "a82c0fc21355ed8a293ac0f5b6fe3d151dfd13bc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eafb5316_65608c5b",
+        "filename": "telephony/java/android/telephony/ims/internal/ImsService.java",
+        "patchSetId": 9
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1135723
+      },
+      "writtenOn": "2017-12-07T21:27:27Z",
+      "side": 1,
+      "message": "nit: move up",
+      "range": {
+        "startLine": 31,
+        "startChar": 38,
+        "endLine": 31,
+        "endChar": 42
+      },
+      "revId": "a82c0fc21355ed8a293ac0f5b6fe3d151dfd13bc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "00409269_8c14cd1c",
+        "filename": "telephony/java/android/telephony/ims/internal/ImsService.java",
+        "patchSetId": 9
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1135723
+      },
+      "writtenOn": "2017-12-07T21:27:27Z",
+      "side": 1,
+      "message": "this needs to be updated?",
+      "range": {
+        "startLine": 68,
+        "startChar": 5,
+        "endLine": 68,
+        "endChar": 16
+      },
+      "revId": "a82c0fc21355ed8a293ac0f5b6fe3d151dfd13bc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a20fcb08_a7c8a6d9",
+        "filename": "telephony/java/android/telephony/ims/internal/ImsService.java",
+        "patchSetId": 9
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1135723
+      },
+      "writtenOn": "2017-12-07T21:27:27Z",
+      "side": 1,
+      "message": "Is there a need to notify when feature is added or removed?",
+      "range": {
+        "startLine": 173,
+        "startChar": 8,
+        "endLine": 173,
+        "endChar": 21
+      },
+      "revId": "a82c0fc21355ed8a293ac0f5b6fe3d151dfd13bc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5282acf9_8d9a7333",
+        "filename": "telephony/java/android/telephony/ims/internal/aidl/IImsCallSessionListener.aidl",
+        "patchSetId": 9
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1135723
+      },
+      "writtenOn": "2017-12-07T21:27:27Z",
+      "side": 1,
+      "message": "nit: if we have startFailed then wouldnt it be better to have start?",
+      "range": {
+        "startLine": 37,
+        "startChar": 9,
+        "endLine": 37,
+        "endChar": 29
+      },
+      "revId": "a82c0fc21355ed8a293ac0f5b6fe3d151dfd13bc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e556325d_c318d55a",
+        "filename": "telephony/java/android/telephony/ims/internal/aidl/IImsCallSessionListener.aidl",
+        "patchSetId": 9
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1135723
+      },
+      "writtenOn": "2017-12-07T21:27:27Z",
+      "side": 1,
+      "message": "nit: we need to mention \"in\" for parameters in these apis?and for tty, multiparty api and callSessionRttModifyResponseReceived api too",
+      "range": {
+        "startLine": 94,
+        "startChar": 16,
+        "endLine": 94,
+        "endChar": 26
+      },
+      "revId": "a82c0fc21355ed8a293ac0f5b6fe3d151dfd13bc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "df0228bd_869907b9",
         "filename": "telephony/java/android/telephony/ims/internal/aidl/IImsCapabilityCallback.aidl",
         "patchSetId": 9
@@ -66,6 +204,29 @@
         "startChar": 29,
         "endLine": 24,
         "endChar": 40
+      },
+      "revId": "a82c0fc21355ed8a293ac0f5b6fe3d151dfd13bc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7033d0e9_8f6f3cba",
+        "filename": "telephony/java/android/telephony/ims/internal/aidl/IImsCapabilityCallback.aidl",
+        "patchSetId": 9
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1135723
+      },
+      "writtenOn": "2017-12-07T21:27:27Z",
+      "side": 1,
+      "message": "Is this in upward or downward path? Do we have an existing equivalent Api currently for this?\nWhat values can result have?",
+      "range": {
+        "startLine": 25,
+        "startChar": 9,
+        "endLine": 25,
+        "endChar": 31
       },
       "revId": "a82c0fc21355ed8a293ac0f5b6fe3d151dfd13bc",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
@@ -209,6 +370,53 @@
         "startChar": 9,
         "endLine": 27,
         "endChar": 36
+      },
+      "revId": "a82c0fc21355ed8a293ac0f5b6fe3d151dfd13bc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "625fac03_4ec078aa",
+        "filename": "telephony/java/android/telephony/ims/internal/aidl/IImsCapabilityCallback.aidl",
+        "patchSetId": 9
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1135723
+      },
+      "writtenOn": "2017-12-07T21:27:27Z",
+      "side": 1,
+      "message": "1) Currently we dont have any equivalent API for onCapabilitiesChanged, am I right?\n2) If settings process is changing any capability, it will be in this flow\nsettings-\u003efrwks (ImsManager)-\u003evendor-\u003e Modem\nModem will update back the capabilities, if anything changed, coz of step 2\n\nAre you going to have 2 copies of Capabilities now? \nOne from apps and one from modem? Do we need it that way?\nWill there be a chance they are different? If yes, then am hoping it will only be different in transitional state and eventually, they both should stay the same. \n\nPlease correct, if my udnerstanding is wrong.",
+      "parentUuid": "0995f75d_9fd4d070",
+      "range": {
+        "startLine": 27,
+        "startChar": 9,
+        "endLine": 27,
+        "endChar": 36
+      },
+      "revId": "a82c0fc21355ed8a293ac0f5b6fe3d151dfd13bc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f7c385b9_028f2f5b",
+        "filename": "telephony/java/android/telephony/ims/internal/feature/ImsFeature.java",
+        "patchSetId": 9
+      },
+      "lineNbr": 378,
+      "author": {
+        "id": 1135723
+      },
+      "writtenOn": "2017-12-07T21:27:27Z",
+      "side": 1,
+      "message": "is it right to use same structure for both APIs here and line 398? could there be a case where modem did not honor our request (or vice-versa) and there is a mismatch between these values at apps and modem layer?",
+      "range": {
+        "startLine": 378,
+        "startChar": 12,
+        "endLine": 378,
+        "endChar": 29
       },
       "revId": "a82c0fc21355ed8a293ac0f5b6fe3d151dfd13bc",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
