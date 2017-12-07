@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "5affd792_8d45c74e",
+        "filename": "services/core/java/com/android/server/pm/PackageManagerService.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 10163,
+      "author": {
+        "id": 1092759
+      },
+      "writtenOn": "2017-12-07T07:43:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e71019e3_7b91dda4",
+      "range": {
+        "startLine": 10163,
+        "startChar": 16,
+        "endLine": 10163,
+        "endChar": 32
+      },
+      "revId": "0b6fae50895d0c8011f2763090be451d5be178c1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b58bd885_1a7b3a30",
         "filename": "services/core/java/com/android/server/pm/PackageManagerService.java",
         "patchSetId": 2
@@ -45,6 +69,30 @@
       "revId": "0b6fae50895d0c8011f2763090be451d5be178c1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f32de2b8_d1529b30",
+        "filename": "services/core/java/com/android/server/pm/PackageManagerService.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 10451,
+      "author": {
+        "id": 1092759
+      },
+      "writtenOn": "2017-12-07T07:43:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b58bd885_1a7b3a30",
+      "range": {
+        "startLine": 10451,
+        "startChar": 16,
+        "endLine": 10451,
+        "endChar": 82
+      },
+      "revId": "0b6fae50895d0c8011f2763090be451d5be178c1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
