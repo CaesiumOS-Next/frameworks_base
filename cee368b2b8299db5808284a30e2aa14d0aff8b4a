@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "154fbcf0_f4ad9a8f",
+        "filename": "services/core/jni/com_android_server_GraphicsStatsService.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-12-07T21:18:24Z",
+      "side": 1,
+      "message": "Future thought, might be worth to templatize this further\n\n  ScopedArrayViewRO\u003cjbyte, ProfileData\u003e\n\nor similar, to avoid the casts.",
+      "revId": "cee368b2b8299db5808284a30e2aa14d0aff8b4a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
