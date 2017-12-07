@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "28c55da2_5462e53f",
+        "filename": "telephony/java/android/telephony/ims/internal/aidl/IImsCapabilityCallback.aidl",
+        "patchSetId": 9
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1127148
+      },
+      "writtenOn": "2017-12-07T19:47:22Z",
+      "side": 1,
+      "message": "I see, got it.",
+      "parentUuid": "38851b51_2d82b0fa",
+      "range": {
+        "startLine": 24,
+        "startChar": 29,
+        "endLine": 24,
+        "endChar": 40
+      },
+      "revId": "a82c0fc21355ed8a293ac0f5b6fe3d151dfd13bc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "7f93f76f_7a9a8440",
         "filename": "telephony/java/android/telephony/ims/internal/aidl/IImsCapabilityCallback.aidl",
         "patchSetId": 9
@@ -132,6 +156,30 @@
       "side": 1,
       "message": "No, the ImsService only uses onCapabilitiesChanged internally to notify other processes when one process has changed it. \n\nI will update the doc and provide more explanation.\n\nI also am going to work on a more formal doc that will be given to IMS providers that provides more explanation and sequence diagrams as well.",
       "parentUuid": "558e1761_64eb070f",
+      "range": {
+        "startLine": 27,
+        "startChar": 9,
+        "endLine": 27,
+        "endChar": 36
+      },
+      "revId": "a82c0fc21355ed8a293ac0f5b6fe3d151dfd13bc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5462eeb5_5a4c9376",
+        "filename": "telephony/java/android/telephony/ims/internal/aidl/IImsCapabilityCallback.aidl",
+        "patchSetId": 9
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1127148
+      },
+      "writtenOn": "2017-12-07T19:47:22Z",
+      "side": 1,
+      "message": "I strongly feel clubbing the IPC part and the IMS Service\u0027s reporting of the features should not be in one module. If we want to keep them together, then I feel it would be great to refactor the methods to be able to understand the usage difference. Capabilities, features, and configs are quite confusing when used together, I believe :-)\n\nThat will be really helpful. Any ETA on the formal doc?",
+      "parentUuid": "710f6cbc_e2fadb83",
       "range": {
         "startLine": 27,
         "startChar": 9,
