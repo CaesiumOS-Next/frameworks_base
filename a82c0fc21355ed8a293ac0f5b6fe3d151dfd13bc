@@ -189,6 +189,30 @@
       "revId": "a82c0fc21355ed8a293ac0f5b6fe3d151dfd13bc",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0995f75d_9fd4d070",
+        "filename": "telephony/java/android/telephony/ims/internal/aidl/IImsCapabilityCallback.aidl",
+        "patchSetId": 9
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1098053
+      },
+      "writtenOn": "2017-12-07T20:59:01Z",
+      "side": 1,
+      "message": "No ETA yet, I wanted to finish the implementation while writing the doc. I can look at my schedule to see what is realistic.\n\nAs for feature, capability, config - I think a lot of the confusion stems from the over-use of those terms in previous revisions of the ImsService APIs. For the new APIs, I am strictly using  the following convention (please point out any place where this is not done):\n\nFeatures have capabilities and capabilities are contained in configurations. Features are top level: {MmTel, RCS}, capabilities belong to features, MmTel-\u003e{Voice, Video, Sms}, RCS-\u003e{UCE,...}. I am happy to refactor to make these APIs cleaner as well.\n\nOne more thing, IMS Features are managed in ImsRegistrationImpl, MMTel specific capabilities are managed in MmTelFeature.",
+      "parentUuid": "5462eeb5_5a4c9376",
+      "range": {
+        "startLine": 27,
+        "startChar": 9,
+        "endLine": 27,
+        "endChar": 36
+      },
+      "revId": "a82c0fc21355ed8a293ac0f5b6fe3d151dfd13bc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
