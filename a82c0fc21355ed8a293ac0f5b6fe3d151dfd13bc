@@ -490,6 +490,69 @@
       "revId": "a82c0fc21355ed8a293ac0f5b6fe3d151dfd13bc",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9d448173_fce8b96e",
+        "filename": "telephony/java/android/telephony/ims/internal/stub/ImsConfigImplBase.java",
+        "patchSetId": 9
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1047993
+      },
+      "writtenOn": "2017-12-07T22:43:38Z",
+      "side": 1,
+      "message": "nit: MIN_VALUE/MAX_VALUE is less likely to conflict with a valid config value, I think.",
+      "revId": "a82c0fc21355ed8a293ac0f5b6fe3d151dfd13bc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4e41bef0_250251f9",
+        "filename": "telephony/java/android/telephony/ims/internal/stub/ImsConfigImplBase.java",
+        "patchSetId": 9
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1047993
+      },
+      "writtenOn": "2017-12-07T22:43:38Z",
+      "side": 1,
+      "message": "nit: final",
+      "range": {
+        "startLine": 101,
+        "startChar": 12,
+        "endLine": 101,
+        "endChar": 30
+      },
+      "revId": "a82c0fc21355ed8a293ac0f5b6fe3d151dfd13bc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "48d8ec9a_1519cf24",
+        "filename": "telephony/java/android/telephony/ims/internal/stub/ImsRegistrationConfiguration.java",
+        "patchSetId": 9
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1047993
+      },
+      "writtenOn": "2017-12-07T22:43:38Z",
+      "side": 1,
+      "message": "nit: \nreturn mFeatures.equals(that.mFeatures) \n\u0026\u0026 ExternalFeatures.equals(that.mExternalFeatures) \n\u0026\u0026 mCarrierFeatures.equals(that.mCarrierFeatures)",
+      "range": {
+        "startLine": 208,
+        "startChar": 13,
+        "endLine": 208,
+        "endChar": 22
+      },
+      "revId": "a82c0fc21355ed8a293ac0f5b6fe3d151dfd13bc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
