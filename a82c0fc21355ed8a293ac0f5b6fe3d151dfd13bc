@@ -539,6 +539,29 @@
     },
     {
       "key": {
+        "uuid": "822ae220_183efb6c",
+        "filename": "telephony/java/android/telephony/ims/internal/feature/ImsFeature.java",
+        "patchSetId": 9
+      },
+      "lineNbr": 336,
+      "author": {
+        "id": 1047993
+      },
+      "writtenOn": "2017-12-08T01:48:36Z",
+      "side": 1,
+      "message": "What if setting some of the capabilities succeeds while others fails? Should onSetCapabilityValues() return CAPABILITY_SUCCESS? How do we interpret mCapabilities in this case, e.g. requested/accepted?",
+      "range": {
+        "startLine": 336,
+        "startChar": 21,
+        "endLine": 336,
+        "endChar": 42
+      },
+      "revId": "a82c0fc21355ed8a293ac0f5b6fe3d151dfd13bc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f7c385b9_028f2f5b",
         "filename": "telephony/java/android/telephony/ims/internal/feature/ImsFeature.java",
         "patchSetId": 9
