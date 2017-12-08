@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "17e2d6f6_f0193f8f",
+        "filename": "telephony/java/android/telephony/ims/internal/stub/ImsRegistrationImplBase.java",
+        "patchSetId": 8
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1098053
+      },
+      "writtenOn": "2017-12-08T18:59:21Z",
+      "side": 1,
+      "message": "maybe updateSupportedImsFeatures instead",
+      "range": {
+        "startLine": 155,
+        "startChar": 20,
+        "endLine": 155,
+        "endChar": 46
+      },
+      "revId": "11ed16bccbddc740f984388935d7dc0ea1f95c9e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}

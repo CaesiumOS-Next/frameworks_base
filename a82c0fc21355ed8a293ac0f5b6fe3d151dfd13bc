@@ -898,6 +898,30 @@
     },
     {
       "key": {
+        "uuid": "5d6eac79_6b4eadd5",
+        "filename": "telephony/java/android/telephony/ims/internal/feature/ImsFeature.java",
+        "patchSetId": 9
+      },
+      "lineNbr": 336,
+      "author": {
+        "id": 1098053
+      },
+      "writtenOn": "2017-12-08T18:59:21Z",
+      "side": 1,
+      "message": "Yes, you are right, we should set capabilities, and if one fails, we should still enable the ones that didn\u0027t fail.\n\nWe will still need to notify the framework that setting some of the capabilities failed, so it should still send the onSetCapabilitiesFailed callback. onSetCapabilityValues is async from the platform perspective, meaning the platform doesn\u0027t block on setCapabilities. Most of the time the operation will succeed (unless it is a rare case, like the modem is not communicating for some reason), I only put a async callback back to the platform on onSetCapabilitiesError() because we do not need to do anything further if the operation succeeds, only if it fails.",
+      "parentUuid": "04aba3e2_ca61b227",
+      "range": {
+        "startLine": 336,
+        "startChar": 21,
+        "endLine": 336,
+        "endChar": 42
+      },
+      "revId": "a82c0fc21355ed8a293ac0f5b6fe3d151dfd13bc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f7c385b9_028f2f5b",
         "filename": "telephony/java/android/telephony/ims/internal/feature/ImsFeature.java",
         "patchSetId": 9
