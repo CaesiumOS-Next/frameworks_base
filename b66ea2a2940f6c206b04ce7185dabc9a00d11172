@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dcffc9a2_e6329ef9",
+        "filename": "telephony/java/android/telephony/ims/internal/feature/ImsFeature.java",
+        "patchSetId": 10
+      },
+      "lineNbr": 406,
+      "author": {
+        "id": 1047993
+      },
+      "writtenOn": "2017-12-08T18:15:54Z",
+      "side": 1,
+      "message": "mCapabilityStatus ?",
+      "revId": "b66ea2a2940f6c206b04ce7185dabc9a00d11172",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
