@@ -470,6 +470,75 @@
     },
     {
       "key": {
+        "uuid": "767bfa76_fc4c09b8",
+        "filename": "telephony/java/android/telephony/ims/internal/aidl/IImsRegistrationCallback.aidl",
+        "patchSetId": 9
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1135723
+      },
+      "writtenOn": "2017-12-08T00:27:07Z",
+      "side": 1,
+      "message": "this parameter is not present in current implementation. Will have to check if we get it from modem to pass it to AOSP.\nSimilarly for api on line 33 and 34",
+      "range": {
+        "startLine": 32,
+        "startChar": 35,
+        "endLine": 32,
+        "endChar": 51
+      },
+      "revId": "a82c0fc21355ed8a293ac0f5b6fe3d151dfd13bc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "db88f27e_1fa849b0",
+        "filename": "telephony/java/android/telephony/ims/internal/aidl/IImsRegistrationCallback.aidl",
+        "patchSetId": 9
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1135723
+      },
+      "writtenOn": "2017-12-08T00:27:07Z",
+      "side": 1,
+      "message": "1) This api is not being used currently\n2) Current api has RAT which is always WLAN, so not sure if it can be for any other RAT.\n3) SO for future purpose, we should have RAT parameter too\n4) nit: new API name is not very helpful. Can we change it to something more meaningful?",
+      "range": {
+        "startLine": 35,
+        "startChar": 8,
+        "endLine": 35,
+        "endChar": 33
+      },
+      "revId": "a82c0fc21355ed8a293ac0f5b6fe3d151dfd13bc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "016819f1_172a00fb",
+        "filename": "telephony/java/android/telephony/ims/internal/aidl/IImsRegistrationCallback.aidl",
+        "patchSetId": 9
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1135723
+      },
+      "writtenOn": "2017-12-08T00:27:07Z",
+      "side": 1,
+      "message": "nit: api name maybe onImsFeaturesUpdated or onImsFeaturesChanged?",
+      "range": {
+        "startLine": 36,
+        "startChar": 8,
+        "endLine": 36,
+        "endChar": 34
+      },
+      "revId": "a82c0fc21355ed8a293ac0f5b6fe3d151dfd13bc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f7c385b9_028f2f5b",
         "filename": "telephony/java/android/telephony/ims/internal/feature/ImsFeature.java",
         "patchSetId": 9
@@ -526,6 +595,52 @@
         "startChar": 12,
         "endLine": 101,
         "endChar": 30
+      },
+      "revId": "a82c0fc21355ed8a293ac0f5b6fe3d151dfd13bc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "943e3824_db05a811",
+        "filename": "telephony/java/android/telephony/ims/internal/stub/ImsRegistrationConfiguration.java",
+        "patchSetId": 9
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1135723
+      },
+      "writtenOn": "2017-12-08T00:27:07Z",
+      "side": 1,
+      "message": "nit: 3",
+      "range": {
+        "startLine": 31,
+        "startChar": 3,
+        "endLine": 31,
+        "endChar": 7
+      },
+      "revId": "a82c0fc21355ed8a293ac0f5b6fe3d151dfd13bc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2f24a994_9d43d533",
+        "filename": "telephony/java/android/telephony/ims/internal/stub/ImsRegistrationConfiguration.java",
+        "patchSetId": 9
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1135723
+      },
+      "writtenOn": "2017-12-08T00:27:07Z",
+      "side": 1,
+      "message": "What is the idea of having these here? not being used currently",
+      "range": {
+        "startLine": 103,
+        "startChar": 8,
+        "endLine": 104,
+        "endChar": 25
       },
       "revId": "a82c0fc21355ed8a293ac0f5b6fe3d151dfd13bc",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
