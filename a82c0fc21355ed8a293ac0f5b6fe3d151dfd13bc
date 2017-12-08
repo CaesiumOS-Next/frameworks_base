@@ -593,6 +593,30 @@
     },
     {
       "key": {
+        "uuid": "82a6f917_bf0f9f16",
+        "filename": "telephony/java/android/telephony/ims/internal/aidl/IImsCapabilityCallback.aidl",
+        "patchSetId": 9
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1135723
+      },
+      "writtenOn": "2017-12-08T20:19:19Z",
+      "side": 1,
+      "message": "Ok. As discussed on call, lets have different names to identify user settings and values coming from modem.\n\nAlso on that note\n1) Currently we were invoking separate API wrt each feature.i.e.If Video call is switched off from UI, we would trigger setFeatureValue only for VT feature tag. But now you will have to pack the entire config (VT,volte,UT) and trigger MMtelfeatures onSetCapabilityValues\n2) Vendor and Modem interface currently takes it individual feature wise. So either vendor or AOSP will have to figure what got changed and then update to modem",
+      "parentUuid": "4d7f5bd2_cb720967",
+      "range": {
+        "startLine": 27,
+        "startChar": 9,
+        "endLine": 27,
+        "endChar": 36
+      },
+      "revId": "a82c0fc21355ed8a293ac0f5b6fe3d151dfd13bc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "609137c3_46c09aa2",
         "filename": "telephony/java/android/telephony/ims/internal/aidl/IImsConfig.aidl",
         "patchSetId": 9
