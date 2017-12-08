@@ -980,6 +980,24 @@
     },
     {
       "key": {
+        "uuid": "3bdf4278_86976974",
+        "filename": "telephony/java/android/telephony/ims/internal/stub/ImsConfigImplBase.java",
+        "patchSetId": 9
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1047993
+      },
+      "writtenOn": "2017-12-08T18:11:24Z",
+      "side": 1,
+      "message": "I see. I thought these is the default implementation.",
+      "parentUuid": "7508065f_ed6f51e6",
+      "revId": "a82c0fc21355ed8a293ac0f5b6fe3d151dfd13bc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4e41bef0_250251f9",
         "filename": "telephony/java/android/telephony/ims/internal/stub/ImsConfigImplBase.java",
         "patchSetId": 9
