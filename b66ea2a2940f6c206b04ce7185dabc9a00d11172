@@ -16,6 +16,24 @@
       "revId": "b66ea2a2940f6c206b04ce7185dabc9a00d11172",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "811381e5_1e96d5ce",
+        "filename": "telephony/java/android/telephony/ims/internal/feature/ImsFeature.java",
+        "patchSetId": 10
+      },
+      "lineNbr": 406,
+      "author": {
+        "id": 1047993
+      },
+      "writtenOn": "2017-12-08T18:24:23Z",
+      "side": 1,
+      "message": "please ignore the comment looks like they are identical.",
+      "parentUuid": "dcffc9a2_e6329ef9",
+      "revId": "b66ea2a2940f6c206b04ce7185dabc9a00d11172",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
