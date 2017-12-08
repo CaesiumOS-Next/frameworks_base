@@ -874,6 +874,30 @@
     },
     {
       "key": {
+        "uuid": "04aba3e2_ca61b227",
+        "filename": "telephony/java/android/telephony/ims/internal/feature/ImsFeature.java",
+        "patchSetId": 9
+      },
+      "lineNbr": 336,
+      "author": {
+        "id": 1047993
+      },
+      "writtenOn": "2017-12-08T18:03:23Z",
+      "side": 1,
+      "message": "It seems like mCapabilities will be out of sync in that case, e.g. \n1) Initial (mCapabilities\u003dVoice)\n2) setCapabilities(Voice, Video, UT), \n3) Enabling of video succeeds while UT fails. \n4) Result: mCapabilities (Voice ), even though it should have been (Voice, Video)\n\n\nIf the semantics of the APIs is \"all\" or \"nothing\", then we will always be in sync otherwise it may get out of sync. \n\n\nIt seems that onSetCapabilityValues() is expected to synchronously set the capabilities if the call is synchronous do we still  \u0027IImsCapabilityCallback c` argument? It seems like the clients code would be simpler if the function returned error/success.",
+      "parentUuid": "46f51f5f_b1853c52",
+      "range": {
+        "startLine": 336,
+        "startChar": 21,
+        "endLine": 336,
+        "endChar": 42
+      },
+      "revId": "a82c0fc21355ed8a293ac0f5b6fe3d151dfd13bc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f7c385b9_028f2f5b",
         "filename": "telephony/java/android/telephony/ims/internal/feature/ImsFeature.java",
         "patchSetId": 9
