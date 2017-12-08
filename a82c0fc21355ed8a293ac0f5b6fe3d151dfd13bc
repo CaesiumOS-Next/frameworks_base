@@ -946,6 +946,30 @@
     },
     {
       "key": {
+        "uuid": "2f94d1fc_0c4eefe3",
+        "filename": "telephony/java/android/telephony/ims/internal/feature/ImsFeature.java",
+        "patchSetId": 9
+      },
+      "lineNbr": 336,
+      "author": {
+        "id": 1098053
+      },
+      "writtenOn": "2017-12-08T19:58:03Z",
+      "side": 1,
+      "message": "IImsMmTelFeature#setCapabilities is called from a different thread from the main thread. The framework doesn\u0027t wait for the setCapabilities/onSetCapabilityValues call to complete and return, so it is async from that perspective. I do not want the framework to wait for this method to relay the result back to the framework. \n\nThe callback back to the framework is called below if the value is not success, it doesn\u0027t need to be passed into onSetCapabilityValues()",
+      "parentUuid": "e443f8ea_1adba871",
+      "range": {
+        "startLine": 336,
+        "startChar": 21,
+        "endLine": 336,
+        "endChar": 42
+      },
+      "revId": "a82c0fc21355ed8a293ac0f5b6fe3d151dfd13bc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f7c385b9_028f2f5b",
         "filename": "telephony/java/android/telephony/ims/internal/feature/ImsFeature.java",
         "patchSetId": 9
