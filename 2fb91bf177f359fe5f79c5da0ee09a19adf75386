@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "86d2f4ae_a66a64c1",
+        "filename": "core/res/res/values/config.xml",
+        "patchSetId": 2
+      },
+      "lineNbr": 363,
+      "author": {
+        "id": 1112054
+      },
+      "writtenOn": "2017-12-11T20:09:14Z",
+      "side": 1,
+      "message": "Good point. Changed to IPv4 for now.",
+      "parentUuid": "d290ddc8_041b2a72",
+      "range": {
+        "startLine": 363,
+        "startChar": 20,
+        "endLine": 363,
+        "endChar": 34
+      },
+      "revId": "2fb91bf177f359fe5f79c5da0ee09a19adf75386",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3c54922c_c9117da4",
         "filename": "services/tests/servicestests/src/com/android/server/net/IpConfigStoreTest.java",
         "patchSetId": 2
@@ -36,6 +60,30 @@
       "writtenOn": "2017-12-11T12:06:52Z",
       "side": 1,
       "message": "It may be that we no longer need a license statement at the top of every file, but if so I am not aware of this change.\n\nPlease correct me if I\u0027m wrong, otherwise please add a license statement to the top of every file (in this change and in the others as well).",
+      "range": {
+        "startLine": 1,
+        "startChar": 30,
+        "endLine": 1,
+        "endChar": 31
+      },
+      "revId": "2fb91bf177f359fe5f79c5da0ee09a19adf75386",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1c4e1445_54c292b6",
+        "filename": "services/tests/servicestests/src/com/android/server/net/IpConfigStoreTest.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1112054
+      },
+      "writtenOn": "2017-12-11T20:09:14Z",
+      "side": 1,
+      "message": "Your are right, it is still required. Tweaked my IDE to always include it by default.",
+      "parentUuid": "3c54922c_c9117da4",
       "range": {
         "startLine": 1,
         "startChar": 30,
