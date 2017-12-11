@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d290ddc8_041b2a72",
+        "filename": "core/res/res/values/config.xml",
+        "patchSetId": 2
+      },
+      "lineNbr": 363,
+      "author": {
+        "id": 1000451
+      },
+      "writtenOn": "2017-12-11T12:06:52Z",
+      "side": 1,
+      "message": "I\u0027m not sure IPv6 link addresses will be parsed by this code.  I definitely don\u0027t think we should be getting people in the habit of hard coding IPv6 link addresses in config files.\n\nI\u0027d say for now let\u0027s just have another IPv4 link address example and it\u0027s on me to sort out an IPv6 prefix allocation scheme (we could in future have something like \"auto6\" as a keyword that tell the yet-to-be-written IP service to generate a prefix to be used dynamically, for example).  We definitely don\u0027t want to encourage people to carry over bad, static habits from IPv4 in to IPv6.",
+      "range": {
+        "startLine": 363,
+        "startChar": 20,
+        "endLine": 363,
+        "endChar": 34
+      },
+      "revId": "2fb91bf177f359fe5f79c5da0ee09a19adf75386",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3c54922c_c9117da4",
+        "filename": "services/tests/servicestests/src/com/android/server/net/IpConfigStoreTest.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1000451
+      },
+      "writtenOn": "2017-12-11T12:06:52Z",
+      "side": 1,
+      "message": "It may be that we no longer need a license statement at the top of every file, but if so I am not aware of this change.\n\nPlease correct me if I\u0027m wrong, otherwise please add a license statement to the top of every file (in this change and in the others as well).",
+      "range": {
+        "startLine": 1,
+        "startChar": 30,
+        "endLine": 1,
+        "endChar": 31
+      },
+      "revId": "2fb91bf177f359fe5f79c5da0ee09a19adf75386",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
