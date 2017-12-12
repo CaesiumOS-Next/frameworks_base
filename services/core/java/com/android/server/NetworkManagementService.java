@@ -630,7 +630,23 @@ public class NetworkManagementService extends INetworkManagementService.Stub
         mBandwidthControlEnabled = false;
 
         // only enable bandwidth control when support exists
-        final boolean hasKernelSupport = new File("/proc/net/xt_qtaguid/ctrl").exists();
+        final boolean hasKernelSupport;
+        if (System.getProperty("os.name").startsWith("Linux")) {
+            String[] kernelVersion = System.getProperty("os.version").split("\\.");
+            if(kernelVersion.length < 2) {
+                Slog.e(TAG, "get kernel version failed");
+            }
+            int VersionMajor = Integer.parseInt(kernelVersion[0]);
+            int VersionMinor = Integer.parseInt(kernelVersion[1]);
+            if((VersionMajor > 4) || (VersionMajor == 4 && VersionMinor >= 9)) {
+                hasKernelSupport = new File("/sys/fs/bpf/traffic_cookie_uid_map").exists();
+            } else {
+                hasKernelSupport = new File("/proc/net/xt_qtaguid/ctrl").exists();
+            }
+        } else {
+            hasKernelSupport = new File("/proc/net/xt_qtaguid/ctrl").exists();
+        }
+
 
         // push any existing quota or UID rules
         synchronized (mQuotaLock) {
