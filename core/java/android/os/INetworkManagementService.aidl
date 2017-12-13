@@ -336,11 +336,6 @@ interface INetworkManagementService
      */
     void removeIdleTimer(String iface);
 
-    /**
-     * Configure name servers, search paths, and resolver parameters for the given network.
-     */
-    void setDnsConfigurationForNetwork(int netId, in String[] servers, String domains);
-
     void setFirewallEnabled(boolean enabled);
     boolean isFirewallEnabled();
     void setFirewallInterfaceRule(String iface, boolean allow);
