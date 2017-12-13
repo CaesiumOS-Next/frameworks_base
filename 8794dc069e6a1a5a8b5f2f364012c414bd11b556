@@ -48,6 +48,29 @@
     },
     {
       "key": {
+        "uuid": "7d738a18_d753b67b",
+        "filename": "telephony/java/android/telephony/ims/internal/ImsService.java",
+        "patchSetId": 11
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1061207
+      },
+      "writtenOn": "2017-12-13T22:14:17Z",
+      "side": 1,
+      "message": "final?",
+      "range": {
+        "startLine": 175,
+        "startChar": 35,
+        "endLine": 175,
+        "endChar": 46
+      },
+      "revId": "8794dc069e6a1a5a8b5f2f364012c414bd11b556",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "40f5886a_0e253c91",
         "filename": "telephony/java/android/telephony/ims/internal/ImsService.java",
         "patchSetId": 11
@@ -393,6 +416,98 @@
     },
     {
       "key": {
+        "uuid": "9d4a8d8f_a38fd078",
+        "filename": "telephony/java/android/telephony/ims/internal/feature/MmTelFeature.java",
+        "patchSetId": 11
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1061207
+      },
+      "writtenOn": "2017-12-13T22:14:17Z",
+      "side": 1,
+      "message": "shall we add getCapabilities as discussed offline so that the ims package does not have to call isCapable multiple times?",
+      "range": {
+        "startLine": 174,
+        "startChar": 24,
+        "endLine": 174,
+        "endChar": 41
+      },
+      "revId": "8794dc069e6a1a5a8b5f2f364012c414bd11b556",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "966301df_a3fd5202",
+        "filename": "telephony/java/android/telephony/ims/internal/feature/MmTelFeature.java",
+        "patchSetId": 11
+      },
+      "lineNbr": 358,
+      "author": {
+        "id": 1061207
+      },
+      "writtenOn": "2017-12-13T22:14:17Z",
+      "side": 1,
+      "message": "why is this here not in registration related classes?",
+      "range": {
+        "startLine": 358,
+        "startChar": 19,
+        "endLine": 358,
+        "endChar": 30
+      },
+      "revId": "8794dc069e6a1a5a8b5f2f364012c414bd11b556",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "917503f1_ec6dd61f",
+        "filename": "telephony/java/android/telephony/ims/internal/feature/MmTelFeature.java",
+        "patchSetId": 11
+      },
+      "lineNbr": 368,
+      "author": {
+        "id": 1061207
+      },
+      "writtenOn": "2017-12-13T22:14:17Z",
+      "side": 1,
+      "message": "what is the purpose of this?",
+      "range": {
+        "startLine": 368,
+        "startChar": 12,
+        "endLine": 368,
+        "endChar": 20
+      },
+      "revId": "8794dc069e6a1a5a8b5f2f364012c414bd11b556",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0542f1eb_c5602b52",
+        "filename": "telephony/java/android/telephony/ims/internal/stub/ImsConfigImplBase.java",
+        "patchSetId": 11
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1061207
+      },
+      "writtenOn": "2017-12-13T22:14:17Z",
+      "side": 1,
+      "message": "I had a quick chat with Nathan about setProvisionedValue but what is the purpose of getProvisionedValue? What values does the FW needs to know and if we are hiding what will be the proper way of providing those values?",
+      "range": {
+        "startLine": 159,
+        "startChar": 4,
+        "endLine": 161,
+        "endChar": 5
+      },
+      "revId": "8794dc069e6a1a5a8b5f2f364012c414bd11b556",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "787b1dce_dd68dd02",
         "filename": "telephony/java/android/telephony/ims/internal/stub/ImsConfigImplBase.java",
         "patchSetId": 11
@@ -404,6 +519,30 @@
       "writtenOn": "2017-12-13T20:43:15Z",
       "side": 1,
       "message": "I\u0027m pretty strongly opposed to exposing this as part of the IMS interface. It\u0027s vendor-specific implementation detail for device provisioning, so it belongs in a vendor library.\n\nCan we plan to leave all of this private while we work on removing it?",
+      "range": {
+        "startLine": 126,
+        "startChar": 1,
+        "endLine": 172,
+        "endChar": 5
+      },
+      "revId": "8794dc069e6a1a5a8b5f2f364012c414bd11b556",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2035b0f9_8c3fffc9",
+        "filename": "telephony/java/android/telephony/ims/internal/stub/ImsConfigImplBase.java",
+        "patchSetId": 11
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1061207
+      },
+      "writtenOn": "2017-12-13T22:14:17Z",
+      "side": 1,
+      "message": "If we are hiding these, lets make sure that the capabilities callbacks are triggered when user preferences changed.\n\nAlso +1 to hiding these. framework should not be telling IMS package the values to set for those values, this should be coming from config doc.",
+      "parentUuid": "787b1dce_dd68dd02",
       "range": {
         "startLine": 126,
         "startChar": 1,
