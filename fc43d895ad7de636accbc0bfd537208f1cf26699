@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "82db805a_c609c380",
+        "filename": "telephony/java/android/telephony/ims/internal/feature/CapabilityChangeRequest.java",
+        "patchSetId": 12
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1098053
+      },
+      "writtenOn": "2017-12-13T23:42:50Z",
+      "side": 1,
+      "message": "Changing to List",
+      "parentUuid": "0517e387_2b5e3758",
+      "range": {
+        "startLine": 101,
+        "startChar": 11,
+        "endLine": 101,
+        "endChar": 19
+      },
+      "revId": "fc43d895ad7de636accbc0bfd537208f1cf26699",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c2c48c80_58c79bcc",
         "filename": "telephony/java/android/telephony/ims/internal/feature/CapabilityChangeRequest.java",
         "patchSetId": 12
@@ -36,6 +60,30 @@
       "writtenOn": "2017-12-13T22:50:15Z",
       "side": 1,
       "message": "Minor; just use a Set since we don\u0027t really care that its an Arrayset.",
+      "range": {
+        "startLine": 108,
+        "startChar": 11,
+        "endLine": 108,
+        "endChar": 19
+      },
+      "revId": "fc43d895ad7de636accbc0bfd537208f1cf26699",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a2ce0c2b_36f2dc1c",
+        "filename": "telephony/java/android/telephony/ims/internal/feature/CapabilityChangeRequest.java",
+        "patchSetId": 12
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1098053
+      },
+      "writtenOn": "2017-12-13T23:42:50Z",
+      "side": 1,
+      "message": "Changing to List",
+      "parentUuid": "c2c48c80_58c79bcc",
       "range": {
         "startLine": 108,
         "startChar": 11,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "a187947e_cfa72f06",
+        "filename": "telephony/java/android/telephony/ims/internal/feature/ImsFeature.java",
+        "patchSetId": 12
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1098053
+      },
+      "writtenOn": "2017-12-13T23:42:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a077fcf0_f22c9df6",
+      "range": {
+        "startLine": 52,
+        "startChar": 35,
+        "endLine": 52,
+        "endChar": 36
+      },
+      "revId": "fc43d895ad7de636accbc0bfd537208f1cf26699",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2b18c34e_36c0acf2",
         "filename": "telephony/java/android/telephony/ims/internal/feature/ImsFeature.java",
         "patchSetId": 12
@@ -94,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "e9e77f87_47f3ea13",
+        "filename": "telephony/java/android/telephony/ims/internal/feature/ImsFeature.java",
+        "patchSetId": 12
+      },
+      "lineNbr": 437,
+      "author": {
+        "id": 1098053
+      },
+      "writtenOn": "2017-12-13T23:42:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2b18c34e_36c0acf2",
+      "range": {
+        "startLine": 437,
+        "startChar": 6,
+        "endLine": 437,
+        "endChar": 7
+      },
+      "revId": "fc43d895ad7de636accbc0bfd537208f1cf26699",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b2675bcc_5d7a220d",
         "filename": "telephony/java/android/telephony/ims/internal/feature/MmTelFeature.java",
         "patchSetId": 12
@@ -105,6 +201,30 @@
       "writtenOn": "2017-12-13T22:50:15Z",
       "side": 1,
       "message": "I have a feeling this would result in the Stub being part of the public API. Might want to try un-@hiding to see what happens in API land.",
+      "range": {
+        "startLine": 228,
+        "startChar": 4,
+        "endLine": 233,
+        "endChar": 9
+      },
+      "revId": "fc43d895ad7de636accbc0bfd537208f1cf26699",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0d71914b_53f9d209",
+        "filename": "telephony/java/android/telephony/ims/internal/feature/MmTelFeature.java",
+        "patchSetId": 12
+      },
+      "lineNbr": 233,
+      "author": {
+        "id": 1098053
+      },
+      "writtenOn": "2017-12-13T23:42:50Z",
+      "side": 1,
+      "message": "Let me see...",
+      "parentUuid": "b2675bcc_5d7a220d",
       "range": {
         "startLine": 228,
         "startChar": 4,
