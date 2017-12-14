@@ -1178,6 +1178,30 @@
     },
     {
       "key": {
+        "uuid": "46b0fa7b_9aa1371b",
+        "filename": "telephony/java/android/telephony/ims/internal/stub/ImsConfigImplBase.java",
+        "patchSetId": 11
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1061207
+      },
+      "writtenOn": "2017-12-14T18:47:11Z",
+      "side": 1,
+      "message": "How will the ims package no if wifi calling was disabled by the user?",
+      "parentUuid": "6d7e24e0_1402e7fc",
+      "range": {
+        "startLine": 126,
+        "startChar": 1,
+        "endLine": 172,
+        "endChar": 5
+      },
+      "revId": "8794dc069e6a1a5a8b5f2f364012c414bd11b556",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3cc9401d_88b33762",
         "filename": "telephony/java/android/telephony/ims/internal/stub/ImsRegistrationImplBase.java",
         "patchSetId": 11
