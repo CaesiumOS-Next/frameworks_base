@@ -1035,6 +1035,30 @@
     },
     {
       "key": {
+        "uuid": "f72bf2d1_6579f669",
+        "filename": "telephony/java/android/telephony/ims/internal/stub/ImsConfigImplBase.java",
+        "patchSetId": 11
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1098053
+      },
+      "writtenOn": "2017-12-14T18:14:11Z",
+      "side": 1,
+      "message": "These settings are being set by more than one process (OMA-DM/Telephony) and are being queried by other processes that need to know the values (OMA-DM/Telephony/RCS Presence).\n\nSure, these settings could be moved to telephony, but that is not in scope for P and I need to keep feature parity for now. I will keep this interface hidden and we can revisit in Q.",
+      "parentUuid": "6343cf0b_bd746708",
+      "range": {
+        "startLine": 159,
+        "startChar": 4,
+        "endLine": 161,
+        "endChar": 5
+      },
+      "revId": "8794dc069e6a1a5a8b5f2f364012c414bd11b556",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "787b1dce_dd68dd02",
         "filename": "telephony/java/android/telephony/ims/internal/stub/ImsConfigImplBase.java",
         "patchSetId": 11
@@ -1118,6 +1142,30 @@
       "side": 1,
       "message": "If we are hiding we should make sure that capabilities callbacks are triggered on user preference. Also thinking about this again it maybe valuable for clients to know when a user has disabled wifi calling for clearcut logging purposes so I do not think doing this through capabilities will work.",
       "parentUuid": "92d418dc_bac64fdd",
+      "range": {
+        "startLine": 126,
+        "startChar": 1,
+        "endLine": 172,
+        "endChar": 5
+      },
+      "revId": "8794dc069e6a1a5a8b5f2f364012c414bd11b556",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6d7e24e0_1402e7fc",
+        "filename": "telephony/java/android/telephony/ims/internal/stub/ImsConfigImplBase.java",
+        "patchSetId": 11
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1098053
+      },
+      "writtenOn": "2017-12-14T18:14:11Z",
+      "side": 1,
+      "message": "Not sure what these settings have to do with capability callbacks, ImsConfigImplBase.Listener#onProvisionedValueChanged will be called when any of these values change.",
+      "parentUuid": "fadc920c_81375a39",
       "range": {
         "startLine": 126,
         "startChar": 1,
