@@ -1011,6 +1011,30 @@
     },
     {
       "key": {
+        "uuid": "6343cf0b_bd746708",
+        "filename": "telephony/java/android/telephony/ims/internal/stub/ImsConfigImplBase.java",
+        "patchSetId": 11
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1061207
+      },
+      "writtenOn": "2017-12-14T18:00:21Z",
+      "side": 1,
+      "message": "But if these are user settings, what settings do we expect the platform to query the ims provider for? The other way around makes sense but not sure what the IMS providers should be implementing here",
+      "parentUuid": "59506e1c_27da891f",
+      "range": {
+        "startLine": 159,
+        "startChar": 4,
+        "endLine": 161,
+        "endChar": 5
+      },
+      "revId": "8794dc069e6a1a5a8b5f2f364012c414bd11b556",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "787b1dce_dd68dd02",
         "filename": "telephony/java/android/telephony/ims/internal/stub/ImsConfigImplBase.java",
         "patchSetId": 11
@@ -1070,6 +1094,30 @@
       "side": 1,
       "message": "This is the method from fw-\u003eIS for getting config value. \n\nI will keep them hidden for P while we discuss alternatives",
       "parentUuid": "2035b0f9_8c3fffc9",
+      "range": {
+        "startLine": 126,
+        "startChar": 1,
+        "endLine": 172,
+        "endChar": 5
+      },
+      "revId": "8794dc069e6a1a5a8b5f2f364012c414bd11b556",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fadc920c_81375a39",
+        "filename": "telephony/java/android/telephony/ims/internal/stub/ImsConfigImplBase.java",
+        "patchSetId": 11
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1061207
+      },
+      "writtenOn": "2017-12-14T18:00:21Z",
+      "side": 1,
+      "message": "If we are hiding we should make sure that capabilities callbacks are triggered on user preference. Also thinking about this again it maybe valuable for clients to know when a user has disabled wifi calling for clearcut logging purposes so I do not think doing this through capabilities will work.",
+      "parentUuid": "92d418dc_bac64fdd",
       "range": {
         "startLine": 126,
         "startChar": 1,
