@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "87070985_e6202868",
+        "filename": "tests/net/java/com/android/server/IpSecServiceParameterizedTest.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 365,
+      "author": {
+        "id": 1060151
+      },
+      "writtenOn": "2017-12-14T02:48:54Z",
+      "side": 1,
+      "message": "We should ensure that the lock on a transform is persistent after the transform is removed. Otherwise, we might be hitting the refcount.",
+      "range": {
+        "startLine": 360,
+        "startChar": 0,
+        "endLine": 365,
+        "endChar": 9
+      },
+      "revId": "a9ac343381c60cee2ffe341fdf3f44cdc04bab3e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
