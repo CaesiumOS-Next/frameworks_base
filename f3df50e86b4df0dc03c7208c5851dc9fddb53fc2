@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6b9fa166_464be9ac",
+        "filename": "telephony/java/android/telephony/ims/internal/feature/CapabilityChangeRequest.java",
+        "patchSetId": 13
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1056478
+      },
+      "writtenOn": "2017-12-14T18:33:48Z",
+      "side": 1,
+      "message": "Usual pattern is to have these private and expose getters, but provider no setters.",
+      "range": {
+        "startLine": 37,
+        "startChar": 8,
+        "endLine": 38,
+        "endChar": 35
+      },
+      "revId": "f3df50e86b4df0dc03c7208c5851dc9fddb53fc2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "048c458b_18056d26",
+        "filename": "telephony/java/android/telephony/ims/internal/feature/ImsFeature.java",
+        "patchSetId": 13
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1056478
+      },
+      "writtenOn": "2017-12-14T18:33:48Z",
+      "side": 1,
+      "message": "Probably good to prefix with FEATURE_",
+      "range": {
+        "startLine": 79,
+        "startChar": 3,
+        "endLine": 84,
+        "endChar": 36
+      },
+      "revId": "f3df50e86b4df0dc03c7208c5851dc9fddb53fc2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
