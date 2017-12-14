@@ -58,13 +58,15 @@ cc_library_shared {
         "android.hidl.token@1.0-utils",
     ],
 
-    header_libs: ["libhardware_headers"],
+    header_libs: [
+        "libhardware_headers",
+        "media_plugin_headers",
+    ],
 
     static_libs: ["libgrallocusage"],
 
     include_dirs: [
         "frameworks/base/core/jni",
-        "frameworks/native/include/media/openmax",
         "system/media/camera/include",
     ],
 
