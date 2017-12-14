@@ -1202,6 +1202,30 @@
     },
     {
       "key": {
+        "uuid": "c04e96a5_477397b4",
+        "filename": "telephony/java/android/telephony/ims/internal/stub/ImsConfigImplBase.java",
+        "patchSetId": 11
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1098053
+      },
+      "writtenOn": "2017-12-14T22:20:48Z",
+      "side": 1,
+      "message": "If WiFi calling status was changed by the user, the IMS provider will receive it in MmTelFeature#changeEnabledCapabilities via a call in Telephony.\n\nThe ImsConfig class doesn\u0027t deal with those capabilities, only things like technology preferences for LTE or WiFi when both are available.",
+      "parentUuid": "46b0fa7b_9aa1371b",
+      "range": {
+        "startLine": 126,
+        "startChar": 1,
+        "endLine": 172,
+        "endChar": 5
+      },
+      "revId": "8794dc069e6a1a5a8b5f2f364012c414bd11b556",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3cc9401d_88b33762",
         "filename": "telephony/java/android/telephony/ims/internal/stub/ImsRegistrationImplBase.java",
         "patchSetId": 11
