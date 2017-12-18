@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b7e846eb_48ffc27f",
+        "filename": "services/core/java/com/android/server/IpSecService.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 1060,
+      "author": {
+        "id": 1060151
+      },
+      "writtenOn": "2017-12-18T18:54:47Z",
+      "side": 1,
+      "message": "Suggest IllegalStateException()",
+      "range": {
+        "startLine": 1060,
+        "startChar": 26,
+        "endLine": 1060,
+        "endChar": 50
+      },
+      "revId": "6768e8ce9038c75aee504ee6b082d54d9fbd8ed3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
