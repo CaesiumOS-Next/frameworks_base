@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d1fc1f46_b2b6b2e2",
+        "filename": "api/current.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 40008,
+      "author": {
+        "id": 1081638
+      },
+      "writtenOn": "2017-12-31T22:03:27Z",
+      "side": 1,
+      "message": "Not sure if this change is okay since CellIdentityGsm is already a public API.",
+      "range": {
+        "startLine": 40008,
+        "startChar": 2,
+        "endLine": 40008,
+        "endChar": 77
+      },
+      "revId": "54660c7f8744f4cb02c1e71944417540e4e1ef6b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
