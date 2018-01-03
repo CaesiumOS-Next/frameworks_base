@@ -3034,6 +3034,9 @@ public class ConnectivityService extends IConnectivityManager.Stub
     // becomes CONNECTED, whichever happens first.  The timer is started by the
     // first caller and not restarted by subsequent callers.
     private void ensureNetworkTransitionWakelock(String forWhom) {
+        if (mNetTransitionWakeLockTimeout <= 0) {
+            return;
+        }
         synchronized (this) {
             if (mNetTransitionWakeLock.isHeld()) {
                 return;
