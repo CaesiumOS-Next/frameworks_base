@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a8b1a224_7c8ee7d3",
+        "filename": "telephony/java/android/telephony/NetworkConstants.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1060151
+      },
+      "writtenOn": "2018-01-03T23:01:17Z",
+      "side": 1,
+      "message": "Just calling this \"NetworkConstants\" seems to be encroaching on the turf of Connectivity. If people import NetworkConstants it\u0027s going to cause confusion (and that\u0027s the level I\u0027d expect them to import).\n\nAccessNetworkConstants or something perhaps?",
+      "range": {
+        "startLine": 22,
+        "startChar": 19,
+        "endLine": 22,
+        "endChar": 35
+      },
+      "revId": "e6d9b4726f5e19b8d67cc8e3287ef2e454d98885",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
