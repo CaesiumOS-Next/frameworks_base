@@ -3035,7 +3035,7 @@ public class ConnectivityService extends IConnectivityManager.Stub
     // first caller and not restarted by subsequent callers.
     private void ensureNetworkTransitionWakelock(String forWhom) {
         synchronized (this) {
-            if (mNetTransitionWakeLock.isHeld()) {
+            if (mNetTransitionWakeLockTimeout <= 0 || mNetTransitionWakeLock.isHeld()) {
                 return;
             }
             mNetTransitionWakeLock.acquire();
