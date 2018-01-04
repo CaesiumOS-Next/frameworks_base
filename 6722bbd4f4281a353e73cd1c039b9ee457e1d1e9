@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ad5caa67_280ddb97",
+        "filename": "tests/net/java/com/android/server/IpSecServiceParameterizedTest.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 385,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2018-01-04T12:59:26Z",
+      "side": 1,
+      "message": "This test is mostly identical to the one above. How about combining them? Something like:\n\n...\n        // Attempting to create transform a second time with the same SPIs should throw an error...\n        try {  // check that a second create fails\n                mIpSecService.createTransportModeTransform(ipSecConfig, new Binder());\n                fail(\"IpSecService should have thrown an error for reuse of SPI\");\n        } catch (IllegalStateException expected) {}\n\n        // ... even if the transform is deleted.\n        mIpSecService.deleteTransportModeTransform(createTransformResp.resourceId);\n        try {\n                mIpSecService.createTransportModeTransform(ipSecConfig, new Binder());\n                fail(\"IpSecService should have thrown an error for reuse of SPI\");\n        } catch (IllegalStateException expected) {}",
+      "range": {
+        "startLine": 371,
+        "startChar": 0,
+        "endLine": 385,
+        "endChar": 9
+      },
+      "revId": "6722bbd4f4281a353e73cd1c039b9ee457e1d1e9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ab7f802d_d0e72dfa",
+        "filename": "tests/net/java/com/android/server/IpSecServiceParameterizedTest.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 386,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2018-01-04T12:59:26Z",
+      "side": 1,
+      "message": "That said - this test checks that they cannot be reused after creating a transform. When do SPIs become available for reuse, then? If there is a way to do this, then can we add a test for that here, or if infeasible, add a comment?\n\nIf there is no way to do this, then is that a leak or a DOS vector? Can an app lock itself into not being able to create any more SPIs or transforms by doing this a few times? If not, can it mount a state exhaustion attack against the service?",
+      "range": {
+        "startLine": 386,
+        "startChar": 4,
+        "endLine": 386,
+        "endChar": 5
+      },
+      "revId": "6722bbd4f4281a353e73cd1c039b9ee457e1d1e9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
