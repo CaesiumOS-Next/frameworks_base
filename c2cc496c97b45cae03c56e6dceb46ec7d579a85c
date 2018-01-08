@@ -22,6 +22,30 @@
       "revId": "c2cc496c97b45cae03c56e6dceb46ec7d579a85c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b92a1b07_182f1c9b",
+        "filename": "telephony/java/android/telephony/PhoneStateListener.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 559,
+      "author": {
+        "id": 1006780
+      },
+      "writtenOn": "2018-01-08T23:52:14Z",
+      "side": 1,
+      "message": "or onUserMobileDataStateChanged? (or onUserMobileDataEnabledStateChanged?)",
+      "parentUuid": "c3959b36_3f7e4ecd",
+      "range": {
+        "startLine": 559,
+        "startChar": 16,
+        "endLine": 559,
+        "endChar": 42
+      },
+      "revId": "c2cc496c97b45cae03c56e6dceb46ec7d579a85c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
