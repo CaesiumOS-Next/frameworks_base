@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "83d1eadd_2c197205",
+        "filename": "telephony/java/android/telephony/CellIdentity.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1121193
+      },
+      "writtenOn": "2018-01-08T00:07:17Z",
+      "side": 1,
+      "message": "illegalArgumentException?",
+      "range": {
+        "startLine": 95,
+        "startChar": 43,
+        "endLine": 95,
+        "endChar": 59
+      },
+      "revId": "445419b36677f7e84e565f002491fe1881e9c964",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
