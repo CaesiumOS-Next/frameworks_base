@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9526347d_181dd675",
+        "filename": "core/res/AndroidManifest.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 2960,
+      "author": {
+        "id": 1061103
+      },
+      "writtenOn": "2018-01-08T18:23:50Z",
+      "side": 1,
+      "message": "If we don\u0027t want to add another permission (and touch Android API) then we can bundle SUSPEND as part of DEVICE_POWER (below) or SHUTDOWN.  Either of those could be applicable here.",
+      "range": {
+        "startLine": 2960,
+        "startChar": 30,
+        "endLine": 2960,
+        "endChar": 56
+      },
+      "revId": "de92a20093dabb9831fbea5e30361d3c1d17a475",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
