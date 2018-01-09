@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "87239e1a_332f9a17",
+        "filename": "telephony/java/android/telephony/PhoneStateListener.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 675,
+      "author": {
+        "id": 1056478
+      },
+      "writtenOn": "2018-01-09T22:23:37Z",
+      "side": 1,
+      "message": "Sorry, want to make sure I am clear on when this fires; is is just when the user changes the data enabled state?  Or can it be when mobile data disables because the data limit is hit.  If that\u0027s the case I think onMobileDataStateChanged makes more sense.",
+      "range": {
+        "startLine": 675,
+        "startChar": 20,
+        "endLine": 675,
+        "endChar": 48
+      },
+      "revId": "35a4702443575d403009bfa7abd4bb93bd3ec267",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
