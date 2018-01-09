@@ -70,6 +70,54 @@
       "revId": "c2cc496c97b45cae03c56e6dceb46ec7d579a85c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7baff5ca_6b5ecc08",
+        "filename": "telephony/java/android/telephony/PhoneStateListener.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 559,
+      "author": {
+        "id": 1266365
+      },
+      "writtenOn": "2018-01-09T22:32:01Z",
+      "side": 1,
+      "message": "Done. Changed to onUserMobileDataStateChanged.",
+      "parentUuid": "b92a1b07_182f1c9b",
+      "range": {
+        "startLine": 559,
+        "startChar": 16,
+        "endLine": 559,
+        "endChar": 42
+      },
+      "revId": "c2cc496c97b45cae03c56e6dceb46ec7d579a85c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "04c0bcbe_4c67200d",
+        "filename": "telephony/java/android/telephony/PhoneStateListener.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 559,
+      "author": {
+        "id": 1266365
+      },
+      "writtenOn": "2018-01-09T22:32:01Z",
+      "side": 1,
+      "message": "Now it is for the event that user changes the settings.",
+      "parentUuid": "e86f5ec5_11d7b3cd",
+      "range": {
+        "startLine": 559,
+        "startChar": 16,
+        "endLine": 559,
+        "endChar": 42
+      },
+      "revId": "c2cc496c97b45cae03c56e6dceb46ec7d579a85c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }

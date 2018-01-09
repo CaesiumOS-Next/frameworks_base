@@ -22,6 +22,30 @@
       "revId": "35a4702443575d403009bfa7abd4bb93bd3ec267",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f5ba8526_2c6cf898",
+        "filename": "telephony/java/android/telephony/PhoneStateListener.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 675,
+      "author": {
+        "id": 1266365
+      },
+      "writtenOn": "2018-01-09T22:32:01Z",
+      "side": 1,
+      "message": "Now it is solely for the event the user changes the state.",
+      "parentUuid": "87239e1a_332f9a17",
+      "range": {
+        "startLine": 675,
+        "startChar": 20,
+        "endLine": 675,
+        "endChar": 48
+      },
+      "revId": "35a4702443575d403009bfa7abd4bb93bd3ec267",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
