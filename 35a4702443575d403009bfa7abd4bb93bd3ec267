@@ -46,6 +46,30 @@
       "revId": "35a4702443575d403009bfa7abd4bb93bd3ec267",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0c285801_5a0a576f",
+        "filename": "telephony/java/android/telephony/PhoneStateListener.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 675,
+      "author": {
+        "id": 1081638
+      },
+      "writtenOn": "2018-01-09T23:32:39Z",
+      "side": 1,
+      "message": "We had some internal discussions and would like to have this API covers more cases, not only for user data settings.\n\nWe should have a onMobileDataSettingsChanged(boolean enabled, int reason) or onMobileDataStateChang(boolean enabled, int reason). The reason could be user, carrier, policy, internal, etc...",
+      "parentUuid": "f5ba8526_2c6cf898",
+      "range": {
+        "startLine": 675,
+        "startChar": 20,
+        "endLine": 675,
+        "endChar": 48
+      },
+      "revId": "35a4702443575d403009bfa7abd4bb93bd3ec267",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
