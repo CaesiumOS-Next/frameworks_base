@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "36fe064d_f5237c59",
+        "filename": "tests/net/java/com/android/server/IpSecServiceParameterizedTest.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 385,
+      "author": {
+        "id": 1221725
+      },
+      "writtenOn": "2018-01-09T04:19:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ad5caa67_280ddb97",
+      "range": {
+        "startLine": 371,
+        "startChar": 0,
+        "endLine": 385,
+        "endChar": 9
+      },
+      "revId": "6722bbd4f4281a353e73cd1c039b9ee457e1d1e9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ab7f802d_d0e72dfa",
         "filename": "tests/net/java/com/android/server/IpSecServiceParameterizedTest.java",
         "patchSetId": 3
@@ -45,6 +69,30 @@
       "revId": "6722bbd4f4281a353e73cd1c039b9ee457e1d1e9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "66b7c66b_95daba97",
+        "filename": "tests/net/java/com/android/server/IpSecServiceParameterizedTest.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 386,
+      "author": {
+        "id": 1221725
+      },
+      "writtenOn": "2018-01-09T04:19:51Z",
+      "side": 1,
+      "message": "Once allocated, SPI objects are forever considered used. If the SPI and the transform that it was used to create are both closed/deallocated, then the SPI quota is returned. \n\nBasically, the two SPI resource objects in this level used to create a Transform map to the same SAs in the kernel as the Transform. Thus, the control is handed over to the Transform object.\n\nSince the resources still count towards the quota, there is no avenue for a resource exhaustion attack, while still allowing the app to reclaim it\u0027s quota once the underlying SA has been cleaned up (whether used in a transform or not)",
+      "parentUuid": "ab7f802d_d0e72dfa",
+      "range": {
+        "startLine": 386,
+        "startChar": 4,
+        "endLine": 386,
+        "endChar": 5
+      },
+      "revId": "6722bbd4f4281a353e73cd1c039b9ee457e1d1e9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
