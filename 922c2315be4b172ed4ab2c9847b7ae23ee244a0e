@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6af3f09b_66015487",
+        "filename": "telephony/java/android/telephony/CellIdentityGsm.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1060151
+      },
+      "writtenOn": "2018-01-09T20:12:51Z",
+      "side": 1,
+      "message": "This is redundant with \"deprecated\".",
+      "range": {
+        "startLine": 208,
+        "startChar": 19,
+        "endLine": 208,
+        "endChar": 52
+      },
+      "revId": "922c2315be4b172ed4ab2c9847b7ae23ee244a0e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
