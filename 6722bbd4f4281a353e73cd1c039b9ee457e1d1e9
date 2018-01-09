@@ -93,6 +93,30 @@
       "revId": "6722bbd4f4281a353e73cd1c039b9ee457e1d1e9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2f649e01_d3040dae",
+        "filename": "tests/net/java/com/android/server/IpSecServiceParameterizedTest.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 386,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2018-01-09T14:20:10Z",
+      "side": 1,
+      "message": "I don\u0027t think I understood that explanation.\n\nLet me rephrase the question. From this test it looks like after deleteTransportModeTransform completes, the integers 0xD1201D and 0xD1201D are no longer allowed to be used in new transforms. Is that correct? If so, then what is the component that remembers that 0xD1201D and 0xD1201E are no longer allowed? Is a state exhaustion attack possible against that component?",
+      "parentUuid": "66b7c66b_95daba97",
+      "range": {
+        "startLine": 386,
+        "startChar": 4,
+        "endLine": 386,
+        "endChar": 5
+      },
+      "revId": "6722bbd4f4281a353e73cd1c039b9ee457e1d1e9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
