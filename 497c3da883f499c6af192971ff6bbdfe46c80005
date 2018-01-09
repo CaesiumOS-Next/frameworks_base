@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "51dc966a_97445c11",
+        "filename": "api/current.txt",
+        "patchSetId": 6
+      },
+      "lineNbr": 39987,
+      "author": {
+        "id": 1081638
+      },
+      "writtenOn": "2018-01-09T19:55:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6511b5dd_b645aa26",
+      "range": {
+        "startLine": 39987,
+        "startChar": 4,
+        "endLine": 39987,
+        "endChar": 32
+      },
+      "revId": "497c3da883f499c6af192971ff6bbdfe46c80005",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3517680b_ca591e68",
         "filename": "api/current.txt",
         "patchSetId": 6
@@ -36,6 +60,30 @@
       "writtenOn": "2018-01-09T19:28:16Z",
       "side": 1,
       "message": "why are these public? They can/should be @hide right?",
+      "range": {
+        "startLine": 39990,
+        "startChar": 0,
+        "endLine": 39995,
+        "endChar": 56
+      },
+      "revId": "497c3da883f499c6af192971ff6bbdfe46c80005",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a80e0325_d8655284",
+        "filename": "api/current.txt",
+        "patchSetId": 6
+      },
+      "lineNbr": 39995,
+      "author": {
+        "id": 1081638
+      },
+      "writtenOn": "2018-01-09T19:55:15Z",
+      "side": 1,
+      "message": "I thought they might be useful later? Can hide it for now.",
+      "parentUuid": "3517680b_ca591e68",
       "range": {
         "startLine": 39990,
         "startChar": 0,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "17dbc740_66dea6fe",
+        "filename": "telephony/java/android/telephony/CellIdentity.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1081638
+      },
+      "writtenOn": "2018-01-09T19:55:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1993f953_d1142df2",
+      "range": {
+        "startLine": 39,
+        "startChar": 0,
+        "endLine": 51,
+        "endChar": 52
+      },
+      "revId": "497c3da883f499c6af192971ff6bbdfe46c80005",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6fc8fb46_7f6eed88",
         "filename": "telephony/java/android/telephony/CellIdentityCdma.java",
         "patchSetId": 6
@@ -94,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "da64dd26_630dc00b",
+        "filename": "telephony/java/android/telephony/CellIdentityCdma.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1081638
+      },
+      "writtenOn": "2018-01-09T19:55:15Z",
+      "side": 1,
+      "message": "I think it\u0027s fine to use getsimplename.",
+      "parentUuid": "6fc8fb46_7f6eed88",
+      "range": {
+        "startLine": 28,
+        "startChar": 38,
+        "endLine": 28,
+        "endChar": 77
+      },
+      "revId": "497c3da883f499c6af192971ff6bbdfe46c80005",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "dd84b08d_71ade2d0",
         "filename": "telephony/java/android/telephony/CellIdentityCdma.java",
         "patchSetId": 6
@@ -105,6 +201,30 @@
       "writtenOn": "2018-01-09T19:28:16Z",
       "side": 1,
       "message": "TAG",
+      "range": {
+        "startLine": 60,
+        "startChar": 14,
+        "endLine": 60,
+        "endChar": 52
+      },
+      "revId": "497c3da883f499c6af192971ff6bbdfe46c80005",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4189726f_10bc90c2",
+        "filename": "telephony/java/android/telephony/CellIdentityCdma.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1081638
+      },
+      "writtenOn": "2018-01-09T19:55:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dd84b08d_71ade2d0",
       "range": {
         "startLine": 60,
         "startChar": 14,
