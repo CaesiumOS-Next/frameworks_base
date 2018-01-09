@@ -46,6 +46,30 @@
       "revId": "c2cc496c97b45cae03c56e6dceb46ec7d579a85c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e86f5ec5_11d7b3cd",
+        "filename": "telephony/java/android/telephony/PhoneStateListener.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 559,
+      "author": {
+        "id": 1056478
+      },
+      "writtenOn": "2018-01-09T22:22:15Z",
+      "side": 1,
+      "message": "The user mobile data state reflected the user setting; I think onMobileDataStateChanged is probably more consistent with what this does.",
+      "parentUuid": "b92a1b07_182f1c9b",
+      "range": {
+        "startLine": 559,
+        "startChar": 16,
+        "endLine": 559,
+        "endChar": 42
+      },
+      "revId": "c2cc496c97b45cae03c56e6dceb46ec7d579a85c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
