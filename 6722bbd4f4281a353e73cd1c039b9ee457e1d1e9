@@ -117,6 +117,30 @@
       "revId": "6722bbd4f4281a353e73cd1c039b9ee457e1d1e9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1f8e59cd_03b7a5d5",
+        "filename": "tests/net/java/com/android/server/IpSecServiceParameterizedTest.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 386,
+      "author": {
+        "id": 1221725
+      },
+      "writtenOn": "2018-01-10T04:16:14Z",
+      "side": 1,
+      "message": "Hopefully this is clearer; the KernelResourceRecord objects in IpSecService keep track of these.\n\nSo let\u0027s say the two SPIs used to create the Transform are 0x1234 and 0x2345. Those SPI numbers are tracked via the creation of two IpSecService.SpiRecord objects. In the process of creating a transform, those SpiRecord objects have a boolean (mOwnedByTransform) flipped.\n\nThe next time someone attempts to use SPI 0x1234 or 0x2345 in a transform, IpSecService does a lookup of the SPIs that are currently alive, and finds the same IpSecService.SpiRecord object. Since this object has mOwnedByTransform set to True, it has been used by a Transform before, and throws the error that we see above.\n\nOnce the TransformRecord and SpiRecord objects are released and removed from IpSecService\u0027s RefcountedResourceArrays, there is no longer any record that SPIs 0x1234 or 0x2345 existed, or have been used previously. At this point, a new SPI/transform set can be allocated and reused.",
+      "parentUuid": "2f649e01_d3040dae",
+      "range": {
+        "startLine": 386,
+        "startChar": 4,
+        "endLine": 386,
+        "endChar": 5
+      },
+      "revId": "6722bbd4f4281a353e73cd1c039b9ee457e1d1e9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
