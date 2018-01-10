@@ -141,6 +141,30 @@
       "revId": "6722bbd4f4281a353e73cd1c039b9ee457e1d1e9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3c237071_6ab8dfa0",
+        "filename": "tests/net/java/com/android/server/IpSecServiceParameterizedTest.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 386,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2018-01-10T14:11:43Z",
+      "side": 1,
+      "message": "I see. So how what causes the TransformRecord and SpiRecord objects to be released? Is it possible to test that codepath here in this test?\n\nI think the thing that I\u0027m still trying to understand is this: obviously, the app can cause these objects to be created. Can it also cause them to be released? If it cannot, then that means the objects cannot count against the app\u0027s quota, or the app would end up exhausting its quota, because it can create those objects but it can\u0027t delete them. But if the objects don\u0027t count against the app\u0027s quota, what stops an app from creating an arbitrarily high number of them?",
+      "parentUuid": "1f8e59cd_03b7a5d5",
+      "range": {
+        "startLine": 386,
+        "startChar": 4,
+        "endLine": 386,
+        "endChar": 5
+      },
+      "revId": "6722bbd4f4281a353e73cd1c039b9ee457e1d1e9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
