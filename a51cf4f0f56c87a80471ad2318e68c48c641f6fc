@@ -70,6 +70,24 @@
       "revId": "a51cf4f0f56c87a80471ad2318e68c48c641f6fc",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "699f8fc1_48ef33e5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2018-01-11T22:38:30Z",
+      "side": 1,
+      "message": "Some things are sticky, especially across commit message updates. But Change-Id is what gerrit uses to identify a change (which is why we want them to stay the same for the same logical change), so fixing this will upload a new CL.\n\nThis doesn\u0027t require any owners approval though, so quite a few people should be able to +2 it.",
+      "parentUuid": "f47c1e58_92b89103",
+      "revId": "a51cf4f0f56c87a80471ad2318e68c48c641f6fc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
