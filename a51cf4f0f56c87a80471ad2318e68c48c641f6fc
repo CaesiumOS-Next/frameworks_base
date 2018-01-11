@@ -16,6 +16,24 @@
       "revId": "a51cf4f0f56c87a80471ad2318e68c48c641f6fc",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2b906398_c72a3b02",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1040443
+      },
+      "writtenOn": "2018-01-11T22:20:13Z",
+      "side": 1,
+      "message": "Other than that are there unresolved concerns? If not could you please +2 the CL? If yes could you please list them?\n\nWe are based in EMEA and would be nice to avoid another 24h for something that might not require code changes in this cl.",
+      "parentUuid": "338cd0b8_3e8961b4",
+      "revId": "a51cf4f0f56c87a80471ad2318e68c48c641f6fc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
