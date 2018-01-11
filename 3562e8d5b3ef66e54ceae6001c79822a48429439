@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ff22df41_8e259de1",
+        "filename": "tests/net/java/com/android/server/IpSecServiceParameterizedTest.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 389,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2018-01-11T12:20:33Z",
+      "side": 1,
+      "message": "Nit: any reason not to put the fail and the first line of the error message on the same line?",
+      "range": {
+        "startLine": 388,
+        "startChar": 17,
+        "endLine": 389,
+        "endChar": 20
+      },
+      "revId": "3562e8d5b3ef66e54ceae6001c79822a48429439",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "77cbd508_e51b5f7c",
+        "filename": "tests/net/java/com/android/server/IpSecServiceParameterizedTest.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 428,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2018-01-11T12:20:33Z",
+      "side": 1,
+      "message": "Long line",
+      "range": {
+        "startLine": 428,
+        "startChar": 100,
+        "endLine": 428,
+        "endChar": 101
+      },
+      "revId": "3562e8d5b3ef66e54ceae6001c79822a48429439",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}

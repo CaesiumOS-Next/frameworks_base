@@ -189,6 +189,30 @@
       "revId": "6722bbd4f4281a353e73cd1c039b9ee457e1d1e9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "37863eba_5ac2e4af",
+        "filename": "tests/net/java/com/android/server/IpSecServiceParameterizedTest.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 386,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2018-01-11T12:20:33Z",
+      "side": 1,
+      "message": "Per in-person discussion, I think the confusion was due to the fact that I didn\u0027t notice that the SPIs are explicitly reserved by addDefaultSpisAndRemoteAddrToIpSecConfig. This now LGTM.\n\nI would suggest adding code to check that if we free the SPIs after deleting the transform, they can be used again. Doesn\u0027t need to be in this CL.",
+      "parentUuid": "69a51c7d_ccbd980e",
+      "range": {
+        "startLine": 386,
+        "startChar": 4,
+        "endLine": 386,
+        "endChar": 5
+      },
+      "revId": "6722bbd4f4281a353e73cd1c039b9ee457e1d1e9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
