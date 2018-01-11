@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "338cd0b8_3e8961b4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2018-01-11T21:39:37Z",
+      "side": 1,
+      "message": "The Change-Id should be the same between the internal change and this one. You\u0027ll also need to get the internal change submitted first due to the conflicts, then use Merged-In here.",
+      "revId": "a51cf4f0f56c87a80471ad2318e68c48c641f6fc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
