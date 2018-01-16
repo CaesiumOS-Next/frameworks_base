@@ -2564,6 +2564,30 @@ public final class Telephony {
         public static final Uri CONTENT_URI = Uri.parse("content://telephony/carriers");
 
         /**
+         * The URL to be called from {@link android.app.admin.DevicePolicyManager}.
+         * @hide
+         */
+        public static final Uri DPC_URI = Uri.parse("content://telephony/carriers/dpc");
+
+        /**
+         * The URL to be called from Telephony.
+         * @hide
+         */
+        public static final Uri FILTERED_URI = Uri.parse("content://telephony/carriers/filtered");
+
+        /**
+         * The URL to be called from {@link android.app.admin.DevicePolicyManager}.
+         * @hide
+         */
+        public static final Uri ENFORCE_MANAGED_URI = Uri.parse(
+                "content://telephony/carriers/enforce_managed");
+
+        /**
+         * @hide
+         */
+        public static final String ENFORCE_KEY = "enforced";
+
+        /**
          * The default sort order for this table.
          */
         public static final String DEFAULT_SORT_ORDER = "name ASC";
