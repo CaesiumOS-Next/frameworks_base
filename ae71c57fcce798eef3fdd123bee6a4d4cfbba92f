@@ -284,6 +284,30 @@
       "revId": "ae71c57fcce798eef3fdd123bee6a4d4cfbba92f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "643baed5_f91e9017",
+        "filename": "core/java/android/os/Debug.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 2382,
+      "author": {
+        "id": 1084818
+      },
+      "writtenOn": "2018-01-17T19:24:56Z",
+      "side": 1,
+      "message": "Yes. Just change the aosp/master..external/dexmaker...JvmtiAgent and I push the update upstream.",
+      "parentUuid": "0d010284_7170868a",
+      "range": {
+        "startLine": 2382,
+        "startChar": 5,
+        "endLine": 2382,
+        "endChar": 7
+      },
+      "revId": "ae71c57fcce798eef3fdd123bee6a4d4cfbba92f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
