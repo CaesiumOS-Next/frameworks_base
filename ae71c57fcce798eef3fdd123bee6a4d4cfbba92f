@@ -356,6 +356,30 @@
       "revId": "ae71c57fcce798eef3fdd123bee6a4d4cfbba92f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2b190fa0_2982da3f",
+        "filename": "core/java/android/os/Debug.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 2382,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2018-01-17T21:39:52Z",
+      "side": 1,
+      "message": "The question was whether we\u0027d be OK with the process. I\u0027m fine making the changes, but I\u0027d like to avoid making the topic larger, especially since I thought we were trying to use dexmaker upstream more directly (instead of having local changes).",
+      "parentUuid": "154a4ce2_9fa743cc",
+      "range": {
+        "startLine": 2382,
+        "startChar": 5,
+        "endLine": 2382,
+        "endChar": 7
+      },
+      "revId": "ae71c57fcce798eef3fdd123bee6a4d4cfbba92f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
