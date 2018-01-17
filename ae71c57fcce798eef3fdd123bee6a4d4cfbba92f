@@ -116,6 +116,30 @@
       "revId": "ae71c57fcce798eef3fdd123bee6a4d4cfbba92f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "40e0b308_8bd86d83",
+        "filename": "core/java/android/os/Debug.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 2382,
+      "author": {
+        "id": 1084818
+      },
+      "writtenOn": "2018-01-17T15:45:12Z",
+      "side": 1,
+      "message": "If this allows me to load a jvmti-agent from my own apk into a platform-signed app I am planning to use this and I need this to be in the public API.\n\nDo we still need the other method then?",
+      "parentUuid": "94e0708a_160758ae",
+      "range": {
+        "startLine": 2382,
+        "startChar": 5,
+        "endLine": 2382,
+        "endChar": 7
+      },
+      "revId": "ae71c57fcce798eef3fdd123bee6a4d4cfbba92f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
