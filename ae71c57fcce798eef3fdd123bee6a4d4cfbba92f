@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "162ac6a7_b688b261",
+        "filename": "core/java/android/os/Debug.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 2357,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2018-01-17T19:19:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3bedbbaa_2dade287",
+      "range": {
+        "startLine": 2357,
+        "startChar": 7,
+        "endLine": 2357,
+        "endChar": 64
+      },
+      "revId": "ae71c57fcce798eef3fdd123bee6a4d4cfbba92f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "812980f5_b81b87af",
         "filename": "core/java/android/os/Debug.java",
         "patchSetId": 1
@@ -60,6 +84,30 @@
       "writtenOn": "2018-01-17T10:50:49Z",
       "side": 1,
       "message": "nit here and below :\n\n@param library the library containing the agent.\n\n(i.e, missing \"the\" and the fullstop at the end. These things are formatted and displayed as property sentences by most javadoc processors. It\u0027s also more consistent with the rest of this file.)",
+      "range": {
+        "startLine": 2359,
+        "startChar": 22,
+        "endLine": 2359,
+        "endChar": 50
+      },
+      "revId": "ae71c57fcce798eef3fdd123bee6a4d4cfbba92f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "131fa582_88a1785c",
+        "filename": "core/java/android/os/Debug.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 2359,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2018-01-17T19:19:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "812980f5_b81b87af",
       "range": {
         "startLine": 2359,
         "startChar": 22,
@@ -131,6 +179,30 @@
       "side": 1,
       "message": "If this allows me to load a jvmti-agent from my own apk into a platform-signed app I am planning to use this and I need this to be in the public API.\n\nDo we still need the other method then?",
       "parentUuid": "94e0708a_160758ae",
+      "range": {
+        "startLine": 2382,
+        "startChar": 5,
+        "endLine": 2382,
+        "endChar": 7
+      },
+      "revId": "ae71c57fcce798eef3fdd123bee6a4d4cfbba92f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d0f27549_933d18e1",
+        "filename": "core/java/android/os/Debug.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 2382,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2018-01-17T19:19:03Z",
+      "side": 1,
+      "message": "This will look into the libs associated w/ the classloader. So if you get that classloader of the APK this should just work. (If it\u0027s injected, I *think* it should work, but would be interested in your experience. I might need to check the LoadedApk code to see whether instrumention libs are correctly added to the library path when the main PathClassLoader is created.)\n\nI thought it would be nice to have a version that does some best effort automagically (and have backwards compat, even if backwards means just the code you introduced in P). If you think that\u0027s overkill I can remove the above.",
+      "parentUuid": "40e0b308_8bd86d83",
       "range": {
         "startLine": 2382,
         "startChar": 5,
