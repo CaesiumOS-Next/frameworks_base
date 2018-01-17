@@ -380,6 +380,30 @@
       "revId": "ae71c57fcce798eef3fdd123bee6a4d4cfbba92f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1e63f2a3_ef14ba71",
+        "filename": "core/java/android/os/Debug.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 2382,
+      "author": {
+        "id": 1084818
+      },
+      "writtenOn": "2018-01-17T21:51:19Z",
+      "side": 1,
+      "message": "I am fine with any process you choose. The upstream dexmaker is currently only for people who want to build aosp from scratch. I guess those people can deal with changing APIs.",
+      "parentUuid": "2b190fa0_2982da3f",
+      "range": {
+        "startLine": 2382,
+        "startChar": 5,
+        "endLine": 2382,
+        "endChar": 7
+      },
+      "revId": "ae71c57fcce798eef3fdd123bee6a4d4cfbba92f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
