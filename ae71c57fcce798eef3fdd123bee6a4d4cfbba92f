@@ -212,6 +212,30 @@
       "revId": "ae71c57fcce798eef3fdd123bee6a4d4cfbba92f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eeeb91d9_5fba5756",
+        "filename": "core/java/android/os/Debug.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 2382,
+      "author": {
+        "id": 1014443
+      },
+      "writtenOn": "2018-01-17T19:21:37Z",
+      "side": 1,
+      "message": "Oh wait, that previous API was introduced in P ? In that case I\u0027m in favour of removing the above.",
+      "parentUuid": "d0f27549_933d18e1",
+      "range": {
+        "startLine": 2382,
+        "startChar": 5,
+        "endLine": 2382,
+        "endChar": 7
+      },
+      "revId": "ae71c57fcce798eef3fdd123bee6a4d4cfbba92f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
