@@ -47,7 +47,7 @@ interface IEuiccCardController {
         in IDisableProfileCallback callback);
     oneway void switchToProfile(String callingPackage, String iccid, boolean refresh,
         in ISwitchToProfileCallback callback);
-    String getEid();
+    String getEid(String callingPackage);
     oneway void setNickname(String callingPackage, String iccid, String nickname,
         in ISetNicknameCallback callback);
     oneway void deleteProfile(String callingPackage, String iccid,
