@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1efcc1e8_1c1759e7",
+        "filename": "core/jni/android_os_HwParcel.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 396,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2018-01-18T00:55:07Z",
+      "side": 1,
+      "message": "nit: status.exceptionCode() ?",
+      "range": {
+        "startLine": 396,
+        "startChar": 37,
+        "endLine": 396,
+        "endChar": 50
+      },
+      "revId": "2ef0cbd8bb070a3268ba5e832c4994415fcfbabf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
