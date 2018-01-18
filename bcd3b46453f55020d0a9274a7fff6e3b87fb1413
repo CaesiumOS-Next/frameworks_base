@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "96c214e1_dedbf298",
+        "filename": "core/java/com/android/internal/os/ZygoteInit.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 572,
+      "author": {
+        "id": 1059815
+      },
+      "writtenOn": "2018-01-18T13:29:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "77acb76c_9dcd7bf2",
+      "range": {
+        "startLine": 572,
+        "startChar": 16,
+        "endLine": 572,
+        "endChar": 70
+      },
+      "revId": "bcd3b46453f55020d0a9274a7fff6e3b87fb1413",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a4c84aaa_95e6b5e5",
         "filename": "services/core/java/com/android/server/pm/PackageDexOptimizer.java",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2018-01-18T11:29:19Z",
       "side": 1,
       "message": "Add a comment.",
+      "range": {
+        "startLine": 519,
+        "startChar": 18,
+        "endLine": 519,
+        "endChar": 72
+      },
+      "revId": "bcd3b46453f55020d0a9274a7fff6e3b87fb1413",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ae13f70b_64062771",
+        "filename": "services/core/java/com/android/server/pm/PackageDexOptimizer.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 519,
+      "author": {
+        "id": 1059815
+      },
+      "writtenOn": "2018-01-18T13:29:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a4c84aaa_95e6b5e5",
       "range": {
         "startLine": 519,
         "startChar": 18,
