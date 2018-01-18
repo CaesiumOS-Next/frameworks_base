@@ -22,6 +22,30 @@
       "revId": "2ef0cbd8bb070a3268ba5e832c4994415fcfbabf",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "61db08c1_65273edd",
+        "filename": "core/jni/android_os_HwParcel.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 396,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2018-01-18T00:57:29Z",
+      "side": 1,
+      "message": "It\u0027s almost always the same for a failure. When we fix b/62713128, we\u0027ll need to refactor this java code and implement our own signalExceptionForError. It throws a bunch of different exceptions, and we probably don\u0027t want to expose a lot of them to hal clients.",
+      "parentUuid": "1efcc1e8_1c1759e7",
+      "range": {
+        "startLine": 396,
+        "startChar": 37,
+        "endLine": 396,
+        "endChar": 50
+      },
+      "revId": "2ef0cbd8bb070a3268ba5e832c4994415fcfbabf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
