@@ -18,6 +18,7 @@ package android.provider;
 
 import android.annotation.SdkConstant;
 import android.annotation.SdkConstant.SdkConstantType;
+import android.annotation.SystemApi;
 import android.annotation.TestApi;
 import android.app.job.JobService;
 import android.content.ComponentName;
@@ -1133,6 +1134,14 @@ public final class Telephony {
             @SdkConstant(SdkConstantType.BROADCAST_INTENT_ACTION)
             public static final String ACTION_EXTERNAL_PROVIDER_CHANGE =
                           "android.provider.action.EXTERNAL_PROVIDER_CHANGE";
+
+            /**
+             * Broadcast Action: A "secret code" has been entered in the dialer. Secret codes are
+             * of the form {@code *#*#<code>#*#*}. The intent will have the data URI:
+             *
+             * {@code android_secret_code://<code>}
+             */
+            public static final String SECRET_CODE_ACTION = "android.provider.Telephony.SECRET_CODE";
 
             /**
              * Read the PDUs out of an {@link #SMS_RECEIVED_ACTION} or a
