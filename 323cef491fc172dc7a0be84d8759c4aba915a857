@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "226e40e7_1436633a",
+        "filename": "telephony/java/android/telephony/CarrierConfigManager.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1056478
+      },
+      "writtenOn": "2018-01-24T21:36:36Z",
+      "side": 1,
+      "message": "If you mean WE as in internally we do, then @hide this extra.  If externally, then passing back the phone id doesn\u0027t mean anything to anyone.  In that case a slot ix might be better?",
+      "parentUuid": "fef08913_871cc25b",
+      "range": {
+        "startLine": 41,
+        "startChar": 4,
+        "endLine": 45,
+        "endChar": 83
+      },
+      "revId": "323cef491fc172dc7a0be84d8759c4aba915a857",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "92b64ca2_e358cc9b",
         "filename": "telephony/java/android/telephony/CarrierConfigManager.java",
         "patchSetId": 1
@@ -84,6 +108,30 @@
       "side": 1,
       "message": "I just reused what\u0027s already public in SubscriptionManager. Let me know if I should change it.",
       "parentUuid": "92b64ca2_e358cc9b",
+      "range": {
+        "startLine": 51,
+        "startChar": 4,
+        "endLine": 52,
+        "endChar": 57
+      },
+      "revId": "323cef491fc172dc7a0be84d8759c4aba915a857",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "46345423_ea30c662",
+        "filename": "telephony/java/android/telephony/CarrierConfigManager.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1056478
+      },
+      "writtenOn": "2018-01-24T21:36:36Z",
+      "side": 1,
+      "message": "Okay, if that\u0027s our standard then we\u0027re good.",
+      "parentUuid": "6434ac72_6a4d2165",
       "range": {
         "startLine": 51,
         "startChar": 4,
