@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "fef08913_871cc25b",
+        "filename": "telephony/java/android/telephony/CarrierConfigManager.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1054648
+      },
+      "writtenOn": "2018-01-24T21:15:12Z",
+      "side": 1,
+      "message": "We sort of need to when we are broadcasting an intent for a phone that does not have a valid subId, right?",
+      "parentUuid": "58ead1c4_af76c9d2",
+      "range": {
+        "startLine": 41,
+        "startChar": 4,
+        "endLine": 45,
+        "endChar": 83
+      },
+      "revId": "323cef491fc172dc7a0be84d8759c4aba915a857",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "92b64ca2_e358cc9b",
         "filename": "telephony/java/android/telephony/CarrierConfigManager.java",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2018-01-24T21:11:02Z",
       "side": 1,
       "message": "Shouldn\u0027t this be Subscription Id?",
+      "range": {
+        "startLine": 51,
+        "startChar": 4,
+        "endLine": 52,
+        "endChar": 57
+      },
+      "revId": "323cef491fc172dc7a0be84d8759c4aba915a857",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6434ac72_6a4d2165",
+        "filename": "telephony/java/android/telephony/CarrierConfigManager.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1054648
+      },
+      "writtenOn": "2018-01-24T21:15:12Z",
+      "side": 1,
+      "message": "I just reused what\u0027s already public in SubscriptionManager. Let me know if I should change it.",
+      "parentUuid": "92b64ca2_e358cc9b",
       "range": {
         "startLine": 51,
         "startChar": 4,
