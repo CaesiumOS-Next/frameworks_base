@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "58ead1c4_af76c9d2",
+        "filename": "telephony/java/android/telephony/CarrierConfigManager.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1056478
+      },
+      "writtenOn": "2018-01-24T21:11:02Z",
+      "side": 1,
+      "message": "PHONE ID is a very internal concept that we don\u0027t expose anywhere else.  We shouldn\u0027t really be doing that here.",
+      "range": {
+        "startLine": 41,
+        "startChar": 4,
+        "endLine": 45,
+        "endChar": 83
+      },
+      "revId": "323cef491fc172dc7a0be84d8759c4aba915a857",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "92b64ca2_e358cc9b",
+        "filename": "telephony/java/android/telephony/CarrierConfigManager.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1056478
+      },
+      "writtenOn": "2018-01-24T21:11:02Z",
+      "side": 1,
+      "message": "Shouldn\u0027t this be Subscription Id?",
+      "range": {
+        "startLine": 51,
+        "startChar": 4,
+        "endLine": 52,
+        "endChar": 57
+      },
+      "revId": "323cef491fc172dc7a0be84d8759c4aba915a857",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
