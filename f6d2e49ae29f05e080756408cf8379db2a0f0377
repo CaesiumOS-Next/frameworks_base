@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "55af3aae_e61360de",
+        "filename": "services/tests/servicestests/src/com/android/server/net/IpConfigStoreTest.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1000451
+      },
+      "writtenOn": "2018-01-25T10:49:19Z",
+      "side": 1,
+      "message": "You don\u0027t need an import for this, or for Writer?",
+      "range": {
+        "startLine": 126,
+        "startChar": 56,
+        "endLine": 126,
+        "endChar": 72
+      },
+      "revId": "f6d2e49ae29f05e080756408cf8379db2a0f0377",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
