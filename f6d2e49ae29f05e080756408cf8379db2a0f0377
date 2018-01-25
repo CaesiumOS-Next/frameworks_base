@@ -22,6 +22,30 @@
       "revId": "f6d2e49ae29f05e080756408cf8379db2a0f0377",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b62eb8e4_2b0fb162",
+        "filename": "services/tests/servicestests/src/com/android/server/net/IpConfigStoreTest.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1112054
+      },
+      "writtenOn": "2018-01-25T22:27:03Z",
+      "side": 1,
+      "message": "Not sure I understand this, unit tests are usually in the same package as target classes so I don\u0027t have to explicitly import them.  Also, DelayedDiskWrite is a class that doesn\u0027t inherit or extend other interface or class, so I can\u0027t use generic Writer.",
+      "parentUuid": "55af3aae_e61360de",
+      "range": {
+        "startLine": 126,
+        "startChar": 56,
+        "endLine": 126,
+        "endChar": 72
+      },
+      "revId": "f6d2e49ae29f05e080756408cf8379db2a0f0377",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
