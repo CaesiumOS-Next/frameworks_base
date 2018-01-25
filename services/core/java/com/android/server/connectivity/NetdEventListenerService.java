@@ -272,7 +272,29 @@ public class NetdEventListenerService extends INetdEventListener.Stub {
             int sentAckDiffMs = sentAckDiffsMs[i];
             getMetricsForNetwork(timestamp, netId)
                     .addTcpStatsResult(sent, lost, rttUs, sentAckDiffMs);
+
+            if (networkLooksUnhealthy(sent, lost, rttUs, sentAckDiffMs)) {
+                maybeLog("Network %d looks unhealthy: loss/sent=%d/%d rttUs=%d sentAckDiffMs=%d",
+                        netId, lost, sent, rttUs, sentAckDiffMs);
+                mCm.reportNetworkConnectivity(new Network(netId), false);
+            }
         }
+    }
+
+    private boolean networkLooksUnhealthy(int sent, int lost, int rttUs, int sentAckDiffMs) {
+        int tenSecondAsMicros = 10 * 1000 * 1000;
+        int tenSecondAsMillis = 10 * 1000;
+        if (rttUs > tenSecondAsMicros) {
+            return true;
+        }
+        if (sentAckDiffMs > tenSecondAsMillis) {
+            return true;
+        }
+        int lossRate = (sent != 0 ? (lost * 100) / sent : 0);
+        if (lossRate > 50) {
+            return true;
+        }
+        return false;
     }
 
     private void addWakeupEvent(WakeupEvent event) {
