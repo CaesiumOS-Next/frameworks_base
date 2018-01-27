@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "487e1106_341bcfec",
+        "filename": "telephony/java/android/telephony/data/DataService.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1081638
+      },
+      "writtenOn": "2018-01-27T00:40:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "84fa9037_d68dabec",
+      "revId": "49b72f0153f1a58b1f6e5c28715476292c0cc91b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f123bf9c_82084be3",
         "filename": "telephony/java/android/telephony/data/DataService.java",
         "patchSetId": 2
@@ -30,6 +48,24 @@
       "writtenOn": "2018-01-27T00:38:14Z",
       "side": 1,
       "message": "Maybe add function name, like loge(\"getDataCallList Callback is null\");",
+      "revId": "49b72f0153f1a58b1f6e5c28715476292c0cc91b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "85c9cf75_084ee74f",
+        "filename": "telephony/java/android/telephony/data/DataService.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 523,
+      "author": {
+        "id": 1081638
+      },
+      "writtenOn": "2018-01-27T00:40:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f123bf9c_82084be3",
       "revId": "49b72f0153f1a58b1f6e5c28715476292c0cc91b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "9b950d03_b434861d",
+        "filename": "telephony/java/android/telephony/data/DataService.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 533,
+      "author": {
+        "id": 1081638
+      },
+      "writtenOn": "2018-01-27T00:40:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bcbe55ad_97ff4ab2",
+      "revId": "49b72f0153f1a58b1f6e5c28715476292c0cc91b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c4c90366_4a37d9c0",
         "filename": "telephony/java/android/telephony/data/DataService.java",
         "patchSetId": 2
@@ -64,6 +118,24 @@
       "writtenOn": "2018-01-27T00:38:14Z",
       "side": 1,
       "message": "Same above. Add function name?",
+      "revId": "49b72f0153f1a58b1f6e5c28715476292c0cc91b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "36831200_d75151c6",
+        "filename": "telephony/java/android/telephony/data/DataService.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 543,
+      "author": {
+        "id": 1081638
+      },
+      "writtenOn": "2018-01-27T00:40:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c4c90366_4a37d9c0",
       "revId": "49b72f0153f1a58b1f6e5c28715476292c0cc91b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
