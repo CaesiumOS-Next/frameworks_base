@@ -2685,7 +2685,48 @@ public class ConnectivityManager {
          * satisfying the request changes.
          *
          * @param network The {@link Network} of the satisfying network.
+         * @param networkCapabilities The {@link NetworkCapabilities} of the satisfying network.
+         * @param linkProperties The {@link LinkProperties} of the satisfying network.
+         * @param suspended True if the satisfying network is currently suspended.
+         *        {@see #onNetworkSuspended(Network)}.
+         * @hide
          */
+        public void onAvailable(Network network, NetworkCapabilities networkCapabilities,
+                LinkProperties linkProperties, boolean suspended) {
+            onAvailable(network, networkCapabilities, linkProperties);
+        }
+
+        /**
+         * Called when the framework connects and has declared a new network ready for use.
+         * This callback may be called more than once if the {@link Network} that is
+         * satisfying the request changes.
+         *
+         * @param network The {@link Network} of the satisfying network.
+         * @param networkCapabilities The {@link NetworkCapabilities} of the satisfying network.
+         * @param linkProperties The {@link LinkProperties} of the satisfying network.
+         */
+        public void onAvailable(Network network, NetworkCapabilities networkCapabilities,
+                LinkProperties linkProperties) {
+            onAvailable(network);
+            onCapabilitiesChanged(network, networkCapabilities);
+            onLinkPropertiesChanged(network, linkProperties);
+        }
+
+        /**
+         * Called when the framework connects and has declared a new network ready for use.
+         * This callback may be called more than once if the {@link Network} that is
+         * satisfying the request changes. Starting with API28, this callback will be called
+         * only if {@link #onAvailable(Network, NetworkCapabilities, LinkProperties)} is not
+         * implemented.  In any case this will be immediately followed by a call to
+         * {@link #onCapabilitiesChanged(Network, NetworkCapabilities)} then with a call to
+         * {@link #onLinkPropertiesChanged(Network, LinkProperties)}.
+         *
+         * @param network The {@link Network} of the satisfying network.
+         */
+        // In the framework, if the network is currently suspended then a call to
+        // {@link #onNetworkSuspended(Network)} will be inserted between the call to
+        // this method and the call to {@link #onCapabilitiesUpdated(NetworkCapabilities)}.
+        // {@link #onNetworkSuspended(Network)} is marked @hide.
         public void onAvailable(Network network) {}
 
         /**
@@ -2724,7 +2765,9 @@ public class ConnectivityManager {
 
         /**
          * Called when the network the framework connected to for this request
-         * changes capabilities but still satisfies the stated need.
+         * changes capabilities but still satisfies the stated need. If
+         * {@link #onAvailable(Network, NetworkCapabilities, LinkProperties)} is not implemented,
+         * this will always be called once after {@link #onAvailable(Network)}.
          *
          * @param network The {@link Network} whose capabilities have changed.
          * @param networkCapabilities The new {@link android.net.NetworkCapabilities} for this network.
@@ -2865,7 +2908,11 @@ public class ConnectivityManager {
                     break;
                 }
                 case CALLBACK_AVAILABLE: {
-                    callback.onAvailable(network);
+                    NetworkCapabilities cap = getObject(message, NetworkCapabilities.class);
+                    LinkProperties lp = getObject(message, LinkProperties.class);
+                    NetworkInfo info = getObject(message, NetworkInfo.class);
+                    boolean suspended = info.getState() == NetworkInfo.State.SUSPENDED;
+                    callback.onAvailable(network, cap, lp, suspended);
                     break;
                 }
                 case CALLBACK_LOSING: {

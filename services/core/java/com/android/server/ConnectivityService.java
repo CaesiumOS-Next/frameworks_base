@@ -4922,6 +4922,12 @@ public class ConnectivityService extends IConnectivityManager.Stub
             putParcelable(bundle, networkAgent.network);
         }
         switch (notificationType) {
+            case ConnectivityManager.CALLBACK_AVAILABLE: {
+                putParcelable(bundle, new NetworkCapabilities(networkAgent.networkCapabilities));
+                putParcelable(bundle, new LinkProperties(networkAgent.linkProperties));
+                putParcelable(bundle, new NetworkInfo(networkAgent.networkInfo));
+                break;
+            }
             case ConnectivityManager.CALLBACK_LOSING: {
                 msg.arg1 = arg1;
                 break;
@@ -5500,14 +5506,6 @@ public class ConnectivityService extends IConnectivityManager.Stub
         }
 
         callCallbackForRequest(nri, nai, ConnectivityManager.CALLBACK_AVAILABLE, 0);
-        // Whether a network is currently suspended is also an important
-        // element of state to be transferred (it would not otherwise be
-        // delivered by any currently available mechanism).
-        if (nai.networkInfo.getState() == NetworkInfo.State.SUSPENDED) {
-            callCallbackForRequest(nri, nai, ConnectivityManager.CALLBACK_SUSPENDED, 0);
-        }
-        callCallbackForRequest(nri, nai, ConnectivityManager.CALLBACK_CAP_CHANGED, 0);
-        callCallbackForRequest(nri, nai, ConnectivityManager.CALLBACK_IP_CHANGED, 0);
     }
 
     private void sendLegacyNetworkBroadcast(NetworkAgentInfo nai, DetailedState state, int type) {

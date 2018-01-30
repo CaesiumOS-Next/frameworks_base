@@ -25758,6 +25758,7 @@ package android.net {
 
   public static class ConnectivityManager.NetworkCallback {
     ctor public ConnectivityManager.NetworkCallback();
+    method public void onAvailable(android.net.Network, android.net.NetworkCapabilities, android.net.LinkProperties);
     method public void onAvailable(android.net.Network);
     method public void onCapabilitiesChanged(android.net.Network, android.net.NetworkCapabilities);
     method public void onLinkPropertiesChanged(android.net.Network, android.net.LinkProperties);
