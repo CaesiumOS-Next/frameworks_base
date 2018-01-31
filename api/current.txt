@@ -25759,7 +25759,7 @@ package android.net {
   public static class ConnectivityManager.NetworkCallback {
     ctor public ConnectivityManager.NetworkCallback();
     method public void onAvailable(android.net.Network, android.net.NetworkCapabilities, android.net.LinkProperties);
-    method public void onAvailable(android.net.Network);
+    method public deprecated void onAvailable(android.net.Network);
     method public void onCapabilitiesChanged(android.net.Network, android.net.NetworkCapabilities);
     method public void onLinkPropertiesChanged(android.net.Network, android.net.LinkProperties);
     method public void onLosing(android.net.Network, int);
@@ -26001,6 +26001,7 @@ package android.net {
     field public static final int NET_CAPABILITY_CBS = 5; // 0x5
     field public static final int NET_CAPABILITY_DUN = 2; // 0x2
     field public static final int NET_CAPABILITY_EIMS = 10; // 0xa
+    field public static final int NET_CAPABILITY_FOREGROUND = 19; // 0x13
     field public static final int NET_CAPABILITY_FOTA = 3; // 0x3
     field public static final int NET_CAPABILITY_IA = 7; // 0x7
     field public static final int NET_CAPABILITY_IMS = 4; // 0x4
@@ -26009,6 +26010,7 @@ package android.net {
     field public static final int NET_CAPABILITY_NOT_METERED = 11; // 0xb
     field public static final int NET_CAPABILITY_NOT_RESTRICTED = 13; // 0xd
     field public static final int NET_CAPABILITY_NOT_ROAMING = 18; // 0x12
+    field public static final int NET_CAPABILITY_NOT_SUSPENDED = 21; // 0x15
     field public static final int NET_CAPABILITY_NOT_VPN = 15; // 0xf
     field public static final int NET_CAPABILITY_RCS = 8; // 0x8
     field public static final int NET_CAPABILITY_SUPL = 1; // 0x1

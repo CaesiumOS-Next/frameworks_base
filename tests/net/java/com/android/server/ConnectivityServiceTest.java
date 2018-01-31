@@ -35,6 +35,7 @@ import static android.net.NetworkCapabilities.NET_CAPABILITY_INTERNET;
 import static android.net.NetworkCapabilities.NET_CAPABILITY_MMS;
 import static android.net.NetworkCapabilities.NET_CAPABILITY_NOT_METERED;
 import static android.net.NetworkCapabilities.NET_CAPABILITY_NOT_RESTRICTED;
+import static android.net.NetworkCapabilities.NET_CAPABILITY_NOT_SUSPENDED;
 import static android.net.NetworkCapabilities.NET_CAPABILITY_NOT_VPN;
 import static android.net.NetworkCapabilities.NET_CAPABILITY_RCS;
 import static android.net.NetworkCapabilities.NET_CAPABILITY_SUPL;
@@ -567,6 +568,10 @@ public class ConnectivityServiceTest {
         public String waitForRedirectUrl() {
             assertTrue(mNetworkStatusReceived.block(TIMEOUT_MS));
             return mRedirectUrl;
+        }
+
+        public NetworkCapabilities getNetworkCapabilities() {
+            return mNetworkCapabilities;
         }
     }
 
@@ -2458,6 +2463,8 @@ public class ConnectivityServiceTest {
 
         // Suspend the network.
         mCellNetworkAgent.suspend();
+        cellNetworkCallback.expectCapabilitiesWithout(NET_CAPABILITY_NOT_SUSPENDED,
+                mCellNetworkAgent);
         cellNetworkCallback.expectCallback(CallbackState.SUSPENDED, mCellNetworkAgent);
         cellNetworkCallback.assertNoCallback();
 
@@ -3712,5 +3719,31 @@ public class ConnectivityServiceTest {
         mCm.unregisterNetworkCallback(genericNetworkCallback);
         mCm.unregisterNetworkCallback(wifiNetworkCallback);
         mCm.unregisterNetworkCallback(vpnNetworkCallback);
+    }
+
+    @Test
+    public void testOnAvailableBackwardCompatibility() {
+        final TestNetworkCallback olderCallback = new TestNetworkCallback();
+        final TestNetworkCallback newerCallback = new TestNetworkCallback() {
+                @Override
+                public void onAvailable(Network network, NetworkCapabilities networkCapabilities,
+                        LinkProperties linkProperties) {
+                    setLastCallback(CallbackState.AVAILABLE, network, networkCapabilities);
+                    super.onAvailable(network, networkCapabilities, linkProperties);
+                }
+            };
+        final NetworkRequest genericRequest = new NetworkRequest.Builder().build();
+        mCm.registerNetworkCallback(genericRequest, olderCallback);
+        mCm.registerNetworkCallback(genericRequest, newerCallback);
+
+        mWiFiNetworkAgent = new MockNetworkAgent(TRANSPORT_WIFI);
+        mWiFiNetworkAgent.connect(false);
+        final NetworkCapabilities wifiCaps = mWiFiNetworkAgent.getNetworkCapabilities();
+
+        olderCallback.expectAvailableCallbacksUnvalidated(mWiFiNetworkAgent);
+        newerCallback.expectCallbackLike(
+                info -> wifiCaps.equalRequestableCapabilities((NetworkCapabilities)info.arg),
+                TIMEOUT_MS);
+        newerCallback.expectAvailableCallbacksUnvalidated(mWiFiNetworkAgent);
     }
 }
