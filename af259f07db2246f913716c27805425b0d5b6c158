@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a7d43d16_ae23de7a",
+        "filename": "core/java/android/net/MacAddress.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 358,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2018-02-02T06:03:58Z",
+      "side": 1,
+      "message": "addr |\u003d",
+      "range": {
+        "startLine": 358,
+        "startChar": 8,
+        "endLine": 358,
+        "endChar": 21
+      },
+      "revId": "af259f07db2246f913716c27805425b0d5b6c158",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2fcf88f6_68bbf4fb",
+        "filename": "core/java/android/net/MacAddress.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 359,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2018-02-02T06:03:58Z",
+      "side": 1,
+      "message": "addr \u0026\u003d",
+      "range": {
+        "startLine": 359,
+        "startChar": 8,
+        "endLine": 359,
+        "endChar": 21
+      },
+      "revId": "af259f07db2246f913716c27805425b0d5b6c158",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
