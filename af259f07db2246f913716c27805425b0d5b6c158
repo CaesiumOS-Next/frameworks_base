@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "ead668ae_6f0c3be5",
+        "filename": "core/java/android/net/MacAddress.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 358,
+      "author": {
+        "id": 1274196
+      },
+      "writtenOn": "2018-02-02T22:20:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a7d43d16_ae23de7a",
+      "range": {
+        "startLine": 358,
+        "startChar": 8,
+        "endLine": 358,
+        "endChar": 21
+      },
+      "revId": "af259f07db2246f913716c27805425b0d5b6c158",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2fcf88f6_68bbf4fb",
         "filename": "core/java/android/net/MacAddress.java",
         "patchSetId": 1
@@ -45,6 +69,30 @@
       "revId": "af259f07db2246f913716c27805425b0d5b6c158",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e550d8d8_eb3ef933",
+        "filename": "core/java/android/net/MacAddress.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 359,
+      "author": {
+        "id": 1274196
+      },
+      "writtenOn": "2018-02-02T22:20:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2fcf88f6_68bbf4fb",
+      "range": {
+        "startLine": 359,
+        "startChar": 8,
+        "endLine": 359,
+        "endChar": 21
+      },
+      "revId": "af259f07db2246f913716c27805425b0d5b6c158",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
