@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8c450652_24e04115",
+        "filename": "core/java/android/net/EthernetManager.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1000451
+      },
+      "writtenOn": "2018-02-02T17:31:05Z",
+      "side": 1,
+      "message": "How about \"is tracking the\"?",
+      "range": {
+        "startLine": 114,
+        "startChar": 36,
+        "endLine": 114,
+        "endChar": 45
+      },
+      "revId": "c07a96d1e4a90c1c42040fd24ad9e4f209becce4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
