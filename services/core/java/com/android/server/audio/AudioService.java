@@ -2364,6 +2364,14 @@ public class AudioService extends IAudioService.Stub
                             if (value == 0) {
                                 vss.setIndex(10, device, TAG);
                             }
+                            // Mirror speaker ringtone volume on SCO
+                            if ((device & AudioSystem.DEVICE_OUT_ALL_SCO) != 0) {
+                                int speakerRingtoneVolume = vss.mIndexMap.get(
+                                        AudioManager.DEVICE_OUT_SPEAKER);
+                                if (speakerRingtoneVolume > 0) {
+                                    vss.setIndex(speakerRingtoneVolume, device, TAG);
+                                }
+                            }
                         }
                         // Persist volume for stream ring when it is changed here
                       final int device = getDeviceForStream(streamType);
@@ -2388,11 +2396,21 @@ public class AudioService extends IAudioService.Stub
 
     private void setRingerModeInt(int ringerMode, boolean persist) {
         final boolean change;
-        synchronized(mSettingsLock) {
+        final int forceVibrateRinging;
+        synchronized (mSettingsLock) {
             change = mRingerMode != ringerMode;
             mRingerMode = ringerMode;
+            forceVibrateRinging = mRingerMode == AudioManager.RINGER_MODE_VIBRATE
+                    ? AudioSystem.FORCE_BT_SCO : AudioSystem.FORCE_NONE;
         }
 
+        // Ask audio policy engine to force use Bluetooth SCO channel
+        final String eventSource = "setRingerModeInt(" + ringerMode + ", " + persist
+                + ") from u/pid:" + Binder.getCallingUid() + "/" + Binder.getCallingPid();
+        sendMsg(mAudioHandler, MSG_SET_FORCE_USE, SENDMSG_QUEUE,
+                AudioSystem.FOR_VIBRATE_RINGING, forceVibrateRinging, eventSource, 0);
+
+        // Mute ringer mode streams
         muteRingerModeStreams();
 
         // Post a persist ringer mode msg
@@ -2966,6 +2984,15 @@ public class AudioService extends IAudioService.Stub
                 AudioSystem.FOR_COMMUNICATION, mForcedUseForComm, eventSource, 0);
         sendMsg(mAudioHandler, MSG_SET_FORCE_USE, SENDMSG_QUEUE,
                 AudioSystem.FOR_RECORD, mForcedUseForComm, eventSource, 0);
+        // Un-mute ringtone stream volume
+        synchronized (mSettingsLock) {
+            final long identity = Binder.clearCallingIdentity();
+            final boolean ringerModeAffectedStreamsChanged = updateRingerModeAffectedStreams();
+            Binder.restoreCallingIdentity(identity);
+            if (ringerModeAffectedStreamsChanged) {
+                setRingerModeInt(getRingerModeInternal(), false);
+            }
+        }
     }
 
     /** @see AudioManager#isBluetoothScoOn() */
@@ -3828,6 +3855,12 @@ public class AudioService extends IAudioService.Stub
             ringerModeAffectedStreams |= (1 << AudioSystem.STREAM_DTMF);
         } else {
             ringerModeAffectedStreams &= ~(1 << AudioSystem.STREAM_DTMF);
+        }
+
+        if (isBluetoothScoOn()) {
+            ringerModeAffectedStreams &= ~(1 << AudioSystem.STREAM_RING);
+        } else {
+            ringerModeAffectedStreams |= (1 << AudioSystem.STREAM_RING);
         }
 
         if (ringerModeAffectedStreams != mRingerModeAffectedStreams) {
