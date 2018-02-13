@@ -70,7 +70,7 @@ public class AudioManager {
     private final boolean mUseVolumeKeySounds;
     private final boolean mUseFixedVolume;
     private static final String TAG = "AudioManager";
-    private static final boolean DEBUG = false;
+    private static final boolean DEBUG = true;
     private static final AudioPortEventHandler sAudioPortEventHandler = new AudioPortEventHandler();
 
     /**
@@ -1439,6 +1439,7 @@ public class AudioManager {
      *               <var>false</var> to not use bluetooth SCO for communications
      */
     public void setBluetoothScoOn(boolean on){
+        Log.i(TAG, "setBluetoothScoOn: on=" + on);
         final IAudioService service = getService();
         try {
             service.setBluetoothScoOn(on);
