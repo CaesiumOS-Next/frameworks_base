@@ -196,6 +196,12 @@ public class Session {
      * @return an instance of Channel if available or null.
      */
     public @Nullable Channel openBasicChannel(byte[] aid, byte p2) throws IOException {
+
+        if (mReader.getName().startsWith("SIM")) {
+            Log.i(TAG, "Reject the opening of the basic channel to " + mReader.getName());
+            return null;
+        }
+
         if (!mService.isConnected()) {
             throw new IllegalStateException("service not connected to system");
         }
