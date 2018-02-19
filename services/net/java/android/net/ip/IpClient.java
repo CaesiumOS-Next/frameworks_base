@@ -72,6 +72,7 @@ import java.util.Objects;
 import java.util.List;
 import java.util.Set;
 import java.util.StringJoiner;
+import java.util.concurrent.atomic.AtomicInteger;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
@@ -97,6 +98,8 @@ public class IpClient extends StateMachine {
     private static final Class[] sMessageClasses = { IpClient.class, DhcpClient.class };
     private static final SparseArray<String> sWhatToString =
             MessageUtils.findMessageNames(sMessageClasses);
+
+    private static final AtomicInteger sSerialNumber = new AtomicInteger();
 
     /**
      * Callbacks for handling IpClient events.
@@ -590,7 +593,7 @@ public class IpClient extends StateMachine {
     @VisibleForTesting
     IpClient(Context context, String ifName, Callback callback,
             INetworkManagementService nwService, INetd netd) {
-        super(IpClient.class.getSimpleName() + "." + ifName);
+        super(makeName(ifName));
         mTag = getName();
 
         mContext = context;
@@ -1679,6 +1682,12 @@ public class IpClient extends StateMachine {
             return String.format("rcvd_in=%s, proc_in=%s",
                                  receivedInState, processedInState);
         }
+    }
+
+    private static makeName(String ifName) {
+        return IpClient.class.getSimpleName()
+                + "." + sSerialNumber.incrementAndGet()
+                + "." + ifName;
     }
 
     // TODO: extract out into CollectionUtils.
