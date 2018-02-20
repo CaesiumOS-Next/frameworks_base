@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "386c5555_a441a3da",
+        "filename": "telephony/java/android/telephony/ims/stub/ImsSmsImplBase.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1081395
+      },
+      "writtenOn": "2018-02-20T22:51:33Z",
+      "side": 1,
+      "message": "is this a new error to P or do we need to consider apps that were checking the old error?  (just want to double check if we need to support older apps that might have been looking for the DELIVER_STATUE_ERROR instead of this new one since the var won\u0027t exist anymore)",
+      "range": {
+        "startLine": 91,
+        "startChar": 5,
+        "endLine": 91,
+        "endChar": 57
+      },
+      "revId": "1ff8e3412867f63206982f838bb580fec62db5da",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
