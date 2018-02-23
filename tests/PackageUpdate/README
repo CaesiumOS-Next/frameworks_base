@@ -1,0 +1,111 @@
+Package Update Test Suite
+
+Package Update Test Suite is framework for testing of package install/update.
+This test suite verifies whether PackageManagerService can manage installed applications and
+user data correctly through SW update (ROM1 -> ROM2).
+
+Background:
+- PackageManagerService is huge and complicated.
+- Bugs in PackageManagerService cause serious problems on market.
+- To maintain PackageManagerService securely, automated test is thought to be needed.
+
+How to use it:
+
+[Prerequisite]
+- Ubuntu PC is required.
+  - Test execution has been verified on Ubuntu14.
+  - Add udev rule into /etc/udev/rules.d/51-android.rules for detecting target device by fastboot.
+    see: https://developer.android.com/studio/run/device.html
+  - Change sudo password timeout longer than the default.
+    - $ sudo visudo
+    - set timestamp_timeout=60 for example.
+- Pixel / Pixel 2 are available with bootloader unlocked fully.
+- Latest fastboot
+- Latest Android SDK / NDK
+- Download ROM images
+  Need to place 2 version ROM for simulating letter update
+  ex:ROM
+      + -- radio.img
+      + -- bootloader.img
+      + -- aosp_walleye-img-xxxx-zip
+- Build Android code
+    - see: https://source.android.com/setup/build/building
+
+[Create test applications]
+1. $ cd frameworks/base/tests/PackageUpdate/app-generate
+2. $ export SDK_ROOT=<path/to/sdk>
+3. $ export NDK_ROOT=<path/to/ndk>
+4. $ bash app-genrerate.bash
+5. When it is succeeded in building test applications, following directories and applications are created.
+
+        app-generate
+        +-- results
+        |   +-- com.android.tests.pkgup001
+        |   |   +-- ver1
+        |   |   |   +-- TestApp001.apk
+        |   |   |   +-- libs
+        |   |   |       +-- arm64-v8a
+        |   |   |       |   +-- libTestApp001.so
+        |   |   |       +-- armeabi
+        |   |   |       |   +-- libTestApp001.so
+        |   |   |       +-- armeabi-v7a
+        |   |   |           +-- libTestApp001.so
+        |   |   +-- ver10
+        |   |   |   +-- TestApp001.apk
+        |   |   |   +-- libs
+        |   |   |       +-- arm64-v8a
+        |   |   |       |   +-- libTestApp001.so
+        |   |   |       +-- armeabi
+        |   |   |       |   +-- libTestApp001.so
+        |   |   |       +-- armeabi-v7a
+        |   |   |           +-- libTestApp001.so
+        |   |   +-- ver2
+        |   |   |   +-- TestApp001.apk
+        |   |   |   +-- libs
+        |   |   |       +-- arm64-v8a
+        |   |   |       |   +-- libTestApp001.so
+        |   |   |       +-- armeabi
+        |   |   |       |   +-- libTestApp001.so
+        |   |   |       +-- armeabi-v7a
+        |   |   |           +-- libTestApp001.so
+        |   |   +-- ver3
+        |   |   |   +-- TestApp001.apk
+        |   |   |   +-- libs
+        |   |   |       +-- arm64-v8a
+        |   |   |       |   +-- libTestApp001.so
+        |   |   |       +-- armeabi
+        |   |   |       |   +-- libTestApp001.so
+        |   |   |       +-- armeabi-v7a
+        |   |   |           +-- libTestApp001.so
+
+
+6. Compress the test applications
+   $ cd results/
+   $ zip -r testapps.zip ./
+
+
+[Run test]
+1. Move to root directory of source tree
+2. $ source ./build/envsetup.sh
+3. $ lunch <device-target>
+4. $ make package_update-all
+   If NDK_ROOT is set, please unset it before excuting this command.
+   $ unset NDK_ROOT
+5. $ make tradefed-all
+6. $ cd out/host/linux-x86/PackageUpdate/PackageUpdate/
+7. $ sudo echo
+8. $ tradefed.sh
+9. $ tf >run pkgup/basic-scope --testapks-zip <path/to/the/test_apps> --rom1-zip <path/to/the/rom_1st> --rom2-zip <path/to/the/rom_2nd>
+NOTE: Test harness accepts both relative and absolute paths but currently it fails to deal with the path which contains "~ (tilde)".
+
+
+[Test result]
+- When all tests are executed, logs and results are placed in out/host/linux-x86/PackageUpdate/PackageUpdate/inv_<integer value>/.
+    - Test summary is included in test_result_<integer value>.zip.
+- The detailed test results are reported in out/host/linux-x86/PackageUpdate/PackageUpdate/reports/html/analysis.html.
+
+
+[Cleanup]
+- If you want to reset the test environment, please execute folloing command.
+    - $ make package_update-clean
+
