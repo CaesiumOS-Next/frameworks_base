@@ -216,6 +216,12 @@ class Task extends WindowContainer<AppWindowToken> implements DimLayer.DimLayerU
             mPreserveNonFloatingState = false;
         }
 
+        // Make sure to remove dim layer user from previous display
+        // if the stack to be re-parented is on other display.
+        if (prevDisplayContent != stack.getDisplayContent()) {
+            prevDisplayContent.mDimLayerController.removeDimLayerUser(this);
+        }
+
         getParent().removeChild(this);
         stack.addTask(this, position, showForAllUsers(), moveParents);
 

@@ -906,6 +906,11 @@ public class TaskStack extends WindowContainer<Task> implements DimLayer.DimLaye
      * re-parented.
      */
     void onRemovedFromDisplay() {
+        // Remove all dim layer users from previous display
+        for (int i = mChildren.size() - 1; i >= 0; i--) {
+            Task task = mChildren.get(i);
+            mDisplayContent.mDimLayerController.removeDimLayerUser(task);
+        }
         mDisplayContent.mDimLayerController.removeDimLayerUser(this);
         EventLog.writeEvent(EventLogTags.WM_STACK_REMOVED, mStackId);
 
