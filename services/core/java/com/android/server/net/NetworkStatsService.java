@@ -765,10 +765,13 @@ public class NetworkStatsService extends INetworkStatsService.Stub {
     public NetworkStats getDetailedUidStats(String[] requiredIfaces) {
         try {
             final String[] ifacesToQuery;
+            final Map<String, String> stackedIfaces;
             synchronized (mStatsLock) {
                 ifacesToQuery = augmentWithStackedInterfacesLocked(requiredIfaces);
+                // Get a snapshot of mStackedIfaces for non-synchronized getNetworkStatsUidDetail().
+                stackedIfaces = new ArrayMap<>(mStackedIfaces);
             }
-            return getNetworkStatsUidDetail(ifacesToQuery);
+            return getNetworkStatsUidDetail(ifacesToQuery, stackedIfaces);
         } catch (RemoteException e) {
             Log.wtf(TAG, "Error compiling UID stats", e);
             return new NetworkStats(0L, 0);
@@ -1160,7 +1163,7 @@ public class NetworkStatsService extends INetworkStatsService.Stub {
     private void recordSnapshotLocked(long currentTime) throws RemoteException {
         // snapshot and record current counters; read UID stats first to
         // avoid over counting dev stats.
-        final NetworkStats uidSnapshot = getNetworkStatsUidDetail(INTERFACES_ALL);
+        final NetworkStats uidSnapshot = getNetworkStatsUidDetail(INTERFACES_ALL, mStackedIfaces);
         final NetworkStats xtSnapshot = getNetworkStatsXt();
         final NetworkStats devSnapshot = mNetworkManager.getNetworkStatsSummaryDev();
 
@@ -1498,15 +1501,18 @@ public class NetworkStatsService extends INetworkStatsService.Stub {
      * @param ifaces A list of interfaces the stats should be restricted to, or
      *               {@link NetworkStats#INTERFACES_ALL}.
      */
-    private NetworkStats getNetworkStatsUidDetail(@Nullable String[] ifaces)
+    private NetworkStats getNetworkStatsUidDetail(@Nullable String[] ifaces,
+            Map<String, String> stackedIfaces)
             throws RemoteException {
 
+        // TODO: remove 464xlat adjustments from NetworkStatsFactory and apply all at once here.
         final NetworkStats uidSnapshot = mNetworkManager.getNetworkStatsUidDetail(UID_ALL,
                 ifaces);
 
         // fold tethering stats and operations into uid snapshot
         final NetworkStats tetherSnapshot = getNetworkStatsTethering(STATS_PER_UID);
         tetherSnapshot.filter(UID_ALL, ifaces, TAG_ALL);
+        NetworkStats.apply464xlatAdjustments(uidSnapshot, tetherSnapshot, stackedIfaces);
         uidSnapshot.combineAllValues(tetherSnapshot);
 
         final TelephonyManager telephonyManager = (TelephonyManager) mContext.getSystemService(
@@ -1516,12 +1522,11 @@ public class NetworkStatsService extends INetworkStatsService.Stub {
         final NetworkStats vtStats = telephonyManager.getVtDataUsage(STATS_PER_UID);
         if (vtStats != null) {
             vtStats.filter(UID_ALL, ifaces, TAG_ALL);
+            NetworkStats.apply464xlatAdjustments(uidSnapshot, vtStats, stackedIfaces);
             uidSnapshot.combineAllValues(vtStats);
         }
 
         uidSnapshot.combineAllValues(mUidOperations);
-
-        // TODO: apply tethering & VC 464xlat adjustments here
 
         return uidSnapshot;
     }
