@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c1324c9b_28e4a290",
+        "filename": "location/lib/java/com/android/location/provider/GmsFusedBatchOptions.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1060529
+      },
+      "writtenOn": "2018-02-28T03:49:57Z",
+      "side": 1,
+      "message": "Wyatt, are we still using GmsFusedBatchOptions after O? As far as I know this is only used in FlpHal.",
+      "range": {
+        "startLine": 24,
+        "startChar": 13,
+        "endLine": 24,
+        "endChar": 33
+      },
+      "revId": "f5e540fee8e2a84bbd62c85fbcedb563dc174665",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
