@@ -22,6 +22,30 @@
       "revId": "c23201175a05b90c7c4cb9871738b0577ba14d29",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2df51051_415d553f",
+        "filename": "core/java/android/se/omapi/Session.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1163305
+      },
+      "writtenOn": "2018-03-01T08:14:18Z",
+      "side": 1,
+      "message": "Unfortunately com.android.se.SecureElementService cannot be referred from here. It might be better to add public constants to android.se.omapi.SEService in the near future, but I followed the same manner as the line 311 of this file this time.",
+      "parentUuid": "f4228cb2_c8589c3c",
+      "range": {
+        "startLine": 200,
+        "startChar": 42,
+        "endLine": 200,
+        "endChar": 45
+      },
+      "revId": "c23201175a05b90c7c4cb9871738b0577ba14d29",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
