@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f4228cb2_c8589c3c",
+        "filename": "core/java/android/se/omapi/Session.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1259546
+      },
+      "writtenOn": "2018-03-01T08:07:47Z",
+      "side": 1,
+      "message": "maybe replace by startsWith(SecureElementService.UICC_TERMINAL) to synchronize with other part of code.",
+      "range": {
+        "startLine": 200,
+        "startChar": 42,
+        "endLine": 200,
+        "endChar": 45
+      },
+      "revId": "c23201175a05b90c7c4cb9871738b0577ba14d29",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
