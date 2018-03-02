@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bbaa5ec6_3d4c51ae",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2018-03-02T04:43:25Z",
+      "side": 1,
+      "message": "I hope this case actually never happens if your description is correct. While I agree with the reasoning, other things next to this code seem to rely on networkAgent.linkProperties being valid ; in particular if \"no interfaces were added or removed\" then how is the network connected, and is it right to say the NetworkAgentInfo \"everConnected\" ? Even VPNs have their own interface.\n\nEither way, this concern is not relevant to this change, so LGTM.",
+      "range": {
+        "startLine": 16,
+        "startChar": 3,
+        "endLine": 16,
+        "endChar": 38
+      },
+      "revId": "75b9df13f7d421d2e3451c6a77192f7060fa4f08",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
