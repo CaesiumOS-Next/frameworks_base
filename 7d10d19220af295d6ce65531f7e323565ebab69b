@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6b32c608_ca9d08e0",
+        "filename": "services/core/java/com/android/server/policy/PhoneWindowManager.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 725,
+      "author": {
+        "id": 1006497
+      },
+      "writtenOn": "2018-03-02T16:26:08Z",
+      "side": 1,
+      "message": "nit: Improper capitalization:\n\n  // Whether system navigation keys are enabled",
+      "range": {
+        "startLine": 725,
+        "startChar": 42,
+        "endLine": 725,
+        "endChar": 49
+      },
+      "revId": "7d10d19220af295d6ce65531f7e323565ebab69b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a902242_8690e935",
+        "filename": "services/core/java/com/android/server/policy/PhoneWindowManager.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 2318,
+      "author": {
+        "id": 1006497
+      },
+      "writtenOn": "2018-03-02T16:26:08Z",
+      "side": 1,
+      "message": "nit: indentation is wrong",
+      "revId": "7d10d19220af295d6ce65531f7e323565ebab69b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
