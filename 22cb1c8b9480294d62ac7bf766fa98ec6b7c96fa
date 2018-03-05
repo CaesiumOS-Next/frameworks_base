@@ -22,6 +22,30 @@
       "revId": "22cb1c8b9480294d62ac7bf766fa98ec6b7c96fa",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2e00ba32_88591188",
+        "filename": "core/jni/android_os_Parcel.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 775,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2018-03-05T21:53:23Z",
+      "side": 1,
+      "message": "Any specific advice?\n\nThe lines were already too long before this CL.\n\nThat being said I welcome all suggestions on how to fix the indent/line length here, this is just a rough attempt at aligning the two columns so they\u0027re mostly the same.",
+      "parentUuid": "b5927297_d9db6962",
+      "range": {
+        "startLine": 775,
+        "startChar": 44,
+        "endLine": 775,
+        "endChar": 66
+      },
+      "revId": "22cb1c8b9480294d62ac7bf766fa98ec6b7c96fa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
