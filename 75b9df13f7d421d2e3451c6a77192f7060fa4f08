@@ -22,6 +22,30 @@
       "revId": "75b9df13f7d421d2e3451c6a77192f7060fa4f08",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "614d3ab0_c95a129b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2018-03-05T06:57:40Z",
+      "side": 1,
+      "message": "Generally, we\u0027ll have a very bad time if nai.linkProperties is null. For example, getLinkProperties() will throw an NPE. Added an Slog.wtf in this case.",
+      "parentUuid": "bbaa5ec6_3d4c51ae",
+      "range": {
+        "startLine": 16,
+        "startChar": 3,
+        "endLine": 16,
+        "endChar": 38
+      },
+      "revId": "75b9df13f7d421d2e3451c6a77192f7060fa4f08",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
