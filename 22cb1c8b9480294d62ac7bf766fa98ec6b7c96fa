@@ -118,6 +118,30 @@
       "revId": "22cb1c8b9480294d62ac7bf766fa98ec6b7c96fa",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bdfe31e5_3f3eb930",
+        "filename": "core/jni/android_os_Parcel.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 775,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2018-03-06T00:37:21Z",
+      "side": 1,
+      "message": "So is this what you have in mind?\n\n\n   MACRO_NAME(\n       arg1Long, arg2, arg3LongLong)\n   MACRO_NAME_OTHER(\n       arg1, arg3Long)\n\n?",
+      "parentUuid": "f6357783_236f5947",
+      "range": {
+        "startLine": 775,
+        "startChar": 44,
+        "endLine": 775,
+        "endChar": 66
+      },
+      "revId": "22cb1c8b9480294d62ac7bf766fa98ec6b7c96fa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
