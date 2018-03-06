@@ -70,6 +70,30 @@
       "revId": "22cb1c8b9480294d62ac7bf766fa98ec6b7c96fa",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ddeaeccd_99c5793a",
+        "filename": "core/jni/android_os_Parcel.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 775,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2018-03-06T00:14:14Z",
+      "side": 1,
+      "message": "I could do the double intent from the start. It\u0027s also a bit tricky because some have signature parameter, some don\u0027t. \n\nThe long-signature-containing macro is deliberately NAME,SIG,FUNCTION to have easy drop-in (replace {} with macro call) but this means now its hard to align NAME,FUNCTION from autosig to non-autosig version.\n\nAll in all I\u0027d like a strong opinion here from someone (jreck?) if possible?",
+      "parentUuid": "886027a5_b7f083c0",
+      "range": {
+        "startLine": 775,
+        "startChar": 44,
+        "endLine": 775,
+        "endChar": 66
+      },
+      "revId": "22cb1c8b9480294d62ac7bf766fa98ec6b7c96fa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
