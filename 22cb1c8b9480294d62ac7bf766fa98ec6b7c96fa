@@ -142,6 +142,30 @@
       "revId": "22cb1c8b9480294d62ac7bf766fa98ec6b7c96fa",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bbfdd522_c8fb6d4f",
+        "filename": "core/jni/android_os_Parcel.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 775,
+      "author": {
+        "id": 1010103
+      },
+      "writtenOn": "2018-03-06T00:48:49Z",
+      "side": 1,
+      "message": "Yeah that looks good",
+      "parentUuid": "bdfe31e5_3f3eb930",
+      "range": {
+        "startLine": 775,
+        "startChar": 44,
+        "endLine": 775,
+        "endChar": 66
+      },
+      "revId": "22cb1c8b9480294d62ac7bf766fa98ec6b7c96fa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
