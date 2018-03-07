@@ -70,6 +70,30 @@
       "revId": "f5e540fee8e2a84bbd62c85fbcedb563dc174665",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0dfac947_43749272",
+        "filename": "location/lib/java/com/android/location/provider/GmsFusedBatchOptions.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1105161
+      },
+      "writtenOn": "2018-03-07T23:07:39Z",
+      "side": 1,
+      "message": "Yes, please go ahead and remove - most things with \"FusedLocation\" and/or \"Flp\" + \"Hardware\" are technical debt, to-be-cleaned, per https://b.corp.google.com/issues/35726697  - thanks!",
+      "parentUuid": "805e5c9c_14dc09fc",
+      "range": {
+        "startLine": 24,
+        "startChar": 13,
+        "endLine": 24,
+        "endChar": 33
+      },
+      "revId": "f5e540fee8e2a84bbd62c85fbcedb563dc174665",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
