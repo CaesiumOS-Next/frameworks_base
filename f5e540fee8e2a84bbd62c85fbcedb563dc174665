@@ -94,6 +94,30 @@
       "revId": "f5e540fee8e2a84bbd62c85fbcedb563dc174665",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5a4b6f27_5f1894ac",
+        "filename": "location/lib/java/com/android/location/provider/GmsFusedBatchOptions.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2018-03-08T07:46:02Z",
+      "side": 1,
+      "message": "Uploaded a follow-up CL for removing them. https://android-review.googlesource.com/c/platform/frameworks/base/+/636180",
+      "parentUuid": "0dfac947_43749272",
+      "range": {
+        "startLine": 24,
+        "startChar": 13,
+        "endLine": 24,
+        "endChar": 33
+      },
+      "revId": "f5e540fee8e2a84bbd62c85fbcedb563dc174665",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
