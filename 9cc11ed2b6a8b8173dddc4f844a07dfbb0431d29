@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6ab8ea75_bfc0c027",
+        "filename": "tests/net/java/com/android/server/connectivity/PermissionMonitorTest.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2018-03-20T14:29:13Z",
+      "side": 1,
+      "message": "Remove this",
+      "range": {
+        "startLine": 38,
+        "startChar": 20,
+        "endLine": 38,
+        "endChar": 25
+      },
+      "revId": "9cc11ed2b6a8b8173dddc4f844a07dfbb0431d29",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
