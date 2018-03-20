@@ -22,6 +22,30 @@
       "revId": "158a4d06ac46245f34964c7f4b1abe97cc80763e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "73e6a1f2_24c13f5a",
+        "filename": "tests/net/java/android/net/NetworkCapabilitiesTest.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 283,
+      "author": {
+        "id": 1112054
+      },
+      "writtenOn": "2018-03-20T19:39:18Z",
+      "side": 1,
+      "message": "Good catch! You\u0027re right. I\u0027ve added FORCE_RESTRICTED_CAPABILITIES and modified test to check this case.",
+      "parentUuid": "77cc719e_aa4bfa33",
+      "range": {
+        "startLine": 283,
+        "startChar": 46,
+        "endLine": 283,
+        "endChar": 76
+      },
+      "revId": "158a4d06ac46245f34964c7f4b1abe97cc80763e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
