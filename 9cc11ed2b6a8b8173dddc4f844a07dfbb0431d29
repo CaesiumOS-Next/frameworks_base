@@ -2,6 +2,52 @@
   "comments": [
     {
       "key": {
+        "uuid": "a90e378a_e4a47e77",
+        "filename": "services/core/java/com/android/server/ConnectivityService.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 4380,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2018-03-20T16:29:15Z",
+      "side": 1,
+      "message": "Nit: if you respin this change, make this \"nc\" instead of \"networkCapabilities\"?",
+      "range": {
+        "startLine": 4380,
+        "startChar": 36,
+        "endLine": 4380,
+        "endChar": 55
+      },
+      "revId": "9cc11ed2b6a8b8173dddc4f844a07dfbb0431d29",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e1ab9c18_ae4ae6bf",
+        "filename": "services/core/java/com/android/server/connectivity/PermissionMonitor.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2018-03-20T16:29:15Z",
+      "side": 1,
+      "message": "Nit: this could (should?) be \u003d\u003d instead of \u003c\u003d.",
+      "range": {
+        "startLine": 200,
+        "startChar": 42,
+        "endLine": 200,
+        "endChar": 44
+      },
+      "revId": "9cc11ed2b6a8b8173dddc4f844a07dfbb0431d29",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6ab8ea75_bfc0c027",
         "filename": "tests/net/java/com/android/server/connectivity/PermissionMonitorTest.java",
         "patchSetId": 1
