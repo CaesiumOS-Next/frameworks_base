@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "022250cf_cfc765be",
+        "filename": "core/java/android/net/NetworkCapabilities.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 321,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2018-03-21T10:48:10Z",
+      "side": 1,
+      "message": "Actually - do we need this? AIUI the reason for putting OEM_PAID into the unwanted set by default is to ensure that by default applications don\u0027t match OEM_PAID networks.\n\nBut this CL now ensures that NOT_RESTRICTED is removed if OEM_PAID is present. And NOT_RESTRICTED is set by default. Doesn\u0027t that accomplish the goal by itself?",
+      "range": {
+        "startLine": 321,
+        "startChar": 30,
+        "endLine": 321,
+        "endChar": 59
+      },
+      "revId": "ba9e5a75dc2316de669fd590d88fb98cfe35cb74",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
