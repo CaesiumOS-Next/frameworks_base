@@ -22,6 +22,30 @@
       "revId": "ba9e5a75dc2316de669fd590d88fb98cfe35cb74",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dbe2ce86_9e44ba9e",
+        "filename": "core/java/android/net/NetworkCapabilities.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 321,
+      "author": {
+        "id": 1112054
+      },
+      "writtenOn": "2018-03-22T18:21:21Z",
+      "side": 1,
+      "message": "I think we still need it to be in unwanted by default, because we don\u0027t want to return oem-paid network if system app is not requesting it explicitly.",
+      "parentUuid": "022250cf_cfc765be",
+      "range": {
+        "startLine": 321,
+        "startChar": 30,
+        "endLine": 321,
+        "endChar": 59
+      },
+      "revId": "ba9e5a75dc2316de669fd590d88fb98cfe35cb74",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
