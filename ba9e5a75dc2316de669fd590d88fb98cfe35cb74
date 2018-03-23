@@ -70,6 +70,30 @@
       "revId": "ba9e5a75dc2316de669fd590d88fb98cfe35cb74",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2168750b_4b808508",
+        "filename": "core/java/android/net/NetworkCapabilities.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 321,
+      "author": {
+        "id": 1112054
+      },
+      "writtenOn": "2018-03-23T19:12:16Z",
+      "side": 1,
+      "message": "Okay, strictly speaking having OEM_PAID in the default list is nice to have, but not required.  I removed default unwanted list if it make this CL a bit less risky.  We should keep  force restricted network logic for OEM_PAID though.\n\nChanged comment to this CL appropriately.",
+      "parentUuid": "9d43b5bc_0964db1f",
+      "range": {
+        "startLine": 321,
+        "startChar": 30,
+        "endLine": 321,
+        "endChar": 59
+      },
+      "revId": "ba9e5a75dc2316de669fd590d88fb98cfe35cb74",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
