@@ -46,6 +46,30 @@
       "revId": "ba9e5a75dc2316de669fd590d88fb98cfe35cb74",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9d43b5bc_0964db1f",
+        "filename": "core/java/android/net/NetworkCapabilities.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 321,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2018-03-23T02:17:48Z",
+      "side": 1,
+      "message": "System apps don\u0027t automatically get restricted networks. They have to clear the NOT_RESTRICTED bit from the capabilities.\n\nAn app that wanted a network with Internet access would never have needed to do this, because a network with Internet access has until now been guaranteed to be unrestricted. So I don\u0027t think there is any existing code that could now start getting an network with INTERNET and OEM_PAID by mistake.\n\nCode in the system that called clearCapabilities() could be getting OEM_PAID INTERNET networks regardless of what we do here.\n\nISTM that mean we don\u0027t need to add OEM_PAID to the unwanted set by default, because no app will be getting this without expecting it. Are there cases I\u0027m missing?\n\n(Note: I\u0027m not strongly opposed to doing this, but this code does have a lot of callers, and this sort of change hasn\u0027t been made before, so if we can live without it, that would be preferable.)",
+      "parentUuid": "dbe2ce86_9e44ba9e",
+      "range": {
+        "startLine": 321,
+        "startChar": 30,
+        "endLine": 321,
+        "endChar": 59
+      },
+      "revId": "ba9e5a75dc2316de669fd590d88fb98cfe35cb74",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
