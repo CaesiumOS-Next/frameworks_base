@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "060050fe_45d72ca4",
+        "filename": "core/jni/AndroidRuntime.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 879,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2018-03-23T18:14:44Z",
+      "side": 0,
+      "message": "Please don\u0027t mix different cleanups. This should be in a separate CL.",
+      "range": {
+        "startLine": 863,
+        "startChar": 0,
+        "endLine": 879,
+        "endChar": 64
+      },
+      "revId": "6941fcd88cbc10c210eb8264caa6d193404cd840",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}

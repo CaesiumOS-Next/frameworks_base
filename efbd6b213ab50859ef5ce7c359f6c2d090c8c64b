@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "41038074_9e647d65",
+        "filename": "services/core/java/com/android/server/am/ActivityManagerService.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 5695,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2018-03-23T18:14:44Z",
+      "side": 1,
+      "message": "Line too long.",
+      "range": {
+        "startLine": 5695,
+        "startChar": 0,
+        "endLine": 5695,
+        "endChar": 109
+      },
+      "revId": "efbd6b213ab50859ef5ce7c359f6c2d090c8c64b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7c4524be_87540cf9",
+        "filename": "services/core/java/com/android/server/am/ActivityManagerService.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 5700,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2018-03-23T18:14:44Z",
+      "side": 1,
+      "message": "Wrong indent.",
+      "range": {
+        "startLine": 5700,
+        "startChar": 20,
+        "endLine": 5700,
+        "endChar": 24
+      },
+      "revId": "efbd6b213ab50859ef5ce7c359f6c2d090c8c64b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
