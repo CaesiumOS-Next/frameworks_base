@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3aa30086_b040db0b",
+        "filename": "services/core/java/com/android/server/IpSecService.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 1471,
+      "author": {
+        "id": 1060151
+      },
+      "writtenOn": "2018-03-23T22:42:06Z",
+      "side": 1,
+      "message": "We are missing a check in this function that the address family of destination and source are the same. I think we can break this up into 2 checks and get more value out of the function:\n\n1) check that destination and source have the same address family.\n2) check that either of them is Inet4Address.\n\nAlso better to check against Inet4Address. When Inet7Address comes around... :-)",
+      "range": {
+        "startLine": 1467,
+        "startChar": 12,
+        "endLine": 1471,
+        "endChar": 59
+      },
+      "revId": "17a2f345270e82c8ce0ffe618df9d5a7edae704c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
