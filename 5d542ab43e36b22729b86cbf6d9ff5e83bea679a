@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a8008af1_0156208b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2018-03-23T20:22:46Z",
+      "side": 1,
+      "message": "Similar to the other CL, not sure this is really a decent test for this functionality. But I\u0027m not sure what a good way to test is (attach jdb/gdb to induce timeouts?).",
+      "range": {
+        "startLine": 10,
+        "startChar": 6,
+        "endLine": 10,
+        "endChar": 20
+      },
+      "revId": "5d542ab43e36b22729b86cbf6d9ff5e83bea679a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
