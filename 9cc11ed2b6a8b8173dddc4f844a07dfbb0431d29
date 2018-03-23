@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "25ac4388_c56fd298",
+        "filename": "services/core/java/com/android/server/ConnectivityService.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 4380,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2018-03-23T04:36:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a90e378a_e4a47e77",
+      "range": {
+        "startLine": 4380,
+        "startChar": 36,
+        "endLine": 4380,
+        "endChar": 55
+      },
+      "revId": "9cc11ed2b6a8b8173dddc4f844a07dfbb0431d29",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e1ab9c18_ae4ae6bf",
         "filename": "services/core/java/com/android/server/connectivity/PermissionMonitor.java",
         "patchSetId": 1
@@ -45,6 +69,30 @@
       "revId": "9cc11ed2b6a8b8173dddc4f844a07dfbb0431d29",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "40a99ae5_fb953a5d",
+        "filename": "services/core/java/com/android/server/connectivity/PermissionMonitor.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2018-03-23T04:36:49Z",
+      "side": 1,
+      "message": "Done, although my general guideline is to put \u003c\u003d because, if you suppose length is ever -1, you typically want to not iterate rather than crash the system ? I mean, I get that if .length returns \u003c 0 we\u0027re pretty wedged and maybe it\u0027s better to crash, but I\u0027ve been saved by this guideline many times in fencepost bug situations so I\u0027m curious of reasons why \u003d\u003d would be a better general guideline.",
+      "parentUuid": "e1ab9c18_ae4ae6bf",
+      "range": {
+        "startLine": 200,
+        "startChar": 42,
+        "endLine": 200,
+        "endChar": 44
+      },
+      "revId": "9cc11ed2b6a8b8173dddc4f844a07dfbb0431d29",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "ad208a4c_a4630741",
+        "filename": "services/core/java/com/android/server/connectivity/PermissionMonitor.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2018-03-23T04:36:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c92bae4e_9cca22b8",
+      "range": {
+        "startLine": 209,
+        "startChar": 12,
+        "endLine": 209,
+        "endChar": 54
+      },
+      "revId": "9cc11ed2b6a8b8173dddc4f844a07dfbb0431d29",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6ab8ea75_bfc0c027",
         "filename": "tests/net/java/com/android/server/connectivity/PermissionMonitorTest.java",
         "patchSetId": 1
@@ -91,6 +163,30 @@
       "revId": "9cc11ed2b6a8b8173dddc4f844a07dfbb0431d29",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d75c6820_163055ad",
+        "filename": "tests/net/java/com/android/server/connectivity/PermissionMonitorTest.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2018-03-23T04:36:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6ab8ea75_bfc0c027",
+      "range": {
+        "startLine": 38,
+        "startChar": 20,
+        "endLine": 38,
+        "endChar": 25
+      },
+      "revId": "9cc11ed2b6a8b8173dddc4f844a07dfbb0431d29",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
