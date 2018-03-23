@@ -62,6 +62,7 @@ public class IpSecServiceParameterizedTest {
     private static final int TEST_SPI = 0xD1201D;
 
     private final String mDestinationAddr;
+    private final String mFamily;
     private final String mSourceAddr;
     private final LinkAddress mLocalInnerAddress;
 
@@ -69,8 +70,8 @@ public class IpSecServiceParameterizedTest {
     public static Collection ipSecConfigs() {
         return Arrays.asList(
                 new Object[][] {
-                {"1.2.3.4", "8.8.4.4", "10.0.1.1/24"},
-                {"2601::2", "2601::10", "2001:db8::1/64"}
+                {"1.2.3.4", "8.8.4.4", "10.0.1.1/24", "IPv4"},
+                {"2601::2", "2601::10", "2001:db8::1/64", "IPv6"}
         });
     }
 
@@ -109,10 +110,11 @@ public class IpSecServiceParameterizedTest {
     private static final int REMOTE_ENCAP_PORT = 4500;
 
     public IpSecServiceParameterizedTest(
-            String sourceAddr, String destAddr, String localInnerAddr) {
+            String sourceAddr, String destAddr, String localInnerAddr, String family) {
         mSourceAddr = sourceAddr;
         mDestinationAddr = destAddr;
         mLocalInnerAddress = new LinkAddress(localInnerAddr);
+        mFamily = family;
     }
 
     @Before
@@ -306,11 +308,21 @@ public class IpSecServiceParameterizedTest {
         addAuthAndCryptToIpSecConfig(ipSecConfig);
         addEncapSocketToIpSecConfig(udpSock.resourceId, ipSecConfig);
 
-        IpSecTransformResponse createTransformResp =
-                mIpSecService.createTransform(ipSecConfig, new Binder());
-        assertEquals(IpSecManager.Status.OK, createTransformResp.status);
+        if (mFamily.equals("IPv4")) {
+            IpSecTransformResponse createTransformResp =
+                    mIpSecService.createTransform(ipSecConfig, new Binder());
+            assertEquals(IpSecManager.Status.OK, createTransformResp.status);
 
-        verifyTransformNetdCalls(ipSecConfig, createTransformResp, udpSock.port);
+            verifyTransformNetdCalls(ipSecConfig, createTransformResp, udpSock.port);
+        } else {
+            try {
+                IpSecTransformResponse createTransformResp =
+                        mIpSecService.createTransform(ipSecConfig, new Binder());
+                fail("Expected IllegalArgumentException on attempt to use UDP Encap in IPv6");
+            } catch (IllegalArgumentException expected) {
+
+            }
+        }
     }
 
     @Test
@@ -323,11 +335,21 @@ public class IpSecServiceParameterizedTest {
         addAuthAndCryptToIpSecConfig(ipSecConfig);
         addEncapSocketToIpSecConfig(udpSock.resourceId, ipSecConfig);
 
-        IpSecTransformResponse createTransformResp =
-                mIpSecService.createTransform(ipSecConfig, new Binder());
-        assertEquals(IpSecManager.Status.OK, createTransformResp.status);
+        if (mFamily.equals("IPv4")) {
+            IpSecTransformResponse createTransformResp =
+                    mIpSecService.createTransform(ipSecConfig, new Binder());
+            assertEquals(IpSecManager.Status.OK, createTransformResp.status);
 
-        verifyTransformNetdCalls(ipSecConfig, createTransformResp, udpSock.port);
+            verifyTransformNetdCalls(ipSecConfig, createTransformResp, udpSock.port);
+        } else {
+            try {
+                IpSecTransformResponse createTransformResp =
+                        mIpSecService.createTransform(ipSecConfig, new Binder());
+                fail("Expected IllegalArgumentException on attempt to use UDP Encap in IPv6");
+            } catch (IllegalArgumentException expected) {
+
+            }
+        }
     }
 
     @Test
