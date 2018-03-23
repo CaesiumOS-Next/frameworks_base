@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bd777609_f21d45bf",
+        "filename": "services/core/java/com/android/server/IpSecService.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 1467,
+      "author": {
+        "id": 1221725
+      },
+      "writtenOn": "2018-03-23T18:00:01Z",
+      "side": 1,
+      "message": "I think we need to check both the src and dst addresses; Technically the transforms we create are non-directional, so we need to be sure of both.",
+      "range": {
+        "startLine": 1467,
+        "startChar": 46,
+        "endLine": 1467,
+        "endChar": 76
+      },
+      "revId": "5b4671d3c7c9d065bae4899366b4f0746d0709db",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "86f5ee36_547cde82",
+        "filename": "services/core/java/com/android/server/IpSecService.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 1469,
+      "author": {
+        "id": 1221725
+      },
+      "writtenOn": "2018-03-23T18:00:01Z",
+      "side": 1,
+      "message": "Let\u0027s do this check first as a short-circuit. It also helps with readability, since it\u0027s more obvious what we\u0027re doing at first glance.",
+      "range": {
+        "startLine": 1469,
+        "startChar": 19,
+        "endLine": 1469,
+        "endChar": 69
+      },
+      "revId": "5b4671d3c7c9d065bae4899366b4f0746d0709db",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ec9855bd_deae3def",
+        "filename": "tests/net/java/com/android/server/IpSecServiceParameterizedTest.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1221725
+      },
+      "writtenOn": "2018-03-23T18:00:01Z",
+      "side": 1,
+      "message": "Can this be taken as an int? We\u0027d gain the ability to switch on OsConstants.AF_INET or AF_INET6",
+      "range": {
+        "startLine": 113,
+        "startChar": 71,
+        "endLine": 113,
+        "endChar": 84
+      },
+      "revId": "5b4671d3c7c9d065bae4899366b4f0746d0709db",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
