@@ -27,6 +27,7 @@ import static org.mockito.Matchers.anyObject;
 import static org.mockito.Matchers.anyString;
 import static org.mockito.Matchers.eq;
 import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
@@ -36,7 +37,10 @@ import android.system.Os;
 
 import com.android.server.IpSecService;
 
+import java.io.FileDescriptor;
+import java.net.DatagramSocket;
 import java.net.InetAddress;
+import java.net.Socket;
 import java.net.UnknownHostException;
 
 import org.junit.Before;
@@ -185,6 +189,19 @@ public class IpSecManagerTest {
         encapSocket.close();
 
         verify(mMockIpSecService).closeUdpEncapsulationSocket(DUMMY_RESOURCE_ID);
+    }
+
+    @Test
+    public void testMockedSocketCreationForced() throws Exception {
+        Socket mockSocket = mock(Socket.class);
+        IpSecConfig dummyConfig = new IpSecConfig();
+        IpSecTransform dummyTransform = new IpSecTransform(null, dummyConfig);
+        when(mockSocket.getFileDescriptor$()).thenReturn(FileDescriptor.in);
+
+        mIpSecManager.applyTransportModeTransform(
+                mockSocket, IpSecManager.DIRECTION_IN, dummyTransform);
+
+        verify(mockSocket, times(1)).getSoLinger();
     }
 
     @Test

@@ -336,6 +336,13 @@ public final class IpSecManager {
      */
     public void applyTransportModeTransform(@NonNull Socket socket,
             @PolicyDirection int direction, @NonNull IpSecTransform transform) throws IOException {
+        // While technically the client socket is backed by an FD, the OpenJDK implementation of
+        // Socket only allocates an FD when bind() or connect() or other similar methods are
+        // called. So we call getSoLinger to ensure the FD creation, so that we can apply a
+        // transform to it. Only the Socket API (TCP) suffers from this issue; all constructors
+        // of UDP sockets generate an FD by default
+        socket.getSoLinger();
+
         applyTransportModeTransform(socket.getFileDescriptor$(), direction, transform);
     }
 
