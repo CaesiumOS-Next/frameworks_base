@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a415b2c5_392e623c",
+        "filename": "services/core/java/com/android/server/ConnectivityService.java",
+        "patchSetId": 12
+      },
+      "lineNbr": 2203,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2018-04-04T15:08:00Z",
+      "side": 1,
+      "message": "Nit: consider being consistent with the code above, which does:\n\n                    final NetworkAgentInfo nai;\n                    synchronized (mNetworkForNetId) {\n                        nai \u003d mNetworkForNetId.get(msg.arg2);\n                    }",
+      "range": {
+        "startLine": 2202,
+        "startChar": 0,
+        "endLine": 2203,
+        "endChar": 82
+      },
+      "revId": "b5c6e5074f8e092bf0baf0edfb54f5eeecc61075",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "630c66ed_f36882c3",
+        "filename": "services/core/java/com/android/server/connectivity/DnsManager.java",
+        "patchSetId": 12
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2018-04-04T15:08:00Z",
+      "side": 1,
+      "message": "Thank you very much for this detailed comment.",
+      "range": {
+        "startLine": 69,
+        "startChar": 11,
+        "endLine": 69,
+        "endChar": 28
+      },
+      "revId": "b5c6e5074f8e092bf0baf0edfb54f5eeecc61075",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4e647fad_4340c4c6",
+        "filename": "services/core/java/com/android/server/connectivity/NetworkMonitor.java",
+        "patchSetId": 12
+      },
+      "lineNbr": 781,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2018-04-04T15:08:00Z",
+      "side": 1,
+      "message": "This looks a bit scary. Maintaining parallel backoff schedule for this seems complex and manipulating the message queue is usually best avoided if possible.\n\nIt seems to me that it would be much simpler if we did the hostname DNS lookup inside isCaptivePortal(), or right after isCaptivePortal returns, but in any case in EvaluatingState. That way we already have an exponential backoff  mechanism. That way, the flow is:\n\n- isCaptivePortal() does its HTTP and HTTPS probes. All DNS is cleartext.\n- If the probe fails, continue to do exponential backoff in EvaluatingState.\n- If the probe says portal, go into the captive portal state and sit there until the user logs in.\n- If the probe succeeds and we\u0027re in strict mode, immediately do the DNS lookup for the provider name. If that DNS lookup fails, then the network is unvalidated, and we continue to do exponential backoff in EvaluatingState.\n- If we\u0027re not in strict mode, or if the lookup succeeds, send EVENT_PRIVATE_DNS_CONFIG_RESOLVED to CS telling it to program the resolvers, and enter EvaluatingPrivateDnsState\n\nIn EvaluatingPrivateDnsState, either wait for the signal from netd that the resolvers have validated, or just sit there doing our one-time encrypted DNS lookups until one of them succeeds. If we get a CMD_FORCE_REEVALUATION, bad luck: go back to EvaluatingState and repeat the captive portal probes.\n\nIf at any time we get a private DNS configuration changed message, go back to evaluation state without passing go or collecting $200.",
+      "range": {
+        "startLine": 780,
+        "startChar": 0,
+        "endLine": 781,
+        "endChar": 72
+      },
+      "revId": "b5c6e5074f8e092bf0baf0edfb54f5eeecc61075",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "26275fb9_5d4c7999",
+        "filename": "services/core/java/com/android/server/connectivity/NetworkMonitor.java",
+        "patchSetId": 12
+      },
+      "lineNbr": 795,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2018-04-04T15:08:00Z",
+      "side": 1,
+      "message": "Is there a reason we do this here? It seems to me that it would be simpler to do this in isCaptivePortal(), or right after isCaptivePortal returns. That way, the flow is:\n\n- isCaptivePortal() does its HTTP and HTTPS probes. All DNS is cleartext.\n- If the probe fails, continue to do exponential backoff in EvaluatingState.\n- If the probe says portal, go into the captive portal state and sit there until the user logs in.\n- If the probe succeeds and we\u0027re in strict mode, immediately do the DNS lookup for the provider name. If that DNS lookup fails, then the network is unvalidated, and we continue to do exponential backoff in EvaluatingState.\n- If we\u0027re not in strict mode, or if the lookup succeeds, send a message to CS telling it to program the resolvers.",
+      "range": {
+        "startLine": 795,
+        "startChar": 20,
+        "endLine": 795,
+        "endChar": 62
+      },
+      "revId": "b5c6e5074f8e092bf0baf0edfb54f5eeecc61075",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "65ea7397_5264fdf5",
+        "filename": "services/core/java/com/android/server/connectivity/NetworkMonitor.java",
+        "patchSetId": 12
+      },
+      "lineNbr": 827,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2018-04-04T15:08:00Z",
+      "side": 1,
+      "message": "Why do we need this? Excepting the lookup of the one-time hostname in EvaluatingPrivateDnsState above, it seems like we could simply things by just saying that all the DNS lookups made by NetworkMonitor are cleartext lookups.\n\nThe DNS lookup for the one-time hostname could be done via android_getaddrinfo directly, by using ResolvUtil to get a netId that has the insecure flag mixed into it.",
+      "range": {
+        "startLine": 827,
+        "startChar": 21,
+        "endLine": 827,
+        "endChar": 58
+      },
+      "revId": "b5c6e5074f8e092bf0baf0edfb54f5eeecc61075",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
