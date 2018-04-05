@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "a7d79d64_3bb6bca2",
+        "filename": "services/core/java/com/android/server/connectivity/NetworkMonitor.java",
+        "patchSetId": 15
+      },
+      "lineNbr": 327,
+      "author": {
+        "id": 1000451
+      },
+      "writtenOn": "2018-04-05T06:41:52Z",
+      "side": 1,
+      "message": "I think that makes good sense, actually.\n\nRe-org\u0027d.",
+      "parentUuid": "594fb80d_f7bf36e6",
+      "range": {
+        "startLine": 327,
+        "startChar": 12,
+        "endLine": 327,
+        "endChar": 68
+      },
+      "revId": "4fb1d05df36be3228b1fd2432a1ec2511ad73b27",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fa1d04f9_f6da3fea",
         "filename": "services/core/java/com/android/server/connectivity/NetworkMonitor.java",
         "patchSetId": 15
@@ -45,6 +69,30 @@
       "revId": "4fb1d05df36be3228b1fd2432a1ec2511ad73b27",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "85084a6f_b44728f9",
+        "filename": "services/core/java/com/android/server/connectivity/NetworkMonitor.java",
+        "patchSetId": 15
+      },
+      "lineNbr": 485,
+      "author": {
+        "id": 1000451
+      },
+      "writtenOn": "2018-04-05T06:41:52Z",
+      "side": 1,
+      "message": "Most substates of MaybeNotifyState eat this message and do nothing with it.\n\nEvaluatingPrivateDnsState will handle it as well.\n\nThis is just here for ValidatedState.  I moved it over there; hope that\u0027s more clear.",
+      "parentUuid": "fa1d04f9_f6da3fea",
+      "range": {
+        "startLine": 484,
+        "startChar": 0,
+        "endLine": 485,
+        "endChar": 61
+      },
+      "revId": "4fb1d05df36be3228b1fd2432a1ec2511ad73b27",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "193cfe70_33e8ae97",
+        "filename": "services/core/java/com/android/server/connectivity/NetworkMonitor.java",
+        "patchSetId": 15
+      },
+      "lineNbr": 777,
+      "author": {
+        "id": 1000451
+      },
+      "writtenOn": "2018-04-05T06:41:52Z",
+      "side": 1,
+      "message": "I don\u0027t understand why it seems scary.\n\nRegular sendMessage() is fine.  Changed.",
+      "parentUuid": "8ce07fb9_845ec0f6",
+      "range": {
+        "startLine": 777,
+        "startChar": 12,
+        "endLine": 777,
+        "endChar": 64
+      },
+      "revId": "4fb1d05df36be3228b1fd2432a1ec2511ad73b27",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "457681cc_5ba8ab8e",
         "filename": "services/core/java/com/android/server/connectivity/NetworkMonitor.java",
         "patchSetId": 15
@@ -91,6 +163,30 @@
       "revId": "4fb1d05df36be3228b1fd2432a1ec2511ad73b27",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "663f24c3_27436aee",
+        "filename": "services/core/java/com/android/server/connectivity/NetworkMonitor.java",
+        "patchSetId": 15
+      },
+      "lineNbr": 796,
+      "author": {
+        "id": 1000451
+      },
+      "writtenOn": "2018-04-05T06:41:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "457681cc_5ba8ab8e",
+      "range": {
+        "startLine": 796,
+        "startChar": 73,
+        "endLine": 796,
+        "endChar": 74
+      },
+      "revId": "4fb1d05df36be3228b1fd2432a1ec2511ad73b27",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "775f0106_9d1bd634",
+        "filename": "services/core/java/com/android/server/connectivity/NetworkMonitor.java",
+        "patchSetId": 15
+      },
+      "lineNbr": 817,
+      "author": {
+        "id": 1000451
+      },
+      "writtenOn": "2018-04-05T06:41:52Z",
+      "side": 1,
+      "message": "We need to process it in ValidatedState when, for example, we\u0027re already validated and the user changes the hostname in settings.\n\nIt\u0027s now only handled in ValidatedState and here.",
+      "parentUuid": "0c0151fb_ca8734c0",
+      "range": {
+        "startLine": 814,
+        "startChar": 0,
+        "endLine": 817,
+        "endChar": 53
+      },
+      "revId": "4fb1d05df36be3228b1fd2432a1ec2511ad73b27",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "82ff7f08_2fb576fc",
         "filename": "services/core/java/com/android/server/connectivity/NetworkMonitor.java",
         "patchSetId": 15
@@ -128,6 +248,30 @@
       "writtenOn": "2018-04-05T05:49:28Z",
       "side": 1,
       "message": "If when we get to this state the network is a captive portal, then no amount of waiting will result in a successful probe. Should we limit the number of attempts we make, and after that, go back into EvaluatingState?",
+      "range": {
+        "startLine": 852,
+        "startChar": 0,
+        "endLine": 854,
+        "endChar": 13
+      },
+      "revId": "4fb1d05df36be3228b1fd2432a1ec2511ad73b27",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b4648b69_9c37df48",
+        "filename": "services/core/java/com/android/server/connectivity/NetworkMonitor.java",
+        "patchSetId": 15
+      },
+      "lineNbr": 854,
+      "author": {
+        "id": 1000451
+      },
+      "writtenOn": "2018-04-05T06:41:52Z",
+      "side": 1,
+      "message": "I was relying on an app calling reportBadNetwork to send a message the moves us over to Evaluating.\n\nIf some enters \"bogus.example.com\" it seems like the smallest amount of traffic we can generate would be the occasional re-resolve.\n\nIf someone enters \"www.google.com\", the smallest traffic we can enter would be the occasional TLS re-connection.",
+      "parentUuid": "82ff7f08_2fb576fc",
       "range": {
         "startLine": 852,
         "startChar": 0,
