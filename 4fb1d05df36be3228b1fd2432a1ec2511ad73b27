@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "594fb80d_f7bf36e6",
+        "filename": "services/core/java/com/android/server/connectivity/NetworkMonitor.java",
+        "patchSetId": 15
+      },
+      "lineNbr": 327,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2018-04-05T05:49:28Z",
+      "side": 1,
+      "message": "We should think about whether this should this be a child of mDefaultState instead. I think the discriminator might be whether we should clear any captive portal notifications when we exit this state.",
+      "range": {
+        "startLine": 327,
+        "startChar": 12,
+        "endLine": 327,
+        "endChar": 68
+      },
+      "revId": "4fb1d05df36be3228b1fd2432a1ec2511ad73b27",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fa1d04f9_f6da3fea",
+        "filename": "services/core/java/com/android/server/connectivity/NetworkMonitor.java",
+        "patchSetId": 15
+      },
+      "lineNbr": 485,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2018-04-05T05:49:28Z",
+      "side": 1,
+      "message": "Is it correct to unconditionally transition to this state regardless of what state we\u0027re in now? What if we\u0027re in CaptivePortalState, or if we\u0027ve not done the captive portal probes yet?",
+      "range": {
+        "startLine": 484,
+        "startChar": 0,
+        "endLine": 485,
+        "endChar": 61
+      },
+      "revId": "4fb1d05df36be3228b1fd2432a1ec2511ad73b27",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8ce07fb9_845ec0f6",
+        "filename": "services/core/java/com/android/server/connectivity/NetworkMonitor.java",
+        "patchSetId": 15
+      },
+      "lineNbr": 777,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2018-04-05T05:49:28Z",
+      "side": 1,
+      "message": "sendMessageAtFrontOfQueue is usually best avoided if possible. Would using an incrementing token  (like EvaluatingState does) help avoid it?\n\nIf it is necessary, can you add a comment to explain why? What other messages might already be in the queue that we want to skip?",
+      "range": {
+        "startLine": 777,
+        "startChar": 12,
+        "endLine": 777,
+        "endChar": 64
+      },
+      "revId": "4fb1d05df36be3228b1fd2432a1ec2511ad73b27",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "457681cc_5ba8ab8e",
+        "filename": "services/core/java/com/android/server/connectivity/NetworkMonitor.java",
+        "patchSetId": 15
+      },
+      "lineNbr": 796,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2018-04-05T05:49:28Z",
+      "side": 1,
+      "message": "Suggest:\n\n// Note that this call races with the ConnectivityService code that programs the DNS-over-TLS\n// server IP addresses into netd. If netd doesn\u0027t know the IP addresses yet, or if the\n// connections to the IP addresses haven\u0027t yet been validated, netd will block for up to a few\n// seconds before failing the lookup.",
+      "range": {
+        "startLine": 796,
+        "startChar": 73,
+        "endLine": 796,
+        "endChar": 74
+      },
+      "revId": "4fb1d05df36be3228b1fd2432a1ec2511ad73b27",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0c0151fb_ca8734c0",
+        "filename": "services/core/java/com/android/server/connectivity/NetworkMonitor.java",
+        "patchSetId": 15
+      },
+      "lineNbr": 817,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2018-04-05T05:49:28Z",
+      "side": 1,
+      "message": "Can we achieve the same result by ensuring that only EvaluatingPrivateDnsState will ever process this message?",
+      "range": {
+        "startLine": 814,
+        "startChar": 0,
+        "endLine": 817,
+        "endChar": 53
+      },
+      "revId": "4fb1d05df36be3228b1fd2432a1ec2511ad73b27",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "82ff7f08_2fb576fc",
+        "filename": "services/core/java/com/android/server/connectivity/NetworkMonitor.java",
+        "patchSetId": 15
+      },
+      "lineNbr": 854,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2018-04-05T05:49:28Z",
+      "side": 1,
+      "message": "If when we get to this state the network is a captive portal, then no amount of waiting will result in a successful probe. Should we limit the number of attempts we make, and after that, go back into EvaluatingState?",
+      "range": {
+        "startLine": 852,
+        "startChar": 0,
+        "endLine": 854,
+        "endChar": 13
+      },
+      "revId": "4fb1d05df36be3228b1fd2432a1ec2511ad73b27",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
