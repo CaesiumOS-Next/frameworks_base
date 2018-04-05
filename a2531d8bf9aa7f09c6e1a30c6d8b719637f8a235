@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "3d9d40d4_6d32d4ed",
+        "filename": "services/core/java/com/android/server/connectivity/NetworkMonitor.java",
+        "patchSetId": 17
+      },
+      "lineNbr": 480,
+      "author": {
+        "id": 1000451
+      },
+      "writtenOn": "2018-04-05T21:30:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4b2e3580_1fe410b8",
+      "range": {
+        "startLine": 479,
+        "startChar": 77,
+        "endLine": 480,
+        "endChar": 33
+      },
+      "revId": "a2531d8bf9aa7f09c6e1a30c6d8b719637f8a235",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f73ccf37_fe8bd42a",
         "filename": "services/core/java/com/android/server/connectivity/NetworkMonitor.java",
         "patchSetId": 17
@@ -45,6 +69,30 @@
       "revId": "a2531d8bf9aa7f09c6e1a30c6d8b719637f8a235",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "37efb723_dc1aecde",
+        "filename": "services/core/java/com/android/server/connectivity/NetworkMonitor.java",
+        "patchSetId": 17
+      },
+      "lineNbr": 481,
+      "author": {
+        "id": 1000451
+      },
+      "writtenOn": "2018-04-05T21:30:17Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "f73ccf37_fe8bd42a",
+      "range": {
+        "startLine": 481,
+        "startChar": 32,
+        "endLine": 481,
+        "endChar": 56
+      },
+      "revId": "a2531d8bf9aa7f09c6e1a30c6d8b719637f8a235",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "0820b7a8_bd6994fc",
+        "filename": "services/core/java/com/android/server/connectivity/NetworkMonitor.java",
+        "patchSetId": 17
+      },
+      "lineNbr": 841,
+      "author": {
+        "id": 1000451
+      },
+      "writtenOn": "2018-04-05T21:30:17Z",
+      "side": 1,
+      "message": "TODO\u0027d.",
+      "parentUuid": "a1499c12_0faad890",
+      "range": {
+        "startLine": 841,
+        "startChar": 12,
+        "endLine": 841,
+        "endChar": 53
+      },
+      "revId": "a2531d8bf9aa7f09c6e1a30c6d8b719637f8a235",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "96595858_3fbeb7ef",
         "filename": "tests/net/java/com/android/server/ConnectivityServiceTest.java",
         "patchSetId": 17
@@ -91,6 +163,30 @@
       "revId": "a2531d8bf9aa7f09c6e1a30c6d8b719637f8a235",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bd4c86f1_2955ec4f",
+        "filename": "tests/net/java/com/android/server/ConnectivityServiceTest.java",
+        "patchSetId": 17
+      },
+      "lineNbr": 3696,
+      "author": {
+        "id": 1000451
+      },
+      "writtenOn": "2018-04-05T21:30:17Z",
+      "side": 1,
+      "message": "Removed.\n\nI think this may have been left over from mechanics associated with previous iterations.",
+      "parentUuid": "96595858_3fbeb7ef",
+      "range": {
+        "startLine": 3696,
+        "startChar": 8,
+        "endLine": 3696,
+        "endChar": 69
+      },
+      "revId": "a2531d8bf9aa7f09c6e1a30c6d8b719637f8a235",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
