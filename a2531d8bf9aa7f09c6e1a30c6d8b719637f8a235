@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4b2e3580_1fe410b8",
+        "filename": "services/core/java/com/android/server/connectivity/NetworkMonitor.java",
+        "patchSetId": 17
+      },
+      "lineNbr": 480,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2018-04-05T14:32:17Z",
+      "side": 1,
+      "message": "\"a no\" -\u003e \"a\"",
+      "range": {
+        "startLine": 479,
+        "startChar": 77,
+        "endLine": 480,
+        "endChar": 33
+      },
+      "revId": "a2531d8bf9aa7f09c6e1a30c6d8b719637f8a235",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f73ccf37_fe8bd42a",
+        "filename": "services/core/java/com/android/server/connectivity/NetworkMonitor.java",
+        "patchSetId": 17
+      },
+      "lineNbr": 481,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2018-04-05T14:32:17Z",
+      "side": 1,
+      "message": "This is a bit hard to follow.\n\nOn first connect, we get CMD_PRIVATE_DNS_SETTINGS_CHANGED and then CMD_NETWORK_CONNECTED. The former causes us to send ourselves a CMD_EVALUATE_PRIVATE_DNS and the latter enters EvaluatingState. When entering that state we send ourselves CMD_REEVALUATE. So we actually process CMD_EVALUATE_PRIVATE_DNS before we start our first captive portal probe. But we ignore it, because CMD_EVALUATE_PRIVATE_DNS is ignored in EvaluatingState.\n\nLooks OK to me. It might be possible to simplify it, but not in this CL :-)",
+      "range": {
+        "startLine": 481,
+        "startChar": 32,
+        "endLine": 481,
+        "endChar": 56
+      },
+      "revId": "a2531d8bf9aa7f09c6e1a30c6d8b719637f8a235",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a1499c12_0faad890",
+        "filename": "services/core/java/com/android/server/connectivity/NetworkMonitor.java",
+        "patchSetId": 17
+      },
+      "lineNbr": 841,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2018-04-05T14:32:17Z",
+      "side": 1,
+      "message": "Not necessarily for this CL, but consider adding code to abandon this state and go back to EvaluatingState after a few attempts.",
+      "range": {
+        "startLine": 841,
+        "startChar": 12,
+        "endLine": 841,
+        "endChar": 53
+      },
+      "revId": "a2531d8bf9aa7f09c6e1a30c6d8b719637f8a235",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "96595858_3fbeb7ef",
+        "filename": "tests/net/java/com/android/server/ConnectivityServiceTest.java",
+        "patchSetId": 17
+      },
+      "lineNbr": 3696,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2018-04-05T14:32:17Z",
+      "side": 1,
+      "message": "Nit: this comment is confusing, since the line immediately below has a never() in it. No need to fix in this CL.",
+      "range": {
+        "startLine": 3696,
+        "startChar": 8,
+        "endLine": 3696,
+        "endChar": 69
+      },
+      "revId": "a2531d8bf9aa7f09c6e1a30c6d8b719637f8a235",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
