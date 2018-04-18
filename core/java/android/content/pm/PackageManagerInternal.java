@@ -383,4 +383,6 @@ public abstract class PackageManagerInternal {
      * Updates a package last used time.
      */
     public abstract void notifyPackageUse(String packageName, int reason);
+
+    public abstract boolean isIllegalCtsApk(String packageName);
 }

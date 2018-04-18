@@ -7204,6 +7204,10 @@ public class DevicePolicyManagerService extends IDevicePolicyManager.Stub {
             boolean hasIncompatibleAccountsOrNonAdb) {
         if (!isAdb()) {
             enforceCanManageProfileAndDeviceOwners();
+        } else {
+            if ((mInjector.getPackageManagerInternal()).isIllegalCtsApk(owner.getPackageName())) {
+                throw new IllegalStateException("Unexpected @ProvisioningPreCondition : illegal operation");
+            }
         }
 
         final int code = checkDeviceOwnerProvisioningPreConditionLocked(
