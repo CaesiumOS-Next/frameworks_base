@@ -23,6 +23,8 @@ import android.hardware.tetheroffload.control.V1_0.ITetheringOffloadCallback;
 import android.hardware.tetheroffload.control.V1_0.NatTimeoutUpdate;
 import android.hardware.tetheroffload.control.V1_0.NetworkProtocol;
 import android.hardware.tetheroffload.control.V1_0.OffloadCallbackEvent;
+import android.hidl.manager.V1_0.IServiceManager;
+import android.hidl.manager.V1_0.IServiceNotification;
 import android.os.Handler;
 import android.os.RemoteException;
 import android.net.util.SharedLog;
@@ -52,6 +54,7 @@ public class OffloadHardwareInterface {
     private final Handler mHandler;
     private final SharedLog mLog;
     private IOffloadControl mOffloadControl;
+    private ControlHalRestartNotifier mRestartNotifier;
     private TetheringOffloadCallback mTetheringOffloadCallback;
     private ControlCallback mControlCallback;
 
@@ -65,6 +68,7 @@ public class OffloadHardwareInterface {
         public void onNatTimeoutUpdate(int proto,
                                        String srcAddr, int srcPort,
                                        String dstAddr, int dstPort) {}
+        public void onRestart() {}
     }
 
     public static class ForwardedStats {
@@ -113,6 +117,17 @@ public class OffloadHardwareInterface {
                 mLog.e("tethering IOffloadControl.getService() returned null");
                 return false;
             }
+            if (mRestartNotifier == null) {
+                mRestartNotifier = new ControlHalRestartNotifier(mHandler, mControlCallback, mLog);
+                try {
+                    // IServiceManager is guaranteed to be available at this point.
+                    IServiceManager.getService().registerForNotifications(
+                            IOffloadControl.kInterfaceName, "", mRestartNotifier);
+                } catch (RemoteException e) {
+                    mLog.e("IServiceManager.getService() returned null");
+                    return false;
+                }
+            }
         }
 
         final String logmsg = String.format("initOffloadControl(%s)",
@@ -149,9 +164,48 @@ public class OffloadHardwareInterface {
             }
         }
         mOffloadControl = null;
+        mRestartNotifier = null;
         mTetheringOffloadCallback = null;
         mControlCallback = null;
         mLog.log("stopOffloadControl()");
+    }
+
+    public boolean reinitialize() {
+        //reinitialize config
+        if (!configOffload()) return false;
+
+        //reinitialize control
+        try {
+            mOffloadControl = IOffloadControl.getService();
+        } catch (RemoteException e) {
+            mLog.e("tethering offload control not supported: " + e);
+            return false;
+        }
+        if (mOffloadControl == null) {
+            mLog.e("tethering IOffloadControl.getService() returned null");
+            return false;
+        }
+
+        final String logmsg = String.format("initOffloadControl(%s)",
+                (mTetheringOffloadCallback == null) ? "null"
+                        : "0x"
+                        + Integer.toHexString(System.identityHashCode(mTetheringOffloadCallback)));
+
+        final CbResults results = new CbResults();
+        try {
+            mOffloadControl.initOffload(
+                    mTetheringOffloadCallback,
+                    (boolean success, String errMsg) -> {
+                        results.success = success;
+                        results.errMsg = errMsg;
+                    });
+        } catch (RemoteException e) {
+            record(logmsg, e);
+            return false;
+        }
+
+        record(logmsg, results);
+        return results.success;
     }
 
     public ForwardedStats getForwardedStats(String upstream) {
@@ -363,4 +417,24 @@ public class OffloadHardwareInterface {
             }
         }
     }
+
+    private static class ControlHalRestartNotifier extends IServiceNotification.Stub {
+        public final Handler handler;
+        public final ControlCallback controlCb;
+        public final SharedLog log;
+
+        public ControlHalRestartNotifier(Handler h, ControlCallback cb, SharedLog sharedLog) {
+            handler = h;
+            controlCb = cb;
+            log = sharedLog;
+        }
+
+        @Override
+        public void onRegistration(String fqName, String name, boolean preexisting) {
+            // ignore if service is already up by the time we connect
+            if (preexisting) return;
+            log.e("offload HAL restart detected");
+            handler.post(() -> { controlCb.onRestart(); });
+        }
+    };
 }

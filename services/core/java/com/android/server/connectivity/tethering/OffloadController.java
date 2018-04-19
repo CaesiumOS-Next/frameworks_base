@@ -221,6 +221,26 @@ public class OffloadController {
                         if (!started()) return;
                         updateNatTimeout(proto, srcAddr, srcPort, dstAddr, dstPort);
                     }
+
+                    @Override
+                    public void onRestart() {
+                        if (!started()) return;
+                        // [1] try reinitialization upon restart
+                        if (!tryRecoveryAfterRestart()) {
+                            mLog.e("HAL reinitialization failed, stopping offload");
+                            stop();
+                            return;
+                        }
+                        // [2] Push all state.
+                        computeAndPushLocalPrefixes(UpdateType.FORCE);
+                        pushAllDownstreamState();
+                        pushUpstreamParameters(null);
+                        // [3] Once HAL is reconfigured, fetch stats to become
+                        // up-to-date
+                        updateStatsForCurrentUpstream();
+                        forceTetherStatsPoll();
+                    }
+
                 });
 
         final boolean isStarted = started();
@@ -233,6 +253,11 @@ public class OffloadController {
             mNatUpdateNetlinkErrors = 0;
         }
         return isStarted;
+    }
+
+    private boolean tryRecoveryAfterRestart() {
+        if (!started()) return false;
+        return mHwInterface.reinitialize();
     }
 
     public void stop() {
