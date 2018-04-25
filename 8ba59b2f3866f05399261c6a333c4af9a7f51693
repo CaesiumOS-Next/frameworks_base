@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3562f7a7_1b58af63",
+        "filename": "packages/CarrierDefaultApp/src/com/android/carrierdefaultapp/CaptivePortalLoginActivity.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2018-04-25T09:47:07Z",
+      "side": 1,
+      "message": "Interestingly, this network object will be equals() to the source network object. So maybe it would be acceptable to have a setLocalDnsResolution() method on Network. Not in this CL.",
+      "range": {
+        "startLine": 238,
+        "startChar": 30,
+        "endLine": 238,
+        "endChar": 37
+      },
+      "revId": "8ba59b2f3866f05399261c6a333c4af9a7f51693",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
