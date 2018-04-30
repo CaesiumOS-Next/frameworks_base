@@ -231,9 +231,9 @@ public abstract class PreferenceGroup extends Preference implements GenericInfla
      * @param key The key of the preference to retrieve.
      * @return The {@link Preference} with the key, or null.
      */
-    public Preference findPreference(CharSequence key) {
+    public <T extends Preference> T findPreference(CharSequence key) {
         if (TextUtils.equals(getKey(), key)) {
-            return this;
+            return (T) this;
         }
         final int preferenceCount = getPreferenceCount();
         for (int i = 0; i < preferenceCount; i++) {
@@ -241,14 +241,14 @@ public abstract class PreferenceGroup extends Preference implements GenericInfla
             final String curKey = preference.getKey();
 
             if (curKey != null && curKey.equals(key)) {
-                return preference;
+                return (T) preference;
             }
 
             if (preference instanceof PreferenceGroup) {
                 final Preference returnedPreference = ((PreferenceGroup)preference)
                         .findPreference(key);
                 if (returnedPreference != null) {
-                    return returnedPreference;
+                    return (T) returnedPreference;
                 }
             }
         }
