@@ -509,6 +509,14 @@ public class CarrierConfigManager {
             = "carrier_volte_override_wfc_provisioning_bool";
 
     /**
+     * Flag specifying if user should be allowed to change IMS provisioning status in USER build.
+     *
+     * @hide
+     */
+    public static final String KEY_CARRIER_ALLOW_USER_CHANGE_IMS_PROVISIONING_USER_BUILD_BOOL =
+            "carrier_allow_user_change_ims_provisioning_user_build_bool";
+
+    /**
      * Override the device's configuration for the cellular data service to use for this SIM card.
      * @hide
      */
@@ -1928,6 +1936,7 @@ public class CarrierConfigManager {
         sDefaults.putBoolean(KEY_CARRIER_FORCE_DISABLE_ETWS_CMAS_TEST_BOOL, false);
         sDefaults.putBoolean(KEY_CARRIER_VOLTE_PROVISIONING_REQUIRED_BOOL, false);
         sDefaults.putBoolean(KEY_CARRIER_VOLTE_OVERRIDE_WFC_PROVISIONING_BOOL, false);
+        sDefaults.putBoolean(KEY_CARRIER_ALLOW_USER_CHANGE_IMS_PROVISIONING_USER_BUILD_BOOL, true);
         sDefaults.putBoolean(KEY_CARRIER_VOLTE_TTY_SUPPORTED_BOOL, true);
         sDefaults.putBoolean(KEY_CARRIER_ALLOW_TURNOFF_IMS_BOOL, true);
         sDefaults.putBoolean(KEY_CARRIER_IMS_GBA_REQUIRED_BOOL, false);
