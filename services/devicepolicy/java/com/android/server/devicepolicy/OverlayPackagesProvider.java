@@ -12,6 +12,9 @@
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
+ *
+ * NOTE: This file has been modified by Sony Mobile Communications Inc.
+ * Modifications are licensed under the License.
  */
 
 package com.android.server.devicepolicy;
@@ -96,6 +99,35 @@ public class OverlayPackagesProvider {
         }
         nonRequiredApps.addAll(getDisallowedApps(provisioningAction));
         return nonRequiredApps;
+    }
+
+    /**
+     * Returns set of non-system apps that should be removed during provisioning.
+     *
+     * @param provisioningAction action indicating type of provisioning, should be one of
+     *                           {@link ACTION_PROVISION_MANAGED_DEVICE}, {@link
+     *                           ACTION_PROVISION_MANAGED_PROFILE} or
+     *                           {@link ACTION_PROVISION_MANAGED_USER}.
+     * @return the set of non-required apps.
+     */
+    @NonNull
+    public Set<String> getDisallowedNonSystemApps(@NonNull String provisioningAction) {
+        final int resId;
+        switch (provisioningAction) {
+            case ACTION_PROVISION_MANAGED_USER:
+                resId = R.array.vendor_disallowed_non_system_apps_managed_user;
+                break;
+            case ACTION_PROVISION_MANAGED_PROFILE:
+                resId = R.array.vendor_disallowed_non_system_apps_managed_profile;
+                break;
+            case ACTION_PROVISION_MANAGED_DEVICE:
+                resId = R.array.vendor_disallowed_non_system_apps_managed_device;
+                break;
+            default:
+                throw new IllegalArgumentException("Provisioning type "
+                        + provisioningAction + " not supported.");
+        }
+        return new ArraySet<>(Arrays.asList(mContext.getResources().getStringArray(resId)));
     }
 
     private Set<String> getLaunchableApps(int userId) {
