@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "87a13e05_84a25d90",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2018-05-18T18:38:13Z",
+      "side": 1,
+      "message": "worth verifying by running this after flashing:\nadb shell cmd package list libraries",
+      "revId": "8fb62e013d6c965298e6446090c78f193667be2f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
