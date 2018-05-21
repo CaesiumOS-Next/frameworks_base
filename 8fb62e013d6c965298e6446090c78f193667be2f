@@ -16,6 +16,24 @@
       "revId": "8fb62e013d6c965298e6446090c78f193667be2f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f5310b75_bbb72931",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1187124
+      },
+      "writtenOn": "2018-05-21T01:31:14Z",
+      "side": 1,
+      "message": "The Result is :\nsundongahn@sundongahn:~$ adb shell cmd package list libraries\nlibrary:android.ext.services\nlibrary:android.ext.shared\nlibrary:android.test.base\nlibrary:android.test.mock\nlibrary:android.test.runner\nlibrary:com.android.future.usb.accessory\nlibrary:com.android.ims.rcsmanager\nlibrary:com.android.location.provider\nlibrary:com.android.media.remotedisplay\nlibrary:com.android.mediadrm.signer\nlibrary:com.android.nfc_extras\nlibrary:com.google.android.camera.experimental2017\nlibrary:com.google.android.dialer.support\nlibrary:com.google.android.gms\nlibrary:com.google.android.hardwareinfo\nlibrary:com.google.android.lowpowermonitordevicefactory\nlibrary:com.google.android.lowpowermonitordeviceinterface\nlibrary:com.google.android.maps\nlibrary:com.google.android.media.effects\nlibrary:com.google.android.poweranomalydatafactory\nlibrary:com.google.android.poweranomalydatamodeminterface\nlibrary:com.google.vr.platform\nlibrary:com.qti.vzw.ims.internal\nlibrary:com.qualcomm.embmslibrary\nlibrary:com.qualcomm.qcrilhook\nlibrary:com.qualcomm.qti.QtiTelephonyServicelibrary\nlibrary:com.quicinc.cne\nlibrary:com.quicinc.cneapiclient\nlibrary:com.verizon.embms\nlibrary:com.verizon.provider\nlibrary:com.vzw.apnlib\nlibrary:com.vzw.vendorlogging\nlibrary:javax.obex\nlibrary:org.apache.http.legacy\n\nAnd I can find library:javax.obex.",
+      "parentUuid": "87a13e05_84a25d90",
+      "revId": "8fb62e013d6c965298e6446090c78f193667be2f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
