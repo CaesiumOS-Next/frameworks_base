@@ -944,7 +944,7 @@ final class UserController {
                 if (foreground) {
                     moveUserToForegroundLocked(uss, oldUserId, userId);
                 } else {
-                    finishUserBoot(uss);
+                    mHandler.post(() -> finishUserBoot(uss));
                 }
 
                 if (needStart) {
