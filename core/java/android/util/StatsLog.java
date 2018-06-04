@@ -40,9 +40,14 @@ public final class StatsLog {
     public static final int BLE_SCAN_STATE_CHANGED__STATE__ON = 1;
     public static final int BLE_SCAN_STATE_CHANGED__STATE__RESET = 2;
 
+    public static final int PHONE_SIGNAL_STRENGTH_CHANGED = 3;
+
     private StatsLog() {}
 
     public static void write(int id, int field1) {}
+
+    /** write 3 ints */
+    public static void write(int id, int field1, int field2) {}
 
     public static void write(int id, int field1, int field2, int field3) {}
 
