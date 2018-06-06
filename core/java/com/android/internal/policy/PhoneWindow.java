@@ -2047,8 +2047,9 @@ public class PhoneWindow extends Window implements MenuBuilder.Callback {
             }
 
             case KeyEvent.KEYCODE_WINDOW: {
-                if (mSupportsPictureInPicture && !event.isCanceled()) {
-                    getWindowControllerCallback().enterPictureInPictureModeIfPossible();
+                Window.WindowControllerCallback callback = getWindowControllerCallback();
+                if (callback != null && mSupportsPictureInPicture && !event.isCanceled()) {
+                    callback.enterPictureInPictureModeIfPossible();
                 }
                 return true;
             }
