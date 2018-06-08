@@ -250,7 +250,7 @@ public class ProxyTracker {
                 Binder.restoreCallingIdentity(token);
             }
 
-            sendProxyBroadcast(mGlobalProxy == null ? mDefaultProxy : proxyInfo);
+            sendProxyBroadcast(getDefaultProxy());
         }
     }
 
