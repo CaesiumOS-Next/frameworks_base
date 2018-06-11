@@ -38,6 +38,7 @@ import android.text.TextUtils;
 import android.util.Slog;
 
 import com.android.internal.annotations.GuardedBy;
+import com.android.internal.annotations.VisibleForTesting;
 
 import java.util.Objects;
 
@@ -101,6 +102,7 @@ public class ProxyTracker {
     //    changes aren't missed.  The legacy PAC resolver pretends to be a simple HTTP proxy but
     //    actually uses the PAC to resolve; this results in ProxyInfo's with PAC URL, host and port
     //    all set.
+    @VisibleForTesting
     public static boolean proxyInfoEqual(@Nullable final ProxyInfo a, @Nullable final ProxyInfo b) {
         final ProxyInfo ca = canonicalizeProxyInfo(a);
         final ProxyInfo cb = canonicalizeProxyInfo(b);
