@@ -24,10 +24,8 @@ import android.text.format.Time;
 import android.telephony.Rlog;
 
 import com.android.internal.telephony.GsmAlphabet;
-import com.android.internal.telephony.GsmAlphabet.TextEncodingDetails;
 import com.android.internal.telephony.SmsConstants;
 import com.android.internal.telephony.SmsHeader;
-import com.android.internal.telephony.SmsMessageBase;
 import com.android.internal.telephony.uicc.IccUtils;
 import com.android.internal.util.BitwiseInputStream;
 import com.android.internal.util.BitwiseOutputStream;
@@ -452,48 +450,6 @@ public final class BearerData {
         outStream.write(8, bData.messageId);
         outStream.write(1, bData.hasUserDataHeader ? 1 : 0);
         outStream.skip(3);
-    }
-
-    private static int countAsciiSeptets(CharSequence msg, boolean force) {
-        int msgLen = msg.length();
-        if (force) return msgLen;
-        for (int i = 0; i < msgLen; i++) {
-            if (UserData.charToAscii.get(msg.charAt(i), -1) == -1) {
-                return -1;
-            }
-        }
-        return msgLen;
-    }
-
-    /**
-     * Calculate the message text encoding length, fragmentation, and other details.
-     *
-     * @param msg message text
-     * @param force7BitEncoding ignore (but still count) illegal characters if true
-     * @param isEntireMsg indicates if this is entire msg or a segment in multipart msg
-     * @return septet count, or -1 on failure
-     */
-    public static TextEncodingDetails calcTextEncodingDetails(CharSequence msg,
-            boolean force7BitEncoding, boolean isEntireMsg) {
-        TextEncodingDetails ted;
-        int septets = countAsciiSeptets(msg, force7BitEncoding);
-        if (septets != -1 && septets <= SmsConstants.MAX_USER_DATA_SEPTETS) {
-            ted = new TextEncodingDetails();
-            ted.msgCount = 1;
-            ted.codeUnitCount = septets;
-            ted.codeUnitsRemaining = SmsConstants.MAX_USER_DATA_SEPTETS - septets;
-            ted.codeUnitSize = SmsConstants.ENCODING_7BIT;
-        } else {
-            ted = com.android.internal.telephony.gsm.SmsMessage.calculateLength(
-                    msg, force7BitEncoding);
-            if (ted.msgCount == 1 && ted.codeUnitSize == SmsConstants.ENCODING_7BIT &&
-                    isEntireMsg) {
-                // We don't support single-segment EMS, so calculate for 16-bit
-                // TODO: Consider supporting single-segment EMS
-                return SmsMessageBase.calcUnicodeEncodingDetails(msg);
-            }
-        }
-        return ted;
     }
 
     private static byte[] encode7bitAscii(String msg, boolean force)

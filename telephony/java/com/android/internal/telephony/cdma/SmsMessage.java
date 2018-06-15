@@ -16,17 +16,24 @@
 
 package com.android.internal.telephony.cdma;
 
+import android.app.ActivityThread;
+import android.os.Binder;
 import android.os.Parcel;
+import android.os.PersistableBundle;
 import android.os.SystemProperties;
+import android.telephony.CarrierConfigManager;
 import android.telephony.PhoneNumberUtils;
 import android.telephony.SmsCbLocation;
 import android.telephony.SmsCbMessage;
+import android.telephony.SubscriptionManager;
 import android.telephony.cdma.CdmaSmsCbProgramData;
 import android.telephony.Rlog;
 import android.util.Log;
 import android.text.TextUtils;
+import android.content.Context;
 import android.content.res.Resources;
 
+import com.android.internal.telephony.GsmAlphabet;
 import com.android.internal.telephony.GsmAlphabet.TextEncodingDetails;
 import com.android.internal.telephony.SmsAddress;
 import com.android.internal.telephony.SmsConstants;
@@ -405,6 +412,31 @@ public class SmsMessage extends SmsMessageBase {
         return false;
     }
 
+    private static TextEncodingDetails countAsciiSeptets(CharSequence msg, boolean force) {
+        int septets = msg.length();
+        if (!force) {
+            for (int i = 0; i < septets; i++) {
+                if (UserData.charToAscii.get(msg.charAt(i), -1) == -1) {
+                    return null;
+                }
+            }
+        }
+        TextEncodingDetails ted = new TextEncodingDetails();
+        ted.codeUnitSize = SmsConstants.ENCODING_7BIT;
+        ted.codeUnitCount = septets;
+        if (septets > SmsConstants.MAX_USER_DATA_SEPTETS) {
+            ted.msgCount =
+                    (septets + (SmsConstants.MAX_USER_DATA_SEPTETS_WITH_HEADER - 1))
+                            / SmsConstants.MAX_USER_DATA_SEPTETS_WITH_HEADER;
+            ted.codeUnitsRemaining =
+                    (ted.msgCount * SmsConstants.MAX_USER_DATA_SEPTETS_WITH_HEADER) - septets;
+        } else {
+            ted.msgCount = 1;
+            ted.codeUnitsRemaining = SmsConstants.MAX_USER_DATA_SEPTETS - septets;
+        }
+        return ted;
+    }
+
     /**
      * Calculate the number of septets needed to encode the message.
      *
@@ -413,17 +445,69 @@ public class SmsMessage extends SmsMessageBase {
      * @param isEntireMsg indicates if this is entire msg or a segment in multipart msg
      * @return TextEncodingDetails
      */
-    public static TextEncodingDetails calculateLength(CharSequence messageBody,
-            boolean use7bitOnly, boolean isEntireMsg) {
+    public static TextEncodingDetails calculateLength(
+            CharSequence messageBody, boolean use7bitOnly, boolean isEntireMsg) {
+        return calculateLength(
+                messageBody,
+                use7bitOnly,
+                isEntireMsg,
+                SubscriptionManager.getDefaultSmsSubscriptionId());
+    }
+
+    /**
+     * Calculate the number of septets needed to encode the message.
+     *
+     * @param messageBody the message to encode
+     * @param use7bitOnly ignore (but still count) illegal characters if true
+     * @param isEntireMsg indicates if this is entire msg or a segment in multipart msg
+     * @param subId Subscription for the message.
+     * @return TextEncodingDetails
+     */
+    public static TextEncodingDetails calculateLength(
+            CharSequence messageBody, boolean use7bitOnly, boolean isEntireMsg, int subId) {
+        TextEncodingDetails ted = null;
         CharSequence newMsgBody = null;
         Resources r = Resources.getSystem();
-        if (r.getBoolean(com.android.internal.R.bool.config_sms_force_7bit_encoding)) {
-            newMsgBody  = Sms7BitEncodingTranslator.translate(messageBody);
+        boolean force7bit =
+                r.getBoolean(com.android.internal.R.bool.config_sms_force_7bit_encoding);
+        boolean isRequiredAscii7ForLMS = isAscii7bitSupportedForLongMessage(subId);
+        if (force7bit) {
+            newMsgBody = Sms7BitEncodingTranslator.translate(messageBody, true);
         }
         if (TextUtils.isEmpty(newMsgBody)) {
             newMsgBody = messageBody;
         }
-        return BearerData.calcTextEncodingDetails(newMsgBody, use7bitOnly, isEntireMsg);
+        if (isEntireMsg || isRequiredAscii7ForLMS) {
+            // Calculate for ASCII-7bit when
+            // 1. it is for entire message.
+            // 2. ASCII-7bit encoding is required for LMS.
+            ted = countAsciiSeptets(newMsgBody, use7bitOnly);
+        }
+        if (ted == null || (!isRequiredAscii7ForLMS && ted.msgCount > 1)) {
+            // Calculate for GSM-7bit when
+            // 1. ted is null.
+            // 2. ASCII-7bit encoding is not required for LMS.
+            newMsgBody = null;
+            if (force7bit) {
+                newMsgBody = Sms7BitEncodingTranslator.translate(messageBody, false);
+            }
+            if (TextUtils.isEmpty(newMsgBody)) {
+                newMsgBody = messageBody;
+            }
+            ted = null;
+            if (!isRequiredAscii7ForLMS) {
+                // Calculate for GSM-7bit when ASCII-7bit encoding is not required for LMS.
+                ted = GsmAlphabet.countGsmSeptets(newMsgBody, use7bitOnly);
+            }
+            if (ted == null || (isEntireMsg && ted.msgCount == 1)) {
+                // Calculate for Unicode when
+                // 1. ted is null.
+                // 2. it is for entire message and it requires only one segment.
+                //  - For SMS, ASCII-7bit and Unicode are only supported now.
+                return SmsMessageBase.calcUnicodeEncodingDetails(newMsgBody);
+            }
+        }
+        return ted;
     }
 
     /**
@@ -1046,5 +1130,23 @@ public class SmsMessage extends SmsMessageBase {
      */
     public ArrayList<CdmaSmsCbProgramData> getSmsCbProgramData() {
         return mBearerData.serviceCategoryProgramData;
+    }
+
+    public static boolean isAscii7bitSupportedForLongMessage(int subId) {
+        Context context = ActivityThread.currentApplication().getApplicationContext();
+        CarrierConfigManager configManager =
+                (CarrierConfigManager) context.getSystemService(Context.CARRIER_CONFIG_SERVICE);
+        PersistableBundle pb = null;
+        final long identity = Binder.clearCallingIdentity();
+        try {
+            pb = configManager.getConfigForSubId(subId);
+        } finally {
+            Binder.restoreCallingIdentity(identity);
+        }
+        if (pb != null) {
+            return pb.getBoolean(
+                    CarrierConfigManager.KEY_ASCII_7_BIT_SUPPORT_FOR_LONG_MESSAGE_BOOL);
+        }
+        return false;
     }
 }

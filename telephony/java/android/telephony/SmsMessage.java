@@ -337,27 +337,46 @@ public class SmsMessage {
      */
 
     /**
-     * Calculates the number of SMS's required to encode the message body and
-     * the number of characters remaining until the next message.
+     * Calculates the number of SMS's required to encode the message body and the number of
+     * characters remaining until the next message.
      *
      * @param msgBody the message to encode
-     * @param use7bitOnly if true, characters that are not part of the
-     *         radio-specific 7-bit encoding are counted as single
-     *         space chars.  If false, and if the messageBody contains
-     *         non-7-bit encodable characters, length is calculated
-     *         using a 16-bit encoding.
-     * @return an int[4] with int[0] being the number of SMS's
-     *         required, int[1] the number of code units used, and
-     *         int[2] is the number of code units remaining until the
-     *         next message. int[3] is an indicator of the encoding
-     *         code unit size (see the ENCODING_* definitions in SmsConstants)
+     * @param use7bitOnly if true, characters that are not part of the radio-specific 7-bit encoding
+     *     are counted as single space chars. If false, and if the messageBody contains non-7-bit
+     *     encodable characters, length is calculated using a 16-bit encoding.
+     * @return an int[4] with int[0] being the number of SMS's required, int[1] the number of code
+     *     units used, and int[2] is the number of code units remaining until the next message.
+     *     int[3] is an indicator of the encoding code unit size (see the ENCODING_* definitions in
+     *     SmsConstant).
      */
     public static int[] calculateLength(CharSequence msgBody, boolean use7bitOnly) {
+        return calculateLength(
+                msgBody, use7bitOnly, SubscriptionManager.getDefaultSmsSubscriptionId());
+    }
+
+    /**
+     * Calculates the number of SMS's required to encode the message body and the number of
+     * characters remaining until the next message.
+     *
+     * @param msgBody the message to encode
+     * @param use7bitOnly if true, characters that are not part of the radio-specific 7-bit encoding
+     *     are counted as single space chars. If false, and if the messageBody contains non-7-bit
+     *     encodable characters, length is calculated using a 16-bit encoding.
+     * @param subId Subscription to take SMS format.
+     * @return an int[4] with int[0] being the number of SMS's required, int[1] the number of code
+     *     units used, and int[2] is the number of code units remaining until the next message.
+     *     int[3] is an indicator of the encoding code unit size (see the ENCODING_* definitions in
+     *     SmsConstants).
+     * @hide
+     */
+    public static int[] calculateLength(CharSequence msgBody, boolean use7bitOnly, int subId) {
         // this function is for MO SMS
-        TextEncodingDetails ted = (useCdmaFormatForMoSms()) ?
-            com.android.internal.telephony.cdma.SmsMessage.calculateLength(msgBody, use7bitOnly,
-                    true) :
-            com.android.internal.telephony.gsm.SmsMessage.calculateLength(msgBody, use7bitOnly);
+        TextEncodingDetails ted =
+                useCdmaFormatForMoSms(subId)
+                        ? com.android.internal.telephony.cdma.SmsMessage.calculateLength(
+                                msgBody, use7bitOnly, true, subId)
+                        : com.android.internal.telephony.gsm.SmsMessage.calculateLength(
+                                msgBody, use7bitOnly);
         int ret[] = new int[4];
         ret[0] = ted.msgCount;
         ret[1] = ted.codeUnitCount;
@@ -367,21 +386,40 @@ public class SmsMessage {
     }
 
     /**
-     * Divide a message text into several fragments, none bigger than
-     * the maximum SMS message text size.
+     * Divide a message text into several fragments, none bigger than the maximum SMS message text
+     * size.
      *
      * @param text text, must not be null.
-     * @return an <code>ArrayList</code> of strings that, in order,
-     *   comprise the original msg text
-     *
+     * @return an <code>ArrayList</code> of strings that, in order, comprise the original msg text.
      * @hide
      */
     @UnsupportedAppUsage
     public static ArrayList<String> fragmentText(String text) {
+        return fragmentText(text, SubscriptionManager.getDefaultSmsSubscriptionId());
+    }
+
+    /**
+     * Divide a message text into several fragments, none bigger than the maximum SMS message text
+     * size.
+     *
+     * @param text text, must not be null.
+     * @param subId Subscription to take SMS format.
+     * @return an <code>ArrayList</code> of strings that, in order, comprise the original msg text.
+     * @hide
+     */
+    public static ArrayList<String> fragmentText(String text, int subId) {
         // This function is for MO SMS
-        TextEncodingDetails ted = (useCdmaFormatForMoSms()) ?
-            com.android.internal.telephony.cdma.SmsMessage.calculateLength(text, false, true) :
-            com.android.internal.telephony.gsm.SmsMessage.calculateLength(text, false);
+        final boolean isCdma = useCdmaFormatForMoSms(subId);
+        final boolean isRequiredAscii7ForLMS =
+                com.android.internal.telephony.cdma.SmsMessage.isAscii7bitSupportedForLongMessage(
+                        subId);
+
+        TextEncodingDetails ted =
+                isCdma
+                        ? com.android.internal.telephony.cdma.SmsMessage.calculateLength(
+                                text, false, true, subId)
+                        : com.android.internal.telephony.gsm.SmsMessage.calculateLength(
+                                text, false);
 
         // TODO(cleanup): The code here could be rolled into the logic
         // below cleanly if these MAX_* constants were defined more
@@ -424,10 +462,22 @@ public class SmsMessage {
             }
         }
 
+        boolean useAscii7Encoding = false;
+        if (isCdma
+                && ted.codeUnitSize == SmsConstants.ENCODING_7BIT
+                && (ted.msgCount == 1 || isRequiredAscii7ForLMS)) {
+            // ASCII-7bit encoding will be used for 3GPP2 SMS and only LMS required it by carriers.
+            useAscii7Encoding = true;
+        }
+
         String newMsgBody = null;
         Resources r = Resources.getSystem();
         if (r.getBoolean(com.android.internal.R.bool.config_sms_force_7bit_encoding)) {
-            newMsgBody  = Sms7BitEncodingTranslator.translate(text);
+            if (useAscii7Encoding) {
+                newMsgBody = Sms7BitEncodingTranslator.translate(text, true);
+            } else {
+                newMsgBody = Sms7BitEncodingTranslator.translate(text, false);
+            }
         }
         if (TextUtils.isEmpty(newMsgBody)) {
             newMsgBody = text;
@@ -438,15 +488,21 @@ public class SmsMessage {
         while (pos < textLen) {
             int nextPos = 0;  // Counts code units.
             if (ted.codeUnitSize == SmsConstants.ENCODING_7BIT) {
-                if (useCdmaFormatForMoSms() && ted.msgCount == 1) {
-                    // For a singleton CDMA message, the encoding must be ASCII...
+                if (useAscii7Encoding) {
+                    // For ASCII-7bit encoding
                     nextPos = pos + Math.min(limit, textLen - pos);
                 } else {
-                    // For multi-segment messages, CDMA 7bit equals GSM 7bit encoding (EMS mode).
-                    nextPos = GsmAlphabet.findGsmSeptetLimitIndex(newMsgBody, pos, limit,
-                            ted.languageTable, ted.languageShiftTable);
+                    // For GSM-7bit encoding
+                    nextPos =
+                            GsmAlphabet.findGsmSeptetLimitIndex(
+                                    newMsgBody,
+                                    pos,
+                                    limit,
+                                    ted.languageTable,
+                                    ted.languageShiftTable);
                 }
-            } else {  // Assume unicode.
+            } else {
+                // Assume unicode.
                 nextPos = SmsMessageBase.findNextUnicodePosition(pos, limit, newMsgBody);
             }
             if ((nextPos <= pos) || (nextPos > textLen)) {
@@ -461,23 +517,37 @@ public class SmsMessage {
     }
 
     /**
-     * Calculates the number of SMS's required to encode the message body and
-     * the number of characters remaining until the next message, given the
-     * current encoding.
+     * Calculates the number of SMS's required to encode the message body and the number of
+     * characters remaining until the next message, given the current encoding.
      *
      * @param messageBody the message to encode
-     * @param use7bitOnly if true, characters that are not part of the radio
-     *         specific (GSM / CDMA) alphabet encoding are converted to as a
-     *         single space characters. If false, a messageBody containing
-     *         non-GSM or non-CDMA alphabet characters are encoded using
-     *         16-bit encoding.
-     * @return an int[4] with int[0] being the number of SMS's required, int[1]
-     *         the number of code units used, and int[2] is the number of code
-     *         units remaining until the next message. int[3] is the encoding
-     *         type that should be used for the message.
+     * @param use7bitOnly if true, characters that are not part of the radio specific (GSM / CDMA)
+     *     alphabet encoding are converted to as a single space characters. If false, a messageBody
+     *     containing non-GSM or non-CDMA alphabet characters are encoded using 16-bit encoding.
+     * @return an int[4] with int[0] being the number of SMS's required, int[1] the number of code
+     *     units used, and int[2] is the number of code units remaining until the next message.
+     *     int[3] is the encoding type that should be used for the message.
      */
     public static int[] calculateLength(String messageBody, boolean use7bitOnly) {
         return calculateLength((CharSequence)messageBody, use7bitOnly);
+    }
+
+    /**
+     * Calculates the number of SMS's required to encode the message body and the number of
+     * characters remaining until the next message, given the current encoding.
+     *
+     * @param messageBody the message to encode
+     * @param use7bitOnly if true, characters that are not part of the radio specific (GSM / CDMA)
+     *     alphabet encoding are converted to as a single space characters. If false, a messageBody
+     *     containing non-GSM or non-CDMA alphabet characters are encoded using 16-bit encoding.
+     * @param subId Subscription to take SMS format.
+     * @return an int[4] with int[0] being the number of SMS's required, int[1] the number of code
+     *     units used, and int[2] is the number of code units remaining until the next message.
+     *     int[3] is the encoding type that should be used for the message.
+     * @hide
+     */
+    public static int[] calculateLength(String messageBody, boolean use7bitOnly, int subId) {
+        return calculateLength((CharSequence) messageBody, use7bitOnly, subId);
     }
 
     /*

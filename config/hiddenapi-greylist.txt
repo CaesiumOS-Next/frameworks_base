@@ -2648,7 +2648,6 @@ Lcom/android/internal/telephony/cdma/EriManager;->getEriDisplayInformation(II)Lc
 Lcom/android/internal/telephony/cdma/sms/BearerData$CodingException;-><init>(Ljava/lang/String;)V
 Lcom/android/internal/telephony/cdma/sms/BearerData$TimeStamp;-><init>()V
 Lcom/android/internal/telephony/cdma/sms/BearerData;-><init>()V
-Lcom/android/internal/telephony/cdma/sms/BearerData;->countAsciiSeptets(Ljava/lang/CharSequence;Z)I
 Lcom/android/internal/telephony/cdma/sms/BearerData;->decodeUserDataPayload(Lcom/android/internal/telephony/cdma/sms/UserData;Z)V
 Lcom/android/internal/telephony/cdma/sms/BearerData;->displayMode:I
 Lcom/android/internal/telephony/cdma/sms/BearerData;->encode(Lcom/android/internal/telephony/cdma/sms/BearerData;)[B
