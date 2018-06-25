@@ -266,6 +266,8 @@ package android.content.pm {
     method public abstract boolean isPermissionReviewModeEnabled();
     field public static final String FEATURE_ADOPTABLE_STORAGE = "android.software.adoptable_storage";
     field public static final String FEATURE_FILE_BASED_ENCRYPTION = "android.software.file_based_encryption";
+    method public abstract void grantRuntimePermission(java.lang.String, java.lang.String, android.os.UserHandle);
+    method public abstract void revokeRuntimePermission(java.lang.String, java.lang.String, android.os.UserHandle);
     field public static final int MATCH_FACTORY_ONLY = 2097152; // 0x200000
     field public static final int MATCH_KNOWN_PACKAGES = 4202496; // 0x402000
   }
