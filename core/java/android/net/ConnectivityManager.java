@@ -53,8 +53,6 @@ import com.android.internal.telephony.PhoneConstants;
 import com.android.internal.util.Preconditions;
 import com.android.internal.util.Protocol;
 
-import libcore.net.event.NetworkEventDispatcher;
-
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.net.InetAddress;
@@ -62,6 +60,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import libcore.net.event.NetworkEventDispatcher;
 
 /**
  * Class that answers queries about the state of network connectivity. It also
@@ -635,11 +634,20 @@ public class ConnectivityManager {
     @Deprecated
     public static final int TYPE_VPN = 17;
 
-    /** {@hide} */
-    public static final int MAX_RADIO_TYPE   = TYPE_VPN;
+    /**
+     * A virtual network using one or more native bearers. It may or may not be providing security
+     * services.
+     *
+     * @deprecated Applications should use {@link NetworkCapabilities#TRANSPORT_IPSEC} instead.
+     * @hide
+     */
+    @Deprecated public static final int TYPE_IPSEC = 18;
 
     /** {@hide} */
-    public static final int MAX_NETWORK_TYPE = TYPE_VPN;
+    public static final int MAX_RADIO_TYPE = TYPE_IPSEC;
+
+    /** {@hide} */
+    public static final int MAX_NETWORK_TYPE = TYPE_IPSEC;
 
     private static final int MIN_NETWORK_TYPE = TYPE_MOBILE;
 
@@ -783,6 +791,8 @@ public class ConnectivityManager {
                 return "PROXY";
             case TYPE_VPN:
                 return "VPN";
+            case TYPE_IPSEC:
+                return "IPSEC";
             default:
                 return Integer.toString(type);
         }
