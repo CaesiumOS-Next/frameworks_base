@@ -100,12 +100,10 @@ public final class BluetoothSocket implements Closeable {
     public static final int TYPE_L2CAP = 3;
 
     /** L2CAP socket on BR/EDR transport
-     * @hide
      */
     public static final int TYPE_L2CAP_BREDR = TYPE_L2CAP;
 
     /** L2CAP socket on LE transport
-     * @hide
      */
     public static final int TYPE_L2CAP_LE = 4;
 

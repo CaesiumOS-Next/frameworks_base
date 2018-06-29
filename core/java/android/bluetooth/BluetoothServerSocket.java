@@ -206,7 +206,6 @@ public final class BluetoothServerSocket implements Closeable {
      * method is called on non-L2CAP server sockets.
      *
      * @return the assigned PSM or LE_PSM value depending on transport
-     * @hide
      */
     public int getPsm() {
         return mChannel;

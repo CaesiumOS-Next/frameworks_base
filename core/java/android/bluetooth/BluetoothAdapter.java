@@ -80,7 +80,8 @@ import java.util.concurrent.locks.ReentrantReadWriteLock;
  * {@link #getBondedDevices()}; start device discovery with
  * {@link #startDiscovery()}; or create a {@link BluetoothServerSocket} to
  * listen for incoming RFComm connection requests with {@link
- * #listenUsingRfcommWithServiceRecord(String, UUID)}; or start a scan for
+ * #listenUsingRfcommWithServiceRecord(String, UUID)}; listen for incoming L2CAP Connection-oriented
+ * Channels (CoC) connection requests with {@link #listenUsingL2capCoc(int)}; or start a scan for
  * Bluetooth LE devices with {@link #startLeScan(LeScanCallback callback)}.
  * </p>
  * <p>This class is thread safe.</p>
@@ -2961,7 +2962,6 @@ public final class BluetoothAdapter {
      * @return an L2CAP CoC BluetoothServerSocket
      * @throws IOException on error, for example Bluetooth not available, or insufficient
      * permissions, or unable to start this CoC
-     * @hide
      */
     @RequiresPermission(Manifest.permission.BLUETOOTH)
     public BluetoothServerSocket listenUsingL2capCoc(int transport)
@@ -3011,7 +3011,6 @@ public final class BluetoothAdapter {
      * @return an L2CAP CoC BluetoothServerSocket
      * @throws IOException on error, for example Bluetooth not available, or insufficient
      * permissions, or unable to start this CoC
-     * @hide
      */
     @RequiresPermission(Manifest.permission.BLUETOOTH)
     public BluetoothServerSocket listenUsingInsecureL2capCoc(int transport)

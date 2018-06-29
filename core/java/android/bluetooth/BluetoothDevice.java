@@ -1942,7 +1942,6 @@ public final class BluetoothDevice implements Parcelable {
      * @return a CoC #BluetoothSocket ready for an outgoing connection
      * @throws IOException on error, for example Bluetooth not available, or insufficient
      * permissions
-     * @hide
      */
     @RequiresPermission(Manifest.permission.BLUETOOTH)
     public BluetoothSocket createL2capCocSocket(int transport, int psm) throws IOException {
@@ -1975,7 +1974,6 @@ public final class BluetoothDevice implements Parcelable {
      * @return a CoC #BluetoothSocket ready for an outgoing connection
      * @throws IOException on error, for example Bluetooth not available, or insufficient
      * permissions
-     * @hide
      */
     @RequiresPermission(Manifest.permission.BLUETOOTH)
     public BluetoothSocket createInsecureL2capCocSocket(int transport, int psm) throws IOException {
