@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cc1414d3_c7c89905",
+        "filename": "services/tests/notification/src/com/android/server/notification/BuzzBeepBlinkTest.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 496,
+      "author": {
+        "id": 1056478
+      },
+      "writtenOn": "2018-07-03T20:44:46Z",
+      "side": 1,
+      "message": "As a consequence of the change I added, this test needed to be modified.\nI\u0027m not familiar enough with this to know if this is okay though.\nThe guidance I want to provide devs for playing ringtones in 3P calling apps is to user a NotificationChannel with an associated ringtone sound.\nIf they want to silence the playing ringtone, they can repost their Notification with setOnlyAlertOnce() set to true.",
+      "range": {
+        "startLine": 496,
+        "startChar": 4,
+        "endLine": 496,
+        "endChar": 71
+      },
+      "revId": "6c12075d633b5c9c66d44b9f5a6ec271e599b1a5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
