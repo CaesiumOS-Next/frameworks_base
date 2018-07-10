@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "94e5c1e1_bc3539dc",
+        "filename": "services/core/java/com/android/server/notification/NotificationManagerService.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 4085,
+      "author": {
+        "id": 1060562
+      },
+      "writtenOn": "2018-07-10T20:00:51Z",
+      "side": 1,
+      "message": "can you only cancel the sound on update if it was looping sound?",
+      "revId": "6c12075d633b5c9c66d44b9f5a6ec271e599b1a5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "cc1414d3_c7c89905",
         "filename": "services/tests/notification/src/com/android/server/notification/BuzzBeepBlinkTest.java",
         "patchSetId": 2
