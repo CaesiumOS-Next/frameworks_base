@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "b92bb593_138ad268",
+        "filename": "services/core/java/com/android/server/notification/NotificationManagerService.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 4085,
+      "author": {
+        "id": 1056478
+      },
+      "writtenOn": "2018-07-10T20:22:25Z",
+      "side": 1,
+      "message": "I don\u0027t envision a case where a ringtone wouldn\u0027t be looping, so this seems like a reasonable restriction to make.",
+      "parentUuid": "94e5c1e1_bc3539dc",
+      "revId": "6c12075d633b5c9c66d44b9f5a6ec271e599b1a5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "cc1414d3_c7c89905",
         "filename": "services/tests/notification/src/com/android/server/notification/BuzzBeepBlinkTest.java",
         "patchSetId": 2
