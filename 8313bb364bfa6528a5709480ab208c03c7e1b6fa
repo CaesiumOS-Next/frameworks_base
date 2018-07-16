@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b407512d_884a928b",
+        "filename": "services/core/java/com/android/server/audio/AudioService.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 2190,
+      "author": {
+        "id": 1060286
+      },
+      "writtenOn": "2018-07-16T22:20:24Z",
+      "side": 1,
+      "message": "CEC 13.15.2 says\n\nWhile System Audio Mode is On:\n the TV or source shall not change their own internal volume levels;\n\n\nSeems to me we should be doing all output devices, not just ARC.",
+      "range": {
+        "startLine": 2190,
+        "startChar": 21,
+        "endLine": 2190,
+        "endChar": 61
+      },
+      "revId": "8313bb364bfa6528a5709480ab208c03c7e1b6fa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
