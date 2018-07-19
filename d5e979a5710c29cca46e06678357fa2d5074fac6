@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a26c6e74_707b9562",
+        "filename": "telephony/java/android/telephony/ims/ImsReasonInfo.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 554,
+      "author": {
+        "id": 1098053
+      },
+      "writtenOn": "2018-07-19T19:56:26Z",
+      "side": 1,
+      "message": "Remove new line",
+      "revId": "d5e979a5710c29cca46e06678357fa2d5074fac6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e88e1d0b_0d8ec792",
+        "filename": "telephony/java/android/telephony/ims/ImsReasonInfo.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 556,
+      "author": {
+        "id": 1098053
+      },
+      "writtenOn": "2018-07-19T19:56:26Z",
+      "side": 1,
+      "message": "nit: new line",
+      "range": {
+        "startLine": 556,
+        "startChar": 4,
+        "endLine": 556,
+        "endChar": 7
+      },
+      "revId": "d5e979a5710c29cca46e06678357fa2d5074fac6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ef547acf_e094fde3",
+        "filename": "telephony/java/android/telephony/ims/ImsReasonInfo.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 557,
+      "author": {
+        "id": 1098053
+      },
+      "writtenOn": "2018-07-19T19:56:26Z",
+      "side": 1,
+      "message": "no need to define @hide, already defined at the class level.",
+      "range": {
+        "startLine": 557,
+        "startChar": 7,
+        "endLine": 557,
+        "endChar": 12
+      },
+      "revId": "d5e979a5710c29cca46e06678357fa2d5074fac6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9df37d52_879af5cc",
+        "filename": "telephony/java/android/telephony/ims/ImsReasonInfo.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 558,
+      "author": {
+        "id": 1098053
+      },
+      "writtenOn": "2018-07-19T19:56:26Z",
+      "side": 1,
+      "message": "Expand CS to \"Circuit Switch\": \"Call failed because WiFi call could not complete and circuit switch silent redial is not allowed while roaming on another network.\"",
+      "range": {
+        "startLine": 558,
+        "startChar": 7,
+        "endLine": 558,
+        "endChar": 78
+      },
+      "revId": "d5e979a5710c29cca46e06678357fa2d5074fac6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8ac3dc5d_cb015d18",
+        "filename": "telephony/java/android/telephony/ims/ImsReasonInfo.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 560,
+      "author": {
+        "id": 1098053
+      },
+      "writtenOn": "2018-07-19T19:56:26Z",
+      "side": 1,
+      "message": "Please move this to after 1515 definition (CODE_SIP_ALTERNATE_EMERGENCY_CALL)",
+      "range": {
+        "startLine": 560,
+        "startChar": 54,
+        "endLine": 560,
+        "endChar": 58
+      },
+      "revId": "d5e979a5710c29cca46e06678357fa2d5074fac6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
