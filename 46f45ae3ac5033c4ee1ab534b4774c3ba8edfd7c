@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bbb05d62_61707ce0",
+        "filename": "Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 649,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-07-25T21:11:20Z",
+      "side": 1,
+      "message": "target android is unnecessary, this only builds for android.",
+      "revId": "46f45ae3ac5033c4ee1ab534b4774c3ba8edfd7c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
