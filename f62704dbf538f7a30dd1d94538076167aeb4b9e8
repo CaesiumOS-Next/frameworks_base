@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7c174543_c36cd626",
+        "filename": "telephony/java/android/telephony/ims/ImsReasonInfo.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 406,
+      "author": {
+        "id": 1098053
+      },
+      "writtenOn": "2018-07-25T23:02:49Z",
+      "side": 1,
+      "message": "oops sorry, this is @SystemApi. Please run \"make update-api\" and upload api diff as well.",
+      "range": {
+        "startLine": 406,
+        "startChar": 28,
+        "endLine": 406,
+        "endChar": 51
+      },
+      "revId": "f62704dbf538f7a30dd1d94538076167aeb4b9e8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
