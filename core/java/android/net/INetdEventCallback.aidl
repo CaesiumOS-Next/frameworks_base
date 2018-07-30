@@ -40,6 +40,16 @@ oneway interface INetdEventCallback {
             int uid);
 
     /**
+     * Represents adding or removing a DNS64 prefix.
+     * This method must not block or perform long-running operations.
+     *
+     * @param netId the ID of the network the prefix was performed on.
+     * @param eventType one of the DNS64_REPORTING_* constants in this interface.
+     * @param dns64Prefix dns64 prefix, or null if not available.
+     */
+    void onDns64PrefixEvent(int netId, int eventType, String dns64Prefix);
+
+    /**
      * Represents a private DNS validation success or failure.
      * This method must not block or perform long-running operations.
      *

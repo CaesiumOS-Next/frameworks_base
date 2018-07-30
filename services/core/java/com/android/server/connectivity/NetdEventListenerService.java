@@ -215,6 +215,18 @@ public class NetdEventListenerService extends INetdEventListener.Stub {
     @Override
     // Called concurrently by multiple binder threads.
     // This method must not block or perform long-running operations.
+    public synchronized void onDns64PrefixEvent(int netId, int eventType, String dns64Prefix)
+            throws RemoteException {
+        for (INetdEventCallback callback : mNetdEventCallbackList) {
+            if (callback != null) {
+                callback.onDns64PrefixEvent(netId, eventType, dns64Prefix);
+            }
+        }
+    }
+
+    @Override
+    // Called concurrently by multiple binder threads.
+    // This method must not block or perform long-running operations.
     public synchronized void onPrivateDnsValidationEvent(int netId,
             String ipAddress, String hostname, boolean validated)
             throws RemoteException {
