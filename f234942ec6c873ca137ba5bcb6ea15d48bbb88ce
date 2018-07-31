@@ -22,6 +22,30 @@
       "revId": "f234942ec6c873ca137ba5bcb6ea15d48bbb88ce",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a2120d0c_0df17c4f",
+        "filename": "core/java/android/net/SSLCertificateSocketFactory.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 444,
+      "author": {
+        "id": 1042885
+      },
+      "writtenOn": "2018-07-31T17:01:29Z",
+      "side": 1,
+      "message": "Yeah, that sounds better.  Changed to only document what the existing behavior is and not change anything.",
+      "parentUuid": "914b3985_6649228f",
+      "range": {
+        "startLine": 444,
+        "startChar": 0,
+        "endLine": 444,
+        "endChar": 60
+      },
+      "revId": "f234942ec6c873ca137ba5bcb6ea15d48bbb88ce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
