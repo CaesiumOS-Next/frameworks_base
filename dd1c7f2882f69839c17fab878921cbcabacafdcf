@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8a54f371_8531c18b",
+        "filename": "core/java/android/net/SSLCertificateSocketFactory.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 524,
+      "author": {
+        "id": 1103203
+      },
+      "writtenOn": "2018-07-31T17:25:03Z",
+      "side": 1,
+      "message": "nit: Perhaps something like:\n\n\u003cp\u003eBy {@link #getDefault default}, this method [...] after connecting; if this {@code SSLSocketFactory} instance was created via {@link #getInsecure(int, SSLSessionCache)}, it will produce sockets that are \u003ci\u003enot connected\u003c/i\u003e.\n\nwould be easier to understand correctly? Putting the caveat (\"unless ...\") in bracket at the end seems like it\u0027d be easier to miss than starting with \"By default, \".\n\nBut I don\u0027t feel strongly. Up to you.",
+      "range": {
+        "startLine": 522,
+        "startChar": 7,
+        "endLine": 524,
+        "endChar": 57
+      },
+      "revId": "dd1c7f2882f69839c17fab878921cbcabacafdcf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
