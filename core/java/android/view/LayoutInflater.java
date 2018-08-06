@@ -27,12 +27,14 @@ import android.graphics.Canvas;
 import android.os.Handler;
 import android.os.Message;
 import android.os.Trace;
+import android.os.SystemClock;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.util.TypedValue;
 import android.util.Xml;
 import android.widget.FrameLayout;
 
+import com.android.internal.logging.MetricsLogger;
 import com.android.internal.R;
 
 import org.xmlpull.v1.XmlPullParser;
@@ -96,6 +98,12 @@ public abstract class LayoutInflater {
     private HashMap<String, Boolean> mFilterMap;
 
     private TypedValue mTempValue;
+
+    private MetricsLogger mMetrics = new MetricsLogger();
+    /**
+     * The current depth of recursive calls to inflate().
+     */
+    private int mInflationDepth = 0;
 
     private static final String TAG_MERGE = "merge";
     private static final String TAG_INCLUDE = "include";
@@ -451,6 +459,17 @@ public abstract class LayoutInflater {
     public View inflate(XmlPullParser parser, @Nullable ViewGroup root, boolean attachToRoot) {
         synchronized (mConstructorArgs) {
             Trace.traceBegin(Trace.TRACE_TAG_VIEW, "inflate");
+            // Save startTime in microseconds. Ints max out at 2^31-1 ns, which is a little
+            // over 2 seconds. That would be a slow inflation, but not outside the realm of
+            // possibilities when heavily loaded. With microseconds, we have more than 35
+            // minutes, which is plenty large.
+            long startTimeMicros = 0;
+
+            if (mInflationDepth == 0) {
+                startTimeMicros = SystemClock.elapsedRealtimeNanos() / 1000;
+            }
+
+            mInflationDepth++;
 
             final Context inflaterContext = mContext;
             final AttributeSet attrs = Xml.asAttributeSet(parser);
@@ -545,6 +564,12 @@ public abstract class LayoutInflater {
                 mConstructorArgs[0] = lastContext;
                 mConstructorArgs[1] = null;
 
+                mInflationDepth--;
+                if (mInflationDepth == 0) {
+                    long endTimeMicros = SystemClock.elapsedRealtimeNanos() / 1000;
+                    mMetrics.histogram("top_level_inflate_time",
+                        (int) (endTimeMicros - startTimeMicros));
+                }
                 Trace.traceEnd(Trace.TRACE_TAG_VIEW);
             }
 
@@ -1035,6 +1060,14 @@ public abstract class LayoutInflater {
                 parser.getDepth() > currentDepth) && type != XmlPullParser.END_DOCUMENT) {
             // Empty
         }
+    }
+
+    /**
+     * Replace the metrics logger for use during tests.
+     * {@hide} for framework testing
+     */
+    public void setMetricsLoggerForTesting(MetricsLogger logger) {
+        mMetrics = logger;
     }
 
     private static class BlinkLayout extends FrameLayout {

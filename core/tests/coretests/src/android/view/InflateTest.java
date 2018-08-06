@@ -24,20 +24,31 @@ import android.test.suitebuilder.annotation.SmallTest;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.LinearLayout;
 import com.android.frameworks.coretests.R;
+import com.android.internal.logging.MetricsLogger;
 
 import java.util.Map;
+
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.eq;
+import static org.mockito.Mockito.intThat;
 
 public class InflateTest extends AndroidTestCase implements PerformanceTestCase {
     private LayoutInflater mInflater;
     private Resources mResources;
     private View mView;
+    private MetricsLogger mLogger;
 
     @Override
     protected void setUp() throws Exception {
         super.setUp();
 
+        mLogger = mock(MetricsLogger.class);
         mInflater = LayoutInflater.from(mContext);
+        mInflater.setMetricsLoggerForTesting(mLogger);
         mResources = mContext.getResources();
 
         // to try to make things consistent, before doing timing
@@ -127,6 +138,22 @@ public class InflateTest extends AndroidTestCase implements PerformanceTestCase 
         inflateCachedTest(R.layout.layout_six);
     }
 
+    @SmallTest
+    public void testMetrics() throws Exception {
+        inflateTest(R.layout.layout_one);
+        verify(mLogger, times(1)).histogram(eq("top_level_inflate_time"),
+                                            intThat(duration -> (duration > 0)
+                                            ));
+    }
+
+    @SmallTest
+    public void testMetricsNestedLayout() throws Exception {
+        inflateTest(R.layout.layout_seven);
+        verify(mLogger, times(1)).histogram(eq("top_level_inflate_time"),
+            intThat(duration -> (duration > 0)
+            ));
+    }
+
 //    public void testLayoutTag() throws Exception {
 //        public void setUp
 //        (Context
@@ -150,6 +177,18 @@ public class InflateTest extends AndroidTestCase implements PerformanceTestCase 
 
         public ViewOne(Context context, AttributeSet attrs) {
             super(context, attrs);
+        }
+    }
+
+    public static class NestedInflateView extends LinearLayout {
+        public NestedInflateView(Context context) {
+            super(context);
+            LayoutInflater inflate = LayoutInflater.from(context);
+            addView(inflate.inflate(R.layout.layout_one, null));
+        }
+
+        public NestedInflateView(Context context, AttributeSet attrs) {
+            this(context);
         }
     }
 }
