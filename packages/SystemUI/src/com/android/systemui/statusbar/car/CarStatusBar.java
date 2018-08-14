@@ -117,9 +117,15 @@ public class CarStatusBar extends StatusBar implements
 
     /**
      * Remove all content from navbars and rebuild them. Used to allow for different nav bars
-     * before and after the device is provisioned
+     * before and after the device is provisioned. Also for change of density and font size.
      */
     private void restartNavBars() {
+        // When StatusBar.start() adds callback to ConfigurationController, the callback
+        // will be triggered directly even there is no change in density or font size. Thus
+        // this function will be called before mCarFacetButtonController is initialized.
+        if (mCarFacetButtonController == null) {
+            return;
+        }
         mCarFacetButtonController.removeAll();
         if (ENABLE_HVAC_CONNECTION) {
             Dependency.get(HvacController.class).removeAllComponents();
@@ -513,6 +519,7 @@ public class CarStatusBar extends StatusBar implements
     @Override
     public void onDensityOrFontScaleChanged() {
         super.onDensityOrFontScaleChanged();
+        restartNavBars();
         // Need to update the background on density changed in case the change was due to night
         // mode.
         mNotificationPanelBackground = getDefaultWallpaper();
