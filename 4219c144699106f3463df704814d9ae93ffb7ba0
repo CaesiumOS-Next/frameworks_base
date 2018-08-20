@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "be680617_bb6116d4",
+        "filename": "core/java/android/provider/BlockedNumberContract.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 261,
+      "author": {
+        "id": 1087703
+      },
+      "writtenOn": "2018-08-20T18:48:02Z",
+      "side": 1,
+      "message": "Any chance you can make this 0? makes it easier to stuff these into protos if we log these for metrics later on.",
+      "range": {
+        "startLine": 261,
+        "startChar": 28,
+        "endLine": 261,
+        "endChar": 54
+      },
+      "revId": "4219c144699106f3463df704814d9ae93ffb7ba0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fe97959f_7f061843",
+        "filename": "core/java/android/provider/BlockedNumberContract.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 486,
+      "author": {
+        "id": 1087703
+      },
+      "writtenOn": "2018-08-20T18:48:02Z",
+      "side": 1,
+      "message": "nit: be consistent on whether you\u0027re using the class prefix",
+      "range": {
+        "startLine": 486,
+        "startChar": 24,
+        "endLine": 486,
+        "endChar": 45
+      },
+      "revId": "4219c144699106f3463df704814d9ae93ffb7ba0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
