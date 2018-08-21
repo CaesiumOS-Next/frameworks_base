@@ -341,9 +341,11 @@ public class ServiceState implements Parcelable {
         mIsDataRoamingFromRegistration = s.mIsDataRoamingFromRegistration;
         mIsUsingCarrierAggregation = s.mIsUsingCarrierAggregation;
         mChannelNumber = s.mChannelNumber;
-        mCellBandwidths = Arrays.copyOf(s.mCellBandwidths, s.mCellBandwidths.length);
+        mCellBandwidths = s.mCellBandwidths == null ? null :
+                Arrays.copyOf(s.mCellBandwidths, s.mCellBandwidths.length);
         mLteEarfcnRsrpBoost = s.mLteEarfcnRsrpBoost;
-        mNetworkRegistrationStates = new ArrayList<>(s.mNetworkRegistrationStates);
+        mNetworkRegistrationStates = s.mNetworkRegistrationStates == null ? null :
+                new ArrayList<>(s.mNetworkRegistrationStates);
     }
 
     /**
