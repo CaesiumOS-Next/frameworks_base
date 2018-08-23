@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "62c92c24_4e743ba4",
+        "filename": "core/java/android/nfc/NfcAdapter.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 326,
+      "author": {
+        "id": 1163305
+      },
+      "writtenOn": "2018-08-23T12:42:22Z",
+      "side": 1,
+      "message": "This wrong intent must cause some warnings if you run the style check tool.",
+      "range": {
+        "startLine": 326,
+        "startChar": 0,
+        "endLine": 326,
+        "endChar": 3
+      },
+      "revId": "7385140a230b8fd1f6a926f99f4100019be6b52b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d3db2b34_62d22bd3",
+        "filename": "core/java/android/nfc/NfcAdapter.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 328,
+      "author": {
+        "id": 1163305
+      },
+      "writtenOn": "2018-08-23T12:42:22Z",
+      "side": 1,
+      "message": "This annotation is effective only for the next constant \u0027AID_SUPPORT_EXACT\u0027. Each constant should have the annotation.",
+      "range": {
+        "startLine": 328,
+        "startChar": 6,
+        "endLine": 328,
+        "endChar": 11
+      },
+      "revId": "7385140a230b8fd1f6a926f99f4100019be6b52b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fc65efb3_00b0d5fe",
+        "filename": "core/java/android/nfc/NfcAdapter.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 332,
+      "author": {
+        "id": 1163305
+      },
+      "writtenOn": "2018-08-23T12:42:22Z",
+      "side": 1,
+      "message": "Why do not we move these constants to the package android.se.omapi if these are mainly used as a parameter of the API you are going to add to android.se.omapi? Or, here is the best place to delcare?",
+      "range": {
+        "startLine": 330,
+        "startChar": 0,
+        "endLine": 332,
+        "endChar": 50
+      },
+      "revId": "7385140a230b8fd1f6a926f99f4100019be6b52b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
