@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "441c03e6_5d090f75",
+        "filename": "services/core/java/com/android/server/NetworkManagementService.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 632,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2018-09-04T09:53:20Z",
+      "side": 1,
+      "message": "If you\u0027re changing this file, you might as well delete hasKernelSupport and mBandwidthControlEnabled as well. See https://android-review.googlesource.com/c/platform/frameworks/base/+/571466 . I don\u0027t think you have to do that in this CL though.",
+      "range": {
+        "startLine": 630,
+        "startChar": 0,
+        "endLine": 632,
+        "endChar": 13
+      },
+      "revId": "0aa54ddc3688380581cef3e259ffad8f5564e14d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
