@@ -57,7 +57,7 @@ import android.content.ContentResolver;
 import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.INetd;
-import android.net.TetherStatsParcel;
+import android.net.INetdUnsolicitedEventCallback;
 import android.net.INetworkManagementEventObserver;
 import android.net.ITetheringStatsProvider;
 import android.net.InterfaceConfiguration;
@@ -68,6 +68,7 @@ import android.net.NetworkPolicyManager;
 import android.net.NetworkStats;
 import android.net.NetworkUtils;
 import android.net.RouteInfo;
+import android.net.TetherStatsParcel;
 import android.net.UidRange;
 import android.net.UidRangeParcel;
 import android.net.util.NetdService;
@@ -110,6 +111,7 @@ import com.android.internal.util.HexDump;
 import com.android.internal.util.Preconditions;
 import com.android.server.NativeDaemonConnector.Command;
 import com.android.server.NativeDaemonConnector.SensitiveArg;
+import com.android.server.net.BaseNetdUnsolicitedEventCallback;
 import com.google.android.collect.Maps;
 
 import java.io.BufferedReader;
@@ -230,6 +232,8 @@ public class NetworkManagementService extends INetworkManagementService.Stub
 
     private INetd mNetdService;
 
+    private final NetdUnsolicitedEventListenerService mNetdListener;
+
     private IBatteryStats mBatteryStats;
 
     private final Thread mThread;
@@ -347,6 +351,8 @@ public class NetworkManagementService extends INetworkManagementService.Stub
 
         mDaemonHandler = new Handler(FgThread.get().getLooper());
 
+        mNetdListener = new NetdUnsolicitedEventListenerService(context);
+
         // Add ourself to the Watchdog monitors.
         Watchdog.getInstance().addMonitor(this);
 
@@ -365,6 +371,7 @@ public class NetworkManagementService extends INetworkManagementService.Stub
         mFgHandler = null;
         mThread = null;
         mServices = null;
+        mNetdListener = null;
     }
 
     static NetworkManagementService create(Context context, String socket, SystemServices services)
@@ -388,6 +395,19 @@ public class NetworkManagementService extends INetworkManagementService.Stub
     }
 
     public void systemReady() {
+        try {
+            ServiceManager.addService(mNetdListener.SERVICE_NAME, mNetdListener);
+        } catch (Exception e) {
+            Slog.d(TAG, "Netd event service adding failed " + e);
+        }
+        registerNetdEventCallback();
+        try {
+            mNetdService.addUnsolEventListener(
+                    mNetdListener, INetd.UNSOL_LISTENER_ID_SYSTEMSERVER);
+            if (DBG) Slog.d(TAG, "Set Unsol event listener");
+        } catch (RemoteException | ServiceSpecificException e) {
+            Slog.d(TAG, "Failed to set Netd unsol event listener " + e);
+        }
         if (DBG) {
             final long start = System.currentTimeMillis();
             prepareNativeDaemon();
@@ -396,6 +416,107 @@ public class NetworkManagementService extends INetworkManagementService.Stub
             return;
         } else {
             prepareNativeDaemon();
+        }
+    }
+
+    protected final INetdUnsolicitedEventCallback mNetdEventCallback = new
+            BaseNetdUnsolicitedEventCallback() {
+        @Override
+        public void onInterfaceClassActivityChangedEvent(boolean isActive,
+                int label, long timestamp, int uid) {
+            final long timestampNanos;
+            if (timestamp <= 0) {
+                timestampNanos = SystemClock.elapsedRealtimeNanos();
+            } else {
+                timestampNanos = timestamp;
+            }
+            notifyInterfaceClassActivity(label,
+                    isActive ? DataConnectionRealTimeInfo.DC_POWER_STATE_HIGH
+                    : DataConnectionRealTimeInfo.DC_POWER_STATE_LOW,
+                    timestampNanos, uid, false);
+        }
+
+        @Override
+        public void onQuotaLimitReachedEvent(String alertName,  String ifName) {
+            notifyLimitReached(alertName, ifName);
+        }
+
+        @Override
+        public void onInterfaceDnsServersAddedEvent(String ifName,
+                long lifetime, String[] servers) {
+            notifyInterfaceDnsServerInfo(ifName, lifetime, servers);
+        }
+
+        @Override
+        public void onInterfaceAddressChangedEvent(boolean updated,
+                String addr, String ifName, int flags, int scope) {
+            final LinkAddress address;
+            try {
+                address = new LinkAddress(addr, flags, scope);
+            } catch (IllegalArgumentException e) {
+                // Malformed/invalid IP address.
+                throw new IllegalStateException(e);
+            }
+
+            if (updated) {
+                notifyAddressUpdated(ifName, address);
+            } else {
+                notifyAddressRemoved(ifName, address);
+            }
+        }
+
+        @Override
+        public void onInterfaceAddedEvent(String ifName) {
+            notifyInterfaceAdded(ifName);
+        }
+
+        @Override
+        public void onInterfaceRemovedEvent(String ifName) {
+            notifyInterfaceRemoved(ifName);
+        }
+
+        @Override
+        public void onInterfaceChangedEvent(String ifName, boolean status) {
+            notifyInterfaceStatusChanged(ifName, status);
+        }
+
+        @Override
+        public void onInterfaceLinkStatusChangedEvent(String ifName, boolean status) {
+            notifyInterfaceLinkStateChanged(ifName, status);
+        }
+
+        @Override
+        public void onRouteChangedEvent(boolean updated,
+                String route, String gateway, String ifName) {
+            try {
+                final InetAddress parsedGateway;
+                parsedGateway = InetAddress.parseNumericAddress(gateway);
+                final RouteInfo processRoute = new RouteInfo(new IpPrefix(route),
+                        parsedGateway, ifName);
+                notifyRouteChange(updated, processRoute);
+            } catch (IllegalArgumentException e) {
+                throw new IllegalStateException(e);
+            }
+        }
+
+        @Override
+        public void onStrictCleartextDetectedEvent(int uid, String hex) {
+            final byte[] firstPacket = HexDump.hexStringToByteArray(hex);
+            try {
+                ActivityManager.getService().notifyCleartextNetwork(uid, firstPacket);
+            } catch (RemoteException e) {
+                Log.wtf(TAG, "Exception in notifyCleartextNetwork", e);
+            }
+        }
+    };
+
+    protected void registerNetdEventCallback() {
+        try {
+            mNetdListener.setNetdUnsolicitedEventCallback(
+                    INetdUnsolicitedEventCallback.CALLBACK_CALLER_NETWORKMANAGEMENT_SERVICE,
+                    mNetdEventCallback);
+        } catch (Exception e) {
+            Log.wtf(TAG, "Error registering netd callback: ", e);
         }
     }
 
@@ -428,17 +549,22 @@ public class NetworkManagementService extends INetworkManagementService.Stub
     }
 
     private void invokeForAllObservers(NetworkManagementEventCallback eventCallback) {
-        final int length = mObservers.beginBroadcast();
-        try {
-            for (int i = 0; i < length; i++) {
+        // Keep all broadcasting at the same thread to avoid collision.
+        mDaemonHandler.post(new Runnable() {
+            @Override public void run() {
+                final int length = mObservers.beginBroadcast();
                 try {
-                    eventCallback.sendCallback(mObservers.getBroadcastItem(i));
-                } catch (RemoteException | RuntimeException e) {
+                    for (int i = 0; i < length; i++) {
+                        try {
+                            eventCallback.sendCallback(mObservers.getBroadcastItem(i));
+                        } catch (RemoteException | RuntimeException e) {
+                        }
+                    }
+                } finally {
+                    mObservers.finishBroadcast();
                 }
             }
-        } finally {
-            mObservers.finishBroadcast();
-        }
+        });
     }
 
     /**
@@ -471,7 +597,6 @@ public class NetworkManagementService extends INetworkManagementService.Stub
         // our sanity-checking state.
         mActiveAlerts.remove(iface);
         mActiveQuotas.remove(iface);
-
         invokeForAllObservers(o -> o.interfaceRemoved(iface));
     }
 
@@ -730,8 +855,8 @@ public class NetworkManagementService extends INetworkManagementService.Stub
     /**
      * Notify our observers of a route change.
      */
-    private void notifyRouteChange(String action, RouteInfo route) {
-        if (action.equals("updated")) {
+    private void notifyRouteChange(boolean updated, RouteInfo route) {
+        if (updated) {
             invokeForAllObservers(o -> o.routeUpdated(route));
         } else {
             invokeForAllObservers(o -> o.routeRemoved(route));
@@ -922,10 +1047,11 @@ public class NetworkManagementService extends INetworkManagementService.Stub
                     if (valid) {
                         try {
                             // InetAddress.parseNumericAddress(null) inexplicably returns ::1.
+                            boolean updated = cooked[2].equals("updated");
                             InetAddress gateway = null;
                             if (via != null) gateway = InetAddress.parseNumericAddress(via);
                             RouteInfo route = new RouteInfo(new IpPrefix(cooked[3]), gateway, dev);
-                            notifyRouteChange(cooked[2], route);
+                            notifyRouteChange(updated, route);
                             return true;
                         } catch (IllegalArgumentException e) {}
                     }
@@ -1464,13 +1590,9 @@ public class NetworkManagementService extends INetworkManagementService.Stub
             if (ConnectivityManager.isNetworkTypeMobile(type)) {
                 mNetworkActive = false;
             }
-            mDaemonHandler.post(new Runnable() {
-                @Override public void run() {
-                    notifyInterfaceClassActivity(type,
-                            DataConnectionRealTimeInfo.DC_POWER_STATE_HIGH,
-                            SystemClock.elapsedRealtimeNanos(), -1, false);
-                }
-            });
+            notifyInterfaceClassActivity(type,
+                    DataConnectionRealTimeInfo.DC_POWER_STATE_HIGH,
+                    SystemClock.elapsedRealtimeNanos(), -1, false);
         }
     }
 
@@ -1493,13 +1615,9 @@ public class NetworkManagementService extends INetworkManagementService.Stub
                 throw new IllegalStateException(e);
             }
             mActiveIdleTimers.remove(iface);
-            mDaemonHandler.post(new Runnable() {
-                @Override public void run() {
-                    notifyInterfaceClassActivity(params.type,
-                            DataConnectionRealTimeInfo.DC_POWER_STATE_LOW,
-                            SystemClock.elapsedRealtimeNanos(), -1, false);
-                }
-            });
+            notifyInterfaceClassActivity(params.type,
+                    DataConnectionRealTimeInfo.DC_POWER_STATE_LOW,
+                    SystemClock.elapsedRealtimeNanos(), -1, false);
         }
     }
 

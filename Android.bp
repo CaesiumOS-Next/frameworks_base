@@ -193,6 +193,7 @@ java_defaults {
         "core/java/android/net/IEthernetManager.aidl",
         "core/java/android/net/IEthernetServiceListener.aidl",
         "core/java/android/net/INetdEventCallback.aidl",
+        "core/java/android/net/INetdUnsolicitedEventCallback.aidl",
         "core/java/android/net/IIpSecService.aidl",
         "core/java/android/net/INetworkManagementEventObserver.aidl",
         "core/java/android/net/INetworkPolicyListener.aidl",
@@ -599,6 +600,7 @@ java_defaults {
 
         ":storaged_aidl",
         ":netd_aidl",
+        ":netd_events_aidl",
         ":vold_aidl",
         ":installd_aidl",
         ":dumpstate_aidl",
