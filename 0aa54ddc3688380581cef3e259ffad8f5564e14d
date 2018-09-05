@@ -22,6 +22,30 @@
       "revId": "0aa54ddc3688380581cef3e259ffad8f5564e14d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f84648d6_1c5a22ae",
+        "filename": "services/core/java/com/android/server/NetworkManagementService.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 632,
+      "author": {
+        "id": 1337176
+      },
+      "writtenOn": "2018-09-05T07:49:53Z",
+      "side": 1,
+      "message": "I think I could do a CL for \"netd unconditionally enable bandwidth control at startup time\" first then I could drop the cmd \"bandwidth enable\".\nWhat do you think about it?",
+      "parentUuid": "441c03e6_5d090f75",
+      "range": {
+        "startLine": 630,
+        "startChar": 0,
+        "endLine": 632,
+        "endChar": 13
+      },
+      "revId": "0aa54ddc3688380581cef3e259ffad8f5564e14d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
