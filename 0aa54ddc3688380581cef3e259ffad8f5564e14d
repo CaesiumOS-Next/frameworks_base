@@ -46,6 +46,30 @@
       "revId": "0aa54ddc3688380581cef3e259ffad8f5564e14d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "88b2e307_d2adaccc",
+        "filename": "services/core/java/com/android/server/NetworkManagementService.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 632,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2018-09-07T10:58:01Z",
+      "side": 1,
+      "message": "The easiest/simplest thing is probably not to change part of the code in this CL. So this CL would only contain the changes to move the commands (well, all the commands except \"bandwidth enable\") to binder.\n\nThen we can have a topic of two CLs (one in netd, one in frameworks/base) that delete the bandwidth enable command entirely. But if you want to keep this in this CL I think that\u0027s OK as well, as long as the code continues to behave correctly.",
+      "parentUuid": "f84648d6_1c5a22ae",
+      "range": {
+        "startLine": 630,
+        "startChar": 0,
+        "endLine": 632,
+        "endChar": 13
+      },
+      "revId": "0aa54ddc3688380581cef3e259ffad8f5564e14d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
