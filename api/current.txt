@@ -18548,6 +18548,7 @@ package android.icu.text {
     field public static final byte LEVEL_OVERRIDE = -128; // 0xffffff80
     field public static final byte LTR = 0; // 0x0
     field public static final int MAP_NOWHERE = -1; // 0xffffffff
+    field public static final byte MAX_EXPLICIT_LEVEL;
     field public static final byte MIXED = 2; // 0x2
     field public static final byte NEUTRAL = 3; // 0x3
     field public static final int OPTION_DEFAULT = 0; // 0x0
