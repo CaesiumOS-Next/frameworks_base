@@ -22,6 +22,30 @@
       "revId": "8313bb364bfa6528a5709480ab208c03c7e1b6fa",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c95f4c88_e590ada5",
+        "filename": "services/core/java/com/android/server/audio/AudioService.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 2190,
+      "author": {
+        "id": 1345588
+      },
+      "writtenOn": "2018-09-08T00:11:15Z",
+      "side": 1,
+      "message": "But we might still need something to differ the source and sink devices.",
+      "parentUuid": "b407512d_884a928b",
+      "range": {
+        "startLine": 2190,
+        "startChar": 21,
+        "endLine": 2190,
+        "endChar": 61
+      },
+      "revId": "8313bb364bfa6528a5709480ab208c03c7e1b6fa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
