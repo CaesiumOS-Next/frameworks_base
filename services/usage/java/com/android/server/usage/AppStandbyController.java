@@ -341,6 +341,7 @@ public class AppStandbyController {
 
     void setAppIdleEnabled(boolean enabled) {
         mAppIdleEnabled = enabled;
+        postParoleStateChanged();
     }
 
     public void onBootPhase(int phase) {
