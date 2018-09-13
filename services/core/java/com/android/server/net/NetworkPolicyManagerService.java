@@ -3853,7 +3853,7 @@ public class NetworkPolicyManagerService extends INetworkPolicyManager.Stub {
     private boolean isUidIdle(int uid) {
         final String[] packages = mContext.getPackageManager().getPackagesForUid(uid);
         final int userId = UserHandle.getUserId(uid);
-
+/*
         if (packages != null) {
             for (String packageName : packages) {
                 if (!mUsageStats.isAppIdle(packageName, uid, userId)) {
@@ -3861,6 +3861,7 @@ public class NetworkPolicyManagerService extends INetworkPolicyManager.Stub {
                 }
             }
         }
+*/
         return true;
     }
 
