@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dfe7ac35_5d091329",
+        "filename": "media/java/android/media/MediaRecorder.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 971,
+      "author": {
+        "id": 1022116
+      },
+      "writtenOn": "2018-09-18T22:59:41Z",
+      "side": 1,
+      "message": "Why not put setMaxFileSize(mMaxSize); in L 992 to reduce duplicate code?",
+      "revId": "f127a17612c42769350e4ef67b273ed3ab457512",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
