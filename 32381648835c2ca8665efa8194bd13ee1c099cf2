@@ -22,6 +22,30 @@
       "revId": "32381648835c2ca8665efa8194bd13ee1c099cf2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2fa817b1_6f602308",
+        "filename": "config/preloaded-classes",
+        "patchSetId": 1
+      },
+      "lineNbr": 2392,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2018-09-21T17:43:01Z",
+      "side": 1,
+      "message": "No. The issue is exposed by the creation of an instance of the SerialExecutor to go into the SERIAL_EXECUTOR field. The inner classes do not initialize AsyncTask itself, and there\u0027s no other static storage that is problematic.",
+      "parentUuid": "594f92b2_33d92aa9",
+      "range": {
+        "startLine": 2384,
+        "startChar": 0,
+        "endLine": 2392,
+        "endChar": 35
+      },
+      "revId": "32381648835c2ca8665efa8194bd13ee1c099cf2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
