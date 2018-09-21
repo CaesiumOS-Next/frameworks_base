@@ -184,4 +184,35 @@ public class InetDiagMessage extends NetlinkMessage {
                 + (mStructInetDiagMsg == null ? "" : mStructInetDiagMsg.toString()) + "} "
                 + "}";
     }
+
+    /**
+     * Detect if kernel config CONFIG_INET_UDP_DIAG is enabled.
+     *
+     * Unfortunately, netlink does not return a useful error like ENOSUPP when CONFIG_INET_UDP_DIAG
+     * is not supported. Instead it returns ENOENT, which is the same error it returns when
+     * CONFIG_INET_UDP_DIAG is enabled, but the entry is not found. So, to accurately detect whether
+     * or not UDP lookups are supported, create a UDP socket and perform the lookup.
+     */
+    public static boolean configInetUdpDiagEnabled() {
+        final int expectedUid = Process.myUid();
+        try {
+            DatagramSocket s = new DatagramSocket(0, InetAddress.getByName("::"));
+            s.setSoTimeout(TIMEOUT_MS);
+            s.connect(InetAddress.getByName("::"), 0);
+            InetSocketAddress loc = new InetSocketAddress(s.getLocalAddress(), s.getLocalPort());
+            InetSocketAddress rem = new InetSocketAddress(s.getInetAddress(), s.getPort());
+
+            final int uid = getConnectionOwnerUid(IPPROTO_UDP, loc, rem);
+            s.close();
+
+            /* For debug builds, log a warning to enable CONFIG_INET_UDP_DIAG. */
+            if ((uid != expectedUid) && (Build.IS_USERDEBUG || Build.IS_ENG)) {
+                Log.w(TAG, "Enable CONFIG_INET_UDP_DIAG in the kernel to improve Vpn performance!");
+            }
+            return uid == expectedUid;
+        } catch (UnknownHostException | SocketException e) {
+            Log.e(TAG, e.toString());
+        }
+        return true;
+    }
 }

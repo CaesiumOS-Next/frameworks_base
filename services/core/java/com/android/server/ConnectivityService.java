@@ -158,6 +158,7 @@ import com.android.server.connectivity.NetworkMonitor;
 import com.android.server.connectivity.NetworkNotificationManager;
 import com.android.server.connectivity.NetworkNotificationManager.NotificationType;
 import com.android.server.connectivity.PermissionMonitor;
+import com.android.server.connectivity.ProcNetUdp;
 import com.android.server.connectivity.ProxyTracker;
 import com.android.server.connectivity.Tethering;
 import com.android.server.connectivity.Vpn;
@@ -898,6 +899,7 @@ public class ConnectivityService extends IConnectivityManager.Stub
 
         mDnsManager = new DnsManager(mContext, mNetd, mSystemProperties);
         registerPrivateDnsSettingsCallbacks();
+        mUseProcNetUdpFallback = !InetDiagMessage.configInetUdpDiagEnabled();
     }
 
     private Tethering makeTethering() {
@@ -5953,6 +5955,8 @@ public class ConnectivityService extends IConnectivityManager.Stub
                 + "permission");
     }
 
+    private final boolean mUseProcNetUdpFallback;
+
     /**
      * @param connectionInfo the connection to resolve.
      * @return {@code uid} if the connection is found and the app has permission to observe it
@@ -5965,8 +5969,13 @@ public class ConnectivityService extends IConnectivityManager.Stub
             throw new IllegalArgumentException("Unsupported protocol " + connectionInfo.protocol);
         }
 
-        final int uid = InetDiagMessage.getConnectionOwnerUid(connectionInfo.protocol,
-                connectionInfo.local, connectionInfo.remote);
+        final int uid;
+        if( (connectionInfo.protocol == IPPROTO_UDP) && mUseProcNetUdpFallback) {
+            uid = ProcNetUdp.getConnectionOwnerUid(connectionInfo.local);
+        } else {
+            uid = InetDiagMessage.getConnectionOwnerUid(connectionInfo.protocol,
+                    connectionInfo.local, connectionInfo.remote);
+        }
 
         /* Filter out Uids not associated with the VPN. */
         if (vpn != null && !vpn.appliesToUid(uid)) {
