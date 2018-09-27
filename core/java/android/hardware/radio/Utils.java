@@ -107,15 +107,12 @@ final class Utils {
     }
 
     static Set<Integer> createIntSet(@NonNull Parcel in) {
-        return createSet(in, new Parcelable.Creator<Integer>() {
-            public Integer createFromParcel(Parcel in) {
-                return in.readInt();
-            }
-
-            public Integer[] newArray(int size) {
-                return new Integer[size];
-            }
-        });
+        int size = in.readInt();
+        Set<Integer> set = new HashSet<>();
+        while (size-- > 0) {
+            set.add(in.readInt());
+        }
+        return set;
     }
 
     static <T extends Parcelable> void writeTypedCollection(@NonNull Parcel dest,
