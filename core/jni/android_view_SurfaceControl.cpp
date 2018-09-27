@@ -278,6 +278,7 @@ static void nativeScreenshot(JNIEnv* env, jclass clazz, jobject displayTokenObj,
     ScreenshotClient::capture(displayToken, sourceCrop, width, height, minLayer, maxLayer,
                               useIdentityTransform, 0, &buffer);
 
+    (consumer.get())->setScalingMode(NATIVE_WINDOW_SCALING_MODE_SCALE_TO_WINDOW);
     Surface::attachAndQueueBuffer(consumer.get(), buffer);
 }
 
