@@ -49,6 +49,7 @@ import android.os.RemoteException;
 import android.os.ResultReceiver;
 import android.os.ServiceManager;
 import android.os.SystemProperties;
+import android.os.WorkSource;
 import android.provider.Settings.SettingNotFoundException;
 import android.service.carrier.CarrierIdentifier;
 import android.telecom.PhoneAccount;
@@ -4599,23 +4600,30 @@ public class TelephonyManager {
     }
 
     /**
-     * Returns all observed cell information from all radios on the
-     * device including the primary and neighboring cells. Calling this method does
-     * not trigger a call to {@link android.telephony.PhoneStateListener#onCellInfoChanged
-     * onCellInfoChanged()}, or change the rate at which
-     * {@link android.telephony.PhoneStateListener#onCellInfoChanged
-     * onCellInfoChanged()} is called.
+     * Returns all observed cell information from all radios on the device including the primary
+     * and neighboring cells.
      *
-     *<p>
-     * The list can include one or more {@link android.telephony.CellInfoGsm CellInfoGsm},
+     * <p>Beginning with {@link Build.VERSION_CODES.Q Android Q}, if this API results in a change
+     * of the CellInfo, that change will be reported via
+     * {@link android.telephony.PhoneStateListener#onCellInfoChanged onCellInfoChanged()}. In
+     * addition, apps targeting {@link Build.VERSION_CODES.Q Android Q} or higher that call this API
+     * will no longer trigger a refresh of CellInfo and instead will receive the latest cached
+     * results. Apps targeting {@link Build.VERSION_CODES.Q Android Q} or greater that wish to
+     * request updated CellInfo should call
+     * {android.telephony.TelephonyManager#requestCellInfoUpdate requestCellInfoUpdate()} and
+     * listen for responses via {@link android.telephony.PhoneStateListener#onCellInfoChanged
+     * onCellInfoChanged()}.
+     *
+     * <p>The list can include one or more {@link android.telephony.CellInfoGsm CellInfoGsm},
      * {@link android.telephony.CellInfoCdma CellInfoCdma},
+     * {@link android.telephony.CellInfoTdscdma CellInfoTdscdma},
      * {@link android.telephony.CellInfoLte CellInfoLte}, and
      * {@link android.telephony.CellInfoWcdma CellInfoWcdma} objects, in any combination.
-     * On devices with multiple radios it is typical to see instances of
-     * one or more of any these in the list. In addition, zero, one, or more
-     * of the returned objects may be considered registered; that is, their
+     * On it is typical to see instances of one or more of any these in the list. In addition, zero
+     * or more of the returned objects may be considered registered; that is, their
      * {@link android.telephony.CellInfo#isRegistered CellInfo.isRegistered()}
-     * methods may return true.
+     * methods may return true, indicating that the cell is being used or would be used for
+     * signaling communication if necessary.
      *
      * <p>This method returns valid data for registered cells on devices with
      * {@link android.content.pm.PackageManager#FEATURE_TELEPHONY}. In cases where only
@@ -4626,10 +4634,6 @@ public class TelephonyManager {
      *<p>
      * This method is preferred over using {@link
      * android.telephony.TelephonyManager#getCellLocation getCellLocation()}.
-     * However, for older devices, <code>getAllCellInfo()</code> may return
-     * null. In these cases, you should call {@link
-     * android.telephony.TelephonyManager#getCellLocation getCellLocation()}
-     * instead.
      *
      * @return List of {@link android.telephony.CellInfo}; null if cell
      * information is unavailable.
@@ -4640,11 +4644,51 @@ public class TelephonyManager {
             ITelephony telephony = getITelephony();
             if (telephony == null)
                 return null;
-            return telephony.getAllCellInfo(getOpPackageName());
+            return telephony.getAllCellInfo(
+                    getOpPackageName(), mContext.getApplicationInfo().targetSdkVersion);
         } catch (RemoteException ex) {
-            return null;
         } catch (NullPointerException ex) {
-            return null;
+        }
+        return null;
+    }
+
+    /**
+     * Requests all observed cell information from all radios on the device including the primary
+     * and neighboring cells.
+     *
+     * <p>Any available results from this request will be provided by calls to
+     * {@link android.telephony.PhoneStateListener#onCellInfoChanged onCellInfoChanged()}
+     * for each active subscription.
+     */
+    @RequiresPermission(android.Manifest.permission.ACCESS_COARSE_LOCATION)
+    public void requestCellInfoUpdate() {
+        try {
+            ITelephony telephony = getITelephony();
+            if (telephony == null) return;
+            telephony.requestCellInfoUpdate(getOpPackageName());
+        } catch (RemoteException ex) {
+        }
+    }
+
+    /**
+     * Requests all observed cell information from all radios on the device including the primary
+     * and neighboring cells.
+     *
+     * <p>Any available results from this request will be provided by calls to
+     * {@link android.telephony.PhoneStateListener#onCellInfoChanged onCellInfoChanged()}
+     * for each active subscription.
+     *
+     * @param workSource the requestor to whom the power consumption for this should be attributed.
+     * @hide
+     */
+    @SystemApi
+    @RequiresPermission(android.Manifest.permission.ACCESS_COARSE_LOCATION)
+    public void requestCellInfoUpdate(WorkSource workSource) {
+        try {
+            ITelephony telephony = getITelephony();
+            if (telephony == null) return;
+            telephony.requestCellInfoUpdateWithWorkSource(getOpPackageName(), workSource);
+        } catch (RemoteException ex) {
         }
     }
 
