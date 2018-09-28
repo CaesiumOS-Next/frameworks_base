@@ -1,0 +1,165 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0b0832aa_71e3a258",
+        "filename": "telephony/java/android/telephony/emergency/EmergencyNumber.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1081638
+      },
+      "writtenOn": "2018-09-28T21:14:00Z",
+      "side": 1,
+      "message": "Are you planing to put a lot more emergency stuffs? Otherwise maybe just android.telephony.",
+      "range": {
+        "startLine": 17,
+        "startChar": 26,
+        "endLine": 17,
+        "endChar": 35
+      },
+      "revId": "b6ac79de911e6c6eaf5025171c408886ad827397",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "74181d73_e175e662",
+        "filename": "telephony/java/android/telephony/emergency/EmergencyNumber.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1081638
+      },
+      "writtenOn": "2018-09-28T21:14:00Z",
+      "side": 1,
+      "message": "Consider removing this. Making it non-final would be easier for writing unit tests with Mockito.",
+      "range": {
+        "startLine": 35,
+        "startChar": 7,
+        "endLine": 35,
+        "endChar": 12
+      },
+      "revId": "b6ac79de911e6c6eaf5025171c408886ad827397",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6c8ca074_06039fd8",
+        "filename": "telephony/java/android/telephony/emergency/EmergencyNumber.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1081638
+      },
+      "writtenOn": "2018-09-28T21:14:00Z",
+      "side": 1,
+      "message": "The constructor is hidden? BTW, what\u0027s the reason to make emergency number as a public API? Is there app using it?",
+      "range": {
+        "startLine": 107,
+        "startChar": 4,
+        "endLine": 107,
+        "endChar": 16
+      },
+      "revId": "b6ac79de911e6c6eaf5025171c408886ad827397",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "286194c9_ad4868d6",
+        "filename": "telephony/java/android/telephony/emergency/EmergencyNumber.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1081638
+      },
+      "writtenOn": "2018-09-28T21:14:00Z",
+      "side": 1,
+      "message": "Maybe more specific? ISO-xxxx",
+      "range": {
+        "startLine": 137,
+        "startChar": 60,
+        "endLine": 137,
+        "endChar": 70
+      },
+      "revId": "b6ac79de911e6c6eaf5025171c408886ad827397",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "266bdb00_be79f5dc",
+        "filename": "telephony/java/android/telephony/emergency/EmergencyNumber.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1081638
+      },
+      "writtenOn": "2018-09-28T21:14:00Z",
+      "side": 1,
+      "message": "Not sure if this is correct? You are returning a list not a @EmergencyServiceCategories.",
+      "range": {
+        "startLine": 170,
+        "startChar": 11,
+        "endLine": 170,
+        "endChar": 38
+      },
+      "revId": "b6ac79de911e6c6eaf5025171c408886ad827397",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "07909b3a_7acc7dda",
+        "filename": "telephony/java/android/telephony/emergency/EmergencyNumber.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1081638
+      },
+      "writtenOn": "2018-09-28T21:14:00Z",
+      "side": 1,
+      "message": "needs to be public? Feel that using inServiceCategory is enough. Also one API starts with \"is\" but the other API starts with \"in\".\n\nAlso is it possible that the bit mask has both EMERGENCY_SERVICE_CATEGORY_GENERIC and other specific categories as well?",
+      "range": {
+        "startLine": 191,
+        "startChar": 19,
+        "endLine": 191,
+        "endChar": 35
+      },
+      "revId": "b6ac79de911e6c6eaf5025171c408886ad827397",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "92533656_8543e612",
+        "filename": "telephony/java/android/telephony/emergency/EmergencyNumber.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 1081638
+      },
+      "writtenOn": "2018-09-28T21:14:00Z",
+      "side": 1,
+      "message": "hide?",
+      "range": {
+        "startLine": 226,
+        "startChar": 0,
+        "endLine": 227,
+        "endChar": 30
+      },
+      "revId": "b6ac79de911e6c6eaf5025171c408886ad827397",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
