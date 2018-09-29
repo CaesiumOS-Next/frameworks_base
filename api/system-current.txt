@@ -5138,9 +5138,11 @@ package android.telephony {
   }
 
   public class ServiceState implements android.os.Parcelable {
+    method public boolean getDataRoaming();
     method public java.util.List<android.telephony.NetworkRegistrationState> getNetworkRegistrationStates();
     method public java.util.List<android.telephony.NetworkRegistrationState> getNetworkRegistrationStates(int);
     method public android.telephony.NetworkRegistrationState getNetworkRegistrationStates(int, int);
+    method public boolean getVoiceRoaming();
   }
 
   public final class SmsManager {

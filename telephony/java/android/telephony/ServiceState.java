@@ -528,11 +528,12 @@ public class ServiceState implements Parcelable {
     }
 
     /**
-     * Get current voice network roaming status
-     * @return roaming status
+     * Get current voice network roaming status.
+     * @return {@code true} if TS 27.007 7.2 roaming is true and ONS is different from SPN,
+     * {@code false} otherwise.
      * @hide
      */
-    @UnsupportedAppUsage
+    @SystemApi
     public boolean getVoiceRoaming() {
         return mVoiceRoamingType != ROAMING_TYPE_NOT_ROAMING;
     }
@@ -548,11 +549,13 @@ public class ServiceState implements Parcelable {
     }
 
     /**
-     * Get current data network roaming type
-     * @return roaming type
+     * Get current data network roaming type. data roaming can be different as voice roaming state
+     * for CDMA network or IWLAN.
+     * @return {@code true} if TS 27.007 7.2 roaming is true and ONS is different from SPN,
+     * {@code false} otherwise.
      * @hide
      */
-    @UnsupportedAppUsage
+    @SystemApi
     public boolean getDataRoaming() {
         return mDataRoamingType != ROAMING_TYPE_NOT_ROAMING;
     }
