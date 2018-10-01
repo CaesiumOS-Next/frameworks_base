@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fea767e4_583c86ba",
+        "filename": "services/core/java/com/android/server/ConnectivityService.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2018-10-01T08:10:57Z",
+      "side": 1,
+      "message": "This is a source file, I don\u0027t see why you\u0027d want to add execute permissions to this. Can you please revert the mode change ?",
+      "revId": "87c0f7e5ebda277c88e55f1167e73e708d8c316d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "74160598_6497109d",
+        "filename": "services/core/java/com/android/server/ConnectivityService.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 1142,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2018-10-01T08:10:57Z",
+      "side": 1,
+      "message": "mLockdownTracker is guarded by mVpns. You can\u0027t just remove the lock and hope there won\u0027t be races. In this case, removing the lock means some other thread can take it and null mLockdownTracker between the test and the call, and you\u0027ll crash the system server with prejudice.",
+      "range": {
+        "startLine": 1142,
+        "startChar": 12,
+        "endLine": 1142,
+        "endChar": 28
+      },
+      "revId": "87c0f7e5ebda277c88e55f1167e73e708d8c316d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
