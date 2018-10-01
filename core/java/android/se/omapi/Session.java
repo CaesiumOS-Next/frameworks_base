@@ -185,8 +185,8 @@ public final class Session {
      *             the Secure Element.
      * @throws IllegalStateException if the Secure Element session is used after
      *             being closed.
-     * @throws IllegalArgumentException if the aid's length is not within 5 to
-     *             16 (inclusive).
+     * @throws IllegalArgumentException if the aid's length is not zero and is not between
+     *             5 and 16 (inclusive).
      * @throws SecurityException if the calling application cannot be granted
      *             access to this AID or the default Applet on this
      *             session.
@@ -235,8 +235,8 @@ public final class Session {
      *             the Secure Element.
      * @throws IllegalStateException if the Secure Element session is used after
      *             being closed.
-     * @throws IllegalArgumentException if the aid's length is not within 5 to
-     *             16 (inclusive).
+     * @throws IllegalArgumentException if the aid's length is not zero and is not between
+     *             5 and 16 (inclusive).
      * @throws SecurityException if the calling application cannot be granted
      *             access to this AID or the default Applet on this
      *             session.
@@ -289,8 +289,8 @@ public final class Session {
      *             the Secure Element.
      * @throws IllegalStateException if the Secure Element is used after being
      *             closed.
-     * @throws IllegalArgumentException if the aid's length is not within 5 to
-     *             16 (inclusive).
+     * @throws IllegalArgumentException if the aid's length is not zero and is not between
+     *             5 and 16 (inclusive).
      * @throws SecurityException if the calling application cannot be granted
      *             access to this AID or the default Applet on this
      *             session.
@@ -342,8 +342,8 @@ public final class Session {
      *             the Secure Element.
      * @throws IllegalStateException if the Secure Element is used after being
      *             closed.
-     * @throws IllegalArgumentException if the aid's length is not within 5 to
-     *             16 (inclusive).
+     * @throws IllegalArgumentException if the aid's length is not zero and is not between
+     *             5 and 16 (inclusive).
      * @throws SecurityException if the calling application cannot be granted
      *             access to this AID or the default Applet on this
      *             session.
