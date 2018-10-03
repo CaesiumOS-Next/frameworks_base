@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d88048c7_d6f5c42f",
+        "filename": "services/core/java/com/android/server/IpSecService.java",
+        "patchSetId": 15
+      },
+      "lineNbr": 1485,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2018-10-03T13:55:34Z",
+      "side": 1,
+      "message": "Consider using the original IP address strings instead of \"source\" and \"destination\".",
+      "range": {
+        "startLine": 1485,
+        "startChar": 21,
+        "endLine": 1485,
+        "endChar": 43
+      },
+      "revId": "d1974973b6d6b04f55cedc11a99db8293a5b132f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f60f2176_d3623878",
+        "filename": "tests/net/java/com/android/server/IpSecServiceParameterizedTest.java",
+        "patchSetId": 15
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2018-10-03T13:55:34Z",
+      "side": 1,
+      "message": "Consider putting these in the same order as they appear in ipSecConfigs below.",
+      "range": {
+        "startLine": 66,
+        "startChar": 0,
+        "endLine": 69,
+        "endChar": 49
+      },
+      "revId": "d1974973b6d6b04f55cedc11a99db8293a5b132f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
