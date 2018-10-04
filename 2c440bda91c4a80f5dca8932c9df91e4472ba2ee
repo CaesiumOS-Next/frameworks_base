@@ -1,0 +1,234 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "44651e7d_62ec8122",
+        "filename": "telephony/java/android/telephony/emergency/EmergencyNumber.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1056478
+      },
+      "writtenOn": "2018-10-04T15:53:45Z",
+      "side": 1,
+      "message": "This interface should be @hide; its not part of the public API.",
+      "range": {
+        "startLine": 67,
+        "startChar": 4,
+        "endLine": 68,
+        "endChar": 51
+      },
+      "revId": "2c440bda91c4a80f5dca8932c9df91e4472ba2ee",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4aa27959_d121262c",
+        "filename": "telephony/java/android/telephony/emergency/EmergencyNumber.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1056478
+      },
+      "writtenOn": "2018-10-04T15:53:45Z",
+      "side": 1,
+      "message": "For this and the other constants, please add the reference:\nReference: 3gpp 22.101, Section 10 - Emergency Calls",
+      "range": {
+        "startLine": 70,
+        "startChar": 77,
+        "endLine": 70,
+        "endChar": 81
+      },
+      "revId": "2c440bda91c4a80f5dca8932c9df91e4472ba2ee",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a57e661d_260e46dd",
+        "filename": "telephony/java/android/telephony/emergency/EmergencyNumber.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1056478
+      },
+      "writtenOn": "2018-10-04T15:53:45Z",
+      "side": 1,
+      "message": "Since the EmergencyServiceCategories is @hide, the comments for it won\u0027t show up in the API.  I think they\u0027re useful, so for unspecified, add the text:\nCategory UNSPECIFIED (General emergency call, all categories) indicates that no specific\nservices are associated with this emergency number; if the emergency number is specified,\nit has one or more defined emergency service categories.",
+      "range": {
+        "startLine": 71,
+        "startChar": 28,
+        "endLine": 71,
+        "endChar": 66
+      },
+      "revId": "2c440bda91c4a80f5dca8932c9df91e4472ba2ee",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d28b8176_5f74f7a7",
+        "filename": "telephony/java/android/telephony/emergency/EmergencyNumber.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1056478
+      },
+      "writtenOn": "2018-10-04T15:53:45Z",
+      "side": 1,
+      "message": "Please rename to:\nEMERGENCY_SERVICE_CATEGORY_FIRE_BRIGADE",
+      "range": {
+        "startLine": 79,
+        "startChar": 28,
+        "endLine": 79,
+        "endChar": 62
+      },
+      "revId": "2c440bda91c4a80f5dca8932c9df91e4472ba2ee",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "29fb69fe_0a62c5ce",
+        "filename": "telephony/java/android/telephony/emergency/EmergencyNumber.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1056478
+      },
+      "writtenOn": "2018-10-04T15:53:45Z",
+      "side": 1,
+      "message": "This should be @hide as well",
+      "range": {
+        "startLine": 118,
+        "startChar": 4,
+        "endLine": 118,
+        "endChar": 47
+      },
+      "revId": "2c440bda91c4a80f5dca8932c9df91e4472ba2ee",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "699c3fa0_87d207f0",
+        "filename": "telephony/java/android/telephony/emergency/EmergencyNumber.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1056478
+      },
+      "writtenOn": "2018-10-04T15:53:45Z",
+      "side": 1,
+      "message": "Since these are bit mask numbers, should indicate that in the comment:\nBit-field which indicates the number was obtained from network signalling.",
+      "range": {
+        "startLine": 120,
+        "startChar": 4,
+        "endLine": 127,
+        "endChar": 47
+      },
+      "revId": "2c440bda91c4a80f5dca8932c9df91e4472ba2ee",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3949838c_73987081",
+        "filename": "telephony/java/android/telephony/emergency/EmergencyNumber.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 1056478
+      },
+      "writtenOn": "2018-10-04T15:53:45Z",
+      "side": 1,
+      "message": "I don\u0027t think this method is needed; the next one can be used to accomplish the same thing.",
+      "range": {
+        "startLine": 219,
+        "startChar": 4,
+        "endLine": 228,
+        "endChar": 5
+      },
+      "revId": "2c440bda91c4a80f5dca8932c9df91e4472ba2ee",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5c198aa5_1d559619",
+        "filename": "telephony/java/android/telephony/emergency/EmergencyNumber.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 1056478
+      },
+      "writtenOn": "2018-10-04T15:53:45Z",
+      "side": 1,
+      "message": "Rename: isInEmergencyServiceCategories",
+      "range": {
+        "startLine": 239,
+        "startChar": 19,
+        "endLine": 239,
+        "endChar": 36
+      },
+      "revId": "2c440bda91c4a80f5dca8932c9df91e4472ba2ee",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "db8d9256_236d1623",
+        "filename": "telephony/java/android/telephony/emergency/EmergencyNumber.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 268,
+      "author": {
+        "id": 1056478
+      },
+      "writtenOn": "2018-10-04T15:53:45Z",
+      "side": 1,
+      "message": "Since the emergency sources are being stored as a bitmask, I\u0027d just make a static method that facilitates converting from a bitmask to a list of sources, something like:\n\n/**\n * Convert an emergency source bit-mask into a list of emergency number sources, suitable for\n * iteration.\n * @return a list of the emergency number sources.\n */\npublic static List\u003cInteger\u003e toEmergencyNumberSourceList(int emergencySourceBitmask)",
+      "range": {
+        "startLine": 255,
+        "startChar": 4,
+        "endLine": 268,
+        "endChar": 5
+      },
+      "revId": "2c440bda91c4a80f5dca8932c9df91e4472ba2ee",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0a3b4a3b_6d4c56cc",
+        "filename": "telephony/java/android/telephony/emergency/EmergencyNumber.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 279,
+      "author": {
+        "id": 1056478
+      },
+      "writtenOn": "2018-10-04T15:53:45Z",
+      "side": 1,
+      "message": "Rename:\nisFromSources",
+      "range": {
+        "startLine": 279,
+        "startChar": 19,
+        "endLine": 279,
+        "endChar": 30
+      },
+      "revId": "2c440bda91c4a80f5dca8932c9df91e4472ba2ee",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
