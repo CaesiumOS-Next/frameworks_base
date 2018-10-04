@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "3df4b4a7_7aae5520",
+        "filename": "telephony/java/android/telephony/emergency/EmergencyNumber.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1131623
+      },
+      "writtenOn": "2018-10-04T23:05:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "44651e7d_62ec8122",
+      "range": {
+        "startLine": 67,
+        "startChar": 4,
+        "endLine": 68,
+        "endChar": 51
+      },
+      "revId": "2c440bda91c4a80f5dca8932c9df91e4472ba2ee",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4aa27959_d121262c",
         "filename": "telephony/java/android/telephony/emergency/EmergencyNumber.java",
         "patchSetId": 2
@@ -45,6 +69,30 @@
       "revId": "2c440bda91c4a80f5dca8932c9df91e4472ba2ee",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "47de9db2_cd0a0989",
+        "filename": "telephony/java/android/telephony/emergency/EmergencyNumber.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1131623
+      },
+      "writtenOn": "2018-10-04T23:05:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4aa27959_d121262c",
+      "range": {
+        "startLine": 70,
+        "startChar": 77,
+        "endLine": 70,
+        "endChar": 81
+      },
+      "revId": "2c440bda91c4a80f5dca8932c9df91e4472ba2ee",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "72466be1_7ebb4e2d",
+        "filename": "telephony/java/android/telephony/emergency/EmergencyNumber.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1131623
+      },
+      "writtenOn": "2018-10-04T23:05:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a57e661d_260e46dd",
+      "range": {
+        "startLine": 71,
+        "startChar": 28,
+        "endLine": 71,
+        "endChar": 66
+      },
+      "revId": "2c440bda91c4a80f5dca8932c9df91e4472ba2ee",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d28b8176_5f74f7a7",
         "filename": "telephony/java/android/telephony/emergency/EmergencyNumber.java",
         "patchSetId": 2
@@ -91,6 +163,30 @@
       "revId": "2c440bda91c4a80f5dca8932c9df91e4472ba2ee",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "70873cc1_49f7f773",
+        "filename": "telephony/java/android/telephony/emergency/EmergencyNumber.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1131623
+      },
+      "writtenOn": "2018-10-04T23:05:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d28b8176_5f74f7a7",
+      "range": {
+        "startLine": 79,
+        "startChar": 28,
+        "endLine": 79,
+        "endChar": 62
+      },
+      "revId": "2c440bda91c4a80f5dca8932c9df91e4472ba2ee",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "213854f5_c7ca2511",
+        "filename": "telephony/java/android/telephony/emergency/EmergencyNumber.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1131623
+      },
+      "writtenOn": "2018-10-04T23:05:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "29fb69fe_0a62c5ce",
+      "range": {
+        "startLine": 118,
+        "startChar": 4,
+        "endLine": 118,
+        "endChar": 47
+      },
+      "revId": "2c440bda91c4a80f5dca8932c9df91e4472ba2ee",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "699c3fa0_87d207f0",
         "filename": "telephony/java/android/telephony/emergency/EmergencyNumber.java",
         "patchSetId": 2
@@ -140,6 +260,30 @@
     },
     {
       "key": {
+        "uuid": "626ad1ba_cd6b1e58",
+        "filename": "telephony/java/android/telephony/emergency/EmergencyNumber.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1131623
+      },
+      "writtenOn": "2018-10-04T23:05:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "699c3fa0_87d207f0",
+      "range": {
+        "startLine": 120,
+        "startChar": 4,
+        "endLine": 127,
+        "endChar": 47
+      },
+      "revId": "2c440bda91c4a80f5dca8932c9df91e4472ba2ee",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3949838c_73987081",
         "filename": "telephony/java/android/telephony/emergency/EmergencyNumber.java",
         "patchSetId": 2
@@ -151,6 +295,30 @@
       "writtenOn": "2018-10-04T15:53:45Z",
       "side": 1,
       "message": "I don\u0027t think this method is needed; the next one can be used to accomplish the same thing.",
+      "range": {
+        "startLine": 219,
+        "startChar": 4,
+        "endLine": 228,
+        "endChar": 5
+      },
+      "revId": "2c440bda91c4a80f5dca8932c9df91e4472ba2ee",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d7b9af38_3b0f5d59",
+        "filename": "telephony/java/android/telephony/emergency/EmergencyNumber.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 1131623
+      },
+      "writtenOn": "2018-10-04T23:05:53Z",
+      "side": 1,
+      "message": "I will keep it as a private util method because this is used more than one time in the code.",
+      "parentUuid": "3949838c_73987081",
       "range": {
         "startLine": 219,
         "startChar": 4,
@@ -186,6 +354,30 @@
     },
     {
       "key": {
+        "uuid": "eb44202d_fa5a57a9",
+        "filename": "telephony/java/android/telephony/emergency/EmergencyNumber.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 1131623
+      },
+      "writtenOn": "2018-10-04T23:05:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5c198aa5_1d559619",
+      "range": {
+        "startLine": 239,
+        "startChar": 19,
+        "endLine": 239,
+        "endChar": 36
+      },
+      "revId": "2c440bda91c4a80f5dca8932c9df91e4472ba2ee",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "db8d9256_236d1623",
         "filename": "telephony/java/android/telephony/emergency/EmergencyNumber.java",
         "patchSetId": 2
@@ -197,6 +389,30 @@
       "writtenOn": "2018-10-04T15:53:45Z",
       "side": 1,
       "message": "Since the emergency sources are being stored as a bitmask, I\u0027d just make a static method that facilitates converting from a bitmask to a list of sources, something like:\n\n/**\n * Convert an emergency source bit-mask into a list of emergency number sources, suitable for\n * iteration.\n * @return a list of the emergency number sources.\n */\npublic static List\u003cInteger\u003e toEmergencyNumberSourceList(int emergencySourceBitmask)",
+      "range": {
+        "startLine": 255,
+        "startChar": 4,
+        "endLine": 268,
+        "endChar": 5
+      },
+      "revId": "2c440bda91c4a80f5dca8932c9df91e4472ba2ee",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3b9819d5_f807bb10",
+        "filename": "telephony/java/android/telephony/emergency/EmergencyNumber.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 268,
+      "author": {
+        "id": 1131623
+      },
+      "writtenOn": "2018-10-04T23:05:53Z",
+      "side": 1,
+      "message": "But I don\u0027t think we want users to pass in a parameter to get the list. I don\u0027t see there is other reasons to make this util. I prefer to keep this. And I don\u0027t want to change for get categories as well.",
+      "parentUuid": "db8d9256_236d1623",
       "range": {
         "startLine": 255,
         "startChar": 4,
@@ -229,6 +445,30 @@
       "revId": "2c440bda91c4a80f5dca8932c9df91e4472ba2ee",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9e008fc9_c4229508",
+        "filename": "telephony/java/android/telephony/emergency/EmergencyNumber.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 279,
+      "author": {
+        "id": 1131623
+      },
+      "writtenOn": "2018-10-04T23:05:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0a3b4a3b_6d4c56cc",
+      "range": {
+        "startLine": 279,
+        "startChar": 19,
+        "endLine": 279,
+        "endChar": 30
+      },
+      "revId": "2c440bda91c4a80f5dca8932c9df91e4472ba2ee",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
