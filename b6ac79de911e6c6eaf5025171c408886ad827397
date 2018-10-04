@@ -166,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "fd0121a7_7912e459",
+        "filename": "telephony/java/android/telephony/emergency/EmergencyNumber.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1131623
+      },
+      "writtenOn": "2018-10-04T00:14:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "286194c9_ad4868d6",
+      "range": {
+        "startLine": 137,
+        "startChar": 60,
+        "endLine": 137,
+        "endChar": 70
+      },
+      "revId": "b6ac79de911e6c6eaf5025171c408886ad827397",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "266bdb00_be79f5dc",
         "filename": "telephony/java/android/telephony/emergency/EmergencyNumber.java",
         "patchSetId": 1
@@ -201,6 +225,30 @@
       "side": 1,
       "message": "I was trying to figure out a way to put the integer inside a list with a strong-type of the defined @EmergencyServiceCategories?",
       "parentUuid": "266bdb00_be79f5dc",
+      "range": {
+        "startLine": 170,
+        "startChar": 11,
+        "endLine": 170,
+        "endChar": 38
+      },
+      "revId": "b6ac79de911e6c6eaf5025171c408886ad827397",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5f81f614_25272680",
+        "filename": "telephony/java/android/telephony/emergency/EmergencyNumber.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1131623
+      },
+      "writtenOn": "2018-10-04T00:14:16Z",
+      "side": 1,
+      "message": "Removed the annotation.",
+      "parentUuid": "c6c5f59b_1b3ee35b",
       "range": {
         "startLine": 170,
         "startChar": 11,
@@ -257,6 +305,30 @@
       "revId": "b6ac79de911e6c6eaf5025171c408886ad827397",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3daa7784_9f333a91",
+        "filename": "telephony/java/android/telephony/emergency/EmergencyNumber.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1131623
+      },
+      "writtenOn": "2018-10-04T00:14:16Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "fdafca2b_4fc2bafa",
+      "range": {
+        "startLine": 191,
+        "startChar": 19,
+        "endLine": 191,
+        "endChar": 35
+      },
+      "revId": "b6ac79de911e6c6eaf5025171c408886ad827397",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
