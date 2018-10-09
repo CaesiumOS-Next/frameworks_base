@@ -3947,6 +3947,34 @@ public class AudioManager {
     }
 
      /**
+     * Indicate Hearing Aid connection state change and eventually suppress
+     * the {@link AudioManager.ACTION_AUDIO_BECOMING_NOISY} intent.
+     * @param device Bluetooth device connected/disconnected
+     * @param state  new connection state (BluetoothProfile.STATE_xxx)
+     * @param musicDevice Default get system volume for the connecting device.
+     * (either {@link android.bluetooth.BluetoothProfile.hearingaid} or
+     * {@link android.bluetooth.BluetoothProfile.HEARING_AID})
+     * @param suppressNoisyIntent if true the
+     * {@link AudioManager.ACTION_AUDIO_BECOMING_NOISY} intent will not be sent.
+     * @return a delay in ms that the caller should wait before broadcasting
+     * BluetoothHearingAid.ACTION_CONNECTION_STATE_CHANGED intent.
+     * {@hide}
+     */
+    public int setBluetoothHearingAidDeviceConnectionState(
+                BluetoothDevice device, int state, boolean suppressNoisyIntent,
+                int musicDevice) {
+        final IAudioService service = getService();
+        int delay = 0;
+        try {
+            delay = service.setBluetoothHearingAidDeviceConnectionState(device,
+                state, suppressNoisyIntent, musicDevice);
+        } catch (RemoteException e) {
+            throw e.rethrowFromSystemServer();
+        }
+        return delay;
+    }
+
+     /**
      * Indicate A2DP source or sink connection state change.
      * @param device Bluetooth device connected/disconnected
      * @param state  new connection state (BluetoothProfile.STATE_xxx)

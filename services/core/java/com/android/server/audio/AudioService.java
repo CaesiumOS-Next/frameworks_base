@@ -5967,7 +5967,6 @@ public class AudioService extends IAudioService.Stub
                 } else {
                     makeA2dpDeviceUnavailableNow(address);
                 }
-                setCurrentAudioRouteName(null);
             } else if (!isConnected && state == BluetoothProfile.STATE_CONNECTED) {
                 if (btDevice.isBluetoothDock()) {
                     // this could be a reconnection after a transient disconnection
@@ -5991,7 +5990,7 @@ public class AudioService extends IAudioService.Stub
                 }
                 makeA2dpDeviceAvailable(address, btDevice.getName(),
                         "onSetA2dpSinkConnectionState");
-                setCurrentAudioRouteName(btDevice.getAliasName());
+                setCurrentAudioRouteName(btDevice.getName());
             }
         }
     }
@@ -6043,11 +6042,10 @@ public class AudioService extends IAudioService.Stub
 
             if (isConnected && state != BluetoothProfile.STATE_CONNECTED) {
                 makeHearingAidDeviceUnavailable(address);
-                setCurrentAudioRouteName(null);
             } else if (!isConnected && state == BluetoothProfile.STATE_CONNECTED) {
                 makeHearingAidDeviceAvailable(address, btDevice.getName(),
                         "onSetHearingAidConnectionState");
-                setCurrentAudioRouteName(btDevice.getAliasName());
+                setCurrentAudioRouteName(btDevice.getName());
             }
         }
     }
@@ -6055,11 +6053,23 @@ public class AudioService extends IAudioService.Stub
     private void setCurrentAudioRouteName(String name){
         synchronized (mCurAudioRoutes) {
             if (!TextUtils.equals(mCurAudioRoutes.bluetoothName, name)) {
-                mCurAudioRoutes.bluetoothName = name;
-                sendMsg(mAudioHandler, MSG_REPORT_NEW_ROUTES,
-                        SENDMSG_NOOP, 0, 0, null, 0);
+                if ((name != null) || !isConnectedDevice()) {
+                    mCurAudioRoutes.bluetoothName = name;
+                    sendMsg(mAudioHandler, MSG_REPORT_NEW_ROUTES,
+                            SENDMSG_NOOP, 0, 0, null, 0);
+                }
             }
         }
+    }
+
+    private boolean isConnectedDevice(){
+        for (int i = 0; i < mConnectedDevices.size(); i++) {
+            DeviceListSpec deviceSpec = mConnectedDevices.valueAt(i);
+            if (TextUtils.equals(deviceSpec.mDeviceName, mCurAudioRoutes.bluetoothName)) {
+                return true;
+            }
+        }
+        return false;
     }
 
     private void onBluetoothA2dpDeviceConfigChange(BluetoothDevice btDevice)
