@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b7e5209d_e77f1b5e",
+        "filename": "core/jni/android_util_Binder.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 351,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2018-10-10T18:33:22Z",
+      "side": 1,
+      "message": "A lot of places are using ScopedUtfChars for this, but this is inefficient (even though it is less lines) because it would do utf16 -\u003e utf8 -\u003e utf16. I can\u0027t find a shorter way to do this w/o doing unnecessary utf8/utf16 conversions, but let me know if you know of one.",
+      "range": {
+        "startLine": 345,
+        "startChar": 0,
+        "endLine": 351,
+        "endChar": 65
+      },
+      "revId": "e52bb7df7c37c6ba33782e2b3fc04108c3024d87",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
