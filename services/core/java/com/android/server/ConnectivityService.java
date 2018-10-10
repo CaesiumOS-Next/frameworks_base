@@ -127,6 +127,7 @@ import android.util.Slog;
 import android.util.SparseArray;
 import android.util.SparseBooleanArray;
 import android.util.SparseIntArray;
+import android.util.StatsLog;
 import android.util.Xml;
 
 import com.android.internal.R;
@@ -139,6 +140,7 @@ import com.android.internal.net.VpnInfo;
 import com.android.internal.net.VpnProfile;
 import com.android.internal.util.ArrayUtils;
 import com.android.internal.util.AsyncChannel;
+import com.android.internal.util.BitUtils;
 import com.android.internal.util.DumpUtils;
 import com.android.internal.util.IndentingPrintWriter;
 import com.android.internal.util.MessageUtils;
@@ -617,6 +619,7 @@ public class ConnectivityService extends IConnectivityManager.Stub
             if ((list.size() == 1) || isDefaultNetwork) {
                 maybeLogBroadcast(nai, DetailedState.CONNECTED, type, isDefaultNetwork);
                 sendLegacyNetworkBroadcast(nai, DetailedState.CONNECTED, type);
+                noteNetworkCapacitiesChanged(nai.networkCapabilities);
             }
         }
 
@@ -639,6 +642,7 @@ public class ConnectivityService extends IConnectivityManager.Stub
             if (wasFirstNetwork || wasDefault) {
                 maybeLogBroadcast(nai, state, type, wasDefault);
                 sendLegacyNetworkBroadcast(nai, state, type);
+                noteNetworkCapacitiesChanged(nai.networkCapabilities);
             }
 
             if (!list.isEmpty() && wasFirstNetwork) {
@@ -647,6 +651,7 @@ public class ConnectivityService extends IConnectivityManager.Stub
                 final NetworkAgentInfo replacement = list.get(0);
                 maybeLogBroadcast(replacement, state, type, isDefaultNetwork(replacement));
                 sendLegacyNetworkBroadcast(replacement, state, type);
+                noteNetworkCapacitiesChanged(replacement.networkCapabilities);
             }
         }
 
@@ -670,6 +675,7 @@ public class ConnectivityService extends IConnectivityManager.Stub
                 if (isFirst || contains && isDefault) {
                     maybeLogBroadcast(nai, state, type, isDefault);
                     sendLegacyNetworkBroadcast(nai, state, type);
+                    noteNetworkCapacitiesChanged(nai.networkCapabilities);
                 }
             }
         }
@@ -1794,6 +1800,15 @@ public class ConnectivityService extends IConnectivityManager.Stub
         } finally {
             Binder.restoreCallingIdentity(ident);
         }
+    }
+
+    private void noteNetworkCapacitiesChanged(NetworkCapabilities netCapabilities) {
+          StatsLog.write(StatsLog.DEVICE_CONNECTIVITY_STATE_CHANGED,
+              BitUtils.packBits(netCapabilities.getCapabilities()),
+              BitUtils.packBits(netCapabilities.getTransportTypes()),
+              netCapabilities.getLinkUpstreamBandwidthKbps(),
+              netCapabilities.getLinkDownstreamBandwidthKbps(),
+              netCapabilities.getSignalStrength());
     }
 
     private void sendStickyBroadcast(Intent intent) {

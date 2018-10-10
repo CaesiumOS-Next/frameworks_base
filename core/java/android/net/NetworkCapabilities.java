@@ -146,78 +146,82 @@ public final class NetworkCapabilities implements Parcelable {
      * Indicates this is a network that has the ability to reach the
      * carrier's MMSC for sending and receiving MMS messages.
      */
-    public static final int NET_CAPABILITY_MMS            = 0;
+
+    public static final int NET_CAPABILITY_MMS            = NetProtoEnums.NET_CAPABILITY_MMS;  // 0
 
     /**
      * Indicates this is a network that has the ability to reach the carrier's
      * SUPL server, used to retrieve GPS information.
      */
-    public static final int NET_CAPABILITY_SUPL           = 1;
+    public static final int NET_CAPABILITY_SUPL           = NetProtoEnums.NET_CAPABILITY_SUPL;  // 1
 
     /**
      * Indicates this is a network that has the ability to reach the carrier's
      * DUN or tethering gateway.
      */
-    public static final int NET_CAPABILITY_DUN            = 2;
+    public static final int NET_CAPABILITY_DUN            = NetProtoEnums.NET_CAPABILITY_DUN; // 2
 
     /**
      * Indicates this is a network that has the ability to reach the carrier's
      * FOTA portal, used for over the air updates.
      */
-    public static final int NET_CAPABILITY_FOTA           = 3;
+    public static final int NET_CAPABILITY_FOTA           = NetProtoEnums.NET_CAPABILITY_FOTA; // 3
 
     /**
      * Indicates this is a network that has the ability to reach the carrier's
      * IMS servers, used for network registration and signaling.
      */
-    public static final int NET_CAPABILITY_IMS            = 4;
+    public static final int NET_CAPABILITY_IMS            = NetProtoEnums.NET_CAPABILITY_IMS; // 4
 
     /**
      * Indicates this is a network that has the ability to reach the carrier's
      * CBS servers, used for carrier specific services.
      */
-    public static final int NET_CAPABILITY_CBS            = 5;
+    public static final int NET_CAPABILITY_CBS            = NetProtoEnums.NET_CAPABILITY_CBS; // 5
 
     /**
      * Indicates this is a network that has the ability to reach a Wi-Fi direct
      * peer.
      */
-    public static final int NET_CAPABILITY_WIFI_P2P       = 6;
+    public static final int NET_CAPABILITY_WIFI_P2P       =
+            NetProtoEnums.NET_CAPABILITY_WIFI_P2P; // 6
 
     /**
      * Indicates this is a network that has the ability to reach a carrier's
      * Initial Attach servers.
      */
-    public static final int NET_CAPABILITY_IA             = 7;
+    public static final int NET_CAPABILITY_IA             = NetProtoEnums.NET_CAPABILITY_IA; // 7
 
     /**
      * Indicates this is a network that has the ability to reach a carrier's
      * RCS servers, used for Rich Communication Services.
      */
-    public static final int NET_CAPABILITY_RCS            = 8;
+    public static final int NET_CAPABILITY_RCS            = NetProtoEnums.NET_CAPABILITY_RCS; // 8
 
     /**
      * Indicates this is a network that has the ability to reach a carrier's
      * XCAP servers, used for configuration and control.
      */
-    public static final int NET_CAPABILITY_XCAP           = 9;
+    public static final int NET_CAPABILITY_XCAP           = NetProtoEnums.NET_CAPABILITY_XCAP; // 9
 
     /**
      * Indicates this is a network that has the ability to reach a carrier's
      * Emergency IMS servers or other services, used for network signaling
      * during emergency calls.
      */
-    public static final int NET_CAPABILITY_EIMS           = 10;
+    public static final int NET_CAPABILITY_EIMS           = NetProtoEnums.NET_CAPABILITY_EIMS; // 10
 
     /**
      * Indicates that this network is unmetered.
      */
-    public static final int NET_CAPABILITY_NOT_METERED    = 11;
+    public static final int NET_CAPABILITY_NOT_METERED    =
+            NetProtoEnums.NET_CAPABILITY_NOT_METERED; // 11
 
     /**
      * Indicates that this network should be able to reach the internet.
      */
-    public static final int NET_CAPABILITY_INTERNET       = 12;
+    public static final int NET_CAPABILITY_INTERNET       =
+            NetProtoEnums.NET_CAPABILITY_INTERNET; // 12
 
     /**
      * Indicates that this network is available for general use.  If this is not set
@@ -225,7 +229,8 @@ public final class NetworkCapabilities implements Parcelable {
      * is simply informative and not enforcement - enforcement is handled via other means.
      * Set by default.
      */
-    public static final int NET_CAPABILITY_NOT_RESTRICTED = 13;
+    public static final int NET_CAPABILITY_NOT_RESTRICTED =
+            NetProtoEnums.NET_CAPABILITY_NOT_RESTRICTED; // 13
 
     /**
      * Indicates that the user has indicated implicit trust of this network.  This
@@ -233,45 +238,51 @@ public final class NetworkCapabilities implements Parcelable {
      * BT device or a wifi the user asked to connect to.  Untrusted networks
      * are probably limited to unknown wifi AP.  Set by default.
      */
-    public static final int NET_CAPABILITY_TRUSTED        = 14;
+    public static final int NET_CAPABILITY_TRUSTED        =
+            NetProtoEnums.NET_CAPABILITY_TRUSTED; // 14
 
     /**
      * Indicates that this network is not a VPN.  This capability is set by default and should be
      * explicitly cleared for VPN networks.
      */
-    public static final int NET_CAPABILITY_NOT_VPN        = 15;
+    public static final int NET_CAPABILITY_NOT_VPN        =
+            NetProtoEnums.NET_CAPABILITY_NOT_VPN; // 15
 
     /**
      * Indicates that connectivity on this network was successfully validated. For example, for a
      * network with NET_CAPABILITY_INTERNET, it means that Internet connectivity was successfully
      * detected.
      */
-    public static final int NET_CAPABILITY_VALIDATED      = 16;
+    public static final int NET_CAPABILITY_VALIDATED      =
+            NetProtoEnums.NET_CAPABILITY_VALIDATED; // 16
 
     /**
      * Indicates that this network was found to have a captive portal in place last time it was
      * probed.
      */
-    public static final int NET_CAPABILITY_CAPTIVE_PORTAL = 17;
+    public static final int NET_CAPABILITY_CAPTIVE_PORTAL =
+            NetProtoEnums.NET_CAPABILITY_CAPTIVE_PORTAL; // 17
 
     /**
      * Indicates that this network is not roaming.
      */
-    public static final int NET_CAPABILITY_NOT_ROAMING = 18;
+    public static final int NET_CAPABILITY_NOT_ROAMING =
+            NetProtoEnums.NET_CAPABILITY_NOT_ROAMING; // 18
 
     /**
      * Indicates that this network is available for use by apps, and not a network that is being
      * kept up in the background to facilitate fast network switching.
      */
-    public static final int NET_CAPABILITY_FOREGROUND = 19;
-
+    public static final int NET_CAPABILITY_FOREGROUND =
+            NetProtoEnums.NET_CAPABILITY_FOREGROUND; // 19
     /**
      * Indicates that this network is not congested.
      * <p>
      * When a network is congested, applications should defer network traffic
      * that can be done at a later time, such as uploading analytics.
      */
-    public static final int NET_CAPABILITY_NOT_CONGESTED = 20;
+    public static final int NET_CAPABILITY_NOT_CONGESTED =
+            NetProtoEnums.NET_CAPABILITY_NOT_CONGESTED; // 20
 
     /**
      * Indicates that this network is not currently suspended.
@@ -283,7 +294,8 @@ public final class NetworkCapabilities implements Parcelable {
      * A network with this capability is not suspended, so is expected to be able to
      * transfer data.
      */
-    public static final int NET_CAPABILITY_NOT_SUSPENDED = 21;
+    public static final int NET_CAPABILITY_NOT_SUSPENDED =
+            NetProtoEnums.NET_CAPABILITY_NOT_SUSPENDED; // 21
 
     /**
      * Indicates that traffic that goes through this network is paid by oem. For example,
@@ -291,7 +303,7 @@ public final class NetworkCapabilities implements Parcelable {
      * @hide
      */
     @SystemApi
-    public static final int NET_CAPABILITY_OEM_PAID = 22;
+    public static final int NET_CAPABILITY_OEM_PAID = NetProtoEnums.NET_CAPABILITY_OEM_PAID; // 22
 
     private static final int MIN_NET_CAPABILITY = NET_CAPABILITY_MMS;
     private static final int MAX_NET_CAPABILITY = NET_CAPABILITY_OEM_PAID;

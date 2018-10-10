@@ -24,6 +24,7 @@ import "frameworks/base/cmds/statsd/src/atom_field_options.proto";
 import "frameworks/base/core/proto/android/app/enums.proto";
 import "frameworks/base/core/proto/android/app/job/enums.proto";
 import "frameworks/base/core/proto/android/bluetooth/enums.proto";
+import "frameworks/base/core/proto/android/net/enums.proto";
 import "frameworks/base/core/proto/android/os/enums.proto";
 import "frameworks/base/core/proto/android/server/enums.proto";
 import "frameworks/base/core/proto/android/telecomm/enums.proto";
@@ -122,9 +123,8 @@ message Atom {
         WTFOccurred wtf_occurred = 80;
         PhoneServiceStateChanged phone_service_state_changed = 94;
         PhoneStateChanged phone_state_changed = 95;
+        DeviceConnectivityStateChanged device_connectivity_state_changed = 97;
         LowMemReported low_mem_reported = 81;
-
-
     }
 
     // Pulled events will start at field 10000.
@@ -529,6 +529,24 @@ message DeviceIdlingModeStateChanged {
 message ScreenBrightnessChanged {
     // Screen brightness level. Should be in [-1, 255] according to PowerManager.java.
     optional int32 level = 1;
+}
+
+/**
+ * Logs device connectivity state changes.
+ *
+ * Logged from:
+ *   frameworks/base/services/core/java/com/android/server/ConnectivityService.java
+ */
+message DeviceConnectivityStateChanged {
+    // Network capability.
+    optional int64 capabilities = 1;
+    // Transport types.
+    optional int64 transports = 2;
+    // Passive link bandwidth.
+    optional int32 link_up_bandwidth_kbps = 3;
+    optional int32 link_down_bandwidth_kbps = 4;
+    // Signal strength. This is a signed integer, and higher values indicate better signal.
+    optional int32 signal_strength = 5;
 }
 
 /**
