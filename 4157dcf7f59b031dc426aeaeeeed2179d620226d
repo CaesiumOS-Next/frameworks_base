@@ -22,6 +22,98 @@
       "revId": "4157dcf7f59b031dc426aeaeeeed2179d620226d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2e7fa050_d690e3ed",
+        "filename": "services/core/java/com/android/server/ConnectivityService.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 1764,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2018-10-10T04:58:12Z",
+      "side": 1,
+      "message": "You are putting an object that may contain confidential information (e.g. if this is a WiFi network, the SSID is contained in there and must not be seen by any app that does not have the LOCATION_FINE_GRAINED permission) and putting it in a global broadcast that is public to every app on the device. You can\u0027t do this.",
+      "range": {
+        "startLine": 1764,
+        "startChar": 8,
+        "endLine": 1764,
+        "endChar": 70
+      },
+      "revId": "4157dcf7f59b031dc426aeaeeeed2179d620226d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e0f75f9e_c68c6d3a",
+        "filename": "services/core/java/com/android/server/ConnectivityService.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 1768,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2018-10-10T04:58:12Z",
+      "side": 1,
+      "message": "Same thing. You can\u0027t put a capabilities object in a broadcast.",
+      "range": {
+        "startLine": 1768,
+        "startChar": 35,
+        "endLine": 1768,
+        "endChar": 47
+      },
+      "revId": "4157dcf7f59b031dc426aeaeeeed2179d620226d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1c3a95d1_d7b20993",
+        "filename": "services/core/java/com/android/server/ConnectivityService.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 1854,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2018-10-10T04:58:12Z",
+      "side": 1,
+      "message": "This is a legacy type that does not always accurately represent the network. You are already logging the transport types contained in the capabilities in 1858 and that\u0027s the source of truth, so there shouldn\u0027t be a need to log this degraded copy of it.",
+      "range": {
+        "startLine": 1854,
+        "startChar": 32,
+        "endLine": 1854,
+        "endChar": 71
+      },
+      "revId": "4157dcf7f59b031dc426aeaeeeed2179d620226d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e74ff2ef_7751ba92",
+        "filename": "services/core/java/com/android/server/ConnectivityService.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 1856,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2018-10-10T04:58:12Z",
+      "side": 1,
+      "message": "You\u0027ll always get CONNECTED from here (the network can also be SUSPENDED but you won\u0027t get a broadcast for that so you won\u0027t come here). We don\u0027t have a network agent for networks that aren\u0027t connected any more, because it does not make sense.\n\nAs Hugo mentioned, NetworkInfo is being deprecated, and it\u0027s essentially useless to log its contents now because it\u0027s only legacy stuff maintained on a best-effort basis.",
+      "range": {
+        "startLine": 1856,
+        "startChar": 24,
+        "endLine": 1856,
+        "endChar": 81
+      },
+      "revId": "4157dcf7f59b031dc426aeaeeeed2179d620226d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
