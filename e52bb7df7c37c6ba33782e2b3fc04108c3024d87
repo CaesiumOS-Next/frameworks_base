@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "f9848449_6be2af4f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2018-10-11T16:53:13Z",
+      "side": 1,
+      "message": "ibinderForJavaObject returns a JavaBBinder (which wraps the java IBinder object). Before this CL, this JavaBBinder inherits from BBinder and doesn\u0027t override getInterfaceDescriptor. If you call ibinderForJavaObject(...)-\u003egetInterfaceDescriptor, it will always return an empty string. Now, the interface descriptor of the wrapped object is returned.\n\nWe should also forward calls to ping, dump, etc... but those all work for the time being.",
+      "parentUuid": "c598fae5_ec0273ce",
+      "range": {
+        "startLine": 12,
+        "startChar": 1,
+        "endLine": 13,
+        "endChar": 45
+      },
+      "revId": "e52bb7df7c37c6ba33782e2b3fc04108c3024d87",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b7e5209d_e77f1b5e",
         "filename": "core/jni/android_util_Binder.cpp",
         "patchSetId": 1
