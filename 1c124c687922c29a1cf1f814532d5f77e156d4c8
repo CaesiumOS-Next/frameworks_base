@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "917ed9e2_a0244c66",
+        "filename": "telephony/java/android/telephony/ims/feature/MmTelFeature.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 1098053
+      },
+      "writtenOn": "2018-10-11T22:57:58Z",
+      "side": 1,
+      "message": "This is being discussed here: b/115639348. Basically i accidentally exposed this api even though  ImsFeature#Capabilities is @hide, so this may be able to be rehidden. Either that or I may have to expose ImsFeature...",
+      "parentUuid": "65893404_dcbde5e6",
+      "range": {
+        "startLine": 239,
+        "startChar": 8,
+        "endLine": 239,
+        "endChar": 18
+      },
+      "revId": "1c124c687922c29a1cf1f814532d5f77e156d4c8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "46ed55c8_ddd12067",
         "filename": "telephony/java/android/telephony/ims/feature/MmTelFeature.java",
         "patchSetId": 2
