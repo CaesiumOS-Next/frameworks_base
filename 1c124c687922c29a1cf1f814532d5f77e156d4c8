@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "65893404_dcbde5e6",
+        "filename": "telephony/java/android/telephony/ims/feature/MmTelFeature.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 1121193
+      },
+      "writtenOn": "2018-10-11T22:40:18Z",
+      "side": 1,
+      "message": "can we directly hide a public API?",
+      "range": {
+        "startLine": 239,
+        "startChar": 8,
+        "endLine": 239,
+        "endChar": 18
+      },
+      "revId": "1c124c687922c29a1cf1f814532d5f77e156d4c8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "46ed55c8_ddd12067",
+        "filename": "telephony/java/android/telephony/ims/feature/MmTelFeature.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 247,
+      "author": {
+        "id": 1121193
+      },
+      "writtenOn": "2018-10-11T22:40:18Z",
+      "side": 1,
+      "message": "nit: alignment",
+      "range": {
+        "startLine": 247,
+        "startChar": 19,
+        "endLine": 247,
+        "endChar": 28
+      },
+      "revId": "1c124c687922c29a1cf1f814532d5f77e156d4c8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
