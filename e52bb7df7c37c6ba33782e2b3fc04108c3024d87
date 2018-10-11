@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "c598fae5_ec0273ce",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2018-10-11T10:20:33Z",
+      "side": 1,
+      "message": "Sorry, but I don\u0027t understand how this can happen. Could you elaborate a little bit more?",
+      "range": {
+        "startLine": 12,
+        "startChar": 1,
+        "endLine": 13,
+        "endChar": 45
+      },
+      "revId": "e52bb7df7c37c6ba33782e2b3fc04108c3024d87",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b7e5209d_e77f1b5e",
         "filename": "core/jni/android_util_Binder.cpp",
         "patchSetId": 1
