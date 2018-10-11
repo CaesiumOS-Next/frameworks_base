@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "412fba61_776f96ee",
+        "filename": "cmds/statsd/src/atoms.proto",
+        "patchSetId": 1
+      },
+      "lineNbr": 544,
+      "author": {
+        "id": 1060129
+      },
+      "writtenOn": "2018-10-11T18:07:05Z",
+      "side": 1,
+      "message": "Removed these deprecated fields.",
+      "parentUuid": "526ed69a_e8cb9c22",
+      "range": {
+        "startLine": 539,
+        "startChar": 0,
+        "endLine": 544,
+        "endChar": 65
+      },
+      "revId": "4157dcf7f59b031dc426aeaeeeed2179d620226d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2e7fa050_d690e3ed",
         "filename": "services/core/java/com/android/server/ConnectivityService.java",
         "patchSetId": 1
@@ -45,6 +69,30 @@
       "revId": "4157dcf7f59b031dc426aeaeeeed2179d620226d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9ff003ec_263115a3",
+        "filename": "services/core/java/com/android/server/ConnectivityService.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 1764,
+      "author": {
+        "id": 1060129
+      },
+      "writtenOn": "2018-10-11T18:07:05Z",
+      "side": 1,
+      "message": "Removed the capacities object from the intent. Instead, now it logs the capacities change event directly when add/update/remove network capacities.",
+      "parentUuid": "2e7fa050_d690e3ed",
+      "range": {
+        "startLine": 1764,
+        "startChar": 8,
+        "endLine": 1764,
+        "endChar": 70
+      },
+      "revId": "4157dcf7f59b031dc426aeaeeeed2179d620226d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "e28497e2_73d94ebd",
+        "filename": "services/core/java/com/android/server/ConnectivityService.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 1768,
+      "author": {
+        "id": 1060129
+      },
+      "writtenOn": "2018-10-11T18:07:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e0f75f9e_c68c6d3a",
+      "range": {
+        "startLine": 1768,
+        "startChar": 35,
+        "endLine": 1768,
+        "endChar": 47
+      },
+      "revId": "4157dcf7f59b031dc426aeaeeeed2179d620226d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1c3a95d1_d7b20993",
         "filename": "services/core/java/com/android/server/ConnectivityService.java",
         "patchSetId": 1
@@ -94,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "f5ee4fc2_ee15d223",
+        "filename": "services/core/java/com/android/server/ConnectivityService.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 1854,
+      "author": {
+        "id": 1060129
+      },
+      "writtenOn": "2018-10-11T18:07:05Z",
+      "side": 1,
+      "message": "Removed the logging for these deprecated fields.",
+      "parentUuid": "1c3a95d1_d7b20993",
+      "range": {
+        "startLine": 1854,
+        "startChar": 32,
+        "endLine": 1854,
+        "endChar": 71
+      },
+      "revId": "4157dcf7f59b031dc426aeaeeeed2179d620226d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e74ff2ef_7751ba92",
         "filename": "services/core/java/com/android/server/ConnectivityService.java",
         "patchSetId": 1
@@ -114,6 +210,30 @@
       "revId": "4157dcf7f59b031dc426aeaeeeed2179d620226d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c3f27cf3_3e23d224",
+        "filename": "services/core/java/com/android/server/ConnectivityService.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 1856,
+      "author": {
+        "id": 1060129
+      },
+      "writtenOn": "2018-10-11T18:07:05Z",
+      "side": 1,
+      "message": "Same here. Removed these deprecated fields",
+      "parentUuid": "e74ff2ef_7751ba92",
+      "range": {
+        "startLine": 1856,
+        "startChar": 24,
+        "endLine": 1856,
+        "endChar": 81
+      },
+      "revId": "4157dcf7f59b031dc426aeaeeeed2179d620226d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
