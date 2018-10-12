@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "146f2261_7b65f59f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2018-10-12T01:35:25Z",
+      "side": 1,
+      "message": "Got it. So, this is happening because JavaBBinder is not delegating some methods of IBinder to the Java Binder object.",
+      "parentUuid": "f9848449_6be2af4f",
+      "range": {
+        "startLine": 12,
+        "startChar": 1,
+        "endLine": 13,
+        "endChar": 45
+      },
+      "revId": "e52bb7df7c37c6ba33782e2b3fc04108c3024d87",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b7e5209d_e77f1b5e",
         "filename": "core/jni/android_util_Binder.cpp",
         "patchSetId": 1
