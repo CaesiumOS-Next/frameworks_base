@@ -1,0 +1,136 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dc2ba665_2f2d49a4",
+        "filename": "cmds/statsd/src/atoms.proto",
+        "patchSetId": 6
+      },
+      "lineNbr": 551,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2018-10-16T08:54:41Z",
+      "side": 1,
+      "message": "While I\u0027m not particularly opposed to logging these three, please do note that their nominal values don\u0027t have a well-defined meaning, and vary with platform release and SKU. Thus I\u0027m not sure what you\u0027d be able figure out with this.",
+      "range": {
+        "startLine": 548,
+        "startChar": 0,
+        "endLine": 551,
+        "endChar": 39
+      },
+      "revId": "7db235c3fdc0169a8169395f48e3f01f6bf7687c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "57d4fcd7_ee464c91",
+        "filename": "core/java/android/net/NetworkCapabilities.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2018-10-16T08:54:41Z",
+      "side": 1,
+      "message": "Moving all of these to NetProtoEnums is going to make life harder for us when we need to add a constant (we don\u0027t have OWNERS where this is defined).\n\nI get that you want the proto compiler to output these, but I\u0027m not sure we can generally afford to require the proto must be the source of truth. What happens when two components have such a requirement ?\n\nIn any case, if you want to move this I think at least it will need to go together with a change of the OWNERS file to let us add stuff in that proto.\n\nAlso, do you have a strategy to keep comments in sync when we update them ?",
+      "range": {
+        "startLine": 150,
+        "startChar": 60,
+        "endLine": 150,
+        "endChar": 92
+      },
+      "revId": "7db235c3fdc0169a8169395f48e3f01f6bf7687c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a0cdc1ff_f946840b",
+        "filename": "core/java/android/net/NetworkCapabilities.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2018-10-16T08:54:41Z",
+      "side": 1,
+      "message": "I know there is no real uniformity of style between 1-space and 2-spaces between instances of end-of-line // comments in this file, but let\u0027s at least keep a single style within this patch",
+      "range": {
+        "startLine": 156,
+        "startChar": 95,
+        "endLine": 156,
+        "endChar": 96
+      },
+      "revId": "7db235c3fdc0169a8169395f48e3f01f6bf7687c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fa28e64a_2233d6d4",
+        "filename": "services/core/java/com/android/server/ConnectivityService.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 622,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2018-10-16T08:54:41Z",
+      "side": 1,
+      "message": "This is in LegacyTypeTracker. If you want you logs to have any meaning at all, I think you should stay out of this old backward compatibility class. This is used to best-effort-emulate the behavior of Android K for very old apps and hasn\u0027t been representative of what is happening on the device since.",
+      "range": {
+        "startLine": 622,
+        "startChar": 16,
+        "endLine": 622,
+        "endChar": 70
+      },
+      "revId": "7db235c3fdc0169a8169395f48e3f01f6bf7687c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e227ba4e_9482e059",
+        "filename": "services/core/java/com/android/server/ConnectivityService.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 1805,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2018-10-16T08:54:41Z",
+      "side": 1,
+      "message": "Capabilities",
+      "range": {
+        "startLine": 1805,
+        "startChar": 28,
+        "endLine": 1805,
+        "endChar": 38
+      },
+      "revId": "7db235c3fdc0169a8169395f48e3f01f6bf7687c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9040566c_31ceb59f",
+        "filename": "services/core/java/com/android/server/ConnectivityService.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 1806,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2018-10-16T08:54:41Z",
+      "side": 1,
+      "message": "I notice this is not even logging what network it\u0027s logging the capabilities of, so I\u0027m not sure how you hope to be able to use the logs this produces at all.",
+      "revId": "7db235c3fdc0169a8169395f48e3f01f6bf7687c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
