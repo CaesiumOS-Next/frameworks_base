@@ -28,7 +28,7 @@ class ActivityManagerDebugConfig {
     // to figure-out the origin of a log message while debugging the activity manager a little
     // painful. By setting this constant to true, log messages from the activity manager package
     // will be tagged with their class names instead fot the generic tag.
-    static final boolean TAG_WITH_CLASS_NAME = false;
+    static final boolean TAG_WITH_CLASS_NAME = true;
 
     // While debugging it is sometimes useful to have the category name of the log appended to the
     // base log tag to make sifting through logs with the same base tag easier. By setting this
@@ -59,6 +59,7 @@ class ActivityManagerDebugConfig {
     static final boolean DEBUG_FOCUS = false;
     static final boolean DEBUG_IDLE = DEBUG_ALL_ACTIVITIES || false;
     static final boolean DEBUG_IMMERSIVE = DEBUG_ALL || false;
+    static final boolean DEBUG_LAUNCH_OBSERVER = DEBUG_ALL || true;
     static final boolean DEBUG_LOCKTASK = DEBUG_ALL || false;
     static final boolean DEBUG_LRU = DEBUG_ALL || false;
     static final boolean DEBUG_MU = DEBUG_ALL || false;
@@ -92,7 +93,7 @@ class ActivityManagerDebugConfig {
     static final boolean DEBUG_USAGE_STATS = DEBUG_ALL || false;
     static final boolean DEBUG_PERMISSIONS_REVIEW = DEBUG_ALL || false;
     static final boolean DEBUG_WHITELISTS = DEBUG_ALL || false;
-    static final boolean DEBUG_METRICS = DEBUG_ALL || false;
+    static final boolean DEBUG_METRICS = DEBUG_ALL || true;
 
     static final String POSTFIX_ADD_REMOVE = (APPEND_CATEGORY_NAME) ? "_AddRemove" : "";
     static final String POSTFIX_APP = (APPEND_CATEGORY_NAME) ? "_App" : "";
