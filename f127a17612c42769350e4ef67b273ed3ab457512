@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "73713d08_982d1f9d",
+        "filename": "media/java/android/media/MediaMuxer.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 374,
+      "author": {
+        "id": 1022116
+      },
+      "writtenOn": "2018-10-22T17:26:46Z",
+      "side": 1,
+      "message": "Better name to MaxFileSize to avoid confustion.",
+      "range": {
+        "startLine": 374,
+        "startChar": 8,
+        "endLine": 374,
+        "endChar": 16
+      },
+      "revId": "f127a17612c42769350e4ef67b273ed3ab457512",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "dfe7ac35_5d091329",
         "filename": "media/java/android/media/MediaRecorder.java",
         "patchSetId": 2
@@ -31,6 +54,64 @@
       "side": 1,
       "message": "I think this code has duplicate, but simple. If we putsetMaxFileSize(mMaxSize); in L 992, we need to check mMaxSize variables before setMaxFileSize() call. Or we can pack these 2 or 3 lines into one function like this.\n\nprivate void setMaxFileSizeFromFD(FileDescriptor fd) throws IllegalArgumentException\n{\n    long maxSize \u003d Utils.getMaxFileSize(fd);\n    setMaxFileSize(maxSize);\n}",
       "parentUuid": "dfe7ac35_5d091329",
+      "revId": "f127a17612c42769350e4ef67b273ed3ab457512",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "adf5a598_de4ba637",
+        "filename": "media/java/android/media/MediaRecorder.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 971,
+      "author": {
+        "id": 1022116
+      },
+      "writtenOn": "2018-10-22T17:26:46Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "c6eaca1a_ed9f82b8",
+      "revId": "f127a17612c42769350e4ef67b273ed3ab457512",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2836a700_f597e396",
+        "filename": "media/java/android/media/Utils.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 306,
+      "author": {
+        "id": 1022116
+      },
+      "writtenOn": "2018-10-22T17:26:46Z",
+      "side": 1,
+      "message": "I am not sure about this part. Need Marco\u0027s review.",
+      "range": {
+        "startLine": 305,
+        "startChar": 51,
+        "endLine": 306,
+        "endChar": 13
+      },
+      "revId": "f127a17612c42769350e4ef67b273ed3ab457512",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "31edc291_4471062e",
+        "filename": "media/jni/android_media_MediaMuxer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 256,
+      "author": {
+        "id": 1022116
+      },
+      "writtenOn": "2018-10-22T17:26:46Z",
+      "side": 1,
+      "message": "Remove this empty line.",
       "revId": "f127a17612c42769350e4ef67b273ed3ab457512",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
