@@ -22,6 +22,23 @@
       "revId": "2d54a12547b02e40c65f10f18ffbea28b772d2ce",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "04323965_84c94de9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1307230
+      },
+      "writtenOn": "2018-10-29T21:06:14Z",
+      "side": 1,
+      "message": "Done, thanks for catching.",
+      "revId": "2d54a12547b02e40c65f10f18ffbea28b772d2ce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
