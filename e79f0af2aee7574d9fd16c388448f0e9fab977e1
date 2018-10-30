@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d0b51c18_6a59c25f",
+        "filename": "core/java/android/net/NetworkStats.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2018-10-30T15:46:25Z",
+      "side": 1,
+      "message": "Alternatively, consider adding CLAT_UID to android.os.Process.",
+      "revId": "e79f0af2aee7574d9fd16c388448f0e9fab977e1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
