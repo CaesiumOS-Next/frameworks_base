@@ -192,6 +192,15 @@ public class DexManager {
         String[] classLoaderContexts = DexoptUtils.processContextForDexLoad(
                 classLoaderNames, classPaths);
 
+        // A null classLoaderContexts means that there are unsupported class loaders in the
+        // chain.
+        if (classLoaderContexts == null) {
+            if (DEBUG) {
+                Slog.i(TAG, loadingAppInfo.packageName + " uses unsupported class loader");
+            }
+            return;
+        }
+
         int dexPathIndex = 0;
         for (String dexPath : dexPathsToRegister) {
             // Find the owning package name.
@@ -219,14 +228,10 @@ public class DexManager {
                 }
 
                 // Record dex file usage. If the current usage is a new pattern (e.g. new secondary,
-                // or UsedBytOtherApps), record will return true and we trigger an async write
+                // or UsedByOtherApps), record will return true and we trigger an async write
                 // to disk to make sure we don't loose the data in case of a reboot.
 
-                // A null classLoaderContexts means that there are unsupported class loaders in the
-                // chain.
-                String classLoaderContext = classLoaderContexts == null
-                        ? PackageDexUsage.UNSUPPORTED_CLASS_LOADER_CONTEXT
-                        : classLoaderContexts[dexPathIndex];
+                String classLoaderContext = classLoaderContexts[dexPathIndex];
                 if (mPackageDexUsage.record(searchResult.mOwningPackageName,
                         dexPath, loaderUserId, loaderIsa, isUsedByOtherApps, primaryOrSplit,
                         loadingAppInfo.packageName, classLoaderContext)) {
