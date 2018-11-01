@@ -1,0 +1,136 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b42c3516_4471f5e7",
+        "filename": "services/core/java/com/android/server/connectivity/Tethering.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 295,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2018-11-01T09:29:04Z",
+      "side": 1,
+      "message": "isDunRequired?",
+      "revId": "41b51cea5f9416dfd72619541c6731506133d53b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "74738426_ac4af908",
+        "filename": "services/core/java/com/android/server/connectivity/Tethering.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 1071,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2018-11-01T09:29:04Z",
+      "side": 1,
+      "message": "This change seems correct. It looks like previously, if we didn\u0027t have any upstream types, we\u0027d return that tethering is not supported, and that doesn\u0027t make sense if automatic upstream selection is enabled.\n\nBut it\u0027s unrelated to the main purpose of the CL. I\u0027d suggest either splitting out into its own CL, or mentioning in the commit message that you are fixing this problem.",
+      "range": {
+        "startLine": 1071,
+        "startChar": 16,
+        "endLine": 1071,
+        "endChar": 50
+      },
+      "revId": "41b51cea5f9416dfd72619541c6731506133d53b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "375c5711_98bd4bec",
+        "filename": "services/core/java/com/android/server/connectivity/tethering/TetheringConfiguration.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2018-11-01T09:29:04Z",
+      "side": 1,
+      "message": "Can this happen? If not, remove the null check. If it can happen, then... how do we recover? If this function is called very often, then perhaps the problem fixes itself quickly?",
+      "range": {
+        "startLine": 215,
+        "startChar": 15,
+        "endLine": 215,
+        "endChar": 27
+      },
+      "revId": "41b51cea5f9416dfd72619541c6731506133d53b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "836121d0_4fcb378c",
+        "filename": "tests/net/java/com/android/server/connectivity/tethering/TetheringConfigurationTest.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2018-11-01T09:29:04Z",
+      "side": 1,
+      "message": "Consider:\n\nimport static com.android.internal.R.array.config_tether_upstream_types;",
+      "range": {
+        "startLine": 110,
+        "startChar": 36,
+        "endLine": 110,
+        "endChar": 93
+      },
+      "revId": "41b51cea5f9416dfd72619541c6731506133d53b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c2406e82_2536caa9",
+        "filename": "tests/net/java/com/android/server/connectivity/tethering/TetheringConfigurationTest.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2018-11-01T09:29:04Z",
+      "side": 1,
+      "message": "Instead of adding these to an array, can you differentiate them by giving them names? For example, you could call these \"cfgWifi\", \"cfgMobileWifiHipri\", \"cfgWifiDun\". you can still loop over them by doing:\n\n    for (TetheringConfiguration cfg : { cfgWifi, cfgMobileWifiHipri, cfgWifiDun }) {",
+      "range": {
+        "startLine": 112,
+        "startChar": 8,
+        "endLine": 112,
+        "endChar": 20
+      },
+      "revId": "41b51cea5f9416dfd72619541c6731506133d53b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "492f5f67_106c3a48",
+        "filename": "tests/net/java/com/android/server/connectivity/tethering/TetheringConfigurationTest.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2018-11-01T09:29:04Z",
+      "side": 1,
+      "message": "Loops in tests are hard to use because when an assertion fails the error message does not tell you which specific configuration it failed on. Suggest:\n\n    String msg \u003d \"config\u003d\" + cfg;\n    assertTrue(msg, ...);\n    assertTrue(msg, ...);",
+      "range": {
+        "startLine": 120,
+        "startChar": 8,
+        "endLine": 120,
+        "endChar": 11
+      },
+      "revId": "41b51cea5f9416dfd72619541c6731506133d53b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8e6b19ea_68cbde5a",
+        "filename": "services/core/java/com/android/server/connectivity/tethering/TetheringConfiguration.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2018-11-01T09:29:04Z",
+      "side": 0,
+      "message": "Consider keeping this log line around, as it has often allowed us to immediately reassign tethering bugs caused by incorrect APN configurations. It\u0027s true that this value is already in the toString call below, so it\u0027s not strictly necessary.",
+      "range": {
+        "startLine": 114,
+        "startChar": 8,
+        "endLine": 114,
+        "endChar": 73
+      },
+      "revId": "b4578819ac26436b3a6494725e65cdd93a253672",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "89969238_886f57a5",
+        "filename": "services/core/java/com/android/server/connectivity/tethering/TetheringConfiguration.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 267,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2018-11-01T09:29:04Z",
+      "side": 0,
+      "message": "Per in-person discussion: this is only a behaviour change in the case that the TETHER_DUN_REQUIRED setting was explicitly set to 0, which is *not* the default and which we believe to be very rare.\n\nTherefore, I would keep these three lines of comment in the code, and add:\n\n    // This preserves backwards compatibility with the behaviour that previous releases\n    // had in the common case where checkDunRequired returned DUN_UNSPECIFIED.\n\nWe should also mention this in the commit message, and explain clearly that in practice, this CL does *not* delete the DUN_UNSPECIFIED case, it deletes the DUN_NOT_REQUIRED case.",
+      "range": {
+        "startLine": 265,
+        "startChar": 0,
+        "endLine": 267,
+        "endChar": 82
+      },
+      "revId": "b4578819ac26436b3a6494725e65cdd93a253672",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
