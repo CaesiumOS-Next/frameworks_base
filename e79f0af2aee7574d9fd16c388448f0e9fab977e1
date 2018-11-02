@@ -16,6 +16,144 @@
       "revId": "e79f0af2aee7574d9fd16c388448f0e9fab977e1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c02f1673_26836eae",
+        "filename": "core/java/android/net/NetworkStats.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 837,
+      "author": {
+        "id": 1288034
+      },
+      "writtenOn": "2018-11-02T01:16:19Z",
+      "side": 1,
+      "message": "I think this now needs to be updated",
+      "range": {
+        "startLine": 836,
+        "startChar": 14,
+        "endLine": 837,
+        "endChar": 60
+      },
+      "revId": "e79f0af2aee7574d9fd16c388448f0e9fab977e1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9c6c5f45_dedc1f89",
+        "filename": "core/java/android/net/NetworkStats.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 889,
+      "author": {
+        "id": 1288034
+      },
+      "writtenOn": "2018-11-02T01:16:19Z",
+      "side": 1,
+      "message": "This won\u0027t be easy to understand once the CL is merged, since it compares behavior with the previous version of the code. This should probably just indicate the current behavior of the code: traffic on CLAT uid is v6 traffic that is already counted with root UID on the stacked v4 interface, so it needs to be removed to avoid double-counting.",
+      "range": {
+        "startLine": 888,
+        "startChar": 11,
+        "endLine": 889,
+        "endChar": 51
+      },
+      "revId": "e79f0af2aee7574d9fd16c388448f0e9fab977e1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1f5145ce_614c1f01",
+        "filename": "tests/net/java/android/net/NetworkStatsTest.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 801,
+      "author": {
+        "id": 1288034
+      },
+      "writtenOn": "2018-11-02T01:16:19Z",
+      "side": 1,
+      "message": "I think this should be removed",
+      "range": {
+        "startLine": 800,
+        "startChar": 11,
+        "endLine": 801,
+        "endChar": 62
+      },
+      "revId": "e79f0af2aee7574d9fd16c388448f0e9fab977e1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ad71d982_3bc86e15",
+        "filename": "tests/net/java/android/net/NetworkStatsTest.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 812,
+      "author": {
+        "id": 1288034
+      },
+      "writtenOn": "2018-11-02T01:16:19Z",
+      "side": 1,
+      "message": "I think this is only for RX now",
+      "range": {
+        "startLine": 812,
+        "startChar": 43,
+        "endLine": 812,
+        "endChar": 61
+      },
+      "revId": "e79f0af2aee7574d9fd16c388448f0e9fab977e1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "751bb799_200bf983",
+        "filename": "tests/net/res/raw/xt_qtaguid_with_clat_simple",
+        "patchSetId": 1
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1288034
+      },
+      "writtenOn": "2018-11-02T01:16:19Z",
+      "side": 1,
+      "message": "This was actually incorrect and should be a few columns to the right in the tx_* section",
+      "range": {
+        "startLine": 2,
+        "startChar": 51,
+        "endLine": 2,
+        "endChar": 58
+      },
+      "revId": "e79f0af2aee7574d9fd16c388448f0e9fab977e1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bef84db5_0456fd43",
+        "filename": "tests/net/res/raw/xt_qtaguid_with_clat_simple",
+        "patchSetId": 1
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1288034
+      },
+      "writtenOn": "2018-11-02T01:16:19Z",
+      "side": 1,
+      "message": "According to the headers this is rx_udp_bytes and rx_udp_packets: you probably should move these right to tx_* instead (not that they\u0027re used though...)",
+      "range": {
+        "startLine": 6,
+        "startChar": 35,
+        "endLine": 6,
+        "endChar": 42
+      },
+      "revId": "e79f0af2aee7574d9fd16c388448f0e9fab977e1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }

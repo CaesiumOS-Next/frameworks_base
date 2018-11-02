@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cf3b6824_e1347cb3",
+        "filename": "tests/net/java/android/net/NetworkStatsTest.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 806,
+      "author": {
+        "id": 1288034
+      },
+      "writtenOn": "2018-11-02T01:16:19Z",
+      "side": 0,
+      "message": "For consistency with other usages in the file, consider keeping these comments",
+      "range": {
+        "startLine": 806,
+        "startChar": 27,
+        "endLine": 806,
+        "endChar": 34
+      },
+      "revId": "d7591e8e4fa96cc3448ba74746d0d727f127f628",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
