@@ -42,6 +42,30 @@
     },
     {
       "key": {
+        "uuid": "736d544b_8832394b",
+        "filename": "core/java/android/net/NetworkStats.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 837,
+      "author": {
+        "id": 1306837
+      },
+      "writtenOn": "2018-11-02T03:22:47Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "c02f1673_26836eae",
+      "range": {
+        "startLine": 836,
+        "startChar": 14,
+        "endLine": 837,
+        "endChar": 60
+      },
+      "revId": "e79f0af2aee7574d9fd16c388448f0e9fab977e1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9c6c5f45_dedc1f89",
         "filename": "core/java/android/net/NetworkStats.java",
         "patchSetId": 1
@@ -62,6 +86,30 @@
       "revId": "e79f0af2aee7574d9fd16c388448f0e9fab977e1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4926a103_c8288fff",
+        "filename": "core/java/android/net/NetworkStats.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 889,
+      "author": {
+        "id": 1306837
+      },
+      "writtenOn": "2018-11-02T03:22:47Z",
+      "side": 1,
+      "message": "Agreed",
+      "parentUuid": "9c6c5f45_dedc1f89",
+      "range": {
+        "startLine": 888,
+        "startChar": 11,
+        "endLine": 889,
+        "endChar": 51
+      },
+      "revId": "e79f0af2aee7574d9fd16c388448f0e9fab977e1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -88,6 +136,30 @@
     },
     {
       "key": {
+        "uuid": "2d27d380_434b8968",
+        "filename": "tests/net/java/android/net/NetworkStatsTest.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 801,
+      "author": {
+        "id": 1306837
+      },
+      "writtenOn": "2018-11-02T03:22:47Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "1f5145ce_614c1f01",
+      "range": {
+        "startLine": 800,
+        "startChar": 11,
+        "endLine": 801,
+        "endChar": 62
+      },
+      "revId": "e79f0af2aee7574d9fd16c388448f0e9fab977e1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ad71d982_3bc86e15",
         "filename": "tests/net/java/android/net/NetworkStatsTest.java",
         "patchSetId": 1
@@ -111,6 +183,30 @@
     },
     {
       "key": {
+        "uuid": "ac12738c_110d9ece",
+        "filename": "tests/net/java/android/net/NetworkStatsTest.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 812,
+      "author": {
+        "id": 1306837
+      },
+      "writtenOn": "2018-11-02T03:22:47Z",
+      "side": 1,
+      "message": "Thanks for pointing out, I think I need to review all these comments.",
+      "parentUuid": "ad71d982_3bc86e15",
+      "range": {
+        "startLine": 812,
+        "startChar": 43,
+        "endLine": 812,
+        "endChar": 61
+      },
+      "revId": "e79f0af2aee7574d9fd16c388448f0e9fab977e1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "751bb799_200bf983",
         "filename": "tests/net/res/raw/xt_qtaguid_with_clat_simple",
         "patchSetId": 1
@@ -122,6 +218,30 @@
       "writtenOn": "2018-11-02T01:16:19Z",
       "side": 1,
       "message": "This was actually incorrect and should be a few columns to the right in the tx_* section",
+      "range": {
+        "startLine": 2,
+        "startChar": 51,
+        "endLine": 2,
+        "endChar": 58
+      },
+      "revId": "e79f0af2aee7574d9fd16c388448f0e9fab977e1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8796f311_038bad59",
+        "filename": "tests/net/res/raw/xt_qtaguid_with_clat_simple",
+        "patchSetId": 1
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1306837
+      },
+      "writtenOn": "2018-11-02T03:22:47Z",
+      "side": 1,
+      "message": "Oh, thanks for pointing it out.\n\nBesides, is there any way we could maintain these raw data easier?\nFor example, ideally, I need to insert new lines into xt_qtaguid_with_clat_100mb_download_before\nBut it seems we have to adjust the first column for every row affected.\nSo I just append the lines in the end to avoid this.",
+      "parentUuid": "751bb799_200bf983",
       "range": {
         "startLine": 2,
         "startChar": 51,
@@ -154,6 +274,30 @@
       "revId": "e79f0af2aee7574d9fd16c388448f0e9fab977e1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e4cf7bcd_ab28ae37",
+        "filename": "tests/net/res/raw/xt_qtaguid_with_clat_simple",
+        "patchSetId": 1
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1306837
+      },
+      "writtenOn": "2018-11-02T03:22:47Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "bef84db5_0456fd43",
+      "range": {
+        "startLine": 6,
+        "startChar": 35,
+        "endLine": 6,
+        "endChar": 42
+      },
+      "revId": "e79f0af2aee7574d9fd16c388448f0e9fab977e1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
