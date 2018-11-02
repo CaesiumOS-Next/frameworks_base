@@ -491,4 +491,14 @@ public class TelephonyIntents {
      */
     public static final String ACTION_CARRIER_CERTIFICATE_DOWNLOAD =
             "com.android.internal.telephony.ACTION_CARRIER_CERTIFICATE_DOWNLOAD";
+
+    /**
+     * Broadcast action to notify radio error.
+     */
+    public static final String ACTION_RADIO_ERROR =
+            "com.android.internal.telephony.RADIO_ERROR";
+
+    // ACTION_RIL_HEALTH_STATUS extra keys
+    public static final String EXTRA_SLOT_ID = "slotId";
+    public static final String EXTRA_RADIO_ERROR = "radioError";
 }
