@@ -22,6 +22,30 @@
       "revId": "c598dc3ee8578e811592cfff2492294c99233b3d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "99666080_958a9368",
+        "filename": "telephony/java/android/telephony/SubscriptionManager.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1054648
+      },
+      "writtenOn": "2018-11-02T22:34:06Z",
+      "side": 1,
+      "message": "Oh looks like this is different from WFC_ROAMING_MODE.",
+      "parentUuid": "a405c787_6fab9c97",
+      "range": {
+        "startLine": 216,
+        "startChar": 4,
+        "endLine": 231,
+        "endChar": 48
+      },
+      "revId": "c598dc3ee8578e811592cfff2492294c99233b3d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
