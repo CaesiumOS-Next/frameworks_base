@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "28260f31_7314d9f3",
+        "filename": "services/core/java/com/android/server/connectivity/Tethering.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 295,
+      "author": {
+        "id": 1308504
+      },
+      "writtenOn": "2018-11-02T01:50:55Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "b42c3516_4471f5e7",
+      "revId": "41b51cea5f9416dfd72619541c6731506133d53b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "74738426_ac4af908",
         "filename": "services/core/java/com/android/server/connectivity/Tethering.java",
         "patchSetId": 2
@@ -39,6 +57,30 @@
       "revId": "41b51cea5f9416dfd72619541c6731506133d53b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e2ebc233_12771884",
+        "filename": "services/core/java/com/android/server/connectivity/Tethering.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 1071,
+      "author": {
+        "id": 1308504
+      },
+      "writtenOn": "2018-11-02T01:50:55Z",
+      "side": 1,
+      "message": "Agree with you. I would separate the commit.",
+      "parentUuid": "74738426_ac4af908",
+      "range": {
+        "startLine": 1071,
+        "startChar": 16,
+        "endLine": 1071,
+        "endChar": 50
+      },
+      "revId": "41b51cea5f9416dfd72619541c6731506133d53b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -65,6 +107,54 @@
     },
     {
       "key": {
+        "uuid": "95cb55f9_cdc78e0f",
+        "filename": "services/core/java/com/android/server/connectivity/tethering/TetheringConfiguration.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1308504
+      },
+      "writtenOn": "2018-11-02T01:50:55Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "375c5711_98bd4bec",
+      "range": {
+        "startLine": 215,
+        "startChar": 15,
+        "endLine": 215,
+        "endChar": 27
+      },
+      "revId": "41b51cea5f9416dfd72619541c6731506133d53b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5d969901_45726e44",
+        "filename": "services/core/java/com/android/server/connectivity/tethering/TetheringConfiguration.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1308504
+      },
+      "writtenOn": "2018-11-02T01:50:55Z",
+      "side": 1,
+      "message": "Agree your concern. I would remove this null check.",
+      "parentUuid": "375c5711_98bd4bec",
+      "range": {
+        "startLine": 215,
+        "startChar": 15,
+        "endLine": 215,
+        "endChar": 27
+      },
+      "revId": "41b51cea5f9416dfd72619541c6731506133d53b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "836121d0_4fcb378c",
         "filename": "tests/net/java/com/android/server/connectivity/tethering/TetheringConfigurationTest.java",
         "patchSetId": 2
@@ -85,6 +175,30 @@
       "revId": "41b51cea5f9416dfd72619541c6731506133d53b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "804e9bef_1aa5622f",
+        "filename": "tests/net/java/com/android/server/connectivity/tethering/TetheringConfigurationTest.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1308504
+      },
+      "writtenOn": "2018-11-02T01:50:55Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "836121d0_4fcb378c",
+      "range": {
+        "startLine": 110,
+        "startChar": 36,
+        "endLine": 110,
+        "endChar": 93
+      },
+      "revId": "41b51cea5f9416dfd72619541c6731506133d53b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -111,6 +225,30 @@
     },
     {
       "key": {
+        "uuid": "eb6b5df4_34567311",
+        "filename": "tests/net/java/com/android/server/connectivity/tethering/TetheringConfigurationTest.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1308504
+      },
+      "writtenOn": "2018-11-02T01:50:55Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "c2406e82_2536caa9",
+      "range": {
+        "startLine": 112,
+        "startChar": 8,
+        "endLine": 112,
+        "endChar": 20
+      },
+      "revId": "41b51cea5f9416dfd72619541c6731506133d53b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "492f5f67_106c3a48",
         "filename": "tests/net/java/com/android/server/connectivity/tethering/TetheringConfigurationTest.java",
         "patchSetId": 2
@@ -131,6 +269,30 @@
       "revId": "41b51cea5f9416dfd72619541c6731506133d53b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5f25d688_a09d031f",
+        "filename": "tests/net/java/com/android/server/connectivity/tethering/TetheringConfigurationTest.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1308504
+      },
+      "writtenOn": "2018-11-02T01:50:55Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "492f5f67_106c3a48",
+      "range": {
+        "startLine": 120,
+        "startChar": 8,
+        "endLine": 120,
+        "endChar": 11
+      },
+      "revId": "41b51cea5f9416dfd72619541c6731506133d53b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }

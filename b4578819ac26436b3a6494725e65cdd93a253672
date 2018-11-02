@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "5cf5a1ff_e0497273",
+        "filename": "services/core/java/com/android/server/connectivity/tethering/TetheringConfiguration.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1308504
+      },
+      "writtenOn": "2018-11-02T01:50:55Z",
+      "side": 0,
+      "message": "Before the change, duncheck is a integer which has tree kind of value(0, 1, 2), but isDunRequired would be printed in line 127 \"configLog.log(toString())\" is boolean. It is helpful print this log first. But now, checkDunRequired(ctx) would return \"isDunRequired\" directly. So we don\u0027t need to duplicate the log. We can also easily search \"isDunRequired\" to know if the bug is caused by incorrect APN configuration.",
+      "parentUuid": "8e6b19ea_68cbde5a",
+      "range": {
+        "startLine": 114,
+        "startChar": 8,
+        "endLine": 114,
+        "endChar": 73
+      },
+      "revId": "b4578819ac26436b3a6494725e65cdd93a253672",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "89969238_886f57a5",
         "filename": "services/core/java/com/android/server/connectivity/tethering/TetheringConfiguration.java",
         "patchSetId": 2
@@ -45,6 +69,30 @@
       "revId": "b4578819ac26436b3a6494725e65cdd93a253672",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "34ffa2c3_e86c0053",
+        "filename": "services/core/java/com/android/server/connectivity/tethering/TetheringConfiguration.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 267,
+      "author": {
+        "id": 1308504
+      },
+      "writtenOn": "2018-11-02T01:50:55Z",
+      "side": 0,
+      "message": "Actually, we mixed the previos DUN_UNSPECIFIED and DUN_NOT_REQUIRED logic. If dun APN is not exists, we would delete TYPE_MOBILE_DUN(DUN_NOT_REQUIRED case) and don\u0027t modified upstream config if one of TYPE_MOBILE and TYPE_MOBILE_HIPRI is exist(DUN_UNSPECIFIED).\nI would mention this in the commit message. Thanks.",
+      "parentUuid": "89969238_886f57a5",
+      "range": {
+        "startLine": 265,
+        "startChar": 0,
+        "endLine": 267,
+        "endChar": 82
+      },
+      "revId": "b4578819ac26436b3a6494725e65cdd93a253672",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
