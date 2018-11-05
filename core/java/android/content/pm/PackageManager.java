@@ -2661,6 +2661,13 @@ public abstract class PackageManager {
             "android.software.device_id_attestation";
 
     /**
+     * Feature for {@link #getSystemAvailableFeatures} and {@link #hasSystemFeature}: The device has
+     * the requisite kernel support for application managed IPsec tunnels.
+     */
+    @SdkConstant(SdkConstantType.FEATURE)
+    public static final String FEATURE_IPSEC_TUNNELS = "android.software.ipsec_tunnels";
+
+    /**
      * Action to external storage service to clean out removed apps.
      * @hide
      */
