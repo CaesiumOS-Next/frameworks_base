@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3c72163c_50d23f58",
+        "filename": "media/java/android/media/Utils.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 313,
+      "author": {
+        "id": 1001525
+      },
+      "writtenOn": "2018-11-06T16:03:42Z",
+      "side": 1,
+      "message": "Using these hardcoded paths doesn\u0027t seem very robust. Perhaps it would be better to add APIs to StorageManager/StorageVolume for this?\n(I\u0027m thinking something like StorageManager.getStorageVolume(FileDescriptor) might be sufficient)",
+      "range": {
+        "startLine": 309,
+        "startChar": 1,
+        "endLine": 313,
+        "endChar": 52
+      },
+      "revId": "99ae5e4e33fc215967826906072618453f3d533c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
