@@ -22,6 +22,30 @@
       "revId": "99ae5e4e33fc215967826906072618453f3d533c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2fd9059c_03813257",
+        "filename": "media/java/android/media/Utils.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 313,
+      "author": {
+        "id": 1233895
+      },
+      "writtenOn": "2018-11-08T09:06:45Z",
+      "side": 1,
+      "message": "We agree with Marco\u0027s suggestion. And we suggest to add \"//FIXME\" or \"//TODO\" comment on this as of now, and fix it after new API is implemented in StorageManager/StorageVolume. (or you can change this code to use your new API. Our goal is \u003e4GB recording in one file is achieved in android framework. So any method is OK if we can achieve our goal.)",
+      "parentUuid": "3c72163c_50d23f58",
+      "range": {
+        "startLine": 309,
+        "startChar": 1,
+        "endLine": 313,
+        "endChar": 52
+      },
+      "revId": "99ae5e4e33fc215967826906072618453f3d533c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
