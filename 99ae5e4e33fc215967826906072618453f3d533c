@@ -46,6 +46,29 @@
       "revId": "99ae5e4e33fc215967826906072618453f3d533c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ee1208a6_e454bc96",
+        "filename": "media/java/android/media/Utils.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 341,
+      "author": {
+        "id": 1001525
+      },
+      "writtenOn": "2018-11-09T17:44:06Z",
+      "side": 1,
+      "message": "could all of this be replaced by something like this: (untested)\n\nstatic long getMaxFileSize(FileDescriptor fd) {\n    File file \u003d ParcelFileDescriptor.getFile(fd);\n    long result \u003d new StatFs(file.getCanonicalPath()).getAvailableBytes();\n    Context ctx \u003d (Context)ActivityThread.currentApplication();\n    StorageManager sm \u003d (StorageManager)ctx.getSystemService(Context.STORAGE_SERVICE);\n    StorageVolume vol \u003d sm.getStorageVolume(file);\n    long maxFileSizeBytes \u003d vol.getMaxFileSize();\n    if (maxFileSizeBytes \u003e 0) {\n        result \u003d Math.min(result, maxFileSizeBytes);\n    }\n    return result;\n}",
+      "range": {
+        "startLine": 305,
+        "startChar": 0,
+        "endLine": 341,
+        "endChar": 5
+      },
+      "revId": "99ae5e4e33fc215967826906072618453f3d533c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
