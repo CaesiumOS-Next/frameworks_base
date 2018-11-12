@@ -58,6 +58,7 @@ import android.net.NetworkInfo;
 import android.net.NetworkInfo.DetailedState;
 import android.net.NetworkMisc;
 import android.net.NetworkUtils;
+import android.net.ProxyInfo;
 import android.net.RouteInfo;
 import android.net.UidRange;
 import android.net.Uri;
@@ -1791,8 +1792,12 @@ public class Vpn {
         config.user = profile.key;
         config.interfaze = iface;
         config.session = profile.name;
+        // Add proxy
+        int proxyPort = profile.proxyPort.isEmpty() ? 0 : Integer.parseInt(profile.proxyPort);
+        config.proxy = new ProxyInfo(profile.proxyHost, proxyPort, null);
 
         config.addLegacyRoutes(profile.routes);
+
         if (!profile.dnsServers.isEmpty()) {
             config.dnsServers = Arrays.asList(profile.dnsServers.split(" +"));
         }
