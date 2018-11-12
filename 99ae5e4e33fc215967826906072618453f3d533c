@@ -69,6 +69,30 @@
       "revId": "99ae5e4e33fc215967826906072618453f3d533c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ecd81f5f_dff92718",
+        "filename": "media/java/android/media/Utils.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 341,
+      "author": {
+        "id": 1233895
+      },
+      "writtenOn": "2018-11-12T08:37:31Z",
+      "side": 1,
+      "message": "Thank you. It looks better. But as written in our code, this suggestion will have following issues.\n\n- path from fd can be from \"/data\", \"/mnt/media_rw\" or \"/cache\". In this case, StorageManager getStorageVolume does not work correctly. So we excluded other than \"/storage\" path in Line 309-315. And internal path \"/mnt/media_rw\" needs to be transformed to corresponding emulated path \"/storage/\u003cID\u003e\"\n\n- try - catch is necessary for IOException.\n\nAnd regarding to new API in StorageManager, we need \"internal path to emulated path\" API.\nOn P, StorageManager has hide API which converts \"emulated path to internal path\".\n\nhttps://android.googlesource.com/platform/frameworks/base/+/master/core/java/android/os/storage/StorageManager.java#1508\n\n    /** {@hide} */\n    public static File maybeTranslateEmulatedPathToInternal(File path) {\n        // Disabled now that FUSE has been replaced by sdcardfs\n        return path;\n    }\n\nWe need opposite conversion API of this.",
+      "parentUuid": "ee1208a6_e454bc96",
+      "range": {
+        "startLine": 305,
+        "startChar": 0,
+        "endLine": 341,
+        "endChar": 5
+      },
+      "revId": "99ae5e4e33fc215967826906072618453f3d533c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
