@@ -1,0 +1,211 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "045103d4_311c9a5d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1149384
+      },
+      "writtenOn": "2018-11-13T01:52:25Z",
+      "side": 1,
+      "message": "Please put the actual command that you used to run the test. Could you please also confirm that the other joystick tests are running fine with this change (\"atest AsusGamepadTestCase\")",
+      "range": {
+        "startLine": 22,
+        "startChar": 11,
+        "endLine": 22,
+        "endChar": 29
+      },
+      "revId": "51db903be0d5f780a74b7eb6cc38ffbe2f3a97db",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "54877293_48dd6227",
+        "filename": "cmds/hid/jni/com_android_commands_hid_Device.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1149384
+      },
+      "writtenOn": "2018-11-13T01:52:25Z",
+      "side": 1,
+      "message": "uint32_t? [1]\n\n[1] https://elixir.bootlin.com/linux/v4.8/source/include/uapi/linux/uhid.h#L87\n\nalso types should match for other parameters",
+      "range": {
+        "startLine": 179,
+        "startChar": 39,
+        "endLine": 179,
+        "endChar": 42
+      },
+      "revId": "51db903be0d5f780a74b7eb6cc38ffbe2f3a97db",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0053d3bf_062a3578",
+        "filename": "cmds/hid/jni/com_android_commands_hid_Device.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1149384
+      },
+      "writtenOn": "2018-11-13T01:52:25Z",
+      "side": 1,
+      "message": "Can this be std::vector\u003cuint8_t\u003e instead?",
+      "range": {
+        "startLine": 179,
+        "startChar": 65,
+        "endLine": 179,
+        "endChar": 71
+      },
+      "revId": "51db903be0d5f780a74b7eb6cc38ffbe2f3a97db",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2b167328_0f62c53e",
+        "filename": "cmds/hid/jni/com_android_commands_hid_Device.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1149384
+      },
+      "writtenOn": "2018-11-13T01:52:25Z",
+      "side": 1,
+      "message": "Instead of memset, can you just initialize with {} ?",
+      "range": {
+        "startLine": 181,
+        "startChar": 4,
+        "endLine": 181,
+        "endChar": 31
+      },
+      "revId": "51db903be0d5f780a74b7eb6cc38ffbe2f3a97db",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "81a4ec85_223ccd8c",
+        "filename": "cmds/hid/jni/com_android_commands_hid_Device.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1149384
+      },
+      "writtenOn": "2018-11-13T01:52:25Z",
+      "side": 1,
+      "message": "looks like this branch should \"return 0\". Can you double check?",
+      "range": {
+        "startLine": 212,
+        "startChar": 8,
+        "endLine": 212,
+        "endChar": 12
+      },
+      "revId": "51db903be0d5f780a74b7eb6cc38ffbe2f3a97db",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f1505f8b_74251bd7",
+        "filename": "cmds/hid/src/com/android/commands/hid/Device.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1149384
+      },
+      "writtenOn": "2018-11-13T01:52:25Z",
+      "side": 1,
+      "message": "upon error, this should be \"EIO\" [1].\n\nhttps://www.kernel.org/doc/Documentation/hid/uhid.txt\n\nIt is probably best to just use true (success) and false (failure) here, and set the values from  native code accordingly.",
+      "range": {
+        "startLine": 40,
+        "startChar": 47,
+        "endLine": 40,
+        "endChar": 48
+      },
+      "revId": "51db903be0d5f780a74b7eb6cc38ffbe2f3a97db",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1e15b15f_0044642e",
+        "filename": "cmds/hid/src/com/android/commands/hid/Device.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1149384
+      },
+      "writtenOn": "2018-11-13T01:52:25Z",
+      "side": 1,
+      "message": "Is this the behaviour defined by the standard?",
+      "range": {
+        "startLine": 173,
+        "startChar": 16,
+        "endLine": 173,
+        "endChar": 86
+      },
+      "revId": "51db903be0d5f780a74b7eb6cc38ffbe2f3a97db",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9b1eb171_b12e9d94",
+        "filename": "cmds/hid/src/com/android/commands/hid/Device.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1149384
+      },
+      "writtenOn": "2018-11-13T01:52:25Z",
+      "side": 1,
+      "message": "Not sure on the style here, does this need spaces after { and before } ? Did preupload hooks all pass?",
+      "range": {
+        "startLine": 174,
+        "startChar": 37,
+        "endLine": 174,
+        "endChar": 51
+      },
+      "revId": "51db903be0d5f780a74b7eb6cc38ffbe2f3a97db",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "553711bf_6fd9c099",
+        "filename": "cmds/hid/src/com/android/commands/hid/Event.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1149384
+      },
+      "writtenOn": "2018-11-13T01:52:25Z",
+      "side": 1,
+      "message": "Can the register command in json contain that dict directly? So, something like:\n\n\"feature_reports\": [\n{ \"type\": 0x05,\n  \"data\": [0x05, 0x1e, 0x00, 0x05, 0x00, 0xe2, 0xff, 0xf2, 0x22, 0xbe, 0x22, 0x8d, 0x22, 0x4f, 0xdd, 0x4d,\n    0xdd, 0x39, 0xdd, 0x1c, 0x02, 0x1c, 0x02, 0xe3, 0x1f, 0x8b, 0xdf, 0x8c, 0x1e, 0xb4, 0xde, 0x30,\n    0x20, 0x71, 0xe0, 0x10, 0x00, 0xca, 0xfc, 0x64, 0x4d]\n  }\n]\n\nAlso, regarding the first byte being the report number : is that custom to Sony driver? Or is it the contract for all drivers? I\u0027m not able to find documentation about the report format anywhere. Since the report id is already being set separately, what is the value of copying that into the report?",
+      "range": {
+        "startLine": 123,
+        "startChar": 12,
+        "endLine": 123,
+        "endChar": 65
+      },
+      "revId": "51db903be0d5f780a74b7eb6cc38ffbe2f3a97db",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
