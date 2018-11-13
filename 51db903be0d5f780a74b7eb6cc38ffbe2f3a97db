@@ -206,6 +206,30 @@
       "revId": "51db903be0d5f780a74b7eb6cc38ffbe2f3a97db",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f9330a22_d7cab8ba",
+        "filename": "cmds/hid/src/com/android/commands/hid/Event.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1154383
+      },
+      "writtenOn": "2018-11-13T04:53:21Z",
+      "side": 1,
+      "message": "The first byte is generally speaking the report ID as documented in the HID spec (https://www.usb.org/sites/default/files/documents/hid1_11.pdf), see e.g. section 8.1 and 8.2. However on simple devices with only a single report per type (input, output, feature), the report ID is omitted. I suppose we should add a field \"id\" stating the report ID.",
+      "parentUuid": "553711bf_6fd9c099",
+      "range": {
+        "startLine": 123,
+        "startChar": 12,
+        "endLine": 123,
+        "endChar": 65
+      },
+      "revId": "51db903be0d5f780a74b7eb6cc38ffbe2f3a97db",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
