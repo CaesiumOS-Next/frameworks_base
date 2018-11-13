@@ -71,6 +71,54 @@
     },
     {
       "key": {
+        "uuid": "8374c414_c1b606cd",
+        "filename": "cmds/hid/jni/com_android_commands_hid_Device.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1152828
+      },
+      "writtenOn": "2018-11-13T18:59:28Z",
+      "side": 1,
+      "message": "If you meant uint8_t* report, it was kept the same as sendReport() unless you want to change there as well.",
+      "parentUuid": "0053d3bf_062a3578",
+      "range": {
+        "startLine": 179,
+        "startChar": 65,
+        "endLine": 179,
+        "endChar": 71
+      },
+      "revId": "51db903be0d5f780a74b7eb6cc38ffbe2f3a97db",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f424394e_ad65107b",
+        "filename": "cmds/hid/jni/com_android_commands_hid_Device.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1152828
+      },
+      "writtenOn": "2018-11-13T18:59:28Z",
+      "side": 1,
+      "message": "Will fix.",
+      "parentUuid": "54877293_48dd6227",
+      "range": {
+        "startLine": 179,
+        "startChar": 39,
+        "endLine": 179,
+        "endChar": 42
+      },
+      "revId": "51db903be0d5f780a74b7eb6cc38ffbe2f3a97db",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "2b167328_0f62c53e",
         "filename": "cmds/hid/jni/com_android_commands_hid_Device.cpp",
         "patchSetId": 1
@@ -82,6 +130,30 @@
       "writtenOn": "2018-11-13T01:52:25Z",
       "side": 1,
       "message": "Instead of memset, can you just initialize with {} ?",
+      "range": {
+        "startLine": 181,
+        "startChar": 4,
+        "endLine": 181,
+        "endChar": 31
+      },
+      "revId": "51db903be0d5f780a74b7eb6cc38ffbe2f3a97db",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7b5278fc_2fc37b69",
+        "filename": "cmds/hid/jni/com_android_commands_hid_Device.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1152828
+      },
+      "writtenOn": "2018-11-13T18:59:28Z",
+      "side": 1,
+      "message": "This was kept the same as sendReport() unless you want to change it there as well.",
+      "parentUuid": "2b167328_0f62c53e",
       "range": {
         "startLine": 181,
         "startChar": 4,
@@ -117,6 +189,30 @@
     },
     {
       "key": {
+        "uuid": "6ab2e699_bdb560cd",
+        "filename": "cmds/hid/jni/com_android_commands_hid_Device.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1152828
+      },
+      "writtenOn": "2018-11-13T18:59:28Z",
+      "side": 1,
+      "message": "Will fix.",
+      "parentUuid": "81a4ec85_223ccd8c",
+      "range": {
+        "startLine": 212,
+        "startChar": 8,
+        "endLine": 212,
+        "endChar": 12
+      },
+      "revId": "51db903be0d5f780a74b7eb6cc38ffbe2f3a97db",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f1505f8b_74251bd7",
         "filename": "cmds/hid/src/com/android/commands/hid/Device.java",
         "patchSetId": 1
@@ -128,6 +224,30 @@
       "writtenOn": "2018-11-13T01:52:25Z",
       "side": 1,
       "message": "upon error, this should be \"EIO\" [1].\n\nhttps://www.kernel.org/doc/Documentation/hid/uhid.txt\n\nIt is probably best to just use true (success) and false (failure) here, and set the values from  native code accordingly.",
+      "range": {
+        "startLine": 40,
+        "startChar": 47,
+        "endLine": 40,
+        "endChar": 48
+      },
+      "revId": "51db903be0d5f780a74b7eb6cc38ffbe2f3a97db",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7ba41780_1aa82cae",
+        "filename": "cmds/hid/src/com/android/commands/hid/Device.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1152828
+      },
+      "writtenOn": "2018-11-13T18:59:28Z",
+      "side": 1,
+      "message": "Will pass a boolean to native, and return EIO in the native layer.",
+      "parentUuid": "f1505f8b_74251bd7",
       "range": {
         "startLine": 40,
         "startChar": 47,
@@ -163,6 +283,30 @@
     },
     {
       "key": {
+        "uuid": "8ddd3171_342f21d4",
+        "filename": "cmds/hid/src/com/android/commands/hid/Device.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1152828
+      },
+      "writtenOn": "2018-11-13T18:59:28Z",
+      "side": 1,
+      "message": "Upon further review, we will return an empty report here, and handle it on the native side.",
+      "parentUuid": "1e15b15f_0044642e",
+      "range": {
+        "startLine": 173,
+        "startChar": 16,
+        "endLine": 173,
+        "endChar": 86
+      },
+      "revId": "51db903be0d5f780a74b7eb6cc38ffbe2f3a97db",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "9b1eb171_b12e9d94",
         "filename": "cmds/hid/src/com/android/commands/hid/Device.java",
         "patchSetId": 1
@@ -183,6 +327,30 @@
       "revId": "51db903be0d5f780a74b7eb6cc38ffbe2f3a97db",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2623f58b_bd968bb6",
+        "filename": "cmds/hid/src/com/android/commands/hid/Device.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1152828
+      },
+      "writtenOn": "2018-11-13T18:59:28Z",
+      "side": 1,
+      "message": "The preupload hooks passed.",
+      "parentUuid": "9b1eb171_b12e9d94",
+      "range": {
+        "startLine": 174,
+        "startChar": 37,
+        "endLine": 174,
+        "endChar": 51
+      },
+      "revId": "51db903be0d5f780a74b7eb6cc38ffbe2f3a97db",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -221,6 +389,30 @@
       "side": 1,
       "message": "The first byte is generally speaking the report ID as documented in the HID spec (https://www.usb.org/sites/default/files/documents/hid1_11.pdf), see e.g. section 8.1 and 8.2. However on simple devices with only a single report per type (input, output, feature), the report ID is omitted. I suppose we should add a field \"id\" stating the report ID.",
       "parentUuid": "553711bf_6fd9c099",
+      "range": {
+        "startLine": 123,
+        "startChar": 12,
+        "endLine": 123,
+        "endChar": 65
+      },
+      "revId": "51db903be0d5f780a74b7eb6cc38ffbe2f3a97db",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c7860eb6_cf793ab5",
+        "filename": "cmds/hid/src/com/android/commands/hid/Event.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1152828
+      },
+      "writtenOn": "2018-11-13T18:59:28Z",
+      "side": 1,
+      "message": "We will change it to the following. If first byte does not contain the report ID, \"id\" should be set to \"0\" according to HID specs.\n\n\"feature_reports\": [\n{ \"id\": 0x05,\n  \"data\": [0x05, 0x1e, 0x00, 0x05, 0x00, 0xe2, 0xff, 0xf2, 0x22, 0xbe, 0x22, 0x8d, 0x22, 0x4f, 0xdd, 0x4d,\n    0xdd, 0x39, 0xdd, 0x1c, 0x02, 0x1c, 0x02, 0xe3, 0x1f, 0x8b, 0xdf, 0x8c, 0x1e, 0xb4, 0xde, 0x30,\n    0x20, 0x71, 0xe0, 0x10, 0x00, 0xca, 0xfc, 0x64, 0x4d]\n  }\n]",
+      "parentUuid": "f9330a22_d7cab8ba",
       "range": {
         "startLine": 123,
         "startChar": 12,
