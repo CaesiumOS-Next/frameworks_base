@@ -143,6 +143,30 @@
     },
     {
       "key": {
+        "uuid": "76d2cc1e_682dd230",
+        "filename": "cmds/hid/jni/com_android_commands_hid_Device.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1152828
+      },
+      "writtenOn": "2018-11-13T22:33:41Z",
+      "side": 1,
+      "message": "Will do this as a separate patch, since it touches quite a few APIs (openDevice, Device::open, etc.). Trying not to pollute the original patch.",
+      "parentUuid": "a8cd9d72_6ff7b644",
+      "range": {
+        "startLine": 179,
+        "startChar": 65,
+        "endLine": 179,
+        "endChar": 71
+      },
+      "revId": "51db903be0d5f780a74b7eb6cc38ffbe2f3a97db",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "2b167328_0f62c53e",
         "filename": "cmds/hid/jni/com_android_commands_hid_Device.cpp",
         "patchSetId": 1
@@ -202,6 +226,30 @@
       "side": 1,
       "message": "Let\u0027s refactor both.",
       "parentUuid": "7b5278fc_2fc37b69",
+      "range": {
+        "startLine": 181,
+        "startChar": 4,
+        "endLine": 181,
+        "endChar": 31
+      },
+      "revId": "51db903be0d5f780a74b7eb6cc38ffbe2f3a97db",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "08885ee3_cd08966e",
+        "filename": "cmds/hid/jni/com_android_commands_hid_Device.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1152828
+      },
+      "writtenOn": "2018-11-13T22:33:41Z",
+      "side": 1,
+      "message": "Will do.",
+      "parentUuid": "1e0d239a_3abdf078",
       "range": {
         "startLine": 181,
         "startChar": 4,
