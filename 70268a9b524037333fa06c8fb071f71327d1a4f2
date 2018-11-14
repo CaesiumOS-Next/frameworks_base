@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3869d1e3_b11cbcb3",
+        "filename": "cmds/hid/jni/com_android_commands_hid_Device.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1149384
+      },
+      "writtenOn": "2018-11-14T21:24:18Z",
+      "side": 1,
+      "message": "nit: let\u0027s match these types to the struct uhid_get_report_req (so, uint32_t and uint8_t) and just let the casting happen automatically when going into java. That way we will keep the type information as long as possible for better readability.",
+      "range": {
+        "startLine": 87,
+        "startChar": 39,
+        "endLine": 87,
+        "endChar": 42
+      },
+      "revId": "70268a9b524037333fa06c8fb071f71327d1a4f2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d12abd85_500f6571",
+        "filename": "cmds/hid/jni/com_android_commands_hid_Device.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1149384
+      },
+      "writtenOn": "2018-11-14T21:24:18Z",
+      "side": 1,
+      "message": "nit: line length",
+      "range": {
+        "startLine": 176,
+        "startChar": 102,
+        "endLine": 176,
+        "endChar": 103
+      },
+      "revId": "70268a9b524037333fa06c8fb071f71327d1a4f2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "55748b44_cfc50406",
+        "filename": "cmds/hid/jni/com_android_commands_hid_Device.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 261,
+      "author": {
+        "id": 1149384
+      },
+      "writtenOn": "2018-11-14T21:24:18Z",
+      "side": 1,
+      "message": "nit: can we switch these? so do:\nif (!err) {\n    getData and sendReply\n} else {\n    sendEmptyReply\n}\n\nOtherwise currently success is sandwiched between two errors.",
+      "range": {
+        "startLine": 261,
+        "startChar": 12,
+        "endLine": 261,
+        "endChar": 15
+      },
+      "revId": "70268a9b524037333fa06c8fb071f71327d1a4f2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0867e6e6_86694e54",
+        "filename": "cmds/hid/jni/com_android_commands_hid_Device.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 262,
+      "author": {
+        "id": 1149384
+      },
+      "writtenOn": "2018-11-14T21:24:18Z",
+      "side": 1,
+      "message": "nit: nullptr",
+      "range": {
+        "startLine": 262,
+        "startChar": 50,
+        "endLine": 262,
+        "endChar": 54
+      },
+      "revId": "70268a9b524037333fa06c8fb071f71327d1a4f2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4f5fe7d6_069e64bd",
+        "filename": "cmds/hid/src/com/android/commands/hid/Device.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1149384
+      },
+      "writtenOn": "2018-11-14T21:24:18Z",
+      "side": 1,
+      "message": "Whether or not report is null, the call to obtainMessage is the same. The only difference is the \"status\". So suggest rewriting:\n\nint result \u003d REQUEST_SUCCESS;\nif (report \u003d\u003d null) {\n    Log.e(\u003cerror message\u003e)\n    result \u003d REQUEST_FAILURE;\n}\nmHandler.obtainMessage(..., result, report);\n\n\nAlternatively:\ndo we need the status at all? Can we just send null report and have that be an indicator of success or failure?",
+      "range": {
+        "startLine": 172,
+        "startChar": 16,
+        "endLine": 172,
+        "endChar": 30
+      },
+      "revId": "70268a9b524037333fa06c8fb071f71327d1a4f2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "453317db_e3c1c25c",
+        "filename": "cmds/hid/src/com/android/commands/hid/Event.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1149384
+      },
+      "writtenOn": "2018-11-14T21:24:18Z",
+      "side": 1,
+      "message": "Question:\nDoes this force one to define \"id\" first and \"data\" second in the json format? Would the parsing still work if \"data\" was defined in the json format before \"id\"? Not super familiar with this parsing logic.",
+      "range": {
+        "startLine": 214,
+        "startChar": 52,
+        "endLine": 214,
+        "endChar": 71
+      },
+      "revId": "70268a9b524037333fa06c8fb071f71327d1a4f2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
