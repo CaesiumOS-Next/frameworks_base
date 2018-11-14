@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "582aca4a_b49d3cf0",
+        "filename": "services/robotests/Android.mk",
+        "patchSetId": 3
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-11-14T20:46:46Z",
+      "side": 1,
+      "message": "It should be added here instead.",
+      "revId": "a10b961710c2e5cf18bd17475bfef05bacd0f06f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
