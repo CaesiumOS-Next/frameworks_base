@@ -650,6 +650,10 @@ static pid_t ForkCommon(JNIEnv* env, bool is_system_server,
     android_fdsan_set_error_level(fdsan_error_level);
   }
 
+  // We want use log apis in signal handler even though knowing they are not async-signal-safe,
+  // and we just reset log internal state before fork, to avoid potential dead lock, we better
+  // re-initialize liblog before unblocking SIGCHLD signal
+  ALOGD("logd re-connected");
   // We blocked SIGCHLD prior to a fork, we unblock it here.
   if (sigprocmask(SIG_UNBLOCK, &sigchld, nullptr) == -1) {
     fail_fn(CREATE_ERROR("sigprocmask(SIG_SETMASK, { SIGCHLD }) failed: %s", strerror(errno)));
