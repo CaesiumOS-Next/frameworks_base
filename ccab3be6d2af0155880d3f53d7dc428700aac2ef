@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "feae9969_ec80ba4f",
+        "filename": "cmds/hid/jni/com_android_commands_hid_Device.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 259,
+      "author": {
+        "id": 1149384
+      },
+      "writtenOn": "2018-11-15T20:13:10Z",
+      "side": 1,
+      "message": "nit: size definition can be moved just before getData call.",
+      "range": {
+        "startLine": 259,
+        "startChar": 11,
+        "endLine": 259,
+        "endChar": 15
+      },
+      "revId": "ccab3be6d2af0155880d3f53d7dc428700aac2ef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "321e81de_c7274c27",
+        "filename": "cmds/hid/jni/com_android_commands_hid_Device.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 264,
+      "author": {
+        "id": 1149384
+      },
+      "writtenOn": "2018-11-15T20:13:10Z",
+      "side": 1,
+      "message": "nit: I meant, we can just not send \"0\" or \"EIO\" here, and just check report.get() for nullness in Device::sendGetFeatureReportReply.  So this way, we could move the logic of filling with EIO closer to the hid struct, and only have a single call to d-\u003esendGetFeatureReportReply here. This can be done in a separate CL when the getData is refactored, though.",
+      "range": {
+        "startLine": 264,
+        "startChar": 12,
+        "endLine": 264,
+        "endChar": 40
+      },
+      "revId": "ccab3be6d2af0155880d3f53d7dc428700aac2ef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c4a0433c_6dbb0e8c",
+        "filename": "cmds/hid/src/com/android/commands/hid/Event.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1149384
+      },
+      "writtenOn": "2018-11-15T20:13:10Z",
+      "side": 1,
+      "message": "nit: If this default case happens, it looks like someone added an unrecognized field. Probably best to raise an exception, similar to the \"malformed data\" one below?",
+      "range": {
+        "startLine": 218,
+        "startChar": 52,
+        "endLine": 218,
+        "endChar": 72
+      },
+      "revId": "ccab3be6d2af0155880d3f53d7dc428700aac2ef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
