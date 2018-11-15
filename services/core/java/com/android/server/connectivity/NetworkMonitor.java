@@ -1614,6 +1614,11 @@ public class NetworkMonitor extends StateMachine {
                 < mMinDataStallEvaluateTime) {
             return false;
         }
+        // Not evaluate data stall since data suppose to be unavailable if network is suspended
+        if (!mNetworkAgentInfo.networkCapabilities.hasCapability(
+                NetworkCapabilities.NET_CAPABILITY_NOT_SUSPENDED)) {
+            return false;
+        }
 
         // Check dns signal. Suspect it may be a data stall if both :
         // 1. The number of consecutive DNS query timeouts > mConsecutiveDnsTimeoutThreshold.
