@@ -1855,6 +1855,16 @@ public final class BluetoothAdapter {
     }
 
     /**
+     * Return true if Android Hearing Aids Profile is supported.
+     *
+     * @return true if phone supports Android Hearing Aids Profile
+     */
+    public boolean isHearingAidsProfileSupported() {
+        // TODO: Please implement.
+        return true;
+    }
+
+    /**
      * Get the maximum number of connected audio devices.
      *
      * @return the maximum number of connected audio devices
@@ -2424,16 +2434,17 @@ public final class BluetoothAdapter {
      * Get the profile proxy object associated with the profile.
      *
      * <p>Profile can be one of {@link BluetoothProfile#HEALTH}, {@link BluetoothProfile#HEADSET},
-     * {@link BluetoothProfile#A2DP}, {@link BluetoothProfile#GATT}, or
-     * {@link BluetoothProfile#GATT_SERVER}. Clients must implement
-     * {@link BluetoothProfile.ServiceListener} to get notified of
-     * the connection status and to get the proxy object.
+     * {@link BluetoothProfile#A2DP}, {@link BluetoothProfile#HEARING_AID}, {@link
+     * BluetoothProfile#GATT}, or {@link BluetoothProfile#GATT_SERVER}. Clients must implement
+     * {@link BluetoothProfile.ServiceListener} to get notified of the connection status and to get
+     * the proxy object.
      *
      * @param context Context of the application
      * @param listener The service Listener for connection callbacks.
      * @param profile The Bluetooth profile; either {@link BluetoothProfile#HEALTH}, {@link
-     * BluetoothProfile#HEADSET}, {@link BluetoothProfile#A2DP}. {@link BluetoothProfile#GATT} or
-     * {@link BluetoothProfile#GATT_SERVER}.
+     * BluetoothProfile#HEADSET}, {@link BluetoothProfile#A2DP}, {@link
+     * BluetoothProfile#HEARING_AID}, {@link BluetoothProfile#GATT} or {@link
+     * BluetoothProfile#GATT_SERVER}.
      * @return true on success, false on error
      */
     public boolean getProfileProxy(Context context, BluetoothProfile.ServiceListener listener,
