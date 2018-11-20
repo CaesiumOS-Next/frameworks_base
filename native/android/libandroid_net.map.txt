@@ -5,6 +5,11 @@ LIBANDROID_NET {
     android_setsocknetwork; # vndk
     android_setprocnetwork; # vndk
     android_getaddrinfofornetwork; # vndk
+    android_res_nquery; # vndk
+    android_res_nresult; # vndk
+    android_res_nsend; # vndk
+    android_res_nrecv; # vndk
+    android_res_cancel; # vndk
   local:
     *;
 };
