@@ -254,6 +254,30 @@
     },
     {
       "key": {
+        "uuid": "d0f6a3ee_d538207e",
+        "filename": "tests/net/res/raw/xt_qtaguid_with_clat_simple",
+        "patchSetId": 1
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1288034
+      },
+      "writtenOn": "2018-11-26T01:12:55Z",
+      "side": 1,
+      "message": "Hmm I don\u0027t think we have a good way to automatically update those, apart from taking a snapshot from a real device...",
+      "parentUuid": "8796f311_038bad59",
+      "range": {
+        "startLine": 2,
+        "startChar": 51,
+        "endLine": 2,
+        "endChar": 58
+      },
+      "revId": "e79f0af2aee7574d9fd16c388448f0e9fab977e1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bef84db5_0456fd43",
         "filename": "tests/net/res/raw/xt_qtaguid_with_clat_simple",
         "patchSetId": 1
@@ -298,6 +322,30 @@
       "revId": "e79f0af2aee7574d9fd16c388448f0e9fab977e1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "075e3cbd_4854248f",
+        "filename": "tests/net/res/raw/xt_qtaguid_with_clat_simple",
+        "patchSetId": 1
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1288034
+      },
+      "writtenOn": "2018-11-26T01:12:55Z",
+      "side": 1,
+      "message": "I think with the current positioning it\u0027s now rx_other_bytes and rx_other_packets - it should be 2 columns to the right to be tx_tcp_bytes and tx_tcp_packets (same thing with line 2)",
+      "parentUuid": "e4cf7bcd_ab28ae37",
+      "range": {
+        "startLine": 6,
+        "startChar": 35,
+        "endLine": 6,
+        "endChar": 42
+      },
+      "revId": "e79f0af2aee7574d9fd16c388448f0e9fab977e1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
