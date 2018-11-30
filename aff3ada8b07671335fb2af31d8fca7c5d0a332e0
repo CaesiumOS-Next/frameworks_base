@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fa700546_2315e43c",
+        "filename": "cmds/hid/src/com/android/commands/hid/Device.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1149384
+      },
+      "writtenOn": "2018-11-30T21:27:23Z",
+      "side": 1,
+      "message": "nit: move this declaration closer to the usage (line 170)",
+      "range": {
+        "startLine": 164,
+        "startChar": 12,
+        "endLine": 164,
+        "endChar": 24
+      },
+      "revId": "aff3ada8b07671335fb2af31d8fca7c5d0a332e0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0c049c9b_bf91fe46",
+        "filename": "cmds/hid/src/com/android/commands/hid/Event.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 233,
+      "author": {
+        "id": 1149384
+      },
+      "writtenOn": "2018-11-30T21:27:23Z",
+      "side": 1,
+      "message": "nit: please factor this out into a separate function",
+      "range": {
+        "startLine": 200,
+        "startChar": 32,
+        "endLine": 233,
+        "endChar": 33
+      },
+      "revId": "aff3ada8b07671335fb2af31d8fca7c5d0a332e0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
