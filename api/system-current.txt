@@ -4466,8 +4466,8 @@ package android.service.carrier {
 
   public abstract class ApnService extends android.app.Service {
     ctor public ApnService();
-    method public abstract java.util.List<android.content.ContentValues> onRestoreApns(int);
     method public android.os.IBinder onBind(android.content.Intent);
+    method public abstract java.util.List<android.content.ContentValues> onRestoreApns(int);
   }
 
 }
@@ -6188,12 +6188,6 @@ package android.telephony.ims {
     method public android.telephony.ims.ImsSsInfo.Builder setClirOutgoingState(int);
     method public android.telephony.ims.ImsSsInfo.Builder setIncomingCommunicationBarringNumber(java.lang.String);
     method public android.telephony.ims.ImsSsInfo.Builder setProvisionStatus(int);
-  }
-
-  public static abstract class ImsSsInfo.ClirInterrogationStatus implements java.lang.annotation.Annotation {
-  }
-
-  public static abstract class ImsSsInfo.ClirOutgoingState implements java.lang.annotation.Annotation {
   }
 
   public final class ImsStreamMediaProfile implements android.os.Parcelable {
