@@ -3723,7 +3723,10 @@ public class ConnectivityService extends IConnectivityManager.Stub
         int user = UserHandle.getUserId(Binder.getCallingUid());
         synchronized (mVpns) {
             throwIfLockdownEnabled();
-            return mVpns.get(user).establish(config);
+            Vpn vpn = mVpns.get(user);
+            ParcelFileDescriptor fd = vpn.establish(config);
+            vpn.updateCapabilities(getDefaultNonVpnNetwork());
+            return fd;
         }
     }
 
@@ -3839,10 +3842,11 @@ public class ConnectivityService extends IConnectivityManager.Stub
      * TODO : Fix this and call updateCapabilities inline to remove out-of-order events.
      */
     private void updateAllVpnsCapabilities() {
+        Network nonVpnDefaultNetwork = getDefaultNonVpnNetwork();
         synchronized (mVpns) {
             for (int i = 0; i < mVpns.size(); i++) {
                 final Vpn vpn = mVpns.valueAt(i);
-                vpn.updateCapabilities();
+                vpn.updateCapabilities(nonVpnDefaultNetwork);
             }
         }
     }
@@ -4155,21 +4159,23 @@ public class ConnectivityService extends IConnectivityManager.Stub
     }
 
     private void onUserAdded(int userId) {
+        Network nonVpnDefaultNetwork = getDefaultNonVpnNetwork();
         synchronized (mVpns) {
             final int vpnsSize = mVpns.size();
             for (int i = 0; i < vpnsSize; i++) {
                 Vpn vpn = mVpns.valueAt(i);
-                vpn.onUserAdded(userId);
+                vpn.onUserAdded(userId, nonVpnDefaultNetwork);
             }
         }
     }
 
     private void onUserRemoved(int userId) {
+        Network nonVpnDefaultNetwork = getDefaultNonVpnNetwork();
         synchronized (mVpns) {
             final int vpnsSize = mVpns.size();
             for (int i = 0; i < vpnsSize; i++) {
                 Vpn vpn = mVpns.valueAt(i);
-                vpn.onUserRemoved(userId);
+                vpn.onUserRemoved(userId, nonVpnDefaultNetwork);
             }
         }
     }
@@ -4678,6 +4684,12 @@ public class ConnectivityService extends IConnectivityManager.Stub
 
     private NetworkAgentInfo getDefaultNetwork() {
         return getNetworkForRequest(mDefaultRequest.requestId);
+    }
+
+    @Nullable
+    private Network getDefaultNonVpnNetwork() {
+        NetworkAgentInfo nai = getDefaultNetwork();
+        return nai != null ? nai.network : null;
     }
 
     private boolean isDefaultNetwork(NetworkAgentInfo nai) {
@@ -5242,6 +5254,9 @@ public class ConnectivityService extends IConnectivityManager.Stub
         updateTcpBufferSizes(newNetwork);
         mDnsManager.setDefaultDnsSystemProperties(newNetwork.linkProperties.getDnsServers());
         notifyIfacesChangedForNetworkStats();
+        // For VPNs that follow platform default, notify them here rather than depending on changes
+        // in the capabilities of non-VPN networks.
+        updateAllVpnsCapabilities();
     }
 
     private void processListenRequests(NetworkAgentInfo nai, boolean capabilitiesChanged) {
@@ -5926,7 +5941,7 @@ public class ConnectivityService extends IConnectivityManager.Stub
         final boolean success;
         synchronized (mVpns) {
             throwIfLockdownEnabled();
-            success = mVpns.get(user).setUnderlyingNetworks(networks);
+            success = mVpns.get(user).setUnderlyingNetworks(networks, getDefaultNonVpnNetwork());
         }
         if (success) {
             mHandler.post(() -> notifyIfacesChangedForNetworkStats());

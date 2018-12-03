@@ -797,7 +797,7 @@ public class ConnectivityServiceTest {
 
         public void setUids(Set<UidRange> uids) {
             mNetworkCapabilities.setUids(uids);
-            updateCapabilities();
+            updateCapabilities(null /* defaultNetwork */);
         }
 
         @Override
@@ -822,9 +822,9 @@ public class ConnectivityServiceTest {
         }
 
         @Override
-        public void updateCapabilities() {
+        public void updateCapabilities(Network defaultNetwork) {
             if (!mConnected) return;
-            super.updateCapabilities();
+            super.updateCapabilities(defaultNetwork);
             // Because super.updateCapabilities will update the capabilities of the agent but not
             // the mock agent, the mock agent needs to know about them.
             copyCapabilitiesToNetworkAgent();
@@ -4497,6 +4497,43 @@ public class ConnectivityServiceTest {
 
         // Disconnect wifi too. No underlying networks means this is now metered.
         mWiFiNetworkAgent.disconnect();
+        vpnNetworkCallback.expectCapabilitiesLike((caps) -> caps.hasTransport(TRANSPORT_VPN)
+                && !caps.hasTransport(TRANSPORT_CELLULAR) && !caps.hasTransport(TRANSPORT_WIFI)
+                && !caps.hasCapability(NET_CAPABILITY_NOT_METERED),
+                vpnNetworkAgent);
+
+        // Both wifi and cell are now disconnected.
+        //
+        // Tests with null underlying networks.
+        // Expected behavior is that VPN caps are updated based on current platform default.
+        mService.setUnderlyingNetworksForVpn(null /* networks */);
+
+        // Connect to Cell, cell is the default network.
+        mCellNetworkAgent = new MockNetworkAgent(TRANSPORT_CELLULAR);
+        mCellNetworkAgent.connect(true);
+
+        vpnNetworkCallback.expectCapabilitiesLike((caps) -> caps.hasTransport(TRANSPORT_VPN)
+                && caps.hasTransport(TRANSPORT_CELLULAR) && !caps.hasTransport(TRANSPORT_WIFI)
+                && !caps.hasCapability(NET_CAPABILITY_NOT_METERED),
+                vpnNetworkAgent);
+
+        // Connect to WiFi, wifi is the new default.
+        mWiFiNetworkAgent = new MockNetworkAgent(TRANSPORT_WIFI);
+        mWiFiNetworkAgent.addCapability(NET_CAPABILITY_NOT_METERED);
+        mWiFiNetworkAgent.connect(true);
+
+        vpnNetworkCallback.expectCapabilitiesLike((caps) -> caps.hasTransport(TRANSPORT_VPN)
+                && !caps.hasTransport(TRANSPORT_CELLULAR) && caps.hasTransport(TRANSPORT_WIFI)
+                && caps.hasCapability(NET_CAPABILITY_NOT_METERED),
+                vpnNetworkAgent);
+
+        // Disconnect Cell. The default network did not change, so there shouldn't be any changes in
+        // the capabilities.
+        mCellNetworkAgent.disconnect();
+
+        // Disconnect wifi too. Now we have no default network.
+        mWiFiNetworkAgent.disconnect();
+
         vpnNetworkCallback.expectCapabilitiesLike((caps) -> caps.hasTransport(TRANSPORT_VPN)
                 && !caps.hasTransport(TRANSPORT_CELLULAR) && !caps.hasTransport(TRANSPORT_WIFI)
                 && !caps.hasCapability(NET_CAPABILITY_NOT_METERED),
