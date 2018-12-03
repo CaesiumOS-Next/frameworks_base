@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0b4ccdad_6589f91b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2018-12-03T08:46:58Z",
+      "side": 1,
+      "message": "Bug ID ?",
+      "revId": "7a3b329bdb93b7b5c6308c40281e3ba7069ef781",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "91bc29ca_09110694",
+        "filename": "services/core/java/com/android/server/connectivity/Tethering.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 1395,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2018-12-03T08:46:58Z",
+      "side": 1,
+      "message": "I think you need to explain better why the test here is for the device to have a default internet network, and what the race specifically is.",
+      "range": {
+        "startLine": 1391,
+        "startChar": 0,
+        "endLine": 1395,
+        "endChar": 50
+      },
+      "revId": "7a3b329bdb93b7b5c6308c40281e3ba7069ef781",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d148f872_4fa4ad43",
+        "filename": "services/core/java/com/android/server/connectivity/Tethering.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 1397,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2018-12-03T08:46:58Z",
+      "side": 1,
+      "message": "While you\u0027re here :\ntrue /* tryCell */",
+      "range": {
+        "startLine": 1397,
+        "startChar": 43,
+        "endLine": 1397,
+        "endChar": 47
+      },
+      "revId": "7a3b329bdb93b7b5c6308c40281e3ba7069ef781",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
