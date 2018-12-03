@@ -62,6 +62,29 @@
       "revId": "7a3b329bdb93b7b5c6308c40281e3ba7069ef781",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "12ce9318_875d779d",
+        "filename": "tests/net/java/com/android/server/connectivity/TetheringTest.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 545,
+      "author": {
+        "id": 1304263
+      },
+      "writtenOn": "2018-12-03T08:58:03Z",
+      "side": 1,
+      "message": "Just curious. Do we have any coding preference about the format?\n\nmTetheringDependencies.upstreamNetworkMonitorMasterSM.sendMessage(\n                Tethering.TetherMasterSM.EVENT_UPSTREAM_CALLBACK,\n                UpstreamNetworkMonitor.EVENT_ON_LINKPROPERTIES,\n                0,\n                upstreamState);\nor\n \nmTetheringDependencies.upstreamNetworkMonitorMasterSM.sendMessage(\n                Tethering.TetherMasterSM.EVENT_UPSTREAM_CALLBACK,\n                UpstreamNetworkMonitor.EVENT_ON_LINKPROPERTIES, 0, upstreamState);",
+      "range": {
+        "startLine": 541,
+        "startChar": 8,
+        "endLine": 545,
+        "endChar": 31
+      },
+      "revId": "7a3b329bdb93b7b5c6308c40281e3ba7069ef781",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
