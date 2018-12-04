@@ -19,6 +19,9 @@ java_library {
     srcs: [
         "src/**/*.java",
     ],
+    static_libs: [
+        "dhcp-lib"
+    ]
 }
 
 java_library {
