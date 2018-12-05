@@ -395,8 +395,7 @@ public final class ScanSettings implements Parcelable {
          * This is used only if {@link ScanSettings.Builder#setLegacy}
          * is set to false.
          * {@link android.bluetooth.BluetoothAdapter#isLeCodedPhySupported}
-         * may be used to check whether LE Coded phy is supported by calling
-         * {@link android.bluetooth.BluetoothAdapter#isLeCodedPhySupported}.
+         * may be used to check whether LE Coded phy is supported.
          * Selecting an unsupported phy will result in failure to start scan.
          *
          * @param phy Can be one of {@link BluetoothDevice#PHY_LE_1M}, {@link
