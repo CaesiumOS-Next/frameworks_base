@@ -179,6 +179,7 @@ public class ActivityManager {
      */
     @Retention(RetentionPolicy.SOURCE)
     @IntDef(prefix = { "BUGREPORT_OPTION_" }, value = {
+            BUGREPORT_OPTION_DEFAULT,
             BUGREPORT_OPTION_FULL,
             BUGREPORT_OPTION_INTERACTIVE,
             BUGREPORT_OPTION_REMOTE,
@@ -187,6 +188,11 @@ public class ActivityManager {
             BUGREPORT_OPTION_WIFI
     })
     public @interface BugreportMode {}
+    /**
+     * Takes a bugreport without any extra options or mode set.
+     * @hide
+     */
+    public static final int BUGREPORT_OPTION_DEFAULT = -1;
     /**
      * Takes a bugreport without user interference (and hence causing less
      * interference to the system), but includes all sections.
