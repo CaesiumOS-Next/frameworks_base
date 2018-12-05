@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "809cbf9a_479069e3",
+        "filename": "cmds/hid/src/com/android/commands/hid/Event.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1149384
+      },
+      "writtenOn": "2018-12-05T22:50:40Z",
+      "side": 1,
+      "message": "Could you amend this to follow the existing convention?\n\n    eb.setFeatureReports(readFeatureReports());\n\ncan be done in a followup CL",
+      "range": {
+        "startLine": 200,
+        "startChar": 32,
+        "endLine": 200,
+        "endChar": 50
+      },
+      "revId": "3ab33125f649a5eecb0728b54fb7a4b8e24d3a4e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6510b6c2_bb1677ee",
+        "filename": "cmds/hid/src/com/android/commands/hid/Event.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 273,
+      "author": {
+        "id": 1149384
+      },
+      "writtenOn": "2018-12-05T22:50:40Z",
+      "side": 1,
+      "message": "nit: add some kind of comment here, \"unexpected element encountered: \" + name",
+      "range": {
+        "startLine": 273,
+        "startChar": 63,
+        "endLine": 273,
+        "endChar": 64
+      },
+      "revId": "3ab33125f649a5eecb0728b54fb7a4b8e24d3a4e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
