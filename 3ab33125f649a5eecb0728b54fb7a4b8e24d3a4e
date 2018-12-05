@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "d72f3fd8_906db307",
+        "filename": "cmds/hid/src/com/android/commands/hid/Event.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1149384
+      },
+      "writtenOn": "2018-12-05T23:35:25Z",
+      "side": 1,
+      "message": "Is it possible to new a SparseArray inside readFeatureReports and then return that?\nThe private field would then be null unless readFeatureReports is called.",
+      "parentUuid": "e7d9e04b_3f1a091d",
+      "range": {
+        "startLine": 200,
+        "startChar": 32,
+        "endLine": 200,
+        "endChar": 50
+      },
+      "revId": "3ab33125f649a5eecb0728b54fb7a4b8e24d3a4e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6510b6c2_bb1677ee",
         "filename": "cmds/hid/src/com/android/commands/hid/Event.java",
         "patchSetId": 6
