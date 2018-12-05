@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "e7d9e04b_3f1a091d",
+        "filename": "cmds/hid/src/com/android/commands/hid/Event.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1152828
+      },
+      "writtenOn": "2018-12-05T23:30:01Z",
+      "side": 1,
+      "message": "To follow that convention, readFeatureReports() will have to return ArrayMap, and eb.addFeatureReports() will iterate over that ArrayMap and add the feature reports one by one. The ArrayMap seems redundant since we can already add the feature reports while creating the ArrayMap. Is that what you would like?\n\nThe other alternative would be to add a setFeatureReports(JsonReader reader) under Event.Builder and just pass the mReader to it. It\u0027s pretty much moving the current readFeatureReports() into Event.Builder.\n\nPlease let us know which way you prefer.",
+      "parentUuid": "809cbf9a_479069e3",
+      "range": {
+        "startLine": 200,
+        "startChar": 32,
+        "endLine": 200,
+        "endChar": 50
+      },
+      "revId": "3ab33125f649a5eecb0728b54fb7a4b8e24d3a4e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6510b6c2_bb1677ee",
         "filename": "cmds/hid/src/com/android/commands/hid/Event.java",
         "patchSetId": 6
@@ -36,6 +60,30 @@
       "writtenOn": "2018-12-05T22:50:40Z",
       "side": 1,
       "message": "nit: add some kind of comment here, \"unexpected element encountered: \" + name",
+      "range": {
+        "startLine": 273,
+        "startChar": 63,
+        "endLine": 273,
+        "endChar": 64
+      },
+      "revId": "3ab33125f649a5eecb0728b54fb7a4b8e24d3a4e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a8c6ac05_aef6d5a7",
+        "filename": "cmds/hid/src/com/android/commands/hid/Event.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 273,
+      "author": {
+        "id": 1152828
+      },
+      "writtenOn": "2018-12-05T23:30:01Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "6510b6c2_bb1677ee",
       "range": {
         "startLine": 273,
         "startChar": 63,
