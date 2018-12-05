@@ -115,6 +115,7 @@ import android.net.NetworkMisc;
 import android.net.NetworkRequest;
 import android.net.NetworkSpecifier;
 import android.net.NetworkUtils;
+import android.net.ProxyInfo;
 import android.net.RouteInfo;
 import android.net.StringNetworkSpecifier;
 import android.net.UidRange;
@@ -154,6 +155,7 @@ import com.android.server.connectivity.MockableSystemProperties;
 import com.android.server.connectivity.Nat464Xlat;
 import com.android.server.connectivity.NetworkAgentInfo;
 import com.android.server.connectivity.NetworkMonitor;
+import com.android.server.connectivity.ProxyTracker;
 import com.android.server.connectivity.Tethering;
 import com.android.server.connectivity.Vpn;
 import com.android.server.net.NetworkPinner;
@@ -925,6 +927,9 @@ public class ConnectivityServiceTest {
         public WrappedMultinetworkPolicyTracker wrappedMultinetworkPolicyTracker;
         private WrappedNetworkMonitor mLastCreatedNetworkMonitor;
         private MockableSystemProperties mSystemProperties;
+        private ProxyTracker mProxyTracker;
+        private NetworkAgentInfo mMockNetworkAgentInfo;
+        private boolean testGetActiveNetwork;
 
         public WrappedConnectivityService(Context context, INetworkManagementService netManager,
                 INetworkStatsService statsService, INetworkPolicyManager policyManager,
@@ -932,6 +937,9 @@ public class ConnectivityServiceTest {
             super(context, netManager, statsService, policyManager, log);
             mNetd = netd;
             mLingerDelayMs = TEST_LINGER_DELAY_MS;
+            super.mProxyTracker = mock(ProxyTracker.class);
+            mProxyTracker = super.mProxyTracker;
+            testGetActiveNetwork = false;
         }
 
         @Override
@@ -1015,6 +1023,22 @@ public class ConnectivityServiceTest {
 
         @Override
         protected void registerNetdEventCallback() {
+        }
+
+        @Override
+        Network getActiveNetworkForUidInternal(final int uid, boolean ignoreBlocked) {
+            if (testGetActiveNetwork) {
+                return mock(Network.class);
+            }
+            return super.getActiveNetworkForUidInternal(uid, ignoreBlocked);
+        }
+
+        @Override
+        public NetworkAgentInfo getNetworkAgentInfoForNetwork(Network activeNetwork) {
+            if (testGetActiveNetwork) {
+                return mMockNetworkAgentInfo;
+            }
+            return super.getNetworkAgentInfoForNetwork(activeNetwork);
         }
 
         public WrappedNetworkMonitor getLastCreatedWrappedNetworkMonitor() {
@@ -4795,5 +4819,40 @@ public class ConnectivityServiceTest {
         lp.setTcpBufferSizes(TEST_TCP_BUFFER_SIZES);
         mCellNetworkAgent.sendLinkProperties(lp);
         verifyTcpBufferSizeChange(TEST_TCP_BUFFER_SIZES);
+    }
+
+    @Test
+    public void testGetGlobalProxyForNetwork() {
+        final ProxyInfo testProxyInfo = ProxyInfo.buildDirectProxy("test", 8888);
+        mWiFiNetworkAgent = new MockNetworkAgent(TRANSPORT_WIFI);
+        Network wifiNetwork = mWiFiNetworkAgent.getNetwork();
+        when(mService.getGlobalProxy()).thenReturn(testProxyInfo);
+        assertEquals(testProxyInfo, mService.getProxyForNetwork(wifiNetwork));
+    }
+
+    @Test
+    public void testGetProxyForNullActiveNetwork() {
+        final ProxyInfo testProxyInfo = ProxyInfo.buildDirectProxy("test", 8888);
+        when(mService.mProxyTracker.getDefaultProxy()).thenReturn(testProxyInfo);
+        assertEquals(testProxyInfo, mService.getProxyForNetwork(null));
+    }
+
+    @Test
+    public void testGetProxyForActiveNetwork() {
+        final ProxyInfo testProxyInfo = ProxyInfo.buildDirectProxy("test", 8888);
+        mService.testGetActiveNetwork = true;
+        mService.mMockNetworkAgentInfo = mock(NetworkAgentInfo.class);
+        LinkProperties testLinkProperties = new LinkProperties();
+        testLinkProperties.setHttpProxy(testProxyInfo);
+        mService.mMockNetworkAgentInfo.linkProperties = testLinkProperties;
+        assertEquals(testProxyInfo, mService.getProxyForNetwork(null));
+    }
+
+    @Test
+    public void testGetProxyForNetwork() {
+        mService.testGetActiveNetwork = true;
+        Network testNetwork = mock(Network.class);
+        mService.mMockNetworkAgentInfo = null;
+        assertNull(mService.getProxyForNetwork(testNetwork));
     }
 }
