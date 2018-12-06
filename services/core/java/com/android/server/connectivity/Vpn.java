@@ -116,7 +116,6 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
-import java.util.Objects;
 import java.util.Set;
 import java.util.SortedSet;
 import java.util.TreeSet;
@@ -945,14 +944,6 @@ public class Vpn {
             return false;
         }
 
-        // TODO: we currently do not support seamless handover if the allowed or disallowed
-        // applications have changed. Consider diffing UID ranges and only applying the delta.
-        if (!Objects.equals(oldConfig.allowedApplications, mConfig.allowedApplications) ||
-                !Objects.equals(oldConfig.disallowedApplications, mConfig.disallowedApplications)) {
-            Log.i(TAG, "Handover not possible due to changes to whitelisted/blacklisted apps");
-            return false;
-        }
-
         LinkProperties lp = makeLinkProperties();
         final boolean hadInternetCapability = mNetworkCapabilities.hasCapability(
                 NetworkCapabilities.NET_CAPABILITY_INTERNET);
@@ -1077,7 +1068,7 @@ public class Vpn {
         String oldInterface = mInterface;
         Connection oldConnection = mConnection;
         NetworkAgent oldNetworkAgent = mNetworkAgent;
-        Set<UidRange> oldUsers = mNetworkCapabilities.getUids();
+        Set<UidRange> oldUids = mNetworkCapabilities.getUids();
 
         // Configure the interface. Abort if any of these steps fails.
         ParcelFileDescriptor tun = ParcelFileDescriptor.adoptFd(jniCreate(config.mtu));
@@ -1114,6 +1105,7 @@ public class Vpn {
             if (oldConfig != null
                     && updateLinkPropertiesInPlaceIfPossible(mNetworkAgent, oldConfig)) {
                 // Keep mNetworkAgent unchanged
+                maybeUpdateAllowedApps(oldUids);
             } else {
                 mNetworkAgent = null;
                 updateState(DetailedState.CONNECTING, "establish");
@@ -1145,13 +1137,24 @@ public class Vpn {
             // restore old state
             mConfig = oldConfig;
             mConnection = oldConnection;
-            mNetworkCapabilities.setUids(oldUsers);
+            mNetworkCapabilities.setUids(oldUids);
             mNetworkAgent = oldNetworkAgent;
             mInterface = oldInterface;
             throw e;
         }
         Log.i(TAG, "Established by " + config.user + " on " + mInterface);
         return tun;
+    }
+
+    private void maybeUpdateAllowedApps(Set<UidRange> oldUids) {
+        Set<UidRange> newUids = createUserAndRestrictedProfilesRanges(mUserHandle,
+                mConfig.allowedApplications, mConfig.disallowedApplications);
+        if (oldUids == null) oldUids = Collections.emptySet();
+
+        if (!newUids.containsAll(oldUids) || !oldUids.containsAll(newUids)) {
+            mNetworkCapabilities.setUids(newUids);
+            mNetworkAgent.sendNetworkCapabilities(mNetworkCapabilities);
+        }
     }
 
     private boolean isRunningLocked() {
