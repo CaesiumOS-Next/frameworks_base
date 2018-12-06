@@ -33,6 +33,7 @@ import static android.net.NetworkCapabilities.NET_CAPABILITY_NOT_RESTRICTED;
 import static android.net.NetworkCapabilities.NET_CAPABILITY_NOT_ROAMING;
 import static android.net.NetworkCapabilities.NET_CAPABILITY_NOT_SUSPENDED;
 import static android.net.NetworkCapabilities.NET_CAPABILITY_NOT_VPN;
+import static android.net.NetworkCapabilities.NET_CAPABILITY_PARTIAL_CONNECTIVITY;
 import static android.net.NetworkCapabilities.NET_CAPABILITY_VALIDATED;
 import static android.net.NetworkCapabilities.TRANSPORT_VPN;
 import static android.net.NetworkPolicyManager.RULE_NONE;
@@ -54,6 +55,7 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.res.Configuration;
 import android.database.ContentObserver;
+import android.net.captiveportal.CaptivePortalProbeResult;
 import android.net.ConnectionInfo;
 import android.net.ConnectivityManager;
 import android.net.ConnectivityManager.PacketKeepalive;
@@ -454,6 +456,7 @@ public class ConnectivityService extends IConnectivityManager.Stub
     final private NetworkStateTrackerHandler mTrackerHandler;
     private final DnsManager mDnsManager;
 
+    private boolean mKeepUnvalidatedNetwork;
     private boolean mSystemReady;
     private Intent mInitialBroadcast;
 
@@ -2417,7 +2420,9 @@ public class ConnectivityService extends IConnectivityManager.Stub
                     final NetworkCapabilities networkCapabilities = (NetworkCapabilities) msg.obj;
                     if (networkCapabilities.hasCapability(NET_CAPABILITY_CAPTIVE_PORTAL) ||
                             networkCapabilities.hasCapability(NET_CAPABILITY_VALIDATED) ||
-                            networkCapabilities.hasCapability(NET_CAPABILITY_FOREGROUND)) {
+                            networkCapabilities.hasCapability(NET_CAPABILITY_FOREGROUND) ||
+                            networkCapabilities.hasCapability(NET_CAPABILITY_PARTIAL_CONNECTIVITY)
+                            ) {
                         Slog.wtf(TAG, "BUG: " + nai + " has CS-managed capability.");
                     }
                     updateCapabilities(nai.getCurrentScore(), nai, networkCapabilities);
@@ -2463,7 +2468,12 @@ public class ConnectivityService extends IConnectivityManager.Stub
                     final boolean wasValidated = nai.lastValidated;
                     final boolean wasDefault = isDefaultNetwork(nai);
 
-                    final String redirectUrl = (msg.obj instanceof String) ? (String) msg.obj : "";
+                    final CaptivePortalProbeResult probeResult = (CaptivePortalProbeResult) msg.obj;
+                    final String redirectUrl =
+                            (probeResult != null && probeResult.redirectUrl != null) ?
+                            probeResult.redirectUrl : "";
+                    nai.partialConnectivity = (probeResult != null) ?
+                            probeResult.isPartialConnectivity() : false;
 
                     if (DBG) {
                         final String logMsg = !TextUtils.isEmpty(redirectUrl)
@@ -3064,6 +3074,11 @@ public class ConnectivityService extends IConnectivityManager.Stub
             nai.asyncChannel.sendMessage(NetworkAgent.CMD_PREVENT_AUTOMATIC_RECONNECT);
             // Teardown the network.
             teardownUnneededNetwork(nai);
+        } else {
+            if (nai.partialConnectivity) {
+                mKeepUnvalidatedNetwork = true;
+                updateCapabilities(nai.getCurrentScore(), nai, nai.networkCapabilities);
+            }
         }
 
     }
@@ -3159,6 +3174,9 @@ public class ConnectivityService extends IConnectivityManager.Stub
             case LOST_INTERNET:
                 action = ConnectivityManager.ACTION_PROMPT_LOST_VALIDATION;
                 break;
+            case PARTIAL_CONNECTIVITY:
+                action = ConnectivityManager.ACTION_PROMPT_PARTIAL_CONNECTIVITY;
+                break;
             default:
                 Slog.wtf(TAG, "Unknown notification type " + type);
                 return;
@@ -3186,7 +3204,11 @@ public class ConnectivityService extends IConnectivityManager.Stub
                 !nai.networkMisc.explicitlySelected || nai.networkMisc.acceptUnvalidated) {
             return;
         }
-        showValidationNotification(nai, NotificationType.NO_INTERNET);
+        if (nai.partialConnectivity) {
+            showValidationNotification(nai, NotificationType.PARTIAL_CONNECTIVITY);
+        } else {
+            showValidationNotification(nai, NotificationType.NO_INTERNET);
+        }
     }
 
     private void handleNetworkUnvalidated(NetworkAgentInfo nai) {
@@ -5001,6 +5023,11 @@ public class ConnectivityService extends IConnectivityManager.Stub
         } else {
             newNc.addCapability(NET_CAPABILITY_NOT_SUSPENDED);
         }
+        if (nai.partialConnectivity && mKeepUnvalidatedNetwork) {
+            newNc.addCapability(NET_CAPABILITY_PARTIAL_CONNECTIVITY);
+        } else {
+            newNc.removeCapability(NET_CAPABILITY_PARTIAL_CONNECTIVITY);
+        }
 
         return newNc;
     }
@@ -5703,6 +5730,7 @@ public class ConnectivityService extends IConnectivityManager.Stub
                     null);
 
             networkAgent.networkMonitor.sendMessage(NetworkMonitor.CMD_NETWORK_CONNECTED);
+            mKeepUnvalidatedNetwork = false;
             scheduleUnvalidatedPrompt(networkAgent);
 
             if (networkAgent.isVPN()) {

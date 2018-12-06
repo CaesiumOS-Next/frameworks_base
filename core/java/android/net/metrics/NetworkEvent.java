@@ -46,6 +46,8 @@ public final class NetworkEvent implements Parcelable {
 
     public static final int NETWORK_CONSECUTIVE_DNS_TIMEOUT_FOUND = 12;
 
+    public static final int NETWORK_PARTIAL_CONNECTIVITY = 13;
+
     @IntDef(value = {
             NETWORK_CONNECTED,
             NETWORK_VALIDATED,
