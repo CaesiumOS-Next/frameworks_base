@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "773c0772_93cff1c9",
+        "filename": "cmds/hid/src/com/android/commands/hid/Event.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1149384
+      },
+      "writtenOn": "2018-12-06T01:35:22Z",
+      "side": 1,
+      "message": "allocation not longer needed",
+      "range": {
+        "startLine": 43,
+        "startChar": 49,
+        "endLine": 43,
+        "endChar": 69
+      },
+      "revId": "4c91fe76d924dd02cc546c0f843df9661b7cc55f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
