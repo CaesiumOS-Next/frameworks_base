@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "f4f7e76e_28ea9a79",
+        "filename": "core/java/android/net/NetworkStats.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1306837
+      },
+      "writtenOn": "2018-12-10T08:33:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d0b51c18_6a59c25f",
+      "revId": "e79f0af2aee7574d9fd16c388448f0e9fab977e1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c02f1673_26836eae",
         "filename": "core/java/android/net/NetworkStats.java",
         "patchSetId": 1
@@ -346,6 +364,30 @@
       "revId": "e79f0af2aee7574d9fd16c388448f0e9fab977e1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "116a71b2_27ffcae4",
+        "filename": "tests/net/res/raw/xt_qtaguid_with_clat_simple",
+        "patchSetId": 1
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1306837
+      },
+      "writtenOn": "2018-12-10T08:33:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "075e3cbd_4854248f",
+      "range": {
+        "startLine": 6,
+        "startChar": 35,
+        "endLine": 6,
+        "endChar": 42
+      },
+      "revId": "e79f0af2aee7574d9fd16c388448f0e9fab977e1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
