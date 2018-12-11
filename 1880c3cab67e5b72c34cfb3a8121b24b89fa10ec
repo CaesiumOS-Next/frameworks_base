@@ -118,6 +118,30 @@
       "revId": "1880c3cab67e5b72c34cfb3a8121b24b89fa10ec",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8488f582_7c600e01",
+        "filename": "media/java/android/media/MediaScanner.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1233895
+      },
+      "writtenOn": "2018-12-11T00:15:51Z",
+      "side": 1,
+      "message": "Thank you for advice. We may use ParseUtils (I\u0027m checking the behavior now).\n\nhttps://android.googlesource.com/platform/frameworks/base/+/refs/heads/master/core/java/com/android/internal/util/ParseUtils.java\n\nand change matcher like ([+-][0-9]+[.][0-9]+), just in case.",
+      "parentUuid": "13628508_24d7786e",
+      "range": {
+        "startLine": 167,
+        "startChar": 75,
+        "endLine": 167,
+        "endChar": 82
+      },
+      "revId": "1880c3cab67e5b72c34cfb3a8121b24b89fa10ec",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
