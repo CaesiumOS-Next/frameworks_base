@@ -19,6 +19,7 @@ package com.android.server.net.ipmemorystore;
 import android.annotation.NonNull;
 import android.annotation.Nullable;
 import android.content.Context;
+import android.database.sqlite.SQLiteDatabase;
 import android.net.IIpMemoryStore;
 import android.net.ipmemorystore.IOnL2KeyResponseListener;
 import android.net.ipmemorystore.IOnNetworkAttributesRetrieved;
@@ -37,9 +38,12 @@ import android.net.ipmemorystore.PrivateData;
  */
 public class IpMemoryStoreService extends IIpMemoryStore.Stub {
     final Context mContext;
+    final SQLiteDatabase mDb;
 
     public IpMemoryStoreService(@NonNull final Context context) {
         mContext = context;
+        final IpMemoryStoreDatabase.DbHelper helper = new IpMemoryStoreDatabase.DbHelper(context);
+        mDb = helper.getWritableDatabase();
     }
 
     /**
