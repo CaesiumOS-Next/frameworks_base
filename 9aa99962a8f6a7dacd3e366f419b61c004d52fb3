@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da7fedfd_eeca5d79",
+        "filename": "telephony/java/android/telephony/ims/ImsReasonInfo.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 456,
+      "author": {
+        "id": 1047993
+      },
+      "writtenOn": "2018-12-13T00:30:50Z",
+      "side": 1,
+      "message": "Please use the comment from the left column.",
+      "revId": "9aa99962a8f6a7dacd3e366f419b61c004d52fb3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
