@@ -368,6 +368,31 @@ public class VpnService extends Service {
     }
 
     /**
+     * Returns whether the current VPN app is configured to run in always-on VPN mode. If current
+     * app is not prepared or not a VPN app returns {@code false}.
+     */
+    public static boolean isAlwaysOn() {
+        try {
+            return getService().isCallerAlwaysOnApp();
+        } catch (RemoteException e) {
+            throw new IllegalStateException(e);
+        }
+    }
+
+    /**
+     * Returns whether the current VPN app is configured to run in always-on VPN mode blocking
+     * connections without VPN. If current app is not prepared or not a VPN app returns
+     * {@code false}.
+     */
+    public static boolean isLockdownEnabled() {
+        try {
+            return getService().isCallerAlwaysOnLockdownApp();
+        } catch (RemoteException e) {
+            throw new IllegalStateException(e);
+        }
+    }
+
+    /**
      * Return the communication interface to the service. This method returns
      * {@code null} on {@link Intent}s other than {@link #SERVICE_INTERFACE}
      * action. Applications overriding this method must identify the intent

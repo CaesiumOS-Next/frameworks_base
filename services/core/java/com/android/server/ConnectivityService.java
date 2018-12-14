@@ -6210,6 +6210,20 @@ public class ConnectivityService extends IConnectivityManager.Stub
         }
     }
 
+    @GuardedBy("mVpns")
+    private Vpn getVpnForCaller() {
+        final int uid = Binder.getCallingUid();
+        final int user = UserHandle.getUserId(uid);
+
+        final Vpn vpn = mVpns.get(user);
+        if (vpn == null) {
+            return null;
+        } else {
+            final VpnInfo info = vpn.getVpnInfo();
+            return (info == null || info.ownerUid != uid) ? null : vpn;
+        }
+    }
+
     /**
      * Caller either needs to be an active VPN, or hold the NETWORK_STACK permission
      * for testing.
@@ -6218,14 +6232,10 @@ public class ConnectivityService extends IConnectivityManager.Stub
         if (checkNetworkStackPermission()) {
             return null;
         }
-        final int uid = Binder.getCallingUid();
-        final int user = UserHandle.getUserId(uid);
         synchronized (mVpns) {
-            Vpn vpn = mVpns.get(user);
-            try {
-                if (vpn.getVpnInfo().ownerUid == uid) return vpn;
-            } catch (NullPointerException e) {
-                /* vpn is null, or VPN is not connected and getVpnInfo() is null. */
+            Vpn vpn = getVpnForCaller();
+            if (vpn != null) {
+                return vpn;
             }
         }
         throw new SecurityException("App must either be an active VPN or have the NETWORK_STACK "
@@ -6253,5 +6263,21 @@ public class ConnectivityService extends IConnectivityManager.Stub
         }
 
         return uid;
+    }
+
+    @Override
+    public boolean isCallerAlwaysOnApp() {
+        synchronized (mVpns) {
+            Vpn vpn = getVpnForCaller();
+            return vpn != null && vpn.getAlwaysOn();
+        }
+    }
+
+    @Override
+    public boolean isCallerAlwaysOnLockdownApp() {
+        synchronized (mVpns) {
+            Vpn vpn = getVpnForCaller();
+            return vpn != null && vpn.getLockdown();
+        }
     }
 }
