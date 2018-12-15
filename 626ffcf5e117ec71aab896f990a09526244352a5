@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a128912_b72097b6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1304263
+      },
+      "writtenOn": "2018-12-15T02:29:08Z",
+      "side": 1,
+      "message": "is?",
+      "range": {
+        "startLine": 9,
+        "startChar": 22,
+        "endLine": 9,
+        "endChar": 25
+      },
+      "revId": "626ffcf5e117ec71aab896f990a09526244352a5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2d3628cb_8de1f148",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1304263
+      },
+      "writtenOn": "2018-12-15T02:29:08Z",
+      "side": 1,
+      "message": "need",
+      "range": {
+        "startLine": 10,
+        "startChar": 48,
+        "endLine": 10,
+        "endChar": 53
+      },
+      "revId": "626ffcf5e117ec71aab896f990a09526244352a5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6df1b14c_29dc9e8b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1304263
+      },
+      "writtenOn": "2018-12-15T02:29:08Z",
+      "side": 1,
+      "message": "pull?",
+      "range": {
+        "startLine": 10,
+        "startChar": 57,
+        "endLine": 10,
+        "endChar": 61
+      },
+      "revId": "626ffcf5e117ec71aab896f990a09526244352a5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "23d3655a_81cc8c2c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1304263
+      },
+      "writtenOn": "2018-12-15T02:29:08Z",
+      "side": 1,
+      "message": "are",
+      "range": {
+        "startLine": 14,
+        "startChar": 50,
+        "endLine": 14,
+        "endChar": 52
+      },
+      "revId": "626ffcf5e117ec71aab896f990a09526244352a5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "787cd479_7255577d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1304263
+      },
+      "writtenOn": "2018-12-15T02:29:08Z",
+      "side": 1,
+      "message": "ies",
+      "range": {
+        "startLine": 14,
+        "startChar": 24,
+        "endLine": 14,
+        "endChar": 25
+      },
+      "revId": "626ffcf5e117ec71aab896f990a09526244352a5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
