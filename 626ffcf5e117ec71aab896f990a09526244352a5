@@ -114,6 +114,23 @@
       "revId": "626ffcf5e117ec71aab896f990a09526244352a5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "808a913c_febdbf15",
+        "filename": "api/current.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 27575,
+      "author": {
+        "id": 1308504
+      },
+      "writtenOn": "2018-12-16T13:36:00Z",
+      "side": 1,
+      "message": "Should we also deprecated NetworkInfo.DetailedState in l.27594 and NetworkInfo.State in l.27612 ??",
+      "revId": "626ffcf5e117ec71aab896f990a09526244352a5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
