@@ -117,6 +117,29 @@
     },
     {
       "key": {
+        "uuid": "cd236560_6bd2ffa8",
+        "filename": "api/current.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 27274,
+      "author": {
+        "id": 1304263
+      },
+      "writtenOn": "2018-12-17T00:57:00Z",
+      "side": 1,
+      "message": "This should also be deprecated.",
+      "range": {
+        "startLine": 27274,
+        "startChar": 4,
+        "endLine": 27274,
+        "endChar": 80
+      },
+      "revId": "626ffcf5e117ec71aab896f990a09526244352a5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "808a913c_febdbf15",
         "filename": "api/current.txt",
         "patchSetId": 1
