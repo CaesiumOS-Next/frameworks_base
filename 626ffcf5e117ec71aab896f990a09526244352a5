@@ -140,6 +140,30 @@
     },
     {
       "key": {
+        "uuid": "dd298e38_a5d1dcb3",
+        "filename": "api/current.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 27274,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2018-12-17T02:03:58Z",
+      "side": 1,
+      "message": "+1",
+      "parentUuid": "cd236560_6bd2ffa8",
+      "range": {
+        "startLine": 27274,
+        "startChar": 4,
+        "endLine": 27274,
+        "endChar": 80
+      },
+      "revId": "626ffcf5e117ec71aab896f990a09526244352a5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "808a913c_febdbf15",
         "filename": "api/current.txt",
         "patchSetId": 1
@@ -151,6 +175,24 @@
       "writtenOn": "2018-12-16T13:36:00Z",
       "side": 1,
       "message": "Should we also deprecated NetworkInfo.DetailedState in l.27594 and NetworkInfo.State in l.27612 ??",
+      "revId": "626ffcf5e117ec71aab896f990a09526244352a5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b7d6594e_f3f778d4",
+        "filename": "api/current.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 27575,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2018-12-17T02:03:58Z",
+      "side": 1,
+      "message": "+1 to deprecating those as well, assuming they don\u0027t contain any meaningful information that can\u0027t be obtained by other APIs.",
+      "parentUuid": "808a913c_febdbf15",
       "revId": "626ffcf5e117ec71aab896f990a09526244352a5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
