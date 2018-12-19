@@ -2,6 +2,144 @@
   "comments": [
     {
       "key": {
+        "uuid": "704dea10_ab74d9a7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2018-12-19T06:13:55Z",
+      "side": 1,
+      "message": "doesn\u0027t need to choose",
+      "range": {
+        "startLine": 9,
+        "startChar": 10,
+        "endLine": 9,
+        "endChar": 31
+      },
+      "revId": "0be709c305a2e19669005ac83069e0b449d73a78",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9a963afc_a56b96a0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2018-12-19T06:13:55Z",
+      "side": 1,
+      "message": "started",
+      "range": {
+        "startLine": 10,
+        "startChar": 5,
+        "endLine": 10,
+        "endChar": 10
+      },
+      "revId": "0be709c305a2e19669005ac83069e0b449d73a78",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8d576daa_91a9b168",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2018-12-19T06:13:55Z",
+      "side": 1,
+      "message": "at",
+      "range": {
+        "startLine": 11,
+        "startChar": 13,
+        "endLine": 11,
+        "endChar": 14
+      },
+      "revId": "0be709c305a2e19669005ac83069e0b449d73a78",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d80f6705_a90690d4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2018-12-19T06:13:55Z",
+      "side": 1,
+      "message": "wouldn\u0027t have gotten",
+      "range": {
+        "startLine": 11,
+        "startChar": 36,
+        "endLine": 11,
+        "endChar": 45
+      },
+      "revId": "0be709c305a2e19669005ac83069e0b449d73a78",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0cdfeb33_3857ca7f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2018-12-19T06:13:55Z",
+      "side": 1,
+      "message": "some",
+      "range": {
+        "startLine": 13,
+        "startChar": 26,
+        "endLine": 13,
+        "endChar": 29
+      },
+      "revId": "0be709c305a2e19669005ac83069e0b449d73a78",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bf5cebfc_8f0d7685",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2018-12-19T06:13:55Z",
+      "side": 1,
+      "message": "finds ?",
+      "range": {
+        "startLine": 13,
+        "startChar": 25,
+        "endLine": 13,
+        "endChar": 26
+      },
+      "revId": "0be709c305a2e19669005ac83069e0b449d73a78",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6fe2f262_d8abf493",
         "filename": "services/core/java/com/android/server/connectivity/Tethering.java",
         "patchSetId": 5
@@ -18,6 +156,29 @@
         "startChar": 53,
         "endLine": 1391,
         "endChar": 54
+      },
+      "revId": "0be709c305a2e19669005ac83069e0b449d73a78",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9769e6a8_472a1c8f",
+        "filename": "services/core/java/com/android/server/connectivity/Tethering.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 1391,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2018-12-19T06:13:55Z",
+      "side": 1,
+      "message": "Also : DUN",
+      "range": {
+        "startLine": 1391,
+        "startChar": 33,
+        "endLine": 1391,
+        "endChar": 36
       },
       "revId": "0be709c305a2e19669005ac83069e0b449d73a78",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
