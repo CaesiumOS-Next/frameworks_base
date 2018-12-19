@@ -45,6 +45,30 @@
       "revId": "f8d9eca30bd4f5282403276dcee9092046f6c2a8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "31baaf6e_b2c076c0",
+        "filename": "core/java/android/net/NetworkStats.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 889,
+      "author": {
+        "id": 1306837
+      },
+      "writtenOn": "2018-12-19T07:39:24Z",
+      "side": 1,
+      "message": "Thanks for reviewing this.\nThis function is actually trying to do what you expect: to count v6 traffic into each uid.\n  1. Line 874~875 deal with v6 rx traffic counted against uid 0. (only for xt_qtaguid)\n  2. Line 883~885 would add IPV4V6_HEADER_DELTA*packet_count into original v4 traffic count for each \n     app.\n  3. removeUid(CLAT_UID) deal with v6 tx traffic counted against uid clat",
+      "parentUuid": "92a4455f_c14214af",
+      "range": {
+        "startLine": 888,
+        "startChar": 8,
+        "endLine": 889,
+        "endChar": 76
+      },
+      "revId": "f8d9eca30bd4f5282403276dcee9092046f6c2a8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
