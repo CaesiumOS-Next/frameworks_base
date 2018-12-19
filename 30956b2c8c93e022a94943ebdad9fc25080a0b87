@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "990f3036_ef266cb0",
+        "filename": "api/current.txt",
+        "patchSetId": 2
+      },
+      "lineNbr": 28481,
+      "author": {
+        "id": 1306837
+      },
+      "writtenOn": "2018-12-19T07:12:39Z",
+      "side": 1,
+      "message": "no , I think these are in wifiInfo, wifiManager and wifiP2pManager, which are some cases of our many users.\nbut instead, we may send them another patch to stop using this.",
+      "parentUuid": "47dc89af_b5a9fb0a",
+      "range": {
+        "startLine": 28481,
+        "startChar": 4,
+        "endLine": 28481,
+        "endChar": 116
+      },
+      "revId": "30956b2c8c93e022a94943ebdad9fc25080a0b87",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5573ba0b_4b7ad73a",
         "filename": "api/current.txt",
         "patchSetId": 2
