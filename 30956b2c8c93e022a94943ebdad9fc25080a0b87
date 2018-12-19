@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "47dc89af_b5a9fb0a",
+        "filename": "api/current.txt",
+        "patchSetId": 2
+      },
+      "lineNbr": 28481,
+      "author": {
+        "id": 1304263
+      },
+      "writtenOn": "2018-12-19T05:38:23Z",
+      "side": 1,
+      "message": "How about this one? Should we also deprecate it?",
+      "range": {
+        "startLine": 28481,
+        "startChar": 4,
+        "endLine": 28481,
+        "endChar": 116
+      },
+      "revId": "30956b2c8c93e022a94943ebdad9fc25080a0b87",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5573ba0b_4b7ad73a",
+        "filename": "api/current.txt",
+        "patchSetId": 2
+      },
+      "lineNbr": 28539,
+      "author": {
+        "id": 1304263
+      },
+      "writtenOn": "2018-12-19T05:38:23Z",
+      "side": 1,
+      "message": "also this one?",
+      "range": {
+        "startLine": 28539,
+        "startChar": 47,
+        "endLine": 28539,
+        "endChar": 65
+      },
+      "revId": "30956b2c8c93e022a94943ebdad9fc25080a0b87",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f28367c0_ba791542",
+        "filename": "api/current.txt",
+        "patchSetId": 2
+      },
+      "lineNbr": 28945,
+      "author": {
+        "id": 1304263
+      },
+      "writtenOn": "2018-12-19T05:38:23Z",
+      "side": 1,
+      "message": "After looking up these hidden parts, we may have more than these to mark as deprecated",
+      "range": {
+        "startLine": 28945,
+        "startChar": 47,
+        "endLine": 28945,
+        "endChar": 65
+      },
+      "revId": "30956b2c8c93e022a94943ebdad9fc25080a0b87",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
