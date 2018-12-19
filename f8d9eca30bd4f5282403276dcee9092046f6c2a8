@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3e8b7760_e83c6865",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2018-12-19T06:29:10Z",
+      "side": 1,
+      "message": "The part that moves the IPv6 traffic accounting to the clat UID is a separate patch right ? Let\u0027s make this clear in the cover comment.",
+      "range": {
+        "startLine": 17,
+        "startChar": 36,
+        "endLine": 18,
+        "endChar": 13
+      },
+      "revId": "f8d9eca30bd4f5282403276dcee9092046f6c2a8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "92a4455f_c14214af",
+        "filename": "core/java/android/net/NetworkStats.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 889,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2018-12-19T06:29:10Z",
+      "side": 1,
+      "message": "If I\u0027m getting this correctly this is introducing an error of IPV4V6_HEADER_DELTA per-packet in byte counts.\n・This patch is having the v4 traffic counted against the app on the v4 virtual interface\n・This patch is having the v6 traffic counted against clatd\n・This patch is discarding the traffic counted against clatd\n・Therefore the byte count at the end is the count of bytes in the v4 packets\nBut :\n・The traffic that is actually going on the wire is the v6 traffic\n・Therefore the byte count should be the count of bytes in the v6 packets\nHence :\n・There is a difference of IPV4V6_HEADER_DELTA for every packet that this fails to take into account\n\nWhat am I missing ?",
+      "range": {
+        "startLine": 888,
+        "startChar": 8,
+        "endLine": 889,
+        "endChar": 76
+      },
+      "revId": "f8d9eca30bd4f5282403276dcee9092046f6c2a8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
