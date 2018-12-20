@@ -25,6 +25,29 @@
     },
     {
       "key": {
+        "uuid": "52ffb82c_912452fc",
+        "filename": "core/java/android/net/NetworkStats.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 884,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2018-12-20T07:30:58Z",
+      "side": 1,
+      "message": "Kind of orthogonal to this patch but it looks like this should probably be done before l.872 instead of doing the adjustment twice (once in l.874 and once in l.883).",
+      "range": {
+        "startLine": 883,
+        "startChar": 0,
+        "endLine": 884,
+        "endChar": 67
+      },
+      "revId": "f8d9eca30bd4f5282403276dcee9092046f6c2a8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "92a4455f_c14214af",
         "filename": "core/java/android/net/NetworkStats.java",
         "patchSetId": 2
@@ -69,6 +92,30 @@
       "revId": "f8d9eca30bd4f5282403276dcee9092046f6c2a8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3a78a0ec_62f64417",
+        "filename": "core/java/android/net/NetworkStats.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 889,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2018-12-20T07:30:58Z",
+      "side": 1,
+      "message": "Got it. Thanks.",
+      "parentUuid": "31baaf6e_b2c076c0",
+      "range": {
+        "startLine": 888,
+        "startChar": 8,
+        "endLine": 889,
+        "endChar": 76
+      },
+      "revId": "f8d9eca30bd4f5282403276dcee9092046f6c2a8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
