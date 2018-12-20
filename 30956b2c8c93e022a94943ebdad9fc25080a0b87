@@ -92,6 +92,29 @@
       "revId": "30956b2c8c93e022a94943ebdad9fc25080a0b87",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ca6a5805_2c6e586d",
+        "filename": "core/java/android/net/NetworkInfo.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2018-12-20T07:01:44Z",
+      "side": 1,
+      "message": "I\u0027m not sure the use of \"mix\" here is clear.\n\nConcretely the issue is that callbacks are ordered with respect to each other, but not with synchronous calls. So what about the following formulation :\n\n    ...or to get information synchronously. Keep in mind that while callbacks are\n    guaranteed to be called for every event in order, synchronous calls have no such\n    constraints, and as such it is unadvisable to use the synchronous methods inside the\n    callbacks as they will often not offer a view of networking that is consistent (that\n    is: they may return a past or a future state with respect to the event being processed\n    by the callback). Instead, apps are advised to only use the arguments of the callbacks,\n    possibly memorizing the specific bits of information they need to keep from one callback\n    to another.",
+      "range": {
+        "startLine": 36,
+        "startChar": 26,
+        "endLine": 36,
+        "endChar": 29
+      },
+      "revId": "30956b2c8c93e022a94943ebdad9fc25080a0b87",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
