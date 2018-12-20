@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "33d6852c_6ed87463",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1071150
+      },
+      "writtenOn": "2018-12-20T16:48:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "63fa29c8_24ed32b6",
+      "revId": "ec841917dfd72717392dd94a5c1ad7f3e4e035ed",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6253e01c_8e4f7009",
         "filename": "core/jni/android_os_SharedMemory.cpp",
         "patchSetId": 7
@@ -39,6 +57,30 @@
       "revId": "ec841917dfd72717392dd94a5c1ad7f3e4e035ed",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ec527a33_2c07d755",
+        "filename": "core/jni/android_os_SharedMemory.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1071150
+      },
+      "writtenOn": "2018-12-20T16:48:54Z",
+      "side": 1,
+      "message": "Done. I\u0027d naively done it this way for debt grepability, but easy enough to find anyways.\n\nAlso fixed the methods here and made StrictJarFile follow the same pattern.",
+      "parentUuid": "6253e01c_8e4f7009",
+      "range": {
+        "startLine": 35,
+        "startChar": 0,
+        "endLine": 35,
+        "endChar": 6
+      },
+      "revId": "ec841917dfd72717392dd94a5c1ad7f3e4e035ed",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
