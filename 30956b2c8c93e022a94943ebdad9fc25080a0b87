@@ -115,6 +115,30 @@
       "revId": "30956b2c8c93e022a94943ebdad9fc25080a0b87",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e5ce6bb4_e980db94",
+        "filename": "core/java/android/net/NetworkInfo.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1306837
+      },
+      "writtenOn": "2018-12-20T08:37:47Z",
+      "side": 1,
+      "message": "Done, modified with minor change (apps -\u003e callers)\nthanks for writing this in detail.",
+      "parentUuid": "ca6a5805_2c6e586d",
+      "range": {
+        "startLine": 36,
+        "startChar": 26,
+        "endLine": 36,
+        "endChar": 29
+      },
+      "revId": "30956b2c8c93e022a94943ebdad9fc25080a0b87",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
