@@ -34,6 +34,24 @@
       "revId": "db5b77c2757fdb99d812cc728cdb49ba8fba9975",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b2aeeba6_8ebc5735",
+        "filename": "core/java/android/view/View.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 793,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2018-12-21T06:42:03Z",
+      "side": 0,
+      "message": "Ack",
+      "parentUuid": "299b5560_563bd119",
+      "revId": "db5b77c2757fdb99d812cc728cdb49ba8fba9975",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
