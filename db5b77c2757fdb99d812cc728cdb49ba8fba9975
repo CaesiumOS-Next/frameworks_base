@@ -16,6 +16,24 @@
       "revId": "db5b77c2757fdb99d812cc728cdb49ba8fba9975",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "299b5560_563bd119",
+        "filename": "core/java/android/view/View.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 793,
+      "author": {
+        "id": 1413436
+      },
+      "writtenOn": "2018-12-21T06:39:49Z",
+      "side": 0,
+      "message": "Thanks for catching it up. I added comment to sysprop file.",
+      "parentUuid": "107d68ae_ea90bed7",
+      "revId": "db5b77c2757fdb99d812cc728cdb49ba8fba9975",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
