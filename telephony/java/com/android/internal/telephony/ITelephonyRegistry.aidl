@@ -33,7 +33,7 @@ import com.android.internal.telephony.IOnSubscriptionsChangedListener;
 
 interface ITelephonyRegistry {
     void addOnSubscriptionsChangedListener(String pkg,
-            IOnSubscriptionsChangedListener callback);
+            IOnSubscriptionsChangedListener callback, int subChangeTypes);
     void addOnOpportunisticSubscriptionsChangedListener(String pkg,
             IOnSubscriptionsChangedListener callback);
     void removeOnSubscriptionsChangedListener(String pkg,
@@ -78,6 +78,7 @@ interface ITelephonyRegistry {
     void notifyOemHookRawEventForSubscriber(in int subId, in byte[] rawData);
     void notifySubscriptionInfoChanged();
     void notifyOpportunisticSubscriptionInfoChanged();
+    void notifySubscriptionInfoChanged(int subChangeTypes);
     void notifyCarrierNetworkChange(in boolean active);
     void notifyUserMobileDataStateChangedForPhoneId(in int phoneId, in int subId, in boolean state);
     void notifyPhoneCapabilityChanged(in PhoneCapability capability);

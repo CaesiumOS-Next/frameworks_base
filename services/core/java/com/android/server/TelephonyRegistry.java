@@ -117,6 +117,8 @@ public class TelephonyRegistry extends ITelephonyRegistry.Stub {
 
         int events;
 
+        int subChangeTypes;
+
         int subId = SubscriptionManager.INVALID_SUBSCRIPTION_ID;
 
         int phoneId = SubscriptionManager.INVALID_PHONE_INDEX;
@@ -125,8 +127,9 @@ public class TelephonyRegistry extends ITelephonyRegistry.Stub {
             return (callback != null) && ((events & this.events) != 0);
         }
 
-        boolean matchOnSubscriptionsChangedListener() {
-            return (onSubscriptionsChangedListenerCallback != null);
+        boolean matchOnSubscriptionsChangedListener(int subChangeTypes) {
+            return (onSubscriptionsChangedListenerCallback != null)
+                    && ((subChangeTypes & this.subChangeTypes) != 0);
         }
 
         boolean matchOnOpportunisticSubscriptionsChangedListener() {
@@ -168,6 +171,7 @@ public class TelephonyRegistry extends ITelephonyRegistry.Stub {
     private boolean mHasNotifySubscriptionInfoChangedOccurred = false;
 
     private boolean mHasNotifyOpportunisticSubscriptionInfoChangedOccurred = false;
+    private int mHasNotifySubscriptionInfoChangedType = 0;
 
     private int mNumPhones;
 
@@ -430,13 +434,13 @@ public class TelephonyRegistry extends ITelephonyRegistry.Stub {
 
     @Override
     public void addOnSubscriptionsChangedListener(String callingPackage,
-            IOnSubscriptionsChangedListener callback) {
+            IOnSubscriptionsChangedListener callback, int subChangeTypes) {
         int callerUserId = UserHandle.getCallingUserId();
         mAppOps.checkPackage(Binder.getCallingUid(), callingPackage);
         if (VDBG) {
             log("listen oscl: E pkg=" + callingPackage + " myUserId=" + UserHandle.myUserId()
                 + " callerUserId="  + callerUserId + " callback=" + callback
-                + " callback.asBinder=" + callback.asBinder());
+                + " callback.asBinder=" + callback.asBinder() + "subChangeTypes=" + subChangeTypes);
         }
 
         synchronized (mRecords) {
@@ -453,12 +457,12 @@ public class TelephonyRegistry extends ITelephonyRegistry.Stub {
             r.callingPackage = callingPackage;
             r.callerUid = Binder.getCallingUid();
             r.callerPid = Binder.getCallingPid();
-            r.events = 0;
+            r.subChangeTypes = subChangeTypes;
             if (DBG) {
                 log("listen oscl:  Register r=" + r);
             }
             // Always notify when registration occurs if there has been a notification.
-            if (mHasNotifySubscriptionInfoChangedOccurred) {
+            if ((subChangeTypes & mHasNotifySubscriptionInfoChangedType) != 0) {
                 try {
                     if (VDBG) log("listen oscl: send to r=" + r);
                     r.onSubscriptionsChangedListenerCallback.onSubscriptionsChanged();
@@ -468,7 +472,7 @@ public class TelephonyRegistry extends ITelephonyRegistry.Stub {
                     remove(r.binder);
                 }
             } else {
-                log("listen oscl: mHasNotifySubscriptionInfoChangedOccurred==false no callback");
+                log("listen oscl: no callback");
             }
         }
     }
@@ -527,7 +531,7 @@ public class TelephonyRegistry extends ITelephonyRegistry.Stub {
     }
 
     @Override
-    public void notifySubscriptionInfoChanged() {
+    public void notifySubscriptionInfoChanged(int subChangeTypes) {
         if (VDBG) log("notifySubscriptionInfoChanged:");
         synchronized (mRecords) {
             if (!mHasNotifySubscriptionInfoChangedOccurred) {
@@ -535,9 +539,10 @@ public class TelephonyRegistry extends ITelephonyRegistry.Stub {
                         + mRecords.size());
             }
             mHasNotifySubscriptionInfoChangedOccurred = true;
+            mHasNotifySubscriptionInfoChangedType |= subChangeTypes;
             mRemoveList.clear();
             for (Record r : mRecords) {
-                if (r.matchOnSubscriptionsChangedListener()) {
+                if (r.matchOnSubscriptionsChangedListener(subChangeTypes)) {
                     try {
                         if (VDBG) log("notifySubscriptionInfoChanged: call osc to r=" + r);
                         r.onSubscriptionsChangedListenerCallback.onSubscriptionsChanged();
