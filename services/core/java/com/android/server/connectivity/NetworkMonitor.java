@@ -54,15 +54,10 @@ import android.os.Message;
 import android.os.SystemClock;
 import android.os.UserHandle;
 import android.provider.Settings;
-import android.telephony.CellIdentityCdma;
-import android.telephony.CellIdentityGsm;
-import android.telephony.CellIdentityLte;
-import android.telephony.CellIdentityWcdma;
-import android.telephony.CellInfo;
-import android.telephony.CellInfoCdma;
-import android.telephony.CellInfoGsm;
-import android.telephony.CellInfoLte;
-import android.telephony.CellInfoWcdma;
+import android.telephony.AccessNetworkConstants;
+import android.telephony.NetworkRegistrationState;
+import android.telephony.ServiceState;
+import android.telephony.SubscriptionManager;
 import android.telephony.TelephonyManager;
 import android.text.TextUtils;
 import android.util.LocalLog;
@@ -278,7 +273,7 @@ public class NetworkMonitor extends StateMachine {
     private final NetworkAgentInfo mNetworkAgentInfo;
     private final Network mNetwork;
     private final int mNetId;
-    private final TelephonyManager mTelephonyManager;
+    private final SubscriptionManager mSubscriptionManager;
     private final WifiManager mWifiManager;
     private final NetworkRequest mDefaultRequest;
     private final IpConnectivityLog mMetricsLog;
@@ -344,6 +339,12 @@ public class NetworkMonitor extends StateMachine {
                 Dependencies.DEFAULT);
     }
 
+    private TelephonyManager getDataTelephonyManager() {
+        TelephonyManager tm =
+                (TelephonyManager) mContext.getSystemService(Context.TELEPHONY_SERVICE);
+        return tm.createForSubscriptionId(mSubscriptionManager.getDefaultDataSubscriptionId());
+    }
+
     @VisibleForTesting
     protected NetworkMonitor(Context context, Handler handler, NetworkAgentInfo networkAgentInfo,
             NetworkRequest defaultRequest, IpConnectivityLog logger, Dependencies deps) {
@@ -361,7 +362,9 @@ public class NetworkMonitor extends StateMachine {
         mNetworkAgentInfo = networkAgentInfo;
         mNetwork = deps.getNetwork(networkAgentInfo).getPrivateDnsBypassingCopy();
         mNetId = mNetwork.netId;
-        mTelephonyManager = (TelephonyManager) context.getSystemService(Context.TELEPHONY_SERVICE);
+        mSubscriptionManager =
+            (SubscriptionManager) context.getSystemService(Context.TELEPHONY_SUBSCRIPTION_SERVICE);
+
         mWifiManager = (WifiManager) context.getSystemService(Context.WIFI_SERVICE);
         mDefaultRequest = defaultRequest;
 
@@ -1434,37 +1437,17 @@ public class NetworkMonitor extends StateMachine {
                 }
                 break;
             case ConnectivityManager.TYPE_MOBILE:
+                TelephonyManager tm = getDataTelephonyManager();
                 latencyBroadcast.putExtra(ConnectivityConstants.EXTRA_NETWORK_TYPE,
-                        mTelephonyManager.getNetworkType());
-                List<CellInfo> info = mTelephonyManager.getAllCellInfo();
-                if (info == null) return;
-                int numRegisteredCellInfo = 0;
-                for (CellInfo cellInfo : info) {
-                    if (cellInfo.isRegistered()) {
-                        numRegisteredCellInfo++;
-                        if (numRegisteredCellInfo > 1) {
-                            if (VDBG) logw("more than one registered CellInfo." +
-                                    " Can't tell which is active.  Bailing.");
-                            return;
-                        }
-                        if (cellInfo instanceof CellInfoCdma) {
-                            CellIdentityCdma cellId = ((CellInfoCdma) cellInfo).getCellIdentity();
-                            latencyBroadcast.putExtra(ConnectivityConstants.EXTRA_CELL_ID, cellId);
-                        } else if (cellInfo instanceof CellInfoGsm) {
-                            CellIdentityGsm cellId = ((CellInfoGsm) cellInfo).getCellIdentity();
-                            latencyBroadcast.putExtra(ConnectivityConstants.EXTRA_CELL_ID, cellId);
-                        } else if (cellInfo instanceof CellInfoLte) {
-                            CellIdentityLte cellId = ((CellInfoLte) cellInfo).getCellIdentity();
-                            latencyBroadcast.putExtra(ConnectivityConstants.EXTRA_CELL_ID, cellId);
-                        } else if (cellInfo instanceof CellInfoWcdma) {
-                            CellIdentityWcdma cellId = ((CellInfoWcdma) cellInfo).getCellIdentity();
-                            latencyBroadcast.putExtra(ConnectivityConstants.EXTRA_CELL_ID, cellId);
-                        } else {
-                            if (VDBG) logw("Registered cellinfo is unrecognized");
-                            return;
-                        }
-                    }
-                }
+                        tm.getNetworkType());
+                ServiceState dataSs = tm.getServiceState();
+                // See if the Data sub is registered for PS services on Cell.
+                NetworkRegistrationState nrs = dataSs.getNetworkRegistrationState(
+                        AccessNetworkConstants.TransportType.WWAN,
+                        NetworkRegistrationState.DOMAIN_PS);
+                latencyBroadcast.putExtra(
+                        ConnectivityConstants.EXTRA_CELL_ID,
+                        nrs == null ? null : nrs.getCellIdentity());
                 break;
             default:
                 return;
