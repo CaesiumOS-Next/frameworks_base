@@ -3846,4 +3846,7 @@
   <java-symbol type="layout" name="platlogo_layout" />
 
   <java-symbol type="bool" name="config_automotiveHideNavBarForKeyboard" />
+
+  <!-- For carrier config filter to be customizable by OEM -->
+  <java-symbol type="string" name="carrier_config_oem_filter" />
 </resources>
