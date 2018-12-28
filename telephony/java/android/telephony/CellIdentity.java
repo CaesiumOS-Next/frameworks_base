@@ -39,12 +39,6 @@ public abstract class CellIdentity implements Parcelable {
     // Cell identity type
     /** @hide */
     protected final int mType;
-    // 3-digit Mobile Country Code in string format. Null for CDMA cell identity.
-    /** @hide */
-    protected final String mMccStr;
-    // 2 or 3-digit Mobile Network Code in string format. Null for CDMA cell identity.
-    /** @hide */
-    protected final String mMncStr;
 
     // long alpha Operator Name String or Enhanced Operator Name String
     /** @hide */
@@ -54,35 +48,9 @@ public abstract class CellIdentity implements Parcelable {
     protected final String mAlphaShort;
 
     /** @hide */
-    protected CellIdentity(String tag, int type, String mcc, String mnc, String alphal,
-                           String alphas) {
+    protected CellIdentity(String tag, int type, String alphal, String alphas) {
         mTag = tag;
         mType = type;
-
-        // Only allow INT_MAX if unknown string mcc/mnc
-        if (mcc == null || mcc.matches("^[0-9]{3}$")) {
-            mMccStr = mcc;
-        } else if (mcc.isEmpty() || mcc.equals(String.valueOf(Integer.MAX_VALUE))) {
-            // If the mccStr is empty or unknown, set it as null.
-            mMccStr = null;
-        } else {
-            // TODO: b/69384059 Should throw IllegalArgumentException for the invalid MCC format
-            // after the bug got fixed.
-            mMccStr = null;
-            log("invalid MCC format: " + mcc);
-        }
-
-        if (mnc == null || mnc.matches("^[0-9]{2,3}$")) {
-            mMncStr = mnc;
-        } else if (mnc.isEmpty() || mnc.equals(String.valueOf(Integer.MAX_VALUE))) {
-            // If the mncStr is empty or unknown, set it as null.
-            mMncStr = null;
-        } else {
-            // TODO: b/69384059 Should throw IllegalArgumentException for the invalid MNC format
-            // after the bug got fixed.
-            mMncStr = null;
-            log("invalid MNC format: " + mnc);
-        }
         mAlphaLong = alphal;
         mAlphaShort = alphas;
     }
@@ -143,15 +111,13 @@ public abstract class CellIdentity implements Parcelable {
 
         CellIdentity o = (CellIdentity) other;
         return mType == o.mType
-                && TextUtils.equals(mMccStr, o.mMccStr)
-                && TextUtils.equals(mMncStr, o.mMncStr)
                 && TextUtils.equals(mAlphaLong, o.mAlphaLong)
                 && TextUtils.equals(mAlphaShort, o.mAlphaShort);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(mAlphaLong, mAlphaShort, mMccStr, mMncStr, mType);
+        return Objects.hash(mAlphaLong, mAlphaShort, mType);
     }
 
     /**
@@ -162,8 +128,6 @@ public abstract class CellIdentity implements Parcelable {
     @CallSuper
     public void writeToParcel(Parcel dest, int type) {
         dest.writeInt(type);
-        dest.writeString(mMccStr);
-        dest.writeString(mMncStr);
         dest.writeString(mAlphaLong);
         dest.writeString(mAlphaShort);
     }

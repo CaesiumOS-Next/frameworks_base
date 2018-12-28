@@ -233,22 +233,14 @@ public final class CellIdentityLte extends CellIdentity {
 
     @Override
     public boolean equals(Object other) {
-        if (this == other) {
-            return true;
-        }
-
-        if (!(other instanceof CellIdentityLte)) {
-            return false;
-        }
-
+        if (!(other instanceof CellIdentityLte)) return false; 
         CellIdentityLte o = (CellIdentityLte) other;
+
         return mCi == o.mCi
                 && mPci == o.mPci
                 && mTac == o.mTac
                 && mEarfcn == o.mEarfcn
                 && mBandwidth == o.mBandwidth
-                && TextUtils.equals(mMccStr, o.mMccStr)
-                && TextUtils.equals(mMncStr, o.mMncStr)
                 && super.equals(other);
     }
 
