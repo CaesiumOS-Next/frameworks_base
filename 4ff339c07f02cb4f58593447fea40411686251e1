@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8eacc961_b0350e4d",
+        "filename": "services/core/jni/BroadcastRadio/Tuner.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1135107
+      },
+      "writtenOn": "2019-01-02T22:13:40Z",
+      "side": 1,
+      "message": "nit: please break this line",
+      "range": {
+        "startLine": 76,
+        "startChar": 0,
+        "endLine": 76,
+        "endChar": 103
+      },
+      "revId": "4ff339c07f02cb4f58593447fea40411686251e1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
