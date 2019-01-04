@@ -48,6 +48,30 @@
     },
     {
       "key": {
+        "uuid": "b1e961b5_c7e7cdd1",
+        "filename": "core/java/android/net/NetworkStats.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 884,
+      "author": {
+        "id": 1306837
+      },
+      "writtenOn": "2019-01-04T03:08:40Z",
+      "side": 1,
+      "message": "agree, maybe send another patch to refactor next time.",
+      "parentUuid": "52ffb82c_912452fc",
+      "range": {
+        "startLine": 883,
+        "startChar": 0,
+        "endLine": 884,
+        "endChar": 67
+      },
+      "revId": "f8d9eca30bd4f5282403276dcee9092046f6c2a8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "92a4455f_c14214af",
         "filename": "core/java/android/net/NetworkStats.java",
         "patchSetId": 2
