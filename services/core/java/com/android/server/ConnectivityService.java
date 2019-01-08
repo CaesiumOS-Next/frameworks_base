@@ -72,6 +72,7 @@ import android.net.Network;
 import android.net.NetworkAgent;
 import android.net.NetworkCapabilities;
 import android.net.NetworkConfig;
+import android.net.NetworkFactory;
 import android.net.NetworkInfo;
 import android.net.NetworkInfo.DetailedState;
 import android.net.NetworkMisc;
@@ -95,7 +96,6 @@ import android.net.util.NetdService;
 import android.os.Binder;
 import android.os.Build;
 import android.os.Bundle;
-import android.os.FileUtils;
 import android.os.Handler;
 import android.os.HandlerThread;
 import android.os.IBinder;
@@ -1013,7 +1013,8 @@ public class ConnectivityService extends IConnectivityManager.Stub
             handleRegisterNetworkRequest(new NetworkRequestInfo(
                     null, networkRequest, new Binder()));
         } else {
-            handleReleaseNetworkRequest(networkRequest, Process.SYSTEM_UID);
+            handleReleaseNetworkRequest(networkRequest, Process.SYSTEM_UID,
+                    /* callOnUnavailable */ false);
         }
     }
 
@@ -2562,11 +2563,25 @@ public class ConnectivityService extends IConnectivityManager.Stub
             return true;
         }
 
+        private boolean maybeHandleNetworkFactoryMessage(Message msg) {
+            switch (msg.what) {
+                default:
+                    return false;
+                case NetworkFactory.CMD_UNFULFILLABLE_REQUEST: {
+                    handleReleaseNetworkRequest((NetworkRequest) msg.obj, msg.sendingUid,
+                            /* callOnUnavailable */ true);
+                    break;
+                }
+            }
+            return true;
+        }
+
         @Override
         public void handleMessage(Message msg) {
-            if (!maybeHandleAsyncChannelMessage(msg) &&
-                    !maybeHandleNetworkMonitorMessage(msg) &&
-                    !maybeHandleNetworkAgentInfoMessage(msg)) {
+            if (!maybeHandleAsyncChannelMessage(msg)
+                    && !maybeHandleNetworkMonitorMessage(msg)
+                    && !maybeHandleNetworkAgentInfoMessage(msg)
+                    && !maybeHandleNetworkFactoryMessage(msg)) {
                 maybeHandleNetworkAgentMessage(msg);
             }
         }
@@ -2652,6 +2667,9 @@ public class ConnectivityService extends IConnectivityManager.Stub
         if (mNetworkFactoryInfos.containsKey(msg.replyTo)) {
             if (msg.arg1 == AsyncChannel.STATUS_SUCCESSFUL) {
                 if (VDBG) log("NetworkFactory connected");
+                // Finish setting up the full connection
+                mNetworkFactoryInfos.get(msg.replyTo).asyncChannel.sendMessage(
+                        AsyncChannel.CMD_CHANNEL_FULL_CONNECTION);
                 // A network factory has connected.  Send it all current NetworkRequests.
                 for (NetworkRequestInfo nri : mNetworkRequests.values()) {
                     if (nri.request.isListen()) continue;
@@ -2808,7 +2826,8 @@ public class ConnectivityService extends IConnectivityManager.Stub
         if (existingRequest != null) { // remove the existing request.
             if (DBG) log("Replacing " + existingRequest.request + " with "
                     + nri.request + " because their intents matched.");
-            handleReleaseNetworkRequest(existingRequest.request, getCallingUid());
+            handleReleaseNetworkRequest(existingRequest.request, getCallingUid(),
+                    /* callOnUnavailable */ false);
         }
         handleRegisterNetworkRequest(nri);
     }
@@ -2834,7 +2853,7 @@ public class ConnectivityService extends IConnectivityManager.Stub
             int callingUid) {
         NetworkRequestInfo nri = findExistingNetworkRequestInfo(pendingIntent);
         if (nri != null) {
-            handleReleaseNetworkRequest(nri.request, callingUid);
+            handleReleaseNetworkRequest(nri.request, callingUid, /* callOnUnavailable */ false);
         }
     }
 
@@ -2917,7 +2936,8 @@ public class ConnectivityService extends IConnectivityManager.Stub
         callCallbackForRequest(nri, null, ConnectivityManager.CALLBACK_UNAVAIL, 0);
     }
 
-    private void handleReleaseNetworkRequest(NetworkRequest request, int callingUid) {
+    private void handleReleaseNetworkRequest(NetworkRequest request, int callingUid,
+            boolean callOnUnavailable) {
         final NetworkRequestInfo nri =
                 getNriForAppRequest(request, callingUid, "release NetworkRequest");
         if (nri == null) {
@@ -2927,6 +2947,9 @@ public class ConnectivityService extends IConnectivityManager.Stub
             log("releasing " + nri.request + " (release request)");
         }
         handleRemoveNetworkRequest(nri);
+        if (callOnUnavailable) {
+            callCallbackForRequest(nri, null, ConnectivityManager.CALLBACK_UNAVAIL, 0);
+        }
     }
 
     private void handleRemoveNetworkRequest(final NetworkRequestInfo nri) {
@@ -3270,7 +3293,8 @@ public class ConnectivityService extends IConnectivityManager.Stub
                     break;
                 }
                 case EVENT_RELEASE_NETWORK_REQUEST: {
-                    handleReleaseNetworkRequest((NetworkRequest) msg.obj, msg.arg1);
+                    handleReleaseNetworkRequest((NetworkRequest) msg.obj, msg.arg1,
+                            /* callOnUnavailable */ false);
                     break;
                 }
                 case EVENT_SET_ACCEPT_UNVALIDATED: {
