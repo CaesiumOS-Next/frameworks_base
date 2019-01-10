@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "27247edb_44d30a0c",
+        "filename": "core/res/res/values/config.xml",
+        "patchSetId": 4
+      },
+      "lineNbr": 480,
+      "author": {
+        "id": 1304263
+      },
+      "writtenOn": "2019-01-10T08:19:44Z",
+      "side": 1,
+      "message": "Should we write it as:\nif any of TYPE_MOBILE{,_HIPRI} are not present:\n   TYPE_MOBILE is appended\n   TYPE_MOBILE_HIPRI is appended",
+      "range": {
+        "startLine": 479,
+        "startChar": 21,
+        "endLine": 480,
+        "endChar": 98
+      },
+      "revId": "0869f325b03fd5475904cc7682f49b5e4c70c7f5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3d18d91a_8830930e",
+        "filename": "services/core/java/com/android/server/connectivity/Tethering.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 1070,
+      "author": {
+        "id": 1304263
+      },
+      "writtenOn": "2019-01-10T08:19:44Z",
+      "side": 1,
+      "message": "Why do we need to do Line-wrapping here?",
+      "range": {
+        "startLine": 1069,
+        "startChar": 8,
+        "endLine": 1070,
+        "endChar": 59
+      },
+      "revId": "0869f325b03fd5475904cc7682f49b5e4c70c7f5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f2109135_2f4162f2",
+        "filename": "tests/net/java/com/android/server/connectivity/tethering/TetheringConfigurationTest.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1304263
+      },
+      "writtenOn": "2019-01-10T08:19:44Z",
+      "side": 1,
+      "message": "This returns an integer, not a boolean.",
+      "range": {
+        "startLine": 108,
+        "startChar": 13,
+        "endLine": 108,
+        "endChar": 53
+      },
+      "revId": "0869f325b03fd5475904cc7682f49b5e4c70c7f5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}

@@ -155,6 +155,30 @@
     },
     {
       "key": {
+        "uuid": "f2a398e5_79061e44",
+        "filename": "services/core/java/com/android/server/connectivity/tethering/TetheringConfiguration.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1304263
+      },
+      "writtenOn": "2019-01-10T08:19:44Z",
+      "side": 1,
+      "message": "Should this able to happen? It might return null. Even not a system issue, it might get null if a device does not support telephony service(e.g., an android device support only wifi and able to share the wifi internet)\n\nhttps://cs.corp.google.com/android/frameworks/base/core/java/android/content/Context.java?type\u003dcs\u0026q\u003dgetSystemService+p:android\u0026g\u003d0\u0026l\u003d3355",
+      "parentUuid": "95cb55f9_cdc78e0f",
+      "range": {
+        "startLine": 215,
+        "startChar": 15,
+        "endLine": 215,
+        "endChar": 27
+      },
+      "revId": "41b51cea5f9416dfd72619541c6731506133d53b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "836121d0_4fcb378c",
         "filename": "tests/net/java/com/android/server/connectivity/tethering/TetheringConfigurationTest.java",
         "patchSetId": 2
