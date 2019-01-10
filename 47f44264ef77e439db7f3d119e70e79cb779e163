@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da6c2f63_64be7e9d",
+        "filename": "services/ipmemorystore/java/com/android/server/net/ipmemorystore/IpMemoryStoreDatabase.java",
+        "patchSetId": 10
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1306837
+      },
+      "writtenOn": "2019-01-10T06:32:15Z",
+      "side": 1,
+      "message": "Nits: COLUMNNAME_ prefix is quite long and looks redundant to me, is it better if we group them into subclasses, e.g. ColName.L2Key ColType.L2Key?",
+      "range": {
+        "startLine": 52,
+        "startChar": 35,
+        "endLine": 52,
+        "endChar": 46
+      },
+      "revId": "47f44264ef77e439db7f3d119e70e79cb779e163",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1e96dacc_9bfb2b75",
+        "filename": "tests/net/java/com/android/server/net/ipmemorystore/IpMemoryStoreServiceTest.java",
+        "patchSetId": 10
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1306837
+      },
+      "writtenOn": "2019-01-10T06:32:15Z",
+      "side": 1,
+      "message": "do we need to test dns addresses in this test?",
+      "range": {
+        "startLine": 96,
+        "startChar": 16,
+        "endLine": 96,
+        "endChar": 37
+      },
+      "revId": "47f44264ef77e439db7f3d119e70e79cb779e163",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
