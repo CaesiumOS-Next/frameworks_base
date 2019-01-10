@@ -68,6 +68,30 @@
       "revId": "0869f325b03fd5475904cc7682f49b5e4c70c7f5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ebb4959b_7f9bc868",
+        "filename": "tests/net/java/com/android/server/connectivity/tethering/TetheringConfigurationTest.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1304263
+      },
+      "writtenOn": "2019-01-10T08:58:49Z",
+      "side": 1,
+      "message": "Please ignore my comment. I found that it needs to combine with another commit.",
+      "parentUuid": "f2109135_2f4162f2",
+      "range": {
+        "startLine": 108,
+        "startChar": 13,
+        "endLine": 108,
+        "endChar": 53
+      },
+      "revId": "0869f325b03fd5475904cc7682f49b5e4c70c7f5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
