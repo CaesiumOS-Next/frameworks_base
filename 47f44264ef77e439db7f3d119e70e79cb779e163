@@ -45,6 +45,30 @@
       "revId": "47f44264ef77e439db7f3d119e70e79cb779e163",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8a7fcfd0_01506030",
+        "filename": "tests/net/java/com/android/server/net/ipmemorystore/IpMemoryStoreServiceTest.java",
+        "patchSetId": 10
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1306837
+      },
+      "writtenOn": "2019-01-10T06:43:19Z",
+      "side": 1,
+      "message": "see it in MS08, please ignore this comment.",
+      "parentUuid": "1e96dacc_9bfb2b75",
+      "range": {
+        "startLine": 96,
+        "startChar": 16,
+        "endLine": 96,
+        "endChar": 37
+      },
+      "revId": "47f44264ef77e439db7f3d119e70e79cb779e163",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
