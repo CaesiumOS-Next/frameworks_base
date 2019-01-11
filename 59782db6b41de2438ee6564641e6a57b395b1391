@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "0175dbf2_a428b8b2",
+        "filename": "core/java/android/net/ConnectivityManager.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 2918,
+      "author": {
+        "id": 1039103
+      },
+      "writtenOn": "2019-01-11T16:26:45Z",
+      "side": 1,
+      "message": "Possibly as a follow-on. But I don\u0027t have a good answer on global reason codes yet. So let\u0027s discuss as a follow-on CL.",
+      "parentUuid": "e113c1e6_59c7d005",
+      "range": {
+        "startLine": 2918,
+        "startChar": 20,
+        "endLine": 2918,
+        "endChar": 33
+      },
+      "revId": "59782db6b41de2438ee6564641e6a57b395b1391",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5662655b_9720d3b6",
         "filename": "services/core/java/com/android/server/ConnectivityService.java",
         "patchSetId": 1
@@ -45,6 +69,30 @@
       "revId": "59782db6b41de2438ee6564641e6a57b395b1391",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "66e8c212_9a8fbbc0",
+        "filename": "services/core/java/com/android/server/ConnectivityService.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 2900,
+      "author": {
+        "id": 1039103
+      },
+      "writtenOn": "2019-01-11T16:26:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5662655b_9720d3b6",
+      "range": {
+        "startLine": 2900,
+        "startChar": 82,
+        "endLine": 2900,
+        "endChar": 87
+      },
+      "revId": "59782db6b41de2438ee6564641e6a57b395b1391",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "99f8dd86_eb1530ec",
+        "filename": "tests/net/java/com/android/server/ConnectivityServiceTest.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 3420,
+      "author": {
+        "id": 1039103
+      },
+      "writtenOn": "2019-01-11T16:26:45Z",
+      "side": 1,
+      "message": "Done - now works.",
+      "parentUuid": "b5348725_6521fbd5",
+      "range": {
+        "startLine": 3420,
+        "startChar": 20,
+        "endLine": 3420,
+        "endChar": 40
+      },
+      "revId": "59782db6b41de2438ee6564641e6a57b395b1391",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "da1f741d_da5673c3",
         "filename": "tests/net/java/com/android/server/ConnectivityServiceTest.java",
         "patchSetId": 1
@@ -82,6 +154,30 @@
       "writtenOn": "2019-01-11T14:14:55Z",
       "side": 1,
       "message": "This doesn\u0027t really check anything because it\u0027s not waiting for callbacks to have arrived",
+      "range": {
+        "startLine": 3427,
+        "startChar": 24,
+        "endLine": 3427,
+        "endChar": 40
+      },
+      "revId": "59782db6b41de2438ee6564641e6a57b395b1391",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bc871300_19db942e",
+        "filename": "tests/net/java/com/android/server/ConnectivityServiceTest.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 3427,
+      "author": {
+        "id": 1039103
+      },
+      "writtenOn": "2019-01-11T16:26:45Z",
+      "side": 1,
+      "message": "Removed.",
+      "parentUuid": "da1f741d_da5673c3",
       "range": {
         "startLine": 3427,
         "startChar": 24,
