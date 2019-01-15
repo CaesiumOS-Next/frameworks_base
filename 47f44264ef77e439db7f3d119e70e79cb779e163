@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "04cc9ede_9c41fc48",
+        "filename": "services/ipmemorystore/java/com/android/server/net/ipmemorystore/IpMemoryStoreDatabase.java",
+        "patchSetId": 10
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2019-01-15T07:35:43Z",
+      "side": 1,
+      "message": "I\u0027m not sure it buys us anything. I don\u0027t really like the idea of just grouping the column names in a ColName class and the types in a ColType class because the name and the type are conceptually together rather than transversal. I\u0027d be more open to having an L2Key class with colName and colType, and an ExpiryDate class with the same, and an AssignedV4Address and a DnsAddresses and so on. But even then I think it reduces readability rather than improve it. If we had a large number of columns and we had some automatic processing on them, then I\u0027d want to have a ColumnSpec type and implement the above scheme, but that\u0027s massively overkill here.\n\nTo try and address the point you\u0027re making, how about I change the prefixes to COLNAME and COLTYPE to at least save a few characters ? Implemented in MS03, as that\u0027s the patch defining the constants.",
+      "parentUuid": "da6c2f63_64be7e9d",
+      "range": {
+        "startLine": 52,
+        "startChar": 35,
+        "endLine": 52,
+        "endChar": 46
+      },
+      "revId": "47f44264ef77e439db7f3d119e70e79cb779e163",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1e96dacc_9bfb2b75",
         "filename": "tests/net/java/com/android/server/net/ipmemorystore/IpMemoryStoreServiceTest.java",
         "patchSetId": 10
