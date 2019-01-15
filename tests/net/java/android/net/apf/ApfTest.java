@@ -18,8 +18,10 @@ package android.net.apf;
 
 import static android.net.util.NetworkConstants.*;
 import static android.system.OsConstants.*;
+
 import static com.android.internal.util.BitUtils.bytesToBEInt;
 import static com.android.internal.util.BitUtils.put;
+
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
@@ -30,6 +32,8 @@ import static org.mockito.Mockito.verify;
 import android.content.Context;
 import android.net.LinkAddress;
 import android.net.LinkProperties;
+import android.net.TcpKeepalivePacketData;
+import android.net.TcpKeepalivePacketData.TcpSocketInfo;
 import android.net.apf.ApfFilter.ApfConfiguration;
 import android.net.apf.ApfGenerator.IllegalInstructionException;
 import android.net.apf.ApfGenerator.Register;
@@ -47,8 +51,20 @@ import android.system.ErrnoException;
 import android.system.Os;
 import android.text.format.DateUtils;
 import android.util.Log;
+
 import com.android.frameworks.tests.net.R;
 import com.android.internal.util.HexDump;
+
+import libcore.io.IoUtils;
+import libcore.io.Streams;
+
+import org.junit.Before;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.mockito.ArgumentCaptor;
+import org.mockito.Mock;
+import org.mockito.MockitoAnnotations;
+
 import java.io.File;
 import java.io.FileDescriptor;
 import java.io.FileOutputStream;
@@ -59,14 +75,6 @@ import java.net.InetAddress;
 import java.nio.ByteBuffer;
 import java.util.List;
 import java.util.Random;
-import libcore.io.IoUtils;
-import libcore.io.Streams;
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.mockito.ArgumentCaptor;
-import org.mockito.Mock;
-import org.mockito.MockitoAnnotations;
 
 /**
  * Tests for APF program generator and interpreter.
@@ -981,15 +989,28 @@ public class ApfTest {
     private static final byte[] ETH_BROADCAST_MAC_ADDRESS =
             {(byte) 0xff, (byte) 0xff, (byte) 0xff, (byte) 0xff, (byte) 0xff, (byte) 0xff };
 
+    private static final int IPV4_HEADER_LEN = 20;
     private static final int IPV4_VERSION_IHL_OFFSET = ETH_HEADER_LEN + 0;
     private static final int IPV4_PROTOCOL_OFFSET = ETH_HEADER_LEN + 9;
+    private static final int IPV4_SRC_ADDR_OFFSET = ETH_HEADER_LEN + 12;
     private static final int IPV4_DEST_ADDR_OFFSET = ETH_HEADER_LEN + 16;
+    private static final int IPV4_TCP_HEADER_OFFSET = ETH_HEADER_LEN + IPV4_HEADER_LEN;
+    private static final int IPV4_TCP_SRC_PORT_OFFSET = IPV4_TCP_HEADER_OFFSET + 0;
+    private static final int IPV4_TCP_DEST_PORT_OFFSET = IPV4_TCP_HEADER_OFFSET + 2;
+    private static final int IPV4_TCP_SEQ_NUM_OFFSET = IPV4_TCP_HEADER_OFFSET + 4;
+    private static final int IPV4_TCP_ACK_NUM_OFFSET = IPV4_TCP_HEADER_OFFSET + 8;
     private static final byte[] IPV4_BROADCAST_ADDRESS =
             {(byte) 255, (byte) 255, (byte) 255, (byte) 255};
 
     private static final int IPV6_NEXT_HEADER_OFFSET = ETH_HEADER_LEN + 6;
     private static final int IPV6_HEADER_LEN = 40;
+    private static final int IPV6_SRC_ADDR_OFFSET = ETH_HEADER_LEN + 8;
     private static final int IPV6_DEST_ADDR_OFFSET = ETH_HEADER_LEN + 24;
+    private static final int IPV6_TCP_HEADER_OFFSET = ETH_HEADER_LEN + IPV6_HEADER_LEN;
+    private static final int IPV6_TCP_SRC_PORT_OFFSET = IPV6_TCP_HEADER_OFFSET + 0;
+    private static final int IPV6_TCP_DEST_PORT_OFFSET = IPV6_TCP_HEADER_OFFSET + 2;
+    private static final int IPV6_TCP_SEQ_NUM_OFFSET = IPV6_TCP_HEADER_OFFSET + 4;
+    private static final int IPV6_TCP_ACK_NUM_OFFSET = IPV6_TCP_HEADER_OFFSET + 8;
     // The IPv6 all nodes address ff02::1
     private static final byte[] IPV6_ALL_NODES_ADDRESS =
             { (byte) 0xff, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1 };
@@ -1060,6 +1081,12 @@ public class ApfTest {
     private static final byte[] BUG_PROBE_SOURCE_ADDR1   = {0, 0, 1, 2};
     private static final byte[] BUG_PROBE_SOURCE_ADDR2   = {3, 4, 0, 0};
     private static final byte[] IPV4_ANY_HOST_ADDR       = {0, 0, 0, 0};
+    private static final byte[] MOCK_IPV6_ADDR           =
+            {(byte) 0x24, 04, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, (byte) 0xfa, (byte) 0xfb};
+    private static final byte[] IPV6_SOURCE_ADDR         =
+            {(byte) 0x24, 04, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, (byte) 0xfa, (byte) 0xfc};
+    private static final byte[] ANOTHER_IPV6_ADDR        =
+            {(byte) 0x24, 04, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, (byte) 0xfa, (byte) 0xfd};
 
     // Helper to initialize a default apfFilter.
     private ApfFilter setupApfFilter(IpClient.Callback ipClientCallback, ApfConfiguration config)
@@ -1466,6 +1493,123 @@ public class ApfTest {
         put(packet, ETH_DEST_ADDR_OFFSET, ETH_BROADCAST_MAC_ADDRESS);
         put(packet, ARP_HEADER_OFFSET, ARP_IPV4_REPLY_HEADER);
         put(packet, ARP_TARGET_IP_ADDRESS_OFFSET, IPV4_ANY_HOST_ADDR);
+        return packet.array();
+    }
+
+    @Test
+    public void testApfFilterKeepaliveAck() throws Exception {
+        MockIpClientCallback cb = new MockIpClientCallback();
+        ApfConfiguration config = getDefaultConfig();
+        config.multicastFilter = DROP_MULTICAST;
+        config.ieee802_3Filter = DROP_802_3_FRAMES;
+        TestApfFilter apfFilter = new TestApfFilter(mContext, config, cb, mLog);
+        byte[] program;
+        final int srcPort = 12345;
+        final int dstPort = 54321;
+        final int seqNum = 2123456789;
+        final int ackNum = 1234567890;
+        final int anotherSrcPort = 23456;
+        final int anotherDstPort = 65432;
+        final int anotherSeqNum = 2123456780;
+        final int anotherAckNum = 1123456789;
+        final int slot1 = 1;
+
+        // src: 10.0.0.3, port: 12345
+        // dst: 10.0.0.1, port: 54321
+        InetAddress srcAddr = InetAddress.getByAddress(IPV4_SOURCE_ADDR);
+        InetAddress dstAddr = InetAddress.getByAddress(MOCK_IPV4_ADDR);
+
+        TcpSocketInfo v4Tsi =
+                new TcpSocketInfo(srcAddr, srcPort, dstAddr, dstPort, seqNum, ackNum);
+        TcpKeepalivePacketData ipv4TcpKeepalivePacket =
+                TcpKeepalivePacketData.tcpKeepalivePacket(v4Tsi);
+        apfFilter.addKeepalivePacketFilter(slot1, ipv4TcpKeepalivePacket);
+        program = cb.getApfProgram();
+
+        // Verify IPv4 keepalive ack packet is dropped
+        // src: 10.0.0.1, port: 54321
+        // dst: 10.0.0.3, port: 12345
+        assertDrop(program,
+                ipv4Packet(MOCK_IPV4_ADDR, IPV4_SOURCE_ADDR, dstPort, srcPort, ackNum, seqNum + 1));
+        // Verify IPv4 non-keepalive ack packet from the same source address is passed
+        assertPass(program,
+                ipv4Packet(MOCK_IPV4_ADDR, IPV4_SOURCE_ADDR,
+                        dstPort, srcPort, ackNum + 100, seqNum));
+        // Verify IPv4 packet from another address is passed
+        assertPass(program,
+                ipv4Packet(ANOTHER_IPV4_ADDR, IPV4_SOURCE_ADDR, anotherSrcPort,
+                        anotherDstPort, anotherSeqNum, anotherAckNum));
+
+        // Remove IPv4 keepalive filter
+        apfFilter.removeKeepalivePacketFilter(slot1);
+
+        // src: 2404:0:0:0:0:0:fafc, port: 12345
+        // dst: 2404:0:0:0:0:0:fafb, port: 54321
+        srcAddr = InetAddress.getByAddress(IPV6_SOURCE_ADDR);
+        dstAddr = InetAddress.getByAddress(MOCK_IPV6_ADDR);
+
+        TcpSocketInfo v6Tsi =
+                new TcpSocketInfo(srcAddr, srcPort, dstAddr, dstPort, seqNum, ackNum);
+        TcpKeepalivePacketData ipv6TcpKeepalivePacket =
+                TcpKeepalivePacketData.tcpKeepalivePacket(v6Tsi);
+        apfFilter.addKeepalivePacketFilter(slot1, ipv6TcpKeepalivePacket);
+        program = cb.getApfProgram();
+
+        // Verify IPv6 keepalive ack packet is dropped
+        // src: 2404:0:0:0:0:0:fafb, port: 54321
+        // dst: 2404:0:0:0:0:0:fafc, port: 12345
+        assertDrop(program,
+                ipv6Packet(MOCK_IPV6_ADDR, IPV6_SOURCE_ADDR, dstPort, srcPort, ackNum, seqNum + 1));
+        // Verify IPv6 non-keepalive ack packet from the same source address is passed
+        assertPass(program,
+                ipv6Packet(MOCK_IPV6_ADDR, IPV6_SOURCE_ADDR,
+                        dstPort, srcPort, ackNum + 100, seqNum));
+        // Verify IPv6 packet from another address is passed
+        assertPass(program,
+                ipv6Packet(ANOTHER_IPV6_ADDR, IPV6_SOURCE_ADDR, anotherSrcPort,
+                        anotherDstPort, anotherSeqNum, anotherAckNum));
+
+        // Remove IPv6 keepalive ack filter
+        apfFilter.removeKeepalivePacketFilter(slot1);
+        program = cb.getApfProgram();
+
+        // Verify IPv4, IPv6 packets are passed
+        assertPass(program,
+                ipv4Packet(MOCK_IPV4_ADDR, IPV4_SOURCE_ADDR, dstPort, srcPort, ackNum, seqNum + 1));
+        assertPass(program,
+                ipv6Packet(MOCK_IPV6_ADDR, IPV6_SOURCE_ADDR, dstPort, srcPort, ackNum, seqNum + 1));
+        assertPass(program,
+                ipv4Packet(ANOTHER_IPV4_ADDR, IPV4_SOURCE_ADDR, srcPort,
+                    dstPort, anotherSeqNum, anotherAckNum));
+        assertPass(program,
+                ipv6Packet(ANOTHER_IPV6_ADDR, IPV6_SOURCE_ADDR, srcPort,
+                    dstPort, anotherSeqNum, anotherAckNum));
+    }
+
+    private static byte[] ipv4Packet(byte[] sip, byte[] tip, int sport,
+            int dport, int seq, int ack) {
+        ByteBuffer packet = ByteBuffer.wrap(new byte[100]);
+        packet.putShort(ETH_ETHERTYPE_OFFSET, (short) ETH_P_IP);
+        packet.put(IPV4_VERSION_IHL_OFFSET, (byte) 0x45);
+        put(packet, IPV4_SRC_ADDR_OFFSET, sip);
+        put(packet, IPV4_DEST_ADDR_OFFSET, tip);
+        packet.putShort(IPV4_TCP_SRC_PORT_OFFSET, (short) sport);
+        packet.putShort(IPV4_TCP_DEST_PORT_OFFSET, (short) dport);
+        packet.putInt(IPV4_TCP_SEQ_NUM_OFFSET, seq);
+        packet.putInt(IPV4_TCP_ACK_NUM_OFFSET, ack);
+        return packet.array();
+    }
+
+    private static byte[] ipv6Packet(byte[] sip, byte[] tip, int sport,
+            int dport, int seq, int ack) {
+        ByteBuffer packet = ByteBuffer.wrap(new byte[100]);
+        packet.putShort(ETH_ETHERTYPE_OFFSET, (short) ETH_P_IPV6);
+        put(packet, IPV6_SRC_ADDR_OFFSET, sip);
+        put(packet, IPV6_DEST_ADDR_OFFSET, tip);
+        packet.putShort(IPV6_TCP_SRC_PORT_OFFSET, (short) sport);
+        packet.putShort(IPV6_TCP_DEST_PORT_OFFSET, (short) dport);
+        packet.putInt(IPV6_TCP_SEQ_NUM_OFFSET, seq);
+        packet.putInt(IPV6_TCP_ACK_NUM_OFFSET, ack);
         return packet.array();
     }
 
