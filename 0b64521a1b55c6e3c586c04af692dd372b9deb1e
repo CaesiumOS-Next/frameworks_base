@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "df647e60_7d550466",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2019-01-15T01:21:46Z",
+      "side": 1,
+      "message": "While the change LGTM, can you describe quickly what the refactoring is aiming at ? Do we want to ultimately remove NetworkManagementService from Nat464Xlat ? Are we aiming at having the Nat464Xlat object more autonomous for code clarity ?",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 46
+      },
+      "revId": "0b64521a1b55c6e3c586c04af692dd372b9deb1e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e566021f_e40b78e9",
+        "filename": "services/core/java/com/android/server/connectivity/Nat464Xlat.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2019-01-15T01:21:46Z",
+      "side": 1,
+      "message": "nit : clatdStart",
+      "range": {
+        "startLine": 210,
+        "startChar": 49,
+        "endLine": 210,
+        "endChar": 59
+      },
+      "revId": "0b64521a1b55c6e3c586c04af692dd372b9deb1e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
