@@ -75,6 +75,9 @@ bool FileDescriptorWhitelist::IsAllowed(const std::string& path) const {
       && android::base::EndsWith(path, kJarSuffix)) {
     return true;
   }
+  if (android::base::StartsWith(path, kFrameworksPrefix) && android::base::EndsWith(path, ".oat")) {
+    return true;
+  }
 
   // Whitelist files needed for Runtime Resource Overlay, like these:
   // /system/vendor/overlay/framework-res.apk
