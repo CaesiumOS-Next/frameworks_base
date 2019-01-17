@@ -1,0 +1,176 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8bbbf3b3_00299a24",
+        "filename": "core/java/android/net/NetworkFactory.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2019-01-17T04:37:06Z",
+      "side": 1,
+      "message": "Should this be @see instead?",
+      "revId": "ceb4c452b78a09db4b326b7385913172f35f7fa1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2a3b93f4_0cf6a732",
+        "filename": "core/java/android/net/NetworkFactory.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2019-01-17T04:37:06Z",
+      "side": 1,
+      "message": "Other classes that use this paradigm (e.g., NetworkAgent) use CMD_* for commands from CS and EVENT_* for notifications to CS. Suggest doing the same here.",
+      "range": {
+        "startLine": 105,
+        "startChar": 28,
+        "endLine": 105,
+        "endChar": 32
+      },
+      "revId": "ceb4c452b78a09db4b326b7385913172f35f7fa1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "411f8982_6cb18b70",
+        "filename": "core/java/android/net/NetworkFactory.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2019-01-17T04:37:06Z",
+      "side": 1,
+      "message": "Can you add GuardedBy annotations here? From the code it looks like both mAsyncChannel and mPreConnectedQueue should be guarded by mPreConnectedQueue. It would be good to mark that as explicit intent via annotations (which would allow things like errorprone to tell us if we ever hold this code wrong).",
+      "revId": "ceb4c452b78a09db4b326b7385913172f35f7fa1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "31667284_55a9636e",
+        "filename": "core/java/android/net/NetworkFactory.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2019-01-17T04:37:06Z",
+      "side": 1,
+      "message": "Technically speaking I think this access is not safe to make without holding the mPreConnectedQueue lock. Should we hold the mPreconnectedQueue lock across the whole if statement? (Is that safe?) I know NetworkAgent doesn\u0027t do this, but since this is new code, it would be nice to make it as correct as we can.",
+      "range": {
+        "startLine": 150,
+        "startChar": 20,
+        "endLine": 150,
+        "endChar": 41
+      },
+      "revId": "ceb4c452b78a09db4b326b7385913172f35f7fa1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fdd09988_1d452266",
+        "filename": "core/java/android/net/NetworkFactory.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2019-01-17T04:37:06Z",
+      "side": 1,
+      "message": "Ditto.",
+      "range": {
+        "startLine": 170,
+        "startChar": 20,
+        "endLine": 170,
+        "endChar": 41
+      },
+      "revId": "ceb4c452b78a09db4b326b7385913172f35f7fa1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "66bfac09_110065fe",
+        "filename": "core/java/android/net/NetworkFactory.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 349,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2019-01-17T04:37:06Z",
+      "side": 1,
+      "message": "synchronized?",
+      "range": {
+        "startLine": 349,
+        "startChar": 16,
+        "endLine": 349,
+        "endChar": 37
+      },
+      "revId": "ceb4c452b78a09db4b326b7385913172f35f7fa1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5b80c570_6150b03c",
+        "filename": "tests/net/java/com/android/server/ConnectivityServiceTest.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 739,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2019-01-17T04:37:06Z",
+      "side": 1,
+      "message": "Why does this need to be a synchronizedList? None of the other members of this class are synchronized. Are those other members incorrect? Would be good to add a comment and/or a TODO to explain.",
+      "range": {
+        "startLine": 739,
+        "startChar": 68,
+        "endLine": 739,
+        "endChar": 84
+      },
+      "revId": "ceb4c452b78a09db4b326b7385913172f35f7fa1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "623dd1dc_9b2ee935",
+        "filename": "tests/net/java/com/android/server/ConnectivityServiceTest.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 3423,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2019-01-17T04:37:06Z",
+      "side": 1,
+      "message": "This will call mNetworkRequests.clear(), which is sort of confusing to anyone trying to follow the tests. It means that mNetworkRequests doesn\u0027t contain all the requests, but only those requests that were added since the last expectAddRequests.\n\nIt\u0027s also not clear to me - why do we need the new mNetworkRequests list at all? NetworkFactory itself already has an mNetworkRequests member, can we simply just add a protected @VisibleForTesting accessor that can fetch that list (or a copy of it) and use that? The semantics are different in the sense that it\u0027s not ordered, but because it\u0027s keyed by request ID, we should be able to use it. If nothing else, maybe we can rely on the fact that CS assigns IDs consecutively, though that might be a terrible idea :)",
+      "range": {
+        "startLine": 3423,
+        "startChar": 20,
+        "endLine": 3423,
+        "endChar": 37
+      },
+      "revId": "ceb4c452b78a09db4b326b7385913172f35f7fa1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
