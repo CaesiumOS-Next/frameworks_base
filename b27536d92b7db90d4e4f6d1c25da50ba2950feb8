@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "887af03f_74b39d2b",
+        "filename": "services/ipmemorystore/java/com/android/server/net/ipmemorystore/IpMemoryStoreDatabase.java",
+        "patchSetId": 16
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 1288034
+      },
+      "writtenOn": "2019-01-18T10:50:12Z",
+      "side": 1,
+      "message": "Should this not be closed() ?",
+      "range": {
+        "startLine": 232,
+        "startChar": 15,
+        "endLine": 232,
+        "endChar": 21
+      },
+      "revId": "b27536d92b7db90d4e4f6d1c25da50ba2950feb8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4c9ef8a0_930c24fc",
+        "filename": "tests/net/java/com/android/server/net/ipmemorystore/IpMemoryStoreServiceTest.java",
+        "patchSetId": 16
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1288034
+      },
+      "writtenOn": "2019-01-18T10:50:12Z",
+      "side": 1,
+      "message": "Could this be a constant ? It\u0027s not a big deal here I guess, but random stuff in tests can make error messages differ across failures.",
+      "range": {
+        "startLine": 104,
+        "startChar": 29,
+        "endLine": 104,
+        "endChar": 58
+      },
+      "revId": "b27536d92b7db90d4e4f6d1c25da50ba2950feb8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7a8b5364_ae43b59d",
+        "filename": "tests/net/java/com/android/server/net/ipmemorystore/IpMemoryStoreServiceTest.java",
+        "patchSetId": 16
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1288034
+      },
+      "writtenOn": "2019-01-18T10:50:12Z",
+      "side": 1,
+      "message": "I have a small preference for making a mock IOnStatusListener, and using:\nverify(mListener, timeout(5000).times(1)).onStatus(argThat(status -\u003e status.isSuccess()));\n\nRegardless, I think you did not intend to wait for 5000 seconds ?",
+      "range": {
+        "startLine": 113,
+        "startChar": 12,
+        "endLine": 113,
+        "endChar": 48
+      },
+      "revId": "b27536d92b7db90d4e4f6d1c25da50ba2950feb8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
