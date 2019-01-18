@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "971088e6_b416633b",
+        "filename": "services/ipmemorystore/java/com/android/server/net/ipmemorystore/IpMemoryStoreDatabase.java",
+        "patchSetId": 14
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2019-01-18T10:00:17Z",
+      "side": 1,
+      "message": "As the comment says because L2KEY is the primary key it\u0027s only possible to get 1 or 0 here. So 1 gives a result, and everything else is an error (we didn\u0027t find the expiry).\n\nIf getCount is ever \u003e 1, it\u0027s a programming error, and it is not useful to return an error code for a programming error – the function that receives this can\u0027t possibly do anything with an error code meaning \"there\u0027s a bug\". What we *could* do is to raise an exception instead. The reason I didn\u0027t do it is generally speaking the memory store is an unessential component so I\u0027m not too keen on crashing the system from the memory store.\n\nBut concretely here if SQLite has a bug or something and we get two results even though we query with the primary key, there is not much that\u0027s doable : we don\u0027t know what the correct value should be, exactly as in the 0 case, so returning an error seemed to me the most sensible thing to do. And bugs in SQLite... well that\u0027s far from impossible, historically.\n\nThe reason I prefer the !\u003d 1 style to the \u003d\u003d 0 style is basic code hygiene : be lenient in what you accept and strict in what you send. The code after the test makes no sense if !\u003d 1, so letting the control go into this area of the code is dangerous. That\u0027s why I tend to prefer encompassing assertions (e.g. if a return value is defined to be 0 for error and positive for something meaningful, I\u0027ll always test with \u003c\u003d 0 rather than \u003d\u003d 0). The thinking is : what should your code do if it gets an impossible value ? It\u0027s true that this philosophy occasionally masks errors, but the flip side is less crashes.\n\nNow if you feel strongly about this, I think it\u0027s equally good to raise an exception here if \u003e 1. What I don\u0027t want to do is replace the test with \u003d\u003d 0, but an exception is fine if you think it\u0027s better.",
+      "parentUuid": "d3a613f5_335a3b37",
+      "range": {
+        "startLine": 229,
+        "startChar": 43,
+        "endLine": 229,
+        "endChar": 55
+      },
+      "revId": "8f10585d87f1ce18eb8d079435f652606123fa04",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ecdccf0a_6b7847d7",
         "filename": "services/ipmemorystore/java/com/android/server/net/ipmemorystore/IpMemoryStoreDatabase.java",
         "patchSetId": 14
@@ -45,6 +69,30 @@
       "revId": "8f10585d87f1ce18eb8d079435f652606123fa04",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9769c198_d109d918",
+        "filename": "services/ipmemorystore/java/com/android/server/net/ipmemorystore/IpMemoryStoreDatabase.java",
+        "patchSetId": 14
+      },
+      "lineNbr": 270,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2019-01-18T10:00:17Z",
+      "side": 1,
+      "message": "Sure. We should also return that error to the caller, if they are listening. Done.",
+      "parentUuid": "ecdccf0a_6b7847d7",
+      "range": {
+        "startLine": 269,
+        "startChar": 8,
+        "endLine": 270,
+        "endChar": 93
+      },
+      "revId": "8f10585d87f1ce18eb8d079435f652606123fa04",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -92,6 +140,30 @@
       "revId": "8f10585d87f1ce18eb8d079435f652606123fa04",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "01e4674c_6cb2c543",
+        "filename": "tests/net/java/com/android/server/net/ipmemorystore/IpMemoryStoreServiceTest.java",
+        "patchSetId": 14
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2019-01-18T10:00:17Z",
+      "side": 1,
+      "message": "Yeah sorry about that \u003e.\u003e",
+      "parentUuid": "e360bbe2_2a153a58",
+      "range": {
+        "startLine": 132,
+        "startChar": 24,
+        "endLine": 132,
+        "endChar": 46
+      },
+      "revId": "8f10585d87f1ce18eb8d079435f652606123fa04",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
