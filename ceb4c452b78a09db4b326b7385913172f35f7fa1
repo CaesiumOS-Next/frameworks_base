@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "5b6f5105_12ebeb91",
+        "filename": "core/java/android/net/NetworkFactory.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1039103
+      },
+      "writtenOn": "2019-01-18T07:09:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8bbbf3b3_00299a24",
+      "revId": "ceb4c452b78a09db4b326b7385913172f35f7fa1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2a3b93f4_0cf6a732",
         "filename": "core/java/android/net/NetworkFactory.java",
         "patchSetId": 3
@@ -42,6 +60,30 @@
     },
     {
       "key": {
+        "uuid": "6f5c29fc_94147489",
+        "filename": "core/java/android/net/NetworkFactory.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1039103
+      },
+      "writtenOn": "2019-01-18T07:09:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2a3b93f4_0cf6a732",
+      "range": {
+        "startLine": 105,
+        "startChar": 28,
+        "endLine": 105,
+        "endChar": 32
+      },
+      "revId": "ceb4c452b78a09db4b326b7385913172f35f7fa1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "411f8982_6cb18b70",
         "filename": "core/java/android/net/NetworkFactory.java",
         "patchSetId": 3
@@ -59,6 +101,24 @@
     },
     {
       "key": {
+        "uuid": "eb22e850_db61849a",
+        "filename": "core/java/android/net/NetworkFactory.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1039103
+      },
+      "writtenOn": "2019-01-18T07:09:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "411f8982_6cb18b70",
+      "revId": "ceb4c452b78a09db4b326b7385913172f35f7fa1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "31667284_55a9636e",
         "filename": "core/java/android/net/NetworkFactory.java",
         "patchSetId": 3
@@ -70,6 +130,30 @@
       "writtenOn": "2019-01-17T04:37:06Z",
       "side": 1,
       "message": "Technically speaking I think this access is not safe to make without holding the mPreConnectedQueue lock. Should we hold the mPreconnectedQueue lock across the whole if statement? (Is that safe?) I know NetworkAgent doesn\u0027t do this, but since this is new code, it would be nice to make it as correct as we can.",
+      "range": {
+        "startLine": 150,
+        "startChar": 20,
+        "endLine": 150,
+        "endChar": 41
+      },
+      "revId": "ceb4c452b78a09db4b326b7385913172f35f7fa1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b2a5d2f8_94fb2b96",
+        "filename": "core/java/android/net/NetworkFactory.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1039103
+      },
+      "writtenOn": "2019-01-18T07:09:42Z",
+      "side": 1,
+      "message": "There is a synchronized check in the else section which covers the setting of mAsyncChannel and usage of it.\n\nSo the only unprotected check is here. But this is purely a read (for a reference, which is atomic (?)) and this is a strange/error scenario which should never happen.\n\nI don\u0027t think another synchronized is necessary.",
+      "parentUuid": "31667284_55a9636e",
       "range": {
         "startLine": 150,
         "startChar": 20,
@@ -105,6 +189,30 @@
     },
     {
       "key": {
+        "uuid": "f763638d_73db84ba",
+        "filename": "core/java/android/net/NetworkFactory.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1039103
+      },
+      "writtenOn": "2019-01-18T07:09:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fdd09988_1d452266",
+      "range": {
+        "startLine": 170,
+        "startChar": 20,
+        "endLine": 170,
+        "endChar": 41
+      },
+      "revId": "ceb4c452b78a09db4b326b7385913172f35f7fa1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "66bfac09_110065fe",
         "filename": "core/java/android/net/NetworkFactory.java",
         "patchSetId": 3
@@ -116,6 +224,30 @@
       "writtenOn": "2019-01-17T04:37:06Z",
       "side": 1,
       "message": "synchronized?",
+      "range": {
+        "startLine": 349,
+        "startChar": 16,
+        "endLine": 349,
+        "endChar": 37
+      },
+      "revId": "ceb4c452b78a09db4b326b7385913172f35f7fa1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9730dd6c_bed4902a",
+        "filename": "core/java/android/net/NetworkFactory.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 349,
+      "author": {
+        "id": 1039103
+      },
+      "writtenOn": "2019-01-18T07:09:42Z",
+      "side": 1,
+      "message": "Not convinced. This is a read on a reference - I don\u0027t see a possible race condition since that reference is initialized only once the channel is set up. In any case note that the actual usage of the channel is within queueOrSendMessage which is synchronized.",
+      "parentUuid": "66bfac09_110065fe",
       "range": {
         "startLine": 349,
         "startChar": 16,
@@ -151,6 +283,30 @@
     },
     {
       "key": {
+        "uuid": "e874cd26_807285d4",
+        "filename": "tests/net/java/com/android/server/ConnectivityServiceTest.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 739,
+      "author": {
+        "id": 1039103
+      },
+      "writtenOn": "2019-01-18T07:09:42Z",
+      "side": 1,
+      "message": "Removed. I respond to your next comment about replication mNetworkRequest in your other comment below.",
+      "parentUuid": "5b80c570_6150b03c",
+      "range": {
+        "startLine": 739,
+        "startChar": 68,
+        "endLine": 739,
+        "endChar": 84
+      },
+      "revId": "ceb4c452b78a09db4b326b7385913172f35f7fa1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "623dd1dc_9b2ee935",
         "filename": "tests/net/java/com/android/server/ConnectivityServiceTest.java",
         "patchSetId": 3
@@ -162,6 +318,30 @@
       "writtenOn": "2019-01-17T04:37:06Z",
       "side": 1,
       "message": "This will call mNetworkRequests.clear(), which is sort of confusing to anyone trying to follow the tests. It means that mNetworkRequests doesn\u0027t contain all the requests, but only those requests that were added since the last expectAddRequests.\n\nIt\u0027s also not clear to me - why do we need the new mNetworkRequests list at all? NetworkFactory itself already has an mNetworkRequests member, can we simply just add a protected @VisibleForTesting accessor that can fetch that list (or a copy of it) and use that? The semantics are different in the sense that it\u0027s not ordered, but because it\u0027s keyed by request ID, we should be able to use it. If nothing else, maybe we can rely on the fact that CS assigns IDs consecutively, though that might be a terrible idea :)",
+      "range": {
+        "startLine": 3423,
+        "startChar": 20,
+        "endLine": 3423,
+        "endChar": 37
+      },
+      "revId": "ceb4c452b78a09db4b326b7385913172f35f7fa1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cc699266_400d4e3f",
+        "filename": "tests/net/java/com/android/server/ConnectivityServiceTest.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 3423,
+      "author": {
+        "id": 1039103
+      },
+      "writtenOn": "2019-01-18T07:09:42Z",
+      "side": 1,
+      "message": "Not clearing anymore. Just tracking \u003d\u003d duplicating the code from NetworkFactory.\n\nExposing mNetworkRequests, whether as protected or through a @VisibleForTesting API, will both result in \"some\" network factory starting to use them directly to observe or manage the network request queue - as opposed to going through existing APIs. Both undesirable. A bit of code duplication isn\u0027t too much of a cost to avoid that.",
+      "parentUuid": "623dd1dc_9b2ee935",
       "range": {
         "startLine": 3423,
         "startChar": 20,
