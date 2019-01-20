@@ -16,6 +16,7 @@
 
 package android.os;
 
+import android.annotation.SystemApi;
 import android.annotation.TestApi;
 import android.system.Os;
 import android.system.OsConstants;
@@ -46,7 +47,6 @@ public class Process {
 
     /**
      * Defines the root UID.
-     * @hide
      */
     public static final int ROOT_UID = 0;
 
@@ -62,7 +62,6 @@ public class Process {
 
     /**
      * Defines the UID/GID for the user shell.
-     * @hide
      */
     public static final int SHELL_UID = 2000;
 
@@ -118,6 +117,7 @@ public class Process {
      * Defines the UID/GID for the Bluetooth service process.
      * @hide
      */
+    @SystemApi
     public static final int BLUETOOTH_UID = 1002;
 
     /**
