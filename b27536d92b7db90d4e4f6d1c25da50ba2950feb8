@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "cc92f9ea_dc94b2fc",
+        "filename": "services/ipmemorystore/java/com/android/server/net/ipmemorystore/IpMemoryStoreDatabase.java",
+        "patchSetId": 16
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2019-01-21T06:00:35Z",
+      "side": 1,
+      "message": "Yes I realized I forgot that earlier today. Closed in MS10.5 if you don\u0027t mind.\n\nNote that the cursor gets GC\u0027d and releases any resources, so this is not actually a problem not to close it, it just defers some resource releasing.",
+      "parentUuid": "887af03f_74b39d2b",
+      "range": {
+        "startLine": 232,
+        "startChar": 15,
+        "endLine": 232,
+        "endChar": 21
+      },
+      "revId": "b27536d92b7db90d4e4f6d1c25da50ba2950feb8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4c9ef8a0_930c24fc",
         "filename": "tests/net/java/com/android/server/net/ipmemorystore/IpMemoryStoreServiceTest.java",
         "patchSetId": 16
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "2228ca26_4b7344aa",
+        "filename": "tests/net/java/com/android/server/net/ipmemorystore/IpMemoryStoreServiceTest.java",
+        "patchSetId": 16
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2019-01-21T06:00:35Z",
+      "side": 1,
+      "message": "Please let me address in subsequent patches. This is a month old already, has been reviewed multiple times, and has patches on top of this touching this code.\nAddressed in MS10.5",
+      "parentUuid": "4c9ef8a0_930c24fc",
+      "range": {
+        "startLine": 104,
+        "startChar": 29,
+        "endLine": 104,
+        "endChar": 58
+      },
+      "revId": "b27536d92b7db90d4e4f6d1c25da50ba2950feb8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7a8b5364_ae43b59d",
         "filename": "tests/net/java/com/android/server/net/ipmemorystore/IpMemoryStoreServiceTest.java",
         "patchSetId": 16
@@ -68,6 +116,30 @@
       "revId": "b27536d92b7db90d4e4f6d1c25da50ba2950feb8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a0f753ff_3c9e1db4",
+        "filename": "tests/net/java/com/android/server/net/ipmemorystore/IpMemoryStoreServiceTest.java",
+        "patchSetId": 16
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2019-01-21T06:00:35Z",
+      "side": 1,
+      "message": "Likewise, because the code in this change gets factorized later and your suggestion makes me change everything, I\u0027d like to address in MS10.5.\nIt requires vastly different helpers, but the final code is more concise, more idiomatic, and it (kind of ?) addresses Junyu\u0027s concerns about the readability of a failure. Readability is similar or better with your suggestion too, the only drawback being that each arg is tested completely separately.\n\nReadability of failures is a mixed bag though. With the style in this patch, the test says \"Process crashed\", and you have to look at the logcat where stuff says \"assertion failed\" with the stack trace and it\u0027s very clear.\nThe large advantage in your style is that the test run actually outputs the actual failure and you don\u0027t have to read the logcat. However, the failure is more verbose for no good reason and doesn\u0027t pinpoint the line easily (instead it targets the verify() line and you\u0027re left to guess which of the args failed). When the failure is on an argument is tested with isNull() or eq(), it\u0027s still easy to identify, but when it\u0027s on a lambda like the one you suggest, here is what you get :\n\n  Argument(s) are different! Wanted:\n  iOnStatusListener.onComplete(\n      \u003cLambda$ ip memory store service test$ 3 1v kj u jwb z qt cy 2gu 1v v 9 kh v zq q\u003e\n  );\n  -\u003e at \n \n com.android.server.net.ipmemorystore.IpMemoryStoreServiceTest.testInvalidAttributes(IpMemoryStoreServiceTest.java:181)\n  Actual invocation has different arguments:\n  iOnStatusListener.onComplete(\n      android.net.ipmemorystore.StatusParcelable@cf064df\n  );\n  -\u003e at \n \n com.android.server.net.ipmemorystore.IpMemoryStoreService.lambda$storeNetworkAttributes$0(IpMemoryStoreService.java:166)\n\n\n...very difficult to parse. If you have multiple tests in that lambda it\u0027s pretty terrible.\n\nPlease take another look and tell me what you think.\n\nAs for the delay this is indeed unintentional but as has been noted by Chiachang this is fixed in MS08.",
+      "parentUuid": "7a8b5364_ae43b59d",
+      "range": {
+        "startLine": 113,
+        "startChar": 12,
+        "endLine": 113,
+        "endChar": 48
+      },
+      "revId": "b27536d92b7db90d4e4f6d1c25da50ba2950feb8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
