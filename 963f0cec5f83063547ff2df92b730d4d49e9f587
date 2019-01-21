@@ -1,0 +1,107 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5e394c21_d74a9bc1",
+        "filename": "core/java/android/net/ip/IIpClient.aidl",
+        "patchSetId": 7
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2019-01-21T06:15:25Z",
+      "side": 1,
+      "message": "typo",
+      "range": {
+        "startLine": 13,
+        "startChar": 58,
+        "endLine": 13,
+        "endChar": 59
+      },
+      "revId": "963f0cec5f83063547ff2df92b730d4d49e9f587",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c1e76f6c_2081978a",
+        "filename": "core/java/android/net/ip/IIpClientCallbacks.aidl",
+        "patchSetId": 7
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2019-01-21T06:15:25Z",
+      "side": 1,
+      "message": "Looks like you dropped the comments for these two members from the IpClient.Callback class?\n\n        // In order to receive onPreDhcpAction(), call #withPreDhcpAction()\n        // when constructing a ProvisioningConfiguration.\n        //\n        // Implementations of onPreDhcpAction() must call\n        // IpClient#completedPreDhcpAction() to indicate that DHCP is clear\n        // to proceed.\n\nOr, alternatively, remove all these comments and just say \"see IpClientCallbacks.java instead\"?",
+      "revId": "963f0cec5f83063547ff2df92b730d4d49e9f587",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fbbe384a_a1c135ff",
+        "filename": "core/java/android/net/ip/IpClientCallbacks.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2019-01-21T06:15:25Z",
+      "side": 1,
+      "message": "Extra blank line before here?",
+      "range": {
+        "startLine": 83,
+        "startChar": 7,
+        "endLine": 83,
+        "endChar": 8
+      },
+      "revId": "963f0cec5f83063547ff2df92b730d4d49e9f587",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6fb92e9f_7619acdf",
+        "filename": "services/net/java/android/net/ip/IpClient.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 548,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2019-01-21T06:15:25Z",
+      "side": 1,
+      "message": "It looks like the only thing this class does is forward all its methods. Is there a reason why we can\u0027t use IpClient directly? Is it because we\u0027d need to have IpClient extend IIpClient.stub, but it already extends StateMachine?",
+      "range": {
+        "startLine": 548,
+        "startChar": 4,
+        "endLine": 548,
+        "endChar": 52
+      },
+      "revId": "963f0cec5f83063547ff2df92b730d4d49e9f587",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8236d4d8_f1eb2ed7",
+        "filename": "services/net/java/android/net/ip/IpClientUtil.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2019-01-21T06:15:25Z",
+      "side": 1,
+      "message": "Consider having an awaitShutdown() here as well.",
+      "revId": "963f0cec5f83063547ff2df92b730d4d49e9f587",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
