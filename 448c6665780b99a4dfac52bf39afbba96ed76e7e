@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ab490499_494585bc",
+        "filename": "core/java/android/net/util/SocketUtils.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2019-01-22T07:28:14Z",
+      "side": 1,
+      "message": "Why also create the socket as well? It seems like we\u0027d want to have something like:\n\n    public static void bindSocketToInterface(FileDescriptor socket, String iface)",
+      "range": {
+        "startLine": 45,
+        "startChar": 33,
+        "endLine": 45,
+        "endChar": 51
+      },
+      "revId": "448c6665780b99a4dfac52bf39afbba96ed76e7e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cb4be6ee_fd59c270",
+        "filename": "core/java/android/net/util/SocketUtils.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2019-01-22T07:28:14Z",
+      "side": 1,
+      "message": "packet\n\nAlso, instead of having two versions, why not expose just one method that specifies all the members? It would end up calling this method in libcore:\n\n    public PacketSocketAddress(short sll_protocol, int sll_ifindex,\n            short sll_hatype, byte sll_pkttype, byte[] sll_addr)",
+      "range": {
+        "startLine": 64,
+        "startChar": 40,
+        "endLine": 64,
+        "endChar": 43
+      },
+      "revId": "448c6665780b99a4dfac52bf39afbba96ed76e7e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "30b5dd97_0804a459",
+        "filename": "services/net/java/android/net/ip/IpNeighborMonitor.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2019-01-22T07:28:14Z",
+      "side": 1,
+      "message": "Not for this CL, but we should probably add a toString method to NetlinkSocketAddress.",
+      "range": {
+        "startLine": 156,
+        "startChar": 53,
+        "endLine": 156,
+        "endChar": 70
+      },
+      "revId": "448c6665780b99a4dfac52bf39afbba96ed76e7e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
