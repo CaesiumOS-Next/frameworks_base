@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0ad6d5c4_b6757c5a",
+        "filename": "core/java/android/net/ConnectivityManager.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 1860,
+      "author": {
+        "id": 1306837
+      },
+      "writtenOn": "2019-01-22T11:22:23Z",
+      "side": 1,
+      "message": "need to add annotation @RequiresPermission(android.Manifest.permission.PACKET_KEEPALIVE_OFFLOAD)",
+      "revId": "028fe92b69541d6acb082bb96748da36cedf3821",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
