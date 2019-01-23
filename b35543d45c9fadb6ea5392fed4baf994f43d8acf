@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "61b19d18_b464cf5e",
+        "filename": "core/java/android/net/ConnectivityManager.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 1862,
+      "author": {
+        "id": 1060151
+      },
+      "writtenOn": "2019-01-23T03:08:13Z",
+      "side": 1,
+      "message": "resourceId is very similar to a handle. The bad naming is my fault (IpSec code).",
+      "parentUuid": "aaf8f0b8_ada0ab9b",
+      "range": {
+        "startLine": 1862,
+        "startChar": 11,
+        "endLine": 1862,
+        "endChar": 26
+      },
+      "revId": "b35543d45c9fadb6ea5392fed4baf994f43d8acf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a9b9ceec_9fbe09c2",
         "filename": "core/java/android/net/NattSocketKeepalive.java",
         "patchSetId": 4
