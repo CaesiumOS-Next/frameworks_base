@@ -1808,4 +1808,9 @@ interface ITelephony {
      * Enable or disable a logical modem stack associated with the slotIndex.
      */
     boolean enableModemForSlot(int slotIndex, boolean enable);
+
+    /**
+     * Get the mapping from logical slots to physical slots.
+     */
+    int[] getSlotsMapping();
 }

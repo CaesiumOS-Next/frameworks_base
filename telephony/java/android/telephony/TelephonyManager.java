@@ -3225,6 +3225,33 @@ public class TelephonyManager {
         }
     }
 
+    /**
+     * Get the mapping from logical slots to physical slots. The mapping represent by an int array.
+     * The i-th item in this array is the physical slot corresponding to the i-th logical slot. For
+     * example, if the return array is [1, 0], that means the first logical slot(with slot index 0)
+     * is mapped to physical slot 1 and the second logical slot(with slot index 1) is mapped to
+     * physical slot 0.
+     *
+     * @return an array indicates the mapping from logical slots to physical slots. The index of the
+     * array is logical slot index and the value of the array is physical slot index. The size of
+     * the array should be {@link #getPhoneCount()} if success, otherwise return an empty int array.
+     *
+     * @hide
+     */
+    @SystemApi
+    @RequiresPermission(android.Manifest.permission.READ_PRIVILEGED_PHONE_STATE)
+    public int[] getSlotsMapping() {
+        try {
+            ITelephony telephony = getITelephony();
+            if (telephony != null) {
+                return telephony.getSlotsMapping();
+            }
+        } catch (RemoteException e) {
+            Log.e(TAG, "getSlotsMapping RemoteException", e);
+        }
+        return new int[0];
+    }
+
     //
     //
     // Subscriber Info
