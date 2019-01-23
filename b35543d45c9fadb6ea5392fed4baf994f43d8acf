@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "9de72039_3427b83f",
+        "filename": "core/java/android/net/ConnectivityManager.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 1862,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2019-01-23T03:43:31Z",
+      "side": 1,
+      "message": "What kind of handle is it ? \"handle\" as an arg name is fine for me as long as the method comment explains a bit more what it is (and/or where it comes from).",
+      "parentUuid": "61b19d18_b464cf5e",
+      "range": {
+        "startLine": 1862,
+        "startChar": 11,
+        "endLine": 1862,
+        "endChar": 26
+      },
+      "revId": "b35543d45c9fadb6ea5392fed4baf994f43d8acf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a9b9ceec_9fbe09c2",
         "filename": "core/java/android/net/NattSocketKeepalive.java",
         "patchSetId": 4
