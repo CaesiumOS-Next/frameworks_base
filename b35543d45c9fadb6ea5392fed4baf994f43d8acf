@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "6609247f_39211246",
+        "filename": "core/java/android/net/ConnectivityManager.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 1862,
+      "author": {
+        "id": 1306837
+      },
+      "writtenOn": "2019-01-23T04:26:10Z",
+      "side": 1,
+      "message": "yes it needs to be properly documented here.\nShort answer: the resourceId is generated from IpSecService.\n\nTo verify if the fd is valid, in the plan we want to cover cases:\n 1. If it is coming from IpSecService, then we need to check if it is valid, by sending both fd and resourceId back to IpSecService, IpSecService would check if the caller, resourceId and fd is matching the record inside it.\n 2. If it is created by QC, e.g. wifi calling, then we just check the fd is correctly bounded.\n 3. failed with other fd that is not created by QC or IpSecService.",
+      "parentUuid": "61b19d18_b464cf5e",
+      "range": {
+        "startLine": 1862,
+        "startChar": 11,
+        "endLine": 1862,
+        "endChar": 26
+      },
+      "revId": "b35543d45c9fadb6ea5392fed4baf994f43d8acf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a9b9ceec_9fbe09c2",
         "filename": "core/java/android/net/NattSocketKeepalive.java",
         "patchSetId": 4
