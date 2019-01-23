@@ -234,6 +234,30 @@
       "revId": "2dcb148c28ac16ba98e8bd9944220933db9eb8ec",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c75c22a7_6a60d86d",
+        "filename": "services/core/java/com/android/server/connectivity/KeepaliveTracker.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 399,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2019-01-23T13:29:58Z",
+      "side": 1,
+      "message": "The main issue is that duplicate documentation easily becomes stale and creates confusion on which copy is authoritative. Maybe just add a brief non-javadoc comment that says \"Identical to \u003cxyz\u003e but takes a resourceId for the purposes of...\"",
+      "parentUuid": "4b857490_f45071c3",
+      "range": {
+        "startLine": 387,
+        "startChar": 0,
+        "endLine": 399,
+        "endChar": 59
+      },
+      "revId": "2dcb148c28ac16ba98e8bd9944220933db9eb8ec",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
