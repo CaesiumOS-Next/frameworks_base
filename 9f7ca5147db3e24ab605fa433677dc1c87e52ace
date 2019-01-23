@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bf2d8a81_21cb034f",
+        "filename": "services/core/java/com/android/server/connectivity/KeepaliveTracker.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 390,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2019-01-23T08:12:31Z",
+      "side": 1,
+      "message": "Sorry but the problem is the same here ; this should be documented even if the public API is not requiring it any more.",
+      "range": {
+        "startLine": 390,
+        "startChar": 45,
+        "endLine": 390,
+        "endChar": 55
+      },
+      "revId": "9f7ca5147db3e24ab605fa433677dc1c87e52ace",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
