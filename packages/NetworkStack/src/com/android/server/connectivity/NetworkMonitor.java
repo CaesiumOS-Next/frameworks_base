@@ -493,7 +493,6 @@ public class NetworkMonitor extends StateMachine {
                 mDefaultRequest.networkCapabilities, mNetworkCapabilities);
     }
 
-
     private void notifyNetworkTested(int result, @Nullable String redirectUrl) {
         try {
             mCallback.notifyNetworkTested(result, redirectUrl);
