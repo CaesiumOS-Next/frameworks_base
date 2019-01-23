@@ -1,0 +1,234 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "aaf8f0b8_ada0ab9b",
+        "filename": "core/java/android/net/ConnectivityManager.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 1862,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2019-01-23T03:02:12Z",
+      "side": 1,
+      "message": "I can\u0027t figure out what this is for (no documentation anywhere, the only place where it\u0027s supposed to be used is a TODO). Can you write a quick comment to explain what this is ?\n\n(In particular I suspect the name might be inappropriate – in Android land a \"resource\" is something that you set up in your res/ directory, and a \"resourceId\" is the R.java generated ID for it. If that\u0027s not what this int is, probably it needs a less ambiguous name.",
+      "range": {
+        "startLine": 1862,
+        "startChar": 11,
+        "endLine": 1862,
+        "endChar": 26
+      },
+      "revId": "b35543d45c9fadb6ea5392fed4baf994f43d8acf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a9b9ceec_9fbe09c2",
+        "filename": "core/java/android/net/NattSocketKeepalive.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2019-01-23T03:02:12Z",
+      "side": 1,
+      "message": "You can\u0027t nonnull an int (does this even compile ?)",
+      "range": {
+        "startLine": 41,
+        "startChar": 13,
+        "endLine": 41,
+        "endChar": 20
+      },
+      "revId": "b35543d45c9fadb6ea5392fed4baf994f43d8acf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e18c4869_fba3ca74",
+        "filename": "services/core/java/com/android/server/connectivity/KeepaliveTracker.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 374,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2019-01-23T03:02:12Z",
+      "side": 1,
+      "message": "Nullable",
+      "range": {
+        "startLine": 374,
+        "startChar": 35,
+        "endLine": 374,
+        "endChar": 51
+      },
+      "revId": "b35543d45c9fadb6ea5392fed4baf994f43d8acf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "95fa89c0_aaf4e92a",
+        "filename": "services/core/java/com/android/server/connectivity/KeepaliveTracker.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 374,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2019-01-23T03:02:12Z",
+      "side": 1,
+      "message": "Nullable and return false from isNattKeepaliveSocketValid if null",
+      "range": {
+        "startLine": 374,
+        "startChar": 57,
+        "endLine": 374,
+        "endChar": 71
+      },
+      "revId": "b35543d45c9fadb6ea5392fed4baf994f43d8acf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "44b31d73_0b8ffe14",
+        "filename": "services/core/java/com/android/server/connectivity/KeepaliveTracker.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 375,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2019-01-23T03:02:12Z",
+      "side": 1,
+      "message": "NonNull",
+      "range": {
+        "startLine": 375,
+        "startChar": 33,
+        "endLine": 375,
+        "endChar": 42
+      },
+      "revId": "b35543d45c9fadb6ea5392fed4baf994f43d8acf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c2c003f6_f0d9bbf5",
+        "filename": "services/core/java/com/android/server/connectivity/KeepaliveTracker.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 375,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2019-01-23T03:02:12Z",
+      "side": 1,
+      "message": "NonNull",
+      "range": {
+        "startLine": 375,
+        "startChar": 70,
+        "endLine": 375,
+        "endChar": 76
+      },
+      "revId": "b35543d45c9fadb6ea5392fed4baf994f43d8acf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b0543bb0_5e2e6f56",
+        "filename": "services/core/java/com/android/server/connectivity/KeepaliveTracker.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 376,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2019-01-23T03:02:12Z",
+      "side": 1,
+      "message": "NonNull",
+      "range": {
+        "startLine": 376,
+        "startChar": 12,
+        "endLine": 376,
+        "endChar": 18
+      },
+      "revId": "b35543d45c9fadb6ea5392fed4baf994f43d8acf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "efe31a99_8fda11ac",
+        "filename": "services/core/java/com/android/server/connectivity/KeepaliveTracker.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 377,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2019-01-23T03:02:12Z",
+      "side": 1,
+      "message": "Validate that ?\nor better : Ensure that",
+      "range": {
+        "startLine": 377,
+        "startChar": 11,
+        "endLine": 377,
+        "endChar": 24
+      },
+      "revId": "b35543d45c9fadb6ea5392fed4baf994f43d8acf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a745bcf5_b4bd0be7",
+        "filename": "services/core/java/com/android/server/connectivity/KeepaliveTracker.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 401,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2019-01-23T03:02:12Z",
+      "side": 1,
+      "message": "which port ?",
+      "range": {
+        "startLine": 401,
+        "startChar": 87,
+        "endLine": 401,
+        "endChar": 90
+      },
+      "revId": "b35543d45c9fadb6ea5392fed4baf994f43d8acf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c8b4c47b_84bf3524",
+        "filename": "services/core/java/com/android/server/connectivity/KeepaliveTracker.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 402,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2019-01-23T03:02:12Z",
+      "side": 1,
+      "message": "open",
+      "range": {
+        "startLine": 402,
+        "startChar": 44,
+        "endLine": 402,
+        "endChar": 50
+      },
+      "revId": "b35543d45c9fadb6ea5392fed4baf994f43d8acf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
