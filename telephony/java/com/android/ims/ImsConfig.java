@@ -277,14 +277,12 @@ public class ImsConfig {
          * Wi-Fi calling roaming status.
          * Value is in Integer format. ON (1), OFF(0).
          */
-        public static final int VOICE_OVER_WIFI_ROAMING =
-                ProvisioningManager.KEY_VOICE_OVER_WIFI_ROAMING_ENABLED_OVERRIDE;
+        public static final int VOICE_OVER_WIFI_ROAMING = 26;
         /**
          * Wi-Fi calling modem - WfcModeFeatureValueConstants.
          * Value is in Integer format.
          */
-        public static final int VOICE_OVER_WIFI_MODE =
-                ProvisioningManager.KEY_VOICE_OVER_WIFI_MODE_OVERRIDE;
+        public static final int VOICE_OVER_WIFI_MODE = 27;
         /**
          * VOLTE Status for voice over wifi status of Enabled (1), or Disabled (0).
          * Value is in Integer format.
