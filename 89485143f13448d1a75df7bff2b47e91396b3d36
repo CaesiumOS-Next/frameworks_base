@@ -22,6 +22,30 @@
       "revId": "89485143f13448d1a75df7bff2b47e91396b3d36",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f584be1d_316011be",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1288034
+      },
+      "writtenOn": "2019-01-25T05:55:01Z",
+      "side": 1,
+      "message": "Context.getSystemService(Class\u003cT\u003e) is final, and calls Context.getSystemServiceName(Class\u003cT\u003e) then Context.getSystemService(String), which are non-final.\nIf mockito does not mock final methods you could mock Context.getSystemServiceName() and getSystemService() to specify a mock service.\nNow that mockito mocks final methods, I need to mock Context.getSystemService(Class\u003cT\u003e) directly.",
+      "parentUuid": "94835b0b_13f4a3f3",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 62
+      },
+      "revId": "89485143f13448d1a75df7bff2b47e91396b3d36",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
