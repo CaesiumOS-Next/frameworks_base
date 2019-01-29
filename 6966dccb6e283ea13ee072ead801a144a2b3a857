@@ -1,0 +1,165 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0f52fe26_7af123c7",
+        "filename": "core/java/android/net/ConnectivityManager.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 1856,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2019-01-29T13:12:36Z",
+      "side": 1,
+      "message": "I\u0027m not sure how relevant is is that the app was attempting to use this network. Is this the network the socket is bound on ? Can\u0027t this be deduced from the socket ?",
+      "range": {
+        "startLine": 1856,
+        "startChar": 58,
+        "endLine": 1856,
+        "endChar": 79
+      },
+      "revId": "6966dccb6e283ea13ee072ead801a144a2b3a857",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0c07137b_5dc5b4b6",
+        "filename": "core/java/android/net/ConnectivityManager.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 1857,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2019-01-29T13:12:36Z",
+      "side": 1,
+      "message": "on which to send keepalive packets",
+      "range": {
+        "startLine": 1857,
+        "startChar": 32,
+        "endLine": 1857,
+        "endChar": 51
+      },
+      "revId": "6966dccb6e283ea13ee072ead801a144a2b3a857",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "54a0643e_202a0553",
+        "filename": "core/java/android/net/ConnectivityManager.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 1862,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2019-01-29T13:12:36Z",
+      "side": 1,
+      "message": "An object that can be used to control this object ?\n\nMaybe \"that can be used to control the keepalive on this socket\" or something",
+      "range": {
+        "startLine": 1862,
+        "startChar": 83,
+        "endLine": 1862,
+        "endChar": 99
+      },
+      "revId": "6966dccb6e283ea13ee072ead801a144a2b3a857",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "df554fd1_f76b79ab",
+        "filename": "core/java/android/net/TcpSocketKeepalive.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2019-01-29T13:12:36Z",
+      "side": 1,
+      "message": "What happens if it does ?",
+      "range": {
+        "startLine": 42,
+        "startChar": 57,
+        "endLine": 42,
+        "endChar": 58
+      },
+      "revId": "6966dccb6e283ea13ee072ead801a144a2b3a857",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cbcb634d_7814b1ff",
+        "filename": "core/java/android/net/TcpSocketKeepalive.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2019-01-29T13:12:36Z",
+      "side": 1,
+      "message": "typo ?",
+      "range": {
+        "startLine": 49,
+        "startChar": 63,
+        "endLine": 49,
+        "endChar": 64
+      },
+      "revId": "6966dccb6e283ea13ee072ead801a144a2b3a857",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2e570a8b_1594822d",
+        "filename": "core/java/android/net/TcpSocketKeepalive.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2019-01-29T13:12:36Z",
+      "side": 1,
+      "message": "Won\u0027t this fit on the same line ?",
+      "range": {
+        "startLine": 51,
+        "startChar": 23,
+        "endLine": 51,
+        "endChar": 24
+      },
+      "revId": "6966dccb6e283ea13ee072ead801a144a2b3a857",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a8e53055_dae32daf",
+        "filename": "services/core/java/com/android/server/connectivity/KeepaliveTracker.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2019-01-29T13:12:36Z",
+      "side": 1,
+      "message": "Optional : switch may be more readable.",
+      "range": {
+        "startLine": 214,
+        "startChar": 20,
+        "endLine": 214,
+        "endChar": 38
+      },
+      "revId": "6966dccb6e283ea13ee072ead801a144a2b3a857",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
