@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "a0511c89_9e5483f8",
+        "filename": "core/java/android/net/ConnectivityManager.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 1856,
+      "author": {
+        "id": 1306837
+      },
+      "writtenOn": "2019-01-30T12:38:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0f52fe26_7af123c7",
+      "range": {
+        "startLine": 1856,
+        "startChar": 58,
+        "endLine": 1856,
+        "endChar": 79
+      },
+      "revId": "6966dccb6e283ea13ee072ead801a144a2b3a857",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0c07137b_5dc5b4b6",
         "filename": "core/java/android/net/ConnectivityManager.java",
         "patchSetId": 3
@@ -45,6 +69,30 @@
       "revId": "6966dccb6e283ea13ee072ead801a144a2b3a857",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eff4de72_ffe3a63e",
+        "filename": "core/java/android/net/ConnectivityManager.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 1857,
+      "author": {
+        "id": 1306837
+      },
+      "writtenOn": "2019-01-30T12:38:21Z",
+      "side": 1,
+      "message": "Done, in the other way.\nReopen if you don\u0027t like it",
+      "parentUuid": "0c07137b_5dc5b4b6",
+      "range": {
+        "startLine": 1857,
+        "startChar": 32,
+        "endLine": 1857,
+        "endChar": 51
+      },
+      "revId": "6966dccb6e283ea13ee072ead801a144a2b3a857",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "f67c30eb_e2acd4e1",
+        "filename": "core/java/android/net/ConnectivityManager.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 1862,
+      "author": {
+        "id": 1306837
+      },
+      "writtenOn": "2019-01-30T12:38:21Z",
+      "side": 1,
+      "message": "Done, also for other APIs.",
+      "parentUuid": "54a0643e_202a0553",
+      "range": {
+        "startLine": 1862,
+        "startChar": 83,
+        "endLine": 1862,
+        "endChar": 99
+      },
+      "revId": "6966dccb6e283ea13ee072ead801a144a2b3a857",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "df554fd1_f76b79ab",
         "filename": "core/java/android/net/TcpSocketKeepalive.java",
         "patchSetId": 3
@@ -91,6 +163,30 @@
       "revId": "6966dccb6e283ea13ee072ead801a144a2b3a857",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2df6838d_708e2a99",
+        "filename": "core/java/android/net/TcpSocketKeepalive.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1306837
+      },
+      "writtenOn": "2019-01-30T12:38:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "df554fd1_f76b79ab",
+      "range": {
+        "startLine": 42,
+        "startChar": 57,
+        "endLine": 42,
+        "endChar": 58
+      },
+      "revId": "6966dccb6e283ea13ee072ead801a144a2b3a857",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "20f56c31_67e96cc4",
+        "filename": "core/java/android/net/TcpSocketKeepalive.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1306837
+      },
+      "writtenOn": "2019-01-30T12:38:21Z",
+      "side": 1,
+      "message": "It\u0027s an old naming style to express the hidden api.\nhttps://cs.corp.google.com/aosp-master/libcore/ojluni/src/main/java/java/net/Socket.java?q\u003dSocket.java\u0026sq\u003dpackage:aosp-master\u0026dr\u0026l\u003d1780",
+      "parentUuid": "cbcb634d_7814b1ff",
+      "range": {
+        "startLine": 49,
+        "startChar": 63,
+        "endLine": 49,
+        "endChar": 64
+      },
+      "revId": "6966dccb6e283ea13ee072ead801a144a2b3a857",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2e570a8b_1594822d",
         "filename": "core/java/android/net/TcpSocketKeepalive.java",
         "patchSetId": 3
@@ -140,6 +260,30 @@
     },
     {
       "key": {
+        "uuid": "16f56d90_58e78168",
+        "filename": "core/java/android/net/TcpSocketKeepalive.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1306837
+      },
+      "writtenOn": "2019-01-30T12:38:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2e570a8b_1594822d",
+      "range": {
+        "startLine": 51,
+        "startChar": 23,
+        "endLine": 51,
+        "endChar": 24
+      },
+      "revId": "6966dccb6e283ea13ee072ead801a144a2b3a857",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a8e53055_dae32daf",
         "filename": "services/core/java/com/android/server/connectivity/KeepaliveTracker.java",
         "patchSetId": 3
@@ -151,6 +295,30 @@
       "writtenOn": "2019-01-29T13:12:36Z",
       "side": 1,
       "message": "Optional : switch may be more readable.",
+      "range": {
+        "startLine": 214,
+        "startChar": 20,
+        "endLine": 214,
+        "endChar": 38
+      },
+      "revId": "6966dccb6e283ea13ee072ead801a144a2b3a857",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5d1c0164_b5271da5",
+        "filename": "services/core/java/com/android/server/connectivity/KeepaliveTracker.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1306837
+      },
+      "writtenOn": "2019-01-30T12:38:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a8e53055_dae32daf",
       "range": {
         "startLine": 214,
         "startChar": 20,
