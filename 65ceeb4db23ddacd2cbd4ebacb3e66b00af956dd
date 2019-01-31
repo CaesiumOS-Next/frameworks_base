@@ -46,6 +46,30 @@
       "revId": "65ceeb4db23ddacd2cbd4ebacb3e66b00af956dd",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a723b1a5_35c1fb28",
+        "filename": "core/java/android/net/ConnectivityManager.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 3973,
+      "author": {
+        "id": 1288034
+      },
+      "writtenOn": "2019-01-31T04:21:54Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "a44be657_0a22970f",
+      "range": {
+        "startLine": 3973,
+        "startChar": 12,
+        "endLine": 3973,
+        "endChar": 61
+      },
+      "revId": "65ceeb4db23ddacd2cbd4ebacb3e66b00af956dd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
