@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e39bcab5_0c3c3380",
+        "filename": "core/java/android/net/NetworkStack.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2019-01-31T10:24:29Z",
+      "side": 1,
+      "message": "Probably best to factor out into its own function. Not necessarily in this CL.",
+      "range": {
+        "startLine": 226,
+        "startChar": 12,
+        "endLine": 226,
+        "endChar": 96
+      },
+      "revId": "3b906878f842373716d05f4b4d2cef02b7e25dc2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
