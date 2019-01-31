@@ -70,6 +70,29 @@
       "revId": "65ceeb4db23ddacd2cbd4ebacb3e66b00af956dd",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b418175a_7ba6eae7",
+        "filename": "core/java/android/net/ConnectivityManager.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 3977,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2019-01-31T10:06:28Z",
+      "side": 1,
+      "message": "But... does this mean I can\u0027t use private DNS if I need to call bindProcessToNetwork ?\n\nSuppose (let me come up with some example) I\u0027m a random app who wants to stream some video data from the mobile network using FFMpeg (which lets me stream from a URL), because the video data is only available through the carrier\u0027s network. The user has set a strict private DNS, but their setting is then ignored.\n\nAre we fine with that ?",
+      "range": {
+        "startLine": 3977,
+        "startChar": 28,
+        "endLine": 3977,
+        "endChar": 45
+      },
+      "revId": "65ceeb4db23ddacd2cbd4ebacb3e66b00af956dd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
