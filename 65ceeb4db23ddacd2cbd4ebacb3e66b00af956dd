@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "020300d1_2a9f98d4",
+        "filename": "core/java/android/net/ConnectivityManager.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 3973,
+      "author": {
+        "id": 1288034
+      },
+      "writtenOn": "2019-01-31T03:50:11Z",
+      "side": 1,
+      "message": "I think because of this, if I do:\nsetProcessDefaultNetwork(network.getPrivateDnsBypassingCopy());\nsetProcessDefaultNetwork(network);\n\nthen it will still bypass private DNS even after the second call.",
+      "range": {
+        "startLine": 3973,
+        "startChar": 12,
+        "endLine": 3973,
+        "endChar": 61
+      },
+      "revId": "65ceeb4db23ddacd2cbd4ebacb3e66b00af956dd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
