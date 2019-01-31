@@ -93,6 +93,30 @@
       "revId": "65ceeb4db23ddacd2cbd4ebacb3e66b00af956dd",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1bfe8631_f3158844",
+        "filename": "core/java/android/net/ConnectivityManager.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 3977,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2019-01-31T10:26:16Z",
+      "side": 1,
+      "message": "Not sure I understand the question, but the intent is:\n\n1. Unprivileged apps cannot bypass private DNS without running their own resolver.\n2. bindProcessToNetwork(network) will bind the app to that network and use that network\u0027s DNS settings (which in strict mode will be the strict mode DNS servers).\n3. bindProcessToNetwork(network.getPrivateDnsBypassingCopy()) will bind the app to that network and bypass private DNS, using the network\u0027s native DNS servers. The app needs the NETWORK_BYPASS_PRIVATE_DNS signature permission.\n\nBut of course there could be a bug in this code. Does your reading of the code match the intent?",
+      "parentUuid": "b418175a_7ba6eae7",
+      "range": {
+        "startLine": 3977,
+        "startChar": 28,
+        "endLine": 3977,
+        "endChar": 45
+      },
+      "revId": "65ceeb4db23ddacd2cbd4ebacb3e66b00af956dd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
