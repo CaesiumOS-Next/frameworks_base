@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d086f912_ce0eb887",
+        "filename": "telephony/java/android/telephony/CarrierConfigManager.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 2263,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2019-01-31T01:10:52Z",
+      "side": 1,
+      "message": "Let\u0027s make clear that this applies only to carrier networks and not to other networks such as wifi. Something like:\n\n     * Defines carrier-specific Network capabilities which disable 464xlat on carrier networks.",
+      "range": {
+        "startLine": 2263,
+        "startChar": 7,
+        "endLine": 2263,
+        "endChar": 75
+      },
+      "revId": "9233f127f9ac2ffed707735d3030399ed4f54384",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aeef857d_d97093e2",
+        "filename": "telephony/java/android/telephony/CarrierConfigManager.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 2277,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2019-01-31T01:10:52Z",
+      "side": 1,
+      "message": "NetworkMisc is an implementation detail and should not be mentioned here. I\u0027d just say\n\nExample:\n464xlat will be disabled:",
+      "range": {
+        "startLine": 2277,
+        "startChar": 7,
+        "endLine": 2277,
+        "endChar": 46
+      },
+      "revId": "9233f127f9ac2ffed707735d3030399ed4f54384",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "96ebeab8_9cc35f46",
+        "filename": "telephony/java/android/telephony/CarrierConfigManager.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 2286,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2019-01-31T01:10:52Z",
+      "side": 1,
+      "message": "Remove.",
+      "range": {
+        "startLine": 2286,
+        "startChar": 0,
+        "endLine": 2286,
+        "endChar": 43
+      },
+      "revId": "9233f127f9ac2ffed707735d3030399ed4f54384",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
