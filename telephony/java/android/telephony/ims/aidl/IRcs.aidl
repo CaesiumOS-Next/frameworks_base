@@ -26,7 +26,7 @@ import android.telephony.ims.RcsMessageQueryParams;
 import android.telephony.ims.RcsMessageQueryResult;
 import android.telephony.ims.RcsOutgoingMessageCreationParams;
 import android.telephony.ims.RcsParticipantQueryParams;
-import android.telephony.ims.RcsParticipantQueryResult;
+import android.telephony.ims.RcsParticipantQueryResultValues;
 import android.telephony.ims.RcsQueryContinuationToken;
 import android.telephony.ims.RcsThreadQueryParams;
 import android.telephony.ims.RcsThreadQueryResult;
@@ -49,9 +49,9 @@ interface IRcs {
     RcsParticipantQueryResult getParticipantsWithToken(
         in RcsQueryContinuationToken continuationToken);
 
-    RcsMessageQueryResult getMessages(in RcsMessageQueryParams queryParams);
+    RcsMessageQueryResultValues getMessages(in RcsMessageQueryParams queryParams);
 
-    RcsMessageQueryResult getMessagesWithToken(
+    RcsMessageQueryResultValues getMessagesWithToken(
         in RcsQueryContinuationToken continuationToken);
 
     RcsEventQueryResultDescriptor getEvents(in RcsEventQueryParams queryParams);

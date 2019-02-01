@@ -58,8 +58,8 @@ public final class RcsGroupThreadNameChangedEvent extends RcsGroupThreadEvent {
      * @hide - not meant for public use.
      */
     @Override
-    public void persist() throws RcsMessageStoreException {
-        RcsControllerCall.call(iRcs -> iRcs.createGroupThreadNameChangedEvent(
+    public void persist(RcsControllerCall rcsControllerCall) throws RcsMessageStoreException {
+        rcsControllerCall.call(iRcs -> iRcs.createGroupThreadNameChangedEvent(
                 getTimestamp(), getRcsGroupThread().getThreadId(),
                 getOriginatingParticipant().getId(), mNewName));
     }
