@@ -117,6 +117,30 @@
       "revId": "65ceeb4db23ddacd2cbd4ebacb3e66b00af956dd",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c89c4755_ec369fe4",
+        "filename": "core/java/android/net/ConnectivityManager.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 3977,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2019-02-01T05:39:35Z",
+      "side": 1,
+      "message": "Ah, yes it does. Thanks for clarifying the intent.\n\nMaybe it would bear clarifying that\n・To bypass private DNS, an app need either NETWORK_BYPASS_PRIVATE_DNS or CONNECTIVITY_USE_RESTRICTED_NETWORKS. While the former is signature, the latter is accessible to signature|privileged.\n・Absent any of those permissions, an app can still call getPrivateDnsBypassingCopy and get a bypassing copy, but resolve requests with that copy from within that app will still not bypass private DNS.",
+      "parentUuid": "1bfe8631_f3158844",
+      "range": {
+        "startLine": 3977,
+        "startChar": 28,
+        "endLine": 3977,
+        "endChar": 45
+      },
+      "revId": "65ceeb4db23ddacd2cbd4ebacb3e66b00af956dd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
