@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0b07a8d6_92a1a349",
+        "filename": "media/java/android/media/tv/TvTrackInfo.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 428,
+      "author": {
+        "id": 1060286
+      },
+      "writtenOn": "2019-02-01T17:49:52Z",
+      "side": 1,
+      "message": "Why not use ISO_639_language_code audiotype or editorial_classification from ETSI EN 300 468\n\nI think an enum for AudioType or EditorialClassification is better\n\nIf we stay with a boolean the field should name hearingImpaired",
+      "range": {
+        "startLine": 428,
+        "startChar": 23,
+        "endLine": 428,
+        "endChar": 39
+      },
+      "revId": "6b1f7015d61f1780fb96422c12a74a9bf3e16f2e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
