@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "76d3188b_85433f33",
+        "filename": "services/core/java/com/android/server/connectivity/KeepaliveTracker.java",
+        "patchSetId": 12
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1288034
+      },
+      "writtenOn": "2019-02-05T04:06:44Z",
+      "side": 1,
+      "message": "This seems to apply only to the handle* methods: startNattKeepalive and startTcpKeepalive are called on random Binder threads from CS",
+      "range": {
+        "startLine": 72,
+        "startChar": 67,
+        "endLine": 73,
+        "endChar": 74
+      },
+      "revId": "5c9740683aa1df10efc9c229c27deeffc9a2f7ee",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "45c77af0_bf90d083",
+        "filename": "services/core/java/com/android/server/connectivity/KeepaliveTracker.java",
+        "patchSetId": 12
+      },
+      "lineNbr": 266,
+      "author": {
+        "id": 1288034
+      },
+      "writtenOn": "2019-02-05T04:06:44Z",
+      "side": 1,
+      "message": "I don\u0027t think we turn off repair mode and restore socket blocking status: maybe this should be here ?",
+      "range": {
+        "startLine": 266,
+        "startChar": 59,
+        "endLine": 266,
+        "endChar": 60
+      },
+      "revId": "5c9740683aa1df10efc9c229c27deeffc9a2f7ee",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d422530b_cec5988c",
+        "filename": "services/core/java/com/android/server/connectivity/KeepaliveTracker.java",
+        "patchSetId": 12
+      },
+      "lineNbr": 458,
+      "author": {
+        "id": 1288034
+      },
+      "writtenOn": "2019-02-05T04:06:44Z",
+      "side": 1,
+      "message": "I think this method is called on some CS binder threads, but TcpKeepaliveController methods are not thread-safe: should we grab a lock here ?",
+      "range": {
+        "startLine": 458,
+        "startChar": 12,
+        "endLine": 458,
+        "endChar": 78
+      },
+      "revId": "5c9740683aa1df10efc9c229c27deeffc9a2f7ee",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "efc601a4_2b5fff57",
+        "filename": "services/core/java/com/android/server/connectivity/KeepaliveTracker.java",
+        "patchSetId": 12
+      },
+      "lineNbr": 459,
+      "author": {
+        "id": 1288034
+      },
+      "writtenOn": "2019-02-05T04:06:44Z",
+      "side": 1,
+      "message": "If this throws I think we should turn off repair mode / restore socket blocking status",
+      "range": {
+        "startLine": 459,
+        "startChar": 12,
+        "endLine": 459,
+        "endChar": 68
+      },
+      "revId": "5c9740683aa1df10efc9c229c27deeffc9a2f7ee",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
