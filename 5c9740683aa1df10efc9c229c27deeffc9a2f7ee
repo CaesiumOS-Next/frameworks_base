@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "8d592e21_c85795db",
+        "filename": "core/java/android/net/NetworkAgent.java",
+        "patchSetId": 12
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2019-02-05T11:43:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "47cfb69f_304e1e08",
+      "range": {
+        "startLine": 198,
+        "startChar": 11,
+        "endLine": 198,
+        "endChar": 14
+      },
+      "revId": "5c9740683aa1df10efc9c229c27deeffc9a2f7ee",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8533fb40_6109020e",
         "filename": "core/java/android/net/NetworkAgent.java",
         "patchSetId": 12
@@ -45,6 +69,30 @@
       "revId": "5c9740683aa1df10efc9c229c27deeffc9a2f7ee",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2de17a42_6ac1ad4e",
+        "filename": "core/java/android/net/NetworkAgent.java",
+        "patchSetId": 12
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2019-02-05T11:43:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8533fb40_6109020e",
+      "range": {
+        "startLine": 200,
+        "startChar": 80,
+        "endLine": 200,
+        "endChar": 83
+      },
+      "revId": "5c9740683aa1df10efc9c229c27deeffc9a2f7ee",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "743e44b4_b5b1b0e9",
+        "filename": "packages/NetworkStack/src/android/net/ip/IpClient.java",
+        "patchSetId": 12
+      },
+      "lineNbr": 1268,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2019-02-05T11:43:13Z",
+      "side": 1,
+      "message": "Nope, not intended. As Rémi points out, mApfFilter is even guaranteed to be null here. Fixed.",
+      "parentUuid": "ec1df9b4_cc9b42a7",
+      "range": {
+        "startLine": 1253,
+        "startChar": 0,
+        "endLine": 1268,
+        "endChar": 17
+      },
+      "revId": "5c9740683aa1df10efc9c229c27deeffc9a2f7ee",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "76d3188b_85433f33",
         "filename": "services/core/java/com/android/server/connectivity/KeepaliveTracker.java",
         "patchSetId": 12
@@ -91,6 +163,30 @@
       "revId": "5c9740683aa1df10efc9c229c27deeffc9a2f7ee",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cf30fbe8_5197a3ea",
+        "filename": "services/core/java/com/android/server/connectivity/KeepaliveTracker.java",
+        "patchSetId": 12
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2019-02-05T11:43:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "76d3188b_85433f33",
+      "range": {
+        "startLine": 72,
+        "startChar": 67,
+        "endLine": 73,
+        "endChar": 74
+      },
+      "revId": "5c9740683aa1df10efc9c229c27deeffc9a2f7ee",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "9fc3201f_3da337d2",
+        "filename": "services/core/java/com/android/server/connectivity/KeepaliveTracker.java",
+        "patchSetId": 12
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2019-02-05T11:43:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5ae53c50_ae45acaf",
+      "range": {
+        "startLine": 178,
+        "startChar": 0,
+        "endLine": 181,
+        "endChar": 69
+      },
+      "revId": "5c9740683aa1df10efc9c229c27deeffc9a2f7ee",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "36301fdc_fe4fefba",
         "filename": "services/core/java/com/android/server/connectivity/KeepaliveTracker.java",
         "patchSetId": 12
@@ -128,6 +248,30 @@
       "writtenOn": "2019-02-05T06:50:03Z",
       "side": 1,
       "message": "Note: this does not work well with stacked links (464xlat). Maybe this should be getAllAddresses instead. Not a new bug: maybe we can file a separate bug for that.",
+      "range": {
+        "startLine": 199,
+        "startChar": 38,
+        "endLine": 199,
+        "endChar": 71
+      },
+      "revId": "5c9740683aa1df10efc9c229c27deeffc9a2f7ee",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "58604c94_5b4f8fc3",
+        "filename": "services/core/java/com/android/server/connectivity/KeepaliveTracker.java",
+        "patchSetId": 12
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2019-02-05T11:43:13Z",
+      "side": 1,
+      "message": "I think we can fix here and now. It seems easy and safe enough. Maybe I\u0027ll regret these words...",
+      "parentUuid": "36301fdc_fe4fefba",
       "range": {
         "startLine": 199,
         "startChar": 38,
@@ -163,6 +307,30 @@
     },
     {
       "key": {
+        "uuid": "254ed9ca_e1e184f9",
+        "filename": "services/core/java/com/android/server/connectivity/KeepaliveTracker.java",
+        "patchSetId": 12
+      },
+      "lineNbr": 266,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2019-02-05T11:43:13Z",
+      "side": 1,
+      "message": "Done, albeit on the previous patchset",
+      "parentUuid": "45c77af0_bf90d083",
+      "range": {
+        "startLine": 266,
+        "startChar": 59,
+        "endLine": 266,
+        "endChar": 60
+      },
+      "revId": "5c9740683aa1df10efc9c229c27deeffc9a2f7ee",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d422530b_cec5988c",
         "filename": "services/core/java/com/android/server/connectivity/KeepaliveTracker.java",
         "patchSetId": 12
@@ -186,6 +354,30 @@
     },
     {
       "key": {
+        "uuid": "f326ba65_3d0be6f2",
+        "filename": "services/core/java/com/android/server/connectivity/KeepaliveTracker.java",
+        "patchSetId": 12
+      },
+      "lineNbr": 458,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2019-02-05T11:43:13Z",
+      "side": 1,
+      "message": "That doesn\u0027t help. In a way you can see the file descriptor update as atomic ; the problem is one of ordering. This method lobs a message to the service handler, so the issue would be the handler thread not seeing this already done. I think at most the probability of this happening is very small. However, it looks very possible that this gets called twice before the message arrives.\n\nIn any case, this should absolutely not be done here, but after the message is received. Added a TODO.",
+      "parentUuid": "d422530b_cec5988c",
+      "range": {
+        "startLine": 458,
+        "startChar": 12,
+        "endLine": 458,
+        "endChar": 78
+      },
+      "revId": "5c9740683aa1df10efc9c229c27deeffc9a2f7ee",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "efc601a4_2b5fff57",
         "filename": "services/core/java/com/android/server/connectivity/KeepaliveTracker.java",
         "patchSetId": 12
@@ -206,6 +398,30 @@
       "revId": "5c9740683aa1df10efc9c229c27deeffc9a2f7ee",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "56b8e3e6_3f941eff",
+        "filename": "services/core/java/com/android/server/connectivity/KeepaliveTracker.java",
+        "patchSetId": 12
+      },
+      "lineNbr": 459,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2019-02-05T11:43:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "efc601a4_2b5fff57",
+      "range": {
+        "startLine": 459,
+        "startChar": 12,
+        "endLine": 459,
+        "endChar": 68
+      },
+      "revId": "5c9740683aa1df10efc9c229c27deeffc9a2f7ee",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
