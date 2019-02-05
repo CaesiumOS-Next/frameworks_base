@@ -2,6 +2,75 @@
   "comments": [
     {
       "key": {
+        "uuid": "47cfb69f_304e1e08",
+        "filename": "core/java/android/net/NetworkAgent.java",
+        "patchSetId": 12
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1273909
+      },
+      "writtenOn": "2019-02-05T08:26:58Z",
+      "side": 1,
+      "message": "nit: TCP",
+      "range": {
+        "startLine": 198,
+        "startChar": 11,
+        "endLine": 198,
+        "endChar": 14
+      },
+      "revId": "5c9740683aa1df10efc9c229c27deeffc9a2f7ee",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8533fb40_6109020e",
+        "filename": "core/java/android/net/NetworkAgent.java",
+        "patchSetId": 12
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1273909
+      },
+      "writtenOn": "2019-02-05T08:26:58Z",
+      "side": 1,
+      "message": "for -\u003e from",
+      "range": {
+        "startLine": 200,
+        "startChar": 80,
+        "endLine": 200,
+        "endChar": 83
+      },
+      "revId": "5c9740683aa1df10efc9c229c27deeffc9a2f7ee",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ec1df9b4_cc9b42a7",
+        "filename": "packages/NetworkStack/src/android/net/ip/IpClient.java",
+        "patchSetId": 12
+      },
+      "lineNbr": 1268,
+      "author": {
+        "id": 1273909
+      },
+      "writtenOn": "2019-02-05T08:26:58Z",
+      "side": 1,
+      "message": "Is it intended that we only process these comments while in StoppedState?\n\nAnd in case this works as intended, could you please document somewhere that APF packet filters must be added and removed only when the interface is stopped?",
+      "range": {
+        "startLine": 1253,
+        "startChar": 0,
+        "endLine": 1268,
+        "endChar": 17
+      },
+      "revId": "5c9740683aa1df10efc9c229c27deeffc9a2f7ee",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "76d3188b_85433f33",
         "filename": "services/core/java/com/android/server/connectivity/KeepaliveTracker.java",
         "patchSetId": 12
@@ -18,6 +87,29 @@
         "startChar": 67,
         "endLine": 73,
         "endChar": 74
+      },
+      "revId": "5c9740683aa1df10efc9c229c27deeffc9a2f7ee",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5ae53c50_ae45acaf",
+        "filename": "services/core/java/com/android/server/connectivity/KeepaliveTracker.java",
+        "patchSetId": 12
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1273909
+      },
+      "writtenOn": "2019-02-05T08:26:58Z",
+      "side": 1,
+      "message": "Shouldn\u0027t we also call CMD_REMOVE_KEEPALIVE_PACKET_FILTER when the app dies?",
+      "range": {
+        "startLine": 178,
+        "startChar": 0,
+        "endLine": 181,
+        "endChar": 69
       },
       "revId": "5c9740683aa1df10efc9c229c27deeffc9a2f7ee",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
