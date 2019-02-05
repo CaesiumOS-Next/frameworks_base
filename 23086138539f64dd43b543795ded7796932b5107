@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "93fd14d1_7723a9fe",
+        "filename": "services/core/java/com/android/server/connectivity/KeepaliveTracker.java",
+        "patchSetId": 15
+      },
+      "lineNbr": 258,
+      "author": {
+        "id": 1288034
+      },
+      "writtenOn": "2019-02-05T09:10:48Z",
+      "side": 1,
+      "message": "This could be called by handleEventSocketKeepalive in response to CMD_ADD_KEEPALIVE_PACKET_FILTER error, before isStarted is set to true.\nI think this could be fixed by adding a \"isStarting\" boolean set to true when the commands are sent to the nai.asyncChannel queue, and checking for that instead.",
+      "range": {
+        "startLine": 258,
+        "startChar": 16,
+        "endLine": 258,
+        "endChar": 25
+      },
+      "revId": "23086138539f64dd43b543795ded7796932b5107",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
