@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e9a2e172_94cb18e0",
+        "filename": "packages/NetworkStack/tests/Android.bp",
+        "patchSetId": 20
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1288034
+      },
+      "writtenOn": "2019-02-06T01:07:02Z",
+      "side": 1,
+      "message": "NetworkStackTests won\u0027t pass anymore without this. Someone probably added it a dependency of one of the other libraries.",
+      "range": {
+        "startLine": 52,
+        "startChar": 9,
+        "endLine": 52,
+        "endChar": 19
+      },
+      "revId": "7158c9e8a95da681aa32274081b894fcad27d7d9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
