@@ -680,6 +680,30 @@
       "revId": "bf79057c122fecd543d8c4fd9282176094bf2a41",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "866bb875_12cdfeae",
+        "filename": "services/core/java/com/android/server/connectivity/TcpKeepaliveController.java",
+        "patchSetId": 22
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2019-02-06T13:43:04Z",
+      "side": 1,
+      "message": "Ack. FWIW I\u0027d much prefer to see this just be:\n\n    if (events \u0026 EVENT_ERROR) {\n\nassuming Java allows that.",
+      "parentUuid": "eb37257d_8e7274cc",
+      "range": {
+        "startLine": 234,
+        "startChar": 35,
+        "endLine": 234,
+        "endChar": 46
+      },
+      "revId": "bf79057c122fecd543d8c4fd9282176094bf2a41",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }

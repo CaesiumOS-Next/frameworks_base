@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2a2c7348_340747f0",
+        "filename": "core/java/android/net/TcpSocketKeepalive.java",
+        "patchSetId": 25
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2019-02-06T13:43:04Z",
+      "side": 1,
+      "message": "POLLERR or POLLHUP",
+      "range": {
+        "startLine": 48,
+        "startChar": 54,
+        "endLine": 48,
+        "endChar": 61
+      },
+      "revId": "974a3834ef1fb8a500cd4568b14a5dc7481b16a7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e741cf9d_f5031ef0",
+        "filename": "core/java/android/net/TcpSocketKeepalive.java",
+        "patchSetId": 25
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2019-02-06T13:43:04Z",
+      "side": 1,
+      "message": "from the server that the data it has sent has all been delivered",
+      "range": {
+        "startLine": 53,
+        "startChar": 25,
+        "endLine": 53,
+        "endChar": 60
+      },
+      "revId": "974a3834ef1fb8a500cd4568b14a5dc7481b16a7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
