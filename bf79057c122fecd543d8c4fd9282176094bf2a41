@@ -704,6 +704,30 @@
       "revId": "bf79057c122fecd543d8c4fd9282176094bf2a41",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "acd0ac07_0ec86427",
+        "filename": "services/core/java/com/android/server/connectivity/TcpKeepaliveController.java",
+        "patchSetId": 22
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2019-02-06T13:56:15Z",
+      "side": 1,
+      "message": "I would agree, but it does not.",
+      "parentUuid": "866bb875_12cdfeae",
+      "range": {
+        "startLine": 234,
+        "startChar": 35,
+        "endLine": 234,
+        "endChar": 46
+      },
+      "revId": "bf79057c122fecd543d8c4fd9282176094bf2a41",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
