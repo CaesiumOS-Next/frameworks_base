@@ -48,6 +48,30 @@
     },
     {
       "key": {
+        "uuid": "132696aa_ffb19048",
+        "filename": "core/java/android/net/NetworkAgent.java",
+        "patchSetId": 22
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2019-02-06T10:07:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bee73a1d_ef132fbf",
+      "range": {
+        "startLine": 186,
+        "startChar": 94,
+        "endLine": 186,
+        "endChar": 95
+      },
+      "revId": "bf79057c122fecd543d8c4fd9282176094bf2a41",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c8d4f7bb_c798b66a",
         "filename": "core/java/android/net/NetworkAgent.java",
         "patchSetId": 22
@@ -68,6 +92,30 @@
       "revId": "bf79057c122fecd543d8c4fd9282176094bf2a41",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "998818be_b1d4095f",
+        "filename": "core/java/android/net/NetworkAgent.java",
+        "patchSetId": 22
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2019-02-06T10:07:42Z",
+      "side": 1,
+      "message": "The comment says \"For TCP keepalive offloads\". Tried to clarify",
+      "parentUuid": "c8d4f7bb_c798b66a",
+      "range": {
+        "startLine": 188,
+        "startChar": 28,
+        "endLine": 188,
+        "endChar": 59
+      },
+      "revId": "bf79057c122fecd543d8c4fd9282176094bf2a41",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -140,6 +188,78 @@
     },
     {
       "key": {
+        "uuid": "9931dbda_919fc1a6",
+        "filename": "core/java/android/net/TcpSocketKeepalive.java",
+        "patchSetId": 22
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2019-02-06T10:07:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7b5de6f9_952d58c8",
+      "range": {
+        "startLine": 48,
+        "startChar": 18,
+        "endLine": 48,
+        "endChar": 27
+      },
+      "revId": "bf79057c122fecd543d8c4fd9282176094bf2a41",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fabe1ce3_7f0a2836",
+        "filename": "core/java/android/net/TcpSocketKeepalive.java",
+        "patchSetId": 22
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2019-02-06T10:07:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5ca51fdb_7db3a0af",
+      "range": {
+        "startLine": 48,
+        "startChar": 70,
+        "endLine": 48,
+        "endChar": 76
+      },
+      "revId": "bf79057c122fecd543d8c4fd9282176094bf2a41",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1c5cb908_a24ec93e",
+        "filename": "core/java/android/net/TcpSocketKeepalive.java",
+        "patchSetId": 22
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2019-02-06T10:07:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "841bd5f2_effb7eee",
+      "range": {
+        "startLine": 48,
+        "startChar": 27,
+        "endLine": 48,
+        "endChar": 28
+      },
+      "revId": "bf79057c122fecd543d8c4fd9282176094bf2a41",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0f10c048_5e7f6ac3",
         "filename": "core/java/android/net/TcpSocketKeepalive.java",
         "patchSetId": 22
@@ -160,6 +280,30 @@
       "revId": "bf79057c122fecd543d8c4fd9282176094bf2a41",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8f367728_69b89e2b",
+        "filename": "core/java/android/net/TcpSocketKeepalive.java",
+        "patchSetId": 22
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2019-02-06T10:07:42Z",
+      "side": 1,
+      "message": "Tried, but I\u0027m not sure my version is easier to read. PTAL and tell me what you think",
+      "parentUuid": "0f10c048_5e7f6ac3",
+      "range": {
+        "startLine": 51,
+        "startChar": 92,
+        "endLine": 51,
+        "endChar": 93
+      },
+      "revId": "bf79057c122fecd543d8c4fd9282176094bf2a41",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -186,6 +330,30 @@
     },
     {
       "key": {
+        "uuid": "314a756c_25283037",
+        "filename": "services/core/java/com/android/server/connectivity/KeepaliveTracker.java",
+        "patchSetId": 22
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2019-02-06T10:07:42Z",
+      "side": 1,
+      "message": "Done, but I\u0027m not sure it\u0027s really useful considering l.125.",
+      "parentUuid": "878a81dc_bf67276e",
+      "range": {
+        "startLine": 121,
+        "startChar": 8,
+        "endLine": 121,
+        "endChar": 51
+      },
+      "revId": "bf79057c122fecd543d8c4fd9282176094bf2a41",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "dba3c28b_72650b87",
         "filename": "services/core/java/com/android/server/connectivity/KeepaliveTracker.java",
         "patchSetId": 22
@@ -206,6 +374,30 @@
       "revId": "bf79057c122fecd543d8c4fd9282176094bf2a41",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f9fd495b_2af163ae",
+        "filename": "services/core/java/com/android/server/connectivity/KeepaliveTracker.java",
+        "patchSetId": 22
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2019-02-06T10:07:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dba3c28b_72650b87",
+      "range": {
+        "startLine": 162,
+        "startChar": 12,
+        "endLine": 162,
+        "endChar": 29
+      },
+      "revId": "bf79057c122fecd543d8c4fd9282176094bf2a41",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -232,6 +424,30 @@
     },
     {
       "key": {
+        "uuid": "97be3ec1_6d36a383",
+        "filename": "services/core/java/com/android/server/connectivity/KeepaliveTracker.java",
+        "patchSetId": 22
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2019-02-06T10:07:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0b8732a9_4ee477cc",
+      "range": {
+        "startLine": 175,
+        "startChar": 22,
+        "endLine": 175,
+        "endChar": 53
+      },
+      "revId": "bf79057c122fecd543d8c4fd9282176094bf2a41",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4d4045c7_8e501078",
         "filename": "services/core/java/com/android/server/connectivity/KeepaliveTracker.java",
         "patchSetId": 22
@@ -252,6 +468,30 @@
       "revId": "bf79057c122fecd543d8c4fd9282176094bf2a41",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "890b0afb_de335e5c",
+        "filename": "services/core/java/com/android/server/connectivity/KeepaliveTracker.java",
+        "patchSetId": 22
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2019-02-06T10:07:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4d4045c7_8e501078",
+      "range": {
+        "startLine": 207,
+        "startChar": 59,
+        "endLine": 207,
+        "endChar": 74
+      },
+      "revId": "bf79057c122fecd543d8c4fd9282176094bf2a41",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -278,6 +518,30 @@
     },
     {
       "key": {
+        "uuid": "142c05c6_c9c3c517",
+        "filename": "services/core/java/com/android/server/connectivity/KeepaliveTracker.java",
+        "patchSetId": 22
+      },
+      "lineNbr": 251,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2019-02-06T10:07:42Z",
+      "side": 1,
+      "message": "Return early : yes for sure.\nI also added handleStop on premises that it is benign if nothing is started, but without a valid type there is no telling what may have happened so far.",
+      "parentUuid": "96873f54_f81dc017",
+      "range": {
+        "startLine": 251,
+        "startChar": 86,
+        "endLine": 251,
+        "endChar": 87
+      },
+      "revId": "bf79057c122fecd543d8c4fd9282176094bf2a41",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f38b368c_e98b4313",
         "filename": "services/core/java/com/android/server/connectivity/KeepaliveTracker.java",
         "patchSetId": 22
@@ -298,6 +562,30 @@
       "revId": "bf79057c122fecd543d8c4fd9282176094bf2a41",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "86e44b22_b197f976",
+        "filename": "services/core/java/com/android/server/connectivity/KeepaliveTracker.java",
+        "patchSetId": 22
+      },
+      "lineNbr": 273,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2019-02-06T10:07:42Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "f38b368c_e98b4313",
+      "range": {
+        "startLine": 273,
+        "startChar": 50,
+        "endLine": 273,
+        "endChar": 84
+      },
+      "revId": "bf79057c122fecd543d8c4fd9282176094bf2a41",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -324,6 +612,30 @@
     },
     {
       "key": {
+        "uuid": "4ec5f739_7dee6b1e",
+        "filename": "services/core/java/com/android/server/connectivity/KeepaliveTracker.java",
+        "patchSetId": 22
+      },
+      "lineNbr": 392,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2019-02-06T10:07:42Z",
+      "side": 1,
+      "message": "I agree. Added explanations and TODOs. I also can\u0027t swear there isn\u0027t a bug of the kind you describe here.",
+      "parentUuid": "fb70bc48_48980080",
+      "range": {
+        "startLine": 392,
+        "startChar": 8,
+        "endLine": 392,
+        "endChar": 78
+      },
+      "revId": "bf79057c122fecd543d8c4fd9282176094bf2a41",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fb648f1c_4a811931",
         "filename": "services/core/java/com/android/server/connectivity/TcpKeepaliveController.java",
         "patchSetId": 22
@@ -344,6 +656,30 @@
       "revId": "bf79057c122fecd543d8c4fd9282176094bf2a41",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eb37257d_8e7274cc",
+        "filename": "services/core/java/com/android/server/connectivity/TcpKeepaliveController.java",
+        "patchSetId": 22
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2019-02-06T10:07:42Z",
+      "side": 1,
+      "message": "MessageQueue.java only defines EVENT_INPUT, EVENT_OUTPUT and EVENT_ERROR. Comments on the latter seem to indicate POLLHUP is folded into EVENT_ERROR :\n\n         * File descriptor errors can occur for various reasons.  One common error\n         * is when the remote peer of a socket or pipe closes its end of the connection.",
+      "parentUuid": "fb648f1c_4a811931",
+      "range": {
+        "startLine": 234,
+        "startChar": 35,
+        "endLine": 234,
+        "endChar": 46
+      },
+      "revId": "bf79057c122fecd543d8c4fd9282176094bf2a41",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
