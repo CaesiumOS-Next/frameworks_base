@@ -1,0 +1,349 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1382a83d_daefc6ae",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 22
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2019-02-06T09:04:51Z",
+      "side": 1,
+      "message": "Since this CL is also implementing the API, maybe s/Expose/Add/?",
+      "range": {
+        "startLine": 7,
+        "startChar": 7,
+        "endLine": 7,
+        "endChar": 13
+      },
+      "revId": "bf79057c122fecd543d8c4fd9282176094bf2a41",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bee73a1d_ef132fbf",
+        "filename": "core/java/android/net/NetworkAgent.java",
+        "patchSetId": 22
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2019-02-06T09:04:51Z",
+      "side": 1,
+      "message": "For consistency with the other messages (and for readability), document what parameters this message takes.",
+      "range": {
+        "startLine": 186,
+        "startChar": 94,
+        "endLine": 186,
+        "endChar": 95
+      },
+      "revId": "bf79057c122fecd543d8c4fd9282176094bf2a41",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c8d4f7bb_c798b66a",
+        "filename": "core/java/android/net/NetworkAgent.java",
+        "patchSetId": 22
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2019-02-06T09:04:51Z",
+      "side": 1,
+      "message": "Is this TCP-specific? If so, mention that in the comment?",
+      "range": {
+        "startLine": 188,
+        "startChar": 28,
+        "endLine": 188,
+        "endChar": 59
+      },
+      "revId": "bf79057c122fecd543d8c4fd9282176094bf2a41",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5ca51fdb_7db3a0af",
+        "filename": "core/java/android/net/TcpSocketKeepalive.java",
+        "patchSetId": 22
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2019-02-06T09:04:51Z",
+      "side": 1,
+      "message": "the socket",
+      "range": {
+        "startLine": 48,
+        "startChar": 70,
+        "endLine": 48,
+        "endChar": 76
+      },
+      "revId": "bf79057c122fecd543d8c4fd9282176094bf2a41",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "841bd5f2_effb7eee",
+        "filename": "core/java/android/net/TcpSocketKeepalive.java",
+        "patchSetId": 22
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2019-02-06T09:04:51Z",
+      "side": 1,
+      "message": "Nit: stray \" \".",
+      "range": {
+        "startLine": 48,
+        "startChar": 27,
+        "endLine": 48,
+        "endChar": 28
+      },
+      "revId": "bf79057c122fecd543d8c4fd9282176094bf2a41",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7b5de6f9_952d58c8",
+        "filename": "core/java/android/net/TcpSocketKeepalive.java",
+        "patchSetId": 22
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2019-02-06T09:04:51Z",
+      "side": 1,
+      "message": "What is a \"corrupted\" socket? Can we be more specific?",
+      "range": {
+        "startLine": 48,
+        "startChar": 18,
+        "endLine": 48,
+        "endChar": 27
+      },
+      "revId": "bf79057c122fecd543d8c4fd9282176094bf2a41",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0f10c048_5e7f6ac3",
+        "filename": "core/java/android/net/TcpSocketKeepalive.java",
+        "patchSetId": 22
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2019-02-06T09:04:51Z",
+      "side": 1,
+      "message": "Maybe add: \"One way to ensure this is to start keepalive only after having received an application-layer acknowledgement from the socket indicating that sent data has been received.\" (or an easier-to-read version thereof)?",
+      "range": {
+        "startLine": 51,
+        "startChar": 92,
+        "endLine": 51,
+        "endChar": 93
+      },
+      "revId": "bf79057c122fecd543d8c4fd9282176094bf2a41",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "878a81dc_bf67276e",
+        "filename": "services/core/java/com/android/server/connectivity/KeepaliveTracker.java",
+        "patchSetId": 22
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2019-02-06T09:04:51Z",
+      "side": 1,
+      "message": "This comment needs to explain what the starting state is.",
+      "range": {
+        "startLine": 121,
+        "startChar": 8,
+        "endLine": 121,
+        "endChar": 51
+      },
+      "revId": "bf79057c122fecd543d8c4fd9282176094bf2a41",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dba3c28b_72650b87",
+        "filename": "services/core/java/com/android/server/connectivity/KeepaliveTracker.java",
+        "patchSetId": 22
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2019-02-06T09:04:51Z",
+      "side": 1,
+      "message": "Consider throwing instead of returning UNKNOWN. That encourages this list to be kept correct at all times. :-)",
+      "range": {
+        "startLine": 162,
+        "startChar": 12,
+        "endLine": 162,
+        "endChar": 29
+      },
+      "revId": "bf79057c122fecd543d8c4fd9282176094bf2a41",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0b8732a9_4ee477cc",
+        "filename": "services/core/java/com/android/server/connectivity/KeepaliveTracker.java",
+        "patchSetId": 22
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2019-02-06T09:04:51Z",
+      "side": 1,
+      "message": "Consider putting UID and PID before the packet data which is very long.",
+      "range": {
+        "startLine": 175,
+        "startChar": 22,
+        "endLine": 175,
+        "endChar": 53
+      },
+      "revId": "bf79057c122fecd543d8c4fd9282176094bf2a41",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4d4045c7_8e501078",
+        "filename": "services/core/java/com/android/server/connectivity/KeepaliveTracker.java",
+        "patchSetId": 22
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2019-02-06T09:04:51Z",
+      "side": 1,
+      "message": "I don\u0027t think this is correct. If clatd is in use we can\u0027t just use its address, we\u0027d also need to convert the packet from IPv4 to IPv6 here, and we don\u0027t have a NAT46 implementation in Java.",
+      "range": {
+        "startLine": 207,
+        "startChar": 59,
+        "endLine": 207,
+        "endChar": 74
+      },
+      "revId": "bf79057c122fecd543d8c4fd9282176094bf2a41",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "96873f54_f81dc017",
+        "filename": "services/core/java/com/android/server/connectivity/KeepaliveTracker.java",
+        "patchSetId": 22
+      },
+      "lineNbr": 251,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2019-02-06T09:04:51Z",
+      "side": 1,
+      "message": "Return early so you don\u0027t enter STARTING state? Call handleStopKeepalive with ERROR_INVALID_PACKET?",
+      "range": {
+        "startLine": 251,
+        "startChar": 86,
+        "endLine": 251,
+        "endChar": 87
+      },
+      "revId": "bf79057c122fecd543d8c4fd9282176094bf2a41",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f38b368c_e98b4313",
+        "filename": "services/core/java/com/android/server/connectivity/KeepaliveTracker.java",
+        "patchSetId": 22
+      },
+      "lineNbr": 273,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2019-02-06T09:04:51Z",
+      "side": 1,
+      "message": "FWIW we do have bugs filed that we don\u0027t drop incoming NAT-T keepalives.",
+      "range": {
+        "startLine": 273,
+        "startChar": 50,
+        "endLine": 273,
+        "endChar": 84
+      },
+      "revId": "bf79057c122fecd543d8c4fd9282176094bf2a41",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fb70bc48_48980080",
+        "filename": "services/core/java/com/android/server/connectivity/KeepaliveTracker.java",
+        "patchSetId": 22
+      },
+      "lineNbr": 392,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2019-02-06T09:04:51Z",
+      "side": 1,
+      "message": "This assumes we can never get an unexpected combination such as SUCCESS in STOPPED state. If you\u0027re sure that can\u0027t happen, you should probably add a comment to explain why it can\u0027t.\n\nIn general this nested if is very hard to reason about but if it\u0027s correct it\u0027s OK to just explain it in comments.",
+      "range": {
+        "startLine": 392,
+        "startChar": 8,
+        "endLine": 392,
+        "endChar": 78
+      },
+      "revId": "bf79057c122fecd543d8c4fd9282176094bf2a41",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fb648f1c_4a811931",
+        "filename": "services/core/java/com/android/server/connectivity/TcpKeepaliveController.java",
+        "patchSetId": 22
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2019-02-06T09:04:51Z",
+      "side": 1,
+      "message": "Perhaps not for this CL, but can we add a comment explaining what errors might have occured here? Also, don\u0027t we need to check for POLLHUP as well?",
+      "range": {
+        "startLine": 234,
+        "startChar": 35,
+        "endLine": 234,
+        "endChar": 46
+      },
+      "revId": "bf79057c122fecd543d8c4fd9282176094bf2a41",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
