@@ -36,7 +36,6 @@ android_test {
         "libdexmakerjvmtiagent",
         "libstaticjvmtiagent",
         // For ApfTest
-        "libartbase",
         "libbacktrace",
         "libbase",
         "libbinder",
