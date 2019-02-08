@@ -6008,6 +6008,10 @@ package android.telephony {
     field public static final android.os.Parcelable.Creator<android.telephony.NetworkRegistrationState> CREATOR;
     field public static final int DOMAIN_CS = 1; // 0x1
     field public static final int DOMAIN_PS = 2; // 0x2
+    field public static final int NR_STATUS_CONNECTED = 3; // 0x3
+    field public static final int NR_STATUS_NONE = -1; // 0xffffffff
+    field public static final int NR_STATUS_NOT_RESTRICTED = 2; // 0x2
+    field public static final int NR_STATUS_RESTRICTED = 1; // 0x1
     field public static final int REG_STATE_DENIED = 3; // 0x3
     field public static final int REG_STATE_HOME = 1; // 0x1
     field public static final int REG_STATE_NOT_REG_NOT_SEARCHING = 0; // 0x0
@@ -6217,6 +6221,13 @@ package android.telephony {
     method @Deprecated public android.telephony.NetworkRegistrationState getNetworkRegistrationStates(int, int);
     method public java.util.List<android.telephony.NetworkRegistrationState> getNetworkRegistrationStatesForDomain(int);
     method public java.util.List<android.telephony.NetworkRegistrationState> getNetworkRegistrationStatesForTransportType(int);
+    method public int getNrFrequencyRange();
+    method public int getNrStatus();
+    field public static final int FREQUENCY_RANGE_HIGH = 3; // 0x3
+    field public static final int FREQUENCY_RANGE_LOW = 1; // 0x1
+    field public static final int FREQUENCY_RANGE_MID = 2; // 0x2
+    field public static final int FREQUENCY_RANGE_MMWAVE = 4; // 0x4
+    field public static final int FREQUENCY_RANGE_UNKNOWN = -1; // 0xffffffff
     field public static final int ROAMING_TYPE_DOMESTIC = 2; // 0x2
     field public static final int ROAMING_TYPE_INTERNATIONAL = 3; // 0x3
     field public static final int ROAMING_TYPE_NOT_ROAMING = 0; // 0x0

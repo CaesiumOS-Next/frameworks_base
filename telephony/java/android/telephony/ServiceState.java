@@ -93,30 +93,35 @@ public class ServiceState implements Parcelable {
      * Indicates frequency range is unknown.
      * @hide
      */
+    @SystemApi
     public static final int FREQUENCY_RANGE_UNKNOWN = -1;
 
     /**
      * Indicates the frequency range is below 1GHz.
      * @hide
      */
+    @SystemApi
     public static final int FREQUENCY_RANGE_LOW = 1;
 
     /**
      * Indicates the frequency range is between 1GHz to 3GHz.
      * @hide
      */
+    @SystemApi
     public static final int FREQUENCY_RANGE_MID = 2;
 
     /**
      * Indicates the frequency range is between 3GHz and 6GHz.
      * @hide
      */
+    @SystemApi
     public static final int FREQUENCY_RANGE_HIGH = 3;
 
     /**
      * Indicates the frequency range is above 6GHz (millimeter wave frequency).
      * @hide
      */
+    @SystemApi
     public static final int FREQUENCY_RANGE_MMWAVE = 4;
 
     private static final List<Integer> FREQUENCY_RANGE_ORDER = Arrays.asList(
@@ -1352,18 +1357,24 @@ public class ServiceState implements Parcelable {
     }
 
     /**
-     * @return the frequency range of 5G NR.
+     * Get the frequency range of NR 5G. This is the rough range of the frequency and it's make
+     * sense only when {@link #getNrStatus} is connected.
+     *
+     * @return the frequency range of NR 5G.
      * @hide
      */
+    @SystemApi
     public @FrequencyRange int getNrFrequencyRange() {
         return mNrFrequencyRange;
     }
 
     /**
      * Get the NR 5G status of the mobile data network.
+     *
      * @return the NR 5G status.
      * @hide
      */
+    @SystemApi
     public @NRStatus int getNrStatus() {
         final NetworkRegistrationState regState = getNetworkRegistrationState(
                 NetworkRegistrationState.DOMAIN_PS, AccessNetworkConstants.TransportType.WWAN);

@@ -82,6 +82,7 @@ public class NetworkRegistrationState implements Parcelable {
      * Dual Connectivity(EN-DC).
      * @hide
      */
+    @SystemApi
     public static final int NR_STATUS_NONE = -1;
 
     /**
@@ -90,6 +91,7 @@ public class NetworkRegistrationState implements Parcelable {
      * the selected PLMN.
      * @hide
      */
+    @SystemApi
     public static final int NR_STATUS_RESTRICTED = 1;
 
     /**
@@ -98,6 +100,7 @@ public class NetworkRegistrationState implements Parcelable {
      * selected PLMN.
      * @hide
      */
+    @SystemApi
     public static final int NR_STATUS_NOT_RESTRICTED = 2;
 
     /**
@@ -105,6 +108,7 @@ public class NetworkRegistrationState implements Parcelable {
      * also connected to at least one 5G cell as a secondary serving cell.
      * @hide
      */
+    @SystemApi
     public static final int NR_STATUS_CONNECTED = 3;
 
     /**
