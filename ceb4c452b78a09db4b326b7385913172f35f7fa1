@@ -351,6 +351,30 @@
       "revId": "ceb4c452b78a09db4b326b7385913172f35f7fa1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c17940fe_16def3ee",
+        "filename": "tests/net/java/com/android/server/ConnectivityServiceTest.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 3423,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2019-02-12T14:39:33Z",
+      "side": 1,
+      "message": "SGTM.",
+      "parentUuid": "cc699266_400d4e3f",
+      "range": {
+        "startLine": 3423,
+        "startChar": 20,
+        "endLine": 3423,
+        "endChar": 37
+      },
+      "revId": "ceb4c452b78a09db4b326b7385913172f35f7fa1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
