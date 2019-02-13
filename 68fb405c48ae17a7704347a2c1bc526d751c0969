@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "902d598c_1cfe6ca9",
+        "filename": "core/java/android/net/NetworkFactory.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1039103
+      },
+      "writtenOn": "2019-02-13T16:53:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "877f36ad_e4b66e8a",
+      "range": {
+        "startLine": 110,
+        "startChar": 12,
+        "endLine": 110,
+        "endChar": 20
+      },
+      "revId": "68fb405c48ae17a7704347a2c1bc526d751c0969",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1e9bcaf2_f1536d99",
         "filename": "core/java/android/net/NetworkFactory.java",
         "patchSetId": 5
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "fa929ce2_45abf80b",
+        "filename": "core/java/android/net/NetworkFactory.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1039103
+      },
+      "writtenOn": "2019-02-13T16:53:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1e9bcaf2_f1536d99",
+      "range": {
+        "startLine": 153,
+        "startChar": 0,
+        "endLine": 153,
+        "endChar": 24
+      },
+      "revId": "68fb405c48ae17a7704347a2c1bc526d751c0969",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "74899789_833700bc",
         "filename": "core/java/android/net/NetworkFactory.java",
         "patchSetId": 5
@@ -59,6 +107,30 @@
       "writtenOn": "2019-02-13T14:37:17Z",
       "side": 1,
       "message": "I\u0027m confused by this null check. It\u0027s in the else clause of a null check, so it will always run and the else clause will never run. But in that case, then what is mPreConnectedQueue for? Should this instead be:\n\n    if (mAsyncChannel !\u003d null) {\n        mAsyncChannel.sendMessage(msg);\n    } else {\n        mPreConnectedQueue.add(msg);\n    }\n\n?\n\nIf this is indeed a bug, I think it might be possible to test by writing a loop of:\n\n\n    for (int i \u003d 0; i \u003c 100; i++) {\n        factory.register();\n        // Check that you receive the unavaialble callback.\n        factory.unregister();\n        waitForIdle();\n    }\n\nbut maybe it\u0027s not worth it.",
+      "range": {
+        "startLine": 328,
+        "startChar": 16,
+        "endLine": 328,
+        "endChar": 44
+      },
+      "revId": "68fb405c48ae17a7704347a2c1bc526d751c0969",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a8012669_d691575b",
+        "filename": "core/java/android/net/NetworkFactory.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 328,
+      "author": {
+        "id": 1039103
+      },
+      "writtenOn": "2019-02-13T16:53:38Z",
+      "side": 1,
+      "message": "Just a side-effect of inlining some methods from last review. Definitely unintentional.\n\nBut correctly uncovered a bug of not queuing messages in that scenario.",
+      "parentUuid": "74899789_833700bc",
       "range": {
         "startLine": 328,
         "startChar": 16,
