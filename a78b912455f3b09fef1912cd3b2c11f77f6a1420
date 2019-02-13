@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "555756ca_ed4e271a",
+        "filename": "core/java/android/net/NetworkFactory.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1039103
+      },
+      "writtenOn": "2019-02-13T01:17:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "89008376_6b407ccf",
+      "range": {
+        "startLine": 110,
+        "startChar": 0,
+        "endLine": 113,
+        "endChar": 48
+      },
+      "revId": "a78b912455f3b09fef1912cd3b2c11f77f6a1420",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "89e9570b_71d2f8ae",
         "filename": "core/java/android/net/NetworkFactory.java",
         "patchSetId": 4
@@ -36,6 +60,30 @@
       "writtenOn": "2019-02-12T14:39:33Z",
       "side": 1,
       "message": "This code is mostly unused. Maybe add just the code you need inline to releaseRequestAsUnfulfillableByAnyFactory ?",
+      "range": {
+        "startLine": 153,
+        "startChar": 0,
+        "endLine": 234,
+        "endChar": 0
+      },
+      "revId": "a78b912455f3b09fef1912cd3b2c11f77f6a1420",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7906bbb8_52b792fd",
+        "filename": "core/java/android/net/NetworkFactory.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 1039103
+      },
+      "writtenOn": "2019-02-13T01:17:11Z",
+      "side": 1,
+      "message": "Removed all queueOrSendMessage methods and inlined the single usage.",
+      "parentUuid": "89e9570b_71d2f8ae",
       "range": {
         "startLine": 153,
         "startChar": 0,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "71cad9f5_11fcefc4",
+        "filename": "core/java/android/net/NetworkFactory.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 350,
+      "author": {
+        "id": 1039103
+      },
+      "writtenOn": "2019-02-13T01:17:11Z",
+      "side": 1,
+      "message": "Done. \n\nAnd yes - no guarantees needed for this (fundamentally) async use-case. The point of this is to inform the client - the client cannot take any sync action (in any case, or should not expect to be able to).",
+      "parentUuid": "167779ef_065f3b9c",
+      "range": {
+        "startLine": 350,
+        "startChar": 75,
+        "endLine": 350,
+        "endChar": 76
+      },
+      "revId": "a78b912455f3b09fef1912cd3b2c11f77f6a1420",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e21465a3_de31b8d6",
         "filename": "core/java/android/net/NetworkFactory.java",
         "patchSetId": 4
@@ -82,6 +154,30 @@
       "writtenOn": "2019-02-12T14:39:33Z",
       "side": 1,
       "message": "This is fine, but since it\u0027s protected and used by subclasses, it\u0027s possible that all the callers will be already running on the handler thread. In that case, you\u0027re probably better off removing this post() and just saying (and possibly enforcing with assertions) that callers must be running on the handler thread. If they\u0027re not, they can always post a lambda to the handler thread themselves.",
+      "range": {
+        "startLine": 356,
+        "startChar": 8,
+        "endLine": 356,
+        "endChar": 15
+      },
+      "revId": "a78b912455f3b09fef1912cd3b2c11f77f6a1420",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "657c60f2_a9b1cadc",
+        "filename": "core/java/android/net/NetworkFactory.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 356,
+      "author": {
+        "id": 1039103
+      },
+      "writtenOn": "2019-02-13T01:17:11Z",
+      "side": 1,
+      "message": "This is the pattern here - see reevaluateAllRequests() above. This seems pretty cheap way to guarantee correctness.",
+      "parentUuid": "e21465a3_de31b8d6",
       "range": {
         "startLine": 356,
         "startChar": 8,
@@ -114,6 +210,30 @@
       "revId": "a78b912455f3b09fef1912cd3b2c11f77f6a1420",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4fae21f4_1fafc03e",
+        "filename": "tests/net/java/com/android/server/ConnectivityServiceTest.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 3517,
+      "author": {
+        "id": 1039103
+      },
+      "writtenOn": "2019-02-13T01:17:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e1dc0c48_0ff47578",
+      "range": {
+        "startLine": 3517,
+        "startChar": 8,
+        "endLine": 3517,
+        "endChar": 74
+      },
+      "revId": "a78b912455f3b09fef1912cd3b2c11f77f6a1420",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
