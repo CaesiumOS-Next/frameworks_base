@@ -22,6 +22,30 @@
       "revId": "5b5eef3981b0bd9081a186a305a3f1b4610b5faf",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "75070a7d_590ac361",
+        "filename": "telephony/java/android/telephony/ims/RcsGroupThreadEventDescriptor.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1396528
+      },
+      "writtenOn": "2019-02-13T19:20:14Z",
+      "side": 1,
+      "message": "Fixed for the descriptor files, also realized I had other changes not uploaded! :-)",
+      "parentUuid": "f977130f_13b0553d",
+      "range": {
+        "startLine": 2,
+        "startChar": 20,
+        "endLine": 2,
+        "endChar": 21
+      },
+      "revId": "5b5eef3981b0bd9081a186a305a3f1b4610b5faf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
