@@ -42,7 +42,7 @@ import java.util.List;
 public final class LocationAccessPolicy {
     private static final String TAG = "LocationAccessPolicy";
     private static final boolean DBG = false;
-    public static final int MAX_SDK_FOR_ANY_ENFORCEMENT = Build.VERSION_CODES.P;
+    public static final int MAX_SDK_FOR_ANY_ENFORCEMENT = Build.VERSION_CODES.CUR_DEVELOPMENT;
 
     public enum LocationPermissionResult {
         ALLOWED,
