@@ -27,4 +27,6 @@ oneway interface INetworkMonitorCallbacks {
     void showProvisioningNotification(String action, String packageName);
     void hideProvisioningNotification();
     void logCaptivePortalLoginEvent(int eventId, String packageName);
+    void sendDataStallStats(int evaluationType, int probeResult, int networkType,
+            in byte[] wifiInfo, in byte[] cellularInfo, in byte[] dns);
 }

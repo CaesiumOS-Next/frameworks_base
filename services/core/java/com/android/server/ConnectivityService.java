@@ -138,6 +138,7 @@ import android.util.Slog;
 import android.util.SparseArray;
 import android.util.SparseBooleanArray;
 import android.util.SparseIntArray;
+import android.util.StatsLog;
 import android.util.Xml;
 
 import com.android.internal.R;
@@ -2693,6 +2694,13 @@ public class ConnectivityService extends IConnectivityManager.Stub
         @Override
         public void logCaptivePortalLoginEvent(int eventId, String packageName) {
             new MetricsLogger().action(eventId, packageName);
+        }
+
+        @Override
+        public void sendDataStallStats(int evaluationType, int probeResult, int networkType,
+                byte[] wifiInfo, byte[] cellularInfo, byte[] dns) {
+            StatsLog.write(StatsLog.DATA_STALL_EVENT, evaluationType, probeResult, networkType,
+                    wifiInfo, cellularInfo, dns);
         }
     }
 
