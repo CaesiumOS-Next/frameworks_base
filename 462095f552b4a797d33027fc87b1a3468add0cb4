@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "057c9885_4d2203d3",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1054648
+      },
+      "writtenOn": "2019-02-15T19:23:44Z",
+      "side": 1,
+      "message": "Add bug #",
+      "revId": "462095f552b4a797d33027fc87b1a3468add0cb4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dd3e4b24_97a97318",
+        "filename": "telephony/java/android/telephony/ims/RcsGroupThreadIconChangedEventDescriptor.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1054648
+      },
+      "writtenOn": "2019-02-15T19:23:44Z",
+      "side": 1,
+      "message": "not needed since the class itself is hidden",
+      "range": {
+        "startLine": 39,
+        "startChar": 8,
+        "endLine": 39,
+        "endChar": 12
+      },
+      "revId": "462095f552b4a797d33027fc87b1a3468add0cb4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
