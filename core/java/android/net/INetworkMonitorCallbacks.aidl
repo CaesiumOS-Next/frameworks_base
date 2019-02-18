@@ -26,4 +26,6 @@ oneway interface INetworkMonitorCallbacks {
     void notifyPrivateDnsConfigResolved(in PrivateDnsConfigParcel config);
     void showProvisioningNotification(String action, String packageName);
     void hideProvisioningNotification();
+    void sendDataStallStats(int evaluationType, int probeResult, int networkType,
+            in byte[] wifiInfo, in byte[] cellularInfo, in byte[] dns);
 }

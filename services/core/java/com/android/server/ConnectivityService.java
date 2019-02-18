@@ -141,6 +141,7 @@ import android.util.Slog;
 import android.util.SparseArray;
 import android.util.SparseBooleanArray;
 import android.util.SparseIntArray;
+import android.util.StatsLog;
 import android.util.Xml;
 
 import com.android.internal.R;
@@ -2700,6 +2701,13 @@ public class ConnectivityService extends IConnectivityManager.Stub
             mTrackerHandler.sendMessage(mTrackerHandler.obtainMessage(
                     EVENT_PROVISIONING_NOTIFICATION, PROVISIONING_NOTIFICATION_HIDE,
                     mNai.network.netId));
+        }
+
+        @Override
+        public void sendDataStallStats(int evaluationType, int probeResult, int networkType,
+                byte[] wifiInfo, byte[] cellularInfo, byte[] dns) {
+            StatsLog.write(StatsLog.DATA_STALL_EVENT, evaluationType, probeResult, networkType,
+                    wifiInfo, cellularInfo, dns);
         }
     }
 
