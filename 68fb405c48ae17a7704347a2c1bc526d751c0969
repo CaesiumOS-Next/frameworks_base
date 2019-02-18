@@ -140,6 +140,30 @@
       "revId": "68fb405c48ae17a7704347a2c1bc526d751c0969",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7b96d167_58b3fd0b",
+        "filename": "core/java/android/net/NetworkFactory.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 328,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2019-02-18T01:38:47Z",
+      "side": 1,
+      "message": "Ack. Is there any test coverage of this codepath? Should there be?",
+      "parentUuid": "a8012669_d691575b",
+      "range": {
+        "startLine": 328,
+        "startChar": 16,
+        "endLine": 328,
+        "endChar": 44
+      },
+      "revId": "68fb405c48ae17a7704347a2c1bc526d751c0969",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
