@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "11e7251f_2056c6c5",
+        "filename": "core/res/res/values/config.xml",
+        "patchSetId": 4
+      },
+      "lineNbr": 480,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2019-02-19T09:05:20Z",
+      "side": 1,
+      "message": "+1",
+      "parentUuid": "27247edb_44d30a0c",
+      "range": {
+        "startLine": 479,
+        "startChar": 21,
+        "endLine": 480,
+        "endChar": 98
+      },
+      "revId": "0869f325b03fd5475904cc7682f49b5e4c70c7f5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3d18d91a_8830930e",
         "filename": "services/core/java/com/android/server/connectivity/Tethering.java",
         "patchSetId": 4
@@ -41,6 +65,99 @@
         "startChar": 8,
         "endLine": 1070,
         "endChar": 59
+      },
+      "revId": "0869f325b03fd5475904cc7682f49b5e4c70c7f5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "37c7891f_5189cb52",
+        "filename": "services/core/java/com/android/server/connectivity/Tethering.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 1070,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2019-02-19T09:05:20Z",
+      "side": 1,
+      "message": "+1. Also (optionally) I think a TODO to fix the issue that Patchset 2 used to fix here would help.",
+      "parentUuid": "3d18d91a_8830930e",
+      "range": {
+        "startLine": 1069,
+        "startChar": 8,
+        "endLine": 1070,
+        "endChar": 59
+      },
+      "revId": "0869f325b03fd5475904cc7682f49b5e4c70c7f5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7a162a78_0191e8b3",
+        "filename": "services/core/java/com/android/server/connectivity/tethering/TetheringConfiguration.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2019-02-19T09:05:20Z",
+      "side": 1,
+      "message": "As Chiachang pointed out in Patchset 2, I think devices that do not support telephony (TVs for example) will return a null object here.",
+      "range": {
+        "startLine": 215,
+        "startChar": 15,
+        "endLine": 215,
+        "endChar": 17
+      },
+      "revId": "0869f325b03fd5475904cc7682f49b5e4c70c7f5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "68568e94_edd5ab13",
+        "filename": "services/core/java/com/android/server/connectivity/tethering/TetheringConfiguration.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 245,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2019-02-19T09:05:20Z",
+      "side": 1,
+      "message": "This does not read to me like it\u0027s accurate.\nPreviously if dunCheck was DUN_UNSPECIFIED, the loop in lines 221~232 would not touch the list, and this would add both mobile types unless any of the three was here.\n\nIf there is no config, then dunRequired is now false, like in the case where the config explicitly says not required.\n\nHere are the cases where the new behavior differs from the old one :\n\n   Config    |      List        |   Old behavior   | New behavior\n-------------+------------------+------------------+--------------\nNot required |      MOBILE      |   MOBILE\u0026HIPRI   |   MOBILE\nNot required |      HIPRI       |   MOBILE\u0026HIPRI   |    HIPRI\nNot required |    DUN\u0026MOBILE    |   MOBILE\u0026HIPRI   |   MOBILE\nNot required |    DUN\u0026HIPRI     |   MOBILE\u0026HIPRI   |    HIPRI\nUnspecified  |       DUN        |       DUN        | MOBILE\u0026HIPRI\nUnspecified  |    DUN\u0026MOBILE    |    DUN\u0026MOBILE    |   MOBILE\nUnspecified  |    DUN\u0026HIPRI     |     DUN\u0026HIPRI    |    HIPRI\nUnspecified  | DUN\u0026MOBILE\u0026HIPRI | DUN\u0026MOBILE\u0026HIPRI | MOBILE\u0026HIPRI\n\nAs far as I can tell, all other cases yield identical results to the old code.\n\nIt seems to me like this change is an improvement in all cases. But the comment says the old behavior is preserved, and it is not.",
+      "range": {
+        "startLine": 244,
+        "startChar": 12,
+        "endLine": 245,
+        "endChar": 86
+      },
+      "revId": "0869f325b03fd5475904cc7682f49b5e4c70c7f5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5532e553_2aabf85c",
+        "filename": "services/core/java/com/android/server/connectivity/tethering/TetheringConfiguration.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 251,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2019-02-19T09:05:20Z",
+      "side": 1,
+      "message": "Optional for this change, but if my reading of this is correct, ll.221~251 are simply a contrived way of saying :\n\nfinal ArrayList\u003cInteger\u003e upstreamIfaceTypes \u003d new ArrayList\u003c\u003e(Arrays.asList(ifaceTypes));\nif (dunRequired) {\n  appendIfNotPresent(upstreamIfaceTypes, TYPE_MOBILE_DUN));\n  upstreamIfaceTypes.remove(TYPE_MOBILE);\n  upstreamIfaceTypes.remove(TYPE_MOBILE_HIPRI);\n} else {\n  upstreamIfaceTypes.remove(TYPE_DUN);\n  if (!containsOneOf(upstreamIfaceTypes, TYPE_MOBILE, TYPE_MOBILE_HIPRI)) {\n    upstreamIfaceTypes.add(TYPE_MOBILE);\n    upstreamIfaceTypes.add(TYPE_MOBILE_HIPRI);\n  }\n}\n\n...which is a lot easier to understand.",
+      "range": {
+        "startLine": 251,
+        "startChar": 7,
+        "endLine": 251,
+        "endChar": 9
       },
       "revId": "0869f325b03fd5475904cc7682f49b5e4c70c7f5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
@@ -92,6 +209,144 @@
       "revId": "0869f325b03fd5475904cc7682f49b5e4c70c7f5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ed8c1698_e048b8ff",
+        "filename": "tests/net/java/com/android/server/connectivity/tethering/TetheringConfigurationTest.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2019-02-19T09:05:20Z",
+      "side": 1,
+      "message": "I think it\u0027s more readable to just say \"true\" here (and \"false\" below) and remove the constant.",
+      "range": {
+        "startLine": 108,
+        "startChar": 66,
+        "endLine": 108,
+        "endChar": 78
+      },
+      "revId": "0869f325b03fd5475904cc7682f49b5e4c70c7f5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f8e99655_684dbaec",
+        "filename": "tests/net/java/com/android/server/connectivity/tethering/TetheringConfigurationTest.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2019-02-19T09:05:20Z",
+      "side": 1,
+      "message": "Now that you\u0027ve static imported that, you don\u0027t need the qualified name (likewise in l.135 and below)",
+      "range": {
+        "startLine": 110,
+        "startChar": 36,
+        "endLine": 110,
+        "endChar": 92
+      },
+      "revId": "0869f325b03fd5475904cc7682f49b5e4c70c7f5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "07f86801_461bc78d",
+        "filename": "tests/net/java/com/android/server/connectivity/tethering/TetheringConfigurationTest.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2019-02-19T09:05:20Z",
+      "side": 1,
+      "message": "Can you please factorize this code with the above ?",
+      "range": {
+        "startLine": 143,
+        "startChar": 8,
+        "endLine": 143,
+        "endChar": 30
+      },
+      "revId": "0869f325b03fd5475904cc7682f49b5e4c70c7f5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "81687b29_a3d0432c",
+        "filename": "tests/net/java/com/android/server/connectivity/tethering/TetheringConfigurationTest.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2019-02-19T09:05:20Z",
+      "side": 1,
+      "message": "While this is going to work, it would fail if you had a config with {TYPE_MOBILE, TYPE_WIFI, TYPE_MOBILE_DUN} for example. I\u0027d say it\u0027s the expected behavior, but it seems a bit obscure to me that it passes just because it\u0027s not tested – someone reading the test would assume \"DunNotRequired\" implies both MOBILE and HIPRI, and that\u0027s not accurate.",
+      "range": {
+        "startLine": 150,
+        "startChar": 12,
+        "endLine": 150,
+        "endChar": 22
+      },
+      "revId": "0869f325b03fd5475904cc7682f49b5e4c70c7f5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bd88252a_c834fb7a",
+        "filename": "tests/net/java/com/android/server/connectivity/tethering/TetheringConfigurationTest.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2019-02-19T09:05:20Z",
+      "side": 1,
+      "message": "Won\u0027t this fit on one line ?",
+      "range": {
+        "startLine": 159,
+        "startChar": 16,
+        "endLine": 159,
+        "endChar": 17
+      },
+      "revId": "0869f325b03fd5475904cc7682f49b5e4c70c7f5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0ef2b62d_c368a390",
+        "filename": "tests/net/java/com/android/server/connectivity/tethering/TetheringConfigurationTest.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2019-02-19T09:05:20Z",
+      "side": 1,
+      "message": "Not completely accurate ; it will add them both only if neither is already present. I suggest to rework this comment the following way :\n\n    or, in this case where DUN is NOT required, make sure there is at least one of MOBILE or HIPRI. With the empty list of the configuration in this test, it will always add both MOBILE and HIPRI, in that order.",
+      "range": {
+        "startLine": 168,
+        "startChar": 11,
+        "endLine": 168,
+        "endChar": 15
+      },
+      "revId": "0869f325b03fd5475904cc7682f49b5e4c70c7f5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
