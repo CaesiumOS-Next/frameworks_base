@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "1efa677b_1b98db13",
+        "filename": "core/res/res/values/config.xml",
+        "patchSetId": 4
+      },
+      "lineNbr": 480,
+      "author": {
+        "id": 1308504
+      },
+      "writtenOn": "2019-02-19T11:18:15Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "11e7251f_2056c6c5",
+      "range": {
+        "startLine": 479,
+        "startChar": 21,
+        "endLine": 480,
+        "endChar": 98
+      },
+      "revId": "0869f325b03fd5475904cc7682f49b5e4c70c7f5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3d18d91a_8830930e",
         "filename": "services/core/java/com/android/server/connectivity/Tethering.java",
         "patchSetId": 4
@@ -96,6 +120,30 @@
     },
     {
       "key": {
+        "uuid": "393844f3_d56fc6b4",
+        "filename": "services/core/java/com/android/server/connectivity/Tethering.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 1070,
+      "author": {
+        "id": 1308504
+      },
+      "writtenOn": "2019-02-19T11:18:15Z",
+      "side": 1,
+      "message": "Here should already be fixed in newest code. Sorry for not updating the conflict fix.\nhttps://cs.corp.google.com/aosp-master/frameworks/base/services/core/java/com/android/server/connectivity/Tethering.java?q\u003dtethering.java\u0026dr\u0026l\u003d964",
+      "parentUuid": "37c7891f_5189cb52",
+      "range": {
+        "startLine": 1069,
+        "startChar": 8,
+        "endLine": 1070,
+        "endChar": 59
+      },
+      "revId": "0869f325b03fd5475904cc7682f49b5e4c70c7f5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "7a162a78_0191e8b3",
         "filename": "services/core/java/com/android/server/connectivity/tethering/TetheringConfiguration.java",
         "patchSetId": 4
@@ -119,6 +167,30 @@
     },
     {
       "key": {
+        "uuid": "85f7ca36_b5679c35",
+        "filename": "services/core/java/com/android/server/connectivity/tethering/TetheringConfiguration.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1308504
+      },
+      "writtenOn": "2019-02-19T11:18:15Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "7a162a78_0191e8b3",
+      "range": {
+        "startLine": 215,
+        "startChar": 15,
+        "endLine": 215,
+        "endChar": 17
+      },
+      "revId": "0869f325b03fd5475904cc7682f49b5e4c70c7f5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "68568e94_edd5ab13",
         "filename": "services/core/java/com/android/server/connectivity/tethering/TetheringConfiguration.java",
         "patchSetId": 4
@@ -130,6 +202,30 @@
       "writtenOn": "2019-02-19T09:05:20Z",
       "side": 1,
       "message": "This does not read to me like it\u0027s accurate.\nPreviously if dunCheck was DUN_UNSPECIFIED, the loop in lines 221~232 would not touch the list, and this would add both mobile types unless any of the three was here.\n\nIf there is no config, then dunRequired is now false, like in the case where the config explicitly says not required.\n\nHere are the cases where the new behavior differs from the old one :\n\n   Config    |      List        |   Old behavior   | New behavior\n-------------+------------------+------------------+--------------\nNot required |      MOBILE      |   MOBILE\u0026HIPRI   |   MOBILE\nNot required |      HIPRI       |   MOBILE\u0026HIPRI   |    HIPRI\nNot required |    DUN\u0026MOBILE    |   MOBILE\u0026HIPRI   |   MOBILE\nNot required |    DUN\u0026HIPRI     |   MOBILE\u0026HIPRI   |    HIPRI\nUnspecified  |       DUN        |       DUN        | MOBILE\u0026HIPRI\nUnspecified  |    DUN\u0026MOBILE    |    DUN\u0026MOBILE    |   MOBILE\nUnspecified  |    DUN\u0026HIPRI     |     DUN\u0026HIPRI    |    HIPRI\nUnspecified  | DUN\u0026MOBILE\u0026HIPRI | DUN\u0026MOBILE\u0026HIPRI | MOBILE\u0026HIPRI\n\nAs far as I can tell, all other cases yield identical results to the old code.\n\nIt seems to me like this change is an improvement in all cases. But the comment says the old behavior is preserved, and it is not.",
+      "range": {
+        "startLine": 244,
+        "startChar": 12,
+        "endLine": 245,
+        "endChar": 86
+      },
+      "revId": "0869f325b03fd5475904cc7682f49b5e4c70c7f5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "340147ea_887b3b1e",
+        "filename": "services/core/java/com/android/server/connectivity/tethering/TetheringConfiguration.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 245,
+      "author": {
+        "id": 1308504
+      },
+      "writtenOn": "2019-02-19T11:18:15Z",
+      "side": 1,
+      "message": "Yes, this is not accurate because new behavior is not fully the same as old behavior.\nHere is want I want to describe.\nIn old behavior, Unspecified would not modify ifaceTypes list if any cellular interface is already present. This idea should be keep in new design. I have been asked why not always add TYPE_MOBILE/TYPE_MOBILE_HIRPIR if dun not required in previous review. The action of TYPE_MOBILE_HIRPIR may be different with TYPE_MOBILE. If device don\u0027t have default mobile network, TYPE_MOBILE_HIRPIR indicate tethering should request mobile data connection manually. Except for there is no useful cellular interface type, override cellular interface type may cause compatibility issue.\nI would replace this comments as below:\nThis preserves backwards compatibility and prevent DUN, default mobile type appear together problem that previous releases had in the common case where checkDunRequired returned DUN_UNSPECIFIED.",
+      "parentUuid": "68568e94_edd5ab13",
       "range": {
         "startLine": 244,
         "startChar": 12,
@@ -235,6 +331,30 @@
     },
     {
       "key": {
+        "uuid": "c838fca3_3d1c9cd3",
+        "filename": "tests/net/java/com/android/server/connectivity/tethering/TetheringConfigurationTest.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1308504
+      },
+      "writtenOn": "2019-02-19T11:18:15Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "ed8c1698_e048b8ff",
+      "range": {
+        "startLine": 108,
+        "startChar": 66,
+        "endLine": 108,
+        "endChar": 78
+      },
+      "revId": "0869f325b03fd5475904cc7682f49b5e4c70c7f5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f8e99655_684dbaec",
         "filename": "tests/net/java/com/android/server/connectivity/tethering/TetheringConfigurationTest.java",
         "patchSetId": 4
@@ -255,6 +375,30 @@
       "revId": "0869f325b03fd5475904cc7682f49b5e4c70c7f5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e5b8d326_2b6d37ca",
+        "filename": "tests/net/java/com/android/server/connectivity/tethering/TetheringConfigurationTest.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1308504
+      },
+      "writtenOn": "2019-02-19T11:18:15Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "f8e99655_684dbaec",
+      "range": {
+        "startLine": 110,
+        "startChar": 36,
+        "endLine": 110,
+        "endChar": 92
+      },
+      "revId": "0869f325b03fd5475904cc7682f49b5e4c70c7f5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -281,6 +425,30 @@
     },
     {
       "key": {
+        "uuid": "e68b0ba2_f624dae1",
+        "filename": "tests/net/java/com/android/server/connectivity/tethering/TetheringConfigurationTest.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1308504
+      },
+      "writtenOn": "2019-02-19T11:18:15Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "07f86801_461bc78d",
+      "range": {
+        "startLine": 143,
+        "startChar": 8,
+        "endLine": 143,
+        "endChar": 30
+      },
+      "revId": "0869f325b03fd5475904cc7682f49b5e4c70c7f5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "81687b29_a3d0432c",
         "filename": "tests/net/java/com/android/server/connectivity/tethering/TetheringConfigurationTest.java",
         "patchSetId": 4
@@ -301,6 +469,30 @@
       "revId": "0869f325b03fd5475904cc7682f49b5e4c70c7f5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6e7f7bdc_757fff29",
+        "filename": "tests/net/java/com/android/server/connectivity/tethering/TetheringConfigurationTest.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1308504
+      },
+      "writtenOn": "2019-02-19T11:18:15Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "81687b29_a3d0432c",
+      "range": {
+        "startLine": 150,
+        "startChar": 12,
+        "endLine": 150,
+        "endChar": 22
+      },
+      "revId": "0869f325b03fd5475904cc7682f49b5e4c70c7f5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -327,6 +519,30 @@
     },
     {
       "key": {
+        "uuid": "a9109d2a_36a99f9e",
+        "filename": "tests/net/java/com/android/server/connectivity/tethering/TetheringConfigurationTest.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1308504
+      },
+      "writtenOn": "2019-02-19T11:18:15Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "bd88252a_c834fb7a",
+      "range": {
+        "startLine": 159,
+        "startChar": 16,
+        "endLine": 159,
+        "endChar": 17
+      },
+      "revId": "0869f325b03fd5475904cc7682f49b5e4c70c7f5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0ef2b62d_c368a390",
         "filename": "tests/net/java/com/android/server/connectivity/tethering/TetheringConfigurationTest.java",
         "patchSetId": 4
@@ -347,6 +563,30 @@
       "revId": "0869f325b03fd5475904cc7682f49b5e4c70c7f5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f691edde_9387a7b1",
+        "filename": "tests/net/java/com/android/server/connectivity/tethering/TetheringConfigurationTest.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1308504
+      },
+      "writtenOn": "2019-02-19T11:18:15Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "0ef2b62d_c368a390",
+      "range": {
+        "startLine": 168,
+        "startChar": 11,
+        "endLine": 168,
+        "endChar": 15
+      },
+      "revId": "0869f325b03fd5475904cc7682f49b5e4c70c7f5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
