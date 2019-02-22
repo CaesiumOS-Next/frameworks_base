@@ -45,6 +45,52 @@
       "revId": "8417160db05d4141751210de68107589db879c44",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e735fb69_8779baad",
+        "filename": "tests/net/java/com/android/server/net/NetworkStatsServiceTest.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 974,
+      "author": {
+        "id": 1060151
+      },
+      "writtenOn": "2019-02-22T02:17:58Z",
+      "side": 1,
+      "message": "Additional comment, this can *also* apply in cases where the VPN service drops uplink data or writes additional traffic to the tun on the downlink.",
+      "range": {
+        "startLine": 974,
+        "startChar": 16,
+        "endLine": 974,
+        "endChar": 57
+      },
+      "revId": "8417160db05d4141751210de68107589db879c44",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "12aaf823_c274f2c0",
+        "filename": "tests/net/java/com/android/server/net/NetworkStatsServiceTest.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 974,
+      "author": {
+        "id": 1060151
+      },
+      "writtenOn": "2019-02-22T02:17:58Z",
+      "side": 1,
+      "message": "is there precedent for Snake_CamelCase?",
+      "range": {
+        "startLine": 974,
+        "startChar": 41,
+        "endLine": 974,
+        "endChar": 42
+      },
+      "revId": "8417160db05d4141751210de68107589db879c44",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
