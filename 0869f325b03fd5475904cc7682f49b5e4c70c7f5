@@ -261,6 +261,30 @@
     },
     {
       "key": {
+        "uuid": "334b3c57_7449fef0",
+        "filename": "services/core/java/com/android/server/connectivity/tethering/TetheringConfiguration.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 251,
+      "author": {
+        "id": 1308504
+      },
+      "writtenOn": "2019-02-22T12:20:32Z",
+      "side": 1,
+      "message": "I prefer original ones since it can prevent below scenario.\nIf someone add duplicate type as below:\n{WIFI, DUN, DUN}, isDunRequire is false.\nOriginal design can handle it well.\nAlthough new option is more clean and beautiful, but it can\u0027t handle above stupid case.",
+      "parentUuid": "5532e553_2aabf85c",
+      "range": {
+        "startLine": 251,
+        "startChar": 7,
+        "endLine": 251,
+        "endChar": 9
+      },
+      "revId": "0869f325b03fd5475904cc7682f49b5e4c70c7f5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f2109135_2f4162f2",
         "filename": "tests/net/java/com/android/server/connectivity/tethering/TetheringConfigurationTest.java",
         "patchSetId": 4
