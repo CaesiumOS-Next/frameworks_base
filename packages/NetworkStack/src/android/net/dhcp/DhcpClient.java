@@ -123,6 +123,9 @@ public class DhcpClient extends StateMachine {
     // t=0, t=2, t=6, t=14, t=30, allowing for 10% jitter.
     private static final int DHCP_TIMEOUT_MS    =  36 * SECONDS;
 
+    private static final int IP CONFLICT_TIMEOUT_MS =  2 * SECONDS;
+    private static final int DECLINED_MAX_TIMES     = 3;
+
     // DhcpClient uses IpClient's handler.
     private static final int PUBLIC_BASE = IpClient.DHCPCLIENT_CMD_BASE;
 
@@ -161,6 +164,8 @@ public class DhcpClient extends StateMachine {
     private static final int CMD_RENEW_DHCP       = PRIVATE_BASE + 4;
     private static final int CMD_REBIND_DHCP      = PRIVATE_BASE + 5;
     private static final int CMD_EXPIRE_DHCP      = PRIVATE_BASE + 6;
+    private static final int CMD_IP_CONFLICT      = PRIVATE_BASE + 7;
+    private static final int CMD_IP_NOT_CONFLICT  = PRIVATE_BASE + 8;
 
     // For message logging.
     private static final Class[] sMessageClasses = { DhcpClient.class };
@@ -222,6 +227,9 @@ public class DhcpClient extends StateMachine {
     private long mLastInitEnterTime;
     private long mLastBoundExitTime;
 
+    private String mArpUuidStr = "";
+    private int mDeclinedTimes = 0;
+
     // States.
     private State mStoppedState = new StoppedState();
     private State mDhcpState = new DhcpState();
@@ -237,6 +245,8 @@ public class DhcpClient extends StateMachine {
     private State mDhcpRebootingState = new DhcpRebootingState();
     private State mWaitBeforeStartState = new WaitBeforeStartState(mDhcpInitState);
     private State mWaitBeforeRenewalState = new WaitBeforeRenewalState(mDhcpRenewingState);
+    private State mIpCheckingState = new IpCheckingState();
+    private State mDeclineState = new DeclineState();
 
     private WakeupMessage makeWakeupMessage(String cmdName, int cmd) {
         cmdName = DhcpClient.class.getSimpleName() + "." + mIfaceName + "." + cmdName;
@@ -258,7 +268,9 @@ public class DhcpClient extends StateMachine {
             addState(mDhcpSelectingState, mDhcpState);
             addState(mDhcpRequestingState, mDhcpState);
             addState(mDhcpHaveLeaseState, mDhcpState);
-                addState(mConfiguringInterfaceState, mDhcpHaveLeaseState);
+                addState(mDeclineState, mDhcpState);
+                addState(mConfiguringInterfaceState, mDhcpState);
+                addState(mIpCheckingState, mDhcpState);
                 addState(mDhcpBoundState, mDhcpHaveLeaseState);
                 addState(mWaitBeforeRenewalState, mDhcpHaveLeaseState);
                 addState(mDhcpRenewingState, mDhcpHaveLeaseState);
@@ -833,6 +845,132 @@ public class DhcpClient extends StateMachine {
         }
     }
 
+    class IpCheckingState extends PacketRetransmittingState {
+        public IpCheckingState() {
+            mTimeout = ARP_TIMEOUT_MS * 2;
+        }
+
+        @Override
+        public void enter() {
+            maybeInitTimeout();
+            sendPacket();
+        }
+
+        @Override
+        public boolean processMessage(Message message) {
+            switch (message.what) {
+                case CMD_IP_CONFLICT:
+                    if (!mArpUuidStr.equals(message.obj)) {
+                        Log.d(TAG, "CMD_IP_CONFLICT, ArpUuid: " + mArpUuidStr + "ArpUuidThread: " + message.obj);
+                        return HANDLED;
+                    }
+                    transitionTo(mDeclineState);
+                    return HANDLED;
+                case CMD_IP_NOT_CONFLICT:
+                    if (!mArpUuidStr.equals(message.obj)) {
+                        Log.d(TAG, "CMD_IP_NOT_CONFLICT, ArpUuid: " + mArpUuidStr + "ArpUuidThread: " + message.obj);
+                        return HANDLED;
+                    }
+                    transitionTo(mDhcpBoundState);
+                    return HANDLED;
+                case CMD_TIMEOUT:
+                    timeout();
+                    return HANDLED;
+                default:
+                    return NOT_HANDLED;
+            }
+        }
+
+        protected boolean sendPacket() {
+            mArpUuidStr = UUID.randomUUID().toString();
+            if (mDeclinedTimes >= DECLINED_TIMES_MAX) {
+                transitionTo(mDhcpBoundState);
+                return true;
+            }
+
+            new Thread(new Runnable() {
+                final String arpThreadUuidStr = mArpUuidStr;
+                public void run() {
+                    try {
+                        /* todo: doIpConflictTest need rawsockets to send arp packets*/
+                        if (doIpConflictTest((Inet4Address) mDhcpLease.ipAddress.getAddress())) {
+                            Log.d(TAG, "Received ARP response, sendCMD_IP_CONFLICT message");
+                            sendMessage(CMD_IP_CONFLICT, arpThreadUuidStr);
+                        } else {
+                            Log.d(TAG, "Not received ARP response, send CMD_IP_NOT_CONFLICT message");
+                            sendMessage(CMD_IP_NOT_CONFLICT, arpThreadUuidStr);
+                        }
+                    } catch (Exception e) {
+                        Log.e(TAG, "Failed to sendArpPacket" + e.toString());
+                    }
+                }
+            }).start();
+
+            return true;
+        }
+
+        protected void receivePacket(DhcpPacket packet) {
+            return;
+        }
+
+        protected void maybeInitTimeout() {
+            if (mTimeout > 0) {
+                long alarmTime = SystemClock.elapsedRealtime() + mTimeout;
+                mTimeoutAlarm.schedule(alarmTime);
+            }
+        }
+
+        @Override
+        protected void timeout() {
+            Log.d(TAG, "Returning to bound state");
+            transitionTo(mDhcpBoundState);
+        }
+
+        @Override
+        public void exit() {
+            mTimeoutAlarm.cancel();
+        }
+    }
+
+    class DeclineState extends PacketRetransmittingState {
+        protected boolean mRet = false;
+
+        public DeclineState() {
+            mTimeout = ARP_TIMEOUT_MS / 2;
+        }
+
+        @Override
+        public void enter() {
+            maybeInitTimeout();
+            sendPacket();
+        }
+
+        protected boolean sendPacket() {
+            /* todo: sendDeclinePacket */
+            mRet = sendDeclinePacket(
+                        INADDR_ANY,
+                        (Inet4Address) mDhcpLease.ipAddress.getAddress(),
+                        (Inet4Address) mDhcpLease.serverAddress,
+                        INADDR_BROADCAST);
+            if (mRet){
+                mDeclinedTimes++;
+                transitionTo(mDhcpInitState);
+            }
+
+            return mRet;
+        }
+
+        protected void receivePacket(DhcpPacket packet) {
+            return;
+        }
+
+        @Override
+        protected void timeout() {
+            Log.d(TAG, "After sending ARP unresponse for a while, go to config IP");
+            transitionTo(mDhcpInitState);
+        }
+    }
+
     class DhcpHaveLeaseState extends State {
         @Override
         public boolean processMessage(Message message) {
@@ -873,7 +1011,8 @@ public class DhcpClient extends StateMachine {
             super.processMessage(message);
             switch (message.what) {
                 case EVENT_LINKADDRESS_CONFIGURED:
-                    transitionTo(mDhcpBoundState);
+                    Log.d(TAG, "process EVENT_LINKADDRESS_CONFIGURED, do ip conflict check");
+                    transitionTo(mIpCheckingState);
                     return HANDLED;
                 default:
                     return NOT_HANDLED;
