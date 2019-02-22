@@ -98,6 +98,7 @@ import java.util.Random;
 import java.util.UUID;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.TimeUnit;
+import android.net.wifi.WifiConfiguration;
 
 /**
  * {@hide}
@@ -870,6 +871,7 @@ public class NetworkMonitor extends StateMachine {
 
         @Override
         public void enter() {
+            setWifiConfigWithPortalConnect();
             maybeLogEvaluationResult(
                     networkEventType(validationStage(), EvaluationResult.CAPTIVE_PORTAL));
             // Don't annoy user with sign-in notifications.
@@ -1807,5 +1809,26 @@ public class NetworkMonitor extends StateMachine {
         }
 
         return result;
+    }
+
+    private void setWifiConfigWithPortalConnect() {
+        WifiInfo wifiInfo = mWifiManager.getConnectionInfo();
+        if (null != wifiInfo) {
+            int networkId = wifiInfo.getNetworkId();
+            if (WifiConfiguration.INVALID_NETWORK_ID != networkId) {
+                final List<WifiConfiguration> configs = mWifiManager.getConfiguredNetworks();
+                if (configs != null) {
+                    for (WifiConfiguration config : configs) {
+                        if (null != config && networkId == config.networkId) {
+                            log("update wifi config(netId:" + config.networkId + ",ssid:"
+                                    + config.SSID + "), set isPortalConnect-->true");
+                            config.isPortalConnect = true;
+                            mWifiManager.updateNetwork(config);
+                            break;
+                        }
+                    }
+                }
+            }
+        }
     }
 }

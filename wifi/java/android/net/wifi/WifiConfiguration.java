@@ -434,6 +434,11 @@ public class WifiConfiguration implements Parcelable {
     public boolean isHomeProviderNetwork;
 
     /**
+     * @hide
+     */
+    public boolean isPortalNetwork;
+
+    /**
      * Roaming Consortium Id list for Passpoint credential; identifies a set of networks where
      * Passpoint credential will be considered valid
      */
