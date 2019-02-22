@@ -91,6 +91,30 @@
       "revId": "8417160db05d4141751210de68107589db879c44",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9c1e87f1_76ac49e4",
+        "filename": "tests/net/java/com/android/server/net/NetworkStatsServiceTest.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 974,
+      "author": {
+        "id": 1399364
+      },
+      "writtenOn": "2019-02-22T05:26:33Z",
+      "side": 1,
+      "message": "this pattern is fairly commonly used in g3 - http://go/unit-test-practices#naming",
+      "parentUuid": "12aaf823_c274f2c0",
+      "range": {
+        "startLine": 974,
+        "startChar": 41,
+        "endLine": 974,
+        "endChar": 42
+      },
+      "revId": "8417160db05d4141751210de68107589db879c44",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
