@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "dbb9668c_4db18ed7",
+        "filename": "core/res/res/values/config.xml",
+        "patchSetId": 4
+      },
+      "lineNbr": 480,
+      "author": {
+        "id": 1308504
+      },
+      "writtenOn": "2019-02-23T04:25:01Z",
+      "side": 1,
+      "message": "Ohh, look at the wording again. It is not correct.\nLets correct it as below:\nIf both of TYPE_MOBILE{,_HIPRI} are not present:\n   TYPE_MOBILE is appended\n   TYPE_MOBILE_HIPRI is appended",
+      "parentUuid": "1efa677b_1b98db13",
+      "range": {
+        "startLine": 479,
+        "startChar": 21,
+        "endLine": 480,
+        "endChar": 98
+      },
+      "revId": "0869f325b03fd5475904cc7682f49b5e4c70c7f5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3d18d91a_8830930e",
         "filename": "services/core/java/com/android/server/connectivity/Tethering.java",
         "patchSetId": 4
