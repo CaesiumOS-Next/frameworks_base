@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4468a733_73380602",
+        "filename": "core/res/res/values/config.xml",
+        "patchSetId": 6
+      },
+      "lineNbr": 489,
+      "author": {
+        "id": 1304263
+      },
+      "writtenOn": "2019-02-25T03:57:15Z",
+      "side": 1,
+      "message": "Align them if you would like to add period at the end?",
+      "range": {
+        "startLine": 480,
+        "startChar": 19,
+        "endLine": 489,
+        "endChar": 54
+      },
+      "revId": "80c192632b71d6d25c16aff45387cfe6c364b5a6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "357157e1_b1dbb764",
+        "filename": "services/core/java/com/android/server/connectivity/tethering/TetheringConfiguration.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 1304263
+      },
+      "writtenOn": "2019-02-25T03:57:15Z",
+      "side": 1,
+      "message": "May able to do in other commits but it\u0027s better to address a TODO here. Then submit a change to support this before Q release. The TelephonyManager should use tm.createForSubscriptionId(subId) to get corresponding objects to support multiple SIMs.",
+      "range": {
+        "startLine": 227,
+        "startChar": 7,
+        "endLine": 227,
+        "endChar": 95
+      },
+      "revId": "80c192632b71d6d25c16aff45387cfe6c364b5a6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1d291c4c_d0a758ba",
+        "filename": "tests/net/java/com/android/server/connectivity/tethering/TetheringConfigurationTest.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1304263
+      },
+      "writtenOn": "2019-02-25T03:57:15Z",
+      "side": 1,
+      "message": "Similar comment addressed in TetheringConfiguration.",
+      "range": {
+        "startLine": 91,
+        "startChar": 23,
+        "endLine": 91,
+        "endChar": 40
+      },
+      "revId": "80c192632b71d6d25c16aff45387cfe6c364b5a6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3563d116_395a9302",
+        "filename": "tests/net/java/com/android/server/connectivity/tethering/TetheringConfigurationTest.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1304263
+      },
+      "writtenOn": "2019-02-25T03:57:15Z",
+      "side": 1,
+      "message": "Add a new line to separate maybe?",
+      "range": {
+        "startLine": 126,
+        "startChar": 4,
+        "endLine": 127,
+        "endChar": 4
+      },
+      "revId": "80c192632b71d6d25c16aff45387cfe6c364b5a6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "23f3924d_f8dc4bdd",
+        "filename": "tests/net/java/com/android/server/connectivity/tethering/TetheringConfigurationTest.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 277,
+      "author": {
+        "id": 1304263
+      },
+      "writtenOn": "2019-02-25T03:57:15Z",
+      "side": 1,
+      "message": "Maybe this is enough?\n1 /* anyValidSubId */",
+      "range": {
+        "startLine": 277,
+        "startChar": 67,
+        "endLine": 277,
+        "endChar": 80
+      },
+      "revId": "80c192632b71d6d25c16aff45387cfe6c364b5a6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b6e98f5a_c1b6aefe",
+        "filename": "tests/net/java/com/android/server/connectivity/tethering/TetheringConfigurationTest.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 293,
+      "author": {
+        "id": 1304263
+      },
+      "writtenOn": "2019-02-25T03:57:15Z",
+      "side": 1,
+      "message": "Do you need to setup this if you would like to test provisioning_app?",
+      "range": {
+        "startLine": 283,
+        "startChar": 8,
+        "endLine": 293,
+        "endChar": 98
+      },
+      "revId": "80c192632b71d6d25c16aff45387cfe6c364b5a6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
