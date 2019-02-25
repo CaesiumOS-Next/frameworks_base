@@ -108,6 +108,30 @@
     },
     {
       "key": {
+        "uuid": "cf4aa890_6a9a6894",
+        "filename": "services/core/java/com/android/server/connectivity/Tethering.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 1071,
+      "author": {
+        "id": 1308504
+      },
+      "writtenOn": "2019-02-25T08:06:10Z",
+      "side": 1,
+      "message": "Ack, this part already be merged in separate CL.",
+      "parentUuid": "b2c7530f_83e595f9",
+      "range": {
+        "startLine": 1071,
+        "startChar": 16,
+        "endLine": 1071,
+        "endChar": 50
+      },
+      "revId": "41b51cea5f9416dfd72619541c6731506133d53b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "375c5711_98bd4bec",
         "filename": "services/core/java/com/android/server/connectivity/tethering/TetheringConfiguration.java",
         "patchSetId": 2
@@ -239,6 +263,30 @@
       "side": 1,
       "message": "It looks like getSystemService(TELEPHONY_SERVICE) will always return non-null due to this code in SystemServer.java:\n\n\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\n        registerService(Context.TELEPHONY_SERVICE, TelephonyManager.class,\n                new CachedServiceFetcher\u003cTelephonyManager\u003e() {\n            @Override\n            public TelephonyManager createService(ContextImpl ctx) {\n                return new TelephonyManager(ctx.getOuterContext());\n            }});",
       "parentUuid": "26db89c9_34cb7737",
+      "range": {
+        "startLine": 215,
+        "startChar": 15,
+        "endLine": 215,
+        "endChar": 27
+      },
+      "revId": "41b51cea5f9416dfd72619541c6731506133d53b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cbcdeabf_79840506",
+        "filename": "services/core/java/com/android/server/connectivity/tethering/TetheringConfiguration.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1308504
+      },
+      "writtenOn": "2019-02-25T08:06:10Z",
+      "side": 1,
+      "message": "Yes, it may be non-due as the code you point out. But I think it still be better to add null check because the return value is nullable for getSystemService API. We can\u0027t expect whether it still always be non-null in the future.\n\nhttps://cs.corp.google.com/android/frameworks/base/core/java/android/content/Context.java?type\u003dcs\u0026q\u003dgetSystemService+p:android\u0026g\u003d0\u0026l\u003d3370",
+      "parentUuid": "883a72bd_c3cdecc8",
       "range": {
         "startLine": 215,
         "startChar": 15,
