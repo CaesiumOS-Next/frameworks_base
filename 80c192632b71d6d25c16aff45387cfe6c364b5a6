@@ -48,6 +48,29 @@
     },
     {
       "key": {
+        "uuid": "f8c95d9e_aae86235",
+        "filename": "services/core/java/com/android/server/connectivity/tethering/TetheringConfiguration.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 258,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2019-02-25T06:27:15Z",
+      "side": 1,
+      "message": "prevents the DUN and default mobile types incorrectly appearing together, which could happen on previous releases",
+      "range": {
+        "startLine": 257,
+        "startChar": 58,
+        "endLine": 258,
+        "endChar": 71
+      },
+      "revId": "80c192632b71d6d25c16aff45387cfe6c364b5a6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1d291c4c_d0a758ba",
         "filename": "tests/net/java/com/android/server/connectivity/tethering/TetheringConfigurationTest.java",
         "patchSetId": 6
