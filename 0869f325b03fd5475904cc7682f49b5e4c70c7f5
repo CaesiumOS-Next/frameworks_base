@@ -357,6 +357,30 @@
     },
     {
       "key": {
+        "uuid": "b9dcfe9b_f7a65052",
+        "filename": "services/core/java/com/android/server/connectivity/tethering/TetheringConfiguration.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 251,
+      "author": {
+        "id": 1308504
+      },
+      "writtenOn": "2019-02-27T07:40:02Z",
+      "side": 1,
+      "message": "Ack, your suggestion is better. I will refine this part in later patch.",
+      "parentUuid": "4b3fd7ca_8cab4099",
+      "range": {
+        "startLine": 251,
+        "startChar": 7,
+        "endLine": 251,
+        "endChar": 9
+      },
+      "revId": "0869f325b03fd5475904cc7682f49b5e4c70c7f5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f2109135_2f4162f2",
         "filename": "tests/net/java/com/android/server/connectivity/tethering/TetheringConfigurationTest.java",
         "patchSetId": 4

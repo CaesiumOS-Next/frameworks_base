@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "bf874270_a95b9f22",
+        "filename": "tests/net/java/com/android/server/connectivity/tethering/TetheringConfigurationTest.java",
+        "patchSetId": 9
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1308504
+      },
+      "writtenOn": "2019-02-27T07:40:02Z",
+      "side": 1,
+      "message": "Ack, would address this in later patch.",
+      "parentUuid": "6701f76a_89acdb78",
+      "range": {
+        "startLine": 124,
+        "startChar": 61,
+        "endLine": 124,
+        "endChar": 92
+      },
+      "revId": "db3a236d7fe4a5229555b6fd23b2cb4316ffcf8b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ec60044e_102d4b17",
         "filename": "tests/net/java/com/android/server/connectivity/tethering/TetheringConfigurationTest.java",
         "patchSetId": 9
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "0a4c7a2c_b77d404f",
+        "filename": "tests/net/java/com/android/server/connectivity/tethering/TetheringConfigurationTest.java",
+        "patchSetId": 9
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1308504
+      },
+      "writtenOn": "2019-02-27T07:40:02Z",
+      "side": 1,
+      "message": "Ack, would keep original one due to both of two options are fine.",
+      "parentUuid": "ec60044e_102d4b17",
+      "range": {
+        "startLine": 145,
+        "startChar": 37,
+        "endLine": 145,
+        "endChar": 44
+      },
+      "revId": "db3a236d7fe4a5229555b6fd23b2cb4316ffcf8b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a5ef60b2_920b012b",
         "filename": "tests/net/java/com/android/server/connectivity/tethering/TetheringConfigurationTest.java",
         "patchSetId": 9
@@ -68,6 +116,30 @@
       "revId": "db3a236d7fe4a5229555b6fd23b2cb4316ffcf8b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8a57e1c2_745cf70a",
+        "filename": "tests/net/java/com/android/server/connectivity/tethering/TetheringConfigurationTest.java",
+        "patchSetId": 9
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1308504
+      },
+      "writtenOn": "2019-02-27T07:40:02Z",
+      "side": 1,
+      "message": "Ack, would address this in later patch.",
+      "parentUuid": "a5ef60b2_920b012b",
+      "range": {
+        "startLine": 182,
+        "startChar": 27,
+        "endLine": 182,
+        "endChar": 58
+      },
+      "revId": "db3a236d7fe4a5229555b6fd23b2cb4316ffcf8b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
