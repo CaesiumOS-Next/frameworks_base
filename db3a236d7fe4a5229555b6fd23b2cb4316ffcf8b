@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6701f76a_89acdb78",
+        "filename": "tests/net/java/com/android/server/connectivity/tethering/TetheringConfigurationTest.java",
+        "patchSetId": 9
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2019-02-27T07:18:02Z",
+      "side": 1,
+      "message": "nit : your callers will be easier to write if you say here\nint... legacyTetherUpstreamTypes.\n\nThis still is an array and no other changes are needed in this function, but then you can say\n\n   getTetheringConfiguration(TYPE_MOBILE, TYPE_WIFI);\n\ninstead of\n\n   getTetheringConfiguration(new int[]{TYPE_MOBILE, TYPE_WIFI});",
+      "range": {
+        "startLine": 124,
+        "startChar": 61,
+        "endLine": 124,
+        "endChar": 92
+      },
+      "revId": "db3a236d7fe4a5229555b6fd23b2cb4316ffcf8b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ec60044e_102d4b17",
+        "filename": "tests/net/java/com/android/server/connectivity/tethering/TetheringConfigurationTest.java",
+        "patchSetId": 9
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2019-02-27T07:18:02Z",
+      "side": 1,
+      "message": "Optional : I think all these variables have explicit enough names that they can be members. That will let you not write the initialization block in every function.\n(of course this is only okay because it\u0027s a test, with a known lifetime)",
+      "range": {
+        "startLine": 145,
+        "startChar": 37,
+        "endLine": 145,
+        "endChar": 44
+      },
+      "revId": "db3a236d7fe4a5229555b6fd23b2cb4316ffcf8b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a5ef60b2_920b012b",
+        "filename": "tests/net/java/com/android/server/connectivity/tethering/TetheringConfigurationTest.java",
+        "patchSetId": 9
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2019-02-27T07:18:02Z",
+      "side": 1,
+      "message": "should be present in none of\n\n(\"not be present in all\" means there are some where it should be absent, think !all() instead of all(!))",
+      "range": {
+        "startLine": 182,
+        "startChar": 27,
+        "endLine": 182,
+        "endChar": 58
+      },
+      "revId": "db3a236d7fe4a5229555b6fd23b2cb4316ffcf8b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}

@@ -262,6 +262,30 @@
     },
     {
       "key": {
+        "uuid": "4c451d18_9c117c59",
+        "filename": "services/core/java/com/android/server/connectivity/tethering/TetheringConfiguration.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 245,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2019-02-27T07:18:02Z",
+      "side": 1,
+      "message": "Ah I see ! The new comment is much clearer, thanks.",
+      "parentUuid": "340147ea_887b3b1e",
+      "range": {
+        "startLine": 244,
+        "startChar": 12,
+        "endLine": 245,
+        "endChar": 86
+      },
+      "revId": "0869f325b03fd5475904cc7682f49b5e4c70c7f5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5532e553_2aabf85c",
         "filename": "services/core/java/com/android/server/connectivity/tethering/TetheringConfiguration.java",
         "patchSetId": 4
@@ -306,6 +330,30 @@
       "revId": "0869f325b03fd5475904cc7682f49b5e4c70c7f5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4b3fd7ca_8cab4099",
+        "filename": "services/core/java/com/android/server/connectivity/tethering/TetheringConfiguration.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 251,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2019-02-27T07:18:02Z",
+      "side": 1,
+      "message": "The only issue is that remove() only removes the first occurrence right ? Then you can replace\n\n  upstreamIfaceTypes.remove(TYPE_MOBILE)\n\nwith either :\n\n  upstreamIfaceTypes.removeIf(e -\u003e e \u003d\u003d TYPE_MOBILE);\n\nor :\n\n  upstreamIfaceTypes.removeAll(Collections.singleton(TYPE_MOBILE));\n\nor :\n\n  while (upstreamIfaceTypes.remove(TYPE_MOBILE)) {}\n\n...any of these will remove all occurrences.\nThe reason I\u0027m suggesting this is because I think it\u0027s a lot less risky going forward to have the more readable code : it\u0027s less likely we\u0027ll get something wrong and miss it in code review.\n\nThan being said, like I said in the original comment, you don\u0027t have to do it in this change.",
+      "parentUuid": "334b3c57_7449fef0",
+      "range": {
+        "startLine": 251,
+        "startChar": 7,
+        "endLine": 251,
+        "endChar": 9
+      },
+      "revId": "0869f325b03fd5475904cc7682f49b5e4c70c7f5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
