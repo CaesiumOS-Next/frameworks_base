@@ -29,7 +29,6 @@ import android.annotation.Nullable;
 import android.app.Service;
 import android.content.Context;
 import android.content.Intent;
-import android.net.ConnectivityManager;
 import android.net.INetd;
 import android.net.INetworkMonitor;
 import android.net.INetworkMonitorCallbacks;
@@ -50,6 +49,7 @@ import android.os.RemoteException;
 
 import com.android.internal.annotations.GuardedBy;
 import com.android.internal.util.IndentingPrintWriter;
+import com.android.networkstack.IResourceManager;
 import com.android.server.connectivity.NetworkMonitor;
 
 import java.io.FileDescriptor;
@@ -75,9 +75,9 @@ public class NetworkStackService extends Service {
      * <p>On platforms where the network stack runs in the system server process, this method may
      * be called directly instead of obtaining the connector by binding to the service.
      */
-    public static synchronized IBinder makeConnector(Context context) {
+    public static synchronized IBinder makeConnector(Context context, Class resIds) {
         if (sConnector == null) {
-            sConnector = new NetworkStackConnector(context);
+            sConnector = new NetworkStackConnector(context, resIds);
         }
         return sConnector;
     }
@@ -85,7 +85,13 @@ public class NetworkStackService extends Service {
     @NonNull
     @Override
     public IBinder onBind(Intent intent) {
-        return makeConnector(this);
+        final Class<?> resIds;
+        try {
+            resIds = Class.forName("com.android.networkstack.R");
+        } catch (ClassNotFoundException e) {
+            throw new IllegalStateException("Could not find network stack resources", e);
+        }
+        return makeConnector(this, resIds);
     }
 
     private static class NetworkStackConnector extends INetworkStackConnector.Stub {
@@ -93,7 +99,7 @@ public class NetworkStackService extends Service {
         private final Context mContext;
         private final INetd mNetd;
         private final NetworkObserverRegistry mObserverRegistry;
-        private final ConnectivityManager mCm;
+        private final IResourceManager mResourceManager;
         @GuardedBy("mIpClients")
         private final ArrayList<WeakReference<IpClient>> mIpClients = new ArrayList<>();
 
@@ -112,12 +118,12 @@ public class NetworkStackService extends Service {
             return log;
         }
 
-        NetworkStackConnector(Context context) {
+        NetworkStackConnector(@NonNull Context context, @NonNull Class<?> resIds) {
             mContext = context;
             mNetd = INetd.Stub.asInterface(
                     (IBinder) context.getSystemService(Context.NETD_SERVICE));
             mObserverRegistry = new NetworkObserverRegistry();
-            mCm = context.getSystemService(ConnectivityManager.class);
+            mResourceManager = IResourceManager.make(resIds, mContext.getResources());
 
             try {
                 mObserverRegistry.register(mNetd);
@@ -157,7 +163,8 @@ public class NetworkStackService extends Service {
                 throws RemoteException {
             final Network parsedNetwork = fromStableParcelable(network);
             final SharedLog log = addValidationLogs(parsedNetwork, name);
-            final NetworkMonitor nm = new NetworkMonitor(mContext, cb, parsedNetwork, log);
+            final NetworkMonitor nm = new NetworkMonitor(
+                    mContext, cb, parsedNetwork, log, mResourceManager);
             cb.onNetworkMonitorCreated(new NetworkMonitorImpl(nm));
         }
 

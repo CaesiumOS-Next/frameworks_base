@@ -81,6 +81,7 @@ import com.android.internal.annotations.VisibleForTesting;
 import com.android.internal.util.RingBufferIndices;
 import com.android.internal.util.State;
 import com.android.internal.util.StateMachine;
+import com.android.networkstack.IResourceManager;
 
 import java.io.IOException;
 import java.net.HttpURLConnection;
@@ -253,6 +254,7 @@ public class NetworkMonitor extends StateMachine {
     private final IpConnectivityLog mMetricsLog;
     private final Dependencies mDependencies;
     private final DataStallStatsUtils mDetectionStatsUtils;
+    private final IResourceManager mResourceManager;
 
     // Configuration values for captive portal detection probes.
     private final String mCaptivePortalUserAgent;
@@ -315,14 +317,14 @@ public class NetworkMonitor extends StateMachine {
     private boolean mCollectDataStallMetrics = false;
 
     public NetworkMonitor(Context context, INetworkMonitorCallbacks cb, Network network,
-            SharedLog validationLog) {
-        this(context, cb, network, new IpConnectivityLog(), validationLog,
+            SharedLog validationLog, IResourceManager resourceManager) {
+        this(context, cb, network, new IpConnectivityLog(), validationLog, resourceManager,
                 Dependencies.DEFAULT, new DataStallStatsUtils());
     }
 
     @VisibleForTesting
     protected NetworkMonitor(Context context, INetworkMonitorCallbacks cb, Network network,
-            IpConnectivityLog logger, SharedLog validationLogs,
+            IpConnectivityLog logger, SharedLog validationLogs, IResourceManager resourceManager,
             Dependencies deps, DataStallStatsUtils detectionStatsUtils) {
         // Add suffix indicating which NetworkMonitor we're talking about.
         super(TAG + "/" + network.toString());
@@ -335,6 +337,7 @@ public class NetworkMonitor extends StateMachine {
         mMetricsLog = logger;
         mValidationLogs = validationLogs;
         mCallback = cb;
+        mResourceManager = resourceManager;
         mDependencies = deps;
         mDetectionStatsUtils = detectionStatsUtils;
         mNonPrivateDnsBypassNetwork = network;
@@ -370,7 +373,7 @@ public class NetworkMonitor extends StateMachine {
         mDataStallValidDnsTimeThreshold = getDataStallValidDnsTimeThreshold();
         mDataStallEvaluationType = getDataStallEvalutionType();
 
-        // mLinkProperties and mNetworkCapbilities must never be null or we will NPE.
+        // mLinkProperties and mNetworkCapabilities must never be null or we will NPE.
         // Provide empty objects in case we are started and the network disconnects before
         // we can ever fetch them.
         // TODO: Delete ASAP.
