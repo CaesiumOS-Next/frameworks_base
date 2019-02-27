@@ -182,8 +182,8 @@ public class NetworkStackClient {
                     "com.android.server.NetworkStackService",
                     true /* initialize */,
                     context.getClassLoader());
-            connector = (IBinder) service.getMethod("makeConnector", Context.class)
-                    .invoke(null, context);
+            connector = (IBinder) service.getMethod("makeConnector", Context.class, Class.class)
+                    .invoke(null, context, com.android.internal.R.class);
         } catch (NoSuchMethodException | IllegalAccessException | InvocationTargetException e) {
             logWtf("Could not create network stack connector from NetworkStackService", e);
             // TODO: crash/reboot system here ?

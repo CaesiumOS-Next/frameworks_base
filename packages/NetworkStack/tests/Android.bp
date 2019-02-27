@@ -24,7 +24,7 @@ android_test {
         "android-support-test",
         "frameworks-base-testutils",
         "mockito-target-extended-minus-junit4",
-        "NetworkStackLib",
+        "NetworkStackAppLib",
         "testables",
     ],
     libs: [

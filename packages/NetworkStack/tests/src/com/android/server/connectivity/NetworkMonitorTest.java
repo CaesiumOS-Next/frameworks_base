@@ -66,6 +66,8 @@ import android.telephony.CellSignalStrength;
 import android.telephony.TelephonyManager;
 import android.util.ArrayMap;
 
+import com.android.networkstack.IResourceManager;
+
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -101,6 +103,7 @@ public class NetworkMonitorTest {
     private @Mock HttpURLConnection mOtherFallbackConnection;
     private @Mock Random mRandom;
     private @Mock NetworkMonitor.Dependencies mDependencies;
+    private @Mock IResourceManager mResourceManager;
     private @Mock INetworkMonitorCallbacks mCallbacks;
     private @Spy Network mNetwork = new Network(TEST_NETID);
     private @Mock DataStallStatsUtils mDataStallStatsUtils;
@@ -197,7 +200,7 @@ public class NetworkMonitorTest {
         WrappedNetworkMonitor(Context context, Network network, IpConnectivityLog logger,
                 Dependencies deps, DataStallStatsUtils statsUtils) {
                 super(context, mCallbacks, network, logger,
-                        new SharedLog("test_nm"), deps, statsUtils);
+                        new SharedLog("test_nm"), mResourceManager, deps, statsUtils);
         }
 
         @Override
@@ -236,7 +239,7 @@ public class NetworkMonitorTest {
     private NetworkMonitor makeMonitor() {
         final NetworkMonitor nm = new NetworkMonitor(
                 mContext, mCallbacks, mNetwork, mLogger, mValidationLogger,
-                mDependencies, mDataStallStatsUtils);
+                mResourceManager, mDependencies, mDataStallStatsUtils);
         nm.start();
         waitForIdle(nm.getHandler());
         return nm;

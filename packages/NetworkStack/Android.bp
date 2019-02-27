@@ -32,6 +32,15 @@ java_library {
     ]
 }
 
+android_library {
+    name: "NetworkStackAppLib",
+    sdk_version: "system_current",
+    static_libs: [
+        "NetworkStackLib"
+    ],
+    resource_dirs: ["res"],
+}
+
 // Updatable network stack packaged as an application
 android_app {
     name: "NetworkStack",
@@ -39,7 +48,7 @@ android_app {
     certificate: "networkstack",
     privileged: true,
     static_libs: [
-        "NetworkStackLib"
+        "NetworkStackAppLib"
     ],
     jarjar_rules: "jarjar-rules-shared.txt",
     manifest: "AndroidManifest.xml",
