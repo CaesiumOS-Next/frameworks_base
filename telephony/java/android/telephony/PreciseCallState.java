@@ -17,6 +17,7 @@
 package android.telephony;
 
 import android.annotation.IntDef;
+import android.annotation.NonNull;
 import android.annotation.SystemApi;
 import android.annotation.UnsupportedAppUsage;
 import android.os.Parcel;
@@ -257,6 +258,7 @@ public final class PreciseCallState implements Parcelable {
         out.writeInt(mPreciseDisconnectCause);
     }
 
+    @NonNull
     public static final Parcelable.Creator<PreciseCallState> CREATOR
             = new Parcelable.Creator<PreciseCallState>() {
 
