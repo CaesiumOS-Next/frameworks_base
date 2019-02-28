@@ -31,8 +31,14 @@ public final class CellInfoNr extends CellInfo {
     private final CellSignalStrengthNr mCellSignalStrength;
 
     private CellInfoNr(Parcel in) {
+        this(in, false);
+    }
+
+    private CellInfoNr(Parcel in, boolean sanitizeLocationInfo) {
         super(in);
-        mCellIdentity = CellIdentityNr.CREATOR.createFromParcel(in);
+        CellIdentityNr cellIdentityNr = CellIdentityNr.CREATOR.createFromParcel(in);
+        mCellIdentity = sanitizeLocationInfo ? cellIdentityNr.sanitizeLocationInfo()
+                : cellIdentityNr;
         mCellSignalStrength = CellSignalStrengthNr.CREATOR.createFromParcel(in);
     }
 
@@ -46,6 +52,15 @@ public final class CellInfoNr extends CellInfo {
     @NonNull
     public CellSignalStrength getCellSignalStrength() {
         return mCellSignalStrength;
+    }
+
+    /** @hide */
+    @Override
+    public CellInfo sanitizeLocationInfo() {
+        Parcel p = Parcel.obtain();
+        this.writeToParcel(p, 0);
+        p.setDataPosition(0);
+        return new CellInfoNr(p, true);
     }
 
     @Override
