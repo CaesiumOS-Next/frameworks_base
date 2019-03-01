@@ -48,6 +48,98 @@
     },
     {
       "key": {
+        "uuid": "a87c549b_6b4fb3d3",
+        "filename": "core/java/android/net/NetworkTemplate.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2019-03-01T08:20:35Z",
+      "side": 1,
+      "message": "@VisibleForTesting ? forceAllNetworkTypes probably should be annotated with that too.",
+      "range": {
+        "startLine": 96,
+        "startChar": 23,
+        "endLine": 96,
+        "endChar": 48
+      },
+      "revId": "8417160db05d4141751210de68107589db879c44",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "19bd212b_9d748054",
+        "filename": "tests/net/java/com/android/server/net/NetworkStatsServiceTest.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 930,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2019-03-01T08:20:35Z",
+      "side": 1,
+      "message": "go/avoidwe\n\nIn this case I don\u0027t know if you mean this test function, this test class, or some specific subset of devices.",
+      "range": {
+        "startLine": 930,
+        "startChar": 11,
+        "endLine": 930,
+        "endChar": 13
+      },
+      "revId": "8417160db05d4141751210de68107589db879c44",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bf71c142_4134d08e",
+        "filename": "tests/net/java/com/android/server/net/NetworkStatsServiceTest.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 933,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2019-03-01T08:20:35Z",
+      "side": 1,
+      "message": "Style : won\u0027t this fit on one line ?",
+      "range": {
+        "startLine": 933,
+        "startChar": 16,
+        "endLine": 933,
+        "endChar": 71
+      },
+      "revId": "8417160db05d4141751210de68107589db879c44",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "17538ca2_9a159d1e",
+        "filename": "tests/net/java/com/android/server/net/NetworkStatsServiceTest.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 950,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2019-03-01T08:20:35Z",
+      "side": 1,
+      "message": "Optional style nit : While what you\u0027ve written is fine, you can also write\n\nexpectNetworkStatsUidDetail(new NetworkStats(getElapsedRealtime(), 2)\n        .addValues(...\n\n...which lets you remove many of these breaks.",
+      "range": {
+        "startLine": 950,
+        "startChar": 20,
+        "endLine": 950,
+        "endChar": 32
+      },
+      "revId": "8417160db05d4141751210de68107589db879c44",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e735fb69_8779baad",
         "filename": "tests/net/java/com/android/server/net/NetworkStatsServiceTest.java",
         "patchSetId": 1
@@ -106,6 +198,30 @@
       "side": 1,
       "message": "this pattern is fairly commonly used in g3 - http://go/unit-test-practices#naming",
       "parentUuid": "12aaf823_c274f2c0",
+      "range": {
+        "startLine": 974,
+        "startChar": 41,
+        "endLine": 974,
+        "endChar": 42
+      },
+      "revId": "8417160db05d4141751210de68107589db879c44",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3d02d300_9117aee7",
+        "filename": "tests/net/java/com/android/server/net/NetworkStatsServiceTest.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 974,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2019-03-01T08:20:35Z",
+      "side": 1,
+      "message": "Android style does not care what happens in g3 (nor wants to get closer), so I don\u0027t find this convincing at all.\n\nThat being said in this case, there is indeed plenty of precedent for this, especially in our code.\nNetworkStatsAccessTest, ConnectivityServiceTest, LinkPropertiesParcelableUtilTest, NetworkStatsTest and many others.",
+      "parentUuid": "9c1e87f1_76ac49e4",
       "range": {
         "startLine": 974,
         "startChar": 41,
