@@ -29,6 +29,9 @@ FLAG_BLACKLIST = "blacklist"
 FLAG_GREYLIST_MAX_O = "greylist-max-o"
 FLAG_GREYLIST_MAX_P = "greylist-max-p"
 FLAG_CORE_PLATFORM_API = "core-platform-api"
+FLAG_PUBLIC_API = "public-api"
+FLAG_SYSTEM_API = "system-api"
+FLAG_TEST_API = "test-api"
 
 # List of all known flags.
 FLAGS_API_LIST = [
@@ -37,6 +40,9 @@ FLAGS_API_LIST = [
     FLAG_BLACKLIST,
     FLAG_GREYLIST_MAX_O,
     FLAG_GREYLIST_MAX_P,
+    FLAG_PUBLIC_API,
+    FLAG_SYSTEM_API,
+    FLAG_TEST_API
 ]
 ALL_FLAGS = FLAGS_API_LIST + [ FLAG_CORE_PLATFORM_API ]
 
@@ -69,6 +75,9 @@ SERIALIZATION_REGEX = re.compile(r'.*->(' + '|'.join(SERIALIZATION_PATTERNS) + r
 # Predicates to be used with filter_apis.
 HAS_NO_API_LIST_ASSIGNED = lambda api, flags: not FLAGS_API_LIST_SET.intersection(flags)
 IS_SERIALIZATION = lambda api, flags: SERIALIZATION_REGEX.match(api)
+
+GREY_OR_WHITELIST = set([FLAG_WHITELIST, FLAG_GREYLIST])
+HAS_WHITELIST_AND_GREYLIST = lambda _, flags: GREY_OR_WHITELIST.issubset(flags)
 
 def get_args():
     """Parses command line arguments.
@@ -119,6 +128,18 @@ def write_lines(filename, lines):
     lines = map(lambda line: line + '\n', lines)
     with open(filename, 'w') as f:
         f.writelines(lines)
+
+def filter_flags(flags):
+    """Filter out public, system and test api flags"""
+    for flag in flags:
+        if flag == FLAG_PUBLIC_API:
+            yield FLAG_WHITELIST
+        elif flag == FLAG_SYSTEM_API:
+            yield FLAG_GREYLIST
+        elif flag == FLAG_TEST_API:
+            yield FLAG_GREYLIST
+        else:
+            yield flag
 
 class FlagsDict:
     def __init__(self):
@@ -203,14 +224,14 @@ class FlagsDict:
 
         # Iterate over all CSV lines, find entry in dict and append flags to it.
         for csv in csv_values:
-            self._dict[csv[0]].update(csv[1:])
+            self._dict[csv[0]].update(filter_flags(csv[1:]))
 
     def assign_flag(self, flag, apis, source="<unknown>"):
         """Assigns a flag to given subset of entries.
 
         Args:
             flag (string): One of ALL_FLAGS.
-            apis (set): Subset of APIs to recieve the flag.
+            apis (set): Subset of APIs to receive the flag.
             source (string): Origin of `entries_subset`. Will be printed in error messages.
 
         Throws:
@@ -225,6 +246,28 @@ class FlagsDict:
         # Iterate over the API subset, find each entry in dict and assign the flag to it.
         for api in apis:
             self._dict[api].add(flag)
+
+    def remove_flag(self, flag, apis, source="<unknown>"):
+        """Removes a flag for given subset of entries.
+
+        Args:
+            flag (string): One of ALL_FLAGS.
+            apis (set): Subset of APIs to remove the flag.
+            source (string): Origin of `entries_subset`. Will be printed in error messages.
+
+        Throws:
+            AssertionError if parsed API signatures of flags are invalid.
+        """
+        # Check that all APIs exist in the dict.
+        self._check_entries_set(apis, source)
+
+        # Check that the flag is known.
+        self._check_flags_set(set([ flag ]), source)
+
+        # Iterate over the API subset, find each entry in dict and assign the flag to it.
+        for api in apis:
+            self._dict[api].remove(flag)
+
 
 def main(argv):
     # Parse arguments.
@@ -262,6 +305,9 @@ def main(argv):
 
     # Assign all remaining entries to the blacklist.
     flags.assign_flag(FLAG_BLACKLIST, flags.filter_apis(HAS_NO_API_LIST_ASSIGNED))
+
+    # Resolve greylist/whitelist conflicts
+    flags.remove_flag(FLAG_GREYLIST, flags.filter_apis(HAS_WHITELIST_AND_GREYLIST))
 
     # Write output.
     write_lines(args["output"], flags.generate_csv())
