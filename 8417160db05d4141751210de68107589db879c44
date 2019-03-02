@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "3ad331c7_84f8237c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1399364
+      },
+      "writtenOn": "2019-03-02T04:21:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b2a7c85b_98f7afdf",
+      "range": {
+        "startLine": 11,
+        "startChar": 5,
+        "endLine": 11,
+        "endChar": 65
+      },
+      "revId": "8417160db05d4141751210de68107589db879c44",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e40bcc17_019c0377",
         "filename": "/COMMIT_MSG",
         "patchSetId": 1
@@ -45,6 +69,30 @@
       "revId": "8417160db05d4141751210de68107589db879c44",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fd28f14d_bd1dc60e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1399364
+      },
+      "writtenOn": "2019-03-02T04:21:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e40bcc17_019c0377",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 4
+      },
+      "revId": "8417160db05d4141751210de68107589db879c44",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "6297dd87_92c904a8",
+        "filename": "core/java/android/net/NetworkTemplate.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1399364
+      },
+      "writtenOn": "2019-03-02T04:21:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a87c549b_6b4fb3d3",
+      "range": {
+        "startLine": 96,
+        "startChar": 23,
+        "endLine": 96,
+        "endChar": 48
+      },
+      "revId": "8417160db05d4141751210de68107589db879c44",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "19bd212b_9d748054",
         "filename": "tests/net/java/com/android/server/net/NetworkStatsServiceTest.java",
         "patchSetId": 1
@@ -91,6 +163,30 @@
       "revId": "8417160db05d4141751210de68107589db879c44",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "64d74d4f_6c8c9ecf",
+        "filename": "tests/net/java/com/android/server/net/NetworkStatsServiceTest.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 930,
+      "author": {
+        "id": 1399364
+      },
+      "writtenOn": "2019-03-02T04:21:29Z",
+      "side": 1,
+      "message": "Thanks for the suggestion and the link to doc. Will keep it in mind going forward.",
+      "parentUuid": "19bd212b_9d748054",
+      "range": {
+        "startLine": 930,
+        "startChar": 11,
+        "endLine": 930,
+        "endChar": 13
+      },
+      "revId": "8417160db05d4141751210de68107589db879c44",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "0240e525_ac09b09b",
+        "filename": "tests/net/java/com/android/server/net/NetworkStatsServiceTest.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 933,
+      "author": {
+        "id": 1399364
+      },
+      "writtenOn": "2019-03-02T04:21:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bf71c142_4134d08e",
+      "range": {
+        "startLine": 933,
+        "startChar": 16,
+        "endLine": 933,
+        "endChar": 71
+      },
+      "revId": "8417160db05d4141751210de68107589db879c44",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "17538ca2_9a159d1e",
         "filename": "tests/net/java/com/android/server/net/NetworkStatsServiceTest.java",
         "patchSetId": 1
@@ -128,6 +248,30 @@
       "writtenOn": "2019-03-01T08:20:35Z",
       "side": 1,
       "message": "Optional style nit : While what you\u0027ve written is fine, you can also write\n\nexpectNetworkStatsUidDetail(new NetworkStats(getElapsedRealtime(), 2)\n        .addValues(...\n\n...which lets you remove many of these breaks.",
+      "range": {
+        "startLine": 950,
+        "startChar": 20,
+        "endLine": 950,
+        "endChar": 32
+      },
+      "revId": "8417160db05d4141751210de68107589db879c44",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a2890ac9_8109017a",
+        "filename": "tests/net/java/com/android/server/net/NetworkStatsServiceTest.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 950,
+      "author": {
+        "id": 1399364
+      },
+      "writtenOn": "2019-03-02T04:21:29Z",
+      "side": 1,
+      "message": "Ack.\nThis was by auto formatter. I did not hand crafted this :)",
+      "parentUuid": "17538ca2_9a159d1e",
       "range": {
         "startLine": 950,
         "startChar": 20,
@@ -227,6 +371,30 @@
         "startChar": 41,
         "endLine": 974,
         "endChar": 42
+      },
+      "revId": "8417160db05d4141751210de68107589db879c44",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "01814f14_71142505",
+        "filename": "tests/net/java/com/android/server/net/NetworkStatsServiceTest.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 974,
+      "author": {
+        "id": 1399364
+      },
+      "writtenOn": "2019-03-02T04:21:29Z",
+      "side": 1,
+      "message": "Ack.",
+      "parentUuid": "e735fb69_8779baad",
+      "range": {
+        "startLine": 974,
+        "startChar": 16,
+        "endLine": 974,
+        "endChar": 57
       },
       "revId": "8417160db05d4141751210de68107589db879c44",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
