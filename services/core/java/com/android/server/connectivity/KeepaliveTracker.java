@@ -128,7 +128,7 @@ public class KeepaliveTracker {
                 @NonNull KeepalivePacketData packet,
                 int interval,
                 int type,
-                @NonNull FileDescriptor fd) {
+                @Nullable FileDescriptor fd) throws InvalidSocketException {
             mCallback = callback;
             mPid = Binder.getCallingPid();
             mUid = Binder.getCallingUid();
@@ -137,7 +137,20 @@ public class KeepaliveTracker {
             mPacket = packet;
             mInterval = interval;
             mType = type;
-            mFd = fd;
+
+            // For SocketKeepalive, a dup of fd is kept in mFd so the socket won't be affected if
+            // the fd get closed by the user. A null is acceptable here for backward compatibility
+            // of PacketKeepalive API.
+            // TODO: don't accept null fd.
+            try {
+                if (fd != null) {
+                    mFd = Os.dup(fd);
+                }  else {
+                    mFd = null;
+                }
+            } catch (ErrnoException e) {
+                throw new InvalidSocketException(ERROR_INVALID_SOCKET);
+            }
 
             try {
                 mCallback.asBinder().linkToDeath(this, 0);
@@ -273,6 +286,18 @@ public class KeepaliveTracker {
                 }
             }
 
+            // Close the duplicated fd that maintains the lifecycle of socket whenever
+            // keepalive is running.
+            if (mFd != null) {
+                try {
+                    Os.close(mFd);
+                } catch (ErrnoException e) {
+                    // This should not happen since system server controls the lifecycle of fd when
+                    // keepalive offload is running.
+                    Log.wtf(TAG, "Error closing fd for keepalive " + mSlot + ": " + e);
+                }
+            }
+
             if (reason == SUCCESS) {
                 try {
                     mCallback.onStopped();
@@ -356,8 +381,9 @@ public class KeepaliveTracker {
             return;
         }
         ki.stop(reason);
-        Log.d(TAG, "Stopped keepalive " + slot + " on " + networkName);
         networkKeepalives.remove(slot);
+        Log.d(TAG, "Stopped keepalive " + slot + " on " + networkName + ", "
+                + networkKeepalives.size() + " remains.");
         if (networkKeepalives.isEmpty()) {
             mKeepalives.remove(nai);
         }
@@ -390,7 +416,8 @@ public class KeepaliveTracker {
             ki = mKeepalives.get(nai).get(slot);
         } catch(NullPointerException e) {}
         if (ki == null) {
-            Log.e(TAG, "Event for unknown keepalive " + slot + " on " + nai.name());
+            Log.e(TAG, "Event " + message.what + " for unknown keepalive " + slot + " on "
+                    + nai.name());
             return;
         }
 
@@ -438,6 +465,7 @@ public class KeepaliveTracker {
      * {@link android.net.SocketKeepalive}.
      **/
     public void startNattKeepalive(@Nullable NetworkAgentInfo nai,
+            @Nullable FileDescriptor fd,
             int intervalSeconds,
             @NonNull ISocketKeepaliveCallback cb,
             @NonNull String srcAddrString,
@@ -466,8 +494,14 @@ public class KeepaliveTracker {
             notifyErrorCallback(cb, e.error);
             return;
         }
-        KeepaliveInfo ki = new KeepaliveInfo(cb, nai, packet, intervalSeconds,
-                KeepaliveInfo.TYPE_NATT, null);
+        KeepaliveInfo ki = null;
+        try {
+            ki = new KeepaliveInfo(cb, nai, packet, intervalSeconds,
+                    KeepaliveInfo.TYPE_NATT, fd);
+        } catch (InvalidSocketException e) {
+            notifyErrorCallback(cb, ERROR_INVALID_SOCKET);
+            return;
+        }
         Log.d(TAG, "Created keepalive: " + ki.toString());
         mConnectivityServiceHandler.obtainMessage(
                 NetworkAgent.CMD_START_SOCKET_KEEPALIVE, ki).sendToTarget();
@@ -505,8 +539,14 @@ public class KeepaliveTracker {
             notifyErrorCallback(cb, e.error);
             return;
         }
-        KeepaliveInfo ki = new KeepaliveInfo(cb, nai, packet, intervalSeconds,
-                KeepaliveInfo.TYPE_TCP, fd);
+        KeepaliveInfo ki = null;
+        try {
+            ki = new KeepaliveInfo(cb, nai, packet, intervalSeconds,
+                    KeepaliveInfo.TYPE_TCP, fd);
+        } catch (InvalidSocketException e) {
+            notifyErrorCallback(cb, ERROR_INVALID_SOCKET);
+            return;
+        }
         Log.d(TAG, "Created keepalive: " + ki.toString());
         mConnectivityServiceHandler.obtainMessage(CMD_START_SOCKET_KEEPALIVE, ki).sendToTarget();
     }
@@ -541,7 +581,7 @@ public class KeepaliveTracker {
         }
 
         // Forward request to old API.
-        startNattKeepalive(nai, intervalSeconds, cb, srcAddrString, srcPort,
+        startNattKeepalive(nai, fd, intervalSeconds, cb, srcAddrString, srcPort,
                 dstAddrString, dstPort);
     }
 

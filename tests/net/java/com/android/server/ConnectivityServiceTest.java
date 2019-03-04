@@ -144,12 +144,14 @@ import android.os.INetworkManagementService;
 import android.os.Looper;
 import android.os.Message;
 import android.os.Parcel;
+import android.os.ParcelFileDescriptor;
 import android.os.Parcelable;
 import android.os.Process;
 import android.os.RemoteException;
 import android.os.SystemClock;
 import android.os.UserHandle;
 import android.provider.Settings;
+import android.system.Os;
 import android.test.mock.MockContentResolver;
 import android.text.TextUtils;
 import android.util.ArraySet;
@@ -4019,21 +4021,26 @@ public class ConnectivityServiceTest {
     }
 
     // Helper method to prepare the executor and run test
-    private void runTestWithSerialExecutors(Consumer<Executor> functor) {
-        final ExecutorService executorSingleThread = Executors.newSingleThreadExecutor();
-        final Executor executorInline = (Runnable r) -> r.run();
-        functor.accept(executorSingleThread);
-        executorSingleThread.shutdown();
-        functor.accept(executorInline);
+    private void runTestWithSerialExecutors(Consumer<Executor> functor) throws Exception {
+        try {
+            final ExecutorService executorSingleThread = Executors.newSingleThreadExecutor();
+            final Executor executorInline = (Runnable r) -> r.run();
+            functor.accept(executorSingleThread);
+            executorSingleThread.shutdown();
+            functor.accept(executorInline);
+        } catch (RuntimeException e) {
+            throw (Exception) e.getCause();
+        }
     }
 
     @Test
-    public void testNattSocketKeepalives() {
+    public void testNattSocketKeepalives() throws Exception {
         runTestWithSerialExecutors(executor -> {
             try {
                 doTestNattSocketKeepalivesWithExecutor(executor);
+                doTestNattSocketKeepalivesFdWithExecutor(executor);
             } catch (Exception e) {
-                fail(e.getMessage());
+                throw new RuntimeException(e);
             }
         });
     }
@@ -4183,12 +4190,12 @@ public class ConnectivityServiceTest {
     }
 
     @Test
-    public void testTcpSocketKeepalives() {
+    public void testTcpSocketKeepalives() throws Exception {
         runTestWithSerialExecutors(executor -> {
             try {
                 doTestTcpSocketKeepalivesWithExecutor(executor);
             } catch (Exception e) {
-                fail(e.getMessage());
+                throw new RuntimeException(e);
             }
         });
     }
@@ -4250,6 +4257,54 @@ public class ConnectivityServiceTest {
 
         testSocketV4.close();
         testSocketV6.close();
+
+        mWiFiNetworkAgent.disconnect();
+        waitFor(mWiFiNetworkAgent.getDisconnectedCV());
+        mWiFiNetworkAgent = null;
+    }
+
+    private void doTestNattSocketKeepalivesFdWithExecutor(Executor executor) throws Exception {
+        final int srcPort = 12345;
+        final InetAddress myIPv4 = InetAddress.getByName("192.0.2.129");
+        final InetAddress anyIPv4 = InetAddress.getByName("0.0.0.0");
+        final InetAddress dstIPv4 = InetAddress.getByName("8.8.8.8");
+        final int validKaInterval = 15;
+
+        // Prepare the target network.
+        LinkProperties lp = new LinkProperties();
+        lp.setInterfaceName("wlan12");
+        lp.addLinkAddress(new LinkAddress(myIPv4, 25));
+        lp.addRoute(new RouteInfo(InetAddress.getByName("192.0.2.254")));
+        Network myNet = connectKeepaliveNetwork(lp);
+        mWiFiNetworkAgent.setStartKeepaliveError(SocketKeepalive.SUCCESS);
+        mWiFiNetworkAgent.setStopKeepaliveError(SocketKeepalive.SUCCESS);
+
+        TestSocketKeepaliveCallback callback = new TestSocketKeepaliveCallback(executor);
+
+        // Prepare the target file descriptor.
+        final IpSecManager mIpSec = (IpSecManager) mContext.getSystemService(Context.IPSEC_SERVICE);
+        final UdpEncapsulationSocket testSocket = mIpSec.openUdpEncapsulationSocket(srcPort);
+        final ParcelFileDescriptor pfd = ParcelFileDescriptor.adoptFd(
+                testSocket.getFileDescriptor().getInt$());
+
+        // Start keepalive and explicit make the variable goes out of scope with try-with-resources
+        // block.
+        try (SocketKeepalive ka =
+                     mCm.createNattKeepalive(myNet, pfd, myIPv4, dstIPv4, executor, callback)) {
+
+            ka.start(validKaInterval);
+            callback.expectStarted();
+            ka.stop();
+            callback.expectStopped();
+        }
+
+        // Check that the FileDescriptor is still valid after keepalive stopped, ErrnoException with
+        // EBADF will be thrown if the socket is closed when checking local address.
+        final InetSocketAddress sa =
+                (InetSocketAddress) Os.getsockname(testSocket.getFileDescriptor());
+        assertEquals(anyIPv4, sa.getAddress());
+        pfd.detachFd();
+        testSocket.close();
 
         mWiFiNetworkAgent.disconnect();
         waitFor(mWiFiNetworkAgent.getDisconnectedCV());
