@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "4d161d91_b2da16e3",
+        "filename": "media/java/android/media/Utils.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 305,
+      "author": {
+        "id": 1013508
+      },
+      "writtenOn": "2019-03-05T16:23:33Z",
+      "side": 1,
+      "message": "The implementation of this method should be replaced with the following body:\n\n  return context.getSystemService(StorageManager.class).getStorageVolume(ParcelFileDescriptor.getFile(fd)).getMaxFileSize();\n\n(But with relevant null-pointer checks along the way.)\n\nThis code should *not* be checking for /mnt/ or /storage/ paths hardcoded at all.  I have b/117464296 internally to ensure that we remove all usages of /mnt/media_rw/ across the OS.",
+      "range": {
+        "startLine": 305,
+        "startChar": 0,
+        "endLine": 305,
+        "endChar": 51
+      },
+      "revId": "99ae5e4e33fc215967826906072618453f3d533c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3c72163c_50d23f58",
         "filename": "media/java/android/media/Utils.java",
         "patchSetId": 4
