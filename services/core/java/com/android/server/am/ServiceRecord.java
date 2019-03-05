@@ -651,7 +651,7 @@ final class ServiceRecord extends Binder implements ComponentName.WithComponentN
                         }
                         if (nm.getNotificationChannel(localPackageName, appUid,
                                 localForegroundNoti.getChannelId()) == null) {
-                            int targetSdkVersion = Build.VERSION_CODES.O_MR1;
+                            int targetSdkVersion = Build.VERSION_CODES.O;
                             try {
                                 final ApplicationInfo applicationInfo =
                                         ams.mContext.getPackageManager().getApplicationInfoAsUser(
@@ -659,7 +659,7 @@ final class ServiceRecord extends Binder implements ComponentName.WithComponentN
                                 targetSdkVersion = applicationInfo.targetSdkVersion;
                             } catch (PackageManager.NameNotFoundException e) {
                             }
-                            if (targetSdkVersion >= Build.VERSION_CODES.O_MR1) {
+                            if (targetSdkVersion >= Build.VERSION_CODES.O) {
                                 throw new RuntimeException(
                                         "invalid channel for service notification: "
                                                 + foregroundNoti);
