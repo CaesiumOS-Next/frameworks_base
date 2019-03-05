@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "ae52016b_80f4ef57",
+        "filename": "telephony/java/android/provider/Telephony.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 3785,
+      "author": {
+        "id": 1033528
+      },
+      "writtenOn": "2019-03-05T03:49:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "88009c4e_ab46c838",
+      "range": {
+        "startLine": 3785,
+        "startChar": 28,
+        "endLine": 3785,
+        "endChar": 46
+      },
+      "revId": "85acef1c966dae7c501d3d91ff6cec7324cabc8d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c87493af_4ed06326",
         "filename": "telephony/java/android/provider/Telephony.java",
         "patchSetId": 2
@@ -39,6 +63,24 @@
       "revId": "85acef1c966dae7c501d3d91ff6cec7324cabc8d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0227fd37_946540c8",
+        "filename": "telephony/java/android/provider/Telephony.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 3793,
+      "author": {
+        "id": 1033528
+      },
+      "writtenOn": "2019-03-05T03:49:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c87493af_4ed06326",
+      "revId": "85acef1c966dae7c501d3d91ff6cec7324cabc8d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -62,6 +104,30 @@
       "revId": "85acef1c966dae7c501d3d91ff6cec7324cabc8d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c61ab1bd_0f90cef7",
+        "filename": "telephony/java/android/provider/Telephony.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 3801,
+      "author": {
+        "id": 1033528
+      },
+      "writtenOn": "2019-03-05T03:49:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b4a724ce_5c8bd935",
+      "range": {
+        "startLine": 3801,
+        "startChar": 28,
+        "endLine": 3801,
+        "endChar": 46
+      },
+      "revId": "85acef1c966dae7c501d3d91ff6cec7324cabc8d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
