@@ -4057,7 +4057,8 @@ public class NetworkPolicyManagerService extends INetworkPolicyManager.Stub {
                     || hasRule(oldRule, RULE_REJECT_METERED)) {
                 // Flip state because app was explicitly added or removed to blacklist.
                 setMeteredNetworkBlacklist(uid, (isBlacklisted || isRestrictedByAdmin));
-                if (hasRule(oldRule, RULE_REJECT_METERED) && isWhitelisted) {
+                if ((hasRule(oldRule, RULE_REJECT_METERED) && isWhitelisted)
+                        || (hasRule(oldRule, RULE_ALLOW_METERED) && !isWhitelisted)) {
                     // Since blacklist prevails over whitelist, we need to handle the special case
                     // where app is whitelisted and blacklisted at the same time (although such
                     // scenario should be blocked by the UI), then blacklist is removed.
