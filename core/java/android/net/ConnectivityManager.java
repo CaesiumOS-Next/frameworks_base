@@ -2687,7 +2687,7 @@ public class ConnectivityManager {
      * @hide
      */
     @SystemApi
-    public abstract static class TetheringEntitlementValueListener  {
+    public interface TetheringEntitlementValueListener  {
         /**
          * Called to notify entitlement result.
          *
@@ -2696,7 +2696,7 @@ public class ConnectivityManager {
          *         {@link #TETHER_ERROR_PROVISION_FAILED}, or
          *         {@link #TETHER_ERROR_ENTITLEMENT_UNKONWN}.
          */
-        public void onEntitlementResult(int resultCode) {}
+        void onEntitlementResult(int resultCode);
     }
 
     /**
@@ -2712,14 +2712,24 @@ public class ConnectivityManager {
      *         {@link #TETHERING_USB}, or
      *         {@link #TETHERING_BLUETOOTH}.
      * @param showEntitlementUi a boolean indicating whether to run UI-based entitlement check.
+     * @param handler {@link Handler} to specify the thread upon which the listener will be invoked.
      * @param listener an {@link TetheringEntitlementValueListener} which will be called to notify
      *         the caller of the result of entitlement check. The listener may be called zero or
      *         one time.
-     * @param handler {@link Handler} to specify the thread upon which the listener will be invoked.
      * {@hide}
      */
     @SystemApi
     @RequiresPermission(android.Manifest.permission.TETHER_PRIVILEGED)
+    public void getLatestTetheringEntitlementValue(int type, boolean showEntitlementUi,
+            @Nullable Handler handler, @NonNull final TetheringEntitlementValueListener listener) {
+        getLatestTetheringEntitlementValue(type, showEntitlementUi, handler, listener);
+    }
+
+    /**
+     * @removed
+     * @deprecated This API would be removed when all of caller has been updated.
+     * */
+    @Deprecated
     public void getLatestTetheringEntitlementValue(int type, boolean showEntitlementUi,
             @NonNull final TetheringEntitlementValueListener listener, @Nullable Handler handler) {
         Preconditions.checkNotNull(listener, "TetheringEntitlementValueListener cannot be null.");
