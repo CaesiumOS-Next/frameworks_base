@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "777b187c_612ac658",
+        "filename": "media/java/android/media/Utils.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 305,
+      "author": {
+        "id": 1233895
+      },
+      "writtenOn": "2019-03-07T02:46:41Z",
+      "side": 1,
+      "message": "Thank you. Then we can remove this hard coded part.\nPlease note that /mnt/media_rw is still used, e.g. createDocument() in FileSystemProvider may handle it (and it internally calls getDocIdForFile() in ExternalStorageProvider.java, then if visible\u003dfalse, /mnt/media_rw can be used).\n\nI hope b/117464296 will solve those issues.",
+      "parentUuid": "4d161d91_b2da16e3",
+      "range": {
+        "startLine": 305,
+        "startChar": 0,
+        "endLine": 305,
+        "endChar": 51
+      },
+      "revId": "99ae5e4e33fc215967826906072618453f3d533c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3c72163c_50d23f58",
         "filename": "media/java/android/media/Utils.java",
         "patchSetId": 4
