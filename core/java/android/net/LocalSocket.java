@@ -294,12 +294,19 @@ public class LocalSocket implements Closeable {
     }
 
     /**
-     * Enqueues a set of file descriptors to send to the peer. The queue
-     * is one deep. The file descriptors will be sent with the next write
-     * of normal data, and will be delivered in a single ancillary message.
+     * Sets the file descriptors to send to the peer. Any previously set via
+     * this method are replaced. The file descriptors will be sent with each
+     * following write of normal data, and will be delivered in a single
+     * ancillary message.
      * See "man 7 unix" SCM_RIGHTS on a desktop Linux machine.
+     * <p>
+     * <strong>WARNING:</strong> File descriptors set by this function will be
+     * sent upon <em>every</em> call to LocalSocket's OutputStream's write
+     * method until setFileDescriptorsForSend is called again with either
+     * another set of file descriptors, or null or an empty array to stop
+     * sending file descriptors.
      *
-     * @param fds non-null; file descriptors to send.
+     * @param fds null or file descriptor array
      */
     public void setFileDescriptorsForSend(FileDescriptor[] fds) {
         impl.setFileDescriptorsForSend(fds);
