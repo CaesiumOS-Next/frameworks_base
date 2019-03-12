@@ -2598,14 +2598,14 @@ public class ConnectivityServiceTest {
         assertEquals(mWiFiNetworkAgent.getNetwork(), mCm.getActiveNetwork());
         mWiFiNetworkAgent.setNetworkValid();
         waitForIdle();
+        callback.expectCallback(CallbackState.LOSING, mCellNetworkAgent);
+        callback.expectCapabilitiesWith(NET_CAPABILITY_PARTIAL_CONNECTIVITY, mWiFiNetworkAgent);
         try {
             verify(mWiFiNetworkAgent.mNetworkMonitor,
                     timeout(TIMEOUT_MS).times(1)).notifyAcceptPartialConnectivity();
         } catch (RemoteException e) {
             fail(e.getMessage());
         }
-        callback.expectCallback(CallbackState.LOSING, mCellNetworkAgent);
-        callback.expectCapabilitiesWith(NET_CAPABILITY_PARTIAL_CONNECTIVITY, mWiFiNetworkAgent);
         // Wifi should be the default network.
         assertEquals(mWiFiNetworkAgent.getNetwork(), mCm.getActiveNetwork());
     }
