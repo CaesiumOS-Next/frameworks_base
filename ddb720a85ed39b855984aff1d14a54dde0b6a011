@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "18a20042_144d7794",
+        "filename": "tests/net/java/com/android/server/ConnectivityServiceTest.java",
+        "patchSetId": 12
+      },
+      "lineNbr": 3571,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2019-03-12T12:04:36Z",
+      "side": 1,
+      "message": "Well, couldn\u0027t that be just a NetworkRequest instead of an int that you\u0027d then call get() with ?",
+      "range": {
+        "startLine": 3571,
+        "startChar": 12,
+        "endLine": 3571,
+        "endChar": 24
+      },
+      "revId": "ddb720a85ed39b855984aff1d14a54dde0b6a011",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
