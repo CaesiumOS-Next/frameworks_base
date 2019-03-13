@@ -16,6 +16,24 @@
       "revId": "808be4368fa0be84f177c18e9db43b86e5d98c91",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ba49d468_d69fa60b",
+        "filename": "tests/net/java/com/android/server/net/NetworkStatsServiceTest.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 998,
+      "author": {
+        "id": 1399364
+      },
+      "writtenOn": "2019-03-13T22:20:14Z",
+      "side": 1,
+      "message": "Good call. Done.",
+      "parentUuid": "eb43cfcc_cdb923dc",
+      "revId": "808be4368fa0be84f177c18e9db43b86e5d98c91",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
