@@ -91,6 +91,12 @@ abstract class AbstractResolverComparator implements Comparator<ResolvedComponen
     };
 
     AbstractResolverComparator(Context context, Intent intent) {
+        // Copy intent to ensure we do not corrupt the state of the original
+        // intent as it will be passed on to the target. This could happen
+        // for example if the extras contained a parcelable are unknown to our
+        // classloader resulting in a BadParcelException.
+        intent = new Intent(intent);
+
         String scheme = intent.getScheme();
         mHttp = "http".equals(scheme) || "https".equals(scheme);
         mContentType = intent.getType();
@@ -104,8 +110,12 @@ abstract class AbstractResolverComparator implements Comparator<ResolvedComponen
 
     // get annotations of content from intent.
     private void getContentAnnotations(Intent intent) {
-        ArrayList<String> annotations = intent.getStringArrayListExtra(
-                Intent.EXTRA_CONTENT_ANNOTATIONS);
+        ArrayList<String> annotations = null;
+        try {
+            annotations = intent.getStringArrayListExtra(Intent.EXTRA_CONTENT_ANNOTATIONS);
+        } catch (BadParcelableException e) {
+            Log.w(TAG, "Failed to unparcel content annotations", e);
+        }
         if (annotations != null) {
             int size = annotations.size();
             if (size > NUM_OF_TOP_ANNOTATIONS_TO_USE) {
