@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "eb43cfcc_cdb923dc",
+        "filename": "tests/net/java/com/android/server/net/NetworkStatsServiceTest.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 998,
+      "author": {
+        "id": 1306837
+      },
+      "writtenOn": "2019-03-13T08:47:12Z",
+      "side": 1,
+      "message": "is it better if we use different value of blue to verify if they are distributed with correct ratio?",
+      "revId": "808be4368fa0be84f177c18e9db43b86e5d98c91",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}

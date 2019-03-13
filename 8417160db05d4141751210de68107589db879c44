@@ -284,6 +284,30 @@
     },
     {
       "key": {
+        "uuid": "659d03fa_f3a762cd",
+        "filename": "tests/net/java/com/android/server/net/NetworkStatsServiceTest.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 950,
+      "author": {
+        "id": 1306837
+      },
+      "writtenOn": "2019-03-13T08:47:12Z",
+      "side": 1,
+      "message": "Nits: can you reconsider to hand craft this instead of use auto formatter?",
+      "parentUuid": "a2890ac9_8109017a",
+      "range": {
+        "startLine": 950,
+        "startChar": 20,
+        "endLine": 950,
+        "endChar": 32
+      },
+      "revId": "8417160db05d4141751210de68107589db879c44",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e735fb69_8779baad",
         "filename": "tests/net/java/com/android/server/net/NetworkStatsServiceTest.java",
         "patchSetId": 1
@@ -399,6 +423,30 @@
       "revId": "8417160db05d4141751210de68107589db879c44",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ad4cec79_9a0d98b0",
+        "filename": "tests/net/java/com/android/server/net/NetworkStatsServiceTest.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 974,
+      "author": {
+        "id": 1306837
+      },
+      "writtenOn": "2019-03-13T08:47:12Z",
+      "side": 1,
+      "message": "+1 with jean\nIt looks unresolved, reopening this.",
+      "parentUuid": "3d02d300_9117aee7",
+      "range": {
+        "startLine": 974,
+        "startChar": 41,
+        "endLine": 974,
+        "endChar": 42
+      },
+      "revId": "8417160db05d4141751210de68107589db879c44",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
