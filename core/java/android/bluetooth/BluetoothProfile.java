@@ -18,11 +18,14 @@
 package android.bluetooth;
 
 import android.Manifest;
+import android.annotation.IntDef;
 import android.annotation.RequiresPermission;
 import android.annotation.SystemApi;
 import android.annotation.UnsupportedAppUsage;
 import android.os.Build;
 
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
 import java.util.List;
 
 /**
@@ -59,6 +62,13 @@ public interface BluetoothProfile {
     int STATE_CONNECTED = 2;
     /** The profile is in disconnecting state */
     int STATE_DISCONNECTING = 3;
+
+    /** @hide */
+    @IntDef(flag = false, prefix = { "STATE_" }, value = {
+            STATE_DISCONNECTED, STATE_CONNECTING,
+            STATE_CONNECTED, STATE_DISCONNECTING })
+    @Retention(RetentionPolicy.SOURCE)
+    public @interface ProfileConnectionState {}
 
     /**
      * Headset and Handsfree profile
@@ -263,7 +273,7 @@ public interface BluetoothProfile {
      * #STATE_CONNECTING}, {@link #STATE_DISCONNECTED}, {@link #STATE_DISCONNECTING}
      */
     @RequiresPermission(Manifest.permission.BLUETOOTH)
-    public int getConnectionState(BluetoothDevice device);
+    @ProfileConnectionState int getConnectionState(BluetoothDevice device);
 
     /**
      * An interface for notifying BluetoothProfile IPC clients when they have
