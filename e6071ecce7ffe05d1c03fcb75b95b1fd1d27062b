@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "46e54bed_67ffc5c1",
+        "filename": "core/java/android/os/BugreportManager.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1336554
+      },
+      "writtenOn": "2019-03-14T16:21:57Z",
+      "side": 1,
+      "message": "hmm no - if you expand the collapsed lines above 151 you can see the early returns for invalid arguments that are not in scope for this \"finally\".\n\nBut I think it makes for a cleaner API to close them always, so I have done it by moving the checks in scope.",
+      "parentUuid": "8f3f8c55_ee54eb4c",
+      "range": {
+        "startLine": 161,
+        "startChar": 10,
+        "endLine": 161,
+        "endChar": 17
+      },
+      "revId": "e6071ecce7ffe05d1c03fcb75b95b1fd1d27062b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cd2da9f8_162c7113",
         "filename": "core/java/android/os/BugreportManager.java",
         "patchSetId": 3
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "054c95ec_f356ddc8",
+        "filename": "core/java/android/os/BugreportManager.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1336554
+      },
+      "writtenOn": "2019-03-14T16:21:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cd2da9f8_162c7113",
+      "range": {
+        "startLine": 162,
+        "startChar": 37,
+        "endLine": 162,
+        "endChar": 47
+      },
+      "revId": "e6071ecce7ffe05d1c03fcb75b95b1fd1d27062b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "99d826d2_7ec2b78d",
         "filename": "core/java/android/os/BugreportManager.java",
         "patchSetId": 3
@@ -68,6 +116,30 @@
       "revId": "e6071ecce7ffe05d1c03fcb75b95b1fd1d27062b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8365b7e6_07651cf2",
+        "filename": "core/java/android/os/BugreportManager.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 247,
+      "author": {
+        "id": 1336554
+      },
+      "writtenOn": "2019-03-14T16:21:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "99d826d2_7ec2b78d",
+      "range": {
+        "startLine": 247,
+        "startChar": 0,
+        "endLine": 247,
+        "endChar": 59
+      },
+      "revId": "e6071ecce7ffe05d1c03fcb75b95b1fd1d27062b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
