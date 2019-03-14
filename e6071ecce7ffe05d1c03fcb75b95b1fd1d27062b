@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8f3f8c55_ee54eb4c",
+        "filename": "core/java/android/os/BugreportManager.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1013030
+      },
+      "writtenOn": "2019-03-14T15:33:36Z",
+      "side": 1,
+      "message": "this is now slightly inconsistent with the doc above, which suggests we only take ownership if the method returns successfully.",
+      "range": {
+        "startLine": 161,
+        "startChar": 10,
+        "endLine": 161,
+        "endChar": 17
+      },
+      "revId": "e6071ecce7ffe05d1c03fcb75b95b1fd1d27062b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cd2da9f8_162c7113",
+        "filename": "core/java/android/os/BugreportManager.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1013030
+      },
+      "writtenOn": "2019-03-14T15:33:36Z",
+      "side": 1,
+      "message": "nit: descriptor",
+      "range": {
+        "startLine": 162,
+        "startChar": 37,
+        "endLine": 162,
+        "endChar": 47
+      },
+      "revId": "e6071ecce7ffe05d1c03fcb75b95b1fd1d27062b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "99d826d2_7ec2b78d",
+        "filename": "core/java/android/os/BugreportManager.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 247,
+      "author": {
+        "id": 1013030
+      },
+      "writtenOn": "2019-03-14T15:33:36Z",
+      "side": 1,
+      "message": "do you want to log this BTW? Might just use IoUtils.closeQuietly",
+      "range": {
+        "startLine": 247,
+        "startChar": 0,
+        "endLine": 247,
+        "endChar": 59
+      },
+      "revId": "e6071ecce7ffe05d1c03fcb75b95b1fd1d27062b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
