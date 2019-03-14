@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "00c9a039_13aacf5f",
+        "filename": "core/java/android/os/BugreportManager.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1336554
+      },
+      "writtenOn": "2019-03-14T15:26:14Z",
+      "side": 1,
+      "message": "nice!",
+      "parentUuid": "23e500f1_ff86c789",
+      "range": {
+        "startLine": 185,
+        "startChar": 11,
+        "endLine": 186,
+        "endChar": 41
+      },
+      "revId": "4906a0a5a8f9b61a68cd6db2ca3513fbfc91dea0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "701a35a8_24db95fa",
         "filename": "services/core/java/com/android/server/os/BugreportManagerServiceImpl.java",
         "patchSetId": 2
@@ -45,6 +69,30 @@
       "revId": "4906a0a5a8f9b61a68cd6db2ca3513fbfc91dea0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e1a68d10_a21d463a",
+        "filename": "services/core/java/com/android/server/os/BugreportManagerServiceImpl.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 276,
+      "author": {
+        "id": 1336554
+      },
+      "writtenOn": "2019-03-14T15:26:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "701a35a8_24db95fa",
+      "range": {
+        "startLine": 276,
+        "startChar": 60,
+        "endLine": 276,
+        "endChar": 65
+      },
+      "revId": "4906a0a5a8f9b61a68cd6db2ca3513fbfc91dea0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
