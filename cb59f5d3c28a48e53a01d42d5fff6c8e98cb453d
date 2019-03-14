@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "460f44d0_eddc7c76",
+        "filename": "tests/net/java/com/android/server/net/NetworkStatsServiceTest.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 983,
+      "author": {
+        "id": 1306837
+      },
+      "writtenOn": "2019-03-14T03:21:35Z",
+      "side": 1,
+      "message": "Sorry for mentioning it lately.\nIIRC vpn subtract also applies to TX direction.\nAlso for other places, is it better if we also use non-zero value to test them, too?",
+      "range": {
+        "startLine": 983,
+        "startChar": 84,
+        "endLine": 983,
+        "endChar": 91
+      },
+      "revId": "cb59f5d3c28a48e53a01d42d5fff6c8e98cb453d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}

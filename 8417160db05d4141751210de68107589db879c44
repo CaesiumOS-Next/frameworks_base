@@ -332,6 +332,30 @@
     },
     {
       "key": {
+        "uuid": "27cd8ea7_5485b4ae",
+        "filename": "tests/net/java/com/android/server/net/NetworkStatsServiceTest.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 950,
+      "author": {
+        "id": 1306837
+      },
+      "writtenOn": "2019-03-14T03:21:35Z",
+      "side": 1,
+      "message": "Great thanks",
+      "parentUuid": "f701a9bf_ac81da78",
+      "range": {
+        "startLine": 950,
+        "startChar": 20,
+        "endLine": 950,
+        "endChar": 32
+      },
+      "revId": "8417160db05d4141751210de68107589db879c44",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e735fb69_8779baad",
         "filename": "tests/net/java/com/android/server/net/NetworkStatsServiceTest.java",
         "patchSetId": 1
@@ -486,6 +510,30 @@
       "side": 1,
       "message": "Note - this comment was resolved by Jean.\n\nI think what Jean really is saying is that there is a precedent for this so this should be fine (also I think Jean doesn\u0027t care too much about this, since he has already +2\u0027d this CL).",
       "parentUuid": "ad4cec79_9a0d98b0",
+      "range": {
+        "startLine": 974,
+        "startChar": 41,
+        "endLine": 974,
+        "endChar": 42
+      },
+      "revId": "8417160db05d4141751210de68107589db879c44",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "69528494_9d16f6fb",
+        "filename": "tests/net/java/com/android/server/net/NetworkStatsServiceTest.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 974,
+      "author": {
+        "id": 1306837
+      },
+      "writtenOn": "2019-03-14T03:21:35Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "1c00c4bb_e3500930",
       "range": {
         "startLine": 974,
         "startChar": 41,
