@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "885536ff_d6904135",
+        "filename": "core/java/android/net/IpPrefix.aidl",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1386891
+      },
+      "writtenOn": "2019-03-15T07:38:45Z",
+      "side": 1,
+      "message": "Yes, @JavaOnlyStableParcelable is valid only if all callee/caller are all in Java.\nAnd also the annotation works when only --structured option turns on. If it turns off, it is meaningless.",
+      "parentUuid": "6e651060_f7b45db1",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 77
+      },
+      "revId": "4700da2bdd9507ef5725249f3648d42d6374066a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "811131b6_e10e886c",
         "filename": "services/net/java/android/net/shared/IpConfigurationParcelableUtil.java",
         "patchSetId": 2

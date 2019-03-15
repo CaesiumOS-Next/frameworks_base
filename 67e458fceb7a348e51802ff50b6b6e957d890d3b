@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bd323cf2_9cc51d36",
+        "filename": "Android.bp",
+        "patchSetId": 4
+      },
+      "lineNbr": 845,
+      "author": {
+        "id": 1386891
+      },
+      "writtenOn": "2019-03-15T07:38:45Z",
+      "side": 1,
+      "message": "You should add options below.\n backend: {\n        ndk: {\n            enabled: false,\n        },\n        cpp: {\n            enabled: false,\n        },\n    }",
+      "revId": "67e458fceb7a348e51802ff50b6b6e957d890d3b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
