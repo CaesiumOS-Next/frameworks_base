@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "6e651060_f7b45db1",
+        "filename": "core/java/android/net/IpPrefix.aidl",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1288034
+      },
+      "writtenOn": "2019-03-15T05:30:04Z",
+      "side": 1,
+      "message": "Added comment. Also adding jeongik@ to confirm.",
+      "parentUuid": "44a096cf_bc1b0403",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 77
+      },
+      "revId": "4700da2bdd9507ef5725249f3648d42d6374066a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "811131b6_e10e886c",
         "filename": "services/net/java/android/net/shared/IpConfigurationParcelableUtil.java",
         "patchSetId": 2
@@ -45,6 +69,30 @@
       "revId": "4700da2bdd9507ef5725249f3648d42d6374066a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b23fe6e2_bd208f42",
+        "filename": "services/net/java/android/net/shared/IpConfigurationParcelableUtil.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1288034
+      },
+      "writtenOn": "2019-03-15T05:30:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "811131b6_e10e886c",
+      "range": {
+        "startLine": 48,
+        "startChar": 22,
+        "endLine": 48,
+        "endChar": 27
+      },
+      "revId": "4700da2bdd9507ef5725249f3648d42d6374066a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
