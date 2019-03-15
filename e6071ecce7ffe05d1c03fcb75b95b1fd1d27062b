@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "ce7a3bd1_dd6b8e03",
+        "filename": "core/java/android/os/BugreportManager.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1013030
+      },
+      "writtenOn": "2019-03-15T08:02:45Z",
+      "side": 1,
+      "message": "Ah, you\u0027re right - I was thinking about the rethrowFromSystemServer(), but that throws a RuntimeException anyway so it\u0027s not relevant. Ack on moving it in scope.",
+      "parentUuid": "46e54bed_67ffc5c1",
+      "range": {
+        "startLine": 161,
+        "startChar": 10,
+        "endLine": 161,
+        "endChar": 17
+      },
+      "revId": "e6071ecce7ffe05d1c03fcb75b95b1fd1d27062b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cd2da9f8_162c7113",
         "filename": "core/java/android/os/BugreportManager.java",
         "patchSetId": 3
