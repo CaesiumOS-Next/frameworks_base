@@ -22,6 +22,30 @@
       "revId": "cb59f5d3c28a48e53a01d42d5fff6c8e98cb453d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1c5aebca_c72b22f0",
+        "filename": "tests/net/java/com/android/server/net/NetworkStatsServiceTest.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 983,
+      "author": {
+        "id": 1306837
+      },
+      "writtenOn": "2019-03-15T03:47:26Z",
+      "side": 1,
+      "message": "likewise, do we want to test operations, too?",
+      "parentUuid": "460f44d0_eddc7c76",
+      "range": {
+        "startLine": 983,
+        "startChar": 84,
+        "endLine": 983,
+        "endChar": 91
+      },
+      "revId": "cb59f5d3c28a48e53a01d42d5fff6c8e98cb453d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
