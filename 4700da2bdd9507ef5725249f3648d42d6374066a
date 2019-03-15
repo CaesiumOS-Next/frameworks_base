@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "44a096cf_bc1b0403",
+        "filename": "core/java/android/net/IpPrefix.aidl",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2019-03-15T03:28:35Z",
+      "side": 1,
+      "message": "I thought JavaOnlyStableParcelable was only valid if all users/callers were in Java code?",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 77
+      },
+      "revId": "4700da2bdd9507ef5725249f3648d42d6374066a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "811131b6_e10e886c",
+        "filename": "services/net/java/android/net/shared/IpConfigurationParcelableUtil.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2019-03-15T03:28:35Z",
+      "side": 1,
+      "message": "I think LinkAddress is immutable. If so, then you don\u0027t need this.",
+      "range": {
+        "startLine": 48,
+        "startChar": 22,
+        "endLine": 48,
+        "endChar": 27
+      },
+      "revId": "4700da2bdd9507ef5725249f3648d42d6374066a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
