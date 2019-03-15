@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "50560ebb_3fa5414f",
+        "filename": "core/java/android/net/NetworkTemplate.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1306837
+      },
+      "writtenOn": "2019-03-15T05:51:33Z",
+      "side": 1,
+      "message": "is it better if we add javadoc for this and the function above?",
+      "range": {
+        "startLine": 98,
+        "startChar": 5,
+        "endLine": 98,
+        "endChar": 22
+      },
+      "revId": "cb59f5d3c28a48e53a01d42d5fff6c8e98cb453d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "460f44d0_eddc7c76",
         "filename": "tests/net/java/com/android/server/net/NetworkStatsServiceTest.java",
         "patchSetId": 4
