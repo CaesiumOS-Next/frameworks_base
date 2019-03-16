@@ -200,6 +200,8 @@ public class Tethering extends BaseNetworkObserver {
     private boolean mWifiTetherRequested;
     private Network mTetherUpstream;
 
+    private final String[] DNS_BLACKLIST = {"wpad", "isatap", "autodiscovery", "autoreconf"};
+
     public Tethering(Context context, INetworkManagementService nmService,
             INetworkStatsService statsService, INetworkPolicyManager policyManager,
             Looper looper, MockableSystemProperties systemProperties,
@@ -250,6 +252,8 @@ public class Tethering extends BaseNetworkObserver {
                     mEntitlementMgr.reevaluateSimCardProvisioning();
                 });
         mStateReceiver = new StateReceiver();
+
+        SystemProperties.set("dnsmasq.blacklist", String.join(",", DNS_BLACKLIST));
 
         // Load tethering configuration.
         updateConfiguration();
