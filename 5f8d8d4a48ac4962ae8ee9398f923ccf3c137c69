@@ -46,6 +46,30 @@
       "revId": "5f8d8d4a48ac4962ae8ee9398f923ccf3c137c69",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c9e3ba81_101a17e7",
+        "filename": "core/java/android/app/ApplicationLoaders.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2019-03-19T16:01:49Z",
+      "side": 1,
+      "message": "There are no other invariants. All the input parameters need to be checked, and that\u0027s it. If the inputs are the same, and it\u0027s semantically \"OK\" to reuse the classloader, you can use it.\n\nTo make the \"OK\" stronger, you could consider duplicating/forwarding to getClassLoaderWithSharedLibraries and specialize one version to be used where shared-libs classloaders are created.\n\nNote that there\u0027s a cache just below already, which is also doing the wrong thing of only checking the \"cacheKey.\" So you\u0027re not the first person doing this technically wrong (or asserting requirements on the caller, which I\u0027m *sure* are enforced everywhere /s).",
+      "parentUuid": "e4ee34e9_0cdc1002",
+      "range": {
+        "startLine": 67,
+        "startChar": 12,
+        "endLine": 71,
+        "endChar": 13
+      },
+      "revId": "5f8d8d4a48ac4962ae8ee9398f923ccf3c137c69",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
