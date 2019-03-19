@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "00ef40ff_99c586c0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2019-03-19T21:59:50Z",
+      "side": 1,
+      "message": "anything else?\n\nAlso waiting on some dependent CLs to land so that I can update the other CL in this topic.",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 24
+      },
+      "revId": "31149cf89a5c0c9a9b60cfdc503ae433b1f48159",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}

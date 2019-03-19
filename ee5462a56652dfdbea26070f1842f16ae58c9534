@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a2756155_adf0732c",
+        "filename": "core/java/com/android/internal/os/ZygoteInit.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 355,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2019-03-19T21:59:50Z",
+      "side": 1,
+      "message": "@zygote maintainers, happy to switch this to a file if you want. For two libs (for now), it seems like it makes more sense to just have the list here. Let me know!",
+      "range": {
+        "startLine": 354,
+        "startChar": 0,
+        "endLine": 355,
+        "endChar": 71
+      },
+      "revId": "ee5462a56652dfdbea26070f1842f16ae58c9534",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
