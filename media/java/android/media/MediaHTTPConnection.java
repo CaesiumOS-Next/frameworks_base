@@ -38,6 +38,7 @@ import java.net.UnknownServiceException;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.atomic.AtomicReference;
+import java.util.concurrent.locks.ReentrantLock;
 
 /** @hide */
 public class MediaHTTPConnection extends IMediaHTTPConnection.Stub {
@@ -60,6 +61,16 @@ public class MediaHTTPConnection extends IMediaHTTPConnection.Stub {
         public long mTotalSize = -1;
         public boolean mAllowCrossDomainRedirect = true;
         public boolean mAllowCrossProtocolRedirect = true;
+        private final ReentrantLock mDelegate = new ReentrantLock();
+        private boolean mDisconnecting = false;
+
+        public void lockOrBlock() {
+            mDelegate.lock();
+        }
+
+        public void  unlock() {
+            mDelegate.unlock();
+        }
     }
     private final AtomicReference<ConnectionState> mConnectionStateHolder =
             new AtomicReference<ConnectionState>();
@@ -150,10 +161,22 @@ public class MediaHTTPConnection extends IMediaHTTPConnection.Stub {
     @UnsupportedAppUsage
     public void disconnect() {
         ConnectionState connectionState = mConnectionStateHolder.getAndSet(null);
-        if (connectionState != null) {
+        if (connectionState == null) {
+            return;
+        }
+        if (connectionState.mConnection != null) {
+            // Close the socket as early as possible (without waiting for the lock) so
+            // that readAt() can return quickly.
+            connectionState.mConnection.disconnect();
+        }
+        // Now, acquire the lock so we can do the remaining cleanup.
+        try {
+            connectionState.lockOrBlock();
             teardownConnection(connectionState);
             connectionState.mHeaders = null;
             connectionState.mURL = null;
+        } finally {
+            connectionState.unlock();
         }
     }
 
@@ -340,10 +363,15 @@ public class MediaHTTPConnection extends IMediaHTTPConnection.Stub {
     @UnsupportedAppUsage
     public int readAt(long offset, int size) {
         ConnectionState connectionState = mConnectionStateHolder.get();
-        if (connectionState != null) {
-            return native_readAt(offset, size, connectionState);
+        if (connectionState == null) {
+            return -1;
         }
-        return -1;
+        try {
+            connectionState.lockOrBlock();
+            return native_readAt(offset, size, connectionState);
+        } finally {
+            connectionState.unlock();
+        }
     }
 
     private int readAt(long offset, byte[] data, int size, ConnectionState connectionState) {
@@ -400,7 +428,11 @@ public class MediaHTTPConnection extends IMediaHTTPConnection.Stub {
     @Override
     public synchronized long getSize() {
         ConnectionState connectionState = mConnectionStateHolder.get();
-        if (connectionState != null) {
+        if (connectionState == null) {
+            return -1;
+        }
+        try {
+            connectionState.lockOrBlock();
             if (connectionState.mConnection == null) {
                 try {
                     seekTo(0, connectionState);
@@ -409,16 +441,20 @@ public class MediaHTTPConnection extends IMediaHTTPConnection.Stub {
                 }
             }
             return connectionState.mTotalSize;
+        } finally {
+            connectionState.unlock();
         }
-
-        return -1;
     }
 
     @Override
     @UnsupportedAppUsage
     public synchronized String getMIMEType() {
         ConnectionState connectionState = mConnectionStateHolder.get();
-        if (connectionState != null) {
+        if (connectionState == null) {
+            return null;
+        }
+        try {
+            connectionState.lockOrBlock();
             if (connectionState.mConnection == null) {
                 try {
                     seekTo(0, connectionState);
@@ -427,19 +463,25 @@ public class MediaHTTPConnection extends IMediaHTTPConnection.Stub {
                 }
             }
             return connectionState.mConnection.getContentType();
+        } finally {
+            connectionState.unlock();
         }
 
-        return null;
     }
 
     @Override
     @UnsupportedAppUsage
     public String getUri() {
         ConnectionState connectionState = mConnectionStateHolder.get();
-        if (connectionState != null) {
-            return connectionState.mURL.toString();
+        if (connectionState == null) {
+            return null;
         }
-        return null;
+        try {
+            connectionState.lockOrBlock();
+            return connectionState.mURL.toString();
+        } finally {
+            connectionState.unlock();
+        }
     }
 
     @Override
