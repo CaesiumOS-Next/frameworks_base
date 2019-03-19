@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "425a1d5a_8ddb6f96",
+        "filename": "core/java/android/app/ApplicationLoaders.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2019-03-19T15:33:28Z",
+      "side": 1,
+      "message": "This doesn\u0027t even check that parent \u003d\u003d null etc.",
+      "range": {
+        "startLine": 67,
+        "startChar": 12,
+        "endLine": 71,
+        "endChar": 13
+      },
+      "revId": "5f8d8d4a48ac4962ae8ee9398f923ccf3c137c69",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
