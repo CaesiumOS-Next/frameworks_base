@@ -70,6 +70,30 @@
       "revId": "5f8d8d4a48ac4962ae8ee9398f923ccf3c137c69",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "281b3e32_89e04b2e",
+        "filename": "core/java/android/app/ApplicationLoaders.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2019-03-19T22:05:33Z",
+      "side": 1,
+      "message": "Done on both. Have to ignore sharedLibraries though as discussed offline. If you want, I can file a follow-up bug for this.",
+      "parentUuid": "c9e3ba81_101a17e7",
+      "range": {
+        "startLine": 67,
+        "startChar": 12,
+        "endLine": 71,
+        "endChar": 13
+      },
+      "revId": "5f8d8d4a48ac4962ae8ee9398f923ccf3c137c69",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
