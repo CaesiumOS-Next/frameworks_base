@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2deec040_1095db3b",
+        "filename": "telephony/java/android/telephony/CellInfoTdscdma.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1060151
+      },
+      "writtenOn": "2019-03-19T21:45:58Z",
+      "side": 1,
+      "message": "Preupload hook complains that this method isn\u0027t in the API, but make update-api doesn\u0027t add it.",
+      "range": {
+        "startLine": 135,
+        "startChar": 15,
+        "endLine": 135,
+        "endChar": 31
+      },
+      "revId": "dc53e62e0eed83fe63c3fbf4cb119f87c5ad044f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
