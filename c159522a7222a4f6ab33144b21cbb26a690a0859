@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "a0c627c5_a7715690",
+        "filename": "core/java/android/app/ApplicationLoaders.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2019-03-20T22:14:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fa81b7fe_d38e7934",
+      "revId": "c159522a7222a4f6ab33144b21cbb26a690a0859",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d207c7b6_4ce20d6a",
         "filename": "core/java/android/app/ApplicationLoaders.java",
         "patchSetId": 5
@@ -39,6 +57,30 @@
       "revId": "c159522a7222a4f6ab33144b21cbb26a690a0859",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b1ff222e_d87a61cc",
+        "filename": "core/java/android/app/ApplicationLoaders.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2019-03-20T22:14:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d207c7b6_4ce20d6a",
+      "range": {
+        "startLine": 73,
+        "startChar": 20,
+        "endLine": 73,
+        "endChar": 21
+      },
+      "revId": "c159522a7222a4f6ab33144b21cbb26a690a0859",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
