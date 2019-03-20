@@ -1,0 +1,199 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0aa7adfd_746d0e5e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2019-03-20T23:34:05Z",
+      "side": 1,
+      "message": "That\u0027s  the hidden complexity of this approach.\n\nCode-wise, the approach is not that hard. But the lack of automated testing around it (not easy to do it), can lead to pretty subtle issues.",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 24
+      },
+      "revId": "be88081164a09f5f7ee0697cd44f2c21be998fd5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "347a3476_e49b4703",
+        "filename": "core/java/android/app/ApplicationLoaders.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2019-03-20T23:34:05Z",
+      "side": 1,
+      "message": "Add docs about the logic.",
+      "range": {
+        "startLine": 62,
+        "startChar": 16,
+        "endLine": 62,
+        "endChar": 62
+      },
+      "revId": "be88081164a09f5f7ee0697cd44f2c21be998fd5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4a60024f_b2edac68",
+        "filename": "core/java/android/app/ApplicationLoaders.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2019-03-20T23:34:05Z",
+      "side": 1,
+      "message": "I don\u0027t fully understand what \"replace\" means in this case.",
+      "range": {
+        "startLine": 65,
+        "startChar": 42,
+        "endLine": 65,
+        "endChar": 71
+      },
+      "revId": "be88081164a09f5f7ee0697cd44f2c21be998fd5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b319dc55_1edf2dd1",
+        "filename": "core/java/android/app/ApplicationLoaders.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2019-03-20T23:34:05Z",
+      "side": 1,
+      "message": "Anything which has \"class-loaders\" and \"approximate check\" in the same phrase is scary (from a correctness point of view). It\u0027s worth spelling out more details.",
+      "revId": "be88081164a09f5f7ee0697cd44f2c21be998fd5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c6b953bd_b5612120",
+        "filename": "core/java/android/app/ApplicationLoaders.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2019-03-20T23:34:05Z",
+      "side": 1,
+      "message": "it\u0027s better to be say you return a zygote-cached class loader.",
+      "revId": "be88081164a09f5f7ee0697cd44f2c21be998fd5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "825d11cd_22236346",
+        "filename": "core/java/android/app/ApplicationLoaders.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2019-03-20T23:34:05Z",
+      "side": 1,
+      "message": "you should probably make this per library rather than per zip. (code-wise is more or less the same)",
+      "range": {
+        "startLine": 139,
+        "startChar": 57,
+        "endLine": 139,
+        "endChar": 61
+      },
+      "revId": "be88081164a09f5f7ee0697cd44f2c21be998fd5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b4bd400b_6777d4bc",
+        "filename": "core/java/android/app/ApplicationLoaders.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2019-03-20T23:34:05Z",
+      "side": 1,
+      "message": "From a quick look at this, it\u0027s unclear if shared library dependencies are handled correctly here.\n\nFor example the hidl manager depends on hidl base and that must be reflected in the structure of the class loader.\n\nIt seems like you\u0027ll be potentially duplicating classloaders for leaves.",
+      "range": {
+        "startLine": 147,
+        "startChar": 0,
+        "endLine": 158,
+        "endChar": 9
+      },
+      "revId": "be88081164a09f5f7ee0697cd44f2c21be998fd5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "97342f98_57e53d50",
+        "filename": "core/java/android/app/ApplicationLoaders.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2019-03-20T23:34:05Z",
+      "side": 1,
+      "message": "document the map (say what the keys point to).",
+      "range": {
+        "startLine": 206,
+        "startChar": 37,
+        "endLine": 206,
+        "endChar": 58
+      },
+      "revId": "be88081164a09f5f7ee0697cd44f2c21be998fd5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "36e56d43_ec31e08d",
+        "filename": "core/java/com/android/internal/os/ZygoteInit.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 361,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2019-03-20T23:34:05Z",
+      "side": 1,
+      "message": "see my other comment. You should refer to the library name, instead of their jars. PM might know more about their dependencies.",
+      "range": {
+        "startLine": 360,
+        "startChar": 16,
+        "endLine": 361,
+        "endChar": 71
+      },
+      "revId": "be88081164a09f5f7ee0697cd44f2c21be998fd5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
