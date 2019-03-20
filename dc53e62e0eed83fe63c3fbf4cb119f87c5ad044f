@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "02fffd76_f03c62d2",
+        "filename": "telephony/java/android/telephony/CellInfoTdscdma.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1060151
+      },
+      "writtenOn": "2019-03-20T23:21:54Z",
+      "side": 1,
+      "message": "For future reference, the preupload linter doesn\u0027t understand inheritance. As per jsharkey@, ignore the linter in case of inherited parcelables, which are discouraged but happen from time to time.",
+      "parentUuid": "2deec040_1095db3b",
+      "range": {
+        "startLine": 135,
+        "startChar": 15,
+        "endLine": 135,
+        "endChar": 31
+      },
+      "revId": "dc53e62e0eed83fe63c3fbf4cb119f87c5ad044f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "7a9d0c39_073586b7",
         "filename": "telephony/java/android/telephony/CellSignalStrengthTdscdma.java",
         "patchSetId": 1
