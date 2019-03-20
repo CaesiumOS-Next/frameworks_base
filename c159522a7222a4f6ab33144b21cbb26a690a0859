@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fa81b7fe_d38e7934",
+        "filename": "core/java/android/app/ApplicationLoaders.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2019-03-20T21:05:36Z",
+      "side": 1,
+      "message": "Add \"This is an approximate check.\"",
+      "revId": "c159522a7222a4f6ab33144b21cbb26a690a0859",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d207c7b6_4ce20d6a",
+        "filename": "core/java/android/app/ApplicationLoaders.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2019-03-20T21:05:36Z",
+      "side": 1,
+      "message": "Should not be a \"w,\" you\u0027ll be accused of logspam. \"d\" at most.",
+      "range": {
+        "startLine": 73,
+        "startChar": 20,
+        "endLine": 73,
+        "endChar": 21
+      },
+      "revId": "c159522a7222a4f6ab33144b21cbb26a690a0859",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
