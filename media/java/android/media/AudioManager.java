@@ -918,6 +918,18 @@ public class AudioManager {
         }
     }
 
+    /** @hide */
+    @UnsupportedAppUsage
+    @RequiresPermission(android.Manifest.permission.MODIFY_AUDIO_ROUTING)
+    public void setMsdEnable(boolean enable) {
+        final IAudioService service = getService();
+        try {
+            service.setMsdEnable(enable);
+        } catch (RemoteException e) {
+            throw e.rethrowFromSystemServer();
+        }
+    }
+
     /**
      * Returns the current ringtone mode.
      *

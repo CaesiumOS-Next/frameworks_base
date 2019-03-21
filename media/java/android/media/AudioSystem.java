@@ -975,6 +975,7 @@ public class AudioSystem
     public static native boolean getMasterMute();
     @UnsupportedAppUsage
     public static native int getDevicesForStream(int stream);
+    public static native int setMsdEnable(boolean enable);
 
     /** @hide returns true if master mono is enabled. */
     public static native boolean getMasterMono();

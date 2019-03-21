@@ -691,6 +691,12 @@ android_media_AudioSystem_getMasterMute(JNIEnv *env, jobject thiz)
 }
 
 static jint
+android_media_AudioSystem_setMsdEnable(JNIEnv *env, jobject thiz, jboolean enable)
+{
+    return (jint) check_AudioSystem_Command(AudioSystem::setMsdEnable(enable));
+}
+
+static jint
 android_media_AudioSystem_setMasterMono(JNIEnv *env, jobject thiz, jboolean mono)
 {
     return (jint) check_AudioSystem_Command(AudioSystem::setMasterMono(mono));
@@ -2278,6 +2284,7 @@ static const JNINativeMethod gMethods[] = {
     {"getMasterVolume",     "()F",      (void *)android_media_AudioSystem_getMasterVolume},
     {"setMasterMute",       "(Z)I",     (void *)android_media_AudioSystem_setMasterMute},
     {"getMasterMute",       "()Z",      (void *)android_media_AudioSystem_getMasterMute},
+    {"setMsdEnable",        "(Z)I",     (void *)android_media_AudioSystem_setMsdEnable},
     {"setMasterMono",       "(Z)I",     (void *)android_media_AudioSystem_setMasterMono},
     {"getMasterMono",       "()Z",      (void *)android_media_AudioSystem_getMasterMono},
     {"setMasterBalance",    "(F)I",     (void *)android_media_AudioSystem_setMasterBalance},

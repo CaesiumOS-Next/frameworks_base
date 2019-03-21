@@ -84,6 +84,8 @@ interface IAudioService {
 
     void setMasterMute(boolean mute, int flags, String callingPackage, int userId);
 
+    void setMsdEnable(boolean enable);
+
     @UnsupportedAppUsage
     int getStreamVolume(int streamType);
 

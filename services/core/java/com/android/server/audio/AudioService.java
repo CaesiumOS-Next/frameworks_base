@@ -2786,6 +2786,10 @@ public class AudioService extends IAudioService.Stub
                 userId);
     }
 
+    public void setMsdEnable(boolean enable) {
+        AudioSystem.setMsdEnable(enable);
+    }
+
     /** @see AudioManager#getStreamVolume(int) */
     public int getStreamVolume(int streamType) {
         ensureValidStreamType(streamType);
