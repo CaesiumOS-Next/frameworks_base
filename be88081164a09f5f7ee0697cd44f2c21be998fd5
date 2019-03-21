@@ -152,6 +152,30 @@
     },
     {
       "key": {
+        "uuid": "40db2346_cae2d583",
+        "filename": "core/java/android/app/ApplicationLoaders.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2019-03-21T00:31:13Z",
+      "side": 1,
+      "message": "PM doesn\u0027t exist when this is called. There\u0027s no resolution possible here.",
+      "parentUuid": "825d11cd_22236346",
+      "range": {
+        "startLine": 139,
+        "startChar": 57,
+        "endLine": 139,
+        "endChar": 61
+      },
+      "revId": "be88081164a09f5f7ee0697cd44f2c21be998fd5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b4bd400b_6777d4bc",
         "filename": "core/java/android/app/ApplicationLoaders.java",
         "patchSetId": 6
@@ -163,6 +187,30 @@
       "writtenOn": "2019-03-20T23:34:05Z",
       "side": 1,
       "message": "From a quick look at this, it\u0027s unclear if shared library dependencies are handled correctly here.\n\nFor example the hidl manager depends on hidl base and that must be reflected in the structure of the class loader.\n\nIt seems like you\u0027ll be potentially duplicating classloaders for leaves.",
+      "range": {
+        "startLine": 147,
+        "startChar": 0,
+        "endLine": 158,
+        "endChar": 9
+      },
+      "revId": "be88081164a09f5f7ee0697cd44f2c21be998fd5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "89c6a3b5_f69f9578",
+        "filename": "core/java/android/app/ApplicationLoaders.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2019-03-21T00:31:13Z",
+      "side": 1,
+      "message": "Yup, it isn\u0027t. The input needs to be more complex, it needs a requirement on the ordering, and you need to call getSharedLibraryClassLoaderWithSharedLibraries (or ask your cache first).",
+      "parentUuid": "b4bd400b_6777d4bc",
       "range": {
         "startLine": 147,
         "startChar": 0,
