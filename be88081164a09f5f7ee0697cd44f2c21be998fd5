@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "5f569f31_d7b27028",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2019-03-21T00:26:41Z",
+      "side": 1,
+      "message": "We can easily make this testable - revert the optimization to restrict to system apps. There is no hidden complexity here that hasn\u0027t been there before (i.e., there are *zero* CTS tests explicitly for uses-library, it\u0027s all implicit in the \"use android.test.runner\").",
+      "parentUuid": "0aa7adfd_746d0e5e",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 24
+      },
+      "revId": "be88081164a09f5f7ee0697cd44f2c21be998fd5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "347a3476_e49b4703",
         "filename": "core/java/android/app/ApplicationLoaders.java",
         "patchSetId": 6
