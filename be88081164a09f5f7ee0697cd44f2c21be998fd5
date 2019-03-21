@@ -494,6 +494,30 @@
       "revId": "be88081164a09f5f7ee0697cd44f2c21be998fd5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c626334d_d37c09ee",
+        "filename": "core/java/com/android/internal/os/ZygoteInit.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 361,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2019-03-21T20:37:21Z",
+      "side": 1,
+      "message": "In this case, manager statically includes base. Maybe I can simplify this? Apps shouldn\u0027t have been built in this configuration (and when statically including multiple of these, the build system automatically de-dupes).",
+      "parentUuid": "52cee56d_2396894b",
+      "range": {
+        "startLine": 360,
+        "startChar": 16,
+        "endLine": 361,
+        "endChar": 71
+      },
+      "revId": "be88081164a09f5f7ee0697cd44f2c21be998fd5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
