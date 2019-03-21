@@ -16,6 +16,24 @@
       "revId": "16861bd29595fb83099388f21bf87ebc98226093",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "061dc032_51a52721",
+        "filename": "tests/net/java/com/android/server/ConnectivityServiceTest.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 4032,
+      "author": {
+        "id": 1308504
+      },
+      "writtenOn": "2019-03-21T06:57:44Z",
+      "side": 1,
+      "message": "Seems you just need as below, no ??\n} catch (RuntimeException e) {\n    throw e;\n}",
+      "parentUuid": "07576a35_6db39146",
+      "revId": "16861bd29595fb83099388f21bf87ebc98226093",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
