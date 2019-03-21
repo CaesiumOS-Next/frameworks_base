@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "5a443686_3229f224",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2019-03-21T01:28:03Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "5f569f31_d7b27028",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 24
+      },
+      "revId": "be88081164a09f5f7ee0697cd44f2c21be998fd5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "347a3476_e49b4703",
         "filename": "core/java/android/app/ApplicationLoaders.java",
         "patchSetId": 6
@@ -69,6 +93,30 @@
       "revId": "be88081164a09f5f7ee0697cd44f2c21be998fd5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9fe2b7ce_d211bb3c",
+        "filename": "core/java/android/app/ApplicationLoaders.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2019-03-21T01:28:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "347a3476_e49b4703",
+      "range": {
+        "startLine": 62,
+        "startChar": 16,
+        "endLine": 62,
+        "endChar": 62
+      },
+      "revId": "be88081164a09f5f7ee0697cd44f2c21be998fd5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -95,6 +143,30 @@
     },
     {
       "key": {
+        "uuid": "75015cfe_6b65174d",
+        "filename": "core/java/android/app/ApplicationLoaders.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2019-03-21T01:28:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4a60024f_b2edac68",
+      "range": {
+        "startLine": 65,
+        "startChar": 42,
+        "endLine": 65,
+        "endChar": 71
+      },
+      "revId": "be88081164a09f5f7ee0697cd44f2c21be998fd5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b319dc55_1edf2dd1",
         "filename": "core/java/android/app/ApplicationLoaders.java",
         "patchSetId": 6
@@ -112,6 +184,24 @@
     },
     {
       "key": {
+        "uuid": "a848fcaf_8f16a4d2",
+        "filename": "core/java/android/app/ApplicationLoaders.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2019-03-21T01:28:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b319dc55_1edf2dd1",
+      "revId": "be88081164a09f5f7ee0697cd44f2c21be998fd5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c6b953bd_b5612120",
         "filename": "core/java/android/app/ApplicationLoaders.java",
         "patchSetId": 6
@@ -126,6 +216,24 @@
       "revId": "be88081164a09f5f7ee0697cd44f2c21be998fd5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fa5931c0_cda98e2f",
+        "filename": "core/java/android/app/ApplicationLoaders.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2019-03-21T01:28:03Z",
+      "side": 1,
+      "message": "Done, thanks!",
+      "parentUuid": "c6b953bd_b5612120",
+      "revId": "be88081164a09f5f7ee0697cd44f2c21be998fd5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -176,6 +284,30 @@
     },
     {
       "key": {
+        "uuid": "d3ff9563_c2e5d3ee",
+        "filename": "core/java/android/app/ApplicationLoaders.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2019-03-21T01:28:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "40db2346_cae2d583",
+      "range": {
+        "startLine": 139,
+        "startChar": 57,
+        "endLine": 139,
+        "endChar": 61
+      },
+      "revId": "be88081164a09f5f7ee0697cd44f2c21be998fd5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b4bd400b_6777d4bc",
         "filename": "core/java/android/app/ApplicationLoaders.java",
         "patchSetId": 6
@@ -223,6 +355,30 @@
     },
     {
       "key": {
+        "uuid": "66a03854_358cfa7c",
+        "filename": "core/java/android/app/ApplicationLoaders.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2019-03-21T01:28:03Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "89c6a3b5_f69f9578",
+      "range": {
+        "startLine": 147,
+        "startChar": 0,
+        "endLine": 158,
+        "endChar": 9
+      },
+      "revId": "be88081164a09f5f7ee0697cd44f2c21be998fd5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "97342f98_57e53d50",
         "filename": "core/java/android/app/ApplicationLoaders.java",
         "patchSetId": 6
@@ -246,6 +402,30 @@
     },
     {
       "key": {
+        "uuid": "7814ac00_585dfe81",
+        "filename": "core/java/android/app/ApplicationLoaders.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2019-03-21T01:28:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "97342f98_57e53d50",
+      "range": {
+        "startLine": 206,
+        "startChar": 37,
+        "endLine": 206,
+        "endChar": 58
+      },
+      "revId": "be88081164a09f5f7ee0697cd44f2c21be998fd5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "36e56d43_ec31e08d",
         "filename": "core/java/com/android/internal/os/ZygoteInit.java",
         "patchSetId": 6
@@ -266,6 +446,30 @@
       "revId": "be88081164a09f5f7ee0697cd44f2c21be998fd5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fe31d4fa_0eb1290c",
+        "filename": "core/java/com/android/internal/os/ZygoteInit.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 361,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2019-03-21T01:28:03Z",
+      "side": 1,
+      "message": "Yeah, it is unfortunate PM isn\u0027t up yet. If we use more complicated libs, maybe we could have the build system (dexpreopt stuff) which also has to understand this logic emit the required information. That logic should be unified with PM at some point anyway.\n\nI\u0027ve added an additional comment here though for more visibility. Thanks!",
+      "parentUuid": "36e56d43_ec31e08d",
+      "range": {
+        "startLine": 360,
+        "startChar": 16,
+        "endLine": 361,
+        "endChar": 71
+      },
+      "revId": "be88081164a09f5f7ee0697cd44f2c21be998fd5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
