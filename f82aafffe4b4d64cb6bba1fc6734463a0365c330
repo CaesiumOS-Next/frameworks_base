@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8405d0c4_a165fe55",
+        "filename": "tests/net/java/com/android/server/ConnectivityServiceTest.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 4020,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2019-03-21T11:37:11Z",
+      "side": 1,
+      "message": "@FunctionalInterface\n(that must be the most useless annotation in the entire language)\n\nSorry I forgot to tag this in my demo ^^;",
+      "range": {
+        "startLine": 4020,
+        "startChar": 22,
+        "endLine": 4020,
+        "endChar": 38
+      },
+      "revId": "f82aafffe4b4d64cb6bba1fc6734463a0365c330",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
