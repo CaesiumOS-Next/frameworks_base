@@ -16,6 +16,24 @@
       "revId": "5fc3516c57197f575f437872bd9a4e3dfe34bd1d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4194687f_79519f1b",
+        "filename": "tests/net/java/com/android/server/ConnectivityServiceTest.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 4033,
+      "author": {
+        "id": 1306837
+      },
+      "writtenOn": "2019-03-21T08:13:55Z",
+      "side": 1,
+      "message": "Good point.\nIt looks like TestRunner print identical debug information no matter we throw e or e.getCause().\nHere is an example:\nhttps://paste.googleplex.com/6335979822514176",
+      "parentUuid": "2df1763b_929b595b",
+      "revId": "5fc3516c57197f575f437872bd9a4e3dfe34bd1d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
