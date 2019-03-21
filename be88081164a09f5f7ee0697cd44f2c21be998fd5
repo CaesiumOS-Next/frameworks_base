@@ -202,6 +202,29 @@
     },
     {
       "key": {
+        "uuid": "1194d993_5fa04b85",
+        "filename": "core/java/android/app/ApplicationLoaders.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2019-03-21T22:17:26Z",
+      "side": 1,
+      "message": "I think you need stronger checks here. At this stage you have access to the dependency tree and you should verify that what is cached is actually correct.",
+      "range": {
+        "startLine": 71,
+        "startChar": 36,
+        "endLine": 71,
+        "endChar": 57
+      },
+      "revId": "be88081164a09f5f7ee0697cd44f2c21be998fd5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c6b953bd_b5612120",
         "filename": "core/java/android/app/ApplicationLoaders.java",
         "patchSetId": 6
@@ -376,6 +399,30 @@
       "revId": "be88081164a09f5f7ee0697cd44f2c21be998fd5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cc812bd1_6411548f",
+        "filename": "core/java/android/app/ApplicationLoaders.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2019-03-21T22:17:26Z",
+      "side": 1,
+      "message": "Here\u0027s the class loader context for the camera:\n\nclasspath \u003d PCL[]{PCL[/system/framework/android.hidl.manager-V1.0-java.jar*1256613519]{PCL[/system/framework/android.hidl.base-V1.0-java.jar*3447435217]}#PCL[/system/framework/android.hidl.base-V1.0-java.jar*3447435217]#PCL[/vendor/framework/com.google.android.camera.experimental2018.jar*770711896]}\n\nIt indicates that the manager has the base as it\u0027s parent.\nSo while this caching might \"work\" it will trigger an incorrect context at runtime. And I think you\u0027ll end up running the code from apks (you should be able to check this with showmaps and/or logcat).",
+      "parentUuid": "66a03854_358cfa7c",
+      "range": {
+        "startLine": 147,
+        "startChar": 0,
+        "endLine": 158,
+        "endChar": 9
+      },
+      "revId": "be88081164a09f5f7ee0697cd44f2c21be998fd5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     },
     {
       "key": {
