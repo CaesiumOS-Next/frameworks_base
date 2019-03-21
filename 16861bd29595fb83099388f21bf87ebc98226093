@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "07576a35_6db39146",
+        "filename": "tests/net/java/com/android/server/ConnectivityServiceTest.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 4032,
+      "author": {
+        "id": 1406251
+      },
+      "writtenOn": "2019-03-21T06:18:19Z",
+      "side": 1,
+      "message": "RuntimeException extends Exception class. Maybe \"e\" is always an Exception object instance?\n\nDo you mean:\n      catch (Exception e) {\n         if (e instanceof RuntimeException) {\n             // do something\n         }\nPlease correct me if my understanding is wrong.:)",
+      "revId": "16861bd29595fb83099388f21bf87ebc98226093",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
