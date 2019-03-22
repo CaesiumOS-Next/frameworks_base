@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "3612f10f_814e46ba",
+        "filename": "core/java/android/app/ApplicationLoaders.java",
+        "patchSetId": 8
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2019-03-22T16:40:27Z",
+      "side": 1,
+      "message": "This is so that I can use a \u0027null\u0027 cacheKey in cacheNonBootclasspathSystemLib. As Andreas suggested earlier, I\u0027m only caching libraries within a specific call (rather than in general). This wasn\u0027t caught earlier because there wasn\u0027t any verification on the classloader returned from this map (although, granted, you could argue it\u0027s relying on PM, but I don\u0027t know the details).",
+      "parentUuid": "5620536a_74ff1d68",
+      "range": {
+        "startLine": 125,
+        "startChar": 0,
+        "endLine": 125,
+        "endChar": 39
+      },
+      "revId": "6abbb58c451be9c61b479270d022fa7a3d7078bb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1353579e_4d8d7e2b",
         "filename": "core/java/android/app/ApplicationLoaders.java",
         "patchSetId": 8
@@ -39,6 +63,24 @@
       "revId": "6abbb58c451be9c61b479270d022fa7a3d7078bb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e0c2b9bc_5d2f1f8f",
+        "filename": "core/java/android/app/ApplicationLoaders.java",
+        "patchSetId": 8
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2019-03-22T16:40:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1353579e_4d8d7e2b",
+      "revId": "6abbb58c451be9c61b479270d022fa7a3d7078bb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -65,6 +107,30 @@
     },
     {
       "key": {
+        "uuid": "104409cb_7f202aed",
+        "filename": "core/java/android/app/ApplicationLoaders.java",
+        "patchSetId": 8
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2019-03-22T16:40:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "49b74aa0_57a79902",
+      "range": {
+        "startLine": 169,
+        "startChar": 0,
+        "endLine": 183,
+        "endChar": 9
+      },
+      "revId": "6abbb58c451be9c61b479270d022fa7a3d7078bb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1009e5f4_f2d052a9",
         "filename": "core/java/android/app/ApplicationLoaders.java",
         "patchSetId": 8
@@ -88,6 +154,30 @@
     },
     {
       "key": {
+        "uuid": "800548e7_fb80a09b",
+        "filename": "core/java/android/app/ApplicationLoaders.java",
+        "patchSetId": 8
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2019-03-22T16:40:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1009e5f4_f2d052a9",
+      "range": {
+        "startLine": 185,
+        "startChar": 55,
+        "endLine": 185,
+        "endChar": 76
+      },
+      "revId": "6abbb58c451be9c61b479270d022fa7a3d7078bb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f00403c8_e98a963f",
         "filename": "core/java/com/android/internal/os/ZygoteInit.java",
         "patchSetId": 8
@@ -99,6 +189,30 @@
       "writtenOn": "2019-03-22T09:58:40Z",
       "side": 1,
       "message": "Maybe I am missing something. But are we actually load any class in the shared libraries? If I am reading this change correctly, we are just pre-creating classloaders.",
+      "range": {
+        "startLine": 356,
+        "startChar": 24,
+        "endLine": 356,
+        "endChar": 31
+      },
+      "revId": "6abbb58c451be9c61b479270d022fa7a3d7078bb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "330aa418_0a99620a",
+        "filename": "core/java/com/android/internal/os/ZygoteInit.java",
+        "patchSetId": 8
+      },
+      "lineNbr": 356,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2019-03-22T16:40:27Z",
+      "side": 1,
+      "message": "This is a good point. Is there more I should preload?",
+      "parentUuid": "f00403c8_e98a963f",
       "range": {
         "startLine": 356,
         "startChar": 24,
@@ -134,6 +248,30 @@
     },
     {
       "key": {
+        "uuid": "92909fd7_eabd7323",
+        "filename": "core/java/com/android/internal/os/ZygoteInit.java",
+        "patchSetId": 8
+      },
+      "lineNbr": 368,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2019-03-22T16:40:27Z",
+      "side": 1,
+      "message": "This is checked at runtime in getCachedNonBootclasspathSystemLib. I was talking to Calin about this. These errors should be checked more often in general (e.g. via b/67345922). When this is fixed, we should probably remove the checks this CL is adding and rely on lower, more consistently applied checks.",
+      "parentUuid": "ee02166b_055eaec9",
+      "range": {
+        "startLine": 368,
+        "startChar": 0,
+        "endLine": 368,
+        "endChar": 44
+      },
+      "revId": "6abbb58c451be9c61b479270d022fa7a3d7078bb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "783d1688_46e0c182",
         "filename": "core/java/com/android/internal/os/ZygoteInit.java",
         "patchSetId": 8
@@ -157,6 +295,30 @@
     },
     {
       "key": {
+        "uuid": "44557842_f202b8cd",
+        "filename": "core/java/com/android/internal/os/ZygoteInit.java",
+        "patchSetId": 8
+      },
+      "lineNbr": 370,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2019-03-22T16:40:27Z",
+      "side": 1,
+      "message": "Oops. Left from an earlier patchset. Thanks",
+      "parentUuid": "783d1688_46e0c182",
+      "range": {
+        "startLine": 370,
+        "startChar": 0,
+        "endLine": 370,
+        "endChar": 66
+      },
+      "revId": "6abbb58c451be9c61b479270d022fa7a3d7078bb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "acd5da9a_54f690dc",
         "filename": "core/java/com/android/internal/os/ZygoteInit.java",
         "patchSetId": 8
@@ -177,6 +339,30 @@
       "revId": "6abbb58c451be9c61b479270d022fa7a3d7078bb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b40f96d3_b271afa6",
+        "filename": "core/java/com/android/internal/os/ZygoteInit.java",
+        "patchSetId": 8
+      },
+      "lineNbr": 373,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2019-03-22T16:40:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "acd5da9a_54f690dc",
+      "range": {
+        "startLine": 372,
+        "startChar": 0,
+        "endLine": 373,
+        "endChar": 28
+      },
+      "revId": "6abbb58c451be9c61b479270d022fa7a3d7078bb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
