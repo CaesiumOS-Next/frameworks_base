@@ -225,6 +225,30 @@
     },
     {
       "key": {
+        "uuid": "8c365495_f1b6fe29",
+        "filename": "core/java/android/app/ApplicationLoaders.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2019-03-22T05:02:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1194d993_5fa04b85",
+      "range": {
+        "startLine": 71,
+        "startChar": 36,
+        "endLine": 71,
+        "endChar": 57
+      },
+      "revId": "be88081164a09f5f7ee0697cd44f2c21be998fd5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c6b953bd_b5612120",
         "filename": "core/java/android/app/ApplicationLoaders.java",
         "patchSetId": 6
@@ -423,6 +447,30 @@
       "revId": "be88081164a09f5f7ee0697cd44f2c21be998fd5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "64c0ac22_1e13d15f",
+        "filename": "core/java/android/app/ApplicationLoaders.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2019-03-22T05:02:56Z",
+      "side": 1,
+      "message": "Done. Talked to Calin offline, and realized there was a bug in my implementation which didn\u0027t take into account this dependency. As a follow-up, we will talk about making ClassLoaderContext more visible.",
+      "parentUuid": "cc812bd1_6411548f",
+      "range": {
+        "startLine": 147,
+        "startChar": 0,
+        "endLine": 158,
+        "endChar": 9
+      },
+      "revId": "be88081164a09f5f7ee0697cd44f2c21be998fd5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
