@@ -2,6 +2,92 @@
   "comments": [
     {
       "key": {
+        "uuid": "5620536a_74ff1d68",
+        "filename": "core/java/android/app/ApplicationLoaders.java",
+        "patchSetId": 8
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2019-03-22T10:03:27Z",
+      "side": 1,
+      "message": "Does that fix a somewhat related but independent bug?",
+      "range": {
+        "startLine": 125,
+        "startChar": 0,
+        "endLine": 125,
+        "endChar": 39
+      },
+      "revId": "6abbb58c451be9c61b479270d022fa7a3d7078bb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1353579e_4d8d7e2b",
+        "filename": "core/java/android/app/ApplicationLoaders.java",
+        "patchSetId": 8
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2019-03-22T10:03:27Z",
+      "side": 1,
+      "message": "nit: add \"This is called by the zygote during preloading.\"",
+      "revId": "6abbb58c451be9c61b479270d022fa7a3d7078bb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "49b74aa0_57a79902",
+        "filename": "core/java/android/app/ApplicationLoaders.java",
+        "patchSetId": 8
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2019-03-22T10:03:27Z",
+      "side": 1,
+      "message": "nit: add comments",
+      "range": {
+        "startLine": 169,
+        "startChar": 0,
+        "endLine": 183,
+        "endChar": 9
+      },
+      "revId": "6abbb58c451be9c61b479270d022fa7a3d7078bb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1009e5f4_f2d052a9",
+        "filename": "core/java/android/app/ApplicationLoaders.java",
+        "patchSetId": 8
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2019-03-22T10:03:27Z",
+      "side": 1,
+      "message": "nit: comment",
+      "range": {
+        "startLine": 185,
+        "startChar": 55,
+        "endLine": 185,
+        "endChar": 76
+      },
+      "revId": "6abbb58c451be9c61b479270d022fa7a3d7078bb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f00403c8_e98a963f",
         "filename": "core/java/com/android/internal/os/ZygoteInit.java",
         "patchSetId": 8
@@ -18,6 +104,75 @@
         "startChar": 24,
         "endLine": 356,
         "endChar": 31
+      },
+      "revId": "6abbb58c451be9c61b479270d022fa7a3d7078bb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ee02166b_055eaec9",
+        "filename": "core/java/com/android/internal/os/ZygoteInit.java",
+        "patchSetId": 8
+      },
+      "lineNbr": 368,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2019-03-22T10:03:27Z",
+      "side": 1,
+      "message": "You should be able to write a unit test that PMS view of the libraries (including the dependencies) is the same as the one for the libraries in mSystemLibsPreloadMap.",
+      "range": {
+        "startLine": 368,
+        "startChar": 0,
+        "endLine": 368,
+        "endChar": 44
+      },
+      "revId": "6abbb58c451be9c61b479270d022fa7a3d7078bb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "783d1688_46e0c182",
+        "filename": "core/java/com/android/internal/os/ZygoteInit.java",
+        "patchSetId": 8
+      },
+      "lineNbr": 370,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2019-03-22T10:03:27Z",
+      "side": 1,
+      "message": "The line above contradicts this?",
+      "range": {
+        "startLine": 370,
+        "startChar": 0,
+        "endLine": 370,
+        "endChar": 66
+      },
+      "revId": "6abbb58c451be9c61b479270d022fa7a3d7078bb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "acd5da9a_54f690dc",
+        "filename": "core/java/com/android/internal/os/ZygoteInit.java",
+        "patchSetId": 8
+      },
+      "lineNbr": 373,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2019-03-22T10:03:27Z",
+      "side": 1,
+      "message": "nit: add a comment about the order here too.",
+      "range": {
+        "startLine": 372,
+        "startChar": 0,
+        "endLine": 373,
+        "endChar": 28
       },
       "revId": "6abbb58c451be9c61b479270d022fa7a3d7078bb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
