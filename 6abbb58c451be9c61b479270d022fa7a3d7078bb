@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f00403c8_e98a963f",
+        "filename": "core/java/com/android/internal/os/ZygoteInit.java",
+        "patchSetId": 8
+      },
+      "lineNbr": 356,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-03-22T09:58:40Z",
+      "side": 1,
+      "message": "Maybe I am missing something. But are we actually load any class in the shared libraries? If I am reading this change correctly, we are just pre-creating classloaders.",
+      "range": {
+        "startLine": 356,
+        "startChar": 24,
+        "endLine": 356,
+        "endChar": 31
+      },
+      "revId": "6abbb58c451be9c61b479270d022fa7a3d7078bb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
