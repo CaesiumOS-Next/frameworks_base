@@ -249,6 +249,30 @@
     },
     {
       "key": {
+        "uuid": "4b809c64_890f5c3c",
+        "filename": "core/java/com/android/internal/os/ZygoteInit.java",
+        "patchSetId": 8
+      },
+      "lineNbr": 356,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2019-03-23T00:01:35Z",
+      "side": 1,
+      "message": "I was talking to Andreas about this today. He said it might get a little bit more complicated when classes from the bootclasspath and classes in this other namespace need to be kept separate, but some of the implementation details (e.g. heap) might interact. This current solution saves all of the loading/parsing times of the oat files (the lib files themselves are preloaded) from all system apps, but not the classes, which are only used by the relatively few system apps that use HIDL.\n\nWe\u0027re currently trying to reach a consensus on whether to take the level of additional complexity in this CL. I think if we do more, it might not be accepted (or it would have to wait until there was time to look into these implementation details in R or later).",
+      "parentUuid": "555607cc_2133f149",
+      "range": {
+        "startLine": 356,
+        "startChar": 24,
+        "endLine": 356,
+        "endChar": 31
+      },
+      "revId": "6abbb58c451be9c61b479270d022fa7a3d7078bb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ee02166b_055eaec9",
         "filename": "core/java/com/android/internal/os/ZygoteInit.java",
         "patchSetId": 8
