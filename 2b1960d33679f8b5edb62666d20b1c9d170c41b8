@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4ed02cb6_9ecc47c9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 9
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2019-03-23T00:05:23Z",
+      "side": 1,
+      "message": "Be a bit more specific. In reality you don\u0027t preload any classes herel - you just crate and cache the CL to avoid doing it in the app process.",
+      "revId": "2b1960d33679f8b5edb62666d20b1c9d170c41b8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4b7a0cad_6056e275",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 9
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2019-03-23T00:05:23Z",
+      "side": 1,
+      "message": "remove",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 28,
+        "endChar": 210
+      },
+      "revId": "2b1960d33679f8b5edb62666d20b1c9d170c41b8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e43bbe30_125097b2",
+        "filename": "core/java/com/android/internal/os/ZygoteInit.java",
+        "patchSetId": 9
+      },
+      "lineNbr": 356,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2019-03-23T00:05:23Z",
+      "side": 1,
+      "message": "lets try to be consistent. \"either cache or preload\"",
+      "range": {
+        "startLine": 356,
+        "startChar": 23,
+        "endLine": 356,
+        "endChar": 31
+      },
+      "revId": "2b1960d33679f8b5edb62666d20b1c9d170c41b8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ce86a145_aa4541b3",
+        "filename": "core/java/com/android/internal/os/ZygoteInit.java",
+        "patchSetId": 9
+      },
+      "lineNbr": 371,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2019-03-23T00:05:23Z",
+      "side": 1,
+      "message": "Add an additional note that this matters for correctness. Otherwise (if you were to reverse these) I think you create 2 different class loaders for the base.",
+      "range": {
+        "startLine": 371,
+        "startChar": 16,
+        "endLine": 371,
+        "endChar": 44
+      },
+      "revId": "2b1960d33679f8b5edb62666d20b1c9d170c41b8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}

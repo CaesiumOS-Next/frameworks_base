@@ -273,6 +273,70 @@
     },
     {
       "key": {
+        "uuid": "2e0ad033_5e7a6b64",
+        "filename": "core/java/com/android/internal/os/ZygoteInit.java",
+        "patchSetId": 8
+      },
+      "lineNbr": 356,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2019-03-23T00:05:23Z",
+      "side": 1,
+      "message": "Let\u0027s not do that here :) I can see the appetite but that should be a different change with some analysis as well.\n\nTo avoid confusion you might want to adjust the docs and/or the name.",
+      "parentUuid": "555607cc_2133f149",
+      "range": {
+        "startLine": 356,
+        "startChar": 24,
+        "endLine": 356,
+        "endChar": 31
+      },
+      "revId": "6abbb58c451be9c61b479270d022fa7a3d7078bb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fd0b350a_575142a3",
+        "filename": "core/java/com/android/internal/os/ZygoteInit.java",
+        "patchSetId": 8
+      },
+      "lineNbr": 359,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2019-03-23T00:05:23Z",
+      "side": 1,
+      "message": "we don\u0027t cache the CL for compatibility reason. Rephrase this and make it clear this addresses a performance issue.",
+      "revId": "6abbb58c451be9c61b479270d022fa7a3d7078bb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "921ab810_be41a47d",
+        "filename": "core/java/com/android/internal/os/ZygoteInit.java",
+        "patchSetId": 8
+      },
+      "lineNbr": 367,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2019-03-23T00:05:23Z",
+      "side": 1,
+      "message": "I\u0027d move this out of ZygoteInit into a helper class. Hardcoding at this point is not ideal.\n\nI\u0027m thinking something similar to PackageSharedLibraryUpdater and SharedLibraryNames. It will be easier to write tests against it as well (to ensure you setup the proper deps)",
+      "range": {
+        "startLine": 360,
+        "startChar": 0,
+        "endLine": 367,
+        "endChar": 94
+      },
+      "revId": "6abbb58c451be9c61b479270d022fa7a3d7078bb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ee02166b_055eaec9",
         "filename": "core/java/com/android/internal/os/ZygoteInit.java",
         "patchSetId": 8
