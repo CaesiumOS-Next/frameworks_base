@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "382cd94c_c1862caa",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 9
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2019-03-23T02:23:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4ed02cb6_9ecc47c9",
+      "revId": "2b1960d33679f8b5edb62666d20b1c9d170c41b8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4b7a0cad_6056e275",
         "filename": "/COMMIT_MSG",
         "patchSetId": 9
@@ -39,6 +57,30 @@
       "revId": "2b1960d33679f8b5edb62666d20b1c9d170c41b8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "19686ee7_af982d05",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 9
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2019-03-23T02:23:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4b7a0cad_6056e275",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 28,
+        "endChar": 210
+      },
+      "revId": "2b1960d33679f8b5edb62666d20b1c9d170c41b8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -65,6 +107,30 @@
     },
     {
       "key": {
+        "uuid": "d431b3e9_42e607ff",
+        "filename": "core/java/com/android/internal/os/ZygoteInit.java",
+        "patchSetId": 9
+      },
+      "lineNbr": 356,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2019-03-23T02:23:49Z",
+      "side": 1,
+      "message": "Done, also updated the ApplicationLoader method to reflect the existing, similar method for WebView.",
+      "parentUuid": "e43bbe30_125097b2",
+      "range": {
+        "startLine": 356,
+        "startChar": 23,
+        "endLine": 356,
+        "endChar": 31
+      },
+      "revId": "2b1960d33679f8b5edb62666d20b1c9d170c41b8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ce86a145_aa4541b3",
         "filename": "core/java/com/android/internal/os/ZygoteInit.java",
         "patchSetId": 9
@@ -85,6 +151,30 @@
       "revId": "2b1960d33679f8b5edb62666d20b1c9d170c41b8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "25ea6947_4c3bbd1f",
+        "filename": "core/java/com/android/internal/os/ZygoteInit.java",
+        "patchSetId": 9
+      },
+      "lineNbr": 371,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2019-03-23T02:23:49Z",
+      "side": 1,
+      "message": "If this is reversed, it will emit an error in ApplicationLoaders cacheNonBootclasspathSystemLib, now createAndCacheNonBootclasspathSystemClassLoader.",
+      "parentUuid": "ce86a145_aa4541b3",
+      "range": {
+        "startLine": 371,
+        "startChar": 16,
+        "endLine": 371,
+        "endChar": 44
+      },
+      "revId": "2b1960d33679f8b5edb62666d20b1c9d170c41b8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }

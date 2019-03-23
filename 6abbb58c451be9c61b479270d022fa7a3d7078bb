@@ -338,6 +338,24 @@
     },
     {
       "key": {
+        "uuid": "2e3ce49b_7a44aea6",
+        "filename": "core/java/com/android/internal/os/ZygoteInit.java",
+        "patchSetId": 8
+      },
+      "lineNbr": 359,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2019-03-23T02:23:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fd0b350a_575142a3",
+      "revId": "6abbb58c451be9c61b479270d022fa7a3d7078bb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "921ab810_be41a47d",
         "filename": "core/java/com/android/internal/os/ZygoteInit.java",
         "patchSetId": 8
@@ -358,6 +376,30 @@
       "revId": "6abbb58c451be9c61b479270d022fa7a3d7078bb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1faf5420_74959888",
+        "filename": "core/java/com/android/internal/os/ZygoteInit.java",
+        "patchSetId": 8
+      },
+      "lineNbr": 367,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2019-03-23T02:23:49Z",
+      "side": 1,
+      "message": "I thought we were planning on relying on the ClassLoaderNamespace checks being planned? It seems more reliable to do that and then potentially remove the checks here as well. Maybe?\n\nAnyway, this is checked at runtime.",
+      "parentUuid": "921ab810_be41a47d",
+      "range": {
+        "startLine": 360,
+        "startChar": 0,
+        "endLine": 367,
+        "endChar": 94
+      },
+      "revId": "6abbb58c451be9c61b479270d022fa7a3d7078bb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
