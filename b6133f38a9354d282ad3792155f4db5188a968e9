@@ -2,6 +2,75 @@
   "comments": [
     {
       "key": {
+        "uuid": "69ef58c4_fa9f8fd9",
+        "filename": "core/java/android/app/ApplicationLoaders.java",
+        "patchSetId": 10
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2019-03-26T07:49:38Z",
+      "side": 1,
+      "message": "you could drop this if you rename the \u0027sharedLibraries\u0027 param with something like \u0027sharedLibrairesDepencencies\u0027.",
+      "range": {
+        "startLine": 71,
+        "startChar": 43,
+        "endLine": 71,
+        "endChar": 62
+      },
+      "revId": "b6133f38a9354d282ad3792155f4db5188a968e9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "61dbf407_b081fb0d",
+        "filename": "core/java/android/app/ApplicationLoaders.java",
+        "patchSetId": 10
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2019-03-26T07:49:38Z",
+      "side": 1,
+      "message": "Is this checked anywhere? This implies it is, but I don\u0027t see it.",
+      "range": {
+        "startLine": 144,
+        "startChar": 7,
+        "endLine": 144,
+        "endChar": 63
+      },
+      "revId": "b6133f38a9354d282ad3792155f4db5188a968e9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5c5b40fb_8a3591d5",
+        "filename": "core/java/android/app/ApplicationLoaders.java",
+        "patchSetId": 10
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2019-03-26T07:49:38Z",
+      "side": 1,
+      "message": "i\u0027d be consistent with the use of cache/preload. You still use interchange them quite a bit.",
+      "range": {
+        "startLine": 196,
+        "startChar": 26,
+        "endLine": 196,
+        "endChar": 33
+      },
+      "revId": "b6133f38a9354d282ad3792155f4db5188a968e9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e667d11e_7014653a",
         "filename": "core/java/android/app/ApplicationLoaders.java",
         "patchSetId": 10
