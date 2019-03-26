@@ -115,6 +115,30 @@
       "revId": "b6133f38a9354d282ad3792155f4db5188a968e9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "247d3c4e_b4502ea2",
+        "filename": "core/java/android/app/ApplicationLoaders.java",
+        "patchSetId": 10
+      },
+      "lineNbr": 235,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2019-03-26T07:58:11Z",
+      "side": 1,
+      "message": "Checking the parent is equal is vital IMO - those things change every release, and this new code is just asking for being overlooked. Same for classLoaderName.",
+      "parentUuid": "b8a88ef8_a7ae8d0a",
+      "range": {
+        "startLine": 235,
+        "startChar": 13,
+        "endLine": 235,
+        "endChar": 34
+      },
+      "revId": "b6133f38a9354d282ad3792155f4db5188a968e9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
