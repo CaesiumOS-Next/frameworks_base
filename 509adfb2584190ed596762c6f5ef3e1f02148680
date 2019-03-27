@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bb654fcb_bf210d74",
+        "filename": "core/java/android/net/ConnectivityManager.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 1937,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2019-03-27T10:20:15Z",
+      "side": 1,
+      "message": "\"as\" or \"since\"\n\n(note : \"due to\" needs to be followed by a noun or gerund, not a conjugated verb)",
+      "range": {
+        "startLine": 1937,
+        "startChar": 34,
+        "endLine": 1937,
+        "endChar": 40
+      },
+      "revId": "509adfb2584190ed596762c6f5ef3e1f02148680",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dd3402f3_4b5c66f4",
+        "filename": "services/core/java/com/android/server/connectivity/KeepaliveTracker.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 542,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2019-03-27T10:20:15Z",
+      "side": 1,
+      "message": "s/ e\u003d\" +/\",/",
+      "range": {
+        "startLine": 542,
+        "startChar": 51,
+        "endLine": 542,
+        "endChar": 58
+      },
+      "revId": "509adfb2584190ed596762c6f5ef3e1f02148680",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7e05aa47_048b9efb",
+        "filename": "tests/net/java/com/android/server/ConnectivityServiceTest.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 4061,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2019-03-27T10:20:15Z",
+      "side": 1,
+      "message": "This is still subject to race conditions. You\u0027re not using srcPort anywhere else, so why not just call\n\n  mIpSec.openUdpEncapsulationSocket()\n\nas you don\u0027t seem to care what the actual port is ? Even if you need it later you can still call getPort() on it.\n\n\nIf I\u0027m missing something and you really need to specify the port, what about :\n\ntestSocket \u003d openUdpEncapsulationSocket()\n\nprivate UdpEncaplusationSocket openUdpEncapsulationSocket() {\n  for (int i \u003d 0; i \u003c MAX_FINDPORT_TRIES; ++i) {\n    final int srcPort \u003d findUnusedUdpPort(); // maybe inline this\n    try {\n      return mIpSec.openUdpEncapsulationSocket(srcPort);\n    } catch (IOException | ResourceUnavailableException e) {\n      // retry\n    }\n  }\n}",
+      "range": {
+        "startLine": 4061,
+        "startChar": 8,
+        "endLine": 4061,
+        "endChar": 93
+      },
+      "revId": "509adfb2584190ed596762c6f5ef3e1f02148680",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
