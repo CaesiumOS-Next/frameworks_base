@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "5c2dd5c5_3f354edf",
+        "filename": "core/java/android/net/ConnectivityManager.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 1937,
+      "author": {
+        "id": 1306837
+      },
+      "writtenOn": "2019-03-27T11:09:02Z",
+      "side": 1,
+      "message": "Done, thanks for the explination",
+      "parentUuid": "bb654fcb_bf210d74",
+      "range": {
+        "startLine": 1937,
+        "startChar": 34,
+        "endLine": 1937,
+        "endChar": 40
+      },
+      "revId": "509adfb2584190ed596762c6f5ef3e1f02148680",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "dd3402f3_4b5c66f4",
         "filename": "services/core/java/com/android/server/connectivity/KeepaliveTracker.java",
         "patchSetId": 2
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "fe208fad_a0a03dfa",
+        "filename": "services/core/java/com/android/server/connectivity/KeepaliveTracker.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 542,
+      "author": {
+        "id": 1306837
+      },
+      "writtenOn": "2019-03-27T11:09:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dd3402f3_4b5c66f4",
+      "range": {
+        "startLine": 542,
+        "startChar": 51,
+        "endLine": 542,
+        "endChar": 58
+      },
+      "revId": "509adfb2584190ed596762c6f5ef3e1f02148680",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7e05aa47_048b9efb",
         "filename": "tests/net/java/com/android/server/ConnectivityServiceTest.java",
         "patchSetId": 2
@@ -68,6 +116,30 @@
       "revId": "509adfb2584190ed596762c6f5ef3e1f02148680",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "66577fdd_f3fa09da",
+        "filename": "tests/net/java/com/android/server/ConnectivityServiceTest.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 4061,
+      "author": {
+        "id": 1306837
+      },
+      "writtenOn": "2019-03-27T11:09:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7e05aa47_048b9efb",
+      "range": {
+        "startLine": 4061,
+        "startChar": 8,
+        "endLine": 4061,
+        "endChar": 93
+      },
+      "revId": "509adfb2584190ed596762c6f5ef3e1f02148680",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
