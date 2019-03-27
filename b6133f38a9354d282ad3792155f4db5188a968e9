@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "673cd2c9_f4c949b9",
+        "filename": "core/java/android/app/ApplicationLoaders.java",
+        "patchSetId": 10
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2019-03-27T01:50:58Z",
+      "side": 1,
+      "message": "This is to be consistent with getClassLoaderWithSharedLibraries and is based on recommendation from agampe. I think it\u0027s fine and would like to avoid further churn.",
+      "parentUuid": "69ef58c4_fa9f8fd9",
+      "range": {
+        "startLine": 71,
+        "startChar": 43,
+        "endLine": 71,
+        "endChar": 62
+      },
+      "revId": "b6133f38a9354d282ad3792155f4db5188a968e9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "61dbf407_b081fb0d",
         "filename": "core/java/android/app/ApplicationLoaders.java",
         "patchSetId": 10
@@ -45,6 +69,30 @@
       "revId": "b6133f38a9354d282ad3792155f4db5188a968e9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f2c94768_3fefd466",
+        "filename": "core/java/android/app/ApplicationLoaders.java",
+        "patchSetId": 10
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2019-03-27T01:50:58Z",
+      "side": 1,
+      "message": "It causes the error on line 176. I was thinking we should consider making this errors fatal instead (but I would like to do so in a follow-up CL).",
+      "parentUuid": "61dbf407_b081fb0d",
+      "range": {
+        "startLine": 144,
+        "startChar": 7,
+        "endLine": 144,
+        "endChar": 63
+      },
+      "revId": "b6133f38a9354d282ad3792155f4db5188a968e9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -130,6 +178,30 @@
       "side": 1,
       "message": "Checking the parent is equal is vital IMO - those things change every release, and this new code is just asking for being overlooked. Same for classLoaderName.",
       "parentUuid": "b8a88ef8_a7ae8d0a",
+      "range": {
+        "startLine": 235,
+        "startChar": 13,
+        "endLine": 235,
+        "endChar": 34
+      },
+      "revId": "b6133f38a9354d282ad3792155f4db5188a968e9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "62a8b226_b791b6df",
+        "filename": "core/java/android/app/ApplicationLoaders.java",
+        "patchSetId": 10
+      },
+      "lineNbr": 235,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2019-03-27T01:50:58Z",
+      "side": 1,
+      "message": "How do you get the parent? I am checking the parent !\u003d null here and instantiating it with null in createAndCacheNonBootclasspathSystemClassLoader.\n\nFor classLoaderName, I\u0027m also checking it in the same way. Do you have a suggestion for checking it that doesn\u0027t introduce additional coupling?",
+      "parentUuid": "247d3c4e_b4502ea2",
       "range": {
         "startLine": 235,
         "startChar": 13,
