@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e4e279fd_3f8b1f2f",
+        "filename": "services/core/java/com/android/server/connectivity/KeepaliveTracker.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2019-03-27T06:42:28Z",
+      "side": 1,
+      "message": "No, I think you want IllegalArgumentException instead. It\u0027s an unchecked exception, so there is no need to declare it in throws clauses or javadoc.",
+      "range": {
+        "startLine": 70,
+        "startChar": 0,
+        "endLine": 70,
+        "endChar": 42
+      },
+      "revId": "7376cbdb5ea0af659cd5f12dafed4c82c299851c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0974479d_2dcf44da",
+        "filename": "services/core/java/com/android/server/connectivity/KeepaliveTracker.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2019-03-27T06:42:28Z",
+      "side": 1,
+      "message": "This is also unchecked so you don\u0027t need to declare it if you don\u0027t want to.",
+      "range": {
+        "startLine": 145,
+        "startChar": 42,
+        "endLine": 145,
+        "endChar": 59
+      },
+      "revId": "7376cbdb5ea0af659cd5f12dafed4c82c299851c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6f7a919c_a40a2b4c",
+        "filename": "services/core/java/com/android/server/connectivity/KeepaliveTracker.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2019-03-27T06:42:28Z",
+      "side": 1,
+      "message": "Remove TODO.",
+      "revId": "7376cbdb5ea0af659cd5f12dafed4c82c299851c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
