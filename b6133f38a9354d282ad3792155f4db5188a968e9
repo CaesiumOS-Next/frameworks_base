@@ -119,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "56e46e5e_2dba93ee",
+        "filename": "core/java/android/app/ApplicationLoaders.java",
+        "patchSetId": 10
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2019-03-27T07:25:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5c5b40fb_8a3591d5",
+      "range": {
+        "startLine": 196,
+        "startChar": 26,
+        "endLine": 196,
+        "endChar": 33
+      },
+      "revId": "b6133f38a9354d282ad3792155f4db5188a968e9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e667d11e_7014653a",
         "filename": "core/java/android/app/ApplicationLoaders.java",
         "patchSetId": 10
