@@ -259,6 +259,30 @@
       "revId": "b6133f38a9354d282ad3792155f4db5188a968e9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "92e68ad3_fcba323b",
+        "filename": "core/java/android/app/ApplicationLoaders.java",
+        "patchSetId": 10
+      },
+      "lineNbr": 235,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2019-03-27T08:57:19Z",
+      "side": 1,
+      "message": "Ah, I missed getParent on classloader. Although, since an equivalent check is already here (and should be done before the lookup to avoid extra map lookups), and I\u0027m adding tests as well, I\u0027ll hold off on this.\n\nFor classLoaderName, I still don\u0027t see how I can do any better. classLoaderName is null. I would have to couple this with the logic to choose the default class loader in order to do the check.",
+      "parentUuid": "246eca43_ebc788a8",
+      "range": {
+        "startLine": 235,
+        "startChar": 13,
+        "endLine": 235,
+        "endChar": 34
+      },
+      "revId": "b6133f38a9354d282ad3792155f4db5188a968e9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
