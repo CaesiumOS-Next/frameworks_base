@@ -30,7 +30,6 @@
     <uses-permission android:name="android.permission.WAKE_LOCK" />
     <uses-permission android:name="android.permission.READ_PRIVILEGED_PHONE_STATE" />
     <application
-        android:label="NetworkStack"
         android:defaultToDeviceProtectedStorage="true"
         android:directBootAware="true"
         android:usesCleartextTraffic="true">
