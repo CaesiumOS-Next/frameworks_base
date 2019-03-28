@@ -133,7 +133,7 @@ message Atom {
         PhoneStateChanged phone_state_changed = 95;
         LowMemReported low_mem_reported = 81;
         ThermalThrottlingStateChanged thermal_throttling = 86;
-        NetworkDnsEventReported network_dns_event_reported = 116;
+        NetworkDnsEventReported network_dns_event_reported = 116 [(log_from_module) = "resolv"];
         DataStallEvent data_stall_event = 121;
         BluetoothLinkLayerConnectionEvent bluetooth_link_layer_connection_event = 125;
         BluetoothAclConnectionStateChanged bluetooth_acl_connection_state_changed = 126;
