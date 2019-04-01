@@ -115,7 +115,7 @@ public final class MediaRouterService extends IMediaRouterService.Stub
 
         mAudioService = IAudioService.Stub.asInterface(
                 ServiceManager.getService(Context.AUDIO_SERVICE));
-        mAudioPlayerStateMonitor = AudioPlayerStateMonitor.getInstance();
+        mAudioPlayerStateMonitor = AudioPlayerStateMonitor.getInstance(context);
         mAudioPlayerStateMonitor.registerListener(
                 new AudioPlayerStateMonitor.OnAudioPlayerActiveStateChangedListener() {
             static final long WAIT_MS = 500;
@@ -166,7 +166,6 @@ public final class MediaRouterService extends IMediaRouterService.Stub
                 }
             }
         }, mHandler);
-        mAudioPlayerStateMonitor.registerSelfIntoAudioServiceIfNeeded(mAudioService);
 
         AudioRoutesInfo audioRoutes = null;
         try {

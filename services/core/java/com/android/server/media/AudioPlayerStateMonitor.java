@@ -31,6 +31,7 @@ import android.util.ArrayMap;
 import android.util.ArraySet;
 import android.util.IntArray;
 import android.util.Log;
+import android.media.AudioManager;
 
 import com.android.internal.annotations.GuardedBy;
 
@@ -42,11 +43,11 @@ import java.util.Set;
 /**
  * Monitors the state changes of audio players.
  */
-class AudioPlayerStateMonitor extends IPlaybackConfigDispatcher.Stub {
+class AudioPlayerStateMonitor {
     private static boolean DEBUG = MediaSessionService.DEBUG;
     private static String TAG = "AudioPlayerStateMonitor";
 
-    private static AudioPlayerStateMonitor sInstance = new AudioPlayerStateMonitor();
+    private static AudioPlayerStateMonitor sInstance;
 
     /**
      * Listener for handling the active state changes of audio players.
@@ -91,47 +92,10 @@ class AudioPlayerStateMonitor extends IPlaybackConfigDispatcher.Stub {
         }
     }
 
-    private final Object mLock = new Object();
-    @GuardedBy("mLock")
-    private final Map<OnAudioPlayerActiveStateChangedListener, MessageHandler> mListenerMap =
-            new ArrayMap<>();
-    @GuardedBy("mLock")
-    private final Set<Integer> mActiveAudioUids = new ArraySet<>();
-    @GuardedBy("mLock")
-    private ArrayMap<Integer, AudioPlaybackConfiguration> mPrevActiveAudioPlaybackConfigs =
-            new ArrayMap<>();
-    // Sorted array of UIDs that had active audio playback. (i.e. playing an audio/video)
-    // The UID whose audio playback becomes active at the last comes first.
-    // TODO(b/35278867): Find and use unique identifier for apps because apps may share the UID.
-    @GuardedBy("mLock")
-    private final IntArray mSortedAudioPlaybackClientUids = new IntArray();
-
-    @GuardedBy("mLock")
-    private boolean mRegisteredToAudioService;
-
-    static AudioPlayerStateMonitor getInstance() {
-        return sInstance;
-    }
-
-    private AudioPlayerStateMonitor() {
-    }
-
-    /**
-     * Called when the {@link AudioPlaybackConfiguration} is updated.
-     * <p>If an app starts audio playback, the app's local media session will be the media button
-     * session. If the app has multiple media sessions, the playback active local session will be
-     * picked.
-     *
-     * @param configs List of the current audio playback configuration
-     */
-    @Override
-    public void dispatchPlaybackConfigChange(List<AudioPlaybackConfiguration> configs,
-            boolean flush) {
-        if (flush) {
-            Binder.flushPendingCommands();
-        }
-        final long token = Binder.clearCallingIdentity();
-        try {
+    private class AudioManagerPlaybackListener extends AudioManager.AudioPlaybackCallback {
+        @Override
+        public void onPlaybackConfigChanged(List<AudioPlaybackConfiguration> configs) {
+            super.onPlaybackConfigChanged(configs);
             synchronized (mLock) {
                 // Update mActiveAudioUids
                 mActiveAudioUids.clear();
@@ -181,9 +145,43 @@ class AudioPlayerStateMonitor extends IPlaybackConfigDispatcher.Stub {
                 // Update mPrevActiveAudioPlaybackConfigs
                 mPrevActiveAudioPlaybackConfigs = activeAudioPlaybackConfigs;
             }
-        } finally {
-            Binder.restoreCallingIdentity(token);
+
         }
+    }
+
+    private final Object mLock = new Object();
+    @GuardedBy("mLock")
+    private final Map<OnAudioPlayerActiveStateChangedListener, MessageHandler> mListenerMap =
+            new ArrayMap<>();
+    @GuardedBy("mLock")
+    private final Set<Integer> mActiveAudioUids = new ArraySet<>();
+    @GuardedBy("mLock")
+    private ArrayMap<Integer, AudioPlaybackConfiguration> mPrevActiveAudioPlaybackConfigs =
+            new ArrayMap<>();
+    // Sorted array of UIDs that had active audio playback. (i.e. playing an audio/video)
+    // The UID whose audio playback becomes active at the last comes first.
+    // TODO(b/35278867): Find and use unique identifier for apps because apps may share the UID.
+    @GuardedBy("mLock")
+    private final IntArray mSortedAudioPlaybackClientUids = new IntArray();
+
+    @GuardedBy("mLock")
+    private boolean mRegisteredToAudioService;
+
+    private static AudioManager mAudioManager;
+    private AudioManagerPlaybackListener mAudioManagerPlaybackCb = new AudioManagerPlaybackListener();
+
+    static AudioPlayerStateMonitor getInstance(Context context) {
+        synchronized (AudioPlayerStateMonitor.class) {
+            if (sInstance == null) {
+                sInstance = new AudioPlayerStateMonitor(context);
+            }
+            return sInstance;
+        }
+    }
+
+    private AudioPlayerStateMonitor(Context context) {
+        mAudioManager = (AudioManager) context.getSystemService(Context.AUDIO_SERVICE);
+        mAudioManager.registerAudioPlaybackCallback(mAudioManagerPlaybackCb, null);
     }
 
     /**
@@ -271,20 +269,6 @@ class AudioPlayerStateMonitor extends IPlaybackConfigDispatcher.Stub {
                     }
                 }
                 pw.println();
-            }
-        }
-    }
-
-    public void registerSelfIntoAudioServiceIfNeeded(IAudioService audioService) {
-        synchronized (mLock) {
-            try {
-                if (!mRegisteredToAudioService) {
-                    audioService.registerPlaybackCallback(this);
-                    mRegisteredToAudioService = true;
-                }
-            } catch (RemoteException e) {
-                Log.wtf(TAG, "Failed to register playback callback", e);
-                mRegisteredToAudioService = false;
             }
         }
     }
