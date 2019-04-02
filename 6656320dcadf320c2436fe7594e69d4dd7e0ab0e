@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "40e1c054_b363af21",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2019-04-02T10:30:42Z",
+      "side": 1,
+      "message": "I don\u0027t follow. /product is meant to be either where the product partition is mounted or a symlink to /system/product. Is this not the case on the device you\u0027re working on?",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 40
+      },
+      "revId": "6656320dcadf320c2436fe7594e69d4dd7e0ab0e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9e22cbdc_db7ef650",
+        "filename": "core/java/android/app/LoadedApk.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 765,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2019-04-02T10:30:42Z",
+      "side": 1,
+      "message": "update the comment to say why the logic is different for /product than it is for /vendor?",
+      "revId": "6656320dcadf320c2436fe7594e69d4dd7e0ab0e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
