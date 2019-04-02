@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5558b1e5_e1bb32c3",
+        "filename": "core/java/android/app/LoadedApk.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 765,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2019-04-02T11:04:12Z",
+      "side": 0,
+      "message": "I suggested to Kiyoung on chat that treatProductApkAsUnbundled should just be hardcoded to false in Q, and that we\u0027ll update to true in Q+1 when we\u0027re ready. If we need some sort of compat story for devices upgrading to Q+1, we can come up with one then.\n\nAny thoughts on this Jiyong?",
+      "revId": "743a1c80015f97d75e9b8c9fe7c3be4cfda006be",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
