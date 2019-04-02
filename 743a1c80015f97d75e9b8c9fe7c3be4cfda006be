@@ -16,6 +16,24 @@
       "revId": "743a1c80015f97d75e9b8c9fe7c3be4cfda006be",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f1138989_2117d758",
+        "filename": "core/java/android/app/LoadedApk.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 765,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2019-04-02T11:04:55Z",
+      "side": 0,
+      "message": "(I basically think this code was a special case added for /vendor and the code was just unnecessarily copy-pasted for the /product partition)",
+      "parentUuid": "5558b1e5_e1bb32c3",
+      "revId": "743a1c80015f97d75e9b8c9fe7c3be4cfda006be",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
