@@ -70,6 +70,24 @@
       "revId": "743a1c80015f97d75e9b8c9fe7c3be4cfda006be",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4fe61a70_07f109d6",
+        "filename": "core/java/android/app/LoadedApk.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 765,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2019-04-03T09:20:38Z",
+      "side": 0,
+      "message": "I guess my point was that in Q, we don\u0027t need this to be customizable. We can cross that bridge when we get there.\n\nIf everyone prefers adding a sysprop right now, can we at least make its name more descriptive of what it\u0027s actually doing? \"unbundled_apps\" can mean anything.",
+      "parentUuid": "630b57df_91129ecd",
+      "revId": "743a1c80015f97d75e9b8c9fe7c3be4cfda006be",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
