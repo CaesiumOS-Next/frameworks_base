@@ -52,6 +52,24 @@
       "revId": "743a1c80015f97d75e9b8c9fe7c3be4cfda006be",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "630b57df_91129ecd",
+        "filename": "core/java/android/app/LoadedApk.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 765,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-04-03T07:37:23Z",
+      "side": 0,
+      "message": "I think this can\u0027t be hard-coded in the source tree because the system/product isolation is like to be optional in Q+, i.e., some OEMs opt in while some others don\u0027t. I\u0027d like to have this an externally configurable item.",
+      "parentUuid": "c181b2f6_4a69326a",
+      "revId": "743a1c80015f97d75e9b8c9fe7c3be4cfda006be",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
