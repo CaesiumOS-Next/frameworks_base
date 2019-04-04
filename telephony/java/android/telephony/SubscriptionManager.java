@@ -2750,6 +2750,8 @@ public class SubscriptionManager {
      *
      * @throws SecurityException if the caller doesn't meet the requirements
      *             outlined above.
+     * @throws IllegalArgumentException if any of the subscriptions in the list doesn't exist.
+     * @throws IllegalStateException if Telephony service is in bad state.
      *
      * @param subIdList list of subId that will be in the same group
      * @return groupUUID a UUID assigned to the subscription group.
@@ -2798,6 +2800,7 @@ public class SubscriptionManager {
      *             outlined above.
      * @throws IllegalArgumentException if the some subscriptions in the list doesn't exist,
      *             or the groupUuid doesn't exist.
+     * @throws IllegalStateException if Telephony service is in bad state.
      *
      * @param subIdList list of subId that need adding into the group
      * @param groupUuid the groupUuid the subscriptions are being added to.
@@ -2850,6 +2853,7 @@ public class SubscriptionManager {
      *             outlined above.
      * @throws IllegalArgumentException if the some subscriptions in the list doesn't belong
      *             the specified group.
+     * @throws IllegalStateException if Telephony service is in bad state.
      *
      * @param subIdList list of subId that need removing from their groups.
      *
