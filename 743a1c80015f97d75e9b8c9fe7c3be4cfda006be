@@ -106,6 +106,24 @@
       "revId": "743a1c80015f97d75e9b8c9fe7c3be4cfda006be",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2f199244_a470da40",
+        "filename": "core/java/android/app/LoadedApk.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 765,
+      "author": {
+        "id": 1413436
+      },
+      "writtenOn": "2019-04-04T09:22:14Z",
+      "side": 0,
+      "message": "To cover current bug from ARC team, I will go with current naming unless we have better option. Please let me know if anyone find any better naming later so I can update this code.",
+      "parentUuid": "967d1352_8e2bf8c5",
+      "revId": "743a1c80015f97d75e9b8c9fe7c3be4cfda006be",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
