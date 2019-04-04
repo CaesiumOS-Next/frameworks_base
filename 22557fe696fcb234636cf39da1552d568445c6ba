@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6baf5dba_0c46e59c",
+        "filename": "core/java/android/app/LoadedApk.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 775,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2019-04-04T10:14:15Z",
+      "side": 1,
+      "message": "I don\u0027t see why we can\u0027t just delete this whole block of code. I think that would solve ARC\u0027s problem?\n\nIf we want to flip this flag .. should the property really be on /product? It feels like the decision for how /product is treated should be the decision of /system?",
+      "range": {
+        "startLine": 762,
+        "startChar": 9,
+        "endLine": 775,
+        "endChar": 9
+      },
+      "revId": "22557fe696fcb234636cf39da1552d568445c6ba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
