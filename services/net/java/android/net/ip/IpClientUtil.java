@@ -23,6 +23,7 @@ import android.net.DhcpResultsParcelable;
 import android.net.LinkProperties;
 import android.net.NetworkStackClient;
 import android.os.ConditionVariable;
+import android.os.RemoteException;
 
 import java.io.FileDescriptor;
 import java.io.PrintWriter;
@@ -174,6 +175,11 @@ public class IpClientUtil {
         @Override
         public void setNeighborDiscoveryOffload(boolean enable) {
             mCb.setNeighborDiscoveryOffload(enable);
+        }
+
+        @Override
+        public int getInterfaceVersion() {
+            return IIpClientCallbacks.VERSION;
         }
     }
 

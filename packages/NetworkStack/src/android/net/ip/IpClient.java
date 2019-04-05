@@ -548,6 +548,11 @@ public class IpClient extends StateMachine {
             checkNetworkStackCallingPermission();
             IpClient.this.removeKeepalivePacketFilter(slot);
         }
+
+        @Override
+        public int getInterfaceVersion() {
+            return IIpClient.VERSION;
+        }
     }
 
     public String getInterfaceName() {
