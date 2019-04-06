@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "84d15be3_29c6ee88",
+        "filename": "cmds/uiautomator/api/current.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1463964
+      },
+      "writtenOn": "2019-04-06T16:52:57Z",
+      "side": 1,
+      "message": "Currently, running \u0027make update-api\u0027 on a clean branch in frameworks/base causes this change to be added. I suspect this is due to a change in the update-api tool, as the source code for UiSelector#className(Class) hasn\u0027t been changed since 2014.\n\nhttp://cs/android/frameworks/base/cmds/uiautomator/library/core-src/com/android/uiautomator/core/UiSelector.java?l\u003d197",
+      "range": {
+        "startLine": 174,
+        "startChar": 18,
+        "endLine": 174,
+        "endChar": 21
+      },
+      "revId": "fe14e315d7a89658cb30ea066e1b8c85124cc560",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
