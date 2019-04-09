@@ -22,6 +22,30 @@
       "revId": "22557fe696fcb234636cf39da1552d568445c6ba",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bbf794e4_db2d2672",
+        "filename": "core/java/android/app/LoadedApk.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 775,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-04-09T10:42:39Z",
+      "side": 1,
+      "message": "\u003e It feels like the decision for how /product is treated should be the decision of /system?\n\nI think it should be from /product. The decision depends on how and by whom things in /product were built.",
+      "parentUuid": "6baf5dba_0c46e59c",
+      "range": {
+        "startLine": 762,
+        "startChar": 9,
+        "endLine": 775,
+        "endChar": 9
+      },
+      "revId": "22557fe696fcb234636cf39da1552d568445c6ba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
