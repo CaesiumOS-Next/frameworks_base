@@ -601,7 +601,6 @@ public class IpMemoryStoreServiceTest {
                 })));
     }
 
-
     @Test
     public void testFullMaintenance() {
         insertFakeDataAndOverThreshold();
@@ -659,5 +658,56 @@ public class IpMemoryStoreServiceTest {
         // Assume that only do dropAllExpiredRecords method in previous maintenance, db size shall
         // still be over the threshold.
         assertTrue(mService.isDbSizeOverThreshold());
+    }
+
+    @Test
+    public void testFactoryReset() throws UnknownHostException {
+        // store network attributes
+        final NetworkAttributes.Builder na = new NetworkAttributes.Builder();
+        na.setAssignedV4Address((Inet4Address) Inet4Address.getByName("1.2.3.4"));
+        na.setAssignedV4AddressExpiry(System.currentTimeMillis() + 7_200_000);
+        na.setGroupHint("hint1");
+        na.setMtu(1500);
+        final String l2Key = FAKE_KEYS[0];
+        NetworkAttributes attributes = na.build();
+        storeAttributes(l2Key, attributes);
+
+        // store private data blob
+        final Blob b = new Blob();
+        b.data = new byte[] { -3, 6, 8, -9, 12, -128, 0, 89, 112, 91, -34 };
+        doLatched("Did not complete storing private data", latch ->
+                mService.storeBlob(l2Key, TEST_CLIENT_ID, TEST_DATA_NAME, b,
+                        onStatus(status -> {
+                            assertTrue("Store status not successful : " + status.resultCode,
+                                    status.isSuccess());
+                            latch.countDown();
+                        })));
+
+
+        // wipe all data in Database
+        mService.factoryReset();
+
+        // retrieved network attributes should be null
+        doLatched("Did not complete retrieving attributes", latch ->
+                mService.retrieveNetworkAttributes(l2Key, onNetworkAttributesRetrieved(
+                        (status, key, attr) -> {
+                            assertTrue("Retrieve network attributes not successful : "
+                                    + status.resultCode, status.isSuccess());
+                            assertEquals(l2Key, key);
+                            assertNull(attr);
+                            latch.countDown();
+                        })));
+
+        //retrieved private data blob should be null
+        doLatched("Did not complete retrieving private data", latch ->
+                mService.retrieveBlob(l2Key, TEST_CLIENT_ID, TEST_DATA_NAME, onBlobRetrieved(
+                        (status, key, name, data) -> {
+                            assertTrue("Retrieve blob status not successful : " + status.resultCode,
+                                    status.isSuccess());
+                            assertEquals(l2Key, key);
+                            assertEquals(name, TEST_DATA_NAME);
+                            assertNull(data);
+                            latch.countDown();
+                        })));
     }
 }

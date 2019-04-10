@@ -77,6 +77,7 @@ import android.net.INetworkStatsService;
 import android.net.ISocketKeepaliveCallback;
 import android.net.ITetheringEventCallback;
 import android.net.InetAddresses;
+import android.net.IpMemoryStore;
 import android.net.IpPrefix;
 import android.net.LinkProperties;
 import android.net.LinkProperties.CompareResult;
@@ -313,6 +314,8 @@ public class ConnectivityService extends IConnectivityManager.Stub
     private INetworkStatsService mStatsService;
     private INetworkPolicyManager mPolicyManager;
     private NetworkPolicyManagerInternal mPolicyManagerInternal;
+    @NonNull
+    private IpMemoryStore mIpMemoryStore;
 
     /**
      * TestNetworkService (lazily) created upon first usage. Locked to prevent creation of multiple
@@ -6896,6 +6899,9 @@ public class ConnectivityService extends IConnectivityManager.Stub
         }
 
         final int userId = UserHandle.getCallingUserId();
+
+        final IpMemoryStore ipMemoryStore = IpMemoryStore.getMemoryStore(mContext);
+        ipMemoryStore.factoryReset();
 
         // Turn airplane mode off
         setAirplaneMode(false);
