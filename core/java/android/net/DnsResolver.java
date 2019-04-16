@@ -197,7 +197,7 @@ public final class DnsResolver {
         final FileDescriptor queryfd;
         try {
             queryfd = resNetworkSend((network != null
-                ? network.netId : NETID_UNSET), query, query.length, flags);
+                ? network.getNetIdForResolv() : NETID_UNSET), query, query.length, flags);
         } catch (ErrnoException e) {
             executor.execute(() -> callback.onError(new DnsException(ERROR_SYSTEM, e)));
             return;
@@ -238,7 +238,7 @@ public final class DnsResolver {
         final FileDescriptor queryfd;
         try {
             queryfd = resNetworkQuery((network != null
-                    ? network.netId : NETID_UNSET), domain, nsClass, nsType, flags);
+                    ? network.getNetIdForResolv() : NETID_UNSET), domain, nsClass, nsType, flags);
         } catch (ErrnoException e) {
             executor.execute(() -> callback.onError(new DnsException(ERROR_SYSTEM, e)));
             return;
@@ -346,7 +346,8 @@ public final class DnsResolver {
         if (queryIpv6) {
             try {
                 v6fd = resNetworkQuery((network != null
-                        ? network.netId : NETID_UNSET), domain, CLASS_IN, TYPE_AAAA, flags);
+                        ? network.getNetIdForResolv() : NETID_UNSET),
+                        domain, CLASS_IN, TYPE_AAAA, flags);
             } catch (ErrnoException e) {
                 executor.execute(() -> callback.onError(new DnsException(ERROR_SYSTEM, e)));
                 return;
@@ -423,7 +424,7 @@ public final class DnsResolver {
         final FileDescriptor queryfd;
         try {
             queryfd = resNetworkQuery((network != null
-                    ? network.netId : NETID_UNSET), domain, CLASS_IN, nsType, flags);
+                    ? network.getNetIdForResolv() : NETID_UNSET), domain, CLASS_IN, nsType, flags);
         } catch (ErrnoException e) {
             executor.execute(() -> callback.onError(new DnsException(ERROR_SYSTEM, e)));
             return;
