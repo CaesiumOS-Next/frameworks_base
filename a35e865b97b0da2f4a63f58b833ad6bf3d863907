@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "387449bd_92f7ead6",
+        "filename": "core/java/android/os/GraphicsEnvironment.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1339259
+      },
+      "writtenOn": "2019-04-17T07:18:45Z",
+      "side": 1,
+      "message": "introduced in this change to resolve.",
+      "range": {
+        "startLine": 142,
+        "startChar": 32,
+        "endLine": 142,
+        "endChar": 55
+      },
+      "revId": "a35e865b97b0da2f4a63f58b833ad6bf3d863907",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
