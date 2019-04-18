@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "35eefab2_e406e9ab",
+        "filename": "tools/stats_log_api_gen/Collation.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1273909
+      },
+      "writtenOn": "2019-04-18T06:08:03Z",
+      "side": 1,
+      "message": "Suggestion: rewrite this as a switch on javaType. This way, the test on isBinaryField will become a simple if/else inside the JAVA_TYPE_BYTE_ARRAY case.",
+      "range": {
+        "startLine": 199,
+        "startChar": 0,
+        "endLine": 231,
+        "endChar": 0
+      },
+      "revId": "37b9742b58c6448c76a41860689f9e6621787b63",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
