@@ -97,6 +97,30 @@
     },
     {
       "key": {
+        "uuid": "0b96b390_9922476e",
+        "filename": "tools/stats_log_api_gen/Collation.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1273909
+      },
+      "writtenOn": "2019-04-18T08:19:22Z",
+      "side": 1,
+      "message": "Sorry, didn\u0027t see your comment before sending even more suggestions.\n\nMost of my comments are related to code health and readability.\nI found no bugs or other serious issues, feel free to submit this change as is.",
+      "parentUuid": "1e55aceb_0f789196",
+      "range": {
+        "startLine": 199,
+        "startChar": 0,
+        "endLine": 231,
+        "endChar": 0
+      },
+      "revId": "37b9742b58c6448c76a41860689f9e6621787b63",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a0bda0fc_0ed57340",
         "filename": "tools/stats_log_api_gen/main.cpp",
         "patchSetId": 4
