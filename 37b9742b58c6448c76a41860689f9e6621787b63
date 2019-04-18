@@ -70,6 +70,30 @@
       "revId": "37b9742b58c6448c76a41860689f9e6621787b63",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1e55aceb_0f789196",
+        "filename": "tools/stats_log_api_gen/Collation.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1258293
+      },
+      "writtenOn": "2019-04-18T06:15:47Z",
+      "side": 1,
+      "message": "+1 on Chiachang\u0027s comment. We should do that separately.",
+      "parentUuid": "be04f601_a57121ab",
+      "range": {
+        "startLine": 199,
+        "startChar": 0,
+        "endLine": 231,
+        "endChar": 0
+      },
+      "revId": "37b9742b58c6448c76a41860689f9e6621787b63",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
