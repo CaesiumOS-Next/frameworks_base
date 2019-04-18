@@ -61,6 +61,7 @@ import static android.net.NetworkPolicyManager.RULE_NONE;
 import static android.net.NetworkPolicyManager.RULE_REJECT_ALL;
 import static android.net.NetworkPolicyManager.RULE_REJECT_METERED;
 import static android.net.RouteInfo.RTN_UNREACHABLE;
+import static android.os.UserHandle.USER_SYSTEM;
 
 import static com.android.internal.util.TestUtils.waitForIdleHandler;
 import static com.android.internal.util.TestUtils.waitForIdleLooper;
@@ -103,6 +104,7 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
 import android.content.pm.UserInfo;
 import android.content.res.Resources;
 import android.net.ConnectivityManager;
@@ -146,6 +148,8 @@ import android.net.metrics.IpConnectivityLog;
 import android.net.shared.NetworkMonitorUtils;
 import android.net.shared.PrivateDnsConfig;
 import android.net.util.MultinetworkPolicyTracker;
+import android.os.Binder;
+import android.os.Build;
 import android.os.ConditionVariable;
 import android.os.Handler;
 import android.os.HandlerThread;
@@ -254,6 +258,14 @@ public class ConnectivityServiceTest {
     private static final String WIFI_IFNAME = "test_wlan0";
     private static final String[] EMPTY_STRING_ARRAY = new String[0];
 
+    private static final int APP1_UID = UserHandle.getUid(USER_SYSTEM, 10100);
+    private static final int APP2_UID = UserHandle.getUid(USER_SYSTEM, 10101);
+    private static final int VPN_UID = UserHandle.getUid(USER_SYSTEM, 10043);
+    private static final String APP1_PACKAGE = "app1";
+    private static final String APP2_PACKAGE = "app2";
+    private static final String VPN_PACKAGE = "vpn_app";
+
+
     private MockContext mServiceContext;
     private WrappedConnectivityService mService;
     private WrappedConnectivityManager mCm;
@@ -263,6 +275,7 @@ public class ConnectivityServiceTest {
     private MockVpn mMockVpn;
     private Context mContext;
     private INetworkPolicyListener mPolicyListener;
+    private ShadowPackageManager mPackageManager;
 
     @Mock IpConnectivityMetrics.Logger mMetricsService;
     @Mock DefaultNetworkMetrics mDefaultNetworkMetrics;
@@ -356,6 +369,11 @@ public class ConnectivityServiceTest {
         @Override
         public Resources getResources() {
             return mResources;
+        }
+
+        @Override
+        public PackageManager getPackageManager() {
+            return mPackageManager.getMock(UserHandle.USER_SYSTEM);
         }
     }
 
@@ -1210,11 +1228,6 @@ public class ConnectivityServiceTest {
         fail("ConditionVariable was blocked for more than " + TIMEOUT_MS + "ms");
     }
 
-    private static final int VPN_USER = 0;
-    private static final int APP1_UID = UserHandle.getUid(VPN_USER, 10100);
-    private static final int APP2_UID = UserHandle.getUid(VPN_USER, 10101);
-    private static final int VPN_UID = UserHandle.getUid(VPN_USER, 10043);
-
     @Before
     public void setUp() throws Exception {
         mContext = InstrumentationRegistry.getContext();
@@ -1224,7 +1237,7 @@ public class ConnectivityServiceTest {
 
         when(mUserManager.getUsers(eq(true))).thenReturn(
                 Arrays.asList(new UserInfo[] {
-                        new UserInfo(VPN_USER, "", 0),
+                        new UserInfo(USER_SYSTEM, "", 0),
                 }));
 
         // InstrumentationTestRunner prepares a looper, but AndroidJUnitRunner does not.
@@ -1234,6 +1247,8 @@ public class ConnectivityServiceTest {
         }
 
         FakeSettingsProvider.clearSettingsProvider();
+        mPackageManager = new ShadowPackageManager();
+        installDefaultPackages();
         mServiceContext = new MockContext(InstrumentationRegistry.getContext(),
                 new FakeSettingsProvider());
         LocalServices.removeServiceForTest(NetworkPolicyManagerInternal.class);
@@ -1282,6 +1297,22 @@ public class ConnectivityServiceTest {
             mEthernetNetworkAgent = null;
         }
         FakeSettingsProvider.clearSettingsProvider();
+    }
+
+    private void installDefaultPackages() throws Exception {
+        final PackageInfo realSelf = mContext.getPackageManager().getPackageInfo(
+                mContext.getPackageName(), PackageManager.GET_PERMISSIONS);
+        mPackageManager.installPackage(realSelf, USER_SYSTEM);
+
+        final PackageInfo app1 = new ShadowPackageManager.PackageBuilder(APP1_PACKAGE, APP1_UID)
+                .build();
+        final PackageInfo app2 = new ShadowPackageManager.PackageBuilder(APP2_PACKAGE, APP2_UID)
+                .build();
+        final PackageInfo vpnApp = new ShadowPackageManager.PackageBuilder(VPN_PACKAGE, VPN_UID)
+                .build();
+        mPackageManager.installPackage(app1, USER_SYSTEM);
+        mPackageManager.installPackage(app2, USER_SYSTEM);
+        mPackageManager.installPackage(vpnApp, USER_SYSTEM);
     }
 
     private static int transportToLegacyType(int transport) {
@@ -6146,13 +6177,12 @@ public class ConnectivityServiceTest {
     }
 
     @Test
-    @Ignore
     public void testFullyRoutedVpnResultsInInterfaceFilteringRules() throws Exception {
         LinkProperties lp = new LinkProperties();
         lp.setInterfaceName("tun0");
         lp.addRoute(new RouteInfo(new IpPrefix(Inet4Address.ANY, 0), null));
         // The uid range needs to cover the test app so the network is visible to it.
-        final Set<UidRange> vpnRange = Collections.singleton(UidRange.createForUser(VPN_USER));
+        final Set<UidRange> vpnRange = Collections.singleton(UidRange.createForUser(USER_SYSTEM));
         final MockNetworkAgent vpnNetworkAgent = establishVpn(lp, VPN_UID, vpnRange);
 
         // Connected VPN should have interface rules set up. There are two expected invocations,
@@ -6173,13 +6203,12 @@ public class ConnectivityServiceTest {
     }
 
     @Test
-    @Ignore
     public void testLegacyVpnDoesNotResultInInterfaceFilteringRule() throws Exception {
         LinkProperties lp = new LinkProperties();
         lp.setInterfaceName("tun0");
         lp.addRoute(new RouteInfo(new IpPrefix(Inet4Address.ANY, 0), null));
         // The uid range needs to cover the test app so the network is visible to it.
-        final Set<UidRange> vpnRange = Collections.singleton(UidRange.createForUser(VPN_USER));
+        final Set<UidRange> vpnRange = Collections.singleton(UidRange.createForUser(USER_SYSTEM));
         final MockNetworkAgent vpnNetworkAgent = establishVpn(lp, Process.SYSTEM_UID, vpnRange);
 
         // Legacy VPN should not have interface rules set up
@@ -6187,7 +6216,6 @@ public class ConnectivityServiceTest {
     }
 
     @Test
-    @Ignore
     public void testLocalIpv4OnlyVpnDoesNotResultInInterfaceFilteringRule()
             throws Exception {
         LinkProperties lp = new LinkProperties();
@@ -6195,7 +6223,7 @@ public class ConnectivityServiceTest {
         lp.addRoute(new RouteInfo(new IpPrefix("192.0.2.0/24"), null, "tun0"));
         lp.addRoute(new RouteInfo(new IpPrefix(Inet6Address.ANY, 0), RTN_UNREACHABLE));
         // The uid range needs to cover the test app so the network is visible to it.
-        final Set<UidRange> vpnRange = Collections.singleton(UidRange.createForUser(VPN_USER));
+        final Set<UidRange> vpnRange = Collections.singleton(UidRange.createForUser(USER_SYSTEM));
         final MockNetworkAgent vpnNetworkAgent = establishVpn(lp, Process.SYSTEM_UID, vpnRange);
 
         // IPv6 unreachable route should not be misinterpreted as a default route
@@ -6203,13 +6231,12 @@ public class ConnectivityServiceTest {
     }
 
     @Test
-    @Ignore
     public void testVpnHandoverChangesInterfaceFilteringRule() throws Exception {
         LinkProperties lp = new LinkProperties();
         lp.setInterfaceName("tun0");
         lp.addRoute(new RouteInfo(new IpPrefix(Inet4Address.ANY, 0), null));
         // The uid range needs to cover the test app so the network is visible to it.
-        final Set<UidRange> vpnRange = Collections.singleton(UidRange.createForUser(VPN_USER));
+        final Set<UidRange> vpnRange = Collections.singleton(UidRange.createForUser(USER_SYSTEM));
         final MockNetworkAgent vpnNetworkAgent = establishVpn(lp, VPN_UID, vpnRange);
 
         // Connected VPN should have interface rules set up. There are two expected invocations,
@@ -6253,13 +6280,12 @@ public class ConnectivityServiceTest {
     }
 
     @Test
-    @Ignore
     public void testUidUpdateChangesInterfaceFilteringRule() throws Exception {
         LinkProperties lp = new LinkProperties();
         lp.setInterfaceName("tun0");
         lp.addRoute(new RouteInfo(new IpPrefix(Inet6Address.ANY, 0), null));
         // The uid range needs to cover the test app so the network is visible to it.
-        final UidRange vpnRange = UidRange.createForUser(VPN_USER);
+        final UidRange vpnRange = UidRange.createForUser(USER_SYSTEM);
         final MockNetworkAgent vpnNetworkAgent = establishVpn(lp, VPN_UID,
                 Collections.singleton(vpnRange));
 
@@ -6300,15 +6326,5 @@ public class ConnectivityServiceTest {
         Arrays.sort(sortedActual);
         Arrays.sort(sortedExpected);
         assertArrayEquals(sortedExpected, sortedActual);
-    }
-
-    private static PackageInfo buildPackageInfo(boolean hasSystemPermission, int uid) {
-        final PackageInfo packageInfo = new PackageInfo();
-        packageInfo.requestedPermissions = new String[0];
-        packageInfo.applicationInfo = new ApplicationInfo();
-        packageInfo.applicationInfo.privateFlags = 0;
-        packageInfo.applicationInfo.uid = UserHandle.getUid(UserHandle.USER_SYSTEM,
-                UserHandle.getAppId(uid));
-        return packageInfo;
     }
 }
