@@ -94,6 +94,167 @@
       "revId": "37b9742b58c6448c76a41860689f9e6621787b63",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a0bda0fc_0ed57340",
+        "filename": "tools/stats_log_api_gen/main.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 847,
+      "author": {
+        "id": 1273909
+      },
+      "writtenOn": "2019-04-18T08:17:16Z",
+      "side": 1,
+      "message": "You could use C++ raw strings to keep multiple lines of Java code together:\n\n    static const char COPY_INT_CODE \u003d R\"(\nprivate static void copyInt(byte[] buf, int pos, int val) {\n    buf[pos] \u003d (byte) (val);\n    buf[pos + 1] \u003d (byte) (val \u003e\u003e 8);\n    buf[pos + 2] \u003d (byte) (val \u003e\u003e 16);\n    buf[pos + 3] \u003d (byte) (val \u003e\u003e 24);\n    return;\n}\n)\";\n    fputs(out, COPY_INT_CODE);\n\n\nI think this improves readability. Also note that I used fputs() instead of fprintf(), so we don\u0027t have to worry about escaping % characters.",
+      "range": {
+        "startLine": 819,
+        "startChar": 0,
+        "endLine": 847,
+        "endChar": 5
+      },
+      "revId": "37b9742b58c6448c76a41860689f9e6621787b63",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ae45220b_1fac8f39",
+        "filename": "tools/stats_log_api_gen/main.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 900,
+      "author": {
+        "id": 1273909
+      },
+      "writtenOn": "2019-04-18T08:17:16Z",
+      "side": 1,
+      "message": "for (const auto\u0026 pair : signatures_to_modules) {\n  ...\n}",
+      "range": {
+        "startLine": 899,
+        "startChar": 0,
+        "endLine": 900,
+        "endChar": 96
+      },
+      "revId": "37b9742b58c6448c76a41860689f9e6621787b63",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cae2a8ea_1c9aeb8e",
+        "filename": "tools/stats_log_api_gen/main.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 907,
+      "author": {
+        "id": 1273909
+      },
+      "writtenOn": "2019-04-18T08:17:16Z",
+      "side": 1,
+      "message": "Make this a const reference to avoid a copy",
+      "range": {
+        "startLine": 907,
+        "startChar": 8,
+        "endLine": 907,
+        "endChar": 37
+      },
+      "revId": "37b9742b58c6448c76a41860689f9e6621787b63",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "95b34d82_b07e7f20",
+        "filename": "tools/stats_log_api_gen/main.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 911,
+      "author": {
+        "id": 1273909
+      },
+      "writtenOn": "2019-04-18T08:17:16Z",
+      "side": 1,
+      "message": "for (const java_type_t arg : signature) { ... }",
+      "range": {
+        "startLine": 910,
+        "startChar": 0,
+        "endLine": 911,
+        "endChar": 48
+      },
+      "revId": "37b9742b58c6448c76a41860689f9e6621787b63",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "48063122_0ee26a70",
+        "filename": "tools/stats_log_api_gen/main.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 956,
+      "author": {
+        "id": 1273909
+      },
+      "writtenOn": "2019-04-18T08:17:16Z",
+      "side": 1,
+      "message": "for (const auto\u0026 pair : signatures_to_modules) {\n  const vector\u003cjava_type_t\u003e\u0026 signature \u003d pair.first;\n  const set\u003cstring\u003e\u0026 modules \u003d pair.second;\n  ...\n}\n\nIf this code is compiled as C++17 (as I think), you could further simplify this to:\n\nfor (const auto\u0026 [signature, modules] : signatures_to_modules) {\n  ...\n}",
+      "range": {
+        "startLine": 954,
+        "startChar": 0,
+        "endLine": 956,
+        "endChar": 0
+      },
+      "revId": "37b9742b58c6448c76a41860689f9e6621787b63",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "01ce6ab1_e972dd0c",
+        "filename": "tools/stats_log_api_gen/main.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 965,
+      "author": {
+        "id": 1273909
+      },
+      "writtenOn": "2019-04-18T08:17:16Z",
+      "side": 1,
+      "message": "for (const java_type_t arg : signature) {\n  ...\n}",
+      "range": {
+        "startLine": 965,
+        "startChar": 0,
+        "endLine": 965,
+        "endChar": 73
+      },
+      "revId": "37b9742b58c6448c76a41860689f9e6621787b63",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9a7df74b_99a58244",
+        "filename": "tools/stats_log_api_gen/main.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 1083,
+      "author": {
+        "id": 1273909
+      },
+      "writtenOn": "2019-04-18T08:17:16Z",
+      "side": 1,
+      "message": "for (const java_type_t : signature) { ... }",
+      "range": {
+        "startLine": 1082,
+        "startChar": 0,
+        "endLine": 1083,
+        "endChar": 48
+      },
+      "revId": "37b9742b58c6448c76a41860689f9e6621787b63",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
