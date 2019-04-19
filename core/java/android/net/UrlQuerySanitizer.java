@@ -22,6 +22,8 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Set;
 import java.util.StringTokenizer;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  *
@@ -837,15 +839,11 @@ public class UrlQuerySanitizer {
      * @param string the escaped string
      * @return the unescaped string.
      */
+    private static final Pattern plusOrPercent = Pattern.compile("(\\+|%)");
     public String unescape(String string) {
-        // Early exit if no escaped characters.
-        int firstEscape = string.indexOf('%');
-        if ( firstEscape < 0) {
-            firstEscape = string.indexOf('+');
-            if (firstEscape < 0) {
-                return string;
-            }
-        }
+        final Matcher matcher = plusOrPercent.matcher(string);
+        if (!matcher.find()) return string;
+        final int firstEscape = matcher.start();
 
         int length = string.length();
 
