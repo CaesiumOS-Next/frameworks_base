@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9552fefd_ed9492ef",
+        "filename": "core/java/android/net/TestNetworkManager.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2019-04-19T09:42:52Z",
+      "side": 1,
+      "message": "@Nullable.SIGSEGV",
+      "range": {
+        "startLine": 70,
+        "startChar": 38,
+        "endLine": 70,
+        "endChar": 41
+      },
+      "revId": "8ef55c116a5b5878d858bb9df39e58c425035789",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "43440f98_adac60eb",
+        "filename": "services/core/java/com/android/server/TestNetworkService.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 262,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2019-04-19T09:42:52Z",
+      "side": 1,
+      "message": "Probably you want to make a defensive copy here, because if the caller lives in the same process you\u0027re mutating their copy.",
+      "range": {
+        "startLine": 262,
+        "startChar": 15,
+        "endLine": 262,
+        "endChar": 31
+      },
+      "revId": "8ef55c116a5b5878d858bb9df39e58c425035789",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
