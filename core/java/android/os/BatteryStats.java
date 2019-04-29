@@ -7738,7 +7738,6 @@ public abstract class BatteryStats implements Parcelable {
         final long rawRealtimeUs = rawRealtimeMs * 1000;
         final int which = STATS_SINCE_CHARGED;
 
-        // Battery data (BATTERY_DATA)
         final long bToken = proto.start(SystemProto.BATTERY);
         proto.write(SystemProto.Battery.START_CLOCK_TIME_MS, getStartClockTime());
         proto.write(SystemProto.Battery.START_COUNT, getStartCount());
