@@ -121,6 +121,7 @@ import com.android.internal.util.TrafficStatsConstants;
 import com.android.networkstack.R;
 import com.android.networkstack.metrics.DataStallDetectionStats;
 import com.android.networkstack.metrics.DataStallStatsUtils;
+import com.android.networkstack.util.DnsUtils;
 
 import java.io.IOException;
 import java.net.HttpURLConnection;
@@ -1014,7 +1015,8 @@ public class NetworkMonitor extends StateMachine {
         private void resolveStrictModeHostname() {
             try {
                 // Do a blocking DNS resolution using the network-assigned nameservers.
-                final InetAddress[] ips = mNetwork.getAllByName(mPrivateDnsProviderHostname);
+                final InetAddress[] ips = DnsUtils.getAllTypesAddressesByName(mNetwork,
+                      mPrivateDnsProviderHostname, DnsUtils.getPrivateDnsResolutionTimeout());
                 mPrivateDnsConfig = new PrivateDnsConfig(mPrivateDnsProviderHostname, ips);
                 validationLog("Strict mode hostname resolved: " + mPrivateDnsConfig);
             } catch (UnknownHostException uhe) {
