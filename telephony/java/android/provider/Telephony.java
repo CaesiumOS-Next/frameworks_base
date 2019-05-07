@@ -3058,6 +3058,9 @@ public final class Telephony {
 
         /**
          * Message send rate table.
+         * <p>
+         * Used to evaluate SMS send Rate limit exceeded or not. Also used to delete all unused rows
+         * (time earlier than one hour ago) by using sent_time.</p>
          */
         public static final class Rate {
 
