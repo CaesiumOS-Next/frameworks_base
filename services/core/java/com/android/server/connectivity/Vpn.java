@@ -1850,10 +1850,11 @@ public class Vpn {
         if (!profile.searchDomains.isEmpty()) {
             config.searchDomains = Arrays.asList(profile.searchDomains.split(" +"));
         }
-        startLegacyVpn(config, racoon, mtpd);
+        startLegacyVpn(config, racoon, mtpd, profile.server);
     }
 
-    private synchronized void startLegacyVpn(VpnConfig config, String[] racoon, String[] mtpd) {
+    private synchronized void startLegacyVpn(VpnConfig config, String[] racoon, String[] mtpd,
+            String server) {
         stopLegacyVpnPrivileged();
 
         // Prepare for the new request.
@@ -1861,7 +1862,7 @@ public class Vpn {
         updateState(DetailedState.CONNECTING, "startLegacyVpn");
 
         // Start a new LegacyVpnRunner and we are done!
-        mLegacyVpnRunner = new LegacyVpnRunner(config, racoon, mtpd);
+        mLegacyVpnRunner = new LegacyVpnRunner(config, racoon, mtpd, server);
         mLegacyVpnRunner.start();
     }
 
@@ -1927,6 +1928,7 @@ public class Vpn {
         private final String mOuterInterface;
         private final AtomicInteger mOuterConnection =
                 new AtomicInteger(ConnectivityManager.TYPE_NONE);
+        private final String mServer;
 
         private long mBringupStartTime = -1;
 
@@ -1953,7 +1955,7 @@ public class Vpn {
             }
         };
 
-        public LegacyVpnRunner(VpnConfig config, String[] racoon, String[] mtpd) {
+        LegacyVpnRunner(VpnConfig config, String[] racoon, String[] mtpd, String server) {
             super(TAG);
             mConfig = config;
             mDaemons = new String[] {"racoon", "mtpd"};
@@ -1968,6 +1970,8 @@ public class Vpn {
             // we will leave the VPN up.  We should check that it's still there/connected after
             // registering
             mOuterInterface = mConfig.interfaze;
+
+            mServer = server;
 
             if (!TextUtils.isEmpty(mOuterInterface)) {
                 final ConnectivityManager cm = ConnectivityManager.from(mContext);
@@ -2181,7 +2185,7 @@ public class Vpn {
                 }
 
                 // Add a throw route for the VPN server endpoint, if one was specified.
-                String endpoint = parameters[5];
+                String endpoint = parameters[5].isEmpty() ? mServer : parameters[5];
                 if (!endpoint.isEmpty()) {
                     try {
                         InetAddress addr = InetAddress.parseNumericAddress(endpoint);
