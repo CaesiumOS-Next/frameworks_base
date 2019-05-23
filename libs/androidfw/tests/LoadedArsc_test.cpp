@@ -174,7 +174,7 @@ TEST(LoadedArscTest, LoadFeatureSplit) {
   const char16_t* type_name16 =
       package->GetTypeStringPool()->stringAt(type_spec->type_spec->id - 1, &len);
   ASSERT_THAT(type_name16, NotNull());
-  EXPECT_THAT(util::Utf16ToUtf8(StringPiece16(type_name16, len)), StrEq("string"));
+  EXPECT_THAT(util::Utf16ToUtf8(std::u16string_view(type_name16, len)), StrEq("string"));
 
   ASSERT_THAT(LoadedPackage::GetEntry(type_spec->types[0], entry_index), NotNull());
 }

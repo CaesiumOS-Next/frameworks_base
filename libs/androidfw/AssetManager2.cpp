@@ -798,7 +798,7 @@ uint32_t AssetManager2::GetResourceId(const std::string& resource_name,
     return 0u;
   }
 
-  const StringPiece16 kAttr16 = u"attr";
+  const std::u16string_view kAttr16 = u"attr";
   const static std::u16string kAttrPrivate16 = u"^attr-private";
 
   for (const PackageGroup& package_group : package_groups_) {

@@ -56,7 +56,7 @@ std::u16string Utf8ToUtf16(const StringPiece& utf8) {
   return utf16;
 }
 
-std::string Utf16ToUtf8(const StringPiece16& utf16) {
+std::string Utf16ToUtf8(const std::u16string_view& utf16) {
   ssize_t utf8_length = utf16_to_utf8_length(utf16.data(), utf16.length());
   if (utf8_length <= 0) {
     return {};
@@ -76,7 +76,7 @@ static std::vector<std::string> SplitAndTransform(
   StringPiece::const_iterator current;
   do {
     current = std::find(start, end, sep);
-    parts.emplace_back(str.substr(start, current).to_string());
+    parts.emplace_back(std::string(start, current));
     if (f) {
       std::string& part = parts.back();
       std::transform(part.begin(), part.end(), part.begin(), f);

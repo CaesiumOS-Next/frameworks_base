@@ -148,7 +148,6 @@ cc_test {
         "tests/ResourceUtils_test.cpp",
         "tests/ResTable_test.cpp",
         "tests/Split_test.cpp",
-        "tests/StringPiece_test.cpp",
         "tests/Theme_test.cpp",
         "tests/TypeWrappers_test.cpp",
         "tests/ZipUtils_test.cpp",

@@ -227,7 +227,7 @@ bool ApkAssets::ForEachFile(const std::string& root_path,
       auto iter = std::find(leaf_file_path.begin(), leaf_file_path.end(), '/');
       if (iter != leaf_file_path.end()) {
         std::string dir =
-            leaf_file_path.substr(0, std::distance(leaf_file_path.begin(), iter)).to_string();
+            std::string(leaf_file_path.substr(0, std::distance(leaf_file_path.begin(), iter)));
         dirs.insert(std::move(dir));
       } else {
         f(leaf_file_path, kFileTypeRegular);

@@ -128,7 +128,7 @@ static void BM_ApplyStyleFramework(benchmark::State& state) {
   }
 
   std::unique_ptr<Asset> asset = assetmanager.OpenNonAsset(
-      StringPiece(layout_path, len).to_string(), cookie, Asset::ACCESS_BUFFER);
+      std::string(layout_path, len), cookie, Asset::ACCESS_BUFFER);
   if (asset == nullptr) {
     state.SkipWithError("failed to load layout");
     return;
