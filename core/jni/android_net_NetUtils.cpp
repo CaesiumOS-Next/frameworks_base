@@ -305,7 +305,8 @@ static void android_net_utils_resNetworkCancel(JNIEnv *env, jobject thiz, jobjec
 }
 
 static jint android_net_utils_getDnsNetId(JNIEnv *env, jobject thiz) {
-    int dnsNetId = getNetworkForDns();
+    const int dnsNetId = getNetworkForDns();
+    if (dnsNetId & NETID_USE_LOCAL_NAMESERVERS) return dnsNetId;
     if (dnsNetId < 0) {
         throwErrnoException(env, "getDnsNetId", -dnsNetId);
     }

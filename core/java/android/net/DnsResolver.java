@@ -58,6 +58,9 @@ public final class DnsResolver {
     private static final int FD_EVENTS = EVENT_INPUT | EVENT_ERROR;
     private static final int MAXPACKET = 8 * 1024;
     private static final int SLEEP_TIME_MS = 2;
+    // This flag must be kept in sync with the NETID_USE_LOCAL_NAMESERVERS flag
+    // in system/netd/include/NetdClient.h.
+    private static final long NETID_USE_LOCAL_NAMESERVERS = 0x80000000L;
 
     @IntDef(prefix = { "CLASS_" }, value = {
             CLASS_IN
@@ -302,6 +305,13 @@ public final class DnsResolver {
         }
     }
 
+    private static @NonNull Network getDefaultNetwork() throws ErrnoException {
+        final int dnsNetId = getDnsNetId();
+        final boolean privateDnsBypass = ((NETID_USE_LOCAL_NAMESERVERS & (long) dnsNetId) != 0);
+
+        return new Network((int) (dnsNetId & ~NETID_USE_LOCAL_NAMESERVERS), privateDnsBypass);
+    }
+
     /**
      * Send a DNS query with the specified name on a network with both IPv4 and IPv6,
      * get back a set of InetAddresses with rfc6724 sorting style asynchronously.
@@ -333,7 +343,7 @@ public final class DnsResolver {
         final Object lock = new Object();
         final Network queryNetwork;
         try {
-            queryNetwork = (network != null) ? network : new Network(getDnsNetId());
+            queryNetwork = (network != null) ? network : getDefaultNetwork();
         } catch (ErrnoException e) {
             executor.execute(() -> callback.onError(new DnsException(ERROR_SYSTEM, e)));
             return;
@@ -433,7 +443,7 @@ public final class DnsResolver {
         final FileDescriptor queryfd;
         final Network queryNetwork;
         try {
-            queryNetwork = (network != null) ? network : new Network(getDnsNetId());
+            queryNetwork = (network != null) ? network : getDefaultNetwork();
             queryfd = resNetworkQuery(queryNetwork.getNetIdForResolv(), domain, CLASS_IN, nsType,
                     flags);
         } catch (ErrnoException e) {

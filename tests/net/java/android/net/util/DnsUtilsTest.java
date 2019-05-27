@@ -83,16 +83,22 @@ public class DnsUtilsTest {
                 makeSortableAddress("::ffff:192.168.95.3"),       // IPv4-mapped IPv6
                 makeSortableAddress("2001::47c1"),                // teredo tunneling
                 makeSortableAddress("::216.58.200.36"),           // IPv4-compatible
-                makeSortableAddress("3ffe::1234:5678"));          // 6bone
+                makeSortableAddress("3ffe::1234:5678"),           // 6bone
+                // 6bone with src addr
+                makeSortableAddress("3ffe::1234:4321", "3ffe::1234:1"),
+                // IPv4-mapped IPv6 with src addr
+                makeSortableAddress("::ffff:192.168.95.7", "::ffff:192.168.95.1"));
 
         final List<InetAddress> expected = Arrays.asList(
+                stringToAddress("::ffff:192.168.95.7"),       // IPv4-mapped IPv6 with src addr
+                stringToAddress("3ffe::1234:4321"),           // 6bone with src addr
                 stringToAddress("::1"),                       // loop back
                 stringToAddress("fe80::c46f:1cff:fe04:39b4"), // link local
                 stringToAddress("2404:6800:4008:801::2004"),  // global
                 stringToAddress("216.58.200.36"),             // Ipv4
                 stringToAddress("::ffff:192.168.95.3"),       // IPv4-mapped IPv6
                 stringToAddress("2001::47c1"),                // teredo tunneling
-                stringToAddress("::216.58.200.36"),            // IPv4-compatible
+                stringToAddress("::216.58.200.36"),           // IPv4-compatible
                 stringToAddress("3ffe::1234:5678"));          // 6bone
 
         Collections.sort(test, new DnsUtils.Rfc6724Comparator());
