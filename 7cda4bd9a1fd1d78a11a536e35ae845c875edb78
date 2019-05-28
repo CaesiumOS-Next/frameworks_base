@@ -22,6 +22,29 @@
       "revId": "7cda4bd9a1fd1d78a11a536e35ae845c875edb78",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5cbf5d70_5b142892",
+        "filename": "tests/net/java/android/net/util/DnsUtilsTest.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2019-05-28T09:32:41Z",
+      "side": 1,
+      "message": "Nit: it\u0027s confusing to have IPv4 and 6bone at the beginning of the list because usually they are close to last. I think the problem here is that all but 2 addresses don\u0027t have source addresses, which is unusual. It would be easier to understand if most addresses did have source addresses, and only one or two did not. Then the test would ensure that even if they were high-priority addresses (eg., global IPv6), they would be placed last because they are unreachable.",
+      "range": {
+        "startLine": 74,
+        "startChar": 0,
+        "endLine": 75,
+        "endChar": 84
+      },
+      "revId": "7cda4bd9a1fd1d78a11a536e35ae845c875edb78",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
