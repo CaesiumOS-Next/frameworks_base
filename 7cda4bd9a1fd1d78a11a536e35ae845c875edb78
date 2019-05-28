@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "114373a2_7c686d71",
+        "filename": "core/java/android/net/util/DnsUtils.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2019-05-28T09:25:57Z",
+      "side": 1,
+      "message": "Hey while you\u0027re here, make this an ArrayList. You save a virtual invocation on each .add. You don\u0027t need to change the return type.",
+      "range": {
+        "startLine": 144,
+        "startChar": 8,
+        "endLine": 144,
+        "endChar": 12
+      },
+      "revId": "7cda4bd9a1fd1d78a11a536e35ae845c875edb78",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
