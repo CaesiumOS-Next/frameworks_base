@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "aa2e5d2e_6baf6390",
+        "filename": "tests/net/java/android/net/util/DnsUtilsTest.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2019-05-29T04:44:26Z",
+      "side": 1,
+      "message": "Would be good to have a ::1 address that has a ::1 source as well. ::1 without a source address is unlikely/impossible in practice.",
+      "range": {
+        "startLine": 65,
+        "startChar": 16,
+        "endLine": 65,
+        "endChar": 43
+      },
+      "revId": "9a018fffad817ea4858b675dd2fd57e8cc0ecce1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
