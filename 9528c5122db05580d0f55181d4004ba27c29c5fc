@@ -22,6 +22,30 @@
       "revId": "9528c5122db05580d0f55181d4004ba27c29c5fc",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "90827a7a_f61940c4",
+        "filename": "services/core/java/com/android/server/ConnectivityService.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 3533,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2019-05-31T08:59:24Z",
+      "side": 0,
+      "message": "Removed. As far as I can see, its only caller is CaptivePortal.java, in the @hide methods reportCaptivePortalDismissed, ignoreNetwork, and useNetwork. These all catch the exception without even logging it.\n\nICaptivePortal is @hide (like all aidl interfaces). It seems unlikely that someone is using it directly since it\u0027s not @UnsupportedAppUsage and in any case it can\u0027t really do anything that\u0027s not exposed by the methods above. It seems still less likely that some app is relying on that RemoteException to be thrown. Before Q, the other end of the binder would have been the system server, so RemoteException would have been pretty unlikely anyway.",
+      "parentUuid": "588ce118_a9119a2c",
+      "range": {
+        "startLine": 3533,
+        "startChar": 64,
+        "endLine": 3533,
+        "endChar": 97
+      },
+      "revId": "9528c5122db05580d0f55181d4004ba27c29c5fc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
