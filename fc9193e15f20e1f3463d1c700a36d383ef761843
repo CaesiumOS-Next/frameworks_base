@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "14927d9b_450cd5ea",
+        "filename": "media/java/android/media/tv/TvTrackInfo.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 324,
+      "author": {
+        "id": 1101748
+      },
+      "writtenOn": "2019-06-03T22:57:37Z",
+      "side": 1,
+      "message": "Can be simplified:\n(mType !\u003d TYPE_AUDIO \u0026\u0026 mType !\u003d TYPE_SUBTITLE) || (mHardOfHearing \u003d\u003d obj.mHardOfHearing)",
+      "range": {
+        "startLine": 323,
+        "startChar": 19,
+        "endLine": 324,
+        "endChar": 62
+      },
+      "revId": "fc9193e15f20e1f3463d1c700a36d383ef761843",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
