@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "67790da3_510775f5",
+        "filename": "core/java/android/net/DnsResolver.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 475,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2019-06-11T06:51:30Z",
+      "side": 1,
+      "message": "Can you add here the reason why the fd might be reused ? Example :\n\n  For example when querying v4 and v6, it\u0027s possible that the first query ends\n  and the fd is closed before the second request starts, which would return the\n  same fd for the second request. By that time, the looper must have unregistered\n  the fd, otherwise another event listener can\u0027t be registered.",
+      "range": {
+        "startLine": 475,
+        "startChar": 57,
+        "endLine": 475,
+        "endChar": 58
+      },
+      "revId": "8b7929249555a5d7ac2d4222e9638a3dbc7a15f4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "edfaef4c_9a0e0be1",
+        "filename": "core/java/android/net/DnsResolver.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 478,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2019-06-11T06:51:30Z",
+      "side": 1,
+      "message": "Can we move this into a local in l.469 ?",
+      "range": {
+        "startLine": 478,
+        "startChar": 20,
+        "endLine": 478,
+        "endChar": 53
+      },
+      "revId": "8b7929249555a5d7ac2d4222e9638a3dbc7a15f4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e4de3063_7c0e7d8c",
+        "filename": "core/java/android/net/DnsResolver.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 501,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2019-06-11T06:51:30Z",
+      "side": 1,
+      "message": "Please update this comment. Suggested wording :\n\n  The file descriptor has already been unregistered, so it does not really matter what is\n  returned here. In spirit 0 (meaning \"unregister this FD\") is still the closest to what\n  the looper needs to do. When returning 0, Looper knows to ignore the fd if it has already\n  been registered.",
+      "range": {
+        "startLine": 501,
+        "startChar": 23,
+        "endLine": 501,
+        "endChar": 50
+      },
+      "revId": "8b7929249555a5d7ac2d4222e9638a3dbc7a15f4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
