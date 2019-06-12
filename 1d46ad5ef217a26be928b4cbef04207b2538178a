@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b8fa450b_52abece8",
+        "filename": "services/core/java/com/android/server/NetworkManagementService.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 1233,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2019-06-12T03:06:06Z",
+      "side": 1,
+      "message": "Are you sure you want to use this method that Varun just deprecated ? Maybe we\u0027d better pass the args explicitly.\n\nVarun, you suggested Ben changes this – any opinion ? Should we undeprecate ?",
+      "range": {
+        "startLine": 1233,
+        "startChar": 33,
+        "endLine": 1233,
+        "endChar": 55
+      },
+      "revId": "1d46ad5ef217a26be928b4cbef04207b2538178a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cfbfd100_92c3fc7f",
+        "filename": "services/core/java/com/android/server/net/NetworkStatsFactory.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 280,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2019-06-12T03:06:06Z",
+      "side": 1,
+      "message": "go/avoidwe – I really don\u0027t think it\u0027s clear here.",
+      "range": {
+        "startLine": 280,
+        "startChar": 46,
+        "endLine": 280,
+        "endChar": 48
+      },
+      "revId": "1d46ad5ef217a26be928b4cbef04207b2538178a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c8c5ff8b_65c8a133",
+        "filename": "services/core/java/com/android/server/net/NetworkStatsFactory.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 308,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2019-06-12T03:06:06Z",
+      "side": 1,
+      "message": "Suggest tagging this with @Nullable and having a comment saying to pass INTERFACES_ALL \u003d null for all interfaces",
+      "range": {
+        "startLine": 308,
+        "startChar": 70,
+        "endLine": 308,
+        "endChar": 76
+      },
+      "revId": "1d46ad5ef217a26be928b4cbef04207b2538178a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "40ca099e_9e668c0b",
+        "filename": "services/core/java/com/android/server/net/NetworkStatsFactory.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 311,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2019-06-12T03:06:06Z",
+      "side": 1,
+      "message": "/* initialSize */\n\nI also think 0 is clearer considering the implementation of this constructor.",
+      "range": {
+        "startLine": 311,
+        "startChar": 88,
+        "endLine": 311,
+        "endChar": 89
+      },
+      "revId": "1d46ad5ef217a26be928b4cbef04207b2538178a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a1bbed6d_9d4fea98",
+        "filename": "services/core/java/com/android/server/net/NetworkStatsFactory.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 387,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2019-06-12T03:06:06Z",
+      "side": 1,
+      "message": "INTERFACES_ALL ?",
+      "range": {
+        "startLine": 387,
+        "startChar": 36,
+        "endLine": 387,
+        "endChar": 40
+      },
+      "revId": "1d46ad5ef217a26be928b4cbef04207b2538178a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
