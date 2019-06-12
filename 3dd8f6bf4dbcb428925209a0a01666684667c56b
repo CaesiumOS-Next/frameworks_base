@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2629d561_62b5ce4c",
+        "filename": "services/core/java/com/android/server/NetworkManagementService.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 1234,
+      "author": {
+        "id": 1399364
+      },
+      "writtenOn": "2019-06-12T01:49:46Z",
+      "side": 1,
+      "message": "nit: can be replaced with readNetworkStatsDetail()",
+      "range": {
+        "startLine": 1234,
+        "startChar": 33,
+        "endLine": 1234,
+        "endChar": 79
+      },
+      "revId": "3dd8f6bf4dbcb428925209a0a01666684667c56b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d290c36f_d4545c6b",
+        "filename": "services/core/java/com/android/server/net/NetworkStatsFactory.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 272,
+      "author": {
+        "id": 1399364
+      },
+      "writtenOn": "2019-06-12T01:49:46Z",
+      "side": 1,
+      "message": "nit: this can be IFACES_ALL",
+      "range": {
+        "startLine": 272,
+        "startChar": 47,
+        "endLine": 272,
+        "endChar": 51
+      },
+      "revId": "3dd8f6bf4dbcb428925209a0a01666684667c56b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
