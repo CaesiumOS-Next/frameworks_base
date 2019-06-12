@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "47a66724_5c0966ed",
+        "filename": "services/core/java/com/android/server/NetworkManagementService.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 1233,
+      "author": {
+        "id": 1399364
+      },
+      "writtenOn": "2019-06-12T15:42:51Z",
+      "side": 1,
+      "message": "Yeah, this method gets undeprecated in next CL. Also, both of these CLs need to be rebased on top of revert of reverts that I merged yesterday in aosp.\n\nIt was deprecated in one of my CLs as we moved everything to NSS. Which we are changing in Ben\u0027s CL on top to move that to NSF.",
+      "parentUuid": "b8fa450b_52abece8",
+      "range": {
+        "startLine": 1233,
+        "startChar": 33,
+        "endLine": 1233,
+        "endChar": 55
+      },
+      "revId": "1d46ad5ef217a26be928b4cbef04207b2538178a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cfbfd100_92c3fc7f",
         "filename": "services/core/java/com/android/server/net/NetworkStatsFactory.java",
         "patchSetId": 2
