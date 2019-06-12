@@ -72,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "234f2cca_0e83e686",
+        "filename": "services/core/java/com/android/server/net/NetworkStatsFactory.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 280,
+      "author": {
+        "id": 1221725
+      },
+      "writtenOn": "2019-06-12T22:42:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cfbfd100_92c3fc7f",
+      "range": {
+        "startLine": 280,
+        "startChar": 46,
+        "endLine": 280,
+        "endChar": 48
+      },
+      "revId": "1d46ad5ef217a26be928b4cbef04207b2538178a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c8c5ff8b_65c8a133",
         "filename": "services/core/java/com/android/server/net/NetworkStatsFactory.java",
         "patchSetId": 2
@@ -92,6 +116,30 @@
       "revId": "1d46ad5ef217a26be928b4cbef04207b2538178a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c0c0653f_bb992144",
+        "filename": "services/core/java/com/android/server/net/NetworkStatsFactory.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 308,
+      "author": {
+        "id": 1221725
+      },
+      "writtenOn": "2019-06-12T22:42:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c8c5ff8b_65c8a133",
+      "range": {
+        "startLine": 308,
+        "startChar": 70,
+        "endLine": 308,
+        "endChar": 76
+      },
+      "revId": "1d46ad5ef217a26be928b4cbef04207b2538178a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -118,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "294d5a05_3360a2ea",
+        "filename": "services/core/java/com/android/server/net/NetworkStatsFactory.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 311,
+      "author": {
+        "id": 1221725
+      },
+      "writtenOn": "2019-06-12T22:42:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "40ca099e_9e668c0b",
+      "range": {
+        "startLine": 311,
+        "startChar": 88,
+        "endLine": 311,
+        "endChar": 89
+      },
+      "revId": "1d46ad5ef217a26be928b4cbef04207b2538178a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a1bbed6d_9d4fea98",
         "filename": "services/core/java/com/android/server/net/NetworkStatsFactory.java",
         "patchSetId": 2
@@ -138,6 +210,30 @@
       "revId": "1d46ad5ef217a26be928b4cbef04207b2538178a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1e46284a_05db2992",
+        "filename": "services/core/java/com/android/server/net/NetworkStatsFactory.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 387,
+      "author": {
+        "id": 1221725
+      },
+      "writtenOn": "2019-06-12T22:42:52Z",
+      "side": 1,
+      "message": "I\u0027d prefer to not increase the scope of these changes if we\u0027re trying to merge for q, but I can file a bug to do some of this minor cleanup in the R timeframe?",
+      "parentUuid": "a1bbed6d_9d4fea98",
+      "range": {
+        "startLine": 387,
+        "startChar": 36,
+        "endLine": 387,
+        "endChar": 40
+      },
+      "revId": "1d46ad5ef217a26be928b4cbef04207b2538178a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
