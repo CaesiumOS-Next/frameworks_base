@@ -37,7 +37,7 @@ import android.database.DatabaseUtils;
 import android.net.Uri;
 import android.os.RemoteException;
 import android.text.format.DateUtils;
-import android.text.format.Time;
+import android.text.format.TimeMigrationUtils;
 import android.util.Log;
 
 /**
@@ -2384,9 +2384,7 @@ public final class CalendarContract {
         @UnsupportedAppUsage
         public static void scheduleAlarm(Context context, AlarmManager manager, long alarmTime) {
             if (DEBUG) {
-                Time time = new Time();
-                time.set(alarmTime);
-                String schedTime = time.format(" %a, %b %d, %Y %I:%M%P");
+                String schedTime = TimeMigrationUtils.formatMillisAsDateTime(alarmTime);
                 Log.d(TAG, "Schedule alarm at " + alarmTime + " " + schedTime);
             }
 
