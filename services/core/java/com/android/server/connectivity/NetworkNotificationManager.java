@@ -34,6 +34,7 @@ import android.telephony.AccessNetworkConstants.TransportType;
 import android.telephony.SubscriptionManager;
 import android.telephony.TelephonyManager;
 import android.text.TextUtils;
+import android.util.Log;
 import android.util.Slog;
 import android.util.SparseArray;
 import android.util.SparseIntArray;
@@ -178,31 +179,15 @@ public class NetworkNotificationManager {
         CharSequence title;
         CharSequence details;
         int icon = getIcon(transportType, notifyType);
-        if (notifyType == NotificationType.NO_INTERNET) {
-            switch (transportType) {
-                case TRANSPORT_WIFI:
-                    title = r.getString(R.string.wifi_no_internet,
-                        WifiInfo.removeDoubleQuotes(nai.networkCapabilities.getSSID()));
-                    details = r.getString(R.string.wifi_no_internet_detailed);
-                    break;
-                default:
-                    // TODO: Display notifications for those networks that provide internet.
-                    // except VPN.
-                    return;
-            }
-
-        } else if (notifyType == NotificationType.PARTIAL_CONNECTIVITY) {
-            switch (transportType) {
-                case TRANSPORT_WIFI:
-                    title = r.getString(R.string.network_partial_connectivity,
-                        WifiInfo.removeDoubleQuotes(nai.networkCapabilities.getSSID()));
-                    details = r.getString(R.string.network_partial_connectivity_detailed);
-                    break;
-                default:
-                    // TODO: Display notifications for those networks that provide internet.
-                    // except VPN.
-                    return;
-            }
+        if (notifyType == NotificationType.NO_INTERNET && transportType == TRANSPORT_WIFI) {
+            title = r.getString(R.string.wifi_no_internet,
+                    WifiInfo.removeDoubleQuotes(nai.networkCapabilities.getSSID()));
+            details = r.getString(R.string.wifi_no_internet_detailed);
+        } else if (notifyType == NotificationType.PARTIAL_CONNECTIVITY
+                && transportType == TRANSPORT_WIFI) {
+            title = r.getString(R.string.network_partial_connectivity,
+                    WifiInfo.removeDoubleQuotes(nai.networkCapabilities.getSSID()));
+            details = r.getString(R.string.network_partial_connectivity_detailed);
         } else if (notifyType == NotificationType.LOST_INTERNET &&
                 transportType == TRANSPORT_WIFI) {
             title = r.getString(R.string.wifi_no_internet,
@@ -249,8 +234,16 @@ public class NetworkNotificationManager {
             details = r.getString(R.string.network_switch_metered_detail, toTransport,
                     fromTransport);
         } else {
-            Slog.wtf(TAG, "Unknown notification type " + notifyType + " on network transport "
-                    + getTransportName(transportType));
+            if (notifyType == NotificationType.NO_INTERNET
+                    || notifyType == NotificationType.PARTIAL_CONNECTIVITY) {
+                // NO_INTERNET and PARTIAL_CONNECTIVITY notification for non-WiFi networks
+                // are sent, but they are not implemented yet.
+                Log.i(TAG, "Notification " + notifyType + " on network transport "
+                        + getTransportName(transportType) + " is not implemented yet");
+            } else {
+                Slog.wtf(TAG, "Unknown notification type " + notifyType + " on network transport "
+                        + getTransportName(transportType));
+            }
             return;
         }
         // When replacing an existing notification for a given network, don't alert, just silently
