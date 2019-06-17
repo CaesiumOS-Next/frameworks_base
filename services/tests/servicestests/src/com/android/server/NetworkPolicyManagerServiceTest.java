@@ -49,7 +49,6 @@ import static android.telephony.CarrierConfigManager.KEY_DATA_WARNING_THRESHOLD_
 import static android.telephony.CarrierConfigManager.KEY_MONTHLY_DATA_CYCLE_DAY_INT;
 import static android.telephony.SubscriptionPlan.BYTES_UNLIMITED;
 import static android.telephony.SubscriptionPlan.LIMIT_BEHAVIOR_DISABLED;
-import static android.text.format.Time.TIMEZONE_UTC;
 
 import static com.android.server.net.NetworkPolicyManagerInternal.QUOTA_TYPE_JOBS;
 import static com.android.server.net.NetworkPolicyManagerInternal.QUOTA_TYPE_MULTIPATH;
@@ -128,7 +127,6 @@ import android.telephony.SubscriptionPlan;
 import android.telephony.TelephonyManager;
 import android.test.suitebuilder.annotation.MediumTest;
 import android.text.TextUtils;
-import android.text.format.Time;
 import android.util.DataUnit;
 import android.util.Log;
 import android.util.Pair;
@@ -185,6 +183,7 @@ import java.util.Calendar;
 import java.util.Iterator;
 import java.util.LinkedHashSet;
 import java.util.List;
+import java.util.TimeZone;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Future;
@@ -869,7 +868,7 @@ public class NetworkPolicyManagerServiceTest {
         final long expectedCycle = parseTime("2007-11-05T00:00:00.000Z");
 
         final NetworkPolicy policy = new NetworkPolicy(
-                sTemplateWifi, 5, TIMEZONE_UTC, 1024L, 1024L, false);
+                sTemplateWifi, 5, "UTC", 1024L, 1024L, false);
         final long actualCycle = computeLastCycleBoundary(currentTime, policy);
         assertTimeEquals(expectedCycle, actualCycle);
     }
@@ -1771,7 +1770,7 @@ public class NetworkPolicyManagerServiceTest {
     private static NetworkPolicy buildFakeMobilePolicy(int cycleDay, long warningBytes,
             long limitBytes, boolean inferred){
         final NetworkTemplate template = buildTemplateMobileAll(FAKE_SUBSCRIBER_ID);
-        return new NetworkPolicy(template, cycleDay, new Time().timezone, warningBytes,
+        return new NetworkPolicy(template, cycleDay, TimeZone.getDefault().getID(), warningBytes,
                 limitBytes, SNOOZE_NEVER, SNOOZE_NEVER, true, inferred);
     }
 
