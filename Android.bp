@@ -1700,6 +1700,16 @@ droidstubs {
     },
 }
 
+genrule {
+    name: "framework-annotation-proc-index",
+    srcs: [":framework-annotation-proc"],
+    cmd: "cp out/soong/.intermediates/frameworks/base/framework-annotation-proc/android_common/javac/classes/unsupportedappusage/unsupportedappusage_index.csv $(out)",
+    out: ["unsupportedappusage_index.csv"],
+    dist: {
+        targets: ["droidcore"],
+    },
+}
+
 filegroup {
     name: "framework-annotation-nonnull-srcs",
     srcs: [
