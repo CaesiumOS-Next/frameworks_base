@@ -994,17 +994,26 @@ class TvInputHardwareManager implements TvInputHal.Callback {
             }
             if (shouldRecreateAudioPatch) {
                 mCommittedVolume = volume;
-                if (mAudioPatch != null) {
-                    mAudioManager.releaseAudioPatch(mAudioPatch);
+                boolean shouldReallyRecreate = true;
+                if ((mAudioPatch != null) &&
+                    (!sinkUpdated && !sourceUpdated)) {
+                    shouldReallyRecreate = false;
                 }
-                mAudioManager.createAudioPatch(
+                if (shouldReallyRecreate) {
+                    if (mAudioPatch != null) {
+                        mAudioManager.releaseAudioPatch(mAudioPatch);
+                        audioPatchArray[0] = null;
+                    }
+                    mAudioManager.createAudioPatch(
                         audioPatchArray,
                         new AudioPortConfig[] { sourceConfig },
                         sinkConfigs.toArray(new AudioPortConfig[sinkConfigs.size()]));
-                mAudioPatch = audioPatchArray[0];
-                if (sourceGainConfig != null) {
-                    mAudioManager.setAudioPortGain(mAudioSource, sourceGainConfig);
+                    mAudioPatch = audioPatchArray[0];
                 }
+             }
+
+            if (sourceGainConfig != null) {
+                mAudioManager.setAudioPortGain(mAudioSource, sourceGainConfig);
             }
         }
 
