@@ -1,0 +1,140 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "10683e58_613e2ca1",
+        "filename": "startop/apps/ColorChanging/app/build.gradle",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1335232
+      },
+      "writtenOn": "2019-07-03T21:07:58Z",
+      "side": 1,
+      "message": "Could you change the package to com.android.startop.colorchanging?",
+      "revId": "96e1a18864aeb59428335abe490523094b931fcc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "74a08ea8_abf853a4",
+        "filename": "startop/apps/ColorChanging/app/src/androidTest/java/com/example/colorchanging/ExampleInstrumentedTest.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1335232
+      },
+      "writtenOn": "2019-07-03T21:07:58Z",
+      "side": 1,
+      "message": "The package here should be com.android.startop.colorchanging too.",
+      "revId": "96e1a18864aeb59428335abe490523094b931fcc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2b4810e5_4ac74408",
+        "filename": "startop/apps/ColorChanging/app/src/main/AndroidManifest.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 1335232
+      },
+      "writtenOn": "2019-07-03T21:07:58Z",
+      "side": 1,
+      "message": "and here.",
+      "revId": "96e1a18864aeb59428335abe490523094b931fcc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "438ed47e_3fa73368",
+        "filename": "startop/apps/ColorChanging/app/src/main/java/com/example/colorchanging/MainActivity.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1335232
+      },
+      "writtenOn": "2019-07-03T21:07:58Z",
+      "side": 1,
+      "message": "Can you add a copyright header to all the Java language files, like the one in https://cs.corp.google.com/android/frameworks/base/startop/apps/test/src/EmptyActivity.java?",
+      "revId": "96e1a18864aeb59428335abe490523094b931fcc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cd463a9f_289c2fed",
+        "filename": "startop/apps/ColorChanging/app/src/main/java/com/example/colorchanging/MainActivity.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1335232
+      },
+      "writtenOn": "2019-07-03T21:07:58Z",
+      "side": 1,
+      "message": "and here.",
+      "revId": "96e1a18864aeb59428335abe490523094b931fcc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "14d6370d_17a2f126",
+        "filename": "startop/apps/ColorChanging/app/src/main/java/com/example/colorchanging/MainActivity.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1335232
+      },
+      "writtenOn": "2019-07-03T21:07:58Z",
+      "side": 1,
+      "message": "You probably want a Trace.beginSection(\"gray\") before this call. That way there is always a trace going to match with the various endSection calls.",
+      "revId": "96e1a18864aeb59428335abe490523094b931fcc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8f00cef2_6d8590ec",
+        "filename": "startop/apps/ColorChanging/app/src/test/java/com/example/colorchanging/ExampleUnitTest.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1335232
+      },
+      "writtenOn": "2019-07-03T21:07:58Z",
+      "side": 1,
+      "message": "This package needs updated too.\n\nAlso, I\u0027m not sure we actually need this file.",
+      "revId": "96e1a18864aeb59428335abe490523094b931fcc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "513922a3_73a911ec",
+        "filename": "startop/apps/ColorChanging/build.gradle",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1335232
+      },
+      "writtenOn": "2019-07-03T21:07:58Z",
+      "side": 1,
+      "message": "Trailing whitespace, here and below.",
+      "revId": "96e1a18864aeb59428335abe490523094b931fcc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
