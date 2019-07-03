@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "1c04e015_4f1a340d",
+        "filename": "startop/apps/ColorChanging/app/build.gradle",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1509597
+      },
+      "writtenOn": "2019-07-03T22:26:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "10683e58_613e2ca1",
+      "revId": "96e1a18864aeb59428335abe490523094b931fcc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "74a08ea8_abf853a4",
         "filename": "startop/apps/ColorChanging/app/src/androidTest/java/com/example/colorchanging/ExampleInstrumentedTest.java",
         "patchSetId": 1
@@ -33,6 +51,24 @@
       "revId": "96e1a18864aeb59428335abe490523094b931fcc",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "11562972_e644ae06",
+        "filename": "startop/apps/ColorChanging/app/src/androidTest/java/com/example/colorchanging/ExampleInstrumentedTest.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1509597
+      },
+      "writtenOn": "2019-07-03T22:26:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "74a08ea8_abf853a4",
+      "revId": "96e1a18864aeb59428335abe490523094b931fcc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "2e9213ed_36119bf7",
+        "filename": "startop/apps/ColorChanging/app/src/main/AndroidManifest.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 1509597
+      },
+      "writtenOn": "2019-07-03T22:26:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2b4810e5_4ac74408",
+      "revId": "96e1a18864aeb59428335abe490523094b931fcc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "438ed47e_3fa73368",
         "filename": "startop/apps/ColorChanging/app/src/main/java/com/example/colorchanging/MainActivity.java",
         "patchSetId": 1
@@ -67,6 +121,24 @@
       "revId": "96e1a18864aeb59428335abe490523094b931fcc",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6183c7a4_c5dc8700",
+        "filename": "startop/apps/ColorChanging/app/src/main/java/com/example/colorchanging/MainActivity.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1509597
+      },
+      "writtenOn": "2019-07-03T22:26:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "438ed47e_3fa73368",
+      "revId": "96e1a18864aeb59428335abe490523094b931fcc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -87,6 +159,24 @@
     },
     {
       "key": {
+        "uuid": "b36fd1da_73a33289",
+        "filename": "startop/apps/ColorChanging/app/src/main/java/com/example/colorchanging/MainActivity.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1509597
+      },
+      "writtenOn": "2019-07-03T22:26:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cd463a9f_289c2fed",
+      "revId": "96e1a18864aeb59428335abe490523094b931fcc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "14d6370d_17a2f126",
         "filename": "startop/apps/ColorChanging/app/src/main/java/com/example/colorchanging/MainActivity.java",
         "patchSetId": 1
@@ -101,6 +191,24 @@
       "revId": "96e1a18864aeb59428335abe490523094b931fcc",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a7add707_54090895",
+        "filename": "startop/apps/ColorChanging/app/src/main/java/com/example/colorchanging/MainActivity.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1509597
+      },
+      "writtenOn": "2019-07-03T22:26:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "14d6370d_17a2f126",
+      "revId": "96e1a18864aeb59428335abe490523094b931fcc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -121,6 +229,24 @@
     },
     {
       "key": {
+        "uuid": "0eec865d_8d197d38",
+        "filename": "startop/apps/ColorChanging/app/src/test/java/com/example/colorchanging/ExampleUnitTest.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1509597
+      },
+      "writtenOn": "2019-07-03T22:26:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8f00cef2_6d8590ec",
+      "revId": "96e1a18864aeb59428335abe490523094b931fcc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "513922a3_73a911ec",
         "filename": "startop/apps/ColorChanging/build.gradle",
         "patchSetId": 1
@@ -135,6 +261,24 @@
       "revId": "96e1a18864aeb59428335abe490523094b931fcc",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0e47d652_6842afb2",
+        "filename": "startop/apps/ColorChanging/build.gradle",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1509597
+      },
+      "writtenOn": "2019-07-03T22:26:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "513922a3_73a911ec",
+      "revId": "96e1a18864aeb59428335abe490523094b931fcc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
