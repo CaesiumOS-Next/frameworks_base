@@ -24,6 +24,7 @@ import android.net.Network;
 import android.net.NetworkUtils;
 import android.net.RouteInfo;
 import android.net.TrafficStats;
+import android.net.shared.PrivateDnsConfig;
 import android.net.util.NetworkConstants;
 import android.os.SystemClock;
 import android.system.ErrnoException;
@@ -40,7 +41,9 @@ import libcore.io.IoUtils;
 import java.io.Closeable;
 import java.io.FileDescriptor;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.InterruptedIOException;
+import java.io.OutputStream;
 import java.net.Inet4Address;
 import java.net.Inet6Address;
 import java.net.InetAddress;
@@ -51,13 +54,29 @@ import java.net.SocketException;
 import java.net.UnknownHostException;
 import java.nio.ByteBuffer;
 import java.nio.charset.StandardCharsets;
+import java.security.KeyManagementException;
+import java.security.KeyStore;
+import java.security.KeyStoreException;
+import java.security.NoSuchAlgorithmException;
+import java.security.SecureRandom;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Random;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.TimeUnit;
+
+import javax.net.ssl.HttpsURLConnection;
+import javax.net.ssl.SNIHostName;
+import javax.net.ssl.SNIServerName;
+import javax.net.ssl.SSLContext;
+import javax.net.ssl.SSLException;
+import javax.net.ssl.SSLParameters;
+import javax.net.ssl.SSLSession;
+import javax.net.ssl.SSLSocket;
+import javax.net.ssl.TrustManagerFactory;
 
 /**
  * NetworkDiagnostics
@@ -100,6 +119,7 @@ public class NetworkDiagnostics {
 
     private final Network mNetwork;
     private final LinkProperties mLinkProperties;
+    private final PrivateDnsConfig mPrivateDnsCfg;
     private final Integer mInterfaceIndex;
 
     private final long mTimeoutMs;
@@ -163,12 +183,15 @@ public class NetworkDiagnostics {
     private final Map<Pair<InetAddress, InetAddress>, Measurement> mExplicitSourceIcmpChecks =
             new HashMap<>();
     private final Map<InetAddress, Measurement> mDnsUdpChecks = new HashMap<>();
+    private final Map<InetAddress, Measurement> mDnsTlsChecks = new HashMap<>();
     private final String mDescription;
 
 
-    public NetworkDiagnostics(Network network, LinkProperties lp, long timeoutMs) {
+    public NetworkDiagnostics(
+            Network network, LinkProperties lp, PrivateDnsConfig privateDnsCfg, long timeoutMs) {
         mNetwork = network;
         mLinkProperties = lp;
+        mPrivateDnsCfg = privateDnsCfg;
         mInterfaceIndex = getInterfaceIndex(mLinkProperties.getInterfaceName());
         mTimeoutMs = timeoutMs;
         mStartTime = now();
@@ -199,8 +222,22 @@ public class NetworkDiagnostics {
             }
         }
         for (InetAddress nameserver : mLinkProperties.getDnsServers()) {
-                prepareIcmpMeasurement(nameserver);
-                prepareDnsMeasurement(nameserver);
+            prepareIcmpMeasurement(nameserver);
+            prepareDnsMeasurement(nameserver);
+
+            // No hostname verification is performed to these servers as what netd resolver does in
+            // opportunistic mode.
+            prepareDnsTlsMeasurement("", nameserver);
+        }
+
+        for (InetAddress tlsNameserver : mPrivateDnsCfg.ips) {
+            // Reachability check is necessary since the hostname is always
+            // resolved by A queries and AAAA queries.
+            if (mLinkProperties.isReachable(tlsNameserver)) {
+                // If there are IPs, there must have been a name that resolved to them, so
+                // mPrivateDnsCfg.hostname is not expected to be empty.
+                prepareDnsTlsMeasurement(mPrivateDnsCfg.hostname, tlsNameserver);
+            }
         }
 
         mCountDownLatch = new CountDownLatch(totalMeasurementCount());
@@ -252,8 +289,21 @@ public class NetworkDiagnostics {
         }
     }
 
+    private void prepareDnsTlsMeasurement(String hostname, InetAddress target) {
+        // Since we iterate LinkProperties.getDnsServers() before PrivateDnsCfg.ips, if the entry
+        // of |target| is found in the DnsTlsChecks map, then 1) the entry must have been created
+        // when we iterated LinkProperties.getDnsServers() 2) we are iterating PrivateDnsCfg.ips
+        // now. Thus, overwrite the entry to perform hostname verification.
+        if (!mDnsTlsChecks.containsKey(target) || !TextUtils.isEmpty(hostname)) {
+            Measurement measurement = new Measurement();
+            measurement.thread = new Thread(new DnsTlsCheck(hostname, target, measurement));
+            mDnsTlsChecks.put(target, measurement);
+        }
+    }
+
     private int totalMeasurementCount() {
-        return mIcmpChecks.size() + mExplicitSourceIcmpChecks.size() + mDnsUdpChecks.size();
+        return mIcmpChecks.size() + mExplicitSourceIcmpChecks.size() + mDnsUdpChecks.size()
+                + mDnsTlsChecks.size();
     }
 
     private void startMeasurements() {
@@ -264,6 +314,9 @@ public class NetworkDiagnostics {
             measurement.thread.start();
         }
         for (Measurement measurement : mDnsUdpChecks.values()) {
+            measurement.thread.start();
+        }
+        for (Measurement measurement : mDnsTlsChecks.values()) {
             measurement.thread.start();
         }
     }
@@ -297,6 +350,11 @@ public class NetworkDiagnostics {
                 measurements.add(entry.getValue());
             }
         }
+        for (Map.Entry<InetAddress, Measurement> entry : mDnsTlsChecks.entrySet()) {
+            if (entry.getKey() instanceof Inet4Address) {
+                measurements.add(entry.getValue());
+            }
+        }
 
         // IPv6 measurements second.
         for (Map.Entry<InetAddress, Measurement> entry : mIcmpChecks.entrySet()) {
@@ -311,6 +369,11 @@ public class NetworkDiagnostics {
             }
         }
         for (Map.Entry<InetAddress, Measurement> entry : mDnsUdpChecks.entrySet()) {
+            if (entry.getKey() instanceof Inet6Address) {
+                measurements.add(entry.getValue());
+            }
+        }
+        for (Map.Entry<InetAddress, Measurement> entry : mDnsTlsChecks.entrySet()) {
             if (entry.getKey() instanceof Inet6Address) {
                 measurements.add(entry.getValue());
             }
@@ -412,6 +475,22 @@ public class NetworkDiagnostics {
                     localAddr.getHostAddress(), inetSockAddr.getPort());
         }
 
+        protected String getLocalAddressString(SSLSocket socket) {
+            final InetAddress addr = socket.getLocalAddress();
+            return String.format(
+                    (addr instanceof Inet6Address ? "[%s]:%d" : "%s:%d"),
+                    addr.getHostAddress(), socket.getLocalPort());
+        }
+
+        // It is called by IcmpCheck/DnsUdpCheck/DnsTlsCheck threads in order to check if the
+        // measurement has already failed during their construction which doesn't decrement
+        // the countdown latch.
+        protected boolean ensureMeasurementNecessary() {
+            if (mMeasurement.finishTime == 0) return true;
+            mCountDownLatch.countDown();
+            return false;
+        }
+
         @Override
         public void close() {
             IoUtils.closeQuietly(mFileDescriptor);
@@ -449,12 +528,7 @@ public class NetworkDiagnostics {
         @Override
         public void run() {
             // Check if this measurement has already failed during setup.
-            if (mMeasurement.finishTime > 0) {
-                // If the measurement failed during construction it didn't
-                // decrement the countdown latch; do so here.
-                mCountDownLatch.countDown();
-                return;
-            }
+            if (!ensureMeasurementNecessary()) return;
 
             try {
                 setupSocket(SOCK_DGRAM, mProtocol, TIMEOUT_SEND, TIMEOUT_RECV, 0);
@@ -507,10 +581,10 @@ public class NetworkDiagnostics {
         private static final int RR_TYPE_AAAA = 28;
         private static final int PACKET_BUFSIZE = 512;
 
-        private final Random mRandom = new Random();
+        protected final Random mRandom = new Random();
 
         // Should be static, but the compiler mocks our puny, human attempts at reason.
-        private String responseCodeStr(int rcode) {
+        protected String responseCodeStr(int rcode) {
             try {
                 return DnsResponseCode.values()[rcode].toString();
             } catch (IndexOutOfBoundsException e) {
@@ -518,7 +592,7 @@ public class NetworkDiagnostics {
             }
         }
 
-        private final int mQueryType;
+        protected final int mQueryType;
 
         public DnsUdpCheck(InetAddress target, Measurement measurement) {
             super(target, measurement);
@@ -536,12 +610,7 @@ public class NetworkDiagnostics {
         @Override
         public void run() {
             // Check if this measurement has already failed during setup.
-            if (mMeasurement.finishTime > 0) {
-                // If the measurement failed during construction it didn't
-                // decrement the countdown latch; do so here.
-                mCountDownLatch.countDown();
-                return;
-            }
+            if (!ensureMeasurementNecessary()) return;
 
             try {
                 setupSocket(SOCK_DGRAM, IPPROTO_UDP, TIMEOUT_SEND, TIMEOUT_RECV,
@@ -592,7 +661,7 @@ public class NetworkDiagnostics {
             close();
         }
 
-        private byte[] getDnsQueryPacket(String sixRandomDigits) {
+        protected byte[] getDnsQueryPacket(String sixRandomDigits) {
             byte[] rnd = sixRandomDigits.getBytes(StandardCharsets.US_ASCII);
             return new byte[] {
                 (byte) mRandom.nextInt(), (byte) mRandom.nextInt(),  // [0-1]   query ID
@@ -610,6 +679,124 @@ public class NetworkDiagnostics {
                 0, (byte) mQueryType,  // QTYPE
                 0, 1  // QCLASS, set to 1 = IN (Internet)
             };
+        }
+    }
+
+    private class DnsTlsCheck extends DnsUdpCheck {
+        private static final int TCP_CONNECT_TIMEOUT = 2500;
+        private static final int TCP_TIMEOUT = 2000;
+        private static final int DNS_TLS_PORT = 853;
+        private static final int DNS_HEADER_SIZE = 12;
+
+        private final String mHostname;
+
+        public DnsTlsCheck(String hostname, InetAddress target, Measurement measurement) {
+            super(target, measurement);
+
+            mHostname = hostname;
+            mMeasurement.description = "DNS TLS dst{" + mTarget.getHostAddress() + "} hostname{"
+                    + mHostname + "}";
+        }
+
+        private SSLSocket setupSSLSocket()
+                throws NoSuchAlgorithmException, IOException, KeyManagementException,
+                       KeyStoreException {
+            final TrustManagerFactory tmf =
+                    TrustManagerFactory.getInstance(TrustManagerFactory.getDefaultAlgorithm());
+
+            // Pass a null KeyStore to use the default system CaCerts KeyStore which is the
+            // instance of KeyStore with the type "AndroidCAStore".
+            // In case the above is not correct anymore and that an error is thrown in the dump
+            // result (e.g. CertPathValidatorException), we can still easily fix it by the
+            // following code:
+            //     KeyStore ks = KeyStore.getInstance("AndroidCAStore");
+            //     ks.load(null, null);
+            //     tmf.init(ks);
+            tmf.init((KeyStore) null);
+
+            // Sync with netd resolver binding the version TLSv1.2.
+            final SSLContext sslContext = SSLContext.getInstance("TLSv1.2");
+            sslContext.init(null /* KeyManager */, tmf.getTrustManagers(), new SecureRandom());
+
+            final int oldTag = TrafficStats.getAndSetThreadStatsTag(
+                    TrafficStatsConstants.TAG_SYSTEM_PROBE);
+            SSLSocket sslSocket = (SSLSocket) sslContext.getSocketFactory().createSocket();
+            sslSocket.setSoTimeout(TCP_TIMEOUT);
+            TrafficStats.setThreadStatsTag(oldTag);
+
+            // Set the extension server_name in Client Hello message.
+            if (!TextUtils.isEmpty(mHostname)) {
+                final List<SNIServerName> names =
+                        Collections.singletonList(new SNIHostName(mHostname));
+                SSLParameters params = sslSocket.getSSLParameters();
+                params.setServerNames(names);
+                sslSocket.setSSLParameters(params);
+            }
+
+            return sslSocket;
+        }
+
+        private void maybeDoHostnameVerification(SSLSocket sslSocket) throws SSLException {
+            if (!TextUtils.isEmpty(mHostname)) {
+                final SSLSession session = sslSocket.getSession();
+                if (session == null) {
+                    throw new SSLException("Failed to get SSL socket session");
+                }
+                if (!HttpsURLConnection.getDefaultHostnameVerifier().verify(mHostname, session)) {
+                    throw new SSLException("Failed to verify hostname " + mHostname);
+                }
+            }
+        }
+
+        @Override
+        public void run() {
+            // Check if this measurement has already failed during setup.
+            if (!ensureMeasurementNecessary()) return;
+
+            final String sixRandomDigits = String.valueOf(mRandom.nextInt(900000) + 100000);
+            final byte[] dnsPacket = getDnsQueryPacket(sixRandomDigits);
+
+            try (SSLSocket sslSocket = setupSSLSocket()) {
+                mMeasurement.startTime = now();
+                sslSocket.connect(
+                        new InetSocketAddress(mTarget, DNS_TLS_PORT), TCP_CONNECT_TIMEOUT);
+
+                // Synchronous call for the negotiated handshake complete.
+                sslSocket.startHandshake();
+                maybeDoHostnameVerification(sslSocket);
+
+                mMeasurement.description += " src{" + getLocalAddressString(sslSocket) + "}"
+                        + " qtype{" + mQueryType + "}"
+                        + " qname{" + sixRandomDigits + "-android-ds.metric.gstatic.com}";
+
+                final OutputStream output = sslSocket.getOutputStream();
+                final ByteBuffer querySize = ByteBuffer.allocate(2);
+                querySize.putShort((short) dnsPacket.length);
+                output.write(querySize.array());
+                output.write(dnsPacket);
+
+                final InputStream input = sslSocket.getInputStream();
+                final byte[] buf = new byte[2];
+                input.read(buf, 0, 2);
+                final short expectReplyLen = ByteBuffer.wrap(buf).getShort();
+
+                final byte[] reply = new byte[expectReplyLen];
+                int read = 0;
+                while (read < expectReplyLen) {
+                    int n = input.read(reply, read, expectReplyLen - read);
+                    if (n < 0) break;
+                    read += n;
+                }
+
+                if (read == expectReplyLen && read > DNS_HEADER_SIZE) {
+                    mMeasurement.recordSuccess("1/1 " + responseCodeStr((int) (reply[3]) & 0x0f));
+                } else {
+                    mMeasurement.recordFailure("Unexpected answer length " + read);
+                }
+            } catch (IOException | NoSuchAlgorithmException | KeyManagementException
+                     | KeyStoreException e) {
+                mMeasurement.recordFailure(e.toString());
+            }
         }
     }
 }
