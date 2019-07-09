@@ -16,6 +16,24 @@
       "revId": "13b596374407bad33b36e5ccf5e003d98387b295",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "175ca371_4ea83c2e",
+        "filename": "startop/apps/ColorChanging/.idea/dictionaries/jeward.xml",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1509597
+      },
+      "writtenOn": "2019-07-09T21:12:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "96bc0a2f_e24c8353",
+      "revId": "13b596374407bad33b36e5ccf5e003d98387b295",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
