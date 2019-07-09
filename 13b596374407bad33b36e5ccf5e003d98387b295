@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "96bc0a2f_e24c8353",
+        "filename": "startop/apps/ColorChanging/.idea/dictionaries/jeward.xml",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1335232
+      },
+      "writtenOn": "2019-07-09T20:35:58Z",
+      "side": 1,
+      "message": "This file probably shouldn\u0027t be checked in. Could you remove it from git? I think you can do that with `git rm --cached startop/apps/ColorChanging/.idea/dictionaries/jeward.xml`",
+      "revId": "13b596374407bad33b36e5ccf5e003d98387b295",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
