@@ -30,8 +30,10 @@ import android.net.INetworkPolicyManager
 import android.net.INetworkStatsService
 import android.net.LinkProperties
 import android.net.NetworkCapabilities.NET_CAPABILITY_INTERNET
+import android.net.NetworkCapabilities.NET_CAPABILITY_PARTIAL_CONNECTIVITY
 import android.net.NetworkCapabilities.NET_CAPABILITY_VALIDATED
 import android.net.NetworkCapabilities.TRANSPORT_CELLULAR
+import android.net.NetworkCapabilities.TRANSPORT_WIFI
 import android.net.NetworkRequest
 import android.net.NetworkStackClient
 import android.net.TestNetworkStackClient
@@ -218,6 +220,40 @@ class ConnectivityServiceIntegrationTest {
                 responseCode = 204, contentLength = 42, redirectUrl = null))
     }
 
+    private fun addInvalidatedMockResponses() {
+        addValidatedMockDnsResponses()
+
+        nsInstrumentation.addHttpResponse(HttpResponse(
+                "http://test.android.com",
+                responseCode = 503, contentLength = 42, redirectUrl = null))
+        nsInstrumentation.addHttpResponse(HttpResponse(
+                "https://secure.test.android.com",
+                responseCode = 503, contentLength = 42, redirectUrl = null))
+        nsInstrumentation.addHttpResponse(HttpResponse(
+                "http://fallback1.android.com",
+                responseCode = 503, contentLength = 42, redirectUrl = null))
+        nsInstrumentation.addHttpResponse(HttpResponse(
+                "http://fallback2.android.com",
+                responseCode = 503, contentLength = 42, redirectUrl = null))
+    }
+
+    private fun addPartialConnectivityMockResponses() {
+        addValidatedMockDnsResponses()
+
+        nsInstrumentation.addHttpResponse(HttpResponse(
+                "http://test.android.com",
+                responseCode = 204, contentLength = 42, redirectUrl = null))
+        nsInstrumentation.addHttpResponse(HttpResponse(
+                "https://secure.test.android.com",
+                responseCode = 503, contentLength = 42, redirectUrl = null))
+        nsInstrumentation.addHttpResponse(HttpResponse(
+                "http://fallback1.android.com",
+                responseCode = 204, contentLength = 42, redirectUrl = null))
+        nsInstrumentation.addHttpResponse(HttpResponse(
+                "http://fallback2.android.com",
+                responseCode = 204, contentLength = 42, redirectUrl = null))
+    }
+
     private fun getTestableNetworkCallback(): TestableNetworkCallback {
         val request = NetworkRequest.Builder()
                 .clearCapabilities()
@@ -242,6 +278,25 @@ class ConnectivityServiceIntegrationTest {
         return na
     }
 
+    private fun getPartialConnectivityNetworkAgent(callback: TestableNetworkCallback):
+            WrappedNetworkAgent {
+        val na = WrappedNetworkAgent(TRANSPORT_WIFI, LinkProperties(), context)
+        networkStackClient.verifyNetworkMonitorCreated(na.network, TEST_TIMEOUT_MS)
+
+        addPartialConnectivityMockResponses()
+        na.addCapability(NET_CAPABILITY_INTERNET)
+        na.connect()
+
+        callback.expectAvailableCallbacksUnvalidated(na)
+        callback.expectCapabilitiesThat(na.network) {
+            it.hasCapability(NET_CAPABILITY_PARTIAL_CONNECTIVITY)
+                    && !it.hasCapability(NET_CAPABILITY_VALIDATED)
+        }
+        assertEquals(3, nsInstrumentation.getRequestUrls().size)
+
+        return na
+    }
+
     @Test
     fun validationTest() {
         val callback = getTestableNetworkCallback()
@@ -258,6 +313,75 @@ class ConnectivityServiceIntegrationTest {
         getValidatedNetworkAgent(callback).run {
             this.disconnect()
             callback.expectCallback(CallbackRecord.LOST, this)
+        }
+    }
+
+    @Test
+    fun reportNetworkConnectivityTest() {
+        val callback = getTestableNetworkCallback()
+
+        getValidatedNetworkAgent(callback).run {
+            addInvalidatedMockResponses()
+            cm.reportNetworkConnectivity(this.network, false)
+            callback.expectCapabilitiesThat(this.network) {
+                !it.hasCapability(NET_CAPABILITY_VALIDATED)
+            }
+            assertEquals(5, nsInstrumentation.getRequestUrls().size)
+
+            addValidatedMockResponses()
+            cm.reportNetworkConnectivity(this.network, true)
+            callback.expectCapabilitiesThat(this.network) {
+                it.hasCapability(NET_CAPABILITY_VALIDATED)
+            }
+            assertEquals(7, nsInstrumentation.getRequestUrls().size)
+
+            this.disconnect()
+            callback.expectCallback(CallbackRecord.LOST, this)
+        }
+    }
+
+    @Test
+    fun partialConntivityTest() {
+        val callback = getTestableNetworkCallback()
+
+        // Verify partial connectivity then validated situation
+        getPartialConnectivityNetworkAgent(callback).run {
+            // Add validated response and force validation again to verify it doesn't have partial
+            // connectivity capability.
+            addValidatedMockResponses()
+            cm.reportNetworkConnectivity(this.network, true)
+            callback.expectCapabilitiesThat(this.network) {
+                it.hasCapability(NET_CAPABILITY_VALIDATED)
+                        && !it.hasCapability(NET_CAPABILITY_PARTIAL_CONNECTIVITY)
+            }
+            assertEquals(5, nsInstrumentation.getRequestUrls().size)
+
+            this.disconnect()
+            callback.expectCallback(CallbackRecord.LOST, this)
+        }
+
+        nsInstrumentation.clearAllState()
+
+        // Verify partial connectivity then accecpted connectivity situation
+        getPartialConnectivityNetworkAgent(callback).run {
+            cm.setAcceptPartialConnectivity(this.network, true /* accept */, false /* always */)
+            callback.expectCapabilitiesThat(this.network) {
+                it.hasCapability(NET_CAPABILITY_VALIDATED)
+                        && it.hasCapability(NET_CAPABILITY_PARTIAL_CONNECTIVITY)
+            }
+            assertEquals(3, nsInstrumentation.getRequestUrls().size)
+
+            this.disconnect()
+            callback.expectCallback(CallbackRecord.LOST, this)
+        }
+
+        nsInstrumentation.clearAllState()
+
+        // Verify partial connectivity then not accecpted connectivity situation
+        getPartialConnectivityNetworkAgent(callback).run {
+            cm.setAcceptPartialConnectivity(this.network, false /* accept */, false /* always */)
+            callback.expectCallback(CallbackRecord.LOST, this)
+            assertEquals(3, nsInstrumentation.getRequestUrls().size)
         }
     }
 }
