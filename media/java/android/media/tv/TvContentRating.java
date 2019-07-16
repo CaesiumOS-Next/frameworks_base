@@ -17,7 +17,6 @@
 package android.media.tv;
 
 import android.annotation.NonNull;
-import android.annotation.SystemApi;
 import android.text.TextUtils;
 
 import com.android.internal.util.Preconditions;
@@ -209,6 +208,10 @@ import java.util.Objects;
  *     <tr>
  *         <td>US_TV</td>
  *         <td>TV content rating system for the United States</td>
+ *     </tr>
+ *     <tr>
+ *         <td>ZA_TV</td>
+ *         <td>TV content rating system for South Africa</td>
  *     </tr>
  * </table>
  *
@@ -721,6 +724,35 @@ import java.util.Objects;
  *         <td>US_TV_MA</td>
  *         <td>This program is specifically designed to be viewed by adults and therefore may be
  *         unsuitable for children under 17</td>
+ *     </tr>
+ *     <tr>
+ *         <td valign="top" rowspan="7">ZA_TV</td>
+ *         <td>ZA_TV_PG10</td>
+ *         <td>To lock "Parental Guidance 10" and above programmes</td>
+ *     </tr>
+ *     <tr>
+ *         <td>ZA_TV_10</td>
+ *         <td>Not suitable for children under the age of 10</td>
+ *     </tr>
+ *     <tr>
+ *         <td>ZA_TV_PG13</td>
+ *         <td>To lock "Parental Guidance 13" and above programmes</td>
+ *     </tr>
+ *     <tr>
+ *         <td>ZA_TV_13</td>
+ *         <td>Not suitable for children under the age of 13</td>
+ *     </tr>
+ *     <tr>
+ *         <td>ZA_TV_16</td>
+ *         <td>Not suitable for persons under the age of 16</td>
+ *     </tr>
+ *     <tr>
+ *         <td>ZA_TV_18</td>
+ *         <td>Not suitable for persons under the age of 18</td>
+ *     </tr>
+ *     <tr>
+ *         <td>ZA_TV_R18</td>
+ *         <td>Adults only</td>
  *     </tr>
  * </table>
  *
