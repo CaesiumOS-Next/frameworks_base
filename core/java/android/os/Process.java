@@ -444,6 +444,12 @@ public class Process {
     public static final int SIGNAL_KILL = 9;
     public static final int SIGNAL_USR1 = 10;
 
+    /**
+     * Signal to use to request a heap dump to a process
+     * @hide
+     **/
+    public static final int SIGNAL_USR2 = 12;
+
     private static long sStartElapsedRealtime;
     private static long sStartUptimeMillis;
 

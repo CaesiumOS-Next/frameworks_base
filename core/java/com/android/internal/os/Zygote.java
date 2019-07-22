@@ -107,6 +107,13 @@ public final class Zygote {
      */
     public static final int DEBUG_IGNORE_APP_SIGNAL_HANDLER = 1 << 17;
 
+    /**
+     * When set, generate heapdump in case of OOM
+     *
+     * Used for debugging only. Usage: setprop debug.heapdump to 1.
+     */
+    public static final int DEBUG_GENERATE_HEAPDUMP = 1 << 18;
+
     /** No external storage should be mounted. */
     public static final int MOUNT_EXTERNAL_NONE = IVold.REMOUNT_MODE_NONE;
     /** Default external storage should be mounted. */

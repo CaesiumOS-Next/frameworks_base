@@ -4302,6 +4302,10 @@ public class ActivityManagerService extends IActivityManager.Stub
             if ("1".equals(SystemProperties.get("debug.ignoreappsignalhandler"))) {
                 runtimeFlags |= Zygote.DEBUG_IGNORE_APP_SIGNAL_HANDLER;
             }
+            if ("1".equals(SystemProperties.get("ro.debuggable"))
+                || "1".equals(SystemProperties.get("debug.heapdump"))) {
+                runtimeFlags |= Zygote.DEBUG_GENERATE_HEAPDUMP;
+            }
             if (mNativeDebuggingApp != null && mNativeDebuggingApp.equals(app.processName)) {
                 // Enable all debug flags required by the native debugger.
                 runtimeFlags |= Zygote.DEBUG_ALWAYS_JIT;          // Don't interpret anything
@@ -15340,6 +15344,18 @@ public class ActivityManagerService extends IActivityManager.Stub
         );
 
         addErrorToDropBox(eventType, r, processName, null, null, null, null, null, crashInfo);
+
+        // -- Dump Heap for OutOfMemoryError
+        if (crashInfo.exceptionClassName.equals("java.lang.OutOfMemoryError")) {
+            boolean isDumpingHeapAllowed = "1".equals(SystemProperties.get(SYSTEM_DEBUGGABLE, "0"))
+                                        || "1".equals(SystemProperties.get("debug.heapdump", "0"));
+
+            if (isDumpingHeapAllowed) {
+                Slog.e(TAG, "Execute heapdump because of OOM!!");
+                Process.sendSignal(Binder.getCallingPid(), Process.SIGNAL_USR2);
+            }
+        }
+        //End of Dump Heap Profile
 
         mAppErrors.crashApplication(r, crashInfo);
     }
