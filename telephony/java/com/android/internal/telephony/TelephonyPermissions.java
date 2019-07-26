@@ -634,4 +634,25 @@ public final class TelephonyPermissions {
 
         throw new SecurityException(message + ": Only shell user can call it");
     }
+
+    /**
+     * Returns the target SDK version number for a given package name.
+     *
+     * This call must be invoked BEFORE clearing the calling UID.
+     *
+     * @param context a Context
+     * @param packageName the calling package name
+     * @return target SDK if the package is found or INT_MAX.
+     */
+    public static int getCallingTargetSdk(Context context, String packageName) {
+        try {
+            final ApplicationInfo ai = context.getPackageManager().getApplicationInfoAsUser(
+                    packageName, 0, UserHandle.getUserId(Binder.getCallingUid()));
+            if (ai != null) return ai.targetSdkVersion;
+        } catch (PackageManager.NameNotFoundException unexpected) {
+            Rlog.e(LOG_TAG, "Failed to get package info for pkg="
+                    + packageName + ", uid=" + Binder.getCallingUid());
+        }
+        return Integer.MAX_VALUE;
+    }
 }
