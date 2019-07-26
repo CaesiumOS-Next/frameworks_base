@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "896951f5_fd3fa4ca",
+        "filename": "telephony/java/android/telephony/TelephonyManager.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 6419,
+      "author": {
+        "id": 1006780
+      },
+      "writtenOn": "2019-07-26T01:22:39Z",
+      "side": 1,
+      "message": "@RequiresPermission(MODIFY_PHONE_STATE, \"carrier privileges\") will generate better Javadoc and allow you to replace the \"\u003cp\u003eRequires Permission: MODIFY_PHONE_STATE or that the calling app has carrier privileges (see {@link #hasCarrierPrivileges})\" above. (see b/72967236).",
+      "range": {
+        "startLine": 6419,
+        "startChar": 0,
+        "endLine": 6419,
+        "endChar": 71
+      },
+      "revId": "851dc8a07f18f3e135890ddf87a4eee09f2d2d76",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
