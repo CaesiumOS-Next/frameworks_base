@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0d36b22b_57677ad9",
+        "filename": "telephony/java/android/provider/Telephony.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 1297,
+      "author": {
+        "id": 1396528
+      },
+      "writtenOn": "2019-08-01T20:29:19Z",
+      "side": 1,
+      "message": "Consider appending permanentDelete to the Raw CONTENT_URI to avoid duplication.",
+      "range": {
+        "startLine": 1296,
+        "startChar": 35,
+        "endLine": 1297,
+        "endChar": 66
+      },
+      "revId": "02218cb5bc5cde5cf89318ecf34b23710205c99c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
