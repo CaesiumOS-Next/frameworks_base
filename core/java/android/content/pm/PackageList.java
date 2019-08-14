@@ -51,6 +51,15 @@ public class PackageList implements PackageListObserver, AutoCloseable {
         }
     }
 
+    // MIUI ADD: START
+    @Override
+    public void onPackageChanged(String packageName, int uid) {
+        if (mWrappedObserver != null) {
+            mWrappedObserver.onPackageChanged(packageName, uid);
+        }
+    }
+    // END
+
     @Override
     public void onPackageRemoved(String packageName, int uid) {
         if (mWrappedObserver != null) {

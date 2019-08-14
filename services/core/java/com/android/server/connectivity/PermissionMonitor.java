@@ -129,6 +129,13 @@ public class PermissionMonitor {
             sendPackagePermissionsForUid(uid, getPermissionForUid(uid));
         }
 
+        // MIUI ADD: START
+        @Override
+        public void onPackageChanged(@NonNull String packageName, int uid) {
+            sendPackagePermissionsForUid(uid, getPermissionForUid(uid));
+        }
+        // END
+
         @Override
         public void onPackageRemoved(String packageName, int uid) {
             sendPackagePermissionsForUid(uid, getPermissionForUid(uid));
