@@ -37,6 +37,7 @@ import android.app.ActivityManager;
 import android.app.IApplicationThread;
 import android.app.IServiceConnection;
 import android.app.VrManager;
+import android.compat.IPlatformCompat;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
 import android.content.res.AssetManager;
@@ -70,6 +71,7 @@ import android.view.ViewDebug;
 import android.view.WindowManager;
 import android.view.autofill.AutofillManager.AutofillClient;
 import android.view.textclassifier.TextClassificationManager;
+
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -3064,6 +3066,7 @@ public abstract class Context {
             RESTRICTIONS_SERVICE,
             APP_OPS_SERVICE,
             CAMERA_SERVICE,
+            //@hide: PLATFORM_COMPAT,
             PRINT_SERVICE,
             CONSUMER_IR_SERVICE,
             //@hide: TRUST_SERVICE,
@@ -4224,6 +4227,14 @@ public abstract class Context {
      */
     @SystemApi
     public static final String STATS_MANAGER = "stats";
+
+    /**
+     * Use with {@link android.os.ServiceManager.getService()} to retrieve a
+     *      * {@link IPlatformCompat} IBinder for communicating with the network stack
+     * @hide
+     */
+    @SystemApi
+    public static final String PLATFORM_COMPAT = "platform_compat";
 
     /**
      * Service to capture a bugreport.

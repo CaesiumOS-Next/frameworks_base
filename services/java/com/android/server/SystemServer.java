@@ -562,6 +562,10 @@ public final class SystemServer {
         SystemServerInitThreadPool.get().submit(SystemConfig::getInstance, TAG_SYSTEM_CONFIG);
         traceEnd();
 
+        traceBeginAndSlog("PlatformCompat");
+        ServiceManager.addService(Context.PLATFORM_COMPAT, new PlatformCompat(mSystemContext));
+        traceEnd();
+
         // Wait for installd to finish starting up so that it has a chance to
         // create critical directories such as /data/user with the appropriate
         // permissions.  We need this to complete before we initialize other services.
@@ -975,10 +979,6 @@ public final class SystemServer {
 
             traceBeginAndSlog("PinnerService");
             mSystemServiceManager.startService(PinnerService.class);
-            traceEnd();
-
-            traceBeginAndSlog("PlatformCompat");
-            ServiceManager.addService("platform_compat", new PlatformCompat(context));
             traceEnd();
 
         } catch (RuntimeException e) {
