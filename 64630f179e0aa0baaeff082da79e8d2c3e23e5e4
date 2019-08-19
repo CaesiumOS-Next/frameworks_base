@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e57b82b0_a6a6ee65",
+        "filename": "services/core/java/com/android/server/BluetoothManagerService.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 829,
+      "author": {
+        "id": 1076123
+      },
+      "writtenOn": "2019-08-19T16:34:20Z",
+      "side": 1,
+      "message": "Why do we need to clearBleApps() if mBluetoothGatt is null?  Are we missing a call to clearBleApps() somewhere where we set it to null?",
+      "range": {
+        "startLine": 826,
+        "startChar": 16,
+        "endLine": 829,
+        "endChar": 31
+      },
+      "revId": "64630f179e0aa0baaeff082da79e8d2c3e23e5e4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
