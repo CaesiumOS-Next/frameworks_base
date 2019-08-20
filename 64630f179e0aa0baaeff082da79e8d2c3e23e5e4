@@ -22,6 +22,30 @@
       "revId": "64630f179e0aa0baaeff082da79e8d2c3e23e5e4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1a8c56fa_45c816ce",
+        "filename": "services/core/java/com/android/server/BluetoothManagerService.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 829,
+      "author": {
+        "id": 1306903
+      },
+      "writtenOn": "2019-08-20T02:34:23Z",
+      "side": 1,
+      "message": "mBluetoothGatt would be set to null without clearBleApps() if GATT service disconnect unexpectedly, in order to make sure Bluetooth stay at BLE_ON after restart. However, if there\u0027s a Bluetooth state change message (TURNING_OFF -\u003e BLE_ON) after the service disconnect message, sendBrEdrDownCallback() in bluetoothStateChangeHandler() would be called and hit this NPE issue.\nAnd since it was TURNING_OFF -\u003e BLE_ON, we should make sure Bluetooth get ON state instead of BLE_ON after restart.",
+      "parentUuid": "e57b82b0_a6a6ee65",
+      "range": {
+        "startLine": 826,
+        "startChar": 16,
+        "endLine": 829,
+        "endChar": 31
+      },
+      "revId": "64630f179e0aa0baaeff082da79e8d2c3e23e5e4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
