@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "794fa26d_3172f62a",
+        "filename": "core/java/android/net/MacAddress.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 370,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2019-08-21T07:37:00Z",
+      "side": 1,
+      "message": "Can we do more efficient than this ? It\u0027s pretty wasteful.",
+      "range": {
+        "startLine": 370,
+        "startChar": 12,
+        "endLine": 370,
+        "endChar": 26
+      },
+      "revId": "683b756b253594cae0a4babbd97cb7eb56bdf981",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5876f8fb_81b363e9",
+        "filename": "core/java/android/net/MacAddress.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 397,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2019-08-21T07:37:00Z",
+      "side": 1,
+      "message": "Is there any way we can avoid duplicating this code ? We used to only have 2 small lines of duplicated logic, but now this is a bit worse.",
+      "range": {
+        "startLine": 393,
+        "startChar": 0,
+        "endLine": 397,
+        "endChar": 19
+      },
+      "revId": "683b756b253594cae0a4babbd97cb7eb56bdf981",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
