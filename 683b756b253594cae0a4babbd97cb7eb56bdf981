@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "4205b991_47e6045b",
+        "filename": "core/java/android/net/MacAddress.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 370,
+      "author": {
+        "id": 1240997
+      },
+      "writtenOn": "2019-08-21T17:44:52Z",
+      "side": 1,
+      "message": "Thanks, will fix in a follow up CL, but will submit this now to get CLs in master unblocked.",
+      "parentUuid": "794fa26d_3172f62a",
+      "range": {
+        "startLine": 370,
+        "startChar": 12,
+        "endLine": 370,
+        "endChar": 26
+      },
+      "revId": "683b756b253594cae0a4babbd97cb7eb56bdf981",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5876f8fb_81b363e9",
         "filename": "core/java/android/net/MacAddress.java",
         "patchSetId": 1
@@ -45,6 +69,30 @@
       "revId": "683b756b253594cae0a4babbd97cb7eb56bdf981",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c1b059e9_0bbc214c",
+        "filename": "core/java/android/net/MacAddress.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 397,
+      "author": {
+        "id": 1240997
+      },
+      "writtenOn": "2019-08-21T17:44:52Z",
+      "side": 1,
+      "message": "Thanks, will fix this in a follow up CL.",
+      "parentUuid": "5876f8fb_81b363e9",
+      "range": {
+        "startLine": 393,
+        "startChar": 0,
+        "endLine": 397,
+        "endChar": 19
+      },
+      "revId": "683b756b253594cae0a4babbd97cb7eb56bdf981",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
