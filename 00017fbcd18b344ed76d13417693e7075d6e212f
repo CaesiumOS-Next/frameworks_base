@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2b26f300_fd1a4f32",
+        "filename": "telephony/java/android/telephony/ims/feature/RcsFeature.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 389,
+      "author": {
+        "id": 1373692
+      },
+      "writtenOn": "2019-08-23T09:10:10Z",
+      "side": 1,
+      "message": "Brad defines ImsRcsManager\u0027s scope\n\"Manager for interfacing with the framework RCS services, including the User Capability Exchange (UCE) service, as well as managing user settings.\"\n\nI think it\u0027s better to move this function there",
+      "range": {
+        "startLine": 389,
+        "startChar": 26,
+        "endLine": 389,
+        "endChar": 40
+      },
+      "revId": "00017fbcd18b344ed76d13417693e7075d6e212f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
