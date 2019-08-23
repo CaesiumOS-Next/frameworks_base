@@ -22,6 +22,30 @@
       "revId": "00017fbcd18b344ed76d13417693e7075d6e212f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0a0b4803_37ef38fa",
+        "filename": "telephony/java/android/telephony/ims/feature/RcsFeature.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 389,
+      "author": {
+        "id": 1392281
+      },
+      "writtenOn": "2019-08-23T22:48:28Z",
+      "side": 1,
+      "message": "Should also say \"Which slot wants to use the RCS feature.\"",
+      "parentUuid": "2b26f300_fd1a4f32",
+      "range": {
+        "startLine": 389,
+        "startChar": 26,
+        "endLine": 389,
+        "endChar": 40
+      },
+      "revId": "00017fbcd18b344ed76d13417693e7075d6e212f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
