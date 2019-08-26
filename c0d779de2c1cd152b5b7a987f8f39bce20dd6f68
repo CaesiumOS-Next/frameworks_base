@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1e2b78f3_271914d4",
+        "filename": "telephony/java/android/telephony/ims/feature/RcsFeature.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1098053
+      },
+      "writtenOn": "2019-08-26T23:55:40Z",
+      "side": 1,
+      "message": "We should not use this for the new devices to determine if it supports RCS. If the ImsService reports RCS as a capability, then the device supports RCS.",
+      "range": {
+        "startLine": 62,
+        "startChar": 4,
+        "endLine": 62,
+        "endChar": 92
+      },
+      "revId": "c0d779de2c1cd152b5b7a987f8f39bce20dd6f68",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "039038b3_9c42f295",
+        "filename": "telephony/java/android/telephony/ims/feature/RcsFeature.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 438,
+      "author": {
+        "id": 1098053
+      },
+      "writtenOn": "2019-08-26T23:55:40Z",
+      "side": 1,
+      "message": "This is technically RCS uce presence support, not RCS support.",
+      "range": {
+        "startLine": 438,
+        "startChar": 26,
+        "endLine": 438,
+        "endChar": 40
+      },
+      "revId": "c0d779de2c1cd152b5b7a987f8f39bce20dd6f68",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
