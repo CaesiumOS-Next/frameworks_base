@@ -45,6 +45,30 @@
       "revId": "c0d779de2c1cd152b5b7a987f8f39bce20dd6f68",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d3f5ce99_759c43ba",
+        "filename": "telephony/java/android/telephony/ims/feature/RcsFeature.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 438,
+      "author": {
+        "id": 1098053
+      },
+      "writtenOn": "2019-08-27T00:03:22Z",
+      "side": 1,
+      "message": "Although it does make sense to have a general \"isRcsSupported\" method, which checks to see if any of the RCS capabilities are supported by the carrier. So, if we are intending to add more checks to this method in the future to return true if 1:1 and group text, file transfer, etc. is supported, then this can stay isRcsSupported.\n\nIt is still important for someone to know if specifically RCS UCE presence is supported by a carrier, so i would suggest also changing isRcsSupportedByCarrier -\u003e isRcsUcePresenceSupportedByCarrier and making that public in ImsRcsManager",
+      "parentUuid": "039038b3_9c42f295",
+      "range": {
+        "startLine": 438,
+        "startChar": 26,
+        "endLine": 438,
+        "endChar": 40
+      },
+      "revId": "c0d779de2c1cd152b5b7a987f8f39bce20dd6f68",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
