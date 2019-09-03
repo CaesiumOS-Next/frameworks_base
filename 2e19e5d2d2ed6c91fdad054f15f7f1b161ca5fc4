@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6c63b903_21d7b1f8",
+        "filename": "core/java/android/net/SntpClient.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1288034
+      },
+      "writtenOn": "2019-09-03T04:29:20Z",
+      "side": 1,
+      "message": "Do you actually get different responses when querying different addresses on the same server ? Do you have an example of such a server ?",
+      "range": {
+        "startLine": 93,
+        "startChar": 38,
+        "endLine": 93,
+        "endChar": 73
+      },
+      "revId": "2e19e5d2d2ed6c91fdad054f15f7f1b161ca5fc4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bc3bbe82_d6c0d7b9",
+        "filename": "core/java/android/net/SntpClient.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1288034
+      },
+      "writtenOn": "2019-09-03T04:29:20Z",
+      "side": 1,
+      "message": "Nit: this is not very helpful since it only logs the index in the addresses array. Logging the address of the NTP server itself might be more helpful ? But not sure this should be put in the log every time the request is done.\nMaybe it would be more helpful to just log the address in case the synchronization problem is seen ?",
+      "range": {
+        "startLine": 95,
+        "startChar": 16,
+        "endLine": 95,
+        "endChar": 77
+      },
+      "revId": "2e19e5d2d2ed6c91fdad054f15f7f1b161ca5fc4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aa1a5de7_9b85464f",
+        "filename": "core/java/android/net/SntpClient.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1288034
+      },
+      "writtenOn": "2019-09-03T04:29:20Z",
+      "side": 1,
+      "message": "Why wait for 5 seconds here - do you see problems otherwise ?",
+      "range": {
+        "startLine": 97,
+        "startChar": 16,
+        "endLine": 97,
+        "endChar": 35
+      },
+      "revId": "2e19e5d2d2ed6c91fdad054f15f7f1b161ca5fc4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f58c1536_fd894e2e",
+        "filename": "core/java/android/net/SntpClient.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1288034
+      },
+      "writtenOn": "2019-09-03T04:29:20Z",
+      "side": 1,
+      "message": "This should probably be \", e\" instead of \"+ host\"",
+      "range": {
+        "startLine": 102,
+        "startChar": 48,
+        "endLine": 102,
+        "endChar": 55
+      },
+      "revId": "2e19e5d2d2ed6c91fdad054f15f7f1b161ca5fc4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "11bf966d_09776ad1",
+        "filename": "core/java/android/net/SntpClient.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1288034
+      },
+      "writtenOn": "2019-09-03T04:29:20Z",
+      "side": 1,
+      "message": "Nit: since the offset needs to be REFERENCE_TIME_OFFSET for this method to work, I think it does not need to be a parameter",
+      "range": {
+        "startLine": 197,
+        "startChar": 53,
+        "endLine": 197,
+        "endChar": 65
+      },
+      "revId": "2e19e5d2d2ed6c91fdad054f15f7f1b161ca5fc4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
