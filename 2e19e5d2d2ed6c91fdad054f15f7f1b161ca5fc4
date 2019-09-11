@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "f5772dc0_357bd7e8",
+        "filename": "core/java/android/net/SntpClient.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1238642
+      },
+      "writtenOn": "2019-09-11T03:02:27Z",
+      "side": 1,
+      "message": "There were issues that youtube can`t be executed due to time issue and here is an example.\ni.e) 0.android.pool.ntp.org NG,1.android.pool.ntp.org NG, 2.android.pool.ntp.org OK (In Vietnam 30/Nov/2015)\n(happened in China 08/Jan/2018 either)\n\nI`m not sure the issues are already resolved from server side but I think this commit will be helpful as a fail-safe.",
+      "parentUuid": "6c63b903_21d7b1f8",
+      "range": {
+        "startLine": 93,
+        "startChar": 38,
+        "endLine": 93,
+        "endChar": 73
+      },
+      "revId": "2e19e5d2d2ed6c91fdad054f15f7f1b161ca5fc4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "bc3bbe82_d6c0d7b9",
         "filename": "core/java/android/net/SntpClient.java",
         "patchSetId": 1
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "1bd7cf53_cdf55e43",
+        "filename": "core/java/android/net/SntpClient.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1238642
+      },
+      "writtenOn": "2019-09-11T03:02:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bc3bbe82_d6c0d7b9",
+      "range": {
+        "startLine": 95,
+        "startChar": 16,
+        "endLine": 95,
+        "endChar": 77
+      },
+      "revId": "2e19e5d2d2ed6c91fdad054f15f7f1b161ca5fc4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "aa1a5de7_9b85464f",
         "filename": "core/java/android/net/SntpClient.java",
         "patchSetId": 1
@@ -59,6 +107,30 @@
       "writtenOn": "2019-09-03T04:29:20Z",
       "side": 1,
       "message": "Why wait for 5 seconds here - do you see problems otherwise ?",
+      "range": {
+        "startLine": 97,
+        "startChar": 16,
+        "endLine": 97,
+        "endChar": 35
+      },
+      "revId": "2e19e5d2d2ed6c91fdad054f15f7f1b161ca5fc4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "08d79689_ca8283b2",
+        "filename": "core/java/android/net/SntpClient.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1238642
+      },
+      "writtenOn": "2019-09-11T03:02:27Z",
+      "side": 1,
+      "message": "deleted.",
+      "parentUuid": "aa1a5de7_9b85464f",
       "range": {
         "startLine": 97,
         "startChar": 16,
@@ -94,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "cf4127e2_ef59e74b",
+        "filename": "core/java/android/net/SntpClient.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1238642
+      },
+      "writtenOn": "2019-09-11T03:02:27Z",
+      "side": 1,
+      "message": "deleted since sleep was removed.",
+      "parentUuid": "f58c1536_fd894e2e",
+      "range": {
+        "startLine": 102,
+        "startChar": 48,
+        "endLine": 102,
+        "endChar": 55
+      },
+      "revId": "2e19e5d2d2ed6c91fdad054f15f7f1b161ca5fc4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "11bf966d_09776ad1",
         "filename": "core/java/android/net/SntpClient.java",
         "patchSetId": 1
@@ -114,6 +210,30 @@
       "revId": "2e19e5d2d2ed6c91fdad054f15f7f1b161ca5fc4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e42b09c1_2930d026",
+        "filename": "core/java/android/net/SntpClient.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1238642
+      },
+      "writtenOn": "2019-09-11T03:02:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "11bf966d_09776ad1",
+      "range": {
+        "startLine": 197,
+        "startChar": 53,
+        "endLine": 197,
+        "endChar": 65
+      },
+      "revId": "2e19e5d2d2ed6c91fdad054f15f7f1b161ca5fc4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
