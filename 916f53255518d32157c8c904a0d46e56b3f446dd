@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3b4a88fe_22daaa0a",
+        "filename": "services/core/java/com/android/server/TelephonyRegistry.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 803,
+      "author": {
+        "id": 1056478
+      },
+      "writtenOn": "2019-09-16T23:03:02Z",
+      "side": 1,
+      "message": "I would assume these shouldn\u0027t trigger when the user calls TelephonyManager#listen if there is no emergency session taking place.  I\u0027m guessing we wouldn\u0027t want to invoke the listeners here.",
+      "range": {
+        "startLine": 788,
+        "startChar": 20,
+        "endLine": 803,
+        "endChar": 21
+      },
+      "revId": "916f53255518d32157c8c904a0d46e56b3f446dd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
