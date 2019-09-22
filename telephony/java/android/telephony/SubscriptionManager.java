@@ -810,9 +810,10 @@ public class SubscriptionManager {
             "android.intent.action.SUB_DEFAULT_CHANGED";
 
     /**
-     * Broadcast Action: The default subscription has changed.  This has the following
-     * extra values:</p>
-     * The {@link #EXTRA_SUBSCRIPTION_INDEX} extra indicates the current default subscription index
+     * Broadcast Action: The default subscription has changed. This has the following extra
+     * values:</p>
+     * The {@link #EXTRA_SUBSCRIPTION_INDEX} extra indicates the current default subscription index.
+     * The {@link PhoneConstants#PHONE_KEY} extra indicates the current default phone index.
      */
     @SdkConstant(SdkConstantType.BROADCAST_INTENT_ACTION)
     public static final String ACTION_DEFAULT_SUBSCRIPTION_CHANGED
