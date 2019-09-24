@@ -3000,6 +3000,9 @@
          empty string is passed in -->
     <string name="config_wlan_data_service_class" translatable="false"></string>
 
+    <!-- Flag specifying whether skip IWLAN APN check before combine IWLAN state-->
+    <bool name="config_skipApnCheckBeforeCombineWlanState">false</bool>
+
     <bool name="config_networkSamplingWakesDevice">true</bool>
 
     <!--From SmsMessage-->
