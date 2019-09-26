@@ -28052,6 +28052,7 @@ package android.media.tv {
     method public void onAppPrivateCommand(@NonNull String, android.os.Bundle);
     method public abstract void onRelease();
     method public abstract void onStartRecording(@Nullable android.net.Uri);
+    method public void onStartRecording(@Nullable android.net.Uri, @Nullable android.os.Bundle);
     method public abstract void onStopRecording();
     method public abstract void onTune(android.net.Uri);
     method public void onTune(android.net.Uri, android.os.Bundle);
@@ -28102,6 +28103,7 @@ package android.media.tv {
     method public void release();
     method public void sendAppPrivateCommand(@NonNull String, android.os.Bundle);
     method public void startRecording(@Nullable android.net.Uri);
+    method public void startRecording(@Nullable android.net.Uri, @Nullable android.os.Bundle);
     method public void stopRecording();
     method public void tune(String, android.net.Uri);
     method public void tune(String, android.net.Uri, android.os.Bundle);
