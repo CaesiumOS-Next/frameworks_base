@@ -563,8 +563,12 @@ public class TrafficStats {
         return total;
     }
 
-    /** {@hide} */
-    @UnsupportedAppUsage
+    /**
+     * Return number of TCP packets received across mobile networks since device
+     * boot. Count packet across all mobile network interfaces, and always increases
+     * monotonically since device boot. Statistics are measured at the network layer,
+     * but only includes TCP usage.
+     */
     public static long getMobileTcpRxPackets() {
         long total = 0;
         for (String iface : getMobileIfaces()) {
@@ -579,8 +583,12 @@ public class TrafficStats {
         return total;
     }
 
-    /** {@hide} */
-    @UnsupportedAppUsage
+    /**
+     * Return number of TCP packets transmitted across mobile networks since device
+     * boot. Count packet across all mobile network interfaces, and always increases
+     * monotonically since device boot. Statistics are measured at the network layer,
+     * but only includes TCP usage.
+     */
     public static long getMobileTcpTxPackets() {
         long total = 0;
         for (String iface : getMobileIfaces()) {
@@ -595,7 +603,14 @@ public class TrafficStats {
         return total;
     }
 
-    /** {@hide} */
+    /**
+     * Return number of packets transmitted across specific interface since device
+     * boot. Statistics are measured at the network layer, so they include both TCP
+     * and UDP usage.
+     *
+     * @param iface The name of interface.
+     * @return Number of TX packets.
+     */
     public static long getTxPackets(String iface) {
         try {
             return getStatsService().getIfaceStats(iface, TYPE_TX_PACKETS);
@@ -604,7 +619,14 @@ public class TrafficStats {
         }
     }
 
-    /** {@hide} */
+    /**
+     * Return number of packets received across specific interface since device
+     * boot. Statistics are measured at the network layer, so they include both TCP
+     * and UDP usage.
+     *
+     * @param iface The name of interface.
+     * @return Number of RX packets.
+     */
     public static long getRxPackets(String iface) {
         try {
             return getStatsService().getIfaceStats(iface, TYPE_RX_PACKETS);
