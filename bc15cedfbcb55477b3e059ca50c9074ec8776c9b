@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "c55d9eac_e5637a57",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1103203
+      },
+      "writtenOn": "2019-09-30T16:14:59Z",
+      "side": 1,
+      "message": "Woops, yes, thanks. Done.",
+      "parentUuid": "8610cef1_4bc282af",
+      "range": {
+        "startLine": 9,
+        "startChar": 20,
+        "endLine": 9,
+        "endChar": 37
+      },
+      "revId": "bc15cedfbcb55477b3e059ca50c9074ec8776c9b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "70380736_1aae4ca5",
         "filename": "/COMMIT_MSG",
         "patchSetId": 1
@@ -45,6 +69,30 @@
       "revId": "bc15cedfbcb55477b3e059ca50c9074ec8776c9b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9820e41a_5bd31b58",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1103203
+      },
+      "writtenOn": "2019-09-30T16:14:59Z",
+      "side": 1,
+      "message": "\"a\" was correct but evidently unclear. Rephrased.",
+      "parentUuid": "70380736_1aae4ca5",
+      "range": {
+        "startLine": 15,
+        "startChar": 50,
+        "endLine": 15,
+        "endChar": 51
+      },
+      "revId": "bc15cedfbcb55477b3e059ca50c9074ec8776c9b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "f7f103f1_9430d7e4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1103203
+      },
+      "writtenOn": "2019-09-30T16:14:59Z",
+      "side": 1,
+      "message": "Rephrased.",
+      "parentUuid": "c3d0bffa_28897580",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 2
+      },
+      "revId": "bc15cedfbcb55477b3e059ca50c9074ec8776c9b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d6fe1fb8_be87a985",
         "filename": "/COMMIT_MSG",
         "patchSetId": 1
@@ -91,6 +163,30 @@
       "revId": "bc15cedfbcb55477b3e059ca50c9074ec8776c9b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f79f133f_a85aba57",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1103203
+      },
+      "writtenOn": "2019-09-30T16:14:59Z",
+      "side": 1,
+      "message": "Dropped. It was mostly meant as context for reviewers, but I guess you\u0027ve seen it now so it has fulfilled its purpose ;)",
+      "parentUuid": "d6fe1fb8_be87a985",
+      "range": {
+        "startLine": 19,
+        "startChar": 21,
+        "endLine": 19,
+        "endChar": 31
+      },
+      "revId": "bc15cedfbcb55477b3e059ca50c9074ec8776c9b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
