@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8610cef1_4bc282af",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1038039
+      },
+      "writtenOn": "2019-09-30T16:08:36Z",
+      "side": 1,
+      "message": "Isn\u0027t vendor.mime.types what you\u0027re introducing? Probably android.mime.types ?",
+      "range": {
+        "startLine": 9,
+        "startChar": 20,
+        "endLine": 9,
+        "endChar": 37
+      },
+      "revId": "bc15cedfbcb55477b3e059ca50c9074ec8776c9b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "70380736_1aae4ca5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1038039
+      },
+      "writtenOn": "2019-09-30T16:08:36Z",
+      "side": 1,
+      "message": "a -\u003e at?",
+      "range": {
+        "startLine": 15,
+        "startChar": 50,
+        "endLine": 15,
+        "endChar": 51
+      },
+      "revId": "bc15cedfbcb55477b3e059ca50c9074ec8776c9b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c3d0bffa_28897580",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1038039
+      },
+      "writtenOn": "2019-09-30T16:08:36Z",
+      "side": 1,
+      "message": "are? - got a bit lost here.",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 2
+      },
+      "revId": "bc15cedfbcb55477b3e059ca50c9074ec8776c9b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d6fe1fb8_be87a985",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1038039
+      },
+      "writtenOn": "2019-09-30T16:08:36Z",
+      "side": 1,
+      "message": "I don\u0027t think you _need_ to put this kind of info on a commit comment. People in the future won\u0027t usually care about what you could have done but didn\u0027t. Up to you, though.",
+      "range": {
+        "startLine": 19,
+        "startChar": 21,
+        "endLine": 19,
+        "endChar": 31
+      },
+      "revId": "bc15cedfbcb55477b3e059ca50c9074ec8776c9b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
