@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7780bfce_09ed214c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1304263
+      },
+      "writtenOn": "2019-10-01T13:22:29Z",
+      "side": 1,
+      "message": "Are you able to explain more why these mainline modules need the TrafficStats API to be public APIs?",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 59
+      },
+      "revId": "e7d07ece00fc8aeb057eaf05edb21a7571d51e06",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5ffba680_16e391d5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1304263
+      },
+      "writtenOn": "2019-10-01T13:22:29Z",
+      "side": 1,
+      "message": "missing bug?",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 4
+      },
+      "revId": "e7d07ece00fc8aeb057eaf05edb21a7571d51e06",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4f45f7f8_d0752535",
+        "filename": "core/java/android/net/TrafficStats.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 572,
+      "author": {
+        "id": 1304263
+      },
+      "writtenOn": "2019-10-01T13:22:29Z",
+      "side": 1,
+      "message": "Will system API be enough for these API? They have to be public API?",
+      "range": {
+        "startLine": 572,
+        "startChar": 23,
+        "endLine": 572,
+        "endChar": 44
+      },
+      "revId": "e7d07ece00fc8aeb057eaf05edb21a7571d51e06",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
