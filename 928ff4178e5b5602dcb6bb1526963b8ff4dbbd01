@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e185e891_df53f6a8",
+        "filename": "telephony/java/android/telephony/MbmsDownloadSession.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 322,
+      "author": {
+        "id": 1098053
+      },
+      "writtenOn": "2019-10-01T23:14:51Z",
+      "side": 1,
+      "message": "onServiceDisconnected and onBindindDied do different things. If you get an onServiceDisconned callback, onServiceConnected will eventually be called. If you get an onBindingDied callback, you must manually rebind. is there a callback when this happens?",
+      "range": {
+        "startLine": 322,
+        "startChar": 33,
+        "endLine": 322,
+        "endChar": 50
+      },
+      "revId": "928ff4178e5b5602dcb6bb1526963b8ff4dbbd01",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
