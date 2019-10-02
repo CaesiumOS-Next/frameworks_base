@@ -71,6 +71,30 @@
     },
     {
       "key": {
+        "uuid": "18e91043_30f1cab1",
+        "filename": "core/java/android/net/TrafficStats.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 572,
+      "author": {
+        "id": 1385042
+      },
+      "writtenOn": "2019-10-02T05:47:52Z",
+      "side": 1,
+      "message": "getStatsService().getIfaceStats() is used by other public APIs. If we change these methods as system APIs then we need to add permission check in NetworkStatsService. I think it will affect other public APIs.",
+      "parentUuid": "4f45f7f8_d0752535",
+      "range": {
+        "startLine": 572,
+        "startChar": 23,
+        "endLine": 572,
+        "endChar": 44
+      },
+      "revId": "e7d07ece00fc8aeb057eaf05edb21a7571d51e06",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3d1796c8_e5a1f67a",
         "filename": "core/java/android/net/TrafficStats.java",
         "patchSetId": 2
