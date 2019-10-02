@@ -112,6 +112,24 @@
     },
     {
       "key": {
+        "uuid": "b210b0f1_6a19ac2e",
+        "filename": "core/java/android/net/TrafficStats.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 587,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2019-10-02T06:05:00Z",
+      "side": 1,
+      "message": "Right. What code is still calling these TCP-specific methods? I think they have returned 0 since at least Q.",
+      "parentUuid": "3d1796c8_e5a1f67a",
+      "revId": "e7d07ece00fc8aeb057eaf05edb21a7571d51e06",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a1f31b84_6f11b3dd",
         "filename": "core/java/android/net/TrafficStats.java",
         "patchSetId": 2
