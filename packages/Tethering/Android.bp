@@ -81,7 +81,16 @@ java_defaults {
 }
 
 // Non-updatable tethering running in the system server process for devices not using the module
-// TODO: build in-process tethering APK here.
+android_app {
+    name: "InProcessTethering",
+    defaults: ["TetheringAppDefaults"],
+    static_libs: ["TetheringApiCurrentLib"],
+    certificate: "platform",
+    manifest: "AndroidManifest_InProcess.xml",
+    // InProcessNetworkStack is a replacement for Tethering
+    overrides: ["Tethering"],
+    // TODO: use PlatformNetworkPermissionConfig.
+}
 
 // Updatable tethering packaged as an application
 android_app {
