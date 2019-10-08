@@ -16,6 +16,8 @@
 
 package android.net;
 
+import android.annotation.SystemApi;
+
 import java.util.Locale;
 
 /**
@@ -23,9 +25,11 @@ import java.util.Locale;
  * Holds settings read from resources.
  * @hide
  */
+@SystemApi
 public class NetworkConfig {
     /**
      * Human readable string
+     * @hide
      */
     public String name;
 
@@ -36,6 +40,7 @@ public class NetworkConfig {
 
     /**
      * the radio number from radio attributes config
+     * @hide
      */
     public int radio;
 
@@ -53,6 +58,7 @@ public class NetworkConfig {
      * indicates the default restoral timer in seconds
      * if the network is used as a special network feature
      * -1 indicates no restoration of default
+     * @hide
      */
     public int restoreTime;
 
@@ -73,6 +79,7 @@ public class NetworkConfig {
 
     /**
      * Indicates if this network is supposed to be default-routable
+     * @hide
      */
     public boolean isDefault() {
         return (type == radio);

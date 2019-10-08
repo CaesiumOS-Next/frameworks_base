@@ -4112,6 +4112,13 @@ package android.net {
     field public static final int NET_CAPABILITY_PARTIAL_CONNECTIVITY = 24; // 0x18
   }
 
+  public class NetworkConfig {
+    ctor public NetworkConfig(String);
+    field public boolean dependencyMet;
+    field public int priority;
+    field public int type;
+  }
+
   public class NetworkKey implements android.os.Parcelable {
     ctor public NetworkKey(android.net.WifiKey);
     method public int describeContents();
