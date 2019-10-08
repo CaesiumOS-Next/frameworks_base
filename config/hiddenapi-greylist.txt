@@ -256,7 +256,6 @@ Landroid/net/INetworkScoreService$Stub;->asInterface(Landroid/os/IBinder;)Landro
 Landroid/net/INetworkStatsService$Stub$Proxy;-><init>(Landroid/os/IBinder;)V
 Landroid/net/INetworkStatsService$Stub$Proxy;->getMobileIfaces()[Ljava/lang/String;
 Landroid/net/INetworkStatsService$Stub;->asInterface(Landroid/os/IBinder;)Landroid/net/INetworkStatsService;
-Landroid/net/InterfaceConfiguration;-><init>()V
 Landroid/net/LinkProperties$ProvisioningChange;->values()[Landroid/net/LinkProperties$ProvisioningChange;
 Landroid/net/MobileLinkQualityInfo;-><init>()V
 Landroid/net/nsd/INsdManager$Stub;->asInterface(Landroid/os/IBinder;)Landroid/net/nsd/INsdManager;

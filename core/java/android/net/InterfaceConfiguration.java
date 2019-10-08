@@ -16,6 +16,9 @@
 
 package android.net;
 
+import android.annotation.NonNull;
+import android.annotation.Nullable;
+import android.annotation.SystemApi;
 import android.annotation.UnsupportedAppUsage;
 import android.os.Parcel;
 import android.os.Parcelable;
@@ -29,7 +32,8 @@ import java.util.HashSet;
  *
  * @hide
  */
-public class InterfaceConfiguration implements Parcelable {
+@SystemApi
+public final class InterfaceConfiguration implements Parcelable {
     private String mHwAddr;
     private LinkAddress mAddr;
     private HashSet<String> mFlags = Sets.newHashSet();
@@ -49,22 +53,26 @@ public class InterfaceConfiguration implements Parcelable {
         return builder.toString();
     }
 
+    /** @hide */
     @UnsupportedAppUsage
     public Iterable<String> getFlags() {
         return mFlags;
     }
 
+    /** @hide */
     public boolean hasFlag(String flag) {
         validateFlag(flag);
         return mFlags.contains(flag);
     }
 
+    /** @hide */
     @UnsupportedAppUsage
     public void clearFlag(String flag) {
         validateFlag(flag);
         mFlags.remove(flag);
     }
 
+    /** @hide */
     @UnsupportedAppUsage
     public void setFlag(String flag) {
         validateFlag(flag);
@@ -74,7 +82,6 @@ public class InterfaceConfiguration implements Parcelable {
     /**
      * Set flags to mark interface as up.
      */
-    @UnsupportedAppUsage
     public void setInterfaceUp() {
         mFlags.remove(FLAG_DOWN);
         mFlags.add(FLAG_UP);
@@ -83,7 +90,6 @@ public class InterfaceConfiguration implements Parcelable {
     /**
      * Set flags to mark interface as down.
      */
-    @UnsupportedAppUsage
     public void setInterfaceDown() {
         mFlags.remove(FLAG_UP);
         mFlags.add(FLAG_DOWN);
@@ -91,47 +97,30 @@ public class InterfaceConfiguration implements Parcelable {
 
     /**
      * Set flags so that no changes will be made to the up/down status.
+     * @hide
      */
     public void ignoreInterfaceUpDownStatus() {
         mFlags.remove(FLAG_UP);
         mFlags.remove(FLAG_DOWN);
     }
 
+    @Nullable
     public LinkAddress getLinkAddress() {
         return mAddr;
     }
 
-    @UnsupportedAppUsage
-    public void setLinkAddress(LinkAddress addr) {
+    public void setLinkAddress(@Nullable LinkAddress addr) {
         mAddr = addr;
     }
 
+    /** @hide */
     public String getHardwareAddress() {
         return mHwAddr;
     }
 
+    /** @hide */
     public void setHardwareAddress(String hwAddr) {
         mHwAddr = hwAddr;
-    }
-
-    /**
-     * This function determines if the interface is up and has a valid IP
-     * configuration (IP address has a non zero octet).
-     *
-     * Note: It is supposed to be quick and hence should not initiate
-     * any network activity
-     */
-    public boolean isActive() {
-        try {
-            if (isUp()) {
-                for (byte b : mAddr.getAddress().getAddress()) {
-                    if (b != 0) return true;
-                }
-            }
-        } catch (NullPointerException e) {
-            return false;
-        }
-        return false;
     }
 
     public boolean isUp() {
@@ -139,12 +128,14 @@ public class InterfaceConfiguration implements Parcelable {
     }
 
     /** {@inheritDoc} */
+    @Override
     public int describeContents() {
         return 0;
     }
 
     /** {@inheritDoc} */
-    public void writeToParcel(Parcel dest, int flags) {
+    @Override
+    public void writeToParcel(@NonNull Parcel dest, int flags) {
         dest.writeString(mHwAddr);
         if (mAddr != null) {
             dest.writeByte((byte)1);

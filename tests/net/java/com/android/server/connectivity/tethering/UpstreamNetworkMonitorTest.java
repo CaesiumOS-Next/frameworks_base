@@ -229,6 +229,8 @@ public class UpstreamNetworkMonitorTest {
         assertTrue(mCM.isDunRequested());
 
         mUNM.stop();
+
+        verify(mCM, times(2)).isDunRequested();
         verify(mCM, times(2)).unregisterNetworkCallback(any(NetworkCallback.class));
 
         verifyNoMoreInteractions(mCM);

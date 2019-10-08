@@ -67,9 +67,9 @@ public class Nat464XlatTest {
     @Mock IDnsResolver mDnsResolver;
     @Mock INetd mNetd;
     @Mock INetworkManagementService mNms;
-    @Mock InterfaceConfiguration mConfig;
     @Mock NetworkAgentInfo mNai;
 
+    InterfaceConfiguration mConfig = new InterfaceConfiguration();
     TestLooper mLooper;
     Handler mHandler;
 
@@ -97,7 +97,7 @@ public class Nat464XlatTest {
         when(mNai.handler()).thenReturn(mHandler);
 
         when(mNms.getInterfaceConfig(eq(STACKED_IFACE))).thenReturn(mConfig);
-        when(mConfig.getLinkAddress()).thenReturn(ADDR);
+        mConfig.setLinkAddress(ADDR);
     }
 
     private void assertRequiresClat(boolean expected, NetworkAgentInfo nai) {

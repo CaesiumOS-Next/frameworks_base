@@ -22,7 +22,7 @@ java_library {
     static_libs: [
         "androidx.test.rules",
         "junit",
-        "mockito-target-minus-junit4",
+        "mockito-target-inline-minus-junit4",
         "net-tests-utils",
         "platform-test-annotations",
     ],

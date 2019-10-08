@@ -4043,6 +4043,18 @@ package android.net {
     method public void onUpstreamChanged(@Nullable android.net.Network);
   }
 
+  public final class InterfaceConfiguration implements android.os.Parcelable {
+    ctor public InterfaceConfiguration();
+    method public int describeContents();
+    method @Nullable public android.net.LinkAddress getLinkAddress();
+    method public boolean isUp();
+    method public void setInterfaceDown();
+    method public void setInterfaceUp();
+    method public void setLinkAddress(@Nullable android.net.LinkAddress);
+    method public void writeToParcel(@NonNull android.os.Parcel, int);
+    field @NonNull public static final android.os.Parcelable.Creator<android.net.InterfaceConfiguration> CREATOR;
+  }
+
   public final class IpPrefix implements android.os.Parcelable {
     ctor public IpPrefix(@NonNull java.net.InetAddress, @IntRange(from=0, to=128) int);
     ctor public IpPrefix(@NonNull String);
