@@ -95,6 +95,30 @@
     },
     {
       "key": {
+        "uuid": "37f2243d_862cd8a4",
+        "filename": "core/java/android/net/TrafficStats.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 572,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2019-10-09T06:15:51Z",
+      "side": 1,
+      "message": "I think Aaron is right here. There is already public API using this, and it\u0027s also @UnsupportedAppUsage. I think public is the right choice.",
+      "parentUuid": "18e91043_30f1cab1",
+      "range": {
+        "startLine": 572,
+        "startChar": 23,
+        "endLine": 572,
+        "endChar": 44
+      },
+      "revId": "e7d07ece00fc8aeb057eaf05edb21a7571d51e06",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3d1796c8_e5a1f67a",
         "filename": "core/java/android/net/TrafficStats.java",
         "patchSetId": 2
@@ -142,6 +166,24 @@
       "side": 1,
       "message": "These are called in DcTracker,\nhttps://cs.corp.google.com/aosp-master/frameworks/opt/telephony/src/java/com/android/internal/telephony/dataconnection/DcTracker.java?type\u003dcs\u0026q\u003dupdateTcpTxRxSum\u0026sq\u003dpackage:aosp-master\u0026g\u003d0\u0026l\u003d479\n\nand they are used for updateDataStallInfo()\nhttps://cs.corp.google.com/aosp-master/frameworks/opt/telephony/src/java/com/android/internal/telephony/dataconnection/DcTracker.java?type\u003dcs\u0026q\u003dupdateTcpTxRxSum\u0026sq\u003dpackage:aosp-master\u0026g\u003d0\u0026l\u003d4604\n\n\nyes, looks that will return 0 since Q.\nHere bpfGetIfaceStatsInternal() gets both tcpRxPackets and tcpTxPackets -1,\nhttps://android.googlesource.com/platform/system/netd/+/refs/heads/android10-release/libnetdbpf/BpfNetworkStats.cpp#77\n\nreturn type TYPE_TCP_TX_PACKETS or TYPE_TCP_RX_PACKETS\nhttps://android.googlesource.com/platform/frameworks/base/+/refs/heads/android10-release/services/core/jni/com_android_server_net_NetworkStatsService.cpp#183",
       "parentUuid": "b210b0f1_6a19ac2e",
+      "revId": "e7d07ece00fc8aeb057eaf05edb21a7571d51e06",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8bada8fb_2af6a1fa",
+        "filename": "core/java/android/net/TrafficStats.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 587,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2019-10-09T06:15:51Z",
+      "side": 1,
+      "message": "Then can you get Chen to stop calling it ? Since it returns always 0 I don\u0027t see what objection could be made. Ideally you can even remove the method when it\u0027s not called any more.",
+      "parentUuid": "7e605c6e_8a0f63d1",
       "revId": "e7d07ece00fc8aeb057eaf05edb21a7571d51e06",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
