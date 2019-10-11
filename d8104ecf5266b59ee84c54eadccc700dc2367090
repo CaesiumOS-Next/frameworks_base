@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d91c140f_70701fa3",
+        "filename": "telephony/java/android/telephony/TelephonyManager.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 2457,
+      "author": {
+        "id": 1038039
+      },
+      "writtenOn": "2019-10-11T12:36:41Z",
+      "side": 1,
+      "message": "A few random questions:\n\n1) Is slotIndex a synonym (or _going to be_ a synonym) for phoneId? I assume so from the change to line 2431 and the other one in NitzStateMachineImpl.\n2) Is subId a synonym for phoneId? The replacement of a getNetworkCountryIso(int) method with a new getNetworkCountryIso(int) but where the int could mean a different thing would lead to problems for OEMs or apps that don\u0027t notice a semantics shift. I can only see this working well if subId \u003d\u003d slotIndex.\n3) Is there an app compat story here for apps using getNetworkCountryIsoForPhone(int) ?",
+      "range": {
+        "startLine": 2457,
+        "startChar": 18,
+        "endLine": 2457,
+        "endChar": 38
+      },
+      "revId": "d8104ecf5266b59ee84c54eadccc700dc2367090",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
