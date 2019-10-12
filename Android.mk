@@ -64,6 +64,9 @@ $(call dist-for-goals,sdk,$(INTERNAL_PLATFORM_API_FILE):apistubs/android/public/
 $(call dist-for-goals,sdk,$(INTERNAL_PLATFORM_SYSTEM_API_FILE):apistubs/android/system/api/android.txt)
 $(call dist-for-goals,sdk,$(INTERNAL_PLATFORM_TEST_API_FILE):apistubs/android/test/api/android.txt)
 
+$(call dist-for-goals,api-stubs-docs-api-lint,$(SOONG_OUT_DIR)/.intermediates/frameworks/base/api-stubs-docs/android_common/api_lint_baseline.txt:api_lint_baseline.txt)
+$(call dist-for-goals,system-api-stubs-docs-api-lint,$(SOONG_OUT_DIR)/.intermediates/frameworks/base/system-api-stubs-docs/android_common/api_lint_baseline.txt:system_api_lint_baseline.txt)
+
 # sdk.atree needs to copy the whole dir: $(OUT_DOCS)/offline-sdk to the final zip.
 # So keep offline-sdk-timestamp target here, and unzip offline-sdk-docs.zip to
 # $(OUT_DOCS)/offline-sdk.
