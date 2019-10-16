@@ -119,6 +119,12 @@ public class TetheringManager {
     public static final int TETHERING_WIFI_P2P = 3;
 
     /**
+     * Ncm local tethering type.
+     * need to start from #startTethering.
+     */
+    public static final int TETHERING_NCM = 4;
+
+    /**
      * Extra used for communicating with the TetherService. Includes the type of tethering to
      * enable if any.
      */
@@ -576,6 +582,17 @@ public class TetheringManager {
         if (mTetherStatesParcel == null) return new String[0];
 
         return mTetherStatesParcel.erroredIfaceList;
+    }
+
+    /**
+     * Getter for the array of local-only intrfaces
+     */
+    @NonNull
+    public String[] getLocalOnlyIfaces() {
+        mCallback.waitForStarted();
+        if (mTetherStatesParcel == null) return new String[0];
+
+        return mTetherStatesParcel.localOnlyList;
     }
 
     /**
