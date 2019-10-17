@@ -18,6 +18,7 @@ package android.view;
 
 import android.graphics.Rect;
 import android.os.IBinder;
+import android.util.Log;
 
 import com.android.internal.util.Preconditions;
 
@@ -37,15 +38,17 @@ public abstract class CompositionSamplingListener {
         mNativeListener = nativeCreate(this);
     }
 
-    @Override
-    protected void finalize() throws Throwable {
+    /**
+     * Destroy the native reference.
+     */
+    public void destroy() {
         try {
             if (mNativeListener != 0) {
                 unregister(this);
                 nativeDestroy(mNativeListener);
             }
-        } finally {
-            super.finalize();
+        } catch (Exception e) {
+            Log.d("CompositionSamplingListener", "destroy", e);
         }
     }
 

@@ -165,6 +165,7 @@ public class NavigationBarFragment extends LifecycleFragment implements Callback
     private int mNavBarMode = NAV_BAR_MODE_3BUTTON;
     private LightBarController mLightBarController;
     private AutoHideController mAutoHideController;
+    private NavigationModeController mNavigationModeController;
 
     private OverviewProxyService mOverviewProxyService;
 
@@ -253,6 +254,7 @@ public class NavigationBarFragment extends LifecycleFragment implements Callback
         mAssistManager = assistManager;
         mAssistantAvailable = mAssistManager.getAssistInfoForUser(UserHandle.USER_CURRENT) != null;
         mOverviewProxyService = overviewProxyService;
+        mNavigationModeController = navigationModeController;
         mNavBarMode = navigationModeController.addListener(this);
     }
 
@@ -295,6 +297,8 @@ public class NavigationBarFragment extends LifecycleFragment implements Callback
         mAccessibilityManagerWrapper.removeCallback(mAccessibilityListener);
         mContentResolver.unregisterContentObserver(mMagnificationObserver);
         mContentResolver.unregisterContentObserver(mAssistContentObserver);
+        mNavigationModeController.removeListener(this);
+        mNavigationBarView.getTintController().destroy();
     }
 
     @Override

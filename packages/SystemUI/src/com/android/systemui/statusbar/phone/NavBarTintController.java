@@ -107,6 +107,15 @@ public class NavBarTintController implements View.OnAttachStateChangeListener,
         requestUpdateSamplingListener();
     }
 
+    /**
+     * Destroy the native reference of CompositionSamplingListener.
+     */
+    public void destroy() {
+        if (mSamplingListener != null) {
+            mSamplingListener.destroy();
+        }
+    }
+
     @Override
     public void onViewAttachedToWindow(View view) {
         requestUpdateSamplingListener();
