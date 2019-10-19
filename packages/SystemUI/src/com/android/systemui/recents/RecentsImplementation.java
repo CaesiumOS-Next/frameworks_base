@@ -18,6 +18,7 @@ package com.android.systemui.recents;
 import android.content.Context;
 import android.content.res.Configuration;
 import android.graphics.Rect;
+import android.os.IBinder;
 
 import com.android.systemui.SysUiServiceProvider;
 
@@ -39,6 +40,8 @@ interface RecentsImplementation {
             int metricsDockAction) {
         return false;
     }
-
+    default IBinder getSystemUserCallbacks() {
+        return null;
+    }
     default void dump(PrintWriter pw) {}
 }

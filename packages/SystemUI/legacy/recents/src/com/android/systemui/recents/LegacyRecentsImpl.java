@@ -165,6 +165,7 @@ public class LegacyRecentsImpl implements RecentsImplementation {
     /**
      * Returns the callbacks interface that non-system users can call.
      */
+    @Override
     public IBinder getSystemUserCallbacks() {
         return mSystemToUserCallbacks;
     }

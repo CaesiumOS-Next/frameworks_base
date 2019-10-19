@@ -40,7 +40,8 @@ public class RecentsSystemUserService extends Service {
 
     @Override
     public IBinder onBind(Intent intent) {
-        LegacyRecentsImpl recents = SysUiServiceProvider.getComponent(this, LegacyRecentsImpl.class);
+        RecentsImplementation recents = SysUiServiceProvider
+                .getComponent(this, RecentsImplementation.class);
         if (DEBUG) {
             Log.d(TAG, "onBind: " + recents);
         }
