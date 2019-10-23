@@ -45519,6 +45519,13 @@ package android.telephony.gsm {
 
 }
 
+package android.telephony.ims {
+
+  public class ImsManager {
+  }
+
+}
+
 package android.telephony.mbms {
 
   public class DownloadProgressListener {
