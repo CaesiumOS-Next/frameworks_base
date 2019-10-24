@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "49e8c1b2_f9f3c28c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2019-10-24T07:42:16Z",
+      "side": 1,
+      "message": "I don\u0027t quite get this comment - the clinits will always be executed, regardless of the class being in preloaded classes or not.\n\nBut I think the reason for having preloaded classes empty for the boot profile experiment (like the old nopreload builds) was to actually know how many apps end up loading a class - a preloaded class prevents knowing that information.",
+      "range": {
+        "startLine": 9,
+        "startChar": 39,
+        "endLine": 10,
+        "endChar": 59
+      },
+      "revId": "4f9535b9c14d2a6a402f9c6231a7dc51273366ff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
