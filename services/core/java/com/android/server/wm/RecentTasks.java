@@ -664,6 +664,8 @@ class RecentTasks {
                 notifyTaskRemoved(tr, true /* wasTrimmed */, true /* killProcess */);
             }
         }
+
+        mService.getTaskChangeNotificationController().notifyTaskStackChanged();
     }
 
     void cleanupDisabledPackageTasksLocked(String packageName, Set<String> filterByClasses,
