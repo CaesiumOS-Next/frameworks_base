@@ -22,6 +22,30 @@
       "revId": "4f9535b9c14d2a6a402f9c6231a7dc51273366ff",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f9d269f4_11884cfd",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2019-10-24T14:47:14Z",
+      "side": 1,
+      "message": "I mean the clinit will only be executed if the class is actually used. If a class were to become unused but it was still in the preloaded classes, the clinit would still get samples.",
+      "parentUuid": "49e8c1b2_f9f3c28c",
+      "range": {
+        "startLine": 9,
+        "startChar": 39,
+        "endLine": 10,
+        "endChar": 59
+      },
+      "revId": "4f9535b9c14d2a6a402f9c6231a7dc51273366ff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
