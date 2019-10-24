@@ -46,6 +46,53 @@
       "revId": "4f9535b9c14d2a6a402f9c6231a7dc51273366ff",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ba1c6744_9837691c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2019-10-24T14:53:35Z",
+      "side": 1,
+      "message": "Oh, gotcha.",
+      "parentUuid": "f9d269f4_11884cfd",
+      "range": {
+        "startLine": 9,
+        "startChar": 39,
+        "endLine": 10,
+        "endChar": 59
+      },
+      "revId": "4f9535b9c14d2a6a402f9c6231a7dc51273366ff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "52536222_2dbdf312",
+        "filename": "core/java/com/android/internal/os/ZygoteInit.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 255,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2019-10-24T14:53:35Z",
+      "side": 1,
+      "message": "Add a comment why this may be empty?",
+      "range": {
+        "startLine": 255,
+        "startChar": 0,
+        "endLine": 255,
+        "endChar": 37
+      },
+      "revId": "4f9535b9c14d2a6a402f9c6231a7dc51273366ff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
