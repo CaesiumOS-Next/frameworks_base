@@ -45316,6 +45316,7 @@ package android.telephony.data {
     field public static final int PROTOCOL_NON_IP = 4; // 0x4
     field public static final int PROTOCOL_PPP = 3; // 0x3
     field public static final int PROTOCOL_UNSTRUCTURED = 5; // 0x5
+    field public static final int TYPE_ALL_INCLUDING_NON_WILD_CARDABLE = 2047; // 0x7ff
     field public static final int TYPE_CBS = 128; // 0x80
     field public static final int TYPE_DEFAULT = 17; // 0x11
     field public static final int TYPE_DUN = 8; // 0x8
