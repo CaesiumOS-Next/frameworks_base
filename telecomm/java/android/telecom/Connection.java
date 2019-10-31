@@ -19,6 +19,7 @@ package android.telecom;
 import android.annotation.NonNull;
 import android.annotation.Nullable;
 import android.annotation.SystemApi;
+import android.annotation.TestApi;
 import android.annotation.UnsupportedAppUsage;
 import android.app.Notification;
 import android.bluetooth.BluetoothDevice;
@@ -273,6 +274,7 @@ public abstract class Connection extends Conferenceable {
      * @hide
      */
     @SystemApi
+    @TestApi
     public static final int CAPABILITY_SPEED_UP_MT_AUDIO = 0x00040000;
 
     /**
@@ -310,6 +312,7 @@ public abstract class Connection extends Conferenceable {
      * @hide
      */
     @SystemApi
+    @TestApi
     public static final int CAPABILITY_CONFERENCE_HAS_NO_CHILDREN = 0x00200000;
 
     /**
@@ -356,6 +359,7 @@ public abstract class Connection extends Conferenceable {
      * @hide
      */
     @SystemApi
+    @TestApi
     public static final int PROPERTY_EMERGENCY_CALLBACK_MODE = 1<<0;
 
     /**
@@ -366,6 +370,7 @@ public abstract class Connection extends Conferenceable {
      * @hide
      */
     @SystemApi
+    @TestApi
     public static final int PROPERTY_GENERIC_CONFERENCE = 1<<1;
 
     /**
@@ -417,6 +422,7 @@ public abstract class Connection extends Conferenceable {
      * @hide
      */
     @SystemApi
+    @TestApi
     public static final int PROPERTY_IS_DOWNGRADED_CONFERENCE = 1<<6;
 
     /**
@@ -435,7 +441,8 @@ public abstract class Connection extends Conferenceable {
 
     /**
      * Set by the framework to indicate that a connection is using assisted dialing.
-     * @hide
+     * <p>
+     * This is used for outgoing calls.
      */
     public static final int PROPERTY_ASSISTED_DIALING_USED = 1 << 9;
 
@@ -457,6 +464,7 @@ public abstract class Connection extends Conferenceable {
      * @hide
      */
     @SystemApi
+    @TestApi
     public static final int PROPERTY_REMOTELY_HOSTED = 1 << 11;
 
     //**********************************************************************************************
@@ -515,6 +523,7 @@ public abstract class Connection extends Conferenceable {
      * @hide
      */
     @SystemApi
+    @TestApi
     public static final String EXTRA_DISABLE_ADD_CALL =
             "android.telecom.extra.DISABLE_ADD_CALL";
 
@@ -1806,6 +1815,7 @@ public abstract class Connection extends Conferenceable {
      * @hide
      */
     @SystemApi
+    @TestApi
     public final @Nullable String getTelecomCallId() {
         return mTelecomCallId;
     }
@@ -1922,6 +1932,7 @@ public abstract class Connection extends Conferenceable {
      * @hide
      */
     @SystemApi
+    @TestApi
     public final long getConnectTimeMillis() {
         return mConnectTimeMillis;
     }
@@ -1941,29 +1952,9 @@ public abstract class Connection extends Conferenceable {
      * @hide
      */
     @SystemApi
+    @TestApi
     public final long getConnectElapsedTimeMillis() {
         return mConnectElapsedTimeMillis;
-    }
-
-    /**
-     * Returns RIL voice radio technology used for current connection.
-     * <p>
-     * Used by the Telephony {@link ConnectionService}.
-     *
-     * @return the RIL voice radio technology used for current connection,
-     *         see {@code RIL_RADIO_TECHNOLOGY_*} in {@link android.telephony.ServiceState}.
-     *
-     * @hide
-     */
-    @SystemApi
-    public final @ServiceState.RilRadioTechnology int getCallRadioTech() {
-        int voiceNetworkType = TelephonyManager.NETWORK_TYPE_UNKNOWN;
-        Bundle extras = getExtras();
-        if (extras != null) {
-            voiceNetworkType = extras.getInt(TelecomManager.EXTRA_CALL_NETWORK_TYPE,
-                    TelephonyManager.NETWORK_TYPE_UNKNOWN);
-        }
-        return ServiceState.networkTypeToRilRadioTechnology(voiceNetworkType);
     }
 
     /**
@@ -2044,6 +2035,7 @@ public abstract class Connection extends Conferenceable {
      * @hide
      */
     @SystemApi
+    @TestApi
     public void setTelecomCallId(@NonNull String callId) {
         mTelecomCallId = callId;
     }
@@ -2390,6 +2382,7 @@ public abstract class Connection extends Conferenceable {
      * @hide
      */
     @SystemApi
+    @TestApi
     public final void setConnectTimeMillis(long connectTimeMillis) {
         mConnectTimeMillis = connectTimeMillis;
     }
@@ -2405,36 +2398,9 @@ public abstract class Connection extends Conferenceable {
      * @hide
      */
     @SystemApi
+    @TestApi
     public final void setConnectionStartElapsedRealTime(long connectElapsedTimeMillis) {
         mConnectElapsedTimeMillis = connectElapsedTimeMillis;
-    }
-
-    /**
-     * Sets RIL voice radio technology used for current connection.
-     * <p>
-     * This property is set by the Telephony {@link ConnectionService}.
-     *
-     * @param vrat the RIL Voice Radio Technology used for current connection,
-     *             see {@code RIL_RADIO_TECHNOLOGY_*} in {@link android.telephony.ServiceState}.
-     *
-     * @hide
-     */
-    @SystemApi
-    public final void setCallRadioTech(@ServiceState.RilRadioTechnology int vrat) {
-        Bundle extras = getExtras();
-        if (extras == null) {
-            extras = new Bundle();
-        }
-        extras.putInt(TelecomManager.EXTRA_CALL_NETWORK_TYPE,
-                ServiceState.rilRadioTechnologyToNetworkType(vrat));
-        putExtras(extras);
-        // Propagates the call radio technology to its parent {@link android.telecom.Conference}
-        // This action only covers non-IMS CS conference calls.
-        // For IMS PS call conference call, it can be updated via its host connection
-        // {@link #Listener.onExtrasChanged} event.
-        if (getConference() != null) {
-            getConference().setCallRadioTech(vrat);
-        }
     }
 
     /**
@@ -2501,6 +2467,7 @@ public abstract class Connection extends Conferenceable {
      * @hide
      */
     @SystemApi
+    @TestApi
     public final void resetConnectionTime() {
         for (Listener l : mListeners) {
             l.onConnectionTimeReset(this);
@@ -3245,6 +3212,7 @@ public abstract class Connection extends Conferenceable {
      * @hide
      */
     @SystemApi
+    @TestApi
     public void setPhoneAccountHandle(@NonNull PhoneAccountHandle phoneAccountHandle) {
         if (mPhoneAccountHandle != phoneAccountHandle) {
             mPhoneAccountHandle = phoneAccountHandle;
@@ -3263,6 +3231,7 @@ public abstract class Connection extends Conferenceable {
      * @hide
      */
     @SystemApi
+    @TestApi
     public @Nullable PhoneAccountHandle getPhoneAccountHandle() {
         return mPhoneAccountHandle;
     }
@@ -3328,6 +3297,7 @@ public abstract class Connection extends Conferenceable {
      * @hide
      */
     @SystemApi
+    @TestApi
     public void setCallDirection(@Call.Details.CallDirection int callDirection) {
         mCallDirection = callDirection;
     }

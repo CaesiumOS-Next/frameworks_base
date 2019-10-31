@@ -14,6 +14,8 @@
 
 package android.telecom;
 
+import static android.Manifest.permission.READ_PRIVILEGED_PHONE_STATE;
+
 import android.Manifest;
 import android.annotation.IntDef;
 import android.annotation.Nullable;
@@ -737,6 +739,14 @@ public class TelecomManager {
      */
     public static final int PRESENTATION_PAYPHONE = 4;
 
+    /** @hide */
+    @Retention(RetentionPolicy.SOURCE)
+    @IntDef(
+            prefix = { "PRESENTATION_" },
+            value = {PRESENTATION_ALLOWED, PRESENTATION_RESTRICTED, PRESENTATION_UNKNOWN,
+            PRESENTATION_PAYPHONE})
+    public @interface Presentation {}
+
     private static final String TAG = "TelecomManager";
 
     private final Context mContext;
@@ -882,9 +892,8 @@ public class TelecomManager {
      *                       queried for.
      * @return The phone account handle of the current sim call manager.
      * @see SubscriptionManager#getActiveSubscriptionInfoList()
-     * @hide
      */
-    public PhoneAccountHandle getSimCallManagerForSubscription(int subscriptionId) {
+    public @Nullable PhoneAccountHandle getSimCallManagerForSubscription(int subscriptionId) {
         try {
             if (isServiceConnected()) {
                 return getTelecomService().getSimCallManager(subscriptionId);
@@ -946,7 +955,7 @@ public class TelecomManager {
      */
     @SystemApi
     @RequiresPermission(anyOf = {
-            android.Manifest.permission.READ_PRIVILEGED_PHONE_STATE,
+            READ_PRIVILEGED_PHONE_STATE,
             android.Manifest.permission.READ_PHONE_STATE
     })
     public List<PhoneAccountHandle> getPhoneAccountsSupportingScheme(String uriScheme) {
@@ -1233,6 +1242,28 @@ public class TelecomManager {
     }
 
     /**
+     * Used to determine the currently selected default dialer package for a specific user.
+     *
+     * @param userId the user id to query the default dialer package for.
+     * @return package name for the default dialer package or null if no package has been
+     *         selected as the default dialer.
+     * @hide
+     */
+    @SystemApi
+    @TestApi
+    @RequiresPermission(READ_PRIVILEGED_PHONE_STATE)
+    public @Nullable String getDefaultDialerPackage(int userId) {
+        try {
+            if (isServiceConnected()) {
+                return getTelecomService().getDefaultDialerPackageForUser(userId);
+            }
+        } catch (RemoteException e) {
+            Log.e(TAG, "RemoteException attempting to get the default dialer package name.", e);
+        }
+        return null;
+    }
+
+    /**
      * Used to set the default dialer package.
      *
      * @param packageName to set the default dialer to, or {@code null} if the system provided
@@ -1431,7 +1462,7 @@ public class TelecomManager {
      */
     @SystemApi
     @RequiresPermission(anyOf = {
-            android.Manifest.permission.READ_PRIVILEGED_PHONE_STATE,
+            READ_PRIVILEGED_PHONE_STATE,
             android.Manifest.permission.READ_PHONE_STATE
     })
     public boolean isRinging() {
@@ -1561,7 +1592,7 @@ public class TelecomManager {
      * Returns whether TTY is supported on this device.
      */
     @RequiresPermission(anyOf = {
-            android.Manifest.permission.READ_PRIVILEGED_PHONE_STATE,
+            READ_PRIVILEGED_PHONE_STATE,
             android.Manifest.permission.READ_PHONE_STATE
     })
     public boolean isTtySupported() {
@@ -1587,7 +1618,7 @@ public class TelecomManager {
      */
     @SystemApi
     @TestApi
-    @RequiresPermission(android.Manifest.permission.READ_PRIVILEGED_PHONE_STATE)
+    @RequiresPermission(READ_PRIVILEGED_PHONE_STATE)
     public @TtyMode int getCurrentTtyMode() {
         try {
             if (isServiceConnected()) {
