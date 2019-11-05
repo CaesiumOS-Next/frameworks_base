@@ -46,6 +46,30 @@
       "revId": "f34532e53a8797fb34c9925104c6241985acbc2c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "481616b4_6804c677",
+        "filename": "tests/BootImageProfileTest/src/com/android/bootimageprofile/BootImageProfileTest.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2019-11-05T20:58:27Z",
+      "side": 1,
+      "message": "It will be part of follow up commit.",
+      "parentUuid": "465f71ff_9741c6c0",
+      "range": {
+        "startLine": 106,
+        "startChar": 0,
+        "endLine": 107,
+        "endChar": 20
+      },
+      "revId": "f34532e53a8797fb34c9925104c6241985acbc2c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
