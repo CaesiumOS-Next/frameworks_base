@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "804d735b_8149c7cc",
+        "filename": "tests/BootImageProfileTest/src/com/android/bootimageprofile/BootImageProfileTest.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2019-11-05T15:33:05Z",
+      "side": 1,
+      "message": "nit: Expand comment to cover services.jar, and why we always expect PackageManagerService.\u003cinit\u003e to be in the profile.",
+      "range": {
+        "startLine": 106,
+        "startChar": 0,
+        "endLine": 107,
+        "endChar": 20
+      },
+      "revId": "f34532e53a8797fb34c9925104c6241985acbc2c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
