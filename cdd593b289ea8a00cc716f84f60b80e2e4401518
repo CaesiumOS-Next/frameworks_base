@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "99adcc71_6f31c831",
+        "filename": "core/java/android/os/image/IDynamicSystemService.aidl",
+        "patchSetId": 3
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1120915
+      },
+      "writtenOn": "2019-11-06T01:04:47Z",
+      "side": 1,
+      "message": "This is called after createPartition(), but before installation, right?",
+      "range": {
+        "startLine": 43,
+        "startChar": 12,
+        "endLine": 43,
+        "endChar": 30
+      },
+      "revId": "cdd593b289ea8a00cc716f84f60b80e2e4401518",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
