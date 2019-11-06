@@ -22,6 +22,30 @@
       "revId": "cdd593b289ea8a00cc716f84f60b80e2e4401518",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "345a5d1f_c43a1eeb",
+        "filename": "core/java/android/os/image/IDynamicSystemService.aidl",
+        "patchSetId": 3
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1135739
+      },
+      "writtenOn": "2019-11-06T01:50:42Z",
+      "side": 1,
+      "message": "A installation would starts with a startInstallation(), followed by several createPartition and ends with a finishInstallation.",
+      "parentUuid": "99adcc71_6f31c831",
+      "range": {
+        "startLine": 43,
+        "startChar": 12,
+        "endLine": 43,
+        "endChar": 30
+      },
+      "revId": "cdd593b289ea8a00cc716f84f60b80e2e4401518",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
