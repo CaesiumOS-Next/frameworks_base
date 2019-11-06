@@ -3194,6 +3194,12 @@ public class CarrierConfigManager {
      */
     public static final String KEY_PREVENT_CLIR_ACTIVATION_AND_DEACTIVATION_CODE_BOOL =
             "prevent_clir_activation_and_deactivation_code_bool";
+    
+    /**
+     * Determines whether support parsing NCR encoded strings
+     * @hide
+     */
+    public static final String KEY_SUPPORT_NCR_USSD_STRING = "support_ncr_ussd_string";
 
     /** The default value for every variable. */
     private final static PersistableBundle sDefaults;
@@ -3624,6 +3630,7 @@ public class CarrierConfigManager {
                 new int[] {4 /* BUSY */});
         sDefaults.putBoolean(KEY_PREVENT_CLIR_ACTIVATION_AND_DEACTIVATION_CODE_BOOL, false);
         sDefaults.putLong(KEY_DATA_SWITCH_VALIDATION_TIMEOUT_LONG, 2000);
+        sDefaults.putBoolean(KEY_SUPPORT_NCR_USSD_STRING, false);
     }
 
     /**
