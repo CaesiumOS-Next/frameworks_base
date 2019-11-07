@@ -157,6 +157,7 @@ import com.android.server.textservices.TextServicesManagerService;
 import com.android.server.trust.TrustManagerService;
 import com.android.server.tv.TvInputManagerService;
 import com.android.server.tv.TvRemoteService;
+import com.android.server.tv.tuner.TunerResourceManagerService;
 import com.android.server.twilight.TwilightService;
 import com.android.server.uri.UriGrantsManagerService;
 import com.android.server.usage.UsageStatsService;
@@ -1764,6 +1765,9 @@ public final class SystemServer {
                     || mPackageManager.hasSystemFeature(PackageManager.FEATURE_LEANBACK)) {
                 traceBeginAndSlog("StartTvInputManager");
                 mSystemServiceManager.startService(TvInputManagerService.class);
+                traceEnd();
+                traceBeginAndSlog("StartTunerResourceManager");
+                mSystemServiceManager.startService(TunerResourceManagerService.class);
                 traceEnd();
             }
 
