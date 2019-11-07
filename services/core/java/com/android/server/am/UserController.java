@@ -1152,68 +1152,90 @@ class UserController implements Handler.Callback {
                 needStart = true;
             }
 
-            if (uss.state == UserState.STATE_BOOTING) {
-                // Give user manager a chance to propagate user restrictions
-                // to other services and prepare app storage
-                mInjector.getUserManager().onBeforeStartUser(userId);
-
-                // Booting up a new user, need to tell system services about it.
-                // Note that this is on the same handler as scheduling of broadcasts,
-                // which is important because it needs to go first.
-                mHandler.sendMessage(
-                        mHandler.obtainMessage(SYSTEM_USER_START_MSG, userId, 0));
-            }
-
-            if (foreground) {
-                mHandler.sendMessage(mHandler.obtainMessage(SYSTEM_USER_CURRENT_MSG, userId,
-                        oldUserId));
-                mHandler.removeMessages(REPORT_USER_SWITCH_MSG);
-                mHandler.removeMessages(USER_SWITCH_TIMEOUT_MSG);
-                mHandler.sendMessage(mHandler.obtainMessage(REPORT_USER_SWITCH_MSG,
-                        oldUserId, userId, uss));
-                mHandler.sendMessageDelayed(mHandler.obtainMessage(USER_SWITCH_TIMEOUT_MSG,
-                        oldUserId, userId, uss), USER_SWITCH_TIMEOUT_MS);
-            }
-
-            if (needStart) {
-                // Send USER_STARTED broadcast
-                Intent intent = new Intent(Intent.ACTION_USER_STARTED);
-                intent.addFlags(Intent.FLAG_RECEIVER_REGISTERED_ONLY
-                        | Intent.FLAG_RECEIVER_FOREGROUND);
-                intent.putExtra(Intent.EXTRA_USER_HANDLE, userId);
-                mInjector.broadcastIntent(intent,
-                        null, null, 0, null, null, null, AppOpsManager.OP_NONE,
-                        null, false, false, MY_PID, SYSTEM_UID, callingUid, callingPid, userId);
-            }
-
-            if (foreground) {
-                moveUserToForeground(uss, oldUserId, userId);
-            } else {
-                finishUserBoot(uss);
-            }
-
-            if (needStart) {
-                Intent intent = new Intent(Intent.ACTION_USER_STARTING);
-                intent.addFlags(Intent.FLAG_RECEIVER_REGISTERED_ONLY);
-                intent.putExtra(Intent.EXTRA_USER_HANDLE, userId);
-                mInjector.broadcastIntent(intent,
-                        null, new IIntentReceiver.Stub() {
-                            @Override
-                            public void performReceive(Intent intent, int resultCode,
-                                    String data, Bundle extras, boolean ordered,
-                                    boolean sticky,
-                                    int sendingUser) throws RemoteException {
-                            }
-                        }, 0, null, null,
-                        new String[]{INTERACT_ACROSS_USERS}, AppOpsManager.OP_NONE,
-                        null, true, false, MY_PID, SYSTEM_UID, callingUid, callingPid,
-                        UserHandle.USER_ALL);
-            }
+            final StartUserRequest request = new StartUserRequest(uss, oldUserId, userId,
+                    foreground, needStart, callingUid, callingPid);
+            mIoHandler.post(() -> {
+                finishUserStart(request);
+            });
         } finally {
             Binder.restoreCallingIdentity(ident);
         }
 
         return true;
+    }
+
+    private static class StartUserRequest {
+        private int oldUserId; // current present user
+        private int userId; // new user to start
+        private @NonNull UserState uss;
+        private boolean foreground; // bring this new user to foreground
+        private boolean needStart;
+        private int callingUid;
+        private int callingPid;
+
+        private StartUserRequest(@NonNull UserState uss, int oldUserId, int userId,
+                boolean foreground, boolean needStart, int callingUid, int callingPid) {
+            this.uss = uss;
+            this.oldUserId = oldUserId;
+            this.userId = userId;
+            this.foreground = foreground;
+            this.needStart = needStart;
+            this.callingUid = callingUid;
+            this.callingPid = callingPid;
+        }
+    }
+
+    private void finishUserStart(StartUserRequest request) {
+        if (request.uss.state == UserState.STATE_BOOTING) {
+            // Give user manager a chance to propagate user restrictions
+            // to other services and prepare app storage
+            mInjector.getUserManager().onBeforeStartUser(request.userId);
+
+            // Booting up a new user, need to tell system services about it.
+            // Note that this is on the same handler as scheduling of broadcasts,
+            // which is important because it needs to go first.
+            mHandler.sendMessage(
+                    mHandler.obtainMessage(SYSTEM_USER_START_MSG, request.userId, 0));
+        }
+
+        if (request.foreground) {
+            mHandler.sendMessage(mHandler.obtainMessage(SYSTEM_USER_CURRENT_MSG, request.userId,
+                    request.oldUserId));
+            mHandler.removeMessages(REPORT_USER_SWITCH_MSG);
+            mHandler.removeMessages(USER_SWITCH_TIMEOUT_MSG);
+            mHandler.sendMessage(mHandler.obtainMessage(REPORT_USER_SWITCH_MSG,
+                    request.oldUserId, request.userId, request.uss));
+            mHandler.sendMessageDelayed(mHandler.obtainMessage(USER_SWITCH_TIMEOUT_MSG,
+                    request.oldUserId, request.userId, request.uss), USER_SWITCH_TIMEOUT_MS);
+        }
+
+        if (request.needStart) {
+            // Send USER_STARTED broadcast
+            Intent intent = new Intent(Intent.ACTION_USER_STARTED);
+            intent.addFlags(Intent.FLAG_RECEIVER_REGISTERED_ONLY
+                    | Intent.FLAG_RECEIVER_FOREGROUND);
+            intent.putExtra(Intent.EXTRA_USER_HANDLE, request.userId);
+            mInjector.broadcastIntent(intent,
+                    null, null, 0, null, null, null, AppOpsManager.OP_NONE,
+                    null, false, false, MY_PID, SYSTEM_UID, request.callingUid, request.callingPid, request.userId);
+        }
+
+        if (request.foreground) {
+            moveUserToForeground(request.uss, request.oldUserId, request.userId);
+        } else {
+            finishUserBoot(request.uss);
+        }
+
+        if (request.needStart) {
+            Intent intent = new Intent(Intent.ACTION_USER_STARTING);
+            intent.addFlags(Intent.FLAG_RECEIVER_REGISTERED_ONLY);
+            intent.putExtra(Intent.EXTRA_USER_HANDLE, request.userId);
+            mInjector.broadcastIntent(intent,
+                    null, null, 0, null, null,
+                    new String[]{INTERACT_ACROSS_USERS}, AppOpsManager.OP_NONE,
+                    null, true, false, MY_PID, SYSTEM_UID, request.callingUid, request.callingPid,
+                    UserHandle.USER_ALL);
+        }
     }
 
     private boolean isCallingOnHandlerThread() {
