@@ -44,7 +44,7 @@ public class DynamicSystemService extends IDynamicSystemService.Stub implements 
     private static final String TAG = "DynamicSystemService";
     private static final String NO_SERVICE_ERROR = "no gsiservice";
     private static final int GSID_ROUGH_TIMEOUT_MS = 8192;
-    private static final String PATH_DEFAULT = "/data/gsi";
+    private static final String PATH_DEFAULT = "/data/gsi/";
     private Context mContext;
     private String mInstallPath;
     private volatile IGsiService mGsiService;
@@ -115,7 +115,7 @@ public class DynamicSystemService extends IDynamicSystemService.Stub implements 
     }
 
     @Override
-    public boolean startInstallation() throws RemoteException {
+    public boolean startInstallation(String dsuSlot) throws RemoteException {
         IGsiService service = getGsiService();
         // priority from high to low: sysprop -> sdcard -> /data
         String path = SystemProperties.get("os.aot.path");
@@ -130,11 +130,15 @@ public class DynamicSystemService extends IDynamicSystemService.Stub implements 
                 File sdCard = volume.getPathFile();
                 if (sdCard.isDirectory()) {
                     path = sdCard.getPath();
+                    if (!path.endsWith(File.separator)) {
+                        path += File.separator;
+                    }
+                    path += dsuSlot;
                     break;
                 }
             }
             if (path.isEmpty()) {
-                path = PATH_DEFAULT;
+                path = PATH_DEFAULT + dsuSlot;
             }
             Slog.i(TAG, "startInstallation -> " + path);
         }
@@ -206,7 +210,7 @@ public class DynamicSystemService extends IDynamicSystemService.Stub implements 
     @Override
     public boolean remove() throws RemoteException {
         IGsiService gsiService = getGsiService();
-        String install_dir = gsiService.getInstalledGsiImageDir();
+        String install_dir = gsiService.getActiveImageDir();
         return getGsiService().removeGsi();
     }
 
