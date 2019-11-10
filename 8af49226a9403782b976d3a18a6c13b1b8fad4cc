@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "91eeca96_7f2a0bb2",
+        "filename": "services/core/java/com/android/server/DynamicSystemService.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1081223
+      },
+      "writtenOn": "2019-11-10T12:41:45Z",
+      "side": 1,
+      "message": "Invert the check?",
+      "revId": "8af49226a9403782b976d3a18a6c13b1b8fad4cc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
