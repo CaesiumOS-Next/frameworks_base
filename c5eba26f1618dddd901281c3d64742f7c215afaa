@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e2dc4ad1_00cfbe7c",
+        "filename": "core/java/android/net/SntpClient.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 247,
+      "author": {
+        "id": 1288034
+      },
+      "writtenOn": "2019-11-11T08:58:32Z",
+      "side": 1,
+      "message": "Can the isClockSynchronized check be included here ?\nI think it would make sense to treat these failure cases the same way",
+      "range": {
+        "startLine": 232,
+        "startChar": 4,
+        "endLine": 247,
+        "endChar": 5
+      },
+      "revId": "c5eba26f1618dddd901281c3d64742f7c215afaa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}

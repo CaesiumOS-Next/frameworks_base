@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "4f798e95_be8c225a",
+        "filename": "core/java/android/net/SntpClient.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1288034
+      },
+      "writtenOn": "2019-11-11T08:58:32Z",
+      "side": 1,
+      "message": "I see, however this commit is using different IP addresses from the same set of servers, not a different set of servers (so it tries several addresses on 0.android.pool.ntp.org but not 1.android.pool.ntp.org); is that intended ?",
+      "parentUuid": "f5772dc0_357bd7e8",
+      "range": {
+        "startLine": 93,
+        "startChar": 38,
+        "endLine": 93,
+        "endChar": 73
+      },
+      "revId": "2e19e5d2d2ed6c91fdad054f15f7f1b161ca5fc4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "bc3bbe82_d6c0d7b9",
         "filename": "core/java/android/net/SntpClient.java",
         "patchSetId": 1
@@ -143,6 +167,30 @@
     },
     {
       "key": {
+        "uuid": "ac8615df_0ae31692",
+        "filename": "core/java/android/net/SntpClient.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1288034
+      },
+      "writtenOn": "2019-11-11T08:58:32Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "08d79689_ca8283b2",
+      "range": {
+        "startLine": 97,
+        "startChar": 16,
+        "endLine": 97,
+        "endChar": 35
+      },
+      "revId": "2e19e5d2d2ed6c91fdad054f15f7f1b161ca5fc4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f58c1536_fd894e2e",
         "filename": "core/java/android/net/SntpClient.java",
         "patchSetId": 1
@@ -187,6 +235,30 @@
       "revId": "2e19e5d2d2ed6c91fdad054f15f7f1b161ca5fc4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6a5fd7f9_f424cbdf",
+        "filename": "core/java/android/net/SntpClient.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1288034
+      },
+      "writtenOn": "2019-11-11T08:58:32Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "cf4127e2_ef59e74b",
+      "range": {
+        "startLine": 102,
+        "startChar": 48,
+        "endLine": 102,
+        "endChar": 55
+      },
+      "revId": "2e19e5d2d2ed6c91fdad054f15f7f1b161ca5fc4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
