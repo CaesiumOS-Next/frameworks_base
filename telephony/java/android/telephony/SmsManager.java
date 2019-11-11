@@ -327,7 +327,6 @@ public final class SmsManager {
      *  <code>RESULT_ERROR_RADIO_OFF</code><br>
      *  <code>RESULT_ERROR_NULL_PDU</code><br>
      *  <code>RESULT_ERROR_NO_SERVICE</code><br>
-     *  <code>RESULT_ERROR_NO_SERVICE</code><br>
      *  <code>RESULT_ERROR_LIMIT_EXCEEDED</code><br>
      *  <code>RESULT_ERROR_FDN_CHECK_FAILURE</code><br>
      *  <code>RESULT_ERROR_SHORT_CODE_NOT_ALLOWED</code><br>
@@ -419,7 +418,6 @@ public final class SmsManager {
      *  <code>RESULT_ERROR_GENERIC_FAILURE</code><br>
      *  <code>RESULT_ERROR_RADIO_OFF</code><br>
      *  <code>RESULT_ERROR_NULL_PDU</code><br>
-     *  <code>RESULT_ERROR_NO_SERVICE</code><br>
      *  <code>RESULT_ERROR_NO_SERVICE</code><br>
      *  <code>RESULT_ERROR_LIMIT_EXCEEDED</code><br>
      *  <code>RESULT_ERROR_FDN_CHECK_FAILURE</code><br>
@@ -820,7 +818,6 @@ public final class SmsManager {
      *  <code>RESULT_ERROR_RADIO_OFF</code><br>
      *  <code>RESULT_ERROR_NULL_PDU</code><br>
      *  <code>RESULT_ERROR_NO_SERVICE</code><br>
-     *  <code>RESULT_ERROR_NO_SERVICE</code><br>
      *  <code>RESULT_ERROR_LIMIT_EXCEEDED</code><br>
      *  <code>RESULT_ERROR_FDN_CHECK_FAILURE</code><br>
      *  <code>RESULT_ERROR_SHORT_CODE_NOT_ALLOWED</code><br>
@@ -1060,7 +1057,6 @@ public final class SmsManager {
      *  <code>RESULT_ERROR_RADIO_OFF</code><br>
      *  <code>RESULT_ERROR_NULL_PDU</code><br>
      *  <code>RESULT_ERROR_NO_SERVICE</code><br>
-     *  <code>RESULT_ERROR_NO_SERVICE</code><br>
      *  <code>RESULT_ERROR_LIMIT_EXCEEDED</code><br>
      *  <code>RESULT_ERROR_FDN_CHECK_FAILURE</code><br>
      *  <code>RESULT_ERROR_SHORT_CODE_NOT_ALLOWED</code><br>
@@ -1257,7 +1253,6 @@ public final class SmsManager {
      *  <code>RESULT_ERROR_GENERIC_FAILURE</code><br>
      *  <code>RESULT_ERROR_RADIO_OFF</code><br>
      *  <code>RESULT_ERROR_NULL_PDU</code><br>
-     *  <code>RESULT_ERROR_NO_SERVICE</code><br>
      *  <code>RESULT_ERROR_NO_SERVICE</code><br>
      *  <code>RESULT_ERROR_LIMIT_EXCEEDED</code><br>
      *  <code>RESULT_ERROR_FDN_CHECK_FAILURE</code><br>
