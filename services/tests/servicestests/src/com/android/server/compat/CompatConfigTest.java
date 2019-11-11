@@ -31,6 +31,9 @@ import org.junit.runner.RunWith;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.HashSet;
 import java.util.UUID;
 
 @RunWith(AndroidJUnit4.class)
@@ -150,12 +153,28 @@ public class CompatConfigTest {
     }
 
     @Test
-    public void testRemovePackageOverride() {
+    public void testRemoveOverride() {
         CompatConfig pc = new CompatConfig();
         pc.addChange(new CompatChange(1234L, "MY_CHANGE", -1, false));
         pc.addOverride(1234L, "com.some.package", false);
         pc.removeOverride(1234L, "com.some.package");
         assertThat(pc.isChangeEnabled(1234L, makeAppInfo("com.some.package", 2))).isTrue();
+    }
+
+    @Test
+    public void testRemovePackageOverride() {
+        CompatConfig pc = new CompatConfig();
+        pc.addChange(new CompatChange(1234L, "MY_CHANGE", -1, false));
+        pc.addChange(new CompatChange(2345L, "ANOTHER_CHANGE", -1, false));
+        pc.addOverride(1234L, "com.some.package", false);
+        pc.addOverride(1234L, "com.other.package", false);
+        pc.addOverride(2345L, "com.other.package", false);
+
+        assertThat(pc.removePackageOverrides("com.some.package").equals(
+                Collections.singleton(1234L))).isTrue();
+        assertThat(pc.removePackageOverrides("com.other.package").equals(
+                new HashSet<>(Arrays.asList(1234L, 2345L)))).isTrue();
+        assertThat(pc.removePackageOverrides("com.other.package2").isEmpty()).isTrue();
     }
 
     @Test

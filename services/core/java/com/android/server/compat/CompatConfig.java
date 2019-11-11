@@ -234,13 +234,18 @@ final class CompatConfig {
      * processes have been restarted.
      *
      * @param packageName The package for which the overrides should be purged.
+     * @return the set of changes for which there was an override for packageName.
      */
-    void removePackageOverrides(String packageName) {
+    Set<Long> removePackageOverrides(String packageName) {
+        Set<Long> affectedChanges = new HashSet<>();
         synchronized (mChanges) {
             for (int i = 0; i < mChanges.size(); ++i) {
-                mChanges.valueAt(i).removePackageOverride(packageName);
+                if (mChanges.valueAt(i).removePackageOverride(packageName)) {
+                    affectedChanges.add(mChanges.valueAt(i).getId());
+                }
             }
         }
+        return affectedChanges;
     }
 
     /**

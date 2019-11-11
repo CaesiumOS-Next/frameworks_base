@@ -27,6 +27,7 @@ import android.os.UserHandle;
 import android.util.Slog;
 import android.util.StatsLog;
 
+import com.android.internal.annotations.GuardedBy;
 import com.android.internal.compat.ChangeReporter;
 import com.android.internal.compat.CompatibilityChangeConfig;
 import com.android.internal.compat.CompatibilityChangeInfo;
@@ -35,6 +36,10 @@ import com.android.internal.util.DumpUtils;
 
 import java.io.FileDescriptor;
 import java.io.PrintWriter;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Set;
 
 /**
  * System server internal API for gating and reporting compatibility changes.
@@ -46,10 +51,26 @@ public class PlatformCompat extends IPlatformCompat.Stub {
     private final Context mContext;
     private final ChangeReporter mChangeReporter;
 
+    /**
+     * The API that listeners need to implement to get updates on overrides.
+     * See {@link #registerListener(long, ChangeListener)} for more details.
+     */
+    public interface ChangeListener {
+        /**
+         * Called upon an override change for packageName and the change this listener is
+         * registered for. Called before the app is killed.
+         */
+        void overrideUpdate(String packageName);
+    }
+
+    @GuardedBy("mListeners")
+    private Map<Long, ChangeListener> mListeners;
+
     public PlatformCompat(Context context) {
         mContext = context;
         mChangeReporter = new ChangeReporter(
                 StatsLog.APP_COMPATIBILITY_CHANGE_REPORTED__SOURCE__SYSTEM_SERVER);
+        mListeners = new HashMap<>();
     }
 
     @Override
@@ -107,15 +128,41 @@ public class PlatformCompat extends IPlatformCompat.Stub {
         return enabled;
     }
 
+    /**
+     * Register a listener for change state overrides. One listener per change is allowed.
+     *
+     * <p>{@code listener.overrideUpdate(String)} method is guaranteed to be called with
+     * packageName before the app is killed upon an override change. The state of a change is not
+     * guaranteed to change when {@code listener.overrideUpdate(String)} is called.
+     *
+     * @param changeId to get updates for
+     * @param listener the listener that will be called upon a potential change for package.
+     * @throws IllegalArgumentException if a listener was already registered for changeId
+     */
+    public void registerListener(long changeId, ChangeListener listener)
+            throws IllegalArgumentException {
+        synchronized (mListeners) {
+            if (mListeners.containsKey(changeId)) {
+                throw new IllegalArgumentException(
+                        "Listener for change " + changeId + " already registered.");
+            }
+            mListeners.put(changeId, listener);
+        }
+    }
+
     @Override
     public void setOverrides(CompatibilityChangeConfig overrides, String packageName) {
         CompatConfig.get().addOverrides(overrides, packageName);
+        updateListeners(overrides.disabledChanges(), packageName);
+        updateListeners(overrides.enabledChanges(), packageName);
         killPackage(packageName);
     }
 
     @Override
     public void setOverridesForTest(CompatibilityChangeConfig overrides, String packageName) {
         CompatConfig.get().addOverrides(overrides, packageName);
+        updateListeners(overrides.disabledChanges(), packageName);
+        updateListeners(overrides.enabledChanges(), packageName);
     }
 
     @Override
@@ -128,6 +175,7 @@ public class PlatformCompat extends IPlatformCompat.Stub {
     @Override
     public boolean clearOverride(long changeId, String packageName) {
         boolean existed = CompatConfig.get().removeOverride(changeId, packageName);
+        updateListeners(Collections.singleton(new Long(changeId)), packageName);
         killPackage(packageName);
         return existed;
     }
@@ -230,6 +278,16 @@ public class PlatformCompat extends IPlatformCompat.Stub {
             }
         } finally {
             Binder.restoreCallingIdentity(identity);
+        }
+    }
+
+    private void updateListeners(Set<Long> overrides, String packageName) {
+        synchronized (mListeners) {
+            for (Long change : overrides) {
+                if (mListeners.containsKey(change)) {
+                    mListeners.get(change).overrideUpdate(packageName);
+                }
+            }
         }
     }
 }

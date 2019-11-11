@@ -72,6 +72,7 @@ public final class CompatChange extends CompatibilityChangeInfo {
      *
      * @param pname Package name to enable the change for.
      * @param enabled Whether or not to enable the change.
+     * @returns {@code true} if an override for changeId and pname existed.
      */
     void addPackageOverride(String pname, boolean enabled) {
         if (mPackageOverrides == null) {
@@ -87,10 +88,13 @@ public final class CompatChange extends CompatibilityChangeInfo {
      *
      * @param pname Package name to reset to defaults for.
      */
-    void removePackageOverride(String pname) {
+    boolean removePackageOverride(String pname) {
         if (mPackageOverrides != null) {
-            mPackageOverrides.remove(pname);
+            if (mPackageOverrides.remove(pname) != null) {
+                return true;
+            }
         }
+        return false;
     }
 
     /**
