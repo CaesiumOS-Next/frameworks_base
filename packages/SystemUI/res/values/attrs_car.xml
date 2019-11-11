@@ -44,6 +44,8 @@
         <attr name="unselectedAlpha" />
         <!-- Render a "more" icon. Defaults true  -->
         <attr name="useMoreIcon" format="boolean" />
+        <!-- Set display on which activity will launch  -->
+        <attr name="launchDisplay" format="integer" />
 
     </declare-styleable>
 
