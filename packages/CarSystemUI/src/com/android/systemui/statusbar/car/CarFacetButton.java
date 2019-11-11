@@ -16,6 +16,7 @@
 
 package com.android.systemui.statusbar.car;
 
+import android.app.ActivityOptions;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.TypedArray;
@@ -92,6 +93,7 @@ public class CarFacetButton extends LinearLayout {
         String longPressIntentString = typedArray.getString(R.styleable.CarFacetButton_longIntent);
         String categoryString = typedArray.getString(R.styleable.CarFacetButton_categories);
         String packageString = typedArray.getString(R.styleable.CarFacetButton_packages);
+        String displayString = typedArray.getString(R.styleable.CarFacetButton_launchDisplay);
         String componentNameString =
                 typedArray.getString(R.styleable.CarFacetButton_componentNames);
         try {
@@ -110,9 +112,14 @@ public class CarFacetButton extends LinearLayout {
                 mComponentNames = componentNameString.split(FACET_FILTER_DELIMITER);
             }
 
+            final ActivityOptions options = ActivityOptions.makeBasic();
+            if (displayString != null) {
+                options.setLaunchDisplayId(Integer.parseInt(displayString));
+            }
+
             setOnClickListener(v -> {
                 intent.putExtra(EXTRA_FACET_LAUNCH_PICKER, mSelected);
-                mContext.startActivityAsUser(intent, UserHandle.CURRENT);
+                mContext.startActivityAsUser(intent, options.toBundle(), UserHandle.CURRENT);
             });
 
             if (longPressIntentString != null) {
