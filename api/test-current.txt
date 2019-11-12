@@ -2990,6 +2990,15 @@ package android.telephony.emergency {
 
 }
 
+package android.telephony.ims {
+
+  public final class ImsReasonInfo implements android.os.Parcelable {
+    ctor public ImsReasonInfo(int, int);
+    ctor public ImsReasonInfo(int, int, @Nullable String);
+  }
+
+}
+
 package android.telephony.mbms {
 
   public static class DownloadRequest.Builder {

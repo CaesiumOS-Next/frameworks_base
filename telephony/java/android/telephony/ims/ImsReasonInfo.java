@@ -18,8 +18,10 @@ package android.telephony.ims;
 
 import android.annotation.IntDef;
 import android.annotation.NonNull;
-import android.annotation.SystemApi;
+import android.annotation.Nullable;
+import android.annotation.TestApi;
 import android.annotation.UnsupportedAppUsage;
+import android.os.Build;
 import android.os.Parcel;
 import android.os.Parcelable;
 
@@ -28,10 +30,7 @@ import java.lang.annotation.RetentionPolicy;
 
 /**
  * This class enables an application to get details on why a method call failed.
- *
- * @hide
  */
-@SystemApi
 public final class ImsReasonInfo implements Parcelable {
 
     /**
@@ -1088,8 +1087,8 @@ public final class ImsReasonInfo implements Parcelable {
      * Network string error messages.
      * mExtraMessage may have these values.
      */
-    public static final String EXTRA_MSG_SERVICE_NOT_AUTHORIZED
-            = "Forbidden. Not Authorized for Service";
+    public static final String EXTRA_MSG_SERVICE_NOT_AUTHORIZED =
+            "android.telephony.ims.extra.MSG_SERVICE_NOT_AUTHORIZED";
 
 
     /*
@@ -1121,16 +1120,18 @@ public final class ImsReasonInfo implements Parcelable {
 
     // For main reason code
     /** @hide */
-    @UnsupportedAppUsage
-    public int mCode;
+    //@UnsupportedAppUsage(maxTargetSdk = Build.VERSION_CODES.Q)
+    @UnsupportedAppUsage(maxTargetSdk = Build.VERSION_CODES.Q, publicAlternatives = "{@code "
+            + "#getCode()}")
+    public final int mCode;
     // For the extra code value; it depends on the code value.
-    /** @hide */
     @UnsupportedAppUsage
-    public int mExtraCode;
+    private int mExtraCode;
     // For the additional message of the reason info.
     /** @hide */
-    @UnsupportedAppUsage
-    public String mExtraMessage;
+    @UnsupportedAppUsage(maxTargetSdk = Build.VERSION_CODES.Q, publicAlternatives = "{@code "
+            + "#getCode()}")
+    public final String mExtraMessage;
 
     /** @hide */
     public ImsReasonInfo() {
@@ -1146,14 +1147,16 @@ public final class ImsReasonInfo implements Parcelable {
     }
 
     /** @hide */
-    @UnsupportedAppUsage
+    @TestApi
     public ImsReasonInfo(int code, int extraCode) {
         mCode = code;
         mExtraCode = extraCode;
         mExtraMessage = null;
     }
 
-    public ImsReasonInfo(int code, int extraCode, String extraMessage) {
+    /** @hide */
+    @TestApi
+    public ImsReasonInfo(int code, int extraCode, @Nullable String extraMessage) {
         mCode = code;
         mExtraCode = extraCode;
         mExtraMessage = extraMessage;
@@ -1177,7 +1180,7 @@ public final class ImsReasonInfo implements Parcelable {
      * @return an optional OEM specified string that provides extra information about the operation
      * result.
      */
-    public String getExtraMessage() {
+    public @Nullable String getExtraMessage() {
         return mExtraMessage;
     }
 
@@ -1196,13 +1199,13 @@ public final class ImsReasonInfo implements Parcelable {
     }
 
     @Override
-    public void writeToParcel(Parcel out, int flags) {
+    public void writeToParcel(@NonNull Parcel out, int flags) {
         out.writeInt(mCode);
         out.writeInt(mExtraCode);
         out.writeString(mExtraMessage);
     }
 
-    public static final @android.annotation.NonNull Creator<ImsReasonInfo> CREATOR = new Creator<ImsReasonInfo>() {
+    public static final @NonNull Creator<ImsReasonInfo> CREATOR = new Creator<ImsReasonInfo>() {
         @Override
         public ImsReasonInfo createFromParcel(Parcel in) {
             return new ImsReasonInfo(in);
