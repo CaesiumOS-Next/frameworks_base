@@ -45,6 +45,30 @@
       "revId": "f57aba60fafb0dcfdbe244e463c8a5bab0a9111e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c6d74725_69975396",
+        "filename": "media/java/android/media/tv/TvTrackInfo.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 328,
+      "author": {
+        "id": 1238642
+      },
+      "writtenOn": "2019-11-12T08:35:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a339327c_f89f466f",
+      "range": {
+        "startLine": 328,
+        "startChar": 27,
+        "endLine": 328,
+        "endChar": 41
+      },
+      "revId": "f57aba60fafb0dcfdbe244e463c8a5bab0a9111e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
