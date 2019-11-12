@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ad08650e_f46293c9",
+        "filename": "api/current.txt",
+        "patchSetId": 5
+      },
+      "lineNbr": 26793,
+      "author": {
+        "id": 1018371
+      },
+      "writtenOn": "2019-11-12T08:10:50Z",
+      "side": 1,
+      "message": "TvTrackInfo.isHardOfHearing() doesn\u0027t sound natural to me.\n\nAs a native speaker, Nick, what do you think? Shouldn\u0027t it be \"isForHardOfHearing\" or something else?",
+      "range": {
+        "startLine": 26793,
+        "startChar": 26,
+        "endLine": 26793,
+        "endChar": 41
+      },
+      "revId": "f57aba60fafb0dcfdbe244e463c8a5bab0a9111e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a339327c_f89f466f",
+        "filename": "media/java/android/media/tv/TvTrackInfo.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 328,
+      "author": {
+        "id": 1018371
+      },
+      "writtenOn": "2019-11-12T08:10:50Z",
+      "side": 1,
+      "message": "Isn\u0027t it for TYPE_AUDIO instead of TYPE_VIDEO? (See L188)",
+      "range": {
+        "startLine": 328,
+        "startChar": 27,
+        "endLine": 328,
+        "endChar": 41
+      },
+      "revId": "f57aba60fafb0dcfdbe244e463c8a5bab0a9111e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
