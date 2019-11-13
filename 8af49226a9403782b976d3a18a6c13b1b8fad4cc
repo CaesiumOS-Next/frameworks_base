@@ -16,6 +16,24 @@
       "revId": "8af49226a9403782b976d3a18a6c13b1b8fad4cc",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3b5caea3_2b0029e7",
+        "filename": "services/core/java/com/android/server/DynamicSystemService.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1135739
+      },
+      "writtenOn": "2019-11-13T03:25:16Z",
+      "side": 1,
+      "message": "Ack .Thanks Luca",
+      "parentUuid": "91eeca96_7f2a0bb2",
+      "revId": "8af49226a9403782b976d3a18a6c13b1b8fad4cc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
