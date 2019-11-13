@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "04c15dba_de5ad6bd",
+        "filename": "media/java/android/media/MediaMuxer.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 377,
+      "author": {
+        "id": 1396722
+      },
+      "writtenOn": "2019-11-13T03:05:16Z",
+      "side": 1,
+      "message": "I believe that it isn\u0027t the responsibility of the muxer module to check for available disk space. Also available disk space keeps varying every now and then. it is upto the user of mediamuxer/app to make the decision as to how much data it can write and stop accordingly.\n\nBut if we are going with this logic in SDK, we need to do this at the NDK level as well, I mean in NdkMediaMuxer.cpp",
+      "revId": "1ea30440ef177ad1c8839b2ae67ec393cfbd830a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e250186a_0d072611",
+        "filename": "media/java/android/media/MediaRecorder.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 1049,
+      "author": {
+        "id": 1396722
+      },
+      "writtenOn": "2019-11-13T03:05:16Z",
+      "side": 1,
+      "message": "As mentioned in the comment on MediaMuxer, I believe that unless user specifies max file size explicitly using MediaRecorder.setMaxFileSize API, we can\u0027t be doing this implicitly.",
+      "range": {
+        "startLine": 1049,
+        "startChar": 31,
+        "endLine": 1049,
+        "endChar": 51
+      },
+      "revId": "1ea30440ef177ad1c8839b2ae67ec393cfbd830a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9c00e1a8_8d20b792",
+        "filename": "media/java/android/media/Utils.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 317,
+      "author": {
+        "id": 1396722
+      },
+      "writtenOn": "2019-11-13T03:05:16Z",
+      "side": 1,
+      "message": "case maxFreeBytes \u003c maxFileSizeBytes:\nSince this happens before start, how do we guarantee that maxFreeBytes in that filesystem is available to writer/this app exclusively.  It could be that a background download would consume some space on the disk, so do we need to take care of that situation too?\n\nAnother, but less severe case than the previous one:\nWould we be restricting the user to Math.min(maxFreeBytes, maxFileSizeBytes) size when there could be some space freed up in the filesystem by another user/thread etc.. ?",
+      "revId": "1ea30440ef177ad1c8839b2ae67ec393cfbd830a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
