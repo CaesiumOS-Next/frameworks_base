@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "8e3ce06e_f39b1242",
+        "filename": "media/java/android/media/MediaMuxer.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 377,
+      "author": {
+        "id": 1233895
+      },
+      "writtenOn": "2019-11-13T08:24:32Z",
+      "side": 1,
+      "message": "I understand your comment. \n\n\u003e\u003e I believe that it isn\u0027t the responsibility of the muxer module to check for available disk space. \n\nThis is a kind of workaround. Currently file write does not return any error, so user may get corrupted file if storage is almost full. We checked if we can protect from user in write. But it\u0027s difficult to add error handling on every write operation. With this check, current behavior can be improved, we think.\n\n\u003e\u003e But if we are going with this logic in SDK, we need to do this at the NDK level as well, I mean in NdkMediaMuxer.cpp\n\nWe considered to do it, but currently storage manager is in Java layer. We could not find other way to get it from native layer.",
+      "parentUuid": "04c15dba_de5ad6bd",
+      "revId": "1ea30440ef177ad1c8839b2ae67ec393cfbd830a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e250186a_0d072611",
         "filename": "media/java/android/media/MediaRecorder.java",
         "patchSetId": 6
@@ -42,6 +60,30 @@
     },
     {
       "key": {
+        "uuid": "61ace816_ce1fc228",
+        "filename": "media/java/android/media/MediaRecorder.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 1049,
+      "author": {
+        "id": 1233895
+      },
+      "writtenOn": "2019-11-13T08:24:32Z",
+      "side": 1,
+      "message": "Commented on MediaMuxer, but we think current solution can improve current behavior with simple solution.",
+      "parentUuid": "e250186a_0d072611",
+      "range": {
+        "startLine": 1049,
+        "startChar": 31,
+        "endLine": 1049,
+        "endChar": 51
+      },
+      "revId": "1ea30440ef177ad1c8839b2ae67ec393cfbd830a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "9c00e1a8_8d20b792",
         "filename": "media/java/android/media/Utils.java",
         "patchSetId": 6
@@ -53,6 +95,24 @@
       "writtenOn": "2019-11-13T03:05:16Z",
       "side": 1,
       "message": "case maxFreeBytes \u003c maxFileSizeBytes:\nSince this happens before start, how do we guarantee that maxFreeBytes in that filesystem is available to writer/this app exclusively.  It could be that a background download would consume some space on the disk, so do we need to take care of that situation too?\n\nAnother, but less severe case than the previous one:\nWould we be restricting the user to Math.min(maxFreeBytes, maxFileSizeBytes) size when there could be some space freed up in the filesystem by another user/thread etc.. ?",
+      "revId": "1ea30440ef177ad1c8839b2ae67ec393cfbd830a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6ee2d44e_31fbd1d2",
+        "filename": "media/java/android/media/Utils.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 317,
+      "author": {
+        "id": 1233895
+      },
+      "writtenOn": "2019-11-13T08:24:32Z",
+      "side": 1,
+      "message": "Strictly speaking, you are correct. But our solution can improve current situation with simple change. We can prevent user from creating corrupted video file.",
+      "parentUuid": "9c00e1a8_8d20b792",
       "revId": "1ea30440ef177ad1c8839b2ae67ec393cfbd830a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
