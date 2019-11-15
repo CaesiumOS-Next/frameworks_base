@@ -22,6 +22,30 @@
       "revId": "c5eba26f1618dddd901281c3d64742f7c215afaa",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cc41da83_a405bbd3",
+        "filename": "core/java/android/net/SntpClient.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 247,
+      "author": {
+        "id": 1238642
+      },
+      "writtenOn": "2019-11-15T09:33:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e2dc4ad1_00cfbe7c",
+      "range": {
+        "startLine": 232,
+        "startChar": 4,
+        "endLine": 247,
+        "endChar": 5
+      },
+      "revId": "c5eba26f1618dddd901281c3d64742f7c215afaa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }

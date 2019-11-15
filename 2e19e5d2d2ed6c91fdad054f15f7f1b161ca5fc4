@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "ab4c57f1_8ab5a5a3",
+        "filename": "core/java/android/net/SntpClient.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1238642
+      },
+      "writtenOn": "2019-11-15T09:33:18Z",
+      "side": 1,
+      "message": "please correct me if I was wrong.\n\nMultiple IP addresses can be obtained from a single Domain Name.\nthis commit is using getAllByName for DNS Round Robin.\n\nand problem was happened like below.\naddress[0]NG\naddress[1]NG\naddress[2]OK\n\nSo yes.",
+      "parentUuid": "4f798e95_be8c225a",
+      "range": {
+        "startLine": 93,
+        "startChar": 38,
+        "endLine": 93,
+        "endChar": 73
+      },
+      "revId": "2e19e5d2d2ed6c91fdad054f15f7f1b161ca5fc4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "bc3bbe82_d6c0d7b9",
         "filename": "core/java/android/net/SntpClient.java",
         "patchSetId": 1
