@@ -5191,7 +5191,7 @@ package android.os {
   }
 
   public class HidlMemory implements java.io.Closeable {
-    ctor public HidlMemory(@NonNull String, long, @Nullable android.os.NativeHandle, boolean);
+    ctor public HidlMemory(@NonNull String, long, @Nullable android.os.NativeHandle);
     method public void close() throws java.io.IOException;
     method @NonNull public android.os.HidlMemory dup() throws java.io.IOException;
     method protected void finalize();

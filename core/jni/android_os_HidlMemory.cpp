@@ -51,17 +51,15 @@ static void nativeFinalize(JNIEnv* env, jobject jobj) {
 }
 
 static JNINativeMethod gMethods[] = {
-    {"nativeFinalize", "()V", (void*) nativeFinalize},
+        {"nativeFinalize", "()V", (void*) nativeFinalize},
 };
 
 }  // namespace
 
 JHidlMemory::~JHidlMemory() {
     if (mObj) {
-        // Must manually delete the underlying handle - hidl_memory has a weird
-        // ownership model, where ownership implies both owning the handle and
-        // the underlying FD. We don't want the latter in this case, so we are
-        // responsible for disposing of the handle.
+        // Must manually delete the underlying handle - hidl_memory doesn't own
+        // it.
         native_handle_delete(const_cast<native_handle_t*>(mObj->handle()));
     }
 }
@@ -86,8 +84,8 @@ JHidlMemory::~JHidlMemory() {
     }
     jstring jname = stringToJava(env, cobj.name());
     jlong jsize = static_cast<jlong>(cobj.size());
-    jobject
-        jhandle = JNativeHandle::MakeJavaNativeHandleObj(env, cobj.handle());
+    jobject jhandle =
+            JNativeHandle::MakeJavaNativeHandleObj(env, cobj.handle());
 
     // We're sharing the handle of cobj, so the Java instance doesn't own it.
     return env->NewObject(gFields.clazz,
@@ -99,10 +97,10 @@ JHidlMemory::~JHidlMemory() {
 }
 
 /* static */ std::unique_ptr<hardware::hidl_memory> JHidlMemory::javaToNative(
-    JNIEnv* env,
-    jobject jobj) {
+        JNIEnv* env,
+        jobject jobj) {
     jstring jname =
-        static_cast<jstring>(env->CallObjectMethod(jobj, gFields.getName));
+            static_cast<jstring>(env->CallObjectMethod(jobj, gFields.getName));
     jlong jsize = env->CallLongMethod(jobj, gFields.getSize);
     jobject jhandle = env->CallObjectMethod(jobj, gFields.getHandle);
 
@@ -112,8 +110,13 @@ JHidlMemory::~JHidlMemory() {
 
     std::string cname = stringFromJava(env, jname);
     size_t csize = jsize;
+    // We created the handle here, we're responsible to call
+    // native_handle_delete() on it. However, we don't assume ownership of the
+    // underlying fd, so we shouldn't call native_handle_close() on it.
     native_handle_t* chandle = JNativeHandle::MakeCppNativeHandle(env, jhandle,
                                                                   nullptr);
+    // hidl_memory doesn't take ownership of the handle here, so won't delete
+    // or close it.
     return std::make_unique<hardware::hidl_memory>(cname, chandle, csize);
 }
 
@@ -141,9 +144,9 @@ int register_android_os_HidlMemory(JNIEnv* env) {
     gFields.constructor = GetMethodIDOrDie(env,
                                            clazz,
                                            "<init>",
-                                           "(Ljava/lang/String;JL" PACKAGE_PATH "/NativeHandle;Z)V");
+                                           "(Ljava/lang/String;JL" PACKAGE_PATH "/NativeHandle;)V");
     gFields.getName =
-        GetMethodIDOrDie(env, clazz, "getName", "()Ljava/lang/String;");
+            GetMethodIDOrDie(env, clazz, "getName", "()Ljava/lang/String;");
     gFields.getSize = GetMethodIDOrDie(env, clazz, "getSize", "()J");
     gFields.getHandle = GetMethodIDOrDie(env,
                                          clazz,

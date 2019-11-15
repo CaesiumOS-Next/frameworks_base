@@ -40,7 +40,6 @@ public class HidlMemory implements Closeable {
     private final @NonNull String mName;
     private final long mSize;
     private final @Nullable NativeHandle mHandle;
-    private boolean mOwnHandle;
     private long mNativeContext;  // For use of native code.
 
     /**
@@ -48,19 +47,14 @@ public class HidlMemory implements Closeable {
      *
      * @param name      The name (determined how to interpret the handle).
      * @param size      The size in bytes of the memory block.
-     * @param handle    The handle. May be null, in which case, the same semantics hold as far as
-     *                  ownership. However, {@link #close()} will be a no-op in case the handle is
-     *                  null and owned.
-     * @param ownHandle If true, the underlying handle will be closed when this object is destroyed,
-     *                  or with an explicit call to {@link #close()}. Handle can be released using
-     *                  {@link #releaseHandle()}.
+     * @param handle    The handle. May be null. This instance will own the handle and will close it
+     *                  as soon as {@link #close()} is called or the object is destroyed. This, this
+     *                  handle instance should generally not be shared with other clients.
      */
-    public HidlMemory(@NonNull String name, long size, @Nullable NativeHandle handle,
-            boolean ownHandle) {
+    public HidlMemory(@NonNull String name, long size, @Nullable NativeHandle handle) {
         mName = Preconditions.checkNotNull(name);
         mSize = Preconditions.checkArgumentNonnegative(size);
         mHandle = handle;
-        mOwnHandle = ownHandle;
     }
 
     /**
@@ -69,7 +63,7 @@ public class HidlMemory implements Closeable {
      */
     @NonNull
     public HidlMemory dup() throws IOException {
-        return new HidlMemory(mName, mSize, mHandle != null ? mHandle.dup() : null, true);
+        return new HidlMemory(mName, mSize, mHandle != null ? mHandle.dup() : null);
     }
 
     /**
@@ -78,7 +72,6 @@ public class HidlMemory implements Closeable {
      */
     @Override
     public void close() throws IOException {
-        checkOwnHandle();
         if (mHandle != null) {
             mHandle.close();
         }
@@ -92,8 +85,6 @@ public class HidlMemory implements Closeable {
      */
     @NonNull
     public NativeHandle releaseHandle() {
-        checkOwnHandle();
-        mOwnHandle = false;
         return mHandle;
     }
 
@@ -127,22 +118,14 @@ public class HidlMemory implements Closeable {
         return mHandle;
     }
 
-    private void checkOwnHandle() {
-        if (!mOwnHandle) {
-            throw new IllegalStateException("Handle is not owned by this object.");
-        }
-    }
-
     @Override
     protected void finalize() {
-        if (mOwnHandle) {
-            try {
-                close();
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            } finally {
-                nativeFinalize();
-            }
+        try {
+            close();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        } finally {
+            nativeFinalize();
         }
     }
 
