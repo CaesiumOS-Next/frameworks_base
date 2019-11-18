@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "988b8d11_f8457782",
+        "filename": "keystore/java/android/security/KeyStore.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 942,
+      "author": {
+        "id": 1043663
+      },
+      "writtenOn": "2019-11-18T21:52:54Z",
+      "side": 1,
+      "message": "Nit:  Use EmptyArray.BYTE.",
+      "range": {
+        "startLine": 942,
+        "startChar": 44,
+        "endLine": 942,
+        "endChar": 55
+      },
+      "revId": "92743aeb44087ad60de820c13086eb61637a0fd3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
