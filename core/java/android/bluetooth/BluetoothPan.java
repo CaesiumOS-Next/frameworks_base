@@ -16,8 +16,11 @@
 
 package android.bluetooth;
 
+import android.annotation.NonNull;
+import android.annotation.Nullable;
 import android.annotation.SdkConstant;
 import android.annotation.SdkConstant.SdkConstantType;
+import android.annotation.SystemApi;
 import android.annotation.UnsupportedAppUsage;
 import android.content.Context;
 import android.os.Binder;
@@ -40,6 +43,7 @@ import java.util.List;
  *
  * @hide
  */
+@SystemApi
 public final class BluetoothPan implements BluetoothProfile {
     private static final String TAG = "BluetoothPan";
     private static final boolean DBG = true;
@@ -69,14 +73,14 @@ public final class BluetoothPan implements BluetoothProfile {
      */
     @SdkConstant(SdkConstantType.BROADCAST_INTENT_ACTION)
     public static final String ACTION_CONNECTION_STATE_CHANGED =
-            "android.bluetooth.pan.profile.action.CONNECTION_STATE_CHANGED";
+            "android.bluetooth.action.CONNECTION_STATE_CHANGED";
 
     /**
      * Extra for {@link #ACTION_CONNECTION_STATE_CHANGED} intent
      * The local role of the PAN profile that the remote device is bound to.
      * It can be one of {@link #LOCAL_NAP_ROLE} or {@link #LOCAL_PANU_ROLE}.
      */
-    public static final String EXTRA_LOCAL_ROLE = "android.bluetooth.pan.extra.LOCAL_ROLE";
+    public static final String EXTRA_LOCAL_ROLE = "android.bluetooth.extra.LOCAL_ROLE";
 
     public static final int PAN_ROLE_NONE = 0;
     /**
@@ -134,6 +138,8 @@ public final class BluetoothPan implements BluetoothProfile {
     /**
      * Create a BluetoothPan proxy object for interacting with the local
      * Bluetooth Service which handles the Pan profile
+     *
+     * @hide
      */
     @UnsupportedAppUsage
     /*package*/ BluetoothPan(Context context, ServiceListener listener) {
@@ -235,7 +241,7 @@ public final class BluetoothPan implements BluetoothProfile {
      * {@inheritDoc}
      */
     @Override
-    public List<BluetoothDevice> getConnectedDevices() {
+    public @NonNull List<BluetoothDevice> getConnectedDevices() {
         if (VDBG) log("getConnectedDevices()");
         final IBluetoothPan service = getService();
         if (service != null && isEnabled()) {
@@ -252,6 +258,7 @@ public final class BluetoothPan implements BluetoothProfile {
 
     /**
      * {@inheritDoc}
+     * @hide
      */
     @Override
     public List<BluetoothDevice> getDevicesMatchingConnectionStates(int[] states) {
@@ -273,7 +280,7 @@ public final class BluetoothPan implements BluetoothProfile {
      * {@inheritDoc}
      */
     @Override
-    public int getConnectionState(BluetoothDevice device) {
+    public int getConnectionState(@Nullable BluetoothDevice device) {
         if (VDBG) log("getState(" + device + ")");
         final IBluetoothPan service = getService();
         if (service != null && isEnabled() && isValidDevice(device)) {
@@ -288,7 +295,11 @@ public final class BluetoothPan implements BluetoothProfile {
         return BluetoothProfile.STATE_DISCONNECTED;
     }
 
-    @UnsupportedAppUsage
+    /**
+     * Turns on/off bluetooth tethering
+     *
+     * @param value is whether to enable or disable bluetooth tethering
+     */
     public void setBluetoothTethering(boolean value) {
         String pkgName = mContext.getOpPackageName();
         if (DBG) log("setBluetoothTethering(" + value + "), calling package:" + pkgName);
@@ -302,7 +313,11 @@ public final class BluetoothPan implements BluetoothProfile {
         }
     }
 
-    @UnsupportedAppUsage
+    /**
+     * Determines whether tethering is enabled
+     *
+     * @return true if tethering is on, false if not or some error occurred
+     */
     public boolean isTetheringOn() {
         if (VDBG) log("isTetheringOn()");
         final IBluetoothPan service = getService();
