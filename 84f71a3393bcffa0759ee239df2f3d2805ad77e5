@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "24567dd4_ee7a11ea",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1308163
+      },
+      "writtenOn": "2019-11-21T04:27:18Z",
+      "side": 1,
+      "message": "Actually, the intent delay is very common too. 😂",
+      "range": {
+        "startLine": 14,
+        "startChar": 18,
+        "endLine": 16,
+        "endChar": 25
+      },
+      "revId": "84f71a3393bcffa0759ee239df2f3d2805ad77e5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
