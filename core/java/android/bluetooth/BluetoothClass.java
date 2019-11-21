@@ -16,12 +16,16 @@
 
 package android.bluetooth;
 
+import android.annotation.IntDef;
+import android.annotation.SystemApi;
 import android.annotation.TestApi;
 import android.annotation.UnsupportedAppUsage;
 import android.os.Build;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 import java.util.Arrays;
@@ -327,20 +331,31 @@ public final class BluetoothClass implements Parcelable {
     }
 
     /** @hide */
-    @UnsupportedAppUsage
+    @IntDef(prefix = "PROFILE_", value = {PROFILE_HEADSET, PROFILE_A2DP, PROFILE_OPP, PROFILE_HID,
+            PROFILE_PANU, PROFILE_NAP, PROFILE_A2DP_SINK})
+    @Retention(RetentionPolicy.SOURCE)
+    public @interface Profile{}
+
+    /** @hide */
+    @SystemApi
     public static final int PROFILE_HEADSET = 0;
     /** @hide */
-    @UnsupportedAppUsage
+    @SystemApi
     public static final int PROFILE_A2DP = 1;
     /** @hide */
+    @SystemApi
     public static final int PROFILE_OPP = 2;
     /** @hide */
+    @SystemApi
     public static final int PROFILE_HID = 3;
     /** @hide */
+    @SystemApi
     public static final int PROFILE_PANU = 4;
     /** @hide */
+    @SystemApi
     public static final int PROFILE_NAP = 5;
     /** @hide */
+    @SystemApi
     public static final int PROFILE_A2DP_SINK = 6;
 
     /**
@@ -353,8 +368,8 @@ public final class BluetoothClass implements Parcelable {
      * @return True if this device might support specified profile.
      * @hide
      */
-    @UnsupportedAppUsage
-    public boolean doesClassMatch(int profile) {
+    @SystemApi
+    public boolean doesClassMatch(@Profile int profile) {
         if (profile == PROFILE_A2DP) {
             if (hasService(Service.RENDER)) {
                 return true;
