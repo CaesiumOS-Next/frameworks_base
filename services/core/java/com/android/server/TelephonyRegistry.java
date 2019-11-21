@@ -1533,20 +1533,38 @@ public class TelephonyRegistry extends ITelephonyRegistry.Stub {
         }
     }
 
-    public void notifyDataConnectionForSubscriber(int phoneId, int subId, int state,
-                                                  String apnType, int networkType,
-                                                  PreciseDataConnectionState preciseState) {
+    /**
+     * Send a notification to registrants that the data connection state has changed.
+     *
+     * @param phoneId the phoneId carrying the data connection
+     * @param subId the subscriptionId for the data connection
+     * @param apnType the APN type that triggered a change in the data connection
+     * @param preciseState a PreciseDataConnectionState that has info about the data connection
+     * */
+    public void notifyDataConnectionForSubscriber(
+            int phoneId, int subId, String apnType, PreciseDataConnectionState preciseState) {
         if (!checkNotifyPermission("notifyDataConnection()" )) {
             return;
         }
 
-        String apn = preciseState != null ? preciseState.getDataConnectionApn() : "";
+        String apn = "";
+        int state = TelephonyManager.DATA_UNKNOWN;
+        int networkType = TelephonyManager.NETWORK_TYPE_UNKNOWN;
+        LinkProperties linkProps = null;
+
+        if (preciseState != null) {
+            apn = preciseState.getDataConnectionApn();
+            state = preciseState.getState();
+            networkType = preciseState.getNetworkType();
+            linkProps = preciseState.getDataConnectionLinkProperties();
+        }
         if (VDBG) {
             log("notifyDataConnectionForSubscriber: subId=" + subId
                     + " state=" + state + "' apn='" + apn
                     + "' apnType=" + apnType + " networkType=" + networkType
                     + "' preciseState=" + preciseState);
         }
+
         synchronized (mRecords) {
             if (validatePhoneId(phoneId)) {
                 // We only call the callback when the change is for default APN type.
@@ -1579,8 +1597,6 @@ public class TelephonyRegistry extends ITelephonyRegistry.Stub {
                     mDataConnectionNetworkType[phoneId] = networkType;
                 }
 
-                LinkProperties linkProps = preciseState != null
-                        ? preciseState.getDataConnectionLinkProperties() : null;
                 mPreciseDataConnectionState[phoneId] = new PreciseDataConnectionState(
                         state, networkType,
                         ApnSetting.getApnTypesBitmaskFromString(apnType), apn,
@@ -1605,12 +1621,10 @@ public class TelephonyRegistry extends ITelephonyRegistry.Stub {
     }
 
     public void notifyDataConnectionFailed(String apnType) {
-         notifyDataConnectionFailedForSubscriber(SubscriptionManager.DEFAULT_PHONE_INDEX,
-                 SubscriptionManager.DEFAULT_SUBSCRIPTION_ID,
-                 apnType);
+        loge("This function should not be invoked");
     }
 
-    public void notifyDataConnectionFailedForSubscriber(int phoneId, int subId, String apnType) {
+    private void notifyDataConnectionFailedForSubscriber(int phoneId, int subId, String apnType) {
         if (!checkNotifyPermission("notifyDataConnectionFailed()")) {
             return;
         }
@@ -1818,6 +1832,10 @@ public class TelephonyRegistry extends ITelephonyRegistry.Stub {
         if (!checkNotifyPermission("notifyPreciseDataConnectionFailed()")) {
             return;
         }
+
+        // precise notify invokes imprecise notify
+        notifyDataConnectionFailedForSubscriber(phoneId, subId, apnType);
+
         synchronized (mRecords) {
             if (validatePhoneId(phoneId)) {
                 mPreciseDataConnectionState[phoneId] = new PreciseDataConnectionState(
