@@ -16,6 +16,7 @@
 
 package android.bluetooth;
 
+import android.annotation.SystemApi;
 import android.annotation.TestApi;
 import android.annotation.UnsupportedAppUsage;
 import android.os.Build;
@@ -353,7 +354,7 @@ public final class BluetoothClass implements Parcelable {
      * @return True if this device might support specified profile.
      * @hide
      */
-    @UnsupportedAppUsage
+    @SystemApi
     public boolean doesClassMatch(int profile) {
         if (profile == PROFILE_A2DP) {
             if (hasService(Service.RENDER)) {
