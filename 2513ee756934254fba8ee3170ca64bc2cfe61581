@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "83134e5a_bd0442fc",
+        "filename": "services/core/java/com/android/server/ConnectivityService.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 6511,
+      "author": {
+        "id": 1308163
+      },
+      "writtenOn": "2019-11-21T07:19:20Z",
+      "side": 1,
+      "message": "nit: Is there an another wording to replace it? I have a trouble to understand what you want to say. But maybe it\u0027s my problem.",
+      "range": {
+        "startLine": 6511,
+        "startChar": 44,
+        "endLine": 6511,
+        "endChar": 54
+      },
+      "revId": "2513ee756934254fba8ee3170ca64bc2cfe61581",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6b789bc5_0d3f4e02",
+        "filename": "services/core/java/com/android/server/ConnectivityService.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 6513,
+      "author": {
+        "id": 1308163
+      },
+      "writtenOn": "2019-11-21T07:19:20Z",
+      "side": 1,
+      "message": "The loop? Do you mean line.6504?",
+      "range": {
+        "startLine": 6513,
+        "startChar": 75,
+        "endLine": 6513,
+        "endChar": 84
+      },
+      "revId": "2513ee756934254fba8ee3170ca64bc2cfe61581",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
