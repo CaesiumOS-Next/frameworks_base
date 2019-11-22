@@ -2392,7 +2392,6 @@ android.media.audiofx.AudioEffect$Descriptor
 android.media.audiopolicy.AudioMix
 android.media.audiopolicy.AudioMixingRule$AudioMixMatchCriterion
 android.media.audiopolicy.AudioMixingRule
-android.media.audiopolicy.AudioProductStrategies
 android.media.audiopolicy.AudioProductStrategy$1
 android.media.audiopolicy.AudioProductStrategy$AudioAttributesGroup$1
 android.media.audiopolicy.AudioProductStrategy$AudioAttributesGroup
@@ -2400,7 +2399,6 @@ android.media.audiopolicy.AudioProductStrategy
 android.media.audiopolicy.AudioVolumeGroup$1
 android.media.audiopolicy.AudioVolumeGroup
 android.media.audiopolicy.AudioVolumeGroupChangeHandler
-android.media.audiopolicy.AudioVolumeGroups
 android.media.browse.MediaBrowser$1
 android.media.browse.MediaBrowser$2
 android.media.browse.MediaBrowser$6

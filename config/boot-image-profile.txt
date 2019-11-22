@@ -9815,8 +9815,6 @@ HSPLandroid/media/VolumeShaper$Operation$Builder;->createIfNeeded()Landroid/medi
 HSPLandroid/media/VolumeShaper$Operation$Builder;->reverse()Landroid/media/VolumeShaper$Operation$Builder;
 HSPLandroid/media/VolumeShaper$Operation$Builder;->setXOffset(F)Landroid/media/VolumeShaper$Operation$Builder;
 HSPLandroid/media/VolumeShaper$State$1;-><init>()V
-HSPLandroid/media/audiopolicy/AudioProductStrategies$1;-><init>()V
-HSPLandroid/media/audiopolicy/AudioProductStrategies;-><init>()V
 HSPLandroid/media/audiopolicy/AudioProductStrategy$1;-><init>()V
 HSPLandroid/media/audiopolicy/AudioProductStrategy$AudioAttributesGroup$1;-><init>()V
 HSPLandroid/media/audiopolicy/AudioProductStrategy$AudioAttributesGroup;-><init>(II[Landroid/media/AudioAttributes;)V
@@ -9824,8 +9822,6 @@ HSPLandroid/media/audiopolicy/AudioProductStrategy;-><init>(Ljava/lang/String;I[
 HSPLandroid/media/audiopolicy/AudioVolumeGroup$1;-><init>()V
 HSPLandroid/media/audiopolicy/AudioVolumeGroup;-><init>(Ljava/lang/String;I[Landroid/media/AudioAttributes;[I)V
 HSPLandroid/media/audiopolicy/AudioVolumeGroupChangeHandler;-><init>()V
-HSPLandroid/media/audiopolicy/AudioVolumeGroups$1;-><init>()V
-HSPLandroid/media/audiopolicy/AudioVolumeGroups;-><init>()V
 HSPLandroid/media/audiopolicy/IAudioPolicyCallback$Stub;->asInterface(Landroid/os/IBinder;)Landroid/media/audiopolicy/IAudioPolicyCallback;
 HSPLandroid/media/browse/MediaBrowser$MediaItem$1;-><init>()V
 HSPLandroid/media/midi/IMidiManager$Stub;-><init>()V
@@ -34701,8 +34697,6 @@ Landroid/media/audiofx/AudioEffect$Descriptor;
 Landroid/media/audiopolicy/AudioMix;
 Landroid/media/audiopolicy/AudioMixingRule$AudioMixMatchCriterion;
 Landroid/media/audiopolicy/AudioMixingRule;
-Landroid/media/audiopolicy/AudioProductStrategies$1;
-Landroid/media/audiopolicy/AudioProductStrategies;
 Landroid/media/audiopolicy/AudioProductStrategy$1;
 Landroid/media/audiopolicy/AudioProductStrategy$AudioAttributesGroup$1;
 Landroid/media/audiopolicy/AudioProductStrategy$AudioAttributesGroup;
@@ -34710,8 +34704,6 @@ Landroid/media/audiopolicy/AudioProductStrategy;
 Landroid/media/audiopolicy/AudioVolumeGroup$1;
 Landroid/media/audiopolicy/AudioVolumeGroup;
 Landroid/media/audiopolicy/AudioVolumeGroupChangeHandler;
-Landroid/media/audiopolicy/AudioVolumeGroups$1;
-Landroid/media/audiopolicy/AudioVolumeGroups;
 Landroid/media/browse/MediaBrowser$1;
 Landroid/media/browse/MediaBrowser$2;
 Landroid/media/browse/MediaBrowser$6;
