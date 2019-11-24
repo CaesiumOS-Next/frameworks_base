@@ -80,6 +80,7 @@ public final class AccessNetworkConstants {
         public static final int EUTRAN = 3;
         public static final int CDMA2000 = 4;
         public static final int IWLAN = 5;
+        public static final int NGRAN = 6;
 
         /** @hide */
         private AccessNetworkType() {}
@@ -93,6 +94,7 @@ public final class AccessNetworkConstants {
                 case EUTRAN: return "EUTRAN";
                 case CDMA2000: return "CDMA2000";
                 case IWLAN: return "IWLAN";
+                case NGRAN: return "NGRAN";
                 default: return Integer.toString(type);
             }
         }

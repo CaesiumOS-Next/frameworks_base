@@ -2314,7 +2314,7 @@ public class CarrierConfigManager {
      * Reference: 3GPP TS 38.215
      *
      * 4 threshold integers must be within the boundaries [-20 dB, -3 dB], and the levels are:
-     *     "NONE: [-23, threshold1]"
+     *     "NONE: [-20, threshold1]"
      *     "POOR: (threshold1, threshold2]"
      *     "MODERATE: (threshold2, threshold3]"
      *     "GOOD:  (threshold3, threshold4]"
@@ -2354,6 +2354,9 @@ public class CarrierConfigManager {
      *  SSRSRP = 1 << 0,
      *  SSRSRQ = 1 << 1,
      *  SSSINR = 1 << 2,
+     *
+     * For example, if both SSRSRP and SSSINR are used, the value of key is 5 (1 << 0 | 1 << 2).
+     * If the key is invalid or not configured, a default value (SSRSRP = 1 << 0) will apply.
      *
      *  Reference: 3GPP TS 38.215,
      *             3GPP TS 38.133 10.1.16.1
@@ -3641,6 +3644,31 @@ public class CarrierConfigManager {
                         -95, /* SIGNAL_STRENGTH_GOOD */
                         -85  /* SIGNAL_STRENGTH_GREAT */
                 });
+        sDefaults.putIntArray(KEY_5G_NR_SSRSRP_THRESHOLDS_INT_ARRAY,
+                // Boundaries: [-140 dB, -44 dB]
+                new int[] {
+                    -125, /* SIGNAL_STRENGTH_POOR */
+                    -115, /* SIGNAL_STRENGTH_MODERATE */
+                    -105, /* SIGNAL_STRENGTH_GOOD */
+                    -95,  /* SIGNAL_STRENGTH_GREAT */
+                });
+        sDefaults.putIntArray(KEY_5G_NR_SSRSRQ_THRESHOLDS_INT_ARRAY,
+                // Boundaries: [-20 dB, -3 dB]
+                new int[] {
+                    -14, /* SIGNAL_STRENGTH_POOR */
+                    -12, /* SIGNAL_STRENGTH_MODERATE */
+                    -10, /* SIGNAL_STRENGTH_GOOD */
+                    -8  /* SIGNAL_STRENGTH_GREAT */
+                });
+        sDefaults.putIntArray(KEY_5G_NR_SSSINR_THRESHOLDS_INT_ARRAY,
+                // Boundaries: [-23 dB, 40 dB]
+                new int[] {
+                    -8, /* SIGNAL_STRENGTH_POOR */
+                    0, /* SIGNAL_STRENGTH_MODERATE */
+                    8, /* SIGNAL_STRENGTH_GOOD */
+                    16  /* SIGNAL_STRENGTH_GREAT */
+                });
+        sDefaults.putInt(KEY_PARAMETERS_USE_FOR_5G_NR_SIGNAL_BAR_INT, 1 /** USE_SSRSRP */);
         sDefaults.putString(KEY_WCDMA_DEFAULT_SIGNAL_STRENGTH_MEASUREMENT_STRING, "rssi");
         sDefaults.putBoolean(KEY_CONFIG_SHOW_ORIG_DIAL_STRING_FOR_CDMA_BOOL, false);
         sDefaults.putBoolean(KEY_SHOW_CALL_BLOCKING_DISABLED_NOTIFICATION_ALWAYS_BOOL, false);

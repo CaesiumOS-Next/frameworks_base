@@ -43927,6 +43927,7 @@ package android.telephony {
     field public static final int EUTRAN = 3; // 0x3
     field public static final int GERAN = 1; // 0x1
     field public static final int IWLAN = 5; // 0x5
+    field public static final int NGRAN = 6; // 0x6
     field public static final int UNKNOWN = 0; // 0x0
     field public static final int UTRAN = 2; // 0x2
   }
@@ -44445,8 +44446,12 @@ package android.telephony {
     method public int getSsRsrp();
     method public int getSsRsrq();
     method public int getSsSinr();
+    method public boolean isLevelForParameter(int);
     method public void writeToParcel(android.os.Parcel, int);
     field @NonNull public static final android.os.Parcelable.Creator<android.telephony.CellSignalStrengthNr> CREATOR;
+    field public static final int USE_SSRSRP = 1; // 0x1
+    field public static final int USE_SSRSRQ = 2; // 0x2
+    field public static final int USE_SSSINR = 4; // 0x4
   }
 
   public final class CellSignalStrengthTdscdma extends android.telephony.CellSignalStrength implements android.os.Parcelable {
