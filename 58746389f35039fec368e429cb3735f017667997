@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bcb2a00e_64530c55",
+        "filename": "core/java/android/telephony/PhoneStateListener.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 759,
+      "author": {
+        "id": 1056478
+      },
+      "writtenOn": "2019-11-25T21:07:03Z",
+      "side": 1,
+      "message": "I\u0027m having a tough time distinguishing this one from the one that doesn\u0027t return a list; does the other one aggregate the data connection state in some manner?",
+      "range": {
+        "startLine": 757,
+        "startChar": 6,
+        "endLine": 759,
+        "endChar": 46
+      },
+      "revId": "58746389f35039fec368e429cb3735f017667997",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e9a2010d_bc8e0cdd",
+        "filename": "telephony/java/android/telephony/PreciseDataConnectionState.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1056478
+      },
+      "writtenOn": "2019-11-25T21:07:03Z",
+      "side": 1,
+      "message": "Do you want this to be available?  The deprecated method says to use this but its @hide.",
+      "range": {
+        "startLine": 148,
+        "startChar": 3,
+        "endLine": 150,
+        "endChar": 46
+      },
+      "revId": "58746389f35039fec368e429cb3735f017667997",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bb93d79c_9d2fc485",
+        "filename": "telephony/java/android/telephony/PreciseDataConnectionState.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1056478
+      },
+      "writtenOn": "2019-11-25T21:07:03Z",
+      "side": 1,
+      "message": "Any @IntDef that applies here?  Or is this an OEM thing?",
+      "range": {
+        "startLine": 218,
+        "startChar": 4,
+        "endLine": 218,
+        "endChar": 15
+      },
+      "revId": "58746389f35039fec368e429cb3735f017667997",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
