@@ -96,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "0b784fa4_2a0deb29",
+        "filename": "telephony/java/android/telephony/PreciseDataConnectionState.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1060151
+      },
+      "writtenOn": "2019-11-25T21:58:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0303b71f_fe2bb892",
+      "range": {
+        "startLine": 148,
+        "startChar": 3,
+        "endLine": 150,
+        "endChar": 46
+      },
+      "revId": "58746389f35039fec368e429cb3735f017667997",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bb93d79c_9d2fc485",
         "filename": "telephony/java/android/telephony/PreciseDataConnectionState.java",
         "patchSetId": 2
@@ -140,6 +164,30 @@
       "revId": "58746389f35039fec368e429cb3735f017667997",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "72a39d14_b7707973",
+        "filename": "telephony/java/android/telephony/PreciseDataConnectionState.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1060151
+      },
+      "writtenOn": "2019-11-25T21:58:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "840192ab_621211bc",
+      "range": {
+        "startLine": 218,
+        "startChar": 4,
+        "endLine": 218,
+        "endChar": 15
+      },
+      "revId": "58746389f35039fec368e429cb3735f017667997",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
