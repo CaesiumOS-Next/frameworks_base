@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "93cc7860_2d1b37f1",
+        "filename": "core/java/android/telephony/PhoneStateListener.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 759,
+      "author": {
+        "id": 1060151
+      },
+      "writtenOn": "2019-11-25T21:30:15Z",
+      "side": 1,
+      "message": "The other one only returns info about the default/internet data connection. This returns info about all data connections. If you have thoughts/preference on how to make that clearer, I\u0027m open. I had considered adding a separate listener bit in the listener, but it didn\u0027t really help much IMO (and had definite cost): happy to do that or something else though.",
+      "parentUuid": "bcb2a00e_64530c55",
+      "range": {
+        "startLine": 757,
+        "startChar": 6,
+        "endLine": 759,
+        "endChar": 46
+      },
+      "revId": "58746389f35039fec368e429cb3735f017667997",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e9a2010d_bc8e0cdd",
         "filename": "telephony/java/android/telephony/PreciseDataConnectionState.java",
         "patchSetId": 2
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "0303b71f_fe2bb892",
+        "filename": "telephony/java/android/telephony/PreciseDataConnectionState.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1060151
+      },
+      "writtenOn": "2019-11-25T21:30:15Z",
+      "side": 1,
+      "message": "Oops! yes.",
+      "parentUuid": "e9a2010d_bc8e0cdd",
+      "range": {
+        "startLine": 148,
+        "startChar": 3,
+        "endLine": 150,
+        "endChar": 46
+      },
+      "revId": "58746389f35039fec368e429cb3735f017667997",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "bb93d79c_9d2fc485",
         "filename": "telephony/java/android/telephony/PreciseDataConnectionState.java",
         "patchSetId": 2
@@ -59,6 +107,30 @@
       "writtenOn": "2019-11-25T21:07:03Z",
       "side": 1,
       "message": "Any @IntDef that applies here?  Or is this an OEM thing?",
+      "range": {
+        "startLine": 218,
+        "startChar": 4,
+        "endLine": 218,
+        "endChar": 15
+      },
+      "revId": "58746389f35039fec368e429cb3735f017667997",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "840192ab_621211bc",
+        "filename": "telephony/java/android/telephony/PreciseDataConnectionState.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1060151
+      },
+      "writtenOn": "2019-11-25T21:30:15Z",
+      "side": 1,
+      "message": "I forked a bug for this: https://b.corp.google.com/issues/144774287\n\nUnfortunately, those who tread this path before me have made a huge mess, so it\u0027s going to take some effort to clean it up. For now, I\u0027ve added documentation for the only thing that we *can* guarantee (which is that the error code will be non-zero for an actual error and zero otherwise). I\u0027d like to make more guarantees depending on progress on that bug. I\u0027ll add a comment here to point to that bug.",
+      "parentUuid": "bb93d79c_9d2fc485",
       "range": {
         "startLine": 218,
         "startChar": 4,
