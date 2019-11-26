@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e69dbfa2_8c1a8789",
+        "filename": "core/res/AndroidManifest.xml",
+        "patchSetId": 3
+      },
+      "lineNbr": 1760,
+      "author": {
+        "id": 1103651
+      },
+      "writtenOn": "2019-11-26T12:14:36Z",
+      "side": 1,
+      "message": "Better to clarify the category. How about replacing with \"NFC preferred payment service\"?",
+      "range": {
+        "startLine": 1760,
+        "startChar": 40,
+        "endLine": 1760,
+        "endChar": 61
+      },
+      "revId": "fcb2eb2113d111f05c8080451eb3b1a8dd2ad1b8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
