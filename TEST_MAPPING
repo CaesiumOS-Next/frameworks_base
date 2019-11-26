@@ -1,0 +1,15 @@
+{
+  "presubmit": [
+    {
+      "name": "ExtServicesUnitTests",
+      "options": [
+        {
+          "exclude-annotation": "androidx.test.filters.FlakyTest"
+        },
+        {
+          "exclude-annotation": "android.support.test.filters.FlakyTest"
+        }
+      ]
+    }
+  ]
+}
