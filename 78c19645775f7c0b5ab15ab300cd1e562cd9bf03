@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "d617f7db_d227978c",
+        "filename": "services/core/java/com/android/server/ConnectivityService.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 6518,
+      "author": {
+        "id": 1306837
+      },
+      "writtenOn": "2019-11-27T13:04:02Z",
+      "side": 1,
+      "message": "nit: IIUC you are saying doing xxx after rematch, in a rematch function.\nWhich is a little confusing, but no strong opinion.\nnot sure if there is a better naming for this.",
+      "range": {
+        "startLine": 6518,
+        "startChar": 31,
+        "endLine": 6518,
+        "endChar": 43
+      },
+      "revId": "78c19645775f7c0b5ab15ab300cd1e562cd9bf03",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "21253e19_ba31251d",
         "filename": "services/core/java/com/android/server/ConnectivityService.java",
         "patchSetId": 6
