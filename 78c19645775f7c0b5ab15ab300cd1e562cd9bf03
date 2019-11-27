@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "21253e19_ba31251d",
+        "filename": "services/core/java/com/android/server/ConnectivityService.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 6560,
+      "author": {
+        "id": 1306837
+      },
+      "writtenOn": "2019-11-27T12:49:08Z",
+      "side": 1,
+      "message": "Also for l.6558.\nIIUC these are not related to legacy tracker, right?\nis it better if we to put them into the if block at l.6446?",
+      "range": {
+        "startLine": 6560,
+        "startChar": 16,
+        "endLine": 6560,
+        "endChar": 33
+      },
+      "revId": "78c19645775f7c0b5ab15ab300cd1e562cd9bf03",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
