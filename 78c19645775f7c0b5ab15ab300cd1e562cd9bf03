@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "7d9d31be_3a8abc4d",
+        "filename": "services/core/java/com/android/server/ConnectivityService.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 6518,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2019-11-29T10:57:10Z",
+      "side": 1,
+      "message": "Renamed \"AfterRematch\" to \"ForRematch\". WDYT ?",
+      "parentUuid": "d617f7db_d227978c",
+      "range": {
+        "startLine": 6518,
+        "startChar": 31,
+        "endLine": 6518,
+        "endChar": 43
+      },
+      "revId": "78c19645775f7c0b5ab15ab300cd1e562cd9bf03",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "21253e19_ba31251d",
         "filename": "services/core/java/com/android/server/ConnectivityService.java",
         "patchSetId": 6
@@ -45,6 +69,30 @@
       "revId": "78c19645775f7c0b5ab15ab300cd1e562cd9bf03",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "67423599_48e54968",
+        "filename": "services/core/java/com/android/server/ConnectivityService.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 6560,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2019-11-29T10:57:10Z",
+      "side": 1,
+      "message": "Unfortunately I think we can\u0027t do this. It\u0027s very annoying too, because I think you\u0027re right that it is better done in the block at l.6446.\nUnfortunately, when a legacy VPN is connected, notifyLockdownVpn ends up sending a legacy broadcast, and this must be done after the callbacks have been sent, so unless we do another substantial round of refactoring, I don\u0027t think this can be moved into the first block.\n\nI changed the name of the function to reflect this. I would like to actually move this outside of this function, but the broadcast probably has to be sent after any broadcast sent in l.6549 and before any broadcast sent in l.6579, so I don\u0027t think we can easily move this code at all.\n\nI also added comments here to avoid future readers having to redo this analysis.",
+      "parentUuid": "21253e19_ba31251d",
+      "range": {
+        "startLine": 6560,
+        "startChar": 16,
+        "endLine": 6560,
+        "endChar": 33
+      },
+      "revId": "78c19645775f7c0b5ab15ab300cd1e562cd9bf03",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
