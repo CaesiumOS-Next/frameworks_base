@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "943cafb6_5d74c0c4",
+        "filename": "services/core/java/com/android/server/ConnectivityService.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 6501,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2019-11-29T10:58:50Z",
+      "side": 1,
+      "message": "Hey you\u0027re right ! This is a happy side effect of this refactoring : lingering is evaluated at the end according to the result of the rematch, which means it\u0027s a lot less dangerous. Unfortunately as of this patch the multiple callbacks problem may still happen.\n\nUpdated the comment.",
+      "parentUuid": "9c859475_e52235de",
+      "range": {
+        "startLine": 6501,
+        "startChar": 21,
+        "endLine": 6501,
+        "endChar": 57
+      },
+      "revId": "2513ee756934254fba8ee3170ca64bc2cfe61581",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "83134e5a_bd0442fc",
         "filename": "services/core/java/com/android/server/ConnectivityService.java",
         "patchSetId": 6
@@ -95,6 +119,54 @@
     },
     {
       "key": {
+        "uuid": "48991926_40d614ec",
+        "filename": "services/core/java/com/android/server/ConnectivityService.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 6511,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2019-11-29T10:58:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4ab66d41_a671b7a4",
+      "range": {
+        "startLine": 6510,
+        "startChar": 15,
+        "endLine": 6511,
+        "endChar": 22
+      },
+      "revId": "2513ee756934254fba8ee3170ca64bc2cfe61581",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d1ee83bc_a406073d",
+        "filename": "services/core/java/com/android/server/ConnectivityService.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 6511,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2019-11-29T10:58:50Z",
+      "side": 1,
+      "message": "Updated to remove usage of this word. This is a very useful word in programming though and often difficult to spell out. \"Idempotent\" means that a function has the same effect no matter how many times \u003e\u003d 1 it\u0027s called in a given environment. For example, println() is a textbook example of something that is not idempotent (if you call it twice, it prints twice).\n\nLogical AND and logical OR with a given operand are idempotent, but logical XOR is not. In code :\n\n  x \u0026 CONSTANT \u003d\u003d (x \u0026 CONSTANT) \u0026 CONSTANT\n  x | CONSTANT \u003d\u003d (x | CONSTANT) | CONSTANT\n  x ^ CONSTANT !\u003d (x ^ CONSTANT) ^ CONSTANT\n\nThe general formulation is :\n\n  if ∀ x, func(x) \u003d\u003d func(func(x)) then func is idempotent",
+      "parentUuid": "167344fe_7e734f38",
+      "range": {
+        "startLine": 6511,
+        "startChar": 44,
+        "endLine": 6511,
+        "endChar": 54
+      },
+      "revId": "2513ee756934254fba8ee3170ca64bc2cfe61581",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6b789bc5_0d3f4e02",
         "filename": "services/core/java/com/android/server/ConnectivityService.java",
         "patchSetId": 6
@@ -115,6 +187,30 @@
       "revId": "2513ee756934254fba8ee3170ca64bc2cfe61581",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "75113ec2_1024d35a",
+        "filename": "services/core/java/com/android/server/ConnectivityService.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 6513,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2019-11-29T10:58:50Z",
+      "side": 1,
+      "message": "Yes. Clarified.",
+      "parentUuid": "6b789bc5_0d3f4e02",
+      "range": {
+        "startLine": 6513,
+        "startChar": 75,
+        "endLine": 6513,
+        "endChar": 84
+      },
+      "revId": "2513ee756934254fba8ee3170ca64bc2cfe61581",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
