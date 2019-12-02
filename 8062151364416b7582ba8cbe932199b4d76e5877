@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a2b6bb8_f56cf4ab",
+        "filename": "core/java/android/provider/BlockedNumberContract.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1056478
+      },
+      "writtenOn": "2019-12-02T21:30:02Z",
+      "side": 1,
+      "message": "This is already part of the public API:\nhttps://developer.android.com/reference/android/provider/BlockedNumberContract.html#AUTHORITY_URI\n\nWe can\u0027t remove it from the public API.",
+      "range": {
+        "startLine": 162,
+        "startChar": 4,
+        "endLine": 163,
+        "endChar": 14
+      },
+      "revId": "8062151364416b7582ba8cbe932199b4d76e5877",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
