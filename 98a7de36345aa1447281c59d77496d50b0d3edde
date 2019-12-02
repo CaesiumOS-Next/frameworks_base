@@ -70,6 +70,30 @@
       "revId": "98a7de36345aa1447281c59d77496d50b0d3edde",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "de487be0_0e412db9",
+        "filename": "apex/sdk/framework/Android.bp",
+        "patchSetId": 3
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-12-02T12:01:18Z",
+      "side": 1,
+      "message": "Well, I\u0027d suggest sdkinfo (because the module is about SdkInfo proto) or sdkext (because the module is about sdk extensions).",
+      "parentUuid": "4abd682f_9f84d767",
+      "range": {
+        "startLine": 16,
+        "startChar": 21,
+        "endLine": 16,
+        "endChar": 24
+      },
+      "revId": "98a7de36345aa1447281c59d77496d50b0d3edde",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
