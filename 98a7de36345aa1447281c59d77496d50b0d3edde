@@ -22,6 +22,30 @@
       "revId": "98a7de36345aa1447281c59d77496d50b0d3edde",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "45589c96_57eb0fdc",
+        "filename": "apex/sdk/framework/Android.bp",
+        "patchSetId": 3
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2019-12-02T11:19:44Z",
+      "side": 1,
+      "message": "yeah, it\u0027s not great. Any ideas? The module is so tiny it\u0027s hard to pick a good name. \u0027sdkext\u0027 is at least a bit more specific.",
+      "parentUuid": "e5e7ffb5_ccf77249",
+      "range": {
+        "startLine": 16,
+        "startChar": 21,
+        "endLine": 16,
+        "endChar": 24
+      },
+      "revId": "98a7de36345aa1447281c59d77496d50b0d3edde",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
