@@ -29,6 +29,8 @@ import android.os.INetworkManagementService;
 import android.os.Looper;
 import android.os.ServiceManager;
 
+import androidx.annotation.NonNull;
+
 import com.android.internal.util.StateMachine;
 
 import java.util.ArrayList;
@@ -147,5 +149,12 @@ public class TetheringDependencies {
      */
     public Context getContext() {
         return null;
+    }
+
+    /**
+     * Get a reference to the TetheringNotificationUpdater to be used by tethering.
+     */
+    public TetheringNotificationUpdater getNotificationUpdater(@NonNull final Context ctx) {
+        return new TetheringNotificationUpdater(ctx);
     }
 }

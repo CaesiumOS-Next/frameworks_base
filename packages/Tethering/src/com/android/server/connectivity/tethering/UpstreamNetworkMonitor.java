@@ -21,6 +21,7 @@ import static android.net.ConnectivityManager.TYPE_MOBILE_HIPRI;
 import static android.net.ConnectivityManager.TYPE_NONE;
 import static android.net.ConnectivityManager.getNetworkTypeName;
 import static android.net.NetworkCapabilities.NET_CAPABILITY_DUN;
+import static android.net.NetworkCapabilities.NET_CAPABILITY_NOT_SUSPENDED;
 import static android.net.NetworkCapabilities.NET_CAPABILITY_NOT_VPN;
 import static android.net.NetworkCapabilities.TRANSPORT_CELLULAR;
 
@@ -79,6 +80,7 @@ public class UpstreamNetworkMonitor {
     public static final int EVENT_ON_CAPABILITIES   = 1;
     public static final int EVENT_ON_LINKPROPERTIES = 2;
     public static final int EVENT_ON_LOST           = 3;
+    public static final int EVENT_ON_SUSPEND        = 4;
     public static final int NOTIFY_LOCAL_PREFIXES   = 10;
 
     private static final int CALLBACK_LISTEN_ALL = 1;
@@ -338,6 +340,10 @@ public class UpstreamNetworkMonitor {
 
         mNetworkMap.put(network, new NetworkState(
                 null, prev.linkProperties, newNc, network, null, null));
+        if (network.equals(mTetheringUpstreamNetwork) && mIsDefaultCellularUpstream) {
+            notifyTarget(EVENT_ON_SUSPEND,
+                    Boolean.valueOf(!newNc.hasCapability(NET_CAPABILITY_NOT_SUSPENDED)));
+        }
         // TODO: If sufficient information is available to select a more
         // preferable upstream, do so now and notify the target.
         notifyTarget(EVENT_ON_CAPABILITIES, network);
@@ -393,6 +399,9 @@ public class UpstreamNetworkMonitor {
 
         if (VDBG) Log.d(TAG, "EVENT_ON_LOST for " + network);
 
+        if (network.equals(mTetheringUpstreamNetwork)) {
+            notifyTarget(EVENT_ON_SUSPEND, Boolean.valueOf(false));
+        }
         // TODO: If sufficient information is available to select a more
         // preferable upstream, do so now and notify the target.  Likewise,
         // if the current upstream network is gone, notify the target of the
