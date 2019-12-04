@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cd5049b6_6e87f242",
+        "filename": "core/java/android/telephony/PhoneStateListener.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 963,
+      "author": {
+        "id": 1121193
+      },
+      "writtenOn": "2019-12-04T18:59:04Z",
+      "side": 1,
+      "message": "nit: @RequiresPermission(android.Manifest.permission.READ_PRIVILEGED_PHONE_STATE}",
+      "range": {
+        "startLine": 962,
+        "startChar": 0,
+        "endLine": 963,
+        "endChar": 50
+      },
+      "revId": "6f099bea9ba59b57f23d4a31e80f0eb3dd98e362",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
