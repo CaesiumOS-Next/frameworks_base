@@ -22,6 +22,30 @@
       "revId": "8062151364416b7582ba8cbe932199b4d76e5877",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7353f918_f2e3b62d",
+        "filename": "core/java/android/provider/BlockedNumberContract.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1468646
+      },
+      "writtenOn": "2019-12-04T03:42:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1a2b6bb8_f56cf4ab",
+      "range": {
+        "startLine": 162,
+        "startChar": 4,
+        "endLine": 163,
+        "endChar": 14
+      },
+      "revId": "8062151364416b7582ba8cbe932199b4d76e5877",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
