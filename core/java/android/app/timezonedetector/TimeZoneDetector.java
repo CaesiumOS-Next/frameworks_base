@@ -26,6 +26,7 @@ import android.util.Log;
 
 /**
  * The interface through which system components can send signals to the TimeZoneDetectorService.
+ *
  * @hide
  */
 @SystemService(Context.TIME_ZONE_DETECTOR_SERVICE)
@@ -41,9 +42,8 @@ public final class TimeZoneDetector {
     }
 
     /**
-     * Suggests the current time zone to the detector. The detector may ignore the signal if better
-     * signals are available such as those that come from more reliable sources or were
-     * determined more recently.
+     * Suggests the current time zone to the detector using telephony signals. The detector may
+     * ignore the signal based on system setting, whether better signals are available and so on.
      */
     public void suggestPhoneTimeZone(@NonNull PhoneTimeZoneSuggestion timeZoneSuggestion) {
         if (DEBUG) {
@@ -56,4 +56,26 @@ public final class TimeZoneDetector {
         }
     }
 
+    /**
+     * Suggests the user's manually entered current time zone to the detector.
+     */
+    public void suggestManualTimeZone(@NonNull ManualTimeZoneSuggestion timeZoneSuggestion) {
+        if (DEBUG) {
+            Log.d(TAG, "suggestManualTimeZone called: " + timeZoneSuggestion);
+        }
+        try {
+            mITimeZoneDetectorService.suggestManualTimeZone(timeZoneSuggestion);
+        } catch (RemoteException e) {
+            throw e.rethrowFromSystemServer();
+        }
+    }
+
+    /**
+     * A shared utility method to create a {@link ManualTimeZoneSuggestion}.
+     */
+    public static ManualTimeZoneSuggestion createManualTimeZoneSuggestion(String tzId, String why) {
+        ManualTimeZoneSuggestion suggestion = new ManualTimeZoneSuggestion(tzId);
+        suggestion.addDebugInfo(why);
+        return suggestion;
+    }
 }
