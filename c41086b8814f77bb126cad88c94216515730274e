@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7b3f5070_0dd95931",
+        "filename": "core/java/android/net/TrafficStats.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 600,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2019-12-05T16:00:52Z",
+      "side": 1,
+      "message": "on the specified",
+      "range": {
+        "startLine": 600,
+        "startChar": 44,
+        "endLine": 600,
+        "endChar": 59
+      },
+      "revId": "c41086b8814f77bb126cad88c94216515730274e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9eb295e1_6a9a0ef7",
+        "filename": "core/java/android/net/TrafficStats.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 604,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2019-12-05T16:00:52Z",
+      "side": 1,
+      "message": "the interface",
+      "range": {
+        "startLine": 604,
+        "startChar": 32,
+        "endLine": 604,
+        "endChar": 41
+      },
+      "revId": "c41086b8814f77bb126cad88c94216515730274e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f62f92e4_151341b4",
+        "filename": "core/java/android/net/TrafficStats.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 605,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2019-12-05T16:00:52Z",
+      "side": 1,
+      "message": "The number of transmitted",
+      "range": {
+        "startLine": 605,
+        "startChar": 15,
+        "endLine": 605,
+        "endChar": 27
+      },
+      "revId": "c41086b8814f77bb126cad88c94216515730274e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "76f8e19d_dc6e957a",
+        "filename": "core/java/android/net/TrafficStats.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 616,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2019-12-05T16:00:52Z",
+      "side": 1,
+      "message": "on the specified",
+      "range": {
+        "startLine": 616,
+        "startChar": 48,
+        "endLine": 616,
+        "endChar": 56
+      },
+      "revId": "c41086b8814f77bb126cad88c94216515730274e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "65e7f6f0_def341c1",
+        "filename": "core/java/android/net/TrafficStats.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 620,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2019-12-05T16:00:52Z",
+      "side": 1,
+      "message": "the interface",
+      "range": {
+        "startLine": 620,
+        "startChar": 32,
+        "endLine": 620,
+        "endChar": 41
+      },
+      "revId": "c41086b8814f77bb126cad88c94216515730274e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0228c4dd_cbc38da8",
+        "filename": "core/java/android/net/TrafficStats.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 621,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2019-12-05T16:00:52Z",
+      "side": 1,
+      "message": "The number of received",
+      "range": {
+        "startLine": 621,
+        "startChar": 15,
+        "endLine": 621,
+        "endChar": 27
+      },
+      "revId": "c41086b8814f77bb126cad88c94216515730274e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
