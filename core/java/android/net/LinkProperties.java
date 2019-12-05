@@ -329,6 +329,7 @@ public final class LinkProperties implements Parcelable {
         }
     }
 
+
     /**
      * Removes a {@link LinkAddress} from this {@code LinkProperties}.  Specifically, matches
      * and {@link LinkAddress} with the same address and prefix.
@@ -705,14 +706,24 @@ public final class LinkProperties implements Parcelable {
             route.getType());
     }
 
+    private int findRouteIndexByDestination(RouteInfo route) {
+        for (int i = 0; i < mRoutes.size(); i++) {
+            if (mRoutes.get(i).isSameDestinationAs(route)) {
+                return i;
+            }
+        }
+        return -1;
+    }
+
     /**
-     * Adds a {@link RouteInfo} to this {@code LinkProperties}, if not present. If the
-     * {@link RouteInfo} had an interface name set and that differs from the interface set for this
+     * Adds a {@link RouteInfo} to this {@code LinkProperties}, if a {@link RouteInfo}
+     * with the same destination does not already exist. If the {@link RouteInfo}
+     * had an interface name set and that differs from the interface set for this
      * {@code LinkProperties} an {@link IllegalArgumentException} will be thrown.  The proper
      * course is to add either un-named or properly named {@link RouteInfo}.
      *
      * @param route A {@link RouteInfo} to add to this object.
-     * @return {@code false} if the route was already present, {@code true} if it was added.
+     * @return {@code true} was added or updated, false otherwise.
      */
     public boolean addRoute(@NonNull RouteInfo route) {
         String routeIface = route.getInterface();
@@ -722,18 +733,29 @@ public final class LinkProperties implements Parcelable {
                             + " vs. " + mIfaceName);
         }
         route = routeWithInterface(route);
-        if (!mRoutes.contains(route)) {
+
+        int i = findRouteIndexByDestination(route);
+        if (i < 0) {
+            // Route was not present. Add it.
             mRoutes.add(route);
             return true;
+        } else if (mRoutes.get(i).equals(route)) {
+            // Route was present and has same properties. Do nothing.
+            return false;
+        } else {
+            // Route was present and has different properties. Update it.
+            mRoutes.set(i, route);
+            return true;
         }
-        return false;
     }
 
     /**
-     * Removes a {@link RouteInfo} from this {@code LinkProperties}, if present. The route must
+     * Removes a {@link RouteInfo} from this {@code LinkProperties}. Specifically, matches
+     * a {@route RouteInfo} with the same destination. The route must
      * specify an interface and the interface must match the interface of this
      * {@code LinkProperties}, or it will not be removed.
      *
+     * @param route A {@link RouteInfo} specifying the route to remove.
      * @return {@code true} if the route was removed, {@code false} if it was not present.
      *
      * @hide
@@ -741,7 +763,14 @@ public final class LinkProperties implements Parcelable {
     @TestApi
     @SystemApi
     public boolean removeRoute(@NonNull RouteInfo route) {
-        return Objects.equals(mIfaceName, route.getInterface()) && mRoutes.remove(route);
+        if (Objects.equals(mIfaceName, route.getInterface())) {
+            int i = findRouteIndexByDestination(route);
+            if (i >= 0) {
+                mRoutes.remove(i);
+                return true;
+            }
+        }
+        return false;
     }
 
     /**

@@ -83,7 +83,6 @@ public final class RouteInfo implements Parcelable {
     @Nullable
     private final String mInterface;
 
-
     /** Unicast route. @hide */
     @SystemApi
     @TestApi
@@ -103,6 +102,11 @@ public final class RouteInfo implements Parcelable {
      * The type of this route; one of the RTN_xxx constants above.
      */
     private final int mType;
+
+    /**
+     * The maximum transmission unit size for this route.
+     */
+    private final int mMtu;
 
     // Derived data members.
     // TODO: remove these.
@@ -132,6 +136,31 @@ public final class RouteInfo implements Parcelable {
     @TestApi
     public RouteInfo(@Nullable IpPrefix destination, @Nullable InetAddress gateway,
             @Nullable String iface, @RouteType int type) {
+        this(destination, gateway, iface, type, 0);
+    }
+
+    /**
+     * Constructs a RouteInfo object.
+     *
+     * If destination is null, then gateway must be specified and the
+     * constructed route is either the IPv4 default route <code>0.0.0.0</code>
+     * if the gateway is an instance of {@link Inet4Address}, or the IPv6 default
+     * route <code>::/0</code> if gateway is an instance of
+     * {@link Inet6Address}.
+     * <p>
+     * destination and gateway may not both be null.
+     *
+     * @param destination the destination prefix
+     * @param gateway the IP address to route packets through
+     * @param iface the interface name to send packets on
+     * @param type the type of this route
+     * @param mtu the maximum transmission unit size for this route
+     *
+     * @hide
+     */
+    @SystemApi
+    public RouteInfo(@Nullable IpPrefix destination, @Nullable InetAddress gateway,
+            @Nullable String iface, @RouteType int type, int mtu) {
         switch (type) {
             case RTN_UNICAST:
             case RTN_UNREACHABLE:
@@ -161,7 +190,7 @@ public final class RouteInfo implements Parcelable {
             } else {
                 // no destination, no gateway. invalid.
                 throw new IllegalArgumentException("Invalid arguments passed in: " + gateway + "," +
-                                                   destination);
+                        destination);
             }
         }
         // TODO: set mGateway to null if there is no gateway. This is more correct, saves space, and
@@ -176,10 +205,10 @@ public final class RouteInfo implements Parcelable {
         }
         mHasGateway = (!gateway.isAnyLocalAddress());
 
-        if ((destination.getAddress() instanceof Inet4Address &&
-                 (gateway instanceof Inet4Address == false)) ||
-                (destination.getAddress() instanceof Inet6Address &&
-                 (gateway instanceof Inet6Address == false))) {
+        if ((destination.getAddress() instanceof Inet4Address
+                && !(gateway instanceof Inet4Address))
+                || (destination.getAddress() instanceof Inet6Address
+                && !(gateway instanceof Inet6Address))) {
             throw new IllegalArgumentException("address family mismatch in RouteInfo constructor");
         }
         mDestination = destination;  // IpPrefix objects are immutable.
@@ -187,6 +216,7 @@ public final class RouteInfo implements Parcelable {
         mInterface = iface;          // Strings are immutable.
         mType = type;
         mIsHost = isHost();
+        mMtu = mtu;
     }
 
     /**
@@ -373,6 +403,17 @@ public final class RouteInfo implements Parcelable {
     }
 
     /**
+     * Retrieves the MTU size for this route.
+     *
+     * @return The MTU size, or 0 if it has not been set.
+     * @hide
+     */
+    @SystemApi
+    public int getMtu() {
+        return mMtu;
+    }
+
+    /**
      * Indicates if this route is a default route (ie, has no destination specified).
      *
      * @return {@code true} if the destination has a prefix length of 0.
@@ -476,6 +517,7 @@ public final class RouteInfo implements Parcelable {
                 val += " unknown type " + mType;
             }
         }
+        val += " mtu " + mMtu;
         return val;
     }
 
@@ -483,6 +525,7 @@ public final class RouteInfo implements Parcelable {
      * Compares this RouteInfo object against the specified object and indicates if they are equal.
      * @return {@code true} if the objects are equal, {@code false} otherwise.
      */
+    @Override
     public boolean equals(Object obj) {
         if (this == obj) return true;
 
@@ -493,7 +536,46 @@ public final class RouteInfo implements Parcelable {
         return Objects.equals(mDestination, target.getDestination()) &&
                 Objects.equals(mGateway, target.getGateway()) &&
                 Objects.equals(mInterface, target.getInterface()) &&
-                mType == target.getType();
+                mType == target.getType() && mMtu == target.getMtu();
+    }
+
+    /**
+     * Compares this RouteInfo object against the specified object and indicates if the
+     * destinations of both routes are equal.
+     * @return {@code true} if the route destinations are equal, {@code false} otherwise.
+     */
+    public boolean isSameDestinationAs(@Nullable Object obj) {
+        if (this == obj) return true;
+
+        if (!(obj instanceof RouteInfo)) return false;
+
+        RouteInfo target = (RouteInfo) obj;
+
+        if (mDestination == target.getDestination()) {
+            return true;
+        }
+        return false;
+    }
+
+    /**
+     * Compares this RouteInfo object against the specified object and indicates if an
+     * existing route was updated.
+     * @return {@code true} if the route was updated, {@code false} otherwise.
+     */
+    public boolean routeUpdated(@Nullable Object obj) {
+        if (this == obj) return true;
+
+        if (!(obj instanceof RouteInfo)) return false;
+
+        RouteInfo target = (RouteInfo) obj;
+
+        if (mDestination == target.getDestination()) {
+            if (mGateway != target.getGateway() || mInterface != target.getInterface()
+                    || mType != target.getType() || mMtu != target.getMtu()) {
+                return true;
+            }
+        }
+        return false;
     }
 
     /**
@@ -503,7 +585,7 @@ public final class RouteInfo implements Parcelable {
         return (mDestination.hashCode() * 41)
                 + (mGateway == null ? 0 :mGateway.hashCode() * 47)
                 + (mInterface == null ? 0 :mInterface.hashCode() * 67)
-                + (mType * 71);
+                + (mType * 71) + (mMtu * 89);
     }
 
     /**
@@ -522,6 +604,7 @@ public final class RouteInfo implements Parcelable {
         dest.writeByteArray(gatewayBytes);
         dest.writeString(mInterface);
         dest.writeInt(mType);
+        dest.writeInt(mMtu);
     }
 
     /**
@@ -540,8 +623,9 @@ public final class RouteInfo implements Parcelable {
 
             String iface = in.readString();
             int type = in.readInt();
+            int mtu = in.readInt();
 
-            return new RouteInfo(dest, gateway, iface, type);
+            return new RouteInfo(dest, gateway, iface, type, mtu);
         }
 
         public RouteInfo[] newArray(int size) {
