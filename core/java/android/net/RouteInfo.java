@@ -526,6 +526,7 @@ public final class RouteInfo implements Parcelable {
      * Compares this RouteInfo object against the specified object and indicates if they are equal.
      * @return {@code true} if the objects are equal, {@code false} otherwise.
      */
+    @Override
     public boolean equals(Object obj) {
         if (this == obj) return true;
 
@@ -537,6 +538,24 @@ public final class RouteInfo implements Parcelable {
                 Objects.equals(mGateway, target.getGateway()) &&
                 Objects.equals(mInterface, target.getInterface()) &&
                 mType == target.getType() && mMtu == target.getMtu();
+    }
+
+    /**
+     * Compares this RouteInfo object against the specified object and indicates if the
+     * destinations of both routes are equal.
+     * @return {@code true} if the route destinations are equal, {@code false} otherwise.
+     */
+    public boolean isSameDestinationAs(@Nullable Object obj) {
+        if (this == obj) return true;
+
+        if (!(obj instanceof RouteInfo)) return false;
+
+        RouteInfo target = (RouteInfo) obj;
+
+        if (mDestination == target.getDestination()) {
+            return true;
+        }
+        return false;
     }
 
     /**
