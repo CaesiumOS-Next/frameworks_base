@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fdafe3e3_69781342",
+        "filename": "core/java/android/provider/Telephony.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 1346,
+      "author": {
+        "id": 1138358
+      },
+      "writtenOn": "2019-12-05T20:18:56Z",
+      "side": 1,
+      "message": "See sender code: https://android.googlesource.com/platform/frameworks/opt/telephony/+/refs/heads/master/src/java/com/android/internal/telephony/InboundSmsHandler.java#1144",
+      "range": {
+        "startLine": 1346,
+        "startChar": 28,
+        "endLine": 1346,
+        "endChar": 34
+      },
+      "revId": "646dcbd0edef2d0f231ea1515ce2631eb9edfb64",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
