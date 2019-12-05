@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f2a6aa5e_3d491a5c",
+        "filename": "api/current.txt",
+        "patchSetId": 7
+      },
+      "lineNbr": 44673,
+      "author": {
+        "id": 1060151
+      },
+      "writtenOn": "2019-12-05T00:24:50Z",
+      "side": 1,
+      "message": "Is onCallDisconnectCauseChanged() already public? I was expecting 2 APIs and 2 constants.",
+      "range": {
+        "startLine": 44673,
+        "startChar": 101,
+        "endLine": 44673,
+        "endChar": 130
+      },
+      "revId": "29b6e0ff9ae307c1f1a54c7c27dc50458c3b02db",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9d376238_c39ccc44",
+        "filename": "core/java/android/telephony/PhoneStateListener.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 701,
+      "author": {
+        "id": 1060151
+      },
+      "writtenOn": "2019-12-05T00:24:50Z",
+      "side": 1,
+      "message": "public?",
+      "range": {
+        "startLine": 701,
+        "startChar": 7,
+        "endLine": 701,
+        "endChar": 8
+      },
+      "revId": "29b6e0ff9ae307c1f1a54c7c27dc50458c3b02db",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
