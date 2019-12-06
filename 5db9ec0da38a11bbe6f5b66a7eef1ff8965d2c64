@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b0c22bdc_08731b6d",
+        "filename": "apex/sdkext/framework/tests/src/android/os/ext/SdkExtensionsTest.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1432579
+      },
+      "writtenOn": "2019-12-06T17:43:48Z",
+      "side": 1,
+      "message": "(passing by comment) IIRC current best practices suggests to use assertThrows/expectThrows",
+      "range": {
+        "startLine": 28,
+        "startChar": 8,
+        "endLine": 31,
+        "endChar": 55
+      },
+      "revId": "5db9ec0da38a11bbe6f5b66a7eef1ff8965d2c64",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
