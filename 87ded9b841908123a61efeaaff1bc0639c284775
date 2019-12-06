@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "829c567a_134070aa",
+        "filename": "nfc-extras/java/com/android/nfc_extras/NfcAdapterExtras.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1051483
+      },
+      "writtenOn": "2019-12-06T20:56:00Z",
+      "side": 1,
+      "message": "the broadcast bus isn\u0027t meant for request/response like this (time to deliver can be long, etc) - instead prefer an API that talks to the service via AIDL.\n\nrecommend the following:\n\n1. java method API to request preferred payment into\n2. broadcast to say something has changed (but leave off the info), and the app turns around and asks for the preferred payment info via the API. That allows finer grained visibility access controls if needed in the future.",
+      "range": {
+        "startLine": 59,
+        "startChar": 4,
+        "endLine": 67,
+        "endChar": 75
+      },
+      "revId": "87ded9b841908123a61efeaaff1bc0639c284775",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6bffcc68_94193bc8",
         "filename": "nfc-extras/java/com/android/nfc_extras/NfcAdapterExtras.java",
         "patchSetId": 5
