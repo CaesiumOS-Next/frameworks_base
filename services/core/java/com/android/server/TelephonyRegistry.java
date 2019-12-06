@@ -30,7 +30,6 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.pm.PackageManager;
 import android.net.LinkProperties;
-import android.net.NetworkCapabilities;
 import android.os.Binder;
 import android.os.Build;
 import android.os.Bundle;
@@ -1534,29 +1533,19 @@ public class TelephonyRegistry extends ITelephonyRegistry.Stub {
         }
     }
 
-    public void notifyDataConnection(int state, boolean isDataAllowed, String apn, String apnType,
-                                     LinkProperties linkProperties,
-                                     NetworkCapabilities networkCapabilities, int networkType,
-                                     boolean roaming) {
-        notifyDataConnectionForSubscriber(SubscriptionManager.DEFAULT_PHONE_INDEX,
-                SubscriptionManager.DEFAULT_SUBSCRIPTION_ID,  state,
-                isDataAllowed, apn, apnType, linkProperties,
-                networkCapabilities, networkType, roaming);
-    }
-
     public void notifyDataConnectionForSubscriber(int phoneId, int subId, int state,
-                                                  boolean isDataAllowed,
-                                                  String apn, String apnType,
-            LinkProperties linkProperties, NetworkCapabilities networkCapabilities,
-            int networkType, boolean roaming) {
+                                                  String apnType, int networkType,
+                                                  PreciseDataConnectionState preciseState) {
         if (!checkNotifyPermission("notifyDataConnection()" )) {
             return;
         }
+
+        String apn = preciseState != null ? preciseState.getDataConnectionApn() : "";
         if (VDBG) {
             log("notifyDataConnectionForSubscriber: subId=" + subId
-                + " state=" + state + " isDataAllowed=" + isDataAllowed
-                + "' apn='" + apn + "' apnType=" + apnType + " networkType=" + networkType
-                + " mRecords.size()=" + mRecords.size());
+                    + " state=" + state + "' apn='" + apn
+                    + "' apnType=" + apnType + " networkType=" + networkType
+                    + "' preciseState=" + preciseState);
         }
         synchronized (mRecords) {
             if (validatePhoneId(phoneId)) {
@@ -1589,10 +1578,13 @@ public class TelephonyRegistry extends ITelephonyRegistry.Stub {
                     mDataConnectionState[phoneId] = state;
                     mDataConnectionNetworkType[phoneId] = networkType;
                 }
+
+                LinkProperties linkProps = preciseState != null
+                        ? preciseState.getDataConnectionLinkProperties() : null;
                 mPreciseDataConnectionState[phoneId] = new PreciseDataConnectionState(
                         state, networkType,
                         ApnSetting.getApnTypesBitmaskFromString(apnType), apn,
-                        linkProperties, DataFailCause.NONE);
+                        linkProps, DataFailCause.NONE);
                 for (Record r : mRecords) {
                     if (r.matchPhoneStateListenerEvent(
                             PhoneStateListener.LISTEN_PRECISE_DATA_CONNECTION_STATE)
@@ -1608,8 +1600,8 @@ public class TelephonyRegistry extends ITelephonyRegistry.Stub {
             }
             handleRemoveListLocked();
         }
-        broadcastDataConnectionStateChanged(state, isDataAllowed, apn, apnType, linkProperties,
-                networkCapabilities, roaming, subId);
+
+        broadcastDataConnectionStateChanged(state, apn, apnType, subId);
     }
 
     public void notifyDataConnectionFailed(String apnType) {
@@ -2301,29 +2293,13 @@ public class TelephonyRegistry extends ITelephonyRegistry.Stub {
         }
     }
 
-    private void broadcastDataConnectionStateChanged(int state, boolean isDataAllowed, String apn,
-                                                     String apnType, LinkProperties linkProperties,
-                                                     NetworkCapabilities networkCapabilities,
-                                                     boolean roaming, int subId) {
+    private void broadcastDataConnectionStateChanged(int state, String apn,
+                                                     String apnType, int subId) {
         // Note: not reporting to the battery stats service here, because the
         // status bar takes care of that after taking into account all of the
         // required info.
         Intent intent = new Intent(TelephonyIntents.ACTION_ANY_DATA_CONNECTION_STATE_CHANGED);
         intent.putExtra(TelephonyManager.EXTRA_STATE, dataStateToString(state));
-        if (!isDataAllowed) {
-            intent.putExtra(PhoneConstants.NETWORK_UNAVAILABLE_KEY, true);
-        }
-        if (linkProperties != null) {
-            intent.putExtra(PhoneConstants.DATA_LINK_PROPERTIES_KEY, linkProperties);
-            String iface = linkProperties.getInterfaceName();
-            if (iface != null) {
-                intent.putExtra(PhoneConstants.DATA_IFACE_NAME_KEY, iface);
-            }
-        }
-        if (networkCapabilities != null) {
-            intent.putExtra(PhoneConstants.DATA_NETWORK_CAPABILITIES_KEY, networkCapabilities);
-        }
-        if (roaming) intent.putExtra(PhoneConstants.DATA_NETWORK_ROAMING_KEY, true);
 
         intent.putExtra(PhoneConstants.DATA_APN_KEY, apn);
         intent.putExtra(PhoneConstants.DATA_APN_TYPE_KEY, apnType);

@@ -776,18 +776,6 @@ public class TelephonyManager {
     public static final String EXTRA_DATA_APN = PhoneConstants.DATA_APN_KEY;
 
     /**
-     * The lookup key used with the {@link #ACTION_PRECISE_DATA_CONNECTION_STATE_CHANGED} broadcast
-     * for an String representation of the data interface.
-     *
-     * <p class="note">
-     * Retrieve with
-     * {@link android.content.Intent#getParcelableExtra(String name)}.
-     *
-     * @hide
-     */
-    public static final String EXTRA_DATA_LINK_PROPERTIES_KEY = PhoneConstants.DATA_LINK_PROPERTIES_KEY;
-
-    /**
      * Broadcast intent action for letting the default dialer to know to show voicemail
      * notification.
      *
