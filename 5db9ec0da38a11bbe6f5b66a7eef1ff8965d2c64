@@ -22,6 +22,30 @@
       "revId": "5db9ec0da38a11bbe6f5b66a7eef1ff8965d2c64",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "37ec965a_02adf340",
+        "filename": "apex/sdkext/framework/tests/src/android/os/ext/SdkExtensionsTest.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2019-12-06T17:44:53Z",
+      "side": 1,
+      "message": "yeah I didn\u0027t have that since I had two of these in one. I\u0027m moving this to CTS in the next CL, I\u0027ll do it then.",
+      "parentUuid": "b0c22bdc_08731b6d",
+      "range": {
+        "startLine": 28,
+        "startChar": 8,
+        "endLine": 31,
+        "endChar": 55
+      },
+      "revId": "5db9ec0da38a11bbe6f5b66a7eef1ff8965d2c64",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
