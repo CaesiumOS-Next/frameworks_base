@@ -28,23 +28,21 @@ import static org.mockito.Mockito.when;
 import static org.mockito.internal.verification.VerificationModeFactory.times;
 import static org.testng.Assert.assertThrows;
 
-import android.compat.Compatibility;
 import android.content.Context;
 import android.content.pm.PackageManager;
 
-import com.android.internal.compat.CompatibilityChangeConfig;
+import androidx.test.runner.AndroidJUnit4;
+
 import com.android.internal.compat.IAndroidBuildClassifier;
 import com.android.internal.compat.IOverrideValidator;
-
-import com.google.common.collect.ImmutableSet;
 
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
-import org.mockito.junit.MockitoJUnitRunner;
+import org.mockito.MockitoAnnotations;
 
-@RunWith(MockitoJUnitRunner.class)
+@RunWith(AndroidJUnit4.class)
 public class PlatformCompatTest {
     private static final String PACKAGE_NAME = "my.package";
 
@@ -54,98 +52,88 @@ public class PlatformCompatTest {
     private PackageManager mPackageManager;
     @Mock
     CompatChange.ChangeListener mListener1, mListener2;
+    PlatformCompat mPlatformCompat;
     CompatConfig mCompatConfig;
     @Mock
     IAndroidBuildClassifier mBuildClassifier;
     @Mock
     IOverrideValidator mOverrideValidator;
 
-
-
     @Before
     public void setUp() throws Exception {
+        MockitoAnnotations.initMocks(this);
         when(mContext.getPackageManager()).thenReturn(mPackageManager);
         when(mPackageManager.getPackageUid(eq(PACKAGE_NAME), eq(0))).thenThrow(
                 new PackageManager.NameNotFoundException());
         mCompatConfig = new CompatConfig();
+        mPlatformCompat = new PlatformCompat(mContext, mCompatConfig, mBuildClassifier,
+                mOverrideValidator);
         // Allow any override.
         when(mOverrideValidator.allowOverride(anyLong(), anyString())).thenReturn(true);
     }
 
     @Test
     public void testRegisterListenerToSameIdThrows() {
-        PlatformCompat pc = new PlatformCompat(mContext, mCompatConfig, mBuildClassifier,
-                                    mOverrideValidator);
-
         // Registering a listener to change 1 is successful.
-        pc.registerListener(1, mListener1);
+        mPlatformCompat.registerListener(1, mListener1);
         // Registering a listener to change 2 is successful.
-        pc.registerListener(2, mListener1);
+        mPlatformCompat.registerListener(2, mListener1);
         // Trying to register another listener to change id 1 fails.
-        assertThrows(IllegalStateException.class, () -> pc.registerListener(1, mListener1));
+        assertThrows(IllegalStateException.class,
+                () -> mPlatformCompat.registerListener(1, mListener1));
     }
 
     @Test
     public void testRegisterListenerReturn() {
-        PlatformCompat pc = new PlatformCompat(mContext, mCompatConfig, mBuildClassifier,
-                                    mOverrideValidator);
-
-        pc.setOverrides(
-                new CompatibilityChangeConfig(
-                        new Compatibility.ChangeConfig(ImmutableSet.of(1L), ImmutableSet.of())),
-                PACKAGE_NAME);
+        OverridesBuilder.create()
+                .enable(1L)
+                .toPackage(PACKAGE_NAME)
+                .override(mPlatformCompat);
 
         // Change id 1 is known (added in setOverrides).
-        assertThat(pc.registerListener(1, mListener1)).isTrue();
+        assertThat(mPlatformCompat.registerListener(1, mListener1)).isTrue();
         // Change 2 is unknown.
-        assertThat(pc.registerListener(2, mListener1)).isFalse();
+        assertThat(mPlatformCompat.registerListener(2, mListener1)).isFalse();
     }
 
     @Test
     public void testListenerCalledOnSetOverrides() {
-        PlatformCompat pc = new PlatformCompat(mContext, mCompatConfig, mBuildClassifier,
-                                    mOverrideValidator);
+        mPlatformCompat.registerListener(1, mListener1);
+        mPlatformCompat.registerListener(2, mListener1);
 
-        pc.registerListener(1, mListener1);
-        pc.registerListener(2, mListener1);
-
-        pc.setOverrides(
-                new CompatibilityChangeConfig(
-                        new Compatibility.ChangeConfig(ImmutableSet.of(1L), ImmutableSet.of(2L))),
-                PACKAGE_NAME);
+        OverridesBuilder.create()
+                .enable(1L)
+                .disable(2L)
+                .toPackage(PACKAGE_NAME)
+                .override(mPlatformCompat);
 
         verify(mListener1, times(2)).onCompatChange(PACKAGE_NAME);
     }
 
     @Test
     public void testListenerNotCalledOnWrongPackage() {
-        PlatformCompat pc = new PlatformCompat(mContext, mCompatConfig, mBuildClassifier,
-                                    mOverrideValidator);
+        mPlatformCompat.registerListener(1, mListener1);
+        mPlatformCompat.registerListener(2, mListener1);
 
-        pc.registerListener(1, mListener1);
-        pc.registerListener(2, mListener1);
-
-        pc.setOverridesForTest(
-                new CompatibilityChangeConfig(
-                        new Compatibility.ChangeConfig(ImmutableSet.of(1L), ImmutableSet.of(2L))),
-                PACKAGE_NAME);
+        OverridesBuilder.create()
+                .enable(1L)
+                .disable(2L)
+                .toPackage(PACKAGE_NAME)
+                .override(mPlatformCompat);
 
         verify(mListener1, never()).onCompatChange("other.package");
     }
 
     @Test
     public void testListenerCalledOnSetOverridesTwoListeners() {
-        PlatformCompat pc = new PlatformCompat(mContext, mCompatConfig, mBuildClassifier,
-                                    mOverrideValidator);
-        pc.registerListener(1, mListener1);
+        mPlatformCompat.registerListener(1, mListener1);
 
-        final ImmutableSet<Long> enabled = ImmutableSet.of(1L);
-        final ImmutableSet<Long> disabled = ImmutableSet.of(2L);
+        OverridesBuilder builder = OverridesBuilder.create()
+                .enable(1L)
+                .disable(2L)
+                .toPackage(PACKAGE_NAME);
 
-        pc.setOverrides(
-                new CompatibilityChangeConfig(
-                        new Compatibility.ChangeConfig(enabled, disabled)),
-                PACKAGE_NAME);
+        builder.override(mPlatformCompat);
 
         verify(mListener1, times(1)).onCompatChange(PACKAGE_NAME);
         verify(mListener2, never()).onCompatChange(PACKAGE_NAME);
@@ -153,12 +141,9 @@ public class PlatformCompatTest {
         reset(mListener1);
         reset(mListener2);
 
-        pc.registerListener(2, mListener2);
+        mPlatformCompat.registerListener(2, mListener2);
 
-        pc.setOverrides(
-                new CompatibilityChangeConfig(
-                        new Compatibility.ChangeConfig(enabled, disabled)),
-                PACKAGE_NAME);
+        builder.override(mPlatformCompat);
 
         verify(mListener1, times(1)).onCompatChange(PACKAGE_NAME);
         verify(mListener2, times(1)).onCompatChange(PACKAGE_NAME);
@@ -166,33 +151,28 @@ public class PlatformCompatTest {
 
     @Test
     public void testListenerCalledOnSetOverridesForTest() {
-        PlatformCompat pc = new PlatformCompat(mContext, mCompatConfig, mBuildClassifier,
-                                    mOverrideValidator);
+        mPlatformCompat.registerListener(1, mListener1);
+        mPlatformCompat.registerListener(2, mListener1);
 
-        pc.registerListener(1, mListener1);
-        pc.registerListener(2, mListener1);
-
-        pc.setOverridesForTest(
-                new CompatibilityChangeConfig(
-                        new Compatibility.ChangeConfig(ImmutableSet.of(1L), ImmutableSet.of(2L))),
-                PACKAGE_NAME);
+        OverridesBuilder.create()
+                .enable(1L)
+                .disable(2L)
+                .toPackage(PACKAGE_NAME)
+                .override(mPlatformCompat);
 
         verify(mListener1, times(2)).onCompatChange(PACKAGE_NAME);
     }
 
     @Test
     public void testListenerCalledOnSetOverridesTwoListenersForTest() {
-        PlatformCompat pc = new PlatformCompat(mContext, mCompatConfig, mBuildClassifier,
-                                    mOverrideValidator);
-        pc.registerListener(1, mListener1);
+        mPlatformCompat.registerListener(1, mListener1);
 
-        final ImmutableSet<Long> enabled = ImmutableSet.of(1L);
-        final ImmutableSet<Long> disabled = ImmutableSet.of(2L);
+        OverridesBuilder builder = OverridesBuilder.create()
+                .enable(1L)
+                .disable(2L)
+                .toPackage(PACKAGE_NAME);
 
-        pc.setOverridesForTest(
-                new CompatibilityChangeConfig(
-                        new Compatibility.ChangeConfig(enabled, disabled)),
-                PACKAGE_NAME);
+        builder.override(mPlatformCompat);
 
         verify(mListener1, times(1)).onCompatChange(PACKAGE_NAME);
         verify(mListener2, never()).onCompatChange(PACKAGE_NAME);
@@ -200,11 +180,9 @@ public class PlatformCompatTest {
         reset(mListener1);
         reset(mListener2);
 
-        pc.registerListener(2, mListener2);
-        pc.setOverridesForTest(
-                new CompatibilityChangeConfig(
-                        new Compatibility.ChangeConfig(enabled, disabled)),
-                PACKAGE_NAME);
+        mPlatformCompat.registerListener(2, mListener2);
+
+        builder.override(mPlatformCompat);
 
         verify(mListener1, times(1)).onCompatChange(PACKAGE_NAME);
         verify(mListener2, times(1)).onCompatChange(PACKAGE_NAME);
@@ -212,84 +190,72 @@ public class PlatformCompatTest {
 
     @Test
     public void testListenerCalledOnClearOverrides() {
-        PlatformCompat pc = new PlatformCompat(mContext, mCompatConfig, mBuildClassifier,
-                                    mOverrideValidator);
+        mPlatformCompat.registerListener(1, mListener1);
+        mPlatformCompat.registerListener(2, mListener2);
 
-        pc.registerListener(1, mListener1);
-        pc.registerListener(2, mListener2);
+        OverridesBuilder.create()
+                .enable(1L)
+                .toPackage(PACKAGE_NAME)
+                .override(mPlatformCompat);
 
-        pc.setOverrides(
-                new CompatibilityChangeConfig(
-                        new Compatibility.ChangeConfig(ImmutableSet.of(1L), ImmutableSet.of())),
-                PACKAGE_NAME);
         verify(mListener1, times(1)).onCompatChange(PACKAGE_NAME);
         verify(mListener2, never()).onCompatChange(PACKAGE_NAME);
 
         reset(mListener1);
         reset(mListener2);
 
-        pc.clearOverrides(PACKAGE_NAME);
+        mPlatformCompat.clearOverrides(PACKAGE_NAME);
         verify(mListener1, times(1)).onCompatChange(PACKAGE_NAME);
         verify(mListener2, never()).onCompatChange(PACKAGE_NAME);
     }
 
     @Test
     public void testListenerCalledOnClearOverridesMultipleOverrides() {
-        PlatformCompat pc = new PlatformCompat(mContext, mCompatConfig, mBuildClassifier,
-                                    mOverrideValidator);
+        mPlatformCompat.registerListener(1, mListener1);
+        mPlatformCompat.registerListener(2, mListener2);
 
-        pc.registerListener(1, mListener1);
-        pc.registerListener(2, mListener2);
-
-        pc.setOverrides(
-                new CompatibilityChangeConfig(
-                        new Compatibility.ChangeConfig(ImmutableSet.of(1L), ImmutableSet.of(2L))),
-                PACKAGE_NAME);
+        OverridesBuilder.create()
+                .enable(1L)
+                .disable(2L)
+                .toPackage(PACKAGE_NAME)
+                .override(mPlatformCompat);
         verify(mListener1, times(1)).onCompatChange(PACKAGE_NAME);
         verify(mListener2, times(1)).onCompatChange(PACKAGE_NAME);
 
         reset(mListener1);
         reset(mListener2);
 
-        pc.clearOverrides(PACKAGE_NAME);
+        mPlatformCompat.clearOverrides(PACKAGE_NAME);
         verify(mListener1, times(1)).onCompatChange(PACKAGE_NAME);
         verify(mListener2, times(1)).onCompatChange(PACKAGE_NAME);
     }
 
     @Test
     public void testListenerCalledOnClearOverrideExists() {
-        PlatformCompat pc = new PlatformCompat(mContext, mCompatConfig, mBuildClassifier,
-                                    mOverrideValidator);
+        mPlatformCompat.registerListener(1, mListener1);
+        mPlatformCompat.registerListener(2, mListener2);
 
-        pc.registerListener(1, mListener1);
-        pc.registerListener(2, mListener2);
-
-        pc.setOverrides(
-                new CompatibilityChangeConfig(
-                        new Compatibility.ChangeConfig(ImmutableSet.of(1L), ImmutableSet.of())),
-                PACKAGE_NAME);
+        OverridesBuilder.create()
+                .enable(1L)
+                .toPackage(PACKAGE_NAME)
+                .override(mPlatformCompat);
         verify(mListener1, times(1)).onCompatChange(PACKAGE_NAME);
         verify(mListener2, never()).onCompatChange(PACKAGE_NAME);
 
         reset(mListener1);
         reset(mListener2);
 
-        pc.clearOverride(1, PACKAGE_NAME);
+        mPlatformCompat.clearOverride(1, PACKAGE_NAME);
         verify(mListener1, times(1)).onCompatChange(PACKAGE_NAME);
         verify(mListener2, never()).onCompatChange(PACKAGE_NAME);
     }
 
     @Test
     public void testListenerCalledOnClearOverrideDoesntExist() {
-        PlatformCompat pc = new PlatformCompat(mContext, mCompatConfig, mBuildClassifier,
-                                    mOverrideValidator);
+        mPlatformCompat.registerListener(1, mListener1);
 
-        pc.registerListener(1, mListener1);
-
-        pc.clearOverride(1, PACKAGE_NAME);
+        mPlatformCompat.clearOverride(1, PACKAGE_NAME);
         // Listener not called when a non existing override is removed.
         verify(mListener1, never()).onCompatChange(PACKAGE_NAME);
     }
-
-
 }

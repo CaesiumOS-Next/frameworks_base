@@ -67,7 +67,7 @@ public class OverrideValidatorImplTest {
         MockitoAnnotations.initMocks(this);
         mCompatConfig = new CompatConfig();
         mOverrideValidator = new OverrideValidatorImpl(mBuildClassifier, mPackageManager,
-                                                       mCompatConfig);
+                mCompatConfig);
     }
 
     @Test

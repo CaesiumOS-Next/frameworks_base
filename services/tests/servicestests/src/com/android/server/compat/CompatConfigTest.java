@@ -26,8 +26,6 @@ import android.content.pm.ApplicationInfo;
 
 import androidx.test.runner.AndroidJUnit4;
 
-import com.android.compat.annotation.Change;
-import com.android.compat.annotation.XmlWriter;
 import com.android.internal.compat.IOverrideValidator;
 
 import org.junit.Before;
@@ -37,8 +35,6 @@ import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
 import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
 import java.util.UUID;
 
 @RunWith(AndroidJUnit4.class)
@@ -46,13 +42,9 @@ public class CompatConfigTest {
 
     @Mock
     private IOverrideValidator mAlwaysValid;
-
-    private ApplicationInfo makeAppInfo(String pName, int targetSdkVersion) {
-        ApplicationInfo ai = new ApplicationInfo();
-        ai.packageName = pName;
-        ai.targetSdkVersion = targetSdkVersion;
-        return ai;
-    }
+    @Mock
+    private IOverrideValidator mAlwaysInvalid;
+    private CompatConfig mCompatConfig;
 
     private File createTempDir() {
         String base = System.getProperty("java.io.tmpdir");
@@ -61,173 +53,328 @@ public class CompatConfigTest {
         return dir;
     }
 
-    private void writeChangesToFile(Change[] changes, File f) {
-        XmlWriter writer = new XmlWriter();
-        for (Change change: changes) {
-            writer.addChange(change);
-        }
-        try {
-            f.createNewFile();
-            writer.write(new FileOutputStream(f));
-        } catch (IOException e) {
-            throw new RuntimeException(
-                    "Encountered an error while writing compat config file", e);
-        }
-    }
-
     @Before
     public void setUp() throws Exception {
         MockitoAnnotations.initMocks(this);
         when(mAlwaysValid.allowOverride(anyLong(), anyString())).thenReturn(true);
+        when(mAlwaysInvalid.allowOverride(anyLong(), anyString())).thenReturn(false);
+        mCompatConfig = new CompatConfig();
     }
 
     @Test
     public void testUnknownChangeEnabled() {
-        CompatConfig pc = new CompatConfig();
-        assertThat(pc.isChangeEnabled(1234L, makeAppInfo("com.some.package", 1))).isTrue();
+        ApplicationInfo app = ApplicationBuilder.create()
+                .withPackageName("com.some.package")
+                .toApplicationInfo();
+        assertThat(mCompatConfig.isChangeEnabled(1234L, app)).isTrue();
     }
 
     @Test
     public void testDisabledChangeDisabled() {
-        CompatConfig pc = new CompatConfig();
-        pc.addChange(new CompatChange(1234L, "MY_CHANGE", -1, true, ""));
-        assertThat(pc.isChangeEnabled(1234L, makeAppInfo("com.some.package", 1))).isFalse();
+        final long changeId = 1234L;
+        ChangeConfigBuilder.create()
+                .disabledChangeWithId(changeId)
+                .addAll(mCompatConfig);
+        ApplicationInfo app = ApplicationBuilder.create()
+                .withPackageName("com.some.package")
+                .toApplicationInfo();
+
+        assertThat(mCompatConfig.isChangeEnabled(changeId, app)).isFalse();
     }
 
     @Test
     public void testTargetSdkChangeDisabled() {
-        CompatConfig pc = new CompatConfig();
-        pc.addChange(new CompatChange(1234L, "MY_CHANGE", 2, false, null));
-        assertThat(pc.isChangeEnabled(1234L, makeAppInfo("com.some.package", 2))).isFalse();
+        final long changeId = 1234L;
+        final int targetSdk = 2;
+        ChangeConfigBuilder.create()
+                .targetSdkChangeWithId(targetSdk, changeId)
+                .addAll(mCompatConfig);
+        ApplicationInfo app = ApplicationBuilder.create()
+                .withPackageName("com.some.package")
+                .withTargetSdk(targetSdk)
+                .toApplicationInfo();
+
+        assertThat(mCompatConfig.isChangeEnabled(changeId, app)).isFalse();
     }
 
     @Test
     public void testTargetSdkChangeEnabled() {
-        CompatConfig pc = new CompatConfig();
-        pc.addChange(new CompatChange(1234L, "MY_CHANGE", 2, false, ""));
-        assertThat(pc.isChangeEnabled(1234L, makeAppInfo("com.some.package", 3))).isTrue();
+        final long changeId = 1234L;
+        final int targetSdk = 2;
+        final int targetSdkHigher = 3;
+        ChangeConfigBuilder.create()
+                .targetSdkChangeWithId(targetSdk, changeId)
+                .addAll(mCompatConfig);
+        ApplicationInfo app = ApplicationBuilder.create()
+                .withPackageName("com.some.package")
+                .withTargetSdk(targetSdkHigher)
+                .toApplicationInfo();
+
+        assertThat(mCompatConfig.isChangeEnabled(changeId, app)).isTrue();
     }
 
     @Test
     public void testDisabledOverrideTargetSdkChange() {
-        CompatConfig pc = new CompatConfig();
-        pc.addChange(new CompatChange(1234L, "MY_CHANGE", 2, true, null));
-        assertThat(pc.isChangeEnabled(1234L, makeAppInfo("com.some.package", 3))).isFalse();
+        final long changeId = 1234L;
+        final int targetSdk = 2;
+        final int targetSdkHigher = 3;
+        ChangeConfigBuilder.create()
+                .targetSdkDisabledChangeWithId(targetSdk, changeId)
+                .addAll(mCompatConfig);
+        ApplicationInfo app = ApplicationBuilder.create()
+                .withPackageName("com.some.package")
+                .withTargetSdk(targetSdkHigher)
+                .toApplicationInfo();
+
+        assertThat(mCompatConfig.isChangeEnabled(changeId, app)).isFalse();
     }
 
     @Test
     public void testGetDisabledChanges() {
-        CompatConfig pc = new CompatConfig();
-        pc.addChange(new CompatChange(1234L, "MY_CHANGE", -1, true, null));
-        pc.addChange(new CompatChange(2345L, "OTHER_CHANGE", -1, false, null));
-        assertThat(pc.getDisabledChanges(
-                makeAppInfo("com.some.package", 2))).asList().containsExactly(1234L);
+        final long disabledChangeId = 1234L;
+        final long otherChangeId = 2345L;
+        ChangeConfigBuilder.create()
+                .disabledChangeWithId(disabledChangeId)
+                .enabledChangeWithId(otherChangeId)
+                .addAll(mCompatConfig);
+        ApplicationInfo app = ApplicationBuilder.create()
+                .withPackageName("com.some.package")
+                .withTargetSdk(2)
+                .toApplicationInfo();
+
+        assertThat(mCompatConfig.getDisabledChanges(app)).asList().containsExactly(
+                disabledChangeId);
     }
 
     @Test
     public void testGetDisabledChangesSorted() {
-        CompatConfig pc = new CompatConfig();
-        pc.addChange(new CompatChange(1234L, "MY_CHANGE", 2, true, null));
-        pc.addChange(new CompatChange(123L, "OTHER_CHANGE", 2, true, null));
-        pc.addChange(new CompatChange(12L, "THIRD_CHANGE", 2, true, null));
-        assertThat(pc.getDisabledChanges(
-                makeAppInfo("com.some.package", 2))).asList().containsExactly(12L, 123L, 1234L);
+        final long highestChangeId = 1234L;
+        final long middleChangeId = 123L;
+        final long lowestChangeId = 12L;
+        ChangeConfigBuilder.create()
+                .disabledChangeWithId(highestChangeId)
+                .disabledChangeWithId(middleChangeId)
+                .disabledChangeWithId(lowestChangeId)
+                .addAll(mCompatConfig);
+        ApplicationInfo app = ApplicationBuilder.create()
+                .withPackageName("com.some.package")
+                .withTargetSdk(2)
+                .toApplicationInfo();
+
+        assertThat(mCompatConfig.getDisabledChanges(app)).asList()
+                .containsExactly(lowestChangeId, middleChangeId, highestChangeId);
     }
 
     @Test
     public void testPackageOverrideEnabled() {
-        CompatConfig pc = new CompatConfig();
-        pc.addChange(new CompatChange(1234L, "MY_CHANGE", -1, true, null)); // disabled
-        pc.addOverride(1234L, "com.some.package", true, mAlwaysValid);
-        assertThat(pc.isChangeEnabled(1234L, makeAppInfo("com.some.package", 2))).isTrue();
-        assertThat(pc.isChangeEnabled(1234L, makeAppInfo("com.other.package", 2))).isFalse();
+        final long changeId = 1234L;
+        final String appPackage = "com.some.package";
+        final String otherAppPackage = "com.other.package";
+        ChangeConfigBuilder.create()
+                .disabledChangeWithId(changeId)
+                .addAll(mCompatConfig);
+        ApplicationInfo app = ApplicationBuilder.create()
+                .withPackageName(appPackage)
+                .withTargetSdk(2)
+                .toApplicationInfo();
+        ApplicationInfo otherApp = ApplicationBuilder.create()
+                .withPackageName(otherAppPackage)
+                .withTargetSdk(2)
+                .toApplicationInfo();
+        OverridesBuilder.create()
+                .enable(changeId)
+                .toPackage(appPackage)
+                .override(mCompatConfig, mAlwaysValid);
+
+        assertThat(mCompatConfig.isChangeEnabled(changeId, app)).isTrue();
+        assertThat(mCompatConfig.isChangeEnabled(changeId, otherApp)).isFalse();
     }
 
     @Test
     public void testPackageOverrideDisabled() {
-        CompatConfig pc = new CompatConfig();
-        pc.addChange(new CompatChange(1234L, "MY_CHANGE", -1, false, null));
-        pc.addOverride(1234L, "com.some.package", false, mAlwaysValid);
-        assertThat(pc.isChangeEnabled(1234L, makeAppInfo("com.some.package", 2))).isFalse();
-        assertThat(pc.isChangeEnabled(1234L, makeAppInfo("com.other.package", 2))).isTrue();
+        final long changeId = 1234L;
+        final String appPackage = "com.some.package";
+        final String otherAppPackage = "com.other.package";
+        ChangeConfigBuilder.create()
+                .enabledChangeWithId(changeId)
+                .addAll(mCompatConfig);
+        ApplicationInfo app = ApplicationBuilder.create()
+                .withPackageName(appPackage)
+                .toApplicationInfo();
+        ApplicationInfo otherApp = ApplicationBuilder.create()
+                .withPackageName(otherAppPackage)
+                .toApplicationInfo();
+        OverridesBuilder.create()
+                .disable(changeId)
+                .toPackage(appPackage)
+                .override(mCompatConfig, mAlwaysValid);
+        assertThat(mCompatConfig.isChangeEnabled(changeId, app)).isFalse();
+        assertThat(mCompatConfig.isChangeEnabled(changeId, otherApp)).isTrue();
     }
 
     @Test
     public void testPackageOverrideUnknownPackage() {
-        CompatConfig pc = new CompatConfig();
-        pc.addOverride(1234L, "com.some.package", false, mAlwaysValid);
-        assertThat(pc.isChangeEnabled(1234L, makeAppInfo("com.some.package", 2))).isFalse();
-        assertThat(pc.isChangeEnabled(1234L, makeAppInfo("com.other.package", 2))).isTrue();
+        final long changeId = 1234L;
+        final String appPackage = "com.some.package";
+        final String otherAppPackage = "com.other.package";
+        ApplicationInfo app = ApplicationBuilder.create()
+                .withPackageName(appPackage)
+                .withTargetSdk(2)
+                .toApplicationInfo();
+        ApplicationInfo otherApp = ApplicationBuilder.create()
+                .withPackageName(otherAppPackage)
+                .withTargetSdk(2)
+                .toApplicationInfo();
+        OverridesBuilder.create()
+                .disable(changeId)
+                .toPackage(appPackage)
+                .override(mCompatConfig, mAlwaysValid);
+
+        assertThat(mCompatConfig.isChangeEnabled(changeId, app)).isFalse();
+        assertThat(mCompatConfig.isChangeEnabled(changeId, otherApp)).isTrue();
+    }
+
+    @Test
+    public void testPreventAddOverride() {
+        final long changeId = 1234L;
+        ChangeConfigBuilder.create()
+                .disabledChangeWithId(changeId)
+                .addAll(mCompatConfig);
+        ApplicationInfo app = ApplicationBuilder.create()
+                .withPackageName("com.some.package")
+                .toApplicationInfo();
+        OverridesBuilder.create()
+                .enable(changeId)
+                .toPackage("com.some.package")
+                .override(mCompatConfig, mAlwaysInvalid);
+
+        assertThat(mCompatConfig.isChangeEnabled(1234L, app)).isFalse();
+    }
+
+    @Test
+    public void testPreventRemoveOverride() {
+        final long changeId = 1234L;
+        final String packageName = "com.some.package";
+        ChangeConfigBuilder.create()
+                .disabledChangeWithId(changeId)
+                .addAll(mCompatConfig);
+        ApplicationInfo app = ApplicationBuilder.create()
+                .withPackageName(packageName)
+                .toApplicationInfo();
+        OverridesBuilder.create()
+                .enable(changeId)
+                .toPackage(packageName)
+                .override(mCompatConfig, mAlwaysValid);
+        // Validator allows turning on the change.
+        assertThat(mCompatConfig.isChangeEnabled(changeId, app)).isTrue();
+        // Try to turn off change, but validator prevents it
+        mCompatConfig.removeOverride(changeId, packageName, mAlwaysInvalid);
+        assertThat(mCompatConfig.isChangeEnabled(changeId, app)).isTrue();
     }
 
     @Test
     public void testPackageOverrideUnknownChange() {
-        CompatConfig pc = new CompatConfig();
-        assertThat(pc.isChangeEnabled(1234L, makeAppInfo("com.some.package", 1))).isTrue();
+        ApplicationInfo app = ApplicationBuilder.create()
+                .withPackageName("com.some.package")
+                .withTargetSdk(1)
+                .toApplicationInfo();
+        assertThat(mCompatConfig.isChangeEnabled(1234L, app)).isTrue();
     }
 
     @Test
     public void testRemovePackageOverride() {
-        CompatConfig pc = new CompatConfig();
-        pc.addChange(new CompatChange(1234L, "MY_CHANGE", -1, false, null));
-        pc.addOverride(1234L, "com.some.package", false, mAlwaysValid);
-        pc.removeOverride(1234L, "com.some.package", mAlwaysValid);
-        assertThat(pc.isChangeEnabled(1234L, makeAppInfo("com.some.package", 2))).isTrue();
+        final long changeId = 1234L;
+        final String packageName = "com.some.package";
+        ChangeConfigBuilder.create()
+                .enabledChangeWithId(changeId)
+                .addAll(mCompatConfig);
+        ApplicationInfo app = ApplicationBuilder.create()
+                .withPackageName(packageName)
+                .toApplicationInfo();
+
+        assertThat(mCompatConfig.addOverride(changeId, packageName, false, mAlwaysValid))
+                .isTrue();
+        assertThat(mCompatConfig.isChangeEnabled(changeId, app)).isFalse();
+
+        mCompatConfig.removeOverride(changeId, packageName, mAlwaysValid);
+        assertThat(mCompatConfig.isChangeEnabled(changeId, app)).isTrue();
     }
 
     @Test
     public void testLookupChangeId() {
-        CompatConfig pc = new CompatConfig();
-        pc.addChange(new CompatChange(1234L, "MY_CHANGE", -1, false, null));
-        pc.addChange(new CompatChange(2345L, "ANOTHER_CHANGE", -1, false, null));
-        assertThat(pc.lookupChangeId("MY_CHANGE")).isEqualTo(1234L);
+        final long changeId = 1234L;
+        final String changeName = "MY_CHANGE";
+        final long otherChangeId = 2345L;
+        final String otherChangeName = "MY_CHANGE";
+        ChangeConfigBuilder.create()
+                .enabledChangeWithIdAndName(changeId, changeName)
+                .enabledChangeWithIdAndName(otherChangeId, otherChangeName)
+                .addAll(mCompatConfig);
+
+        assertThat(mCompatConfig.lookupChangeId(changeName)).isEqualTo(changeId);
     }
 
     @Test
     public void testLookupChangeIdNotPresent() {
-        CompatConfig pc = new CompatConfig();
-        assertThat(pc.lookupChangeId("MY_CHANGE")).isEqualTo(-1L);
+        assertThat(mCompatConfig.lookupChangeId("MY_CHANGE")).isEqualTo(-1L);
     }
 
     @Test
     public void testReadConfig() {
-        Change[] changes = {new Change(1234L, "MY_CHANGE1", false, 2, null), new Change(1235L,
-                "MY_CHANGE2", true, null, "description"), new Change(1236L, "MY_CHANGE3", false,
-                null, "")};
-
         File dir = createTempDir();
-        writeChangesToFile(changes, new File(dir.getPath() + "/platform_compat_config.xml"));
+        ChangeConfigBuilder.create()
+                .targetSdkChangeWithId(2, 1234L)
+                .disabledChangeWithId(1235L)
+                .enabledChangeWithId(1236)
+                .saveToFile(dir, "/platform_compat_config.xml");
+        mCompatConfig.initConfigFromLib(dir);
 
-        CompatConfig pc = new CompatConfig();
-        pc.initConfigFromLib(dir);
+        ApplicationInfo appTargetSdk1 = ApplicationBuilder.create()
+                .withPackageName("com.some.package")
+                .withTargetSdk(1)
+                .toApplicationInfo();
+        ApplicationInfo appTargetSdk3 = ApplicationBuilder.create()
+                .withPackageName("com.some.package")
+                .withTargetSdk(3)
+                .toApplicationInfo();
+        ApplicationInfo appTargetSdk5 = ApplicationBuilder.create()
+                .withPackageName("com.some.package")
+                .withTargetSdk(5)
+                .toApplicationInfo();
 
-        assertThat(pc.isChangeEnabled(1234L, makeAppInfo("com.some.package", 1))).isFalse();
-        assertThat(pc.isChangeEnabled(1234L, makeAppInfo("com.some.package", 3))).isTrue();
-        assertThat(pc.isChangeEnabled(1235L, makeAppInfo("com.some.package", 5))).isFalse();
-        assertThat(pc.isChangeEnabled(1236L, makeAppInfo("com.some.package", 1))).isTrue();
+        assertThat(mCompatConfig.isChangeEnabled(1234L, appTargetSdk1)).isFalse();
+        assertThat(mCompatConfig.isChangeEnabled(1234L, appTargetSdk3)).isTrue();
+        assertThat(mCompatConfig.isChangeEnabled(1235L, appTargetSdk5)).isFalse();
+        assertThat(mCompatConfig.isChangeEnabled(1236L, appTargetSdk1)).isTrue();
     }
 
     @Test
     public void testReadConfigMultipleFiles() {
-        Change[] changes1 = {new Change(1234L, "MY_CHANGE1", false, 2, null)};
-        Change[] changes2 = {new Change(1235L, "MY_CHANGE2", true, null, ""), new Change(1236L,
-                "MY_CHANGE3", false, null, null)};
-
         File dir = createTempDir();
-        writeChangesToFile(changes1,
-                new File(dir.getPath() + "/libcore_platform_compat_config.xml"));
-        writeChangesToFile(changes2,
-                new File(dir.getPath() + "/frameworks_platform_compat_config.xml"));
+        ChangeConfigBuilder.create()
+                .targetSdkChangeWithId(2, 1234L)
+                .saveToFile(dir, "/libcore_platform_compat_config.xml");
+        ChangeConfigBuilder.create()
+                .disabledChangeWithId(1235L)
+                .saveToFile(dir, "/frameworks_platform_compat_config.xml");
+        mCompatConfig.initConfigFromLib(dir);
 
+        ApplicationInfo appTargetSdk1 = ApplicationBuilder.create()
+                .withPackageName("com.some.package")
+                .withTargetSdk(1)
+                .toApplicationInfo();
+        ApplicationInfo appTargetSdk3 = ApplicationBuilder.create()
+                .withPackageName("com.some.package")
+                .withTargetSdk(3)
+                .toApplicationInfo();
+        ApplicationInfo appTargetSdk5 = ApplicationBuilder.create()
+                .withPackageName("com.some.package")
+                .withTargetSdk(5)
+                .toApplicationInfo();
 
-        CompatConfig pc = new CompatConfig();
-        pc.initConfigFromLib(dir);
-
-        assertThat(pc.isChangeEnabled(1234L, makeAppInfo("com.some.package", 1))).isFalse();
-        assertThat(pc.isChangeEnabled(1234L, makeAppInfo("com.some.package", 3))).isTrue();
-        assertThat(pc.isChangeEnabled(1235L, makeAppInfo("com.some.package", 5))).isFalse();
-        assertThat(pc.isChangeEnabled(1236L, makeAppInfo("com.some.package", 1))).isTrue();
+        assertThat(mCompatConfig.isChangeEnabled(1234L, appTargetSdk1)).isFalse();
+        assertThat(mCompatConfig.isChangeEnabled(1234L, appTargetSdk3)).isTrue();
+        assertThat(mCompatConfig.isChangeEnabled(1235L, appTargetSdk5)).isFalse();
+        assertThat(mCompatConfig.isChangeEnabled(1236L, appTargetSdk1)).isTrue();
     }
 }
-
-
