@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5a04b27d_c9e156b0",
+        "filename": "core/java/android/net/TrafficStats.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 600,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2019-12-06T07:28:48Z",
+      "side": 1,
+      "message": "Nit: the number",
+      "range": {
+        "startLine": 600,
+        "startChar": 14,
+        "endLine": 600,
+        "endChar": 20
+      },
+      "revId": "7410d88ae467e8fe3e1f00501a7e18b69c8de26c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "57462df0_6e994b4a",
+        "filename": "core/java/android/net/TrafficStats.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 616,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2019-12-06T07:28:48Z",
+      "side": 1,
+      "message": "Nit: the number",
+      "range": {
+        "startLine": 616,
+        "startChar": 14,
+        "endLine": 616,
+        "endChar": 20
+      },
+      "revId": "7410d88ae467e8fe3e1f00501a7e18b69c8de26c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
