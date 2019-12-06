@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "13206cbb_3c622dcb",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1432579
+      },
+      "writtenOn": "2019-12-06T17:44:55Z",
+      "side": 1,
+      "message": "You can also test locally by running atest --test_mapping frameworks/base/apex/sdkext",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 30
+      },
+      "revId": "5db9ec0da38a11bbe6f5b66a7eef1ff8965d2c64",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b0c22bdc_08731b6d",
         "filename": "apex/sdkext/framework/tests/src/android/os/ext/SdkExtensionsTest.java",
         "patchSetId": 2
