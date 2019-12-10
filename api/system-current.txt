@@ -5848,6 +5848,7 @@ package android.os {
     method public boolean bind(android.os.UpdateEngineCallback, android.os.Handler);
     method public boolean bind(android.os.UpdateEngineCallback);
     method public void cancel();
+    method public boolean cleanupSuccessfulUpdate();
     method public void resetStatus();
     method public void resume();
     method public void suspend();
