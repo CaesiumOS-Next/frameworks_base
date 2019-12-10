@@ -366,7 +366,7 @@ public class TelephonyRegistryManager {
      * @param state latest data connection state, e.g,
      * @param isDataConnectivityPossible indicates if data is allowed
      * @param apn the APN {@link ApnSetting#getApnName()} of this data connection.
-     * @param apnType the apnType, "ims" for IMS APN, "emergency" for EMERGENCY APN.
+     * @param apnType the apn type bitmask, defined with {@link ApnSetting#TYPE_*} flags.
      * @param linkProperties {@link LinkProperties} associated with this data connection.
      * @param networkCapabilities {@link NetworkCapabilities} associated with this data connection.
      * @param networkType associated with this data connection.
@@ -377,9 +377,9 @@ public class TelephonyRegistryManager {
      * @hide
      */
     public void notifyDataConnectionForSubscriber(int slotIndex, int subId, @DataState int state,
-        boolean isDataConnectivityPossible,
-        @ApnType String apn, String apnType, LinkProperties linkProperties,
-        NetworkCapabilities networkCapabilities, int networkType, boolean roaming) {
+            boolean isDataConnectivityPossible,
+            String apn, @ApnType int apnType, LinkProperties linkProperties,
+            NetworkCapabilities networkCapabilities, int networkType, boolean roaming) {
         try {
             sRegistry.notifyDataConnectionForSubscriber(slotIndex, subId, state,
                 isDataConnectivityPossible,

@@ -40,6 +40,7 @@ import android.os.Message;
 import android.os.RemoteException;
 import android.os.UserHandle;
 import android.telephony.Annotation;
+import android.telephony.Annotation.ApnType;
 import android.telephony.Annotation.DataFailureCause;
 import android.telephony.Annotation.RadioPowerState;
 import android.telephony.Annotation.SrvccState;
@@ -1534,8 +1535,9 @@ public class TelephonyRegistry extends ITelephonyRegistry.Stub {
         }
     }
 
-    public void notifyDataConnection(int state, boolean isDataAllowed, String apn, String apnType,
-                                     LinkProperties linkProperties,
+    @Override
+    public void notifyDataConnection(int state, boolean isDataAllowed, String apn,
+                                     @ApnType int apnType, inkProperties linkProperties,
                                      NetworkCapabilities networkCapabilities, int networkType,
                                      boolean roaming) {
         notifyDataConnectionForSubscriber(SubscriptionManager.DEFAULT_PHONE_INDEX,
@@ -1544,9 +1546,10 @@ public class TelephonyRegistry extends ITelephonyRegistry.Stub {
                 networkCapabilities, networkType, roaming);
     }
 
+    @Override
     public void notifyDataConnectionForSubscriber(int phoneId, int subId, int state,
                                                   boolean isDataAllowed,
-                                                  String apn, String apnType,
+                                                  String apn, @ApnType int apnType,
             LinkProperties linkProperties, NetworkCapabilities networkCapabilities,
             int networkType, boolean roaming) {
         if (!checkNotifyPermission("notifyDataConnection()" )) {
@@ -1561,7 +1564,7 @@ public class TelephonyRegistry extends ITelephonyRegistry.Stub {
         synchronized (mRecords) {
             if (validatePhoneId(phoneId)) {
                 // We only call the callback when the change is for default APN type.
-                if (PhoneConstants.APN_TYPE_DEFAULT.equals(apnType)
+                if ((ApnSetting.TYPE_DEFAULT & apnType) != 0
                         && (mDataConnectionState[phoneId] != state
                         || mDataConnectionNetworkType[phoneId] != networkType)) {
                     String str = "onDataConnectionStateChanged("
@@ -1590,9 +1593,7 @@ public class TelephonyRegistry extends ITelephonyRegistry.Stub {
                     mDataConnectionNetworkType[phoneId] = networkType;
                 }
                 mPreciseDataConnectionState[phoneId] = new PreciseDataConnectionState(
-                        state, networkType,
-                        ApnSetting.getApnTypesBitmaskFromString(apnType), apn,
-                        linkProperties, DataFailCause.NONE);
+                        state, networkType, apnType, apn, linkProperties, DataFailCause.NONE);
                 for (Record r : mRecords) {
                     if (r.matchPhoneStateListenerEvent(
                             PhoneStateListener.LISTEN_PRECISE_DATA_CONNECTION_STATE)
