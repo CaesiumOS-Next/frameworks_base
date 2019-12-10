@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2df29b24_ba1bc581",
+        "filename": "packages/DynamicSystemInstallationService/src/com/android/dynsystem/InstallationAsyncTask.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1337669
+      },
+      "writtenOn": "2019-12-10T03:21:18Z",
+      "side": 1,
+      "message": "make this a standalone line",
+      "range": {
+        "startLine": 96,
+        "startChar": 29,
+        "endLine": 96,
+        "endChar": 40
+      },
+      "revId": "c04b277e2517e78d86c1e41899234035fdfe867b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "caa47dca_c73ad805",
+        "filename": "packages/DynamicSystemInstallationService/src/com/android/dynsystem/InstallationAsyncTask.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1337669
+      },
+      "writtenOn": "2019-12-10T03:21:18Z",
+      "side": 1,
+      "message": "What is the purpose of this block?\n\nif mUrl is null then verifyAndPrepare()@L135 should fail / throw, thus makes this block unreachable?",
+      "range": {
+        "startLine": 144,
+        "startChar": 12,
+        "endLine": 147,
+        "endChar": 13
+      },
+      "revId": "c04b277e2517e78d86c1e41899234035fdfe867b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
