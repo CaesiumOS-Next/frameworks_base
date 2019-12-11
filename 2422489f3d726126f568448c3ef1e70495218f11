@@ -46,6 +46,30 @@
       "revId": "2422489f3d726126f568448c3ef1e70495218f11",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fbf798d9_1ac723c0",
+        "filename": "core/java/android/annotation/UnsupportedAppUsage.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1010681
+      },
+      "writtenOn": "2019-12-11T09:20:56Z",
+      "side": 1,
+      "message": "Well I wrote the original test which was unclear so I may not be the right person :)\n\nI would go for something like \"the API is available to apps with a targetSdkVersion up to and including the specified release\". For added clarity, we could linkify targetSdkVersion to https://developer.android.com/guide/topics/manifest/uses-sdk-element#target\n\nNote also this annotation is moving to here:\n  https://cs.corp.google.com/aosp-master/tools/platform-compat/annotation/src/java/android/compat/annotation/UnsupportedAppUsage.java\n\nand this version will eventually be deleted.",
+      "parentUuid": "a3c66be0_3ae30d87",
+      "range": {
+        "startLine": 87,
+        "startChar": 25,
+        "endLine": 87,
+        "endChar": 66
+      },
+      "revId": "2422489f3d726126f568448c3ef1e70495218f11",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
