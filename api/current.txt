@@ -28597,7 +28597,8 @@ package android.net {
     field public final int code;
   }
 
-  public final class Ikev2VpnProfile extends android.net.PlatformVpnProfile {
+  public final class Ikev2VpnProfile extends android.net.PlatformVpnProfile implements android.os.Parcelable {
+    method public int describeContents();
     method @NonNull public java.util.List<java.lang.String> getAllowedAlgorithms();
     method public int getMaxMtu();
     method @Nullable public String getPassword();
@@ -28612,6 +28613,8 @@ package android.net {
     method @Nullable public String getUsername();
     method public boolean isBypassable();
     method public boolean isMetered();
+    method public void writeToParcel(@NonNull android.os.Parcel, int);
+    field @NonNull public static final android.os.Parcelable.Creator<android.net.Ikev2VpnProfile> CREATOR;
   }
 
   public static final class Ikev2VpnProfile.Builder {

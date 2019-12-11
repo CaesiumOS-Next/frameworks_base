@@ -16,6 +16,8 @@
 
 package android.net;
 
+import static com.android.testutils.ParcelUtilsKt.assertParcelSane;
+
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
@@ -310,6 +312,18 @@ public class Ikev2VpnProfileTest {
         final Ikev2VpnProfile ikeProfile = builder.build();
 
         assertEquals(ikeProfile, Ikev2VpnProfile.fromVpnProfile(ikeProfile.toVpnProfile()));
+    }
+
+    @Test
+    public void testParcelUnparcelIsLossless() throws Exception {
+        final Ikev2VpnProfile.Builder builder = getBuilderWithDefaultOptions();
+
+        // Overwrite with a real proxy; otherwise unparcelling fails.
+        builder.setProxy(new ProxyInfo("host", 443, "exclList"));
+        builder.setAuthDigitalSignature(mUserCert, mPrivateKey, mServerRootCa);
+        final Ikev2VpnProfile ikeProfile = builder.build();
+
+        assertParcelSane(ikeProfile, 14);
     }
 
     private static class CertificateAndKey {

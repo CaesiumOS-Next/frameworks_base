@@ -25,6 +25,8 @@ import static com.android.internal.util.Preconditions.checkStringNotEmpty;
 
 import android.annotation.NonNull;
 import android.annotation.Nullable;
+import android.os.Parcel;
+import android.os.Parcelable;
 import android.security.Credentials;
 
 import com.android.internal.annotations.VisibleForTesting;
@@ -58,7 +60,7 @@ import java.util.Objects;
  * @see <a href="https://tools.ietf.org/html/rfc7296#section-3.3.2">RFC 7296 - Internet Key
  *     Exchange, Version 2 (IKEv2)</a>
  */
-public final class Ikev2VpnProfile extends PlatformVpnProfile {
+public final class Ikev2VpnProfile extends PlatformVpnProfile implements Parcelable {
     private static final String MISSING_PARAM_MSG_TMPL = "Required parameter was not provided: %s";
 
     @Nullable private final String mSessionName;
@@ -124,6 +126,70 @@ public final class Ikev2VpnProfile extends PlatformVpnProfile {
         mMaxMtu = maxMtu;
 
         validate();
+    }
+
+    private Ikev2VpnProfile(Parcel in) throws GeneralSecurityException {
+        super(in.readInt());
+
+        mSessionName = in.readString();
+        mServerAddr = in.readString();
+        mUserIdentity = in.readString();
+        mPresharedKey = in.createByteArray();
+
+        String serverRootCaStr = in.readString();
+        mServerRootCaCert =
+                serverRootCaStr.isEmpty() ? null : certificateFromPemString(serverRootCaStr);
+
+        mUsername = in.readString();
+        mPassword = in.readString();
+
+        String rsaPrivateKeyStr = in.readString();
+        mRsaPrivateKey = rsaPrivateKeyStr.isEmpty() ? null : getPrivateKey(rsaPrivateKeyStr);
+
+        String userCertStr = in.readString();
+        mUserCert = userCertStr.isEmpty() ? null : certificateFromPemString(userCertStr);
+        mProxyInfo = in.readParcelable(ProxyInfo.class.getClassLoader());
+
+        mAllowedAlgorithms = new ArrayList<>();
+        in.readStringList(mAllowedAlgorithms);
+
+        mIsBypassable = in.readBoolean();
+        mIsMetered = in.readBoolean();
+        mMaxMtu = in.readInt();
+
+        validate();
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(@NonNull Parcel out, int flags) {
+        try {
+            out.writeInt(mType);
+            out.writeString(mSessionName);
+            out.writeString(mServerAddr);
+            out.writeString(mUserIdentity);
+            out.writeByteArray(mPresharedKey);
+            out.writeString(
+                    mServerRootCaCert == null ? "" : certificateToPemString(mServerRootCaCert));
+            out.writeString(mUsername);
+            out.writeString(mPassword);
+            out.writeString(
+                    mRsaPrivateKey == null
+                            ? ""
+                            : encodeForIpsecSecret(mRsaPrivateKey.getEncoded()));
+            out.writeString(mUserCert == null ? "" : certificateToPemString(mUserCert));
+            out.writeParcelable(mProxyInfo, flags);
+            out.writeStringList(mAllowedAlgorithms);
+            out.writeBoolean(mIsBypassable);
+            out.writeBoolean(mIsMetered);
+            out.writeInt(mMaxMtu);
+        } catch (IOException | GeneralSecurityException e) {
+            throw new RuntimeException("Failed to parcel", e);
+        }
     }
 
     private void validate() {
@@ -680,4 +746,19 @@ public final class Ikev2VpnProfile extends PlatformVpnProfile {
                     mMaxMtu);
         }
     }
+
+    public static final @android.annotation.NonNull Parcelable.Creator<Ikev2VpnProfile> CREATOR =
+            new Parcelable.Creator<Ikev2VpnProfile>() {
+                public Ikev2VpnProfile createFromParcel(@NonNull Parcel in) {
+                    try {
+                        return new Ikev2VpnProfile(in);
+                    } catch (GeneralSecurityException e) {
+                        throw new IllegalArgumentException("Invalid IKEv2 VPN Profile", e);
+                    }
+                }
+
+                public Ikev2VpnProfile[] newArray(int size) {
+                    return new Ikev2VpnProfile[size];
+                }
+            };
 }
