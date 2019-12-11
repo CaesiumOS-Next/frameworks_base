@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "60e894a0_648fdf0d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1306837
+      },
+      "writtenOn": "2019-12-11T11:59:19Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 9,
+        "startChar": 50,
+        "endLine": 9,
+        "endChar": 52
+      },
+      "revId": "5c42130d851c9917505e65c98f3cc311161b5481",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e118a954_5ad415d1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1306837
+      },
+      "writtenOn": "2019-12-11T11:59:19Z",
+      "side": 1,
+      "message": "nit: maybe go/avoidwe applies here? :)",
+      "range": {
+        "startLine": 13,
+        "startChar": 6,
+        "endLine": 13,
+        "endChar": 8
+      },
+      "revId": "5c42130d851c9917505e65c98f3cc311161b5481",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "33842d29_dead5eab",
+        "filename": "services/core/java/com/android/server/ConnectivityService.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 5576,
+      "author": {
+        "id": 1306837
+      },
+      "writtenOn": "2019-12-11T11:59:19Z",
+      "side": 1,
+      "message": "maybe not for this change: updateCapabilities ?",
+      "range": {
+        "startLine": 5576,
+        "startChar": 35,
+        "endLine": 5576,
+        "endChar": 60
+      },
+      "revId": "5c42130d851c9917505e65c98f3cc311161b5481",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
