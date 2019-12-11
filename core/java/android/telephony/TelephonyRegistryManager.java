@@ -18,6 +18,8 @@ package android.telephony;
 import android.annotation.NonNull;
 import android.annotation.Nullable;
 import android.annotation.RequiresPermission;
+import android.annotation.SdkConstant;
+import android.annotation.SdkConstant.SdkConstantType;
 import android.annotation.SystemApi;
 import android.annotation.TestApi;
 import android.content.Context;
@@ -68,6 +70,105 @@ import java.util.concurrent.Executor;
  */
 @SystemApi
 public class TelephonyRegistryManager {
+
+    /**
+     * Broadcast intent action indicating that a precise call state
+     * (cellular) on the device has changed.
+     *
+     * <p>
+     * The {@link #EXTRA_RINGING_CALL_STATE} extra indicates the ringing call state.
+     * The {@link #EXTRA_FOREGROUND_CALL_STATE} extra indicates the foreground call state.
+     * The {@link #EXTRA_BACKGROUND_CALL_STATE} extra indicates the background call state.
+     *
+     * <p class="note">
+     * Requires the READ_PRECISE_PHONE_STATE permission.
+     *
+     * @see #EXTRA_RINGING_CALL_STATE
+     * @see #EXTRA_FOREGROUND_CALL_STATE
+     * @see #EXTRA_BACKGROUND_CALL_STATE
+     *
+     * <p class="note">
+     * Requires the READ_PRECISE_PHONE_STATE permission.
+     * @deprecated use {@link PhoneStateListener#LISTEN_PRECISE_CALL_STATE} instead
+     * @hide
+     */
+    @Deprecated
+    @SdkConstant(SdkConstantType.BROADCAST_INTENT_ACTION)
+    public static final String ACTION_PRECISE_CALL_STATE_CHANGED =
+            "android.intent.action.PRECISE_CALL_STATE";
+
+    /**
+     * The lookup key used with the {@link #ACTION_PRECISE_CALL_STATE_CHANGED} broadcast and
+     * {@link PhoneStateListener#onPreciseCallStateChanged(PreciseCallState)} for an integer
+     * containing the state of the current ringing call.
+     *
+     * @see PreciseCallState#PRECISE_CALL_STATE_NOT_VALID
+     * @see PreciseCallState#PRECISE_CALL_STATE_IDLE
+     * @see PreciseCallState#PRECISE_CALL_STATE_ACTIVE
+     * @see PreciseCallState#PRECISE_CALL_STATE_HOLDING
+     * @see PreciseCallState#PRECISE_CALL_STATE_DIALING
+     * @see PreciseCallState#PRECISE_CALL_STATE_ALERTING
+     * @see PreciseCallState#PRECISE_CALL_STATE_INCOMING
+     * @see PreciseCallState#PRECISE_CALL_STATE_WAITING
+     * @see PreciseCallState#PRECISE_CALL_STATE_DISCONNECTED
+     * @see PreciseCallState#PRECISE_CALL_STATE_DISCONNECTING
+     *
+     * <p class="note">
+     * Retrieve with
+     * {@link android.content.Intent#getIntExtra(String name, int defaultValue)}.
+     *
+     * @hide
+     */
+    public static final String EXTRA_RINGING_CALL_STATE = "ringing_state";
+
+    /**
+     * The lookup key used with the {@link #ACTION_PRECISE_CALL_STATE_CHANGED} broadcast and
+     * {@link PhoneStateListener#onPreciseCallStateChanged(PreciseCallState)} for an integer
+     * containing the state of the current foreground call.
+     *
+     * @see PreciseCallState#PRECISE_CALL_STATE_NOT_VALID
+     * @see PreciseCallState#PRECISE_CALL_STATE_IDLE
+     * @see PreciseCallState#PRECISE_CALL_STATE_ACTIVE
+     * @see PreciseCallState#PRECISE_CALL_STATE_HOLDING
+     * @see PreciseCallState#PRECISE_CALL_STATE_DIALING
+     * @see PreciseCallState#PRECISE_CALL_STATE_ALERTING
+     * @see PreciseCallState#PRECISE_CALL_STATE_INCOMING
+     * @see PreciseCallState#PRECISE_CALL_STATE_WAITING
+     * @see PreciseCallState#PRECISE_CALL_STATE_DISCONNECTED
+     * @see PreciseCallState#PRECISE_CALL_STATE_DISCONNECTING
+     *
+     * <p class="note">
+     * Retrieve with
+     * {@link android.content.Intent#getIntExtra(String name, int defaultValue)}.
+     *
+     * @hide
+     */
+    public static final String EXTRA_FOREGROUND_CALL_STATE = "foreground_state";
+
+    /**
+     * The lookup key used with the {@link #ACTION_PRECISE_CALL_STATE_CHANGED} broadcast and
+     * {@link PhoneStateListener#onPreciseCallStateChanged(PreciseCallState)} for an integer
+     * containing the state of the current background call.
+     *
+     * @see PreciseCallState#PRECISE_CALL_STATE_NOT_VALID
+     * @see PreciseCallState#PRECISE_CALL_STATE_IDLE
+     * @see PreciseCallState#PRECISE_CALL_STATE_ACTIVE
+     * @see PreciseCallState#PRECISE_CALL_STATE_HOLDING
+     * @see PreciseCallState#PRECISE_CALL_STATE_DIALING
+     * @see PreciseCallState#PRECISE_CALL_STATE_ALERTING
+     * @see PreciseCallState#PRECISE_CALL_STATE_INCOMING
+     * @see PreciseCallState#PRECISE_CALL_STATE_WAITING
+     * @see PreciseCallState#PRECISE_CALL_STATE_DISCONNECTED
+     * @see PreciseCallState#PRECISE_CALL_STATE_DISCONNECTING
+     *
+     * <p class="note">
+     * Retrieve with
+     * {@link android.content.Intent#getIntExtra(String name, int defaultValue)}.
+     *
+     * @hide
+     */
+    public static final String EXTRA_BACKGROUND_CALL_STATE = "background_state";
+
 
     private static final String TAG = "TelephonyRegistryManager";
     private static ITelephonyRegistry sRegistry;

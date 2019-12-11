@@ -2349,10 +2349,10 @@ public class TelephonyRegistry extends ITelephonyRegistry.Stub {
 
     private void broadcastPreciseCallStateChanged(int ringingCallState, int foregroundCallState,
                                                   int backgroundCallState) {
-        Intent intent = new Intent(TelephonyManager.ACTION_PRECISE_CALL_STATE_CHANGED);
-        intent.putExtra(TelephonyManager.EXTRA_RINGING_CALL_STATE, ringingCallState);
-        intent.putExtra(TelephonyManager.EXTRA_FOREGROUND_CALL_STATE, foregroundCallState);
-        intent.putExtra(TelephonyManager.EXTRA_BACKGROUND_CALL_STATE, backgroundCallState);
+        Intent intent = new Intent(TelephonyRegistryManager.ACTION_PRECISE_CALL_STATE_CHANGED);
+        intent.putExtra(TelephonyRegistryManager.EXTRA_RINGING_CALL_STATE, ringingCallState);
+        intent.putExtra(TelephonyRegistryManager.EXTRA_FOREGROUND_CALL_STATE, foregroundCallState);
+        intent.putExtra(TelephonyRegistryManager.EXTRA_BACKGROUND_CALL_STATE, backgroundCallState);
         mContext.sendBroadcastAsUser(intent, UserHandle.ALL,
                 android.Manifest.permission.READ_PRECISE_PHONE_STATE);
     }
