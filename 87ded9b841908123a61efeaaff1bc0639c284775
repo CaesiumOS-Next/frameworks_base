@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "58401a35_eeed88fd",
+        "filename": "nfc-extras/java/com/android/nfc_extras/NfcAdapterExtras.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1328430
+      },
+      "writtenOn": "2019-12-11T11:32:40Z",
+      "side": 1,
+      "message": "Add APIs for applications to get the preferred payment service information.",
+      "parentUuid": "829c567a_134070aa",
+      "range": {
+        "startLine": 59,
+        "startChar": 4,
+        "endLine": 67,
+        "endChar": 75
+      },
+      "revId": "87ded9b841908123a61efeaaff1bc0639c284775",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6bffcc68_94193bc8",
         "filename": "nfc-extras/java/com/android/nfc_extras/NfcAdapterExtras.java",
         "patchSetId": 5
@@ -45,6 +69,30 @@
       "revId": "87ded9b841908123a61efeaaff1bc0639c284775",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "31fa12fe_c8cd676d",
+        "filename": "nfc-extras/java/com/android/nfc_extras/NfcAdapterExtras.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1328430
+      },
+      "writtenOn": "2019-12-11T11:32:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6bffcc68_94193bc8",
+      "range": {
+        "startLine": 74,
+        "startChar": 10,
+        "endLine": 74,
+        "endChar": 17
+      },
+      "revId": "87ded9b841908123a61efeaaff1bc0639c284775",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
