@@ -22,6 +22,30 @@
       "revId": "2422489f3d726126f568448c3ef1e70495218f11",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a3c66be0_3ae30d87",
+        "filename": "core/java/android/annotation/UnsupportedAppUsage.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1038039
+      },
+      "writtenOn": "2019-12-11T08:53:36Z",
+      "side": 1,
+      "message": "Then it should be fixed here and in the libcore copy. Give me the text you prefer and I\u0027ll happily make the change.",
+      "parentUuid": "b1d12739_d3d37deb",
+      "range": {
+        "startLine": 87,
+        "startChar": 25,
+        "endLine": 87,
+        "endChar": 66
+      },
+      "revId": "2422489f3d726126f568448c3ef1e70495218f11",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
