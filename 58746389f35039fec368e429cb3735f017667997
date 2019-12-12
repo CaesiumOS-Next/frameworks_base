@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "9db016a4_2c51fbfb",
+        "filename": "core/java/android/telephony/PhoneStateListener.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 759,
+      "author": {
+        "id": 1060151
+      },
+      "writtenOn": "2019-12-12T19:29:33Z",
+      "side": 1,
+      "message": "Update on this comment: I have *removed* the version that returns a list. As I was building it, I realized that returning full lists with a specific delta will make it hard for callers to see what changes. Instead, when the registration happens initially, the registrant will receive an invocation for each active APN type all back-to-back, which will provide a baseline for all future state information.",
+      "parentUuid": "93cc7860_2d1b37f1",
+      "range": {
+        "startLine": 757,
+        "startChar": 6,
+        "endLine": 759,
+        "endChar": 46
+      },
+      "revId": "58746389f35039fec368e429cb3735f017667997",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e9a2010d_bc8e0cdd",
         "filename": "telephony/java/android/telephony/PreciseDataConnectionState.java",
         "patchSetId": 2
