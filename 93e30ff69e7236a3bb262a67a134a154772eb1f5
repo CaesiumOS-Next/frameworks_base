@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "6f0d4079_5231c1de",
+        "filename": "packages/Tethering/src/com/android/server/connectivity/tethering/Tethering.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2019-12-12T14:30:19Z",
+      "side": 1,
+      "message": "Only used in the constructor : make this a local",
+      "range": {
+        "startLine": 176,
+        "startChar": 0,
+        "endLine": 176,
+        "endChar": 52
+      },
+      "revId": "93e30ff69e7236a3bb262a67a134a154772eb1f5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6d5f749a_40f82668",
         "filename": "packages/Tethering/src/com/android/server/connectivity/tethering/TetheringDependencies.java",
         "patchSetId": 1
