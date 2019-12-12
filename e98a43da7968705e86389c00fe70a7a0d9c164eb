@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b6bea6b2_54eca27b",
+        "filename": "packages/SystemUI/src/com/android/systemui/statusbar/policy/FlashlightControllerImpl.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1387508
+      },
+      "writtenOn": "2019-12-12T14:03:37Z",
+      "side": 1,
+      "message": "Why do we always want to enable/disable the last camera\u0027s torch?",
+      "revId": "e98a43da7968705e86389c00fe70a7a0d9c164eb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "59cc0976_87a28437",
+        "filename": "packages/SystemUI/src/com/android/systemui/statusbar/policy/FlashlightControllerImpl.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1387508
+      },
+      "writtenOn": "2019-12-12T14:03:37Z",
+      "side": 1,
+      "message": "What if one of the cameras\u0027 torch becomes unavailable but the others are still available. Shouldn\u0027t we only set the availablility of the torch if none are available? In that case, we may want to keep an array of which ones are available.",
+      "revId": "e98a43da7968705e86389c00fe70a7a0d9c164eb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
