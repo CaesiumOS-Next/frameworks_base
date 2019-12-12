@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6d5f749a_40f82668",
+        "filename": "packages/Tethering/src/com/android/server/connectivity/tethering/TetheringDependencies.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1308504
+      },
+      "writtenOn": "2019-12-12T07:49:10Z",
+      "side": 1,
+      "message": "Maybe just remove getNetworkStatsManager, this is use to inject for testing. Now we easily inject by mock context.",
+      "range": {
+        "startLine": 117,
+        "startChar": 40,
+        "endLine": 117,
+        "endChar": 62
+      },
+      "revId": "93e30ff69e7236a3bb262a67a134a154772eb1f5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7b7be68e_45f4cdb4",
+        "filename": "packages/Tethering/tests/unit/src/com/android/server/connectivity/tethering/TetheringTest.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 331,
+      "author": {
+        "id": 1308504
+      },
+      "writtenOn": "2019-12-12T07:49:10Z",
+      "side": 1,
+      "message": "Suggest to replace as below.\nAdd injection in l.218\n\n        @Override\n        public Object getSystemService(String name) {\n            if (Context.WIFI_SERVICE.equals(name)) return mWifiManager;\n            if (Context.USB_SERVICE.equals(name)) return mUsbManager;\n            if (Context.TELEPHONY_SERVICE.equals(name)) return mTelephonyManager;\n            if (Context.USER_SERVICE.equals(name)) return mUserManager;\n+            if (Context.NETWORK_STATS_SERVICE) return mStatsManager;\n            return super.getSystemService(name);\n        }",
+      "range": {
+        "startLine": 331,
+        "startChar": 35,
+        "endLine": 331,
+        "endChar": 57
+      },
+      "revId": "93e30ff69e7236a3bb262a67a134a154772eb1f5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
