@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "4174b125_2b103ebd",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2019-12-12T08:31:42Z",
+      "side": 1,
+      "message": "See other reply",
+      "parentUuid": "60e894a0_648fdf0d",
+      "range": {
+        "startLine": 9,
+        "startChar": 50,
+        "endLine": 9,
+        "endChar": 52
+      },
+      "revId": "5c42130d851c9917505e65c98f3cc311161b5481",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e118a954_5ad415d1",
         "filename": "/COMMIT_MSG",
         "patchSetId": 7
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "fb1b486f_d221630f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2019-12-12T08:31:42Z",
+      "side": 1,
+      "message": "Does this \"we\" seem unclear to you ? If so, I\u0027ll change it.\ngo/avoidwe lists the following possible interpretations of \"we\" in a comment :\n• We the programmers who wrote this\n• We the personification of the class\n• We the personification of some (unspecified) specific aspect of the algorithm\n• We the personification of the application\n• We the personification of some piece of data\n\nOnly the first one applies in a cover comment and it\u0027s what I mean here, which is why I tend to use \"we\" in those. However if you think this is unclear I am happy to reword.",
+      "parentUuid": "e118a954_5ad415d1",
+      "range": {
+        "startLine": 13,
+        "startChar": 6,
+        "endLine": 13,
+        "endChar": 8
+      },
+      "revId": "5c42130d851c9917505e65c98f3cc311161b5481",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "33842d29_dead5eab",
         "filename": "services/core/java/com/android/server/ConnectivityService.java",
         "patchSetId": 7
@@ -68,6 +116,30 @@
       "revId": "5c42130d851c9917505e65c98f3cc311161b5481",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "da2d309d_6532c14e",
+        "filename": "services/core/java/com/android/server/ConnectivityService.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 5576,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2019-12-12T08:31:42Z",
+      "side": 1,
+      "message": "aosp/1186183 is waiting for your review",
+      "parentUuid": "33842d29_dead5eab",
+      "range": {
+        "startLine": 5576,
+        "startChar": 35,
+        "endLine": 5576,
+        "endChar": 60
+      },
+      "revId": "5c42130d851c9917505e65c98f3cc311161b5481",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
