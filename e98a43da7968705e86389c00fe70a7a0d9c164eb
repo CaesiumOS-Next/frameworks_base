@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "d9e0e414_3ce0a71b",
+        "filename": "packages/SystemUI/src/com/android/systemui/statusbar/policy/FlashlightControllerImpl.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1607220
+      },
+      "writtenOn": "2019-12-13T01:47:11Z",
+      "side": 1,
+      "message": "The google assistant always enable/disable the last camera\u0027s torch,if we enable the torch by SystemUI and disable torch by google assistant,it will be not work,so why the google assistant always enable/disable the last camera\u0027s torch and not the first camera\u0027s torch",
+      "parentUuid": "b6bea6b2_54eca27b",
+      "revId": "e98a43da7968705e86389c00fe70a7a0d9c164eb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "59cc0976_87a28437",
         "filename": "packages/SystemUI/src/com/android/systemui/statusbar/policy/FlashlightControllerImpl.java",
         "patchSetId": 2
