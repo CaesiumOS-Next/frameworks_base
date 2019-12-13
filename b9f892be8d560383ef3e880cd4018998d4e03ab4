@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "c34c7fdd_fec6e0c0",
+        "filename": "services/core/java/com/android/server/ConnectivityService.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 6522,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2019-12-13T09:32:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7d4c2d19_d1e8f989",
+      "range": {
+        "startLine": 6521,
+        "startChar": 12,
+        "endLine": 6522,
+        "endChar": 48
+      },
+      "revId": "b9f892be8d560383ef3e880cd4018998d4e03ab4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b1f88676_51a8a5ed",
         "filename": "services/core/java/com/android/server/ConnectivityService.java",
         "patchSetId": 6
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "398e12a1_dd65c9ce",
+        "filename": "services/core/java/com/android/server/ConnectivityService.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 6535,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2019-12-13T09:32:57Z",
+      "side": 1,
+      "message": "Added comments",
+      "parentUuid": "b1f88676_51a8a5ed",
+      "range": {
+        "startLine": 6531,
+        "startChar": 16,
+        "endLine": 6535,
+        "endChar": 35
+      },
+      "revId": "b9f892be8d560383ef3e880cd4018998d4e03ab4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2e803b2c_1eab8437",
         "filename": "services/core/java/com/android/server/ConnectivityService.java",
         "patchSetId": 6
@@ -59,6 +107,30 @@
       "writtenOn": "2019-12-13T03:00:19Z",
       "side": 1,
       "message": "This patch ensure that the mNewNetwork will not be assigned null, so we could remove this else block, right?",
+      "range": {
+        "startLine": 6596,
+        "startChar": 13,
+        "endLine": 6599,
+        "endChar": 13
+      },
+      "revId": "b9f892be8d560383ef3e880cd4018998d4e03ab4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "85945026_9af159e7",
+        "filename": "services/core/java/com/android/server/ConnectivityService.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 6599,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2019-12-13T09:32:57Z",
+      "side": 1,
+      "message": "Wait that\u0027s entirely not okay though. How is it that the tests pass ? This is how we lose networks when they stop satisfying requests and there is no replacement.",
+      "parentUuid": "2e803b2c_1eab8437",
       "range": {
         "startLine": 6596,
         "startChar": 13,
