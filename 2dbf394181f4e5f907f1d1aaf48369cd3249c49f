@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "57be8c08_0fa2aac1",
+        "filename": "core/java/android/nfc/cardemulation/CardEmulation.java",
+        "patchSetId": 9
+      },
+      "lineNbr": 685,
+      "author": {
+        "id": 1051483
+      },
+      "writtenOn": "2019-12-13T21:30:35Z",
+      "side": 1,
+      "message": "it\u0027s kinda of a weird pattern here with the try catch inside of the try catch, but that seems to be the pattern here locally. something to potentially revisit in the future",
+      "range": {
+        "startLine": 668,
+        "startChar": 8,
+        "endLine": 685,
+        "endChar": 9
+      },
+      "revId": "2dbf394181f4e5f907f1d1aaf48369cd3249c49f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
