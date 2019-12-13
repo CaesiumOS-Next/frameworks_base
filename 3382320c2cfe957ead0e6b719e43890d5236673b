@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7b06a830_064f32cc",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1221725
+      },
+      "writtenOn": "2019-12-13T18:00:01Z",
+      "side": 1,
+      "message": "IpPrefix",
+      "range": {
+        "startLine": 14,
+        "startChar": 7,
+        "endLine": 14,
+        "endChar": 15
+      },
+      "revId": "3382320c2cfe957ead0e6b719e43890d5236673b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
