@@ -140,6 +140,30 @@
       "revId": "b9f892be8d560383ef3e880cd4018998d4e03ab4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6adbd08c_43829899",
+        "filename": "services/core/java/com/android/server/ConnectivityService.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 6599,
+      "author": {
+        "id": 1308163
+      },
+      "writtenOn": "2019-12-16T07:56:48Z",
+      "side": 1,
+      "message": "The patchset7 looks good to me!\nIt ensures that if computeNetworkReassignment() cannot find the best network, then it will assign the null to mNewNetwork.",
+      "parentUuid": "85945026_9af159e7",
+      "range": {
+        "startLine": 6596,
+        "startChar": 13,
+        "endLine": 6599,
+        "endChar": 13
+      },
+      "revId": "b9f892be8d560383ef3e880cd4018998d4e03ab4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
