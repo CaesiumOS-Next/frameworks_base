@@ -22,6 +22,30 @@
       "revId": "268bcf069c265e32a73288575e3a85020187dc5a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "883f3119_ac06dce0",
+        "filename": "telephony/java/android/telephony/CarrierConfigManager.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 2260,
+      "author": {
+        "id": 1131623
+      },
+      "writtenOn": "2019-12-16T19:43:02Z",
+      "side": 1,
+      "message": "Would \"By default, {@link #DATA_CYCLE_USE_PLATFORM_DEFAULT} will be used.\" be clearer to you?",
+      "parentUuid": "2228214c_eb4b30c9",
+      "range": {
+        "startLine": 2259,
+        "startChar": 63,
+        "endLine": 2260,
+        "endChar": 61
+      },
+      "revId": "268bcf069c265e32a73288575e3a85020187dc5a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
