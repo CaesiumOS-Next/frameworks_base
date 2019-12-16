@@ -1,0 +1,510 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6d167ec1_1a5148d7",
+        "filename": "core/java/android/net/IpRange.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2019-12-16T14:36:34Z",
+      "side": 1,
+      "message": "Because this transformation is not reversible, I suggest you add some comments on what becomes what and what guarantees of stability this class gives.",
+      "range": {
+        "startLine": 36,
+        "startChar": 73,
+        "endLine": 36,
+        "endChar": 74
+      },
+      "revId": "bee5d5d38f9ffa8aa918eb6eff3f4ccfb9ece063",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2b18dcfe_8ec1c5a3",
+        "filename": "core/java/android/net/IpRange.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2019-12-16T14:36:34Z",
+      "side": 1,
+      "message": "Can this live in internal, or in a static lib like libs/net/ ?",
+      "range": {
+        "startLine": 40,
+        "startChar": 19,
+        "endLine": 40,
+        "endChar": 26
+      },
+      "revId": "bee5d5d38f9ffa8aa918eb6eff3f4ccfb9ece063",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "becf134d_c8166c56",
+        "filename": "core/java/android/net/IpRange.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2019-12-16T14:36:34Z",
+      "side": 1,
+      "message": "Just for its side effects ? At least document which exceptions you expect to be thrown in what case. Not necessarily in detail, but at least so that readers have some idea.",
+      "range": {
+        "startLine": 61,
+        "startChar": 8,
+        "endLine": 61,
+        "endChar": 11
+      },
+      "revId": "bee5d5d38f9ffa8aa918eb6eff3f4ccfb9ece063",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "00828525_5a8db150",
+        "filename": "core/java/android/net/IpRange.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2019-12-16T14:36:34Z",
+      "side": 1,
+      "message": "Question : do we need to clear all the bottom bits ? If I say\n\nIpRange(10.1.1.8, 24), does that mean 10.1.1.8 → 10.1.1.15 or 10.1.1.0 → 10.1.1.15 ?",
+      "range": {
+        "startLine": 63,
+        "startChar": 8,
+        "endLine": 63,
+        "endChar": 18
+      },
+      "revId": "bee5d5d38f9ffa8aa918eb6eff3f4ccfb9ece063",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bff00c5f_c8419e22",
+        "filename": "core/java/android/net/IpRange.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2019-12-16T14:36:34Z",
+      "side": 1,
+      "message": "final",
+      "range": {
+        "startLine": 66,
+        "startChar": 8,
+        "endLine": 66,
+        "endChar": 18
+      },
+      "revId": "bee5d5d38f9ffa8aa918eb6eff3f4ccfb9ece063",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3b54b3d0_44a19b72",
+        "filename": "core/java/android/net/IpRange.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2019-12-16T14:36:34Z",
+      "side": 1,
+      "message": "I don\u0027t think all this BigInteger arithmetic is easier to understand than a simple loop.\n\n  byte endAddr[] \u003d startAddr.getAddress();\n  for (int bitIndex \u003d prefixLen; bitIndex \u003c 8 * endAddr.length; ++bitIndex) {\n    endAddr[bitIndex \u003e\u003e 3] |\u003d 0x80 \u003e\u003e (bitIndex % 8);\n  }\n\nWhile this is not very very fast and could be improved with constants, it is still much faster than your arithmetic, and I would argue easier to understand and easier to comment. It\u0027s also three lines to compare to your 40 (counting functions). You can optionally make a function to return the 0x80 \u003e\u003e (bitIndex % 8) if you find this easier to think about, and replace bitIndex \u003e\u003e 3 with bitIndex / 8 if you find this easier.",
+      "range": {
+        "startLine": 74,
+        "startChar": 20,
+        "endLine": 74,
+        "endChar": 43
+      },
+      "revId": "bee5d5d38f9ffa8aa918eb6eff3f4ccfb9ece063",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "841d0136_71f71205",
+        "filename": "core/java/android/net/IpRange.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2019-12-16T14:36:34Z",
+      "side": 1,
+      "message": "finals everywhere please",
+      "range": {
+        "startLine": 98,
+        "startChar": 8,
+        "endLine": 98,
+        "endChar": 15
+      },
+      "revId": "bee5d5d38f9ffa8aa918eb6eff3f4ccfb9ece063",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6a2307d9_974611af",
+        "filename": "core/java/android/net/IpRange.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2019-12-16T14:36:34Z",
+      "side": 1,
+      "message": "Suggest renaming to overlapsRange for consistency with containsRange",
+      "range": {
+        "startLine": 121,
+        "startChar": 16,
+        "endLine": 121,
+        "endChar": 34
+      },
+      "revId": "bee5d5d38f9ffa8aa918eb6eff3f4ccfb9ece063",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "36dc6a99_98ae57b0",
+        "filename": "core/java/android/net/IpRange.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2019-12-16T14:36:34Z",
+      "side": 1,
+      "message": "This should not be possible if containsRange and overlapsRange work. A prefix of the maximum length, covering only one IP, either is contained or does not overlap.",
+      "range": {
+        "startLine": 122,
+        "startChar": 20,
+        "endLine": 123,
+        "endChar": 81
+      },
+      "revId": "bee5d5d38f9ffa8aa918eb6eff3f4ccfb9ece063",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cea97a84_a11f12e2",
+        "filename": "core/java/android/net/IpRange.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2019-12-16T14:36:34Z",
+      "side": 1,
+      "message": "Likewise, what\u0027s wrong with\n\n  final byte[] otherAddress \u003d prefix.getAddress();\n  otherAddress[newPrefixLen \u003e\u003e 3] ^\u003d 0x80 \u003e\u003e (newPrefixLen \u0026 0x7);",
+      "range": {
+        "startLine": 140,
+        "startChar": 7,
+        "endLine": 146,
+        "endChar": 39
+      },
+      "revId": "bee5d5d38f9ffa8aa918eb6eff3f4ccfb9ece063",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "612c87d2_dd2fa28e",
+        "filename": "core/java/android/net/IpRange.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2019-12-16T14:36:34Z",
+      "side": 1,
+      "message": "final on all these locals please",
+      "range": {
+        "startLine": 155,
+        "startChar": 8,
+        "endLine": 155,
+        "endChar": 11
+      },
+      "revId": "bee5d5d38f9ffa8aa918eb6eff3f4ccfb9ece063",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8d97e26e_c7e5c659",
+        "filename": "core/java/android/net/IpRange.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2019-12-16T14:36:34Z",
+      "side": 1,
+      "message": "Math.min(addrLenBytes, byteValueWithSign.length) ?",
+      "range": {
+        "startLine": 159,
+        "startChar": 8,
+        "endLine": 161,
+        "endChar": 82
+      },
+      "revId": "bee5d5d38f9ffa8aa918eb6eff3f4ccfb9ece063",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ff01cc31_87f3611a",
+        "filename": "core/java/android/net/IpRange.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2019-12-16T14:36:34Z",
+      "side": 1,
+      "message": "...in which case this becomes byteValueWithSign.length - byteValueActualLen",
+      "range": {
+        "startLine": 166,
+        "startChar": 16,
+        "endLine": 166,
+        "endChar": 35
+      },
+      "revId": "bee5d5d38f9ffa8aa918eb6eff3f4ccfb9ece063",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1c92e41e_583f4ab5",
+        "filename": "core/java/android/net/IpRange.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2019-12-16T14:36:34Z",
+      "side": 1,
+      "message": "Okay sure, but it\u0027s still faster to write\n\n  Comparator\u003cint[]\u003e() {\n    compare(int[] a1, int[] a2) {\n      if (a1.size !\u003d a2.size) throw because I don\u0027t expect this ever\n      for (int i : 0..a1.length) {\n        if (a1[i] \u003c a2[i]) return -1;\n        if (a1[i] \u003e a2[i]) return 1;\n      }\n      return 0;\n    }\n  }\n\nThen you can say\n\n  comparator.compare(mStartAddr, other,mStartAddr) \u003c\u003d0 \u0026\u0026 ...\n\nOr you could keep the addrToBigInteger just for this.",
+      "range": {
+        "startLine": 183,
+        "startChar": 44,
+        "endLine": 183,
+        "endChar": 53
+      },
+      "revId": "bee5d5d38f9ffa8aa918eb6eff3f4ccfb9ece063",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8a019e61_d44e5e41",
+        "filename": "tests/net/common/java/android/net/IpRangeTest.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2019-12-16T14:36:34Z",
+      "side": 1,
+      "message": "I don\u0027t think you need to say that. Java programmers are familiar with this.",
+      "range": {
+        "startLine": 49,
+        "startChar": 7,
+        "endLine": 49,
+        "endChar": 86
+      },
+      "revId": "bee5d5d38f9ffa8aa918eb6eff3f4ccfb9ece063",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b2d6ccd2_15d40804",
+        "filename": "tests/net/common/java/android/net/IpRangeTest.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2019-12-16T14:36:34Z",
+      "side": 1,
+      "message": "IPV4_ADDR.getAddress() ?",
+      "range": {
+        "startLine": 50,
+        "startChar": 45,
+        "endLine": 50,
+        "endChar": 88
+      },
+      "revId": "bee5d5d38f9ffa8aa918eb6eff3f4ccfb9ece063",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f0fe84bd_d7c21eb0",
+        "filename": "tests/net/common/java/android/net/IpRangeTest.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2019-12-16T14:36:34Z",
+      "side": 1,
+      "message": "NPE. You don\u0027t want to pass if a BufferUnderflowException is thrown at you or something.",
+      "range": {
+        "startLine": 63,
+        "startChar": 17,
+        "endLine": 63,
+        "endChar": 33
+      },
+      "revId": "bee5d5d38f9ffa8aa918eb6eff3f4ccfb9ece063",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "48fcbee3_8ad850c1",
+        "filename": "tests/net/common/java/android/net/IpRangeTest.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2019-12-16T14:36:34Z",
+      "side": 1,
+      "message": "Let\u0027s try to also test some things that are likely to actually uncover fencepost bugs, rather than only nicely aligned ones.",
+      "range": {
+        "startLine": 131,
+        "startChar": 44,
+        "endLine": 131,
+        "endChar": 46
+      },
+      "revId": "bee5d5d38f9ffa8aa918eb6eff3f4ccfb9ece063",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e9fc8979_71c77320",
+        "filename": "tests/net/common/java/android/net/IpRangeTest.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2019-12-16T14:36:34Z",
+      "side": 1,
+      "message": "Likewise. And also test that (x+25, 100) is included in (x, 100) but not equal or things like that",
+      "range": {
+        "startLine": 137,
+        "startChar": 16,
+        "endLine": 137,
+        "endChar": 39
+      },
+      "revId": "bee5d5d38f9ffa8aa918eb6eff3f4ccfb9ece063",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c73ab6e9_58638026",
+        "filename": "tests/net/common/java/android/net/IpRangeTest.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2019-12-16T14:36:34Z",
+      "side": 1,
+      "message": "Also test with overlapping ranges, including ranges that you can\u0027t create with (addr, prefix)",
+      "range": {
+        "startLine": 145,
+        "startChar": 16,
+        "endLine": 145,
+        "endChar": 44
+      },
+      "revId": "bee5d5d38f9ffa8aa918eb6eff3f4ccfb9ece063",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "47f52fe9_3e8e2b06",
+        "filename": "tests/net/common/java/android/net/IpRangeTest.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2019-12-16T14:36:34Z",
+      "side": 1,
+      "message": "finals please, wherever not obnoxious (meaning, if it\u0027s reasonable to have a 2nd var with a different name, final)",
+      "range": {
+        "startLine": 188,
+        "startChar": 8,
+        "endLine": 188,
+        "endChar": 15
+      },
+      "revId": "bee5d5d38f9ffa8aa918eb6eff3f4ccfb9ece063",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "47efdcb4_b6ce0f94",
+        "filename": "tests/net/common/java/android/net/IpRangeTest.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2019-12-16T14:36:34Z",
+      "side": 1,
+      "message": "If this was Kotlin you could have said\n\n  val prefixes \u003d listOf(\"192.0.2.4/30\", \"192.0.2.8/29\", ...).map{IpPrefix(it))}",
+      "range": {
+        "startLine": 198,
+        "startChar": 22,
+        "endLine": 198,
+        "endChar": 30
+      },
+      "revId": "bee5d5d38f9ffa8aa918eb6eff3f4ccfb9ece063",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
