@@ -46,6 +46,30 @@
       "revId": "268bcf069c265e32a73288575e3a85020187dc5a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "898ca54e_6bec303a",
+        "filename": "telephony/java/android/telephony/CarrierConfigManager.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 2260,
+      "author": {
+        "id": 1054648
+      },
+      "writtenOn": "2019-12-16T20:46:20Z",
+      "side": 1,
+      "message": "Sure, or \"The default value is {@link #DATA_CYCLE_USE_PLATFORM_DEFAULT} which indicates the platform default value should be used.\"\n\nSame applies to other places where you have added DATA_CYCLE_USE_PLATFORM_DEFAULT. Thanks!",
+      "parentUuid": "883f3119_ac06dce0",
+      "range": {
+        "startLine": 2259,
+        "startChar": 63,
+        "endLine": 2260,
+        "endChar": 61
+      },
+      "revId": "268bcf069c265e32a73288575e3a85020187dc5a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
