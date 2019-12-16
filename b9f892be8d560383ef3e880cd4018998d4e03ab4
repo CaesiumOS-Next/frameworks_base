@@ -164,6 +164,30 @@
       "revId": "b9f892be8d560383ef3e880cd4018998d4e03ab4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "76e4a876_9e1da169",
+        "filename": "services/core/java/com/android/server/ConnectivityService.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 6599,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2019-12-16T12:07:27Z",
+      "side": 1,
+      "message": "Well we had no coverage for that. Thankfully this is a trivial bug (and further patches actually fix it, but this patch should not introduce that bug – amended).\nAlso added the coverage that would have detected this defect.\n\nThanks for finding this.",
+      "parentUuid": "85945026_9af159e7",
+      "range": {
+        "startLine": 6596,
+        "startChar": 13,
+        "endLine": 6599,
+        "endChar": 13
+      },
+      "revId": "b9f892be8d560383ef3e880cd4018998d4e03ab4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
