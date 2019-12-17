@@ -1,0 +1,211 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "df88106e_cb6a9526",
+        "filename": "services/tests/servicestests/src/com/android/server/compat/CompatConfigTest.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1010681
+      },
+      "writtenOn": "2019-12-17T18:00:39Z",
+      "side": 1,
+      "message": "I\u0027m not convinced that moving these into named constants improves readability, but I\u0027ll let you decide.\n\nLooking at the code below that doesn\u0027t do this, it\u0027s also more compact which seems nicer.",
+      "range": {
+        "startLine": 91,
+        "startChar": 8,
+        "endLine": 92,
+        "endChar": 32
+      },
+      "revId": "9fb982b9091e9b3806a5edfad90b25402fba4bf1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "caf542c1_b1bb9bed",
+        "filename": "services/tests/servicestests/src/com/android/server/compat/CompatConfigTest.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1010681
+      },
+      "writtenOn": "2019-12-17T18:00:39Z",
+      "side": 1,
+      "message": "better naming might be good here.\n\ne.g. \"changeDisabledPackage\" and \"changeDisabledApp\" below\n\n(same goes elsewhere too?)",
+      "range": {
+        "startLine": 222,
+        "startChar": 21,
+        "endLine": 222,
+        "endChar": 31
+      },
+      "revId": "9fb982b9091e9b3806a5edfad90b25402fba4bf1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6ad09f15_6fc3f97a",
+        "filename": "services/tests/servicestests/src/com/android/server/compat/CompatConfigTest.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 249,
+      "author": {
+        "id": 1010681
+      },
+      "writtenOn": "2019-12-17T18:00:39Z",
+      "side": 1,
+      "message": "inconsistent with other tests that use named constants?",
+      "range": {
+        "startLine": 249,
+        "startChar": 33,
+        "endLine": 249,
+        "endChar": 51
+      },
+      "revId": "9fb982b9091e9b3806a5edfad90b25402fba4bf1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "07bc8738_8a38ef20",
+        "filename": "services/tests/servicestests/src/com/android/server/compat/CompatConfigTest.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 252,
+      "author": {
+        "id": 1010681
+      },
+      "writtenOn": "2019-12-17T18:00:39Z",
+      "side": 1,
+      "message": "seems like this boiler plate could be moved to a setup method? Even if it\u0027s not needed in all tests, it\u0027s harmless.",
+      "range": {
+        "startLine": 251,
+        "startChar": 8,
+        "endLine": 252,
+        "endChar": 70
+      },
+      "revId": "9fb982b9091e9b3806a5edfad90b25402fba4bf1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "26fad20b_6efb356f",
+        "filename": "services/tests/servicestests/src/com/android/server/compat/CompatConfigTest.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 252,
+      "author": {
+        "id": 1010681
+      },
+      "writtenOn": "2019-12-17T18:00:39Z",
+      "side": 1,
+      "message": "seems like this boiler plate could be moved to a setup method? Even if it\u0027s not needed in all tests, it\u0027s harmless.",
+      "range": {
+        "startLine": 251,
+        "startChar": 8,
+        "endLine": 252,
+        "endChar": 70
+      },
+      "revId": "9fb982b9091e9b3806a5edfad90b25402fba4bf1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ee3f37d0_f82c683c",
+        "filename": "services/tests/servicestests/src/com/android/server/compat/CompatConfigTest.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 258,
+      "author": {
+        "id": 1010681
+      },
+      "writtenOn": "2019-12-17T18:00:39Z",
+      "side": 1,
+      "message": "the chaining in here makes it unclear *which* method invocation is expected to throw. The test could also pass if the wrong method throws. Better to put a single invocation in the assertThrows call.",
+      "range": {
+        "startLine": 258,
+        "startChar": 8,
+        "endLine": 258,
+        "endChar": 20
+      },
+      "revId": "9fb982b9091e9b3806a5edfad90b25402fba4bf1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "22ea3572_2a1e6b88",
+        "filename": "services/tests/servicestests/src/com/android/server/compat/CompatConfigTest.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 285,
+      "author": {
+        "id": 1010681
+      },
+      "writtenOn": "2019-12-17T18:00:39Z",
+      "side": 1,
+      "message": "the phrasing here doesn\u0027t quite feel right. You\u0027re not really overriding compatConfig. Maybe \"applyTo\" would be better?\n\nOr maybe better again would be:\n\n  compatConfig.addOverrides(OverridesBuilder.create().....build())\n\nThat makes the method your testing visible (addOverrides()) which is currently obfuscated in here, making it hard to understand which functionality your actually testing (it looks a bit like the test if for OverridesBuilder)",
+      "range": {
+        "startLine": 285,
+        "startChar": 17,
+        "endLine": 285,
+        "endChar": 25
+      },
+      "revId": "9fb982b9091e9b3806a5edfad90b25402fba4bf1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d5a9ce10_92f7d2d5",
+        "filename": "services/tests/servicestests/src/com/android/server/compat/CompatConfigTest.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 292,
+      "author": {
+        "id": 1010681
+      },
+      "writtenOn": "2019-12-17T18:00:39Z",
+      "side": 1,
+      "message": "not sure changing the build type mid-test makes sense? Those things are fixed at build time, so it would be reasonable (for example) for these values to be cached in the prod code which would break this test. Better to move this case into a separate test method?\n\n(also makes me wonder whether we should always allow removing of overrides? Image installing a debuggable app -\u003e apply overrides -\u003e upgrade to non-debuggable app -\u003e try to remove override - would that work as expected? Or do we remove overrides at upgrade time in that case?)",
+      "range": {
+        "startLine": 291,
+        "startChar": 8,
+        "endLine": 292,
+        "endChar": 63
+      },
+      "revId": "9fb982b9091e9b3806a5edfad90b25402fba4bf1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "da6598ec_7c046c44",
+        "filename": "services/tests/servicestests/src/com/android/server/compat/CompatConfigTest.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 355,
+      "author": {
+        "id": 1010681
+      },
+      "writtenOn": "2019-12-17T18:00:39Z",
+      "side": 1,
+      "message": "Sorry for causing you merge conflicts... http://ag/9930416 is merged now :(",
+      "range": {
+        "startLine": 355,
+        "startChar": 17,
+        "endLine": 355,
+        "endChar": 27
+      },
+      "revId": "9fb982b9091e9b3806a5edfad90b25402fba4bf1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
