@@ -32,7 +32,7 @@ import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.bluetooth.BluetoothCodecConfig;
 import android.bluetooth.BluetoothDevice;
-import android.bluetooth.BluetoothProfile;
+import android.bluetooth.BluetoothDeviceState;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
@@ -4227,7 +4227,7 @@ public class AudioManager {
      * the {@link AudioManager.ACTION_AUDIO_BECOMING_NOISY} intent.
      * This operation is asynchronous but its execution will still be sequentially scheduled
      * relative to calls to {@link #setBluetoothA2dpDeviceConnectionStateSuppressNoisyIntent(
-     * * BluetoothDevice, int, int, boolean, int)} and
+     * * BluetoothDeviceState, boolean)} and
      * and {@link #handleBluetoothA2dpDeviceConfigChange(BluetoothDevice)}.
      * @param device Bluetooth device connected/disconnected
      * @param state new connection state (BluetoothProfile.STATE_xxx)
@@ -4257,24 +4257,18 @@ public class AudioManager {
      * relative to calls to {@link #setBluetoothHearingAidDeviceConnectionState(BluetoothDevice,
      * int, boolean, int)} and
      * {@link #handleBluetoothA2dpDeviceConfigChange(BluetoothDevice)}.
-     * @param device Bluetooth device connected/disconnected
-     * @param state  new connection state, {@link BluetoothProfile#STATE_CONNECTED}
-     *     or {@link BluetoothProfile#STATE_DISCONNECTED}
-     * @param profile profile for the A2DP device
-     * @param a2dpVolume New volume for the connecting device. Does nothing if disconnecting.
-     * (either {@link android.bluetooth.BluetoothProfile.A2DP} or
-     * {@link android.bluetooth.BluetoothProfile.A2DP_SINK})
+     * @param deviceState contains all details about the Bluetooth device's state
      * @param suppressNoisyIntent if true the
      * {@link AudioManager.ACTION_AUDIO_BECOMING_NOISY} intent will not be sent.
      * {@hide}
      */
     public void setBluetoothA2dpDeviceConnectionStateSuppressNoisyIntent(
-            BluetoothDevice device, int state,
-            int profile, boolean suppressNoisyIntent, int a2dpVolume) {
+            BluetoothDeviceState deviceState, boolean suppressNoisyIntent) {
         final IAudioService service = getService();
         try {
-            service.setBluetoothA2dpDeviceConnectionStateSuppressNoisyIntent(device,
-                state, profile, suppressNoisyIntent, a2dpVolume);
+            service.setBluetoothA2dpDeviceConnectionStateSuppressNoisyIntent(
+                    deviceState.getDevice(), deviceState.getConnectionState(),
+                    deviceState.getProfile(), suppressNoisyIntent, deviceState.getVolume());
         } catch (RemoteException e) {
             throw e.rethrowFromSystemServer();
         }
@@ -4284,8 +4278,8 @@ public class AudioManager {
      * Indicate A2DP device configuration has changed.
      * This operation is asynchronous but its execution will still be sequentially scheduled
      * relative to calls to
-     * {@link #setBluetoothA2dpDeviceConnectionStateSuppressNoisyIntent(BluetoothDevice, int, int,
-     * boolean, int)} and
+     * {@link #setBluetoothA2dpDeviceConnectionStateSuppressNoisyIntent(BluetoothDeviceState,
+     * boolean)} and
      * {@link #setBluetoothHearingAidDeviceConnectionState(BluetoothDevice, int, boolean, int)}
      * @param device Bluetooth device whose configuration has changed.
      * {@hide}

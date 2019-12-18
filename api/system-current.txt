@@ -1395,6 +1395,20 @@ package android.bluetooth {
     field public static final int METADATA_UNTETHERED_RIGHT_ICON = 8; // 0x8
   }
 
+  public class BluetoothDeviceState {
+    ctor public BluetoothDeviceState(@Nullable android.bluetooth.BluetoothDevice, int, int, int, @Nullable android.bluetooth.BluetoothCodecStatus);
+    method @Nullable public android.bluetooth.BluetoothCodecStatus getCodecStatus();
+    method public int getConnectionState();
+    method @Nullable public android.bluetooth.BluetoothDevice getDevice();
+    method public int getProfile();
+    method public int getVolume();
+    method public void setCodecStatus(@Nullable android.bluetooth.BluetoothCodecStatus);
+    method public void setConnectionState(int);
+    method public void setDevice(@Nullable android.bluetooth.BluetoothDevice);
+    method public void setProfile(int);
+    method public void setVolume(int);
+  }
+
   public final class BluetoothHeadset implements android.bluetooth.BluetoothProfile {
     method @RequiresPermission(android.Manifest.permission.BLUETOOTH_ADMIN) public boolean connect(android.bluetooth.BluetoothDevice);
     method @RequiresPermission(android.Manifest.permission.BLUETOOTH_ADMIN) public boolean disconnect(android.bluetooth.BluetoothDevice);
