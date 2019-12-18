@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "54014bb5_d55800fc",
+        "filename": "services/tests/servicestests/src/com/android/server/compat/CompatConfigTest.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1431994
+      },
+      "writtenOn": "2019-12-18T17:13:33Z",
+      "side": 1,
+      "message": "I don\u0027t have a strong opinion, so I changed it; I believe not all methods made it clear whether I was providing a changeId or targetSdk, but I _think_ that should be ok now?",
+      "parentUuid": "df88106e_cb6a9526",
+      "range": {
+        "startLine": 91,
+        "startChar": 8,
+        "endLine": 92,
+        "endChar": 32
+      },
+      "revId": "9fb982b9091e9b3806a5edfad90b25402fba4bf1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "caf542c1_b1bb9bed",
         "filename": "services/tests/servicestests/src/com/android/server/compat/CompatConfigTest.java",
         "patchSetId": 4
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "41ae6dee_036c645d",
+        "filename": "services/tests/servicestests/src/com/android/server/compat/CompatConfigTest.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1431994
+      },
+      "writtenOn": "2019-12-18T17:13:33Z",
+      "side": 1,
+      "message": "Changed the way things are done; only create a named ApplicationInfo instance if reused; otherwise, just use the builder inside the assert call",
+      "parentUuid": "caf542c1_b1bb9bed",
+      "range": {
+        "startLine": 222,
+        "startChar": 21,
+        "endLine": 222,
+        "endChar": 31
+      },
+      "revId": "9fb982b9091e9b3806a5edfad90b25402fba4bf1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6ad09f15_6fc3f97a",
         "filename": "services/tests/servicestests/src/com/android/server/compat/CompatConfigTest.java",
         "patchSetId": 4
@@ -68,6 +116,30 @@
       "revId": "9fb982b9091e9b3806a5edfad90b25402fba4bf1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "32da2d50_4c1bdb7a",
+        "filename": "services/tests/servicestests/src/com/android/server/compat/CompatConfigTest.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 249,
+      "author": {
+        "id": 1431994
+      },
+      "writtenOn": "2019-12-18T17:13:33Z",
+      "side": 1,
+      "message": "Removed all other named constants in this testcase",
+      "parentUuid": "6ad09f15_6fc3f97a",
+      "range": {
+        "startLine": 249,
+        "startChar": 33,
+        "endLine": 249,
+        "endChar": 51
+      },
+      "revId": "9fb982b9091e9b3806a5edfad90b25402fba4bf1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -117,6 +189,54 @@
     },
     {
       "key": {
+        "uuid": "3ed11d02_f19bb3fc",
+        "filename": "services/tests/servicestests/src/com/android/server/compat/CompatConfigTest.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 252,
+      "author": {
+        "id": 1431994
+      },
+      "writtenOn": "2019-12-18T17:13:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "07bc8738_8a38ef20",
+      "range": {
+        "startLine": 251,
+        "startChar": 8,
+        "endLine": 252,
+        "endChar": 70
+      },
+      "revId": "9fb982b9091e9b3806a5edfad90b25402fba4bf1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "68b801ed_297c387c",
+        "filename": "services/tests/servicestests/src/com/android/server/compat/CompatConfigTest.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 252,
+      "author": {
+        "id": 1431994
+      },
+      "writtenOn": "2019-12-18T17:13:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "26fad20b_6efb356f",
+      "range": {
+        "startLine": 251,
+        "startChar": 8,
+        "endLine": 252,
+        "endChar": 70
+      },
+      "revId": "9fb982b9091e9b3806a5edfad90b25402fba4bf1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ee3f37d0_f82c683c",
         "filename": "services/tests/servicestests/src/com/android/server/compat/CompatConfigTest.java",
         "patchSetId": 4
@@ -137,6 +257,30 @@
       "revId": "9fb982b9091e9b3806a5edfad90b25402fba4bf1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "22c19818_ecd00e1e",
+        "filename": "services/tests/servicestests/src/com/android/server/compat/CompatConfigTest.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 258,
+      "author": {
+        "id": 1431994
+      },
+      "writtenOn": "2019-12-18T17:13:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ee3f37d0_f82c683c",
+      "range": {
+        "startLine": 258,
+        "startChar": 8,
+        "endLine": 258,
+        "endChar": 20
+      },
+      "revId": "9fb982b9091e9b3806a5edfad90b25402fba4bf1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -163,6 +307,30 @@
     },
     {
       "key": {
+        "uuid": "fcdd64aa_9d842177",
+        "filename": "services/tests/servicestests/src/com/android/server/compat/CompatConfigTest.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 285,
+      "author": {
+        "id": 1431994
+      },
+      "writtenOn": "2019-12-18T17:13:33Z",
+      "side": 1,
+      "message": "The purpose of this builder was to use a similar construct in both PlatformCompat (where you can only specify a _list_ of changes) and CompatConfig (where you can send individual changes). Removed all uses of OverridesBuilder in CompatConfigTest, renamed it to CompatibilityChangeConfigBuilder, made it a proper builder, use it only in PlatformCompatTest.",
+      "parentUuid": "22ea3572_2a1e6b88",
+      "range": {
+        "startLine": 285,
+        "startChar": 17,
+        "endLine": 285,
+        "endChar": 25
+      },
+      "revId": "9fb982b9091e9b3806a5edfad90b25402fba4bf1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d5a9ce10_92f7d2d5",
         "filename": "services/tests/servicestests/src/com/android/server/compat/CompatConfigTest.java",
         "patchSetId": 4
@@ -174,6 +342,30 @@
       "writtenOn": "2019-12-17T18:00:39Z",
       "side": 1,
       "message": "not sure changing the build type mid-test makes sense? Those things are fixed at build time, so it would be reasonable (for example) for these values to be cached in the prod code which would break this test. Better to move this case into a separate test method?\n\n(also makes me wonder whether we should always allow removing of overrides? Image installing a debuggable app -\u003e apply overrides -\u003e upgrade to non-debuggable app -\u003e try to remove override - would that work as expected? Or do we remove overrides at upgrade time in that case?)",
+      "range": {
+        "startLine": 291,
+        "startChar": 8,
+        "endLine": 292,
+        "endChar": 63
+      },
+      "revId": "9fb982b9091e9b3806a5edfad90b25402fba4bf1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ed249ae7_0bf0964a",
+        "filename": "services/tests/servicestests/src/com/android/server/compat/CompatConfigTest.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 292,
+      "author": {
+        "id": 1431994
+      },
+      "writtenOn": "2019-12-18T17:13:33Z",
+      "side": 1,
+      "message": "Let\u0027s chat about this offline. I\u0027ll leave this comment as unresolved, and follow up with the resolution.",
+      "parentUuid": "d5a9ce10_92f7d2d5",
       "range": {
         "startLine": 291,
         "startChar": 8,
@@ -206,6 +398,30 @@
       "revId": "9fb982b9091e9b3806a5edfad90b25402fba4bf1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f8a760ab_71a737ff",
+        "filename": "services/tests/servicestests/src/com/android/server/compat/CompatConfigTest.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 355,
+      "author": {
+        "id": 1431994
+      },
+      "writtenOn": "2019-12-18T17:13:33Z",
+      "side": 1,
+      "message": "https://youtu.be/mqeCuyJ458Y",
+      "parentUuid": "da6598ec_7c046c44",
+      "range": {
+        "startLine": 355,
+        "startChar": 17,
+        "endLine": 355,
+        "endChar": 27
+      },
+      "revId": "9fb982b9091e9b3806a5edfad90b25402fba4bf1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
