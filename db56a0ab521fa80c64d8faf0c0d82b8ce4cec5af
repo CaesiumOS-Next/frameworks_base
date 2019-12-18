@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ec94d767_15728651",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1060151
+      },
+      "writtenOn": "2019-12-18T17:53:00Z",
+      "side": 1,
+      "message": "nit line length",
+      "range": {
+        "startLine": 10,
+        "startChar": 66,
+        "endLine": 10,
+        "endChar": 82
+      },
+      "revId": "db56a0ab521fa80c64d8faf0c0d82b8ce4cec5af",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "187e0833_4e4a08d1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1060151
+      },
+      "writtenOn": "2019-12-18T17:53:00Z",
+      "side": 1,
+      "message": "nit TelephonyManager",
+      "range": {
+        "startLine": 10,
+        "startChar": 8,
+        "endLine": 10,
+        "endChar": 25
+      },
+      "revId": "db56a0ab521fa80c64d8faf0c0d82b8ce4cec5af",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c67baedb_f1fe0f6d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1060151
+      },
+      "writtenOn": "2019-12-18T17:53:00Z",
+      "side": 1,
+      "message": "nit",
+      "range": {
+        "startLine": 10,
+        "startChar": 51,
+        "endLine": 10,
+        "endChar": 62
+      },
+      "revId": "db56a0ab521fa80c64d8faf0c0d82b8ce4cec5af",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "45abaa4b_18ebacf8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1060151
+      },
+      "writtenOn": "2019-12-18T17:53:00Z",
+      "side": 1,
+      "message": "hides",
+      "range": {
+        "startLine": 12,
+        "startChar": 37,
+        "endLine": 12,
+        "endChar": 41
+      },
+      "revId": "db56a0ab521fa80c64d8faf0c0d82b8ce4cec5af",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
