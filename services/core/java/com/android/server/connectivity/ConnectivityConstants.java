@@ -25,6 +25,10 @@ public class ConnectivityConstants {
     // Penalty applied to scores of Networks that have not been validated.
     public static final int UNVALIDATED_SCORE_PENALTY = 40;
 
+    // Carrier VPNs typically have higher priority than cellular and wifi networks and lower
+    // priority than tethering networks.
+    public static final int CARRIER_VPN_DEFAULT_SCORE = 61;
+
     // Score for explicitly connected network.
     //
     // This ensures that a) the explicitly selected network is never trumped by anything else, and

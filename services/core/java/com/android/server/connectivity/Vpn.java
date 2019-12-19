@@ -954,10 +954,12 @@ public class Vpn {
         mNetworkCapabilities.setUids(createUserAndRestrictedProfilesRanges(mUserHandle,
                 mConfig.allowedApplications, mConfig.disallowedApplications));
         long token = Binder.clearCallingIdentity();
+        int score = isVpnUserPreConsented(mPackage)
+                ? ConnectivityConstants.VPN_DEFAULT_SCORE
+                : ConnectivityConstants.CARRIER_VPN_DEFAULT_SCORE;
         try {
             mNetworkAgent = new NetworkAgent(mLooper, mContext, NETWORKTYPE /* logtag */,
-                    mNetworkInfo, mNetworkCapabilities, lp,
-                    ConnectivityConstants.VPN_DEFAULT_SCORE, networkMisc,
+                    mNetworkInfo, mNetworkCapabilities, lp, score, networkMisc,
                     NetworkFactory.SerialNumber.VPN) {
                             @Override
                             public void unwanted() {
