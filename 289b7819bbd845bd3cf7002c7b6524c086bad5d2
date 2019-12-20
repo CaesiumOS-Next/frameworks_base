@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f830e943_e4ebbd58",
+        "filename": "telephony/java/android/telephony/PreciseCallState.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1054648
+      },
+      "writtenOn": "2019-12-20T06:59:50Z",
+      "side": 1,
+      "message": "Add IntDefs for these",
+      "range": {
+        "startLine": 90,
+        "startChar": 67,
+        "endLine": 91,
+        "endChar": 54
+      },
+      "revId": "289b7819bbd845bd3cf7002c7b6524c086bad5d2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
