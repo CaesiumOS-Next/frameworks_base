@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "9fede6b6_9cdb53f5",
+        "filename": "nfc-extras/java/com/android/nfc_extras/NfcAdapterExtras.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1328430
+      },
+      "writtenOn": "2019-12-20T03:04:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "58401a35_eeed88fd",
+      "range": {
+        "startLine": 59,
+        "startChar": 4,
+        "endLine": 67,
+        "endChar": 75
+      },
+      "revId": "87ded9b841908123a61efeaaff1bc0639c284775",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6bffcc68_94193bc8",
         "filename": "nfc-extras/java/com/android/nfc_extras/NfcAdapterExtras.java",
         "patchSetId": 5
