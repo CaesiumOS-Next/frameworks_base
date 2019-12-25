@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ee8e5b9b_81f3abf6",
+        "filename": "services/core/java/com/android/server/ConnectivityService.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 6488,
+      "author": {
+        "id": 1306837
+      },
+      "writtenOn": "2019-12-25T12:31:32Z",
+      "side": 1,
+      "message": "nit: @NonNull",
+      "range": {
+        "startLine": 6488,
+        "startChar": 12,
+        "endLine": 6488,
+        "endChar": 31
+      },
+      "revId": "49aeaab9fe4be14a90e96078b362cb8ecf310b16",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7a7ef521_9d0c3ebb",
+        "filename": "services/core/java/com/android/server/ConnectivityService.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 6488,
+      "author": {
+        "id": 1306837
+      },
+      "writtenOn": "2019-12-25T12:31:32Z",
+      "side": 1,
+      "message": "maybe move this to the place just below computeRequestReassignmentForNetwork?",
+      "range": {
+        "startLine": 6488,
+        "startChar": 32,
+        "endLine": 6488,
+        "endChar": 58
+      },
+      "revId": "49aeaab9fe4be14a90e96078b362cb8ecf310b16",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
