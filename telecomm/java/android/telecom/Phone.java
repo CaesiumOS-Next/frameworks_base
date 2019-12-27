@@ -215,10 +215,8 @@ public final class Phone {
     }
 
     final void internalCallAudioStateChanged(CallAudioState callAudioState) {
-        if (!Objects.equals(mCallAudioState, callAudioState)) {
-            mCallAudioState = callAudioState;
-            fireCallAudioStateChanged(callAudioState);
-        }
+        mCallAudioState = callAudioState;
+        fireCallAudioStateChanged(callAudioState);
     }
 
     final Call internalGetCallByTelecomId(String telecomId) {
