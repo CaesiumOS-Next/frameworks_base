@@ -455,12 +455,14 @@ public final class Tag implements Parcelable {
      *
      * @hide
      */
-    public synchronized void setConnectedTechnology(int technology) {
+    public synchronized boolean setConnectedTechnology(int technology) {
         if (mConnectedTechnology == -1) {
             mConnectedTechnology = technology;
         } else {
-            throw new IllegalStateException("Close other technology first!");
+            // Close other technology first!
+            return false;
         }
+        return true;
     }
 
     /**
