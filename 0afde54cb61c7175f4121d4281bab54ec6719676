@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "170571b0_d3fa0c91",
+        "filename": "services/core/java/com/android/server/DynamicSystemService.java",
+        "patchSetId": 8
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2020-01-02T18:46:36Z",
+      "side": 1,
+      "message": "nit: use Paths.get() ?",
+      "range": {
+        "startLine": 133,
+        "startChar": 0,
+        "endLine": 136,
+        "endChar": 36
+      },
+      "revId": "0afde54cb61c7175f4121d4281bab54ec6719676",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
