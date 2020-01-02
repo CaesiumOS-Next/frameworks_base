@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "92c44fee_6a2352f7",
+        "filename": "core/java/android/net/ConnectivityManager.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 1759,
+      "author": {
+        "id": 1304263
+      },
+      "writtenOn": "2020-01-02T03:29:44Z",
+      "side": 1,
+      "message": "It looks unreasonable to explore a deprecated API as SystemApi. Our doc may not able to provide reasonable sugguestion to replace the usage of the function if caller must use this function. or we should use the sugguested way to do that.",
+      "range": {
+        "startLine": 1758,
+        "startChar": 4,
+        "endLine": 1759,
+        "endChar": 15
+      },
+      "revId": "719cb67b7eea052323a57a5ef17df51ef8db22ce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ca07a9f1_d18eb67e",
+        "filename": "packages/Tethering/src/com/android/server/connectivity/tethering/UpstreamNetworkMonitor.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1304263
+      },
+      "writtenOn": "2020-01-02T03:29:44Z",
+      "side": 1,
+      "message": "will mIsCurrentUpstreamSuspended be better? It looks like that this variable only keep the current upstream suspended status. But UpstreamNetworkMonitor should able to monitor not only the current one, right? I will suspect that it should be an array or map for the suspended status for each network but not only current one if it only name as current naming.\n\nIn fact, should it be a map including the network status of each network? E.g. Current upstream is WiFi and cellular network is also connected. Cellular network is updated to suspended. After a while, WiFi disconnect and upstream is updated to cellular. You may miss this part?",
+      "range": {
+        "startLine": 109,
+        "startChar": 20,
+        "endLine": 109,
+        "endChar": 38
+      },
+      "revId": "719cb67b7eea052323a57a5ef17df51ef8db22ce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c416f319_903bc53d",
+        "filename": "packages/Tethering/src/com/android/server/connectivity/tethering/UpstreamNetworkMonitor.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 368,
+      "author": {
+        "id": 1304263
+      },
+      "writtenOn": "2020-01-02T03:29:44Z",
+      "side": 1,
+      "message": "Nit: Nullability annotation is better if there is no check for it in the function.",
+      "range": {
+        "startLine": 368,
+        "startChar": 39,
+        "endLine": 368,
+        "endChar": 81
+      },
+      "revId": "719cb67b7eea052323a57a5ef17df51ef8db22ce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "97cd97bc_a0683923",
+        "filename": "packages/Tethering/src/com/android/server/connectivity/tethering/UpstreamNetworkMonitor.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 380,
+      "author": {
+        "id": 1304263
+      },
+      "writtenOn": "2020-01-02T03:29:44Z",
+      "side": 1,
+      "message": "This looks a behaviour change. Should we have a test for this?",
+      "range": {
+        "startLine": 368,
+        "startChar": 4,
+        "endLine": 380,
+        "endChar": 5
+      },
+      "revId": "719cb67b7eea052323a57a5ef17df51ef8db22ce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d6a16aff_399869c0",
+        "filename": "packages/Tethering/tests/unit/src/com/android/server/connectivity/tethering/UpstreamNetworkMonitorTest.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1304263
+      },
+      "writtenOn": "2020-01-02T03:29:44Z",
+      "side": 1,
+      "message": "You may want to use the definition in UpstreamNetworkMonitor.java or put the constant in somewhere in side Tethering. Otherwise, we have even 2 places defining TYPE_NONE.",
+      "range": {
+        "startLine": 81,
+        "startChar": 4,
+        "endLine": 81,
+        "endChar": 44
+      },
+      "revId": "719cb67b7eea052323a57a5ef17df51ef8db22ce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
