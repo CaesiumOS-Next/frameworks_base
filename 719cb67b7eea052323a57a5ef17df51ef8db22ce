@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "ff39ae2c_b2847089",
+        "filename": "core/java/android/net/ConnectivityManager.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 1759,
+      "author": {
+        "id": 1308504
+      },
+      "writtenOn": "2020-01-02T08:37:25Z",
+      "side": 1,
+      "message": "No, if we want to keep support legacy priority list selection for network type. We need to expose this API. The suggested why don\u0027t work for tethering use case.\nThere are some option:\n1. Remove these legacy code totally in tethering. But it means OEM can\u0027t configure upstream priority anymore. We may got complain.\n2. copy this code into tethering, but we need to expose more @hide API (e.g. NetworkCapablitiies(), #maybeMarkCapabilitiesRestricted, ...)",
+      "parentUuid": "92c44fee_6a2352f7",
+      "range": {
+        "startLine": 1758,
+        "startChar": 4,
+        "endLine": 1759,
+        "endChar": 15
+      },
+      "revId": "719cb67b7eea052323a57a5ef17df51ef8db22ce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ca07a9f1_d18eb67e",
         "filename": "packages/Tethering/src/com/android/server/connectivity/tethering/UpstreamNetworkMonitor.java",
         "patchSetId": 2
@@ -45,6 +69,30 @@
       "revId": "719cb67b7eea052323a57a5ef17df51ef8db22ce",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "da4b8347_a02249b9",
+        "filename": "packages/Tethering/src/com/android/server/connectivity/tethering/UpstreamNetworkMonitor.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1308504
+      },
+      "writtenOn": "2020-01-02T08:37:25Z",
+      "side": 1,
+      "message": "The use case is just for tethering upstream. That is why this is not a map. Maybe mIsTetheringUpstreamSuspsend.",
+      "parentUuid": "ca07a9f1_d18eb67e",
+      "range": {
+        "startLine": 109,
+        "startChar": 20,
+        "endLine": 109,
+        "endChar": 38
+      },
+      "revId": "719cb67b7eea052323a57a5ef17df51ef8db22ce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "8df1c4ad_e52ef456",
+        "filename": "packages/Tethering/src/com/android/server/connectivity/tethering/UpstreamNetworkMonitor.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 368,
+      "author": {
+        "id": 1308504
+      },
+      "writtenOn": "2020-01-02T08:37:25Z",
+      "side": 1,
+      "message": "Hmm, maybe just remove this function that we already have alternative log to know whether network is suspend.",
+      "parentUuid": "c416f319_903bc53d",
+      "range": {
+        "startLine": 368,
+        "startChar": 39,
+        "endLine": 368,
+        "endChar": 81
+      },
+      "revId": "719cb67b7eea052323a57a5ef17df51ef8db22ce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "97cd97bc_a0683923",
         "filename": "packages/Tethering/src/com/android/server/connectivity/tethering/UpstreamNetworkMonitor.java",
         "patchSetId": 2
@@ -94,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "b13646b6_aed81f6d",
+        "filename": "packages/Tethering/src/com/android/server/connectivity/tethering/UpstreamNetworkMonitor.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 380,
+      "author": {
+        "id": 1308504
+      },
+      "writtenOn": "2020-01-02T08:37:25Z",
+      "side": 1,
+      "message": "The only change is print the log. There is no real function in here.",
+      "parentUuid": "97cd97bc_a0683923",
+      "range": {
+        "startLine": 368,
+        "startChar": 4,
+        "endLine": 380,
+        "endChar": 5
+      },
+      "revId": "719cb67b7eea052323a57a5ef17df51ef8db22ce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d6a16aff_399869c0",
         "filename": "packages/Tethering/tests/unit/src/com/android/server/connectivity/tethering/UpstreamNetworkMonitorTest.java",
         "patchSetId": 2
@@ -114,6 +210,30 @@
       "revId": "719cb67b7eea052323a57a5ef17df51ef8db22ce",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4b3c2477_57e9bc7e",
+        "filename": "packages/Tethering/tests/unit/src/com/android/server/connectivity/tethering/UpstreamNetworkMonitorTest.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1308504
+      },
+      "writtenOn": "2020-01-02T08:37:25Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "d6a16aff_399869c0",
+      "range": {
+        "startLine": 81,
+        "startChar": 4,
+        "endLine": 81,
+        "endChar": 44
+      },
+      "revId": "719cb67b7eea052323a57a5ef17df51ef8db22ce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
