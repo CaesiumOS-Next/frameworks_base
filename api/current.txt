@@ -42209,6 +42209,19 @@ package android.service.vr {
 
 package android.service.wallpaper {
 
+  public final class BuildConfig {
+    ctor public BuildConfig();
+    field public static final boolean DEBUG;
+  }
+
+  public final class Manifest {
+    ctor public Manifest();
+  }
+
+  public final class R {
+    ctor public R();
+  }
+
   public abstract class WallpaperService extends android.app.Service {
     ctor public WallpaperService();
     method public final android.os.IBinder onBind(android.content.Intent);
