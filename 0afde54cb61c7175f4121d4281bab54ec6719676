@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "5de93ecf_3004a32c",
+        "filename": "packages/DynamicSystemInstallationService/src/com/android/dynsystem/DynamicSystemInstallationService.java",
+        "patchSetId": 8
+      },
+      "lineNbr": 251,
+      "author": {
+        "id": 1337669
+      },
+      "writtenOn": "2020-01-03T03:53:08Z",
+      "side": 1,
+      "message": "Use TextUtils.isEmpty() to check nullity and emptiness of dsuSlot?\nIf dsuSlot \u003d \"\", then install path would be \"/data/gsi//\" which may break stuff",
+      "range": {
+        "startLine": 251,
+        "startChar": 12,
+        "endLine": 251,
+        "endChar": 27
+      },
+      "revId": "0afde54cb61c7175f4121d4281bab54ec6719676",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "170571b0_d3fa0c91",
         "filename": "services/core/java/com/android/server/DynamicSystemService.java",
         "patchSetId": 8
