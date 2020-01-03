@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "bd3ef781_0af24804",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1304263
+      },
+      "writtenOn": "2020-01-03T02:03:32Z",
+      "side": 1,
+      "message": "I think it\u0027s clearer to separate this part into other commit.",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 23
+      },
+      "revId": "719cb67b7eea052323a57a5ef17df51ef8db22ce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "92c44fee_6a2352f7",
         "filename": "core/java/android/net/ConnectivityManager.java",
         "patchSetId": 2
@@ -96,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "1c9675d1_e6f01c80",
+        "filename": "packages/Tethering/src/com/android/server/connectivity/tethering/UpstreamNetworkMonitor.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1304263
+      },
+      "writtenOn": "2020-01-03T02:03:32Z",
+      "side": 1,
+      "message": "The main point I think is there will not be only one upstream. As my previous example, mIsTetheringUpstreamSuspsend will not set correcyly.",
+      "parentUuid": "da4b8347_a02249b9",
+      "range": {
+        "startLine": 109,
+        "startChar": 20,
+        "endLine": 109,
+        "endChar": 38
+      },
+      "revId": "719cb67b7eea052323a57a5ef17df51ef8db22ce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c416f319_903bc53d",
         "filename": "packages/Tethering/src/com/android/server/connectivity/tethering/UpstreamNetworkMonitor.java",
         "patchSetId": 2
@@ -178,6 +225,30 @@
       "side": 1,
       "message": "The only change is print the log. There is no real function in here.",
       "parentUuid": "97cd97bc_a0683923",
+      "range": {
+        "startLine": 368,
+        "startChar": 4,
+        "endLine": 380,
+        "endChar": 5
+      },
+      "revId": "719cb67b7eea052323a57a5ef17df51ef8db22ce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cc690917_f8983a81",
+        "filename": "packages/Tethering/src/com/android/server/connectivity/tethering/UpstreamNetworkMonitor.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 380,
+      "author": {
+        "id": 1304263
+      },
+      "writtenOn": "2020-01-03T02:03:32Z",
+      "side": 1,
+      "message": "then do we really need this change? remove maybe?",
+      "parentUuid": "b13646b6_aed81f6d",
       "range": {
         "startLine": 368,
         "startChar": 4,
