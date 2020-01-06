@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "11a4523d_36f4546e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2020-01-06T13:14:06Z",
+      "side": 1,
+      "message": "Sorry the description is not enough for me to understand what you mean here, even after carefully reading b/145993724. Can you clarify what bug you are talking about ?",
+      "range": {
+        "startLine": 13,
+        "startChar": 25,
+        "endLine": 13,
+        "endChar": 36
+      },
+      "revId": "0bfc7a7ac5e2ab21a8e72393492919dcad43d1e0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
