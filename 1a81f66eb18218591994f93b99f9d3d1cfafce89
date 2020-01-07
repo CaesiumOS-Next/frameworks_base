@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6c5f0951_2e1a8c1b",
+        "filename": "media/java/android/media/tv/TvTrackInfo.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 470,
+      "author": {
+        "id": 1060286
+      },
+      "writtenOn": "2020-01-07T23:50:13Z",
+      "side": 1,
+      "message": "@NotNull\n\nFails API lint without.",
+      "range": {
+        "startLine": 470,
+        "startChar": 15,
+        "endLine": 470,
+        "endChar": 22
+      },
+      "revId": "1a81f66eb18218591994f93b99f9d3d1cfafce89",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
