@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "ca397914_56d73621",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1308504
+      },
+      "writtenOn": "2020-01-07T12:56:36Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "7f4f4cad_f068bcb9",
+      "range": {
+        "startLine": 9,
+        "startChar": 52,
+        "endLine": 9,
+        "endChar": 58
+      },
+      "revId": "39df6f8b99c451826204cdc22799fd894178c5ac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "58e24a86_16c14fd0",
         "filename": "core/java/android/net/ConnectivityManager.java",
         "patchSetId": 5
@@ -62,6 +86,24 @@
       "revId": "39df6f8b99c451826204cdc22799fd894178c5ac",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b0539fd3_c1e13ea9",
+        "filename": "packages/Tethering/src/com/android/server/connectivity/tethering/UpstreamNetworkMonitor.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1308504
+      },
+      "writtenOn": "2020-01-07T12:56:36Z",
+      "side": 1,
+      "message": "It is used at l.258 and l.481. Looking the code again, TYPE_NONE is only using inside tethering, so maybe refine the comment that it don\u0027t need to the same as ConnectivityManager#TYPE_NONE",
+      "parentUuid": "81af0c9b_91e0bfe0",
+      "revId": "39df6f8b99c451826204cdc22799fd894178c5ac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
