@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7f4f4cad_f068bcb9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1306837
+      },
+      "writtenOn": "2020-01-07T10:39:27Z",
+      "side": 1,
+      "message": "since",
+      "range": {
+        "startLine": 9,
+        "startChar": 52,
+        "endLine": 9,
+        "endChar": 58
+      },
+      "revId": "39df6f8b99c451826204cdc22799fd894178c5ac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "58e24a86_16c14fd0",
+        "filename": "core/java/android/net/ConnectivityManager.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 1759,
+      "author": {
+        "id": 1306837
+      },
+      "writtenOn": "2020-01-07T10:39:27Z",
+      "side": 1,
+      "message": "Expose a deprecated API?\nDo we want to add more comments specify the reasons in commit message?",
+      "range": {
+        "startLine": 1758,
+        "startChar": 4,
+        "endLine": 1759,
+        "endChar": 15
+      },
+      "revId": "39df6f8b99c451826204cdc22799fd894178c5ac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "81af0c9b_91e0bfe0",
+        "filename": "packages/Tethering/src/com/android/server/connectivity/tethering/UpstreamNetworkMonitor.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1306837
+      },
+      "writtenOn": "2020-01-07T10:39:27Z",
+      "side": 1,
+      "message": "IIUC there is no one using this constant.\nMaybe move this to where use it?",
+      "revId": "39df6f8b99c451826204cdc22799fd894178c5ac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
