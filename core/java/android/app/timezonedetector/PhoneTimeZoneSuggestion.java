@@ -19,6 +19,7 @@ package android.app.timezonedetector;
 import android.annotation.IntDef;
 import android.annotation.NonNull;
 import android.annotation.Nullable;
+import android.annotation.SystemApi;
 import android.os.Parcel;
 import android.os.Parcelable;
 
@@ -34,8 +35,11 @@ import java.util.Objects;
  *
  * @hide
  */
+@SystemApi // (client = SystemApi.Client.MODULE_LIBRARIES)
 public final class PhoneTimeZoneSuggestion implements Parcelable {
 
+    /** @hide */
+    @SystemApi // (client = SystemApi.Client.MODULE_LIBRARIES)
     @NonNull
     public static final Creator<PhoneTimeZoneSuggestion> CREATOR =
             new Creator<PhoneTimeZoneSuggestion>() {
@@ -90,6 +94,8 @@ public final class PhoneTimeZoneSuggestion implements Parcelable {
      */
     public static final int MATCH_TYPE_TEST_NETWORK_OFFSET_ONLY = 5;
 
+    /** @hide */
+    @SystemApi // (client = SystemApi.Client.MODULE_LIBRARIES)
     @IntDef({ QUALITY_NA, QUALITY_SINGLE_ZONE, QUALITY_MULTIPLE_ZONES_WITH_SAME_OFFSET,
             QUALITY_MULTIPLE_ZONES_WITH_DIFFERENT_OFFSETS })
     @Retention(RetentionPolicy.SOURCE)
@@ -123,6 +129,7 @@ public final class PhoneTimeZoneSuggestion implements Parcelable {
      * The suggestion. {@code null} means there is no current suggestion and any previous suggestion
      * should be forgotten.
      */
+    @Nullable
     private final String mZoneId;
 
     /**
@@ -142,6 +149,7 @@ public final class PhoneTimeZoneSuggestion implements Parcelable {
      * Free-form debug information about how the signal was derived. Used for debug only,
      * intentionally not used in equals(), etc.
      */
+    @Nullable
     private List<String> mDebugInfo;
 
     private PhoneTimeZoneSuggestion(Builder builder) {
@@ -267,7 +275,8 @@ public final class PhoneTimeZoneSuggestion implements Parcelable {
      *
      * @hide
      */
-    public static class Builder {
+    @SystemApi // (client = SystemApi.Client.MODULE_LIBRARIES)
+    public static final class Builder {
         private final int mPhoneId;
         private String mZoneId;
         @MatchType private int mMatchType;
@@ -279,7 +288,7 @@ public final class PhoneTimeZoneSuggestion implements Parcelable {
         }
 
         /** Returns the builder for call chaining. */
-        public Builder setZoneId(String zoneId) {
+        public Builder setZoneId(@Nullable String zoneId) {
             mZoneId = zoneId;
             return this;
         }

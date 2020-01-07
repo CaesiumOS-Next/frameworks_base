@@ -18,6 +18,7 @@ package android.app.timedetector;
 
 import android.annotation.NonNull;
 import android.annotation.Nullable;
+import android.annotation.SystemApi;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.util.TimestampedValue;
@@ -37,8 +38,11 @@ import java.util.Objects;
  *
  * @hide
  */
+@SystemApi // (client = SystemApi.Client.MODULE_LIBRARIES)
 public final class PhoneTimeSuggestion implements Parcelable {
 
+    /** @hide */
+    @SystemApi // (client = SystemApi.Client.MODULE_LIBRARIES)
     public static final @NonNull Parcelable.Creator<PhoneTimeSuggestion> CREATOR =
             new Parcelable.Creator<PhoneTimeSuggestion>() {
                 public PhoneTimeSuggestion createFromParcel(Parcel in) {
@@ -105,7 +109,7 @@ public final class PhoneTimeSuggestion implements Parcelable {
      * information is present in {@link #toString()} but is not considered for
      * {@link #equals(Object)} and {@link #hashCode()}.
      */
-    public void addDebugInfo(String debugInfo) {
+    public void addDebugInfo(@NonNull String debugInfo) {
         if (mDebugInfo == null) {
             mDebugInfo = new ArrayList<>();
         }
@@ -156,7 +160,8 @@ public final class PhoneTimeSuggestion implements Parcelable {
      *
      * @hide
      */
-    public static class Builder {
+    @SystemApi // (client = SystemApi.Client.MODULE_LIBRARIES)
+    public static final class Builder {
         private final int mPhoneId;
         private TimestampedValue<Long> mUtcTime;
         private List<String> mDebugInfo;
