@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3f2eff24_77f687fc",
+        "filename": "core/java/android/provider/Settings.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 15272,
+      "author": {
+        "id": 1304263
+      },
+      "writtenOn": "2020-01-07T05:11:35Z",
+      "side": 1,
+      "message": "From your description, why do you not expose enforceTetherChangePermission.enforceTetherChangePermission() but this one assume you need to check both case?",
+      "range": {
+        "startLine": 15272,
+        "startChar": 26,
+        "endLine": 15272,
+        "endChar": 60
+      },
+      "revId": "a8940f141f3740c692473ce20b8c5d36041ddd0f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
