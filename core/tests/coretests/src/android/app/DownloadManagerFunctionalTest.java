@@ -24,6 +24,7 @@ import android.os.Environment;
 import android.os.ParcelFileDescriptor;
 
 import androidx.test.filters.LargeTest;
+import androidx.test.filters.Suppress;
 
 import com.google.mockwebserver.MockResponse;
 
@@ -35,6 +36,7 @@ import java.util.concurrent.TimeoutException;
 /**
  * Integration tests of the DownloadManager API.
  */
+@Suppress
 public class DownloadManagerFunctionalTest extends DownloadManagerBaseTest {
     private static final String TAG = "DownloadManagerFunctionalTest";
     private final static String CACHE_DIR =
