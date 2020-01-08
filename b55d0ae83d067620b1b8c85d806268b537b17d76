@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "02cef2b2_a478b97d",
+        "filename": "services/core/java/com/android/server/am/UserController.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 448,
+      "author": {
+        "id": 1165283
+      },
+      "writtenOn": "2020-01-08T00:48:43Z",
+      "side": 1,
+      "message": "It would be better if we didn\u0027t assume that only the SYSTEM user can have profiles. (In theory, other users may have profiles in the future.) Or are you saying that this bug can only happen to the SYSTEM user - even if other users could have profiles, they would never experience this bug?",
+      "range": {
+        "startLine": 448,
+        "startChar": 0,
+        "endLine": 448,
+        "endChar": 47
+      },
+      "revId": "b55d0ae83d067620b1b8c85d806268b537b17d76",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
