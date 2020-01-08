@@ -72,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "4cab28bd_95ba03ea",
+        "filename": "core/java/android/net/ConnectivityManager.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 1759,
+      "author": {
+        "id": 1288034
+      },
+      "writtenOn": "2020-01-08T04:24:12Z",
+      "side": 1,
+      "message": "I would also prefer just to copy the code to UpstreamNetworkMonitor, since it\u0027s just a few lines, and using the deprecated types in UpstreamNetworkMonitor should be temporary.\nExposing an API means signing up for some level of stability guarantees, but if it uses deprecated concepts (or is deprecated itself) that means we don\u0027t actually intend to provide that guarantee.",
+      "parentUuid": "58e24a86_16c14fd0",
+      "range": {
+        "startLine": 1758,
+        "startChar": 4,
+        "endLine": 1759,
+        "endChar": 15
+      },
+      "revId": "39df6f8b99c451826204cdc22799fd894178c5ac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "81af0c9b_91e0bfe0",
         "filename": "packages/Tethering/src/com/android/server/connectivity/tethering/UpstreamNetworkMonitor.java",
         "patchSetId": 5
