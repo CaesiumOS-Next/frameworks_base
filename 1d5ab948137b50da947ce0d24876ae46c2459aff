@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d98bbe78_ad50ae81",
+        "filename": "packages/SettingsLib/src/com/android/settingslib/DeviceInfoUtils.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1316472
+      },
+      "writtenOn": "2020-01-09T14:00:15Z",
+      "side": 1,
+      "message": "rename to subscriptionInfoList or subscriptionInfos",
+      "range": {
+        "startLine": 191,
+        "startChar": 35,
+        "endLine": 191,
+        "endChar": 51
+      },
+      "revId": "1d5ab948137b50da947ce0d24876ae46c2459aff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8345cee7_7051c92b",
+        "filename": "packages/SettingsLib/src/com/android/settingslib/DeviceInfoUtils.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1316472
+      },
+      "writtenOn": "2020-01-09T14:00:15Z",
+      "side": 1,
+      "message": "code could be like \nfor (SubscriptionInfo subscriptionInfo : subscriptionInfos) {\n    final String rawNumber \u003d telephonyManager.createForSubscriptionId(\n                        subscriptionInfo.getSubscriptionId()).getLine1Number();",
+      "range": {
+        "startLine": 197,
+        "startChar": 12,
+        "endLine": 199,
+        "endChar": 86
+      },
+      "revId": "1d5ab948137b50da947ce0d24876ae46c2459aff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
