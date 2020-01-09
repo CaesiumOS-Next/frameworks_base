@@ -22,6 +22,30 @@
       "revId": "a8940f141f3740c692473ce20b8c5d36041ddd0f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0191c7a1_623a425f",
+        "filename": "core/java/android/provider/Settings.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 15272,
+      "author": {
+        "id": 1308504
+      },
+      "writtenOn": "2020-01-09T04:13:50Z",
+      "side": 1,
+      "message": "I think we have potential bug in ConnectivityManager#enforceTetherChangePermission for multiple SIM. We need to move permission check inside Tethering module to correctly know whether entitlement supported or not.\n\n    public static final void enforceTetherChangePermission(Context context, String callingPkg) {\n        Preconditions.checkNotNull(context, \"Context cannot be null\");\n        Preconditions.checkNotNull(callingPkg, \"callingPkg cannot be null\");\n\n        if (context.getResources().getStringArray(\n                com.android.internal.R.array.config_mobile_hotspot_provision_app).length \u003d\u003d 2) {\n        ...",
+      "parentUuid": "3f2eff24_77f687fc",
+      "range": {
+        "startLine": 15272,
+        "startChar": 26,
+        "endLine": 15272,
+        "endChar": 60
+      },
+      "revId": "a8940f141f3740c692473ce20b8c5d36041ddd0f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
