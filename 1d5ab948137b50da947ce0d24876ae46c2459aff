@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "8741ea98_ce4cea3a",
+        "filename": "packages/SettingsLib/src/com/android/settingslib/DeviceInfoUtils.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1387063
+      },
+      "writtenOn": "2020-01-10T02:25:09Z",
+      "side": 1,
+      "message": "Suggested to remove entire method, since\n1. it\u0027s not referenced by any source code\n2. there might be some concern exposing concatenated phone numbers as a string.\n   That will easily be ignored when performing PII related checkings.",
+      "revId": "1d5ab948137b50da947ce0d24876ae46c2459aff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d98bbe78_ad50ae81",
         "filename": "packages/SettingsLib/src/com/android/settingslib/DeviceInfoUtils.java",
         "patchSetId": 3
