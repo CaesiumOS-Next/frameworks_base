@@ -22,6 +22,30 @@
       "revId": "939a56e48526d3756908cea6da69e52a2a46a84a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "13b43dc6_7c9b8aad",
+        "filename": "core/java/android/os/image/IDynamicSystemService.aidl",
+        "patchSetId": 10
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2020-01-13T22:49:08Z",
+      "side": 1,
+      "message": "ping",
+      "parentUuid": "4bed8de7_08bbbe6c",
+      "range": {
+        "startLine": 25,
+        "startChar": 35,
+        "endLine": 25,
+        "endChar": 44
+      },
+      "revId": "939a56e48526d3756908cea6da69e52a2a46a84a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
