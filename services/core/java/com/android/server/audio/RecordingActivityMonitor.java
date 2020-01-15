@@ -78,8 +78,8 @@ public final class RecordingActivityMonitor implements AudioSystem.AudioRecordin
             return mConfig;
         }
 
-        boolean hasDeathHandler() {
-            return mDeathHandler != null;
+        RecorderDeathHandler getDeathHandler() {
+            return mDeathHandler;
         }
 
         boolean isActiveConfiguration() {
@@ -245,7 +245,7 @@ public final class RecordingActivityMonitor implements AudioSystem.AudioRecordin
             boolean configChanged = false;
             for (Iterator<RecordingState> it = mRecordStates.iterator(); it.hasNext(); ) {
                 RecordingState state = it.next();
-                if (!state.hasDeathHandler()) {
+                if (state.getDeathHandler() == null) {
                     if (state.isActiveConfiguration()) {
                         configChanged = true;
                         sEventLogger.log(new RecordingEvent(
@@ -409,7 +409,7 @@ public final class RecordingActivityMonitor implements AudioSystem.AudioRecordin
                     break;
                 case AudioManager.RECORD_CONFIG_EVENT_STOP:
                     configChanged = state.setActive(false);
-                    if (!state.hasDeathHandler()) {
+                    if (state.getDeathHandler() == null) {
                         // A recorder tracked by AudioServer has to be removed now so it
                         // does not leak. It will be re-registered if recording starts again.
                         mRecordStates.remove(stateIndex);
@@ -418,6 +418,8 @@ public final class RecordingActivityMonitor implements AudioSystem.AudioRecordin
                 case AudioManager.RECORD_CONFIG_EVENT_RELEASE:
                     configChanged = state.isActiveConfiguration();
                     mRecordStates.remove(stateIndex);
+                    RecorderDeathHandler handler = state.getDeathHandler();
+                    if (handler != null) handler.release();
                     break;
                 default:
                     Log.e(TAG, String.format("Unknown event %d for riid %d / portid %d",
@@ -448,7 +450,7 @@ public final class RecordingActivityMonitor implements AudioSystem.AudioRecordin
         // Lookup by portId is unambiguous only for recordings managed by the Audio Server.
         synchronized (mRecordStates) {
             for (int i = 0; i < mRecordStates.size(); i++) {
-                if (!mRecordStates.get(i).hasDeathHandler()
+                if (mRecordStates.get(i).getDeathHandler() == null
                         && mRecordStates.get(i).getPortId() == portId) {
                     return i;
                 }
@@ -518,6 +520,11 @@ public final class RecordingActivityMonitor implements AudioSystem.AudioRecordin
                 Log.w(TAG, "Could not link to recorder death", e);
                 return false;
             }
+        }
+
+        boolean release() {
+            mRecorderToken.unlinkToDeath(this, 0);
+            return true;
         }
     }
 
