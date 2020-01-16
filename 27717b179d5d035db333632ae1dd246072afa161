@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "c54d68fc_16782ebb",
+        "filename": "core/res/AndroidManifest.xml",
+        "patchSetId": 2
+      },
+      "lineNbr": 4707,
+      "author": {
+        "id": 1022895
+      },
+      "writtenOn": "2020-01-16T20:34:00Z",
+      "side": 1,
+      "message": "Can these just be signature?",
+      "range": {
+        "startLine": 4707,
+        "startChar": 51,
+        "endLine": 4707,
+        "endChar": 61
+      },
+      "revId": "27717b179d5d035db333632ae1dd246072afa161",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b4889163_5317bde4",
         "filename": "services/core/java/com/android/server/compat/PlatformCompat.java",
         "patchSetId": 2
