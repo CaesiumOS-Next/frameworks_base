@@ -29763,6 +29763,7 @@ package android.net.sip {
     method public static android.net.sip.SipManager newInstance(android.content.Context);
     method public void open(android.net.sip.SipProfile) throws android.net.sip.SipException;
     method public void open(android.net.sip.SipProfile, android.app.PendingIntent, android.net.sip.SipRegistrationListener) throws android.net.sip.SipException;
+    method public void processActiveProfiles(java.util.List<android.net.sip.SipProfile>) throws android.net.sip.SipException;
     method public void register(android.net.sip.SipProfile, int, android.net.sip.SipRegistrationListener) throws android.net.sip.SipException;
     method public void setRegistrationListener(String, android.net.sip.SipRegistrationListener) throws android.net.sip.SipException;
     method public android.net.sip.SipAudioCall takeAudioCall(android.content.Intent, android.net.sip.SipAudioCall.Listener) throws android.net.sip.SipException;
@@ -29776,6 +29777,7 @@ package android.net.sip {
     method public int describeContents();
     method public String getAuthUserName();
     method public boolean getAutoRegistration();
+    method public int getCallingUid();
     method public String getDisplayName();
     method public String getPassword();
     method public int getPort();
