@@ -45,6 +45,29 @@
       "revId": "98791b9f15f16f2e9d7807bb2b56287b380df170",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "40153f56_3697034d",
+        "filename": "wifi/java/android/net/wifi/WifiManager.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 4649,
+      "author": {
+        "id": 1039103
+      },
+      "writtenOn": "2020-01-16T19:27:18Z",
+      "side": 1,
+      "message": "Why is a wrapper needed - can\u0027t the caller just do the same?",
+      "range": {
+        "startLine": 4649,
+        "startChar": 15,
+        "endLine": 4649,
+        "endChar": 90
+      },
+      "revId": "98791b9f15f16f2e9d7807bb2b56287b380df170",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
