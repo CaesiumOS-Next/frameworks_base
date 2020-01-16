@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "563fb7e8_5883cd9a",
+        "filename": "wifi/java/android/net/wifi/WifiManager.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 4645,
+      "author": {
+        "id": 1128973
+      },
+      "writtenOn": "2020-01-16T19:45:45Z",
+      "side": 1,
+      "message": "I don\u0027t see any security issues here. Especially if we can keep the @RequiresPermission(android.Manifest.permission.MANAGE_DEBUGGING) check. I\u0027ll just make it public then.",
+      "parentUuid": "f1a0c425_f3e49690",
+      "range": {
+        "startLine": 4645,
+        "startChar": 8,
+        "endLine": 4645,
+        "endChar": 12
+      },
+      "revId": "98791b9f15f16f2e9d7807bb2b56287b380df170",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "cb72c353_3297038d",
         "filename": "wifi/java/android/net/wifi/WifiManager.java",
         "patchSetId": 3
