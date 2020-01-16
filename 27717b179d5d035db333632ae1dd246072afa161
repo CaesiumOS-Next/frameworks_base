@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b4889163_5317bde4",
+        "filename": "services/core/java/com/android/server/compat/PlatformCompat.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1463094
+      },
+      "writtenOn": "2020-01-16T20:06:07Z",
+      "side": 1,
+      "message": "perhaps we should also restrict this (and the other versions of this), to make sure nobody messes up with our logging?",
+      "range": {
+        "startLine": 88,
+        "startChar": 16,
+        "endLine": 88,
+        "endChar": 33
+      },
+      "revId": "27717b179d5d035db333632ae1dd246072afa161",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
