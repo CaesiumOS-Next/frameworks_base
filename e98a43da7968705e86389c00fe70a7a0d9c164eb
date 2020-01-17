@@ -69,6 +69,24 @@
       "revId": "e98a43da7968705e86389c00fe70a7a0d9c164eb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3b4a51e4_c62acb81",
+        "filename": "packages/SystemUI/src/com/android/systemui/statusbar/policy/FlashlightControllerImpl.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1387508
+      },
+      "writtenOn": "2020-01-17T13:43:36Z",
+      "side": 1,
+      "message": "Calling setCameraAvailable to false would indicate that all torches are unavailable. However, in this case this is called if at least one is unavailable. This would lead to situations where the torch is deemed unavailable when that\u0027s not the case.",
+      "parentUuid": "a38b0947_0c520489",
+      "revId": "e98a43da7968705e86389c00fe70a7a0d9c164eb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
