@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "26865929_54f89ac3",
+        "filename": "core/res/AndroidManifest.xml",
+        "patchSetId": 2
+      },
+      "lineNbr": 4707,
+      "author": {
+        "id": 1431994
+      },
+      "writtenOn": "2020-01-17T17:49:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c54d68fc_16782ebb",
+      "range": {
+        "startLine": 4707,
+        "startChar": 51,
+        "endLine": 4707,
+        "endChar": 61
+      },
+      "revId": "27717b179d5d035db333632ae1dd246072afa161",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b4889163_5317bde4",
         "filename": "services/core/java/com/android/server/compat/PlatformCompat.java",
         "patchSetId": 2
@@ -45,6 +69,30 @@
       "revId": "27717b179d5d035db333632ae1dd246072afa161",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fe223f33_8e2a8b4a",
+        "filename": "services/core/java/com/android/server/compat/PlatformCompat.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1431994
+      },
+      "writtenOn": "2020-01-17T17:49:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b4889163_5317bde4",
+      "range": {
+        "startLine": 88,
+        "startChar": 16,
+        "endLine": 88,
+        "endChar": 33
+      },
+      "revId": "27717b179d5d035db333632ae1dd246072afa161",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
