@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9758b0b1_e7a418e2",
+        "filename": "packages/Shell/AndroidManifest.xml",
+        "patchSetId": 3
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 1022895
+      },
+      "writtenOn": "2020-01-17T18:29:50Z",
+      "side": 1,
+      "message": "Would this allow shell to disable compat configs on product apps on production devices?",
+      "range": {
+        "startLine": 225,
+        "startChar": 54,
+        "endLine": 225,
+        "endChar": 83
+      },
+      "revId": "b6e15e72a873c69042be18cf7ce5a4236902560f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
