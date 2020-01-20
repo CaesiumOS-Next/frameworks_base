@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3523f9b5_eb849f8f",
+        "filename": "core/java/android/net/IpRange.java",
+        "patchSetId": 27
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1399364
+      },
+      "writtenOn": "2020-01-20T23:15:34Z",
+      "side": 1,
+      "message": "nit: add @IntRange\nex - http://cs/aosp-master/frameworks/base/core/java/android/net/IpPrefix.java?l\u003d75",
+      "range": {
+        "startLine": 67,
+        "startChar": 51,
+        "endLine": 67,
+        "endChar": 54
+      },
+      "revId": "53b96a19b8583b665e7dc40d61cebbb49c5287e8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "498dc5ed_ced51add",
+        "filename": "core/java/android/net/IpRange.java",
+        "patchSetId": 27
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1399364
+      },
+      "writtenOn": "2020-01-20T23:15:34Z",
+      "side": 1,
+      "message": "Given that you are converting this given args to IpPrefix, I\u0027m wondering if it\u0027d make sense for callers to directly pass an instance of IpPrefix?\n\nI haven\u0027t looked at the usage of this class yet, but if you think callers already have instances of IpPrefix than better to just pass that in or add a new constructor that takes IpPrefix directly.",
+      "range": {
+        "startLine": 67,
+        "startChar": 19,
+        "endLine": 67,
+        "endChar": 64
+      },
+      "revId": "53b96a19b8583b665e7dc40d61cebbb49c5287e8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cf25029a_d93f0bfd",
+        "filename": "core/java/android/net/IpRange.java",
+        "patchSetId": 27
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1399364
+      },
+      "writtenOn": "2020-01-20T23:15:34Z",
+      "side": 1,
+      "message": "can this be static?",
+      "range": {
+        "startLine": 84,
+        "startChar": 24,
+        "endLine": 84,
+        "endChar": 40
+      },
+      "revId": "53b96a19b8583b665e7dc40d61cebbb49c5287e8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "48abc161_c82174d3",
+        "filename": "core/java/android/net/IpRange.java",
+        "patchSetId": 27
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1399364
+      },
+      "writtenOn": "2020-01-20T23:15:34Z",
+      "side": 1,
+      "message": "same, please add an example in the javadoc.",
+      "range": {
+        "startLine": 109,
+        "startChar": 26,
+        "endLine": 109,
+        "endChar": 38
+      },
+      "revId": "53b96a19b8583b665e7dc40d61cebbb49c5287e8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "caa631d7_61ba50e1",
+        "filename": "core/java/android/net/IpRange.java",
+        "patchSetId": 27
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1399364
+      },
+      "writtenOn": "2020-01-20T23:15:34Z",
+      "side": 1,
+      "message": "It is hard to understand: 1) why an IpRange (which is a contiguous block) needs to be converted into an IpPrefix. And 2) Why would there be more than one IpPrefix?\n\nIIUC, IpPrefix represents CIDR notation - so something like 1.2.3.4/24\nwhereas, IpRange represents start and end IPs - so corresponding equivalent of given IpPrefix should be 1.2.3.0 (start) to 1.2.3.255 (end).\n\nSo, if I\u0027m converting an IpRange into an IpPrefix there should only be one right?\n\nI guess I\u0027m getting confused as to what the real use case is?",
+      "range": {
+        "startLine": 109,
+        "startChar": 11,
+        "endLine": 109,
+        "endChar": 25
+      },
+      "revId": "53b96a19b8583b665e7dc40d61cebbb49c5287e8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ab529786_1de6e936",
+        "filename": "core/java/android/net/IpRange.java",
+        "patchSetId": 27
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1399364
+      },
+      "writtenOn": "2020-01-20T23:15:34Z",
+      "side": 1,
+      "message": "Please add an example in the javadoc so it becomes clear what this method does without getting too involved in the logic.",
+      "range": {
+        "startLine": 143,
+        "startChar": 26,
+        "endLine": 143,
+        "endChar": 43
+      },
+      "revId": "53b96a19b8583b665e7dc40d61cebbb49c5287e8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
