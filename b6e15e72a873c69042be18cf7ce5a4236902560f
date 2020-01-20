@@ -22,6 +22,30 @@
       "revId": "b6e15e72a873c69042be18cf7ce5a4236902560f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "16e09a03_66c12759",
+        "filename": "packages/Shell/AndroidManifest.xml",
+        "patchSetId": 3
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 1431994
+      },
+      "writtenOn": "2020-01-20T20:44:49Z",
+      "side": 1,
+      "message": "Any override attempts go through OverrideValidatorImpl: http://cs/aosp-master/frameworks/base/services/core/java/com/android/server/compat/OverrideValidatorImpl.java?l\u003d53\n\nOn release builds, compat changes can only be overridden for debuggable apps (and only particular types of compat changes).",
+      "parentUuid": "9758b0b1_e7a418e2",
+      "range": {
+        "startLine": 225,
+        "startChar": 54,
+        "endLine": 225,
+        "endChar": 83
+      },
+      "revId": "b6e15e72a873c69042be18cf7ce5a4236902560f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
