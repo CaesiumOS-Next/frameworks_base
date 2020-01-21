@@ -48,6 +48,54 @@
     },
     {
       "key": {
+        "uuid": "6e23f947_6b1daa8f",
+        "filename": "core/java/android/net/IpRange.java",
+        "patchSetId": 27
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1221725
+      },
+      "writtenOn": "2020-01-21T01:33:18Z",
+      "side": 1,
+      "message": "Ack, changed to use IpPrefix instead",
+      "parentUuid": "3523f9b5_eb849f8f",
+      "range": {
+        "startLine": 67,
+        "startChar": 51,
+        "endLine": 67,
+        "endChar": 54
+      },
+      "revId": "53b96a19b8583b665e7dc40d61cebbb49c5287e8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bf744286_2e1b29bc",
+        "filename": "core/java/android/net/IpRange.java",
+        "patchSetId": 27
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1221725
+      },
+      "writtenOn": "2020-01-21T01:33:18Z",
+      "side": 1,
+      "message": "Done; also added a VisibleForTesting() annotation.",
+      "parentUuid": "498dc5ed_ced51add",
+      "range": {
+        "startLine": 67,
+        "startChar": 19,
+        "endLine": 67,
+        "endChar": 64
+      },
+      "revId": "53b96a19b8583b665e7dc40d61cebbb49c5287e8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cf25029a_d93f0bfd",
         "filename": "core/java/android/net/IpRange.java",
         "patchSetId": 27
@@ -68,6 +116,30 @@
       "revId": "53b96a19b8583b665e7dc40d61cebbb49c5287e8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0bc32cd3_ca56be61",
+        "filename": "core/java/android/net/IpRange.java",
+        "patchSetId": 27
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1221725
+      },
+      "writtenOn": "2020-01-21T01:33:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cf25029a_d93f0bfd",
+      "range": {
+        "startLine": 84,
+        "startChar": 24,
+        "endLine": 84,
+        "endChar": 40
+      },
+      "revId": "53b96a19b8583b665e7dc40d61cebbb49c5287e8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -117,6 +189,54 @@
     },
     {
       "key": {
+        "uuid": "a0cd257a_21091920",
+        "filename": "core/java/android/net/IpRange.java",
+        "patchSetId": 27
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1221725
+      },
+      "writtenOn": "2020-01-21T01:33:18Z",
+      "side": 1,
+      "message": "for (1), Linux and Android routing systems both work based on prefixes, rather than ranges\n(2), ranges spanning multiple prefixes are possible:\n\n192.0.2.4 - 192.0.3.1 spans multiple prefixes:\n\n192.0.2.128/25\n192.0.2.64/26\n192.0.2.32/27\n192.0.2.16/28\n192.0.2.8/29\n192.0.2.4/30\n192.0.3.0/31",
+      "parentUuid": "caa631d7_61ba50e1",
+      "range": {
+        "startLine": 109,
+        "startChar": 11,
+        "endLine": 109,
+        "endChar": 25
+      },
+      "revId": "53b96a19b8583b665e7dc40d61cebbb49c5287e8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9cb7b837_2171a311",
+        "filename": "core/java/android/net/IpRange.java",
+        "patchSetId": 27
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1221725
+      },
+      "writtenOn": "2020-01-21T01:33:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "48abc161_c82174d3",
+      "range": {
+        "startLine": 109,
+        "startChar": 26,
+        "endLine": 109,
+        "endChar": 38
+      },
+      "revId": "53b96a19b8583b665e7dc40d61cebbb49c5287e8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ab529786_1de6e936",
         "filename": "core/java/android/net/IpRange.java",
         "patchSetId": 27
@@ -137,6 +257,30 @@
       "revId": "53b96a19b8583b665e7dc40d61cebbb49c5287e8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9ace6f1c_02a3ef71",
+        "filename": "core/java/android/net/IpRange.java",
+        "patchSetId": 27
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1221725
+      },
+      "writtenOn": "2020-01-21T01:33:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ab529786_1de6e936",
+      "range": {
+        "startLine": 143,
+        "startChar": 26,
+        "endLine": 143,
+        "endChar": 43
+      },
+      "revId": "53b96a19b8583b665e7dc40d61cebbb49c5287e8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
