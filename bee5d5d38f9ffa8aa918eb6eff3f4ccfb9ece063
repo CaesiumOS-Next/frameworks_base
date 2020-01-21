@@ -96,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "8376ca6c_8ccc6cae",
+        "filename": "core/java/android/net/IpRange.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2020-01-21T07:18:38Z",
+      "side": 1,
+      "message": "Then move it to libs/net",
+      "parentUuid": "5f53c036_ad891c30",
+      "range": {
+        "startLine": 40,
+        "startChar": 19,
+        "endLine": 40,
+        "endChar": 26
+      },
+      "revId": "bee5d5d38f9ffa8aa918eb6eff3f4ccfb9ece063",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "becf134d_c8166c56",
         "filename": "core/java/android/net/IpRange.java",
         "patchSetId": 2

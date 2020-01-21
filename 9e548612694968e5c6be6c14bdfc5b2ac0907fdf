@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7f67c746_2cf1fdfa",
+        "filename": "core/java/android/net/IpRange.java",
+        "patchSetId": 28
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2020-01-21T07:18:38Z",
+      "side": 1,
+      "message": "Maybe it\u0027s clearer to just say this splits the prefix into two half-size prefixes ?",
+      "range": {
+        "startLine": 141,
+        "startChar": 8,
+        "endLine": 141,
+        "endChar": 64
+      },
+      "revId": "9e548612694968e5c6be6c14bdfc5b2ac0907fdf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4554dda4_9ff044d8",
+        "filename": "core/java/android/net/IpRange.java",
+        "patchSetId": 28
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2020-01-21T07:18:38Z",
+      "side": 1,
+      "message": "Put this in a local for simplicity",
+      "range": {
+        "startLine": 150,
+        "startChar": 14,
+        "endLine": 150,
+        "endChar": 38
+      },
+      "revId": "9e548612694968e5c6be6c14bdfc5b2ac0907fdf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}

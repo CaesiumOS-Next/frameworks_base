@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0aa06340_74a53553",
+        "filename": "core/java/android/net/IpRange.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2020-01-21T07:18:38Z",
+      "side": 1,
+      "message": "typo",
+      "range": {
+        "startLine": 202,
+        "startChar": 82,
+        "endLine": 202,
+        "endChar": 93
+      },
+      "revId": "12a2f5cb7a2daca2317233d77d98f5579b59dd6d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
