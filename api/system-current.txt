@@ -4844,6 +4844,9 @@ package android.net.ipsec.ike {
 
   public final class IkeSessionConfiguration {
     ctor public IkeSessionConfiguration();
+    method @NonNull public java.net.InetAddress getLocalAddress();
+    method @NonNull public android.net.Network getNetwork();
+    method @NonNull public java.net.InetAddress getRemoteAddress();
     method @NonNull public String getRemoteApplicationVersion();
     method @NonNull public java.util.List<byte[]> getRemoteVendorIDs();
     method public boolean isIkeExtensionEnabled(int);
@@ -4859,7 +4862,8 @@ package android.net.ipsec.ike {
     method @NonNull public android.net.ipsec.ike.IkeSessionParams.IkeAuthConfig getRemoteAuthConfig();
     method @NonNull public android.net.ipsec.ike.IkeIdentification getRemoteIdentification();
     method @NonNull public java.util.List<android.net.ipsec.ike.IkeSaProposal> getSaProposals();
-    method @NonNull public java.net.InetAddress getServerAddress();
+    method @Nullable public java.net.InetAddress getServerAddress();
+    method @Nullable public String getServerHostname();
     method public long getSoftLifetime();
   }
 
@@ -4876,6 +4880,7 @@ package android.net.ipsec.ike {
     method @NonNull public android.net.ipsec.ike.IkeSessionParams.Builder setNetwork(@NonNull android.net.Network);
     method @NonNull public android.net.ipsec.ike.IkeSessionParams.Builder setRemoteIdentification(@NonNull android.net.ipsec.ike.IkeIdentification);
     method @NonNull public android.net.ipsec.ike.IkeSessionParams.Builder setServerAddress(@NonNull java.net.InetAddress);
+    method @NonNull public android.net.ipsec.ike.IkeSessionParams.Builder setServerHostname(@NonNull String);
   }
 
   public abstract static class IkeSessionParams.IkeAuthConfig {
