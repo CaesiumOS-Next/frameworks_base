@@ -298,15 +298,12 @@ public final class BluetoothHearingAid implements BluetoothProfile {
      * {@link #ACTION_ACTIVE_DEVICE_CHANGED} intent will be broadcasted
      * with the active device.
      *
-     * <p>Requires {@link android.Manifest.permission#BLUETOOTH_ADMIN}
-     * permission.
-     *
      * @param device the remote Bluetooth device. Could be null to clear
      * the active device and stop streaming audio to a Bluetooth device.
      * @return false on immediate error, true otherwise
      * @hide
      */
-    @UnsupportedAppUsage
+    @SystemApi
     public boolean setActiveDevice(@Nullable BluetoothDevice device) {
         if (DBG) log("setActiveDevice(" + device + ")");
         final IBluetoothHearingAid service = getService();

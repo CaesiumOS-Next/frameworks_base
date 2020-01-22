@@ -757,8 +757,8 @@ public final class BluetoothHeadset implements BluetoothProfile {
      *
      * @hide
      */
-    @UnsupportedAppUsage
-    public int getAudioState(BluetoothDevice device) {
+    @SystemApi
+    public int getAudioState(@Nullable BluetoothDevice device) {
         if (VDBG) log("getAudioState");
         final IBluetoothHeadset service = mService;
         if (service != null && !isDisabled()) {
@@ -846,12 +846,12 @@ public final class BluetoothHeadset implements BluetoothProfile {
     /**
      * Check if at least one headset's SCO audio is connected or connecting
      *
-     * <p>Requires {@link android.Manifest.permission#BLUETOOTH} permission.
-     *
      * @return true if at least one device's SCO audio is connected or connecting, false otherwise
      * or on error
      * @hide
      */
+    @RequiresPermission(android.Manifest.permission.BLUETOOTH)
+    @SystemApi
     public boolean isAudioOn() {
         if (VDBG) log("isAudioOn()");
         final IBluetoothHeadset service = mService;
@@ -885,7 +885,7 @@ public final class BluetoothHeadset implements BluetoothProfile {
      * @return false if there was some error such as there is no active headset
      * @hide
      */
-    @UnsupportedAppUsage
+    @SystemApi
     public boolean connectAudio() {
         final IBluetoothHeadset service = mService;
         if (service != null && isEnabled()) {
@@ -912,7 +912,7 @@ public final class BluetoothHeadset implements BluetoothProfile {
      * @return false if audio is not connected, or on error, true otherwise
      * @hide
      */
-    @UnsupportedAppUsage
+    @SystemApi
     public boolean disconnectAudio() {
         final IBluetoothHeadset service = mService;
         if (service != null && isEnabled()) {
@@ -1095,16 +1095,13 @@ public final class BluetoothHeadset implements BluetoothProfile {
      * {@link #ACTION_ACTIVE_DEVICE_CHANGED} intent will be broadcasted
      * with the active device.
      *
-     * <p>Requires {@link android.Manifest.permission#BLUETOOTH_ADMIN}
-     * permission.
-     *
      * @param device Remote Bluetooth Device, could be null if phone call audio should not be
      * streamed to a headset
      * @return false on immediate error, true otherwise
      * @hide
      */
     @RequiresPermission(android.Manifest.permission.BLUETOOTH_ADMIN)
-    @UnsupportedAppUsage
+    @SystemApi
     public boolean setActiveDevice(@Nullable BluetoothDevice device) {
         if (DBG) {
             Log.d(TAG, "setActiveDevice: " + device);
@@ -1162,6 +1159,7 @@ public final class BluetoothHeadset implements BluetoothProfile {
      * @hide
      */
     @RequiresPermission(android.Manifest.permission.BLUETOOTH)
+    @SystemApi
     public boolean isInbandRingingEnabled() {
         if (DBG) {
             log("isInbandRingingEnabled()");
