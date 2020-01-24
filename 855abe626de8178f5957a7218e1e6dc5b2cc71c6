@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ed2670b7_bfb487e6",
+        "filename": "core/res/AndroidManifest.xml",
+        "patchSetId": 11
+      },
+      "lineNbr": 4698,
+      "author": {
+        "id": 1060831
+      },
+      "writtenOn": "2020-01-24T16:48:42Z",
+      "side": 1,
+      "message": "Should these be @SystemApi ?",
+      "revId": "855abe626de8178f5957a7218e1e6dc5b2cc71c6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
