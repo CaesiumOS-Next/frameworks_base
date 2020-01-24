@@ -16,6 +16,24 @@
       "revId": "855abe626de8178f5957a7218e1e6dc5b2cc71c6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "386fae0f_a7b494bf",
+        "filename": "core/res/AndroidManifest.xml",
+        "patchSetId": 11
+      },
+      "lineNbr": 4698,
+      "author": {
+        "id": 1431994
+      },
+      "writtenOn": "2020-01-24T17:46:15Z",
+      "side": 1,
+      "message": "Good question!\nI\u0027m not completely sure what difference adding @SystemApi woud make in this case; these permissions are supposed to be used only by the system server or by the Settings app. And the Settings app still worked just fine when manually testing.\n\nOn a more honest note, making them @SystemApi makes this CL unmergeable to internal master and my life more difficult.",
+      "parentUuid": "ed2670b7_bfb487e6",
+      "revId": "855abe626de8178f5957a7218e1e6dc5b2cc71c6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
