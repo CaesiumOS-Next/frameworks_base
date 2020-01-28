@@ -1,0 +1,280 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "36384d84_d4b00b9f",
+        "filename": "packages/Tethering/common/TetheringLib/jarjar-rules.txt",
+        "patchSetId": 2
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2020-01-28T14:36:32Z",
+      "side": 1,
+      "message": "Did you need to add this because of a build or runtime failure, or did you just know you needed to add it? If you \"just knew\", how do we make it so that other engineers don\u0027t need to know?",
+      "range": {
+        "startLine": 2,
+        "startChar": 0,
+        "endLine": 2,
+        "endChar": 89
+      },
+      "revId": "59737af3e2db12b48d4952ee90ce8d4710ed83ea",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d33fedb5_3aad75b5",
+        "filename": "packages/Tethering/common/TetheringLib/src/android/net/TetheringManager.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2020-01-28T14:36:32Z",
+      "side": 1,
+      "message": "I think we could eliminate this if statement by making startPollingForConnector() call mConnectorSupplier.get() before calling Thread.sleep().\n\nThe benefit would be fewer codepaths and more reliable code, and initialization code is often hard to test. On the minus side, the common case of creating a TetheringManager for the first time while the system is already running would perform worse because it would need to create a thread (after the first time, SystemServiceRegistry caches the manager object so it doesn\u0027t matter). The overhead of creating the thread should be a small fraction of a millisecond, which seems negligible; we might be able to optimize it further by using ConnectivityThread; see below.\n\nOne drawback of doing this would be that if the app calls TetheringManager methods immediately after the manager class is constructed, then those methods would run on the polling thread, whereas subsequent methods would run on the app thread. In certain unlikely cases this is an app-visible difference. Given the other comments in this file related to the effects of running manager code in different threads, what you have here seems safer. It can still have this problem, but only if the app constructs a tetheringmanager immediately after boot.\n\nWe should probably try to capture this in a comment somewhere.",
+      "range": {
+        "startLine": 176,
+        "startChar": 0,
+        "endLine": 180,
+        "endChar": 9
+      },
+      "revId": "59737af3e2db12b48d4952ee90ce8d4710ed83ea",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c0605df3_2d9fa5ad",
+        "filename": "packages/Tethering/common/TetheringLib/src/android/net/TetheringManager.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2020-01-28T14:36:32Z",
+      "side": 1,
+      "message": "Creating a new thread seems fine, but is there a reason we can\u0027t use the singleton ConnectivityThread? I think it would be something like:\n\n    final Handler handler \u003d ConnectivityThread.get().getThreadHandler();\n    final Runnable r \u003d () -\u003e {\n        final IBinder connector \u003d mConnectorSupplier.get();\n            if (connector !\u003d null) {\n                onTetheringConnected(ITetheringConnector.Stub.asInterface(connector));\n                return;\n            }\n            handler.postDelayed(r, CONNECTOR_POLL_INTERVAL_MILLIS);\n        }\n    }\n\nUsing the ConnectivityThread means that if that thread is busy, then starting tetheringmanager could be slow. Also, it means that if the ConnectivityThread is blocked on a lock (e.g., because the app is taking a lock from NetworkCallback that was registered with a null Handler, and expects to release the lock when the TetheringManager is created, it could deadlock. This scenario seems pretty far-fetched but there could be others.",
+      "range": {
+        "startLine": 187,
+        "startChar": 8,
+        "endLine": 187,
+        "endChar": 18
+      },
+      "revId": "59737af3e2db12b48d4952ee90ce8d4710ed83ea",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6d9804de_d8632735",
+        "filename": "packages/Tethering/common/TetheringLib/src/android/net/TetheringManager.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2020-01-28T14:36:32Z",
+      "side": 1,
+      "message": "Nit: might be clearer with a do { } while (true) and a break statement. up to you.",
+      "range": {
+        "startLine": 209,
+        "startChar": 8,
+        "endLine": 209,
+        "endChar": 21
+      },
+      "revId": "59737af3e2db12b48d4952ee90ce8d4710ed83ea",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "873ee235_e9f781e1",
+        "filename": "packages/Tethering/common/TetheringLib/src/android/net/TetheringManager.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2020-01-28T14:36:32Z",
+      "side": 1,
+      "message": "Suggesting renaming to localWaitQueue for clarity.",
+      "range": {
+        "startLine": 211,
+        "startChar": 42,
+        "endLine": 211,
+        "endChar": 47
+      },
+      "revId": "59737af3e2db12b48d4952ee90ce8d4710ed83ea",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "29dad57d_60e08c10",
+        "filename": "packages/Tethering/common/TetheringLib/src/android/net/TetheringManager.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2020-01-28T14:36:32Z",
+      "side": 1,
+      "message": "Suggest a comment explaining how this works and why. Something like:\n\n    // Process the connector wait queue in order, including any items that are added\n    // while processing.\n    //\n    // 1. Copy the queue to a local variable under lock.\n    // 2. Drain the local queue with the lock released (otherwise, enqueuing future commands\n    //    would block on the lock).\n    // 3. Acquire the lock again. If any new tasks were queued during step 2, goto 1.\n    //    If not, set mConnector to non-null so future tasks are run immediately, not queued.\n    //\n    // For this to work, all calls to the tethering service must use getConnector(), which\n    // ensures that tasks are added to the queue with the lock held.\n    //\n    // Once mConnector is set to non-null, it will never be null again. If the network stack\n    // process crashes, no recovery is possible. TODO: evaluate whether to find a better\n    // solution (though in most cases the system will have crashed when the network stack\n    // process crashes).\n\nThat last bit is sort of glum but probably not something that we need to address in this change.",
+      "range": {
+        "startLine": 211,
+        "startChar": 12,
+        "endLine": 211,
+        "endChar": 48
+      },
+      "revId": "59737af3e2db12b48d4952ee90ce8d4710ed83ea",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d335617a_5c1e35e0",
+        "filename": "packages/Tethering/common/TetheringLib/src/android/net/TetheringManager.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2020-01-28T14:36:32Z",
+      "side": 1,
+      "message": "Is this the right thing to do here? AFAICT this happens on the polling thread (which might or might not be the ConnectivityThread), right? Does that crash the app? If so, maybe that\u0027s fine since this should be super rare. It should basically \"never\" happen to regular apps outside the system, because they start after tethering, and in any case, getting a RemoteException here likely (well, not in the case of TransactionTooLargeException, but...) means that the networkstack process has crashed, which generally will already have crashed the device. Might want to add a comment to that effect.",
+      "range": {
+        "startLine": 222,
+        "startChar": 26,
+        "endLine": 222,
+        "endChar": 55
+      },
+      "revId": "59737af3e2db12b48d4952ee90ce8d4710ed83ea",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d57c1101_2d7e6dd9",
+        "filename": "packages/Tethering/common/TetheringLib/src/android/net/TetheringManager.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2020-01-28T14:36:32Z",
+      "side": 1,
+      "message": "What are the app-visible implications of this if? ISTM that if the connector is already available, then app calls will proceed on their own thread, and potentially (very unlikely) get RemoteExceptions on those threads, and if not, exceptions will be seen by the polling thread. But that\u0027s already covered by my comment on line 222.\n\nIn addition, are there any ordering issues? Given that all calls are executed in sequence (due to how onTetheringConnected works), and all binder IPCs are oneway to the same binder object on the other side, perhaps not.\n\nOne reason this is safe is that none of the app-called methods assume they\u0027re running on any particular thread. However, if those methods were somehow to execute app code (like a lambda passed in by the app), then that could contain non-threadsafe code that could fail if it\u0027s run sometimes on the polling thread and sometimes on the app thread.\n\nMight want to add a comment here about this.",
+      "range": {
+        "startLine": 239,
+        "startChar": 12,
+        "endLine": 239,
+        "endChar": 14
+      },
+      "revId": "59737af3e2db12b48d4952ee90ce8d4710ed83ea",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e12e1c1a_829f72df",
+        "filename": "packages/Tethering/common/TetheringLib/src/android/net/TetheringManager.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 248,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2020-01-28T14:36:32Z",
+      "side": 1,
+      "message": "In this case the user gets a semi-useful stack trace, right?",
+      "range": {
+        "startLine": 248,
+        "startChar": 12,
+        "endLine": 248,
+        "endChar": 47
+      },
+      "revId": "59737af3e2db12b48d4952ee90ce8d4710ed83ea",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "135abf6f_0a693e91",
+        "filename": "packages/Tethering/common/TetheringLib/src/android/net/TetheringManager.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 256,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2020-01-28T14:36:32Z",
+      "side": 1,
+      "message": "Can we add a comment here explaining what this is for, given that we already have the connector queue? Something like (assuming it\u0027s correct):\n\n    // Used to dispatch legacy ConnectivityManager methods that expect tethering to be able to\n    // return results and perform operations synchronously.\n    // TODO: remove once there are no callers of these legacy methods.\n\nBTW, if that comment is true then we should go about setting maxTargetSdkVersion on those APIs and preparing to remove them, but that\u0027s definitely not a question for this CL.",
+      "range": {
+        "startLine": 256,
+        "startChar": 4,
+        "endLine": 256,
+        "endChar": 37
+      },
+      "revId": "59737af3e2db12b48d4952ee90ce8d4710ed83ea",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "049ff22e_88db7391",
+        "filename": "packages/Tethering/common/TetheringLib/src/android/net/TetheringManager.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 258,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2020-01-28T14:36:32Z",
+      "side": 1,
+      "message": "This should already have been volatile, right? You don\u0027t need to change it to volatile just because of this change? If this was previously correct and no longer correct after this change, then I\u0027d ask:\n - Is there any other code in this file with a similar bug?\n - Is there anything specific to this issue that engineers need to know when adding new methods to this class?",
+      "range": {
+        "startLine": 258,
+        "startChar": 15,
+        "endLine": 258,
+        "endChar": 23
+      },
+      "revId": "59737af3e2db12b48d4952ee90ce8d4710ed83ea",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "48a18968_e00fc7d0",
+        "filename": "packages/Tethering/common/TetheringLib/src/android/net/TetheringManager.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 582,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2020-01-28T14:36:32Z",
+      "side": 1,
+      "message": "This is a pre-existing issue, right? Not something added in this change? If so, would add:\n\n    // This has never been possible as stopTethering has always been void and never taken a\n    // callback object. The only indication that callers have is if the call results in a \n    // TETHER_STATE_CHANGE broadcast.",
+      "range": {
+        "startLine": 582,
+        "startChar": 16,
+        "endLine": 582,
+        "endChar": 56
+      },
+      "revId": "59737af3e2db12b48d4952ee90ce8d4710ed83ea",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
