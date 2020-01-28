@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ce4e2fac_96cc3ead",
+        "filename": "services/core/java/com/android/server/hdmi/HdmiControlService.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 276,
+      "author": {
+        "id": 1060286
+      },
+      "writtenOn": "2020-01-28T16:17:34Z",
+      "side": 1,
+      "message": "Now that this is a list it should probably use RemoteCallbackList",
+      "range": {
+        "startLine": 276,
+        "startChar": 55,
+        "endLine": 276,
+        "endChar": 82
+      },
+      "revId": "d934d429b3667b6e0544e8c48d6cd7019b9f5d21",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "57595f1f_cfbdff4a",
+        "filename": "services/core/java/com/android/server/hdmi/HdmiControlService.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 2346,
+      "author": {
+        "id": 1060286
+      },
+      "writtenOn": "2020-01-28T16:17:34Z",
+      "side": 1,
+      "message": "change the api to add/remove",
+      "range": {
+        "startLine": 2346,
+        "startChar": 17,
+        "endLine": 2346,
+        "endChar": 39
+      },
+      "revId": "d934d429b3667b6e0544e8c48d6cd7019b9f5d21",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
