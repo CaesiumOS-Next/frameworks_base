@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "0b1d22d6_c459042f",
+        "filename": "packages/Tethering/common/TetheringLib/jarjar-rules.txt",
+        "patchSetId": 2
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1288034
+      },
+      "writtenOn": "2020-01-29T04:31:58Z",
+      "side": 1,
+      "message": "Last time I checked, not having the annotations jarjared would fail (I think it was at build time), because of duplicate classes in the bootclasspath. So if this is missed you\u0027d know :)",
+      "parentUuid": "36384d84_d4b00b9f",
+      "range": {
+        "startLine": 2,
+        "startChar": 0,
+        "endLine": 2,
+        "endChar": 89
+      },
+      "revId": "59737af3e2db12b48d4952ee90ce8d4710ed83ea",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d33fedb5_3aad75b5",
         "filename": "packages/Tethering/common/TetheringLib/src/android/net/TetheringManager.java",
         "patchSetId": 2
@@ -45,6 +69,30 @@
       "revId": "59737af3e2db12b48d4952ee90ce8d4710ed83ea",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fa73303f_233c7eba",
+        "filename": "packages/Tethering/common/TetheringLib/src/android/net/TetheringManager.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1288034
+      },
+      "writtenOn": "2020-01-29T04:31:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d33fedb5_3aad75b5",
+      "range": {
+        "startLine": 176,
+        "startChar": 0,
+        "endLine": 180,
+        "endChar": 9
+      },
+      "revId": "59737af3e2db12b48d4952ee90ce8d4710ed83ea",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "90644775_bfe04389",
+        "filename": "packages/Tethering/common/TetheringLib/src/android/net/TetheringManager.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1288034
+      },
+      "writtenOn": "2020-01-29T04:31:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c0605df3_2d9fa5ad",
+      "range": {
+        "startLine": 187,
+        "startChar": 8,
+        "endLine": 187,
+        "endChar": 18
+      },
+      "revId": "59737af3e2db12b48d4952ee90ce8d4710ed83ea",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6d9804de_d8632735",
         "filename": "packages/Tethering/common/TetheringLib/src/android/net/TetheringManager.java",
         "patchSetId": 2
@@ -91,6 +163,30 @@
       "revId": "59737af3e2db12b48d4952ee90ce8d4710ed83ea",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "73598912_f2c48c44",
+        "filename": "packages/Tethering/common/TetheringLib/src/android/net/TetheringManager.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1288034
+      },
+      "writtenOn": "2020-01-29T04:31:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6d9804de_d8632735",
+      "range": {
+        "startLine": 209,
+        "startChar": 8,
+        "endLine": 209,
+        "endChar": 21
+      },
+      "revId": "59737af3e2db12b48d4952ee90ce8d4710ed83ea",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -140,6 +236,54 @@
     },
     {
       "key": {
+        "uuid": "011e28a0_08105db4",
+        "filename": "packages/Tethering/common/TetheringLib/src/android/net/TetheringManager.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1288034
+      },
+      "writtenOn": "2020-01-29T04:31:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "873ee235_e9f781e1",
+      "range": {
+        "startLine": 211,
+        "startChar": 42,
+        "endLine": 211,
+        "endChar": 47
+      },
+      "revId": "59737af3e2db12b48d4952ee90ce8d4710ed83ea",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c3a5a655_8b3b4cc5",
+        "filename": "packages/Tethering/common/TetheringLib/src/android/net/TetheringManager.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1288034
+      },
+      "writtenOn": "2020-01-29T04:31:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "29dad57d_60e08c10",
+      "range": {
+        "startLine": 211,
+        "startChar": 12,
+        "endLine": 211,
+        "endChar": 48
+      },
+      "revId": "59737af3e2db12b48d4952ee90ce8d4710ed83ea",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d335617a_5c1e35e0",
         "filename": "packages/Tethering/common/TetheringLib/src/android/net/TetheringManager.java",
         "patchSetId": 2
@@ -160,6 +304,30 @@
       "revId": "59737af3e2db12b48d4952ee90ce8d4710ed83ea",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "563d32de_ba699c0b",
+        "filename": "packages/Tethering/common/TetheringLib/src/android/net/TetheringManager.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1288034
+      },
+      "writtenOn": "2020-01-29T04:31:58Z",
+      "side": 1,
+      "message": "Changed to Log.wtf, I think this would be better to let other components handle crashes of the networkstack process properly (like watchdog rollbacks).",
+      "parentUuid": "d335617a_5c1e35e0",
+      "range": {
+        "startLine": 222,
+        "startChar": 26,
+        "endLine": 222,
+        "endChar": 55
+      },
+      "revId": "59737af3e2db12b48d4952ee90ce8d4710ed83ea",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -186,6 +354,30 @@
     },
     {
       "key": {
+        "uuid": "134005c7_03759778",
+        "filename": "packages/Tethering/common/TetheringLib/src/android/net/TetheringManager.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 1288034
+      },
+      "writtenOn": "2020-01-29T04:31:58Z",
+      "side": 1,
+      "message": "Added a comment to the method. I think ordering should be preserved given how onTetheringConnected is written.",
+      "parentUuid": "d57c1101_2d7e6dd9",
+      "range": {
+        "startLine": 239,
+        "startChar": 12,
+        "endLine": 239,
+        "endChar": 14
+      },
+      "revId": "59737af3e2db12b48d4952ee90ce8d4710ed83ea",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e12e1c1a_829f72df",
         "filename": "packages/Tethering/common/TetheringLib/src/android/net/TetheringManager.java",
         "patchSetId": 2
@@ -206,6 +398,30 @@
       "revId": "59737af3e2db12b48d4952ee90ce8d4710ed83ea",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a52979ab_16c1a842",
+        "filename": "packages/Tethering/common/TetheringLib/src/android/net/TetheringManager.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 248,
+      "author": {
+        "id": 1288034
+      },
+      "writtenOn": "2020-01-29T04:31:58Z",
+      "side": 1,
+      "message": "Right, this is in the caller thread",
+      "parentUuid": "e12e1c1a_829f72df",
+      "range": {
+        "startLine": 248,
+        "startChar": 12,
+        "endLine": 248,
+        "endChar": 47
+      },
+      "revId": "59737af3e2db12b48d4952ee90ce8d4710ed83ea",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -232,6 +448,30 @@
     },
     {
       "key": {
+        "uuid": "499d7267_b68187d1",
+        "filename": "packages/Tethering/common/TetheringLib/src/android/net/TetheringManager.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 256,
+      "author": {
+        "id": 1288034
+      },
+      "writtenOn": "2020-01-29T04:31:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "135abf6f_0a693e91",
+      "range": {
+        "startLine": 256,
+        "startChar": 4,
+        "endLine": 256,
+        "endChar": 37
+      },
+      "revId": "59737af3e2db12b48d4952ee90ce8d4710ed83ea",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "049ff22e_88db7391",
         "filename": "packages/Tethering/common/TetheringLib/src/android/net/TetheringManager.java",
         "patchSetId": 2
@@ -255,6 +495,30 @@
     },
     {
       "key": {
+        "uuid": "0db567b5_4b20b5de",
+        "filename": "packages/Tethering/common/TetheringLib/src/android/net/TetheringManager.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 258,
+      "author": {
+        "id": 1288034
+      },
+      "writtenOn": "2020-01-29T04:31:58Z",
+      "side": 1,
+      "message": "Yes I think it needed to be volatile because AFIK, otherwise there\u0027s no guarantee that the write in onResult will be seen by the read (in a different thread) in waitForResult.\n\nI don\u0027t think there\u0027s anything special to this issue, I think it was just a synchronization bug on this particular code.\n\nAlso applied the same to TetheringCallbackInternal#mError, mTetheringConfiguration, mTetherStatesParcel since they were also written before opening a ConditionVariable.",
+      "parentUuid": "049ff22e_88db7391",
+      "range": {
+        "startLine": 258,
+        "startChar": 15,
+        "endLine": 258,
+        "endChar": 23
+      },
+      "revId": "59737af3e2db12b48d4952ee90ce8d4710ed83ea",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "48a18968_e00fc7d0",
         "filename": "packages/Tethering/common/TetheringLib/src/android/net/TetheringManager.java",
         "patchSetId": 2
@@ -275,6 +539,30 @@
       "revId": "59737af3e2db12b48d4952ee90ce8d4710ed83ea",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "25be41b6_8e3ff934",
+        "filename": "packages/Tethering/common/TetheringLib/src/android/net/TetheringManager.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 582,
+      "author": {
+        "id": 1288034
+      },
+      "writtenOn": "2020-01-29T04:31:58Z",
+      "side": 1,
+      "message": "Yes this is not new in this change. Added the comment.",
+      "parentUuid": "48a18968_e00fc7d0",
+      "range": {
+        "startLine": 582,
+        "startChar": 16,
+        "endLine": 582,
+        "endChar": 56
+      },
+      "revId": "59737af3e2db12b48d4952ee90ce8d4710ed83ea",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
