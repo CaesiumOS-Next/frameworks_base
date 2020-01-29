@@ -143,6 +143,30 @@
     },
     {
       "key": {
+        "uuid": "b50eb1e7_bb38e7f9",
+        "filename": "packages/Tethering/common/TetheringLib/src/android/net/TetheringManager.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1288034
+      },
+      "writtenOn": "2020-01-29T06:17:27Z",
+      "side": 1,
+      "message": "Actually not done - ConnectivityThread is not part of the API so cannot be depended on by the module.",
+      "parentUuid": "90644775_bfe04389",
+      "range": {
+        "startLine": 187,
+        "startChar": 8,
+        "endLine": 187,
+        "endChar": 18
+      },
+      "revId": "59737af3e2db12b48d4952ee90ce8d4710ed83ea",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6d9804de_d8632735",
         "filename": "packages/Tethering/common/TetheringLib/src/android/net/TetheringManager.java",
         "patchSetId": 2
