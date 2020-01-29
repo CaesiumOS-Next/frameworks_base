@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bed8313d_fa29d145",
+        "filename": "services/core/java/com/android/server/BluetoothManagerService.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 1103,
+      "author": {
+        "id": 1076123
+      },
+      "writtenOn": "2020-01-29T14:21:26Z",
+      "side": 1,
+      "message": "isBluetoothAvailableForBinding ?",
+      "range": {
+        "startLine": 1103,
+        "startChar": 25,
+        "endLine": 1103,
+        "endChar": 35
+      },
+      "revId": "fb3c447bb720c9e12348b9ec1b921f2055ae7e7b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c02ee85d_fa17e579",
+        "filename": "services/core/java/com/android/server/BluetoothManagerService.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 1418,
+      "author": {
+        "id": 1076123
+      },
+      "writtenOn": "2020-01-29T14:21:26Z",
+      "side": 1,
+      "message": "When do we expect to see this message?",
+      "range": {
+        "startLine": 1414,
+        "startChar": 0,
+        "endLine": 1418,
+        "endChar": 13
+      },
+      "revId": "fb3c447bb720c9e12348b9ec1b921f2055ae7e7b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
