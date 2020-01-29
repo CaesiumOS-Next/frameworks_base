@@ -45,6 +45,54 @@
       "revId": "49aeaab9fe4be14a90e96078b362cb8ecf310b16",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8eff37fb_d873ae49",
+        "filename": "services/core/java/com/android/server/ConnectivityService.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 6488,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2020-01-29T10:15:20Z",
+      "side": 1,
+      "message": "Not sure it\u0027s better : after all it\u0027s used just below.\n\nBut in any case I will implore your clemency because moving a function like that would cause all patches above to conflict everything into oblivion. If you feel strongly I\u0027ll append a patch at the end of the tower of changes that moves this function.",
+      "parentUuid": "7a7ef521_9d0c3ebb",
+      "range": {
+        "startLine": 6488,
+        "startChar": 32,
+        "endLine": 6488,
+        "endChar": 58
+      },
+      "revId": "49aeaab9fe4be14a90e96078b362cb8ecf310b16",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "aadf24d1_636ebb22",
+        "filename": "services/core/java/com/android/server/ConnectivityService.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 6488,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2020-01-29T10:15:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ee8e5b9b_81f3abf6",
+      "range": {
+        "startLine": 6488,
+        "startChar": 12,
+        "endLine": 6488,
+        "endChar": 31
+      },
+      "revId": "49aeaab9fe4be14a90e96078b362cb8ecf310b16",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
