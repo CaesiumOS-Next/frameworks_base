@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "7fc1532f_9a61e9e6",
+        "filename": "services/core/java/com/android/server/BluetoothManagerService.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 1093,
+      "author": {
+        "id": 1220282
+      },
+      "writtenOn": "2020-01-30T21:19:53Z",
+      "side": 1,
+      "message": "private?",
+      "range": {
+        "startLine": 1093,
+        "startChar": 4,
+        "endLine": 1093,
+        "endChar": 10
+      },
+      "revId": "fb3c447bb720c9e12348b9ec1b921f2055ae7e7b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "bed8313d_fa29d145",
         "filename": "services/core/java/com/android/server/BluetoothManagerService.java",
         "patchSetId": 2
