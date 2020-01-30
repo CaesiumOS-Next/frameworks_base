@@ -45,6 +45,30 @@
       "revId": "d934d429b3667b6e0544e8c48d6cd7019b9f5d21",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4f655d8a_474723d5",
+        "filename": "services/core/java/com/android/server/hdmi/HdmiControlService.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 2346,
+      "author": {
+        "id": 1238642
+      },
+      "writtenOn": "2020-01-30T02:55:43Z",
+      "side": 1,
+      "message": "Do you mean that changing the public api either or just changing this private one?\n\npublic void setInputChangeListener(final IHdmiInputChangeListener listener)",
+      "parentUuid": "57595f1f_cfbdff4a",
+      "range": {
+        "startLine": 2346,
+        "startChar": 17,
+        "endLine": 2346,
+        "endChar": 39
+      },
+      "revId": "d934d429b3667b6e0544e8c48d6cd7019b9f5d21",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
