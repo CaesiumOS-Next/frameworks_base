@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "48f7940b_1eeb5a11",
+        "filename": "services/core/java/com/android/server/BluetoothManagerService.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 1093,
+      "author": {
+        "id": 1399000
+      },
+      "writtenOn": "2020-01-31T06:46:37Z",
+      "side": 1,
+      "message": "Yes it should be private, will re upload with change",
+      "parentUuid": "7fc1532f_9a61e9e6",
+      "range": {
+        "startLine": 1093,
+        "startChar": 4,
+        "endLine": 1093,
+        "endChar": 10
+      },
+      "revId": "fb3c447bb720c9e12348b9ec1b921f2055ae7e7b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "bed8313d_fa29d145",
         "filename": "services/core/java/com/android/server/BluetoothManagerService.java",
         "patchSetId": 2
@@ -36,6 +60,30 @@
       "writtenOn": "2020-01-29T14:21:26Z",
       "side": 1,
       "message": "isBluetoothAvailableForBinding ?",
+      "range": {
+        "startLine": 1103,
+        "startChar": 25,
+        "endLine": 1103,
+        "endChar": 35
+      },
+      "revId": "fb3c447bb720c9e12348b9ec1b921f2055ae7e7b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "974ec1ab_6f78e09c",
+        "filename": "services/core/java/com/android/server/BluetoothManagerService.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 1103,
+      "author": {
+        "id": 1399000
+      },
+      "writtenOn": "2020-01-31T06:46:37Z",
+      "side": 1,
+      "message": "Exception is for getState. hence log is proper. Same followed in other places of this file",
+      "parentUuid": "bed8313d_fa29d145",
       "range": {
         "startLine": 1103,
         "startChar": 25,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "253a0c8c_4058c9ce",
+        "filename": "services/core/java/com/android/server/BluetoothManagerService.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 1117,
+      "author": {
+        "id": 1399000
+      },
+      "writtenOn": "2020-01-31T06:46:37Z",
+      "side": 1,
+      "message": "Yes , in Quick BT On and BT Off scenario , this can happen",
+      "parentUuid": "6711a4f1_1c0c2024",
+      "range": {
+        "startLine": 1113,
+        "startChar": 8,
+        "endLine": 1117,
+        "endChar": 9
+      },
+      "revId": "fb3c447bb720c9e12348b9ec1b921f2055ae7e7b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c02ee85d_fa17e579",
         "filename": "services/core/java/com/android/server/BluetoothManagerService.java",
         "patchSetId": 2
@@ -82,6 +154,30 @@
       "writtenOn": "2020-01-29T14:21:26Z",
       "side": 1,
       "message": "When do we expect to see this message?",
+      "range": {
+        "startLine": 1414,
+        "startChar": 0,
+        "endLine": 1418,
+        "endChar": 13
+      },
+      "revId": "fb3c447bb720c9e12348b9ec1b921f2055ae7e7b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b00ed19e_61943f56",
+        "filename": "services/core/java/com/android/server/BluetoothManagerService.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 1418,
+      "author": {
+        "id": 1399000
+      },
+      "writtenOn": "2020-01-31T06:46:37Z",
+      "side": 1,
+      "message": "When BluetoothHeadset exited abruptly , and BT is in turning off state",
+      "parentUuid": "c02ee85d_fa17e579",
       "range": {
         "startLine": 1414,
         "startChar": 0,
