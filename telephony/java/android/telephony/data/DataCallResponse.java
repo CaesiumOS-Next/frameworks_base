@@ -24,8 +24,8 @@ import android.annotation.SystemApi;
 import android.net.LinkAddress;
 import android.os.Parcel;
 import android.os.Parcelable;
-import android.telephony.Annotation.DataFailureCause;
 import android.telephony.DataFailCause;
+import android.telephony.DataFailCause.DataFailureCause;
 import android.telephony.data.ApnSetting.ProtocolType;
 
 import com.android.internal.annotations.VisibleForTesting;

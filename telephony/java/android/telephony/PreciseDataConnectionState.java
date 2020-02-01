@@ -29,9 +29,9 @@ import android.os.Build;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.telephony.Annotation.ApnType;
-import android.telephony.Annotation.DataFailureCause;
 import android.telephony.Annotation.DataState;
 import android.telephony.Annotation.NetworkType;
+import android.telephony.DataFailCause.DataFailureCause;
 import android.telephony.data.ApnSetting;
 
 import java.util.Objects;
@@ -256,8 +256,7 @@ public final class PreciseDataConnectionState implements Parcelable {
      * Return the cause code for the most recent change in {@link #getState}. In the event of an
      * error, this cause code will be non-zero.
      */
-    // FIXME(b144774287): some of these cause codes should have a prescribed meaning.
-    public int getLastCauseCode() {
+    public @DataFailureCause int getLastCauseCode() {
         return mFailCause;
     }
 
