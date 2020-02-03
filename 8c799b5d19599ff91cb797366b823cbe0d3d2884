@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "64b5490e_937a353a",
+        "filename": "packages/SettingsLib/src/com/android/settingslib/license/LicenseHtmlGeneratorFromXml.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2020-02-03T22:14:39Z",
+      "side": 1,
+      "message": "*can be shortened",
+      "parentUuid": "e787d474_ab4c8cbc",
+      "range": {
+        "startLine": 211,
+        "startChar": 0,
+        "endLine": 216,
+        "endChar": 54
+      },
+      "revId": "8c799b5d19599ff91cb797366b823cbe0d3d2884",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "dd2ffd62_bb88d38f",
         "filename": "packages/SettingsLib/src/com/android/settingslib/license/LicenseHtmlGeneratorFromXml.java",
         "patchSetId": 3
