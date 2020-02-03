@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e787d474_ab4c8cbc",
+        "filename": "packages/SettingsLib/src/com/android/settingslib/license/LicenseHtmlGeneratorFromXml.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2020-02-03T22:14:14Z",
+      "side": 1,
+      "message": "This five lines can shortened as:\nfileNameToContentIdMap.computeIfAbsent(fileName, k -\u003e new HashSet\u003c\u003e()).add(contentId);",
+      "range": {
+        "startLine": 211,
+        "startChar": 0,
+        "endLine": 216,
+        "endChar": 54
+      },
+      "revId": "8c799b5d19599ff91cb797366b823cbe0d3d2884",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dd2ffd62_bb88d38f",
+        "filename": "packages/SettingsLib/src/com/android/settingslib/license/LicenseHtmlGeneratorFromXml.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 240,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2020-02-03T22:14:14Z",
+      "side": 1,
+      "message": "You can simplify this with computeIfAbsent as well, though it\u0027ll be slightly inefficient.",
+      "range": {
+        "startLine": 235,
+        "startChar": 0,
+        "endLine": 240,
+        "endChar": 13
+      },
+      "revId": "8c799b5d19599ff91cb797366b823cbe0d3d2884",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
