@@ -16,6 +16,24 @@
       "revId": "94d4b7d1dc91531431ff178868e0eb41ed6981ec",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4a3ea662_1edd3f81",
+        "filename": "core/jni/com_android_internal_os_Zygote.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 586,
+      "author": {
+        "id": 1453063
+      },
+      "writtenOn": "2020-02-03T18:20:59Z",
+      "side": 1,
+      "message": "\u003e I think we want it before M_SET_ZYGOTE_CHILD, not after.\n\nLooking back, it doesn\u0027t actually matter. gwp_asan_initialize (see other patchset) in libc will always be run with *zygote_child \u003d\u003d false, and we initialise through the common mallopt() anyway.\n\n\u003e Also, why not do the initialization in M_SET_ZYGOTE_CHILD itself?\n\nWe use mallopt(M_INITIALIZE_GWP_ASAN) as the common entry pathway, and I think it\u0027s a little clearer to explicitly say in the Zygote that this is what\u0027s happening, rather than hide it behind M_SET_ZYGOTE_CHILD.",
+      "parentUuid": "9536911f_1b6ee6ed",
+      "revId": "94d4b7d1dc91531431ff178868e0eb41ed6981ec",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
