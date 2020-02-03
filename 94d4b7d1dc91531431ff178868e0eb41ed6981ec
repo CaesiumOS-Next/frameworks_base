@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9536911f_1b6ee6ed",
+        "filename": "core/jni/com_android_internal_os_Zygote.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 586,
+      "author": {
+        "id": 1005967
+      },
+      "writtenOn": "2020-02-03T18:16:17Z",
+      "side": 1,
+      "message": "I think we want it before M_SET_ZYGOTE_CHILD, not after.\nAlso, why not do the initialization in M_SET_ZYGOTE_CHILD itself?",
+      "revId": "94d4b7d1dc91531431ff178868e0eb41ed6981ec",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
