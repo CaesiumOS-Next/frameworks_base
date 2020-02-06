@@ -39,14 +39,16 @@ public final class UserState {
     public final static int STATE_BOOTING = 0;
     // User is in the locked state.
     public final static int STATE_RUNNING_LOCKED = 1;
+    // User storage is unlocked, but system_server hasn't started unlocking it yet.
+    public final static int STATE_RUNNING_STORAGE_UNLOCKED = 2;
     // User is in the unlocking state.
-    public final static int STATE_RUNNING_UNLOCKING = 2;
+    public final static int STATE_RUNNING_UNLOCKING = 3;
     // User is in the running state.
-    public final static int STATE_RUNNING_UNLOCKED = 3;
+    public final static int STATE_RUNNING_UNLOCKED = 4;
     // User is in the initial process of being stopped.
-    public final static int STATE_STOPPING = 4;
+    public final static int STATE_STOPPING = 5;
     // User is in the final phase of stopping, sending Intent.ACTION_SHUTDOWN.
-    public final static int STATE_SHUTDOWN = 5;
+    public final static int STATE_SHUTDOWN = 6;
 
     public final UserHandle mHandle;
     public final ArrayList<IStopUserCallback> mStopCallbacks = new ArrayList<>();
@@ -112,6 +114,7 @@ public final class UserState {
         switch (state) {
             case STATE_BOOTING: return "BOOTING";
             case STATE_RUNNING_LOCKED: return "RUNNING_LOCKED";
+            case STATE_RUNNING_STORAGE_UNLOCKED: return "RUNNING_STORAGE_UNLOCKED";
             case STATE_RUNNING_UNLOCKING: return "RUNNING_UNLOCKING";
             case STATE_RUNNING_UNLOCKED: return "RUNNING_UNLOCKED";
             case STATE_STOPPING: return "STOPPING";

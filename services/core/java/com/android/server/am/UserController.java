@@ -34,6 +34,7 @@ import static com.android.server.am.ActivityManagerDebugConfig.TAG_WITH_CLASS_NA
 import static com.android.server.am.ActivityManagerService.MY_PID;
 import static com.android.server.am.UserState.STATE_BOOTING;
 import static com.android.server.am.UserState.STATE_RUNNING_LOCKED;
+import static com.android.server.am.UserState.STATE_RUNNING_STORAGE_UNLOCKED;
 import static com.android.server.am.UserState.STATE_RUNNING_UNLOCKED;
 import static com.android.server.am.UserState.STATE_RUNNING_UNLOCKING;
 
@@ -414,6 +415,12 @@ class UserController implements Handler.Callback {
                 return false;
             }
         }
+        synchronized (mLock) {
+            if (!uss.setState(STATE_RUNNING_LOCKED, STATE_RUNNING_STORAGE_UNLOCKED)) {
+                return false;
+            }
+        }
+        mInjector.getUserManagerInternal().setUserState(userId, uss.state);
         uss.mUnlockProgress.start();
 
         // Prepare app storage before we go any further
@@ -424,12 +431,16 @@ class UserController implements Handler.Callback {
         FgThread.getHandler().post(() -> {
             if (!StorageManager.isUserKeyUnlocked(userId)) {
                 Slog.w(TAG, "User key got locked unexpectedly, leaving user locked.");
+                synchronized (mLock) {
+                    uss.setState(STATE_RUNNING_LOCKED);
+                }
+                mInjector.getUserManagerInternal().setUserState(userId, uss.state);
                 return;
             }
             mInjector.getUserManager().onBeforeUnlockUser(userId);
             synchronized (mLock) {
                 // Do not proceed if unexpected state
-                if (!uss.setState(STATE_RUNNING_LOCKED, STATE_RUNNING_UNLOCKING)) {
+                if (!uss.setState(STATE_RUNNING_STORAGE_UNLOCKED, STATE_RUNNING_UNLOCKING)) {
                     return;
                 }
             }
