@@ -18,6 +18,7 @@ package com.android.server.timezonedetector;
 
 import android.annotation.NonNull;
 import android.annotation.Nullable;
+import android.app.timezonedetector.GeoLocationTimeZoneSuggestion;
 import android.app.timezonedetector.ITimeZoneDetectorService;
 import android.app.timezonedetector.ManualTimeZoneSuggestion;
 import android.app.timezonedetector.TelephonyTimeZoneSuggestion;
@@ -93,6 +94,16 @@ public final class TimeZoneDetectorService extends ITimeZoneDetectorService.Stub
     }
 
     @Override
+    public void suggestGeoLocationTimeZone(
+            @NonNull GeoLocationTimeZoneSuggestion timeZoneSuggestion) {
+        enforceSuggestGeoLocationTimeZonePermission();
+        Objects.requireNonNull(timeZoneSuggestion);
+
+        mHandler.post(
+                () -> mTimeZoneDetectorStrategy.suggestGeoLocationTimeZone(timeZoneSuggestion));
+    }
+
+    @Override
     public void suggestManualTimeZone(@NonNull ManualTimeZoneSuggestion timeZoneSuggestion) {
         enforceSuggestManualTimeZonePermission();
         Objects.requireNonNull(timeZoneSuggestion);
@@ -120,6 +131,12 @@ public final class TimeZoneDetectorService extends ITimeZoneDetectorService.Stub
     @VisibleForTesting
     public void handleAutoTimeZoneDetectionChanged() {
         mHandler.post(mTimeZoneDetectorStrategy::handleAutoTimeZoneDetectionChanged);
+    }
+
+    private void enforceSuggestGeoLocationTimeZonePermission() {
+        mContext.enforceCallingOrSelfPermission(
+                android.Manifest.permission.SUGGEST_GEOLOCATION_TIME_ZONE,
+                "suggest geolocation time zone");
     }
 
     private void enforceSuggestTelephonyTimeZonePermission() {
