@@ -34,6 +34,24 @@
       "revId": "94d4b7d1dc91531431ff178868e0eb41ed6981ec",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1db73921_b4e4f1d9",
+        "filename": "core/jni/com_android_internal_os_Zygote.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 586,
+      "author": {
+        "id": 1453063
+      },
+      "writtenOn": "2020-02-06T00:48:17Z",
+      "side": 1,
+      "message": "From offline - this is resolved.",
+      "parentUuid": "4a3ea662_1edd3f81",
+      "revId": "94d4b7d1dc91531431ff178868e0eb41ed6981ec",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
