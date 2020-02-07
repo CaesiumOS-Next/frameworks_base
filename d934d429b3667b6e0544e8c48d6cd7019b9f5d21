@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "c3bb599f_825b7d9a",
+        "filename": "services/core/java/com/android/server/hdmi/HdmiControlService.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 276,
+      "author": {
+        "id": 1238642
+      },
+      "writtenOn": "2020-02-07T09:05:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ce4e2fac_96cc3ead",
+      "range": {
+        "startLine": 276,
+        "startChar": 55,
+        "endLine": 276,
+        "endChar": 82
+      },
+      "revId": "d934d429b3667b6e0544e8c48d6cd7019b9f5d21",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "57595f1f_cfbdff4a",
         "filename": "services/core/java/com/android/server/hdmi/HdmiControlService.java",
         "patchSetId": 1
@@ -69,6 +93,30 @@
       "revId": "d934d429b3667b6e0544e8c48d6cd7019b9f5d21",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bb2f10a9_c6766621",
+        "filename": "services/core/java/com/android/server/hdmi/HdmiControlService.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 2346,
+      "author": {
+        "id": 1238642
+      },
+      "writtenOn": "2020-02-07T09:05:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4f655d8a_474723d5",
+      "range": {
+        "startLine": 2346,
+        "startChar": 17,
+        "endLine": 2346,
+        "endChar": 39
+      },
+      "revId": "d934d429b3667b6e0544e8c48d6cd7019b9f5d21",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
