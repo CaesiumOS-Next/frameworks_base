@@ -2512,7 +2512,8 @@ public class ConnectivityManager {
     @RequiresPermission(anyOf = {android.Manifest.permission.TETHER_PRIVILEGED,
             android.Manifest.permission.WRITE_SETTINGS})
     public boolean isTetheringSupported() {
-        return getTetheringManager().isTetheringSupported();
+      return false;
+//        return getTetheringManager().isTetheringSupported();
     }
 
     /**
@@ -2682,7 +2683,7 @@ public class ConnectivityManager {
 
         synchronized (mTetheringEventCallbacks) {
             mTetheringEventCallbacks.put(callback, tetherCallback);
-            getTetheringManager().registerTetheringEventCallback(executor, tetherCallback);
+            //getTetheringManager().registerTetheringEventCallback(executor, tetherCallback);
         }
     }
 
@@ -2704,7 +2705,7 @@ public class ConnectivityManager {
         synchronized (mTetheringEventCallbacks) {
             final TetheringEventCallback tetherCallback =
                     mTetheringEventCallbacks.remove(callback);
-            getTetheringManager().unregisterTetheringEventCallback(tetherCallback);
+            //getTetheringManager().unregisterTetheringEventCallback(tetherCallback);
         }
     }
 
@@ -2724,7 +2725,8 @@ public class ConnectivityManager {
     @UnsupportedAppUsage
     @Deprecated
     public String[] getTetherableUsbRegexs() {
-        return getTetheringManager().getTetherableUsbRegexs();
+        return new String[0];
+        //return getTetheringManager().getTetherableUsbRegexs();
     }
 
     /**
@@ -2742,7 +2744,8 @@ public class ConnectivityManager {
     @UnsupportedAppUsage
     @Deprecated
     public String[] getTetherableWifiRegexs() {
-        return getTetheringManager().getTetherableWifiRegexs();
+      return new String[0];
+        //return getTetheringManager().getTetherableWifiRegexs();
     }
 
     /**
@@ -2761,7 +2764,8 @@ public class ConnectivityManager {
     @UnsupportedAppUsage
     @Deprecated
     public String[] getTetherableBluetoothRegexs() {
-        return getTetheringManager().getTetherableBluetoothRegexs();
+      return new String[0];
+//        return getTetheringManager().getTetherableBluetoothRegexs();
     }
 
     /**
@@ -2902,7 +2906,8 @@ public class ConnectivityManager {
     @UnsupportedAppUsage
     @Deprecated
     public int getLastTetherError(String iface) {
-        return getTetheringManager().getLastTetherError(iface);
+      return 0;
+//        return getTetheringManager().getLastTetherError(iface);
     }
 
     /** @hide */

@@ -75,10 +75,10 @@ public class TetheringService extends Service {
     @Override
     public void onCreate() {
         mLog.mark("onCreate");
-        mDeps = getTetheringDependencies();
-        mContext = mDeps.getContext();
-        mTethering = makeTethering(mDeps);
-        mUserManager = (UserManager) mContext.getSystemService(Context.USER_SERVICE);
+        //mDeps = getTetheringDependencies();
+        //mContext = mDeps.getContext();
+        //mTethering = makeTethering(mDeps);
+        //mUserManager = (UserManager) mContext.getSystemService(Context.USER_SERVICE);
     }
 
     /**
