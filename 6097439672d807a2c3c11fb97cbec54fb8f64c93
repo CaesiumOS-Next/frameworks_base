@@ -46,6 +46,30 @@
       "revId": "6097439672d807a2c3c11fb97cbec54fb8f64c93",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "21e4cfac_0c1d4373",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-02-10T11:51:53Z",
+      "side": 1,
+      "message": "Ah, thnaks.",
+      "parentUuid": "8aa93952_8dd9db90",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 52
+      },
+      "revId": "6097439672d807a2c3c11fb97cbec54fb8f64c93",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
