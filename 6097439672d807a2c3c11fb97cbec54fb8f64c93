@@ -22,6 +22,30 @@
       "revId": "6097439672d807a2c3c11fb97cbec54fb8f64c93",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8aa93952_8dd9db90",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2020-02-10T10:50:44Z",
+      "side": 1,
+      "message": "Because the cherry-picked internal CL (9ac03a050485242c5b511898000007f1030b05bf) had the same Change-Id.",
+      "parentUuid": "afeb4e79_cf2ceb2d",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 52
+      },
+      "revId": "6097439672d807a2c3c11fb97cbec54fb8f64c93",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
