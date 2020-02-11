@@ -200,6 +200,7 @@ public class Tethering {
     private final NetdCallback mNetdCallback;
     private final UserRestrictionActionListener mTetheringRestriction;
     private final ActiveDataSubIdListener mActiveDataSubIdListener;
+    private final PrivateAddressCoordinator mPrivateAddressCoordinator;
     private int mActiveDataSubId = INVALID_SUBSCRIPTION_ID;
     // All the usage of mTetheringEventCallback should run in the same thread.
     private ITetheringEventCallback mTetheringEventCallback = null;
@@ -277,6 +278,7 @@ public class Tethering {
         mTetheringRestriction = new UserRestrictionActionListener(userManager, this);
         final TetheringThreadExecutor executor = new TetheringThreadExecutor(mHandler);
         mActiveDataSubIdListener = new ActiveDataSubIdListener(executor);
+        mPrivateAddressCoordinator = new PrivateAddressCoordinator();
 
         // Load tethering configuration.
         updateConfiguration();
@@ -1658,6 +1660,7 @@ public class Tethering {
                 mUpstreamNetworkMonitor.stop();
                 notifyDownstreamsOfNewUpstreamIface(null);
                 handleNewUpstreamNetworkState(null);
+                mPrivateAddressCoordinator.clearAllRecords();
                 if (mTetherUpstream != null) {
                     mTetherUpstream = null;
                     reportUpstreamChanged(null);
@@ -2079,6 +2082,11 @@ public class Tethering {
         mOffloadController.dump(pw);
         pw.decreaseIndent();
 
+        pw.println("Private Address:");
+        pw.increaseIndent();
+        mPrivateAddressCoordinator.dump(pw);
+        pw.decreaseIndent();
+
         pw.println("Log:");
         pw.increaseIndent();
         if (argsContain(args, "--short")) {
@@ -2108,6 +2116,16 @@ public class Tethering {
             @Override
             public void updateLinkProperties(IpServer who, LinkProperties newLp) {
                 notifyLinkPropertiesChanged(who, newLp);
+            }
+
+            @Override
+            public IpPrefix requestPrefix(final int interfaceType) {
+                return mPrivateAddressCoordinator.requestDownstreamPrefix(interfaceType);
+            }
+
+            @Override
+            public void releasePrefix(final int interfaceType) {
+                mPrivateAddressCoordinator.removeDownstreamRecord(interfaceType);
             }
         };
     }
