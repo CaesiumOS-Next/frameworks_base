@@ -17,6 +17,7 @@
 package android.provider;
 
 import android.accounts.Account;
+import android.annotation.Nullable;
 import android.annotation.SdkConstant;
 import android.annotation.SdkConstant.SdkConstantType;
 import android.annotation.SystemApi;
@@ -6210,7 +6211,7 @@ public final class ContactsContract {
              * for {@link #TYPE_CUSTOM}.
              */
             public static final CharSequence getTypeLabel(Resources res, int type,
-                    CharSequence label) {
+                    @Nullable CharSequence label) {
                 if ((type == TYPE_CUSTOM || type == TYPE_ASSISTANT) && !TextUtils.isEmpty(label)) {
                     return label;
                 } else {
@@ -6433,7 +6434,7 @@ public final class ContactsContract {
              * for {@link #TYPE_CUSTOM}.
              */
             public static final CharSequence getTypeLabel(Resources res, int type,
-                    CharSequence label) {
+                    @Nullable CharSequence label) {
                 if (type == TYPE_CUSTOM && !TextUtils.isEmpty(label)) {
                     return label;
                 } else {
@@ -6641,7 +6642,7 @@ public final class ContactsContract {
              * for {@link #TYPE_CUSTOM}.
              */
             public static final CharSequence getTypeLabel(Resources res, int type,
-                    CharSequence label) {
+                    @Nullable CharSequence label) {
                 if (type == TYPE_CUSTOM && !TextUtils.isEmpty(label)) {
                     return label;
                 } else {
@@ -6779,7 +6780,7 @@ public final class ContactsContract {
              * for {@link #TYPE_CUSTOM}.
              */
             public static final CharSequence getTypeLabel(Resources res, int type,
-                    CharSequence label) {
+                    @Nullable CharSequence label) {
                 if (type == TYPE_CUSTOM && !TextUtils.isEmpty(label)) {
                     return label;
                 } else {
@@ -6813,7 +6814,7 @@ public final class ContactsContract {
              * {@link #CUSTOM_PROTOCOL} value for {@link #PROTOCOL_CUSTOM}.
              */
             public static final CharSequence getProtocolLabel(Resources res, int type,
-                    CharSequence label) {
+                    @Nullable CharSequence label) {
                 if (type == PROTOCOL_CUSTOM && !TextUtils.isEmpty(label)) {
                     return label;
                 } else {
@@ -6986,7 +6987,7 @@ public final class ContactsContract {
              * for {@link #TYPE_CUSTOM}.
              */
             public static final CharSequence getTypeLabel(Resources res, int type,
-                    CharSequence label) {
+                    @Nullable CharSequence label) {
                 if (type == TYPE_CUSTOM && !TextUtils.isEmpty(label)) {
                     return label;
                 } else {
@@ -7113,7 +7114,7 @@ public final class ContactsContract {
              * for {@link #TYPE_CUSTOM}.
              */
             public static final CharSequence getTypeLabel(Resources res, int type,
-                    CharSequence label) {
+                    @Nullable CharSequence label) {
                 if (type == TYPE_CUSTOM && !TextUtils.isEmpty(label)) {
                     return label;
                 } else {
@@ -7209,7 +7210,7 @@ public final class ContactsContract {
              * for {@link #TYPE_CUSTOM}.
              */
             public static final CharSequence getTypeLabel(Resources res, int type,
-                    CharSequence label) {
+                    @Nullable CharSequence label) {
                 if (type == TYPE_CUSTOM && !TextUtils.isEmpty(label)) {
                     return label;
                 } else {
@@ -7538,7 +7539,7 @@ public final class ContactsContract {
              * for {@link #TYPE_CUSTOM}.
              */
             public static final CharSequence getTypeLabel(Resources res, int type,
-                    CharSequence label) {
+                    @Nullable CharSequence label) {
                 if (type == TYPE_CUSTOM && !TextUtils.isEmpty(label)) {
                     return label;
                 } else {
