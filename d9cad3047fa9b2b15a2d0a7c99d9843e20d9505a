@@ -1,0 +1,326 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "41a32884_8c478962",
+        "filename": "services/core/java/com/android/server/media/AudioPlayerStateMonitor.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1019013
+      },
+      "writtenOn": "2020-02-12T08:03:45Z",
+      "side": 1,
+      "message": "playing state changes",
+      "range": {
+        "startLine": 40,
+        "startChar": 16,
+        "endLine": 40,
+        "endChar": 29
+      },
+      "revId": "d9cad3047fa9b2b15a2d0a7c99d9843e20d9505a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ac361015_769aa552",
+        "filename": "services/core/java/com/android/server/media/AudioPlayerStateMonitor.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1019013
+      },
+      "writtenOn": "2020-02-12T08:03:45Z",
+      "side": 1,
+      "message": "AudioPlayerPlayingStateMonitor",
+      "range": {
+        "startLine": 42,
+        "startChar": 6,
+        "endLine": 42,
+        "endChar": 29
+      },
+      "revId": "d9cad3047fa9b2b15a2d0a7c99d9843e20d9505a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "02211487_58d58e7b",
+        "filename": "services/core/java/com/android/server/media/AudioPlayerStateMonitor.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1019013
+      },
+      "writtenOn": "2020-02-12T08:03:45Z",
+      "side": 1,
+      "message": "AudioPlayerPlayingStateMonitor",
+      "range": {
+        "startLine": 44,
+        "startChar": 33,
+        "endLine": 44,
+        "endChar": 56
+      },
+      "revId": "d9cad3047fa9b2b15a2d0a7c99d9843e20d9505a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b8d31dc1_bf9de138",
+        "filename": "services/core/java/com/android/server/media/AudioPlayerStateMonitor.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1019013
+      },
+      "writtenOn": "2020-02-12T08:03:45Z",
+      "side": 1,
+      "message": "playing state changes of audio players",
+      "range": {
+        "startLine": 49,
+        "startChar": 33,
+        "endLine": 49,
+        "endChar": 70
+      },
+      "revId": "d9cad3047fa9b2b15a2d0a7c99d9843e20d9505a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cf8142a3_65e3ff81",
+        "filename": "services/core/java/com/android/server/media/AudioPlayerStateMonitor.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1019013
+      },
+      "writtenOn": "2020-02-12T08:03:45Z",
+      "side": 1,
+      "message": "OnAudioPlayerPlayingStateChangedListener",
+      "range": {
+        "startLine": 51,
+        "startChar": 14,
+        "endLine": 51,
+        "endChar": 53
+      },
+      "revId": "d9cad3047fa9b2b15a2d0a7c99d9843e20d9505a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6e75c076_ee50c4f1",
+        "filename": "services/core/java/com/android/server/media/AudioPlayerStateMonitor.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1019013
+      },
+      "writtenOn": "2020-02-12T08:03:45Z",
+      "side": 1,
+      "message": "playing state",
+      "range": {
+        "startLine": 53,
+        "startChar": 27,
+        "endLine": 53,
+        "endChar": 39
+      },
+      "revId": "d9cad3047fa9b2b15a2d0a7c99d9843e20d9505a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "06240b64_b3b71552",
+        "filename": "services/core/java/com/android/server/media/AudioPlayerStateMonitor.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1019013
+      },
+      "writtenOn": "2020-02-12T08:03:45Z",
+      "side": 1,
+      "message": "onAudioPlayerPlayingStateChanged",
+      "range": {
+        "startLine": 60,
+        "startChar": 13,
+        "endLine": 60,
+        "endChar": 44
+      },
+      "revId": "d9cad3047fa9b2b15a2d0a7c99d9843e20d9505a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1093580e_1020e151",
+        "filename": "services/core/java/com/android/server/media/AudioPlayerStateMonitor.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1019013
+      },
+      "writtenOn": "2020-02-12T08:03:45Z",
+      "side": 1,
+      "message": "MSG_AUDIO_PLAYER_PLAYING_STATE_CHANGED",
+      "range": {
+        "startLine": 77,
+        "startChar": 21,
+        "endLine": 77,
+        "endChar": 58
+      },
+      "revId": "d9cad3047fa9b2b15a2d0a7c99d9843e20d9505a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f13173b2_bd07e4a1",
+        "filename": "services/core/java/com/android/server/media/AudioPlayerStateMonitor.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1019013
+      },
+      "writtenOn": "2020-02-12T08:03:45Z",
+      "side": 1,
+      "message": "ActiveState-\u003ePlayingState",
+      "range": {
+        "startLine": 84,
+        "startChar": 13,
+        "endLine": 84,
+        "endChar": 53
+      },
+      "revId": "d9cad3047fa9b2b15a2d0a7c99d9843e20d9505a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "46818088_0593aadd",
+        "filename": "services/core/java/com/android/server/media/AudioPlayerStateMonitor.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1019013
+      },
+      "writtenOn": "2020-02-12T08:03:45Z",
+      "side": 1,
+      "message": "is playing",
+      "range": {
+        "startLine": 157,
+        "startChar": 28,
+        "endLine": 157,
+        "endChar": 46
+      },
+      "revId": "d9cad3047fa9b2b15a2d0a7c99d9843e20d9505a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b408256a_5f97546c",
+        "filename": "services/core/java/com/android/server/media/AudioPlayerStateMonitor.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1019013
+      },
+      "writtenOn": "2020-02-12T08:03:45Z",
+      "side": 1,
+      "message": "isPlaying",
+      "range": {
+        "startLine": 159,
+        "startChar": 19,
+        "endLine": 159,
+        "endChar": 35
+      },
+      "revId": "d9cad3047fa9b2b15a2d0a7c99d9843e20d9505a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a2d05e57_8024043b",
+        "filename": "services/core/java/com/android/server/media/AudioPlayerStateMonitor.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1019013
+      },
+      "writtenOn": "2020-02-12T08:03:45Z",
+      "side": 1,
+      "message": "mPlayingAudioUids",
+      "range": {
+        "startLine": 231,
+        "startChar": 24,
+        "endLine": 231,
+        "endChar": 40
+      },
+      "revId": "d9cad3047fa9b2b15a2d0a7c99d9843e20d9505a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e51dd0e1_7991f1d1",
+        "filename": "services/core/java/com/android/server/media/AudioPlayerStateMonitor.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 279,
+      "author": {
+        "id": 1019013
+      },
+      "writtenOn": "2020-02-12T08:03:45Z",
+      "side": 1,
+      "message": "mPrevPlayingAudioPlaybackConfigs",
+      "range": {
+        "startLine": 279,
+        "startChar": 40,
+        "endLine": 279,
+        "endChar": 71
+      },
+      "revId": "d9cad3047fa9b2b15a2d0a7c99d9843e20d9505a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "47b92c98_3d29a3f7",
+        "filename": "services/core/java/com/android/server/media/AudioPlayerStateMonitor.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 280,
+      "author": {
+        "id": 1019013
+      },
+      "writtenOn": "2020-02-12T08:03:45Z",
+      "side": 1,
+      "message": "wasPlaying",
+      "range": {
+        "startLine": 280,
+        "startChar": 24,
+        "endLine": 280,
+        "endChar": 33
+      },
+      "revId": "d9cad3047fa9b2b15a2d0a7c99d9843e20d9505a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
