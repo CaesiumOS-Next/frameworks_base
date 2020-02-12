@@ -332,6 +332,12 @@ public class ConnectivityDiagnosticsManager {
                     mAdditionalInfo);
         }
 
+        @Override
+        public String toString() {
+            return "ConnectivityReport: {" + mNetwork + " " + mLinkProperties + " "
+                    + mNetworkCapabilities + " " + mAdditionalInfo + "}";
+        }
+
         /** {@inheritDoc} */
         @Override
         public int describeContents() {
