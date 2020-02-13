@@ -35,12 +35,15 @@ import android.net.dhcp.DhcpServerCallbacks;
 import android.net.dhcp.DhcpServingParamsParcel;
 import android.net.dhcp.DhcpServingParamsParcelExt;
 import android.net.dhcp.IDhcpServer;
+import android.net.ip.IpNeighborMonitor;
+import android.net.ip.IpNeighborMonitor.NeighborEvent;
 import android.net.ip.RouterAdvertisementDaemon.RaParams;
 import android.net.shared.NetdUtils;
 import android.net.shared.RouteUtils;
 import android.net.util.InterfaceParams;
 import android.net.util.InterfaceSet;
 import android.net.util.SharedLog;
+import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
 import android.os.RemoteException;
@@ -52,9 +55,11 @@ import com.android.internal.util.MessageUtils;
 import com.android.internal.util.State;
 import com.android.internal.util.StateMachine;
 
+import java.io.IOException;
 import java.net.Inet4Address;
 import java.net.Inet6Address;
 import java.net.InetAddress;
+import java.net.NetworkInterface;
 import java.net.UnknownHostException;
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -134,6 +139,15 @@ public class IpServer extends StateMachine {
 
     /** Capture IpServer dependencies, for injection. */
     public abstract static class Dependencies {
+        /** Create an IpNeighborMonitor to be used by this IpServer */
+        public IpNeighborMonitor getIpNeighborMonitor(Handler handler, SharedLog log, int ifindex) {
+            return new IpNeighborMonitor(handler, log, (event) -> {
+                if (event.ifindex == ifindex) {
+                    handler.sendMessage(handler.obtainMessage(CMD_NEIGHBOR_EVENT, event));
+                }
+            });
+        }
+
         /** Create a RouterAdvertisementDaemon instance to be used by IpServer.*/
         public RouterAdvertisementDaemon getRouterAdvertisementDaemon(InterfaceParams ifParams) {
             return new RouterAdvertisementDaemon(ifParams);
@@ -169,6 +183,8 @@ public class IpServer extends StateMachine {
     public static final int CMD_TETHER_CONNECTION_CHANGED   = BASE_IPSERVER + 9;
     // new IPv6 tethering parameters need to be processed
     public static final int CMD_IPV6_TETHER_UPDATE          = BASE_IPSERVER + 10;
+    // new neighbor cache entry on our interface
+    public static final int CMD_NEIGHBOR_EVENT              = BASE_IPSERVER + 11;
 
     private final State mInitialState;
     private final State mLocalHotspotState;
@@ -181,6 +197,7 @@ public class IpServer extends StateMachine {
     private final InterfaceController mInterfaceCtrl;
 
     private final String mIfaceName;
+    private final int mIfaceIndex;
     private final int mInterfaceType;
     private final LinkProperties mLinkProperties;
     private final boolean mUsingLegacyDhcp;
@@ -222,6 +239,17 @@ public class IpServer extends StateMachine {
         resetLinkProperties();
         mLastError = TetheringManager.TETHER_ERROR_NO_ERROR;
         mServingMode = STATE_AVAILABLE;
+
+        // Can't assign to mIfaceIndex in the try and catch clauses below because the compiler can't
+        // tell that it's only written to once.
+        int ifindex;
+        try {
+            ifindex = NetworkInterface.getByName(ifaceName).getIndex();
+        } catch (Exception e) {
+            // Interface doesn't exist at the moment?
+            ifindex = 0;
+        }
+        mIfaceIndex = ifindex;
 
         mInitialState = new InitialState();
         mLocalHotspotState = new LocalHotspotState();
