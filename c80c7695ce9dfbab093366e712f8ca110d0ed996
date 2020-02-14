@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "71f906cf_1761bd2e",
+        "filename": "services/core/java/com/android/server/connectivity/Vpn.java",
+        "patchSetId": 44
+      },
+      "lineNbr": 440,
+      "author": {
+        "id": 1221725
+      },
+      "writtenOn": "2020-02-14T07:47:17Z",
+      "side": 1,
+      "message": "Yes; during design discussions, I think we didn\u0027t quite see any use case for an \"opportunistic\" VPN profile, which seems like it might be the only use case where we would need to be able to opt-out (eg wifi assistant, which probably is the literal only user of that opt-out).\n\nEspecially with the change that apps can remove the profile even if it\u0027s in always-on mode, if an app is very much determined to do so, they could have a foreground service that removes the profile once the conditions are no longer met.\n\nThoughts?",
+      "parentUuid": "7b1579f5_7d19c905",
+      "range": {
+        "startLine": 440,
+        "startChar": 7,
+        "endLine": 440,
+        "endChar": 25
+      },
+      "revId": "c80c7695ce9dfbab093366e712f8ca110d0ed996",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "058ae5f3_d74038ea",
         "filename": "services/core/java/com/android/server/connectivity/Vpn.java",
         "patchSetId": 44
@@ -36,6 +60,30 @@
       "writtenOn": "2020-02-14T03:46:26Z",
       "side": 1,
       "message": "This change represents an important semantic change for this function : before it could only change its return value for a given package on install boundaries, but now it depends whether the app has registered a profile.\n\nThis is the right thing to do for profiles (in fact, I don\u0027t see how it could work otherwise), but make sure that nobody calling this function depends on this not changing arbitrarily. This is crucial for its call site in ConnectivityService.",
+      "range": {
+        "startLine": 462,
+        "startChar": 16,
+        "endLine": 462,
+        "endChar": 70
+      },
+      "revId": "c80c7695ce9dfbab093366e712f8ca110d0ed996",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b75c2c9b_259638e4",
+        "filename": "services/core/java/com/android/server/connectivity/Vpn.java",
+        "patchSetId": 44
+      },
+      "lineNbr": 462,
+      "author": {
+        "id": 1221725
+      },
+      "writtenOn": "2020-02-14T07:47:17Z",
+      "side": 1,
+      "message": "Yep. the only caller down to this is Settings, which queries it at VPN page load. Also, based on conversations with the Fi VPN folks, the component providing the VpnService can be enabled/disabled at runtime, and therefore this can change at runtime (not just package install/uninstall)",
+      "parentUuid": "058ae5f3_d74038ea",
       "range": {
         "startLine": 462,
         "startChar": 16,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "81c6d9d2_414d366e",
+        "filename": "services/core/java/com/android/server/connectivity/Vpn.java",
+        "patchSetId": 44
+      },
+      "lineNbr": 572,
+      "author": {
+        "id": 1221725
+      },
+      "writtenOn": "2020-02-14T07:47:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5beb59e5_11597611",
+      "range": {
+        "startLine": 572,
+        "startChar": 12,
+        "endLine": 572,
+        "endChar": 15
+      },
+      "revId": "c80c7695ce9dfbab093366e712f8ca110d0ed996",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a3308648_79afadba",
         "filename": "services/core/java/com/android/server/connectivity/Vpn.java",
         "patchSetId": 44
@@ -82,6 +154,30 @@
       "writtenOn": "2020-02-14T03:46:26Z",
       "side": 1,
       "message": "This implies it\u0027s not possible to have both a profile and a service in the same app, and the profile will be preferred always, at least when it comes to having always on. In other words, I can\u0027t have an app that supports both or the service will stop working.\n\nIs this an existing limitation ? Or if an app has two VPN services do they show both in Settings ? If they do and a fortiori if Settings will show both the profile and the service separately, then this is probably an unacceptable limitation ; if it\u0027s already true that you can\u0027t have two services, then it\u0027s okay-ish but it needs public documentation somewhere.",
+      "range": {
+        "startLine": 573,
+        "startChar": 20,
+        "endLine": 573,
+        "endChar": 37
+      },
+      "revId": "c80c7695ce9dfbab093366e712f8ca110d0ed996",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9c2ac64b_3c781e38",
+        "filename": "services/core/java/com/android/server/connectivity/Vpn.java",
+        "patchSetId": 44
+      },
+      "lineNbr": 573,
+      "author": {
+        "id": 1221725
+      },
+      "writtenOn": "2020-02-14T07:47:17Z",
+      "side": 1,
+      "message": "Yeah, this is both intentional, and an existing limitation; if an app has two VpnService(s), it will only show a single one in Settings, and the one that gets started is (i think?) based on the IntentFilter priorities.\n\nFor the Platform VPN case, we had to choose one, and this seemed the less scary of the two to choose. If the user DOES explicitly want the VpnService version, the app probably should have a toggle, and remove the VpnProfile (\"Snoop on me locally mode\")\n\nI think the Fi VPN currently has two VPNs in the same package, and they have to swap which is enabled in order to change the \"isAlwaysOnPackageSupported\" on the fly.",
+      "parentUuid": "a3308648_79afadba",
       "range": {
         "startLine": 573,
         "startChar": 20,
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "867dc18e_b8b52c94",
+        "filename": "services/core/java/com/android/server/connectivity/Vpn.java",
+        "patchSetId": 44
+      },
+      "lineNbr": 693,
+      "author": {
+        "id": 1221725
+      },
+      "writtenOn": "2020-02-14T07:47:17Z",
+      "side": 1,
+      "message": "Done. This is all true as of the updated patchset, with comments.\n\nThere was one case where the Platform VPN could fail to start if an invalid profile was given (which should be impossible here, given that it was provisioned from an Ikev2VpnProfile in provisionVpnProfile()), which is now checked in the try-catch-finally block.",
+      "parentUuid": "cb30cbf6_36edea86",
+      "range": {
+        "startLine": 693,
+        "startChar": 23,
+        "endLine": 693,
+        "endChar": 27
+      },
+      "revId": "c80c7695ce9dfbab093366e712f8ca110d0ed996",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e66fd7e3_a05b1537",
         "filename": "services/core/java/com/android/server/connectivity/Vpn.java",
         "patchSetId": 44
@@ -140,6 +260,30 @@
     },
     {
       "key": {
+        "uuid": "67ac3b8f_04db61bf",
+        "filename": "services/core/java/com/android/server/connectivity/Vpn.java",
+        "patchSetId": 44
+      },
+      "lineNbr": 2881,
+      "author": {
+        "id": 1221725
+      },
+      "writtenOn": "2020-02-14T07:47:17Z",
+      "side": 1,
+      "message": "Done. In that case, this also stops the VPN if it is running, and disables always-on.",
+      "parentUuid": "e66fd7e3_a05b1537",
+      "range": {
+        "startLine": 2880,
+        "startChar": 8,
+        "endLine": 2881,
+        "endChar": 28
+      },
+      "revId": "c80c7695ce9dfbab093366e712f8ca110d0ed996",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "530360e8_ec3126c7",
         "filename": "tests/net/java/com/android/server/connectivity/VpnTest.java",
         "patchSetId": 44
@@ -160,6 +304,30 @@
       "revId": "c80c7695ce9dfbab093366e712f8ca110d0ed996",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d93a17fc_74e315db",
+        "filename": "tests/net/java/com/android/server/connectivity/VpnTest.java",
+        "patchSetId": 44
+      },
+      "lineNbr": 1213,
+      "author": {
+        "id": 1221725
+      },
+      "writtenOn": "2020-02-14T07:47:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "530360e8_ec3126c7",
+      "range": {
+        "startLine": 1213,
+        "startChar": 23,
+        "endLine": 1213,
+        "endChar": 36
+      },
+      "revId": "c80c7695ce9dfbab093366e712f8ca110d0ed996",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
