@@ -20,6 +20,9 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
+import android.util.ArrayMap;
+import android.util.Pair;
+
 import androidx.test.filters.SmallTest;
 import androidx.test.runner.AndroidJUnit4;
 
@@ -36,6 +39,18 @@ import org.junit.runner.RunWith;
 @SmallTest
 @RunWith(AndroidJUnit4.class)
 public class BundleTest {
+
+    /**
+     * Take a bundle, write it to a parcel and return the parcel.
+     */
+    private Parcel getParcelledBundle(Bundle bundle) {
+        final Parcel p = Parcel.obtain();
+        // Don't use p.writeParcelabe(), which would write the creator, which we don't need.
+        bundle.writeToParcel(p, 0);
+        p.setDataPosition(0);
+        return p;
+    }
+
     /**
      * Create a test bundle, parcel it and return the parcel.
      */
@@ -48,12 +63,7 @@ public class BundleTest {
             pipe[1].close();
             source.putParcelable("fd", pipe[0]);
         }
-        final Parcel p = Parcel.obtain();
-        // Don't use p.writeParcelabe(), which would write the creator, which we don't need.
-        source.writeToParcel(p, 0);
-        p.setDataPosition(0);
-
-        return p;
+        return getParcelledBundle(source);
     }
 
     /**
@@ -136,5 +146,79 @@ public class BundleTest {
         b.readFromParcel(p);
         checkBundle(b, withFd);
         p.recycle();
+    }
+
+    private static ArrayMap<String, Object> createMap(Pair<String, Object>... keyValues) {
+        final ArrayMap<String, Object> map = new ArrayMap<>();
+        for (Pair<String, Object> entry : keyValues) {
+            map.put(entry.first, entry.second);
+        }
+        return map;
+    }
+
+    @Test
+    public void kindofEquals_bothUnParcelled_same() {
+        Bundle bundle1 = new Bundle();
+        bundle1.putAll(createMap(Pair.create("StringKey", "S"), Pair.create("IntKey", 2)));
+
+        Bundle bundle2 = new Bundle();
+        bundle2.putAll(createMap(Pair.create("StringKey", "S"), Pair.create("IntKey", 2)));
+
+        assertTrue(BaseBundle.kindofEquals(bundle1, bundle2));
+    }
+
+    @Test
+    public void kindofEquals_bothUnParcelled_different() {
+        Bundle bundle1 = new Bundle();
+        bundle1.putAll(createMap(Pair.create("StringKey", "S"), Pair.create("IntKey", 2)));
+
+        Bundle bundle2 = new Bundle();
+        bundle2.putAll(createMap(Pair.create("StringKey", "U"), Pair.create("LongKey", 5L)));
+
+        assertFalse(BaseBundle.kindofEquals(bundle1, bundle2));
+    }
+
+    @Test
+    public void kindofEquals_bothParcelled_same() {
+        Bundle bundle1 = new Bundle();
+        bundle1.putAll(createMap(Pair.create("StringKey", "S"), Pair.create("IntKey", 2)));
+        bundle1.readFromParcel(getParcelledBundle(bundle1));
+
+        Bundle bundle2 = new Bundle();
+        bundle2.putAll(createMap(Pair.create("StringKey", "S"), Pair.create("IntKey", 2)));
+        bundle2.readFromParcel(getParcelledBundle(bundle2));
+
+        assertTrue(bundle1.isParcelled());
+        assertTrue(bundle2.isParcelled());
+        assertTrue(BaseBundle.kindofEquals(bundle1, bundle2));
+    }
+
+    @Test
+    public void kindofEquals_bothParcelled_different() {
+        Bundle bundle1 = new Bundle();
+        bundle1.putAll(createMap(Pair.create("StringKey", "S"), Pair.create("IntKey", 2)));
+        bundle1.readFromParcel(getParcelledBundle(bundle1));
+
+        Bundle bundle2 = new Bundle();
+        bundle2.putAll(createMap(Pair.create("StringKey", "T"), Pair.create("LongKey", 5L)));
+        bundle2.readFromParcel(getParcelledBundle(bundle2));
+
+        assertTrue(bundle1.isParcelled());
+        assertTrue(bundle2.isParcelled());
+        assertFalse(BaseBundle.kindofEquals(bundle1, bundle2));
+    }
+
+    @Test
+    public void kindofEquals_ParcelledUnparcelled_empty() {
+        Bundle bundle1 = new Bundle();
+        bundle1.readFromParcel(getParcelledBundle(bundle1));
+
+        Bundle bundle2 = new Bundle();
+
+        assertTrue(bundle1.isParcelled());
+        assertFalse(bundle2.isParcelled());
+        // Even though one is parcelled and the other is not, both are empty, so it should
+        // return true
+        assertTrue(BaseBundle.kindofEquals(bundle1, bundle2));
     }
 }
