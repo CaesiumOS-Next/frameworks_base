@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "299b83d2_1e44c29d",
+        "filename": "services/core/java/com/android/server/connectivity/Vpn.java",
+        "patchSetId": 44
+      },
+      "lineNbr": 440,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2020-02-14T08:03:40Z",
+      "side": 1,
+      "message": "Fair enough",
+      "parentUuid": "71f906cf_1761bd2e",
+      "range": {
+        "startLine": 440,
+        "startChar": 7,
+        "endLine": 440,
+        "endChar": 25
+      },
+      "revId": "c80c7695ce9dfbab093366e712f8ca110d0ed996",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "058ae5f3_d74038ea",
         "filename": "services/core/java/com/android/server/connectivity/Vpn.java",
         "patchSetId": 44
@@ -84,6 +108,30 @@
       "side": 1,
       "message": "Yep. the only caller down to this is Settings, which queries it at VPN page load. Also, based on conversations with the Fi VPN folks, the component providing the VpnService can be enabled/disabled at runtime, and therefore this can change at runtime (not just package install/uninstall)",
       "parentUuid": "058ae5f3_d74038ea",
+      "range": {
+        "startLine": 462,
+        "startChar": 16,
+        "endLine": 462,
+        "endChar": 70
+      },
+      "revId": "c80c7695ce9dfbab093366e712f8ca110d0ed996",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0e219301_f421bad6",
+        "filename": "services/core/java/com/android/server/connectivity/Vpn.java",
+        "patchSetId": 44
+      },
+      "lineNbr": 462,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2020-02-14T08:03:40Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "b75c2c9b_259638e4",
       "range": {
         "startLine": 462,
         "startChar": 16,
@@ -187,6 +235,30 @@
       "revId": "c80c7695ce9dfbab093366e712f8ca110d0ed996",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "089cbdb3_e1122e7f",
+        "filename": "services/core/java/com/android/server/connectivity/Vpn.java",
+        "patchSetId": 44
+      },
+      "lineNbr": 573,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2020-02-14T08:03:40Z",
+      "side": 1,
+      "message": "Fair enough. If you\u0027re right that Settings can only show one VPN per package anyway, an app that wants this would have to build the UI for choosing, and the app has all it needs then to offer one or the other, as it can disable the service or remove the profile, even if it\u0027s not super trivial.",
+      "parentUuid": "9c2ac64b_3c781e38",
+      "range": {
+        "startLine": 573,
+        "startChar": 20,
+        "endLine": 573,
+        "endChar": 37
+      },
+      "revId": "c80c7695ce9dfbab093366e712f8ca110d0ed996",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {

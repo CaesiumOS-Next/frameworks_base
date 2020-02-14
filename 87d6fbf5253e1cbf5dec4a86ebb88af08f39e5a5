@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f6ac6ffb_9ebdf583",
+        "filename": "services/core/java/com/android/server/connectivity/Vpn.java",
+        "patchSetId": 48
+      },
+      "lineNbr": 699,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2020-02-14T08:03:40Z",
+      "side": 1,
+      "message": "resilient",
+      "range": {
+        "startLine": 699,
+        "startChar": 64,
+        "endLine": 699,
+        "endChar": 73
+      },
+      "revId": "87d6fbf5253e1cbf5dec4a86ebb88af08f39e5a5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6e06c0c8_ad000d84",
+        "filename": "services/core/java/com/android/server/connectivity/Vpn.java",
+        "patchSetId": 48
+      },
+      "lineNbr": 699,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2020-02-14T08:03:40Z",
+      "side": 1,
+      "message": "permanent",
+      "range": {
+        "startLine": 699,
+        "startChar": 39,
+        "endLine": 699,
+        "endChar": 50
+      },
+      "revId": "87d6fbf5253e1cbf5dec4a86ebb88af08f39e5a5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
