@@ -1,0 +1,165 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7b1579f5_7d19c905",
+        "filename": "services/core/java/com/android/server/connectivity/Vpn.java",
+        "patchSetId": 44
+      },
+      "lineNbr": 440,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2020-02-14T03:46:26Z",
+      "side": 1,
+      "message": "There is no way for platform VPN profiles to opt out of always on then. Is this expected ?",
+      "range": {
+        "startLine": 440,
+        "startChar": 7,
+        "endLine": 440,
+        "endChar": 25
+      },
+      "revId": "c80c7695ce9dfbab093366e712f8ca110d0ed996",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "058ae5f3_d74038ea",
+        "filename": "services/core/java/com/android/server/connectivity/Vpn.java",
+        "patchSetId": 44
+      },
+      "lineNbr": 462,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2020-02-14T03:46:26Z",
+      "side": 1,
+      "message": "This change represents an important semantic change for this function : before it could only change its return value for a given package on install boundaries, but now it depends whether the app has registered a profile.\n\nThis is the right thing to do for profiles (in fact, I don\u0027t see how it could work otherwise), but make sure that nobody calling this function depends on this not changing arbitrarily. This is crucial for its call site in ConnectivityService.",
+      "range": {
+        "startLine": 462,
+        "startChar": 16,
+        "endLine": 462,
+        "endChar": 70
+      },
+      "revId": "c80c7695ce9dfbab093366e712f8ca110d0ed996",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5beb59e5_11597611",
+        "filename": "services/core/java/com/android/server/connectivity/Vpn.java",
+        "patchSetId": 44
+      },
+      "lineNbr": 572,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2020-02-14T03:46:26Z",
+      "side": 1,
+      "message": "final",
+      "range": {
+        "startLine": 572,
+        "startChar": 12,
+        "endLine": 572,
+        "endChar": 15
+      },
+      "revId": "c80c7695ce9dfbab093366e712f8ca110d0ed996",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a3308648_79afadba",
+        "filename": "services/core/java/com/android/server/connectivity/Vpn.java",
+        "patchSetId": 44
+      },
+      "lineNbr": 573,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2020-02-14T03:46:26Z",
+      "side": 1,
+      "message": "This implies it\u0027s not possible to have both a profile and a service in the same app, and the profile will be preferred always, at least when it comes to having always on. In other words, I can\u0027t have an app that supports both or the service will stop working.\n\nIs this an existing limitation ? Or if an app has two VPN services do they show both in Settings ? If they do and a fortiori if Settings will show both the profile and the service separately, then this is probably an unacceptable limitation ; if it\u0027s already true that you can\u0027t have two services, then it\u0027s okay-ish but it needs public documentation somewhere.",
+      "range": {
+        "startLine": 573,
+        "startChar": 20,
+        "endLine": 573,
+        "endChar": 37
+      },
+      "revId": "c80c7695ce9dfbab093366e712f8ca110d0ed996",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cb30cbf6_36edea86",
+        "filename": "services/core/java/com/android/server/connectivity/Vpn.java",
+        "patchSetId": 44
+      },
+      "lineNbr": 693,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2020-02-14T03:46:26Z",
+      "side": 1,
+      "message": "I think this needs comments because it looks like this can actually fail to start. Here is why I think it\u0027s fine, please check :\n\n• Callers (especially CS) disable always-on when this returns false.\n• We return false for VpnService iff the service fails to start as in the service is not installed.\n• Platform VPN can\u0027t actually fail in the same way as above.\n• Platform VPN can fail to start for temporary reasons, and they should not disable the always-on bit.\n• There are no permanent reasons Platform VPN can fail (stuff like DNS failure may seem permanent but they are in fact temporary as the name could resolve on some other network)\n• We don\u0027t return false if a Service VPN fails to connect here, only if the package is not installed (how the got here in this case is a mystery though).\n\nPlease check that all the above is true. If it is, add a comment explaining it.",
+      "range": {
+        "startLine": 693,
+        "startChar": 23,
+        "endLine": 693,
+        "endChar": 27
+      },
+      "revId": "c80c7695ce9dfbab093366e712f8ca110d0ed996",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e66fd7e3_a05b1537",
+        "filename": "services/core/java/com/android/server/connectivity/Vpn.java",
+        "patchSetId": 44
+      },
+      "lineNbr": 2881,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2020-02-14T03:46:26Z",
+      "side": 1,
+      "message": "I think this is something we might have to live with ? The user can uninstall the package so we need to have this ability technically ; if the app receives, say, a kill switch due to a found vulnerability, maybe we want to honor a request to down the VPN.",
+      "range": {
+        "startLine": 2880,
+        "startChar": 8,
+        "endLine": 2881,
+        "endChar": 28
+      },
+      "revId": "c80c7695ce9dfbab093366e712f8ca110d0ed996",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "530360e8_ec3126c7",
+        "filename": "tests/net/java/com/android/server/connectivity/VpnTest.java",
+        "patchSetId": 44
+      },
+      "lineNbr": 1213,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2020-02-14T03:46:26Z",
+      "side": 1,
+      "message": "Please verify an observable effect of this instead of the implementation detail represented by the value of this member. In other words : this test does not actually verify the package is now always on. Instead you could check that mocked settings received a call to write the package, the interactions with a mock keystore, the interactions with a mocked IpSecService...",
+      "range": {
+        "startLine": 1213,
+        "startChar": 23,
+        "endLine": 1213,
+        "endChar": 36
+      },
+      "revId": "c80c7695ce9dfbab093366e712f8ca110d0ed996",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
