@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f94dbf97_b0d40dac",
+        "filename": "packages/Tethering/src/com/android/server/connectivity/tethering/PrivateAddressCoordinator.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1135107
+      },
+      "writtenOn": "2020-02-14T16:22:21Z",
+      "side": 1,
+      "message": "shouldn\u0027t /24 prefix have 0 here?",
+      "range": {
+        "startLine": 51,
+        "startChar": 62,
+        "endLine": 51,
+        "endChar": 63
+      },
+      "revId": "0d790b5f91ddb623be03b56db53753bcd11ce979",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0f5d0315_d36ef650",
+        "filename": "packages/Tethering/src/com/android/server/connectivity/tethering/PrivateAddressCoordinator.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1135107
+      },
+      "writtenOn": "2020-02-14T16:22:21Z",
+      "side": 1,
+      "message": "typo: intranets?",
+      "range": {
+        "startLine": 55,
+        "startChar": 88,
+        "endLine": 55,
+        "endChar": 97
+      },
+      "revId": "0d790b5f91ddb623be03b56db53753bcd11ce979",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8339bd61_e7134e66",
+        "filename": "packages/Tethering/src/com/android/server/connectivity/tethering/PrivateAddressCoordinator.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1135107
+      },
+      "writtenOn": "2020-02-14T16:22:21Z",
+      "side": 1,
+      "message": "Can we have this configurable? If a default id for interface type -\u003e default IP was in the overlay xml file, OEM could configure their defaults and bluetooth wouldn\u0027t be a special case. Plus a fallback to random subnet id in case of a conflict.",
+      "range": {
+        "startLine": 113,
+        "startChar": 0,
+        "endLine": 117,
+        "endChar": 9
+      },
+      "revId": "0d790b5f91ddb623be03b56db53753bcd11ce979",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
