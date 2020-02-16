@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "30c86f1a_635dddb6",
+        "filename": "core/java/android/net/SntpClient.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2020-02-16T02:57:17Z",
+      "side": 1,
+      "message": "Now the timeout argument really doesn\u0027t mean much because this function is having this timeout once per server address. It already was a bit murky because the DNS resolution can in principle take an arbitrary amount of time so I don\u0027t think it\u0027s really a problem, but maybe you want to call this out in the documentation (e.g. \"the timeout doesn\u0027t include the DNS lookup time, and it applies to each individual query to the resolved addresses of the NTP server\")\n\nNot feeling strongly",
+      "range": {
+        "startLine": 94,
+        "startChar": 48,
+        "endLine": 94,
+        "endChar": 55
+      },
+      "revId": "a7996ecb4ccaabd1545ccd8dd245739d9ce5447b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "93530af4_e34edfa3",
+        "filename": "core/java/android/net/SntpClient.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2020-02-16T02:57:17Z",
+      "side": 1,
+      "message": "If you respin this change, make this var final (otherwise don\u0027t bother)",
+      "range": {
+        "startLine": 97,
+        "startChar": 12,
+        "endLine": 97,
+        "endChar": 23
+      },
+      "revId": "a7996ecb4ccaabd1545ccd8dd245739d9ce5447b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "61e7519c_48765286",
+        "filename": "core/java/android/net/SntpClient.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2020-02-16T02:57:17Z",
+      "side": 1,
+      "message": "This used to be networkForResolv.\nI don\u0027t think this changes anything really as the resolution has already been done and frankly the new cod might be clearer, but I just wanted to make sure this was intentional and not an overlook.",
+      "range": {
+        "startLine": 99,
+        "startChar": 65,
+        "endLine": 99,
+        "endChar": 72
+      },
+      "revId": "a7996ecb4ccaabd1545ccd8dd245739d9ce5447b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
