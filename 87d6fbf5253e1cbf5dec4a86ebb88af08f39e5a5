@@ -45,6 +45,54 @@
       "revId": "87d6fbf5253e1cbf5dec4a86ebb88af08f39e5a5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "135b66ff_9f9e5c6c",
+        "filename": "services/core/java/com/android/server/connectivity/Vpn.java",
+        "patchSetId": 48
+      },
+      "lineNbr": 699,
+      "author": {
+        "id": 1221725
+      },
+      "writtenOn": "2020-02-18T22:13:34Z",
+      "side": 1,
+      "message": "Ditto",
+      "parentUuid": "f6ac6ffb_9ebdf583",
+      "range": {
+        "startLine": 699,
+        "startChar": 64,
+        "endLine": 699,
+        "endChar": 73
+      },
+      "revId": "87d6fbf5253e1cbf5dec4a86ebb88af08f39e5a5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "17b4a075_787e2082",
+        "filename": "services/core/java/com/android/server/connectivity/Vpn.java",
+        "patchSetId": 48
+      },
+      "lineNbr": 699,
+      "author": {
+        "id": 1221725
+      },
+      "writtenOn": "2020-02-18T22:13:34Z",
+      "side": 1,
+      "message": "Ack, addressed in a simple cleanup CL.",
+      "parentUuid": "6e06c0c8_ad000d84",
+      "range": {
+        "startLine": 699,
+        "startChar": 39,
+        "endLine": 699,
+        "endChar": 50
+      },
+      "revId": "87d6fbf5253e1cbf5dec4a86ebb88af08f39e5a5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
