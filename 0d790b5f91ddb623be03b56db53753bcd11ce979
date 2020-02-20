@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "ebe59939_7c535f19",
+        "filename": "packages/Tethering/src/com/android/server/connectivity/tethering/PrivateAddressCoordinator.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1308504
+      },
+      "writtenOn": "2020-02-20T10:20:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f94dbf97_b0d40dac",
+      "range": {
+        "startLine": 51,
+        "startChar": 62,
+        "endLine": 51,
+        "endChar": 63
+      },
+      "revId": "0d790b5f91ddb623be03b56db53753bcd11ce979",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0f5d0315_d36ef650",
         "filename": "packages/Tethering/src/com/android/server/connectivity/tethering/PrivateAddressCoordinator.java",
         "patchSetId": 4
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "e7240687_90f9f25b",
+        "filename": "packages/Tethering/src/com/android/server/connectivity/tethering/PrivateAddressCoordinator.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1308504
+      },
+      "writtenOn": "2020-02-20T10:20:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0f5d0315_d36ef650",
+      "range": {
+        "startLine": 55,
+        "startChar": 88,
+        "endLine": 55,
+        "endChar": 97
+      },
+      "revId": "0d790b5f91ddb623be03b56db53753bcd11ce979",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8339bd61_e7134e66",
         "filename": "packages/Tethering/src/com/android/server/connectivity/tethering/PrivateAddressCoordinator.java",
         "patchSetId": 4
@@ -68,6 +116,30 @@
       "revId": "0d790b5f91ddb623be03b56db53753bcd11ce979",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5b1fb292_7bc5e17e",
+        "filename": "packages/Tethering/src/com/android/server/connectivity/tethering/PrivateAddressCoordinator.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1308504
+      },
+      "writtenOn": "2020-02-20T10:20:47Z",
+      "side": 1,
+      "message": "I don\u0027t want this be configurable for OEM and this logic should be removed after b/148078390 that move interface conflagration logic from bluetooth to tethering.",
+      "parentUuid": "8339bd61_e7134e66",
+      "range": {
+        "startLine": 113,
+        "startChar": 0,
+        "endLine": 117,
+        "endChar": 9
+      },
+      "revId": "0d790b5f91ddb623be03b56db53753bcd11ce979",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
