@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "f9ff0054_a00df96e",
+        "filename": "core/java/android/nfc/NfcAdapter.java",
+        "patchSetId": 9
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1000322
+      },
+      "writtenOn": "2020-02-21T19:08:55Z",
+      "side": 1,
+      "message": "This broadcast is only dispatched to bundled+privileged apps.  Why are you making it public API instead of @SystemApi?\n\nAlso, I see that this broadcast as currently implemented can take up to several minutes to be delivered to the recipient.  Is that really the desired behavior?",
+      "range": {
+        "startLine": 173,
+        "startChar": 0,
+        "endLine": 178,
+        "endChar": 0
+      },
+      "revId": "2dbf394181f4e5f907f1d1aaf48369cd3249c49f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "57be8c08_0fa2aac1",
         "filename": "core/java/android/nfc/cardemulation/CardEmulation.java",
         "patchSetId": 9
