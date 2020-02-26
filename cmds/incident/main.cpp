@@ -52,9 +52,13 @@ public:
     virtual Status onReportServiceStatus(const String16& service, int32_t status);
     virtual Status onReportFinished();
     virtual Status onReportFailed();
+
+    int getExitCode(int default_code);
+ private:
+    int exit_code_;
 };
 
-StatusListener::StatusListener()
+StatusListener::StatusListener(): exit_code_(-1)
 {
 }
 
@@ -89,7 +93,7 @@ StatusListener::onReportFinished()
 {
     fprintf(stderr, "done\n");
     ALOGD("done\n");
-    exit(0);
+    exit_code_ = 0;
     return Status::ok();
 }
 
@@ -98,8 +102,13 @@ StatusListener::onReportFailed()
 {
     fprintf(stderr, "failed\n");
     ALOGD("failed\n");
-    exit(1);
+    exit_code_ = 1;
     return Status::ok();
+}
+
+int
+StatusListener::getExitCode(int default_code) {
+    return exit_code_ == -1 ? default_code : exit_code_;
 }
 
 // ================================================================================
@@ -201,20 +210,14 @@ parse_receiver_arg(const string& arg, string* pkg, string* cls)
 static int
 stream_output(const int read_fd, const int write_fd) {
     while (true) {
-        uint8_t buf[4096];
-        ssize_t amt = TEMP_FAILURE_RETRY(read(read_fd, buf, sizeof(buf)));
+        int amt = splice(read_fd, NULL, write_fd, NULL, 4096, 0);
+        fprintf(stderr, "spliced %d bytes\n", amt);
         if (amt < 0) {
-            break;
-        } else if (amt == 0) {
-            break;
-        }
-
-        ssize_t wamt = TEMP_FAILURE_RETRY(write(write_fd, buf, amt));
-        if (wamt != amt) {
             return errno;
+        } else if (amt == 0) {
+            return 0;
         }
     }
-    return 0;
 }
 
 // ================================================================================
@@ -384,7 +387,7 @@ main(int argc, char** argv)
 
         // Wait for the result and print out the data they send.
         //IPCThreadState::self()->joinThreadPool();
-        return stream_output(fds[0], STDOUT_FILENO);
+        return listener->getExitCode(stream_output(fds[0], STDOUT_FILENO));
     } else if (destination == DEST_DUMPSTATE) {
         // Call into the service
         sp<StatusListener> listener(new StatusListener());
@@ -393,7 +396,7 @@ main(int argc, char** argv)
             fprintf(stderr, "reportIncident returned \"%s\"\n", status.toString8().string());
             return 1;
         }
-        return stream_output(fds[0], STDOUT_FILENO);
+        return listener->getExitCode(stream_output(fds[0], STDOUT_FILENO));
     } else {
         status = service->reportIncident(args);
         if (!status.isOk()) {
