@@ -591,7 +591,11 @@ public final class PlaybackActivityMonitor
     List<AudioPlaybackConfiguration> getActivePlaybackConfigurations(boolean isPrivileged) {
         synchronized(mPlayers) {
             if (isPrivileged) {
-                return new ArrayList<AudioPlaybackConfiguration>(mPlayers.values());
+                final List<AudioPlaybackConfiguration> configsPrivileged;
+                synchronized (mPlayerLock) {
+                    configsPrivileged = new ArrayList<AudioPlaybackConfiguration>(mPlayers.values());
+                }
+                return configsPrivileged;
             } else {
                 final List<AudioPlaybackConfiguration> configsPublic;
                 synchronized (mPlayerLock) {
