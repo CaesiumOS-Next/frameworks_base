@@ -626,7 +626,12 @@ java_library {
     sdk_version: "current",
 }
 
-filegroup {
+soong_config_module_type_import {
+    from: "frameworks/base/telephony/Android.bp",
+    module_types: ["sample_config_filegroup"],
+}
+
+sample_config_filegroup {
     name: "framework-ike-shared-srcs",
     visibility: ["//frameworks/opt/net/ike"],
     srcs: [
@@ -637,6 +642,23 @@ filegroup {
         "core/java/com/android/internal/util/StateMachine.java",
         "telephony/java/android/telephony/Annotation.java",
     ],
+    soong_config_variables: {
+        sample_mainline_filegroups: {
+            oem: {
+                srcs: [
+                    "telephony/java/android/telephony/Annotation.java",
+                ],
+            },
+            aosp: {
+                srcs: [
+                    // Remove the Telephony annotations -- this means compilation should fail with
+                    // the "aosp" configuration when ike complains about some annotation not being
+                    // found.
+                    // "telephony/java/android/telephony/Annotation.java",
+                ],
+            }
+        }
+    },
 }
 
 filegroup {

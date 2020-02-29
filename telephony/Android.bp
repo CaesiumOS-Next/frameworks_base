@@ -1,0 +1,28 @@
+// See https://android.googlesource.com/platform/build/soong/+/master/README.md#soong-config-variables
+// for documentation on these rules.
+soong_config_module_type {
+    name: "sample_config_defaults",
+    module_type: "java_defaults",
+    config_namespace: "sample_telephony",
+    variables: ["sample_mainline"],
+    properties: ["srcs", "resource_dirs", "asset_dirs", "optimize"],
+}
+
+soong_config_string_variable {
+    name: "sample_mainline",
+    values: ["oem", "aosp"],
+}
+
+soong_config_module_type {
+    name: "sample_config_filegroup",
+    module_type: "filegroup",
+    config_namespace: "sample_telephony",
+    variables: ["sample_mainline_filegroups"],
+    properties: ["srcs"],
+}
+
+soong_config_string_variable {
+    name: "sample_mainline_filegroups",
+    values: ["oem", "aosp"],
+}
+
