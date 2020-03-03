@@ -16,6 +16,24 @@
       "revId": "1550470660db35502db2e4a8280362d84e139799",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0ffb2585_96bc9e9c",
+        "filename": "cmds/statsd/src/atoms.proto",
+        "patchSetId": 1
+      },
+      "lineNbr": 359,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2020-03-03T20:34:40Z",
+      "side": 1,
+      "message": "This is a cherry-pick. A bunch of fields aren\u0027t here in AOSP, but in internal master.",
+      "parentUuid": "bdc67121_55f303ef",
+      "revId": "1550470660db35502db2e4a8280362d84e139799",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
