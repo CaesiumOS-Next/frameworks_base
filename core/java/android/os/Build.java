@@ -106,6 +106,11 @@ public class Build {
     public static final String HARDWARE = getString("ro.hardware");
 
     /**
+     * The hardware variant (SKU), if available.
+     */
+    public static final String SKU = getString("ro.boot.product.hardware.sku");
+
+    /**
      * Whether this build was for an emulator device.
      * @hide
      */
