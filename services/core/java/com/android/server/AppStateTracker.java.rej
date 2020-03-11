@@ -1,0 +1,20 @@
+diff a/services/core/java/com/android/server/AppStateTracker.java b/services/core/java/com/android/server/AppStateTracker.java	(rejected hunks)
+@@ -416,12 +417,12 @@
+             }
+             mStarted = true;
+ 
+-            mIActivityManager = Preconditions.checkNotNull(injectIActivityManager());
+-            mActivityManagerInternal = Preconditions.checkNotNull(injectActivityManagerInternal());
+-            mAppOpsManager = Preconditions.checkNotNull(injectAppOpsManager());
+-            mAppOpsService = Preconditions.checkNotNull(injectIAppOpsService());
+-            mPowerManagerInternal = Preconditions.checkNotNull(injectPowerManagerInternal());
+-            mAppStandbyInternal = Preconditions.checkNotNull(injectAppStandbyInternal());
++            mIActivityManager = Objects.requireNonNull(injectIActivityManager());
++            mActivityManagerInternal = Objects.requireNonNull(injectActivityManagerInternal());
++            mAppOpsManager = Objects.requireNonNull(injectAppOpsManager());
++            mAppOpsService = Objects.requireNonNull(injectIAppOpsService());
++            mPowerManagerInternal = Objects.requireNonNull(injectPowerManagerInternal());
++            mAppStandbyInternal = Objects.requireNonNull(injectAppStandbyInternal());
+ 
+             mFlagsObserver = new FeatureFlagsObserver();
+             mFlagsObserver.register();
