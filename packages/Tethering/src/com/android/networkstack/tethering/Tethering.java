@@ -211,6 +211,8 @@ public class Tethering {
     private final BroadcastReceiver mStateReceiver;
     private final Looper mLooper;
     private final StateMachine mTetherMasterSM;
+    // TODO: Naming OffloadController more accurately because it controls hardware offload only and
+    // the BPF offload is controlled by class BpfOffloadStatsProvider.
     private final OffloadController mOffloadController;
     private final UpstreamNetworkMonitor mUpstreamNetworkMonitor;
     // TODO: Figure out how to merge this and other downstream-tracking objects
@@ -228,6 +230,8 @@ public class Tethering {
     private final ConnectedClientsTracker mConnectedClientsTracker;
     private final TetheringThreadExecutor mExecutor;
     private final TetheringNotificationUpdater mNotificationUpdater;
+    @Nullable
+    private final BpfOffloadStatsProvider mBpfStatsProvider;
     private int mActiveDataSubId = INVALID_SUBSCRIPTION_ID;
     // All the usage of mTetheringEventCallback should run in the same thread.
     private ITetheringEventCallback mTetheringEventCallback = null;
@@ -276,6 +280,15 @@ public class Tethering {
         mUpstreamNetworkMonitor = mDeps.getUpstreamNetworkMonitor(mContext, mTetherMasterSM, mLog,
                 TetherMasterSM.EVENT_UPSTREAM_CALLBACK);
         mForwardedDownstreams = new LinkedHashSet<>();
+        BpfOffloadStatsProvider bpfProvider = mDeps.getBpfOffloadStatsProvider(
+                mHandler, mNetd, mLog);
+        try {
+            statsManager.registerNetworkStatsProvider(getClass().getSimpleName(), bpfProvider);
+        } catch (RuntimeException e) {
+            Log.wtf(TAG, "Cannot register bpf offload stats provider: " + e);
+            bpfProvider = null;
+        }
+        mBpfStatsProvider = bpfProvider;
 
         IntentFilter filter = new IntentFilter();
         filter.addAction(ACTION_CARRIER_CONFIG_CHANGED);
@@ -1533,6 +1546,14 @@ public class Tethering {
         }
 
         protected void handleNewUpstreamNetworkState(UpstreamNetworkState ns) {
+            if (mBpfStatsProvider != null) {
+                // Make sure the data limit is set on upstream before adding forwarding rules.
+                // The BPF stats provider set the data limit while updating the
+                // UpstreamNetworkState which has ipv6 for tethering. This needs to be done
+                // before IPv6TetheringCoordinator update that state because IpServer may be able
+                // to add forwarding rules after that updated.
+                mBpfStatsProvider.updateUpstreamNetworkState(ns);
+            }
             mIPv6TetheringCoordinator.updateUpstreamNetworkState(ns);
             mOffload.updateUpstreamNetworkState(ns);
         }
@@ -1656,11 +1677,19 @@ public class Tethering {
                     chooseUpstreamType(true);
                     mTryCell = false;
                 }
+
+                // TODO: Check the upstream interface if it is managed by BPF offload.
+                if (mBpfStatsProvider != null) {
+                    mBpfStatsProvider.start();
+                }
             }
 
             @Override
             public void exit() {
                 mOffload.stop();
+                if (mBpfStatsProvider != null) {
+                    mBpfStatsProvider.stop();
+                }
                 mUpstreamNetworkMonitor.stop();
                 notifyDownstreamsOfNewUpstreamIface(null);
                 handleNewUpstreamNetworkState(null);
@@ -2138,6 +2167,16 @@ public class Tethering {
         pw.println("Hardware offload:");
         pw.increaseIndent();
         mOffloadController.dump(pw);
+        pw.decreaseIndent();
+
+        pw.println("BPF offload:");
+        pw.increaseIndent();
+        // TODO: Dump the BPF offload device config once it is added.
+        if (mBpfStatsProvider != null) {
+            mBpfStatsProvider.dump(pw);
+        } else {
+            pw.println("<not registered>");
+        }
         pw.decreaseIndent();
 
         pw.println("Log:");
