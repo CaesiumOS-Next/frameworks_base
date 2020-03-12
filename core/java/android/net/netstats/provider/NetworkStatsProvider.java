@@ -47,6 +47,11 @@ public abstract class NetworkStatsProvider {
         }
 
         @Override
+        public void onSetWarning(String iface, long quotaBytes) {
+            NetworkStatsProvider.this.onSetWarning(iface, quotaBytes);
+        }
+
+        @Override
         public void onSetAlert(long quotaBytes) {
             NetworkStatsProvider.this.onSetAlert(quotaBytes);
         }
@@ -145,6 +150,17 @@ public abstract class NetworkStatsProvider {
     }
 
     /**
+     * Notify system that the quota set by {@code onSetWarning} has been reached.
+     */
+    public void notifyWarningReached() {
+        try {
+            getProviderCallbackBinderOrThrow().notifyWarningReached();
+        } catch (RemoteException e) {
+            e.rethrowAsRuntimeException();
+        }
+    }
+
+    /**
      * Notify system that the quota set by {@code onSetLimit} has been reached.
      */
     public void notifyLimitReached() {
@@ -181,6 +197,19 @@ public abstract class NetworkStatsProvider {
      *                   from now. A value of {@link #QUOTA_UNLIMITED} indicates there is no limit.
      */
     public abstract void onSetLimit(@NonNull String iface, long quotaBytes);
+
+    /**
+     * Called by {@code NetworkStatsService} when setting the interface quota for the specified
+     * upstream interface. Unlike {@link #onSetLimit}, when this is called, the custom
+     * implementation should NOT block all egress packets on any {@code iface} associated with the
+     * provider when {@code quotaBytes} bytes have been reached, but only respond to it by calling
+     * {@link NetworkStatsProvider#notifyWarningReached()}.
+     *
+     * @param iface the interface requiring the operation.
+     * @param quotaBytes the quota defined as the number of bytes, starting from zero and counting
+     *                   from now. A value of {@link #QUOTA_UNLIMITED} indicates there is no limit.
+     */
+    public abstract void onSetWarning(@NonNull String iface, long quotaBytes);
 
     /**
      * Called by {@code NetworkStatsService} when setting the alert bytes. Custom implementations

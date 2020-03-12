@@ -291,7 +291,7 @@ public class OffloadController {
         }
 
         @Override
-        public void onSetLimit(String iface, long quotaBytes) {
+        public void onSetLimit(@NonNull String iface, long quotaBytes) {
             // Listen for all iface is necessary since upstream might be changed after limit
             // is set.
             mHandler.post(() -> {
@@ -311,6 +311,11 @@ public class OffloadController {
                 }
                 maybeUpdateDataLimit(iface);
             });
+        }
+
+        @Override
+        public void onSetWarning(@NonNull String iface, long quotaBytes) {
+            // TODO: Ask offload HAL to notify warning without stopping traffic.
         }
 
         /**

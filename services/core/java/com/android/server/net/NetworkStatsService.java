@@ -1947,6 +1947,11 @@ public class NetworkStatsService extends INetworkStatsService.Stub {
         }
 
         @Override
+        public void notifyWarningReached() throws RemoteException {
+            mAlertObserver.limitReached(LIMIT_GLOBAL_ALERT, null /* unused */);
+        }
+
+        @Override
         public void notifyLimitReached() {
             Log.d(TAG, mTag + ": onLimitReached");
             LocalServices.getService(NetworkPolicyManagerInternal.class)

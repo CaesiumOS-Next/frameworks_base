@@ -24,5 +24,6 @@ package android.net.netstats.provider;
 oneway interface INetworkStatsProvider {
     void onRequestStatsUpdate(int token);
     void onSetLimit(String iface, long quotaBytes);
+    void onSetWarning(String iface, long quotaBytes);
     void onSetAlert(long quotaBytes);
 }
