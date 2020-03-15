@@ -1,0 +1,48 @@
+{
+  "comments": [
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000001975933",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1259379?revision\u003d1",
+      "fixSuggestions": [
+        {
+          "fixId": "aa03ad57_4b610f84",
+          "description": "Change to \"packages/Tethering/common/TetheringLib/src/android/net/TetheringManager.java\"",
+          "replacements": [
+            {
+              "path": "packages/Tethering/common/TetheringLib/src/android/net/TetheringManager.java",
+              "range": {
+                "startLine": 883,
+                "startChar": 38,
+                "endLine": 883,
+                "endChar": 43
+              },
+              "replacement": "of"
+            }
+          ]
+        }
+      ],
+      "key": {
+        "uuid": "d2cc4072_1ba5b79a",
+        "filename": "packages/Tethering/common/TetheringLib/src/android/net/TetheringManager.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 883,
+      "author": {
+        "id": 1550585
+      },
+      "writtenOn": "2020-03-15T12:08:01Z",
+      "side": 1,
+      "message": "Common typo found: \"of of\" -- should it be \"of\"?\nNote: a line containing \"common_typos_disable\" or \"common_typos_enable\" will turn off or on (respectively) the linter for subsequent lines in the file. Alternatively include the token \"NOTYPO\" within a line to skip typo linting that line.",
+      "range": {
+        "startLine": 883,
+        "startChar": 38,
+        "endLine": 883,
+        "endChar": 43
+      },
+      "revId": "f0b3da5ca12d1c5a4bac1b49f71be8f000a1e8dc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
