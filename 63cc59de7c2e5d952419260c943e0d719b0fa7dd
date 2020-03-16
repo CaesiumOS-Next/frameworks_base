@@ -94,6 +94,30 @@
     },
     {
       "key": {
+        "uuid": "be0fd875_f99fff0c",
+        "filename": "packages/Tethering/src/android/net/ip/IpServer.java",
+        "patchSetId": 9
+      },
+      "lineNbr": 641,
+      "author": {
+        "id": 1135107
+      },
+      "writtenOn": "2020-03-16T14:44:28Z",
+      "side": 1,
+      "message": "Is there a reason to not do what you suggested in a comment and randomize only the last byte? Your code also takes care of prefix lengths that are not multiply of 8 bits.\n\nI would suggest going forward with the code from your comment.",
+      "parentUuid": "c64e1b01_a02a4d00",
+      "range": {
+        "startLine": 639,
+        "startChar": 8,
+        "endLine": 641,
+        "endChar": 47
+      },
+      "revId": "63cc59de7c2e5d952419260c943e0d719b0fa7dd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c56bfb6a_440d3ced",
         "filename": "packages/Tethering/src/com/android/server/connectivity/tethering/PrivateAddressCoordinator.java",
         "patchSetId": 9
