@@ -1,0 +1,809 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "65ef79a2_f0841e89",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 9
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1288034
+      },
+      "writtenOn": "2020-03-16T09:08:24Z",
+      "side": 1,
+      "message": "Typo: to coordinate the private address conflict problem",
+      "range": {
+        "startLine": 9,
+        "startChar": 42,
+        "endLine": 10,
+        "endChar": 18
+      },
+      "revId": "63cc59de7c2e5d952419260c943e0d719b0fa7dd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a8062246_425194c3",
+        "filename": "packages/Tethering/src/android/net/ip/IpServer.java",
+        "patchSetId": 9
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1288034
+      },
+      "writtenOn": "2020-03-16T09:08:24Z",
+      "side": 1,
+      "message": "an",
+      "range": {
+        "startLine": 156,
+        "startChar": 19,
+        "endLine": 156,
+        "endChar": 20
+      },
+      "revId": "63cc59de7c2e5d952419260c943e0d719b0fa7dd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "06141cd0_9ba63272",
+        "filename": "packages/Tethering/src/android/net/ip/IpServer.java",
+        "patchSetId": 9
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1288034
+      },
+      "writtenOn": "2020-03-16T09:08:24Z",
+      "side": 1,
+      "message": "can be freed",
+      "range": {
+        "startLine": 165,
+        "startChar": 47,
+        "endLine": 165,
+        "endChar": 58
+      },
+      "revId": "63cc59de7c2e5d952419260c943e0d719b0fa7dd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c64e1b01_a02a4d00",
+        "filename": "packages/Tethering/src/android/net/ip/IpServer.java",
+        "patchSetId": 9
+      },
+      "lineNbr": 641,
+      "author": {
+        "id": 1288034
+      },
+      "writtenOn": "2020-03-16T09:08:24Z",
+      "side": 1,
+      "message": "Technically this only works if the prefix length is 24, otherwise the address may be outside of the prefix (or not use the whole prefix range for the random values). Since you\u0027re getting the prefix via callback now it becomes a little more problematic.\n\nI guess you could do something like:\nfinal int prefixMask \u003d prefixLengthToV4NetmaskIntHTH(prefix.getPrefixLength());\nfinal int address \u003d inet4AddressToIntHTH(prefix.getAddress());\nfinal int randomAddr \u003d (address \u0026 prefixMask) | (Random.nextInt() \u0026 ~prefixMask);\nfinal byte[] randomAddrBytes \u003d ByteBuffer.allocate(4).putInt(randomAddr).array();\nfor (int i \u003d 3; i \u003e\u003d prefix.getPrefixLength() / 8; i--) {\n    final byte randomByte \u003d randomAddrBytes[i];\n    if (randomByte \u003d\u003d 0 || randomByte \u003d\u003d 1 || randomByte \u003d\u003d 0xff) {\n        randomAddrBytes[i] \u003d DOUG_ADAMS;\n    }\n}\nreturn InetAddress.getByAddress(randomAddrBytes);\n\nOr just only randomize the last byte if the prefixLength \u003c\u003d 24, but that\u0027s not as complete.",
+      "range": {
+        "startLine": 639,
+        "startChar": 8,
+        "endLine": 641,
+        "endChar": 47
+      },
+      "revId": "63cc59de7c2e5d952419260c943e0d719b0fa7dd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c56bfb6a_440d3ced",
+        "filename": "packages/Tethering/src/com/android/server/connectivity/tethering/PrivateAddressCoordinator.java",
+        "patchSetId": 9
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1288034
+      },
+      "writtenOn": "2020-03-16T09:08:24Z",
+      "side": 1,
+      "message": "Nit: the first line should be a one-line summary of the class, followed by an empty line",
+      "range": {
+        "startLine": 36,
+        "startChar": 2,
+        "endLine": 36,
+        "endChar": 3
+      },
+      "revId": "63cc59de7c2e5d952419260c943e0d719b0fa7dd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2e27b74e_900741a4",
+        "filename": "packages/Tethering/src/com/android/server/connectivity/tethering/PrivateAddressCoordinator.java",
+        "patchSetId": 9
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1288034
+      },
+      "writtenOn": "2020-03-16T09:08:24Z",
+      "side": 1,
+      "message": "Nit: More than \"not advised\", I think it should just not be done; maybe just say the class is not thread-safe.",
+      "range": {
+        "startLine": 40,
+        "startChar": 72,
+        "endLine": 41,
+        "endChar": 18
+      },
+      "revId": "63cc59de7c2e5d952419260c943e0d719b0fa7dd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fd575302_fb568d0e",
+        "filename": "packages/Tethering/src/com/android/server/connectivity/tethering/PrivateAddressCoordinator.java",
+        "patchSetId": 9
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1288034
+      },
+      "writtenOn": "2020-03-16T09:08:24Z",
+      "side": 1,
+      "message": "This is easy to confuse with the prefix mask, maybe just BYTE_MASK ?",
+      "range": {
+        "startLine": 47,
+        "startChar": 29,
+        "endLine": 47,
+        "endChar": 40
+      },
+      "revId": "63cc59de7c2e5d952419260c943e0d719b0fa7dd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "decc6fce_1d32ff55",
+        "filename": "packages/Tethering/src/com/android/server/connectivity/tethering/PrivateAddressCoordinator.java",
+        "patchSetId": 9
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1288034
+      },
+      "writtenOn": "2020-03-16T09:08:24Z",
+      "side": 1,
+      "message": "Typo: RESERVED",
+      "range": {
+        "startLine": 49,
+        "startChar": 39,
+        "endLine": 49,
+        "endChar": 47
+      },
+      "revId": "63cc59de7c2e5d952419260c943e0d719b0fa7dd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "12e98c62_6e5bcb85",
+        "filename": "packages/Tethering/src/com/android/server/connectivity/tethering/PrivateAddressCoordinator.java",
+        "patchSetId": 9
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1288034
+      },
+      "writtenOn": "2020-03-16T09:08:24Z",
+      "side": 1,
+      "message": "Maybe just \"upstreamPrefixes\" (and rename the below map to mDownstreamPrefixes), or \"upstreamPrefixMap\" ?",
+      "range": {
+        "startLine": 53,
+        "startChar": 45,
+        "endLine": 53,
+        "endChar": 74
+      },
+      "revId": "63cc59de7c2e5d952419260c943e0d719b0fa7dd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2344da0a_603254d4",
+        "filename": "packages/Tethering/src/com/android/server/connectivity/tethering/PrivateAddressCoordinator.java",
+        "patchSetId": 9
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1288034
+      },
+      "writtenOn": "2020-03-16T09:08:24Z",
+      "side": 1,
+      "message": "Should this be by Network rather than by interface ?",
+      "range": {
+        "startLine": 53,
+        "startChar": 27,
+        "endLine": 53,
+        "endChar": 33
+      },
+      "revId": "63cc59de7c2e5d952419260c943e0d719b0fa7dd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b322ecae_52b59fe6",
+        "filename": "packages/Tethering/src/com/android/server/connectivity/tethering/PrivateAddressCoordinator.java",
+        "patchSetId": 9
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1288034
+      },
+      "writtenOn": "2020-03-16T09:08:24Z",
+      "side": 1,
+      "message": "Can it be static and a constant ?",
+      "range": {
+        "startLine": 58,
+        "startChar": 4,
+        "endLine": 58,
+        "endChar": 43
+      },
+      "revId": "63cc59de7c2e5d952419260c943e0d719b0fa7dd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3768e2fe_5f74473f",
+        "filename": "packages/Tethering/src/com/android/server/connectivity/tethering/PrivateAddressCoordinator.java",
+        "patchSetId": 9
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1288034
+      },
+      "writtenOn": "2020-03-16T09:08:24Z",
+      "side": 1,
+      "message": "Why TETHERING_INVALID ? It sounds like an error code, but if there\u0027s no conflict it\u0027s not really an error right ? Maybe another value can be used ?",
+      "range": {
+        "startLine": 68,
+        "startChar": 52,
+        "endLine": 69,
+        "endChar": 14
+      },
+      "revId": "63cc59de7c2e5d952419260c943e0d719b0fa7dd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4aa89736_d3e6dbcc",
+        "filename": "packages/Tethering/src/com/android/server/connectivity/tethering/PrivateAddressCoordinator.java",
+        "patchSetId": 9
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1288034
+      },
+      "writtenOn": "2020-03-16T09:08:24Z",
+      "side": 1,
+      "message": "Maybe updateUpstreamPrefix ? \"Record\" is not clear on what is done with the LinkProperties.",
+      "range": {
+        "startLine": 71,
+        "startChar": 15,
+        "endLine": 71,
+        "endChar": 35
+      },
+      "revId": "63cc59de7c2e5d952419260c943e0d719b0fa7dd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7f6a48ab_b43be321",
+        "filename": "packages/Tethering/src/com/android/server/connectivity/tethering/PrivateAddressCoordinator.java",
+        "patchSetId": 9
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1288034
+      },
+      "writtenOn": "2020-03-16T09:08:24Z",
+      "side": 1,
+      "message": "Maybe getAllLinkAddresses to include stacked links ?",
+      "range": {
+        "startLine": 77,
+        "startChar": 51,
+        "endLine": 77,
+        "endChar": 67
+      },
+      "revId": "63cc59de7c2e5d952419260c943e0d719b0fa7dd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1c3bf7a1_dd573923",
+        "filename": "packages/Tethering/src/com/android/server/connectivity/tethering/PrivateAddressCoordinator.java",
+        "patchSetId": 9
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1288034
+      },
+      "writtenOn": "2020-03-16T09:08:24Z",
+      "side": 1,
+      "message": "This loop combines 2 things:\n - Finding an IPv4 address\n - Handling potential conflicts with the address\n\nIt\u0027s hard to follow with the \"continue\" and return logic inside.\nCould you refactor it to something like:\n\nfinal Inet4Address inPrefix \u003d getAddressInPrefix(lp.getAllLinkAddresses());\nif (inPrefix \u003d\u003d null) {\n    removeUpstreamRecord(inPrefix);\n    return ...\n}\n\nmPotentialConflictPrefixesMap.put...\n\nThen you could also remove the hasIpv4Address check at the beginning.",
+      "range": {
+        "startLine": 78,
+        "startChar": 8,
+        "endLine": 78,
+        "endChar": 11
+      },
+      "revId": "63cc59de7c2e5d952419260c943e0d719b0fa7dd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bef518a7_b54c09c4",
+        "filename": "packages/Tethering/src/com/android/server/connectivity/tethering/PrivateAddressCoordinator.java",
+        "patchSetId": 9
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1288034
+      },
+      "writtenOn": "2020-03-16T09:08:24Z",
+      "side": 1,
+      "message": "Nit: has",
+      "range": {
+        "startLine": 79,
+        "startChar": 37,
+        "endLine": 79,
+        "endChar": 41
+      },
+      "revId": "63cc59de7c2e5d952419260c943e0d719b0fa7dd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1408ec32_d2aca156",
+        "filename": "packages/Tethering/src/com/android/server/connectivity/tethering/PrivateAddressCoordinator.java",
+        "patchSetId": 9
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1288034
+      },
+      "writtenOn": "2020-03-16T09:08:24Z",
+      "side": 1,
+      "message": "Nit: ipv4Address (it\u0027s an address, not the protocol)",
+      "range": {
+        "startLine": 80,
+        "startChar": 24,
+        "endLine": 80,
+        "endChar": 30
+      },
+      "revId": "63cc59de7c2e5d952419260c943e0d719b0fa7dd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d54ac797_15a43f56",
+        "filename": "packages/Tethering/src/com/android/server/connectivity/tethering/PrivateAddressCoordinator.java",
+        "patchSetId": 9
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1288034
+      },
+      "writtenOn": "2020-03-16T09:08:24Z",
+      "side": 1,
+      "message": "Nit: if the constant is in the comment we\u0027re losing one benefit of the constants, since the comment needs to be updated if the constant is changed. Maybe just say \"Addresses outside of the tethering prefix cannot conflict\".",
+      "range": {
+        "startLine": 82,
+        "startChar": 53,
+        "endLine": 82,
+        "endChar": 74
+      },
+      "revId": "63cc59de7c2e5d952419260c943e0d719b0fa7dd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e8a9ac90_e5aa01e2",
+        "filename": "packages/Tethering/src/com/android/server/connectivity/tethering/PrivateAddressCoordinator.java",
+        "patchSetId": 9
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1288034
+      },
+      "writtenOn": "2020-03-16T09:08:24Z",
+      "side": 1,
+      "message": "What if there are several ?",
+      "range": {
+        "startLine": 91,
+        "startChar": 39,
+        "endLine": 91,
+        "endChar": 76
+      },
+      "revId": "63cc59de7c2e5d952419260c943e0d719b0fa7dd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c447c1a2_c306cd1b",
+        "filename": "packages/Tethering/src/com/android/server/connectivity/tethering/PrivateAddressCoordinator.java",
+        "patchSetId": 9
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1288034
+      },
+      "writtenOn": "2020-03-16T09:08:24Z",
+      "side": 1,
+      "message": "Should this not be handled by Tethering when the downstream is stopped, since it\u0027s supposed to reconfigure the downstream when a conflict is detected ?\nThis line is assuming that tethering will do this afterwards.",
+      "range": {
+        "startLine": 93,
+        "startChar": 38,
+        "endLine": 93,
+        "endChar": 77
+      },
+      "revId": "63cc59de7c2e5d952419260c943e0d719b0fa7dd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9cb68906_b6a19202",
+        "filename": "packages/Tethering/src/com/android/server/connectivity/tethering/PrivateAddressCoordinator.java",
+        "patchSetId": 9
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1288034
+      },
+      "writtenOn": "2020-03-16T09:08:24Z",
+      "side": 1,
+      "message": "Likewise, maybe \"removeUpstreamPrefix\" ?",
+      "range": {
+        "startLine": 102,
+        "startChar": 16,
+        "endLine": 102,
+        "endChar": 36
+      },
+      "revId": "63cc59de7c2e5d952419260c943e0d719b0fa7dd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6614abcc_9c91a94a",
+        "filename": "packages/Tethering/src/com/android/server/connectivity/tethering/PrivateAddressCoordinator.java",
+        "patchSetId": 9
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1288034
+      },
+      "writtenOn": "2020-03-16T09:08:24Z",
+      "side": 1,
+      "message": "How about putting this in a constant and having mTetheringPrefix built from it ?",
+      "range": {
+        "startLine": 120,
+        "startChar": 8,
+        "endLine": 121,
+        "endChar": 62
+      },
+      "revId": "63cc59de7c2e5d952419260c943e0d719b0fa7dd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "64a82b6e_14f28553",
+        "filename": "packages/Tethering/src/com/android/server/connectivity/tethering/PrivateAddressCoordinator.java",
+        "patchSetId": 9
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1288034
+      },
+      "writtenOn": "2020-03-16T09:08:24Z",
+      "side": 1,
+      "message": "Also some OSes don\u0027t support 0 or 255 well, so they should be excluded",
+      "range": {
+        "startLine": 125,
+        "startChar": 16,
+        "endLine": 125,
+        "endChar": 43
+      },
+      "revId": "63cc59de7c2e5d952419260c943e0d719b0fa7dd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d0c9d9a8_65940e1a",
+        "filename": "packages/Tethering/src/com/android/server/connectivity/tethering/PrivateAddressCoordinator.java",
+        "patchSetId": 9
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1288034
+      },
+      "writtenOn": "2020-03-16T09:08:24Z",
+      "side": 1,
+      "message": "Nit: final",
+      "range": {
+        "startLine": 128,
+        "startChar": 12,
+        "endLine": 128,
+        "endChar": 23
+      },
+      "revId": "63cc59de7c2e5d952419260c943e0d719b0fa7dd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3e7abc5a_f1d69ddf",
+        "filename": "packages/Tethering/src/com/android/server/connectivity/tethering/PrivateAddressCoordinator.java",
+        "patchSetId": 9
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1288034
+      },
+      "writtenOn": "2020-03-16T09:08:24Z",
+      "side": 1,
+      "message": "Why only the last one, and not the last 2 for example ? Would it be more correct with a set ?",
+      "range": {
+        "startLine": 136,
+        "startChar": 15,
+        "endLine": 136,
+        "endChar": 80
+      },
+      "revId": "63cc59de7c2e5d952419260c943e0d719b0fa7dd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "39f1a6fb_dba4abf6",
+        "filename": "packages/Tethering/src/com/android/server/connectivity/tethering/PrivateAddressCoordinator.java",
+        "patchSetId": 9
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1288034
+      },
+      "writtenOn": "2020-03-16T09:08:24Z",
+      "side": 1,
+      "message": "Nit: in use",
+      "range": {
+        "startLine": 138,
+        "startChar": 44,
+        "endLine": 138,
+        "endChar": 50
+      },
+      "revId": "63cc59de7c2e5d952419260c943e0d719b0fa7dd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "757332a8_1d57356f",
+        "filename": "packages/Tethering/src/com/android/server/connectivity/tethering/PrivateAddressCoordinator.java",
+        "patchSetId": 9
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1288034
+      },
+      "writtenOn": "2020-03-16T09:08:24Z",
+      "side": 1,
+      "message": "Typo: downstream record for interfaceType",
+      "range": {
+        "startLine": 161,
+        "startChar": 15,
+        "endLine": 161,
+        "endChar": 50
+      },
+      "revId": "63cc59de7c2e5d952419260c943e0d719b0fa7dd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2491d32b_b46a474a",
+        "filename": "packages/Tethering/src/com/android/server/connectivity/tethering/PrivateAddressCoordinator.java",
+        "patchSetId": 9
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1288034
+      },
+      "writtenOn": "2020-03-16T09:08:24Z",
+      "side": 1,
+      "message": "The notion of a \"record\" is not very clear, maybe just \"reset\" ? Or \"clearAllPrefixes\" ?",
+      "range": {
+        "startLine": 167,
+        "startChar": 16,
+        "endLine": 167,
+        "endChar": 31
+      },
+      "revId": "63cc59de7c2e5d952419260c943e0d719b0fa7dd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e5ff0c11_3255e0aa",
+        "filename": "packages/Tethering/src/com/android/server/connectivity/tethering/PrivateAddressCoordinator.java",
+        "patchSetId": 9
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1288034
+      },
+      "writtenOn": "2020-03-16T09:08:24Z",
+      "side": 1,
+      "message": "Nit: here isConflictPrefix(a, b) should be the same as isConflictPrefix(b, a), so \"source\" and \"target\" may not be the right names.\nMaybe just prefixesOverlap(IpPrefix prefix1, IpPrefix prefix2) ?",
+      "range": {
+        "startLine": 188,
+        "startChar": 37,
+        "endLine": 188,
+        "endChar": 81
+      },
+      "revId": "63cc59de7c2e5d952419260c943e0d719b0fa7dd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5cf1d37d_84bd13b9",
+        "filename": "packages/Tethering/src/com/android/server/connectivity/tethering/PrivateAddressCoordinator.java",
+        "patchSetId": 9
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1288034
+      },
+      "writtenOn": "2020-03-16T09:08:24Z",
+      "side": 1,
+      "message": "Considering that this is only used to check if the given prefix is being used, I\u0027d change this to:\n\"boolean isDownstreamPrefixInUse(IpPrefix prefix)\" or \"boolean isDownstreamPrefixAvailable(IpPrefix prefix)\"\nYou could then just use ArrayMap#containsValue()\n\nAlso add a comment that this class always generates downstream prefixes with the same prefix length, so prefixes cannot be contained in each other - they can only be equal to each other.",
+      "range": {
+        "startLine": 196,
+        "startChar": 4,
+        "endLine": 196,
+        "endChar": 57
+      },
+      "revId": "63cc59de7c2e5d952419260c943e0d719b0fa7dd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2f6f59a7_624634ed",
+        "filename": "packages/Tethering/src/com/android/server/connectivity/tethering/PrivateAddressCoordinator.java",
+        "patchSetId": 9
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1288034
+      },
+      "writtenOn": "2020-03-16T09:08:24Z",
+      "side": 1,
+      "message": "Nit: increase indent here ?",
+      "range": {
+        "startLine": 205,
+        "startChar": 52,
+        "endLine": 205,
+        "endChar": 53
+      },
+      "revId": "63cc59de7c2e5d952419260c943e0d719b0fa7dd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e24c2e2a_f4f81629",
+        "filename": "packages/Tethering/src/com/android/server/connectivity/tethering/Tethering.java",
+        "patchSetId": 9
+      },
+      "lineNbr": 336,
+      "author": {
+        "id": 1288034
+      },
+      "writtenOn": "2020-03-16T09:08:24Z",
+      "side": 1,
+      "message": "Can you use TetheringDependencies instead ?",
+      "range": {
+        "startLine": 332,
+        "startChar": 4,
+        "endLine": 336,
+        "endChar": 0
+      },
+      "revId": "63cc59de7c2e5d952419260c943e0d719b0fa7dd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e529b813_d7a90374",
+        "filename": "packages/Tethering/src/com/android/server/connectivity/tethering/Tethering.java",
+        "patchSetId": 9
+      },
+      "lineNbr": 1592,
+      "author": {
+        "id": 1288034
+      },
+      "writtenOn": "2020-03-16T09:08:24Z",
+      "side": 1,
+      "message": "Nit: maybeHandleIpConflict ? Since it\u0027s not necessarily a conflict when it\u0027s called",
+      "range": {
+        "startLine": 1592,
+        "startChar": 21,
+        "endLine": 1592,
+        "endChar": 37
+      },
+      "revId": "63cc59de7c2e5d952419260c943e0d719b0fa7dd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "27f1b9b2_da4003bd",
+        "filename": "packages/Tethering/src/com/android/server/connectivity/tethering/Tethering.java",
+        "patchSetId": 9
+      },
+      "lineNbr": 1600,
+      "author": {
+        "id": 1288034
+      },
+      "writtenOn": "2020-03-16T09:08:24Z",
+      "side": 1,
+      "message": "This is very ad-hoc, using global state to change behavior of the state machine when it\u0027s stopping. Ideally the state machine would just select an available prefix when starting every time, so the only global state would be the list of prefixes that are in use (in PrivateAddressCoordinator).\n\nWould it be possible to call stopTethering and startTethering to do a full, normal restart of the downstream at this point ?",
+      "range": {
+        "startLine": 1600,
+        "startChar": 24,
+        "endLine": 1600,
+        "endChar": 71
+      },
+      "revId": "63cc59de7c2e5d952419260c943e0d719b0fa7dd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0cf68149_c21af60d",
+        "filename": "packages/Tethering/tests/unit/src/com/android/server/connectivity/tethering/PrivateAddressCoordinatorTest.java",
+        "patchSetId": 9
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1288034
+      },
+      "writtenOn": "2020-03-16T09:08:24Z",
+      "side": 1,
+      "message": "This should be an error message: it should explain what went wrong",
+      "range": {
+        "startLine": 73,
+        "startChar": 22,
+        "endLine": 73,
+        "endChar": 47
+      },
+      "revId": "63cc59de7c2e5d952419260c943e0d719b0fa7dd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
