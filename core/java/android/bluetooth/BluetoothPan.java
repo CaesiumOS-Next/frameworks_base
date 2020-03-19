@@ -19,7 +19,6 @@ package android.bluetooth;
 import android.Manifest;
 import android.annotation.IntDef;
 import android.annotation.NonNull;
-import android.annotation.Nullable;
 import android.annotation.RequiresPermission;
 import android.annotation.SdkConstant;
 import android.annotation.SdkConstant.SdkConstantType;
@@ -177,6 +176,7 @@ public final class BluetoothPan implements BluetoothProfile, AutoCloseable {
      *
      * @hide
      */
+    @UnsupportedAppUsage
     public void close() {
         if (VDBG) log("close()");
         mProfileConnector.disconnect();
@@ -203,9 +203,6 @@ public final class BluetoothPan implements BluetoothProfile, AutoCloseable {
      * connection state intent for the profile will be broadcasted with
      * the state. Users can get the connection state of the profile
      * from this intent.
-     *
-     * <p>Requires {@link android.Manifest.permission#BLUETOOTH_ADMIN}
-     * permission.
      *
      * @param device Remote Bluetooth Device
      * @return false on immediate error, true otherwise
@@ -244,9 +241,6 @@ public final class BluetoothPan implements BluetoothProfile, AutoCloseable {
      * state {@link #STATE_DISCONNECTED}. The transition to
      * {@link #STATE_DISCONNECTING} can be used to distinguish between the
      * two scenarios.
-     *
-     * <p>Requires {@link android.Manifest.permission#BLUETOOTH_ADMIN}
-     * permission.
      *
      * @param device Remote Bluetooth Device
      * @return false on immediate error, true otherwise
@@ -353,7 +347,7 @@ public final class BluetoothPan implements BluetoothProfile, AutoCloseable {
     @SystemApi
     @Override
     @RequiresPermission(Manifest.permission.BLUETOOTH_PRIVILEGED)
-    public int getConnectionState(@Nullable BluetoothDevice device) {
+    public int getConnectionState(@NonNull BluetoothDevice device) {
         if (VDBG) log("getState(" + device + ")");
         final IBluetoothPan service = getService();
         if (service != null && isEnabled() && isValidDevice(device)) {
