@@ -2315,7 +2315,19 @@ public class AudioService extends IAudioService.Stub
 
             // Check if volume update should be sent to Hdmi system audio.
             if (streamTypeAlias == AudioSystem.STREAM_MUSIC) {
-                setSystemAudioVolume(oldIndex, newIndex, getStreamMaxVolume(streamType), flags);
+                int maxVolume = getStreamMaxVolume(streamType);
+                int minVolume = getStreamMinVolume(streamType);
+                if (direction == AudioManager.ADJUST_RAISE && newIndex == oldIndex) {
+                    int oldvalue = maxVolume-1;
+                    Log.d(TAG, "adjustStreamVolume() + always send oldindex=" + oldvalue + " newindex=" + maxVolume +" to CEC");
+                    setSystemAudioVolume(oldvalue, maxVolume, maxVolume, flags);
+                } else if (direction == AudioManager.ADJUST_LOWER && newIndex == oldIndex) {
+                    int oldvalue = minVolume+1;
+                    Log.d(TAG, "adjustStreamVolume() - always send oldindex=" + oldvalue + " newindex=" + minVolume +" to CEC");
+                    setSystemAudioVolume(oldvalue, minVolume, maxVolume, flags);
+                } else {
+                    setSystemAudioVolume(oldIndex, newIndex, getStreamMaxVolume(streamType), flags);
+                }
             }
         }
 
@@ -2818,7 +2830,22 @@ public class AudioService extends IAudioService.Stub
             }
 
             if (streamTypeAlias == AudioSystem.STREAM_MUSIC) {
-                setSystemAudioVolume(oldIndex, index, getStreamMaxVolume(streamType), flags);
+                //setSystemAudioVolume(oldIndex, index, getStreamMaxVolume(streamType), flags);
+                // Mediatek Android Patch Begin
+                int maxVolume = getStreamMaxVolume(streamType);
+                int minVolume = getStreamMinVolume(streamType);
+                if (oldIndex == index && index >= maxVolume) {
+                    int oldvalue = maxVolume-1;
+                    Log.d(TAG, "setStreamVolume + always send oldindex=" + oldvalue+", newindex=" + maxVolume + " to CEC");
+                    setSystemAudioVolume(oldvalue, maxVolume, maxVolume, flags);
+                } else if (oldIndex == index && index <= minVolume) {
+                    int oldvalue = minVolume+1;
+                    Log.d(TAG, "setStreamVolume - always send oldindex=" + oldvalue+", newindex=" + minVolume + " to CEC");
+                    setSystemAudioVolume(oldvalue, minVolume, maxVolume, flags);
+                } else {
+                    setSystemAudioVolume(oldIndex, index, getStreamMaxVolume(streamType), flags);
+                }
+                // Mediatek Android Patch End
             }
 
             flags &= ~AudioManager.FLAG_FIXED_VOLUME;
