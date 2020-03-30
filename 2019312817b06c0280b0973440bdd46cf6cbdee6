@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "086d468f_346a4071",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1288034
+      },
+      "writtenOn": "2020-03-30T08:17:24Z",
+      "side": 1,
+      "message": "Also if using .add() with negative stats; which seems to be supported looking at the documention on .combineValues (\"Can also be used to subtract values from existing rows\").\n\nI find it strange that due to this, a.add(-b) and a.substract(b)  have different behavior.\n\nSome solutions I can think of:\n - Document that .add cannot be used with negative values; but is it already used that way somewhere ? This would also introduce inconsistencies with combineValues.\n - Have .add() remove empty entries after adding; also would still be inconsistent with combineValues\n - Have combineValues drop the row if it ends up empty - not sure if safe considering callers.\n\nWDYT ?",
+      "range": {
+        "startLine": 19,
+        "startChar": 22,
+        "endLine": 19,
+        "endChar": 23
+      },
+      "revId": "2019312817b06c0280b0973440bdd46cf6cbdee6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
