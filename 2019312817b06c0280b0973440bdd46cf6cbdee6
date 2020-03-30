@@ -22,6 +22,30 @@
       "revId": "2019312817b06c0280b0973440bdd46cf6cbdee6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aee7ddb7_779ab365",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1306837
+      },
+      "writtenOn": "2020-03-30T09:50:35Z",
+      "side": 1,
+      "message": "Yes you are right.\n\noption 1 might not be what we want.\n\noption 2 also introduce additional copy of entire class, which is not good I think.\n\nThe comment here is exactly for option 3.\nIt needs to shrink array and/or re-ordering array, which is not very good for performance, or impact tests that will check entry ordering.\n\nBut still thinking if there is any good way for option 3.\nMaybe a cleanup at the end of combineAllValues.",
+      "parentUuid": "086d468f_346a4071",
+      "range": {
+        "startLine": 19,
+        "startChar": 22,
+        "endLine": 19,
+        "endChar": 23
+      },
+      "revId": "2019312817b06c0280b0973440bdd46cf6cbdee6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
