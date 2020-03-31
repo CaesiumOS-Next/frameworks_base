@@ -46,6 +46,30 @@
       "revId": "2019312817b06c0280b0973440bdd46cf6cbdee6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1310f1cb_f872fff6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1288034
+      },
+      "writtenOn": "2020-03-31T07:57:24Z",
+      "side": 1,
+      "message": "As far as performance is concerned, I guess you would do:\nfor (int[] stat : { iface, uid, set, tag... }) {\n    System.arrayCopy(stat, del + 1, stat, del, size - del - 1);\n}\nsize--;\n\nAt least no need to resize the arrays since there\u0027s already a concept of size / capacity. Getting empty entries shouldn\u0027t be too frequent so maybe it\u0027s not very impacting ? Hard to know without benchmarks...\n\nAnyway if you\u0027ve decided not to proceed with this, SGTM",
+      "parentUuid": "aee7ddb7_779ab365",
+      "range": {
+        "startLine": 19,
+        "startChar": 22,
+        "endLine": 19,
+        "endChar": 23
+      },
+      "revId": "2019312817b06c0280b0973440bdd46cf6cbdee6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
