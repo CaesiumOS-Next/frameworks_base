@@ -70,6 +70,30 @@
       "revId": "2019312817b06c0280b0973440bdd46cf6cbdee6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7966ba55_d203c6d8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1306837
+      },
+      "writtenOn": "2020-03-31T08:44:29Z",
+      "side": 1,
+      "message": "Yes, tried several ways to minimize the performance impact.\nLike this one you mentioned or swap last one to the deleted position or called removeEmptyEntries() in combineAllValues.\n\nHowever it is going to break functions that need to iterate whole array or depend on the index. E.g.\n1. \naddTrafficToApplications() {\n...\n  for(int i \u003d 0 ;i \u003c size; i++)\n    ...\n    combineValues(modifiedEntry)\n}\n\n2. any function that uses getValues(int i, Entry recycle)\nit is @UnsupportedAppUsage so it is considered as public.\n\nHence we are not sure if it is safe now.",
+      "parentUuid": "1310f1cb_f872fff6",
+      "range": {
+        "startLine": 19,
+        "startChar": 22,
+        "endLine": 19,
+        "endChar": 23
+      },
+      "revId": "2019312817b06c0280b0973440bdd46cf6cbdee6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
