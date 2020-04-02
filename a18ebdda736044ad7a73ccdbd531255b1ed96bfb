@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a11dcafd_f9de69da",
+        "filename": "services/core/java/com/android/server/connectivity/Nat464Xlat.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 301,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2020-04-02T13:15:07Z",
+      "side": 1,
+      "message": "I\u0027m not very sure but I think there *might* be a bug here in the following scenario.\n\n• Network connects, IPv6 comes up\n• update() → Prefix discovery starts\n• Prefix is discovered\n• update() → start()\n• go to running state and hum happily\n• IPv4 shows up\n• update() → stop() → IDLE\n• IPv4 disappears\n• update() → startPrefixDiscovery()\nHere the old code would go directly to started, and the new code will go to DISCOVERING. The new code flow is cleaner but I don\u0027t think anybody is going to call update() again until something else happens.\n\nThis is because AFAICT we don\u0027t clear the prefix when v4 shows up (though I haven\u0027t looked at whether netd does call back up to clear) ; if we do, then this can\u0027t happen. It\u0027s also fairly unlikely a network will lose v4 but keep v6 connectivity I guess.",
+      "range": {
+        "startLine": 301,
+        "startChar": 20,
+        "endLine": 301,
+        "endChar": 40
+      },
+      "revId": "a18ebdda736044ad7a73ccdbd531255b1ed96bfb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "64d55ee0_b9ef8f94",
+        "filename": "services/core/java/com/android/server/connectivity/Nat464Xlat.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 310,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2020-04-02T13:15:07Z",
+      "side": 1,
+      "message": "Style-wise I think it\u0027s easier to follow with an else {} and only one break at the end of the case clause. I tend to dislike these breaks because I have to go up while remembering which of the control flow constructions they jump out of.",
+      "range": {
+        "startLine": 309,
+        "startChar": 20,
+        "endLine": 310,
+        "endChar": 17
+      },
+      "revId": "a18ebdda736044ad7a73ccdbd531255b1ed96bfb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7b8b531b_0fad8c6e",
+        "filename": "services/core/java/com/android/server/connectivity/Nat464Xlat.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 314,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2020-04-02T13:15:07Z",
+      "side": 1,
+      "message": "I think this should be done in stopPrefixDiscovery to mirror what happens in startPrefixDiscovery. stopDiscovery is only called here and in l.219 and both of these go to IDLE ; moreover, all reasons for stopping prefix discovery always mean we don\u0027t want to have clat started.",
+      "range": {
+        "startLine": 314,
+        "startChar": 20,
+        "endLine": 314,
+        "endChar": 40
+      },
+      "revId": "a18ebdda736044ad7a73ccdbd531255b1ed96bfb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
