@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "eea861ab_2f73dffc",
+        "filename": "services/core/java/com/android/server/connectivity/Nat464Xlat.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 301,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2020-04-02T14:45:44Z",
+      "side": 1,
+      "message": "Good catch. In practice the behaviour is basically the same, because the way update() → stop() → IDLE works is that just before going into IDLE, leaveStartedState calls stopPrefixDiscovery(), and this causes the DNS resolver to send back a callback saying that the prefix was removed. There is coverage for this in resolv_integration_test:\n\n    // Stopping NAT64 prefix discovery disables synthesis.\n    EXPECT_TRUE(mDnsClient.resolvService()-\u003estopPrefix64Discovery(TEST_NETID).isOk());\n    EXPECT_TRUE(WaitForNat64Prefix(EXPECT_NOT_FOUND));\n\nWhen the prefix is removed mNat64Prefix becomes null again, so when the IPv4 address is removed the code goes back to DISCOVERING both in the old and the new code. When the prefix is discovered, both the old and the new code enter STARTING.\n\nI tested this manually on a device running the new code where I hacked IpClient not to disconnect when the IPv4 address was removed, and I verified that removing the IPv4 address causes prefix discovery to start, netd to re-discover the prefix, and clatd to start.\n\nEven if stopping discovery did not cause a NAT64 prefix removed event, I think the new code would still be correct. This is because it depends on the fact that telling the DNS resolver to stop prefix discovery, and then telling it to start prefix discovery, will result in an event when the prefix is discovered (that event will bring the code out of the DISCOVERING state). I think that\u0027s a solid assumption.\n\nAdded a TODO.",
+      "parentUuid": "228be886_08abcc88",
+      "range": {
+        "startLine": 301,
+        "startChar": 20,
+        "endLine": 301,
+        "endChar": 40
+      },
+      "revId": "a18ebdda736044ad7a73ccdbd531255b1ed96bfb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "64d55ee0_b9ef8f94",
         "filename": "services/core/java/com/android/server/connectivity/Nat464Xlat.java",
         "patchSetId": 2
@@ -72,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "6d2050d2_03dcd7d7",
+        "filename": "services/core/java/com/android/server/connectivity/Nat464Xlat.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 310,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2020-04-02T14:45:44Z",
+      "side": 1,
+      "message": "I actually prefer it this way, because when I read \"} else if {\" I always find my self referring back to the previous if statements\u0027 if clauses. But I can see how having multiple break statements at different levels of nesting is confusing too. Replaced with \"return\" which hopefully makes it clear that nothing more will be done and that within a given case label, all the operations are exclusive.",
+      "parentUuid": "64d55ee0_b9ef8f94",
+      "range": {
+        "startLine": 309,
+        "startChar": 20,
+        "endLine": 310,
+        "endChar": 17
+      },
+      "revId": "a18ebdda736044ad7a73ccdbd531255b1ed96bfb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7b8b531b_0fad8c6e",
         "filename": "services/core/java/com/android/server/connectivity/Nat464Xlat.java",
         "patchSetId": 2
@@ -92,6 +140,30 @@
       "revId": "a18ebdda736044ad7a73ccdbd531255b1ed96bfb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2d439503_b7489d21",
+        "filename": "services/core/java/com/android/server/connectivity/Nat464Xlat.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 314,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2020-04-02T14:45:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7b8b531b_0fad8c6e",
+      "range": {
+        "startLine": 314,
+        "startChar": 20,
+        "endLine": 314,
+        "endChar": 40
+      },
+      "revId": "a18ebdda736044ad7a73ccdbd531255b1ed96bfb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
