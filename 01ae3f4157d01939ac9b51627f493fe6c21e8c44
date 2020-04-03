@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4e0710ab_d798539b",
+        "filename": "libs/androidfw/ZipUtils.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2020-04-03T18:14:20Z",
+      "side": 1,
+      "message": "did this happen with the aapt2 rewrite?",
+      "revId": "01ae3f4157d01939ac9b51627f493fe6c21e8c44",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
