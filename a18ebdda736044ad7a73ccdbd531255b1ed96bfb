@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "e44148bc_82a12288",
+        "filename": "services/core/java/com/android/server/connectivity/Nat464Xlat.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 301,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2020-04-06T04:25:36Z",
+      "side": 1,
+      "message": "My second comment addresses exactly what you describe in the last paragraph : even if this happens CS will not call update() because the equals() in https://osscs.corp.google.com/android/platform/superproject/+/master:frameworks/base/services/core/java/com/android/server/ConnectivityService.java;l\u003d5901?q\u003dconnectivityService.java will return true.\n\nBut if stopping discovery does cause a prefix removed event, then I think it\u0027s best really. I wouldn\u0027t even have the TODO.",
+      "parentUuid": "eea861ab_2f73dffc",
+      "range": {
+        "startLine": 301,
+        "startChar": 20,
+        "endLine": 301,
+        "endChar": 40
+      },
+      "revId": "a18ebdda736044ad7a73ccdbd531255b1ed96bfb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "64d55ee0_b9ef8f94",
         "filename": "services/core/java/com/android/server/connectivity/Nat464Xlat.java",
         "patchSetId": 2
@@ -108,6 +132,30 @@
       "side": 1,
       "message": "I actually prefer it this way, because when I read \"} else if {\" I always find my self referring back to the previous if statements\u0027 if clauses. But I can see how having multiple break statements at different levels of nesting is confusing too. Replaced with \"return\" which hopefully makes it clear that nothing more will be done and that within a given case label, all the operations are exclusive.",
       "parentUuid": "64d55ee0_b9ef8f94",
+      "range": {
+        "startLine": 309,
+        "startChar": 20,
+        "endLine": 310,
+        "endChar": 17
+      },
+      "revId": "a18ebdda736044ad7a73ccdbd531255b1ed96bfb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a3426dc_c57f371d",
+        "filename": "services/core/java/com/android/server/connectivity/Nat464Xlat.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 310,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2020-04-06T04:25:36Z",
+      "side": 1,
+      "message": "I like return.",
+      "parentUuid": "6d2050d2_03dcd7d7",
       "range": {
         "startLine": 309,
         "startChar": 20,
