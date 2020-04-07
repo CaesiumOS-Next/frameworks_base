@@ -496,6 +496,53 @@
     },
     {
       "key": {
+        "uuid": "3b5db63b_e34075be",
+        "filename": "packages/Tethering/src/com/android/server/connectivity/tethering/PrivateAddressCoordinator.java",
+        "patchSetId": 9
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1288034
+      },
+      "writtenOn": "2020-04-07T11:22:43Z",
+      "side": 1,
+      "message": "I think that\u0027s not how we normally track networks though, or upstream networks: UpstreamNetworkMonitor has:\nHashMap\u003cNetwork, UpstreamNetworkState\u003e mNetworkMap\n\nNetwork is generally the key for LinkProperties too, not the interface (also with stacked links a LinkProperties entry can cover several interfaces). So unless there is a strong reason not to, I think this should be keyed by Network as usual.",
+      "parentUuid": "8c2ab2ce_c3205c95",
+      "range": {
+        "startLine": 53,
+        "startChar": 27,
+        "endLine": 53,
+        "endChar": 33
+      },
+      "revId": "63cc59de7c2e5d952419260c943e0d719b0fa7dd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c11bc4cb_875bf837",
+        "filename": "packages/Tethering/src/com/android/server/connectivity/tethering/PrivateAddressCoordinator.java",
+        "patchSetId": 9
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1288034
+      },
+      "writtenOn": "2020-04-07T11:22:43Z",
+      "side": 1,
+      "message": "Although I think upstreams should be keyed by Network, downstreams seem to be keyed by interface in Tethering (mTetherStates) or just maintained as a list of IpServers (mForwardedDownStreams). We could support multiple downstream Ethernet in the future too. I think this should follow the structure in Tethering and key by interface, or use a list of downstreams, but the data structure should not force an assumption that there is only one prefix per downstream type.",
+      "range": {
+        "startLine": 54,
+        "startChar": 46,
+        "endLine": 54,
+        "endChar": 66
+      },
+      "revId": "63cc59de7c2e5d952419260c943e0d719b0fa7dd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b322ecae_52b59fe6",
         "filename": "packages/Tethering/src/com/android/server/connectivity/tethering/PrivateAddressCoordinator.java",
         "patchSetId": 9
@@ -681,6 +728,30 @@
       "revId": "63cc59de7c2e5d952419260c943e0d719b0fa7dd",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5324b3b4_e616a4fa",
+        "filename": "packages/Tethering/src/com/android/server/connectivity/tethering/PrivateAddressCoordinator.java",
+        "patchSetId": 9
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1288034
+      },
+      "writtenOn": "2020-04-07T11:22:43Z",
+      "side": 1,
+      "message": "It looks like getAllLinkAddresses is system API since aosp/1132312\nConsidering that I think it\u0027s better to use it, because even if it\u0027s fine for CLAT with the current implementation, there\u0027s no guarantee that stacked links are only CLAT (we could add stuff in the future in particular)",
+      "parentUuid": "b79617a3_e070e2a2",
+      "range": {
+        "startLine": 77,
+        "startChar": 51,
+        "endLine": 77,
+        "endChar": 67
+      },
+      "revId": "63cc59de7c2e5d952419260c943e0d719b0fa7dd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     },
     {
       "key": {
@@ -1095,6 +1166,30 @@
       "side": 1,
       "message": "Could you sharing more about what OS do not support 0 or 255 as part of prefix ? IIRC, addresses which end in .255 and .0 are broken in Windows(refer dnsmasq and DhcpLeaseRepository.java). But the subNet here is third byte of 24 length prefix that 192.168.[subNet].0/24. Please correct me if I am wrong.",
       "parentUuid": "64a82b6e_14f28553",
+      "range": {
+        "startLine": 125,
+        "startChar": 16,
+        "endLine": 125,
+        "endChar": 43
+      },
+      "revId": "63cc59de7c2e5d952419260c943e0d719b0fa7dd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0448d095_78d41409",
+        "filename": "packages/Tethering/src/com/android/server/connectivity/tethering/PrivateAddressCoordinator.java",
+        "patchSetId": 9
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1288034
+      },
+      "writtenOn": "2020-04-07T11:22:43Z",
+      "side": 1,
+      "message": "Sorry you\u0027re right I didn\u0027t remember correctly about Windows support, so this should be fine.",
+      "parentUuid": "1f77f4ff_cb4eb1f3",
       "range": {
         "startLine": 125,
         "startChar": 16,

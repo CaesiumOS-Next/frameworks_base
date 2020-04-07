@@ -48,6 +48,75 @@
     },
     {
       "key": {
+        "uuid": "ed383716_b1c268b7",
+        "filename": "packages/Tethering/src/android/net/ip/IpServer.java",
+        "patchSetId": 13
+      },
+      "lineNbr": 617,
+      "author": {
+        "id": 1288034
+      },
+      "writtenOn": "2020-04-07T11:22:43Z",
+      "side": 1,
+      "message": "The next line will crash if the prefix length is not 24: it does not seem right to let IpServer decide the prefix, but crash if it returns anything but 24.\nCould it be mCallback.requestPrefix(mInterfaceType, prefixLength) instead ? Or maybe just requestAddress(mInterfaceType) ?\nOr make getRandomIPv4Address work with any prefix length",
+      "range": {
+        "startLine": 617,
+        "startChar": 30,
+        "endLine": 617,
+        "endChar": 70
+      },
+      "revId": "3c374eacaf5dbf00c776e867fe9e5218c5176adc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "abd393ef_2316ed77",
+        "filename": "packages/Tethering/src/android/net/ip/IpServer.java",
+        "patchSetId": 13
+      },
+      "lineNbr": 618,
+      "author": {
+        "id": 1288034
+      },
+      "writtenOn": "2020-04-07T11:22:43Z",
+      "side": 1,
+      "message": "This can NPE if requestPrefix returns null",
+      "range": {
+        "startLine": 618,
+        "startChar": 41,
+        "endLine": 618,
+        "endChar": 74
+      },
+      "revId": "3c374eacaf5dbf00c776e867fe9e5218c5176adc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2b208eb4_0cd16fed",
+        "filename": "packages/Tethering/src/com/android/server/connectivity/tethering/PrivateAddressCoordinator.java",
+        "patchSetId": 13
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1288034
+      },
+      "writtenOn": "2020-04-07T11:22:43Z",
+      "side": 1,
+      "message": "Should this be new ArrayMap\u003c\u003e() ?",
+      "range": {
+        "startLine": 65,
+        "startChar": 29,
+        "endLine": 65,
+        "endChar": 43
+      },
+      "revId": "3c374eacaf5dbf00c776e867fe9e5218c5176adc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6d200de2_a867e394",
         "filename": "packages/Tethering/src/com/android/server/connectivity/tethering/PrivateAddressCoordinator.java",
         "patchSetId": 13
@@ -64,6 +133,420 @@
         "startChar": 8,
         "endLine": 67,
         "endChar": 58
+      },
+      "revId": "3c374eacaf5dbf00c776e867fe9e5218c5176adc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "213f4fdf_bbddb404",
+        "filename": "packages/Tethering/src/com/android/server/connectivity/tethering/PrivateAddressCoordinator.java",
+        "patchSetId": 13
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1288034
+      },
+      "writtenOn": "2020-04-07T11:22:43Z",
+      "side": 1,
+      "message": "Nit: record a new upstream IpPrefix, which may conflict with tethering downstreams",
+      "range": {
+        "startLine": 71,
+        "startChar": 7,
+        "endLine": 71,
+        "endChar": 82
+      },
+      "revId": "3c374eacaf5dbf00c776e867fe9e5218c5176adc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6ad4755a_ab1d6fa0",
+        "filename": "packages/Tethering/src/com/android/server/connectivity/tethering/PrivateAddressCoordinator.java",
+        "patchSetId": 13
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1288034
+      },
+      "writtenOn": "2020-04-07T11:22:43Z",
+      "side": 1,
+      "message": "From the signature and documentation, it\u0027s not clear what is returned if there is a conflict",
+      "range": {
+        "startLine": 72,
+        "startChar": 50,
+        "endLine": 72,
+        "endChar": 64
+      },
+      "revId": "3c374eacaf5dbf00c776e867fe9e5218c5176adc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5be34f6c_bad47452",
+        "filename": "packages/Tethering/src/com/android/server/connectivity/tethering/PrivateAddressCoordinator.java",
+        "patchSetId": 13
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1288034
+      },
+      "writtenOn": "2020-04-07T11:22:43Z",
+      "side": 1,
+      "message": "What does \"kicking out\" mean here ? I think the conflicting types are returned, but no action is taken right ?",
+      "range": {
+        "startLine": 71,
+        "startChar": 84,
+        "endLine": 72,
+        "endChar": 48
+      },
+      "revId": "3c374eacaf5dbf00c776e867fe9e5218c5176adc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "19e13d1b_aa08ab7a",
+        "filename": "packages/Tethering/src/com/android/server/connectivity/tethering/PrivateAddressCoordinator.java",
+        "patchSetId": 13
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1288034
+      },
+      "writtenOn": "2020-04-07T11:22:43Z",
+      "side": 1,
+      "message": "Nit: I think new ArrayList\u003cInteger\u003e(0) would use slightly less memory if you don\u0027t plan to add elements to it.\nAlternatively Collections.emptyList() if you change the return type to a List\u003c\u003e",
+      "range": {
+        "startLine": 78,
+        "startChar": 23,
+        "endLine": 78,
+        "endChar": 43
+      },
+      "revId": "3c374eacaf5dbf00c776e867fe9e5218c5176adc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "98a68134_68b4f602",
+        "filename": "packages/Tethering/src/com/android/server/connectivity/tethering/PrivateAddressCoordinator.java",
+        "patchSetId": 13
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1288034
+      },
+      "writtenOn": "2020-04-07T11:22:43Z",
+      "side": 1,
+      "message": "This should actually be called getIpv4Address, not getAddressInPrefix, considering the current implementation",
+      "range": {
+        "startLine": 88,
+        "startChar": 24,
+        "endLine": 88,
+        "endChar": 42
+      },
+      "revId": "3c374eacaf5dbf00c776e867fe9e5218c5176adc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d2d56add_b77c11ca",
+        "filename": "packages/Tethering/src/com/android/server/connectivity/tethering/PrivateAddressCoordinator.java",
+        "patchSetId": 13
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1288034
+      },
+      "writtenOn": "2020-04-07T11:22:43Z",
+      "side": 1,
+      "message": "That\u0027s what LinkProperties says, but that doesn\u0027t look like a very solid guarantee 😊 Agreed that it\u0027s probably rare (if possible ATM) but since the code does not guarantee it, I\u0027d rather not make an assumption here.\n\nCould updateUpstreamPrefix loop on the link addresses instead ? Then maybe getConflictDownstreamTypes could be \"addConflictDownstreamTypes(IpPrefix, List\u003cInteger\u003e)\"",
+      "range": {
+        "startLine": 90,
+        "startChar": 15,
+        "endLine": 90,
+        "endChar": 24
+      },
+      "revId": "3c374eacaf5dbf00c776e867fe9e5218c5176adc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0ee87b9e_f9be7954",
+        "filename": "packages/Tethering/src/com/android/server/connectivity/tethering/PrivateAddressCoordinator.java",
+        "patchSetId": 13
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1288034
+      },
+      "writtenOn": "2020-04-07T11:22:43Z",
+      "side": 1,
+      "message": "Nit: this should be more explicit, like \"Pick a random, available prefix and mark it as in use for the provided tethering type\"\n\nAlso document what happens if there is no prefix available: \"Returns null if there is no available prefix\"",
+      "range": {
+        "startLine": 103,
+        "startChar": 8,
+        "endLine": 103,
+        "endChar": 33
+      },
+      "revId": "3c374eacaf5dbf00c776e867fe9e5218c5176adc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e7db9d8e_b8548b44",
+        "filename": "packages/Tethering/src/com/android/server/connectivity/tethering/PrivateAddressCoordinator.java",
+        "patchSetId": 13
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1288034
+      },
+      "writtenOn": "2020-04-07T11:22:43Z",
+      "side": 1,
+      "message": "Also add @Nullable because callers are expected to handle the null case",
+      "range": {
+        "startLine": 104,
+        "startChar": 11,
+        "endLine": 104,
+        "endChar": 19
+      },
+      "revId": "3c374eacaf5dbf00c776e867fe9e5218c5176adc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eda0faca_56a09cd1",
+        "filename": "packages/Tethering/src/com/android/server/connectivity/tethering/PrivateAddressCoordinator.java",
+        "patchSetId": 13
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1288034
+      },
+      "writtenOn": "2020-04-07T11:22:43Z",
+      "side": 1,
+      "message": "tetheringType, or downstreamType ? The same name should be used in the whole file (right now I think there\u0027s both interfaceType and downstreamType). Personally I prefer downstreamType.",
+      "range": {
+        "startLine": 104,
+        "startChar": 54,
+        "endLine": 104,
+        "endChar": 67
+      },
+      "revId": "3c374eacaf5dbf00c776e867fe9e5218c5176adc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5ac4860d_550f463e",
+        "filename": "packages/Tethering/src/com/android/server/connectivity/tethering/PrivateAddressCoordinator.java",
+        "patchSetId": 13
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1288034
+      },
+      "writtenOn": "2020-04-07T11:22:43Z",
+      "side": 1,
+      "message": "Nit: this code only works if it\u0027s 24, so I think it should not be called \"DEFAULT\", maybe just \"PREFIX_LENGTH\"",
+      "range": {
+        "startLine": 132,
+        "startChar": 55,
+        "endLine": 132,
+        "endChar": 63
+      },
+      "revId": "3c374eacaf5dbf00c776e867fe9e5218c5176adc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a2ba42ec_0701675f",
+        "filename": "packages/Tethering/src/com/android/server/connectivity/tethering/PrivateAddressCoordinator.java",
+        "patchSetId": 13
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1288034
+      },
+      "writtenOn": "2020-04-07T11:22:43Z",
+      "side": 1,
+      "message": "Sorry I still don\u0027t understand this.\nSince the last conflict upstream prefix is stored in mUpstreamPrefixMap, would the prefix not be excluded already ?\nI think at any time PrivateAddressCoordinator should always be able to tell which prefixes are available and which ones are not, based on the current upstreams and downstreams: it should not need to know the previous conflict, since what matters is only that the prefix it gives does not conflict with anything at any time.",
+      "range": {
+        "startLine": 133,
+        "startChar": 15,
+        "endLine": 133,
+        "endChar": 70
+      },
+      "revId": "3c374eacaf5dbf00c776e867fe9e5218c5176adc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "67ca1d8b_a96d3a7c",
+        "filename": "packages/Tethering/src/com/android/server/connectivity/tethering/PrivateAddressCoordinator.java",
+        "patchSetId": 13
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1288034
+      },
+      "writtenOn": "2020-04-07T11:22:43Z",
+      "side": 1,
+      "message": "Nit: for consistency with the style above, how about:\nif (isConflictWithUpstream(prefix)) continue;\nupdateDownstreamPrefix...",
+      "range": {
+        "startLine": 139,
+        "startChar": 12,
+        "endLine": 139,
+        "endChar": 50
+      },
+      "revId": "3c374eacaf5dbf00c776e867fe9e5218c5176adc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1d302c99_6e7c9e59",
+        "filename": "packages/Tethering/src/com/android/server/connectivity/tethering/Tethering.java",
+        "patchSetId": 13
+      },
+      "lineNbr": 248,
+      "author": {
+        "id": 1288034
+      },
+      "writtenOn": "2020-04-07T11:22:43Z",
+      "side": 1,
+      "message": "Looks like this is never set to non-null now ?",
+      "range": {
+        "startLine": 248,
+        "startChar": 4,
+        "endLine": 248,
+        "endChar": 47
+      },
+      "revId": "3c374eacaf5dbf00c776e867fe9e5218c5176adc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4dc71577_1f896982",
+        "filename": "packages/Tethering/src/com/android/server/connectivity/tethering/Tethering.java",
+        "patchSetId": 13
+      },
+      "lineNbr": 1615,
+      "author": {
+        "id": 1288034
+      },
+      "writtenOn": "2020-04-07T11:22:43Z",
+      "side": 1,
+      "message": "This method is doing two different things for different situations; I\u0027d rather split it into two methods and have handleUpstreamNetworkMonitorCallback choose which one to call",
+      "range": {
+        "startLine": 1615,
+        "startChar": 21,
+        "endLine": 1615,
+        "endChar": 42
+      },
+      "revId": "3c374eacaf5dbf00c776e867fe9e5218c5176adc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c43c41f5_59c7a1d7",
+        "filename": "packages/Tethering/src/com/android/server/connectivity/tethering/Tethering.java",
+        "patchSetId": 13
+      },
+      "lineNbr": 1623,
+      "author": {
+        "id": 1288034
+      },
+      "writtenOn": "2020-04-07T11:22:43Z",
+      "side": 1,
+      "message": "updateUpstreamPrefix should return a list of interfaces; then you can just get the IpServer from mTetherStates. I\u0027m not a fan of the assumption that there is only one IpServer per type: this would make our work harder to support multiple in the future.",
+      "range": {
+        "startLine": 1623,
+        "startChar": 52,
+        "endLine": 1623,
+        "endChar": 75
+      },
+      "revId": "3c374eacaf5dbf00c776e867fe9e5218c5176adc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d87cb266_dc26973b",
+        "filename": "packages/Tethering/src/com/android/server/connectivity/tethering/Tethering.java",
+        "patchSetId": 13
+      },
+      "lineNbr": 1624,
+      "author": {
+        "id": 1288034
+      },
+      "writtenOn": "2020-04-07T11:22:43Z",
+      "side": 1,
+      "message": "This \"auto-restart on stop if that flag is on\" logic is still very ad-hoc and adds complexity with another weird flow, even if the boolean is on the IpServer...\n\nstartTethering does enableTetheringInternal(false); enableTetheringInternal(true); when a different request is received: why can\u0027t this be used here ? I see you mentioned entitlement being a problem, but how is it different from calling enableTetheringInternal in handleInterfaceServingStateInactive ?",
+      "range": {
+        "startLine": 1624,
+        "startChar": 24,
+        "endLine": 1624,
+        "endChar": 98
+      },
+      "revId": "3c374eacaf5dbf00c776e867fe9e5218c5176adc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fc48a3c7_3376fa7d",
+        "filename": "packages/Tethering/src/com/android/server/connectivity/tethering/Tethering.java",
+        "patchSetId": 13
+      },
+      "lineNbr": 2186,
+      "author": {
+        "id": 1288034
+      },
+      "writtenOn": "2020-04-07T11:22:43Z",
+      "side": 1,
+      "message": "Nit: coordinator ?",
+      "range": {
+        "startLine": 2186,
+        "startChar": 35,
+        "endLine": 2186,
+        "endChar": 36
+      },
+      "revId": "3c374eacaf5dbf00c776e867fe9e5218c5176adc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0eed3815_252f14cd",
+        "filename": "packages/Tethering/tests/unit/src/com/android/server/connectivity/tethering/TetheringTest.java",
+        "patchSetId": 13
+      },
+      "lineNbr": 1696,
+      "author": {
+        "id": 1288034
+      },
+      "writtenOn": "2020-04-07T11:22:43Z",
+      "side": 1,
+      "message": "This should also verify what happens if:\n - There is no prefix left (for example if the upstream changes to 192.168.0.0/16)\n - There are several downstreams that become conflicting at once",
+      "range": {
+        "startLine": 1696,
+        "startChar": 16,
+        "endLine": 1696,
+        "endChar": 36
       },
       "revId": "3c374eacaf5dbf00c776e867fe9e5218c5176adc",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
