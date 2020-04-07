@@ -71,6 +71,30 @@
     },
     {
       "key": {
+        "uuid": "189cbe3a_162e604d",
+        "filename": "packages/Tethering/src/android/net/ip/IpServer.java",
+        "patchSetId": 13
+      },
+      "lineNbr": 617,
+      "author": {
+        "id": 1135107
+      },
+      "writtenOn": "2020-04-07T15:53:16Z",
+      "side": 1,
+      "message": "+1 to making getRandomIPv4Address work with any prefix lentgh",
+      "parentUuid": "ed383716_b1c268b7",
+      "range": {
+        "startLine": 617,
+        "startChar": 30,
+        "endLine": 617,
+        "endChar": 70
+      },
+      "revId": "3c374eacaf5dbf00c776e867fe9e5218c5176adc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "abd393ef_2316ed77",
         "filename": "packages/Tethering/src/android/net/ip/IpServer.java",
         "patchSetId": 13
@@ -232,6 +256,30 @@
     },
     {
       "key": {
+        "uuid": "bd133eca_f4975452",
+        "filename": "packages/Tethering/src/com/android/server/connectivity/tethering/PrivateAddressCoordinator.java",
+        "patchSetId": 13
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1135107
+      },
+      "writtenOn": "2020-04-07T15:53:16Z",
+      "side": 1,
+      "message": "Public functions like that should not return concrete types. Please change return type to List\u003c\u003e and follow Remi\u0027s alternative suggestion.",
+      "parentUuid": "19e13d1b_aa08ab7a",
+      "range": {
+        "startLine": 78,
+        "startChar": 23,
+        "endLine": 78,
+        "endChar": 43
+      },
+      "revId": "3c374eacaf5dbf00c776e867fe9e5218c5176adc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "98a68134_68b4f602",
         "filename": "packages/Tethering/src/com/android/server/connectivity/tethering/PrivateAddressCoordinator.java",
         "patchSetId": 13
@@ -370,6 +418,30 @@
     },
     {
       "key": {
+        "uuid": "292babe8_98628e03",
+        "filename": "packages/Tethering/src/com/android/server/connectivity/tethering/PrivateAddressCoordinator.java",
+        "patchSetId": 13
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1135107
+      },
+      "writtenOn": "2020-04-07T15:53:16Z",
+      "side": 1,
+      "message": "Or make it work with any prefix length? :)",
+      "parentUuid": "5ac4860d_550f463e",
+      "range": {
+        "startLine": 132,
+        "startChar": 55,
+        "endLine": 132,
+        "endChar": 63
+      },
+      "revId": "3c374eacaf5dbf00c776e867fe9e5218c5176adc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a2ba42ec_0701675f",
         "filename": "packages/Tethering/src/com/android/server/connectivity/tethering/PrivateAddressCoordinator.java",
         "patchSetId": 13
@@ -409,6 +481,29 @@
         "startChar": 12,
         "endLine": 139,
         "endChar": 50
+      },
+      "revId": "3c374eacaf5dbf00c776e867fe9e5218c5176adc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "429307a9_b9d92139",
+        "filename": "packages/Tethering/src/com/android/server/connectivity/tethering/Tethering.java",
+        "patchSetId": 13
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1135107
+      },
+      "writtenOn": "2020-04-07T15:53:16Z",
+      "side": 1,
+      "message": "TODOs should have either name or bug assigned",
+      "range": {
+        "startLine": 208,
+        "startChar": 7,
+        "endLine": 208,
+        "endChar": 11
       },
       "revId": "3c374eacaf5dbf00c776e867fe9e5218c5176adc",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
