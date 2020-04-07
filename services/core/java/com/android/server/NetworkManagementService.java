@@ -17,6 +17,7 @@
 package com.android.server;
 
 import static android.Manifest.permission.CONNECTIVITY_INTERNAL;
+import static android.Manifest.permission.MANAGE_TEST_NETWORKS;
 import static android.Manifest.permission.NETWORK_SETTINGS;
 import static android.Manifest.permission.OBSERVE_NETWORK_POLICY;
 import static android.Manifest.permission.SHUTDOWN;
@@ -846,7 +847,7 @@ public class NetworkManagementService extends INetworkManagementService.Stub {
 
     @Override
     public void setInterfaceUp(String iface) {
-        NetworkStack.checkNetworkStackPermission(mContext);
+        NetworkStack.checkNetworkStackPermissionOr(mContext, MANAGE_TEST_NETWORKS);
         final InterfaceConfiguration ifcg = getInterfaceConfig(iface);
         ifcg.setInterfaceUp();
         setInterfaceConfig(iface, ifcg);

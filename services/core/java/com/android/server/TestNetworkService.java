@@ -319,37 +319,34 @@ class TestNetworkService extends ITestNetworkManager.Stub {
 
         // Setup needs to be done with NETWORK_STACK privileges.
         int callingUid = Binder.getCallingUid();
-        Binder.withCleanCallingIdentity(
-                () -> {
-                    try {
-                        mNMS.setInterfaceUp(iface);
+        try {
+            mNMS.setInterfaceUp(iface);
 
-                        // Synchronize all accesses to mTestNetworkTracker to prevent the case
-                        // where:
-                        // 1. TestNetworkAgent successfully binds to death of binder
-                        // 2. Before it is added to the mTestNetworkTracker, binder dies,
-                        // binderDied() is called (on a different thread)
-                        // 3. This thread is pre-empted, put() is called after remove()
-                        synchronized (mTestNetworkTracker) {
-                            TestNetworkAgent agent =
-                                    registerTestNetworkAgent(
-                                            mHandler.getLooper(),
-                                            mContext,
-                                            iface,
-                                            lp,
-                                            isMetered,
-                                            callingUid,
-                                            administratorUids,
-                                            binder);
+            // Synchronize all accesses to mTestNetworkTracker to prevent the case
+            // where:
+            // 1. TestNetworkAgent successfully binds to death of binder
+            // 2. Before it is added to the mTestNetworkTracker, binder dies,
+            // binderDied() is called (on a different thread)
+            // 3. This thread is pre-empted, put() is called after remove()
+            synchronized (mTestNetworkTracker) {
+                TestNetworkAgent agent =
+                        registerTestNetworkAgent(
+                                mHandler.getLooper(),
+                                mContext,
+                                iface,
+                                lp,
+                                isMetered,
+                                callingUid,
+                                administratorUids,
+                                binder);
 
-                            mTestNetworkTracker.put(agent.getNetwork().netId, agent);
-                        }
-                    } catch (SocketException e) {
-                        throw new UncheckedIOException(e);
-                    } catch (RemoteException e) {
-                        throw e.rethrowFromSystemServer();
-                    }
-                });
+                mTestNetworkTracker.put(agent.getNetwork().netId, agent);
+            }
+        } catch (SocketException e) {
+            throw new UncheckedIOException(e);
+        } catch (RemoteException e) {
+            throw e.rethrowFromSystemServer();
+        }
     }
 
     /** Teardown a test network */

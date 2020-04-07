@@ -26,6 +26,7 @@ import android.annotation.SystemApi;
 import android.annotation.TestApi;
 import android.compat.annotation.UnsupportedAppUsage;
 import android.net.ConnectivityManager.NetworkCallback;
+import android.os.Binder;
 import android.os.Build;
 import android.os.Parcel;
 import android.os.Parcelable;
@@ -669,11 +670,23 @@ public final class NetworkCapabilities implements Parcelable {
     public void restrictCapabilitesForTestNetwork() {
         final long originalCapabilities = mNetworkCapabilities;
         final NetworkSpecifier originalSpecifier = mNetworkSpecifier;
+        final int ownerUid = getOwnerUid();
+        final int[] administratorUids = getAdministratorUids();
         clearAll();
         // Reset the transports to only contain TRANSPORT_TEST.
         mTransportTypes = (1 << TRANSPORT_TEST);
         mNetworkCapabilities = originalCapabilities & TEST_NETWORKS_ALLOWED_CAPABILITIES;
         mNetworkSpecifier = originalSpecifier;
+
+        // Only retain the owner and administrator UIDs if they match the app registering the test
+        // network.
+        final int callingUid = Binder.getCallingUid();
+        if (callingUid == ownerUid) {
+            setOwnerUid(callingUid);
+        }
+        if (ArrayUtils.contains(administratorUids, callingUid)) {
+            setAdministratorUids(new int[] {callingUid});
+        }
     }
 
     /**
