@@ -28,7 +28,6 @@ import android.content.res.Resources;
 import android.net.IpPrefix;
 import android.net.LinkAddress;
 import android.net.Network;
-import android.net.ProxyInfo;
 import android.net.RouteInfo;
 import android.os.Parcel;
 import android.os.Parcelable;
@@ -105,7 +104,6 @@ public class VpnConfig implements Parcelable {
     public boolean allowIPv4;
     public boolean allowIPv6;
     public Network[] underlyingNetworks;
-    public ProxyInfo proxyInfo;
 
     public void updateAllowedFamilies(InetAddress address) {
         if (address instanceof Inet4Address) {
@@ -166,7 +164,6 @@ public class VpnConfig implements Parcelable {
         out.writeInt(allowIPv4 ? 1 : 0);
         out.writeInt(allowIPv6 ? 1 : 0);
         out.writeTypedArray(underlyingNetworks, flags);
-        out.writeParcelable(proxyInfo, flags);
     }
 
     public static final Parcelable.Creator<VpnConfig> CREATOR =
@@ -192,7 +189,6 @@ public class VpnConfig implements Parcelable {
             config.allowIPv4 = in.readInt() != 0;
             config.allowIPv6 = in.readInt() != 0;
             config.underlyingNetworks = in.createTypedArray(Network.CREATOR);
-            config.proxyInfo = in.readParcelable(null);
             return config;
         }
 
@@ -224,7 +220,6 @@ public class VpnConfig implements Parcelable {
                 .append(", allowIPv4=").append(allowIPv4)
                 .append(", allowIPv6=").append(allowIPv6)
                 .append(", underlyingNetworks=").append(Arrays.toString(underlyingNetworks))
-                .append(", proxyInfo=").append(proxyInfo.toString())
                 .append("}")
                 .toString();
     }

@@ -39,12 +39,12 @@ import java.util.Locale;
  */
 public class ProxyInfo implements Parcelable {
 
-    private final String mHost;
-    private final int mPort;
-    private final String mExclusionList;
-    private final String[] mParsedExclusionList;
-    private final Uri mPacFileUrl;
+    private String mHost;
+    private int mPort;
+    private String mExclusionList;
+    private String[] mParsedExclusionList;
 
+    private Uri mPacFileUrl;
     /**
      *@hide
      */
@@ -96,8 +96,7 @@ public class ProxyInfo implements Parcelable {
     public ProxyInfo(String host, int port, String exclList) {
         mHost = host;
         mPort = port;
-        mExclusionList = exclList;
-        mParsedExclusionList = parseExclusionList(mExclusionList);
+        setExclusionList(exclList);
         mPacFileUrl = Uri.EMPTY;
     }
 
@@ -108,8 +107,7 @@ public class ProxyInfo implements Parcelable {
     public ProxyInfo(Uri pacFileUrl) {
         mHost = LOCAL_HOST;
         mPort = LOCAL_PORT;
-        mExclusionList = LOCAL_EXCL_LIST;
-        mParsedExclusionList = parseExclusionList(mExclusionList);
+        setExclusionList(LOCAL_EXCL_LIST);
         if (pacFileUrl == null) {
             throw new NullPointerException();
         }
@@ -123,8 +121,7 @@ public class ProxyInfo implements Parcelable {
     public ProxyInfo(String pacFileUrl) {
         mHost = LOCAL_HOST;
         mPort = LOCAL_PORT;
-        mExclusionList = LOCAL_EXCL_LIST;
-        mParsedExclusionList = parseExclusionList(mExclusionList);
+        setExclusionList(LOCAL_EXCL_LIST);
         mPacFileUrl = Uri.parse(pacFileUrl);
     }
 
@@ -135,20 +132,11 @@ public class ProxyInfo implements Parcelable {
     public ProxyInfo(Uri pacFileUrl, int localProxyPort) {
         mHost = LOCAL_HOST;
         mPort = localProxyPort;
-        mExclusionList = LOCAL_EXCL_LIST;
-        mParsedExclusionList = parseExclusionList(mExclusionList);
+        setExclusionList(LOCAL_EXCL_LIST);
         if (pacFileUrl == null) {
             throw new NullPointerException();
         }
         mPacFileUrl = pacFileUrl;
-    }
-
-    private static String[] parseExclusionList(String exclusionList) {
-        if (exclusionList == null) {
-            return new String[0];
-        } else {
-            return exclusionList.toLowerCase(Locale.ROOT).split(",");
-        }
     }
 
     private ProxyInfo(String host, int port, String exclList, String[] parsedExclList) {
@@ -171,10 +159,6 @@ public class ProxyInfo implements Parcelable {
             mExclusionList = source.getExclusionListAsString();
             mParsedExclusionList = source.mParsedExclusionList;
         } else {
-            mHost = null;
-            mPort = 0;
-            mExclusionList = null;
-            mParsedExclusionList = null;
             mPacFileUrl = Uri.EMPTY;
         }
     }
@@ -230,14 +214,24 @@ public class ProxyInfo implements Parcelable {
         return mExclusionList;
     }
 
+    // comma separated
+    private void setExclusionList(String exclusionList) {
+        mExclusionList = exclusionList;
+        if (mExclusionList == null) {
+            mParsedExclusionList = new String[0];
+        } else {
+            mParsedExclusionList = exclusionList.toLowerCase(Locale.ROOT).split(",");
+        }
+    }
+
     /**
      * @hide
      */
     public boolean isValid() {
         if (!Uri.EMPTY.equals(mPacFileUrl)) return true;
         return Proxy.PROXY_VALID == Proxy.validate(mHost == null ? "" : mHost,
-                mPort == 0 ? "" : Integer.toString(mPort),
-                mExclusionList == null ? "" : mExclusionList);
+                                                mPort == 0 ? "" : Integer.toString(mPort),
+                                                mExclusionList == null ? "" : mExclusionList);
     }
 
     /**
@@ -268,7 +262,7 @@ public class ProxyInfo implements Parcelable {
             sb.append("] ");
             sb.append(Integer.toString(mPort));
             if (mExclusionList != null) {
-                sb.append(" xl=").append(mExclusionList);
+                    sb.append(" xl=").append(mExclusionList);
             }
         } else {
             sb.append("[ProxyProperties.mHost == null]");
@@ -314,8 +308,8 @@ public class ProxyInfo implements Parcelable {
      */
     public int hashCode() {
         return ((null == mHost) ? 0 : mHost.hashCode())
-                + ((null == mExclusionList) ? 0 : mExclusionList.hashCode())
-                + mPort;
+        + ((null == mExclusionList) ? 0 : mExclusionList.hashCode())
+        + mPort;
     }
 
     /**
@@ -358,7 +352,8 @@ public class ProxyInfo implements Parcelable {
                 }
                 String exclList = in.readString();
                 String[] parsedExclList = in.readStringArray();
-                ProxyInfo proxyProperties = new ProxyInfo(host, port, exclList, parsedExclList);
+                ProxyInfo proxyProperties =
+                        new ProxyInfo(host, port, exclList, parsedExclList);
                 return proxyProperties;
             }
 
