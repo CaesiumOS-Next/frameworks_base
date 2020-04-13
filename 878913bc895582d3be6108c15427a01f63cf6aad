@@ -1,0 +1,211 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "338adc8d_ff3f52e6",
+        "filename": "packages/Tethering/src/com/android/server/connectivity/tethering/EntitlementManager.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2020-04-13T03:36:37Z",
+      "side": 1,
+      "message": "If these are just lists of which downstreams are active and/or exempted, then can they just be BitSet objects?",
+      "range": {
+        "startLine": 110,
+        "startChar": 0,
+        "endLine": 111,
+        "endChar": 49
+      },
+      "revId": "878913bc895582d3be6108c15427a01f63cf6aad",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "28fb0b4c_81656263",
+        "filename": "packages/Tethering/src/com/android/server/connectivity/tethering/EntitlementManager.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2020-04-13T03:36:37Z",
+      "side": 1,
+      "message": "downstreams",
+      "range": {
+        "startLine": 166,
+        "startChar": 77,
+        "endLine": 166,
+        "endChar": 87
+      },
+      "revId": "878913bc895582d3be6108c15427a01f63cf6aad",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cbfd22d4_ae4609e7",
+        "filename": "packages/Tethering/src/com/android/server/connectivity/tethering/EntitlementManager.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2020-04-13T03:36:37Z",
+      "side": 1,
+      "message": "doesn\u0027t",
+      "range": {
+        "startLine": 166,
+        "startChar": 62,
+        "endLine": 166,
+        "endChar": 67
+      },
+      "revId": "878913bc895582d3be6108c15427a01f63cf6aad",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "32125a07_4f9bc1be",
+        "filename": "packages/Tethering/src/com/android/server/connectivity/tethering/EntitlementManager.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2020-04-13T03:36:37Z",
+      "side": 1,
+      "message": "unless there are",
+      "range": {
+        "startLine": 167,
+        "startChar": 51,
+        "endLine": 167,
+        "endChar": 70
+      },
+      "revId": "878913bc895582d3be6108c15427a01f63cf6aad",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f6a279e9_d9d18c26",
+        "filename": "packages/Tethering/src/com/android/server/connectivity/tethering/EntitlementManager.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2020-04-13T03:36:37Z",
+      "side": 1,
+      "message": "downstreams",
+      "range": {
+        "startLine": 167,
+        "startChar": 80,
+        "endLine": 167,
+        "endChar": 90
+      },
+      "revId": "878913bc895582d3be6108c15427a01f63cf6aad",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6316ac5d_26b60037",
+        "filename": "packages/Tethering/src/com/android/server/connectivity/tethering/EntitlementManager.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2020-04-13T03:36:37Z",
+      "side": 1,
+      "message": "will",
+      "range": {
+        "startLine": 175,
+        "startChar": 78,
+        "endLine": 175,
+        "endChar": 83
+      },
+      "revId": "878913bc895582d3be6108c15427a01f63cf6aad",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f4941165_006975c6",
+        "filename": "packages/Tethering/src/com/android/server/connectivity/tethering/EntitlementManager.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2020-04-13T03:36:37Z",
+      "side": 1,
+      "message": "will",
+      "range": {
+        "startLine": 175,
+        "startChar": 39,
+        "endLine": 175,
+        "endChar": 44
+      },
+      "revId": "878913bc895582d3be6108c15427a01f63cf6aad",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cab72e8f_bc7aafba",
+        "filename": "packages/Tethering/src/com/android/server/connectivity/tethering/EntitlementManager.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2020-04-13T03:36:37Z",
+      "side": 1,
+      "message": "will",
+      "range": {
+        "startLine": 176,
+        "startChar": 88,
+        "endLine": 176,
+        "endChar": 93
+      },
+      "revId": "878913bc895582d3be6108c15427a01f63cf6aad",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6322edcc_29a1d499",
+        "filename": "packages/Tethering/src/com/android/server/connectivity/tethering/EntitlementManager.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2020-04-13T03:36:37Z",
+      "side": 1,
+      "message": "This is a set, right? If so, you don\u0027t need to do check if it\u0027s already there. Just set it.",
+      "range": {
+        "startLine": 194,
+        "startChar": 8,
+        "endLine": 194,
+        "endChar": 93
+      },
+      "revId": "878913bc895582d3be6108c15427a01f63cf6aad",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}

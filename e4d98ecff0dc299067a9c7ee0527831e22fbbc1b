@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "af1cda82_2a41d157",
+        "filename": "packages/Tethering/src/com/android/server/connectivity/tethering/EntitlementManager.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2020-04-13T03:36:37Z",
+      "side": 0,
+      "message": "Looks like you\u0027re changing startProvisioningIfNeeded so it acts immediately instead of posting a message. But that means that those methods could act *before* other calls that were called before them. In general doing something like this will cause ordering bugs.\n\nHere\u0027s an example. Say that Tethering calls methods A, B, and C on EntitlementManager. Assume that A, B, and C all call sendMessage. If Tethering calls A, B, and C in order, then A, B, and C happen in order.\n\nBut if you change, say, B so that it acts directly instead of sending a message, then if Tethering calls A, B, and C in order, then EntitlementManager can will execute either A, B, C or B, A, C.\n\nIt\u0027s possible that if we inspect all calls to EntitlementManager we\u0027ll conclude that this CL is correct and safe. But that would have to be carefully investigated and explained in the commit message, and maintaining that code in the future will continue to be difficult.\n\nIf it\u0027s possible to do so, it\u0027s generally better to ensure that all calls always have the same ordering. You could achieve this, for example, by ensuring that all calls from TetheringManager to EntitlementManager (or at least, any calls that are ordering-dependent) happen on the handler thread. This may or may not be possible if Tethering calls into EntitlementManager to satisfy a synchronous TetheringManager API.",
+      "range": {
+        "startLine": 175,
+        "startChar": 0,
+        "endLine": 176,
+        "endChar": 65
+      },
+      "revId": "e4d98ecff0dc299067a9c7ee0527831e22fbbc1b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
