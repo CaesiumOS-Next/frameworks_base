@@ -439,6 +439,7 @@ public final class NetworkCapabilities implements Parcelable {
      * @return This NetworkCapabilities instance, to facilitate chaining.
      * @hide
      */
+    @UnsupportedAppUsage
     public @NonNull NetworkCapabilities addCapability(@NetCapability int capability) {
         // If the given capability was previously added to the list of unwanted capabilities
         // then the capability will also be removed from the list of unwanted capabilities.
@@ -476,6 +477,7 @@ public final class NetworkCapabilities implements Parcelable {
      * @return This NetworkCapabilities instance, to facilitate chaining.
      * @hide
      */
+    @UnsupportedAppUsage
     public @NonNull NetworkCapabilities removeCapability(@NetCapability int capability) {
         // Note that this method removes capabilities that were added via addCapability(int),
         // addUnwantedCapability(int) or setCapabilities(int[], int[]).
@@ -777,6 +779,7 @@ public final class NetworkCapabilities implements Parcelable {
      * @return This NetworkCapabilities instance, to facilitate chaining.
      * @hide
      */
+    @UnsupportedAppUsage
     public @NonNull NetworkCapabilities addTransportType(@Transport int transportType) {
         checkValidTransportType(transportType);
         mTransportTypes |= 1 << transportType;
@@ -1224,6 +1227,7 @@ public final class NetworkCapabilities implements Parcelable {
      * @param signalStrength the bearer-specific signal strength.
      * @hide
      */
+    @UnsupportedAppUsage
     public @NonNull NetworkCapabilities setSignalStrength(int signalStrength) {
         mSignalStrength = signalStrength;
         return this;
