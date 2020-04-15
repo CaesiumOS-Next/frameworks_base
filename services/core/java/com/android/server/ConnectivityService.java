@@ -3051,16 +3051,7 @@ public class ConnectivityService extends IConnectivityManager.Stub
         @Override
         public void notifyDataStallSuspected(
                 long timestampMillis, int detectionMethod, PersistableBundle extras) {
-            final Message msg =
-                    mConnectivityDiagnosticsHandler.obtainMessage(
-                            ConnectivityDiagnosticsHandler.EVENT_DATA_STALL_SUSPECTED,
-                            detectionMethod, mNetId, timestampMillis);
-            msg.setData(new Bundle(extras));
-
-            // NetworkStateTrackerHandler currently doesn't take any actions based on data
-            // stalls so send the message directly to ConnectivityDiagnosticsHandler and avoid
-            // the cost of going through two handlers.
-            mConnectivityDiagnosticsHandler.sendMessage(msg);
+            handleDataStallNotification(detectionMethod, mNetId, timestampMillis, extras);
         }
 
         @Override
@@ -8095,5 +8086,28 @@ public class ConnectivityService extends IConnectivityManager.Stub
                         Binder.getCallingUid(),
                         0,
                         callback));
+    }
+
+    @Override
+    public void simulateDataStall(int detectionMethod, int netId, long timestampMillis,
+            @NonNull PersistableBundle extras) {
+        enforceChangePermission();
+        handleDataStallNotification(detectionMethod, netId, timestampMillis, extras);
+    }
+
+    private void handleDataStallNotification(int detectionMethod, int netId, long timestampMillis,
+            @NonNull PersistableBundle extras) {
+        final Message msg =
+                mConnectivityDiagnosticsHandler.obtainMessage(
+                        ConnectivityDiagnosticsHandler.EVENT_DATA_STALL_SUSPECTED,
+                        detectionMethod,
+                        netId,
+                        timestampMillis);
+        msg.setData(new Bundle(extras));
+
+        // NetworkStateTrackerHandler currently doesn't take any actions based on data
+        // stalls so send the message directly to ConnectivityDiagnosticsHandler and avoid
+        // the cost of going through two handlers.
+        mConnectivityDiagnosticsHandler.sendMessage(msg);
     }
 }
