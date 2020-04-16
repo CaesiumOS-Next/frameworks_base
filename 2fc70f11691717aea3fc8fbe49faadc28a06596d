@@ -1,0 +1,188 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5aced7b3_d28314ea",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2020-04-16T16:58:57Z",
+      "side": 1,
+      "message": "typo",
+      "range": {
+        "startLine": 7,
+        "startChar": 21,
+        "endLine": 7,
+        "endChar": 33
+      },
+      "revId": "2fc70f11691717aea3fc8fbe49faadc28a06596d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "402cbd42_d847e700",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2020-04-16T16:58:57Z",
+      "side": 1,
+      "message": "typo",
+      "range": {
+        "startLine": 9,
+        "startChar": 54,
+        "endLine": 9,
+        "endChar": 71
+      },
+      "revId": "2fc70f11691717aea3fc8fbe49faadc28a06596d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c1b674e9_49658b96",
+        "filename": "packages/Tethering/src/com/android/networkstack/tethering/EntitlementManager.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2020-04-16T16:58:57Z",
+      "side": 1,
+      "message": "Consider renaming to mCurrentDownstreams and mExemptedDownstreams. Otherwise someone might think that the mExemptedTypes contains upstreams or something :-)",
+      "range": {
+        "startLine": 103,
+        "startChar": 0,
+        "endLine": 104,
+        "endChar": 38
+      },
+      "revId": "2fc70f11691717aea3fc8fbe49faadc28a06596d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bc09ce6c_03acb254",
+        "filename": "packages/Tethering/src/com/android/networkstack/tethering/EntitlementManager.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2020-04-16T16:58:57Z",
+      "side": 1,
+      "message": "Hmm. So if a privileged app has called setUsbTethering and bypassed entitlement, but then someone calls setUsbTethering again, then the downstream is no longer exempt?\n\nSeems like perhaps we should keep the downstream exempt until the privileged app calls stopTethering. Not sure if this is possible though, since we don\u0027t track individual apps\u0027 tethering requests. If it\u0027s not trivial to do, no need to do it in this CL.",
+      "range": {
+        "startLine": 186,
+        "startChar": 8,
+        "endLine": 186,
+        "endChar": 50
+      },
+      "revId": "2fc70f11691717aea3fc8fbe49faadc28a06596d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "884d8651_02c44b92",
+        "filename": "packages/Tethering/tests/unit/src/com/android/networkstack/tethering/TetheringTest.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 1714,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2020-04-16T16:58:57Z",
+      "side": 1,
+      "message": "Would find this more readable as:\n\n    TetheringRequestParcel wifiNotExemptRequest \u003d createTetheringRequestParcel(TETHERING_WIFI, null, null, false);\n    mTethering.startTethering(wifiNotExemptRequest, null);",
+      "range": {
+        "startLine": 1713,
+        "startChar": 0,
+        "endLine": 1714,
+        "endChar": 22
+      },
+      "revId": "2fc70f11691717aea3fc8fbe49faadc28a06596d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0abd92c8_45630437",
+        "filename": "packages/Tethering/tests/unit/src/com/android/networkstack/tethering/TetheringTest.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 1717,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2020-04-16T16:58:57Z",
+      "side": 1,
+      "message": "never()",
+      "range": {
+        "startLine": 1717,
+        "startChar": 36,
+        "endLine": 1717,
+        "endChar": 44
+      },
+      "revId": "2fc70f11691717aea3fc8fbe49faadc28a06596d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "989a6ead_7d18199b",
+        "filename": "packages/Tethering/tests/unit/src/com/android/networkstack/tethering/TetheringTest.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 1724,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2020-04-16T16:58:57Z",
+      "side": 1,
+      "message": "ditto, would be good to call this wifiExemptRequest.",
+      "range": {
+        "startLine": 1724,
+        "startChar": 34,
+        "endLine": 1724,
+        "endChar": 96
+      },
+      "revId": "2fc70f11691717aea3fc8fbe49faadc28a06596d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "de9b8dc8_d56ff77c",
+        "filename": "packages/Tethering/tests/unit/src/com/android/networkstack/tethering/TetheringTest.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 1727,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2020-04-16T16:58:57Z",
+      "side": 1,
+      "message": "never()",
+      "range": {
+        "startLine": 1727,
+        "startChar": 36,
+        "endLine": 1727,
+        "endChar": 44
+      },
+      "revId": "2fc70f11691717aea3fc8fbe49faadc28a06596d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}

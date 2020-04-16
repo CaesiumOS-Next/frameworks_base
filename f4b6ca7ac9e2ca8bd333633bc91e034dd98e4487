@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a09ad373_89b2f1f4",
+        "filename": "packages/Tethering/src/com/android/networkstack/tethering/EntitlementManager.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2020-04-16T16:58:57Z",
+      "side": 0,
+      "message": "Why is it safe to delete this code? It doesn\u0027t seem to have moved anywhere. The previous code used to set mCellularUpstreamPermitted both in startProvisioningIfneeded and in evaluateCellularPermission, but now it sets it only in evaluateCellularPermission. Was this code not necessary? \n\nAlso, this doesn\u0027t seem to have anything to do with exempting downstreams from entitlement checks. If it\u0027s a refactoring that is needed in order to support exempting downstreams, then can it go into its own CL so we can review it independently, make sure it doesn\u0027t break the tests, etc.?",
+      "range": {
+        "startLine": 171,
+        "startChar": 0,
+        "endLine": 175,
+        "endChar": 13
+      },
+      "revId": "f4b6ca7ac9e2ca8bd333633bc91e034dd98e4487",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
