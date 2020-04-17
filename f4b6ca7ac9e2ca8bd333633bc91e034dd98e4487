@@ -22,6 +22,30 @@
       "revId": "f4b6ca7ac9e2ca8bd333633bc91e034dd98e4487",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6babe7cf_c6bf47a3",
+        "filename": "packages/Tethering/src/com/android/networkstack/tethering/EntitlementManager.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1308504
+      },
+      "writtenOn": "2020-04-17T08:40:56Z",
+      "side": 0,
+      "message": "This code is moved to isCellularUpstreamPermitted(). Now it just used to store the previous value. The status of CellularUpstreamPermitted is wrap by isCellularUpstreamPermitted() function. Maybe rename it to mLastEvaluetedResult\n\nBefore:\n   public boolean isCellularUpstreamPermitted() {\n        final TetheringConfiguration config \u003d mFetcher.fetchTetheringConfiguration();\n        if (mCurrentTethers.size() \u003d\u003d 0 \u0026\u0026 isTetherProvisioningRequired(config)) {\n            return false;\n        }\n        return mCellularUpstreamPermitted; // ---\u003e The change here is the key point\n    }\nNow:\n    public boolean isCellularUpstreamPermitted() {\n        final TetheringConfiguration config \u003d mFetcher.fetchTetheringConfiguration();\n\n        return isCellularUpstreamPermitted(config);\n    }\n\n    private boolean isCellularUpstreamPermitted(final TetheringConfiguration config) {\n        if (!isTetherProvisioningRequired(config)) return true;\n\n        if (mDownstreamTypes.isEmpty()) return !mExemptedTypes.isEmpty();\n\n        return mCellularPermitted.indexOfValue(TETHER_ERROR_NO_ERROR) \u003e -1;\n    }",
+      "parentUuid": "a09ad373_89b2f1f4",
+      "range": {
+        "startLine": 171,
+        "startChar": 0,
+        "endLine": 175,
+        "endChar": 13
+      },
+      "revId": "f4b6ca7ac9e2ca8bd333633bc91e034dd98e4487",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
