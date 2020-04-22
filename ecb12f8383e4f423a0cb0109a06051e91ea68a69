@@ -1,0 +1,48 @@
+{
+  "comments": [
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000002598658",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1292595?revision\u003d1",
+      "fixSuggestions": [
+        {
+          "fixId": "72aaf69f_e48c282b",
+          "description": "Change to \"tests/net/common/java/android/net/NetworkSpecifierTest.kt\"",
+          "replacements": [
+            {
+              "path": "tests/net/common/java/android/net/NetworkSpecifierTest.kt",
+              "range": {
+                "startLine": 57,
+                "startChar": 17,
+                "endLine": 57,
+                "endChar": 27
+              },
+              "replacement": "Satisfied"
+            }
+          ]
+        }
+      ],
+      "key": {
+        "uuid": "9ae91d46_21761502",
+        "filename": "tests/net/common/java/android/net/NetworkSpecifierTest.kt",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1550585
+      },
+      "writtenOn": "2020-04-22T09:45:12Z",
+      "side": 1,
+      "message": "Common typo found: \"Satisified\" -- should it be \"Satisfied\"?\nNote: a line containing \"common_typos_disable\" or \"common_typos_enable\" will turn off or on (respectively) the linter for subsequent lines in the file. Alternatively include the token \"NOTYPO\" within a line to skip typo linting that line.",
+      "range": {
+        "startLine": 57,
+        "startChar": 17,
+        "endLine": 57,
+        "endChar": 27
+      },
+      "revId": "ecb12f8383e4f423a0cb0109a06051e91ea68a69",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
