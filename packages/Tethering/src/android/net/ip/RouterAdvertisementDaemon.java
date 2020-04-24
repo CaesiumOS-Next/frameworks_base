@@ -270,7 +270,7 @@ public class RouterAdvertisementDaemon {
 
     /** Start router advertisement daemon. */
     public boolean start() {
-        if (!createSocket()) {
+        if ((mSocket = createSocket()) == null) {
             return false;
         }
 
@@ -285,7 +285,8 @@ public class RouterAdvertisementDaemon {
 
     /** Stop router advertisement daemon. */
     public void stop() {
-        closeSocket();
+        closeSocket(mSocket);
+        mSocket = null;
         // Wake up mMulticastTransmitter thread to interrupt a potential 1 day sleep before
         // the thread's termination.
         maybeNotifyMulticastTransmitter();
@@ -599,35 +600,35 @@ public class RouterAdvertisementDaemon {
         }
     }
 
-    private boolean createSocket() {
+    public FileDescriptor createSocket() {
         final int send_timout_ms = 300;
+        FileDescriptor socket = null;
 
         final int oldTag = TrafficStats.getAndSetThreadStatsTag(
                 TrafficStatsConstants.TAG_SYSTEM_NEIGHBOR);
         try {
-            mSocket = Os.socket(AF_INET6, SOCK_RAW, IPPROTO_ICMPV6);
+            socket = Os.socket(AF_INET6, SOCK_RAW, IPPROTO_ICMPV6);
             // Setting SNDTIMEO is purely for defensive purposes.
             Os.setsockoptTimeval(
-                    mSocket, SOL_SOCKET, SO_SNDTIMEO, StructTimeval.fromMillis(send_timout_ms));
-            SocketUtils.bindSocketToInterface(mSocket, mInterface.name);
-            TetheringUtils.setupRaSocket(mSocket, mInterface.index);
+                    socket, SOL_SOCKET, SO_SNDTIMEO, StructTimeval.fromMillis(send_timout_ms));
+            SocketUtils.bindSocketToInterface(socket, mInterface.name);
+            TetheringUtils.setupRaSocket(socket, mInterface.index);
         } catch (ErrnoException | IOException e) {
             Log.e(TAG, "Failed to create RA daemon socket: " + e);
-            return false;
+            closeSocket(socket);
+            return null;
         } finally {
             TrafficStats.setThreadStatsTag(oldTag);
         }
 
-        return true;
+        return socket;
     }
 
-    private void closeSocket() {
-        if (mSocket != null) {
-            try {
-                SocketUtils.closeSocket(mSocket);
-            } catch (IOException ignored) { }
-        }
-        mSocket = null;
+    private void closeSocket(final FileDescriptor socket) {
+        if (socket == null) return;
+        try {
+            SocketUtils.closeSocket(socket);
+        } catch (IOException ignored) { }
     }
 
     private boolean isSocketValid() {
