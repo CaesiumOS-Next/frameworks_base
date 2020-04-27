@@ -22,6 +22,7 @@ import android.hardware.hdmi.HdmiControlManager;
 import android.hardware.hdmi.HdmiPortInfo;
 import android.hardware.hdmi.IHdmiControlCallback;
 import android.os.SystemProperties;
+import android.sysprop.HdmiProperties.cec_device_types_values;
 import android.util.Slog;
 
 import com.android.internal.annotations.GuardedBy;
@@ -70,7 +71,8 @@ abstract class HdmiCecLocalDeviceSource extends HdmiCecLocalDevice {
     @GuardedBy("mLock")
     protected boolean mRoutingControlFeatureEnabled;
 
-    protected HdmiCecLocalDeviceSource(HdmiControlService service, int deviceType) {
+    protected HdmiCecLocalDeviceSource(HdmiControlService service,
+            cec_device_types_values deviceType) {
         super(service, deviceType);
     }
 
@@ -219,7 +221,7 @@ abstract class HdmiCecLocalDeviceSource extends HdmiCecLocalDevice {
     // This method should only be called when the device can be the active source.
     protected void setAndBroadcastActiveSource(HdmiCecMessage message, int physicalAddress) {
         mService.setAndBroadcastActiveSource(
-                physicalAddress, getDeviceInfo().getDeviceType(), message.getSource());
+                physicalAddress, mDeviceType, message.getSource());
     }
 
     @ServiceThreadOnly
