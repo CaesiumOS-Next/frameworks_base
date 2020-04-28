@@ -471,23 +471,32 @@ public class EthernetTetheringTest {
         }
     }
 
+    private byte[] getClientId(byte[] macAddress) {
+        final byte[] clientId = new byte[7];
+        clientId[0] = 0x1; // CLIENT_ID_ETHER
+        System.arraycopy(macAddress, 0, clientId, 1, macAddress.length);
+        return clientId;
+    }
+
     private void sendDhcpDiscover(FileDescriptor fd, byte[] macAddress) throws Exception {
+        final byte[] clientId = getClientId(macAddress);
         ByteBuffer packet = DhcpPacket.buildDiscoverPacket(DhcpPacket.ENCAP_L2,
                 new Random().nextInt() /* transactionId */, (short) 0 /* secs */,
                 macAddress,  false /* unicast */, DHCP_REQUESTED_PARAMS,
-                false /* rapid commit */,  DHCP_HOSTNAME);
+                false /* rapid commit */,  DHCP_HOSTNAME, clientId);
         sendPacket(fd, packet);
     }
 
     private void sendDhcpRequest(FileDescriptor fd, DhcpPacket offerPacket, byte[] macAddress)
             throws Exception {
+        final byte[] clientId = getClientId(macAddress);
         DhcpResults results = offerPacket.toDhcpResults();
         Inet4Address clientIp = (Inet4Address) results.ipAddress.getAddress();
         Inet4Address serverIdentifier = results.serverAddress;
         ByteBuffer packet = DhcpPacket.buildRequestPacket(DhcpPacket.ENCAP_L2,
                 0 /* transactionId */, (short) 0 /* secs */, DhcpPacket.INADDR_ANY /* clientIp */,
                 false /* broadcast */, macAddress, clientIp /* requestedIpAddress */,
-                serverIdentifier, DHCP_REQUESTED_PARAMS, DHCP_HOSTNAME);
+                serverIdentifier, DHCP_REQUESTED_PARAMS, DHCP_HOSTNAME, clientId);
         sendPacket(fd, packet);
     }
 
