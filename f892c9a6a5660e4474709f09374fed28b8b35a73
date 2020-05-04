@@ -22,6 +22,30 @@
       "revId": "f892c9a6a5660e4474709f09374fed28b8b35a73",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a5965fe2_14d1f2b8",
+        "filename": "services/core/java/com/android/server/hdmi/HdmiCecLocalDevicePlayback.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1060286
+      },
+      "writtenOn": "2020-05-04T22:13:51Z",
+      "side": 0,
+      "message": "I have already remove the constant on internal master.",
+      "parentUuid": "9a0a76d5_8bb77010",
+      "range": {
+        "startLine": 47,
+        "startChar": 40,
+        "endLine": 47,
+        "endChar": 74
+      },
+      "revId": "f892c9a6a5660e4474709f09374fed28b8b35a73",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
