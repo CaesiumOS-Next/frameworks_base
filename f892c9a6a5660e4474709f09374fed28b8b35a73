@@ -46,6 +46,30 @@
       "revId": "f892c9a6a5660e4474709f09374fed28b8b35a73",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "98ff7f51_ec895557",
+        "filename": "services/core/java/com/android/server/hdmi/HdmiCecLocalDevicePlayback.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1585075
+      },
+      "writtenOn": "2020-05-05T11:44:51Z",
+      "side": 0,
+      "message": "Done. It is deleted in merged CL https://android-review.googlesource.com/c/platform/frameworks/base/+/1260104.",
+      "parentUuid": "a5965fe2_14d1f2b8",
+      "range": {
+        "startLine": 47,
+        "startChar": 40,
+        "endLine": 47,
+        "endChar": 74
+      },
+      "revId": "f892c9a6a5660e4474709f09374fed28b8b35a73",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
