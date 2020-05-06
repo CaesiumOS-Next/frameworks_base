@@ -871,7 +871,12 @@ public class IpServer extends StateMachine {
         if (!mUsingBpfOffload) return;
 
         try {
+            // TODO: Move into BpfCoordinator.
             mNetd.tetherOffloadRuleAdd(rule.toTetherOffloadRuleParcel());
+            // For now, it is okay to add offload rule before setting data limit in the coordinator
+            // because the default data limit is zero. The offload tethering doesn't start
+            // forwarding with a zero data limit.
+            mBpfCoordinator.notifyForwardingRuleAdded(rule);
             mIpv6ForwardingRules.put(rule.address, rule);
         } catch (RemoteException | ServiceSpecificException e) {
             mLog.e("Could not add IPv6 downstream rule: ", e);
@@ -885,7 +890,9 @@ public class IpServer extends StateMachine {
         if (!mUsingBpfOffload) return;
 
         try {
+            // TODO: Move into BpfCoordinator.
             mNetd.tetherOffloadRuleRemove(rule.toTetherOffloadRuleParcel());
+            mBpfCoordinator.notifyForwardingRuleRemoved(rule);
             if (removeFromMap) {
                 mIpv6ForwardingRules.remove(rule.address);
             }
