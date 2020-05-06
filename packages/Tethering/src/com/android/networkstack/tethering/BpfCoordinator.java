@@ -47,11 +47,13 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.android.internal.annotations.VisibleForTesting;
+import com.android.internal.util.IndentingPrintWriter;
 
 import java.net.Inet6Address;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
+import java.util.Map;
 import java.util.Objects;
 
 /**
@@ -341,6 +343,70 @@ public class BpfCoordinator {
             Log.wtf(TAG, "The upstream interface name " + upstreamIface
                     + " is different from the existing interface name "
                     + iface + " for index " + upstreamIfindex);
+        }
+    }
+
+    /** Dump information. */
+    public void dump(@NonNull IndentingPrintWriter pw) {
+        // TODO: Dump the BPF offload device config once it has been added.
+        pw.println("Polling " + (mPollingStarted ? "started" : "not started"));
+        pw.println("Stats provider " + (mStatsProvider != null ? "registered" : "not registered"));
+        pw.println("Upstream quota: " + mInterfaceQuotas.toString());
+
+        pw.print("Forwarding stats: ");
+        pw.println(mStats.size() == 0 ? "<no stats>" : "");
+        pw.increaseIndent();
+        dumpStats(pw);
+        pw.decreaseIndent();
+
+        pw.print("Forwarding rules: ");
+        pw.println(mIpv6ForwardingRules.size() == 0 ? "<no rule>" : "");
+        pw.increaseIndent();
+        dumpIpv6ForwardingRules(pw);
+        pw.decreaseIndent();
+    }
+
+    private void dumpStats(@NonNull IndentingPrintWriter pw) {
+        for (int i = 0; i < mStats.size(); i++) {
+            final int key = mStats.keyAt(i);
+            final ForwardedStats stats = mStats.get(key);
+
+            pw.print(key);
+            pw.print("(");
+            final String iface = mInterfaceNames.get(key);
+            pw.print(iface != null ? iface : "<null>");
+            pw.println(") - " + stats.toString());
+        }
+    }
+
+    private void dumpIpv6ForwardingRules(@NonNull IndentingPrintWriter pw) {
+        for (Map.Entry<IpServer, LinkedHashMap<Inet6Address, Ipv6ForwardingRule>> entry :
+                mIpv6ForwardingRules.entrySet()) {
+            IpServer ipServer = entry.getKey();
+            // The rule downstream interface index is paired with the interface name from
+            // IpServer#interfaceName. See #startIPv6, #updateIpv6ForwardingRules in IpServer.
+            final String downstreamIface = ipServer.interfaceName();
+            pw.println("[" + downstreamIface + "]: iif(iface) oif(iface) addr srcmac dstmac");
+
+            pw.increaseIndent();
+            LinkedHashMap<Inet6Address, Ipv6ForwardingRule> rules = entry.getValue();
+            for (Ipv6ForwardingRule rule : rules.values()) {
+                final int upstreamIfindex = rule.upstreamIfindex;
+                pw.print(upstreamIfindex);
+                pw.print("(");
+                pw.print(mInterfaceNames.get(upstreamIfindex));
+                pw.print("), ");
+                pw.print(rule.downstreamIfindex);
+                pw.print("(");
+                pw.print(downstreamIface);
+                pw.print("), ");
+                pw.print(rule.address);
+                pw.print(", ");
+                pw.print(rule.srcMac);
+                pw.print(", ");
+                pw.println(rule.dstMac);
+            }
+            pw.decreaseIndent();
         }
     }
 
