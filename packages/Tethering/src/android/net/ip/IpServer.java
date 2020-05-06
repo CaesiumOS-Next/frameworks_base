@@ -280,6 +280,8 @@ public class IpServer extends StateMachine {
         }
     }
 
+    // TODO: Remove this map once the coordinator provide function to clear all rules and
+    // migrate new upstream rule for each IpServer.
     private final LinkedHashMap<Inet6Address, Ipv6ForwardingRule> mIpv6ForwardingRules =
             new LinkedHashMap<>();
 
@@ -870,12 +872,8 @@ public class IpServer extends StateMachine {
         // TODO: Perhaps remove this protection check.
         if (!mUsingBpfOffload) return;
 
-        try {
-            mNetd.tetherOffloadRuleAdd(rule.toTetherOffloadRuleParcel());
-            mIpv6ForwardingRules.put(rule.address, rule);
-        } catch (RemoteException | ServiceSpecificException e) {
-            mLog.e("Could not add IPv6 downstream rule: ", e);
-        }
+        mBpfCoordinator.tetherOffloadRuleAdd(rule);
+        mIpv6ForwardingRules.put(rule.address, rule);
     }
 
     private void removeIpv6ForwardingRule(Ipv6ForwardingRule rule, boolean removeFromMap) {
@@ -884,13 +882,9 @@ public class IpServer extends StateMachine {
         // TODO: Perhaps remove this protection check.
         if (!mUsingBpfOffload) return;
 
-        try {
-            mNetd.tetherOffloadRuleRemove(rule.toTetherOffloadRuleParcel());
-            if (removeFromMap) {
-                mIpv6ForwardingRules.remove(rule.address);
-            }
-        } catch (RemoteException | ServiceSpecificException e) {
-            mLog.e("Could not remove IPv6 downstream rule: ", e);
+        mBpfCoordinator.tetherOffloadRuleRemove(rule);
+        if (removeFromMap) {
+            mIpv6ForwardingRules.remove(rule.address);
         }
     }
 
