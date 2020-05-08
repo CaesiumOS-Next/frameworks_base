@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8c513619_87b6d3f7",
+        "filename": "packages/Tethering/src/com/android/networkstack/tethering/EntitlementManager.java",
+        "patchSetId": 9
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2020-05-08T06:26:13Z",
+      "side": 1,
+      "message": "When any",
+      "range": {
+        "startLine": 172,
+        "startChar": 90,
+        "endLine": 172,
+        "endChar": 93
+      },
+      "revId": "e8b658ac8f3b8816fee9a51937bdbd2179245cc9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c4e4187e_6b5969ea",
+        "filename": "packages/Tethering/src/com/android/networkstack/tethering/EntitlementManager.java",
+        "patchSetId": 9
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2020-05-08T06:26:13Z",
+      "side": 1,
+      "message": "gets",
+      "range": {
+        "startLine": 173,
+        "startChar": 31,
+        "endLine": 173,
+        "endChar": 34
+      },
+      "revId": "e8b658ac8f3b8816fee9a51937bdbd2179245cc9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4f4be2b7_4e75af48",
+        "filename": "packages/Tethering/src/com/android/networkstack/tethering/EntitlementManager.java",
+        "patchSetId": 9
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2020-05-08T06:26:13Z",
+      "side": 1,
+      "message": "will",
+      "range": {
+        "startLine": 173,
+        "startChar": 81,
+        "endLine": 173,
+        "endChar": 86
+      },
+      "revId": "e8b658ac8f3b8816fee9a51937bdbd2179245cc9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "246e19cc_5199829e",
+        "filename": "packages/Tethering/tests/unit/src/com/android/networkstack/tethering/TetheringTest.java",
+        "patchSetId": 9
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2020-05-08T06:26:13Z",
+      "side": 1,
+      "message": "Out of curiosity, why change this? Does it avoid line wrapping?",
+      "range": {
+        "startLine": 221,
+        "startChar": 31,
+        "endLine": 221,
+        "endChar": 42
+      },
+      "revId": "e8b658ac8f3b8816fee9a51937bdbd2179245cc9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}

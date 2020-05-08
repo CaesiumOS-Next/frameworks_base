@@ -22,6 +22,30 @@
       "revId": "1304083c7d7e9fe9e8103f3660fae1d214489592",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "928241a3_4b053e74",
+        "filename": "packages/Tethering/src/com/android/networkstack/tethering/Tethering.java",
+        "patchSetId": 8
+      },
+      "lineNbr": 521,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2020-05-08T06:26:13Z",
+      "side": 1,
+      "message": "That said, this would complicate the unit test a bit, so maybe you don\u0027t want to do this? In any case, no need to do it in this CL.",
+      "parentUuid": "2c6c5502_bea14c88",
+      "range": {
+        "startLine": 516,
+        "startChar": 0,
+        "endLine": 521,
+        "endChar": 13
+      },
+      "revId": "1304083c7d7e9fe9e8103f3660fae1d214489592",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
