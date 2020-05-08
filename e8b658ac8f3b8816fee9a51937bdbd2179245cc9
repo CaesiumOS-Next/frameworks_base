@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "75701e1a_3805562b",
+        "filename": "packages/Tethering/src/com/android/networkstack/tethering/EntitlementManager.java",
+        "patchSetId": 9
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1308504
+      },
+      "writtenOn": "2020-05-08T08:10:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8c513619_87b6d3f7",
+      "range": {
+        "startLine": 172,
+        "startChar": 90,
+        "endLine": 172,
+        "endChar": 93
+      },
+      "revId": "e8b658ac8f3b8816fee9a51937bdbd2179245cc9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c4e4187e_6b5969ea",
         "filename": "packages/Tethering/src/com/android/networkstack/tethering/EntitlementManager.java",
         "patchSetId": 9
@@ -71,6 +95,54 @@
     },
     {
       "key": {
+        "uuid": "2318b089_4e39fa59",
+        "filename": "packages/Tethering/src/com/android/networkstack/tethering/EntitlementManager.java",
+        "patchSetId": 9
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1308504
+      },
+      "writtenOn": "2020-05-08T08:10:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c4e4187e_6b5969ea",
+      "range": {
+        "startLine": 173,
+        "startChar": 31,
+        "endLine": 173,
+        "endChar": 34
+      },
+      "revId": "e8b658ac8f3b8816fee9a51937bdbd2179245cc9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "381ca8e7_49108207",
+        "filename": "packages/Tethering/src/com/android/networkstack/tethering/EntitlementManager.java",
+        "patchSetId": 9
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1308504
+      },
+      "writtenOn": "2020-05-08T08:10:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4f4be2b7_4e75af48",
+      "range": {
+        "startLine": 173,
+        "startChar": 81,
+        "endLine": 173,
+        "endChar": 86
+      },
+      "revId": "e8b658ac8f3b8816fee9a51937bdbd2179245cc9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "246e19cc_5199829e",
         "filename": "packages/Tethering/tests/unit/src/com/android/networkstack/tethering/TetheringTest.java",
         "patchSetId": 9
@@ -91,6 +163,30 @@
       "revId": "e8b658ac8f3b8816fee9a51937bdbd2179245cc9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "00ce6883_6e4cde83",
+        "filename": "packages/Tethering/tests/unit/src/com/android/networkstack/tethering/TetheringTest.java",
+        "patchSetId": 9
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 1308504
+      },
+      "writtenOn": "2020-05-08T08:10:49Z",
+      "side": 1,
+      "message": "This is added in another CL(writing later than this CL but merged first) and I do not remember I already name \"mEntitlementManager\" in this CL. Since the CL(have mEntitleMgr naming) merged first, I rebase this CL then the name is changed as you see.",
+      "parentUuid": "246e19cc_5199829e",
+      "range": {
+        "startLine": 221,
+        "startChar": 31,
+        "endLine": 221,
+        "endChar": 42
+      },
+      "revId": "e8b658ac8f3b8816fee9a51937bdbd2179245cc9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
