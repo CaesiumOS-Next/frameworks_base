@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2c6c5502_bea14c88",
+        "filename": "packages/Tethering/src/com/android/networkstack/tethering/Tethering.java",
+        "patchSetId": 8
+      },
+      "lineNbr": 521,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2020-05-08T06:07:17Z",
+      "side": 1,
+      "message": "Given that the data on exempted downstreams is in EntitlementManager, it feels like this code should be in startProvisioningIfNeeded, not here. (Just like the code to remove the exemption is in stopProvisioningIfNeeded, not in this class.)\n\nThat way we also have the invariant that there will be exactly one call to startProvisioningIfNeeded for every call to startTethering.\n\nMaybe just make startProvisioningIfNeeded take the request parcel?",
+      "range": {
+        "startLine": 516,
+        "startChar": 0,
+        "endLine": 521,
+        "endChar": 13
+      },
+      "revId": "1304083c7d7e9fe9e8103f3660fae1d214489592",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
