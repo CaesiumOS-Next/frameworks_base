@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f9ded4b9_0480c590",
+        "filename": "packages/Tethering/src/com/android/networkstack/tethering/TetheringService.java",
+        "patchSetId": 11
+      },
+      "lineNbr": 329,
+      "author": {
+        "id": 1308504
+      },
+      "writtenOn": "2020-05-08T10:57:07Z",
+      "side": 1,
+      "message": "Do not move this function to avoid conflict with internal branch.",
+      "range": {
+        "startLine": 324,
+        "startChar": 0,
+        "endLine": 329,
+        "endChar": 5
+      },
+      "revId": "7f2ec3593fb88224314407258d135abe1bc794a7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
