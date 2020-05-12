@@ -520,6 +520,30 @@
     },
     {
       "key": {
+        "uuid": "df6c084d_2a762255",
+        "filename": "packages/Tethering/src/com/android/server/connectivity/tethering/PrivateAddressCoordinator.java",
+        "patchSetId": 9
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1308504
+      },
+      "writtenOn": "2020-05-12T08:23:40Z",
+      "side": 1,
+      "message": "I still think interface is more suitable than network to lookup IpPrefix because one network may have multiple interfaces(e.g. clat).",
+      "parentUuid": "3b5db63b_e34075be",
+      "range": {
+        "startLine": 53,
+        "startChar": 27,
+        "endLine": 53,
+        "endChar": 33
+      },
+      "revId": "63cc59de7c2e5d952419260c943e0d719b0fa7dd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c11bc4cb_875bf837",
         "filename": "packages/Tethering/src/com/android/server/connectivity/tethering/PrivateAddressCoordinator.java",
         "patchSetId": 9
