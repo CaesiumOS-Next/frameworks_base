@@ -96,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "75fab033_d309646f",
+        "filename": "packages/Tethering/src/android/net/ip/IpServer.java",
+        "patchSetId": 13
+      },
+      "lineNbr": 390,
+      "author": {
+        "id": 1135107
+      },
+      "writtenOn": "2020-05-12T18:26:28Z",
+      "side": 1,
+      "message": "Oh, I meant restartTethering without arguments, since you only called it with true argument. Now since it\u0027s being used both with true and false, setTetheringRestartNeeded(bool needed) seems more appropriate.",
+      "parentUuid": "2d0f9f10_f2dc9823",
+      "range": {
+        "startLine": 390,
+        "startChar": 4,
+        "endLine": 390,
+        "endChar": 58
+      },
+      "revId": "3c374eacaf5dbf00c776e867fe9e5218c5176adc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ed383716_b1c268b7",
         "filename": "packages/Tethering/src/android/net/ip/IpServer.java",
         "patchSetId": 13
