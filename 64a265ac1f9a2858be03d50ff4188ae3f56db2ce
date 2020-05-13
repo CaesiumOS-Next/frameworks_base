@@ -22,6 +22,29 @@
       "revId": "64a265ac1f9a2858be03d50ff4188ae3f56db2ce",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "148e36d3_c8203a0b",
+        "filename": "core/proto/android/stats/connectivity/network_tethering.proto",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1308504
+      },
+      "writtenOn": "2020-05-13T03:49:54Z",
+      "side": 1,
+      "message": "This is not upstream type.\nUpstream may be:\nCELLULAR, WIFI, BLUETOOTH, ETHERNET,\nreference:\nhttps://osscs.corp.google.com/android/platform/superproject/+/master:frameworks/base/core/java/android/net/NetworkCapabilities.java;l\u003d713?ss\u003dandroid\u0026q\u003dnetworkcapabilities",
+      "range": {
+        "startLine": 62,
+        "startChar": 0,
+        "endLine": 68,
+        "endChar": 31
+      },
+      "revId": "64a265ac1f9a2858be03d50ff4188ae3f56db2ce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
