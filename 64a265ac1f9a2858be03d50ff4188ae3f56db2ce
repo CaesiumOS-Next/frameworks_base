@@ -45,6 +45,30 @@
       "revId": "64a265ac1f9a2858be03d50ff4188ae3f56db2ce",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "19eaa173_5a18d860",
+        "filename": "core/proto/android/stats/connectivity/network_tethering.proto",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1351420
+      },
+      "writtenOn": "2020-05-13T03:59:04Z",
+      "side": 1,
+      "message": "Do we need to record upstream type ?\nError type seems only related to downstream.",
+      "parentUuid": "148e36d3_c8203a0b",
+      "range": {
+        "startLine": 62,
+        "startChar": 0,
+        "endLine": 68,
+        "endChar": 31
+      },
+      "revId": "64a265ac1f9a2858be03d50ff4188ae3f56db2ce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
