@@ -69,6 +69,30 @@
       "revId": "64a265ac1f9a2858be03d50ff4188ae3f56db2ce",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "15af022a_cabb5c32",
+        "filename": "core/proto/android/stats/connectivity/network_tethering.proto",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1308504
+      },
+      "writtenOn": "2020-05-13T04:05:14Z",
+      "side": 1,
+      "message": "If we can know upstream when error happen, it may be helpful for debug or analysis.",
+      "parentUuid": "19eaa173_5a18d860",
+      "range": {
+        "startLine": 62,
+        "startChar": 0,
+        "endLine": 68,
+        "endChar": 31
+      },
+      "revId": "64a265ac1f9a2858be03d50ff4188ae3f56db2ce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
