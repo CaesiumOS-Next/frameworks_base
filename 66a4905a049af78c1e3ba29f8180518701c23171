@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "66e73591_3e65e360",
+        "filename": "core/jni/AndroidRuntime.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 814,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2020-05-14T19:57:54Z",
+      "side": 1,
+      "message": "Is there any reason why this can\u0027t be a system property?",
+      "revId": "66a4905a049af78c1e3ba29f8180518701c23171",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
