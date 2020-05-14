@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "e975c088_c4b373e5",
+        "filename": "cmds/statsd/src/atoms.proto",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1364839
+      },
+      "writtenOn": "2020-05-14T03:52:02Z",
+      "side": 1,
+      "message": "I used to add it as a prefix to our team metrics.\nIf you find it confusing, I can remove it.",
+      "parentUuid": "e2610561_d1d708ba",
+      "range": {
+        "startLine": 44,
+        "startChar": 62,
+        "endLine": 44,
+        "endChar": 79
+      },
+      "revId": "64a265ac1f9a2858be03d50ff4188ae3f56db2ce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "148e36d3_c8203a0b",
         "filename": "core/proto/android/stats/connectivity/network_tethering.proto",
         "patchSetId": 1
