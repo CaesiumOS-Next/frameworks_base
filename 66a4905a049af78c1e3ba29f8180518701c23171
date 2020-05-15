@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "e30072cb_71b2dfc7",
+        "filename": "core/jni/AndroidRuntime.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 813,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2020-05-15T19:26:11Z",
+      "side": 1,
+      "message": "Where is this check actually done?",
+      "range": {
+        "startLine": 811,
+        "startChar": 47,
+        "endLine": 813,
+        "endChar": 6
+      },
+      "revId": "66a4905a049af78c1e3ba29f8180518701c23171",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "66e73591_3e65e360",
         "filename": "core/jni/AndroidRuntime.cpp",
         "patchSetId": 1
@@ -52,6 +75,24 @@
       "revId": "66a4905a049af78c1e3ba29f8180518701c23171",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7ff1cff5_394f6b53",
+        "filename": "core/jni/AndroidRuntime.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 814,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2020-05-15T19:26:11Z",
+      "side": 1,
+      "message": "Having a forced default value passed for any property here is usually a bad practice. Even if it will be true for all known cases now, there might be special cases when devices will need a special config. These special cases usually come much later after the commit.\n\nAlso, setting this as true here makes me questions: why not have it true by default in the runtime then, and make sure we flip it false in tests?",
+      "parentUuid": "b4de281c_d10693ab",
+      "revId": "66a4905a049af78c1e3ba29f8180518701c23171",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
