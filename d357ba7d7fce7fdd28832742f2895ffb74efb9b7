@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4dd1fdce_acbb3712",
+        "filename": "core/proto/android/stats/connectivity/tethering.proto",
+        "patchSetId": 3
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1308504
+      },
+      "writtenOn": "2020-05-18T10:03:05Z",
+      "side": 1,
+      "message": "nits: DownstreamType",
+      "range": {
+        "startLine": 43,
+        "startChar": 5,
+        "endLine": 43,
+        "endChar": 19
+      },
+      "revId": "d357ba7d7fce7fdd28832742f2895ffb74efb9b7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8e4d634e_51ab1427",
+        "filename": "core/proto/android/stats/connectivity/tethering.proto",
+        "patchSetId": 3
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1308504
+      },
+      "writtenOn": "2020-05-18T10:03:05Z",
+      "side": 1,
+      "message": "To consistent with Downstream and have opportunity to allow other upstream but share the same transport type. Maybe rename to UpstreamType and UT_XXX(e.g. UT_WIFI)",
+      "range": {
+        "startLine": 60,
+        "startChar": 5,
+        "endLine": 60,
+        "endChar": 26
+      },
+      "revId": "d357ba7d7fce7fdd28832742f2895ffb74efb9b7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
