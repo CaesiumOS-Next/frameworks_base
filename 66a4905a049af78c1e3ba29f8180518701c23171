@@ -93,6 +93,24 @@
       "revId": "66a4905a049af78c1e3ba29f8180518701c23171",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "97c8daa7_306cd6a9",
+        "filename": "core/jni/AndroidRuntime.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 814,
+      "author": {
+        "id": 1268571
+      },
+      "writtenOn": "2020-05-18T18:19:28Z",
+      "side": 1,
+      "message": "Added a sysprop.\n\nAlex told me to add the flag this way, and I don\u0027t see how inverting the default would make a difference in practice, so leaving it this way.",
+      "parentUuid": "7ff1cff5_394f6b53",
+      "revId": "66a4905a049af78c1e3ba29f8180518701c23171",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
