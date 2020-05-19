@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "966f3472_cafcc926",
+        "filename": "core/java/android/net/NetworkInfo.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 496,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2020-05-19T14:56:50Z",
+      "side": 1,
+      "message": "Null?",
+      "range": {
+        "startLine": 496,
+        "startChar": 48,
+        "endLine": 496,
+        "endChar": 55
+      },
+      "revId": "6ebcb8f7ebab2248e8a6d1eafe36edd23dabab5b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
