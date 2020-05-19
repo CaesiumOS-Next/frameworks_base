@@ -22,6 +22,30 @@
       "revId": "6ebcb8f7ebab2248e8a6d1eafe36edd23dabab5b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "73182e8c_f9414504",
+        "filename": "core/java/android/net/NetworkInfo.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 496,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2020-05-19T14:59:05Z",
+      "side": 1,
+      "message": "Never mind, this is explained in the comment right above this.",
+      "parentUuid": "966f3472_cafcc926",
+      "range": {
+        "startLine": 496,
+        "startChar": 48,
+        "endLine": 496,
+        "endChar": 55
+      },
+      "revId": "6ebcb8f7ebab2248e8a6d1eafe36edd23dabab5b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
