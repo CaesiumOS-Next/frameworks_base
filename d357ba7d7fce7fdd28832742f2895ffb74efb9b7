@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "fdb7dcf7_08b1faae",
+        "filename": "core/proto/android/stats/connectivity/tethering.proto",
+        "patchSetId": 3
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1364839
+      },
+      "writtenOn": "2020-05-19T09:28:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4dd1fdce_acbb3712",
+      "range": {
+        "startLine": 43,
+        "startChar": 5,
+        "endLine": 43,
+        "endChar": 19
+      },
+      "revId": "d357ba7d7fce7fdd28832742f2895ffb74efb9b7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8e4d634e_51ab1427",
         "filename": "core/proto/android/stats/connectivity/tethering.proto",
         "patchSetId": 3
@@ -45,6 +69,30 @@
       "revId": "d357ba7d7fce7fdd28832742f2895ffb74efb9b7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "72284b45_5905b361",
+        "filename": "core/proto/android/stats/connectivity/tethering.proto",
+        "patchSetId": 3
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1364839
+      },
+      "writtenOn": "2020-05-19T09:28:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8e4d634e_51ab1427",
+      "range": {
+        "startLine": 60,
+        "startChar": 5,
+        "endLine": 60,
+        "endChar": 26
+      },
+      "revId": "d357ba7d7fce7fdd28832742f2895ffb74efb9b7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
