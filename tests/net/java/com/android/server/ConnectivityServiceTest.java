@@ -6320,6 +6320,7 @@ public class ConnectivityServiceTest {
         int netId = network.getNetId();
         callback.expectAvailableCallbacksUnvalidated(mCellNetworkAgent);
         inOrder.verify(mMockNetd).clatdStart(iface, pref64FromRa.toString());
+        inOrder.verify(mMockDnsResolver).setPrefix64(netId, pref64FromRa.toString());
         inOrder.verify(mMockDnsResolver, never()).startPrefix64Discovery(netId);
         callback.assertNoCallback();
         assertEquals(pref64FromRa, mCm.getLinkProperties(network).getNat64Prefix());
@@ -6329,6 +6330,7 @@ public class ConnectivityServiceTest {
         mCellNetworkAgent.sendLinkProperties(lp);
         expectNat64PrefixChange(callback, mCellNetworkAgent, null);
         inOrder.verify(mMockNetd).clatdStop(iface);
+        inOrder.verify(mMockDnsResolver).setPrefix64(netId, "");
         inOrder.verify(mMockDnsResolver).startPrefix64Discovery(netId);
 
         // If the RA prefix appears while DNS discovery is in progress, discovery is stopped and
@@ -6338,6 +6340,7 @@ public class ConnectivityServiceTest {
         expectNat64PrefixChange(callback, mCellNetworkAgent, pref64FromRa);
         inOrder.verify(mMockNetd).clatdStart(iface, pref64FromRa.toString());
         inOrder.verify(mMockDnsResolver).stopPrefix64Discovery(netId);
+        inOrder.verify(mMockDnsResolver).setPrefix64(netId, pref64FromRa.toString());
 
         // Withdraw the RA prefix so we can test the case where an RA prefix appears after DNS
         // discovery has succeeded.
@@ -6345,6 +6348,7 @@ public class ConnectivityServiceTest {
         mCellNetworkAgent.sendLinkProperties(lp);
         expectNat64PrefixChange(callback, mCellNetworkAgent, null);
         inOrder.verify(mMockNetd).clatdStop(iface);
+        inOrder.verify(mMockDnsResolver).setPrefix64(netId, "");
         inOrder.verify(mMockDnsResolver).startPrefix64Discovery(netId);
 
         mService.mNetdEventCallback.onNat64PrefixEvent(netId, true /* added */,
@@ -6359,6 +6363,7 @@ public class ConnectivityServiceTest {
         inOrder.verify(mMockNetd).clatdStop(iface);
         inOrder.verify(mMockDnsResolver).stopPrefix64Discovery(netId);
         inOrder.verify(mMockNetd).clatdStart(iface, pref64FromRa.toString());
+        inOrder.verify(mMockDnsResolver).setPrefix64(netId, pref64FromRa.toString());
         inOrder.verify(mMockDnsResolver, never()).startPrefix64Discovery(netId);
 
         // If the RA prefix changes, clatd is restarted and prefix discovery is not started.
@@ -6366,7 +6371,9 @@ public class ConnectivityServiceTest {
         mCellNetworkAgent.sendLinkProperties(lp);
         expectNat64PrefixChange(callback, mCellNetworkAgent, newPref64FromRa);
         inOrder.verify(mMockNetd).clatdStop(iface);
+        inOrder.verify(mMockDnsResolver).setPrefix64(netId, "");
         inOrder.verify(mMockNetd).clatdStart(iface, newPref64FromRa.toString());
+        inOrder.verify(mMockDnsResolver).setPrefix64(netId, newPref64FromRa.toString());
         inOrder.verify(mMockDnsResolver, never()).stopPrefix64Discovery(netId);
         inOrder.verify(mMockDnsResolver, never()).startPrefix64Discovery(netId);
 
@@ -6379,6 +6386,7 @@ public class ConnectivityServiceTest {
         inOrder.verify(mMockNetd, never()).clatdStart(eq(iface), anyString());
         inOrder.verify(mMockDnsResolver, never()).stopPrefix64Discovery(netId);
         inOrder.verify(mMockDnsResolver, never()).startPrefix64Discovery(netId);
+        inOrder.verify(mMockDnsResolver, never()).setPrefix64(eq(netId), anyString());
 
         // The transition between no prefix and DNS prefix is tested in testStackedLinkProperties.
 
