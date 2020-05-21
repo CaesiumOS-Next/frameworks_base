@@ -1,0 +1,234 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "797e7f26_9df6c7c3",
+        "filename": "packages/Tethering/src/android/net/ip/IpServer.java",
+        "patchSetId": 16
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1288034
+      },
+      "writtenOn": "2020-05-21T13:31:47Z",
+      "side": 1,
+      "message": "While as far as IpServer is concerned it\u0027s OK not to do anything for the 3 methods above, it\u0027s not OK for this method, so this default behavior needs to be overridden.\nIn which case, I think this and the method should be abstract\n\n(but see larger comment about not using this callback and having the coordinator passed in the IpServer constructor instead)",
+      "range": {
+        "startLine": 155,
+        "startChar": 8,
+        "endLine": 158,
+        "endChar": 0
+      },
+      "revId": "7127cb0a8650ca492988ae24b7d09117e1f6152a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "71b008f0_6fe7ed53",
+        "filename": "packages/Tethering/src/android/net/ip/IpServer.java",
+        "patchSetId": 16
+      },
+      "lineNbr": 411,
+      "author": {
+        "id": 1288034
+      },
+      "writtenOn": "2020-05-21T13:31:47Z",
+      "side": 1,
+      "message": "Nit: IpServer",
+      "range": {
+        "startLine": 411,
+        "startChar": 56,
+        "endLine": 411,
+        "endChar": 63
+      },
+      "revId": "7127cb0a8650ca492988ae24b7d09117e1f6152a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3f8a27b0_0491d51e",
+        "filename": "packages/Tethering/src/android/net/ip/IpServer.java",
+        "patchSetId": 16
+      },
+      "lineNbr": 635,
+      "author": {
+        "id": 1288034
+      },
+      "writtenOn": "2020-05-21T13:31:47Z",
+      "side": 1,
+      "message": "Why is this condition necessary ? IpServer is stopping so the address is being released right ?\nIf this is due to some behavior of PrivateAddressCoordinator, I think that class should be updated to handle it.",
+      "range": {
+        "startLine": 635,
+        "startChar": 8,
+        "endLine": 635,
+        "endChar": 36
+      },
+      "revId": "7127cb0a8650ca492988ae24b7d09117e1f6152a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f0d57cb7_ec1762d7",
+        "filename": "packages/Tethering/src/android/net/ip/IpServer.java",
+        "patchSetId": 16
+      },
+      "lineNbr": 688,
+      "author": {
+        "id": 1288034
+      },
+      "writtenOn": "2020-05-21T13:31:47Z",
+      "side": 1,
+      "message": "Nit: this looks like a getter but is really not, how about \"requestAddress\" to match the callback ?",
+      "range": {
+        "startLine": 688,
+        "startChar": 24,
+        "endLine": 688,
+        "endChar": 38
+      },
+      "revId": "7127cb0a8650ca492988ae24b7d09117e1f6152a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a38813e4_7f3b2f5b",
+        "filename": "packages/Tethering/src/com/android/networkstack/tethering/PrivateAddressCoordinator.java",
+        "patchSetId": 16
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1288034
+      },
+      "writtenOn": "2020-05-21T13:31:47Z",
+      "side": 1,
+      "message": "Supernit: !address.isIpv4() ? This indicates more clearly that we want to just keep IPv4 addresses",
+      "range": {
+        "startLine": 89,
+        "startChar": 16,
+        "endLine": 89,
+        "endChar": 32
+      },
+      "revId": "7127cb0a8650ca492988ae24b7d09117e1f6152a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b2711ffe_cb7960ef",
+        "filename": "packages/Tethering/src/com/android/networkstack/tethering/PrivateAddressCoordinator.java",
+        "patchSetId": 16
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1288034
+      },
+      "writtenOn": "2020-05-21T13:31:47Z",
+      "side": 1,
+      "message": "getConflictDownstreamIfaces ?",
+      "range": {
+        "startLine": 97,
+        "startChar": 30,
+        "endLine": 97,
+        "endChar": 52
+      },
+      "revId": "7127cb0a8650ca492988ae24b7d09117e1f6152a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "18ede056_285396c6",
+        "filename": "packages/Tethering/src/com/android/networkstack/tethering/PrivateAddressCoordinator.java",
+        "patchSetId": 16
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1288034
+      },
+      "writtenOn": "2020-05-21T13:31:47Z",
+      "side": 1,
+      "message": "But bytes[3] is not the subId (subnet ID ?), it\u0027s the address inside the subnet right ?\nShould this be \"getSanitizedAddressSuffix\", \"getSanitizedAddressByte\" or something similar ?",
+      "range": {
+        "startLine": 126,
+        "startChar": 19,
+        "endLine": 126,
+        "endChar": 36
+      },
+      "revId": "7127cb0a8650ca492988ae24b7d09117e1f6152a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d35e82e0_a8a81115",
+        "filename": "packages/Tethering/src/com/android/networkstack/tethering/PrivateAddressCoordinator.java",
+        "patchSetId": 16
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1288034
+      },
+      "writtenOn": "2020-05-21T13:31:47Z",
+      "side": 1,
+      "message": "Nit: it\u0027s not clear that this goes through all bytes, and when looking at the constant definition it\u0027s not clear why it\u0027s 256; maybe call it MAX_UBYTE, or just use \"i \u003c\u003d BYTE_MASK\" ?",
+      "range": {
+        "startLine": 127,
+        "startChar": 28,
+        "endLine": 127,
+        "endChar": 42
+      },
+      "revId": "7127cb0a8650ca492988ae24b7d09117e1f6152a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1105a2d1_b8545d37",
+        "filename": "packages/Tethering/src/com/android/networkstack/tethering/PrivateAddressCoordinator.java",
+        "patchSetId": 16
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1288034
+      },
+      "writtenOn": "2020-05-21T13:31:47Z",
+      "side": 1,
+      "message": "This class should not be written to depend on behavior of the Tethering state machine; it should be valid for Tethering to remove all downstreams, then add back some, without notifying of changes in the upstreams.\n\nSee other comment about having IpServers register themselves to this class: in that case the IpServer can unregister when it exits BaseServingState maybe ?",
+      "range": {
+        "startLine": 177,
+        "startChar": 43,
+        "endLine": 179,
+        "endChar": 32
+      },
+      "revId": "7127cb0a8650ca492988ae24b7d09117e1f6152a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4dc55eee_672cb65b",
+        "filename": "packages/Tethering/src/com/android/networkstack/tethering/Tethering.java",
+        "patchSetId": 16
+      },
+      "lineNbr": 1624,
+      "author": {
+        "id": 1288034
+      },
+      "writtenOn": "2020-05-21T13:31:47Z",
+      "side": 1,
+      "message": "I still find this very ad-hoc, and really don\u0027t like that Tethering is using some boolean in its IpServer to track some state, and that the stop() path ends up containing a start() path.\n\nOne way that I would find better:\n - Add a state in IpServer such as WaitingForRestartState\n - Instead of adding methods in IpServer.Callback, send mPrivateAddressCoordinator to each IpServer in its constructor\n - Have each IpServer register (for conflict notifications) to mPrivateAddressCoordinator, so instead of having ArrayMap\u003cString, IpPrefix\u003e mDownstreamPrefixMap, you just have ArrayList\u003cIpServer\u003e or LinkedHashSet\u003cIpServer\u003e\n - Instead of returning a list of conflicting interfaces, PrivateAddressCoordinator#updateUpstreamPrefix directly sends .notifyPrefixConflicts() to the IpServer (and returns void)\n - When receiving notifyPrefixConflicts(), the IpServer transitions to WaitingForRestartState and calls stopTetheringInternal() on Tethering in State#enter()\n - Once IpServer receives CMD_INTERFACE_DOWN  in WaitingForRestartState, it calls enableTetheringInternal() (so you\u0027d have new internal start/stop methods on IpServer.Callbacks) \n\n\nThis way state is tracked as usual (with a StateMachine state), and IpServer just has normal start / stop mechanics.\nIt also gives a clear role to PrivateAddressCoordinator: IpServers register to it to receive conflict notifications, and Tethering just notifies it of new upstream prefixes; so all the conflict detection logic is in PrivateAddressCoordinator.",
+      "range": {
+        "startLine": 1621,
+        "startChar": 12,
+        "endLine": 1624,
+        "endChar": 13
+      },
+      "revId": "7127cb0a8650ca492988ae24b7d09117e1f6152a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
