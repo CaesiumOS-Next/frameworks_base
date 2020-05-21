@@ -3335,6 +3335,8 @@ public class LocationManagerService extends ILocationManager.Stub {
         Location coarseLocation = null;
         if (noGPSLocation != null) {
             coarseLocation = mLocationFudger.getOrCreate(noGPSLocation);
+        } else if (LocationManager.NETWORK_PROVIDER.equals(location.getProvider())) {
+            coarseLocation = mLocationFudger.getOrCreate(noGPSLocation);
         }
 
         ArrayList<Receiver> deadReceivers = null;
