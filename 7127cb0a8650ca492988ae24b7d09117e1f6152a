@@ -117,6 +117,30 @@
     },
     {
       "key": {
+        "uuid": "be70a743_11914f0f",
+        "filename": "packages/Tethering/src/com/android/networkstack/tethering/PrivateAddressCoordinator.java",
+        "patchSetId": 16
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1135107
+      },
+      "writtenOn": "2020-05-26T16:26:52Z",
+      "side": 1,
+      "message": "It\u0027s no longer a supernit if in 20 years from now there was IPv10.",
+      "parentUuid": "a38813e4_7f3b2f5b",
+      "range": {
+        "startLine": 89,
+        "startChar": 16,
+        "endLine": 89,
+        "endChar": 32
+      },
+      "revId": "7127cb0a8650ca492988ae24b7d09117e1f6152a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b2711ffe_cb7960ef",
         "filename": "packages/Tethering/src/com/android/networkstack/tethering/PrivateAddressCoordinator.java",
         "patchSetId": 16
