@@ -98,8 +98,8 @@ public class AudioSystem
     /** Maximum value for AudioTrack channel count
      * @hide public for MediaCode only, do not un-hide or change to a numeric literal
      */
-    public static final int OUT_CHANNEL_COUNT_MAX = native_get_FCC_8();
-    private static native int native_get_FCC_8();
+    public static final int OUT_CHANNEL_COUNT_MAX = native_get_FCC_12();
+    private static native int native_get_FCC_12();
 
     // Expose only the getter method publicly so we can change it in the future
     private static final int NUM_STREAM_TYPES = 11;

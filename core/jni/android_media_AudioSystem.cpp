@@ -2200,8 +2200,8 @@ android_media_AudioSystem_setSurroundFormatEnabled(JNIEnv *env, jobject thiz,
     return (jint)nativeToJavaStatus(status);
 }
 
-static jint android_media_AudioSystem_get_FCC_8(JNIEnv *env, jobject thiz) {
-    return FCC_8;
+static jint android_media_AudioSystem_get_FCC_12(JNIEnv *env, jobject thiz) {
+    return FCC_12;
 }
 
 static jint
@@ -2355,7 +2355,7 @@ static const JNINativeMethod gEventHandlerMethods[] = {
 };
 
 static const JNINativeMethod gGetFCC8Methods[] = {
-    {"native_get_FCC_8", "()I", (void *)android_media_AudioSystem_get_FCC_8},
+    {"native_get_FCC_12", "()I", (void *)android_media_AudioSystem_get_FCC_12},
 };
 
 int register_android_media_AudioSystem(JNIEnv *env)
