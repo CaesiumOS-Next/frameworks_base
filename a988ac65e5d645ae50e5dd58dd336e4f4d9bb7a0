@@ -1,0 +1,234 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d9869ad8_69bd2337",
+        "filename": "packages/Tethering/src/android/net/ip/IpServer.java",
+        "patchSetId": 18
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1288034
+      },
+      "writtenOn": "2020-05-27T03:10:46Z",
+      "side": 1,
+      "message": "Nit: whether to restart is up to IpServer: PrivateAddressCoordinator\u0027s role is only to track prefix conflicts, so the command should be CMD_NOTIFY_PREFIX_CONFLICT or something similar",
+      "range": {
+        "startLine": 217,
+        "startChar": 7,
+        "endLine": 218,
+        "endChar": 49
+      },
+      "revId": "a988ac65e5d645ae50e5dd58dd336e4f4d9bb7a0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cb8a685d_350c44c7",
+        "filename": "packages/Tethering/src/android/net/ip/IpServer.java",
+        "patchSetId": 18
+      },
+      "lineNbr": 355,
+      "author": {
+        "id": 1288034
+      },
+      "writtenOn": "2020-05-27T03:10:46Z",
+      "side": 1,
+      "message": "I think WaitingForRestartState should be a substate of mTetheredState, otherwise you end up calling mTetheredState.exit() which tears down the downstream, then have Tethering stop tethering (which should also attempt to tear down the downstream); so this creates an unusual teardown path that\u0027s not well tested.\n\nYou could just do:\naddState(mTetheredState, mWaitingForRestartState)\nand you also don\u0027t need to handle CMD_TETHER_UNREQUESTED in WaitingForRestartState\n\nAlso that\u0027s assuming that this mechanism is not valid for local hotspot, so the handling of CMD_RESTART_TETHERING should be moved from BaseServingState to TetheredState",
+      "range": {
+        "startLine": 355,
+        "startChar": 8,
+        "endLine": 355,
+        "endChar": 41
+      },
+      "revId": "a988ac65e5d645ae50e5dd58dd336e4f4d9bb7a0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eee47bd0_24dbb011",
+        "filename": "packages/Tethering/src/android/net/ip/IpServer.java",
+        "patchSetId": 18
+      },
+      "lineNbr": 636,
+      "author": {
+        "id": 1288034
+      },
+      "writtenOn": "2020-05-27T03:10:46Z",
+      "side": 1,
+      "message": "Nit: \".e\" will already say \"error\" so no need to have it in the message",
+      "range": {
+        "startLine": 636,
+        "startChar": 20,
+        "endLine": 636,
+        "endChar": 26
+      },
+      "revId": "a988ac65e5d645ae50e5dd58dd336e4f4d9bb7a0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "baa47982_8bfb2d77",
+        "filename": "packages/Tethering/src/android/net/ip/IpServer.java",
+        "patchSetId": 18
+      },
+      "lineNbr": 1387,
+      "author": {
+        "id": 1288034
+      },
+      "writtenOn": "2020-05-27T03:10:46Z",
+      "side": 1,
+      "message": "interface down ? (maybe also add \"restarting\" to this message too ?)",
+      "range": {
+        "startLine": 1387,
+        "startChar": 40,
+        "endLine": 1387,
+        "endChar": 51
+      },
+      "revId": "a988ac65e5d645ae50e5dd58dd336e4f4d9bb7a0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "221ea712_6e7b5cf1",
+        "filename": "packages/Tethering/src/com/android/networkstack/tethering/PrivateAddressCoordinator.java",
+        "patchSetId": 18
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1288034
+      },
+      "writtenOn": "2020-05-27T03:10:46Z",
+      "side": 1,
+      "message": "remove ? Maybe replace with saying that downstreams will be notified if a conflict is found",
+      "range": {
+        "startLine": 75,
+        "startChar": 7,
+        "endLine": 77,
+        "endChar": 28
+      },
+      "revId": "a988ac65e5d645ae50e5dd58dd336e4f4d9bb7a0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5b7ea566_a65fec30",
+        "filename": "packages/Tethering/src/com/android/networkstack/tethering/PrivateAddressCoordinator.java",
+        "patchSetId": 18
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1288034
+      },
+      "writtenOn": "2020-05-27T03:10:46Z",
+      "side": 1,
+      "message": "Nit: should fit in one line",
+      "range": {
+        "startLine": 80,
+        "startChar": 12,
+        "endLine": 80,
+        "endChar": 36
+      },
+      "revId": "a988ac65e5d645ae50e5dd58dd336e4f4d9bb7a0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ee30b89d_dda1c3d8",
+        "filename": "packages/Tethering/src/com/android/networkstack/tethering/PrivateAddressCoordinator.java",
+        "patchSetId": 18
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1288034
+      },
+      "writtenOn": "2020-05-27T03:10:46Z",
+      "side": 1,
+      "message": "This is not well protected against races as there is no guarantee here that there won\u0027t be 2 conflicts, so the first one will be lost.\n\nMaybe this can be in another CL, but I think this should implement what we discussed in the meeting yesterday:\n - Keep a set of previously conflicting prefixes and just don\u0027t delete them; except when you start tethering and there\u0027s more than X (like 50)\n - Or (maybe my preference) keep a map of network -\u003e list\u003cprefix\u003e of previously conflicting prefixes, and when you start tethering remove all networks that are not in ConnectivityManager.getAllNetworks()",
+      "range": {
+        "startLine": 88,
+        "startChar": 8,
+        "endLine": 88,
+        "endChar": 90
+      },
+      "revId": "a988ac65e5d645ae50e5dd58dd336e4f4d9bb7a0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9dd82337_b095d274",
+        "filename": "packages/Tethering/src/com/android/networkstack/tethering/PrivateAddressCoordinator.java",
+        "patchSetId": 18
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1288034
+      },
+      "writtenOn": "2020-05-27T03:10:46Z",
+      "side": 1,
+      "message": "Nit: network",
+      "range": {
+        "startLine": 119,
+        "startChar": 55,
+        "endLine": 119,
+        "endChar": 69
+      },
+      "revId": "a988ac65e5d645ae50e5dd58dd336e4f4d9bb7a0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c3f5a0f8_9b84969a",
+        "filename": "packages/Tethering/src/com/android/networkstack/tethering/PrivateAddressCoordinator.java",
+        "patchSetId": 18
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1288034
+      },
+      "writtenOn": "2020-05-27T03:10:46Z",
+      "side": 1,
+      "message": "Nit: quote",
+      "range": {
+        "startLine": 126,
+        "startChar": 52,
+        "endLine": 126,
+        "endChar": 53
+      },
+      "revId": "a988ac65e5d645ae50e5dd58dd336e4f4d9bb7a0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dfcfa943_3842248c",
+        "filename": "packages/Tethering/src/com/android/networkstack/tethering/PrivateAddressCoordinator.java",
+        "patchSetId": 18
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1288034
+      },
+      "writtenOn": "2020-05-27T03:10:46Z",
+      "side": 1,
+      "message": "Nit: releaseDownstream ? Since it\u0027s not just a prefix, it\u0027s unregistration of the ipserver (alternatively unregisterIpServer, and rename requestDownstreamAddress to registerIpServer)",
+      "range": {
+        "startLine": 181,
+        "startChar": 16,
+        "endLine": 181,
+        "endChar": 39
+      },
+      "revId": "a988ac65e5d645ae50e5dd58dd336e4f4d9bb7a0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
