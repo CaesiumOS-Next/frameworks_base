@@ -16,6 +16,24 @@
       "revId": "8de903184a4f0312a744012e4059e51c79a67a46",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "efe14cfd_8bb428c3",
+        "filename": "tests/net/res/raw/xt_qtaguid_with_clat",
+        "patchSetId": 2
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1003247
+      },
+      "writtenOn": "2020-05-28T09:49:14Z",
+      "side": 1,
+      "message": "Tests pass, and it was more a lack of NL at EOF previously.\nOther test files did have NL at EOF",
+      "parentUuid": "9ba83cc6_48fe16c0",
+      "revId": "8de903184a4f0312a744012e4059e51c79a67a46",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
