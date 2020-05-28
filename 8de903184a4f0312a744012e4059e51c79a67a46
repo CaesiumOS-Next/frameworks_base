@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9ba83cc6_48fe16c0",
+        "filename": "tests/net/res/raw/xt_qtaguid_with_clat",
+        "patchSetId": 2
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2020-05-28T09:30:07Z",
+      "side": 1,
+      "message": "Does this extra blank line cause any problems? Presumably if the tests pass, then it\u0027s fine.",
+      "revId": "8de903184a4f0312a744012e4059e51c79a67a46",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
