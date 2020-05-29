@@ -284,6 +284,30 @@
     },
     {
       "key": {
+        "uuid": "5b6bc331_908771e4",
+        "filename": "packages/Tethering/src/com/android/networkstack/tethering/PrivateAddressCoordinator.java",
+        "patchSetId": 20
+      },
+      "lineNbr": 240,
+      "author": {
+        "id": 1308504
+      },
+      "writtenOn": "2020-05-29T03:30:28Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "d0b2d658_d8103c10",
+      "range": {
+        "startLine": 240,
+        "startChar": 8,
+        "endLine": 240,
+        "endChar": 28
+      },
+      "revId": "f53ec879f0f9f8d781a3340dcff5c8f843f8926e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f014a6b0_8497f3c2",
         "filename": "packages/Tethering/tests/unit/src/com/android/networkstack/tethering/PrivateAddressCoordinatorTest.java",
         "patchSetId": 20
