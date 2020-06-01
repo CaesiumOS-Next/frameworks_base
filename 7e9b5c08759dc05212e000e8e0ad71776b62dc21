@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a9251e76_df471326",
+        "filename": "packages/Tethering/tests/unit/src/com/android/networkstack/tethering/TetheringServiceTest.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 288,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2020-06-01T15:29:22Z",
+      "side": 1,
+      "message": "How can we test for exemptFromEntitlementCheck \u003d true? Do we need to use a test signed by the networkstack key, like NetworkStackIntegrationTests is?",
+      "range": {
+        "startLine": 288,
+        "startChar": 16,
+        "endLine": 288,
+        "endChar": 42
+      },
+      "revId": "7e9b5c08759dc05212e000e8e0ad71776b62dc21",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
