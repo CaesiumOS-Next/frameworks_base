@@ -18,3 +18,5 @@ rule android.net.shared.Inet4AddressUtils* com.android.networkstack.tethering.sh
 
 # Classes from net-utils-framework-common
 rule com.android.net.module.util.** com.android.networkstack.tethering.util.@1
+
+rule com.google.protobuf* com.android.networkstack.tethering.protobuf@1

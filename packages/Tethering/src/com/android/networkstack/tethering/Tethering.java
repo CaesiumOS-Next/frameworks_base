@@ -132,6 +132,8 @@ import com.android.internal.util.IndentingPrintWriter;
 import com.android.internal.util.MessageUtils;
 import com.android.internal.util.State;
 import com.android.internal.util.StateMachine;
+import com.android.networkstack.tethering.metrics.TetheringStatsUtils;
+
 
 import java.io.FileDescriptor;
 import java.io.PrintWriter;
@@ -237,6 +239,7 @@ public class Tethering {
     private final UserManager mUserManager;
     private final BpfCoordinator mBpfCoordinator;
     private final PrivateAddressCoordinator mPrivateAddressCoordinator;
+    private final TetheringStatsUtils mTetheringStatsUtils;
     private int mActiveDataSubId = INVALID_SUBSCRIPTION_ID;
     // All the usage of mTetheringEventCallback should run in the same thread.
     private ITetheringEventCallback mTetheringEventCallback = null;
@@ -267,6 +270,7 @@ public class Tethering {
         mNetd = mDeps.getINetd(mContext);
         mLooper = mDeps.getTetheringLooper();
         mNotificationUpdater = mDeps.getNotificationUpdater(mContext, mLooper);
+        mTetheringStatsUtils = mDeps.getTetheringStatsUtils();
 
         mPublicSync = new Object();
 
@@ -547,7 +551,8 @@ public class Tethering {
         }
     }
 
-    void startTethering(final TetheringRequestParcel request, final IIntResultListener listener) {
+    void startTethering(final TetheringRequestParcel request, final String callerPkg,
+            final IIntResultListener listener) {
         mHandler.post(() -> {
             final TetheringRequestParcel unfinishedRequest = mActiveTetheringRequests.get(
                     request.tetheringType);
@@ -567,6 +572,7 @@ public class Tethering {
                         request.showProvisioningUi);
             }
             enableTetheringInternal(request.tetheringType, true /* enabled */, listener);
+            mTetheringStatsUtils.createTetheringStats(callerPkg, request.tetheringType);
         });
     }
 
@@ -576,6 +582,7 @@ public class Tethering {
 
             enableTetheringInternal(type, false /* disabled */, null);
             mEntitlementMgr.stopProvisioningIfNeeded(type);
+            mTetheringStatsUtils.maybeRemoveAndWriteTetheringStats(type);
         });
     }
 
@@ -858,6 +865,7 @@ public class Tethering {
             for (int i = 0; i < mTetherStates.size(); i++) {
                 TetherState tetherState = mTetherStates.valueAt(i);
                 String iface = mTetherStates.keyAt(i);
+                final int type = tetherState.ipServer.interfaceType();
                 if (tetherState.lastError != TETHER_ERROR_NO_ERROR) {
                     erroredList.add(iface);
                     lastErrorList.add(tetherState.lastError);
@@ -2410,7 +2418,7 @@ public class Tethering {
                 new IpServer(iface, mLooper, interfaceType, mLog, mNetd, mBpfCoordinator,
                              makeControlCallback(), mConfig.enableLegacyDhcpServer,
                              mConfig.isBpfOffloadEnabled(), mPrivateAddressCoordinator,
-                             mDeps.getIpServerDependencies()));
+                             mDeps.getIpServerDependencies(), mTetheringStatsUtils));
         mTetherStates.put(iface, tetherState);
         tetherState.ipServer.start();
     }

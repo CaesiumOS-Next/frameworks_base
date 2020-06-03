@@ -67,6 +67,7 @@ import com.android.internal.util.StateMachine;
 import com.android.networkstack.tethering.BpfCoordinator;
 import com.android.networkstack.tethering.BpfCoordinator.Ipv6ForwardingRule;
 import com.android.networkstack.tethering.PrivateAddressCoordinator;
+import com.android.networkstack.tethering.metrics.TetheringStatsUtils;
 
 import java.io.IOException;
 import java.net.Inet4Address;
@@ -275,13 +276,16 @@ public class IpServer extends StateMachine {
 
     private LinkAddress mIpv4Address;
 
+    private TetheringStatsUtils mTetheringStatsUtils;
+
     // TODO: Add a dependency object to pass the data members or variables from the tethering
     // object. It helps to reduce the arguments of the constructor.
     public IpServer(
             String ifaceName, Looper looper, int interfaceType, SharedLog log,
             INetd netd, @NonNull BpfCoordinator coordinator, Callback callback,
             boolean usingLegacyDhcp, boolean usingBpfOffload,
-            PrivateAddressCoordinator addressCoordinator, Dependencies deps) {
+            PrivateAddressCoordinator addressCoordinator, Dependencies deps,
+            TetheringStatsUtils statsUtils) {
         super(ifaceName, looper);
         mLog = log.forSubComponent(ifaceName);
         mNetd = netd;
@@ -295,6 +299,7 @@ public class IpServer extends StateMachine {
         mUsingBpfOffload = usingBpfOffload;
         mPrivateAddressCoordinator = addressCoordinator;
         mDeps = deps;
+        mTetheringStatsUtils = statsUtils;
         resetLinkProperties();
         mLastError = TetheringManager.TETHER_ERROR_NO_ERROR;
         mServingMode = STATE_AVAILABLE;
@@ -1092,8 +1097,8 @@ public class IpServer extends StateMachine {
             if (!startIPv6()) {
                 mLog.e("Failed to startIPv6");
                 // TODO: Make this a fatal error once Bluetooth IPv6 is sorted.
-                return;
             }
+            mTetheringStatsUtils.updateErrorCode(mLastError, mInterfaceType);
         }
 
         @Override
@@ -1113,6 +1118,9 @@ public class IpServer extends StateMachine {
             stopIPv4();
 
             resetLinkProperties();
+
+            mTetheringStatsUtils.updateErrorCode(mLastError, mInterfaceType);
+            mTetheringStatsUtils.maybeRemoveAndWriteTetheringStats(mInterfaceType);
         }
 
         @Override

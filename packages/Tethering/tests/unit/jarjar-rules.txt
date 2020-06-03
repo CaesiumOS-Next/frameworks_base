@@ -9,3 +9,5 @@ rule com.android.internal.util.StateMachine* com.android.networkstack.tethering.
 rule com.android.internal.util.TrafficStatsConstants* com.android.networkstack.tethering.util.TrafficStatsConstants@1
 
 rule android.util.LocalLog* com.android.networkstack.tethering.util.LocalLog@1
+
+rule com.google.protobuf* com.android.networkstack.tethering.protobuf@1

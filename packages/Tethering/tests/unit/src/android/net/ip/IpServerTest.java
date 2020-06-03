@@ -97,6 +97,7 @@ import com.android.networkstack.tethering.BpfCoordinator;
 import com.android.networkstack.tethering.BpfCoordinator.Ipv6ForwardingRule;
 import com.android.networkstack.tethering.PrivateAddressCoordinator;
 import com.android.networkstack.tethering.TetheringConfiguration;
+import com.android.networkstack.tethering.metrics.TetheringStatsUtils;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -145,6 +146,7 @@ public class IpServerTest {
     @Mock private PrivateAddressCoordinator mAddressCoordinator;
     @Mock private NetworkStatsManager mStatsManager;
     @Mock private TetheringConfiguration mTetherConfig;
+    @Mock private TetheringStatsUtils mTetheringStatsUtils;
 
     @Captor private ArgumentCaptor<DhcpServingParamsParcel> mDhcpParamsCaptor;
 
@@ -193,7 +195,8 @@ public class IpServerTest {
 
         mIpServer = new IpServer(
                 IFACE_NAME, mLooper.getLooper(), interfaceType, mSharedLog, mNetd, mBpfCoordinator,
-                mCallback, usingLegacyDhcp, usingBpfOffload, mAddressCoordinator, mDependencies);
+                mCallback, usingLegacyDhcp, usingBpfOffload, mAddressCoordinator, mDependencies,
+                mTetheringStatsUtils);
         mIpServer.start();
         mNeighborEventConsumer = neighborCaptor.getValue();
 
@@ -265,7 +268,8 @@ public class IpServerTest {
                 .thenReturn(mIpNeighborMonitor);
         mIpServer = new IpServer(IFACE_NAME, mLooper.getLooper(), TETHERING_BLUETOOTH, mSharedLog,
                 mNetd, mBpfCoordinator, mCallback, false /* usingLegacyDhcp */,
-                DEFAULT_USING_BPF_OFFLOAD, mAddressCoordinator, mDependencies);
+                DEFAULT_USING_BPF_OFFLOAD, mAddressCoordinator, mDependencies,
+                mTetheringStatsUtils);
         mIpServer.start();
         mLooper.dispatchAll();
         verify(mCallback).updateInterfaceState(

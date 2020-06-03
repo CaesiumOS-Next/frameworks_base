@@ -22,6 +22,7 @@ java_defaults {
         ":framework-tethering-shared-srcs",
         ":tethering-module-utils-srcs",
         ":services-tethering-shared-srcs",
+        ":statslog-tethering-java-gen",
     ],
     static_libs: [
         "androidx.annotation_annotation",
@@ -32,6 +33,7 @@ java_defaults {
         "android.hardware.tetheroffload.config-V1.0-java",
         "android.hardware.tetheroffload.control-V1.0-java",
         "net-utils-framework-common",
+        "tetheringstatsprotos",
     ],
     libs: [
         "framework-tethering.impl",
@@ -130,4 +132,29 @@ android_app {
     required: ["NetworkPermissionConfig"],
     apex_available: ["com.android.tethering"],
     min_sdk_version: "current",
+}
+
+genrule {
+    name: "statslog-tethering-java-gen",
+    tools: ["stats-log-api-gen"],
+    cmd: "$(location stats-log-api-gen) --java $(out) --module network_tethering" +
+         " --javaPackage com.android.networkstack.tethering.metrics --javaClass TetheringStatsLog",
+    out: ["com/android/networkstack/tethering/metrics/TetheringStatsLog.java"],
+}
+
+java_library_static {
+    name: "tetheringstatsprotos",
+    proto: {
+        type: "lite",
+    },
+    srcs: [
+        "src/com/android/networkstack/tethering/metrics/stats.proto",
+    ],
+    static_libs: [
+        "tetheringprotos",
+    ],
+    apex_available: [
+        "com.android.tethering",
+    ],
+    sdk_version: "system_current",
 }
