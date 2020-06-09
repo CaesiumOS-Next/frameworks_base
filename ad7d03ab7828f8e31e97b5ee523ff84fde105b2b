@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9a5cfc0f_9635cd50",
+        "filename": "core/proto/android/stats/connectivity/tethering.proto",
+        "patchSetId": 6
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1304263
+      },
+      "writtenOn": "2020-06-09T03:03:58Z",
+      "side": 1,
+      "message": "Not sure if this means unspecified type. If it is, I think it\u0027s usually be the first item(0) if no special reason.\n\nSee go/totw-4 and go/protodosdonts",
+      "range": {
+        "startLine": 40,
+        "startChar": 4,
+        "endLine": 40,
+        "endChar": 19
+      },
+      "revId": "ad7d03ab7828f8e31e97b5ee523ff84fde105b2b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "300c3027_f94a2f66",
+        "filename": "core/proto/android/stats/connectivity/tethering.proto",
+        "patchSetId": 6
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1304263
+      },
+      "writtenOn": "2020-06-09T03:03:58Z",
+      "side": 1,
+      "message": "Usually called DS_UNSPECIFIED. See go/default-values-enums-protobufs",
+      "range": {
+        "startLine": 45,
+        "startChar": 4,
+        "endLine": 45,
+        "endChar": 24
+      },
+      "revId": "ad7d03ab7828f8e31e97b5ee523ff84fde105b2b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d11644ed_cbdc9ec9",
+        "filename": "core/proto/android/stats/connectivity/tethering.proto",
+        "patchSetId": 6
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1304263
+      },
+      "writtenOn": "2020-06-09T03:03:58Z",
+      "side": 1,
+      "message": "Question: what is ncm? can we have full name like other type?",
+      "range": {
+        "startLine": 54,
+        "startChar": 7,
+        "endLine": 54,
+        "endChar": 10
+      },
+      "revId": "ad7d03ab7828f8e31e97b5ee523ff84fde105b2b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c030b0cd_bf0bd015",
+        "filename": "core/proto/android/stats/connectivity/tethering.proto",
+        "patchSetId": 6
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1304263
+      },
+      "writtenOn": "2020-06-09T03:03:58Z",
+      "side": 1,
+      "message": "Nit: extra empty line",
+      "revId": "ad7d03ab7828f8e31e97b5ee523ff84fde105b2b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
