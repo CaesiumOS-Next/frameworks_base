@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "b41d2255_219d56b2",
+        "filename": "core/proto/android/stats/connectivity/tethering.proto",
+        "patchSetId": 6
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1364839
+      },
+      "writtenOn": "2020-06-11T03:47:56Z",
+      "side": 1,
+      "message": "No, it is a one specific error type.",
+      "parentUuid": "9a5cfc0f_9635cd50",
+      "range": {
+        "startLine": 40,
+        "startChar": 4,
+        "endLine": 40,
+        "endChar": 19
+      },
+      "revId": "ad7d03ab7828f8e31e97b5ee523ff84fde105b2b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "300c3027_f94a2f66",
         "filename": "core/proto/android/stats/connectivity/tethering.proto",
         "patchSetId": 6
@@ -45,6 +69,30 @@
       "revId": "ad7d03ab7828f8e31e97b5ee523ff84fde105b2b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f9a2d001_1dd76fb0",
+        "filename": "core/proto/android/stats/connectivity/tethering.proto",
+        "patchSetId": 6
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1364839
+      },
+      "writtenOn": "2020-06-11T03:47:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "300c3027_f94a2f66",
+      "range": {
+        "startLine": 45,
+        "startChar": 4,
+        "endLine": 45,
+        "endChar": 24
+      },
+      "revId": "ad7d03ab7828f8e31e97b5ee523ff84fde105b2b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "3decb2f6_9d822048",
+        "filename": "core/proto/android/stats/connectivity/tethering.proto",
+        "patchSetId": 6
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1364839
+      },
+      "writtenOn": "2020-06-11T03:47:56Z",
+      "side": 1,
+      "message": "It has the same name as our code, so we want to stay the same.\nI wrote a note on it.\nNetwork Control Model (NCM).",
+      "parentUuid": "d11644ed_cbdc9ec9",
+      "range": {
+        "startLine": 54,
+        "startChar": 7,
+        "endLine": 54,
+        "endChar": 10
+      },
+      "revId": "ad7d03ab7828f8e31e97b5ee523ff84fde105b2b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c030b0cd_bf0bd015",
         "filename": "core/proto/android/stats/connectivity/tethering.proto",
         "patchSetId": 6
@@ -85,6 +157,24 @@
       "revId": "ad7d03ab7828f8e31e97b5ee523ff84fde105b2b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b8403f42_ebcc05f5",
+        "filename": "core/proto/android/stats/connectivity/tethering.proto",
+        "patchSetId": 6
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1364839
+      },
+      "writtenOn": "2020-06-11T03:47:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c030b0cd_bf0bd015",
+      "revId": "ad7d03ab7828f8e31e97b5ee523ff84fde105b2b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
