@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f0b77f67_43851726",
+        "filename": "cmds/statsd/src/atoms.proto",
+        "patchSetId": 11
+      },
+      "lineNbr": 5868,
+      "author": {
+        "id": 1351420
+      },
+      "writtenOn": "2020-06-12T11:24:54Z",
+      "side": 1,
+      "message": "missing user_type",
+      "range": {
+        "startLine": 5868,
+        "startChar": 46,
+        "endLine": 5868,
+        "endChar": 48
+      },
+      "revId": "28e75db1d24b775939560b237c2476b273b16888",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
