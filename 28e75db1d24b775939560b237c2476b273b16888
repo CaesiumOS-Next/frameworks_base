@@ -22,6 +22,30 @@
       "revId": "28e75db1d24b775939560b237c2476b273b16888",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1a4a2960_c7f1ace3",
+        "filename": "cmds/statsd/src/atoms.proto",
+        "patchSetId": 11
+      },
+      "lineNbr": 5868,
+      "author": {
+        "id": 1364839
+      },
+      "writtenOn": "2020-06-14T13:44:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f0b77f67_43851726",
+      "range": {
+        "startLine": 5868,
+        "startChar": 46,
+        "endLine": 5868,
+        "endChar": 48
+      },
+      "revId": "28e75db1d24b775939560b237c2476b273b16888",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
