@@ -29,13 +29,12 @@ import android.content.pm.ApplicationInfo.PRIVATE_FLAG_VENDOR
 import android.content.pm.PackageManager.GET_PERMISSIONS
 import android.content.pm.PackageManager.MATCH_ANY_USER
 import android.net.INetd.PERMISSION_INTERNET
+import android.net.INetd.PERMISSION_NETWORK
 import android.net.INetd.PERMISSION_NONE
 import android.net.INetd.PERMISSION_SYSTEM
 import android.net.INetd.PERMISSION_UNINSTALLED
 import android.net.INetd.PERMISSION_UPDATE_DEVICE_STATS
 import android.os.Process.SYSTEM_UID
-import com.android.server.connectivity.PermissionMonitor.NETWORK
-import com.android.server.connectivity.PermissionMonitor.SYSTEM
 import com.android.server.connectivity.PermissionMonitor.UidNetdPermissionInfo
 import junit.framework.Assert.fail
 import org.junit.Assert.assertEquals
@@ -50,9 +49,7 @@ import org.mockito.ArgumentMatchers.eq
 import org.mockito.Mockito.doAnswer
 import org.mockito.Mockito.doReturn
 import org.mockito.Mockito.reset
-import org.mockito.Mockito.spy
 import org.mockito.Mockito.verify
-import org.mockito.Mockito.`when`
 import android.content.Context
 import android.content.pm.ApplicationInfo
 import android.content.pm.PackageInfo
@@ -124,7 +121,7 @@ class PermissionMonitorTest {
         doReturn(PackageManager.PERMISSION_DENIED)
                 .`when`(deps).checkUidPermission(anyString(), anyInt())
 
-        permissionMonitor = spy(PermissionMonitor(context, netdService, deps))
+        permissionMonitor = PermissionMonitor(context, netdService, deps)
 
         LocalServices.removeServiceForTest(PackageManagerInternal::class.java)
         LocalServices.addService(PackageManagerInternal::class.java, mockPmi)
@@ -294,21 +291,35 @@ class PermissionMonitorTest {
         assertBackgroundPermission(true, MOCK_PACKAGE2, MOCK_UID2, NETWORK_STACK)
     }
 
+    @Test
+    fun testHasNetdPermissions() {
+        var uidPerms = UidNetdPermissionInfo()
+        assertFalse(uidPerms.hasNetdPermissions(PERMISSION_UNINSTALLED))
+        assertFalse(uidPerms.hasNetdPermissions(PERMISSION_NONE))
+        assertFalse(uidPerms.hasNetdPermissions(PERMISSION_NETWORK))
+        assertFalse(uidPerms.hasNetdPermissions(PERMISSION_INTERNET))
+
+        uidPerms = UidNetdPermissionInfo(PERMISSION_SYSTEM or PERMISSION_UPDATE_DEVICE_STATS)
+        assertFalse(uidPerms.hasNetdPermissions(PERMISSION_NETWORK))
+        assertTrue(uidPerms.hasNetdPermissions(PERMISSION_SYSTEM))
+        assertTrue(uidPerms.hasNetdPermissions(PERMISSION_UPDATE_DEVICE_STATS))
+        assertTrue(uidPerms.hasNetdPermissions(PERMISSION_SYSTEM or PERMISSION_UPDATE_DEVICE_STATS))
+    }
+
     private class NetdMonitor internal constructor(mockNetd: INetd) {
-        private val mApps: HashMap<Int, Boolean> = HashMap()
+        private val mApps: HashMap<Int, Int> = HashMap()
 
         init {
             // Add hook to verify and track result of setPermission.
             doAnswer { invocation: InvocationOnMock ->
                 val args = invocation.arguments
-                val isSystem = args[0] == PERMISSION_SYSTEM
                 for (uid in args[1] as IntArray) {
                     // TODO: Currently, permission monitor will send duplicate commands for each uid
                     // corresponding to each user. Need to fix that and uncomment below test.
                     // if (mApps.containsKey(uid) && mApps.get(uid) == isSystem) {
                     //     fail("uid " + uid + " is already set to " + isSystem);
                     // }
-                    mApps.put(uid, isSystem)
+                    mApps.put(uid, args[0] as Int)
                 }
                 null
             }.`when`(mockNetd).networkSetPermissionForUser(anyInt(), any(IntArray::class.java))
@@ -328,7 +339,7 @@ class PermissionMonitorTest {
             }.`when`(mockNetd).networkClearPermissionForUser(any(IntArray::class.java))
         }
 
-        fun expectPermission(permission: Boolean, users: IntArray, apps: IntArray) {
+        fun expectPermission(permission: Int, users: IntArray, apps: IntArray) {
             for (user in users) {
                 for (app in apps) {
                     val uid = UserHandle.getUid(user, app)
@@ -358,52 +369,71 @@ class PermissionMonitorTest {
     @Throws(Exception::class)
     fun testUserAndPackageAddRemove() {
         val mNetdMonitor = NetdMonitor(netdService)
+        doReturn(packageInfoWithPartition(PARTITION_SYSTEM))
+                .`when`(packageManager).getPackageInfo(anyString(), anyInt())
 
-        // MOCK_UID1: MOCK_PACKAGE1 only has network permission.
-        // SYSTEM_UID: SYSTEM_PACKAGE1 has system permission.
-        // SYSTEM_UID: SYSTEM_PACKAGE2 only has network permission.
-        doReturn(SYSTEM).`when`(permissionMonitor).highestPermissionForUid(eq(SYSTEM),
-                anyString(), anyInt())
-        doReturn(SYSTEM).`when`(permissionMonitor).highestPermissionForUid(any(),
-                eq(SYSTEM_PACKAGE1), anyInt())
-        doReturn(NETWORK).`when`(permissionMonitor).highestPermissionForUid(any(),
-                eq(SYSTEM_PACKAGE2), anyInt())
-        doReturn(NETWORK).`when`(permissionMonitor).highestPermissionForUid(any(),
-                eq(MOCK_PACKAGE1), anyInt())
-
-        // Add SYSTEM_PACKAGE2, expect only have network permission.
+        // Add MOCK_USER1, expect no permission
         permissionMonitor.onUserAdded(MOCK_USER1)
-        addPackageForUsers(intArrayOf(MOCK_USER1), SYSTEM_PACKAGE2, SYSTEM_UID)
-        mNetdMonitor.expectPermission(NETWORK, intArrayOf(MOCK_USER1), intArrayOf(SYSTEM_UID))
+        mNetdMonitor.expectNoPermission(intArrayOf(MOCK_USER1), intArrayOf(SYSTEM_UID))
 
-        // Add SYSTEM_PACKAGE1, expect permission escalate.
+        // Add SYSTEM_PACKAGE2 with SYSTEM_UID, expect only have network permission.
+        uidWithPermissions(UserHandle.getUid(MOCK_USER1, SYSTEM_UID), CHANGE_NETWORK_STATE)
+        addPackageForUsers(intArrayOf(MOCK_USER1), SYSTEM_PACKAGE2, SYSTEM_UID)
+        mNetdMonitor.expectPermission(
+                PERMISSION_NETWORK, intArrayOf(MOCK_USER1), intArrayOf(SYSTEM_UID))
+
+        // Add SYSTEM_PACKAGE1 with SYSTEM_UID, expect permission escalate.
+        uidWithPermissions(UserHandle.getUid(MOCK_USER1, SYSTEM_UID), CHANGE_NETWORK_STATE,
+                CONNECTIVITY_USE_RESTRICTED_NETWORKS)
         addPackageForUsers(intArrayOf(MOCK_USER1), SYSTEM_PACKAGE1, SYSTEM_UID)
-        mNetdMonitor.expectPermission(SYSTEM, intArrayOf(MOCK_USER1), intArrayOf(SYSTEM_UID))
+        mNetdMonitor.expectPermission(
+                PERMISSION_SYSTEM, intArrayOf(MOCK_USER1), intArrayOf(SYSTEM_UID))
+
+        // Add MOCK_USER2, expect permission escalate with multiple users.
         permissionMonitor.onUserAdded(MOCK_USER2)
         mNetdMonitor.expectPermission(
-                SYSTEM, intArrayOf(MOCK_USER1, MOCK_USER2), intArrayOf(SYSTEM_UID))
+                PERMISSION_SYSTEM, intArrayOf(MOCK_USER1, MOCK_USER2), intArrayOf(SYSTEM_UID))
+
+        // Add MOCK_PACKAGE1 with MOCK_UID1, expect only have network permission.
+        uidWithPermissions(UserHandle.getUid(MOCK_USER1, MOCK_UID1), CHANGE_NETWORK_STATE)
+        uidWithPermissions(UserHandle.getUid(MOCK_USER2, MOCK_UID1), CHANGE_NETWORK_STATE)
         addPackageForUsers(intArrayOf(MOCK_USER1, MOCK_USER2), MOCK_PACKAGE1, MOCK_UID1)
         mNetdMonitor.expectPermission(
-                SYSTEM, intArrayOf(MOCK_USER1, MOCK_USER2), intArrayOf(SYSTEM_UID))
+                PERMISSION_SYSTEM, intArrayOf(MOCK_USER1, MOCK_USER2), intArrayOf(SYSTEM_UID))
         mNetdMonitor.expectPermission(
-                NETWORK, intArrayOf(MOCK_USER1, MOCK_USER2), intArrayOf(MOCK_UID1))
+                PERMISSION_NETWORK, intArrayOf(MOCK_USER1, MOCK_USER2), intArrayOf(MOCK_UID1))
 
         // Remove MOCK_UID1, expect no permission left for all user.
-        permissionMonitor.onPackageRemoved(MOCK_PACKAGE1, MOCK_UID1)
-        removePackageForUsers(intArrayOf(MOCK_USER1, MOCK_USER2), MOCK_UID1)
+        uidWithPermissions(UserHandle.getUid(MOCK_USER1, MOCK_UID1))
+        uidWithPermissions(UserHandle.getUid(MOCK_USER2, MOCK_UID1))
+        doReturn(null).`when`(packageManager)
+                .getNameForUid(UserHandle.getUid(MOCK_USER1, MOCK_UID1))
+        doReturn(null).`when`(packageManager)
+                .getNameForUid(UserHandle.getUid(MOCK_USER2, MOCK_UID1))
+        removePackageForUsers(intArrayOf(MOCK_USER1, MOCK_USER2), MOCK_PACKAGE1, MOCK_UID1)
         mNetdMonitor.expectNoPermission(intArrayOf(MOCK_USER1, MOCK_USER2), intArrayOf(MOCK_UID1))
 
         // Remove SYSTEM_PACKAGE1, expect permission downgrade.
-        doReturn(arrayOf(SYSTEM_PACKAGE2)).`when`(packageManager).getPackagesForUid(anyInt())
-        removePackageForUsers(intArrayOf(MOCK_USER1, MOCK_USER2), SYSTEM_UID)
+        uidWithPermissions(UserHandle.getUid(MOCK_USER1, SYSTEM_UID), CHANGE_NETWORK_STATE)
+        uidWithPermissions(UserHandle.getUid(MOCK_USER2, SYSTEM_UID), CHANGE_NETWORK_STATE)
+        doReturn("system").`when`(packageManager)
+                .getNameForUid(UserHandle.getUid(MOCK_USER1, SYSTEM_UID))
+        doReturn("system").`when`(packageManager)
+                .getNameForUid(UserHandle.getUid(MOCK_USER2, SYSTEM_UID))
+        removePackageForUsers(intArrayOf(MOCK_USER1, MOCK_USER2), SYSTEM_PACKAGE1, SYSTEM_UID)
         mNetdMonitor.expectPermission(
-                NETWORK, intArrayOf(MOCK_USER1, MOCK_USER2), intArrayOf(SYSTEM_UID))
+                PERMISSION_NETWORK, intArrayOf(MOCK_USER1, MOCK_USER2), intArrayOf(SYSTEM_UID))
+
+        // Remove MOCK_USER1, expect only MOCK_USER2 has permission.
         permissionMonitor.onUserRemoved(MOCK_USER1)
-        mNetdMonitor.expectPermission(NETWORK, intArrayOf(MOCK_USER2), intArrayOf(SYSTEM_UID))
+        mNetdMonitor.expectPermission(
+                PERMISSION_NETWORK, intArrayOf(MOCK_USER2), intArrayOf(SYSTEM_UID))
 
         // Remove all packages, expect no permission left.
-        doReturn(arrayOf<String>()).`when`(packageManager).getPackagesForUid(anyInt())
-        removePackageForUsers(intArrayOf(MOCK_USER2), SYSTEM_UID)
+        uidWithPermissions(UserHandle.getUid(MOCK_USER2, SYSTEM_UID))
+        doReturn(null).`when`(packageManager)
+                .getNameForUid(UserHandle.getUid(MOCK_USER2, SYSTEM_UID))
+        removePackageForUsers(intArrayOf(MOCK_USER2), SYSTEM_PACKAGE2, SYSTEM_UID)
         mNetdMonitor.expectNoPermission(
                 intArrayOf(MOCK_USER1, MOCK_USER2), intArrayOf(SYSTEM_UID, MOCK_UID1))
 
@@ -491,9 +521,9 @@ class PermissionMonitorTest {
         }
     }
 
-    private fun removePackageForUsers(users: IntArray, uid: Int) {
+    private fun removePackageForUsers(users: IntArray, packageName: String, uid: Int) {
         for (user in users) {
-            permissionMonitor.onPackageRemoved("", UserHandle.getUid(user, uid))
+            permissionMonitor.onPackageRemoved(packageName, UserHandle.getUid(user, uid))
         }
     }
 
@@ -567,7 +597,7 @@ class PermissionMonitorTest {
     }
 
     @Throws(Exception::class)
-    private fun setPackagePermissions(packageName: String, uid: Int, permissions: Array<String>):
+    private fun setPackagePermissions(packageName: String, uid: Int, vararg permissions: String):
             PackageInfo {
         val packageInfo = packageInfoWithPartition(PARTITION_SYSTEM)
         doReturn(packageInfo).`when`(packageManager).getPackageInfo(eq(packageName), anyInt())
@@ -577,8 +607,8 @@ class PermissionMonitorTest {
     }
 
     @Throws(Exception::class)
-    private fun addPackage(packageName: String, uid: Int, permissions: Array<String>): PackageInfo {
-        val packageInfo = setPackagePermissions(packageName, uid, permissions)
+    private fun addPackage(packageName: String, uid: Int, vararg permissions: String): PackageInfo {
+        val packageInfo = setPackagePermissions(packageName, uid, *permissions)
         permissionMonitor.onPackageAdded(packageName, uid)
         return packageInfo
     }
@@ -587,10 +617,10 @@ class PermissionMonitorTest {
     @Throws(Exception::class)
     fun testPackageInstall() {
         val mNetdServiceMonitor = NetdServiceMonitor(netdService)
-        addPackage(MOCK_PACKAGE1, MOCK_UID1, arrayOf(INTERNET, UPDATE_DEVICE_STATS))
+        addPackage(MOCK_PACKAGE1, MOCK_UID1, INTERNET, UPDATE_DEVICE_STATS)
         mNetdServiceMonitor.expectPermission(PERMISSION_INTERNET
                 or PERMISSION_UPDATE_DEVICE_STATS, intArrayOf(MOCK_UID1))
-        addPackage(MOCK_PACKAGE2, MOCK_UID2, arrayOf(INTERNET))
+        addPackage(MOCK_PACKAGE2, MOCK_UID2, INTERNET)
         mNetdServiceMonitor.expectPermission(PERMISSION_INTERNET, intArrayOf(MOCK_UID2))
     }
 
@@ -598,7 +628,7 @@ class PermissionMonitorTest {
     @Throws(Exception::class)
     fun testPackageInstallSharedUid() {
         val mNetdServiceMonitor = NetdServiceMonitor(netdService)
-        addPackage(MOCK_PACKAGE1, MOCK_UID1, arrayOf(INTERNET, UPDATE_DEVICE_STATS))
+        addPackage(MOCK_PACKAGE1, MOCK_UID1, INTERNET, UPDATE_DEVICE_STATS)
         mNetdServiceMonitor.expectPermission(PERMISSION_INTERNET
                 or PERMISSION_UPDATE_DEVICE_STATS, intArrayOf(MOCK_UID1))
 
@@ -617,7 +647,7 @@ class PermissionMonitorTest {
     @Throws(Exception::class)
     fun testPackageUninstallBasic() {
         val mNetdServiceMonitor = NetdServiceMonitor(netdService)
-        addPackage(MOCK_PACKAGE1, MOCK_UID1, arrayOf(INTERNET, UPDATE_DEVICE_STATS))
+        addPackage(MOCK_PACKAGE1, MOCK_UID1, INTERNET, UPDATE_DEVICE_STATS)
         mNetdServiceMonitor.expectPermission(PERMISSION_INTERNET
                 or PERMISSION_UPDATE_DEVICE_STATS, intArrayOf(MOCK_UID1))
         doReturn(arrayOf<String>()).`when`(packageManager).getPackagesForUid(MOCK_UID1)
@@ -629,13 +659,13 @@ class PermissionMonitorTest {
     @Throws(Exception::class)
     fun testPackageRemoveThenAdd() {
         val mNetdServiceMonitor = NetdServiceMonitor(netdService)
-        addPackage(MOCK_PACKAGE1, MOCK_UID1, arrayOf(INTERNET, UPDATE_DEVICE_STATS))
+        addPackage(MOCK_PACKAGE1, MOCK_UID1, INTERNET, UPDATE_DEVICE_STATS)
         mNetdServiceMonitor.expectPermission(PERMISSION_INTERNET
                 or PERMISSION_UPDATE_DEVICE_STATS, intArrayOf(MOCK_UID1))
-        doReturn(arrayOf<String>()).`when`(packageManager).getPackagesForUid(MOCK_UID1)
+        doReturn(null).`when`(packageManager).getNameForUid(MOCK_UID1)
         permissionMonitor.onPackageRemoved(MOCK_PACKAGE1, MOCK_UID1)
         mNetdServiceMonitor.expectPermission(PERMISSION_UNINSTALLED, intArrayOf(MOCK_UID1))
-        addPackage(MOCK_PACKAGE1, MOCK_UID1, arrayOf(INTERNET))
+        addPackage(MOCK_PACKAGE1, MOCK_UID1, INTERNET)
         mNetdServiceMonitor.expectPermission(PERMISSION_INTERNET, intArrayOf(MOCK_UID1))
     }
 
@@ -643,9 +673,9 @@ class PermissionMonitorTest {
     @Throws(Exception::class)
     fun testPackageUpdate() {
         val mNetdServiceMonitor = NetdServiceMonitor(netdService)
-        addPackage(MOCK_PACKAGE1, MOCK_UID1, arrayOf())
+        addPackage(MOCK_PACKAGE1, MOCK_UID1)
         mNetdServiceMonitor.expectPermission(PERMISSION_NONE, intArrayOf(MOCK_UID1))
-        addPackage(MOCK_PACKAGE1, MOCK_UID1, arrayOf(INTERNET))
+        addPackage(MOCK_PACKAGE1, MOCK_UID1, INTERNET)
         mNetdServiceMonitor.expectPermission(PERMISSION_INTERNET, intArrayOf(MOCK_UID1))
     }
 
@@ -653,15 +683,13 @@ class PermissionMonitorTest {
     @Throws(Exception::class)
     fun testPackageUninstallWithMultiplePackages() {
         val mNetdServiceMonitor = NetdServiceMonitor(netdService)
-        addPackage(MOCK_PACKAGE1, MOCK_UID1, arrayOf(INTERNET, UPDATE_DEVICE_STATS))
+        addPackage(MOCK_PACKAGE1, MOCK_UID1, INTERNET, UPDATE_DEVICE_STATS)
         mNetdServiceMonitor.expectPermission(PERMISSION_INTERNET
                 or PERMISSION_UPDATE_DEVICE_STATS, intArrayOf(MOCK_UID1))
 
-        // Mock another package with the same uid but different permissions.
-        val packageInfo2 = packageInfoWithPartition(PARTITION_SYSTEM)
-        doReturn(packageInfo2).`when`(packageManager).getPackageInfo(eq(MOCK_PACKAGE2), anyInt())
-        doReturn(arrayOf(MOCK_PACKAGE2)).`when`(packageManager).getPackagesForUid(MOCK_UID1)
-        uidWithPermissions(MOCK_UID1, INTERNET)
+        // Mock another package with the same uid
+        addPackage(MOCK_PACKAGE2, MOCK_UID1, INTERNET)
+        doReturn("mock1").`when`(packageManager).getNameForUid(MOCK_UID1)
         permissionMonitor.onPackageRemoved(MOCK_PACKAGE1, MOCK_UID1)
         mNetdServiceMonitor.expectPermission(PERMISSION_INTERNET, intArrayOf(MOCK_UID1))
     }
