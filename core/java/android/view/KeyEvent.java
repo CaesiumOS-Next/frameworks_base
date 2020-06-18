@@ -103,7 +103,16 @@ public class KeyEvent extends InputEvent implements Parcelable {
     public static final int KEYCODE_BACK            = 4;
     /** Key code constant: Call key. */
     public static final int KEYCODE_CALL            = 5;
-    /** Key code constant: End Call key. */
+    /**
+     * Key code constant: End Call key.
+     * <p>
+     * Note: This key code cannot be used to terminate emergency calls.
+     *
+     * @deprecated Apps wishing to control calls on a device should use
+     * {@link android.telecom.InCallService}.  Apps wishing to end incoming calls for call
+     * screening purposes should use {@link android.telecom.CallScreeningService}.
+     */
+    @Deprecated
     public static final int KEYCODE_ENDCALL         = 6;
     /** Key code constant: '0' key. */
     public static final int KEYCODE_0               = 7;
