@@ -1,0 +1,136 @@
+{
+  "comments": [
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000003691842",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1258645?revision\u003d11",
+      "fixSuggestions": [
+        {
+          "fixId": "0065f3d5_b546e370",
+          "description": "Change to \"packages/Tethering/tests/privilege/src/android/net/ip/DadProxyTest.java\"",
+          "replacements": [
+            {
+              "path": "packages/Tethering/tests/privilege/src/android/net/ip/DadProxyTest.java",
+              "range": {
+                "startLine": 201,
+                "startChar": 79,
+                "endLine": 201,
+                "endChar": 87
+              },
+              "replacement": "separate"
+            }
+          ]
+        }
+      ],
+      "key": {
+        "uuid": "ff0fbd73_461becad",
+        "filename": "packages/Tethering/tests/privilege/src/android/net/ip/DadProxyTest.java",
+        "patchSetId": 11
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1550585
+      },
+      "writtenOn": "2020-06-30T21:34:01Z",
+      "side": 1,
+      "message": "Common typo found: \"seperate\" -- should it be \"separate\"?\nNote: a line containing \"common_typos_disable\" or \"common_typos_enable\" will turn off or on (respectively) the linter for subsequent lines in the file. Alternatively include the token \"NOTYPO\" within a line to skip typo linting that line.",
+      "range": {
+        "startLine": 201,
+        "startChar": 79,
+        "endLine": 201,
+        "endChar": 87
+      },
+      "revId": "1a4b4b7e5c757adb61ab985e91e5e254cddf35a5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000003691842",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1258645?revision\u003d11",
+      "fixSuggestions": [
+        {
+          "fixId": "406591e0_02208904",
+          "description": "Change to \"packages/Tethering/tests/privilege/src/android/net/ip/DadProxyTest.java\"",
+          "replacements": [
+            {
+              "path": "packages/Tethering/tests/privilege/src/android/net/ip/DadProxyTest.java",
+              "range": {
+                "startLine": 218,
+                "startChar": 79,
+                "endLine": 218,
+                "endChar": 87
+              },
+              "replacement": "separate"
+            }
+          ]
+        }
+      ],
+      "key": {
+        "uuid": "3d2911be_d95446a8",
+        "filename": "packages/Tethering/tests/privilege/src/android/net/ip/DadProxyTest.java",
+        "patchSetId": 11
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1550585
+      },
+      "writtenOn": "2020-06-30T21:34:01Z",
+      "side": 1,
+      "message": "Common typo found: \"seperate\" -- should it be \"separate\"?\nNote: a line containing \"common_typos_disable\" or \"common_typos_enable\" will turn off or on (respectively) the linter for subsequent lines in the file. Alternatively include the token \"NOTYPO\" within a line to skip typo linting that line.",
+      "range": {
+        "startLine": 218,
+        "startChar": 79,
+        "endLine": 218,
+        "endChar": 87
+      },
+      "revId": "1a4b4b7e5c757adb61ab985e91e5e254cddf35a5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000003691842",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1258645?revision\u003d11",
+      "fixSuggestions": [
+        {
+          "fixId": "1057b69a_c85a80d5",
+          "description": "Change to \"packages/Tethering/tests/privilege/src/android/net/ip/DadProxyTest.java\"",
+          "replacements": [
+            {
+              "path": "packages/Tethering/tests/privilege/src/android/net/ip/DadProxyTest.java",
+              "range": {
+                "startLine": 240,
+                "startChar": 79,
+                "endLine": 240,
+                "endChar": 87
+              },
+              "replacement": "separate"
+            }
+          ]
+        }
+      ],
+      "key": {
+        "uuid": "93efc3c6_83459fd2",
+        "filename": "packages/Tethering/tests/privilege/src/android/net/ip/DadProxyTest.java",
+        "patchSetId": 11
+      },
+      "lineNbr": 240,
+      "author": {
+        "id": 1550585
+      },
+      "writtenOn": "2020-06-30T21:34:01Z",
+      "side": 1,
+      "message": "Common typo found: \"seperate\" -- should it be \"separate\"?\nNote: a line containing \"common_typos_disable\" or \"common_typos_enable\" will turn off or on (respectively) the linter for subsequent lines in the file. Alternatively include the token \"NOTYPO\" within a line to skip typo linting that line.",
+      "range": {
+        "startLine": 240,
+        "startChar": 79,
+        "endLine": 240,
+        "endChar": 87
+      },
+      "revId": "1a4b4b7e5c757adb61ab985e91e5e254cddf35a5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
