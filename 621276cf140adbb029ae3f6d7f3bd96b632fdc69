@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c412c7a8_ba0ef283",
+        "filename": "packages/Tethering/jarjar-rules.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2020-07-01T13:58:56Z",
+      "side": 1,
+      "message": "Do you want to have a blank line before this ? To me it looks like the 1st line is part of this comment block, but really it\u0027s not.",
+      "range": {
+        "startLine": 2,
+        "startChar": 0,
+        "endLine": 2,
+        "endChar": 1
+      },
+      "revId": "621276cf140adbb029ae3f6d7f3bd96b632fdc69",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
