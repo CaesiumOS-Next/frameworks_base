@@ -189,7 +189,11 @@ public class MultipathPolicyTracker {
 
         private long mQuota;
         /** Current multipath budget. Nonzero iff we have budget and a UsageCallback is armed. */
-        private long mMultipathBudget;
+        // To avoid mismatched multipath budget problem, this member should only be set once by a
+        // method or set to same value while updating.
+        // Add volatile to unsure that writes to and reads of this long is always atomic, regardless
+        // of whether it's implemented as 32 or 64 bit value.
+        private volatile long mMultipathBudget;
         private final NetworkTemplate mNetworkTemplate;
         private final UsageCallback mUsageCallback;
         private NetworkCapabilities mNetworkCapabilities;
@@ -389,7 +393,13 @@ public class MultipathPolicyTracker {
         }
 
         private void registerUsageCallback(long budget) {
-            maybeUnregisterUsageCallback();
+            // Unregister usage callback then register callback with new budget. Instead of call to
+            // maybeUnregisterUsageCallback() below, just has similar logic here. Because that
+            // method will set mMultipathBudget to 0 which may cause mismatched multipath preference
+            // issue if apps call ConnectivityManager#getMultipathPreference() while updating.
+            if (haveMultipathBudget()) {
+                mStatsManager.unregisterUsageCallback(mUsageCallback);
+            }
             mStatsManager.registerUsageCallback(mNetworkTemplate, TYPE_MOBILE, budget,
                     mUsageCallback, mHandler);
             mMultipathBudget = budget;
