@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e85271c9_e82bc8c1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1670415
+      },
+      "writtenOn": "2020-07-14T03:14:36Z",
+      "side": 1,
+      "message": "Google has fixed this problem in internal repository, and will be published in next release, Android 11. The information is in the comment of Riddle Hsu in page https://android-review.googlesource.com/c/platform/frameworks/base/+/1305929.",
+      "revId": "47f96d032e8c7455c11ba64f07c75167ecbb12f4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
