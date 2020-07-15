@@ -2792,7 +2792,8 @@ public class NotificationManagerService extends SystemService {
             if (NotificationChannel.DEFAULT_CHANNEL_ID.equals(channelId)) {
                 throw new IllegalArgumentException("Cannot delete default channel");
             }
-            cancelAllNotificationsInt(MY_UID, MY_PID, pkg, channelId, 0, 0, true,
+            final int mustNotHaveFlags = isCallingUidSystem() ? 0 : FLAG_FOREGROUND_SERVICE;
+            cancelAllNotificationsInt(MY_UID, MY_PID, pkg, channelId, 0, mustNotHaveFlags, true,
                     UserHandle.getUserId(callingUid), REASON_CHANNEL_BANNED, null);
             mPreferencesHelper.deleteNotificationChannel(pkg, callingUid, channelId);
             mListeners.notifyNotificationChannelChanged(pkg,
