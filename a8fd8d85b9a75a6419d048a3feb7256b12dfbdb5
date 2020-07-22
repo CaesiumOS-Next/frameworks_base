@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3d0a397b_0e1fdb67",
+        "filename": "services/core/java/com/android/server/hdmi/HdmiCecLocalDevicePlayback.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1060286
+      },
+      "writtenOn": "2020-07-22T14:01:24Z",
+      "side": 1,
+      "message": "stub,\n\nSee go/mocks#mocks-stubs-fakes",
+      "range": {
+        "startLine": 204,
+        "startChar": 28,
+        "endLine": 204,
+        "endChar": 32
+      },
+      "revId": "a8fd8d85b9a75a6419d048a3feb7256b12dfbdb5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
