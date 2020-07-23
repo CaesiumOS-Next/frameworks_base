@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c1101fa5_6aff82c4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1651020
+      },
+      "writtenOn": "2020-07-23T07:09:18Z",
+      "side": 1,
+      "message": "PTAL, updated commit message + documentation for stub Wakelock",
+      "revId": "0bb72bdf03d08d260269d43e3180719160919215",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
