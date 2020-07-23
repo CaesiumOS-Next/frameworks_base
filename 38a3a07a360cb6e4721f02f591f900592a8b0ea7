@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "df73f6fb_1d3eea5d",
+        "filename": "core/jni/fd_utils.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1060646
+      },
+      "writtenOn": "2020-07-23T18:43:18Z",
+      "side": 1,
+      "message": "Is there a way to only allow this for coverage builds?",
+      "range": {
+        "startLine": 164,
+        "startChar": 0,
+        "endLine": 164,
+        "endChar": 57
+      },
+      "revId": "38a3a07a360cb6e4721f02f591f900592a8b0ea7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
