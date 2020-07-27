@@ -24,7 +24,7 @@ namespace test {
 
 static const int IDENT_DISPLAYEVENT = 1;
 
-static android::DisplayInfo DUMMY_DISPLAY{
+static android::DisplayInfo FAKE_DISPLAY{
         1080,   // w
         1920,   // h
         320.0,  // xdpi
@@ -47,12 +47,12 @@ DisplayInfo getInternalDisplay() {
     LOG_ALWAYS_FATAL_IF(status, "Failed to get display info\n");
     return display;
 #else
-    return DUMMY_DISPLAY;
+    return FAKE_DISPLAY;
 #endif
 }
 
-// Initialize to a dummy default
-android::DisplayInfo gDisplay = DUMMY_DISPLAY;
+// Initialize to a placeholder default
+android::DisplayInfo gDisplay = FAKE_DISPLAY;
 
 TestContext::TestContext() {
     mLooper = new Looper(true);

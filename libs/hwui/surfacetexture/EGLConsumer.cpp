@@ -172,7 +172,7 @@ status_t EGLConsumer::releaseTexImage(SurfaceTexture& st) {
         // detached, don't touch the texture (and we may not even have an
         // EGLDisplay here.
         if (st.mOpMode == SurfaceTexture::OpMode::attachedToGL) {
-            // This binds a dummy buffer (mReleasedTexImage).
+            // This binds a placeholder buffer (mReleasedTexImage).
             status_t result = bindTextureImageLocked(st);
             if (result != NO_ERROR) {
                 return result;
