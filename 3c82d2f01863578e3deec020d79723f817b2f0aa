@@ -1,0 +1,85 @@
+{
+  "comments": [
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000004092830",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1258645?revision\u003d20",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "d524d9e9_d6ec1bc6",
+        "filename": "packages/Tethering/jni/android_net_util_TetheringUtils.cpp",
+        "patchSetId": 20
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1550585
+      },
+      "writtenOn": "2020-07-29T16:03:43Z",
+      "side": 1,
+      "message": "Prefer to use inclusive terms like \u0027machine code\u0027 or \u0027C/C++ code\u0027; see https://developers.google.com/style/word-list#native for more details.",
+      "range": {
+        "startLine": 173,
+        "startChar": 7,
+        "endLine": 173,
+        "endChar": 13
+      },
+      "revId": "3c82d2f01863578e3deec020d79723f817b2f0aa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000004092830",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1258645?revision\u003d20",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "237c7bd8_4ab8e8b6",
+        "filename": "packages/Tethering/jni/android_net_util_TetheringUtils.cpp",
+        "patchSetId": 20
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1550585
+      },
+      "writtenOn": "2020-07-29T16:03:43Z",
+      "side": 1,
+      "message": "Prefer to use inclusive terms like \u0027machine code\u0027 or \u0027C/C++ code\u0027; see https://developers.google.com/style/word-list#native for more details.",
+      "range": {
+        "startLine": 175,
+        "startChar": 7,
+        "endLine": 175,
+        "endChar": 13
+      },
+      "revId": "3c82d2f01863578e3deec020d79723f817b2f0aa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000004092830",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1258645?revision\u003d20",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "e2426787_b93fa0cf",
+        "filename": "packages/Tethering/jni/android_net_util_TetheringUtils.cpp",
+        "patchSetId": 20
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1550585
+      },
+      "writtenOn": "2020-07-29T16:03:43Z",
+      "side": 1,
+      "message": "Prefer to use inclusive terms like \u0027machine code\u0027 or \u0027C/C++ code\u0027; see https://developers.google.com/style/word-list#native for more details.",
+      "range": {
+        "startLine": 177,
+        "startChar": 7,
+        "endLine": 177,
+        "endChar": 13
+      },
+      "revId": "3c82d2f01863578e3deec020d79723f817b2f0aa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
