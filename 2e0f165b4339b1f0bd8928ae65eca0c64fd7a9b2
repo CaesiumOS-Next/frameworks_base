@@ -1,0 +1,228 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "49c29913_148721ae",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2020-08-03T11:06:41Z",
+      "side": 1,
+      "message": "This is actually incorrect. I would say something like:\n\nCurrently, name resolution is performed by the native VPN daemons racoon and mtpd. When a hostname is used, the framework does not know the IP address of the VPN server and does not add a throw route for the VPN server IP address. On older kernels this does not matter because the legacy PPP kernel code binds the PPP socket to the right network, but on newer devices that use the upstream PPP code, this does not work.\n\nBug: 133797637",
+      "range": {
+        "startLine": 11,
+        "startChar": 42,
+        "endLine": 15,
+        "endChar": 52
+      },
+      "revId": "2e0f165b4339b1f0bd8928ae65eca0c64fd7a9b2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bb703e55_a069a9d5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2020-08-03T11:06:41Z",
+      "side": 1,
+      "message": "LGTM except the commit message is a bit incorrect. I think the CyclicBarrier synchronization scheme is difficult to follow, I think things will be clearer using mocking instead. See inline comments for both of these.\n\nOther comments optional.",
+      "revId": "2e0f165b4339b1f0bd8928ae65eca0c64fd7a9b2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b7d86423_cf1eada2",
+        "filename": "services/core/java/com/android/server/connectivity/Vpn.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 280,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2020-08-03T11:06:41Z",
+      "side": 1,
+      "message": "Nit: given that the ThrowingConsumers that can actually only throw a limited set of exceptions, we could use a different interface that can only throw those exceptions. That would also give us a better class name to use. Something like:\n\n    interface RetryScheduler {\n        public checkInterruptAndDelay(boolean sleepLonger) throws InterruptedException;\n    }\n\nor you could call it InterruptChecker or whatever else.",
+      "range": {
+        "startLine": 280,
+        "startChar": 42,
+        "endLine": 280,
+        "endChar": 87
+      },
+      "revId": "2e0f165b4339b1f0bd8928ae65eca0c64fd7a9b2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5818e270_960041f6",
+        "filename": "services/core/java/com/android/server/connectivity/Vpn.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 328,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2020-08-03T11:06:41Z",
+      "side": 1,
+      "message": "\"checkpoint\" is already used in this code. Maybe change the name to something more expressive? Maybe \"notifyConfigurationComplete\" or the like?",
+      "range": {
+        "startLine": 328,
+        "startChar": 20,
+        "endLine": 328,
+        "endChar": 30
+      },
+      "revId": "2e0f165b4339b1f0bd8928ae65eca0c64fd7a9b2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "17f0299f_f8a6ac2a",
+        "filename": "services/core/java/com/android/server/connectivity/Vpn.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 2821,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2020-08-03T11:06:41Z",
+      "side": 1,
+      "message": "This seems unusual, and also difficult to read because it embeds spaces. Why not something like:\n\n    + \"\u0027\" + String.join(\"\u0027, \", parameters) + \"\u0027\"",
+      "range": {
+        "startLine": 2821,
+        "startChar": 42,
+        "endLine": 2821,
+        "endChar": 48
+      },
+      "revId": "2e0f165b4339b1f0bd8928ae65eca0c64fd7a9b2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "97be2125_bc9c9308",
+        "filename": "tests/net/java/com/android/server/connectivity/VpnTest.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2020-08-03T11:06:41Z",
+      "side": 1,
+      "message": "Nit: pre-existing, but interface names are lowercase. If you want to use an interface that exists (see comment below for why), you can use \"dummy0\". (You could also use \"lo\", I suppose, though that\u0027s not very realistic.)\n\nIf you don\u0027t need an interface that exists,  https://developers.google.com/style/inclusive-documentation recommends against using \"dummy\". You could use something realistic-looking such as \"wlan0\" if you want.",
+      "range": {
+        "startLine": 151,
+        "startChar": 40,
+        "endLine": 151,
+        "endChar": 46
+      },
+      "revId": "2e0f165b4339b1f0bd8928ae65eca0c64fd7a9b2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ef2aecc7_18e571e3",
+        "filename": "tests/net/java/com/android/server/connectivity/VpnTest.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 1061,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2020-08-03T11:06:41Z",
+      "side": 1,
+      "message": "Nit: generally hostname is spelled as one word, so this would be \"Hostname\".",
+      "range": {
+        "startLine": 1061,
+        "startChar": 31,
+        "endLine": 1061,
+        "endChar": 39
+      },
+      "revId": "2e0f165b4339b1f0bd8928ae65eca0c64fd7a9b2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c1bb76d6_2ad3915d",
+        "filename": "tests/net/java/com/android/server/connectivity/VpnTest.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 1188,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2020-08-03T11:06:41Z",
+      "side": 1,
+      "message": "Nit: these seem unrealistic. Consider filling in with some fake values.",
+      "range": {
+        "startLine": 1180,
+        "startChar": 0,
+        "endLine": 1188,
+        "endChar": 31
+      },
+      "revId": "2e0f165b4339b1f0bd8928ae65eca0c64fd7a9b2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "554118e9_b3f2f65c",
+        "filename": "tests/net/java/com/android/server/connectivity/VpnTest.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 1210,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2020-08-03T11:06:41Z",
+      "side": 1,
+      "message": "This scheme seems difficult to follow. Is it only needed because you want the code to exit early, without doing jniCheck, prepareStatusIntent and agentConnect? If so, it seems like the code would be a lot easier to read (and simpler, too) by using mocks instead.\n\nSpecifically: if you use dummy0 or lo, jniCheck will succeed. After that, the test already mocks out ConnectivityManager, so maybe all it takes is to call:\n\n    verify(mConnectivityManager, timeout(...)).registerNetworkAgent(any(), any(), ...);\n\nI don\u0027t know if making the PendingIntent needs to be mocked or faked but even if it does it should be easy.\n\nIf you don\u0027t do this, add a comments to explain how the CyclicBarrier code works (and specificallly, what events happen in what order). Right now this information is partial and spread across a couple of places.",
+      "range": {
+        "startLine": 1195,
+        "startChar": 0,
+        "endLine": 1210,
+        "endChar": 0
+      },
+      "revId": "2e0f165b4339b1f0bd8928ae65eca0c64fd7a9b2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "809e7eaa_d093375d",
+        "filename": "tests/net/java/com/android/server/connectivity/VpnTest.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 1212,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2020-08-03T11:06:41Z",
+      "side": 1,
+      "message": "Endpoint is one word. Use a lowercase P?",
+      "range": {
+        "startLine": 1212,
+        "startChar": 48,
+        "endLine": 1212,
+        "endChar": 56
+      },
+      "revId": "2e0f165b4339b1f0bd8928ae65eca0c64fd7a9b2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
