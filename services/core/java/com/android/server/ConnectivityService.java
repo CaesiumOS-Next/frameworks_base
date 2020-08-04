@@ -3031,8 +3031,24 @@ public class ConnectivityService extends IConnectivityManager.Stub
                     ConnectivityDiagnosticsHandler.EVENT_NETWORK_TESTED,
                     new ConnectivityReportEvent(p.timestampMillis, nai));
 
+            // NetworkMonitor reports the network validation result as a bitmask while
+            // ConnectivityDiagnostics treats this value as an int. Convert the result to a single
+            // logical value for ConnectivityDiagnostics.
+            final int validationResult;
+            if (p.wasValidationSkipped) {
+                validationResult = ConnectivityReport.NETWORK_VALIDATION_RESULT_SKIPPED;
+            } else if ((p.result & NETWORK_VALIDATION_RESULT_VALID) != 0) {
+                if ((p.result & NETWORK_VALIDATION_RESULT_PARTIAL) != 0) {
+                    validationResult = ConnectivityReport.NETWORK_VALIDATION_RESULT_PARTIALLY_VALID;
+                } else {
+                    validationResult = ConnectivityReport.NETWORK_VALIDATION_RESULT_VALID;
+                }
+            } else {
+                validationResult = ConnectivityReport.NETWORK_VALIDATION_RESULT_INVALID;
+            }
+
             final PersistableBundle extras = new PersistableBundle();
-            extras.putInt(KEY_NETWORK_VALIDATION_RESULT, p.result);
+            extras.putInt(KEY_NETWORK_VALIDATION_RESULT, validationResult);
             extras.putInt(KEY_NETWORK_PROBES_SUCCEEDED_BITMASK, p.probesSucceeded);
             extras.putInt(KEY_NETWORK_PROBES_ATTEMPTED_BITMASK, p.probesAttempted);
 
@@ -4351,6 +4367,26 @@ public class ConnectivityService extends IConnectivityManager.Stub
         }
         // Revalidate if the app report does not match our current validated state.
         if (hasConnectivity == nai.lastValidated) {
+            // NetworkMonitor will not revalidate this Network. Report this through
+            // ConnectivityDiagnostics as a ConnectivityReport with VALIDATION_RESULT_SKIPPED.
+            final ConnectivityReport connectivityReport = nai.getConnectivityReport();
+            if (connectivityReport == null) {
+                // No cached ConnectivityReport available yet. The Network is still being validated
+                // and a ConnectivityReport will be shared after validation completes.
+                return;
+            }
+
+            final Message m = mConnectivityDiagnosticsHandler.obtainMessage(
+                    ConnectivityDiagnosticsHandler.EVENT_NETWORK_TESTED,
+                    new ConnectivityReportEvent(SystemClock.elapsedRealtime(), nai));
+
+            final PersistableBundle extras = new PersistableBundle(
+                    connectivityReport.getAdditionalInfo());
+            extras.putInt(KEY_NETWORK_VALIDATION_RESULT,
+                    ConnectivityReport.NETWORK_VALIDATION_RESULT_SKIPPED);
+
+            m.setData(new Bundle(extras));
+            mConnectivityDiagnosticsHandler.sendMessage(m);
             return;
         }
         if (DBG) {
