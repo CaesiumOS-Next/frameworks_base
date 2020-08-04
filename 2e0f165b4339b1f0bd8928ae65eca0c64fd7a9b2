@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "9c74e917_e6bf1a87",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2020-08-04T07:44:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "49c29913_148721ae",
+      "range": {
+        "startLine": 11,
+        "startChar": 42,
+        "endLine": 15,
+        "endChar": 52
+      },
+      "revId": "2e0f165b4339b1f0bd8928ae65eca0c64fd7a9b2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bb703e55_a069a9d5",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 4
@@ -65,6 +89,30 @@
     },
     {
       "key": {
+        "uuid": "69aaa3f7_78292920",
+        "filename": "services/core/java/com/android/server/connectivity/Vpn.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 280,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2020-08-04T07:44:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b7d86423_cf1eada2",
+      "range": {
+        "startLine": 280,
+        "startChar": 42,
+        "endLine": 280,
+        "endChar": 87
+      },
+      "revId": "2e0f165b4339b1f0bd8928ae65eca0c64fd7a9b2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5818e270_960041f6",
         "filename": "services/core/java/com/android/server/connectivity/Vpn.java",
         "patchSetId": 4
@@ -85,6 +133,30 @@
       "revId": "2e0f165b4339b1f0bd8928ae65eca0c64fd7a9b2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "db8faef7_e509b921",
+        "filename": "services/core/java/com/android/server/connectivity/Vpn.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 328,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2020-08-04T07:44:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5818e270_960041f6",
+      "range": {
+        "startLine": 328,
+        "startChar": 20,
+        "endLine": 328,
+        "endChar": 30
+      },
+      "revId": "2e0f165b4339b1f0bd8928ae65eca0c64fd7a9b2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -111,6 +183,30 @@
     },
     {
       "key": {
+        "uuid": "4a01e7e0_c8d6ca98",
+        "filename": "services/core/java/com/android/server/connectivity/Vpn.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 2821,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2020-08-04T07:44:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "17f0299f_f8a6ac2a",
+      "range": {
+        "startLine": 2821,
+        "startChar": 42,
+        "endLine": 2821,
+        "endChar": 48
+      },
+      "revId": "2e0f165b4339b1f0bd8928ae65eca0c64fd7a9b2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "97be2125_bc9c9308",
         "filename": "tests/net/java/com/android/server/connectivity/VpnTest.java",
         "patchSetId": 4
@@ -131,6 +227,30 @@
       "revId": "2e0f165b4339b1f0bd8928ae65eca0c64fd7a9b2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "36487a18_c5f7d20f",
+        "filename": "tests/net/java/com/android/server/connectivity/VpnTest.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2020-08-04T07:44:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "97be2125_bc9c9308",
+      "range": {
+        "startLine": 151,
+        "startChar": 40,
+        "endLine": 151,
+        "endChar": 46
+      },
+      "revId": "2e0f165b4339b1f0bd8928ae65eca0c64fd7a9b2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -157,6 +277,30 @@
     },
     {
       "key": {
+        "uuid": "00c4d68a_17a4af1a",
+        "filename": "tests/net/java/com/android/server/connectivity/VpnTest.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 1061,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2020-08-04T07:44:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ef2aecc7_18e571e3",
+      "range": {
+        "startLine": 1061,
+        "startChar": 31,
+        "endLine": 1061,
+        "endChar": 39
+      },
+      "revId": "2e0f165b4339b1f0bd8928ae65eca0c64fd7a9b2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c1bb76d6_2ad3915d",
         "filename": "tests/net/java/com/android/server/connectivity/VpnTest.java",
         "patchSetId": 4
@@ -177,6 +321,30 @@
       "revId": "2e0f165b4339b1f0bd8928ae65eca0c64fd7a9b2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "44fc5e43_ad841ba2",
+        "filename": "tests/net/java/com/android/server/connectivity/VpnTest.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 1188,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2020-08-04T07:44:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c1bb76d6_2ad3915d",
+      "range": {
+        "startLine": 1180,
+        "startChar": 0,
+        "endLine": 1188,
+        "endChar": 31
+      },
+      "revId": "2e0f165b4339b1f0bd8928ae65eca0c64fd7a9b2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -203,6 +371,30 @@
     },
     {
       "key": {
+        "uuid": "c02715a2_2892ebf5",
+        "filename": "tests/net/java/com/android/server/connectivity/VpnTest.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 1210,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2020-08-04T07:44:38Z",
+      "side": 1,
+      "message": "Mostly it was to wait for the configuration to be done before I can check for the throw route to be installed. But also yes, I wanted to unbranch before jniCheck (jniCheck will crash the test as the native lib is not included in the test (not even caught because Error not Exception), and I didn\u0027t want to add the native lib to the test as it\u0027s a bit more complex than a simple line to the build file (have to deal with variants)).\n\nChanged this based on your suggestion with mocking. Now jniCheck is a dependency, registerNetworkAgent will unblock the test and that lets me do it with a much simpler ConditionVariable. Let me know what you think.",
+      "parentUuid": "554118e9_b3f2f65c",
+      "range": {
+        "startLine": 1195,
+        "startChar": 0,
+        "endLine": 1210,
+        "endChar": 0
+      },
+      "revId": "2e0f165b4339b1f0bd8928ae65eca0c64fd7a9b2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "809e7eaa_d093375d",
         "filename": "tests/net/java/com/android/server/connectivity/VpnTest.java",
         "patchSetId": 4
@@ -223,6 +415,30 @@
       "revId": "2e0f165b4339b1f0bd8928ae65eca0c64fd7a9b2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1eaf4f9f_88352b51",
+        "filename": "tests/net/java/com/android/server/connectivity/VpnTest.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 1212,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2020-08-04T07:44:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "809e7eaa_d093375d",
+      "range": {
+        "startLine": 1212,
+        "startChar": 48,
+        "endLine": 1212,
+        "endChar": 56
+      },
+      "revId": "2e0f165b4339b1f0bd8928ae65eca0c64fd7a9b2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
