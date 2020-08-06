@@ -1,0 +1,228 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "64fa9f40_7b831bca",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2020-08-06T07:33:14Z",
+      "side": 1,
+      "message": "LGTM as is, feel free to address comments in a follow-up.",
+      "revId": "8f4d1ec282c971a27e4c804bf658bf7e1598b7d0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "925a14ac_3db71a60",
+        "filename": "services/core/java/com/android/server/connectivity/Vpn.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 284,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2020-08-06T07:33:14Z",
+      "side": 1,
+      "message": "This comment is out of date, and possibly no longer necessary.",
+      "range": {
+        "startLine": 283,
+        "startChar": 42,
+        "endLine": 284,
+        "endChar": 91
+      },
+      "revId": "8f4d1ec282c971a27e4c804bf658bf7e1598b7d0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dacb2ed8_0c4e1346",
+        "filename": "services/core/java/com/android/server/connectivity/Vpn.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 287,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2020-08-06T07:33:14Z",
+      "side": 1,
+      "message": "Nit: consider renaming to \"retryScheduler\" or \"scheduler\".",
+      "range": {
+        "startLine": 287,
+        "startChar": 37,
+        "endLine": 287,
+        "endChar": 53
+      },
+      "revId": "8f4d1ec282c971a27e4c804bf658bf7e1598b7d0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5ace2674_75f6cb3f",
+        "filename": "services/core/java/com/android/server/connectivity/Vpn.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 333,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2020-08-06T07:33:14Z",
+      "side": 1,
+      "message": "Nit: endpoint with a lowercase p.",
+      "range": {
+        "startLine": 333,
+        "startChar": 48,
+        "endLine": 333,
+        "endChar": 56
+      },
+      "revId": "8f4d1ec282c971a27e4c804bf658bf7e1598b7d0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c0b1c7d0_603b6398",
+        "filename": "services/core/java/com/android/server/connectivity/Vpn.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 2804,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2020-08-06T07:33:14Z",
+      "side": 1,
+      "message": "Typo, send.",
+      "range": {
+        "startLine": 2804,
+        "startChar": 58,
+        "endLine": 2804,
+        "endChar": 61
+      },
+      "revId": "8f4d1ec282c971a27e4c804bf658bf7e1598b7d0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2c3deee3_517fe560",
+        "filename": "services/core/java/com/android/server/connectivity/Vpn.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 2824,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2020-08-06T07:33:14Z",
+      "side": 1,
+      "message": "Uber-nit: delete this space?",
+      "range": {
+        "startLine": 2824,
+        "startChar": 75,
+        "endLine": 2824,
+        "endChar": 76
+      },
+      "revId": "8f4d1ec282c971a27e4c804bf658bf7e1598b7d0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b9c04d4f_c06bc369",
+        "filename": "services/core/java/com/android/server/connectivity/Vpn.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 2872,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2020-08-06T07:33:14Z",
+      "side": 1,
+      "message": "Remove this?",
+      "range": {
+        "startLine": 2870,
+        "startChar": 0,
+        "endLine": 2872,
+        "endChar": 0
+      },
+      "revId": "8f4d1ec282c971a27e4c804bf658bf7e1598b7d0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ce515bda_18f56ede",
+        "filename": "tests/net/java/com/android/server/connectivity/VpnTest.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 1076,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2020-08-06T07:33:14Z",
+      "side": 1,
+      "message": "This is fine, but out of curiosity, would it work if this code was:\n\n    when(mConnectivityManager.registerNetworkAgent()).thenReturn(new Network(102));\n\nand then later you used:\n\n    verify(mConnectivityManager, timeout(...)).registerNetworkAgent(...);\n\n? That seems a bit easier to read than the synchronization scheme that uses the ConditionVariable. LGTM either way.",
+      "range": {
+        "startLine": 1076,
+        "startChar": 8,
+        "endLine": 1076,
+        "endChar": 12
+      },
+      "revId": "8f4d1ec282c971a27e4c804bf658bf7e1598b7d0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1685105b_f9c847da",
+        "filename": "tests/net/java/com/android/server/connectivity/VpnTest.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 1179,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2020-08-06T07:33:14Z",
+      "side": 1,
+      "message": "Uber-nit: not a valid prefix since it has non-prefix bits set. Suggest 192.168.6.0/24 instead.",
+      "range": {
+        "startLine": 1179,
+        "startChar": 26,
+        "endLine": 1179,
+        "endChar": 40
+      },
+      "revId": "8f4d1ec282c971a27e4c804bf658bf7e1598b7d0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cdccc6b4_de4e5add",
+        "filename": "tests/net/java/com/android/server/connectivity/VpnTest.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 1181,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2020-08-06T07:33:14Z",
+      "side": 1,
+      "message": "... and 192.168.6.1 so it\u0027s within the route aboev.",
+      "range": {
+        "startLine": 1181,
+        "startChar": 26,
+        "endLine": 1181,
+        "endChar": 37
+      },
+      "revId": "8f4d1ec282c971a27e4c804bf658bf7e1598b7d0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
