@@ -45,12 +45,15 @@ public class QosFilter implements Parcelable {
     private PortRange localPort;
     private PortRange remotePort;
 
-    /** @hide */
+    /* @hide
+    Had trouble building this???
+
     @Retention(RetentionPolicy.SOURCE)
     @IntDef(prefix = "QOS_PROTOCOL_",
             value = {QOS_PROTOCOL_UNSPECIFIED, QOS_PROTOCOL_TCP, QOS_PROTOCOL_UDP,
                     QOS_PROTOCOL_ESP, QOS_PROTOCOL_AH})
     public @interface QosProtocol {}
+    */
 
     public static final int QOS_PROTOCOL_UNSPECIFIED =
             android.hardware.radio.V1_6.QosProtocol.UNSPECIFIED;
@@ -59,7 +62,7 @@ public class QosFilter implements Parcelable {
     public static final int QOS_PROTOCOL_ESP = android.hardware.radio.V1_6.QosProtocol.ESP;
     public static final int QOS_PROTOCOL_AH = android.hardware.radio.V1_6.QosProtocol.AH;
 
-    @QosProtocol
+    /*@QosProtocol*/
     public int protocol;
 
     private int typeOfServiceMask;
@@ -69,12 +72,14 @@ public class QosFilter implements Parcelable {
     /** IPSec security parameter index */
     private long securityParameterIndex;
 
-    /** @hide */
+    /* @hide
+    Had trouble building this???
+
     @Retention(RetentionPolicy.SOURCE)
     @IntDef(prefix = "QOS_FILTER_DIRECTION_",
             value = {QOS_FILTER_DIRECTION_DOWNLINK, QOS_FILTER_DIRECTION_UPLINK,
                     QOS_FILTER_DIRECTION_BIDIRECTIONAL})
-    public @interface QosFilterDirection {}
+    public @interface QosFilterDirection {}*/
 
     public static final int QOS_FILTER_DIRECTION_DOWNLINK =
             android.hardware.radio.V1_6.QosFilterDirection.DOWNLINK;
@@ -83,7 +88,7 @@ public class QosFilter implements Parcelable {
     public static final int QOS_FILTER_DIRECTION_BIDIRECTIONAL =
             android.hardware.radio.V1_6.QosFilterDirection.BIDIRECTIONAL;
 
-    @QosFilterDirection
+    /*@QosFilterDirection*/
     private int filterDirection;
 
     /**
@@ -91,6 +96,33 @@ public class QosFilter implements Parcelable {
      * A Lower numerical value has a higher precedence.
      */
     private int precedence;
+
+    public List<LinkAddress> getLocalAddresses() {
+        return localAddresses;
+    }
+
+    public List<LinkAddress> getRemoteAddresses() {
+        return remoteAddresses;
+    }
+
+    public PortRange getLocalPort() {
+        return localPort;
+    }
+
+    public PortRange getRemotePort() {
+        return remotePort;
+    }
+
+    public boolean doesLocalAddressMatch(InetAddress targetAddress, int targetPort) {
+        if (filterDirection == QOS_FILTER_DIRECTION_DOWNLINK ||
+                filterDirection == QOS_FILTER_DIRECTION_BIDIRECTIONAL) {
+            boolean match = QosFilterUtil.anyAddressMatch(
+                    targetAddress, targetPort, getLocalAddresses(), getLocalPort());
+            return match;
+        } else {
+            return false;
+        }
+    }
 
     QosFilter() {
         localAddresses = new ArrayList<>();
@@ -107,14 +139,14 @@ public class QosFilter implements Parcelable {
         String[] localAddresses = qosFilter.localAddresses.stream().toArray(String[]::new);
         if (localAddresses != null) {
             for (String address : localAddresses) {
-                ret.localAddresses.add(createLinkAddressFromString(address));
+                ret.getLocalAddresses().add(createLinkAddressFromString(address));
             }
         }
 
         String[] remoteAddresses = qosFilter.remoteAddresses.stream().toArray(String[]::new);
         if (remoteAddresses != null) {
             for (String address : remoteAddresses) {
-                ret.remoteAddresses.add(createLinkAddressFromString(address));
+                ret.getRemoteAddresses().add(createLinkAddressFromString(address));
             }
         }
 
@@ -122,8 +154,8 @@ public class QosFilter implements Parcelable {
             if (qosFilter.localPort.getDiscriminator()
                     == android.hardware.radio.V1_6.MaybePort.hidl_discriminator.range) {
                 final android.hardware.radio.V1_6.PortRange portRange = qosFilter.localPort.range();
-                ret.localPort.start = portRange.start;
-                ret.localPort.end = portRange.end;
+                ret.getLocalPort().start = portRange.start;
+                ret.getLocalPort().end = portRange.end;
             }
         }
 
@@ -132,8 +164,8 @@ public class QosFilter implements Parcelable {
                     == android.hardware.radio.V1_6.MaybePort.hidl_discriminator.range) {
                 final android.hardware.radio.V1_6.PortRange portRange
                         = qosFilter.remotePort.range();
-                ret.remotePort.start = portRange.start;
-                ret.remotePort.end = portRange.end;
+                ret.getRemotePort().start = portRange.start;
+                ret.getRemotePort().end = portRange.end;
             }
         }
 
@@ -178,6 +210,10 @@ public class QosFilter implements Parcelable {
         private PortRange(Parcel source) {
             this.start = source.readInt();
             this.end = source.readInt();
+        }
+
+        public boolean inRange(int port) {
+            return port >= start && port <= end;
         }
 
         @Override
@@ -233,10 +269,10 @@ public class QosFilter implements Parcelable {
     @Override
     public String toString() {
         return "QosFilter {"
-                + " localAddresses=" + localAddresses
-                + " remoteAddresses=" + remoteAddresses
-                + " localPort=" + localPort
-                + " remotePort=" + remotePort
+                + " localAddresses=" + getLocalAddresses()
+                + " remoteAddresses=" + getRemoteAddresses()
+                + " localPort=" + getLocalPort()
+                + " remotePort=" + getRemotePort()
                 + " protocol=" + protocol
                 + " typeOfServiceMask=" + typeOfServiceMask
                 + " flowLabel=" + flowLabel
@@ -247,8 +283,8 @@ public class QosFilter implements Parcelable {
 
     @Override
     public int hashCode() {
-        return Objects.hash(localAddresses, remoteAddresses, localPort,
-                remotePort, protocol, typeOfServiceMask, flowLabel,
+        return Objects.hash(getLocalAddresses(), getRemoteAddresses(), getLocalPort(),
+                getRemotePort(), protocol, typeOfServiceMask, flowLabel,
                 securityParameterIndex, filterDirection, precedence);
     }
 
@@ -262,12 +298,12 @@ public class QosFilter implements Parcelable {
 
         QosFilter other = (QosFilter) o;
 
-        return localAddresses.size() == other.localAddresses.size()
-                && localAddresses.containsAll(other.localAddresses)
-                && remoteAddresses.size() == other.remoteAddresses.size()
-                && remoteAddresses.containsAll(other.remoteAddresses)
-                && localPort.equals(other.localPort)
-                && remotePort.equals(other.remotePort)
+        return getLocalAddresses().size() == other.getLocalAddresses().size()
+                && getLocalAddresses().containsAll(other.getLocalAddresses())
+                && getRemoteAddresses().size() == other.getRemoteAddresses().size()
+                && getRemoteAddresses().containsAll(other.getRemoteAddresses())
+                && getLocalPort().equals(other.getLocalPort())
+                && getRemotePort().equals(other.getRemotePort())
                 && protocol == other.protocol
                 && typeOfServiceMask == other.typeOfServiceMask
                 && flowLabel == other.flowLabel
@@ -304,9 +340,9 @@ public class QosFilter implements Parcelable {
 
     private QosFilter(Parcel source) {
         localAddresses = new ArrayList<>();
-        source.readList(localAddresses, LinkAddress.class.getClassLoader());
+        source.readList(getLocalAddresses(), LinkAddress.class.getClassLoader());
         remoteAddresses = new ArrayList<>();
-        source.readList(remoteAddresses, LinkAddress.class.getClassLoader());
+        source.readList(getRemoteAddresses(), LinkAddress.class.getClassLoader());
         localPort = source.readParcelable(PortRange.class.getClassLoader());
         remotePort = source.readParcelable(PortRange.class.getClassLoader());
         protocol = source.readInt();
@@ -319,10 +355,10 @@ public class QosFilter implements Parcelable {
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
-        dest.writeList(localAddresses);
-        dest.writeList(remoteAddresses);
-        dest.writeParcelable(localPort, flags);
-        dest.writeParcelable(remotePort, flags);
+        dest.writeList(getLocalAddresses());
+        dest.writeList(getRemoteAddresses());
+        dest.writeParcelable(getLocalPort(), flags);
+        dest.writeParcelable(getRemotePort(), flags);
         dest.writeInt(protocol);
         dest.writeInt(typeOfServiceMask);
         dest.writeLong(flowLabel);

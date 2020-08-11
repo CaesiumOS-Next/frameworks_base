@@ -434,7 +434,7 @@ public final class DataCallResponse implements Parcelable {
 
         private Qos mDefaultQos;
 
-        private List<QosSession> mQosSessions;
+        @NonNull private List<QosSession> mQosSessions;
 
         /**
          * Default constructor for Builder.
@@ -631,6 +631,13 @@ public final class DataCallResponse implements Parcelable {
             return new DataCallResponse(mCause, mSuggestedRetryTime, mId, mLinkStatus,
                     mProtocolType, mInterfaceName, mAddresses, mDnsAddresses, mGatewayAddresses,
                     mPcscfAddresses, mMtu, mMtuV4, mMtuV6);
+        }
+
+        /**
+         * @hide
+         */
+        @NonNull List<QosSession> getQosSessions() {
+            return mQosSessions;
         }
     }
 }

@@ -20,16 +20,20 @@ import android.annotation.NonNull;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import java.net.InetAddress;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 
 /**
  * Class that stores information specific to QOS session.
+ *
  * @hide
  */
-public class QosSession implements Parcelable{
+public class QosSession implements Parcelable {
 
     int qosSessionId;
     Qos qos;
@@ -39,6 +43,12 @@ public class QosSession implements Parcelable{
         this.qosSessionId = qosSessionId;
         this.qos = qos;
         this.qosFilterList = qosFilterList;
+    }
+
+    public List<QosFilter> filterLocalAddressMatch(InetAddress targetAddress, int targetPort) {
+        return this.getQosFilterList().stream()
+                .filter(f -> f.doesLocalAddressMatch(targetAddress, targetPort))
+                .collect(Collectors.toList());
     }
 
     private QosSession(Parcel source) {
@@ -115,4 +125,21 @@ public class QosSession implements Parcelable{
                     return new QosSession[size];
                 }
             };
+
+    public int getQosSessionId() {
+        return qosSessionId;
+    }
+
+    public List<QosFilter> getQosFilterList() {
+        return qosFilterList;
+    }
+
+    public Qos getQos() {
+        return qos;
+    }
+
+    public boolean same(QosSession other) {
+        //TODO: check to see if this actually changed
+        return true;
+    }
 }
