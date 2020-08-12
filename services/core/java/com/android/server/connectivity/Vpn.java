@@ -77,6 +77,7 @@ import android.net.ipsec.ike.ChildSessionParams;
 import android.net.ipsec.ike.IkeSession;
 import android.net.ipsec.ike.IkeSessionCallback;
 import android.net.ipsec.ike.IkeSessionParams;
+import android.net.ipsec.ike.exceptions.IkeProtocolException;
 import android.os.Binder;
 import android.os.Build.VERSION_CODES;
 import android.os.Bundle;
@@ -2300,7 +2301,7 @@ public class Vpn {
         void onChildTransformCreated(
                 @NonNull Network network, @NonNull IpSecTransform transform, int direction);
 
-        void onSessionLost(@NonNull Network network);
+        void onSessionLost(@NonNull Network network, @Nullable Exception exception);
     }
 
     /**
@@ -2457,7 +2458,7 @@ public class Vpn {
                 networkAgent.sendLinkProperties(lp);
             } catch (Exception e) {
                 Log.d(TAG, "Error in ChildOpened for network " + network, e);
-                onSessionLost(network);
+                onSessionLost(network, e);
             }
         }
 
@@ -2487,7 +2488,7 @@ public class Vpn {
                 mIpSecManager.applyTunnelModeTransform(mTunnelIface, direction, transform);
             } catch (IOException e) {
                 Log.d(TAG, "Transform application failed for network " + network, e);
-                onSessionLost(network);
+                onSessionLost(network, e);
             }
         }
 
@@ -2545,7 +2546,7 @@ public class Vpn {
                     Log.d(TAG, "Ike Session started for network " + network);
                 } catch (Exception e) {
                     Log.i(TAG, "Setup failed for network " + network + ". Aborting", e);
-                    onSessionLost(network);
+                    onSessionLost(network, e);
                 }
             });
         }
@@ -2559,7 +2560,7 @@ public class Vpn {
          * <p>This method MUST always be called on the mExecutor thread in order to ensure
          * consistency of the Ikev2VpnRunner fields.
          */
-        public void onSessionLost(@NonNull Network network) {
+        public void onSessionLost(@NonNull Network network, @Nullable Exception exception) {
             if (!isActiveNetwork(network)) {
                 Log.d(TAG, "onSessionLost() called for obsolete network " + network);
 
@@ -2569,6 +2570,34 @@ public class Vpn {
                 // else). In both cases, all resources and sessions are torn down via
                 // onSessionLost() and resetIkeState().
                 return;
+            }
+
+            if (exception instanceof IkeProtocolException) {
+                final IkeProtocolException ikeException = (IkeProtocolException) exception;
+
+                switch (ikeException.getErrorType()) {
+                    case IkeProtocolException.ERROR_TYPE_NO_PROPOSAL_CHOSEN: // Fallthrough
+                    case IkeProtocolException.ERROR_TYPE_INVALID_KE_PAYLOAD: // Fallthrough
+                    case IkeProtocolException.ERROR_TYPE_AUTHENTICATION_FAILED: // Fallthrough
+                    case IkeProtocolException.ERROR_TYPE_SINGLE_PAIR_REQUIRED: // Fallthrough
+                    case IkeProtocolException.ERROR_TYPE_FAILED_CP_REQUIRED: // Fallthrough
+                    case IkeProtocolException.ERROR_TYPE_TS_UNACCEPTABLE:
+                        synchronized (Vpn.this) {
+                            // All the above failures are configuration errors, and are terminal
+                            updateState(DetailedState.FAILED, ikeException.getMessage());
+                        }
+
+                        shutdownVpnRunner();
+                        return;
+                    // All other cases possibly recoverable.
+                }
+            } else if (exception instanceof IllegalArgumentException) {
+                synchronized (Vpn.this) {
+                    // Failed to build IKE/ChildSessionParams; fatal profile configuration error
+                    updateState(DetailedState.FAILED, exception.getMessage());
+                }
+
+                shutdownVpnRunner();
             }
 
             mActiveNetwork = null;
@@ -2633,8 +2662,6 @@ public class Vpn {
 
             final ConnectivityManager cm = ConnectivityManager.from(mContext);
             cm.unregisterNetworkCallback(mNetworkCallback);
-
-            mExecutor.shutdown();
         }
 
         @Override
@@ -2642,6 +2669,10 @@ public class Vpn {
             mExecutor.execute(() -> {
                 shutdownVpnRunner();
             });
+
+            // Only shutdown executor when called from the main VPN logic, to be consistent with
+            // clearing of mVpnRunner field.
+            mExecutor.shutdown();
         }
     }
 
