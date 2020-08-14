@@ -57,6 +57,8 @@ MouseCursorController::MouseCursorController(PointerControllerContext& context)
     mLocked.resourcesLoaded = false;
 
     mLocked.buttonState = 0;
+
+    mLocked.animating = false;
 }
 
 MouseCursorController::~MouseCursorController() {
@@ -168,7 +170,7 @@ void MouseCursorController::fade(PointerControllerInterface::Transition transiti
         updatePointerLocked();
     } else {
         mLocked.pointerFadeDirection = -1;
-        mContext.startAnimation();
+        startAnimation();
     }
 }
 
@@ -185,7 +187,7 @@ void MouseCursorController::unfade(PointerControllerInterface::Transition transi
         updatePointerLocked();
     } else {
         mLocked.pointerFadeDirection = 1;
-        mContext.startAnimation();
+        startAnimation();
     }
 }
 
@@ -312,8 +314,9 @@ void MouseCursorController::setCustomPointerIcon(const SpriteIcon& icon) {
     updatePointerLocked();
 }
 
-bool MouseCursorController::doFadingAnimation(nsecs_t timestamp, bool keepAnimating) {
+bool MouseCursorController::doFadingAnimation(nsecs_t timestamp) {
     nsecs_t frameDelay = timestamp - mContext.getAnimationTime();
+    bool keepAnimating = false;
 
     std::scoped_lock lock(mLock);
 
@@ -337,7 +340,6 @@ bool MouseCursorController::doFadingAnimation(nsecs_t timestamp, bool keepAnimat
         }
         updatePointerLocked();
     }
-
     return keepAnimating;
 }
 
@@ -364,7 +366,6 @@ bool MouseCursorController::doBitmapAnimation(nsecs_t timestamp) {
 
         spriteController->closeTransaction();
     }
-
     // Keep animating.
     return true;
 }
@@ -399,7 +400,7 @@ void MouseCursorController::updatePointerLocked() REQUIRES(mLock) {
                 if (anim_iter != mLocked.animationResources.end()) {
                     mLocked.animationFrameIndex = 0;
                     mLocked.lastFrameUpdatedTime = systemTime(SYSTEM_TIME_MONOTONIC);
-                    mContext.startAnimation();
+                    startAnimation();
                 }
                 mLocked.pointerSprite->setIcon(iter->second);
             } else {
@@ -455,6 +456,35 @@ void MouseCursorController::getAdditionalMouseResources() {
 bool MouseCursorController::resourcesLoaded() {
     std::scoped_lock lock(mLock);
     return mLocked.resourcesLoaded;
+}
+
+bool MouseCursorController::doAnimations(nsecs_t timestamp) {
+    bool keepFading = doFadingAnimation(timestamp);
+    bool keepBitmap = doBitmapAnimation(timestamp);
+    bool keepAnimating = keepFading || keepBitmap;
+    if (!keepAnimating) {
+        /*
+         * We know that this callback will be removed before another
+         * is added due to mLock in PointerAnimator not being released
+         * until after removal. Thus it's safe to set mLocked.animating
+         * here.
+         */
+        std::scoped_lock lock(mLock);
+        mLocked.animating = false;
+    }
+    return keepAnimating;
+}
+
+void MouseCursorController::startAnimation() {
+    using namespace std::placeholders;
+
+    if (mLocked.animating) {
+        return;
+    }
+    mLocked.animating = true;
+
+    std::function<bool(nsecs_t)> func = std::bind(&MouseCursorController::doAnimations, this, _1);
+    mContext.registerCallback(func);
 }
 
 } // namespace android
