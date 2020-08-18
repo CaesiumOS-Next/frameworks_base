@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "826eeba7_d94199d3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1071150
+      },
+      "writtenOn": "2020-08-18T08:25:56Z",
+      "side": 1,
+      "message": "Sorry all, could you PTAL, PS1 erred in not updating the preload-check test. Thanks!",
+      "revId": "7cebdeeb53410548c2fad979b46f94d4e53c9733",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
