@@ -16,6 +16,23 @@
       "revId": "7cebdeeb53410548c2fad979b46f94d4e53c9733",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8910c990_3726feff",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1071150
+      },
+      "writtenOn": "2020-08-19T08:55:22Z",
+      "side": 1,
+      "message": "PTAL, the delta between PS1 and PS2 is 3 lines.\n\nhttps://android-review.googlesource.com/c/platform/frameworks/base/+/1392981/1..2",
+      "revId": "7cebdeeb53410548c2fad979b46f94d4e53c9733",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
