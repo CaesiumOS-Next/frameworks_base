@@ -16,14 +16,23 @@
 
 package com.android.server;
 
+import static org.junit.Assert.fail;
+import static org.mockito.Matchers.eq;
 import static org.mockito.Mockito.any;
+import static org.mockito.Mockito.anyInt;
+import static org.mockito.Mockito.doNothing;
 import static org.mockito.Mockito.doReturn;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 
 import android.content.Context;
 import android.net.ConnectivityManager;
+import android.net.vcn.VcnConfig;
+import android.os.ParcelUuid;
 import android.os.test.TestLooper;
+import android.telephony.SubscriptionInfo;
+import android.telephony.SubscriptionManager;
+import android.telephony.TelephonyManager;
 
 import androidx.test.filters.SmallTest;
 import androidx.test.runner.AndroidJUnit4;
@@ -31,27 +40,78 @@ import androidx.test.runner.AndroidJUnit4;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+import java.util.Collections;
+import java.util.UUID;
+
 /** Tests for {@link VcnManagementService}. */
 @RunWith(AndroidJUnit4.class)
 @SmallTest
 public class VcnManagementServiceTest {
     private static final String TAG = VcnManagementServiceTest.class.getSimpleName();
 
+    private static final ParcelUuid TEST_UUID_1 = new ParcelUuid(new UUID(0, 0));
+    private static final SubscriptionInfo TEST_SUBSCRIPTION_INFO =
+            new SubscriptionInfo(
+                    1 /* id */,
+                    "" /* iccId */,
+                    0 /* simSlotIndex */,
+                    "Carrier" /* displayName */,
+                    "Carrier" /* carrierName */,
+                    0 /* nameSource */,
+                    255 /* iconTint */,
+                    "12345" /* number */,
+                    0 /* roaming */,
+                    null /* icon */,
+                    "0" /* mcc */,
+                    "0" /* mnc */,
+                    "0" /* countryIso */,
+                    false /* isEmbedded */,
+                    null /* nativeAccessRules */,
+                    null /* cardString */,
+                    false /* isOpportunistic */,
+                    TEST_UUID_1.toString() /* groupUUID */,
+                    0 /* carrierId */,
+                    0 /* profileClass */);
+
     private final Context mMockContext = mock(Context.class);
     private final VcnManagementService.Dependencies mMockDeps =
             mock(VcnManagementService.Dependencies.class);
     private final TestLooper mTestLooper = new TestLooper();
     private final ConnectivityManager mConnMgr = mock(ConnectivityManager.class);
+    private final TelephonyManager mTelMgr = mock(TelephonyManager.class);
+    private final SubscriptionManager mSubMgr = mock(SubscriptionManager.class);
     private final VcnManagementService mVcnMgmtSvc;
 
-    public VcnManagementServiceTest() {
+    public VcnManagementServiceTest() throws Exception {
+        doNothing()
+                .when(mMockContext)
+                .enforceCallingPermission(eq(android.Manifest.permission.NETWORK_FACTORY), any());
         doReturn(Context.CONNECTIVITY_SERVICE)
                 .when(mMockContext)
                 .getSystemServiceName(ConnectivityManager.class);
         doReturn(mConnMgr).when(mMockContext).getSystemService(Context.CONNECTIVITY_SERVICE);
+        doReturn(Context.TELEPHONY_SERVICE)
+                .when(mMockContext)
+                .getSystemServiceName(TelephonyManager.class);
+        doReturn(mTelMgr).when(mMockContext).getSystemService(Context.TELEPHONY_SERVICE);
+        doReturn(Context.TELEPHONY_SUBSCRIPTION_SERVICE)
+                .when(mMockContext)
+                .getSystemServiceName(SubscriptionManager.class);
+        doReturn(mSubMgr)
+                .when(mMockContext)
+                .getSystemService(Context.TELEPHONY_SUBSCRIPTION_SERVICE);
 
         doReturn(mTestLooper.getLooper()).when(mMockDeps).getLooper();
+
+        setupMockedCarrierPrivilege(true);
         mVcnMgmtSvc = new VcnManagementService(mMockContext, mMockDeps);
+    }
+
+    private void setupMockedCarrierPrivilege(boolean isPrivileged) {
+        doReturn(Collections.singletonList(TEST_SUBSCRIPTION_INFO))
+                .when(mSubMgr)
+                .getSubscriptionsInGroup(any());
+        doReturn(isPrivileged).when(mTelMgr).hasCarrierPrivileges(anyInt());
     }
 
     @Test
@@ -59,5 +119,27 @@ public class VcnManagementServiceTest {
         mVcnMgmtSvc.systemReady();
 
         verify(mConnMgr).registerNetworkProvider(any());
+    }
+
+    @Test
+    public void testSetVcnConfigRequiresCarrierPrivileges() throws Exception {
+        setupMockedCarrierPrivilege(false);
+
+        try {
+            mVcnMgmtSvc.setVcnConfig(TEST_UUID_1, new VcnConfig.Builder().build());
+            fail("Expected security exception for missing carrier privileges");
+        } catch (SecurityException expected) {
+        }
+    }
+
+    @Test
+    public void testClearVcnConfigRequiresCarrierPrivileges() throws Exception {
+        setupMockedCarrierPrivilege(false);
+
+        try {
+            mVcnMgmtSvc.clearVcnConfig(TEST_UUID_1);
+            fail("Expected security exception for missing carrier privileges");
+        } catch (SecurityException expected) {
+        }
     }
 }
