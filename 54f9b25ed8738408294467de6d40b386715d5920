@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "345ec354_75d5438c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2020-08-19T08:32:39Z",
+      "side": 1,
+      "message": "Code LGTM. Junyu, please take a look.\n\nWe need to have a clear picture of how big this can become. Please work with Junyu to put a reasonable estimate on how bigger this will make the bug report in most cases and ideally have a maximum size that this can grow to.\n",
+      "revId": "54f9b25ed8738408294467de6d40b386715d5920",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "227ae2f3_639bddde",
+        "filename": "services/core/java/com/android/server/net/NetworkStatsService.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 1849,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2020-08-19T08:32:39Z",
+      "side": 1,
+      "message": "If you remove DUMP_FLAG_PRIORITY_NORMAL from SystemServer, can you remove this method ? I would prefer we don\u0027t have two copies of this.",
+      "range": {
+        "startLine": 1845,
+        "startChar": 11,
+        "endLine": 1849,
+        "endChar": 13
+      },
+      "revId": "54f9b25ed8738408294467de6d40b386715d5920",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "44e4a398_7b005ec2",
+        "filename": "services/core/java/com/android/server/net/NetworkStatsService.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 1850,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2020-08-19T08:32:39Z",
+      "side": 1,
+      "message": "Need a blank line above",
+      "range": {
+        "startLine": 1850,
+        "startChar": 12,
+        "endLine": 1850,
+        "endChar": 13
+      },
+      "revId": "54f9b25ed8738408294467de6d40b386715d5920",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
