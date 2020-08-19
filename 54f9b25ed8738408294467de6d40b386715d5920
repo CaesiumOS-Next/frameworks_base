@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "8655508e_fb3c99a2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1306837
+      },
+      "writtenOn": "2020-08-19T09:20:03Z",
+      "side": 1,
+      "message": "how do we know this is a real data instead of random binary values?",
+      "range": {
+        "startLine": 14,
+        "startChar": 28,
+        "endLine": 14,
+        "endChar": 42
+      },
+      "revId": "54f9b25ed8738408294467de6d40b386715d5920",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "345ec354_75d5438c",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 2
@@ -30,6 +53,30 @@
       "writtenOn": "2020-08-19T08:32:39Z",
       "side": 1,
       "message": "If you remove DUMP_FLAG_PRIORITY_NORMAL from SystemServer, can you remove this method ? I would prefer we don\u0027t have two copies of this.",
+      "range": {
+        "startLine": 1845,
+        "startChar": 11,
+        "endLine": 1849,
+        "endChar": 13
+      },
+      "revId": "54f9b25ed8738408294467de6d40b386715d5920",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "263c2913_92ebd160",
+        "filename": "services/core/java/com/android/server/net/NetworkStatsService.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 1849,
+      "author": {
+        "id": 1306837
+      },
+      "writtenOn": "2020-08-19T09:20:03Z",
+      "side": 1,
+      "message": "+1\nIf that can be done,\nmaybe directly call dumpProtoLocked here since it is quite isolated?",
+      "parentUuid": "227ae2f3_639bddde",
       "range": {
         "startLine": 1845,
         "startChar": 11,
