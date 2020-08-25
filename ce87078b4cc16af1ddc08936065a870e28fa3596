@@ -1,0 +1,92 @@
+{
+  "comments": [
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000004600515",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1303573?revision\u003d7",
+      "fixSuggestions": [
+        {
+          "fixId": "07f0cef8_3336a354",
+          "description": "Change to \"services/core/java/com/android/server/audio/AudioService.java\"",
+          "replacements": [
+            {
+              "path": "services/core/java/com/android/server/audio/AudioService.java",
+              "range": {
+                "startLine": 1752,
+                "startChar": 22,
+                "endLine": 1752,
+                "endChar": 32
+              },
+              "replacement": "unnecessary"
+            }
+          ]
+        }
+      ],
+      "key": {
+        "uuid": "0a11df6d_8be2e7cd",
+        "filename": "services/core/java/com/android/server/audio/AudioService.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 1752,
+      "author": {
+        "id": 1550585
+      },
+      "writtenOn": "2020-08-25T14:52:11Z",
+      "side": 1,
+      "message": "Common typo found: \"unecessary\" -- should it be \"unnecessary\"?\nNote: a line containing \"common_typos_disable\" or \"common_typos_enable\" will turn off or on (respectively) the linter for subsequent lines in the file. Alternatively include the token \"NOTYPO\" within a line to skip typo linting that line or include \u0027NO_TYPO_CHECK\u003d\u003creason\u003e\u0027in the commit message.",
+      "range": {
+        "startLine": 1752,
+        "startChar": 22,
+        "endLine": 1752,
+        "endChar": 32
+      },
+      "revId": "ce87078b4cc16af1ddc08936065a870e28fa3596",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000004600515",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1303573?revision\u003d7",
+      "fixSuggestions": [
+        {
+          "fixId": "50087590_b2696028",
+          "description": "Change to \"services/core/java/com/android/server/audio/AudioService.java\"",
+          "replacements": [
+            {
+              "path": "services/core/java/com/android/server/audio/AudioService.java",
+              "range": {
+                "startLine": 5189,
+                "startChar": 23,
+                "endLine": 5189,
+                "endChar": 33
+              },
+              "replacement": "unnecessary"
+            }
+          ]
+        }
+      ],
+      "key": {
+        "uuid": "1beafc55_677bd376",
+        "filename": "services/core/java/com/android/server/audio/AudioService.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 5189,
+      "author": {
+        "id": 1550585
+      },
+      "writtenOn": "2020-08-25T14:52:11Z",
+      "side": 1,
+      "message": "Common typo found: \"unecessary\" -- should it be \"unnecessary\"?\nNote: a line containing \"common_typos_disable\" or \"common_typos_enable\" will turn off or on (respectively) the linter for subsequent lines in the file. Alternatively include the token \"NOTYPO\" within a line to skip typo linting that line or include \u0027NO_TYPO_CHECK\u003d\u003creason\u003e\u0027in the commit message.",
+      "range": {
+        "startLine": 5189,
+        "startChar": 23,
+        "endLine": 5189,
+        "endChar": 33
+      },
+      "revId": "ce87078b4cc16af1ddc08936065a870e28fa3596",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
