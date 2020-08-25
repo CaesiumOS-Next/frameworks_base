@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "dbd87bfd_b5b27641",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1385042
+      },
+      "writtenOn": "2020-08-25T10:04:01Z",
+      "side": 1,
+      "message": "Checked offline.",
+      "parentUuid": "8655508e_fb3c99a2",
+      "range": {
+        "startLine": 14,
+        "startChar": 28,
+        "endLine": 14,
+        "endChar": 42
+      },
+      "revId": "54f9b25ed8738408294467de6d40b386715d5920",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "345ec354_75d5438c",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 2
@@ -77,6 +101,30 @@
       "side": 1,
       "message": "+1\nIf that can be done,\nmaybe directly call dumpProtoLocked here since it is quite isolated?",
       "parentUuid": "227ae2f3_639bddde",
+      "range": {
+        "startLine": 1845,
+        "startChar": 11,
+        "endLine": 1849,
+        "endChar": 13
+      },
+      "revId": "54f9b25ed8738408294467de6d40b386715d5920",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d897c4ee_d00a71cd",
+        "filename": "services/core/java/com/android/server/net/NetworkStatsService.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 1849,
+      "author": {
+        "id": 1385042
+      },
+      "writtenOn": "2020-08-25T10:04:01Z",
+      "side": 1,
+      "message": "In dumpstate, RunDumpsysProto() is only called with passing one of the DUMP_FLAG_PRIORITY_[CRITICAL | HIGH | NORMAL] priority flags. My understanding is that we need to add one of the above priority flags if we want to dump the section in protobuf format.\nAlso, I tried to remove the flag DUMP_FLAG_PRIORITY_NORMAL and it didn\u0027t generate netstats.proto in bugreoprt zip file.",
+      "parentUuid": "263c2913_92ebd160",
       "range": {
         "startLine": 1845,
         "startChar": 11,
