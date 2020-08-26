@@ -16,6 +16,52 @@
       "revId": "ab588ef9438794eb9615a787b76c98fcfc1e3e32",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "619af279_d0a25ff6",
+        "filename": "services/core/java/com/android/server/net/NetworkStatsService.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 1848,
+      "author": {
+        "id": 1306837
+      },
+      "writtenOn": "2020-08-26T03:47:32Z",
+      "side": 1,
+      "message": "If this is the only caller of doDump,\nmaybe rename doDump to dumpNormal, or inline the content here.",
+      "range": {
+        "startLine": 1848,
+        "startChar": 16,
+        "endLine": 1848,
+        "endChar": 22
+      },
+      "revId": "ab588ef9438794eb9615a787b76c98fcfc1e3e32",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e3a35126_9d469611",
+        "filename": "services/core/java/com/android/server/net/NetworkStatsService.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 1855,
+      "author": {
+        "id": 1306837
+      },
+      "writtenOn": "2020-08-26T03:47:32Z",
+      "side": 1,
+      "message": "Maybe you don\u0027t need to implement this?\nSee https://osscs.corp.google.com/android/platform/superproject/+/master:frameworks/base/services/core/java/com/android/server/utils/PriorityDump.java;l\u003d247?q\u003dPriorityDump\u0026ss\u003dandroid",
+      "range": {
+        "startLine": 1851,
+        "startChar": 12,
+        "endLine": 1855,
+        "endChar": 13
+      },
+      "revId": "ab588ef9438794eb9615a787b76c98fcfc1e3e32",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
