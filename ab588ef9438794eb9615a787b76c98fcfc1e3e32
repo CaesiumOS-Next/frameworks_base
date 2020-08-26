@@ -42,6 +42,30 @@
     },
     {
       "key": {
+        "uuid": "3dc08de5_2e3fdc3e",
+        "filename": "services/core/java/com/android/server/net/NetworkStatsService.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 1848,
+      "author": {
+        "id": 1385042
+      },
+      "writtenOn": "2020-08-26T13:42:58Z",
+      "side": 1,
+      "message": "Done, rename to doNormalDump.",
+      "parentUuid": "619af279_d0a25ff6",
+      "range": {
+        "startLine": 1848,
+        "startChar": 16,
+        "endLine": 1848,
+        "endChar": 22
+      },
+      "revId": "ab588ef9438794eb9615a787b76c98fcfc1e3e32",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e3a35126_9d469611",
         "filename": "services/core/java/com/android/server/net/NetworkStatsService.java",
         "patchSetId": 3
@@ -62,6 +86,30 @@
       "revId": "ab588ef9438794eb9615a787b76c98fcfc1e3e32",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dbd25b55_a5c4cdab",
+        "filename": "services/core/java/com/android/server/net/NetworkStatsService.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 1855,
+      "author": {
+        "id": 1385042
+      },
+      "writtenOn": "2020-08-26T13:42:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e3a35126_9d469611",
+      "range": {
+        "startLine": 1851,
+        "startChar": 12,
+        "endLine": 1855,
+        "endChar": 13
+      },
+      "revId": "ab588ef9438794eb9615a787b76c98fcfc1e3e32",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
