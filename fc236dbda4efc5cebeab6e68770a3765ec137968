@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2c39bec3_d2b7c76d",
+        "filename": "services/core/java/com/android/server/net/NetworkStatsService.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 1850,
+      "author": {
+        "id": 1306837
+      },
+      "writtenOn": "2020-08-27T07:13:19Z",
+      "side": 0,
+      "message": "how do you know it is safe to change? Maybe comment in design doc or buganizer?",
+      "range": {
+        "startLine": 1850,
+        "startChar": 8,
+        "endLine": 1850,
+        "endChar": 90
+      },
+      "revId": "fc236dbda4efc5cebeab6e68770a3765ec137968",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}

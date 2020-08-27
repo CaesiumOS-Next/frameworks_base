@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b6a696be_fc6100e2",
+        "filename": "services/core/java/com/android/server/net/NetworkStatsRecorder.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 477,
+      "author": {
+        "id": 1306837
+      },
+      "writtenOn": "2020-08-27T07:13:19Z",
+      "side": 1,
+      "message": "IIUC you need to change this?",
+      "range": {
+        "startLine": 477,
+        "startChar": 65,
+        "endLine": 477,
+        "endChar": 81
+      },
+      "revId": "e3d002fdc52a8341d2cf7b703c7611a59dd7b583",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c9a46d2e_fa15f87f",
+        "filename": "services/core/java/com/android/server/net/NetworkStatsService.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 1696,
+      "author": {
+        "id": 1306837
+      },
+      "writtenOn": "2020-08-27T07:13:19Z",
+      "side": 1,
+      "message": "nit: still think dumpNormal would be better, but this works too.\nAs you might imagine if our code fills with do- prefix, it might not actually helpful.\nOr if we have multi-layer refactoring for a function, do- prefix at the middle function might not be suitable, so another renaming effort might be needed when that happens.",
+      "range": {
+        "startLine": 1696,
+        "startChar": 17,
+        "endLine": 1696,
+        "endChar": 29
+      },
+      "revId": "e3d002fdc52a8341d2cf7b703c7611a59dd7b583",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8718b806_35651ceb",
+        "filename": "services/core/java/com/android/server/net/NetworkStatsService.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 1721,
+      "author": {
+        "id": 1306837
+      },
+      "writtenOn": "2020-08-27T07:13:19Z",
+      "side": 1,
+      "message": "However now we are not parsing this argument directly, right?\nMaybe says this is going to be parsed by PriorityDump to be more clear?",
+      "range": {
+        "startLine": 1721,
+        "startChar": 32,
+        "endLine": 1721,
+        "endChar": 39
+      },
+      "revId": "e3d002fdc52a8341d2cf7b703c7611a59dd7b583",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
