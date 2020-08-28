@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "fbdfd62a_6573cb32",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1306837
+      },
+      "writtenOn": "2020-08-28T10:00:04Z",
+      "side": 1,
+      "message": "Maybe you also need to pass something like this (not sure if this is outdated):\nTest: cts-tradefed run cts --skip-device-info --skip-preconditions --skip-system-status-check com.android.compatibility.common.tradefed.targetprep.NetworkConnectivityChecker -a armeabi-v7a -m CtsIncidentHostTestCases -t com.android.server.cts.NetstatsIncidentTest\n\nSee b/34228873 for more information",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 4
+      },
+      "revId": "e3d002fdc52a8341d2cf7b703c7611a59dd7b583",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b6a696be_fc6100e2",
         "filename": "services/core/java/com/android/server/net/NetworkStatsRecorder.java",
         "patchSetId": 4
@@ -49,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "01f9117f_db22dde0",
+        "filename": "services/core/java/com/android/server/net/NetworkStatsRecorder.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 477,
+      "author": {
+        "id": 1306837
+      },
+      "writtenOn": "2020-08-28T10:00:04Z",
+      "side": 1,
+      "message": "Yes and no.\nIt indeed means write proto into complete_history field.\nBut the naming is not right for what we are doing here.\ncomplete_history means the full data from 90day ago.\nBut we are only writing data since boot up.\nFor example, we can put uid stats into xt stats recorder.\nYou can imagine it is something doable but not that correct.",
+      "parentUuid": "443b647d_024081c7",
+      "range": {
+        "startLine": 477,
+        "startChar": 65,
+        "endLine": 477,
+        "endChar": 81
+      },
+      "revId": "e3d002fdc52a8341d2cf7b703c7611a59dd7b583",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c9a46d2e_fa15f87f",
         "filename": "services/core/java/com/android/server/net/NetworkStatsService.java",
         "patchSetId": 4
@@ -84,6 +131,30 @@
       "side": 1,
       "message": "The name dumpNormal is the same as we override(l.1847) in PriorityDumper, and it will cause a recursive call.",
       "parentUuid": "c9a46d2e_fa15f87f",
+      "range": {
+        "startLine": 1696,
+        "startChar": 17,
+        "endLine": 1696,
+        "endChar": 29
+      },
+      "revId": "e3d002fdc52a8341d2cf7b703c7611a59dd7b583",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "58c1c147_7029d64e",
+        "filename": "services/core/java/com/android/server/net/NetworkStatsService.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 1696,
+      "author": {
+        "id": 1306837
+      },
+      "writtenOn": "2020-08-28T10:00:04Z",
+      "side": 1,
+      "message": "Use NetworkStatsService.this.dumpNormal() if that is your concern.\nYou can also see NetworkStatsService.this.xxx are widely used in this file.",
+      "parentUuid": "be4c5b58_5ac48410",
       "range": {
         "startLine": 1696,
         "startChar": 17,

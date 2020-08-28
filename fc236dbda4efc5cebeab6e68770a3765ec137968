@@ -46,6 +46,30 @@
       "revId": "fc236dbda4efc5cebeab6e68770a3765ec137968",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e4544346_316cb120",
+        "filename": "services/core/java/com/android/server/net/NetworkStatsService.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 1850,
+      "author": {
+        "id": 1306837
+      },
+      "writtenOn": "2020-08-28T10:00:04Z",
+      "side": 0,
+      "message": "From b/34228873, it seems \"incident_report netstats\" uses this?\nAnd IIUC it is called from someone who refer to here: https://source.corp.google.com/android/frameworks/base/core/proto/android/os/incident.proto;l\u003d249?q\u003dNetworkStatsServiceDumpProto\u0026sq\u003dpackage:%5Eandroid$",
+      "parentUuid": "ddc953f9_2e35f2e4",
+      "range": {
+        "startLine": 1850,
+        "startChar": 8,
+        "endLine": 1850,
+        "endChar": 90
+      },
+      "revId": "fc236dbda4efc5cebeab6e68770a3765ec137968",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
