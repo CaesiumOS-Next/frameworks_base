@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "077035f0_ab8deda7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1385042
+      },
+      "writtenOn": "2020-08-31T12:59:14Z",
+      "side": 1,
+      "message": "I cannot pass the CTS even without this patch. b/145953251 for more information.",
+      "parentUuid": "fbdfd62a_6573cb32",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 4
+      },
+      "revId": "e3d002fdc52a8341d2cf7b703c7611a59dd7b583",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b6a696be_fc6100e2",
         "filename": "services/core/java/com/android/server/net/NetworkStatsRecorder.java",
         "patchSetId": 4
@@ -96,6 +120,30 @@
     },
     {
       "key": {
+        "uuid": "4e05b980_c3ec73ce",
+        "filename": "services/core/java/com/android/server/net/NetworkStatsRecorder.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 477,
+      "author": {
+        "id": 1385042
+      },
+      "writtenOn": "2020-08-31T12:59:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "01f9117f_db22dde0",
+      "range": {
+        "startLine": 477,
+        "startChar": 65,
+        "endLine": 477,
+        "endChar": 81
+      },
+      "revId": "e3d002fdc52a8341d2cf7b703c7611a59dd7b583",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c9a46d2e_fa15f87f",
         "filename": "services/core/java/com/android/server/net/NetworkStatsService.java",
         "patchSetId": 4
@@ -164,6 +212,30 @@
       "revId": "e3d002fdc52a8341d2cf7b703c7611a59dd7b583",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9bd0f1e6_ce0e34ee",
+        "filename": "services/core/java/com/android/server/net/NetworkStatsService.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 1696,
+      "author": {
+        "id": 1385042
+      },
+      "writtenOn": "2020-08-31T12:59:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "58c1c147_7029d64e",
+      "range": {
+        "startLine": 1696,
+        "startChar": 17,
+        "endLine": 1696,
+        "endChar": 29
+      },
+      "revId": "e3d002fdc52a8341d2cf7b703c7611a59dd7b583",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
