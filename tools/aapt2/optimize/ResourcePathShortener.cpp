@@ -54,8 +54,8 @@ std::string ShortenFileName(const android::StringPiece& file_path, int output_le
 // collide in their shortened path.
 // Reference: http://matt.might.net/articles/counting-hash-collisions/
 int OptimalShortenedLength(int num_resources) {
-  int num_chars = 2;
-  double N = 64*64; // hash space when hash is 2 chars long
+  int num_chars = 1;
+  double N = 64; // hash space when hash is 1 char long
   double max_collisions = num_resources * 0.1;
   while (num_resources - N + N * pow((N - 1) / N, num_resources) > max_collisions) {
     N *= 64;
