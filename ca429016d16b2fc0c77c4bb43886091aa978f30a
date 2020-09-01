@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "881b5780_991e487c",
+        "filename": "services/core/java/com/android/server/net/NetworkStatsService.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 1734,
+      "author": {
+        "id": 1306837
+      },
+      "writtenOn": "2020-09-01T03:38:47Z",
+      "side": 1,
+      "message": "Is it better if we just:\nif (asProto) {\n  dumpProtoLocked(fd, isIncidentReport);\n  return;\n}\n\nAnd:\npublic void writeToProtoLocked(ProtoOutputStream proto, long tag, boolean completeHistory)\n\nIf so the comments also need to be revised.",
+      "range": {
+        "startLine": 1724,
+        "startChar": 11,
+        "endLine": 1734,
+        "endChar": 13
+      },
+      "revId": "ca429016d16b2fc0c77c4bb43886091aa978f30a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
