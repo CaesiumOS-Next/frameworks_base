@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "127ad63d_6acbee25",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 10
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1306837
+      },
+      "writtenOn": "2020-09-02T06:53:59Z",
+      "side": 1,
+      "message": "It doesn\u0027t sound accurate to me since the incident report also uses netstats.proto, right?\nmaybe say \u0027bugreport\u0027 or something?",
+      "range": {
+        "startLine": 14,
+        "startChar": 41,
+        "endLine": 14,
+        "endChar": 55
+      },
+      "revId": "244bad439963833f810ed21bb3154a3b64012ebf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6bf29d7b_b660365b",
+        "filename": "services/core/java/com/android/server/net/NetworkStatsService.java",
+        "patchSetId": 10
+      },
+      "lineNbr": 1725,
+      "author": {
+        "id": 1306837
+      },
+      "writtenOn": "2020-09-02T06:53:59Z",
+      "side": 1,
+      "message": "It looks to me the comments explained what we are doing in the called function.\nWhich we can easily know that by tracing the code flow.\nBut not explaining why we are doing this.\nIIUC \u0027why\u0027 is more important, right?",
+      "range": {
+        "startLine": 1722,
+        "startChar": 0,
+        "endLine": 1725,
+        "endChar": 74
+      },
+      "revId": "244bad439963833f810ed21bb3154a3b64012ebf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "188b554e_f451de99",
+        "filename": "services/core/java/com/android/server/net/NetworkStatsService.java",
+        "patchSetId": 10
+      },
+      "lineNbr": 1869,
+      "author": {
+        "id": 1306837
+      },
+      "writtenOn": "2020-09-02T06:53:59Z",
+      "side": 1,
+      "message": "style: normally it should break after lowest priority operator. Unless it does not fit in 2 lines. Maybe:\n mDevRecorder.writeToProtoLocked(\n         proto, NetworkStatsServiceDumpProto.DEV_STATS, isIncidentReport);",
+      "range": {
+        "startLine": 1868,
+        "startChar": 8,
+        "endLine": 1869,
+        "endChar": 34
+      },
+      "revId": "244bad439963833f810ed21bb3154a3b64012ebf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
