@@ -25,6 +25,29 @@
     },
     {
       "key": {
+        "uuid": "20d9c469_945aa427",
+        "filename": "services/core/java/com/android/server/net/NetworkStatsRecorder.java",
+        "patchSetId": 10
+      },
+      "lineNbr": 486,
+      "author": {
+        "id": 1306837
+      },
+      "writtenOn": "2020-09-03T08:55:25Z",
+      "side": 1,
+      "message": "not sure whether it is safe to leave one field empty.\nPresumably yes, but may need someone know more about proto to have a look.\n+lifr@",
+      "range": {
+        "startLine": 481,
+        "startChar": 0,
+        "endLine": 486,
+        "endChar": 9
+      },
+      "revId": "244bad439963833f810ed21bb3154a3b64012ebf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6bf29d7b_b660365b",
         "filename": "services/core/java/com/android/server/net/NetworkStatsService.java",
         "patchSetId": 10
