@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "63ced671_bee5fbda",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 10
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1385042
+      },
+      "writtenOn": "2020-09-10T09:42:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "127ad63d_6acbee25",
+      "range": {
+        "startLine": 14,
+        "startChar": 41,
+        "endLine": 14,
+        "endChar": 55
+      },
+      "revId": "244bad439963833f810ed21bb3154a3b64012ebf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "20d9c469_945aa427",
         "filename": "services/core/java/com/android/server/net/NetworkStatsRecorder.java",
         "patchSetId": 10
@@ -95,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "7fae3ea4_d17ede24",
+        "filename": "services/core/java/com/android/server/net/NetworkStatsService.java",
+        "patchSetId": 10
+      },
+      "lineNbr": 1725,
+      "author": {
+        "id": 1385042
+      },
+      "writtenOn": "2020-09-10T09:42:18Z",
+      "side": 1,
+      "message": "Done, please take a look if this explains all you want to mention. Thanks.\nFeel free to reopen if you want to have more comments here.",
+      "parentUuid": "6bf29d7b_b660365b",
+      "range": {
+        "startLine": 1722,
+        "startChar": 0,
+        "endLine": 1725,
+        "endChar": 74
+      },
+      "revId": "244bad439963833f810ed21bb3154a3b64012ebf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "188b554e_f451de99",
         "filename": "services/core/java/com/android/server/net/NetworkStatsService.java",
         "patchSetId": 10
@@ -115,6 +163,30 @@
       "revId": "244bad439963833f810ed21bb3154a3b64012ebf",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "61de8a5d_0cce61fd",
+        "filename": "services/core/java/com/android/server/net/NetworkStatsService.java",
+        "patchSetId": 10
+      },
+      "lineNbr": 1869,
+      "author": {
+        "id": 1385042
+      },
+      "writtenOn": "2020-09-10T09:42:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "188b554e_f451de99",
+      "range": {
+        "startLine": 1868,
+        "startChar": 8,
+        "endLine": 1869,
+        "endChar": 34
+      },
+      "revId": "244bad439963833f810ed21bb3154a3b64012ebf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
