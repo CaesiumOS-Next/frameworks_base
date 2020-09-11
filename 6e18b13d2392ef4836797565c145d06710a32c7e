@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7cd7bfbb_aa15bde5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 11
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1306837
+      },
+      "writtenOn": "2020-09-11T02:53:06Z",
+      "side": 1,
+      "message": "1. I think the cover message should contains high level description about this commit. Such as what is the current problem we are currently facing and why this CL is the correct fix.\n\n2. maybe move the first 2 into systemServer to say\nAdd DUMP_FLAG_* to allow \u003c?module name?\u003e to collect stats in proto format when generating bugreport.",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 65
+      },
+      "revId": "6e18b13d2392ef4836797565c145d06710a32c7e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e65d9b70_f3bd0922",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 11
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1306837
+      },
+      "writtenOn": "2020-09-11T02:53:06Z",
+      "side": 1,
+      "message": "... dump history since boot.",
+      "range": {
+        "startLine": 14,
+        "startChar": 61,
+        "endLine": 15,
+        "endChar": 12
+      },
+      "revId": "6e18b13d2392ef4836797565c145d06710a32c7e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3833433b_1689f6c8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 11
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1306837
+      },
+      "writtenOn": "2020-09-11T02:53:06Z",
+      "side": 1,
+      "message": "LGTM with nits about comments and cover message.\nBut it would be better if we could make sure\n the issue reporter could be satisfied before merging.",
+      "revId": "6e18b13d2392ef4836797565c145d06710a32c7e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1627567a_edc54237",
+        "filename": "services/core/java/com/android/server/net/NetworkStatsService.java",
+        "patchSetId": 11
+      },
+      "lineNbr": 1874,
+      "author": {
+        "id": 1306837
+      },
+      "writtenOn": "2020-09-11T02:53:06Z",
+      "side": 1,
+      "message": "IIUC this would cover what GMS core team needs.\nTo make sure we have done things right,\nmaybe reply on the bug to request issue reporter\nto take a look of this change or have a try on trial build?",
+      "range": {
+        "startLine": 1874,
+        "startChar": 8,
+        "endLine": 1874,
+        "endChar": 23
+      },
+      "revId": "6e18b13d2392ef4836797565c145d06710a32c7e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}

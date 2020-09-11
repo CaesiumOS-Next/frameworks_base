@@ -96,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "cdfca0e9_f00b7363",
+        "filename": "services/core/java/com/android/server/net/NetworkStatsRecorder.java",
+        "patchSetId": 10
+      },
+      "lineNbr": 486,
+      "author": {
+        "id": 1306837
+      },
+      "writtenOn": "2020-09-11T02:53:06Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "943178dc_bcbe1785",
+      "range": {
+        "startLine": 481,
+        "startChar": 0,
+        "endLine": 486,
+        "endChar": 9
+      },
+      "revId": "244bad439963833f810ed21bb3154a3b64012ebf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6bf29d7b_b660365b",
         "filename": "services/core/java/com/android/server/net/NetworkStatsService.java",
         "patchSetId": 10
@@ -140,6 +164,30 @@
       "revId": "244bad439963833f810ed21bb3154a3b64012ebf",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "46a324f7_753006d5",
+        "filename": "services/core/java/com/android/server/net/NetworkStatsService.java",
+        "patchSetId": 10
+      },
+      "lineNbr": 1725,
+      "author": {
+        "id": 1306837
+      },
+      "writtenOn": "2020-09-11T02:53:06Z",
+      "side": 1,
+      "message": "nit: Not sure if below is more clear. But here is what I would say:\n\n--incident would be passed by incident_report tool to indicates full history is needed. Alternatively, for use cases which need to reduce logging size, such as collecting bugreport, only history since boot will be dumped. Note that --proto is passed in both cases and\nparsed by {@link PriorityDump}.\n\nTo avoid bikeshedding, current patch is also ok for me. Please feel free to leave it as is.",
+      "parentUuid": "7fae3ea4_d17ede24",
+      "range": {
+        "startLine": 1722,
+        "startChar": 0,
+        "endLine": 1725,
+        "endChar": 74
+      },
+      "revId": "244bad439963833f810ed21bb3154a3b64012ebf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     },
     {
       "key": {
