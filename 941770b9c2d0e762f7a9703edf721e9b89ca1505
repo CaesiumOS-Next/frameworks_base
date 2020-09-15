@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d319a463_7e0e1ec4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1149384
+      },
+      "writtenOn": "2020-09-15T01:41:47Z",
+      "side": 1,
+      "message": "Hey Rob,\n\nThis cherry-pick is a request from vendor, could you please help approve?",
+      "revId": "941770b9c2d0e762f7a9703edf721e9b89ca1505",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
