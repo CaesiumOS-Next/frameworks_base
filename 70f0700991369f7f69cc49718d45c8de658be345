@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "021455af_9c036080",
+        "filename": "services/core/java/com/android/server/hdmi/HdmiCecLocalDeviceTv.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 1179,
+      "author": {
+        "id": 1651020
+      },
+      "writtenOn": "2020-09-16T07:01:55Z",
+      "side": 1,
+      "message": "As mentioned on the bug: Instead of duplicating the code from the SystemAudioModeInitiationAction here as well, we could play with the timeout.\n\nHowever: HDMI CEC specification mentions a maximum response time for messages which are generally at 1s. The Action already has a timeout at 2s, doubling the recommended time. Is there data as to how long the timeout would need to be to reduce this issue?",
+      "range": {
+        "startLine": 1164,
+        "startChar": 8,
+        "endLine": 1179,
+        "endChar": 0
+      },
+      "revId": "70f0700991369f7f69cc49718d45c8de658be345",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
