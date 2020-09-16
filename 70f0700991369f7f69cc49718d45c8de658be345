@@ -22,6 +22,30 @@
       "revId": "70f0700991369f7f69cc49718d45c8de658be345",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7b216785_3521c568",
+        "filename": "services/core/java/com/android/server/hdmi/HdmiCecLocalDeviceTv.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 1179,
+      "author": {
+        "id": 1501832
+      },
+      "writtenOn": "2020-09-16T07:11:52Z",
+      "side": 1,
+      "message": "We think that timeout at 2s is enough. The timeout happens at low reproduce rate.\nBut there\u0027re other cases that SystemAudioAutoInitiationAction is finished or being removed without handling \u003cSystem Audio Mode Status\u003e, for example, when AVR sends \u003cSet System Audio Mode\u003e directly,\n\nSorry that the comments in this change might be confusing. Our idea is that we should focus on how to handle \u003cSystem Audio Mode Status\u003e properly in HdmiCecLocalDeviceTv when there\u0027s no SystemAudioAutoInitiationAction.",
+      "parentUuid": "021455af_9c036080",
+      "range": {
+        "startLine": 1164,
+        "startChar": 8,
+        "endLine": 1179,
+        "endChar": 0
+      },
+      "revId": "70f0700991369f7f69cc49718d45c8de658be345",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
