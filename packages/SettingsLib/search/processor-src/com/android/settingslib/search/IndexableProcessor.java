@@ -34,7 +34,6 @@ import javax.annotation.processing.Messager;
 import javax.annotation.processing.ProcessingEnvironment;
 import javax.annotation.processing.RoundEnvironment;
 import javax.annotation.processing.SupportedAnnotationTypes;
-import javax.annotation.processing.SupportedSourceVersion;
 import javax.lang.model.SourceVersion;
 import javax.lang.model.element.Element;
 import javax.lang.model.element.Modifier;
@@ -47,7 +46,6 @@ import javax.tools.Diagnostic.Kind;
  * Annotation processor for {@link SearchIndexable} that generates {@link SearchIndexableResources}
  * subclasses.
  */
-@SupportedSourceVersion(SourceVersion.RELEASE_8)
 @SupportedAnnotationTypes({"com.android.settingslib.search.SearchIndexable"})
 public class IndexableProcessor extends AbstractProcessor {
 
