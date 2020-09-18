@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5fca9a54_130baf4b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 14
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1385042
+      },
+      "writtenOn": "2020-09-18T07:35:32Z",
+      "side": 1,
+      "message": "New uploaded patch set also fix merge conflict caused by writeToProtoLocked() is renamed to dumpDebugLocked().",
+      "revId": "be785a29dbcba6e344de0d22f04fce16f465aa53",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
