@@ -46,6 +46,30 @@
       "revId": "dd3945439ff4d7c05706b0b9c476c3cc4a766ee9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e978a734_499780c9",
+        "filename": "api/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-09-21T17:12:52Z",
+      "side": 1,
+      "message": "Anyone that changes the API will need to make sure that they update the API before building anything that uses the .txt file, e.g. various CTS tests. That would be different to what they did before and so may cause some initial issues but they would need to do the update at some point. I think it is worth the disruption to those developers if it reduces the build time for a lot more developers.\n\nFTR http://b/169059567 was raised to track this change.",
+      "parentUuid": "648895ee_e05a1737",
+      "range": {
+        "startLine": 56,
+        "startChar": 48,
+        "endLine": 58,
+        "endChar": 37
+      },
+      "revId": "dd3945439ff4d7c05706b0b9c476c3cc4a766ee9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
