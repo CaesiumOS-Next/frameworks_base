@@ -22,6 +22,30 @@
       "revId": "dd3945439ff4d7c05706b0b9c476c3cc4a766ee9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "648895ee_e05a1737",
+        "filename": "api/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-09-21T16:41:08Z",
+      "side": 1,
+      "message": "Functionally I don\u0027t think it matters as there are build checks to ensure that they are consistent. Performance wise using the checked in files will save time.",
+      "parentUuid": "7490be1f_1258e457",
+      "range": {
+        "startLine": 56,
+        "startChar": 48,
+        "endLine": 58,
+        "endChar": 37
+      },
+      "revId": "dd3945439ff4d7c05706b0b9c476c3cc4a766ee9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
