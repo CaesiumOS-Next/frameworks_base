@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3f9bc573_2da9d4ea",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1096713
+      },
+      "writtenOn": "2020-09-21T21:04:20Z",
+      "side": 1,
+      "message": "I\u0027ve verified this works as expected, and the code seems pretty straight-forward.\n\nBut since I have no knowledge in this area of the code, we should probably get a +2 from someone else.",
+      "revId": "f2ed0552f2781931d158107c2acd9413f398cd82",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
