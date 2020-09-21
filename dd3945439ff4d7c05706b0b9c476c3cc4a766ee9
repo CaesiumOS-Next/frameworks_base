@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7490be1f_1258e457",
+        "filename": "api/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2020-09-21T16:37:04Z",
+      "side": 1,
+      "message": "This uses\n- checked in version of current.txt from non-updatable framework\n- source generated version from the sdk_libraries\n\nThat\u0027s a weird inconsistency we should probably avoid, but I\u0027m not sure if we want to depend on the checked in version or the source-generated version. Thoughts?",
+      "range": {
+        "startLine": 56,
+        "startChar": 48,
+        "endLine": 58,
+        "endChar": 37
+      },
+      "revId": "dd3945439ff4d7c05706b0b9c476c3cc4a766ee9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
