@@ -16,6 +16,29 @@
       "revId": "ddc7798c713c5917691afc3b398a8572ce9a3e6a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1e05c292_f5965371",
+        "filename": "ApiDocs.bp",
+        "patchSetId": 3
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2020-09-22T06:31:36Z",
+      "side": 1,
+      "message": "I guess these two can probably go in \"framework-doc-stubs\" rather than the defaults? This whole file kind of needs an overhaul to match StubLibraries.bp. (not this CL obviously).",
+      "range": {
+        "startLine": 67,
+        "startChar": 29,
+        "endLine": 69,
+        "endChar": 61
+      },
+      "revId": "ddc7798c713c5917691afc3b398a8572ce9a3e6a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
