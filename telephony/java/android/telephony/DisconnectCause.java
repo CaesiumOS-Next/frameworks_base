@@ -360,6 +360,51 @@ public final class DisconnectCause {
      */
     public static final int INCOMING_AUTO_REJECTED = 81;
 
+    /** Disconnect code for mapping of cause values
+     * defined in table 10.5.123/3GPP TS 24.008
+	 */
+    public static final int NO_ROUTE_TO_DEST = 82;
+    public static final int CHANNEL_UNACCEPTABLE = 83;
+    public static final int OPERATOR_DETERMINED_BARRING = 84;
+    public static final int NO_USER_RESPONDING = 85;
+    public static final int CALL_REJECTED = 86;
+    public static final int NUMBER_CHANGED = 87;
+    public static final int PRE_EMPTION = 88;
+    public static final int NON_SELECTED_USER_CLEARING = 89;
+    public static final int DESTINATION_OUT_OF_ORDER = 90;
+    public static final int FACILITY_REJECTED = 91;
+    public static final int RESPONSE_TO_STATUS_ENQUIRY = 92;
+    public static final int NO_CIRCUIT_AVAIL = 93;
+    public static final int NETWORK_OUT_OF_ORDER = 94;
+    public static final int TEMPORARY_FAILURE = 95;
+    public static final int SWITCHING_CONGESTION = 96;
+    public static final int ACCESS_INFORMATION_DISCARDED = 97;
+    public static final int REQUESTED_CIRCUIT_OR_CHANNEL_NOT_AVAILABLE = 98;
+    public static final int RESOURCES_UNAVAILABLE_UNSPECIFIED = 99;
+    public static final int QOS_NOT_AVAIL = 100;
+    public static final int REQUESTED_FACILITY_NOT_SUBSCRIBED = 101;
+    public static final int INCOMING_CALL_BARRED_WITHIN_CUG = 102;
+    public static final int BEARER_CAPABILITY_NOT_AUTHORIZED = 103;
+    public static final int BEARER_CAPABILITY_NOT_PRESENTLY_AVAILABLE = 104;
+    public static final int SERVICE_OR_OPTION_NOT_AVAILABLE = 105;
+    public static final int BEARER_SERVICE_NOT_IMPLEMENTED = 106;
+    public static final int REQUESTED_FACILITY_NOT_IMPLEMENTED = 107;
+    public static final int ONLY_RESTRICTED_DIGITAL_INFO_BC_AVAILABLE = 108;
+    public static final int SERVICE_OR_OPTION_NOT_IMPLEMENTED = 109;
+    public static final int INVALID_TRANSACTION_ID_VALUE = 110;
+    public static final int USER_NOT_MEMBER_OF_CUG = 111;
+    public static final int INCOMPATIBLE_DESTINATION = 112;
+    public static final int INVALID_TRANSIT_NETWORK_SELECTION = 113;
+    public static final int SEMANTICALLY_INCORRECT_MESSAGE = 114;
+    public static final int INVALID_MANDATORY_INFORMATION = 115;
+    public static final int MESSAGE_TYPE_NON_EXISTENT = 116;
+    public static final int MESSAGE_TYPE_NOT_COMPATIBLE_WITH_PROT_STATE  = 117;
+    public static final int IE_NON_EXISTENT_OR_NOT_IMPLEMENTED = 118;
+    public static final int CONDITIONAL_IE_ERROR = 119;
+    public static final int MESSAGE_NOT_COMPATIBLE_WITH_PROTOCOL_STATE = 120;
+    public static final int RECOVER_ON_TIMER_EXPIRY = 121;
+    public static final int PROTOCOL_ERROR_UNSPECIFIED = 122;
+    public static final int INTERWORKING_UNSPECIFIED = 123;
 
     //*********************************************************************************************
     // When adding a disconnect type:
@@ -539,6 +584,90 @@ public final class DisconnectCause {
             return "OUTGOING_EMERGENCY_CALL_PLACED";
             case INCOMING_AUTO_REJECTED:
                 return "INCOMING_AUTO_REJECTED";
+        case NO_ROUTE_TO_DEST:
+            return "NO_ROUTE_TO_DEST";
+        case CHANNEL_UNACCEPTABLE:
+            return "CHANNEL_UNACCEPTABLE";
+        case OPERATOR_DETERMINED_BARRING:
+            return "OPERATOR_DETERMINED_BARRING";
+        case NO_USER_RESPONDING:
+            return "NO_USER_RESPONDING";
+        case CALL_REJECTED:
+            return "CALL_REJECTED";
+        case NUMBER_CHANGED:
+            return "NUMBER_CHANGED";
+        case PRE_EMPTION:
+            return "PRE_EMPTION";
+        case NON_SELECTED_USER_CLEARING:
+            return "NON_SELECTED_USER_CLEARING";
+        case DESTINATION_OUT_OF_ORDER:
+            return "DESTINATION_OUT_OF_ORDER";
+        case FACILITY_REJECTED:
+            return "FACILITY_REJECTED";
+        case RESPONSE_TO_STATUS_ENQUIRY:
+            return "RESPONSE_TO_STATUS_ENQUIRY";
+        case NO_CIRCUIT_AVAIL:
+            return "NO_CIRCUIT_AVAIL";
+        case NETWORK_OUT_OF_ORDER:
+            return "NETWORK_OUT_OF_ORDER";
+        case TEMPORARY_FAILURE:
+            return "TEMPORARY_FAILURE";
+        case SWITCHING_CONGESTION:
+            return "SWITCHING_CONGESTION";
+        case ACCESS_INFORMATION_DISCARDED:
+            return "ACCESS_INFORMATION_DISCARDED";
+        case REQUESTED_CIRCUIT_OR_CHANNEL_NOT_AVAILABLE:
+            return "REQUESTED_CIRCUIT_OR_CHANNEL_NOT_AVAILABLE";
+        case RESOURCES_UNAVAILABLE_UNSPECIFIED:
+            return "RESOURCES_UNAVAILABLE_UNSPECIFIED";
+        case QOS_NOT_AVAIL:
+            return "QOS_NOT_AVAIL";
+        case REQUESTED_FACILITY_NOT_SUBSCRIBED:
+            return "REQUESTED_FACILITY_NOT_SUBSCRIBED";
+        case INCOMING_CALL_BARRED_WITHIN_CUG:
+            return "INCOMING_CALL_BARRED_WITHIN_CUG";
+        case BEARER_CAPABILITY_NOT_AUTHORIZED:
+            return "BEARER_CAPABILITY_NOT_AUTHORIZED";
+        case BEARER_CAPABILITY_NOT_PRESENTLY_AVAILABLE:
+            return "BEARER_CAPABILITY_NOT_PRESENTLY_AVAILABLE";
+        case SERVICE_OR_OPTION_NOT_AVAILABLE:
+            return "SERVICE_OR_OPTION_NOT_AVAILABLE";
+        case BEARER_SERVICE_NOT_IMPLEMENTED:
+            return "BEARER_SERVICE_NOT_IMPLEMENTED";
+        case REQUESTED_FACILITY_NOT_IMPLEMENTED:
+            return "REQUESTED_FACILITY_NOT_IMPLEMENTED";
+        case ONLY_RESTRICTED_DIGITAL_INFO_BC_AVAILABLE:
+            return "ONLY_RESTRICTED_DIGITAL_INFO_BC_AVAILABLE";
+        case SERVICE_OR_OPTION_NOT_IMPLEMENTED:
+            return "SERVICE_OR_OPTION_NOT_IMPLEMENTED";
+        case INVALID_TRANSACTION_ID_VALUE:
+            return "INVALID_TRANSACTION_ID_VALUE";
+        case USER_NOT_MEMBER_OF_CUG:
+            return "USER_NOT_MEMBER_OF_CUG";
+        case INCOMPATIBLE_DESTINATION:
+            return "INCOMPATIBLE_DESTINATION";
+        case INVALID_TRANSIT_NETWORK_SELECTION:
+            return "INVALID_TRANSIT_NETWORK_SELECTION";
+        case SEMANTICALLY_INCORRECT_MESSAGE:
+            return "SEMANTICALLY_INCORRECT_MESSAGE";
+        case INVALID_MANDATORY_INFORMATION:
+            return "INVALID_MANDATORY_INFORMATION";
+        case MESSAGE_TYPE_NON_EXISTENT:
+            return "MESSAGE_TYPE_NON_EXISTENT";
+        case MESSAGE_TYPE_NOT_COMPATIBLE_WITH_PROT_STATE:
+            return "MESSAGE_TYPE_NOT_COMPATIBLE_WITH_PROT_STATE";
+        case IE_NON_EXISTENT_OR_NOT_IMPLEMENTED:
+            return "IE_NON_EXISTENT_OR_NOT_IMPLEMENTED";
+        case CONDITIONAL_IE_ERROR:
+            return "CONDITIONAL_IE_ERROR";
+        case MESSAGE_NOT_COMPATIBLE_WITH_PROTOCOL_STATE:
+            return "MESSAGE_NOT_COMPATIBLE_WITH_PROTOCOL_STATE";
+        case RECOVER_ON_TIMER_EXPIRY:
+            return "RECOVER_ON_TIMER_EXPIRY";
+        case PROTOCOL_ERROR_UNSPECIFIED:
+            return "PROTOCOL_ERROR_UNSPECIFIED";
+        case INTERWORKING_UNSPECIFIED:
+            return "INTERWORKING_UNSPECIFIED";
         default:
             return "INVALID: " + cause;
         }
