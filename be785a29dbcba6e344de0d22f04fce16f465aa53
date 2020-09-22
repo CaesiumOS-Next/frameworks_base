@@ -39,6 +39,30 @@
       "revId": "be785a29dbcba6e344de0d22f04fce16f465aa53",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "83cf2376_e92c350e",
+        "filename": "services/core/java/com/android/server/net/NetworkStatsRecorder.java",
+        "patchSetId": 14
+      },
+      "lineNbr": 475,
+      "author": {
+        "id": 1385042
+      },
+      "writtenOn": "2020-09-22T08:56:16Z",
+      "side": 1,
+      "message": "ag/9848015, some of this kind of APIs eventually will be make as @SystemApi for mainline modules, so there are a bunch of classes with writeToProtoLocked() are renamed to dumpDebugLocked(). Author thinks this name is more appropriate than original one.",
+      "parentUuid": "ef6597f5_67dda263",
+      "range": {
+        "startLine": 475,
+        "startChar": 16,
+        "endLine": 475,
+        "endChar": 31
+      },
+      "revId": "be785a29dbcba6e344de0d22f04fce16f465aa53",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
