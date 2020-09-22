@@ -16,6 +16,29 @@
       "revId": "be785a29dbcba6e344de0d22f04fce16f465aa53",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ef6597f5_67dda263",
+        "filename": "services/core/java/com/android/server/net/NetworkStatsRecorder.java",
+        "patchSetId": 14
+      },
+      "lineNbr": 475,
+      "author": {
+        "id": 1306837
+      },
+      "writtenOn": "2020-09-22T08:16:14Z",
+      "side": 1,
+      "message": "Why change naming?\nI\u0027d prefer original naming since that is what it do described in javadoc.",
+      "range": {
+        "startLine": 475,
+        "startChar": 16,
+        "endLine": 475,
+        "endChar": 31
+      },
+      "revId": "be785a29dbcba6e344de0d22f04fce16f465aa53",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
