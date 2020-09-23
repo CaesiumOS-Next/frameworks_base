@@ -19,6 +19,46 @@
     },
     {
       "key": {
+        "uuid": "2c24a14d_8942b4cd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 14
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2020-09-23T09:11:30Z",
+      "side": 1,
+      "message": "So we determined that this will put data in the bug report that already is in the incident report which is part of all bug reports.\n\nWe should check with the incident report owners whether it\u0027s fine just removing this from the incident report and to simply always put it in the main bug report, so we don\u0027t duplicate information.\n",
+      "revId": "be785a29dbcba6e344de0d22f04fce16f465aa53",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d4a69b45_3fd20f95",
+        "filename": "core/proto/android/service/netstats.proto",
+        "patchSetId": 14
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2020-09-23T09:11:30Z",
+      "side": 1,
+      "message": "Please have comments explaining that any NetworkStatsRecorderProto will have either complete_history or since_boot",
+      "range": {
+        "startLine": 93,
+        "startChar": 4,
+        "endLine": 93,
+        "endChar": 12
+      },
+      "revId": "be785a29dbcba6e344de0d22f04fce16f465aa53",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ef6597f5_67dda263",
         "filename": "services/core/java/com/android/server/net/NetworkStatsRecorder.java",
         "patchSetId": 14
