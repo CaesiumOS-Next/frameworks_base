@@ -19,6 +19,9 @@ import static android.net.NetworkCapabilities.TRANSPORT_VPN;
 import static android.net.TetheringManager.TETHERING_WIFI_P2P;
 import static android.net.util.PrefixUtils.asIpPrefix;
 
+import static com.android.net.module.util.Inet4AddressUtils.inet4AddressToIntHTH;
+import static com.android.net.module.util.Inet4AddressUtils.prefixLengthToV4NetmaskIntHTH;
+
 import static java.util.Arrays.asList;
 
 import android.content.Context;
@@ -37,9 +40,12 @@ import androidx.annotation.Nullable;
 import com.android.internal.annotations.VisibleForTesting;
 import com.android.internal.util.IndentingPrintWriter;
 
+import java.net.Inet4Address;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
+import java.nio.ByteBuffer;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Random;
@@ -58,13 +64,6 @@ import java.util.Set;
 public class PrivateAddressCoordinator {
     public static final int PREFIX_LENGTH = 24;
 
-    private static final int MAX_UBYTE = 256;
-    private static final int BYTE_MASK = 0xff;
-    // reserved for bluetooth tethering.
-    private static final int BLUETOOTH_RESERVED = 44;
-    private static final int WIFI_P2P_RESERVED = 49;
-    private static final byte DEFAULT_ID = (byte) 42;
-
     // Upstream monitor would be stopped when tethering is down. When tethering restart, downstream
     // address may be requested before coordinator get current upstream notification. To ensure
     // coordinator do not select conflict downstream prefix, mUpstreamPrefixMap would not be cleared
@@ -72,12 +71,10 @@ public class PrivateAddressCoordinator {
     // mUpstreamPrefixMap when tethering is starting. See #maybeRemoveDeprecatedUpstreams().
     private final ArrayMap<Network, List<IpPrefix>> mUpstreamPrefixMap;
     private final ArraySet<IpServer> mDownstreams;
-    // IANA has reserved the following three blocks of the IP address space for private intranets:
-    // 10.0.0.0/8, 172.16.0.0/12, 192.168.0.0/16
-    // Tethering use 192.168.0.0/16 that has 256 contiguous class C network numbers.
-    private static final String DEFAULT_TETHERING_PREFIX = "192.168.0.0/16";
     private static final String LEGACY_WIFI_P2P_IFACE_ADDRESS = "192.168.49.1/24";
-    private final IpPrefix mTetheringPrefix;
+    private static final String LEGACY_BLUETOOTH_IFACE_ADDRESS = "192.168.44.1/24";
+    private final ArrayList<IpPrefix> mReservedPrefixes;
+    private final ArrayList<IpPrefix> mTetheringPrefixes;
     private final ConnectivityManager mConnectivityMgr;
     private final TetheringConfiguration mConfig;
     private final SparseArray<LinkAddress> mCachedAddress;
@@ -85,11 +82,19 @@ public class PrivateAddressCoordinator {
     public PrivateAddressCoordinator(Context context, TetheringConfiguration config) {
         mDownstreams = new ArraySet<>();
         mUpstreamPrefixMap = new ArrayMap<>();
-        mTetheringPrefix = new IpPrefix(DEFAULT_TETHERING_PREFIX);
         mConnectivityMgr = (ConnectivityManager) context.getSystemService(
                 Context.CONNECTIVITY_SERVICE);
         mConfig = config;
         mCachedAddress = new SparseArray();
+
+        mTetheringPrefixes = new ArrayList<>(Arrays.asList(
+                new IpPrefix("192.168.0.0/16"),
+                new IpPrefix("172.16.0.0/12"),
+                new IpPrefix("10.0.0.0/8")));
+
+        mReservedPrefixes = new ArrayList<>(Arrays.asList(
+                new IpPrefix(LEGACY_WIFI_P2P_IFACE_ADDRESS),
+                new IpPrefix(LEGACY_BLUETOOTH_IFACE_ADDRESS)));
     }
 
     /**
@@ -159,10 +164,6 @@ public class PrivateAddressCoordinator {
         mUpstreamPrefixMap.removeAll(toBeRemoved);
     }
 
-    private boolean isReservedSubnet(final int subnet) {
-        return subnet == BLUETOOTH_RESERVED || subnet == WIFI_P2P_RESERVED;
-    }
-
     /**
      * Pick a random available address and mark its prefix as in use for the provided IpServer,
      * returns null if there is no available address.
@@ -179,53 +180,85 @@ public class PrivateAddressCoordinator {
             return cachedAddress;
         }
 
-        // Address would be 192.168.[subAddress]/24.
-        final byte[] bytes = mTetheringPrefix.getRawAddress();
-        final int subAddress = getRandomSubAddr();
-        final int subNet = (subAddress >> 8) & BYTE_MASK;
-        bytes[3] = getSanitizedAddressSuffix(subAddress, (byte) 0, (byte) 1, (byte) 0xff);
-        for (int i = 0; i < MAX_UBYTE; i++) {
-            final int newSubNet = (subNet + i) & BYTE_MASK;
-            if (isReservedSubnet(newSubNet)) continue;
+        for (IpPrefix prefixRange : mTetheringPrefixes) {
+            // Check whether given prefixRange has non-conflict prefixes before go through all of
+            // prefixes from prefixRange.
+            if (noValidPrefixSpace(prefixRange)) continue;
 
-            bytes[2] = (byte) newSubNet;
-            final InetAddress addr;
-            try {
-                addr = InetAddress.getByAddress(bytes);
-            } catch (UnknownHostException e) {
-                throw new IllegalStateException("Invalid address, shouldn't happen.", e);
+            final LinkAddress newAddress = chooseDownstreamAddress(ipServer, prefixRange);
+            if (newAddress != null) {
+                mCachedAddress.put(ipServer.interfaceType(), newAddress);
+                return newAddress;
             }
-
-            if (isConflict(new IpPrefix(addr, PREFIX_LENGTH))) continue;
-
-            mDownstreams.add(ipServer);
-            final LinkAddress newAddress = new LinkAddress(addr, PREFIX_LENGTH);
-            mCachedAddress.put(ipServer.interfaceType(), newAddress);
-            return newAddress;
         }
 
         // No available address.
         return null;
     }
 
-    private boolean isConflict(final IpPrefix prefix) {
-        // Check whether this prefix is in use or conflict with any current upstream network.
-        return isDownstreamPrefixInUse(prefix) || isConflictWithUpstream(prefix);
+    private boolean noValidPrefixSpace(final IpPrefix prefixRange) {
+        for (int i = 0; i < mUpstreamPrefixMap.size(); i++) {
+            final List<IpPrefix> list = mUpstreamPrefixMap.valueAt(i);
+            for (IpPrefix upstream : list) {
+                if (upstream.getPrefixLength() <= prefixRange.getPrefixLength()
+                        && upstream.contains(prefixRange.getAddress())) {
+                    return true;
+                }
+            }
+        }
+        return false;
     }
 
-    /** Get random sub address value. Return value is in 0 ~ 0xffff. */
-    @VisibleForTesting
-    public int getRandomSubAddr() {
-        return ((new Random()).nextInt()) & 0xffff; // subNet is in 0 ~ 0xffff.
-    }
+    private LinkAddress chooseDownstreamAddress(final IpServer ipServer,
+            final IpPrefix prefixRange) {
+        final int suffixMask = ~prefixLengthToV4NetmaskIntHTH(prefixRange.getPrefixLength());
+        final int rootAddress = inet4AddressToIntHTH((Inet4Address) prefixRange.getAddress());
+        final int subAddress = getSanitizedSubAddr(suffixMask);
+        final int num_of_prefixes = 1 << (PREFIX_LENGTH - prefixRange.getPrefixLength());
+        for (int i = 0; i < num_of_prefixes; i++) {
+            final int newSubAddress = subAddress + (i << (32 - PREFIX_LENGTH));
 
-    private byte getSanitizedAddressSuffix(final int source, byte... excluded) {
-        final byte subId = (byte) (source & BYTE_MASK);
-        for (byte value : excluded) {
-            if (subId == value) return DEFAULT_ID;
+            final int newAddress = rootAddress | (newSubAddress & suffixMask);
+            final byte[] addrBytes = ByteBuffer.allocate(4).putInt(newAddress).array();
+            final InetAddress address;
+            try {
+                address = InetAddress.getByAddress(addrBytes);
+            } catch (UnknownHostException e) {
+                throw new IllegalStateException("Invalid address, shouldn't happen.", e);
+            }
+
+            if (isConflict(new IpPrefix(address, PREFIX_LENGTH))) continue;
+
+            mDownstreams.add(ipServer);
+            return new LinkAddress(address, PREFIX_LENGTH);
         }
 
-        return subId;
+        return null;
+    }
+
+    private boolean isConflict(final IpPrefix prefix) {
+        // Check whether this prefix is conflict with reserved prefixes, already be in use or
+        // conflict with any current upstream network.
+        return isConflictWithReservedPrefixes(prefix) || isDownstreamPrefixInUse(prefix)
+                || isConflictWithUpstream(prefix);
+    }
+
+    /** Get random int which could be used to generate random address. */
+    @VisibleForTesting
+    public int getRandomInt() {
+        return (new Random()).nextInt();
+    }
+
+    private int getSanitizedSubAddr(final int subAddrMask) {
+        final int randomSubAddr = getRandomInt() & subAddrMask;
+        if (PREFIX_LENGTH > 30) return randomSubAddr;
+
+        final int candidate = randomSubAddr & 0xff;
+        if (candidate == 0 || candidate == 1 || candidate == 255) {
+            return (randomSubAddr & 0xfffffffc) + 2;
+        }
+
+        return randomSubAddr;
     }
 
     /** Release downstream record for IpServer. */
@@ -236,6 +269,14 @@ public class PrivateAddressCoordinator {
     /** Clear current upstream prefixes records. */
     public void clearUpstreamPrefixes() {
         mUpstreamPrefixMap.clear();
+    }
+
+    private boolean isConflictWithReservedPrefixes(final IpPrefix source) {
+        for (IpPrefix target : mReservedPrefixes) {
+            if (isConflictPrefix(source, target)) return true;
+        }
+
+        return false;
     }
 
     private boolean isConflictWithUpstream(final IpPrefix source) {
