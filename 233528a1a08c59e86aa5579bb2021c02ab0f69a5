@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "e8b89e5b_3b366f8e",
+        "filename": "telephony/java/android/telephony/DisconnectCause.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1763766
+      },
+      "writtenOn": "2020-09-24T01:22:58Z",
+      "side": 1,
+      "message": "Sorry, I don\u0027t exactly understand above.\nCould you please explain in detail CDMA_DROP is any relation to DESTINATION_OUT_OF_ORDER?",
+      "parentUuid": "04c75406_48bb44cd",
+      "range": {
+        "startLine": 87,
+        "startChar": 28,
+        "endLine": 87,
+        "endChar": 37
+      },
+      "revId": "233528a1a08c59e86aa5579bb2021c02ab0f69a5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "2001b0f2_7b9cde4e",
         "filename": "telephony/java/android/telephony/DisconnectCause.java",
         "patchSetId": 3
@@ -36,6 +60,30 @@
       "writtenOn": "2020-09-23T00:09:48Z",
       "side": 1,
       "message": "Each of these causes should have a description just like the ones above please.",
+      "range": {
+        "startLine": 367,
+        "startChar": 28,
+        "endLine": 367,
+        "endChar": 48
+      },
+      "revId": "233528a1a08c59e86aa5579bb2021c02ab0f69a5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e7f87462_a4cbc678",
+        "filename": "telephony/java/android/telephony/DisconnectCause.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 367,
+      "author": {
+        "id": 1763766
+      },
+      "writtenOn": "2020-09-24T01:22:58Z",
+      "side": 1,
+      "message": "Please check patchset5 and let me know if anything to do.",
+      "parentUuid": "2001b0f2_7b9cde4e",
       "range": {
         "startLine": 367,
         "startChar": 28,
