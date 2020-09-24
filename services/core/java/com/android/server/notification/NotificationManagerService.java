@@ -1621,6 +1621,8 @@ public class NotificationManagerService extends SystemService {
                 = Settings.Global.getUriFor(Settings.Global.MAX_NOTIFICATION_ENQUEUE_RATE);
         private final Uri NOTIFICATION_HISTORY_ENABLED
                 = Settings.Secure.getUriFor(Settings.Secure.NOTIFICATION_HISTORY_ENABLED);
+        private final Uri DEVICE_PROVISIONED_URI
+                = Settings.Global.getUriFor(Settings.Global.DEVICE_PROVISIONED);
 
         SettingsObserver(Handler handler) {
             super(handler);
@@ -1637,6 +1639,8 @@ public class NotificationManagerService extends SystemService {
             resolver.registerContentObserver(NOTIFICATION_BUBBLES_URI,
                     false, this, UserHandle.USER_ALL);
             resolver.registerContentObserver(NOTIFICATION_HISTORY_ENABLED,
+                    false, this, UserHandle.USER_ALL);
+            resolver.registerContentObserver(DEVICE_PROVISIONED_URI,
                     false, this, UserHandle.USER_ALL);
             update(null);
         }
@@ -1672,6 +1676,12 @@ public class NotificationManagerService extends SystemService {
                 for (int i = 0; i < userIds.size(); i++) {
                     mArchive.updateHistoryEnabled(userIds.get(i), Settings.Secure.getInt(resolver,
                             Settings.Secure.NOTIFICATION_HISTORY_ENABLED, 0) == 1);
+                }
+            }
+            if (DEVICE_PROVISIONED_URI.equals(uri)) {
+                if (1 == Settings.Global.getInt(resolver,Settings.Global.DEVICE_PROVISIONED, 0)) {
+                    mDisableNotificationEffects = false;
+                    Slog.v(TAG,"mDisableNotificationEffects = false");
                 }
             }
         }
