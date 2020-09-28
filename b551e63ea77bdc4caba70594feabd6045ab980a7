@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "71abc334_57b266a5",
+        "filename": "core/java/android/os/Process.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 854,
+      "author": {
+        "id": 1071150
+      },
+      "writtenOn": "2020-09-28T08:55:22Z",
+      "side": 1,
+      "message": "Could drop these, but okay if wanting to keep revert 100% pure.",
+      "range": {
+        "startLine": 854,
+        "startChar": 6,
+        "endLine": 854,
+        "endChar": 7
+      },
+      "revId": "b551e63ea77bdc4caba70594feabd6045ab980a7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
