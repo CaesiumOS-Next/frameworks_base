@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6f5cce17_190326f9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1339423
+      },
+      "writtenOn": "2020-09-28T15:49:00Z",
+      "side": 1,
+      "message": "Resolved merge conflict error that was occurring because the list of owners is longer in master branch by syncing with master code. PTAL",
+      "revId": "ab3f672f315d223691d932af93842ffae27ca187",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
