@@ -551,6 +551,10 @@ public class NetworkPolicyManagerService extends INetworkPolicyManager.Stub {
     @GuardedBy("mNetworkPoliciesSecondLock")
     private List<String[]> mMergedSubscriberIds = new ArrayList<>();
 
+    /** Map from subId to configuration as of last update */
+    @GuardedBy("mNetworkPoliciesSecondLock")
+    private final SparseArray<PersistableBundle> mSubIdToConfig = new SparseArray<>();
+
     /**
      * Indicates the uids restricted by admin from accessing metered data. It's a mapping from
      * userId to restricted uids which belong to that user.
@@ -1176,10 +1180,15 @@ public class NetworkPolicyManagerService extends INetworkPolicyManager.Stub {
             final long cycleEnd = cycle.second.toInstant().toEpochMilli();
             final long totalBytes = getTotalBytes(policy.template, cycleStart, cycleEnd);
 
+            // find the mobile carrierConfiguration for this subId
+            PersistableBundle config = null;
+            for (int j = 0; j < mSubIdToConfig.size() && mSubIdToConfig.keyAt(j) == subId; j++) {
+                config = mSubIdToConfig.valueAt(j);
+                break;
+            }
+
             // Carrier might want to manage notifications themselves
-            final PersistableBundle config = mCarrierConfigManager.getConfigForSubId(subId);
-            if (!CarrierConfigManager.isConfigForIdentifiedCarrier(config)) {
-                if (LOGV) Slog.v(TAG, "isConfigForIdentifiedCarrier returned false");
+            if (config == null || !CarrierConfigManager.isConfigForIdentifiedCarrier(config)) {
                 // Don't show notifications until we confirm that the loaded config is from an
                 // identified carrier, which may want to manage their own notifications. This method
                 // should be called every time the carrier config changes anyways, and there's no
@@ -1822,6 +1831,8 @@ public class NetworkPolicyManagerService extends INetworkPolicyManager.Stub {
 
         final List<String[]> mergedSubscriberIdsList = new ArrayList();
         final SparseArray<String> subIdToSubscriberId = new SparseArray<>(subList.size());
+        final SparseArray<PersistableBundle> subIdToConfig = new SparseArray<>(subList.size());
+
         for (final SubscriptionInfo sub : subList) {
             final TelephonyManager tmSub = tm.createForSubscriptionId(sub.getSubscriptionId());
             final String subscriberId = tmSub.getSubscriberId();
@@ -1829,6 +1840,14 @@ public class NetworkPolicyManagerService extends INetworkPolicyManager.Stub {
                 subIdToSubscriberId.put(tmSub.getSubscriptionId(), subscriberId);
             } else {
                 Slog.wtf(TAG, "Missing subscriberId for subId " + tmSub.getSubscriptionId());
+            }
+
+            final PersistableBundle carrierConfig =
+                    mCarrierConfigManager.getConfigForSubId(sub.getSubscriptionId());
+            if(carrierConfig != null) {
+                subIdToConfig.put(sub.getSubscriptionId(), carrierConfig);
+            } else {
+                Slog.e(TAG, "carrierConfig is null for sub " + sub);
             }
 
             final String[] mergedSubscriberId = ArrayUtils.defeatNullable(
@@ -1841,6 +1860,12 @@ public class NetworkPolicyManagerService extends INetworkPolicyManager.Stub {
             for (int i = 0; i < subIdToSubscriberId.size(); i++) {
                 mSubIdToSubscriberId.put(subIdToSubscriberId.keyAt(i),
                         subIdToSubscriberId.valueAt(i));
+            }
+
+            mSubIdToConfig.clear();
+            for (int i = 0; i < subIdToConfig.size(); i++) {
+                mSubIdToConfig.put(subIdToConfig.keyAt(i),
+                        subIdToConfig.valueAt(i));
             }
 
             mMergedSubscriberIds = mergedSubscriberIdsList;
@@ -2158,7 +2183,16 @@ public class NetworkPolicyManagerService extends INetworkPolicyManager.Stub {
                 }
             }
         } else {
-            final PersistableBundle config = mCarrierConfigManager.getConfigForSubId(subId);
+            PersistableBundle config = null;
+            for (int j = 0; j < mSubIdToConfig.size() && mSubIdToConfig.keyAt(j) == subId; j++) {
+                config = mSubIdToConfig.valueAt(j);
+                break;
+            }
+
+            if (config == null) {
+                return false;
+            }
+
             final int currentCycleDay;
             if (policy.cycleRule.isMonthly()) {
                 currentCycleDay = policy.cycleRule.start.getDayOfMonth();
