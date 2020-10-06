@@ -1,7 +1,6 @@
 {
   "comments": [
     {
-      "unresolved": true,
       "key": {
         "uuid": "04c75406_48bb44cd",
         "filename": "telephony/java/android/telephony/DisconnectCause.java",
@@ -21,10 +20,10 @@
         "endChar": 37
       },
       "revId": "233528a1a08c59e86aa5579bb2021c02ab0f69a5",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     },
     {
-      "unresolved": true,
       "key": {
         "uuid": "e8b89e5b_3b366f8e",
         "filename": "telephony/java/android/telephony/DisconnectCause.java",
@@ -45,10 +44,10 @@
         "endChar": 37
       },
       "revId": "233528a1a08c59e86aa5579bb2021c02ab0f69a5",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     },
     {
-      "unresolved": true,
       "key": {
         "uuid": "3c761fc0_e501d548",
         "filename": "telephony/java/android/telephony/DisconnectCause.java",
@@ -69,10 +68,34 @@
         "endChar": 37
       },
       "revId": "233528a1a08c59e86aa5579bb2021c02ab0f69a5",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     },
     {
-      "unresolved": true,
+      "key": {
+        "uuid": "8d6dbd3a_7ebdaf7e",
+        "filename": "telephony/java/android/telephony/DisconnectCause.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1060151
+      },
+      "writtenOn": "2020-10-06T16:43:18Z",
+      "side": 1,
+      "message": "Sorry, these cause codes are wrong as well. If you are updating the cause codes to match 10.5.123/3GPP TS 24.008, please update all of them?\n\nAccording to 10.5.123, cause code 27 is \"DESTINATION_OUT_OF_ORDER\", but currently the enum is listed as \"CDMA_DROP\".",
+      "parentUuid": "3c761fc0_e501d548",
+      "range": {
+        "startLine": 87,
+        "startChar": 28,
+        "endLine": 87,
+        "endChar": 37
+      },
+      "revId": "233528a1a08c59e86aa5579bb2021c02ab0f69a5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
       "key": {
         "uuid": "2001b0f2_7b9cde4e",
         "filename": "telephony/java/android/telephony/DisconnectCause.java",
@@ -92,10 +115,10 @@
         "endChar": 48
       },
       "revId": "233528a1a08c59e86aa5579bb2021c02ab0f69a5",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     },
     {
-      "unresolved": true,
       "key": {
         "uuid": "e7f87462_a4cbc678",
         "filename": "telephony/java/android/telephony/DisconnectCause.java",
@@ -116,10 +139,10 @@
         "endChar": 48
       },
       "revId": "233528a1a08c59e86aa5579bb2021c02ab0f69a5",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     },
     {
-      "unresolved": true,
       "key": {
         "uuid": "309f56dc_3be75dd1",
         "filename": "telephony/java/android/telephony/DisconnectCause.java",
@@ -140,7 +163,32 @@
         "endChar": 48
       },
       "revId": "233528a1a08c59e86aa5579bb2021c02ab0f69a5",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "991cb4ba_3f2a5a10",
+        "filename": "telephony/java/android/telephony/DisconnectCause.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 367,
+      "author": {
+        "id": 1060151
+      },
+      "writtenOn": "2020-10-06T16:43:18Z",
+      "side": 1,
+      "message": "This is very nice. Thank you.",
+      "parentUuid": "309f56dc_3be75dd1",
+      "range": {
+        "startLine": 367,
+        "startChar": 28,
+        "endLine": 367,
+        "endChar": 48
+      },
+      "revId": "233528a1a08c59e86aa5579bb2021c02ab0f69a5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
