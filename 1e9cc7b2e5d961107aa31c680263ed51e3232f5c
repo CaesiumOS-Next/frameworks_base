@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8389839e_e98e1de5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1098053
+      },
+      "writtenOn": "2020-10-06T17:08:32Z",
+      "side": 1,
+      "message": "Already submitted internally, CP to AOSP. Verified change on AOSP device as well.",
+      "revId": "1e9cc7b2e5d961107aa31c680263ed51e3232f5c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
