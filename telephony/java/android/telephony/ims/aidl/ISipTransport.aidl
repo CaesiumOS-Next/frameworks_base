@@ -21,4 +21,6 @@ package android.telephony.ims.aidl;
  * {@hide}
  */
 interface ISipTransport {
+    void createSipDelegate(in DelegateRequest request, in DelegateStateCallback dc,
+    in DelegateMessageCallback cb);
 }
