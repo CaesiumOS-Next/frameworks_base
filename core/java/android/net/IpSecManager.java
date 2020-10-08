@@ -798,6 +798,7 @@ public final class IpSecManager {
          *     This network should almost certainly be a network such as WiFi with an L2 address.
          * @hide
          */
+        @SystemApi
         @RequiresFeature(PackageManager.FEATURE_IPSEC_TUNNELS)
         @RequiresPermission(android.Manifest.permission.MANAGE_IPSEC_TUNNELS)
         public void setUnderlyingNetwork(@NonNull Network underlyingNetwork) throws IOException {
