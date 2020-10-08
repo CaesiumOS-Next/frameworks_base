@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cff8466d_127ddcfb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1098053
+      },
+      "writtenOn": "2020-10-08T18:28:27Z",
+      "side": 1,
+      "message": "This is only used in fw/opt/net/ims currently, but I will be extending to IMS manager classes such as SipTransportManager once there is a need.",
+      "revId": "dccfb6697bca45f3c825ed5d386e27091c7b1713",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
