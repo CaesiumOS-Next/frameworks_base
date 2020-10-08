@@ -46,6 +46,30 @@
       },
       "revId": "eb0737961d7035394dd5a2315da806a84f895eab",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2bb332dd_be15f46e",
+        "filename": "telephony/java/android/telephony/BinderCacheManager.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1087703
+      },
+      "writtenOn": "2020-10-08T20:33:49Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "b24f3837_373ab5b0",
+      "range": {
+        "startLine": 168,
+        "startChar": 81,
+        "endLine": 169,
+        "endChar": 40
+      },
+      "revId": "eb0737961d7035394dd5a2315da806a84f895eab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
