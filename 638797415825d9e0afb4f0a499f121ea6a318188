@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8a8df01e_9eef74a5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1288034
+      },
+      "writtenOn": "2020-10-08T08:22:20Z",
+      "side": 1,
+      "message": "Etan / Roshan: this is moving IpUtils to the com.android.net.module.util package. The wifi jarjar rule should be updated to remove the IpUtils rule, since there\u0027s already a generic rule for com.android.net.module.util.",
+      "revId": "638797415825d9e0afb4f0a499f121ea6a318188",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
