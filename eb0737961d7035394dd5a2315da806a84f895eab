@@ -22,6 +22,30 @@
       },
       "revId": "eb0737961d7035394dd5a2315da806a84f895eab",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b24f3837_373ab5b0",
+        "filename": "telephony/java/android/telephony/BinderCacheManager.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1098053
+      },
+      "writtenOn": "2020-10-08T20:31:52Z",
+      "side": 1,
+      "message": "getTracker() will invalidate the tracker and return null if the Binder is no longer alive.",
+      "parentUuid": "6278466a_7fca8dcd",
+      "range": {
+        "startLine": 168,
+        "startChar": 81,
+        "endLine": 169,
+        "endChar": 40
+      },
+      "revId": "eb0737961d7035394dd5a2315da806a84f895eab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
