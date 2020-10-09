@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "37e824bd_e5853287",
+        "filename": "core/java/android/uwb/AngleOfArrivalMeasurement.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1418133
+      },
+      "writtenOn": "2020-10-09T02:16:14Z",
+      "side": 1,
+      "message": "Can\u0027t we use @FloatRange(from \u003d 0, to \u003d +Math.PI) here?",
+      "range": {
+        "startLine": 54,
+        "startChar": 0,
+        "endLine": 54,
+        "endChar": 40
+      },
+      "revId": "d73d173db1b4efa063b566dc5f8df8f7a04151b3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
