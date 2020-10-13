@@ -51,6 +51,24 @@
       "parentUuid": "af657104_e3d8cf9a",
       "revId": "85359f6f0b7cb6d0d9ef95adf36d9389450864ff",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d39eb243_92b85865",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-10-13T14:42:28Z",
+      "side": 1,
+      "message": "I think it is largely a performance optimization to reduce build time. I have a patch to fix this. Basically, if it does not run the check API it does not create the current.txt and removed.txt files. In that case my patch will fallback to just using the source versions of those files instead.\n\nFix is https://r.android.com/1458439",
+      "parentUuid": "b880b57e_0580ccc1",
+      "revId": "85359f6f0b7cb6d0d9ef95adf36d9389450864ff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
