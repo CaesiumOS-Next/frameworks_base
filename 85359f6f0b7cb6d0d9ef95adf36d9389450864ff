@@ -69,6 +69,24 @@
       "parentUuid": "b880b57e_0580ccc1",
       "revId": "85359f6f0b7cb6d0d9ef95adf36d9389450864ff",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b9fb9cc7_f6551afc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1581772
+      },
+      "writtenOn": "2020-10-13T14:46:39Z",
+      "side": 1,
+      "message": "Indeed we find it useful to reduce the build time, as the droiddoc stuff takes quite a bit of time and is no really useful when developing / experimenting. Thanks a lot for the fix!",
+      "parentUuid": "b880b57e_0580ccc1",
+      "revId": "85359f6f0b7cb6d0d9ef95adf36d9389450864ff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
