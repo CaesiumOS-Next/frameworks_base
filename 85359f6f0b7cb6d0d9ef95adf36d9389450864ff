@@ -1,6 +1,7 @@
 {
   "comments": [
     {
+      "unresolved": false,
       "key": {
         "uuid": "77bc628f_ff14a056",
         "filename": "/PATCHSET_LEVEL",
@@ -14,8 +15,24 @@
       "side": 1,
       "message": "re-stamp",
       "revId": "85359f6f0b7cb6d0d9ef95adf36d9389450864ff",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": false
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "af657104_e3d8cf9a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1581772
+      },
+      "writtenOn": "2020-10-13T13:24:51Z",
+      "side": 1,
+      "message": "@Anton It looks like this patch broke the build when WITHOUT_CHECK_API\u003dtrue, we get dozens of errors like:\n\n  error: frameworks/base/api/Android.bp:47:1: module \"frameworks-base-api-current-merged.txt\": path dependency \":conscrypt.module.public.api{.public.api.txt}\": api.txt not available for api scope public\n  error: frameworks/base/api/Android.bp:47:1: module \"frameworks-base-api-current-merged.txt\": path dependency \":framework-media{.public.api.txt}\": api.txt not available for api scope public",
+      "revId": "85359f6f0b7cb6d0d9ef95adf36d9389450864ff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
