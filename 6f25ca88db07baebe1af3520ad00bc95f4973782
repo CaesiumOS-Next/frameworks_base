@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5efbdd69_5c38e889",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1056478
+      },
+      "writtenOn": "2020-10-13T21:51:13Z",
+      "side": 1,
+      "message": "Given it\u0027s protected by a public permission already this seems like a reasonable change.",
+      "revId": "6f25ca88db07baebe1af3520ad00bc95f4973782",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
