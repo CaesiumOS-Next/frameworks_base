@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9875df19_a2bfb26a",
+        "filename": "services/tests/servicestests/src/com/android/server/hdmi/HdmiCecMessageValidatorTest.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1590836
+      },
+      "writtenOn": "2020-10-13T11:28:04Z",
+      "side": 1,
+      "message": "mHdmiControlService.setIoLooper is needed, otherwise it fails due to runtime exception.\n\njava.lang.RuntimeException: Can\u0027t create handler inside thread Thread[Instr: androidx.test.runner.AndroidJUnitRunner,5,main] that has not called Looper.prepare().\nThis failure is observed when running on master for yukawa_userdebug.",
+      "range": {
+        "startLine": 48,
+        "startChar": 27,
+        "endLine": 48,
+        "endChar": 47
+      },
+      "revId": "a8f8bdcaa7ed2005215bb52164489361ef168d9f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
