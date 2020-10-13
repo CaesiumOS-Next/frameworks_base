@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1dfa0c43_c734d085",
+        "filename": "core/java/android/uwb/AngleOfArrivalMeasurement.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1121403
+      },
+      "writtenOn": "2020-10-13T16:46:15Z",
+      "side": 1,
+      "message": "please make this class final as well",
+      "range": {
+        "startLine": 26,
+        "startChar": 4,
+        "endLine": 26,
+        "endChar": 15
+      },
+      "revId": "0c1bc0ba31370e8b12612ee2bb164bcf934ee610",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
