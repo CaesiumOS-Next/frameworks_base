@@ -1,6 +1,7 @@
 {
   "comments": [
     {
+      "unresolved": true,
       "key": {
         "uuid": "04c75406_48bb44cd",
         "filename": "telephony/java/android/telephony/DisconnectCause.java",
@@ -20,10 +21,10 @@
         "endChar": 37
       },
       "revId": "233528a1a08c59e86aa5579bb2021c02ab0f69a5",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": true
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "e8b89e5b_3b366f8e",
         "filename": "telephony/java/android/telephony/DisconnectCause.java",
@@ -44,10 +45,10 @@
         "endChar": 37
       },
       "revId": "233528a1a08c59e86aa5579bb2021c02ab0f69a5",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": true
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "3c761fc0_e501d548",
         "filename": "telephony/java/android/telephony/DisconnectCause.java",
@@ -68,10 +69,10 @@
         "endChar": 37
       },
       "revId": "233528a1a08c59e86aa5579bb2021c02ab0f69a5",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": true
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "8d6dbd3a_7ebdaf7e",
         "filename": "telephony/java/android/telephony/DisconnectCause.java",
@@ -92,10 +93,34 @@
         "endChar": 37
       },
       "revId": "233528a1a08c59e86aa5579bb2021c02ab0f69a5",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": true
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "32e2ee5b_20a297b0",
+        "filename": "telephony/java/android/telephony/DisconnectCause.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1763766
+      },
+      "writtenOn": "2020-10-13T09:14:03Z",
+      "side": 1,
+      "message": "Dear Nathan. \nThanks for your answer. \nI updated patch set as you requested.\n(Other disconnect causes were also modified based on call fail causes due to duplicated value like CDMA_DROP)\n\nPlease check it and give your opinion.\nThanks.",
+      "parentUuid": "8d6dbd3a_7ebdaf7e",
+      "range": {
+        "startLine": 87,
+        "startChar": 28,
+        "endLine": 87,
+        "endChar": 37
+      },
+      "revId": "233528a1a08c59e86aa5579bb2021c02ab0f69a5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
       "key": {
         "uuid": "2001b0f2_7b9cde4e",
         "filename": "telephony/java/android/telephony/DisconnectCause.java",
@@ -115,10 +140,10 @@
         "endChar": 48
       },
       "revId": "233528a1a08c59e86aa5579bb2021c02ab0f69a5",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": true
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "e7f87462_a4cbc678",
         "filename": "telephony/java/android/telephony/DisconnectCause.java",
@@ -139,10 +164,10 @@
         "endChar": 48
       },
       "revId": "233528a1a08c59e86aa5579bb2021c02ab0f69a5",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": true
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "309f56dc_3be75dd1",
         "filename": "telephony/java/android/telephony/DisconnectCause.java",
@@ -163,10 +188,10 @@
         "endChar": 48
       },
       "revId": "233528a1a08c59e86aa5579bb2021c02ab0f69a5",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": true
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "991cb4ba_3f2a5a10",
         "filename": "telephony/java/android/telephony/DisconnectCause.java",
@@ -187,8 +212,31 @@
         "endChar": 48
       },
       "revId": "233528a1a08c59e86aa5579bb2021c02ab0f69a5",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": true
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b7cf7d71_a3ab2bdc",
+        "filename": "telephony/java/android/telephony/DisconnectCause.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 367,
+      "author": {
+        "id": 1763766
+      },
+      "writtenOn": "2020-10-13T09:14:03Z",
+      "side": 1,
+      "message": "Thanks a lot.",
+      "parentUuid": "991cb4ba_3f2a5a10",
+      "range": {
+        "startLine": 367,
+        "startChar": 28,
+        "endLine": 367,
+        "endChar": 48
+      },
+      "revId": "233528a1a08c59e86aa5579bb2021c02ab0f69a5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
