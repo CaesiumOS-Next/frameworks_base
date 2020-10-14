@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a1929aab_199421b8",
+        "filename": "packages/Tethering/tests/unit/src/com/android/networkstack/tethering/PrivateAddressCoordinatorTest.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 224,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2020-10-14T08:46:40Z",
+      "side": 1,
+      "message": "works",
+      "range": {
+        "startLine": 224,
+        "startChar": 40,
+        "endLine": 224,
+        "endChar": 49
+      },
+      "revId": "fe002e682024c9ba9fb5f1e4065668208f08d58e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c207b46b_f6a9a361",
+        "filename": "packages/Tethering/tests/unit/src/com/android/networkstack/tethering/PrivateAddressCoordinatorTest.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 224,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2020-10-14T08:46:40Z",
+      "side": 1,
+      "message": ".",
+      "range": {
+        "startLine": 224,
+        "startChar": 75,
+        "endLine": 224,
+        "endChar": 76
+      },
+      "revId": "fe002e682024c9ba9fb5f1e4065668208f08d58e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d7bf64a0_f1326023",
+        "filename": "packages/Tethering/tests/unit/src/com/android/networkstack/tethering/PrivateAddressCoordinatorTest.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2020-10-14T08:46:40Z",
+      "side": 1,
+      "message": "It\u0027s not super clear what the current IP address is. Is it easy to add an assertion somewhere close to here that it\u0027s 192.168.43.5?",
+      "range": {
+        "startLine": 228,
+        "startChar": 33,
+        "endLine": 228,
+        "endChar": 49
+      },
+      "revId": "fe002e682024c9ba9fb5f1e4065668208f08d58e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ba565ddf_8df4d944",
+        "filename": "packages/Tethering/tests/unit/src/com/android/networkstack/tethering/PrivateAddressCoordinatorTest.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2020-10-14T08:46:40Z",
+      "side": 1,
+      "message": "Per chat: is there  a way to add an assertion that checks that the wrong behaviour happens? That might be better than commenting out the assertion. Something like:\n\n    verify(ipServer, never()), sendMessage(IpServer.CMD_NOTIFY_PREFIX_CONFLICT);\n\n? It\u0027s better because when you apply the fix, the test you checked in starts to fail unless you modify it. That means that you know the test was previously actually checking that the bug existed.",
+      "range": {
+        "startLine": 231,
+        "startChar": 0,
+        "endLine": 232,
+        "endChar": 55
+      },
+      "revId": "fe002e682024c9ba9fb5f1e4065668208f08d58e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
