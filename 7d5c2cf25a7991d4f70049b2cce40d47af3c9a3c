@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9f29babc_1f181c20",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308504
+      },
+      "writtenOn": "2020-10-14T09:10:23Z",
+      "side": 1,
+      "message": "Carry Lorenzo\u0027s +2, just fix his comment that address the typo.",
+      "revId": "7d5c2cf25a7991d4f70049b2cce40d47af3c9a3c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
