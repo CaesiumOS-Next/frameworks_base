@@ -22,6 +22,30 @@
       },
       "revId": "a8f8bdcaa7ed2005215bb52164489361ef168d9f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9b355321_a5280224",
+        "filename": "services/tests/servicestests/src/com/android/server/hdmi/HdmiCecMessageValidatorTest.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1651020
+      },
+      "writtenOn": "2020-10-14T11:06:44Z",
+      "side": 1,
+      "message": "Checking presubmits again - and have this test passing locally as well. However if required we can update.",
+      "parentUuid": "9875df19_a2bfb26a",
+      "range": {
+        "startLine": 48,
+        "startChar": 27,
+        "endLine": 48,
+        "endChar": 47
+      },
+      "revId": "a8f8bdcaa7ed2005215bb52164489361ef168d9f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
