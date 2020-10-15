@@ -49,6 +49,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "fc70a095_18dc0dff",
+        "filename": "telephony/java/android/telephony/DisconnectCause.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 306,
+      "author": {
+        "id": 1763766
+      },
+      "writtenOn": "2020-10-15T03:11:14Z",
+      "side": 1,
+      "message": "Dear Nathan. \nThanks for your feedback. \n\nI\u0027m confused because below can\u0027t be satisfied at the same time by duplicated existing constant.\n\n1. using cause value defined in 3GPP\n2. not change cause value in public API\n\nFor example,\nUNOBTAINABLE_NUMBER is defined as 1 in 3GPP \nand INCOMING_MISSED in public API is the same constant 1 as you mentioned,\nit means one of these must use another constant as per my understanding. \n\n\nPlease let me know if there\u0027s other way to satisfy above together.\nIf not, I think patch set 5 could be suitable one because constant of disconnect cause doesn\u0027t have important meaning (just used for converting from call fail cause)\n\nPlease give your opinion. \nThanks.",
+      "parentUuid": "464f79ce_cd44a3df",
+      "range": {
+        "startLine": 306,
+        "startChar": 28,
+        "endLine": 306,
+        "endChar": 43
+      },
+      "revId": "453b2255ab058cc02eb3cf4e91c86955a652d702",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "00b8b85f_a2586f3b",
         "filename": "telephony/java/android/telephony/DisconnectCause.java",
         "patchSetId": 7
