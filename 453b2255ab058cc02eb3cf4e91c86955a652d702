@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ba5a5711_59a9e77f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1763766
+      },
+      "writtenOn": "2020-10-15T03:57:05Z",
+      "side": 1,
+      "message": "\u003e Patch Set 7:\n\u003e \n\u003e There will have to be multiple strings mapped to the same enumerated value.\n\n\nDo you mean below is fine?\n\nUNOBTAINABLE_NUMBER \u003d 1;\nINCOMING_MISSED \u003d 1;\n\nI think it might be able to be confusing for debugging. \nis it no problem?\n\n\n\n",
+      "revId": "453b2255ab058cc02eb3cf4e91c86955a652d702",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "875eb7ea_15f10e6a",
