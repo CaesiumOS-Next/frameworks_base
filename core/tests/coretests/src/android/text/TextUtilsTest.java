@@ -793,4 +793,51 @@ public class TextUtilsTest {
         assertEquals("ABC", TextUtils.trimToLengthWithEllipsis("ABC", 3));
         assertEquals("", TextUtils.trimToLengthWithEllipsis("", 3));
     }
+
+    @Test
+    public void testFormatSimple_Types() {
+        assertEquals("true", TextUtils.formatSimple("%b", true));
+        assertEquals("false", TextUtils.formatSimple("%b", false));
+        assertEquals("true", TextUtils.formatSimple("%b", this));
+        assertEquals("false", TextUtils.formatSimple("%b", new Object[] { null }));
+
+        assertEquals("!", TextUtils.formatSimple("%c", '!'));
+
+        assertEquals("42", TextUtils.formatSimple("%d", 42));
+        assertEquals("281474976710656", TextUtils.formatSimple("%d", 281474976710656L));
+
+        assertEquals("3.14159", TextUtils.formatSimple("%f", 3.14159));
+        assertEquals("NaN", TextUtils.formatSimple("%f", Float.NaN));
+
+        assertEquals("example", TextUtils.formatSimple("%s", "example"));
+        assertEquals("null", TextUtils.formatSimple("%s", new Object[] { null }));
+
+        assertEquals("2a", TextUtils.formatSimple("%x", 42));
+        assertEquals("1000000000000", TextUtils.formatSimple("%x", 281474976710656L));
+    }
+
+    @Test
+    public void testFormatSimple_Empty() {
+        assertEquals("", TextUtils.formatSimple(""));
+    }
+
+    @Test
+    public void testFormatSimple_Typical() {
+        assertEquals("String foobar and number -42 together", TextUtils
+                .formatSimple("String %s%s and number %d%d together", "foo", "bar", -4, 2));
+    }
+
+    @Test
+    public void testFormatSimple_Mismatch() {
+        try {
+            TextUtils.formatSimple("%s");
+            fail();
+        } catch (IllegalArgumentException expected) {
+        }
+        try {
+            TextUtils.formatSimple("%s", "foo", "bar");
+            fail();
+        } catch (IllegalArgumentException expected) {
+        }
+    }
 }
