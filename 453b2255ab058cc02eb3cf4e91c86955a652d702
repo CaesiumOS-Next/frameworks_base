@@ -36,6 +36,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f912c5c9_be5a7262",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1060151
+      },
+      "writtenOn": "2020-10-15T04:07:18Z",
+      "side": 1,
+      "message": "The problem is:\n\n1) there are existing constants defined in Android where the 3gpp constants ideally would be.\n2) Those constants became public API without cleaning them up (which means we can never change them).\n3) Over the next 10 years, the old constants, especially CDMA-specific constants will become useless.\n4) Mixing the 3gpp constants with the old constants just makes the problem more confusing, so we should try to avoid that.\n\nIt might be worth deprecating all of the existing constants, and migrating them to another namespace, or it might be worth having DisconnectCause3gpp be defined in a new top level class rather than as an inner class (need to talk to tgunn@).\n\nBut, all the constants are written out so that work is done. Now we need to talk about API shape.",
+      "parentUuid": "f9a9d988_5586e054",
+      "revId": "453b2255ab058cc02eb3cf4e91c86955a652d702",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "875eb7ea_15f10e6a",
