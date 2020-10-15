@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "875eb7ea_15f10e6a",
+        "filename": "telephony/java/android/telephony/DisconnectCause.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1060151
+      },
+      "writtenOn": "2020-10-15T02:00:05Z",
+      "side": 1,
+      "message": "This part is perfect. Thank you for updating all of the cause codes to match 24.008.",
+      "range": {
+        "startLine": 41,
+        "startChar": 28,
+        "endLine": 41,
+        "endChar": 47
+      },
+      "revId": "453b2255ab058cc02eb3cf4e91c86955a652d702",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "464f79ce_cd44a3df",
+        "filename": "telephony/java/android/telephony/DisconnectCause.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 306,
+      "author": {
+        "id": 1060151
+      },
+      "writtenOn": "2020-10-15T02:00:05Z",
+      "side": 1,
+      "message": "Unfortunately, these values are already part of the public API, so they will have to remain the same. Fortunately, if they are not used by anybody and aren\u0027t part of the 3gpp standard, they can be moved somewhere like the bottom of the file. We can\u0027t change them though. :-(",
+      "range": {
+        "startLine": 306,
+        "startChar": 28,
+        "endLine": 306,
+        "endChar": 43
+      },
+      "revId": "453b2255ab058cc02eb3cf4e91c86955a652d702",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "00b8b85f_a2586f3b",
+        "filename": "telephony/java/android/telephony/DisconnectCause.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 674,
+      "author": {
+        "id": 1060151
+      },
+      "writtenOn": "2020-10-15T02:00:05Z",
+      "side": 1,
+      "message": "It\u0027s OK if the toString() method is for 3gpp cause codes (the new ones you have added). For 3gpp2 cause codes, perhaps the strings can move to a separate function that is not called by default.",
+      "range": {
+        "startLine": 674,
+        "startChar": 20,
+        "endLine": 674,
+        "endChar": 36
+      },
+      "revId": "453b2255ab058cc02eb3cf4e91c86955a652d702",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
