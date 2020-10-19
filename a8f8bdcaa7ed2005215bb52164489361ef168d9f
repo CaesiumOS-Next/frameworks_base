@@ -46,6 +46,30 @@
       },
       "revId": "a8f8bdcaa7ed2005215bb52164489361ef168d9f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bd3c4cbb_32581a80",
+        "filename": "services/tests/servicestests/src/com/android/server/hdmi/HdmiCecMessageValidatorTest.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1590836
+      },
+      "writtenOn": "2020-10-19T14:40:29Z",
+      "side": 1,
+      "message": "Created a follow-up CL, marking this resolved. \nhttps://android-review.googlesource.com/c/platform/frameworks/base/+/1463903",
+      "parentUuid": "9b355321_a5280224",
+      "range": {
+        "startLine": 48,
+        "startChar": 27,
+        "endLine": 48,
+        "endChar": 47
+      },
+      "revId": "a8f8bdcaa7ed2005215bb52164489361ef168d9f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
