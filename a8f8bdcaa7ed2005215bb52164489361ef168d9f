@@ -70,6 +70,29 @@
       },
       "revId": "a8f8bdcaa7ed2005215bb52164489361ef168d9f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6b252161_60b07c4c",
+        "filename": "services/tests/servicestests/src/com/android/server/hdmi/HdmiCecMessageValidatorTest.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1060286
+      },
+      "writtenOn": "2020-10-20T15:38:40Z",
+      "side": 1,
+      "message": "For a follow up CL lets try to keep to the Truth style\n\nassertThat(isValid(\"04:90:00\")).isEqualTo(OK)\n\nor create a custom subject for HdmiCecMessageValidator\n\nso you have \nassertThat(mHdmiCecMessageValidator).isValid(\"04:90:00\").isEqualTo(OK)\nor\nassertThat(mHdmiCecMessageValidator).message(\"04:90:00\").isEqualOk()",
+      "range": {
+        "startLine": 64,
+        "startChar": 8,
+        "endLine": 64,
+        "endChar": 56
+      },
+      "revId": "a8f8bdcaa7ed2005215bb52164489361ef168d9f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
