@@ -101,8 +101,7 @@ public abstract class CameraMetadata<TKey> {
      *
      * @hide
      */
-    @UnsupportedAppUsage(publicAlternatives = "This method is exposed for native "
-                        + "{@code ACameraMetadata_fromCameraMetadata} in {@code libcamera2ndk}.")
+    @UnsupportedAppUsage
     public long getNativeMetadataPtr() {
         if (mNativeInstance == null) {
             return 0;

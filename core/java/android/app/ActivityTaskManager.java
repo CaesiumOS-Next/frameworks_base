@@ -150,7 +150,7 @@ public class ActivityTaskManager {
         return IActivityTaskManagerSingleton.get();
     }
 
-    @UnsupportedAppUsage(trackingBug = 129726065)
+    @UnsupportedAppUsage
     private static final Singleton<IActivityTaskManager> IActivityTaskManagerSingleton =
             new Singleton<IActivityTaskManager>() {
                 @Override
