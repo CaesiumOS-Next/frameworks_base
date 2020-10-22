@@ -1,0 +1,12 @@
+{
+  "presubmit": [
+    {
+      "name": "UwbManagerTests",
+      "options": [
+        {
+          "include-annotation": "android.platform.test.annotations.Presubmit"
+        }
+      ]
+    }
+  ]
+}
