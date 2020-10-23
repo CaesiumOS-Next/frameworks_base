@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e1c90bfa_866ae1b2",
+        "filename": "services/core/java/com/android/server/connectivity/Vpn.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 1299,
+      "author": {
+        "id": 1308163
+      },
+      "writtenOn": "2020-10-23T14:42:47Z",
+      "side": 1,
+      "message": "Since this change adds one more case which will make this method return null. Do you want to update this java doc as well?",
+      "range": {
+        "startLine": 1298,
+        "startChar": 84,
+        "endLine": 1299,
+        "endChar": 74
+      },
+      "revId": "a2e6369f30beb4956c940698567d8c8ea067ac58",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "331f463d_ef90713c",
+        "filename": "services/core/java/com/android/server/connectivity/Vpn.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 1334,
+      "author": {
+        "id": 1308163
+      },
+      "writtenOn": "2020-10-23T14:42:47Z",
+      "side": 0,
+      "message": "Why did you remove this?\nThe code path of the new change is:\nContextImpl#getPackageManager() -\u003e ApplicationPackageManager#resolveService() -\u003e ApplicationPackageManager#resolveServiceAsUser() -\u003e ...\nAnd ApplicationPackageManager#resolveServiceAsUser() may throw RemoteException, so we still need it, right?",
+      "range": {
+        "startLine": 1333,
+        "startChar": 8,
+        "endLine": 1334,
+        "endChar": 70
+      },
+      "revId": "20a3234d5bb0e7132610416369f53ec9dd9a35e5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
