@@ -3902,7 +3902,7 @@ public class AudioService extends IAudioService.Stub
             // change of mode may require volume to be re-applied on some devices
             updateAbsVolumeMultiModeDevices(oldMode, actualMode);
 
-            if (actualMode == AudioSystem.MODE_IN_COMMUNICATION) {
+            if (mode == AudioSystem.MODE_IN_COMMUNICATION) {
                 sendMsg(mAudioHandler,
                         MSG_CHECK_MODE_FOR_UID,
                         SENDMSG_QUEUE,
