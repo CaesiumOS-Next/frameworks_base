@@ -188,9 +188,9 @@ class FlagsDict:
     def _check_entries_set(self, keys_subset, source):
         assert isinstance(keys_subset, set)
         assert keys_subset.issubset(self._dict_keyset), (
-            "Error processing: {}\n"
-            "The following entries were unexpected:\n"
-            "{}"
+            "Error: {} specifies signature:\n"
+            "  {}\n"
+            "But that signature is not present in code.\n"
             "Please visit go/hiddenapi for more information.").format(
                 source, "".join(map(lambda x: "  " + str(x), keys_subset - self._dict_keyset)))
 
