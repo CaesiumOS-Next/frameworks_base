@@ -21,8 +21,8 @@ java_library_static {
 }
 
 // Version of services.net for usage by the wifi mainline module.
-// Note: This is compiled against module_current.
-// TODO(b/145825329): This should be moved to networkstack-client,
+// Note: This is compiled against module_30.
+// TODO(b/172457099): This should be moved to networkstack-client,
 // with dependencies moved to frameworks/libs/net right.
 java_library {
     name: "services.net-module-wifi",
@@ -38,7 +38,7 @@ java_library {
         "java/android/net/NetworkMonitorManager.java",
         "java/android/net/TcpKeepalivePacketData.java",
     ],
-    sdk_version: "module_current",
+    sdk_version: "module_30",
     libs: [
         "unsupportedappusage",
         "framework-wifi-util-lib",
