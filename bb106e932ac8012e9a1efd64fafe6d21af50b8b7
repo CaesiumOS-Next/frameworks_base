@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6ba10e8d_aefc40c9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1010681
+      },
+      "writtenOn": "2020-10-27T09:49:07Z",
+      "side": 1,
+      "message": "This CL will not be your culprit - it just changed the error message. The test will fail regardless of this CL if you revert.\n\nThe bug is likely the same root cause as b/171020536",
+      "revId": "bb106e932ac8012e9a1efd64fafe6d21af50b8b7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
