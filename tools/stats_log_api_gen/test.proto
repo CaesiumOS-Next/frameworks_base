@@ -213,3 +213,10 @@ message ModuleAtoms {
         NoModuleAtom no_module_atom = 4;
     }
 }
+
+message VendorPushedAtoms {
+    oneof event {
+        IntAtom vendor_first_pushed_atom = 100000;
+        IntAtom vendor_last_pushed_atom = 149999;
+    }
+}

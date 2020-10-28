@@ -38,6 +38,8 @@ using std::string;
 using std::vector;
 
 const int PULL_ATOM_START_ID = 10000;
+const int VENDOR_PUSH_ATOM_START_ID = 100000;
+const int VENDOR_PULL_ATOM_START_ID = 150000;
 
 const int FIRST_UID_IN_CHAIN_ID = 0;
 
@@ -171,6 +173,11 @@ struct AtomDecl {
 
     inline bool operator<(const AtomDecl& that) const {
         return (code == that.code) ? (name < that.name) : (code < that.code);
+    }
+
+    inline bool isPushedAtom() const {
+        return code < PULL_ATOM_START_ID ||
+            (code >= VENDOR_PUSH_ATOM_START_ID && code < VENDOR_PULL_ATOM_START_ID);
     }
 };
 

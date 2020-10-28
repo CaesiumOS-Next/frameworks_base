@@ -325,7 +325,7 @@ int collate_atom(const Descriptor* atom, AtomDecl* atomDecl, vector<java_type_t>
             print_error(field, "Unknown type for field: %s\n", field->name().c_str());
             errorCount++;
             continue;
-        } else if (javaType == JAVA_TYPE_OBJECT && atomDecl->code < PULL_ATOM_START_ID) {
+        } else if (javaType == JAVA_TYPE_OBJECT && atomDecl->isPushedAtom()) {
             // Allow attribution chain, but only at position 1.
             print_error(field, "Message type not allowed for field in pushed atoms: %s\n",
                         field->name().c_str());
@@ -397,7 +397,7 @@ int collate_atom(const Descriptor* atom, AtomDecl* atomDecl, vector<java_type_t>
         }
 
         // Generate signature for pushed atoms
-        if (atomDecl->code < PULL_ATOM_START_ID) {
+        if (atomDecl->isPushedAtom()) {
             if (javaType == JAVA_TYPE_ENUM) {
                 // All enums are treated as ints when it comes to function signatures.
                 signature->push_back(JAVA_TYPE_INT);
@@ -518,7 +518,7 @@ int collate_atoms(const Descriptor* descriptor, const string& moduleName, Atoms*
         shared_ptr<AtomDecl> atomDecl =
                 make_shared<AtomDecl>(atomField->number(), atomField->name(), atom->name());
 
-        if (atomDecl->code < PULL_ATOM_START_ID &&
+        if (atomDecl->isPushedAtom() &&
             atomField->options().GetExtension(os::statsd::truncate_timestamp)) {
             addAnnotationToAtomDecl(atomDecl.get(), ATOM_ID_FIELD_NUMBER,
                                     ANNOTATION_ID_TRUNCATE_TIMESTAMP, ANNOTATION_TYPE_BOOL,

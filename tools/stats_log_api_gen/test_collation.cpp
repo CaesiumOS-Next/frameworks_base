@@ -365,5 +365,33 @@ TEST(CollationTest, RecognizeModule1Atom) {
     EXPECT_TRUE(annotation->value.boolValue);
 }
 
+TEST(CollationTest, VendorPushedAtoms) {
+    Atoms atoms;
+    int errorCount = collate_atoms(VendorPushedAtoms::descriptor(), DEFAULT_MODULE_NAME, &atoms);
+
+    EXPECT_EQ(0, errorCount);
+    EXPECT_EQ(1ul, atoms.signatureInfoMap.size());
+
+    // IntAtom
+    EXPECT_MAP_CONTAINS_SIGNATURE(atoms.signatureInfoMap, JAVA_TYPE_INT);
+
+    EXPECT_EQ(2ul, atoms.decls.size());
+
+    AtomDeclSet::const_iterator atomIt = atoms.decls.begin();
+    EXPECT_EQ(100000, (*atomIt)->code);
+    EXPECT_EQ("vendor_first_pushed_atom", (*atomIt)->name);
+    EXPECT_EQ("IntAtom", (*atomIt)->message);
+    EXPECT_NO_ENUM_FIELD((*atomIt));
+    atomIt++;
+
+    EXPECT_EQ(149999, (*atomIt)->code);
+    EXPECT_EQ("vendor_last_pushed_atom", (*atomIt)->name);
+    EXPECT_EQ("IntAtom", (*atomIt)->message);
+    EXPECT_NO_ENUM_FIELD((*atomIt));
+    atomIt++;
+
+    EXPECT_EQ(atoms.decls.end(), atomIt);
+}
+
 }  // namespace stats_log_api_gen
 }  // namespace android
