@@ -22,6 +22,29 @@
       },
       "revId": "a2e6369f30beb4956c940698567d8c8ea067ac58",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "83add131_2dd27a83",
+        "filename": "services/core/java/com/android/server/connectivity/Vpn.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 1327,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2020-10-28T06:28:01Z",
+      "side": 1,
+      "message": "This must not happen. I think the code should at least log a wtf, but probably actually crash with an exception.",
+      "range": {
+        "startLine": 1327,
+        "startChar": 16,
+        "endLine": 1327,
+        "endChar": 38
+      },
+      "revId": "a2e6369f30beb4956c940698567d8c8ea067ac58",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
