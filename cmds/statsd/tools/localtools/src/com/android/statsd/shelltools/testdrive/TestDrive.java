@@ -52,7 +52,7 @@ public class TestDrive {
     private static final long ATOM_MATCHER_ID_BASE = 1234567;
     private static final long APP_BREADCRUMB_MATCHER_ID = 1111111;
     private static final int PULL_ATOM_START = 10000;
-    private static final int MAX_PLATFORM_ATOM_TAG = 100000;
+    private static final int MAX_PLATFORM_ATOM_TAG = 99999;
     private static final int VENDOR_PULLED_ATOM_START_TAG = 150000;
     private static final long CONFIG_ID = 54321;
     private static final String[] ALLOWED_LOG_SOURCES = {
