@@ -813,6 +813,14 @@ static void BindMount(const std::string& source_dir, const std::string& target_d
   }
 }
 
+static bool BindMount(const std::string& source_dir, const std::string& target_dir) {
+  if (TEMP_FAILURE_RETRY(mount(source_dir.c_str(), target_dir.c_str(), nullptr,
+                               MS_BIND | MS_REC, nullptr)) == -1) {
+    return false;
+  }
+  return true;
+}
+
 static void MountAppDataTmpFs(const std::string& target_dir,
                       fail_fn_t fail_fn) {
   if (TEMP_FAILURE_RETRY(mount("tmpfs", target_dir.c_str(), "tmpfs",
@@ -1194,7 +1202,7 @@ static pid_t ForkCommon(JNIEnv* env, bool is_system_server,
 
 // Create an app data directory over tmpfs overlayed CE / DE storage, and bind mount it
 // from the actual app data directory in data mirror.
-static void createAndMountAppData(std::string_view package_name,
+static bool createAndMountAppData(std::string_view package_name,
     std::string_view mirror_pkg_dir_name, std::string_view mirror_data_path,
     std::string_view actual_data_path, fail_fn_t fail_fn) {
 
@@ -1207,7 +1215,23 @@ static void createAndMountAppData(std::string_view package_name,
   PrepareDir(actualAppDataPath, 0700, AID_ROOT, AID_ROOT, fail_fn);
 
   // Bind mount from original app data directory in mirror.
-  BindMount(mirrorAppDataPath, actualAppDataPath, fail_fn);
+  return BindMount(mirrorAppDataPath, actualAppDataPath);
+}
+
+// There is an app data directory over tmpfs overlayed CE / DE storage
+// bind mount it from the actual app data directory in data mirror.
+static bool mountAppData(std::string_view package_name,
+    std::string_view mirror_pkg_dir_name, std::string_view mirror_data_path,
+    std::string_view actual_data_path) {
+
+  char mirrorAppDataPath[PATH_MAX];
+  char actualAppDataPath[PATH_MAX];
+  snprintf(mirrorAppDataPath, PATH_MAX, "%s/%s", mirror_data_path.data(),
+      mirror_pkg_dir_name.data());
+  snprintf(actualAppDataPath, PATH_MAX, "%s/%s", actual_data_path.data(), package_name.data());
+
+  // Bind mount from original app data directory in mirror.
+  return BindMount(mirrorAppDataPath, actualAppDataPath);
 }
 
 // Get the directory name stored in /data/data. If device is unlocked it should be the same as
@@ -1284,10 +1308,31 @@ static void isolateAppDataPerPackage(int userId, std::string_view package_name,
   snprintf(mirrorCePath, PATH_MAX, "%s/%d", mirrorCeParent, userId);
   snprintf(mirrorDePath, PATH_MAX, "/data_mirror/data_de/%s/%d", volume_uuid.data(), userId);
 
-  createAndMountAppData(package_name, package_name, mirrorDePath, actualDePath, fail_fn);
+  if (!createAndMountAppData(package_name, package_name, mirrorDePath, actualDePath, fail_fn)) {
+    fail_fn(CREATE_ERROR("Failed to mount %s/%s to %s/%s: %s",
+                         mirrorDePath, package_name.data(),
+                         actualDePath.data(), package_name.data(),
+                         strerror(errno)));
+  }
 
   std::string ce_data_path = getAppDataDirName(mirrorCePath, package_name, ce_data_inode, fail_fn);
-  createAndMountAppData(package_name, ce_data_path, mirrorCePath, actualCePath, fail_fn);
+  if (!createAndMountAppData(package_name, ce_data_path, mirrorCePath, actualCePath, fail_fn)) {
+    ALOGW("Failed to mount %s/%s to %s/%s: %s",
+          mirrorCePath, ce_data_path.c_str(),
+          actualCePath.data(), package_name.data(),
+          strerror(errno));
+
+    // CE might unlocks and the name is decrypted
+    // get the name and mount again
+    ce_data_path=getAppDataDirName(mirrorCePath, package_name, ce_data_inode, fail_fn);
+
+    if (!mountAppData(package_name, ce_data_path, mirrorCePath, actualCePath)) {
+      fail_fn(CREATE_ERROR("Failed to mount %s/%s to %s/%s: %s",
+                           mirrorCePath, ce_data_path.c_str(),
+                           actualCePath.data(), package_name.data(),
+                           strerror(errno)));
+    }
+  }
 }
 
 // Relabel directory
