@@ -1,6 +1,24 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a2da2c29_020062bb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1651020
+      },
+      "writtenOn": "2020-10-30T12:23:24Z",
+      "side": 1,
+      "message": "Would it be possible to cover the new functionality with a test in HdmiCecLocalDeviceTvTest?",
+      "revId": "70f0700991369f7f69cc49718d45c8de658be345",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
       "key": {
         "uuid": "021455af_9c036080",
         "filename": "services/core/java/com/android/server/hdmi/HdmiCecLocalDeviceTv.java",
@@ -20,10 +38,10 @@
         "endChar": 0
       },
       "revId": "70f0700991369f7f69cc49718d45c8de658be345",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": true
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "7b216785_3521c568",
         "filename": "services/core/java/com/android/server/hdmi/HdmiCecLocalDeviceTv.java",
@@ -44,8 +62,31 @@
         "endChar": 0
       },
       "revId": "70f0700991369f7f69cc49718d45c8de658be345",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": true
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d69dac06_786e7586",
+        "filename": "services/core/java/com/android/server/hdmi/HdmiCecLocalDeviceTv.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 1179,
+      "author": {
+        "id": 1651020
+      },
+      "writtenOn": "2020-10-30T12:23:24Z",
+      "side": 1,
+      "message": "Understood. The first case (checking avr \u003d\u003d null) should realistiaclly not happen as the audio device should always be known, otherwise that would point to a different issue. However it\u0027s a good safeguard.",
+      "parentUuid": "7b216785_3521c568",
+      "range": {
+        "startLine": 1164,
+        "startChar": 8,
+        "endLine": 1179,
+        "endChar": 0
+      },
+      "revId": "70f0700991369f7f69cc49718d45c8de658be345",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
