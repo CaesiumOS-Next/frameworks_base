@@ -18,6 +18,23 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c4034d1c_dce5bc7a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1328424
+      },
+      "writtenOn": "2020-10-30T16:08:48Z",
+      "side": 1,
+      "message": "Thanks Marvin,\n\nHi Nick, can you +2?",
+      "revId": "70f0700991369f7f69cc49718d45c8de658be345",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "021455af_9c036080",
