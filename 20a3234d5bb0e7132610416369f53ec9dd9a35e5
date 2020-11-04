@@ -22,6 +22,30 @@
       },
       "revId": "20a3234d5bb0e7132610416369f53ec9dd9a35e5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "33471b6c_6b8561ce",
+        "filename": "services/core/java/com/android/server/connectivity/Vpn.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 1334,
+      "author": {
+        "id": 1308473
+      },
+      "writtenOn": "2020-11-04T04:40:23Z",
+      "side": 0,
+      "message": "No, the compiler complain this RemoteException is never catched and should be removed. Becasue resolveService() doesn\u0027t specify the exception would be thrown. But I think we can just popup the exception.",
+      "parentUuid": "331f463d_ef90713c",
+      "range": {
+        "startLine": 1333,
+        "startChar": 8,
+        "endLine": 1334,
+        "endChar": 70
+      },
+      "revId": "20a3234d5bb0e7132610416369f53ec9dd9a35e5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
