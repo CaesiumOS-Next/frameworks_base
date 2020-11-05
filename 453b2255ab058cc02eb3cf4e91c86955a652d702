@@ -54,6 +54,23 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a4a8eb8b_4de0d291",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1763766
+      },
+      "writtenOn": "2020-11-05T09:31:28Z",
+      "side": 1,
+      "message": "Thanks a lot for all your support. \n\nThere\u0027s difficulty for me to consider origin public constants together.\nLet me abandon this.\n  ",
+      "revId": "453b2255ab058cc02eb3cf4e91c86955a652d702",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "875eb7ea_15f10e6a",
