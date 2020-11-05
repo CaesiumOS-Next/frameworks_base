@@ -69,6 +69,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "11309e62_317260c1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1651020
+      },
+      "writtenOn": "2020-11-05T09:18:22Z",
+      "side": 1,
+      "message": "Can we cover the new functionality with a unit test in HdmiCecLocalDeviceTvTest?",
+      "parentUuid": "c4034d1c_dce5bc7a",
+      "revId": "70f0700991369f7f69cc49718d45c8de658be345",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "021455af_9c036080",
