@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e20ec26e_37ff23bb",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1304263
+      },
+      "writtenOn": "2020-11-05T03:26:39Z",
+      "side": 1,
+      "message": "an?",
+      "range": {
+        "startLine": 9,
+        "startChar": 37,
+        "endLine": 9,
+        "endChar": 38
+      },
+      "revId": "7adf71f697155a0c46bd85732baebedbaa65d56a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bdc42c97_a0be4165",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1304263
+      },
+      "writtenOn": "2020-11-05T03:26:39Z",
+      "side": 1,
+      "message": "+s?",
+      "range": {
+        "startLine": 10,
+        "startChar": 36,
+        "endLine": 10,
+        "endChar": 37
+      },
+      "revId": "7adf71f697155a0c46bd85732baebedbaa65d56a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "261a9927_525563f6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1304263
+      },
+      "writtenOn": "2020-11-05T03:26:39Z",
+      "side": 1,
+      "message": "be called?",
+      "range": {
+        "startLine": 10,
+        "startChar": 17,
+        "endLine": 10,
+        "endChar": 21
+      },
+      "revId": "7adf71f697155a0c46bd85732baebedbaa65d56a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "040951f9_085e2e15",
+        "filename": "services/core/java/com/android/server/connectivity/Vpn.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 1315,
+      "author": {
+        "id": 1304263
+      },
+      "writtenOn": "2020-11-05T03:26:39Z",
+      "side": 1,
+      "message": "Shall we add \"throw UnsupportedOperationException, SecurityException\" to inform caller to have them handle it properly?",
+      "range": {
+        "startLine": 1315,
+        "startChar": 71,
+        "endLine": 1315,
+        "endChar": 73
+      },
+      "revId": "7adf71f697155a0c46bd85732baebedbaa65d56a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5a59ccde_83f5da45",
+        "filename": "services/core/java/com/android/server/connectivity/Vpn.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 1334,
+      "author": {
+        "id": 1304263
+      },
+      "writtenOn": "2020-11-05T03:26:39Z",
+      "side": 1,
+      "message": "Could you add documentation on this says that it will throw this exception?",
+      "range": {
+        "startLine": 1334,
+        "startChar": 26,
+        "endLine": 1334,
+        "endChar": 55
+      },
+      "revId": "7adf71f697155a0c46bd85732baebedbaa65d56a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
