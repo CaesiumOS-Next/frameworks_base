@@ -194,6 +194,7 @@ public class VpnTest {
     private final VpnProfile mVpnProfile;
 
     private IpSecManager mIpSecManager;
+    private Integer mTestVpnPkgUid;
 
     public VpnTest() throws Exception {
         // Build an actual VPN profile that is capable of being converted to and from an
@@ -211,7 +212,19 @@ public class VpnTest {
         mIpSecManager = new IpSecManager(mContext, mIpSecService);
 
         when(mContext.getPackageManager()).thenReturn(mPackageManager);
-        setMockedPackages(mPackages);
+
+        doAnswer(invocation -> {
+            final Context asUserContext = mock(Context.class,
+                    AdditionalAnswers.delegatesTo(mContext));
+            final UserHandle user = (UserHandle) invocation.getArguments()[0];
+            final int userId = user.getIdentifier();
+            doReturn(user).when(asUserContext).getUser();
+            doReturn(userId).when(asUserContext).getUserId();
+            doReturn(mPackageManager).when(asUserContext).getPackageManager();
+            setMockedPackages(mPackages, userId);
+            return asUserContext;
+        }).when(mContext).createContextAsUser(any(), anyInt());
+        mTestVpnPkgUid = null;
 
         when(mContext.getPackageName()).thenReturn(TEST_VPN_PKG);
         when(mContext.getOpPackageName()).thenReturn(TEST_VPN_PKG);
@@ -235,8 +248,7 @@ public class VpnTest {
         ApplicationInfo applicationInfo = new ApplicationInfo();
         applicationInfo.targetSdkVersion = VERSION_CODES.CUR_DEVELOPMENT;
         when(mContext.getApplicationInfo()).thenReturn(applicationInfo);
-        when(mPackageManager.getApplicationInfoAsUser(anyString(), anyInt(), anyInt()))
-                .thenReturn(applicationInfo);
+        when(mPackageManager.getApplicationInfo(anyString(), anyInt())).thenReturn(applicationInfo);
 
         doNothing().when(mNetService).registerObserver(any());
 
@@ -559,14 +571,12 @@ public class VpnTest {
         final Vpn vpn = createVpn(primaryUser.id);
 
         ApplicationInfo appInfo = new ApplicationInfo();
-        when(mPackageManager.getApplicationInfoAsUser(eq(PKGS[0]), anyInt(), eq(primaryUser.id)))
-                .thenReturn(appInfo);
+        when(mPackageManager.getApplicationInfo(eq(PKGS[0]), anyInt())).thenReturn(appInfo);
 
         ServiceInfo svcInfo = new ServiceInfo();
         ResolveInfo resInfo = new ResolveInfo();
         resInfo.serviceInfo = svcInfo;
-        when(mPackageManager.queryIntentServicesAsUser(any(), eq(PackageManager.GET_META_DATA),
-                eq(primaryUser.id)))
+        when(mPackageManager.queryIntentServices(any(), eq(PackageManager.GET_META_DATA)))
                 .thenReturn(Collections.singletonList(resInfo));
 
         // null package name should return false
@@ -737,8 +747,7 @@ public class VpnTest {
         final Vpn vpn = createVpn(user.id);
         setMockedUsers(user);
 
-        when(mPackageManager.getPackageUidAsUser(eq(TEST_VPN_PKG), anyInt()))
-                .thenReturn(Process.myUid());
+        mTestVpnPkgUid = Process.myUid();
 
         for (final String opStr : grantedOps) {
             when(mAppOps.noteOpNoThrow(opStr, Process.myUid(), TEST_VPN_PKG,
@@ -1088,8 +1097,7 @@ public class VpnTest {
 
         // UID checks must return a different UID; otherwise it'll be treated as already prepared.
         final int uid = Process.myUid() + 1;
-        when(mPackageManager.getPackageUidAsUser(eq(TEST_VPN_PKG), anyInt()))
-                .thenReturn(uid);
+        mTestVpnPkgUid = uid;
         when(mKeyStore.get(vpn.getProfileNameForPackage(TEST_VPN_PKG)))
                 .thenReturn(mVpnProfile.encode());
 
@@ -1283,10 +1291,6 @@ public class VpnTest {
      * Mock some methods of vpn object.
      */
     private Vpn createVpn(@UserIdInt int userId) {
-        final Context asUserContext = mock(Context.class, AdditionalAnswers.delegatesTo(mContext));
-        doReturn(UserHandle.of(userId)).when(asUserContext).getUser();
-        when(mContext.createContextAsUser(eq(UserHandle.of(userId)), anyInt()))
-                .thenReturn(asUserContext);
         return new Vpn(Looper.myLooper(), mContext, new TestDeps(), mNetService,
                 userId, mKeyStore, mSystemServices, mIkev2SessionCreator);
     }
@@ -1342,15 +1346,15 @@ public class VpnTest {
     /**
      * Populate {@link #mPackageManager} with a fake packageName-to-UID mapping.
      */
-    private void setMockedPackages(final Map<String, Integer> packages) {
+    private void setMockedPackages(final Map<String, Integer> packages, final int userId) {
         try {
             doAnswer(invocation -> {
                 final String appName = (String) invocation.getArguments()[0];
-                final int userId = (int) invocation.getArguments()[1];
+                if (TEST_VPN_PKG.equals(appName) && mTestVpnPkgUid != null) return mTestVpnPkgUid;
                 Integer appId = packages.get(appName);
                 if (appId == null) throw new PackageManager.NameNotFoundException(appName);
                 return UserHandle.getUid(userId, appId);
-            }).when(mPackageManager).getPackageUidAsUser(anyString(), anyInt());
+            }).when(mPackageManager).getPackageUid(anyString(), anyInt());
         } catch (Exception e) {
         }
     }

@@ -619,10 +619,10 @@ public class Vpn {
             Binder.restoreCallingIdentity(oldId);
         }
 
-        PackageManager pm = mContext.getPackageManager();
+        final PackageManager pm = mUserIdContext.getPackageManager();
         ApplicationInfo appInfo = null;
         try {
-            appInfo = pm.getApplicationInfoAsUser(packageName, 0 /*flags*/, mUserId);
+            appInfo = pm.getApplicationInfo(packageName, 0 /*flags*/);
         } catch (NameNotFoundException unused) {
             Log.w(TAG, "Can't find \"" + packageName + "\" when checking always-on support");
         }
@@ -633,7 +633,7 @@ public class Vpn {
         final Intent intent = new Intent(VpnConfig.SERVICE_INTERFACE);
         intent.setPackage(packageName);
         List<ResolveInfo> services =
-                pm.queryIntentServicesAsUser(intent, PackageManager.GET_META_DATA, mUserId);
+                pm.queryIntentServices(intent, PackageManager.GET_META_DATA);
         if (services == null || services.size() == 0) {
             return false;
         }
@@ -1110,10 +1110,11 @@ public class Vpn {
         if (VpnConfig.LEGACY_VPN.equals(app)) {
             return Process.myUid();
         }
-        PackageManager pm = mContext.getPackageManager();
+        final PackageManager pm = mContext.createContextAsUser(
+                UserHandle.of(userId), 0 /* flags */).getPackageManager();
         return Binder.withCleanCallingIdentity(() -> {
             try {
-                return pm.getPackageUidAsUser(app, userId);
+                return pm.getPackageUid(app, 0 /* flags */);
             } catch (NameNotFoundException e) {
                 return -1;
             }
@@ -1124,10 +1125,10 @@ public class Vpn {
         if (VpnConfig.LEGACY_VPN.equals(packageName)) {
             return true;
         }
-        PackageManager pm = mContext.getPackageManager();
+        final PackageManager pm = mUserIdContext.getPackageManager();
         try {
             ApplicationInfo appInfo =
-                    pm.getApplicationInfoAsUser(packageName, 0 /*flags*/, mUserId);
+                    pm.getApplicationInfo(packageName, 0 /*flags*/);
             return appInfo.targetSdkVersion >= VERSION_CODES.Q;
         } catch (NameNotFoundException unused) {
             Log.w(TAG, "Can't find \"" + packageName + "\"");
