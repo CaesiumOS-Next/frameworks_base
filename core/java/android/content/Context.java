@@ -2693,6 +2693,7 @@ public abstract class Context {
             android.Manifest.permission.INTERACT_ACROSS_USERS,
             android.Manifest.permission.BROADCAST_STICKY
     })
+    @SystemApi(client = SystemApi.Client.SYSTEM_SERVER)
     public abstract void sendStickyBroadcastAsUser(@RequiresPermission Intent intent,
             UserHandle user, Bundle options);
 
