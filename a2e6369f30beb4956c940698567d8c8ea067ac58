@@ -48,6 +48,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "80b518d2_c2220951",
+        "filename": "services/core/java/com/android/server/connectivity/Vpn.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 1299,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2020-11-10T04:57:32Z",
+      "side": 1,
+      "message": "Right, Paul\u0027s change doesn\u0027t add a null-returning case any more, so this comment is still accurate. Also, it\u0027s hopefully impossible that we throw that exception.",
+      "parentUuid": "780821ba_2c17a794",
+      "range": {
+        "startLine": 1298,
+        "startChar": 84,
+        "endLine": 1299,
+        "endChar": 74
+      },
+      "revId": "a2e6369f30beb4956c940698567d8c8ea067ac58",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "83add131_2dd27a83",

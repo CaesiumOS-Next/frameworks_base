@@ -95,6 +95,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "589d348c_3d3090d9",
+        "filename": "services/core/java/com/android/server/connectivity/Vpn.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 1315,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2020-11-10T04:57:32Z",
+      "side": 1,
+      "message": "Really we throw when there is a bug in our code. SecurityException is thrown when we\u0027re trying to start a VPN for a user that has been deleted, or when the service doesn\u0027t require BIND_VPN_SERVICE. Both of these are issues in our code and it\u0027s a bit unclear why it\u0027s SecurityException.\nThe one Paul is adding is also meant to detect a bug in our code.",
+      "parentUuid": "040951f9_085e2e15",
+      "range": {
+        "startLine": 1315,
+        "startChar": 71,
+        "endLine": 1315,
+        "endChar": 73
+      },
+      "revId": "7adf71f697155a0c46bd85732baebedbaa65d56a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5a59ccde_83f5da45",
         "filename": "services/core/java/com/android/server/connectivity/Vpn.java",
         "patchSetId": 2
@@ -111,6 +135,53 @@
         "startChar": 26,
         "endLine": 1334,
         "endChar": 55
+      },
+      "revId": "7adf71f697155a0c46bd85732baebedbaa65d56a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "67dfc085_7ee63f31",
+        "filename": "services/core/java/com/android/server/connectivity/Vpn.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 1334,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2020-11-10T04:57:32Z",
+      "side": 1,
+      "message": "No I don\u0027t think so. This is only a fence for us to get bug reports if we actually enter this code, but it must never happen.",
+      "parentUuid": "5a59ccde_83f5da45",
+      "range": {
+        "startLine": 1334,
+        "startChar": 26,
+        "endLine": 1334,
+        "endChar": 55
+      },
+      "revId": "7adf71f697155a0c46bd85732baebedbaa65d56a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0c63e116_ac5e1462",
+        "filename": "services/core/java/com/android/server/connectivity/Vpn.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 1334,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2020-11-10T04:57:32Z",
+      "side": 1,
+      "message": "Suggest IllegalStateException instead",
+      "range": {
+        "startLine": 1334,
+        "startChar": 22,
+        "endLine": 1334,
+        "endChar": 56
       },
       "revId": "7adf71f697155a0c46bd85732baebedbaa65d56a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
