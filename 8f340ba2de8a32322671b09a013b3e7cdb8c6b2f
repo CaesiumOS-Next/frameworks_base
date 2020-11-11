@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3329fe5b_7155f36d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1297255
+      },
+      "writtenOn": "2020-11-11T03:22:06Z",
+      "side": 1,
+      "message": "Code review is done in aosp/12559420.\nChanges in two CLs are identical except INTEGER_SERIALIZER and INTEGER_DESERIALIZER are defined after the Deserializer\u003cT\u003e interface",
+      "revId": "8f340ba2de8a32322671b09a013b3e7cdb8c6b2f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
