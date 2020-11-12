@@ -16,6 +16,23 @@
       "message": "Verified using Amazon Prime and Spotify, now with a smaller patch set - the other change was unnecessary.",
       "revId": "27d234f04f557574dcf4ea6379d0ac219d4b0ad4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bdaf2c83_92141a4e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1059880
+      },
+      "writtenOn": "2020-11-12T14:12:06Z",
+      "side": 1,
+      "message": "Thanks for the fix!",
+      "revId": "27d234f04f557574dcf4ea6379d0ac219d4b0ad4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
