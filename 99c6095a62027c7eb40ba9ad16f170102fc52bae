@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fe6964a7_95075088",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1004882
+      },
+      "writtenOn": "2020-11-12T10:26:27Z",
+      "side": 1,
+      "message": "Verified using Amazon Prime and Spotify.",
+      "revId": "99c6095a62027c7eb40ba9ad16f170102fc52bae",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
