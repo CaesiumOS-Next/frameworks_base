@@ -117,6 +117,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8fad8b08_53857088",
+        "filename": "services/core/java/com/android/server/connectivity/Vpn.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 1315,
+      "author": {
+        "id": 1308473
+      },
+      "writtenOn": "2020-11-12T08:38:12Z",
+      "side": 1,
+      "message": "+1 the exception should not happen.",
+      "parentUuid": "589d348c_3d3090d9",
+      "range": {
+        "startLine": 1315,
+        "startChar": 71,
+        "endLine": 1315,
+        "endChar": 73
+      },
+      "revId": "7adf71f697155a0c46bd85732baebedbaa65d56a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5a59ccde_83f5da45",
@@ -177,6 +201,54 @@
       "writtenOn": "2020-11-10T04:57:32Z",
       "side": 1,
       "message": "Suggest IllegalStateException instead",
+      "range": {
+        "startLine": 1334,
+        "startChar": 22,
+        "endLine": 1334,
+        "endChar": 56
+      },
+      "revId": "7adf71f697155a0c46bd85732baebedbaa65d56a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cd416b03_602fabbe",
+        "filename": "services/core/java/com/android/server/connectivity/Vpn.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 1334,
+      "author": {
+        "id": 1308473
+      },
+      "writtenOn": "2020-11-12T08:38:12Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "67dfc085_7ee63f31",
+      "range": {
+        "startLine": 1334,
+        "startChar": 26,
+        "endLine": 1334,
+        "endChar": 55
+      },
+      "revId": "7adf71f697155a0c46bd85732baebedbaa65d56a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5c99d0d2_affae396",
+        "filename": "services/core/java/com/android/server/connectivity/Vpn.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 1334,
+      "author": {
+        "id": 1308473
+      },
+      "writtenOn": "2020-11-12T08:38:12Z",
+      "side": 1,
+      "message": "Address it on follow up commit aosp/1495899",
+      "parentUuid": "0c63e116_ac5e1462",
       "range": {
         "startLine": 1334,
         "startChar": 22,
