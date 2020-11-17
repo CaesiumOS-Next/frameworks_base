@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a5d13bad_3043a916",
+        "filename": "services/core/java/com/android/server/ConnectivityService.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 3541,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2020-11-17T12:43:51Z",
+      "side": 1,
+      "message": "Let\u0027s call this \"candidate\" if you agree with me it makes this function clearer",
+      "range": {
+        "startLine": 3541,
+        "startChar": 65,
+        "endLine": 3541,
+        "endChar": 68
+      },
+      "revId": "c7664df0c7f6247c6d092ac432a3e6d07593b9aa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b3a7495c_a95b79d3",
+        "filename": "services/core/java/com/android/server/ConnectivityService.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 3542,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2020-11-17T12:43:51Z",
+      "side": 1,
+      "message": "I don\u0027t think this logic is actually correct, because a network has no hope of satisfying a multilayer NRI if it can only satisfy a lower-priority request and the NRI is already satisfied by a network that satisfies a higher-priority request.\n\nI think the kind of logic you\u0027d need is :\n\n  for (...) {\n    if (isRequest \u0026\u0026 satisfies \u0026\u0026 (isSatisfyingRequest || score \u003c asValidated) {\n      return true\n    } else if (any NAI is satisfying request(request)) {\n      // If this request is satisfied, but this NAI can\u0027t beat it through the test\n      // above, then it\u0027s not needed for this request, because even being good enough\n      // for one of the lower-prio requests won\u0027t be good enough.\n      return false\n    }\n  }",
+      "range": {
+        "startLine": 3542,
+        "startChar": 8,
+        "endLine": 3542,
+        "endChar": 11
+      },
+      "revId": "c7664df0c7f6247c6d092ac432a3e6d07593b9aa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "66a323a3_edf37e50",
+        "filename": "services/core/java/com/android/server/ConnectivityService.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 3554,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2020-11-17T12:43:51Z",
+      "side": 1,
+      "message": "I\u0027m not sure this is correct, on two accounts :\n• In the old world, this member is guaranteed to be non-null because nai.satisfies(req). The reasoning is that if there is at least one NAI that satisfies this request, then it\u0027s impossible that this request is not satisfied. Also, this code is only called after a rematch, not before (otherwise it would be possible that a NAI could satisfy this request but not be assigned yet, and mSatisfier would be null).\n → But I\u0027m not sure how true that holds in the new world. It is certainly possible that an NAI can satisfy a *request* and that request doesn\u0027t have a satisfier. But mSatisfier is not the satisfier for the request, it\u0027s the satisfier for the NRI, and I do think that if any of the requests has at least one NAI that can satisfy it then we have the same guarantee as before. I think.\n• mSatisfier here is the satisfier for the NRI, and at this point we don\u0027t know what request it satisfies, so it doesn\u0027t necessarily make sense to compare its score to the score of the candidate.\n\nReally what this function should do is probably to \n① figure out which of the requests mSatisfier satisfies\n\n  NetworkRequest satisfiedRequest \u003d null;\n  for (NetworkRequest req : nri.mRequests) {\n    if (req.isRequest() \u0026\u0026 mSatisfier.satisfies(req)) {\n      satisfiedRequest \u003d req;\n      break;\n    } // NOTE\n  }\n\n② figure out if this candidate can possibly beat the current satisfier\n  \n  return nai.satisfies(req) \u0026\u0026 mSatisfier.getCurrentScore() \u003c nai.getCurrentScoreAsValidated();\n\n...I think that should work.\nObserve that in NOTE we can add code like the following :\n\n - } // NOTE\n + } else if (nai.satisfies(req)) {\n +   return true;\n + }\n\n...because if that\u0027s true, then this candidate can satisfy a higher-priority request than the current satisfier. But in practice, and for the same reason as above, it\u0027s never possible to enter this test because if this candidate could satisfy a higher-prio request than the current satisfier, well this candidate would have won the rematch and would be the current satisfier. This probably warrants a comment.",
+      "range": {
+        "startLine": 3554,
+        "startChar": 35,
+        "endLine": 3554,
+        "endChar": 45
+      },
+      "revId": "c7664df0c7f6247c6d092ac432a3e6d07593b9aa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5f6fc866_123c1257",
+        "filename": "services/core/java/com/android/server/ConnectivityService.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 5440,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2020-11-17T12:43:51Z",
+      "side": 1,
+      "message": "Maybe just MultilayerRequest ?",
+      "range": {
+        "startLine": 5440,
+        "startChar": 18,
+        "endLine": 5440,
+        "endChar": 37
+      },
+      "revId": "c7664df0c7f6247c6d092ac432a3e6d07593b9aa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fb9c7180_e882bc53",
+        "filename": "services/core/java/com/android/server/ConnectivityService.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 5484,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2020-11-17T12:43:51Z",
+      "side": 1,
+      "message": "I\u0027d rather we don\u0027t call a method that reads members in a helper method that\u0027s called by the constructor. Consider :\n\n  class Foo {\n    @NonNull private final Bar bar1;\n    @NonNull private final Bar bar2;\n    public Foo(@NonNull final Bar bar1, @NonNull final Bar bar2) {\n      enforceConsistency();\n      this.bar1 \u003d bar1;\n      this.bar2 \u003d bar2;\n    }\n\n    private void enforceConsistency() {\n      bar1.enforceConsistency();\n    }\n  }\n\nbar1 is final @NonNull, and still this code will crash with NPE.\n\nOf course your current code doesn\u0027t have such a bug, but all it takes to introduce it is to move the assignment of mRequests in l.5405 together with all the other assignments. And it won\u0027t crash, it will only behave incorrectly – which won\u0027t be caught by tests, because at this point we don\u0027t have any for this code.",
+      "range": {
+        "startLine": 5484,
+        "startChar": 0,
+        "endLine": 5484,
+        "endChar": 43
+      },
+      "revId": "c7664df0c7f6247c6d092ac432a3e6d07593b9aa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "86809fed_26898db5",
+        "filename": "services/core/java/com/android/server/ConnectivityService.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 5493,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2020-11-17T12:43:51Z",
+      "side": 1,
+      "message": "Is there a good reason for this restriction ?\n• The code in l.3545 explicitly supports non-REQUEST types.\n• The unmetered use case, as I recall, requires that the highest prio NetworkRequest is of type LISTEN.",
+      "range": {
+        "startLine": 5490,
+        "startChar": 0,
+        "endLine": 5493,
+        "endChar": 0
+      },
+      "revId": "c7664df0c7f6247c6d092ac432a3e6d07593b9aa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
