@@ -30,6 +30,7 @@ import android.net.RouteInfo;
 import android.os.INetworkManagementService;
 import android.os.RemoteException;
 import android.os.ServiceSpecificException;
+import android.sysprop.NetworkProperties;
 import android.util.Slog;
 
 import com.android.internal.annotations.VisibleForTesting;
@@ -96,6 +97,7 @@ public class Nat464Xlat extends BaseNetworkObserver {
     private Inet6Address mIPv6Address;
     private State mState = State.IDLE;
 
+    private boolean mEnableClatOnCellular;
     private boolean mPrefixDiscoveryRunning;
 
     public Nat464Xlat(NetworkAgentInfo nai, INetd netd, IDnsResolver dnsResolver,
@@ -104,6 +106,7 @@ public class Nat464Xlat extends BaseNetworkObserver {
         mNetd = netd;
         mNMService = nmService;
         mNetwork = nai;
+        mEnableClatOnCellular = NetworkProperties.vendor_xlat();
     }
 
     /**
@@ -130,7 +133,13 @@ public class Nat464Xlat extends BaseNetworkObserver {
         final boolean skip464xlat = (nai.netAgentConfig() != null)
                 && nai.netAgentConfig().skip464xlat;
 
-        return supported && connected && isIpv6OnlyNetwork && !skip464xlat;
+        if(nai.networkCapabilities().hasTransport(TRANSPORT_CELLULAR) && !mEnableClatOnCellular) {
+            Slog.i(TAG, "Android Xlat is disabled");
+        }
+
+        return supported && connected && isIpv6OnlyNetwork && !skip464xlat
+            && (nai.networkCapabilities().hasTransport(TRANSPORT_CELLULAR)
+                ? mEnableClatOnCellular : true);
     }
 
     /**
