@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ce2cf0cf_2ca2e1f8",
+        "filename": "services/core/java/com/android/server/ConnectivityService.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 3541,
+      "author": {
+        "id": 1470463
+      },
+      "writtenOn": "2020-11-18T18:36:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a5d13bad_3043a916",
+      "range": {
+        "startLine": 3541,
+        "startChar": 65,
+        "endLine": 3541,
+        "endChar": 68
+      },
+      "revId": "c7664df0c7f6247c6d092ac432a3e6d07593b9aa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b3a7495c_a95b79d3",
@@ -37,6 +61,30 @@
       "writtenOn": "2020-11-17T12:43:51Z",
       "side": 1,
       "message": "I don\u0027t think this logic is actually correct, because a network has no hope of satisfying a multilayer NRI if it can only satisfy a lower-priority request and the NRI is already satisfied by a network that satisfies a higher-priority request.\n\nI think the kind of logic you\u0027d need is :\n\n  for (...) {\n    if (isRequest \u0026\u0026 satisfies \u0026\u0026 (isSatisfyingRequest || score \u003c asValidated) {\n      return true\n    } else if (any NAI is satisfying request(request)) {\n      // If this request is satisfied, but this NAI can\u0027t beat it through the test\n      // above, then it\u0027s not needed for this request, because even being good enough\n      // for one of the lower-prio requests won\u0027t be good enough.\n      return false\n    }\n  }",
+      "range": {
+        "startLine": 3542,
+        "startChar": 8,
+        "endLine": 3542,
+        "endChar": 11
+      },
+      "revId": "c7664df0c7f6247c6d092ac432a3e6d07593b9aa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "565d6804_593dcca0",
+        "filename": "services/core/java/com/android/server/ConnectivityService.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 3542,
+      "author": {
+        "id": 1470463
+      },
+      "writtenOn": "2020-11-18T18:36:11Z",
+      "side": 1,
+      "message": "Is the difference above the added `else if` statement? If so, I don\u0027t think it is needed since we already return `false` if the first `if` statement isn\u0027t true. I.e., whether the `else if` if there or not, it doesn\u0027t have any effect on the end result.",
+      "parentUuid": "b3a7495c_a95b79d3",
       "range": {
         "startLine": 3542,
         "startChar": 8,
@@ -72,6 +120,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "67de65d7_dbed8612",
+        "filename": "services/core/java/com/android/server/ConnectivityService.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 3554,
+      "author": {
+        "id": 1470463
+      },
+      "writtenOn": "2020-11-18T18:36:11Z",
+      "side": 1,
+      "message": "Thanks Jean for the detailed feedback. I spent a bit of time looking at the code with the above and I think we are ok. Here is what I am thinking.\n\nI am assuming that we are ordering the list for nri.mRequests starting with the highest priority and then working our way down. Let me know if that assumption is off but that\u0027s how I have been thinking about it (otherwise we\u0027ll need another mechanism to determine priority). \n\nThat said, if nai.satisfies(req) is true, then either of these will return true:\nnai.isSatisfyingRequest(req.requestId) ||  mSatisfier.getCurrentScore() \u003c nai.getCurrentScoreAsValidated()\n\nAs soon as that is the case, we return true and don\u0027t evaluate the lower priority requests therefore it doesn\u0027t appear that we\u0027ll run into the scenario you have above. In other words, it seems this code would only return true in the case where we have the appropriate mSatisfier and its corresponding req.\n\nLet me know if that makes sense or not. If not, can you maybe provide a particular example where we might run into this issue with the way we currently have the network preferences setup. i.e. would we have an issue with a multilayer request for [OEM_PAID, Unmetered, Default]?",
+      "parentUuid": "66a323a3_edf37e50",
+      "range": {
+        "startLine": 3554,
+        "startChar": 35,
+        "endLine": 3554,
+        "endChar": 45
+      },
+      "revId": "c7664df0c7f6247c6d092ac432a3e6d07593b9aa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5f6fc866_123c1257",
         "filename": "services/core/java/com/android/server/ConnectivityService.java",
         "patchSetId": 1
@@ -83,6 +155,30 @@
       "writtenOn": "2020-11-17T12:43:51Z",
       "side": 1,
       "message": "Maybe just MultilayerRequest ?",
+      "range": {
+        "startLine": 5440,
+        "startChar": 18,
+        "endLine": 5440,
+        "endChar": 37
+      },
+      "revId": "c7664df0c7f6247c6d092ac432a3e6d07593b9aa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8711da60_4846bf06",
+        "filename": "services/core/java/com/android/server/ConnectivityService.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 5440,
+      "author": {
+        "id": 1470463
+      },
+      "writtenOn": "2020-11-18T18:36:11Z",
+      "side": 1,
+      "message": "SGTM",
+      "parentUuid": "5f6fc866_123c1257",
       "range": {
         "startLine": 5440,
         "startChar": 18,
@@ -116,6 +212,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5dc2e8a4_00fdcb7a",
+        "filename": "services/core/java/com/android/server/ConnectivityService.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 5484,
+      "author": {
+        "id": 1470463
+      },
+      "writtenOn": "2020-11-18T18:36:11Z",
+      "side": 1,
+      "message": "Yes, you\u0027re absolutely right. Ideally, we should not rely on ordering in the constructor in the way I have it currently so no arguments there. I\u0027ll go ahead and change.",
+      "parentUuid": "fb9c7180_e882bc53",
+      "range": {
+        "startLine": 5484,
+        "startChar": 0,
+        "endLine": 5484,
+        "endChar": 43
+      },
+      "revId": "c7664df0c7f6247c6d092ac432a3e6d07593b9aa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "86809fed_26898db5",
@@ -129,6 +249,30 @@
       "writtenOn": "2020-11-17T12:43:51Z",
       "side": 1,
       "message": "Is there a good reason for this restriction ?\n• The code in l.3545 explicitly supports non-REQUEST types.\n• The unmetered use case, as I recall, requires that the highest prio NetworkRequest is of type LISTEN.",
+      "range": {
+        "startLine": 5490,
+        "startChar": 0,
+        "endLine": 5493,
+        "endChar": 0
+      },
+      "revId": "c7664df0c7f6247c6d092ac432a3e6d07593b9aa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "152247cc_663159e5",
+        "filename": "services/core/java/com/android/server/ConnectivityService.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 5493,
+      "author": {
+        "id": 1470463
+      },
+      "writtenOn": "2020-11-18T18:36:11Z",
+      "side": 1,
+      "message": "Would we ever have a multilayer request for a background request? I\u0027ve changed it up a bit to take that into account. If you think we would, I can change and remove the restriction altogether.",
+      "parentUuid": "86809fed_26898db5",
       "range": {
         "startLine": 5490,
         "startChar": 0,
