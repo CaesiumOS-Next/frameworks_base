@@ -16,6 +16,29 @@
       "message": "is this necessary? no class should be considered thread safe by default, and in general, we don\u0027t expect this class to be used across threads.",
       "revId": "67309145e83909c3c96c3c67221b10aa9b6ad324",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "49a5af2f_7c4849c1",
+        "filename": "core/java/android/os/ParcelableHolder.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-11-19T02:26:59Z",
+      "side": 1,
+      "message": "I think this should be in a separate paragraph as in \n\n\u003cp\u003eThis class is \u003cb\u003eNOT\u003c/b\u003e thread-safe.\u003c/p\u003e",
+      "range": {
+        "startLine": 66,
+        "startChar": 3,
+        "endLine": 66,
+        "endChar": 83
+      },
+      "revId": "67309145e83909c3c96c3c67221b10aa9b6ad324",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
