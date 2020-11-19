@@ -39,6 +39,30 @@
       },
       "revId": "67309145e83909c3c96c3c67221b10aa9b6ad324",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0d22af23_6bdb7806",
+        "filename": "core/java/android/os/ParcelableHolder.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-11-19T20:58:49Z",
+      "side": 1,
+      "message": "+1",
+      "parentUuid": "49a5af2f_7c4849c1",
+      "range": {
+        "startLine": 66,
+        "startChar": 3,
+        "endLine": 66,
+        "endChar": 83
+      },
+      "revId": "67309145e83909c3c96c3c67221b10aa9b6ad324",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
