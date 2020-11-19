@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "510c5a30_deb957ff",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1308473
+      },
+      "writtenOn": "2020-11-19T15:00:41Z",
+      "side": 1,
+      "message": "Some tests are using TestNetworkManager as well, please also run those tests to ensure the tests will not break by your change such as NetworkStackIntegrationTests.",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 5
+      },
+      "revId": "1d5627c70850c75580131aef5184a6bb779470c2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
