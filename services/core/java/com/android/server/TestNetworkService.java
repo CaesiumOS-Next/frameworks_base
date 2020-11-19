@@ -29,9 +29,8 @@ import android.net.IpPrefix;
 import android.net.LinkAddress;
 import android.net.LinkProperties;
 import android.net.NetworkAgent;
+import android.net.NetworkAgentConfig;
 import android.net.NetworkCapabilities;
-import android.net.NetworkInfo;
-import android.net.NetworkInfo.DetailedState;
 import android.net.RouteInfo;
 import android.net.StringNetworkSpecifier;
 import android.net.TestNetworkInterface;
@@ -150,7 +149,6 @@ class TestNetworkService extends ITestNetworkManager.Stub {
         private static final int NETWORK_SCORE = 1; // Use a low, non-zero score.
 
         private final int mUid;
-        @NonNull private final NetworkInfo mNi;
         @NonNull private final NetworkCapabilities mNc;
         @NonNull private final LinkProperties mLp;
 
@@ -163,16 +161,16 @@ class TestNetworkService extends ITestNetworkManager.Stub {
         private TestNetworkAgent(
                 @NonNull Looper looper,
                 @NonNull Context context,
-                @NonNull NetworkInfo ni,
+                @NonNull NetworkAgentConfig config,
                 @NonNull NetworkCapabilities nc,
                 @NonNull LinkProperties lp,
                 int uid,
                 @NonNull IBinder binder)
                 throws RemoteException {
-            super(looper, context, TEST_NETWORK_TYPE, ni, nc, lp, NETWORK_SCORE);
+            super(context, looper, TEST_NETWORK_TYPE, nc, lp, NETWORK_SCORE, config, null);
+            register();
 
             mUid = uid;
-            mNi = ni;
             mNc = nc;
             mLp = lp;
 
@@ -203,9 +201,7 @@ class TestNetworkService extends ITestNetworkManager.Stub {
         }
 
         private void teardown() {
-            mNi.setDetailedState(DetailedState.DISCONNECTED, null, null);
-            mNi.setIsAvailable(false);
-            sendNetworkInfo(mNi);
+            unregister();
 
             // Synchronize on mBinderLock to ensure that unlinkToDeath is never called more than
             // once (otherwise it could throw an exception)
@@ -238,10 +234,10 @@ class TestNetworkService extends ITestNetworkManager.Stub {
         Objects.requireNonNull(context, "missing Context");
         // iface and binder validity checked by caller
 
-        // Build network info with special testing type
-        NetworkInfo ni = new NetworkInfo(ConnectivityManager.TYPE_TEST, 0, TEST_NETWORK_TYPE, "");
-        ni.setDetailedState(DetailedState.CONNECTED, null, null);
-        ni.setIsAvailable(true);
+        // Build network agent config with special testing type
+        final NetworkAgentConfig.Builder config = new NetworkAgentConfig.Builder();
+        config.setLegacyType(ConnectivityManager.TYPE_TEST);
+        config.setLegacyTypeName(TEST_NETWORK_TYPE);
 
         // Build narrow set of NetworkCapabilities, useful only for testing
         NetworkCapabilities nc = new NetworkCapabilities();
@@ -290,7 +286,7 @@ class TestNetworkService extends ITestNetworkManager.Stub {
             lp.addRoute(new RouteInfo(new IpPrefix(Inet6Address.ANY, 0), null, iface));
         }
 
-        return new TestNetworkAgent(looper, context, ni, nc, lp, callingUid, binder);
+        return new TestNetworkAgent(looper, context, config.build(), nc, lp, callingUid, binder);
     }
 
     /**
@@ -337,7 +333,7 @@ class TestNetworkService extends ITestNetworkManager.Stub {
                                 Binder.getCallingUid(),
                                 administratorUids,
                                 binder);
-
+                agent.markConnected();
                 mTestNetworkTracker.put(agent.getNetwork().netId, agent);
             }
         } catch (SocketException e) {
