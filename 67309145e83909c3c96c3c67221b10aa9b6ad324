@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "569094d3_24922ad8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-11-19T02:12:51Z",
+      "side": 1,
+      "message": "is this necessary? no class should be considered thread safe by default, and in general, we don\u0027t expect this class to be used across threads.",
+      "revId": "67309145e83909c3c96c3c67221b10aa9b6ad324",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
