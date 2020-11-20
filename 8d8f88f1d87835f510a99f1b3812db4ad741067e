@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8d684c5f_07bf039a",
+        "filename": "services/core/java/com/android/server/TestNetworkService.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1308163
+      },
+      "writtenOn": "2020-11-20T12:37:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fb1185da_0825930e",
+      "range": {
+        "startLine": 162,
+        "startChar": 15,
+        "endLine": 166,
+        "endChar": 43
+      },
+      "revId": "8d8f88f1d87835f510a99f1b3812db4ad741067e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9d7cc255_49af1ddd",
@@ -47,6 +71,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "060495c7_5f008447",
+        "filename": "services/core/java/com/android/server/TestNetworkService.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1308163
+      },
+      "writtenOn": "2020-11-20T12:37:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9d7cc255_49af1ddd",
+      "range": {
+        "startLine": 171,
+        "startChar": 12,
+        "endLine": 171,
+        "endChar": 20
+      },
+      "revId": "8d8f88f1d87835f510a99f1b3812db4ad741067e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3694b57c_c04fd8f8",
@@ -60,6 +108,30 @@
       "writtenOn": "2020-11-20T06:23:37Z",
       "side": 1,
       "message": "Test networks have been invented well after the legacy type and type name were deprecated ; does anything at all break if we don\u0027t do this ? Unless there is a very strong reason, we should not perpetuate that legacy.",
+      "range": {
+        "startLine": 239,
+        "startChar": 3,
+        "endLine": 240,
+        "endChar": 52
+      },
+      "revId": "8d8f88f1d87835f510a99f1b3812db4ad741067e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e3e2d4c4_d1e47412",
+        "filename": "services/core/java/com/android/server/TestNetworkService.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 240,
+      "author": {
+        "id": 1308163
+      },
+      "writtenOn": "2020-11-20T12:37:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3694b57c_c04fd8f8",
       "range": {
         "startLine": 239,
         "startChar": 3,

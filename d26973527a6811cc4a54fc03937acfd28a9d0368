@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c329c823_c5fb5cf3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308163
+      },
+      "writtenOn": "2020-11-20T12:37:58Z",
+      "side": 1,
+      "message": "Also fixed the comment that Lorenzo left on aosp/1456116.",
+      "revId": "d26973527a6811cc4a54fc03937acfd28a9d0368",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
