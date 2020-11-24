@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "456894cc_ae4f9c09",
+        "filename": "services/core/java/com/android/server/TestNetworkService.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1304263
+      },
+      "writtenOn": "2020-11-24T08:42:25Z",
+      "side": 1,
+      "message": "private is enough?",
+      "range": {
+        "startLine": 76,
+        "startChar": 39,
+        "endLine": 76,
+        "endChar": 42
+      },
+      "revId": "426f91c81498bd70dbae845322b263b8cc180e9c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7b82289c_2513a011",
+        "filename": "services/core/java/com/android/server/TestNetworkService.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 1304263
+      },
+      "writtenOn": "2020-11-24T08:42:25Z",
+      "side": 1,
+      "message": "You conditionally register the network provider(if ID_NONE) but unconditionally unregister. It does not sound right.",
+      "range": {
+        "startLine": 228,
+        "startChar": 11,
+        "endLine": 228,
+        "endChar": 60
+      },
+      "revId": "426f91c81498bd70dbae845322b263b8cc180e9c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4c576fc8_2b2fb1bd",
+        "filename": "services/core/java/com/android/server/TestNetworkService.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 1304263
+      },
+      "writtenOn": "2020-11-24T08:42:25Z",
+      "side": 1,
+      "message": "You should also need to synchronized mNetworkProvider here if you need to synchronized it.",
+      "range": {
+        "startLine": 228,
+        "startChar": 12,
+        "endLine": 228,
+        "endChar": 60
+      },
+      "revId": "426f91c81498bd70dbae845322b263b8cc180e9c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "25c75f8f_a5ab04f3",
+        "filename": "services/core/java/com/android/server/TestNetworkService.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 246,
+      "author": {
+        "id": 1304263
+      },
+      "writtenOn": "2020-11-24T08:42:25Z",
+      "side": 1,
+      "message": "Optional: you could just build in l.297. You do not need this variable.",
+      "range": {
+        "startLine": 246,
+        "startChar": 8,
+        "endLine": 246,
+        "endChar": 83
+      },
+      "revId": "426f91c81498bd70dbae845322b263b8cc180e9c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6ce1c799_84cfe4e9",
+        "filename": "services/core/java/com/android/server/TestNetworkService.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 305,
+      "author": {
+        "id": 1304263
+      },
+      "writtenOn": "2020-11-24T08:42:25Z",
+      "side": 1,
+      "message": "Why do you need to check this? I expect that we should able to register multiple networkagents. \nIn your code, the second one will be ignored since mNetworkProvider is global and the id is assigned(not ID_NONE anymore unless you set it back to ID_NONE). Do you expect the network provider is shared? but you will unregister the provider when the agent is torn down, then we will not have network provider registered.\n\nmaybe just create the network provider inside TestNetworkAgent and register/unregister inside  TestNetworkAgent. The networkprovider seems useless outside TestNetworkAgent. It does not need to be a global one. Also to get rid of the synchronize.",
+      "range": {
+        "startLine": 305,
+        "startChar": 12,
+        "endLine": 305,
+        "endChar": 78
+      },
+      "revId": "426f91c81498bd70dbae845322b263b8cc180e9c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
