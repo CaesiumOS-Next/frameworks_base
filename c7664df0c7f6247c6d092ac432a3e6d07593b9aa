@@ -166,6 +166,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "abd1fbc1_09923917",
+        "filename": "services/core/java/com/android/server/ConnectivityService.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 3554,
+      "author": {
+        "id": 1470463
+      },
+      "writtenOn": "2020-11-24T00:56:14Z",
+      "side": 1,
+      "message": "Ahh yes, now that I understand the nuances of metered with LISTEN as per another CL you reviewed, what you have makes sense.\n\nI went ahead and made these changes with explanatory comments (hopefully sufficiently helpful).",
+      "parentUuid": "d01c4608_4be776b3",
+      "range": {
+        "startLine": 3554,
+        "startChar": 35,
+        "endLine": 3554,
+        "endChar": 45
+      },
+      "revId": "c7664df0c7f6247c6d092ac432a3e6d07593b9aa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5f6fc866_123c1257",
