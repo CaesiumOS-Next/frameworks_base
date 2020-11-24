@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e4507907_3be62571",
+        "filename": "services/core/java/com/android/server/TestNetworkService.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1308163
+      },
+      "writtenOn": "2020-11-24T11:25:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "456894cc_ae4f9c09",
+      "range": {
+        "startLine": 76,
+        "startChar": 39,
+        "endLine": 76,
+        "endChar": 42
+      },
+      "revId": "426f91c81498bd70dbae845322b263b8cc180e9c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7b82289c_2513a011",
@@ -72,6 +96,54 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "9b387bb3_d11e9e24",
+        "filename": "services/core/java/com/android/server/TestNetworkService.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 1308163
+      },
+      "writtenOn": "2020-11-24T11:25:41Z",
+      "side": 1,
+      "message": "Accept your suggestion below, so synchronized is unneeded now.",
+      "parentUuid": "4c576fc8_2b2fb1bd",
+      "range": {
+        "startLine": 228,
+        "startChar": 12,
+        "endLine": 228,
+        "endChar": 60
+      },
+      "revId": "426f91c81498bd70dbae845322b263b8cc180e9c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6b2350b5_50abf18f",
+        "filename": "services/core/java/com/android/server/TestNetworkService.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 1308163
+      },
+      "writtenOn": "2020-11-24T11:25:41Z",
+      "side": 1,
+      "message": "Accept your suggestion below, so we don\u0027t check ID_NONE now.",
+      "parentUuid": "7b82289c_2513a011",
+      "range": {
+        "startLine": 228,
+        "startChar": 11,
+        "endLine": 228,
+        "endChar": 60
+      },
+      "revId": "426f91c81498bd70dbae845322b263b8cc180e9c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "25c75f8f_a5ab04f3",
         "filename": "services/core/java/com/android/server/TestNetworkService.java",
         "patchSetId": 6
@@ -83,6 +155,30 @@
       "writtenOn": "2020-11-24T08:42:25Z",
       "side": 1,
       "message": "Optional: you could just build in l.297. You do not need this variable.",
+      "range": {
+        "startLine": 246,
+        "startChar": 8,
+        "endLine": 246,
+        "endChar": 83
+      },
+      "revId": "426f91c81498bd70dbae845322b263b8cc180e9c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a4642a11_1698b926",
+        "filename": "services/core/java/com/android/server/TestNetworkService.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 246,
+      "author": {
+        "id": 1308163
+      },
+      "writtenOn": "2020-11-24T11:25:41Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "25c75f8f_a5ab04f3",
       "range": {
         "startLine": 246,
         "startChar": 8,
@@ -106,6 +202,30 @@
       "writtenOn": "2020-11-24T08:42:25Z",
       "side": 1,
       "message": "Why do you need to check this? I expect that we should able to register multiple networkagents. \nIn your code, the second one will be ignored since mNetworkProvider is global and the id is assigned(not ID_NONE anymore unless you set it back to ID_NONE). Do you expect the network provider is shared? but you will unregister the provider when the agent is torn down, then we will not have network provider registered.\n\nmaybe just create the network provider inside TestNetworkAgent and register/unregister inside  TestNetworkAgent. The networkprovider seems useless outside TestNetworkAgent. It does not need to be a global one. Also to get rid of the synchronize.",
+      "range": {
+        "startLine": 305,
+        "startChar": 12,
+        "endLine": 305,
+        "endChar": 78
+      },
+      "revId": "426f91c81498bd70dbae845322b263b8cc180e9c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3a452858_b93f920d",
+        "filename": "services/core/java/com/android/server/TestNetworkService.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 305,
+      "author": {
+        "id": 1308163
+      },
+      "writtenOn": "2020-11-24T11:25:41Z",
+      "side": 1,
+      "message": "Yeah, I think you\u0027re right.\nUpdated.\nSee if the new patch matches what you said.",
+      "parentUuid": "6ce1c799_84cfe4e9",
       "range": {
         "startLine": 305,
         "startChar": 12,
