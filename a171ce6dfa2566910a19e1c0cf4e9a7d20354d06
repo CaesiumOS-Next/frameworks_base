@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "943b42bd_55a013a0",
+        "filename": "services/core/java/com/android/server/TestNetworkService.java",
+        "patchSetId": 8
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2020-11-25T15:19:24Z",
+      "side": 1,
+      "message": "There\u0027s no need to say \"provider\" because it is a provider. Maybe just use \"TestNetworkService\" here?",
+      "range": {
+        "startLine": 66,
+        "startChar": 71,
+        "endLine": 66,
+        "endChar": 91
+      },
+      "revId": "a171ce6dfa2566910a19e1c0cf4e9a7d20354d06",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5ba9becb_83d740b8",
+        "filename": "services/core/java/com/android/server/TestNetworkService.java",
+        "patchSetId": 8
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2020-11-25T15:19:24Z",
+      "side": 1,
+      "message": "Do we use these? If not: since you\u0027re touching this code anyway, please delete them.",
+      "range": {
+        "startLine": 154,
+        "startChar": 0,
+        "endLine": 155,
+        "endChar": 50
+      },
+      "revId": "a171ce6dfa2566910a19e1c0cf4e9a7d20354d06",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7c221ed1_69c0ae1a",
+        "filename": "services/core/java/com/android/server/TestNetworkService.java",
+        "patchSetId": 8
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2020-11-25T15:19:24Z",
+      "side": 1,
+      "message": "It seems unnecessary to register a NetworkProvider for every NetworkAgent that you create. Can you just maintain one NetworkProvider in TestNetworkService, register it on startup, and use that for every agent?",
+      "range": {
+        "startLine": 156,
+        "startChar": 47,
+        "endLine": 156,
+        "endChar": 63
+      },
+      "revId": "a171ce6dfa2566910a19e1c0cf4e9a7d20354d06",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5e3af049_e825aa1f",
+        "filename": "services/core/java/com/android/server/TestNetworkService.java",
+        "patchSetId": 8
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2020-11-25T15:19:24Z",
+      "side": 1,
+      "message": "Can this be in TestNetworkService instead of here?",
+      "range": {
+        "startLine": 180,
+        "startChar": 12,
+        "endLine": 180,
+        "endChar": 71
+      },
+      "revId": "a171ce6dfa2566910a19e1c0cf4e9a7d20354d06",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
