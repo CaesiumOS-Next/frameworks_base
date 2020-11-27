@@ -65,6 +65,7 @@ public final class KeymasterDefs {
     public static final int KM_TAG_USAGE_EXPIRE_DATETIME = KM_DATE | 402;
     public static final int KM_TAG_MIN_SECONDS_BETWEEN_OPS = KM_UINT | 403;
     public static final int KM_TAG_MAX_USES_PER_BOOT = KM_UINT | 404;
+    public static final int KM_TAG_USAGE_COUNT_LIMIT = KM_UINT | 405;
 
     public static final int KM_TAG_ALL_USERS = KM_BOOL | 500;
     public static final int KM_TAG_USER_ID = KM_UINT | 501;
@@ -227,6 +228,7 @@ public final class KeymasterDefs {
     public static final int KM_ERROR_CANNOT_ATTEST_IDS = -66;
     public static final int KM_ERROR_HARDWARE_TYPE_UNAVAILABLE = -68;
     public static final int KM_ERROR_DEVICE_LOCKED = -72;
+    public static final int KM_ERROR_USAGE_LIMIT_EXHAUSTED = -78;
     public static final int KM_ERROR_UNIMPLEMENTED = -100;
     public static final int KM_ERROR_VERSION_MISMATCH = -101;
     public static final int KM_ERROR_UNKNOWN_ERROR = -1000;
@@ -276,6 +278,8 @@ public final class KeymasterDefs {
         sErrorCodeToString.put(KM_ERROR_HARDWARE_TYPE_UNAVAILABLE, "Requested security level "
                         + "(likely Strongbox) is not available.");
         sErrorCodeToString.put(KM_ERROR_DEVICE_LOCKED, "Device locked");
+        sErrorCodeToString.put(KM_ERROR_USAGE_LIMIT_EXHAUSTED,
+                "Usage of limited use key is exhausted");
         sErrorCodeToString.put(KM_ERROR_UNIMPLEMENTED, "Not implemented");
         sErrorCodeToString.put(KM_ERROR_UNKNOWN_ERROR, "Unknown error");
     }
