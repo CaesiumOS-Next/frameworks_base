@@ -7675,6 +7675,7 @@ public class ConnectivityService extends IConnectivityManager.Stub
 
     @Override
     public void factoryReset() {
+        log("factoryReset");
         enforceSettingsPermission();
 
         if (mUserManager.hasUserRestriction(UserManager.DISALLOW_NETWORK_RESET)) {
