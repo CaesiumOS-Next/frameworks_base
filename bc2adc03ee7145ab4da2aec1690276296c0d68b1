@@ -16,6 +16,29 @@
       "message": "Hello. Could you please have a look on my CL? Thanks.",
       "revId": "bc2adc03ee7145ab4da2aec1690276296c0d68b1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fea47ac2_cdc69541",
+        "filename": "core/java/android/view/autofill/AutofillManager.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 1915,
+      "author": {
+        "id": 1381966
+      },
+      "writtenOn": "2020-12-01T02:18:48Z",
+      "side": 1,
+      "message": "Try to use hasAutofillFeature()?",
+      "range": {
+        "startLine": 1915,
+        "startChar": 38,
+        "endLine": 1915,
+        "endChar": 54
+      },
+      "revId": "bc2adc03ee7145ab4da2aec1690276296c0d68b1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
