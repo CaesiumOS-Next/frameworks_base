@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e009b172_b2f6ef2b",
+        "filename": "services/core/java/com/android/server/TestNetworkService.java",
+        "patchSetId": 9
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2020-12-01T10:32:02Z",
+      "side": 1,
+      "message": "While you\u0027re at it, consider removing the word TYPE from here, so we don\u0027t get confused with the ConnectivityManager#TYPE_xxx constants. Since this is only used as a log tag, maybe:\n\n    @NonNull private static final String TEST_NETWORK_LOGTAG \u003d \"TestNetworkAgent\";\n\n?",
+      "range": {
+        "startLine": 65,
+        "startChar": 41,
+        "endLine": 65,
+        "endChar": 75
+      },
+      "revId": "28ec57ed48b7a85257363c65a6d120e7a5aaf7ba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "95d90f79_bd68be82",
+        "filename": "services/core/java/com/android/server/TestNetworkService.java",
+        "patchSetId": 9
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2020-12-01T10:32:02Z",
+      "side": 1,
+      "message": "TAG",
+      "range": {
+        "startLine": 66,
+        "startChar": 71,
+        "endLine": 66,
+        "endChar": 90
+      },
+      "revId": "28ec57ed48b7a85257363c65a6d120e7a5aaf7ba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
