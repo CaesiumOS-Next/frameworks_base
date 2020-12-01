@@ -39,6 +39,30 @@
       },
       "revId": "bc2adc03ee7145ab4da2aec1690276296c0d68b1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dedd8c26_e923ec42",
+        "filename": "core/java/android/view/autofill/AutofillManager.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 1915,
+      "author": {
+        "id": 1259532
+      },
+      "writtenOn": "2020-12-01T11:02:31Z",
+      "side": 1,
+      "message": "Done. Thanks for your suggestion.",
+      "parentUuid": "fea47ac2_cdc69541",
+      "range": {
+        "startLine": 1915,
+        "startChar": 38,
+        "endLine": 1915,
+        "endChar": 54
+      },
+      "revId": "bc2adc03ee7145ab4da2aec1690276296c0d68b1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
