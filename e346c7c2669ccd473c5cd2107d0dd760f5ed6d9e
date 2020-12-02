@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9e413389_b2595a01",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2020-12-02T08:29:09Z",
+      "side": 1,
+      "message": "This seems fine in itself, but if this code is unused then perhaps we should either delete it or put it in the module.",
+      "revId": "e346c7c2669ccd473c5cd2107d0dd760f5ed6d9e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
