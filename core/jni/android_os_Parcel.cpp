@@ -104,6 +104,12 @@ static jint android_os_Parcel_dataSize(jlong nativePtr)
     return parcel ? parcel->dataSize() : 0;
 }
 
+static jint android_os_Parcel_objectsCount(jlong nativePtr)
+{
+    Parcel* parcel = reinterpret_cast<Parcel*>(nativePtr);
+    return parcel ? parcel->objectsCount() : 0;
+}
+
 static jint android_os_Parcel_dataAvail(jlong nativePtr)
 {
     Parcel* parcel = reinterpret_cast<Parcel*>(nativePtr);
@@ -849,6 +855,9 @@ static const JNINativeMethod gParcelMethods[] = {
     {"nativeReadCallingWorkSourceUid", "(J)I", (void*)android_os_Parcel_readCallingWorkSourceUid},
     // @CriticalNative
     {"nativeReplaceCallingWorkSourceUid", "(JI)Z", (void*)android_os_Parcel_replaceCallingWorkSourceUid},
+
+    // @CriticalNative
+    {"nativeObjectsCount",            "(J)I", (void*)android_os_Parcel_objectsCount},
 };
 
 const char* const kParcelPathName = "android/os/Parcel";

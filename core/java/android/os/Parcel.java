@@ -359,6 +359,9 @@ public final class Parcel {
     @CriticalNative
     private static native int nativeReadCallingWorkSourceUid(long nativePtr);
 
+    @CriticalNative
+    private static native int nativeObjectsCount(long nativePtr);
+
     /** Last time exception with a stack trace was written */
     private static volatile long sLastWriteExceptionStackTrace;
     /** Used for throttling of writing stack trace, which is costly */
@@ -464,6 +467,8 @@ public final class Parcel {
                 }
             }
         }
+
+        destroy();
     }
 
     /**
@@ -3544,6 +3549,10 @@ public final class Parcel {
         }
     }
 
+    private int objectsCount() {
+        return nativeObjectsCount(mNativePtr);
+    }
+
     @Override
     protected void finalize() throws Throwable {
         if (DEBUG_RECYCLE) {
@@ -3551,7 +3560,14 @@ public final class Parcel {
                 Log.w(TAG, "Client did not call Parcel.recycle()", mStack);
             }
         }
-        destroy();
+
+        if (mNativePtr != 0 && objectsCount() > 0) {
+            // ATTENTION:
+            // for Parcel that contained Binder objects, we intentionally
+            // do NOT call "destroy()" to avoid risk of race condition!
+        } else {
+            destroy();
+        }
     }
 
     /* package */ void readMapInternal(@NonNull Map outVal, int N,
