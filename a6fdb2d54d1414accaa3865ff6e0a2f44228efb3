@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8a0681f3_b85db2cb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 13
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2020-12-08T11:17:05Z",
+      "side": 1,
+      "message": "Sorry for the back-and-forth. The progress we\u0027ve been making before is making things clearer which makes me realize new things :)",
+      "revId": "a6fdb2d54d1414accaa3865ff6e0a2f44228efb3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "79d8dca7_df804cf2",
+        "filename": "services/core/java/com/android/server/ConnectivityService.java",
+        "patchSetId": 13
+      },
+      "lineNbr": 3572,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2020-12-08T11:17:05Z",
+      "side": 1,
+      "message": "If I\u0027m reading this correctly, if isKeepingUp is false, then the code can never reach l.3591, which means we could just return false immediately. This also gives an opportunity to clarify the comment above I think, something like :\n\n  // If a request is not multilayer, and it\u0027s a LISTEN or TRACK_DEFAULT, then it won\u0027t\n  // keep up a network satisfying it.\n  if (!multilayer \u0026\u0026 !isRequest) return false;",
+      "range": {
+        "startLine": 3572,
+        "startChar": 22,
+        "endLine": 3572,
+        "endChar": 33
+      },
+      "revId": "a6fdb2d54d1414accaa3865ff6e0a2f44228efb3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5b9d16e9_ca62b200",
+        "filename": "services/core/java/com/android/server/ConnectivityService.java",
+        "patchSetId": 13
+      },
+      "lineNbr": 3576,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2020-12-08T11:17:05Z",
+      "side": 1,
+      "message": "I think we also do need that particular request to be of type REQUEST. Consider a multilayer request like :\nLISTEN for UNMETERED\nREQUEST for OEM_PAID\nTRACK_DEFAULT\n\nThis request may be satisfied by virtue of there being an unmetered network, but on its own that should not keep the unmetered network up – it\u0027s a LISTEN, it\u0027s opportunistic. The more interesting question is, in this case should this request keep up the OEM_PAID network, and I think the answer should probably be yes. The only drawback is battery, and battery is as very important in a car which is the only use case for these LISTENs, and the advantage is faster connectivity when the unmetered network disappears.",
+      "range": {
+        "startLine": 3576,
+        "startChar": 41,
+        "endLine": 3576,
+        "endChar": 50
+      },
+      "revId": "a6fdb2d54d1414accaa3865ff6e0a2f44228efb3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
