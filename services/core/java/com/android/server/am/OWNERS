@@ -23,6 +23,8 @@ toddke@google.com
 
 # Battery Stats
 joeo@google.com
+per-file BatteryStats* = file:/OWNERS_BATTERY_STATS
+per-file BatteryExternalStats* = file:/OWNERS_BATTERY_STATS
 
 # Londoners
 michaelwr@google.com

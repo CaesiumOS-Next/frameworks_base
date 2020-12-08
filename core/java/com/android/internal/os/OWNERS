@@ -1,1 +1,7 @@
 per-file *Zygote* = file:/ZYGOTE_OWNERS
+
+# BatteryStats
+per-file BatterySipper.java = file:/OWNERS_BATTERY_STATS
+per-file BatteryStats* = file:/OWNERS_BATTERY_STATS
+per-file BatteryUsageStats* = file:/OWNERS_BATTERY_STATS
+per-file *PowerCalculator* = file:/OWNERS_BATTERY_STATS
