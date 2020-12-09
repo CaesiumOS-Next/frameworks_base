@@ -70,6 +70,30 @@
       },
       "revId": "0ad7e434442ec65afecdd95c7c4ac87bd75f543b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "199718ab_5006e94f",
+        "filename": "services/core/java/com/android/server/ConnectivityService.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 1381,
+      "author": {
+        "id": 1470463
+      },
+      "writtenOn": "2020-12-09T00:09:22Z",
+      "side": 1,
+      "message": "Was already done 😊",
+      "parentUuid": "8705b61f_0b7eb035",
+      "range": {
+        "startLine": 1381,
+        "startChar": 23,
+        "endLine": 1381,
+        "endChar": 25
+      },
+      "revId": "0ad7e434442ec65afecdd95c7c4ac87bd75f543b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
