@@ -73,6 +73,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c9b31d7b_205b4ab1",
+        "filename": "core/java/android/view/OWNERS",
+        "patchSetId": 4
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1234352
+      },
+      "writtenOn": "2020-12-09T19:44:11Z",
+      "side": 1,
+      "message": "Let\u0027s also add SurfaceSession.java",
+      "range": {
+        "startLine": 45,
+        "startChar": 9,
+        "endLine": 45,
+        "endChar": 23
+      },
+      "revId": "69df725aea33f1f71349743df7dcd5fd81a97d67",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a5f48969_4ef776c5",
         "filename": "core/java/android/view/OWNERS",
         "patchSetId": 4
@@ -113,6 +136,69 @@
         "endLine": 47,
         "endChar": 20
       },
+      "revId": "69df725aea33f1f71349743df7dcd5fd81a97d67",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d87a4c06_0db3db04",
+        "filename": "core/jni/OWNERS",
+        "patchSetId": 4
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1234352
+      },
+      "writtenOn": "2020-12-09T19:44:11Z",
+      "side": 1,
+      "message": "We should get ownership of android_graphics_BLASTBufferQueue.cpp",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 24,
+        "endChar": 73
+      },
+      "revId": "69df725aea33f1f71349743df7dcd5fd81a97d67",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "85cb1aea_fefa5f9c",
+        "filename": "core/jni/OWNERS",
+        "patchSetId": 4
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1234352
+      },
+      "writtenOn": "2020-12-09T19:44:11Z",
+      "side": 1,
+      "message": "We should get ownership of android_view_SurfaceControl.cpp, android_view_SurfaceSession.cpp, and android_view_SurfaceSession.h",
+      "range": {
+        "startLine": 35,
+        "startChar": 9,
+        "endLine": 35,
+        "endChar": 22
+      },
+      "revId": "69df725aea33f1f71349743df7dcd5fd81a97d67",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e530af85_a13d467a",
+        "filename": "graphics/java/android/graphics/OWNERS",
+        "patchSetId": 4
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1234352
+      },
+      "writtenOn": "2020-12-09T19:44:11Z",
+      "side": 1,
+      "message": "We should also get ownership of BLASTBufferQueue.java",
       "revId": "69df725aea33f1f71349743df7dcd5fd81a97d67",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
