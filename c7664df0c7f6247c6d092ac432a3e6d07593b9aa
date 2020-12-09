@@ -95,6 +95,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "15b166f8_478c2210",
+        "filename": "services/core/java/com/android/server/ConnectivityService.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 3542,
+      "author": {
+        "id": 1470463
+      },
+      "writtenOn": "2020-12-09T00:07:59Z",
+      "side": 1,
+      "message": "I don\u0027t believe this is an issue any longer after the most recent updates as per your latest comments? Feel free to reopen if not.",
+      "parentUuid": "565d6804_593dcca0",
+      "range": {
+        "startLine": 3542,
+        "startChar": 8,
+        "endLine": 3542,
+        "endChar": 11
+      },
+      "revId": "c7664df0c7f6247c6d092ac432a3e6d07593b9aa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "66a323a3_edf37e50",

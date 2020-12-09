@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7f6fa9fb_54535168",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 13
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1470463
+      },
+      "writtenOn": "2020-12-09T00:07:59Z",
+      "side": 1,
+      "message": "No problem at all! Better to catch issues now as opposed to later and appreciate the feedback.",
+      "parentUuid": "8a0681f3_b85db2cb",
+      "revId": "a6fdb2d54d1414accaa3865ff6e0a2f44228efb3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "79d8dca7_df804cf2",
@@ -41,6 +59,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b5ccc746_6c3de70e",
+        "filename": "services/core/java/com/android/server/ConnectivityService.java",
+        "patchSetId": 13
+      },
+      "lineNbr": 3572,
+      "author": {
+        "id": 1470463
+      },
+      "writtenOn": "2020-12-09T00:07:59Z",
+      "side": 1,
+      "message": "Sounds good. I tweaked it a bit since we tend to use .isListen() must more than !isRequest(). Also, updated the comment a bit.",
+      "parentUuid": "79d8dca7_df804cf2",
+      "range": {
+        "startLine": 3572,
+        "startChar": 22,
+        "endLine": 3572,
+        "endChar": 33
+      },
+      "revId": "a6fdb2d54d1414accaa3865ff6e0a2f44228efb3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5b9d16e9_ca62b200",
@@ -54,6 +96,30 @@
       "writtenOn": "2020-12-08T11:17:05Z",
       "side": 1,
       "message": "I think we also do need that particular request to be of type REQUEST. Consider a multilayer request like :\nLISTEN for UNMETERED\nREQUEST for OEM_PAID\nTRACK_DEFAULT\n\nThis request may be satisfied by virtue of there being an unmetered network, but on its own that should not keep the unmetered network up – it\u0027s a LISTEN, it\u0027s opportunistic. The more interesting question is, in this case should this request keep up the OEM_PAID network, and I think the answer should probably be yes. The only drawback is battery, and battery is as very important in a car which is the only use case for these LISTENs, and the advantage is faster connectivity when the unmetered network disappears.",
+      "range": {
+        "startLine": 3576,
+        "startChar": 41,
+        "endLine": 3576,
+        "endChar": 50
+      },
+      "revId": "a6fdb2d54d1414accaa3865ff6e0a2f44228efb3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "37a703d2_9881fefc",
+        "filename": "services/core/java/com/android/server/ConnectivityService.java",
+        "patchSetId": 13
+      },
+      "lineNbr": 3576,
+      "author": {
+        "id": 1470463
+      },
+      "writtenOn": "2020-12-09T00:07:59Z",
+      "side": 1,
+      "message": "Yes, very good catch. I added a check for the isListen() scenario.",
+      "parentUuid": "5b9d16e9_ca62b200",
       "range": {
         "startLine": 3576,
         "startChar": 41,
