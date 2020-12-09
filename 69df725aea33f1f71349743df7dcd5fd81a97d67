@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "62359608_8683c3f3",
+        "filename": "core/java/android/view/OWNERS",
+        "patchSetId": 4
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1315793
+      },
+      "writtenOn": "2020-12-09T14:30:34Z",
+      "side": 1,
+      "message": "not sure what about DisplayCutout.{aidl, java} or DisplayAdjustment.java",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 9
+      },
+      "revId": "69df725aea33f1f71349743df7dcd5fd81a97d67",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
