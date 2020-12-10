@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8695083b_1a8729b4",
+        "filename": "core/java/android/view/OWNERS",
+        "patchSetId": 4
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1381453
+      },
+      "writtenOn": "2020-12-10T09:54:44Z",
+      "side": 1,
+      "message": "Quick overview the change list and add some more groups of owners",
+      "parentUuid": "29ad91d8_d6b358bb",
+      "range": {
+        "startLine": 13,
+        "startChar": 9,
+        "endLine": 13,
+        "endChar": 26
+      },
+      "revId": "69df725aea33f1f71349743df7dcd5fd81a97d67",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "62359608_8683c3f3",
@@ -61,6 +85,30 @@
       "side": 1,
       "message": "BTW, there are many test classes under coretest and mockingcoretest.",
       "parentUuid": "62359608_8683c3f3",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 9
+      },
+      "revId": "69df725aea33f1f71349743df7dcd5fd81a97d67",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7ccb12b7_169ecaef",
+        "filename": "core/java/android/view/OWNERS",
+        "patchSetId": 4
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1381453
+      },
+      "writtenOn": "2020-12-10T09:54:44Z",
+      "side": 1,
+      "message": "Re Mark: Added it to OWNERS\nRe Riddle: Thanks for the reminder. I think it could be the next CL.",
+      "parentUuid": "50e4d3db_092ad385",
       "range": {
         "startLine": 15,
         "startChar": 0,
@@ -117,6 +165,54 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "47e17077_f8eca301",
+        "filename": "core/java/android/view/OWNERS",
+        "patchSetId": 4
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1381453
+      },
+      "writtenOn": "2020-12-10T09:54:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "207e6683_1d56493a",
+      "range": {
+        "startLine": 26,
+        "startChar": 9,
+        "endLine": 26,
+        "endChar": 26
+      },
+      "revId": "69df725aea33f1f71349743df7dcd5fd81a97d67",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1e3e1254_928e8c1a",
+        "filename": "core/java/android/view/OWNERS",
+        "patchSetId": 4
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1381453
+      },
+      "writtenOn": "2020-12-10T09:54:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "aba5e103_5a9dab68",
+      "range": {
+        "startLine": 26,
+        "startChar": 34,
+        "endLine": 26,
+        "endChar": 70
+      },
+      "revId": "69df725aea33f1f71349743df7dcd5fd81a97d67",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "edb19091_22515e21",
@@ -140,6 +236,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7577e747_1ecc42d5",
+        "filename": "core/java/android/view/OWNERS",
+        "patchSetId": 4
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1381453
+      },
+      "writtenOn": "2020-12-10T09:54:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "edb19091_22515e21",
+      "range": {
+        "startLine": 36,
+        "startChar": 9,
+        "endLine": 36,
+        "endChar": 26
+      },
+      "revId": "69df725aea33f1f71349743df7dcd5fd81a97d67",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c9b31d7b_205b4ab1",
@@ -153,6 +273,30 @@
       "writtenOn": "2020-12-09T19:44:11Z",
       "side": 1,
       "message": "Let\u0027s also add SurfaceSession.java",
+      "range": {
+        "startLine": 45,
+        "startChar": 9,
+        "endLine": 45,
+        "endChar": 23
+      },
+      "revId": "69df725aea33f1f71349743df7dcd5fd81a97d67",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dd447dc6_a19459ce",
+        "filename": "core/java/android/view/OWNERS",
+        "patchSetId": 4
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1381453
+      },
+      "writtenOn": "2020-12-10T09:54:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c9b31d7b_205b4ab1",
       "range": {
         "startLine": 45,
         "startChar": 9,
@@ -209,6 +353,54 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "de4edb74_e4186326",
+        "filename": "core/java/android/view/OWNERS",
+        "patchSetId": 4
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1381453
+      },
+      "writtenOn": "2020-12-10T09:54:44Z",
+      "side": 1,
+      "message": "Please let me know if I need to add more owners.",
+      "parentUuid": "a5f48969_4ef776c5",
+      "range": {
+        "startLine": 47,
+        "startChar": 75,
+        "endLine": 47,
+        "endChar": 81
+      },
+      "revId": "69df725aea33f1f71349743df7dcd5fd81a97d67",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0bd6f7cb_7bc70605",
+        "filename": "core/java/android/view/OWNERS",
+        "patchSetId": 4
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1381453
+      },
+      "writtenOn": "2020-12-10T09:54:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0a1c4e3e_5c5dd080",
+      "range": {
+        "startLine": 47,
+        "startChar": 9,
+        "endLine": 47,
+        "endChar": 20
+      },
+      "revId": "69df725aea33f1f71349743df7dcd5fd81a97d67",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d87a4c06_0db3db04",
@@ -222,6 +414,30 @@
       "writtenOn": "2020-12-09T19:44:11Z",
       "side": 1,
       "message": "We should get ownership of android_graphics_BLASTBufferQueue.cpp",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 24,
+        "endChar": 73
+      },
+      "revId": "69df725aea33f1f71349743df7dcd5fd81a97d67",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "36a617fb_f3acbefd",
+        "filename": "core/jni/OWNERS",
+        "patchSetId": 4
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1381453
+      },
+      "writtenOn": "2020-12-10T09:54:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d87a4c06_0db3db04",
       "range": {
         "startLine": 24,
         "startChar": 0,
@@ -255,6 +471,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6add03db_69c3c99c",
+        "filename": "core/jni/OWNERS",
+        "patchSetId": 4
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1381453
+      },
+      "writtenOn": "2020-12-10T09:54:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "85cb1aea_fefa5f9c",
+      "range": {
+        "startLine": 35,
+        "startChar": 9,
+        "endLine": 35,
+        "endChar": 22
+      },
+      "revId": "69df725aea33f1f71349743df7dcd5fd81a97d67",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e530af85_a13d467a",
@@ -268,6 +508,24 @@
       "writtenOn": "2020-12-09T19:44:11Z",
       "side": 1,
       "message": "We should also get ownership of BLASTBufferQueue.java",
+      "revId": "69df725aea33f1f71349743df7dcd5fd81a97d67",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d297d385_997b3d1b",
+        "filename": "graphics/java/android/graphics/OWNERS",
+        "patchSetId": 4
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1381453
+      },
+      "writtenOn": "2020-12-10T09:54:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e530af85_a13d467a",
       "revId": "69df725aea33f1f71349743df7dcd5fd81a97d67",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
