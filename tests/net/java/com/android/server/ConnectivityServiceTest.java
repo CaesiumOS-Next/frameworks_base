@@ -333,6 +333,10 @@ public class ConnectivityServiceTest {
 
     private static final String INTERFACE_NAME = "interface";
 
+    private static final String TEST_VENUE_URL_NA = "https://android.com/";
+    private static final String TEST_VENUE_URL_CAPPORT = "https://android.com/capport/";
+    private static final String TEST_FRIENDLY_NAME = "Network friendly name";
+
     private MockContext mServiceContext;
     private HandlerThread mCsHandlerThread;
     private ConnectivityService mService;
@@ -844,7 +848,7 @@ public class ConnectivityServiceTest {
             mProbesSucceeded = probesSucceeded;
         }
 
-        void notifyCaptivePortalDataChanged(CaptivePortalData data) {
+        void notifyCapportApiDataChanged(CaptivePortalData data) {
             try {
                 mNmCallbacks.notifyCaptivePortalDataChanged(data);
             } catch (RemoteException e) {
@@ -1919,7 +1923,7 @@ public class ConnectivityServiceTest {
                 Objects.equals(expectedCapportUrl, lp.getCaptivePortalApiUrl()));
 
         final CaptivePortalData expectedCapportData = sanitized ? null : capportData;
-        mWiFiNetworkAgent.notifyCaptivePortalDataChanged(capportData);
+        mWiFiNetworkAgent.notifyCapportApiDataChanged(capportData);
         callback.expectLinkPropertiesThat(mWiFiNetworkAgent, lp ->
                 Objects.equals(expectedCapportData, lp.getCaptivePortalData()));
         defaultCallback.expectLinkPropertiesThat(mWiFiNetworkAgent, lp ->
@@ -2925,7 +2929,7 @@ public class ConnectivityServiceTest {
                 .setBytesRemaining(12345L)
                 .build();
 
-        mWiFiNetworkAgent.notifyCaptivePortalDataChanged(testData);
+        mWiFiNetworkAgent.notifyCapportApiDataChanged(testData);
 
         captivePortalCallback.expectLinkPropertiesThat(mWiFiNetworkAgent,
                 lp -> testData.equals(lp.getCaptivePortalData()));
@@ -2936,6 +2940,86 @@ public class ConnectivityServiceTest {
         // CaptivePortalData is not lost and unchanged when LPs are received from the NetworkAgent
         captivePortalCallback.expectLinkPropertiesThat(mWiFiNetworkAgent,
                 lp -> testData.equals(lp.getCaptivePortalData()) && lp.getMtu() == 1234);
+    }
+
+    @Test
+    public void testMergeCaptivePortalApiWithFriendlyNameAndVenueUrl() throws Exception {
+        // Grant NETWORK_SETTINGS permission to be able to receive LinkProperties change callbacks
+        // with sensitive (captive portal) data
+        mServiceContext.setPermission(
+                android.Manifest.permission.NETWORK_SETTINGS, PERMISSION_GRANTED);
+
+        final TestNetworkCallback captivePortalCallback = new TestNetworkCallback();
+        final NetworkRequest captivePortalRequest = new NetworkRequest.Builder()
+                .addCapability(NET_CAPABILITY_CAPTIVE_PORTAL).build();
+        mCm.registerNetworkCallback(captivePortalRequest, captivePortalCallback);
+
+        mWiFiNetworkAgent = new TestNetworkAgentWrapper(TRANSPORT_WIFI);
+        final String redirectUrl = "http://example.com/firstPath";
+
+        mWiFiNetworkAgent.connectWithCaptivePortal(redirectUrl, false /* isStrictMode */);
+        captivePortalCallback.expectAvailableCallbacksUnvalidated(mWiFiNetworkAgent);
+
+        // Baseline capport data
+        final CaptivePortalData testData = new CaptivePortalData.Builder()
+                .setUserPortalUrl(Uri.parse(redirectUrl))
+                .setVenueInfoUrl(Uri.parse(TEST_VENUE_URL_CAPPORT))
+                .setExpiryTime(1000000L)
+                .setBytesRemaining(12345L)
+                .build();
+
+        mWiFiNetworkAgent.notifyCapportApiDataChanged(testData);
+
+        captivePortalCallback.expectLinkPropertiesThat(mWiFiNetworkAgent,
+                lp -> testData.equals(lp.getCaptivePortalData()));
+
+        // Venue URL and friendly name from Network agent, confirm that API data gets precedence
+        // on the bytes remaining.
+        final CaptivePortalData naData = new CaptivePortalData.Builder()
+                .setBytesRemaining(80802L)
+                .setVenueInfoUrl(Uri.parse(TEST_VENUE_URL_NA))
+                .setVenueFriendlyName(TEST_FRIENDLY_NAME).build();
+        final LinkProperties linkProperties = new LinkProperties();
+        linkProperties.setCaptivePortalData(naData);
+
+        mWiFiNetworkAgent.sendLinkProperties(linkProperties);
+
+        final CaptivePortalData expectedMergedData = new CaptivePortalData.Builder()
+                .setUserPortalUrl(Uri.parse(redirectUrl))
+                .setBytesRemaining(12345L)
+                .setExpiryTime(1000000L)
+                .setVenueInfoUrl(Uri.parse(TEST_VENUE_URL_NA))
+                .setVenueFriendlyName(TEST_FRIENDLY_NAME).build();
+
+        // Make sure that the capport data is merged
+        captivePortalCallback.expectLinkPropertiesThat(mWiFiNetworkAgent,
+                lp -> expectedMergedData.equals(lp.getCaptivePortalData()));
+
+        // Create a new LP with no Network agent capport data
+        final LinkProperties newLps = new LinkProperties();
+        newLps.setMtu(1234);
+        mWiFiNetworkAgent.sendLinkProperties(newLps);
+        // CaptivePortalData is not lost and has the original values when LPs are received from the
+        // NetworkAgent
+        captivePortalCallback.expectLinkPropertiesThat(mWiFiNetworkAgent,
+                lp -> testData.equals(lp.getCaptivePortalData()) && lp.getMtu() == 1234);
+
+        // Now send capport data only from the Network agent
+        mWiFiNetworkAgent.notifyCapportApiDataChanged(null);
+        captivePortalCallback.expectLinkPropertiesThat(mWiFiNetworkAgent,
+                lp -> lp.getCaptivePortalData() == null);
+
+        final CaptivePortalData expectedData = new CaptivePortalData.Builder()
+                .setBytesRemaining(80802L)
+                .setVenueInfoUrl(Uri.parse(TEST_VENUE_URL_NA))
+                .setVenueFriendlyName(TEST_FRIENDLY_NAME).build();
+        newLps.setCaptivePortalData(naData);
+        mWiFiNetworkAgent.sendLinkProperties(newLps);
+
+        // Make sure that only the network agent capport data is available
+        captivePortalCallback.expectLinkPropertiesThat(mWiFiNetworkAgent,
+                lp -> expectedData.equals(lp.getCaptivePortalData()));
+
     }
 
     private NetworkRequest.Builder newWifiRequestBuilder() {
