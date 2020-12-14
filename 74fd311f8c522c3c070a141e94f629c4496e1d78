@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "afa4d687_878c0ced",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1259532
+      },
+      "writtenOn": "2020-12-14T14:23:28Z",
+      "side": 1,
+      "message": "Hello, \nSeems like this CL is ready for submit. Please merge this CL.\nThanks",
+      "revId": "74fd311f8c522c3c070a141e94f629c4496e1d78",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
