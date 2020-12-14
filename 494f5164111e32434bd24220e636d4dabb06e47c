@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "59fca432_720706fb",
+        "filename": "core/java/android/net/TcpKeepalivePacketData.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2020-12-14T05:07:04Z",
+      "side": 1,
+      "message": "Shorten to \"src\"?\n\nOr maybe even just not print anything and just use something like:\n\n   192.168.86.42:51226 -\u003e 1.5.2.44:4500",
+      "range": {
+        "startLine": 154,
+        "startChar": 16,
+        "endLine": 154,
+        "endChar": 26
+      },
+      "revId": "494f5164111e32434bd24220e636d4dabb06e47c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aed2e717_b119cb07",
+        "filename": "core/java/android/net/TcpKeepalivePacketData.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2020-12-14T05:07:04Z",
+      "side": 1,
+      "message": "dst",
+      "range": {
+        "startLine": 155,
+        "startChar": 20,
+        "endLine": 155,
+        "endChar": 30
+      },
+      "revId": "494f5164111e32434bd24220e636d4dabb06e47c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
