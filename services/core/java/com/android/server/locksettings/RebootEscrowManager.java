@@ -125,22 +125,23 @@ class RebootEscrowManager {
     static class Injector {
         protected Context mContext;
         private final RebootEscrowKeyStoreManager mKeyStoreManager;
+        private final LockSettingsStorage mStorage;
         private final RebootEscrowProviderInterface mRebootEscrowProvider;
 
-        Injector(Context context) {
+        Injector(Context context, LockSettingsStorage storage) {
             mContext = context;
+            mStorage = storage;
             mKeyStoreManager = new RebootEscrowKeyStoreManager();
 
-            RebootEscrowProviderInterface rebootEscrowProvider = null;
-            // TODO(xunchang) add implementation for server based ror.
+            RebootEscrowProviderInterface rebootEscrowProvider;
             if (DeviceConfig.getBoolean(DeviceConfig.NAMESPACE_RESUME_ON_REBOOT,
                     "server_based_ror_enabled", false)) {
-                Slog.e(TAG, "Server based ror isn't implemented yet.");
+                rebootEscrowProvider = new RebootEscrowProviderServerBasedImpl(context, storage);
             } else {
                 rebootEscrowProvider = new RebootEscrowProviderHalImpl();
             }
 
-            if (rebootEscrowProvider != null && rebootEscrowProvider.hasRebootEscrowSupport()) {
+            if (rebootEscrowProvider.hasRebootEscrowSupport()) {
                 mRebootEscrowProvider = rebootEscrowProvider;
             } else {
                 mRebootEscrowProvider = null;
@@ -178,7 +179,7 @@ class RebootEscrowManager {
     }
 
     RebootEscrowManager(Context context, Callbacks callbacks, LockSettingsStorage storage) {
-        this(new Injector(context), callbacks, storage);
+        this(new Injector(context, storage), callbacks, storage);
     }
 
     @VisibleForTesting

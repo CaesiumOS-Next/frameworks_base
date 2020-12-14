@@ -108,10 +108,9 @@ public class RebootEscrowDataTest {
     @Test
     public void aesEncryptedBlob_loopback_success() throws Exception {
         byte[] testSp = getTestSp();
-        RebootEscrowData.AesEncryptedBlob expected = RebootEscrowData.AesEncryptedBlob
-                .encryptBlob(mKeyStoreEncryptionKey, testSp);
-        RebootEscrowData.AesEncryptedBlob actual = RebootEscrowData.AesEncryptedBlob
-                .decryptBlob(mKeyStoreEncryptionKey, expected.getEncryptedBlob());
+        AesEncryptedBlob expected = AesEncryptedBlob.encryptBlob(mKeyStoreEncryptionKey, testSp);
+        AesEncryptedBlob actual = AesEncryptedBlob.decryptBlob(mKeyStoreEncryptionKey,
+                expected.getEncryptedBlob());
 
         assertThat(actual.getEncryptedBlob(), is(expected.getEncryptedBlob()));
         assertThat(actual.getUnencryptedData(), is(expected.getUnencryptedData()));
