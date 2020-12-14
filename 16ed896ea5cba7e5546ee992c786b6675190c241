@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "aefdf5dd_cfb30d30",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1632811
+      },
+      "writtenOn": "2020-12-14T19:49:31Z",
+      "side": 1,
+      "message": "We can also remove my team from the top-level owners so we don\u0027t accidentally approve changes here.",
+      "revId": "16ed896ea5cba7e5546ee992c786b6675190c241",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
