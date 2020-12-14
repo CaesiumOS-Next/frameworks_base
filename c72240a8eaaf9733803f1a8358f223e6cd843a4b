@@ -46,6 +46,30 @@
       },
       "revId": "c72240a8eaaf9733803f1a8358f223e6cd843a4b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "703fafe9_cebf0921",
+        "filename": "lowpan/java/android/net/lowpan/LowpanManager.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1288034
+      },
+      "writtenOn": "2020-12-14T08:49:40Z",
+      "side": 1,
+      "message": "Sounds good: moved to BackgroundThread.",
+      "parentUuid": "1943ee15_13524716",
+      "range": {
+        "startLine": 45,
+        "startChar": 0,
+        "endLine": 45,
+        "endChar": 42
+      },
+      "revId": "c72240a8eaaf9733803f1a8358f223e6cd843a4b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
