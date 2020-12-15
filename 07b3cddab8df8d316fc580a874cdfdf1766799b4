@@ -1,0 +1,188 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "69aa14d6_0890ada1",
+        "filename": "telephony/java/android/telephony/ims/RcsUceAdapter.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 1098053
+      },
+      "writtenOn": "2020-12-15T00:37:08Z",
+      "side": 1,
+      "message": "can we make unknown \u003d 0",
+      "range": {
+        "startLine": 238,
+        "startChar": 28,
+        "endLine": 238,
+        "endChar": 61
+      },
+      "revId": "07b3cddab8df8d316fc580a874cdfdf1766799b4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c4aa9287_d094ab38",
+        "filename": "telephony/java/android/telephony/ims/RcsUceAdapter.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 289,
+      "author": {
+        "id": 1098053
+      },
+      "writtenOn": "2020-12-15T00:37:08Z",
+      "side": 1,
+      "message": "can we decouple from VoLTE explicitly and say something like \"provisioned for voice\".",
+      "range": {
+        "startLine": 289,
+        "startChar": 53,
+        "endLine": 289,
+        "endChar": 58
+      },
+      "revId": "07b3cddab8df8d316fc580a874cdfdf1766799b4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c072e13d_e4f7ecf0",
+        "filename": "telephony/java/android/telephony/ims/feature/RcsFeature.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 359,
+      "author": {
+        "id": 1098053
+      },
+      "writtenOn": "2020-12-15T00:37:08Z",
+      "side": 1,
+      "message": "This should include CapabilityExchangeEventListener here.",
+      "range": {
+        "startLine": 359,
+        "startChar": 50,
+        "endLine": 359,
+        "endChar": 78
+      },
+      "revId": "07b3cddab8df8d316fc580a874cdfdf1766799b4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c571a5b3_03884862",
+        "filename": "telephony/java/android/telephony/ims/feature/RcsFeature.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 396,
+      "author": {
+        "id": 1098053
+      },
+      "writtenOn": "2020-12-15T00:37:08Z",
+      "side": 1,
+      "message": "This shouldnt be called until the cap exchange instance has already been created in the framework. There should not be any need to have the potential of this being called before setCapabilityExchangeEventListener is called",
+      "range": {
+        "startLine": 396,
+        "startChar": 51,
+        "endLine": 396,
+        "endChar": 88
+      },
+      "revId": "07b3cddab8df8d316fc580a874cdfdf1766799b4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0e23ffdf_3f11c7a6",
+        "filename": "telephony/java/android/telephony/ims/stub/RcsCapabilityExchangeImplBase.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1098053
+      },
+      "writtenOn": "2020-12-15T00:37:08Z",
+      "side": 1,
+      "message": "more context needed here: \n\nExtend this base class to implement RCS User Capability Exchange (UCE) for the AOSP platform using the vendor ImsService.\n\u003cp\u003e\nSee RCC.07 for more details on UCE as well as how UCE should be implemented.",
+      "range": {
+        "startLine": 38,
+        "startChar": 3,
+        "endLine": 38,
+        "endChar": 56
+      },
+      "revId": "07b3cddab8df8d316fc580a874cdfdf1766799b4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9301261f_011dac40",
+        "filename": "telephony/java/android/telephony/ims/stub/RcsCapabilityExchangeImplBase.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1098053
+      },
+      "writtenOn": "2020-12-15T00:37:08Z",
+      "side": 1,
+      "message": "Add link to {@link #publishCapabilities(String, PublishResponseCallback)} here, like below.",
+      "range": {
+        "startLine": 123,
+        "startChar": 70,
+        "endLine": 123,
+        "endChar": 78
+      },
+      "revId": "07b3cddab8df8d316fc580a874cdfdf1766799b4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bf44ff63_34ad3cb2",
+        "filename": "telephony/java/android/telephony/ims/stub/RcsCapabilityExchangeImplBase.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1098053
+      },
+      "writtenOn": "2020-12-15T00:37:08Z",
+      "side": 1,
+      "message": "There is a difference between reason code associated with the response and reason header. Can you add the following. If there is a reason header included in the response, that should take precedence over the reason provided in the status line.",
+      "range": {
+        "startLine": 140,
+        "startChar": 63,
+        "endLine": 140,
+        "endChar": 70
+      },
+      "revId": "07b3cddab8df8d316fc580a874cdfdf1766799b4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6fd57a0a_90dffc2d",
+        "filename": "telephony/java/android/telephony/ims/stub/RcsCapabilityExchangeImplBase.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1098053
+      },
+      "writtenOn": "2020-12-15T00:37:08Z",
+      "side": 1,
+      "message": "What is the scope of adding a retry-after param here to retry publish?",
+      "range": {
+        "startLine": 148,
+        "startChar": 13,
+        "endLine": 148,
+        "endChar": 30
+      },
+      "revId": "07b3cddab8df8d316fc580a874cdfdf1766799b4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
