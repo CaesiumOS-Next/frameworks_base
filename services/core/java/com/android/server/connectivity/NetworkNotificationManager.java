@@ -334,13 +334,20 @@ public class NetworkNotificationManager {
      */
     public void setProvNotificationVisible(boolean visible, int id, String action) {
         if (visible) {
+            if (action == null) {
+                Log.d(TAG, "setProvNotificationVisible: Ignoring null action.");
+                return;
+            }
             // For legacy purposes, action is sent as the action + the phone ID from DcTracker.
             // Split the string here and send the phone ID as an extra instead.
             String[] splitAction = action.split(":");
             Intent intent = new Intent(splitAction[0]);
             try {
                 intent.putExtra("provision.phone.id", Integer.parseInt(splitAction[1]));
-            } catch (NumberFormatException ignored) { }
+            } catch (NumberFormatException | ArrayIndexOutOfBoundsException ignored) {
+                Log.d(TAG, "setProvNotificationVisible: Ignoring action without phone ID extra.");
+                return;
+            }
             PendingIntent pendingIntent = PendingIntent.getBroadcast(
                     mContext, 0 /* requestCode */, intent, PendingIntent.FLAG_IMMUTABLE);
             showNotification(id, NotificationType.SIGN_IN, null, null, pendingIntent, false);
