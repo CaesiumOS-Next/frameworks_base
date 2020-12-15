@@ -264,7 +264,7 @@ class RebootEscrowManager {
             byte[] blob = mStorage.readRebootEscrow(userId);
             mStorage.removeRebootEscrow(userId);
 
-            RebootEscrowData escrowData = RebootEscrowData.fromEncryptedData(ks, blob);
+            RebootEscrowData escrowData = RebootEscrowData.fromEncryptedData(ks, blob, kk);
 
             mCallbacks.onRebootEscrowRestored(escrowData.getSpVersion(),
                     escrowData.getSyntheticPassword(), userId);
@@ -306,9 +306,8 @@ class RebootEscrowManager {
 
         final RebootEscrowData escrowData;
         try {
-            // TODO(xunchang) further wrap the escrowData with a key from keystore.
             escrowData = RebootEscrowData.fromSyntheticPassword(escrowKey, spVersion,
-                    syntheticPassword);
+                    syntheticPassword, kk);
         } catch (IOException e) {
             setRebootEscrowReady(false);
             Slog.w(TAG, "Could not escrow reboot data", e);
