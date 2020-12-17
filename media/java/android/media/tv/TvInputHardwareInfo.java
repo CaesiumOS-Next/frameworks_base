@@ -143,6 +143,11 @@ public final class TvInputHardwareInfo implements Parcelable {
         return mCableConnectionStatus;
     }
 
+    /** @hide */
+    public void setCableConnectionStatus(int cableConnectionStatus) {
+        mCableConnectionStatus = cableConnectionStatus;
+    }
+
     @NonNull
     @Override
     public String toString() {
