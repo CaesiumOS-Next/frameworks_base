@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9657e8cd_2c33293a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1060678
+      },
+      "writtenOn": "2020-12-17T22:48:20Z",
+      "side": 1,
+      "message": "sry; did not see this. i must have a filter for aosp changes\n\nanyway, submitted aosp/1533458 that does the same thing",
+      "revId": "8e9278a0b9c81c72e1f6bb1e3c3bdf8d11557969",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
