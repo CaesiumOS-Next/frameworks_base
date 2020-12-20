@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "466164eb_a2920d07",
+        "filename": "services/core/java/com/android/server/ConnectivityService.java",
+        "patchSetId": 15
+      },
+      "lineNbr": 3580,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2020-12-20T12:13:21Z",
+      "side": 1,
+      "message": "generally : go/avoidwe\n\n(don\u0027t bother in this case because it\u0027s reasonably clear hear and this patch is ready, but keep it in mind going forward)",
+      "range": {
+        "startLine": 3580,
+        "startChar": 20,
+        "endLine": 3580,
+        "endChar": 22
+      },
+      "revId": "12fcce53104d1d676f51decf93b4b4c4f8898547",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
