@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b69e8681_dc526a53",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-12-28T20:10:52Z",
+      "side": 1,
+      "message": "If someone OWNER reviews this - please OWNER review https://android-review.googlesource.com/c/platform/frameworks/base/+/1532277 as well, so we don\u0027t have to bother you so much! 😊",
+      "revId": "bb3f774af8803fcdfbdf1a09467570339c1b7034",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
