@@ -28,7 +28,14 @@ import android.net.NetworkTemplate.MATCH_MOBILE
 import android.net.NetworkTemplate.MATCH_WIFI
 import android.net.NetworkTemplate.NETWORK_TYPE_5G_NSA
 import android.net.NetworkTemplate.NETWORK_TYPE_ALL
+import android.net.NetworkTemplate.SSID_ALL
+import android.net.NetworkTemplate.SSID_YES
+import android.net.NetworkTemplate.SUBSCRIBER_ID_ALL
+import android.net.NetworkTemplate.SUBSCRIBER_ID_YES
+import android.net.NetworkTemplate.buildTemplateWifi
+import android.net.NetworkTemplate.buildTemplateCarrierWildcard
 import android.net.NetworkTemplate.buildTemplateMobileWithRatType
+import android.net.wifi.WifiManager
 import android.telephony.TelephonyManager
 import com.android.testutils.assertParcelSane
 import org.junit.Before
@@ -45,15 +52,17 @@ import kotlin.test.assertTrue
 private const val TEST_IMSI1 = "imsi1"
 private const val TEST_IMSI2 = "imsi2"
 private const val TEST_SSID1 = "ssid1"
+private const val TEST_SSID2 = "ssid2"
 
 @RunWith(JUnit4::class)
 class NetworkTemplateTest {
     private val mockContext = mock(Context::class.java)
+    private val mockWifiManager = mock(WifiManager::class.java)
 
     private fun buildMobileNetworkState(subscriberId: String): NetworkState =
             buildNetworkState(TYPE_MOBILE, subscriberId = subscriberId)
-    private fun buildWifiNetworkState(ssid: String): NetworkState =
-            buildNetworkState(TYPE_WIFI, ssid = ssid)
+    private fun buildWifiNetworkState(subscriberId: String?, ssid: String?): NetworkState =
+            buildNetworkState(TYPE_WIFI, subscriberId = subscriberId, ssid = ssid)
 
     private fun buildNetworkState(
         type: Int,
@@ -81,6 +90,96 @@ class NetworkTemplateTest {
     @Before
     fun setup() {
         MockitoAnnotations.initMocks(this)
+        doReturn(mockWifiManager).`when`(mockContext).getSystemService(Context.WIFI_SERVICE)
+        doReturn(null).`when`(mockWifiManager).getConnectionInfo()
+    }
+
+    @Test
+    fun testWifiMatches() {
+        val templateWifiSsid1 = buildTemplateWifi(TEST_SSID1)
+        val templateWifiImsiInvalidSsidAll = buildTemplateWifi(String(), SSID_ALL)
+        val templateWifiImsiAllSsidInvalid = buildTemplateWifi(SUBSCRIBER_ID_ALL, String())
+        val templateWifiImsiNullSsid1 = buildTemplateWifi(null, TEST_SSID1)
+        val templateWifiImsiNonNullSsid1 = buildTemplateWifi(SUBSCRIBER_ID_YES, TEST_SSID1)
+        val templateWifiImsi1SsidNonNull = buildTemplateWifi(TEST_IMSI1, SSID_YES)
+        val templateWifiImsi1Ssid1 = buildTemplateWifi(TEST_IMSI1, TEST_SSID1)
+
+        val identMobile1 = buildNetworkIdentity(mockContext, buildMobileNetworkState(TEST_IMSI1),
+                false, TelephonyManager.NETWORK_TYPE_UMTS)
+        val identWifiImsiNullSsid1 = buildNetworkIdentity(
+                mockContext, buildWifiNetworkState(null, TEST_SSID1), true, 0)
+        val identWifiImsi1SsidNull = buildNetworkIdentity(
+                mockContext, buildWifiNetworkState(TEST_IMSI1, null), true, 0)
+        val identWifiImsi1Ssid1 = buildNetworkIdentity(
+                mockContext, buildWifiNetworkState(TEST_IMSI1, TEST_SSID1), true, 0)
+
+        // Verify that template with SSID only matches any subscriberId and specific SSID.
+        templateWifiSsid1.assertDoesNotMatch(identMobile1)
+        templateWifiSsid1.assertMatches(identWifiImsiNullSsid1)
+        templateWifiSsid1.assertDoesNotMatch(identWifiImsi1SsidNull)
+        templateWifiSsid1.assertMatches(identWifiImsi1Ssid1)
+
+        // Verify that template with SSID1 and null imsi matches any network with
+        // SSID1 and null imsi.
+        templateWifiImsiNullSsid1.assertDoesNotMatch(identMobile1)
+        templateWifiImsiNullSsid1.assertMatches(identWifiImsiNullSsid1)
+        templateWifiImsiNullSsid1.assertDoesNotMatch(identWifiImsi1SsidNull)
+        templateWifiImsiNullSsid1.assertDoesNotMatch(identWifiImsi1Ssid1)
+
+        // Verify that template with invalid subscriberId does not matches non-null subscriberId.
+        templateWifiImsiInvalidSsidAll.assertDoesNotMatch(identMobile1)
+        templateWifiImsiInvalidSsidAll.assertDoesNotMatch(identWifiImsiNullSsid1)
+        templateWifiImsiInvalidSsidAll.assertDoesNotMatch(identWifiImsi1SsidNull)
+        templateWifiImsiInvalidSsidAll.assertDoesNotMatch(identWifiImsi1Ssid1)
+
+        // Verify that template with invalid SSID does not matches non-null SSID.
+        templateWifiImsiAllSsidInvalid.assertDoesNotMatch(identMobile1)
+        templateWifiImsiAllSsidInvalid.assertDoesNotMatch(identWifiImsiNullSsid1)
+        templateWifiImsiAllSsidInvalid.assertDoesNotMatch(identWifiImsi1SsidNull)
+        templateWifiImsiAllSsidInvalid.assertDoesNotMatch(identWifiImsi1Ssid1)
+
+        // Verify that template with specific subscriberId and non-null SSID matches
+        // the specific subscriberId only and non-null SSID.
+        templateWifiImsi1SsidNonNull.assertDoesNotMatch(identMobile1)
+        templateWifiImsi1SsidNonNull.assertDoesNotMatch(identWifiImsiNullSsid1)
+        templateWifiImsi1SsidNonNull.assertDoesNotMatch(identWifiImsi1SsidNull)
+        templateWifiImsi1SsidNonNull.assertMatches(identWifiImsi1Ssid1)
+
+        // Verify that template with SUBSCRIBER_ID_YES and specific SSID matches the
+        // any non-null subscriberId and specific SSID.
+        templateWifiImsiNonNullSsid1.assertDoesNotMatch(identMobile1)
+        templateWifiImsiNonNullSsid1.assertDoesNotMatch(identWifiImsiNullSsid1)
+        templateWifiImsiNonNullSsid1.assertDoesNotMatch(identWifiImsi1SsidNull)
+        templateWifiImsiNonNullSsid1.assertMatches(identWifiImsi1Ssid1)
+
+        // Verify that template with specific subscriberId and specific SSID matches
+        // the specific subscriberId and specific SSID.
+        templateWifiImsi1Ssid1.assertDoesNotMatch(identMobile1)
+        templateWifiImsi1Ssid1.assertDoesNotMatch(identWifiImsiNullSsid1)
+        templateWifiImsi1Ssid1.assertDoesNotMatch(identWifiImsi1SsidNull)
+        templateWifiImsi1Ssid1.assertMatches(identWifiImsi1Ssid1)
+    }
+
+    @Test
+    fun testCarrierWildcardMatches() {
+        val templateCarrierWildcardImsi1 = buildTemplateCarrierWildcard(TEST_IMSI1)
+
+        val identMobile1 = buildNetworkIdentity(mockContext, buildMobileNetworkState(TEST_IMSI1),
+                false, TelephonyManager.NETWORK_TYPE_UMTS)
+        val identMobile2 = buildNetworkIdentity(mockContext, buildMobileNetworkState(TEST_IMSI2),
+                false, TelephonyManager.NETWORK_TYPE_UMTS)
+        val identWifiSsid1 = buildNetworkIdentity(
+                mockContext, buildWifiNetworkState(null, TEST_SSID1), true, 0)
+        val identCarrierWifiImsi1 = buildNetworkIdentity(
+                mockContext, buildWifiNetworkState(TEST_IMSI1, null), true, 0)
+        val identCarrierWifiImsi2 = buildNetworkIdentity(
+                mockContext, buildWifiNetworkState(TEST_IMSI2, null), true, 0)
+
+        templateCarrierWildcardImsi1.assertMatches(identCarrierWifiImsi1)
+        templateCarrierWildcardImsi1.assertDoesNotMatch(identCarrierWifiImsi2)
+        templateCarrierWildcardImsi1.assertDoesNotMatch(identWifiSsid1)
+        templateCarrierWildcardImsi1.assertMatches(identMobile1)
+        templateCarrierWildcardImsi1.assertDoesNotMatch(identMobile2)
     }
 
     @Test
@@ -107,7 +206,7 @@ class NetworkTemplateTest {
         val identImsi2 = buildNetworkIdentity(mockContext, buildMobileNetworkState(TEST_IMSI2),
                 false, TelephonyManager.NETWORK_TYPE_UMTS)
         val identWifi = buildNetworkIdentity(
-                mockContext, buildWifiNetworkState(TEST_SSID1), true, 0)
+                mockContext, buildWifiNetworkState(null, TEST_SSID1), true, 0)
 
         // Assert that identity with the same RAT matches.
         templateUmts.assertMatches(identUmts)
