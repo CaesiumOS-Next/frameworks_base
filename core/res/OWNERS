@@ -16,3 +16,9 @@ svetoslavganov@android.com
 svetoslavganov@google.com
 toddke@google.com
 yamasani@google.com
+
+# TODO: change to CAR_OWNERS once that file exists
+per-file */*_car.xml = file:/platform/packages/services/Car:/OWNERS
+per-file res/*_car/* = file:/platform/packages/services/Car:/OWNERS
+# per-file */*_car.xml = file:/core/res/CAR_OWNERS
+# per-file res/*_car/* = file:/core/res/CAR_OWNERS
