@@ -16,6 +16,24 @@
       "message": "Fix uploaded at aosp/1539684",
       "revId": "c012d384440e493c74fd9d7caebb0cfe58db7782",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f00957cf_aa8095e4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1307149
+      },
+      "writtenOn": "2021-01-05T17:15:06Z",
+      "side": 1,
+      "message": "Thank you for the fix!",
+      "parentUuid": "75db224d_02aa34b4",
+      "revId": "c012d384440e493c74fd9d7caebb0cfe58db7782",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
