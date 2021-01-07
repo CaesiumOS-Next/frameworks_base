@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a8886fb9_9663e151",
+        "filename": "telephony/java/android/telephony/ims/RcsUceAdapter.java",
+        "patchSetId": 13
+      },
+      "lineNbr": 339,
+      "author": {
+        "id": 1056478
+      },
+      "writtenOn": "2021-01-07T16:50:58Z",
+      "side": 1,
+      "message": "Use Listener when there is a single callback method and there will never be any others. It should be an interface whose name is the same as the callback method plus Listener.\n\ngo/android-api-guidelines#callbacks-listener",
+      "range": {
+        "startLine": 339,
+        "startChar": 24,
+        "endLine": 339,
+        "endChar": 44
+      },
+      "revId": "e9078c0f431b8d8691ffe8a23accfb9aed29d683",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ffd696a7_17281435",
+        "filename": "telephony/java/android/telephony/ims/RcsUceAdapter.java",
+        "patchSetId": 13
+      },
+      "lineNbr": 662,
+      "author": {
+        "id": 1056478
+      },
+      "writtenOn": "2021-01-07T16:50:58Z",
+      "side": 1,
+      "message": "See naming guidelines at:\ngo/android-api-guidelines#callbacks-listener",
+      "range": {
+        "startLine": 662,
+        "startChar": 16,
+        "endLine": 662,
+        "endChar": 44
+      },
+      "revId": "e9078c0f431b8d8691ffe8a23accfb9aed29d683",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e724871f_e775924f",
+        "filename": "telephony/java/android/telephony/ims/RcsUceAdapter.java",
+        "patchSetId": 13
+      },
+      "lineNbr": 706,
+      "author": {
+        "id": 1056478
+      },
+      "writtenOn": "2021-01-07T16:50:58Z",
+      "side": 1,
+      "message": "See naming guidelines at:\ngo/android-api-guidelines#callbacks-listener",
+      "range": {
+        "startLine": 706,
+        "startChar": 4,
+        "endLine": 706,
+        "endChar": 47
+      },
+      "revId": "e9078c0f431b8d8691ffe8a23accfb9aed29d683",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
