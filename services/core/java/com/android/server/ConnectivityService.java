@@ -5092,8 +5092,12 @@ public class ConnectivityService extends IConnectivityManager.Stub
                     logw("VPN for user " + user + " not ready yet. Skipping lockdown");
                     return false;
                 }
-                setLockdownTracker(
-                        new LockdownVpnTracker(mContext, this, mHandler, mKeyStore, vpn,  profile));
+                final LockdownVpnTracker newTracker =
+                        new LockdownVpnTracker(mContext, this, mHandler, mKeyStore, vpn, profile);
+                if (!newTracker.equals(mLockdownTracker)) {
+                    setLockdownTracker(newTracker);
+                }
+
             } else {
                 setLockdownTracker(null);
             }
@@ -5287,9 +5291,7 @@ public class ConnectivityService extends IConnectivityManager.Stub
             }
             userVpn = new Vpn(mHandler.getLooper(), mContext, mNMS, mNetd, userId, mKeyStore);
             mVpns.put(userId, userVpn);
-            if (mUserManager.getUserInfo(userId).isPrimary() && isLockdownVpnEnabled()) {
-                updateLockdownVpn();
-            }
+            updateLockdownVpn();
         }
     }
 
@@ -5371,11 +5373,8 @@ public class ConnectivityService extends IConnectivityManager.Stub
     private void onUserUnlocked(int userId) {
         synchronized (mVpns) {
             // User present may be sent because of an unlock, which might mean an unlocked keystore.
-            if (mUserManager.getUserInfo(userId).isPrimary() && isLockdownVpnEnabled()) {
-                updateLockdownVpn();
-            } else {
-                startAlwaysOnVpn(userId);
-            }
+            updateLockdownVpn();
+            startAlwaysOnVpn(userId);
         }
     }
 
