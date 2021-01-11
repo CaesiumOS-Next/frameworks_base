@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "efae26ef_3f4871ab",
+        "filename": "telephony/java/android/telephony/ims/RcsUceAdapter.java",
+        "patchSetId": 13
+      },
+      "lineNbr": 339,
+      "author": {
+        "id": 1467491
+      },
+      "writtenOn": "2021-01-11T23:25:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a8886fb9_9663e151",
+      "range": {
+        "startLine": 339,
+        "startChar": 24,
+        "endLine": 339,
+        "endChar": 44
+      },
+      "revId": "e9078c0f431b8d8691ffe8a23accfb9aed29d683",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ffd696a7_17281435",
@@ -47,6 +71,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f8b057cd_431baa08",
+        "filename": "telephony/java/android/telephony/ims/RcsUceAdapter.java",
+        "patchSetId": 13
+      },
+      "lineNbr": 662,
+      "author": {
+        "id": 1467491
+      },
+      "writtenOn": "2021-01-11T23:25:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ffd696a7_17281435",
+      "range": {
+        "startLine": 662,
+        "startChar": 16,
+        "endLine": 662,
+        "endChar": 44
+      },
+      "revId": "e9078c0f431b8d8691ffe8a23accfb9aed29d683",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e724871f_e775924f",
@@ -60,6 +108,30 @@
       "writtenOn": "2021-01-07T16:50:58Z",
       "side": 1,
       "message": "See naming guidelines at:\ngo/android-api-guidelines#callbacks-listener",
+      "range": {
+        "startLine": 706,
+        "startChar": 4,
+        "endLine": 706,
+        "endChar": 47
+      },
+      "revId": "e9078c0f431b8d8691ffe8a23accfb9aed29d683",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c1ceacdd_1dead419",
+        "filename": "telephony/java/android/telephony/ims/RcsUceAdapter.java",
+        "patchSetId": 13
+      },
+      "lineNbr": 706,
+      "author": {
+        "id": 1467491
+      },
+      "writtenOn": "2021-01-11T23:25:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e724871f_e775924f",
       "range": {
         "startLine": 706,
         "startChar": 4,
