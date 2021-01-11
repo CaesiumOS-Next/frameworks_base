@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8f6fb741_9c6b3aab",
+        "filename": "services/core/java/com/android/server/am/ActivityManagerService.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 17097,
+      "author": {
+        "id": 1431994
+      },
+      "writtenOn": "2021-01-11T16:43:34Z",
+      "side": 1,
+      "message": "Could you actually make VMRuntime.ALLOW_TEST_API_ACCESS public instead?",
+      "range": {
+        "startLine": 17097,
+        "startChar": 56,
+        "endLine": 17097,
+        "endChar": 65
+      },
+      "revId": "8b51b9e6ab350d80dd718f9e5d2817759867b23b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
