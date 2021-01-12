@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "36734b51_df025e42",
+        "filename": "services/core/java/com/android/server/am/ActivityManagerService.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 17106,
+      "author": {
+        "id": 1787007
+      },
+      "writtenOn": "2021-01-12T10:02:39Z",
+      "side": 1,
+      "message": "This will remove all overrides, even others that tests might have applied (or users might have manually done on a real device).\n\nIs this a problem for us? I think it might happen and it\u0027s hard for us to really know if that\u0027s the case.\n\nIt would be safer to disable ALLOW_TEST_API_ACCESS.",
+      "revId": "67f4cf0216f4cc9af9c9883d42b5a03871e6b672",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9ff83d26_9187b7d8",
+        "filename": "services/core/java/com/android/server/compat/PlatformCompat.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 1787007
+      },
+      "writtenOn": "2021-01-12T10:02:39Z",
+      "side": 1,
+      "message": "unrelated with this CL, but I think this method (and related methods) should be called \"applyOverrides\" instead of \"set\".  Set gives me the expectation that what I pass will be the final value but instead what this does is applying that config on top of the current config. \n\n(this made me confused while reviewing your changes as it seemed you could be doing something wrong)",
+      "revId": "67f4cf0216f4cc9af9c9883d42b5a03871e6b672",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
