@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d50e6c8c_b1e9df34",
+        "filename": "services/core/java/com/android/server/am/ActivityManagerService.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 17106,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2021-01-12T14:31:06Z",
+      "side": 1,
+      "message": "Done. Good point!",
+      "parentUuid": "36734b51_df025e42",
+      "revId": "67f4cf0216f4cc9af9c9883d42b5a03871e6b672",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9ff83d26_9187b7d8",
@@ -31,6 +49,24 @@
       "writtenOn": "2021-01-12T10:02:39Z",
       "side": 1,
       "message": "unrelated with this CL, but I think this method (and related methods) should be called \"applyOverrides\" instead of \"set\".  Set gives me the expectation that what I pass will be the final value but instead what this does is applying that config on top of the current config. \n\n(this made me confused while reviewing your changes as it seemed you could be doing something wrong)",
+      "revId": "67f4cf0216f4cc9af9c9883d42b5a03871e6b672",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f85cd18c_60ffb2bf",
+        "filename": "services/core/java/com/android/server/compat/PlatformCompat.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2021-01-12T14:31:06Z",
+      "side": 1,
+      "message": "Agreed, had the same reaction earlier..",
+      "parentUuid": "9ff83d26_9187b7d8",
       "revId": "67f4cf0216f4cc9af9c9883d42b5a03871e6b672",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }

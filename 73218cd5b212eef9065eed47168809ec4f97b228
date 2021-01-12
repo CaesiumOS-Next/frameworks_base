@@ -22,6 +22,30 @@
       },
       "revId": "73218cd5b212eef9065eed47168809ec4f97b228",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d5312dca_d920088f",
+        "filename": "cmds/am/src/com/android/commands/am/Am.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2021-01-12T14:31:06Z",
+      "side": 0,
+      "message": "It\u0027s used below. We still need it for tradefed to tell runtime that test api checks are disabled/enabled. We could teach tradefed to run `am compat` commands for us instead of sending a flag to `am instrument`, but not sure it\u0027s worth it...\n\n(There is some clean up after this I will do on runtime/ActivityManagerService side.)",
+      "parentUuid": "c905f352_20f4586b",
+      "range": {
+        "startLine": 180,
+        "startChar": 27,
+        "endLine": 180,
+        "endChar": 47
+      },
+      "revId": "73218cd5b212eef9065eed47168809ec4f97b228",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
