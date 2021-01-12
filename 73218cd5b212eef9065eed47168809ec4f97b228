@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c905f352_20f4586b",
+        "filename": "cmds/am/src/com/android/commands/am/Am.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1010681
+      },
+      "writtenOn": "2021-01-12T09:36:25Z",
+      "side": 0,
+      "message": "do we also plan to remove this?",
+      "range": {
+        "startLine": 180,
+        "startChar": 27,
+        "endLine": 180,
+        "endChar": 47
+      },
+      "revId": "73218cd5b212eef9065eed47168809ec4f97b228",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
