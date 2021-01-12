@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c09c2249_16edad80",
+        "filename": "telephony/java/android/telephony/ims/feature/RcsFeature.java",
+        "patchSetId": 14
+      },
+      "lineNbr": 278,
+      "author": {
+        "id": 1098053
+      },
+      "writtenOn": "2021-01-12T01:40:41Z",
+      "side": 1,
+      "message": "nit: a little hard to understand, perhaps \"The executor for the framework to use when executing the methods overriden by the implementation of RcsFeature\"\n\nsame with below",
+      "range": {
+        "startLine": 278,
+        "startChar": 66,
+        "endLine": 278,
+        "endChar": 86
+      },
+      "revId": "ab82e1b039d857a96c1d36355295188e9ab83164",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
