@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "92426d48_634d4de1",
+        "filename": "services/core/java/com/android/server/am/ActivityManagerService.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 17097,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2021-01-13T17:28:01Z",
+      "side": 1,
+      "message": "It has to be @SystemApi eventually (libcore team is moving @CorePlatformApi to @SystemApi). I abandoned that change as they weren\u0027t super keen on doing that.",
+      "parentUuid": "54ba09e2_91831089",
+      "range": {
+        "startLine": 17097,
+        "startChar": 66,
+        "endLine": 17097,
+        "endChar": 87
+      },
+      "revId": "588b007d5d0dccca0c49dd70f9072f94a7b695ce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "eb08428d_a0713297",
         "filename": "services/core/java/com/android/server/am/ActivityManagerService.java",
         "patchSetId": 6
@@ -37,6 +61,24 @@
       "writtenOn": "2021-01-13T15:59:14Z",
       "side": 1,
       "message": "seems like what we really want here is\n\n  mPlatformCompat.clearOverrideForTest(166236554L, packageName)\n\nas is, this still leave an override, just force disabled not enabled?\n\n(maybe not a big deal)",
+      "revId": "588b007d5d0dccca0c49dd70f9072f94a7b695ce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e91bcaad_854ad8c1",
+        "filename": "services/core/java/com/android/server/am/ActivityManagerService.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 17110,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2021-01-13T17:28:01Z",
+      "side": 1,
+      "message": "Clearing removes all overrides, which is not what we want in general.",
+      "parentUuid": "eb08428d_a0713297",
       "revId": "588b007d5d0dccca0c49dd70f9072f94a7b695ce",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
