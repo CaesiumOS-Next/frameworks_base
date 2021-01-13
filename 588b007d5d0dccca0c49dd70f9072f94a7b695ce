@@ -81,6 +81,24 @@
       "parentUuid": "eb08428d_a0713297",
       "revId": "588b007d5d0dccca0c49dd70f9072f94a7b695ce",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3b88c664_2364fb77",
+        "filename": "services/core/java/com/android/server/am/ActivityManagerService.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 17110,
+      "author": {
+        "id": 1787007
+      },
+      "writtenOn": "2021-01-13T17:47:20Z",
+      "side": 1,
+      "message": "Note that in that example, the change id is passed.\n\nI think what Mathew meant was that this should remove overrides (IOW reset) for a particular change id instead of setting it to disabled.",
+      "parentUuid": "e91bcaad_854ad8c1",
+      "revId": "588b007d5d0dccca0c49dd70f9072f94a7b695ce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
