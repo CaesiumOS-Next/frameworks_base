@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b21aa6fb_387846f9",
+        "filename": "services/tests/servicestests/src/com/android/server/net/NetworkPolicyManagerServiceTest.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 1919,
+      "author": {
+        "id": 1308163
+      },
+      "writtenOn": "2021-01-14T01:48:40Z",
+      "side": 1,
+      "message": "Is there any test verifying the subscriber id you set?\nOtherwise, I\u0027m not sure why do we need to do this change.",
+      "range": {
+        "startLine": 1919,
+        "startChar": 8,
+        "endLine": 1919,
+        "endChar": 41
+      },
+      "revId": "d95c7ab995bbf931850a660403da68952c3960db",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7234d0ef_7c3b306d",
+        "filename": "tests/net/java/com/android/server/net/NetworkStatsServiceTest.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 1524,
+      "author": {
+        "id": 1308163
+      },
+      "writtenOn": "2021-01-14T01:48:40Z",
+      "side": 1,
+      "message": "Same question as I left at NetworkPolicyManagerServiceTest.",
+      "range": {
+        "startLine": 1524,
+        "startChar": 8,
+        "endLine": 1524,
+        "endChar": 51
+      },
+      "revId": "d95c7ab995bbf931850a660403da68952c3960db",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
