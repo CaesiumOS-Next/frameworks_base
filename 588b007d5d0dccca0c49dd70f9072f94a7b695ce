@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0bdacd9a_df8452a7",
+        "filename": "services/core/java/com/android/server/am/ActivityManagerService.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 17097,
+      "author": {
+        "id": 1010681
+      },
+      "writtenOn": "2021-01-14T10:22:59Z",
+      "side": 1,
+      "message": "Fair enough. Maybe better to add a private constant in here with a TODO?",
+      "parentUuid": "92426d48_634d4de1",
+      "range": {
+        "startLine": 17097,
+        "startChar": 66,
+        "endLine": 17097,
+        "endChar": 87
+      },
+      "revId": "588b007d5d0dccca0c49dd70f9072f94a7b695ce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "eb08428d_a0713297",
         "filename": "services/core/java/com/android/server/am/ActivityManagerService.java",
         "patchSetId": 6
@@ -97,6 +121,24 @@
       "side": 1,
       "message": "Note that in that example, the change id is passed.\n\nI think what Mathew meant was that this should remove overrides (IOW reset) for a particular change id instead of setting it to disabled.",
       "parentUuid": "e91bcaad_854ad8c1",
+      "revId": "588b007d5d0dccca0c49dd70f9072f94a7b695ce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "985d010c_e6f5bc5a",
+        "filename": "services/core/java/com/android/server/am/ActivityManagerService.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 17110,
+      "author": {
+        "id": 1010681
+      },
+      "writtenOn": "2021-01-14T10:22:59Z",
+      "side": 1,
+      "message": "Yep, as Pedro says. Not a big deal though, ok as is too.",
+      "parentUuid": "3b88c664_2364fb77",
       "revId": "588b007d5d0dccca0c49dd70f9072f94a7b695ce",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
