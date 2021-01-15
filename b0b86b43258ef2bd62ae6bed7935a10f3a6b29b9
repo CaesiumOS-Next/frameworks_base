@@ -16,6 +16,24 @@
       "message": "+Philip for his idea.\n\nThis doesn\u0027t seem to be a desirable API to me from a permission perspective, because the API we provide is about permission definitions and checking/mutating permission state. Just the same as we shouldn\u0027t be providing the list of packages which have permission states, we shouldn\u0027t be providing the list of UIDs as well.\n\nI think fundamentally the issue lies in the fact that connectivity isn\u0027t using the permission API in the intended way. The recommended way to check permission is simply calling Context.check/enforcePermission() directly, which takes a number of subtle things into consideration and always reflects the most recent permission state. In the event it is considered too slow for connectivity, adding a private permission cache may still be considered a supported usage pattern. However, com.android.server.connectivity.PermissionMonitor seems to be building and maintaining its own copy of all permission state in the system, which resulted in the need to get the list of UIDs while a cache wouldn\u0027t need it. Duplicating all the permission state is not only unsupported, but also brings trouble to permission\u0027s internal changes, e.g. we are making all install permissions per-user now, and what if we turn the INTERNET permission into a runtime permission in the future? Checking permissions directly won\u0027t have any issue with these changes, and a cache may still be adapted relatively easily, but a full copy of all the permission state is way too internal and fragile.",
       "revId": "b0b86b43258ef2bd62ae6bed7935a10f3a6b29b9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4035f373_0118b989",
+        "filename": "core/api/system-current.txt",
+        "patchSetId": 3
+      },
+      "lineNbr": 7759,
+      "author": {
+        "id": 1308473
+      },
+      "writtenOn": "2021-01-15T08:28:09Z",
+      "side": 1,
+      "message": "It needs provide uid to do permission check via Context#checkPermission() but the problem is we can\u0027t get the native service uids from installed packages(such as mediaserver, audioserver) and oem can have more native services. Besides, the high level permission of those native services are defined in data/etc/platform.xml which can get the info from SystemConfig.\n\nIn the past, we were encountered the permission problem from native services which would block networking for the service(b/128944261, b/132217906), so we must know the high level permissions for those native service.\n\nBut SysetmConfig is the internal service for frameworks only which cannot use by Connectivty mainline module. Therefore, I create this API that can only get the native service uids who define the INTERNET/UPDATE_DEVICE_STATS permission in platform.xml.",
+      "parentUuid": "ca47888b_c9eea3d4",
+      "revId": "b0b86b43258ef2bd62ae6bed7935a10f3a6b29b9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
