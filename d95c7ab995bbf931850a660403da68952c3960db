@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2f3070b4_562d37bf",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2021-01-15T13:37:46Z",
+      "side": 1,
+      "message": "LGTM assuming other reviewers are happy.",
+      "revId": "d95c7ab995bbf931850a660403da68952c3960db",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b21aa6fb_387846f9",
