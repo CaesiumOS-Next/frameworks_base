@@ -35,6 +35,7 @@
 #include <binder/IPCThreadState.h>
 #include <binder/IServiceManager.h>
 #include <binder/Parcel.h>
+#include <binder/ParcelRef.h>
 #include <binder/ProcessState.h>
 #include <binder/Stability.h>
 #include <binderthreadstate/CallerUtils.h>
@@ -1415,6 +1416,10 @@ static jboolean android_os_BinderProxy_transact(JNIEnv* env, jobject obj,
     //printf("Transact from Java code to %p sending: ", target); data->print();
     status_t err = target->transact(code, *data, reply, flags);
     //if (reply) printf("Transact from Java code to %p received: ", target); reply->print();
+
+    if (reply) {
+        IPCThreadState::self()->createATempReference(static_cast<ParcelRef*>(reply));
+    }
 
     if (kEnableBinderSample) {
         if (time_binder_calls) {
