@@ -34,6 +34,24 @@
       "parentUuid": "ca47888b_c9eea3d4",
       "revId": "b0b86b43258ef2bd62ae6bed7935a10f3a6b29b9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "431d401b_dd678b11",
+        "filename": "core/api/system-current.txt",
+        "patchSetId": 3
+      },
+      "lineNbr": 7759,
+      "author": {
+        "id": 1351609
+      },
+      "writtenOn": "2021-01-16T00:44:04Z",
+      "side": 1,
+      "message": "Could you clarify about why you can\u0027t get the native service UIDs? From what I read in connectivity.PermissionMonitor, it is pushing a mapping of UID to net related permissions it has. How could the mapping be useful to netd if you don\u0027t have the UIDs in netd?\n\nI\u0027m not against permission providing the infra to check if an UID has a certain permission - that\u0027s what our module does. However, I don\u0027t think we should be providing the UIDs, the same reason as I don\u0027t think we should provide an API that returns package names.\n\nI think the intended usage pattern is to fetch all the system UIDs from somewhere else (definitely not from permission, but from the definer/storage of all those UIDs, the source of truth seems to be Process.getUidForName()), and then check if each UID has the net related permissions (e.g. checkUidPermission()), similar what you are doing for package names now.\n\nOr better, I\u0027d prefer not creating a copy of all permission state at all, which is an anti-pattern and fragile, but instead build an on-demand cache if you need performance.",
+      "parentUuid": "4035f373_0118b989",
+      "revId": "b0b86b43258ef2bd62ae6bed7935a10f3a6b29b9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
