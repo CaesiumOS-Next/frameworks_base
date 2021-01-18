@@ -52,6 +52,24 @@
       "parentUuid": "4035f373_0118b989",
       "revId": "b0b86b43258ef2bd62ae6bed7935a10f3a6b29b9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "42927469_6bdfd132",
+        "filename": "core/api/system-current.txt",
+        "patchSetId": 3
+      },
+      "lineNbr": 7759,
+      "author": {
+        "id": 1308473
+      },
+      "writtenOn": "2021-01-18T06:46:03Z",
+      "side": 1,
+      "message": "To get the native service UIDs, we need to get the native services name for using Pocess.getUidForName() first. AFAIK, there is no way to retrieve all native services name(oem may add more services than aosp) in framework side. So we cannot have the native service uids for checking net related permissions via checkUidPermission(). In fact, I think SysetmConfig is the only way to get the uids and related permissions, it might be better that Connectivity mainline can read the config from there but it\u0027s harder to accomplish it definately. Alternatively, we can only create the API that just simply returns native service uids which contains the net permissions, it might not be the best solution but it doesn\u0027t expose more permission info(anyone has the native service uid can check whether the uid has net permissions)\n\nBesides, PermissionMonitor send the uid list that contains high-level net permissions to netd because netd is native service and it can\u0027t retrieve the high level permission either. We have to get and send uids for framework side. Otherwise, netd will not know which uid has the permission to create/bind socket then block the operation for uid.",
+      "parentUuid": "431d401b_dd678b11",
+      "revId": "b0b86b43258ef2bd62ae6bed7935a10f3a6b29b9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
