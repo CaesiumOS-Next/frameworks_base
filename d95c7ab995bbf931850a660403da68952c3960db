@@ -41,6 +41,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e2ec7d19_449a1aef",
+        "filename": "services/tests/servicestests/src/com/android/server/net/NetworkPolicyManagerServiceTest.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 1919,
+      "author": {
+        "id": 1306837
+      },
+      "writtenOn": "2021-01-19T06:31:32Z",
+      "side": 1,
+      "message": "Basically anything relying on TEST_IMSI, NetworkIndentity, NetworkState would fail.\nSince NPMS cannot get IMSI anymore.\nTo be specific, those are:\ncom.android.server.net.NetworkPolicyManagerServiceTest#testNotificationWarningLimitSnooze\ncom.android.server.net.NetworkPolicyManagerServiceTest#testStatsProviderLimitReached",
+      "parentUuid": "b21aa6fb_387846f9",
+      "range": {
+        "startLine": 1919,
+        "startChar": 8,
+        "endLine": 1919,
+        "endChar": 41
+      },
+      "revId": "d95c7ab995bbf931850a660403da68952c3960db",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7234d0ef_7c3b306d",
@@ -54,6 +78,30 @@
       "writtenOn": "2021-01-14T01:48:40Z",
       "side": 1,
       "message": "Same question as I left at NetworkPolicyManagerServiceTest.",
+      "range": {
+        "startLine": 1524,
+        "startChar": 8,
+        "endLine": 1524,
+        "endChar": 51
+      },
+      "revId": "d95c7ab995bbf931850a660403da68952c3960db",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3de25624_e60c9fcf",
+        "filename": "tests/net/java/com/android/server/net/NetworkStatsServiceTest.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 1524,
+      "author": {
+        "id": 1306837
+      },
+      "writtenOn": "2021-01-19T06:31:32Z",
+      "side": 1,
+      "message": "com.android.server.net.NetworkStatsServiceTest#testMobileStatsByRatType\ncom.android.server.net.NetworkStatsServiceTest#testUid3gWimaxCombinedByTemplate\ncom.android.server.net.NetworkStatsServiceTest#testTethering\ncom.android.server.net.NetworkStatsServiceTest#testDynamicWatchForNetworkRatTypeChanges\ncom.android.server.net.NetworkStatsServiceTest#testRoaming\ncom.android.server.net.NetworkStatsServiceTest#testUidStatsAcrossNetworks",
+      "parentUuid": "7234d0ef_7c3b306d",
       "range": {
         "startLine": 1524,
         "startChar": 8,
