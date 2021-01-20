@@ -2167,6 +2167,11 @@
     <permission android:name="android.permission.READ_PRIVILEGED_PHONE_STATE"
         android:protectionLevel="signature|privileged" />
 
+    <!-- @SystemApi Allows access user capability exchange
+         @hide -->
+    <permission android:name="android.permission.ACCESS_USER_CAPABILITY_EXCHANGE"
+        android:protectionLevel="signature|privileged" />
+
     <!-- @SystemApi Allows read access to emergency number information for ongoing calls or SMS
          sessions.
          @hide Used internally. -->
