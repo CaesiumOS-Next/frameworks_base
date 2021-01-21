@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "888fa858_24bd1e04",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1079143
+      },
+      "writtenOn": "2021-01-21T19:04:30Z",
+      "side": 1,
+      "message": "Hi Adrian, could you approve this new OWNER file?\nVictor is the author of these two files.",
+      "revId": "c1a088cbc2c908d85239b2a68126e2618fd29442",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
