@@ -70,6 +70,24 @@
       "parentUuid": "431d401b_dd678b11",
       "revId": "b0b86b43258ef2bd62ae6bed7935a10f3a6b29b9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "10f795cf_6b019e57",
+        "filename": "core/api/system-current.txt",
+        "patchSetId": 3
+      },
+      "lineNbr": 7759,
+      "author": {
+        "id": 1351609
+      },
+      "writtenOn": "2021-01-21T03:30:52Z",
+      "side": 1,
+      "message": "Can netd just check permissions in native? I believe we do have native APIs for checking permissions, and calling them should be the right \u0026 intended way to do this. +Philip should know more about native APIs. I believe pushing down an entire \u0026 separate copy of all permission state just isn\u0027t what our module intended to support.\n\nEven if connectivity would like to keep creating and maintaining a separate copy of all permission states (which isn\u0027t recommended), that doesn\u0027t make permission the right place to provide the list of UIDs (we are PermissionManager, not UidManager), similar to we shouldn\u0027t be providing the list of packages.\n\nThe UID listing part of this new API just isn\u0027t generic or relevant enough to permission, and it won\u0027t \u0026 shouldn\u0027t be helpful for any other user of permission, so it shouldn\u0027t be on our API surface - we provide permission definitions and checking/mutating permission state. If this is instead purely about adding API to check permission, we would be happy to consider adding it to our API surface.\n\nIMO you may still add an API to get the list of UIDs in another appropriate place, and thus enable creating a copy of all UID permission states by iterating through these UIDs and checking their permission. Although it still isn\u0027t recommended usage, I personally won\u0027t object to it as long as it\u0027s using existing permission APIs and doesn\u0027t cause performance problems etc.",
+      "parentUuid": "42927469_6bdfd132",
+      "revId": "b0b86b43258ef2bd62ae6bed7935a10f3a6b29b9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
