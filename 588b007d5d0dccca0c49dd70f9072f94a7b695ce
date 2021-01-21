@@ -72,6 +72,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "081f1400_e0113204",
+        "filename": "services/core/java/com/android/server/am/ActivityManagerService.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 17097,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2021-01-21T14:13:37Z",
+      "side": 1,
+      "message": "I have a parallel change to potentially open it up as an api",
+      "parentUuid": "0bdacd9a_df8452a7",
+      "range": {
+        "startLine": 17097,
+        "startChar": 66,
+        "endLine": 17097,
+        "endChar": 87
+      },
+      "revId": "588b007d5d0dccca0c49dd70f9072f94a7b695ce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "eb08428d_a0713297",
