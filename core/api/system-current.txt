@@ -1479,6 +1479,7 @@ package android.bluetooth {
   public final class BluetoothDevice implements android.os.Parcelable {
     method @RequiresPermission(android.Manifest.permission.BLUETOOTH_PRIVILEGED) public boolean canBondWithoutDialog();
     method @RequiresPermission(android.Manifest.permission.BLUETOOTH_PRIVILEGED) public boolean cancelBondProcess();
+    method @RequiresPermission(android.Manifest.permission.BLUETOOTH_PRIVILEGED) public boolean createBondOutOfBand(int, @Nullable android.bluetooth.OobData, @Nullable android.bluetooth.OobData);
     method @Nullable @RequiresPermission(android.Manifest.permission.BLUETOOTH_PRIVILEGED) public byte[] getMetadata(int);
     method @RequiresPermission(android.Manifest.permission.BLUETOOTH) public int getSimAccessPermission();
     method @RequiresPermission(android.Manifest.permission.BLUETOOTH) public boolean isConnected();
@@ -1643,6 +1644,35 @@ package android.bluetooth {
     method public void writeToParcel(@NonNull android.os.Parcel, int);
     field public static final int BUFFER_CODEC_MAX_NUM = 32; // 0x20
     field @NonNull public static final android.os.Parcelable.Creator<android.bluetooth.BufferConstraints> CREATOR;
+  }
+
+  public final class OobData implements android.os.Parcelable {
+    method @Nullable public static android.bluetooth.OobData.ClassicBuilder createClassicBuilder(@NonNull byte[], @Nullable byte[], @NonNull byte[], @NonNull byte[]);
+    method @Nullable public static android.bluetooth.OobData.LeBuilder createLeBuilder(@NonNull byte[], @Nullable byte[], @Nullable byte[], int);
+    method @NonNull public byte[] getClassOfDevice();
+    method @NonNull public byte[] getConfirmation();
+    method @NonNull public byte[] getDeviceAddressWithType();
+    method @Nullable public byte[] getDeviceName();
+    method @Nullable public byte[] getLeAppearance();
+    method @NonNull public int getLeDeviceRole();
+    method @NonNull public int getLeFlags();
+    method @Nullable public byte[] getLeTemporaryKey();
+    method @NonNull public byte[] getOobDataLength();
+    method @NonNull public byte[] getRandomizer();
+    field @NonNull public static final android.os.Parcelable.Creator<android.bluetooth.OobData> CREATOR;
+  }
+
+  public static final class OobData.ClassicBuilder {
+    method @Nullable public android.bluetooth.OobData build();
+    method @NonNull public android.bluetooth.OobData.ClassicBuilder setClassOfDevice(@NonNull byte[]);
+    method @NonNull public android.bluetooth.OobData.ClassicBuilder setDeviceName(@NonNull byte[]);
+  }
+
+  public static final class OobData.LeBuilder {
+    method @Nullable public android.bluetooth.OobData build();
+    method @NonNull public android.bluetooth.OobData.LeBuilder setDeviceName(@NonNull byte[]);
+    method @NonNull public android.bluetooth.OobData.LeBuilder setLeFlags(int);
+    method @NonNull public android.bluetooth.OobData.LeBuilder setLeTemporaryKey(@NonNull byte[]);
   }
 
 }
