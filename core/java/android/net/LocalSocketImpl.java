@@ -19,7 +19,6 @@ package android.net;
 import android.compat.annotation.UnsupportedAppUsage;
 import android.os.Build;
 import android.system.ErrnoException;
-import android.system.Int32Ref;
 import android.system.Os;
 import android.system.OsConstants;
 import android.system.StructLinger;
@@ -66,13 +65,13 @@ class LocalSocketImpl
             FileDescriptor myFd = fd;
             if (myFd == null) throw new IOException("socket closed");
 
-            Int32Ref avail = new Int32Ref(0);
+            int avail = 0;
             try {
-                Os.ioctlInt(myFd, OsConstants.FIONREAD, avail);
+                avail = Os.ioctlInt(myFd, OsConstants.FIONREAD);
             } catch (ErrnoException e) {
                 throw e.rethrowAsIOException();
             }
-            return avail.value;
+            return avail;
         }
 
         /** {@inheritDoc} */
