@@ -969,6 +969,8 @@ final class HdmiCecLocalDeviceTv extends HdmiCecLocalDevice {
                 mService.announceSystemAudioModeChange(on);
                 if (on == false) {
                     mAvrSupportedFormats.clear();
+                    mAtmosSupported = false;
+                    notifyAtmosSupported(false);
                 }
             }
             if (on && !mArcEstablished) {
