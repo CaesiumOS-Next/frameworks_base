@@ -88,6 +88,24 @@
       "parentUuid": "42927469_6bdfd132",
       "revId": "b0b86b43258ef2bd62ae6bed7935a10f3a6b29b9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4aa792a1_71700672",
+        "filename": "core/api/system-current.txt",
+        "patchSetId": 3
+      },
+      "lineNbr": 7759,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2021-01-25T04:18:00Z",
+      "side": 1,
+      "message": "The problem we\u0027re dealing with here is really not about checking the permission – netd can already check permissions in native. The problem is whom is in the loop and when.\n\nThe INTERNET permission concretely is checked by the kernel for every socket (connected sockets) and every *packet* (for unconnected sockets). This is achieved by having marks in routing tables that the kernel is checking directly. In a sense, this is a cache of the system permissions of sorts, though not really what you\u0027d typically mean by that. Of course, these rules must be set up before any process with this UID tries to access the network, which no component of the system may be notified of, for some native daemons.\n\nChecking permissions when this happens rather than having this in the routing tables would mean instrumenting system calls like send() (requiring complex kernel patches), and performing a check of permissions there, even with the native APIs, would unacceptably adversely affect all networking performance.\n\nFor this reason, the current architecture is getting the list of all packages at boot and blocking boot until such a time that the routing tables, including the permissions, are setup.\n\nThe call Paul is trying to expose is, AFAICT, the condoned way of actually getting the list of UIDs including the native daemons that OEMs may add to their image. This is why we were thinking of exposing this. But of course, you make good points ; PermissionManager might not be the right home for such an API, and it is fine, once we know the list of UIDs we have to allow, to have the boot sequence blocked by queries to PermissionMonitor for each UID we need to check the permissions of. But the fact remains that the only choices we have really here are to have *some* API giving us the UIDs that need rules, or to query for the entire possible space for each user. We do think the former is a much better idea. We just need to find the right home for it.\n\nWe\u0027ll try to find a better home for this. PackageManager owners were not very warm at the idea of an API that would let you get the list of native daemon UIDs, and thought, because we already have an API with these semantics, PermissionManager might be a better fit. But we can go back and discuss again. Maybe we\u0027ll make a chatroom with all the parties in there.",
+      "parentUuid": "10f795cf_6b019e57",
+      "revId": "b0b86b43258ef2bd62ae6bed7935a10f3a6b29b9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
