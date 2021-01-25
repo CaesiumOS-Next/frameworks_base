@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b2dd6a89_bb756dac",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1013508
+      },
+      "writtenOn": "2021-01-25T23:29:16Z",
+      "side": 1,
+      "message": "Confirmed via https://b.corp.google.com/issues/172532505#comment3 that there\u0027s no API surface needed here, and that this is only an internal interface between stuff on the system image, so LGTM.",
+      "revId": "5303950d77599d4ebf281e7b46126cb3f2c862e9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9647ec6f_efa592ee",
+        "filename": "services/core/java/com/android/server/tracing/TracingServiceProxy.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1013508
+      },
+      "writtenOn": "2021-01-25T23:29:16Z",
+      "side": 1,
+      "message": "General defense in depth advice: I\u0027d recommend calling PackageManager.getPackageInfo(TRACING_APP_PACKAGE_NAME, PM.MATCH_SYSTEM_ONLY) and check for non-null.",
+      "range": {
+        "startLine": 73,
+        "startChar": 28,
+        "endLine": 73,
+        "endChar": 52
+      },
+      "revId": "5303950d77599d4ebf281e7b46126cb3f2c862e9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
