@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "40f77760_0bd4b27e",
+        "filename": "core/java/android/net/NetworkRequest.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 356,
+      "author": {
+        "id": 1288034
+      },
+      "writtenOn": "2021-01-25T09:34:00Z",
+      "side": 0,
+      "message": "Are you able to remove the method too ? It\u0027s not @UnsupportedAppUsage and I see only 2 usages",
+      "range": {
+        "startLine": 356,
+        "startChar": 37,
+        "endLine": 356,
+        "endChar": 69
+      },
+      "revId": "14cb00fd506885168870fadf5dda284f8659dcc3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
