@@ -106,6 +106,24 @@
       "parentUuid": "10f795cf_6b019e57",
       "revId": "b0b86b43258ef2bd62ae6bed7935a10f3a6b29b9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0005863a_406de31a",
+        "filename": "core/api/system-current.txt",
+        "patchSetId": 3
+      },
+      "lineNbr": 7759,
+      "author": {
+        "id": 1351609
+      },
+      "writtenOn": "2021-01-26T03:54:03Z",
+      "side": 1,
+      "message": "Thanks for the detailed explanation, it makes sense to me now about the need for a copy of permission state. If in some cases we can not check permission right upon the action of a native process, I believe it is acceptable to push a whole copy of the permission state into some kernel data structure.\n\nAnd yes I agree that the crux of the matter here is how we get the UIDs. If we create the permission state copy similar to how we did that for packages, i.e. getting all the possible names and checking permissions on them, package would surely be a more appropriate fit for adding the UID API upon than permission. If we create a specialized API for network stack\u0027s need - actually network stack can create and maintain its own system server in-process API, see http://ag/12512659. In this case network stack may get the potential system UIDs from SystemConfig as usual in its platform implementation of the in-process API, and check them with PermissionManager.",
+      "parentUuid": "4aa792a1_71700672",
+      "revId": "b0b86b43258ef2bd62ae6bed7935a10f3a6b29b9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
