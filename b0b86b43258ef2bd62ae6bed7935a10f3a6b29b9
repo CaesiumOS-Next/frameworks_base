@@ -124,6 +124,24 @@
       "parentUuid": "4aa792a1_71700672",
       "revId": "b0b86b43258ef2bd62ae6bed7935a10f3a6b29b9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0eeea8f0_3f3a796d",
+        "filename": "core/api/system-current.txt",
+        "patchSetId": 3
+      },
+      "lineNbr": 7759,
+      "author": {
+        "id": 1308473
+      },
+      "writtenOn": "2021-01-27T02:48:50Z",
+      "side": 1,
+      "message": "I just searched the code in framework that could put our design and then I found SystemConfigManager. Looks like this is for Telephony mainline to read some system configs, assume that Connectivity mainline is able to read system config via this way. Thus, SystemConfigManager should be proper and reasonable place to land the get system permission uid API. So I will put our API to there. Thanks for your suggestion and help.",
+      "parentUuid": "0005863a_406de31a",
+      "revId": "b0b86b43258ef2bd62ae6bed7935a10f3a6b29b9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
