@@ -39,6 +39,30 @@
       },
       "revId": "5303950d77599d4ebf281e7b46126cb3f2c862e9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "da161b60_e6e9ff60",
+        "filename": "services/core/java/com/android/server/tracing/TracingServiceProxy.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1558410
+      },
+      "writtenOn": "2021-01-27T23:00:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9647ec6f_efa592ee",
+      "range": {
+        "startLine": 73,
+        "startChar": 28,
+        "endLine": 73,
+        "endChar": 52
+      },
+      "revId": "5303950d77599d4ebf281e7b46126cb3f2c862e9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
