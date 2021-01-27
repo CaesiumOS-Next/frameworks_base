@@ -77,6 +77,14 @@ package android.os {
 
 }
 
+package android.provider {
+
+  public final class Settings {
+    method public static boolean checkAndNoteChangeNetworkStateOperation(@NonNull android.content.Context, int, @Nullable String, boolean);
+  }
+
+}
+
 package android.telephony {
 
   public abstract class CellSignalStrength {

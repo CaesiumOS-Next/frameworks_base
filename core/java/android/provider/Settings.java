@@ -15104,8 +15104,9 @@ public final class Settings {
      * of this app will be updated to the current time.
      * @hide
      */
-    public static boolean checkAndNoteChangeNetworkStateOperation(Context context, int uid,
-            String callingPackage, boolean throwException) {
+    @SystemApi(client = SystemApi.Client.MODULE_LIBRARIES)
+    public static boolean checkAndNoteChangeNetworkStateOperation(@NonNull Context context, int uid,
+            @Nullable String callingPackage, boolean throwException) {
         if (context.checkCallingOrSelfPermission(android.Manifest.permission.CHANGE_NETWORK_STATE)
                 == PackageManager.PERMISSION_GRANTED) {
             return true;
