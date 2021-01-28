@@ -1,0 +1,56 @@
+{
+  "comments": [
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000007687479",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1563232?revision\u003d1",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "18d9f4f6_223c6665",
+        "filename": "services/core/java/com/android/server/power/ShutdownThread.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 623,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2021-01-28T05:21:46Z",
+      "side": 1,
+      "message": "Lines longer than 100 characters should be wrapped to improve readability; see https://source.android.com/setup/contribute/code-style#limit-line-length for more details.",
+      "range": {
+        "startLine": 623,
+        "startChar": 0,
+        "endLine": 623,
+        "endChar": 124
+      },
+      "revId": "72f0b5a6edeb15efa0efbaca6d8c44d44ddbe249",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000007687479",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1563232?revision\u003d1",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "1b538c60_5dcdac66",
+        "filename": "services/core/java/com/android/server/power/ShutdownThread.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 666,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2021-01-28T05:21:46Z",
+      "side": 1,
+      "message": "Lines longer than 100 characters should be wrapped to improve readability; see https://source.android.com/setup/contribute/code-style#limit-line-length for more details.",
+      "range": {
+        "startLine": 666,
+        "startChar": 0,
+        "endLine": 666,
+        "endChar": 107
+      },
+      "revId": "72f0b5a6edeb15efa0efbaca6d8c44d44ddbe249",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
