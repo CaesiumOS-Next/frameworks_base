@@ -5059,6 +5059,11 @@ public class UserManagerService extends IUserManager.Stub {
         }
 
         @Override
+        public void removeAllPreCreatedUsers() {
+            UserManagerService.this.cleanupPreCreatedUsers();
+        }
+
+        @Override
         public void onEphemeralUserStop(@UserIdInt int userId) {
             synchronized (mUsersLock) {
                UserInfo userInfo = getUserInfoLU(userId);
