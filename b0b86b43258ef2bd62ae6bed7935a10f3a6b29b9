@@ -142,6 +142,24 @@
       "parentUuid": "0005863a_406de31a",
       "revId": "b0b86b43258ef2bd62ae6bed7935a10f3a6b29b9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ef20d768_7582a7c5",
+        "filename": "core/api/system-current.txt",
+        "patchSetId": 3
+      },
+      "lineNbr": 7759,
+      "author": {
+        "id": 1351609
+      },
+      "writtenOn": "2021-01-28T20:13:45Z",
+      "side": 1,
+      "message": "Thanks for the effort in finding the best place for the new API!",
+      "parentUuid": "0eeea8f0_3f3a796d",
+      "revId": "b0b86b43258ef2bd62ae6bed7935a10f3a6b29b9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
