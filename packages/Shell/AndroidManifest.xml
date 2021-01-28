@@ -65,6 +65,7 @@
     <uses-permission android:name="android.permission.WRITE_DEVICE_CONFIG" />
     <uses-permission android:name="android.permission.BROADCAST_STICKY" />
     <uses-permission android:name="android.permission.MANAGE_ACCESSIBILITY" />
+    <uses-permission android:name="android.permission.STORAGE_INTERNAL"/>
     <!-- Development tool permissions granted to the shell. -->
     <uses-permission android:name="android.permission.SET_DEBUG_APP" />
     <uses-permission android:name="android.permission.SET_PROCESS_LIMIT" />
