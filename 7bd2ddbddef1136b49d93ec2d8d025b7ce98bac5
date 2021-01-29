@@ -47,6 +47,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ccde22d1_57de16bd",
+        "filename": "core/java/android/os/SystemConfigManager.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1308473
+      },
+      "writtenOn": "2021-01-29T03:04:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d5542717_e4129e1d",
+      "range": {
+        "startLine": 118,
+        "startChar": 29,
+        "endLine": 118,
+        "endChar": 77
+      },
+      "revId": "7bd2ddbddef1136b49d93ec2d8d025b7ce98bac5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "55861f3e_ccfac084",
@@ -60,6 +84,30 @@
       "writtenOn": "2021-01-28T14:47:31Z",
       "side": 1,
       "message": "Question: What does this mean?",
+      "range": {
+        "startLine": 128,
+        "startChar": 19,
+        "endLine": 128,
+        "endChar": 29
+      },
+      "revId": "7bd2ddbddef1136b49d93ec2d8d025b7ce98bac5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "195cf210_0e7ce298",
+        "filename": "core/java/android/os/SystemConfigManager.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1308473
+      },
+      "writtenOn": "2021-01-29T03:04:18Z",
+      "side": 1,
+      "message": "Return an int array with zero length.",
+      "parentUuid": "55861f3e_ccfac084",
       "range": {
         "startLine": 128,
         "startChar": 19,
@@ -93,6 +141,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d460d402_91e06ad7",
+        "filename": "services/java/com/android/server/SystemConfigService.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1308473
+      },
+      "writtenOn": "2021-01-29T03:04:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ffbb0e0d_30ce70dc",
+      "range": {
+        "startLine": 77,
+        "startChar": 48,
+        "endLine": 77,
+        "endChar": 64
+      },
+      "revId": "7bd2ddbddef1136b49d93ec2d8d025b7ce98bac5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "700cb313_e52f698c",
@@ -106,6 +178,30 @@
       "writtenOn": "2021-01-28T09:16:35Z",
       "side": 1,
       "message": "Nit: final",
+      "range": {
+        "startLine": 80,
+        "startChar": 16,
+        "endLine": 80,
+        "endChar": 17
+      },
+      "revId": "7bd2ddbddef1136b49d93ec2d8d025b7ce98bac5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "462bb330_45a8a1bb",
+        "filename": "services/java/com/android/server/SystemConfigService.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1308473
+      },
+      "writtenOn": "2021-01-29T03:04:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "700cb313_e52f698c",
       "range": {
         "startLine": 80,
         "startChar": 16,
