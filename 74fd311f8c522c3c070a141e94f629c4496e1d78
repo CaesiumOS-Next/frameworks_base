@@ -16,6 +16,46 @@
       "message": "Hello, \nSeems like this CL is ready for submit. Please merge this CL.\nThanks",
       "revId": "74fd311f8c522c3c070a141e94f629c4496e1d78",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "42ba0d82_81861a46",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1632811
+      },
+      "writtenOn": "2021-01-29T21:02:54Z",
+      "side": 1,
+      "message": "Sorry for the late response. Thanks for the fix.",
+      "revId": "74fd311f8c522c3c070a141e94f629c4496e1d78",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "80cab312_e77e6dc4",
+        "filename": "core/java/android/view/autofill/AutofillManager.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 1915,
+      "author": {
+        "id": 1632811
+      },
+      "writtenOn": "2021-01-29T21:02:54Z",
+      "side": 1,
+      "message": "This is normally checked at entry points to the class and we shouldn\u0027t get here if this is false. Still, having a check to make sure we don\u0027t throw an NPE is good. I suggest adding a direct check for mService !\u003d null here (or better in a separate if condition above) to make the intention clearer. Can optionally also log a warning if we see this being null.",
+      "range": {
+        "startLine": 1915,
+        "startChar": 35,
+        "endLine": 1915,
+        "endChar": 58
+      },
+      "revId": "74fd311f8c522c3c070a141e94f629c4496e1d78",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
