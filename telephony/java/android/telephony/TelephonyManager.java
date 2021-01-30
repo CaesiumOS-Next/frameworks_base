@@ -97,6 +97,7 @@ import android.util.Pair;
 
 import com.android.internal.annotations.GuardedBy;
 import com.android.internal.annotations.VisibleForTesting;
+import com.android.internal.os.BackgroundThread;
 import com.android.internal.telephony.CellNetworkScanResult;
 import com.android.internal.telephony.IBooleanConsumer;
 import com.android.internal.telephony.ICallForwardingInfoCallback;
@@ -5929,7 +5930,8 @@ public class TelephonyManager {
             @NonNull @CallbackExecutor Executor executor, @NonNull CellInfoCallback callback) {
         try {
             ITelephony telephony = getITelephony();
-            if (telephony == null) return;
+            if (telephony == null) throw new RemoteException("Telephony is null");
+
             telephony.requestCellInfoUpdate(
                     getSubId(),
                     new ICellInfoCallback.Stub() {
@@ -5956,6 +5958,11 @@ public class TelephonyManager {
                         }
                     }, getOpPackageName(), getAttributionTag());
         } catch (RemoteException ex) {
+            Handler h = BackgroundThread.getHandler();
+            if (h != null) {
+                h.post(() -> executor.execute(
+                            () -> callback.onError(CellInfoCallback.ERROR_MODEM_ERROR, ex)));
+            }
         }
     }
 
@@ -5983,7 +5990,7 @@ public class TelephonyManager {
             @NonNull @CallbackExecutor Executor executor, @NonNull CellInfoCallback callback) {
         try {
             ITelephony telephony = getITelephony();
-            if (telephony == null) return;
+            if (telephony == null) throw new RemoteException("Telephony is null");
             telephony.requestCellInfoUpdateWithWorkSource(
                     getSubId(),
                     new ICellInfoCallback.Stub() {
@@ -6011,6 +6018,11 @@ public class TelephonyManager {
                         }
                     }, getOpPackageName(), getAttributionTag(), workSource);
         } catch (RemoteException ex) {
+            Handler h = BackgroundThread.getHandler();
+            if (h != null) {
+                h.post(() -> executor.execute(
+                            () -> callback.onError(CellInfoCallback.ERROR_MODEM_ERROR, ex)));
+            }
         }
     }
 
@@ -6977,14 +6989,18 @@ public class TelephonyManager {
 
         try {
             ITelephony telephony = getITelephony();
-            if (telephony != null) {
-                telephony.requestNumberVerification(range, timeoutMillis, internalCallback,
-                        getOpPackageName());
-            }
+            if (telephony == null) throw new RemoteException("Telephony is null");
+
+            telephony.requestNumberVerification(range, timeoutMillis, internalCallback,
+                    getOpPackageName());
         } catch (RemoteException ex) {
             Rlog.e(TAG, "requestNumberVerification RemoteException", ex);
-            executor.execute(() ->
-                    callback.onVerificationFailed(NumberVerificationCallback.REASON_UNSPECIFIED));
+            Handler h = BackgroundThread.getHandler();
+            if (h != null) {
+                h.post(() -> executor.execute(
+                            () -> callback.onVerificationFailed(
+                                    NumberVerificationCallback.REASON_UNSPECIFIED)));
+            }
         }
     }
 
@@ -10258,6 +10274,8 @@ public class TelephonyManager {
         }
         try {
             ITelephony telephony = getITelephony();
+            if (telephony == null) throw new RemoteException("Telephony is null.");
+
             IIntegerConsumer internalCallback = new IIntegerConsumer.Stub() {
                 @Override
                 public void accept(int result) {
@@ -10265,10 +10283,9 @@ public class TelephonyManager {
                             Binder.withCleanCallingIdentity(() -> callback.accept(result)));
                 }
             };
-            if (telephony != null) {
-                telephony.setSimPowerStateForSlotWithCallback(slotIndex, state, internalCallback);
-            }
+            telephony.setSimPowerStateForSlotWithCallback(slotIndex, state, internalCallback);
         } catch (RemoteException e) {
+
             Log.e(TAG, "Error calling ITelephony#setSimPowerStateForSlot", e);
         } catch (SecurityException e) {
             Log.e(TAG, "Permission error calling ITelephony#setSimPowerStateForSlot",
@@ -12704,22 +12721,7 @@ public class TelephonyManager {
         try {
             IOns iOpportunisticNetworkService = getIOns();
             if (iOpportunisticNetworkService == null) {
-                if (executor == null || callback == null) {
-                    return;
-                }
-                final long identity = Binder.clearCallingIdentity();
-                try {
-                    executor.execute(() -> {
-                        if (Compatibility.isChangeEnabled(CALLBACK_ON_MORE_ERROR_CODE_CHANGE)) {
-                            callback.accept(SET_OPPORTUNISTIC_SUB_REMOTE_SERVICE_EXCEPTION);
-                        } else {
-                            callback.accept(SET_OPPORTUNISTIC_SUB_INACTIVE_SUBSCRIPTION);
-                        }
-                    });
-                } finally {
-                    Binder.restoreCallingIdentity(identity);
-                }
-                return;
+                throw new RemoteException("Opportunistic Network Service is null");
             }
             ISetOpportunisticDataCallback callbackStub = new ISetOpportunisticDataCallback.Stub() {
                 @Override
@@ -12742,7 +12744,20 @@ public class TelephonyManager {
                     .setPreferredDataSubscriptionId(subId, needValidation, callbackStub,
                             pkgForDebug);
         } catch (RemoteException ex) {
-            Rlog.e(TAG, "setPreferredDataSubscriptionId RemoteException", ex);
+            Rlog.e(TAG, "setPreferredOpportunisticDataSubscription RemoteException", ex);
+            if (executor == null || callback == null) {
+                return;
+            }
+            Handler h = BackgroundThread.getHandler();
+            if (h != null) {
+                h.post(executor.execute(() -> {
+                        if (Compatibility.isChangeEnabled(CALLBACK_ON_MORE_ERROR_CODE_CHANGE)) {
+                            callback.accept(SET_OPPORTUNISTIC_SUB_REMOTE_SERVICE_EXCEPTION);
+                        } else {
+                            callback.accept(SET_OPPORTUNISTIC_SUB_INACTIVE_SUBSCRIPTION);
+                        }
+                    }));
+            }
         }
         return;
     }
@@ -12801,37 +12816,13 @@ public class TelephonyManager {
             @Nullable @CallbackExecutor Executor executor,
             @UpdateAvailableNetworksResult @Nullable Consumer<Integer> callback) {
         String pkgForDebug = mContext != null ? mContext.getOpPackageName() : "<unknown>";
+        Objects.requireNonNull(availableNetworks, "availableNetworks must not be null.");
         try {
             IOns iOpportunisticNetworkService = getIOns();
-            if (iOpportunisticNetworkService == null || availableNetworks == null) {
-                if (executor == null || callback == null) {
-                    return;
-                }
-                if (iOpportunisticNetworkService == null) {
-                    final long identity = Binder.clearCallingIdentity();
-                    try {
-                        executor.execute(() -> {
-                            if (Compatibility.isChangeEnabled(CALLBACK_ON_MORE_ERROR_CODE_CHANGE)) {
-                                callback.accept(UPDATE_AVAILABLE_NETWORKS_REMOTE_SERVICE_EXCEPTION);
-                            } else {
-                                callback.accept(UPDATE_AVAILABLE_NETWORKS_UNKNOWN_FAILURE);
-                            }
-                        });
-                    } finally {
-                        Binder.restoreCallingIdentity(identity);
-                    }
-                } else {
-                    final long identity = Binder.clearCallingIdentity();
-                    try {
-                        executor.execute(() -> {
-                            callback.accept(UPDATE_AVAILABLE_NETWORKS_INVALID_ARGUMENTS);
-                        });
-                    } finally {
-                        Binder.restoreCallingIdentity(identity);
-                    }
-                }
-                return;
+            if (iOpportunisticNetworkService == null) {
+                throw new RemoteException("Opportunistic Network Service is null");
             }
+
             IUpdateAvailableNetworksCallback callbackStub =
                     new IUpdateAvailableNetworksCallback.Stub() {
                         @Override
@@ -12839,20 +12830,28 @@ public class TelephonyManager {
                             if (executor == null || callback == null) {
                                 return;
                             }
-                            final long identity = Binder.clearCallingIdentity();
-                            try {
-                                executor.execute(() -> {
-                                    callback.accept(result);
-                                });
-                            } finally {
-                                Binder.restoreCallingIdentity(identity);
-                            }
+                            Binder.withCleanCallingIdentity(() -> {
+                                executor.execute(() -> callback.accept(result));
+                            });
                         }
                     };
-            iOpportunisticNetworkService.updateAvailableNetworks(availableNetworks, callbackStub,
-                    pkgForDebug);
+            iOpportunisticNetworkService
+                    .updateAvailableNetworks(availableNetworks, callbackStub, pkgForDebug);
         } catch (RemoteException ex) {
             Rlog.e(TAG, "updateAvailableNetworks RemoteException", ex);
+            if (executor == null || callback == null) {
+                return;
+            }
+            Handler h = BackgroundThread.getHandler();
+            if (h != null) {
+                h.post(executor.execute(() -> {
+                        if (Compatibility.isChangeEnabled(CALLBACK_ON_MORE_ERROR_CODE_CHANGE)) {
+                            callback.accept(UPDATE_AVAILABLE_NETWORKS_REMOTE_SERVICE_EXCEPTION);
+                        } else {
+                            callback.accept(UPDATE_AVAILABLE_NETWORKS_UNKNOWN_FAILURE);
+                        }
+                }));
+            }
         }
     }
 
