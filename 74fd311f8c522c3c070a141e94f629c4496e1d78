@@ -56,6 +56,30 @@
       },
       "revId": "74fd311f8c522c3c070a141e94f629c4496e1d78",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a2626e23_778d98fa",
+        "filename": "core/java/android/view/autofill/AutofillManager.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 1915,
+      "author": {
+        "id": 1259532
+      },
+      "writtenOn": "2021-02-01T13:52:17Z",
+      "side": 1,
+      "message": "Hello,\nCould you please clarify the expected action:\nShould I update the CL with separate mService !\u003d null condition, adding a warning log? Or I should leave the CL unchanged?\nMethod hasAutofillFeature() is widely used in AutofillManager to check\nif AutofillService is available, so I think it could be used in this case.\nThanks.",
+      "parentUuid": "80cab312_e77e6dc4",
+      "range": {
+        "startLine": 1915,
+        "startChar": 35,
+        "endLine": 1915,
+        "endChar": 58
+      },
+      "revId": "74fd311f8c522c3c070a141e94f629c4496e1d78",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
