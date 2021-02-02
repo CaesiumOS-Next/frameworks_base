@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ed97948b_ab998ab5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308473
+      },
+      "writtenOn": "2021-02-02T02:00:53Z",
+      "side": 1,
+      "message": "Hi, Todd\n\nI saw you review ag/10027504 to add SystemConfigManger before.\nCould you please help to review this change?\nIf you are not the right owner, could you please loop right owner for review. Thanks.",
+      "revId": "1cdf3366b7dbfddb41a807b8c7b0cfe7f0947709",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
