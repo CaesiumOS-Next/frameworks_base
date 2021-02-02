@@ -16,6 +16,29 @@
       "message": "Hi, Todd\n\nI saw you review ag/10027504 to add SystemConfigManger before.\nCould you please help to review this change?\nIf you are not the right owner, could you please loop right owner for review. Thanks.",
       "revId": "1cdf3366b7dbfddb41a807b8c7b0cfe7f0947709",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0579253b_8c16388b",
+        "filename": "core/java/android/os/ISystemConfig.aidl",
+        "patchSetId": 6
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1060678
+      },
+      "writtenOn": "2021-02-02T15:46:23Z",
+      "side": 1,
+      "message": "please expose through the PermissionManager",
+      "range": {
+        "startLine": 42,
+        "startChar": 10,
+        "endLine": 42,
+        "endChar": 33
+      },
+      "revId": "1cdf3366b7dbfddb41a807b8c7b0cfe7f0947709",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
