@@ -39,6 +39,30 @@
       },
       "revId": "1cdf3366b7dbfddb41a807b8c7b0cfe7f0947709",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "78314780_e91e3928",
+        "filename": "core/java/android/os/ISystemConfig.aidl",
+        "patchSetId": 6
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1308473
+      },
+      "writtenOn": "2021-02-02T16:50:53Z",
+      "side": 1,
+      "message": "I put the API on PermissionManager at beginning, but zhanghai@ thought it\u0027s not the right place to land this API. We have discussed it many times but still no agreement. Eventually, I can only seek some possible places to put the API. That\u0027s why I put the API on SystemConfigManager. Please see the comments above. Thanks.",
+      "parentUuid": "0579253b_8c16388b",
+      "range": {
+        "startLine": 42,
+        "startChar": 10,
+        "endLine": 42,
+        "endChar": 33
+      },
+      "revId": "1cdf3366b7dbfddb41a807b8c7b0cfe7f0947709",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
