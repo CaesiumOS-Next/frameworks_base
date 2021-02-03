@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2ecf1c27_c773d787",
+        "filename": "services/core/java/com/android/server/IpSecService.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 1322,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2021-02-03T07:19:38Z",
+      "side": 1,
+      "message": "Why check a permission inside a block clearing calling identity ?",
+      "range": {
+        "startLine": 1322,
+        "startChar": 29,
+        "endLine": 1322,
+        "endChar": 56
+      },
+      "revId": "3f6c33753c0d650be609d06f1e0f077be8bc0613",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1b9003c3_2dff418c",
+        "filename": "tests/net/java/com/android/server/IpSecServiceParameterizedTest.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 645,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2021-02-03T07:19:38Z",
+      "side": 1,
+      "message": "Let\u0027s remove these unrealistic and unused flags and inline the var",
+      "range": {
+        "startLine": 645,
+        "startChar": 45,
+        "endLine": 645,
+        "endChar": 62
+      },
+      "revId": "3f6c33753c0d650be609d06f1e0f077be8bc0613",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "36bb1df5_482014f2",
+        "filename": "tests/net/java/com/android/server/IpSecServiceParameterizedTest.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 684,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2021-02-03T07:19:38Z",
+      "side": 1,
+      "message": "Please refer to my comments on aosp/15536988 – use argThat() and remove the comment",
+      "range": {
+        "startLine": 677,
+        "startChar": 0,
+        "endLine": 684,
+        "endChar": 54
+      },
+      "revId": "3f6c33753c0d650be609d06f1e0f077be8bc0613",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
