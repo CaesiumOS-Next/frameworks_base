@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "299f7088_4bf1afe1",
+        "filename": "services/core/java/com/android/server/IpSecService.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 1322,
+      "author": {
+        "id": 1308163
+      },
+      "writtenOn": "2021-02-03T16:13:21Z",
+      "side": 1,
+      "message": "Ah, right.\nI\u0027m just following the original design that NetworkManagementService checks the NetworkStack permission in setInterfaceUp().\n\nRemoved.",
+      "parentUuid": "2ecf1c27_c773d787",
+      "range": {
+        "startLine": 1322,
+        "startChar": 29,
+        "endLine": 1322,
+        "endChar": 56
+      },
+      "revId": "3f6c33753c0d650be609d06f1e0f077be8bc0613",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1b9003c3_2dff418c",
@@ -47,6 +71,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "24211afb_1539d6fc",
+        "filename": "tests/net/java/com/android/server/IpSecServiceParameterizedTest.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 645,
+      "author": {
+        "id": 1308163
+      },
+      "writtenOn": "2021-02-03T16:13:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1b9003c3_2dff418c",
+      "range": {
+        "startLine": 645,
+        "startChar": 45,
+        "endLine": 645,
+        "endChar": 62
+      },
+      "revId": "3f6c33753c0d650be609d06f1e0f077be8bc0613",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "36bb1df5_482014f2",
@@ -60,6 +108,30 @@
       "writtenOn": "2021-02-03T07:19:38Z",
       "side": 1,
       "message": "Please refer to my comments on aosp/15536988 – use argThat() and remove the comment",
+      "range": {
+        "startLine": 677,
+        "startChar": 0,
+        "endLine": 684,
+        "endChar": 54
+      },
+      "revId": "3f6c33753c0d650be609d06f1e0f077be8bc0613",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7ecdbaa5_e08baaec",
+        "filename": "tests/net/java/com/android/server/IpSecServiceParameterizedTest.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 684,
+      "author": {
+        "id": 1308163
+      },
+      "writtenOn": "2021-02-03T16:13:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "36bb1df5_482014f2",
       "range": {
         "startLine": 677,
         "startChar": 0,
