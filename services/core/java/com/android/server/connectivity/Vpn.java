@@ -111,6 +111,7 @@ import com.android.internal.messages.nano.SystemMessageProto.SystemMessage;
 import com.android.internal.net.LegacyVpnInfo;
 import com.android.internal.net.VpnConfig;
 import com.android.internal.net.VpnProfile;
+import com.android.net.module.util.NetdUtils;
 import com.android.server.DeviceIdleInternal;
 import com.android.server.LocalServices;
 import com.android.server.net.BaseNetworkObserver;
@@ -2501,7 +2502,7 @@ public class Vpn {
                                     address /* unused */,
                                     address /* unused */,
                                     network);
-                    mNms.setInterfaceUp(mTunnelIface.getInterfaceName());
+                    NetdUtils.setInterfaceUp(mNetd, mTunnelIface.getInterfaceName());
 
                     mSession = mIkev2SessionCreator.createIkeSession(
                             mContext,
