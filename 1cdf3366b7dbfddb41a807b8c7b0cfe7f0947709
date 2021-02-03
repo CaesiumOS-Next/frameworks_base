@@ -86,6 +86,30 @@
       },
       "revId": "1cdf3366b7dbfddb41a807b8c7b0cfe7f0947709",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e01929e0_a64cab34",
+        "filename": "core/java/android/os/SystemConfigManager.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1308473
+      },
+      "writtenOn": "2021-02-03T16:30:57Z",
+      "side": 1,
+      "message": "It should be \"have been granted\", they define the permission on data/etc/platform.xml. Upate the comment accordingly.",
+      "parentUuid": "fef004ce_bcd0a5f1",
+      "range": {
+        "startLine": 116,
+        "startChar": 16,
+        "endLine": 116,
+        "endChar": 29
+      },
+      "revId": "1cdf3366b7dbfddb41a807b8c7b0cfe7f0947709",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
