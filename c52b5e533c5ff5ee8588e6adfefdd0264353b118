@@ -16,6 +16,24 @@
       "message": "Hi Henry, Nick,\n\nCan you advise what are the next steps since the Presubmit-Verified vote expired?",
       "revId": "c52b5e533c5ff5ee8588e6adfefdd0264353b118",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2149aa81_53ec7b1d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1443524
+      },
+      "writtenOn": "2021-02-03T01:57:33Z",
+      "side": 1,
+      "message": "rerun presubmit, if it\u0027s ok, will merge it.",
+      "parentUuid": "7a77bd9d_bc934ebf",
+      "revId": "c52b5e533c5ff5ee8588e6adfefdd0264353b118",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
