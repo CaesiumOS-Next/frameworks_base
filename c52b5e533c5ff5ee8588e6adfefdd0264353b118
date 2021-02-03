@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7a77bd9d_bc934ebf",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1133568
+      },
+      "writtenOn": "2021-02-03T01:16:06Z",
+      "side": 1,
+      "message": "Hi Henry, Nick,\n\nCan you advise what are the next steps since the Presubmit-Verified vote expired?",
+      "revId": "c52b5e533c5ff5ee8588e6adfefdd0264353b118",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
