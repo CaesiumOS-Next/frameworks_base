@@ -313,7 +313,6 @@ cc_defaults {
         "libharfbuzz_ng",
         "liblog",
         "libminikin",
-        "libnativehelper",
         "libz",
         "libziparchive",
         "libjpeg",
@@ -349,6 +348,7 @@ cc_defaults {
             ],
             static_libs: [
                 "libgif",
+                "libnativehelper_lazy",
                 "libstatslog",
             ],
         },

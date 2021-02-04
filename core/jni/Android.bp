@@ -50,7 +50,6 @@ cc_library_shared {
         "libhwui",
         "liblog",
         "libminikin",
-        "libnativehelper",
         "libz",
         "libziparchive",
     ],
@@ -200,9 +199,14 @@ cc_library_shared {
                 "libbinderthreadstateutils",
                 "libdmabufinfo",
                 "libgif",
+                "libnativehelper_lazy",
                 "libseccomp_policy",
                 "libgrallocusage",
                 "libscrypt_static",
+            ],
+
+            export_static_lib_headers: [
+                "libnativehelper_lazy",
             ],
 
             shared_libs: [
@@ -266,9 +270,6 @@ cc_library_shared {
                 "libstatspull",
             ],
             export_shared_lib_headers: [
-                // AndroidRuntime.h depends on nativehelper/jni.h
-                "libnativehelper",
-
                 // our headers include libnativewindow's public headers
                 "libnativewindow",
             ],
@@ -293,6 +294,7 @@ cc_library_shared {
             shared_libs: [
                 "libicui18n",
                 "libicuuc",
+                "libnativehelper",
             ],
             static_libs: [
                 "libandroidfw",
