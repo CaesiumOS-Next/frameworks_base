@@ -1,0 +1,314 @@
+{
+  "comments": [
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000007955693",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1556758?revision\u003d5",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "d43448ef_3b042194",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2021-02-05T21:30:35Z",
+      "side": 1,
+      "message": "\"compiles and runs\" is not a valid test stanza. Expected one of: gd/cert/run (--device|--rust|--rhost) (\u003cfilter\u003e) OR gd/fuzz/run (--host) \u003ctest\u003e OR atest (--host) \u003ctest\u003e",
+      "range": {
+        "startLine": 14,
+        "startChar": 5,
+        "endLine": 14,
+        "endChar": 23
+      },
+      "revId": "a33c2481bba42f2d0b80d7c65a4f549468fba9e7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000007955690",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1556758?revision\u003d5",
+      "fixSuggestions": [
+        {
+          "fixId": "48133f5a_18cd3531",
+          "description": "Change to \"core/java/android/bluetooth/OobData.java\"",
+          "replacements": [
+            {
+              "path": "core/java/android/bluetooth/OobData.java",
+              "range": {
+                "startLine": 262,
+                "startChar": 19,
+                "endLine": 262,
+                "endChar": 31
+              },
+              "replacement": "Supplemental"
+            }
+          ]
+        }
+      ],
+      "key": {
+        "uuid": "dc71f717_a588939b",
+        "filename": "core/java/android/bluetooth/OobData.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 262,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2021-02-05T21:30:35Z",
+      "side": 1,
+      "message": "Common typo found: \"Supplimental\" -- should it be \"Supplemental\"?\nNote: a line containing \"common_typos_disable\" or \"common_typos_enable\" will turn off or on (respectively) the linter for subsequent lines in the file. Alternatively include the token \"NOTYPO\" within a line to skip typo linting that line or include \u0027No-Typo-Check: \u003creason\u003e\u0027in the commit message.",
+      "range": {
+        "startLine": 262,
+        "startChar": 19,
+        "endLine": 262,
+        "endChar": 31
+      },
+      "revId": "a33c2481bba42f2d0b80d7c65a4f549468fba9e7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000007955690",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1556758?revision\u003d5",
+      "fixSuggestions": [
+        {
+          "fixId": "a15a9c58_7577d763",
+          "description": "Change to \"core/java/android/bluetooth/OobData.java\"",
+          "replacements": [
+            {
+              "path": "core/java/android/bluetooth/OobData.java",
+              "range": {
+                "startLine": 301,
+                "startChar": 19,
+                "endLine": 301,
+                "endChar": 31
+              },
+              "replacement": "Supplemental"
+            }
+          ]
+        }
+      ],
+      "key": {
+        "uuid": "3affb7b7_019ef120",
+        "filename": "core/java/android/bluetooth/OobData.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 301,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2021-02-05T21:30:35Z",
+      "side": 1,
+      "message": "Common typo found: \"Supplimental\" -- should it be \"Supplemental\"?\nNote: a line containing \"common_typos_disable\" or \"common_typos_enable\" will turn off or on (respectively) the linter for subsequent lines in the file. Alternatively include the token \"NOTYPO\" within a line to skip typo linting that line or include \u0027No-Typo-Check: \u003creason\u003e\u0027in the commit message.",
+      "range": {
+        "startLine": 301,
+        "startChar": 19,
+        "endLine": 301,
+        "endChar": 31
+      },
+      "revId": "a33c2481bba42f2d0b80d7c65a4f549468fba9e7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000007955697",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1556758?revision\u003d5",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "5a5f615a_c44c6657",
+        "filename": "core/java/android/bluetooth/OobData.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 310,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2021-02-05T21:30:35Z",
+      "side": 1,
+      "message": "Lines longer than 100 characters should be wrapped to improve readability; see https://source.android.com/setup/contribute/code-style#limit-line-length for more details.",
+      "range": {
+        "startLine": 310,
+        "startChar": 0,
+        "endLine": 310,
+        "endChar": 101
+      },
+      "revId": "a33c2481bba42f2d0b80d7c65a4f549468fba9e7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000007955690",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1556758?revision\u003d5",
+      "fixSuggestions": [
+        {
+          "fixId": "8226134b_6bf88378",
+          "description": "Change to \"core/java/android/bluetooth/OobData.java\"",
+          "replacements": [
+            {
+              "path": "core/java/android/bluetooth/OobData.java",
+              "range": {
+                "startLine": 466,
+                "startChar": 16,
+                "endLine": 466,
+                "endChar": 28
+              },
+              "replacement": "Simultaneous"
+            }
+          ]
+        }
+      ],
+      "key": {
+        "uuid": "48a5e50b_7837ce05",
+        "filename": "core/java/android/bluetooth/OobData.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 466,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2021-02-05T21:30:35Z",
+      "side": 1,
+      "message": "Common typo found: \"Simulatneous\" -- should it be \"Simultaneous\"?\nNote: a line containing \"common_typos_disable\" or \"common_typos_enable\" will turn off or on (respectively) the linter for subsequent lines in the file. Alternatively include the token \"NOTYPO\" within a line to skip typo linting that line or include \u0027No-Typo-Check: \u003creason\u003e\u0027in the commit message.",
+      "range": {
+        "startLine": 466,
+        "startChar": 16,
+        "endLine": 466,
+        "endChar": 28
+      },
+      "revId": "a33c2481bba42f2d0b80d7c65a4f549468fba9e7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000007955690",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1556758?revision\u003d5",
+      "fixSuggestions": [
+        {
+          "fixId": "42dafdfa_a66a7620",
+          "description": "Change to \"core/java/android/bluetooth/OobData.java\"",
+          "replacements": [
+            {
+              "path": "core/java/android/bluetooth/OobData.java",
+              "range": {
+                "startLine": 468,
+                "startChar": 16,
+                "endLine": 468,
+                "endChar": 28
+              },
+              "replacement": "Simultaneous"
+            }
+          ]
+        }
+      ],
+      "key": {
+        "uuid": "880c2a1d_7a6be9cc",
+        "filename": "core/java/android/bluetooth/OobData.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 468,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2021-02-05T21:30:35Z",
+      "side": 1,
+      "message": "Common typo found: \"Simulatneous\" -- should it be \"Simultaneous\"?\nNote: a line containing \"common_typos_disable\" or \"common_typos_enable\" will turn off or on (respectively) the linter for subsequent lines in the file. Alternatively include the token \"NOTYPO\" within a line to skip typo linting that line or include \u0027No-Typo-Check: \u003creason\u003e\u0027in the commit message.",
+      "range": {
+        "startLine": 468,
+        "startChar": 16,
+        "endLine": 468,
+        "endChar": 28
+      },
+      "revId": "a33c2481bba42f2d0b80d7c65a4f549468fba9e7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000007955690",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1556758?revision\u003d5",
+      "fixSuggestions": [
+        {
+          "fixId": "babb4000_e37227f2",
+          "description": "Change to \"core/java/android/bluetooth/OobData.java\"",
+          "replacements": [
+            {
+              "path": "core/java/android/bluetooth/OobData.java",
+              "range": {
+                "startLine": 554,
+                "startChar": 52,
+                "endLine": 554,
+                "endChar": 61
+              },
+              "replacement": "particular"
+            }
+          ]
+        }
+      ],
+      "key": {
+        "uuid": "71bef505_bce341b7",
+        "filename": "core/java/android/bluetooth/OobData.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 554,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2021-02-05T21:30:35Z",
+      "side": 1,
+      "message": "Common typo found: \"particlar\" -- should it be \"particular\"?\nNote: a line containing \"common_typos_disable\" or \"common_typos_enable\" will turn off or on (respectively) the linter for subsequent lines in the file. Alternatively include the token \"NOTYPO\" within a line to skip typo linting that line or include \u0027No-Typo-Check: \u003creason\u003e\u0027in the commit message.",
+      "range": {
+        "startLine": 554,
+        "startChar": 52,
+        "endLine": 554,
+        "endChar": 61
+      },
+      "revId": "a33c2481bba42f2d0b80d7c65a4f549468fba9e7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000007955690",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1556758?revision\u003d5",
+      "fixSuggestions": [
+        {
+          "fixId": "a52600b4_97b85ba5",
+          "description": "Change to \"core/java/android/bluetooth/OobData.java\"",
+          "replacements": [
+            {
+              "path": "core/java/android/bluetooth/OobData.java",
+              "range": {
+                "startLine": 567,
+                "startChar": 38,
+                "endLine": 567,
+                "endChar": 44
+              },
+              "replacement": "length"
+            }
+          ]
+        }
+      ],
+      "key": {
+        "uuid": "9ea46852_f7fc05fa",
+        "filename": "core/java/android/bluetooth/OobData.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 567,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2021-02-05T21:30:35Z",
+      "side": 1,
+      "message": "Common typo found: \"lenght\" -- should it be \"length\"?\nNote: a line containing \"common_typos_disable\" or \"common_typos_enable\" will turn off or on (respectively) the linter for subsequent lines in the file. Alternatively include the token \"NOTYPO\" within a line to skip typo linting that line or include \u0027No-Typo-Check: \u003creason\u003e\u0027in the commit message.",
+      "range": {
+        "startLine": 567,
+        "startChar": 38,
+        "endLine": 567,
+        "endChar": 44
+      },
+      "revId": "a33c2481bba42f2d0b80d7c65a4f549468fba9e7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
