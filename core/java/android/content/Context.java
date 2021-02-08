@@ -5238,6 +5238,15 @@ public abstract class Context {
     public static final String DREAM_SERVICE = "dream";
 
     /**
+     * Use with {@link #getSystemService(String)} to retrieve an {@link ArtService}.
+     *
+     * @see #getSystemService(String)
+     *
+     * @hide
+     */
+    public static final String ART_SERVICE = "art";
+
+    /**
      * Determine whether the given permission is allowed for a particular
      * process and user ID running in the system.
      *

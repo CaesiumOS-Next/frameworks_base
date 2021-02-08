@@ -130,6 +130,7 @@ import android.net.vcn.VcnManager;
 import android.net.wifi.WifiFrameworkInitializer;
 import android.net.wifi.nl80211.WifiNl80211Manager;
 import android.nfc.NfcManager;
+import android.os.ArtManager;
 import android.os.BatteryManager;
 import android.os.BatteryStats;
 import android.os.BatteryStatsManager;
@@ -137,6 +138,7 @@ import android.os.BugreportManager;
 import android.os.Build;
 import android.os.DropBoxManager;
 import android.os.HardwarePropertiesManager;
+import android.os.IArtServiceProxy;
 import android.os.IBatteryPropertiesRegistrar;
 import android.os.IBinder;
 import android.os.IDumpstate;
@@ -1291,6 +1293,20 @@ public final class SystemServiceRegistry {
                             throws ServiceNotFoundException {
                         return new DreamManager(ctx);
                     }});
+
+        registerService(Context.ART_SERVICE, ArtManager.class,
+                new CachedServiceFetcher<ArtManager>() {
+                    @Override
+                    public ArtManager createService(ContextImpl ctx)
+                            throws ServiceNotFoundException {
+
+                        IArtServiceProxy service =
+                                IArtServiceProxy.Stub.asInterface(
+                                        ServiceManager.getServiceOrThrow(Context.ART_SERVICE));
+
+                        return new ArtManager(service);
+                    }
+                });
 
         sInitializing = true;
         try {

@@ -76,6 +76,9 @@ package android.net {
 
 package android.os {
 
+  public final class ArtManager {
+  }
+
   public class Binder implements android.os.IBinder {
     method public final void markVintfStability();
   }

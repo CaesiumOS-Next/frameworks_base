@@ -99,6 +99,7 @@ java_library_static {
         "android.hardware.power-V1.0-java",
         "android.hardware.vibrator-V1-java",
         "app-compat-annotations",
+        "artservice",
         "framework-tethering.stubs.module_lib",
         "service-permission.stubs.system_server",
     ],

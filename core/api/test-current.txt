@@ -1005,6 +1005,10 @@ package android.net {
 
 package android.os {
 
+  public final class ArtManager {
+    method @NonNull public String getMsg();
+  }
+
   public class Build {
     method public static boolean is64BitAbi(String);
     field public static final boolean IS_EMULATOR;

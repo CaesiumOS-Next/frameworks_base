@@ -326,6 +326,13 @@ public final class SystemServer {
     private static final String IP_CONNECTIVITY_METRICS_CLASS =
             "com.android.server.connectivity.IpConnectivityMetrics";
 
+
+
+    private static final String ART_SERVICE_APEX_PATH =
+            "/apex/com.android.art/javalib/artservice.jar";
+    private static final String ART_SERVICE_CLASS =
+            "com.android.server.art.ArtServiceProxy$Lifecycle";
+
     private static final String TETHERING_CONNECTOR_CLASS = "android.net.ITetheringConnector";
 
     private static final String PERSISTENT_DATA_BLOCK_PROP = "ro.frp.pst";
@@ -2318,6 +2325,10 @@ public final class SystemServer {
             }
             t.traceEnd();
         }
+        t.traceEnd();
+
+        t.traceBegin("ArtService");
+        mSystemServiceManager.startServiceFromJar(ART_SERVICE_CLASS, ART_SERVICE_APEX_PATH);
         t.traceEnd();
 
         t.traceBegin("StartBootPhaseDeviceSpecificServicesReady");
