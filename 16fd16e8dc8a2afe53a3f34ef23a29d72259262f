@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0afc52ca_9f69e2c4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2021-02-08T01:33:31Z",
+      "side": 1,
+      "message": "LGTM but please fix the RemoteException.\n\nAlso see comment on the semantics of the method. It seems to me that the proposed method has the problem that it only allows a caller to know what permissions have been granted if the caller knows all the permissions that exist. This does not seem very practical. If this was decided in previous discussions with the permission manager/framework team, then maybe that\u0027s fine.",
+      "revId": "16fd16e8dc8a2afe53a3f34ef23a29d72259262f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ea83b6ac_fc4b5395",
+        "filename": "core/java/android/os/SystemConfigManager.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2021-02-08T01:33:31Z",
+      "side": 1,
+      "message": "How does the calling code know what permission(s) to pass to this method? It looks like the SystemConfig just parses an XML file and checks the \u003cassign-permission\u003e statements that it finds there. Could any permission could be in that file? If so, then it sounds like the caller will only be able to find all the permissions grants unless it knows in advance all permissions that exist.\n\nIs there a reason you decided not to expose the full permission list here? It looks like the underlying IPC to the system service returns a SparseArray\u003cArraySet\u003cString\u003e\u003e. Is there a reason not to return that whole array to the caller?\n\nAt the moment it looks like our code in PermissionMonitor gets all the results and scans the resulting SparseArray to get what it\u0027s looking for. But it only does this twice. So maybe calling this method twice is fine.",
+      "range": {
+        "startLine": 120,
+        "startChar": 7,
+        "endLine": 120,
+        "endChar": 51
+      },
+      "revId": "16fd16e8dc8a2afe53a3f34ef23a29d72259262f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1bfdd432_a8bed77c",
+        "filename": "core/java/android/os/SystemConfigManager.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2021-02-08T01:33:31Z",
+      "side": 1,
+      "message": "This should throw an exception. The canonical way to deal with this is:\n\n    throw e.rethrowFromSystemServer();\n\n(and remove the log statement).",
+      "range": {
+        "startLine": 129,
+        "startChar": 0,
+        "endLine": 130,
+        "endChar": 30
+      },
+      "revId": "16fd16e8dc8a2afe53a3f34ef23a29d72259262f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
