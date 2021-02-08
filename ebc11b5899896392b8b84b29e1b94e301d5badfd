@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a907aa7f_16967a89",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1003473
+      },
+      "writtenOn": "2021-02-08T18:28:57Z",
+      "side": 1,
+      "message": "Thank you Rafal!\n\n@jsharkey: is this placement of CPU_OWNER consistent with your plan of normalization of OWNERS file placement and naming?",
+      "revId": "ebc11b5899896392b8b84b29e1b94e301d5badfd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "464736c5_55a28167",
+        "filename": "core/java/com/android/internal/os/OWNERS",
+        "patchSetId": 1
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 1003473
+      },
+      "writtenOn": "2021-02-08T18:28:57Z",
+      "side": 1,
+      "message": "nit: perhaps, file:/core/java/com/android/internal/os/CPU_OWNERS for perfect clarity?",
+      "range": {
+        "startLine": 3,
+        "startChar": 17,
+        "endLine": 3,
+        "endChar": 32
+      },
+      "revId": "ebc11b5899896392b8b84b29e1b94e301d5badfd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
