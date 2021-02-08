@@ -43,6 +43,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "bd679c7f_aa35fc91",
+        "filename": "core/java/android/os/SystemConfigManager.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1308473
+      },
+      "writtenOn": "2021-02-08T16:35:16Z",
+      "side": 1,
+      "message": "I think any permission can be in the XML file. But the possible callers are components that know about the permission and want to know the list of UIDs holding it. Even we pass full permission list, the caller probably will filter the permissions/uids and only keep part of permissions/uids they know like PermissionMonitor. So I think returning the full list might in fact be too broad, it should be feasible for the callers that return the uid list only.",
+      "parentUuid": "ea83b6ac_fc4b5395",
+      "range": {
+        "startLine": 120,
+        "startChar": 7,
+        "endLine": 120,
+        "endChar": 51
+      },
+      "revId": "16fd16e8dc8a2afe53a3f34ef23a29d72259262f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1bfdd432_a8bed77c",
         "filename": "core/java/android/os/SystemConfigManager.java",
         "patchSetId": 7
