@@ -66,17 +66,20 @@ public class PackageOverride implements Parcelable {
     private final long mMinVersionCode;
     private final long mMaxVersionCode;
     private final boolean mEnabled;
+    private final int mCreatorUid;
 
     private PackageOverride(long minVersionCode,
             long maxVersionCode,
-            boolean enabled) {
+            boolean enabled,
+            int creatorUid) {
         this.mMinVersionCode = minVersionCode;
         this.mMaxVersionCode = maxVersionCode;
         this.mEnabled = enabled;
+        this.mCreatorUid = creatorUid;
     }
 
     private PackageOverride(Parcel in) {
-        this(in.readLong(), in.readLong(), in.readBoolean());
+        this(in.readLong(), in.readLong(), in.readBoolean(), in.readInt());
     }
 
     /**
@@ -118,6 +121,11 @@ public class PackageOverride implements Parcelable {
         return mEnabled;
     }
 
+    /** Returns the uid of the package that set the override. */
+    public int getCreatorUid() {
+        return mCreatorUid;
+    }
+
     /** @hide */
     @Override
     public int describeContents() {
@@ -130,6 +138,7 @@ public class PackageOverride implements Parcelable {
         dest.writeLong(mMinVersionCode);
         dest.writeLong(mMaxVersionCode);
         dest.writeBoolean(mEnabled);
+        dest.writeInt(mCreatorUid);
     }
 
     /** @hide */
@@ -205,7 +214,8 @@ public class PackageOverride implements Parcelable {
                 throw new IllegalArgumentException("minVersionCode must not be larger than "
                         + "maxVersionCode");
             }
-            return new PackageOverride(mMinVersionCode, mMaxVersionCode, mEnabled);
+            return new PackageOverride(mMinVersionCode, mMaxVersionCode, mEnabled,
+                    android.os.Process.myUid());
         }
     };
 }

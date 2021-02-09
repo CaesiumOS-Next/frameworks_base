@@ -25,6 +25,7 @@ import static com.android.internal.compat.OverrideAllowedState.LOGGING_ONLY_CHAN
 
 import android.content.Context;
 import android.content.pm.ApplicationInfo;
+import android.content.pm.InstallSourceInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
 import android.database.ContentObserver;
@@ -70,6 +71,12 @@ public class OverrideValidatorImpl extends IOverrideValidator.Stub {
 
     @Override
     public OverrideAllowedState getOverrideAllowedState(long changeId, String packageName) {
+        return getOverrideAllowedStateWithCaller(changeId, packageName, -1);
+    }
+
+    @Override
+    public OverrideAllowedState getOverrideAllowedStateWithCaller(long changeId, String packageName,
+            int callingUid) {
         if (mCompatConfig.isLoggingOnly(changeId)) {
             return new OverrideAllowedState(LOGGING_ONLY_CHANGE, -1, -1);
         }
@@ -94,6 +101,11 @@ public class OverrideValidatorImpl extends IOverrideValidator.Stub {
             applicationInfo = packageManager.getApplicationInfo(packageName, 0);
         } catch (NameNotFoundException e) {
             return new OverrideAllowedState(DEFERRED_VERIFICATION, -1, -1);
+        }
+        // Always allow the installer to set overrides on overridable change ids
+        if (mCompatConfig.isOverridable(changeId)
+                && isUidInstaller(packageManager, packageName, callingUid)) {
+            return new OverrideAllowedState(ALLOWED, -1, -1);
         }
         int appTargetSdk = applicationInfo.targetSdkVersion;
         // Only allow overriding debuggable apps.
@@ -127,4 +139,18 @@ public class OverrideValidatorImpl extends IOverrideValidator.Stub {
         mForceNonDebuggableFinalBuild = value;
     }
 
+    private boolean isUidInstaller(PackageManager packageManager, String packageName,
+            int callingUid) {
+        if (callingUid < 0) {
+            return false;
+        }
+        try {
+            InstallSourceInfo installSourceInfo = packageManager.getInstallSourceInfo(packageName);
+            return packageManager.getPackageUid(
+                    installSourceInfo.getInstallingPackageName(), 0) == callingUid;
+        } catch (NameNotFoundException e) {
+            // Do nothing
+        }
+        return false;
+    }
 }
