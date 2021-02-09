@@ -181,6 +181,7 @@ public class PlatformCompat extends IPlatformCompat.Stub {
     public void setOverridesFromInstaller(CompatibilityOverrideConfig overrides,
             String packageName) {
         checkCompatChangeOverridePermission();
+        checkAllOverridesOverridable(overrides);
         mCompatConfig.addOverrides(overrides, packageName);
         killPackage(packageName);
     }
@@ -376,6 +377,18 @@ public class PlatformCompat extends IPlatformCompat.Stub {
         if (mContext.checkCallingOrSelfPermission(OVERRIDE_COMPAT_CHANGE_CONFIG)
                 != PERMISSION_GRANTED) {
             throw new SecurityException("Cannot override compat change");
+        }
+    }
+
+    private void checkAllOverridesOverridable(CompatibilityOverrideConfig overrides) {
+        for (Long changeId : overrides.overrides.keySet()) {
+            if (!mCompatConfig.isOverridable(changeId)) {
+                throw new SecurityException("Only change ids marked as Overridable can be "
+                        + "overridden.");
+            }
+            if (overrides.overrides.get(changeId).getCreatorUid() != Binder.getCallingUid()) {
+                throw new SecurityException("Creator UID does not match caller");
+            }
         }
     }
 

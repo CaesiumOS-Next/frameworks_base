@@ -35,4 +35,15 @@ interface IOverrideValidator
      * the given package or a reason why not.
      */
     OverrideAllowedState getOverrideAllowedState(long changeId, String packageName);
+
+    /**
+     * Validation function.
+     * @param changeId    id of the change to be toggled on or off.
+     * @param packageName package of the app for which the change should be overridden.
+     * @param callingUid the uid of the caller that is requesting the allowed state. If this is the
+     *      installing package of {@code packageName} and the change is overridable, it is allowed.
+     * @return {@link OverrideAllowedState} specifying whether the change can be overridden for
+     * the given package or a reason why not.
+     */
+    OverrideAllowedState getOverrideAllowedStateWithCaller(long changeId, String packageName, int callingUid);
 }

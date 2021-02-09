@@ -21,6 +21,7 @@ import android.app.compat.PackageOverride;
 import android.compat.Compatibility.ChangeConfig;
 import android.content.Context;
 import android.content.pm.ApplicationInfo;
+import android.os.Binder;
 import android.os.Environment;
 import android.text.TextUtils;
 import android.util.LongArray;
@@ -243,7 +244,8 @@ final class CompatConfig {
             PackageOverride overrides) {
         boolean alreadyKnown = true;
         OverrideAllowedState allowedState =
-                mOverrideValidator.getOverrideAllowedState(changeId, packageName);
+                mOverrideValidator.getOverrideAllowedStateWithCaller(changeId, packageName,
+                        overrides.getCreatorUid());
         allowedState.enforce(changeId, packageName);
         synchronized (mChanges) {
             CompatChange c = mChanges.get(changeId);
@@ -301,6 +303,16 @@ final class CompatConfig {
     }
 
     /**
+     * Returns whether the change is overridable.
+     */
+    boolean isOverridable(long changeId) {
+        synchronized (mChanges) {
+            CompatChange c = mChanges.get(changeId);
+            return c != null && c.getOverridable();
+        }
+    }
+
+    /**
      * Removes an override previously added via {@link #addOverride(long, String, boolean)}.
      *
      * <p>This restores the default behaviour for the given change and app, once any app processes
@@ -326,7 +338,8 @@ final class CompatConfig {
             CompatChange c = mChanges.get(changeId);
             if (c != null) {
                 OverrideAllowedState allowedState =
-                        mOverrideValidator.getOverrideAllowedState(changeId, packageName);
+                        mOverrideValidator.getOverrideAllowedStateWithCaller(changeId, packageName,
+                                Binder.getCallingUid());
                 if (c.hasPackageOverride(packageName)) {
                     allowedState.enforce(changeId, packageName);
                     c.removePackageOverride(packageName, allowedState, mContext);
@@ -340,7 +353,7 @@ final class CompatConfig {
 
     /**
      * Removes all overrides previously added via {@link #addOverride(long, String, boolean)} or
-     * {@link #addOverrides(CompatibilityChangeConfig, String)} for a certain package.
+     * {@link #addOverrides(CompatibilityOverrideConfig, String)} for a certain package.
      *
      * <p>This restores the default behaviour for the given app.
      *
@@ -599,8 +612,13 @@ final class CompatConfig {
             boolean shouldInvalidateCache = false;
             for (int idx = 0; idx < mChanges.size(); ++idx) {
                 CompatChange c = mChanges.valueAt(idx);
+                if (!c.hasPackageOverride(packageName)) {
+                    continue;
+                }
                 OverrideAllowedState allowedState =
-                        mOverrideValidator.getOverrideAllowedState(c.getId(), packageName);
+                        mOverrideValidator.getOverrideAllowedStateWithCaller(
+                                c.getId(), packageName,
+                                c.getPackageOverrideCreatorUid(packageName));
                 shouldInvalidateCache |= c.recheckOverride(packageName, allowedState, mContext);
             }
             if (shouldInvalidateCache) {
