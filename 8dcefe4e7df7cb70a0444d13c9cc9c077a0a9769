@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1cccae70_64628aa0",
+        "filename": "tests/vcn/java/com/android/server/vcn/VcnGatewayConnectionConnectedStateTest.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1221725
+      },
+      "writtenOn": "2021-02-10T00:54:12Z",
+      "side": 1,
+      "message": "Nit final",
+      "range": {
+        "startLine": 194,
+        "startChar": 8,
+        "endLine": 194,
+        "endChar": 15
+      },
+      "revId": "8dcefe4e7df7cb70a0444d13c9cc9c077a0a9769",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eadbcddd_a9bd15d4",
+        "filename": "tests/vcn/java/com/android/server/vcn/VcnGatewayConnectionTestBase.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 278,
+      "author": {
+        "id": 1221725
+      },
+      "writtenOn": "2021-02-10T00:54:12Z",
+      "side": 1,
+      "message": "nit final",
+      "range": {
+        "startLine": 278,
+        "startChar": 8,
+        "endLine": 278,
+        "endChar": 16
+      },
+      "revId": "8dcefe4e7df7cb70a0444d13c9cc9c077a0a9769",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
