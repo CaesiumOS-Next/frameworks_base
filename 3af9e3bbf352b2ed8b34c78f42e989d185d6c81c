@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "64d616f5_ba7ff07c",
+        "filename": "services/core/java/com/android/server/vcn/VcnGatewayConnection.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 409,
+      "author": {
+        "id": 1463964
+      },
+      "writtenOn": "2021-02-11T21:04:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b939c1a3_af4538a6",
+      "range": {
+        "startLine": 407,
+        "startChar": 7,
+        "endLine": 409,
+        "endChar": 6
+      },
+      "revId": "3af9e3bbf352b2ed8b34c78f42e989d185d6c81c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "809e93af_36a360f5",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-02-10T00:54:12Z",
       "side": 1,
       "message": "Suggest leaving a comment noting that this is either (1) always null, or (2) already fired. And in both cases, there\u0027s nothing left we need to track and cancel.",
+      "range": {
+        "startLine": 730,
+        "startChar": 8,
+        "endLine": 730,
+        "endChar": 29
+      },
+      "revId": "3af9e3bbf352b2ed8b34c78f42e989d185d6c81c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e830c0ad_c94b604e",
+        "filename": "services/core/java/com/android/server/vcn/VcnGatewayConnection.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 730,
+      "author": {
+        "id": 1463964
+      },
+      "writtenOn": "2021-02-11T21:04:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "809e93af_36a360f5",
       "range": {
         "startLine": 730,
         "startChar": 8,
