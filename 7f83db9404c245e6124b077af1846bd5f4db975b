@@ -16,6 +16,23 @@
       "message": "cherry-pick from internal",
       "revId": "7f83db9404c245e6124b077af1846bd5f4db975b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "778f4fad_e74463f3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2021-02-12T23:38:39Z",
+      "side": 1,
+      "message": "Are these CLs the ones that got approved in master?\nare they just cherry picks?",
+      "revId": "7f83db9404c245e6124b077af1846bd5f4db975b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
