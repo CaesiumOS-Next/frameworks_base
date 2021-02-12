@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3f4664d4_75c7ff31",
+        "filename": "telephony/java/android/telephony/LteVopsSupportInfo.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1081638
+      },
+      "writtenOn": "2021-02-12T18:04:11Z",
+      "side": 1,
+      "message": "We don\u0027t need this constructor",
+      "range": {
+        "startLine": 63,
+        "startChar": 0,
+        "endLine": 66,
+        "endChar": 5
+      },
+      "revId": "23cb94ebdc5da96378329ba21fbab5affcde9852",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e9e1b3a6_7d7c7b87",
+        "filename": "telephony/java/android/telephony/NrVopsSupportInfo.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1081638
+      },
+      "writtenOn": "2021-02-12T18:04:11Z",
+      "side": 1,
+      "message": "Move this down after NR_STATUS_VOPS_NON_3GPP_SUPPORTED",
+      "range": {
+        "startLine": 47,
+        "startChar": 0,
+        "endLine": 57,
+        "endChar": 37
+      },
+      "revId": "23cb94ebdc5da96378329ba21fbab5affcde9852",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b173331f_58a2b0dc",
+        "filename": "telephony/java/android/telephony/NrVopsSupportInfo.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1081638
+      },
+      "writtenOn": "2021-02-12T18:04:11Z",
+      "side": 1,
+      "message": "Don\u0027t think we need this constructor",
+      "range": {
+        "startLine": 107,
+        "startChar": 0,
+        "endLine": 111,
+        "endChar": 5
+      },
+      "revId": "23cb94ebdc5da96378329ba21fbab5affcde9852",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b2384c43_84ca9786",
+        "filename": "telephony/java/android/telephony/NrVopsSupportInfo.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1081638
+      },
+      "writtenOn": "2021-02-12T18:04:11Z",
+      "side": 1,
+      "message": "Should be @hide",
+      "range": {
+        "startLine": 113,
+        "startChar": 4,
+        "endLine": 113,
+        "endChar": 28
+      },
+      "revId": "23cb94ebdc5da96378329ba21fbab5affcde9852",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
