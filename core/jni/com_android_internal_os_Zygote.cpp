@@ -103,6 +103,17 @@
 #define NO_PAC_FUNC
 #endif /* __ARM_FEATURE_PAC_DEFAULT */
 
+/*
+ * All functions that lead to ForkCommon must be marked with the
+ * no_stack_protector attributed.  Because ForkCommon changes the stack
+ * protector cookie, all of the guard checks on the frames above ForkCommon
+ * would fail when they are popped.
+ */
+#define NO_STACK_PROTECTOR __attribute__((no_stack_protector))
+
+#if defined(__BIONIC__)
+extern "C" void android_reset_stack_guards();
+#endif
 
 namespace {
 
@@ -1100,6 +1111,7 @@ static void PAuthKeyChange(JNIEnv* env) {
 
 // Utility routine to fork a process from the zygote.
 NO_PAC_FUNC
+NO_STACK_PROTECTOR
 static pid_t ForkCommon(JNIEnv* env, bool is_system_server,
                         const std::vector<int>& fds_to_close,
                         const std::vector<int>& fds_to_ignore,
@@ -1148,6 +1160,9 @@ static pid_t ForkCommon(JNIEnv* env, bool is_system_server,
     } else {
       setpriority(PRIO_PROCESS, 0, PROCESS_PRIORITY_MIN);
     }
+
+    // Reset the stack guard for the new process.
+    android_reset_stack_guards();
 
     // The child process.
     PAuthKeyChange(env);
@@ -2094,6 +2109,7 @@ static void com_android_internal_os_Zygote_nativePreApplicationInit(JNIEnv*, jcl
 }
 
 NO_PAC_FUNC
+NO_STACK_PROTECTOR
 static jint com_android_internal_os_Zygote_nativeForkAndSpecialize(
         JNIEnv* env, jclass, jint uid, jint gid, jintArray gids,
         jint runtime_flags, jobjectArray rlimits,
@@ -2147,6 +2163,7 @@ static jint com_android_internal_os_Zygote_nativeForkAndSpecialize(
 }
 
 NO_PAC_FUNC
+NO_STACK_PROTECTOR
 static jint com_android_internal_os_Zygote_nativeForkSystemServer(
         JNIEnv* env, jclass, uid_t uid, gid_t gid, jintArray gids,
         jint runtime_flags, jobjectArray rlimits, jlong permitted_capabilities,
@@ -2219,6 +2236,7 @@ static jint com_android_internal_os_Zygote_nativeForkSystemServer(
  * @return
  */
 NO_PAC_FUNC
+NO_STACK_PROTECTOR
 static jint com_android_internal_os_Zygote_nativeForkUsap(JNIEnv* env,
                                                           jclass,
                                                           jint read_pipe_fd,
