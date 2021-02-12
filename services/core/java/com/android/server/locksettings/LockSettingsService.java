@@ -225,7 +225,6 @@ public class LockSettingsService extends ILockSettings.Stub {
     private final SyntheticPasswordManager mSpManager;
 
     private final KeyStore mKeyStore;
-    private android.security.keystore2.UserManager mKeystoreUserManager;
     private final RecoverableKeyStoreManager mRecoverableKeyStoreManager;
     private ManagedProfilePasswordCache mManagedProfilePasswordCache;
 
@@ -598,7 +597,6 @@ public class LockSettingsService extends ILockSettings.Stub {
                 mStorage);
 
         LocalServices.addService(LockSettingsInternal.class, new LocalService());
-        mKeystoreUserManager = new android.security.keystore2.UserManager();
     }
 
     /**
@@ -803,7 +801,7 @@ public class LockSettingsService extends ILockSettings.Stub {
             if (Intent.ACTION_USER_ADDED.equals(intent.getAction())) {
                 // Notify keystore that a new user was added.
                 final int userHandle = intent.getIntExtra(Intent.EXTRA_USER_HANDLE, 0);
-                mKeystoreUserManager.onUserAdded(userHandle);
+                android.security.UserManager.onUserAdded(userHandle);
                 final KeyStore ks = KeyStore.getInstance();
                 final UserInfo parentInfo = mUserManager.getProfileParent(userHandle);
                 final int parentHandle = parentInfo != null ? parentInfo.id : -1;
@@ -1267,7 +1265,7 @@ public class LockSettingsService extends ILockSettings.Stub {
     }
 
     private void setKeystorePassword(byte[] password, int userHandle) {
-        mKeystoreUserManager.onUserPasswordChanged(userHandle, password);
+        android.security.UserManager.onUserPasswordChanged(userHandle, password);
         final KeyStore ks = KeyStore.getInstance();
         // TODO(b/120484642): Update keystore to accept byte[] passwords
         String passwordString = password == null ? null : new String(password);
@@ -1276,7 +1274,7 @@ public class LockSettingsService extends ILockSettings.Stub {
 
     private void unlockKeystore(byte[] password, int userHandle) {
         if (DEBUG) Slog.v(TAG, "Unlock keystore for user: " + userHandle);
-        new Authorization().onLockScreenEvent(false, userHandle, password);
+        Authorization.onLockScreenEvent(false, userHandle, password);
         // TODO(b/120484642): Update keystore to accept byte[] passwords
         String passwordString = password == null ? null : new String(password);
         final KeyStore ks = KeyStore.getInstance();
@@ -2299,7 +2297,7 @@ public class LockSettingsService extends ILockSettings.Stub {
         mSpManager.removeUser(userId);
         mStrongAuth.removeUser(userId);
 
-        mKeystoreUserManager.onUserRemoved(userId);
+        android.security.UserManager.onUserRemoved(userId);
         final KeyStore ks = KeyStore.getInstance();
         ks.onUserRemoved(userId);
         mManagedProfilePasswordCache.removePassword(userId);
