@@ -74,6 +74,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "07ef4b72_215b9767",
+        "filename": "telephony/java/android/telephony/LteVopsSupportInfo.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1733820
+      },
+      "writtenOn": "2021-02-12T18:37:27Z",
+      "side": 1,
+      "message": "ok, will update to call the constructor below",
+      "parentUuid": "2bd52e08_d91e5964",
+      "range": {
+        "startLine": 63,
+        "startChar": 0,
+        "endLine": 66,
+        "endChar": 5
+      },
+      "revId": "23cb94ebdc5da96378329ba21fbab5affcde9852",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e9e1b3a6_7d7c7b87",
         "filename": "telephony/java/android/telephony/NrVopsSupportInfo.java",
         "patchSetId": 1
