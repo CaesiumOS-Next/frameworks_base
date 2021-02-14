@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "782053c9_f766fde5",
+        "filename": "services/core/java/com/android/server/net/LockdownVpnTracker.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2021-02-14T09:04:00Z",
+      "side": 1,
+      "message": "Now unused",
+      "range": {
+        "startLine": 61,
+        "startChar": 29,
+        "endLine": 61,
+        "endChar": 44
+      },
+      "revId": "5329fa395b83b5c2f7a1054724e0ce631b6aa254",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2763d3cd_e1c594b7",
+        "filename": "services/core/java/com/android/server/net/LockdownVpnTracker.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2021-02-14T09:04:00Z",
+      "side": 1,
+      "message": "I\u0027m confused ; can\u0027t you simply do this now by not adding any of this NC code and just logging egressProp.getInterface() ?",
+      "range": {
+        "startLine": 131,
+        "startChar": 8,
+        "endLine": 131,
+        "endChar": 88
+      },
+      "revId": "5329fa395b83b5c2f7a1054724e0ce631b6aa254",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4c09e37e_4bbff716",
+        "filename": "services/core/java/com/android/server/net/LockdownVpnTracker.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2021-02-14T09:04:00Z",
+      "side": 1,
+      "message": "Now write-only",
+      "range": {
+        "startLine": 153,
+        "startChar": 16,
+        "endLine": 153,
+        "endChar": 27
+      },
+      "revId": "5329fa395b83b5c2f7a1054724e0ce631b6aa254",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
