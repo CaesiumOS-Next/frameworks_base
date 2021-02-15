@@ -1,0 +1,30 @@
+{
+  "comments": [
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000008169169",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1589333?revision\u003d1",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "c190698d_5d8f6b80",
+        "filename": "cmds/bootanimation/BootAnimation.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 649,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2021-02-15T09:31:48Z",
+      "side": 1,
+      "message": "Lines longer than 100 characters should be wrapped to improve readability; see https://source.android.com/setup/contribute/code-style#limit-line-length for more details.",
+      "range": {
+        "startLine": 649,
+        "startChar": 0,
+        "endLine": 649,
+        "endChar": 123
+      },
+      "revId": "f9a9f46ee5bc1577a4aa9c71593cc83b2e418d9f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
