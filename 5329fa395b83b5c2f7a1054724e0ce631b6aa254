@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "dda97728_31641b57",
+        "filename": "services/core/java/com/android/server/net/LockdownVpnTracker.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2021-02-15T00:29:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "782053c9_f766fde5",
+      "range": {
+        "startLine": 61,
+        "startChar": 29,
+        "endLine": 61,
+        "endChar": 44
+      },
+      "revId": "5329fa395b83b5c2f7a1054724e0ce631b6aa254",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2763d3cd_e1c594b7",
@@ -47,6 +71,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a24543ad_d50f34cb",
+        "filename": "services/core/java/com/android/server/net/LockdownVpnTracker.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2021-02-15T00:29:17Z",
+      "side": 1,
+      "message": "Yes, sorry. This was a TODO I had in my local tree to ensure I wouldn\u0027t forget to do this. I had time to add the TODO, but not to implement it. Done now.",
+      "parentUuid": "2763d3cd_e1c594b7",
+      "range": {
+        "startLine": 131,
+        "startChar": 8,
+        "endLine": 131,
+        "endChar": 88
+      },
+      "revId": "5329fa395b83b5c2f7a1054724e0ce631b6aa254",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4c09e37e_4bbff716",
@@ -60,6 +108,30 @@
       "writtenOn": "2021-02-14T09:04:00Z",
       "side": 1,
       "message": "Now write-only",
+      "range": {
+        "startLine": 153,
+        "startChar": 16,
+        "endLine": 153,
+        "endChar": 27
+      },
+      "revId": "5329fa395b83b5c2f7a1054724e0ce631b6aa254",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8aa22a05_d9a7d32d",
+        "filename": "services/core/java/com/android/server/net/LockdownVpnTracker.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2021-02-15T00:29:17Z",
+      "side": 1,
+      "message": "Removed.",
+      "parentUuid": "4c09e37e_4bbff716",
       "range": {
         "startLine": 153,
         "startChar": 16,
