@@ -48,6 +48,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1b620f46_995aaacd",
+        "filename": "services/core/java/com/android/server/vcn/VcnGatewayConnection.java",
+        "patchSetId": 21
+      },
+      "lineNbr": 1385,
+      "author": {
+        "id": 1463964
+      },
+      "writtenOn": "2021-02-16T19:19:30Z",
+      "side": 1,
+      "message": "per our conversation offline, we should consider canceling + restarting the safe mode timer for unsuccessful valdiation.\n\nCreated b/180413848 to track this",
+      "parentUuid": "34da56ab_886e7b46",
+      "range": {
+        "startLine": 1385,
+        "startChar": 55,
+        "endLine": 1385,
+        "endChar": 78
+      },
+      "revId": "f8fa5c12f5c7e4e10526da08061258a20f6806c8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1b2a172e_d7a7eaca",
