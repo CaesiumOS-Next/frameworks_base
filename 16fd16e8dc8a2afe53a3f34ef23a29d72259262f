@@ -65,6 +65,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "847ccf32_20b8708e",
+        "filename": "core/java/android/os/SystemConfigManager.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2021-02-16T06:36:21Z",
+      "side": 1,
+      "message": "Ack. I continue to think it\u0027s better to return all the results, but I suppose we can always add a new system API for that later. API council review might have an opinion too, and if they don\u0027t, maybe this is fine as is.",
+      "parentUuid": "bd679c7f_aa35fc91",
+      "range": {
+        "startLine": 120,
+        "startChar": 7,
+        "endLine": 120,
+        "endChar": 51
+      },
+      "revId": "16fd16e8dc8a2afe53a3f34ef23a29d72259262f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1bfdd432_a8bed77c",
