@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "34da56ab_886e7b46",
+        "filename": "services/core/java/com/android/server/vcn/VcnGatewayConnection.java",
+        "patchSetId": 21
+      },
+      "lineNbr": 1385,
+      "author": {
+        "id": 1463964
+      },
+      "writtenOn": "2021-02-16T18:39:46Z",
+      "side": 1,
+      "message": "I don\u0027t think this is necessary - if the Network is not validated then the previous safe mode alarm is still running. Are you suggesting we cancel that and start a new one?",
+      "parentUuid": "b8f9ab95_ed8e78d6",
+      "range": {
+        "startLine": 1385,
+        "startChar": 55,
+        "endLine": 1385,
+        "endChar": 78
+      },
+      "revId": "f8fa5c12f5c7e4e10526da08061258a20f6806c8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1b2a172e_d7a7eaca",
         "filename": "services/core/java/com/android/server/vcn/VcnGatewayConnection.java",
         "patchSetId": 21
