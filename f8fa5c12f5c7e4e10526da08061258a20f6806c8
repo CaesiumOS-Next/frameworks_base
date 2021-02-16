@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b8f9ab95_ed8e78d6",
+        "filename": "services/core/java/com/android/server/vcn/VcnGatewayConnection.java",
+        "patchSetId": 21
+      },
+      "lineNbr": 1385,
+      "author": {
+        "id": 1221725
+      },
+      "writtenOn": "2021-02-16T11:13:02Z",
+      "side": 1,
+      "message": "Oh just thought of something... If this fails validation, we should probably start the safe mode timer.\n\nThis can be a separate CL, and can be post IC. (can you file a bug?)",
+      "range": {
+        "startLine": 1385,
+        "startChar": 55,
+        "endLine": 1385,
+        "endChar": 78
+      },
+      "revId": "f8fa5c12f5c7e4e10526da08061258a20f6806c8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1b2a172e_d7a7eaca",
+        "filename": "services/core/java/com/android/server/vcn/VcnGatewayConnection.java",
+        "patchSetId": 21
+      },
+      "lineNbr": 1576,
+      "author": {
+        "id": 1221725
+      },
+      "writtenOn": "2021-02-16T11:13:02Z",
+      "side": 1,
+      "message": "Nit: Will only set a new alarm if no safe mode alarm is currently scheduled.",
+      "range": {
+        "startLine": 1575,
+        "startChar": 15,
+        "endLine": 1576,
+        "endChar": 73
+      },
+      "revId": "f8fa5c12f5c7e4e10526da08061258a20f6806c8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
