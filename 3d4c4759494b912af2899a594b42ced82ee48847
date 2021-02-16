@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a3535aa9_388a5102",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2021-02-16T21:49:46Z",
+      "side": 1,
+      "message": "Ping for +2, this is just cherry-pick of CL already submitted to internal.",
+      "revId": "3d4c4759494b912af2899a594b42ced82ee48847",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
