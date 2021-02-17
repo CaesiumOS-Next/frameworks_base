@@ -1,0 +1,188 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0705693a_4f602b39",
+        "filename": "packages/Connectivity/framework/src/android/net/util/MultinetworkPolicyTracker.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2021-02-17T12:49:48Z",
+      "side": 1,
+      "message": "Please add a small comment saying that this code can\u0027t use the internal HandlerExecutor.\n\nPersonally I think HandlerExecutor might be better exposed, but this will do for now.",
+      "range": {
+        "startLine": 78,
+        "startChar": 63,
+        "endLine": 78,
+        "endChar": 71
+      },
+      "revId": "0e6c223110b325c718d68a8cdac8e0c82eb94c74",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3f711dbd_d095afd6",
+        "filename": "tests/net/java/android/net/util/MultinetworkPolicyTrackerTest.kt",
+        "patchSetId": 2
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2021-02-17T12:49:48Z",
+      "side": 1,
+      "message": "You don\u0027t need to say \"this.\".",
+      "range": {
+        "startLine": 67,
+        "startChar": 8,
+        "endLine": 67,
+        "endChar": 12
+      },
+      "revId": "0e6c223110b325c718d68a8cdac8e0c82eb94c74",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "845c0446_a0f04989",
+        "filename": "tests/net/java/android/net/util/MultinetworkPolicyTrackerTest.kt",
+        "patchSetId": 2
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2021-02-17T12:49:48Z",
+      "side": 1,
+      "message": "What\u0027s the point of accessing this member only to discard it ?",
+      "range": {
+        "startLine": 67,
+        "startChar": 23,
+        "endLine": 67,
+        "endChar": 29
+      },
+      "revId": "0e6c223110b325c718d68a8cdac8e0c82eb94c74",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "92345e7d_1efd2ff4",
+        "filename": "tests/net/java/android/net/util/MultinetworkPolicyTrackerTest.kt",
+        "patchSetId": 2
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2021-02-17T12:49:48Z",
+      "side": 1,
+      "message": "You don\u0027t need \"this.\"",
+      "range": {
+        "startLine": 69,
+        "startChar": 8,
+        "endLine": 69,
+        "endChar": 12
+      },
+      "revId": "0e6c223110b325c718d68a8cdac8e0c82eb94c74",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "14c00c52_081a3510",
+        "filename": "tests/net/java/android/net/util/MultinetworkPolicyTrackerTest.kt",
+        "patchSetId": 2
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2021-02-17T12:49:48Z",
+      "side": 1,
+      "message": "Please write in comments a good justification for using lateinit. Usually we avoid lateinit, and we want justification for usage.\n\n(maybe you\u0027ll find a way to avoid it)",
+      "range": {
+        "startLine": 71,
+        "startChar": 12,
+        "endLine": 71,
+        "endChar": 20
+      },
+      "revId": "0e6c223110b325c718d68a8cdac8e0c82eb94c74",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5ac81227_0870992a",
+        "filename": "tests/net/java/android/net/util/MultinetworkPolicyTrackerTest.kt",
+        "patchSetId": 2
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2021-02-17T12:49:48Z",
+      "side": 1,
+      "message": "Is this actually writing to the real settings of the device ?",
+      "range": {
+        "startLine": 109,
+        "startChar": 8,
+        "endLine": 109,
+        "endChar": 72
+      },
+      "revId": "0e6c223110b325c718d68a8cdac8e0c82eb94c74",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "735bc5d1_56781010",
+        "filename": "tests/net/java/android/net/util/MultinetworkPolicyTrackerTest.kt",
+        "patchSetId": 2
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2021-02-17T12:49:48Z",
+      "side": 1,
+      "message": "IIUC MultinetworkPolicyTracker already observes settings changes so you shouldn\u0027t need this I think ?",
+      "range": {
+        "startLine": 110,
+        "startChar": 27,
+        "endLine": 110,
+        "endChar": 45
+      },
+      "revId": "0e6c223110b325c718d68a8cdac8e0c82eb94c74",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e61c4857_5b867634",
+        "filename": "tests/net/java/android/net/util/MultinetworkPolicyTrackerTest.kt",
+        "patchSetId": 2
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2021-02-17T12:49:48Z",
+      "side": 1,
+      "message": "Please don\u0027t use a captor just to check things. Instead, use\n\n  argThat { it.mcc \u003d\u003d 310 \u0026\u0026 it.mnc \u003d\u003d 210 }",
+      "range": {
+        "startLine": 145,
+        "startChar": 0,
+        "endLine": 147,
+        "endChar": 37
+      },
+      "revId": "0e6c223110b325c718d68a8cdac8e0c82eb94c74",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
