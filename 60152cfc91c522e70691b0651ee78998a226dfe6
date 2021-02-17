@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "58121269_9bbcda2b",
+        "filename": "telephony/java/android/telephony/DataSpecificRegistrationInfo.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1733820
+      },
+      "writtenOn": "2021-02-17T17:09:48Z",
+      "side": 1,
+      "message": "we can\u0027t convert it to nonnull as we may set it as null for now, and do not know whether it is lte or nr info when it is null, will change the interface @Nullable",
+      "parentUuid": "059987b3_3dd19995",
+      "range": {
+        "startLine": 192,
+        "startChar": 15,
+        "endLine": 192,
+        "endChar": 31
+      },
+      "revId": "60152cfc91c522e70691b0651ee78998a226dfe6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "421c419f_68da8ddd",
         "filename": "telephony/java/android/telephony/NetworkRegistrationInfo.java",
         "patchSetId": 2
@@ -37,6 +61,30 @@
       "writtenOn": "2021-02-17T16:59:44Z",
       "side": 1,
       "message": "@Nullable",
+      "range": {
+        "startLine": 296,
+        "startChar": 35,
+        "endLine": 296,
+        "endChar": 50
+      },
+      "revId": "60152cfc91c522e70691b0651ee78998a226dfe6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2c0f88a7_8234b061",
+        "filename": "telephony/java/android/telephony/NetworkRegistrationInfo.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 296,
+      "author": {
+        "id": 1733820
+      },
+      "writtenOn": "2021-02-17T17:09:48Z",
+      "side": 1,
+      "message": "will update",
+      "parentUuid": "421c419f_68da8ddd",
       "range": {
         "startLine": 296,
         "startChar": 35,
