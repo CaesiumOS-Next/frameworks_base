@@ -96,6 +96,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "21bab2d6_e282d207",
+        "filename": "telephony/java/android/telephony/LteVopsSupportInfo.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1733820
+      },
+      "writtenOn": "2021-02-17T01:00:53Z",
+      "side": 1,
+      "message": "done",
+      "parentUuid": "07ef4b72_215b9767",
+      "range": {
+        "startLine": 63,
+        "startChar": 0,
+        "endLine": 66,
+        "endChar": 5
+      },
+      "revId": "23cb94ebdc5da96378329ba21fbab5affcde9852",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e9e1b3a6_7d7c7b87",
@@ -133,6 +157,30 @@
       "side": 1,
       "message": "ok",
       "parentUuid": "e9e1b3a6_7d7c7b87",
+      "range": {
+        "startLine": 47,
+        "startChar": 0,
+        "endLine": 57,
+        "endChar": 37
+      },
+      "revId": "23cb94ebdc5da96378329ba21fbab5affcde9852",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dc9de327_802a9222",
+        "filename": "telephony/java/android/telephony/NrVopsSupportInfo.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1733820
+      },
+      "writtenOn": "2021-02-17T01:00:53Z",
+      "side": 1,
+      "message": "done",
+      "parentUuid": "b303d2e0_903e988c",
       "range": {
         "startLine": 47,
         "startChar": 0,
@@ -214,6 +262,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "33ea79a7_1a3e6cfb",
+        "filename": "telephony/java/android/telephony/NrVopsSupportInfo.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1733820
+      },
+      "writtenOn": "2021-02-17T01:00:53Z",
+      "side": 1,
+      "message": "done",
+      "parentUuid": "29c68395_2e321cb1",
+      "range": {
+        "startLine": 107,
+        "startChar": 0,
+        "endLine": 111,
+        "endChar": 5
+      },
+      "revId": "23cb94ebdc5da96378329ba21fbab5affcde9852",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b2384c43_84ca9786",
@@ -251,6 +323,30 @@
       "side": 1,
       "message": "will update",
       "parentUuid": "b2384c43_84ca9786",
+      "range": {
+        "startLine": 113,
+        "startChar": 4,
+        "endLine": 113,
+        "endChar": 28
+      },
+      "revId": "23cb94ebdc5da96378329ba21fbab5affcde9852",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eeedd2e9_90c6d43f",
+        "filename": "telephony/java/android/telephony/NrVopsSupportInfo.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1733820
+      },
+      "writtenOn": "2021-02-17T01:00:53Z",
+      "side": 1,
+      "message": "cts needs to use it, keep system api.",
+      "parentUuid": "0a946cae_a4838129",
       "range": {
         "startLine": 113,
         "startChar": 4,
