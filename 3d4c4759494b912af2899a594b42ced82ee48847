@@ -16,6 +16,23 @@
       "message": "Ping for +2, this is just cherry-pick of CL already submitted to internal.",
       "revId": "3d4c4759494b912af2899a594b42ced82ee48847",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cc6450e8_9bc8c8ea",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2021-02-17T20:27:22Z",
+      "side": 1,
+      "message": "Add cherry-pick line to the commit message.",
+      "revId": "3d4c4759494b912af2899a594b42ced82ee48847",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
