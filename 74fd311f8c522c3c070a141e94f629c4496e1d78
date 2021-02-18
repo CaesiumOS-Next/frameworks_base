@@ -97,6 +97,30 @@
       },
       "revId": "74fd311f8c522c3c070a141e94f629c4496e1d78",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dd240de7_c1a06135",
+        "filename": "core/java/android/view/autofill/AutofillManager.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 1915,
+      "author": {
+        "id": 1632811
+      },
+      "writtenOn": "2021-02-18T05:51:59Z",
+      "side": 1,
+      "message": "My suggestions are:\n* directly check mService !\u003d null. hasAutofillFeature() does the same thing right now, but the intent of the method is a bit different so it\u0027s possible it could be change to check something else in the future. It\u0027s safer to directly check the field.\n* move it above to it\u0027s own if condition; then also log a warning since the value isn\u0027t supposed to be null here.",
+      "parentUuid": "a2626e23_778d98fa",
+      "range": {
+        "startLine": 1915,
+        "startChar": 35,
+        "endLine": 1915,
+        "endChar": 58
+      },
+      "revId": "74fd311f8c522c3c070a141e94f629c4496e1d78",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
