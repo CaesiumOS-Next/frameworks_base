@@ -33,6 +33,23 @@
       "message": "looks good to me, Jean-Michel?",
       "revId": "70cc65d52813903e2e8c87f7a2c18fcd465f3d2e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9eebf417_8a9bd005",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2021-02-18T19:49:55Z",
+      "side": 1,
+      "message": "Btw this looks like an API change. Do we have a matching update to the api current.txt contract files?",
+      "revId": "70cc65d52813903e2e8c87f7a2c18fcd465f3d2e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
