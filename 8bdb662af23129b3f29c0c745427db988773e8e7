@@ -16,6 +16,29 @@
       "message": "Adding Jean for connectivity API review",
       "revId": "8bdb662af23129b3f29c0c745427db988773e8e7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "205c1190_319fe57c",
+        "filename": "packages/Connectivity/framework/src/android/net/NetworkCapabilities.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 422,
+      "author": {
+        "id": 1542950
+      },
+      "writtenOn": "2021-02-19T05:11:54Z",
+      "side": 1,
+      "message": "In ag/13483692, the comment was updated to the following:\n\n```\n    /**\n     * Indicates that this network is intended for enterprise use.\n     * \u003cp\u003e\n     * 5G URSP rules may indicate that all data should use a connection dedicated for enterprise\n     * use. If the enterprise capability is requested, all enterprise traffic will be routed over\n     * the connection with this capability.\n     * @hide\n     */\n```",
+      "range": {
+        "startLine": 422,
+        "startChar": 0,
+        "endLine": 422,
+        "endChar": 66
+      },
+      "revId": "8bdb662af23129b3f29c0c745427db988773e8e7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
