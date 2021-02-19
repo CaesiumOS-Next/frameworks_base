@@ -41,6 +41,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5410d3ba_ad7877e5",
+        "filename": "core/java/android/net/vcn/VcnManager.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 374,
+      "author": {
+        "id": 1463964
+      },
+      "writtenOn": "2021-02-19T23:06:53Z",
+      "side": 1,
+      "message": "generally, I would assume that the \u0027it\u0027 does not refer to the callback as \u0027callback\u0027 is said immediately before. If \u0027it\u0027 was referring to the callback, it may be more appropriate to use \u0027itself\u0027 so it relates to the noun (callback) more directly. However, let\u0027s be extra specific to avoid any confusion.\n\nDone",
+      "parentUuid": "2496e921_1c9be694",
+      "range": {
+        "startLine": 374,
+        "startChar": 38,
+        "endLine": 374,
+        "endChar": 40
+      },
+      "revId": "00347cc9d4dd7d461e0b32028c700e05839f3504",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0e35d1b9_a5560329",
@@ -54,6 +78,30 @@
       "writtenOn": "2021-02-19T22:58:17Z",
       "side": 1,
       "message": "Per offline conversation, let\u0027s just remove this.",
+      "range": {
+        "startLine": 404,
+        "startChar": 0,
+        "endLine": 407,
+        "endChar": 24
+      },
+      "revId": "00347cc9d4dd7d461e0b32028c700e05839f3504",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "815bb42a_fd4233be",
+        "filename": "core/java/android/net/vcn/VcnManager.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 407,
+      "author": {
+        "id": 1463964
+      },
+      "writtenOn": "2021-02-19T23:06:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0e35d1b9_a5560329",
       "range": {
         "startLine": 404,
         "startChar": 0,
