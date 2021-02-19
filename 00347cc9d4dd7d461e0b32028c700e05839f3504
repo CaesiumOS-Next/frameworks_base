@@ -39,6 +39,29 @@
       },
       "revId": "00347cc9d4dd7d461e0b32028c700e05839f3504",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0e35d1b9_a5560329",
+        "filename": "core/java/android/net/vcn/VcnManager.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 407,
+      "author": {
+        "id": 1221725
+      },
+      "writtenOn": "2021-02-19T22:58:17Z",
+      "side": 1,
+      "message": "Per offline conversation, let\u0027s just remove this.",
+      "range": {
+        "startLine": 404,
+        "startChar": 0,
+        "endLine": 407,
+        "endChar": 24
+      },
+      "revId": "00347cc9d4dd7d461e0b32028c700e05839f3504",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
