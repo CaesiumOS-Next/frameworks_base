@@ -142,6 +142,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "50c64ca9_8928c78e",
+        "filename": "core/java/android/net/vcn/VcnManager.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 391,
+      "author": {
+        "id": 1463964
+      },
+      "writtenOn": "2021-02-19T22:33:26Z",
+      "side": 1,
+      "message": "per conversation offline, this is a VcnConfig. Updated docs to @link them",
+      "parentUuid": "8bd0e6f2_f64e126d",
+      "range": {
+        "startLine": 391,
+        "startChar": 7,
+        "endLine": 391,
+        "endChar": 15
+      },
+      "revId": "3df67347bd588db4837466a562d8dc797ee55c29",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "03879bfb_b7517e12",
