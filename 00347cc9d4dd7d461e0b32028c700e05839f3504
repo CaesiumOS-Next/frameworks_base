@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bf619b54_ab794ee0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1221725
+      },
+      "writtenOn": "2021-02-19T22:52:43Z",
+      "side": 1,
+      "message": "Much cleaner. Thanks! :) \n\nSend to Nathan for review?",
+      "revId": "00347cc9d4dd7d461e0b32028c700e05839f3504",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2496e921_1c9be694",
+        "filename": "core/java/android/net/vcn/VcnManager.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 374,
+      "author": {
+        "id": 1221725
+      },
+      "writtenOn": "2021-02-19T22:52:43Z",
+      "side": 1,
+      "message": "Nit: the subscription group. I think (and please correct me if my grasp of english is off) that \"it\" is ambiguous here, because i can refer to the callback.",
+      "range": {
+        "startLine": 374,
+        "startChar": 38,
+        "endLine": 374,
+        "endChar": 40
+      },
+      "revId": "00347cc9d4dd7d461e0b32028c700e05839f3504",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
