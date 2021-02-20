@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fa858dba_7d7a67ad",
+        "filename": "core/java/android/net/vcn/IVcnStatusCallback.aidl",
+        "patchSetId": 6
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1221725
+      },
+      "writtenOn": "2021-02-20T01:46:08Z",
+      "side": 1,
+      "message": "Let\u0027s make this a oneway interface",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 9
+      },
+      "revId": "83aec7ce64d670cc41cbce14549b4c2aad40facc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
