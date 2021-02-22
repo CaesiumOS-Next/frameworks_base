@@ -33,6 +33,24 @@
       "message": "It seems that there is a problem with verification of my CL. Could you explain what causes the problem? \nThanks.",
       "revId": "82e5161e463edb6dfd8e0c37eaa62f3026fb305b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3dd37c92_da4a7457",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1381966
+      },
+      "writtenOn": "2021-02-22T12:54:24Z",
+      "side": 1,
+      "message": "The change tries to auto merge to internal master but our internal implementation is changed. Please add Merged-In: I10ce988603f47117d0efddcc014ec51b72d3b3b4 in your chabge. We will add your fix internally. Thanks.",
+      "parentUuid": "bf027aa1_05ea76a5",
+      "revId": "82e5161e463edb6dfd8e0c37eaa62f3026fb305b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
