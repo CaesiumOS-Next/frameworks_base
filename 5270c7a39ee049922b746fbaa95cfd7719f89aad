@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f6c42887_87665c1e",
+        "filename": "packages/Connectivity/framework/src/android/net/util/MultinetworkPolicyTracker.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2021-02-22T03:26:47Z",
+      "side": 1,
+      "message": "an",
+      "range": {
+        "startLine": 78,
+        "startChar": 66,
+        "endLine": 78,
+        "endChar": 69
+      },
+      "revId": "5270c7a39ee049922b746fbaa95cfd7719f89aad",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "42423079_39709562",
+        "filename": "tests/net/java/android/net/util/MultinetworkPolicyTrackerTest.kt",
+        "patchSetId": 3
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2021-02-22T03:26:47Z",
+      "side": 1,
+      "message": "The class is re-instanciated for each test, so that doesn\u0027t work as an argument.",
+      "range": {
+        "startLine": 67,
+        "startChar": 61,
+        "endLine": 68,
+        "endChar": 11
+      },
+      "revId": "5270c7a39ee049922b746fbaa95cfd7719f89aad",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
