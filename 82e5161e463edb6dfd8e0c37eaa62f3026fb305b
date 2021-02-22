@@ -16,6 +16,23 @@
       "message": "Thanks!",
       "revId": "82e5161e463edb6dfd8e0c37eaa62f3026fb305b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bf027aa1_05ea76a5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1259532
+      },
+      "writtenOn": "2021-02-22T12:03:32Z",
+      "side": 1,
+      "message": "It seems that there is a problem with verification of my CL. Could you explain what causes the problem? \nThanks.",
+      "revId": "82e5161e463edb6dfd8e0c37eaa62f3026fb305b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
