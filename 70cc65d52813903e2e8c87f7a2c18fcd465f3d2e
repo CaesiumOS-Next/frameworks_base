@@ -50,6 +50,24 @@
       "message": "Btw this looks like an API change. Do we have a matching update to the api current.txt contract files?",
       "revId": "70cc65d52813903e2e8c87f7a2c18fcd465f3d2e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b214a0f5_32134c4c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1565664
+      },
+      "writtenOn": "2021-02-22T04:22:36Z",
+      "side": 1,
+      "message": "Sure i will update the core/api/current.txt in my next patchset.",
+      "parentUuid": "9eebf417_8a9bd005",
+      "revId": "70cc65d52813903e2e8c87f7a2c18fcd465f3d2e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
