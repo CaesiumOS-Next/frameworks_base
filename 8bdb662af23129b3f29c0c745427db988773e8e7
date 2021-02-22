@@ -18,6 +18,29 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "66cc4aa9_3ffa3e10",
+        "filename": "core/api/module-lib-current.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2021-02-22T09:22:49Z",
+      "side": 1,
+      "message": "Shouldn\u0027t this be completely public, rather than just SystemApi ? Enterprise apps should be able to know they are given an enterprise slice – in fact they must, and they\u0027ll hardcode 29 if we don\u0027t give them this constant.",
+      "range": {
+        "startLine": 36,
+        "startChar": 0,
+        "endLine": 36,
+        "endChar": 73
+      },
+      "revId": "8bdb662af23129b3f29c0c745427db988773e8e7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "205c1190_319fe57c",
