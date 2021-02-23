@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ae038f76_16428323",
+        "filename": "core/java/android/net/vcn/VcnManager.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 383,
+      "author": {
+        "id": 1463964
+      },
+      "writtenOn": "2021-02-23T02:15:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "47115c72_3811a434",
+      "range": {
+        "startLine": 383,
+        "startChar": 94,
+        "endLine": 383,
+        "endChar": 96
+      },
+      "revId": "6a314e8919d4c2eb287e9e07b50b76571b547c74",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7eac95be_deb7cf66",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-02-22T23:42:20Z",
       "side": 1,
       "message": "Can you clarify what constitutes active in this case? For instance, is it active only when it has one or more gateway connections or is it active any time it\u0027s connecting,disconnecting, etc?",
+      "range": {
+        "startLine": 391,
+        "startChar": 67,
+        "endLine": 391,
+        "endChar": 73
+      },
+      "revId": "6a314e8919d4c2eb287e9e07b50b76571b547c74",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "29462cd0_6a506372",
+        "filename": "core/java/android/net/vcn/VcnManager.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 391,
+      "author": {
+        "id": 1463964
+      },
+      "writtenOn": "2021-02-23T02:15:23Z",
+      "side": 1,
+      "message": "Clarified below",
+      "parentUuid": "7eac95be_deb7cf66",
       "range": {
         "startLine": 391,
         "startChar": 67,
