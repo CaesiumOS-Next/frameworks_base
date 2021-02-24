@@ -16,6 +16,46 @@
       "message": "Hi William, \n\nThis CL is required to support the TestHarnessMode with GSI/DSU.",
       "revId": "4be43a966494e3e4de1c8bb55d353372d121d41a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cf09996b_c77e8270",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1156333
+      },
+      "writtenOn": "2021-02-24T19:07:09Z",
+      "side": 1,
+      "message": "I\u0027m not familiar with \"copy-on-write\". Can you link a reference for me? Does this change have a doc associated with it?",
+      "revId": "4be43a966494e3e4de1c8bb55d353372d121d41a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "939b74e5_0f550d81",
+        "filename": "services/core/java/com/android/server/PersistentDataBlockService.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 293,
+      "author": {
+        "id": 1156333
+      },
+      "writtenOn": "2021-02-24T19:07:09Z",
+      "side": 1,
+      "message": "This should probably remain \"getBlockOutputStream\", because if I understand \"copy-on-write\" correctly, it\u0027s copying to an underlying block. Also, if we\u0027re not running a GSI, then it\u0027s not actually a copy-on-write, it\u0027s just writing.",
+      "range": {
+        "startLine": 293,
+        "startChar": 29,
+        "endLine": 293,
+        "endChar": 47
+      },
+      "revId": "4be43a966494e3e4de1c8bb55d353372d121d41a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
