@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ed15d559_f9f5da45",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1135739
+      },
+      "writtenOn": "2021-02-24T03:14:55Z",
+      "side": 1,
+      "message": "Hi William, \n\nThis CL is required to support the TestHarnessMode with GSI/DSU.",
+      "revId": "4be43a966494e3e4de1c8bb55d353372d121d41a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
