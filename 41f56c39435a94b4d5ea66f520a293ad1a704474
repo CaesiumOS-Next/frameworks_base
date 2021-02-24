@@ -16,6 +16,29 @@
       "message": "Jean-Michel, could you please do an API Review?",
       "revId": "41f56c39435a94b4d5ea66f520a293ad1a704474",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "67e91f7f_4786e656",
+        "filename": "media/java/android/media/AudioMetadata.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2021-02-24T22:47:35Z",
+      "side": 1,
+      "message": "I think for an inner class the delimiter must be comma:\n\n  AudioPresentation.ContentClassifier\n\nOtherwise javadoc thinks that you are attempting to refer to a method or a constant:\n\nhttps://android-build.googleplex.com/builds/pending/P20074995/aosp_crosshatch-userdebug/latest/view/logs/build_error.log",
+      "range": {
+        "startLine": 228,
+        "startChar": 16,
+        "endLine": 228,
+        "endChar": 51
+      },
+      "revId": "41f56c39435a94b4d5ea66f520a293ad1a704474",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
