@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "769c86b1_d92ba649",
+        "filename": "media/java/android/media/AudioMetadata.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1002682
+      },
+      "writtenOn": "2021-02-25T00:05:46Z",
+      "side": 1,
+      "message": "Do all those keys belong to AudioMetadata.Format class? They seem very different from bitrate, encoding... that are about the format.",
+      "range": {
+        "startLine": 207,
+        "startChar": 50,
+        "endLine": 207,
+        "endChar": 66
+      },
+      "revId": "9ff0a7375cca92e767fb3a2910d49453790e23d3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
