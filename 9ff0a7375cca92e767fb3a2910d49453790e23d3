@@ -22,6 +22,30 @@
       },
       "revId": "9ff0a7375cca92e767fb3a2910d49453790e23d3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "329b771a_5168b9c6",
+        "filename": "media/java/android/media/AudioMetadata.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1565664
+      },
+      "writtenOn": "2021-02-25T00:27:24Z",
+      "side": 1,
+      "message": "The keys added here are all related to AUDIO_FORMAT_AC4.\nThey represent the active audio presentation fields.\n\nHence, AudioMetadata.Format was chosen as the viable candidate.",
+      "parentUuid": "769c86b1_d92ba649",
+      "range": {
+        "startLine": 207,
+        "startChar": 50,
+        "endLine": 207,
+        "endChar": 66
+      },
+      "revId": "9ff0a7375cca92e767fb3a2910d49453790e23d3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
