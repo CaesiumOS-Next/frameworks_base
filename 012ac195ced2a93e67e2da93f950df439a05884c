@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "947af939_ade6082e",
+        "filename": "packages/Connectivity/framework/src/android/net/util/MultinetworkPolicyTracker.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1308473
+      },
+      "writtenOn": "2021-02-25T08:09:56Z",
+      "side": 1,
+      "message": "I have tried but it couldn\u0027t be package-private only.",
+      "parentUuid": "c8d5b221_b8271221",
+      "range": {
+        "startLine": 95,
+        "startChar": 4,
+        "endLine": 95,
+        "endChar": 13
+      },
+      "revId": "012ac195ced2a93e67e2da93f950df439a05884c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "0e855db4_d5c81e14",
         "filename": "tests/net/java/android/net/util/MultinetworkPolicyTrackerTest.kt",
         "patchSetId": 4
