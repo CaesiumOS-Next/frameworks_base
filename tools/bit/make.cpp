@@ -89,8 +89,9 @@ BuildVars::BuildVars(const string& outDir, const string& buildProduct,
     }
 
     Json::Value json;
-    Json::Reader reader;
-    if (!reader.parse(stream, json)) {
+    Json::CharReaderBuilder builder;
+    std::string errorMessage;
+    if (!Json::parseFromStream(builder, stream, &json, &errorMessage)) {
         return;
     }
 
