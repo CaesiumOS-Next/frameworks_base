@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ddd4d069_6385a8d8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-02-25T22:43:19Z",
+      "side": 1,
+      "message": "Hey! Thanks! I have been wondering why I had to Ctrl+C this locally. I hadn\u0027t remembered it hanging forever before.\n\nyamasani@, can you TAL? Maybe there is some other object that could be used, to avoid having to expose the underlying binder in ShellCallback (I haven\u0027t added ShellCallback OWNERS - probably I forgot to include this when I updated these owners for binder, but I\u0027d like to avoid the change there if possible)",
+      "revId": "9f6979a22bebb59734e6701f24e7fb4a73521e24",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
