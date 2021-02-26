@@ -16,6 +16,24 @@
       "message": "Hey! Thanks! I have been wondering why I had to Ctrl+C this locally. I hadn\u0027t remembered it hanging forever before.\n\nyamasani@, can you TAL? Maybe there is some other object that could be used, to avoid having to expose the underlying binder in ShellCallback (I haven\u0027t added ShellCallback OWNERS - probably I forgot to include this when I updated these owners for binder, but I\u0027d like to avoid the change there if possible)",
       "revId": "9f6979a22bebb59734e6701f24e7fb4a73521e24",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "226a0927_f2821e10",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1840920
+      },
+      "writtenOn": "2021-02-26T05:56:46Z",
+      "side": 1,
+      "message": "Hello! If the phone can not resume from hanging state after we kill \"am hang\" shell command, we need to restart the phone to make it resume, which may result in a bad experience.\nBefore Android 8.0, e.g., Android 7.0, the phone can resume from hanging state after we kill \"am hang\" shell command. In Android 8.0, the frameworks/base/cmds/am/src/com/android/commands/am/Am.java was modified, resulting in such problem.",
+      "parentUuid": "ddd4d069_6385a8d8",
+      "revId": "9f6979a22bebb59734e6701f24e7fb4a73521e24",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
