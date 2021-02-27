@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "290d1d60_389086e9",
+        "filename": "telephony/java/android/telephony/DataSpecificRegistrationInfo.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1056478
+      },
+      "writtenOn": "2021-02-27T00:25:02Z",
+      "side": 0,
+      "message": "Given mLteVopsSupportInfo is @Nullable it\u0027s unfortunate we marked this NonNull in the past.  Seems we could always return null and break the caller.",
+      "range": {
+        "startLine": 175,
+        "startChar": 4,
+        "endLine": 177,
+        "endChar": 35
+      },
+      "revId": "ca115f206a9a7b182773937f7ebf043a18f2965d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

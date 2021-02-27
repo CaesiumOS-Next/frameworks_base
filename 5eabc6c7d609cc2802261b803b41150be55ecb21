@@ -1,0 +1,234 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1c2a0634_d1f30f58",
+        "filename": "telephony/java/android/telephony/DataSpecificRegistrationInfo.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1056478
+      },
+      "writtenOn": "2021-02-27T00:25:02Z",
+      "side": 1,
+      "message": "You should document what it means to be null.  Does that mean VOPS is not available at all?\nShould also mention the two subclasses that can be returned here.",
+      "range": {
+        "startLine": 188,
+        "startChar": 12,
+        "endLine": 188,
+        "endChar": 72
+      },
+      "revId": "5eabc6c7d609cc2802261b803b41150be55ecb21",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ef184b16_3cecd2af",
+        "filename": "telephony/java/android/telephony/LteVopsSupportInfo.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1056478
+      },
+      "writtenOn": "2021-02-27T00:25:02Z",
+      "side": 1,
+      "message": "The constants you\u0027re referring to here should be defined in the base class.",
+      "range": {
+        "startLine": 95,
+        "startChar": 4,
+        "endLine": 95,
+        "endChar": 45
+      },
+      "revId": "5eabc6c7d609cc2802261b803b41150be55ecb21",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "12f0659f_0150100e",
+        "filename": "telephony/java/android/telephony/LteVopsSupportInfo.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1056478
+      },
+      "writtenOn": "2021-02-27T00:25:02Z",
+      "side": 1,
+      "message": "getEmcSupport and getVopsSupport both already indicate this; I don\u0027t see a need to provide these helper methods.",
+      "range": {
+        "startLine": 99,
+        "startChar": 4,
+        "endLine": 113,
+        "endChar": 5
+      },
+      "revId": "5eabc6c7d609cc2802261b803b41150be55ecb21",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7d972a5f_6bd5811d",
+        "filename": "telephony/java/android/telephony/LteVopsSupportInfo.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1056478
+      },
+      "writtenOn": "2021-02-27T00:25:02Z",
+      "side": 1,
+      "message": "Minor: Why not just call new LteVopsSupportInfo(in) here?",
+      "range": {
+        "startLine": 160,
+        "startChar": 19,
+        "endLine": 160,
+        "endChar": 39
+      },
+      "revId": "5eabc6c7d609cc2802261b803b41150be55ecb21",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8ee2ad37_936c46ee",
+        "filename": "telephony/java/android/telephony/VopsSupportInfo.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1056478
+      },
+      "writtenOn": "2021-02-27T00:25:02Z",
+      "side": 1,
+      "message": "Add some docs explaining the class hierarchy and what the expected types are.",
+      "range": {
+        "startLine": 27,
+        "startChar": 3,
+        "endLine": 27,
+        "endChar": 74
+      },
+      "revId": "5eabc6c7d609cc2802261b803b41150be55ecb21",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b8a8443d_3b6df9b6",
+        "filename": "telephony/java/android/telephony/VopsSupportInfo.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1056478
+      },
+      "writtenOn": "2021-02-27T00:25:02Z",
+      "side": 1,
+      "message": "To prevent subclassing of VopsSupportInfo outside the framework (Effectively solving the parcel not final problem) add:\n\n/** @hide to prevent subclassing from outside of the framework */\npublic VopsSupportInfo() { }",
+      "range": {
+        "startLine": 32,
+        "startChar": 7,
+        "endLine": 32,
+        "endChar": 9
+      },
+      "revId": "5eabc6c7d609cc2802261b803b41150be55ecb21",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "632b1636_9ec5117e",
+        "filename": "telephony/java/android/telephony/VopsSupportInfo.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1056478
+      },
+      "writtenOn": "2021-02-27T00:25:02Z",
+      "side": 1,
+      "message": "You need an @IntDef here which defines the allowed values.  \nPlease include an @returns in the javadoc.",
+      "range": {
+        "startLine": 37,
+        "startChar": 20,
+        "endLine": 37,
+        "endChar": 41
+      },
+      "revId": "5eabc6c7d609cc2802261b803b41150be55ecb21",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5a5f4cc6_8756ca24",
+        "filename": "telephony/java/android/telephony/VopsSupportInfo.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1056478
+      },
+      "writtenOn": "2021-02-27T00:25:02Z",
+      "side": 1,
+      "message": "Can we choose a better name for this?  EMC doesn\u0027t even seem to be an abbreviation for emergency service support..\n\nHow about: getEmergencyServiceSupport\n\nAlso, need intdef here.",
+      "range": {
+        "startLine": 42,
+        "startChar": 23,
+        "endLine": 42,
+        "endChar": 40
+      },
+      "revId": "5eabc6c7d609cc2802261b803b41150be55ecb21",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "feb8882c_db24d98d",
+        "filename": "telephony/java/android/telephony/VopsSupportInfo.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1056478
+      },
+      "writtenOn": "2021-02-27T00:25:02Z",
+      "side": 1,
+      "message": "As I mentioned before; since they just derive from the getXSupport methods, I recommend removing them.",
+      "range": {
+        "startLine": 44,
+        "startChar": 4,
+        "endLine": 52,
+        "endChar": 45
+      },
+      "revId": "5eabc6c7d609cc2802261b803b41150be55ecb21",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9f6e144a_d5cb3df0",
+        "filename": "telephony/java/android/telephony/VopsSupportInfo.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1056478
+      },
+      "writtenOn": "2021-02-27T00:25:02Z",
+      "side": 1,
+      "message": "I don\u0027t think you need this; the subclases are going provide this so I don\u0027t think you need to be explicit here.  E.g. see VibrationEffect for an example as they\u0027re doing something similar.",
+      "range": {
+        "startLine": 64,
+        "startChar": 4,
+        "endLine": 64,
+        "endChar": 72
+      },
+      "revId": "5eabc6c7d609cc2802261b803b41150be55ecb21",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
