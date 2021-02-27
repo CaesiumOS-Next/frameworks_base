@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6c11ef8b_ae3bbf35",
+        "filename": "telephony/java/android/telephony/DataSpecificRegistrationInfo.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1733820
+      },
+      "writtenOn": "2021-02-27T01:21:26Z",
+      "side": 1,
+      "message": "yes, it means vops indicator is not available (not returned from radio interface). will update to mention the two subclass here.",
+      "parentUuid": "1c2a0634_d1f30f58",
+      "range": {
+        "startLine": 188,
+        "startChar": 12,
+        "endLine": 188,
+        "endChar": 72
+      },
+      "revId": "5eabc6c7d609cc2802261b803b41150be55ecb21",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ef184b16_3cecd2af",
         "filename": "telephony/java/android/telephony/LteVopsSupportInfo.java",
         "patchSetId": 4
@@ -72,6 +96,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "13a64cee_79b99b91",
+        "filename": "telephony/java/android/telephony/LteVopsSupportInfo.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1733820
+      },
+      "writtenOn": "2021-02-27T01:21:26Z",
+      "side": 1,
+      "message": "as the value of nr is different as lte, considering some application may only care about if vops or emc is supported by the network, there 2 methods may avoid application to check the values for different instance (LTE or NR)",
+      "parentUuid": "12f0659f_0150100e",
+      "range": {
+        "startLine": 99,
+        "startChar": 4,
+        "endLine": 113,
+        "endChar": 5
+      },
+      "revId": "5eabc6c7d609cc2802261b803b41150be55ecb21",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7d972a5f_6bd5811d",
         "filename": "telephony/java/android/telephony/LteVopsSupportInfo.java",
         "patchSetId": 4
@@ -95,6 +143,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "79a5c774_9b1982fb",
+        "filename": "telephony/java/android/telephony/LteVopsSupportInfo.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1733820
+      },
+      "writtenOn": "2021-02-27T01:21:26Z",
+      "side": 1,
+      "message": "will update",
+      "parentUuid": "7d972a5f_6bd5811d",
+      "range": {
+        "startLine": 160,
+        "startChar": 19,
+        "endLine": 160,
+        "endChar": 39
+      },
+      "revId": "5eabc6c7d609cc2802261b803b41150be55ecb21",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8ee2ad37_936c46ee",
         "filename": "telephony/java/android/telephony/VopsSupportInfo.java",
         "patchSetId": 4
@@ -106,6 +178,30 @@
       "writtenOn": "2021-02-27T00:25:02Z",
       "side": 1,
       "message": "Add some docs explaining the class hierarchy and what the expected types are.",
+      "range": {
+        "startLine": 27,
+        "startChar": 3,
+        "endLine": 27,
+        "endChar": 74
+      },
+      "revId": "5eabc6c7d609cc2802261b803b41150be55ecb21",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "46862497_9d392203",
+        "filename": "telephony/java/android/telephony/VopsSupportInfo.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1733820
+      },
+      "writtenOn": "2021-02-27T01:21:26Z",
+      "side": 1,
+      "message": "will update",
+      "parentUuid": "8ee2ad37_936c46ee",
       "range": {
         "startLine": 27,
         "startChar": 3,
@@ -164,6 +260,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9387e9c6_6e4d3f4f",
+        "filename": "telephony/java/android/telephony/VopsSupportInfo.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1733820
+      },
+      "writtenOn": "2021-02-27T01:21:26Z",
+      "side": 1,
+      "message": "I had thought to use intdef to define unified values for both lte and nr. however, the values defined in existing lte info are not same value as spec, 0-not support, 1 support, but convert to 2-support, 3 unavailable. it is hard to combine them.",
+      "parentUuid": "632b1636_9ec5117e",
+      "range": {
+        "startLine": 37,
+        "startChar": 20,
+        "endLine": 37,
+        "endChar": 41
+      },
+      "revId": "5eabc6c7d609cc2802261b803b41150be55ecb21",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5a5f4cc6_8756ca24",
         "filename": "telephony/java/android/telephony/VopsSupportInfo.java",
         "patchSetId": 4
@@ -175,6 +295,30 @@
       "writtenOn": "2021-02-27T00:25:02Z",
       "side": 1,
       "message": "Can we choose a better name for this?  EMC doesn\u0027t even seem to be an abbreviation for emergency service support..\n\nHow about: getEmergencyServiceSupport\n\nAlso, need intdef here.",
+      "range": {
+        "startLine": 42,
+        "startChar": 23,
+        "endLine": 42,
+        "endChar": 40
+      },
+      "revId": "5eabc6c7d609cc2802261b803b41150be55ecb21",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8ef3c5af_5300732d",
+        "filename": "telephony/java/android/telephony/VopsSupportInfo.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1733820
+      },
+      "writtenOn": "2021-02-27T01:21:26Z",
+      "side": 1,
+      "message": "EMC and EMF are the abbreviation in the spec, 24.501. If we think the abbreviation make confused, we may change to getEmergencyServiceSupport",
+      "parentUuid": "5a5f4cc6_8756ca24",
       "range": {
         "startLine": 42,
         "startChar": 23,
@@ -221,6 +365,30 @@
       "writtenOn": "2021-02-27T00:25:02Z",
       "side": 1,
       "message": "I don\u0027t think you need this; the subclases are going provide this so I don\u0027t think you need to be explicit here.  E.g. see VibrationEffect for an example as they\u0027re doing something similar.",
+      "range": {
+        "startLine": 64,
+        "startChar": 4,
+        "endLine": 64,
+        "endChar": 72
+      },
+      "revId": "5eabc6c7d609cc2802261b803b41150be55ecb21",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "04924994_69975272",
+        "filename": "telephony/java/android/telephony/VopsSupportInfo.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1733820
+      },
+      "writtenOn": "2021-02-27T01:21:26Z",
+      "side": 1,
+      "message": "will update",
+      "parentUuid": "9f6e144a_d5cb3df0",
       "range": {
         "startLine": 64,
         "startChar": 4,
