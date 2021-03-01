@@ -35,6 +35,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "09ac9530_f0957fe6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1156333
+      },
+      "writtenOn": "2021-03-01T23:14:05Z",
+      "side": 1,
+      "message": "I see an attached bug now.",
+      "parentUuid": "cf09996b_c77e8270",
+      "revId": "4be43a966494e3e4de1c8bb55d353372d121d41a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "939b74e5_0f550d81",
@@ -72,6 +90,30 @@
       "side": 1,
       "message": "Ack. You are right. Let me fix it then.",
       "parentUuid": "939b74e5_0f550d81",
+      "range": {
+        "startLine": 293,
+        "startChar": 29,
+        "endLine": 293,
+        "endChar": 47
+      },
+      "revId": "4be43a966494e3e4de1c8bb55d353372d121d41a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "25d940d1_fe4dcc0e",
+        "filename": "services/core/java/com/android/server/PersistentDataBlockService.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 293,
+      "author": {
+        "id": 1156333
+      },
+      "writtenOn": "2021-03-01T23:14:05Z",
+      "side": 1,
+      "message": "Fixed (resolving this comment).",
+      "parentUuid": "f1f077fb_b3f4eb7a",
       "range": {
         "startLine": 293,
         "startChar": 29,
