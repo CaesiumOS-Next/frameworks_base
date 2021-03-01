@@ -46,6 +46,30 @@
       },
       "revId": "9ff0a7375cca92e767fb3a2910d49453790e23d3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f18b13e2_6a3770c9",
+        "filename": "media/java/android/media/AudioMetadata.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1565664
+      },
+      "writtenOn": "2021-03-01T21:20:40Z",
+      "side": 1,
+      "message": "@Jean-Michel Trivi\nIs the patch set as per your expectation ? Is there anything else which needs to be addressed as part of this patch ?",
+      "parentUuid": "329b771a_5168b9c6",
+      "range": {
+        "startLine": 207,
+        "startChar": 50,
+        "endLine": 207,
+        "endChar": 66
+      },
+      "revId": "9ff0a7375cca92e767fb3a2910d49453790e23d3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
