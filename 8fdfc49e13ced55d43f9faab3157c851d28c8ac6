@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6923c797_9c216f23",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1470463
+      },
+      "writtenOn": "2021-03-01T23:44:33Z",
+      "side": 1,
+      "message": "I\u0027m not sure if you want to move this CL up the relation chain? It looks like there is a lot of independent small changes right above it that may be easier to merge?",
+      "revId": "8fdfc49e13ced55d43f9faab3157c851d28c8ac6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
