@@ -870,6 +870,12 @@ final class HdmiCecLocalDeviceTv extends HdmiCecLocalDevice {
     }
 
     private void sendRequestShortAudioDescriptor() {
+        if (getAvrDeviceInfo() == null || !isArcFeatureEnabled(getAvrDeviceInfo().getPortId()) ||
+                !isConnected(getAvrDeviceInfo().getPortId())) {
+            HdmiLogger.debug("Fail to send Request SAD, AVR might not be connected.");
+            return;
+        }
+
         List<DeviceConfig> config = null;
         File file = new File(SHORT_AUDIO_DESCRIPTOR_CONFIG_PATH);
         @AudioCodec int[] codecToAsk;
