@@ -354,6 +354,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "74e5b78b_0708b09c",
+        "filename": "telephony/java/android/telephony/VopsSupportInfo.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1733820
+      },
+      "writtenOn": "2021-03-02T17:34:11Z",
+      "side": 1,
+      "message": "with this method, application may not need care the exact value for lte, or nr.",
+      "parentUuid": "feb8882c_db24d98d",
+      "range": {
+        "startLine": 44,
+        "startChar": 4,
+        "endLine": 52,
+        "endChar": 45
+      },
+      "revId": "5eabc6c7d609cc2802261b803b41150be55ecb21",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9f6e144a_d5cb3df0",
         "filename": "telephony/java/android/telephony/VopsSupportInfo.java",
         "patchSetId": 4
@@ -389,6 +413,30 @@
       "side": 1,
       "message": "will update",
       "parentUuid": "9f6e144a_d5cb3df0",
+      "range": {
+        "startLine": 64,
+        "startChar": 4,
+        "endLine": 64,
+        "endChar": 72
+      },
+      "revId": "5eabc6c7d609cc2802261b803b41150be55ecb21",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5c46870f_e2b820e9",
+        "filename": "telephony/java/android/telephony/VopsSupportInfo.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1733820
+      },
+      "writtenOn": "2021-03-02T17:34:11Z",
+      "side": 1,
+      "message": "checked again, VibrationEffect does not have the writeToParcel as below, but have this one. this method looks required. otherwise, it will cause compile error. also found similar case as CellInfo.",
+      "parentUuid": "04924994_69975272",
       "range": {
         "startLine": 64,
         "startChar": 4,
