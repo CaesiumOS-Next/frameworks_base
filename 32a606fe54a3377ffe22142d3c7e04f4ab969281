@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "feb5a820_94983e6f",
+        "filename": "packages/Connectivity/service/jarjar-rules.txt",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2021-03-02T08:59:26Z",
+      "side": 0,
+      "message": "Just to confirm: this is unused, given that you don\u0027t change any callers in this CL? (I looked for it in code search and didn\u0027t find anything, so I assume the answer is yes.)",
+      "range": {
+        "startLine": 1,
+        "startChar": 61,
+        "endLine": 1,
+        "endChar": 65
+      },
+      "revId": "32a606fe54a3377ffe22142d3c7e04f4ab969281",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
