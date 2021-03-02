@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "36a216e2_aac183ff",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1321491
+      },
+      "writtenOn": "2021-03-02T00:26:12Z",
+      "side": 1,
+      "message": "Could you add description of the events to the commit message?",
+      "range": {
+        "startLine": 9,
+        "startChar": 44,
+        "endLine": 9,
+        "endChar": 69
+      },
+      "revId": "8cd7e7b4311a7f8864d4a049833f7b0845265344",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ad4e4dc1_068c99ae",
+        "filename": "services/core/java/com/android/server/apphibernation/AppHibernationService.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 633,
+      "author": {
+        "id": 1321491
+      },
+      "writtenOn": "2021-03-02T00:26:12Z",
+      "side": 1,
+      "message": "Is there a tracker bug you could add?",
+      "range": {
+        "startLine": 633,
+        "startChar": 15,
+        "endLine": 633,
+        "endChar": 19
+      },
+      "revId": "8cd7e7b4311a7f8864d4a049833f7b0845265344",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
