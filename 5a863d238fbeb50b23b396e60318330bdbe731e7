@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4809cc68_d2142f01",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1056478
+      },
+      "writtenOn": "2021-03-03T19:41:43Z",
+      "side": 1,
+      "message": "So our of curiosity I ran the contents of the NrVopsSupportInfo and LteVopsSupportInfo classes through a diff tool; the contents of the two classes are almost identical. \n\nThe only functional difference I see between the classes is that the NR sub-class includes:\n public @NrEmcStatus int getEmfSupport() {\n        return mEmfSupport;\n    }\n\nAlso, the inheritance model for these classes doesn\u0027t make sense and I think you really need to rethink how this is working.\n\nTake these two methods:\n@Override\npublic @NrVopsStatus int getVopsSupport()\n@Override\npublic @LteVopsStatus int getVopsSupport()\n\nThese two methods are returning two completely different enumerated values, so I don\u0027t think you can really provide that as a base-class implementation detail.\n\nConsider if instead of using an int/intdef we used proper Java enums.  It would be impossible to make this method reusable in the subclasses because you\u0027d need to have the enumeration in the base class, and it would in effect become a jumble of LTE and NR concepts.\n\ngetEmcStatus has the same fundamental problem as well.\n",
+      "revId": "5a863d238fbeb50b23b396e60318330bdbe731e7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
