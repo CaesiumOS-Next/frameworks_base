@@ -70,6 +70,30 @@
       },
       "revId": "9ff0a7375cca92e767fb3a2910d49453790e23d3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c44d09bd_6694b137",
+        "filename": "media/java/android/media/AudioMetadata.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2021-03-03T02:35:57Z",
+      "side": 1,
+      "message": "Marking as resolved per Jean-Michel\u0027s approval of the CL.",
+      "parentUuid": "f18b13e2_6a3770c9",
+      "range": {
+        "startLine": 207,
+        "startChar": 50,
+        "endLine": 207,
+        "endChar": 66
+      },
+      "revId": "9ff0a7375cca92e767fb3a2910d49453790e23d3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
