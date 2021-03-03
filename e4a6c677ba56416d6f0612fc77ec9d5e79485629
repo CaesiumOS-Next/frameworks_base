@@ -16,6 +16,24 @@
       "message": "From this CL, it looks like you\u0027re not deprecating this API, you\u0027re removing the implementation. If so you should probably mark it @removed, not @deprecated.\n\nBefore we do this: are there any callers in the system (or in modules) that we should delete? Will you be deleting them? If not, why not? Also, what about any other callers elsewhere?\n\nRemi, you might already have some of the answers here.",
       "revId": "e4a6c677ba56416d6f0612fc77ec9d5e79485629",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "624d2d4a_2eaa49cf",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1288034
+      },
+      "writtenOn": "2021-03-03T10:53:23Z",
+      "side": 1,
+      "message": "The only caller should be the captive portal activity. I think we should be careful about deleting it because it was calling OEM code on Q and R. This is to consider when adding modern metrics to CaptivePortalLogin though.\nI don\u0027t think there are callers elsewhere, they would need signature permissions anyway, and can\u0027t do much with such an API.",
+      "parentUuid": "f31b4921_3c87635e",
+      "revId": "e4a6c677ba56416d6f0612fc77ec9d5e79485629",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
