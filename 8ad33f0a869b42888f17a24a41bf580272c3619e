@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8729f5e5_eb33d429",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1288034
+      },
+      "writtenOn": "2021-03-03T08:18:04Z",
+      "side": 1,
+      "message": "Nit: These are not being added now so probably shouldn\u0027t be in the comment for this change",
+      "range": {
+        "startLine": 10,
+        "startChar": 60,
+        "endLine": 11,
+        "endChar": 52
+      },
+      "revId": "8ad33f0a869b42888f17a24a41bf580272c3619e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "15895b68_6b6ce086",
+        "filename": "tests/net/common/java/android/net/CaptivePortalTest.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1288034
+      },
+      "writtenOn": "2021-03-03T08:18:04Z",
+      "side": 1,
+      "message": "Nit: you could also have a comment to explain that this is expected to do nothing but shouldn\u0027t crash; but no need to respin if it\u0027s just for that.",
+      "range": {
+        "startLine": 95,
+        "startChar": 0,
+        "endLine": 95,
+        "endChar": 32
+      },
+      "revId": "8ad33f0a869b42888f17a24a41bf580272c3619e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
