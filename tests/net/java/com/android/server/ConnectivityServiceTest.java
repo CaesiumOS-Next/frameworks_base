@@ -735,7 +735,7 @@ public class ConnectivityServiceTest {
                 }
             };
 
-            assertEquals(na.getNetwork().netId, nmNetworkCaptor.getValue().netId);
+            assertEquals(na.getNetwork().getNetId(), nmNetworkCaptor.getValue().getNetId());
             mNmCallbacks = nmCbCaptor.getValue();
 
             mNmCallbacks.onNetworkMonitorCreated(mNetworkMonitor);
@@ -1137,7 +1137,8 @@ public class ConnectivityServiceTest {
 
         @Override
         public int getNetId() {
-            return (mMockNetworkAgent == null) ? NETID_UNSET : mMockNetworkAgent.getNetwork().netId;
+            return (mMockNetworkAgent == null) ? NETID_UNSET
+                    : mMockNetworkAgent.getNetwork().getNetId();
         }
 
         @Override
@@ -5717,7 +5718,7 @@ public class ConnectivityServiceTest {
         waitForIdle();
 
         verify(mMockDnsResolver, times(1)).createNetworkCache(
-                eq(mCellNetworkAgent.getNetwork().netId));
+                eq(mCellNetworkAgent.getNetwork().getNetId()));
         // CS tells dnsresolver about the empty DNS config for this network.
         verify(mMockDnsResolver, atLeastOnce()).setResolverConfiguration(any());
         reset(mMockDnsResolver);
@@ -5781,7 +5782,7 @@ public class ConnectivityServiceTest {
         mWiFiNetworkAgent.connect(false);
         callback.expectAvailableCallbacksUnvalidated(mWiFiNetworkAgent);
         verify(mMockDnsResolver, times(1)).createNetworkCache(
-                eq(mWiFiNetworkAgent.getNetwork().netId));
+                eq(mWiFiNetworkAgent.getNetwork().getNetId()));
         verify(mMockDnsResolver, times(2)).setResolverConfiguration(
                 mResolverParamsParcelCaptor.capture());
         final ResolverParamsParcel resolverParams = mResolverParamsParcelCaptor.getValue();
@@ -5864,7 +5865,7 @@ public class ConnectivityServiceTest {
         mCellNetworkAgent.connect(false);
         waitForIdle();
         verify(mMockDnsResolver, times(1)).createNetworkCache(
-                eq(mCellNetworkAgent.getNetwork().netId));
+                eq(mCellNetworkAgent.getNetwork().getNetId()));
         verify(mMockDnsResolver, atLeastOnce()).setResolverConfiguration(
                 mResolverParamsParcelCaptor.capture());
         ResolverParamsParcel resolvrParams = mResolverParamsParcelCaptor.getValue();
@@ -5950,7 +5951,7 @@ public class ConnectivityServiceTest {
         // Send a validation event for a server that is not part of the current
         // resolver config. The validation event should be ignored.
         mService.mNetdEventCallback.onPrivateDnsValidationEvent(
-                mCellNetworkAgent.getNetwork().netId, "", "145.100.185.18", true);
+                mCellNetworkAgent.getNetwork().getNetId(), "", "145.100.185.18", true);
         cellNetworkCallback.assertNoCallback();
 
         // Add a dns server to the LinkProperties.
@@ -5968,19 +5969,19 @@ public class ConnectivityServiceTest {
         // Send a validation event containing a hostname that is not part of
         // the current resolver config. The validation event should be ignored.
         mService.mNetdEventCallback.onPrivateDnsValidationEvent(
-                mCellNetworkAgent.getNetwork().netId, "145.100.185.16", "hostname", true);
+                mCellNetworkAgent.getNetwork().getNetId(), "145.100.185.16", "hostname", true);
         cellNetworkCallback.assertNoCallback();
 
         // Send a validation event where validation failed.
         mService.mNetdEventCallback.onPrivateDnsValidationEvent(
-                mCellNetworkAgent.getNetwork().netId, "145.100.185.16", "", false);
+                mCellNetworkAgent.getNetwork().getNetId(), "145.100.185.16", "", false);
         cellNetworkCallback.assertNoCallback();
 
         // Send a validation event where validation succeeded for a server in
         // the current resolver config. A LinkProperties callback with updated
         // private dns fields should be sent.
         mService.mNetdEventCallback.onPrivateDnsValidationEvent(
-                mCellNetworkAgent.getNetwork().netId, "145.100.185.16", "", true);
+                mCellNetworkAgent.getNetwork().getNetId(), "145.100.185.16", "", true);
         cbi = cellNetworkCallback.expectCallback(CallbackEntry.LINK_PROPERTIES_CHANGED,
                 mCellNetworkAgent);
         cellNetworkCallback.assertNoCallback();
@@ -7737,7 +7738,7 @@ public class ConnectivityServiceTest {
             mCellNetworkAgent.connect(true);
             callbackWithCap.expectAvailableThenValidatedCallbacks(mCellNetworkAgent);
             callbackWithoutCap.expectAvailableThenValidatedCallbacks(mCellNetworkAgent);
-            verify(mMockNetd).networkSetDefault(eq(mCellNetworkAgent.getNetwork().netId));
+            verify(mMockNetd).networkSetDefault(eq(mCellNetworkAgent.getNetwork().getNetId()));
             reset(mMockNetd);
 
             mWiFiNetworkAgent = new TestNetworkAgentWrapper(TRANSPORT_WIFI);
@@ -7745,7 +7746,7 @@ public class ConnectivityServiceTest {
             mWiFiNetworkAgent.connect(true);
             callbackWithCap.expectAvailableDoubleValidatedCallbacks(mWiFiNetworkAgent);
             callbackWithoutCap.expectAvailableDoubleValidatedCallbacks(mWiFiNetworkAgent);
-            verify(mMockNetd).networkSetDefault(eq(mWiFiNetworkAgent.getNetwork().netId));
+            verify(mMockNetd).networkSetDefault(eq(mWiFiNetworkAgent.getNetwork().getNetId()));
             reset(mMockNetd);
 
             // Remove the testing capability on wifi, verify the callback and default network
@@ -7753,7 +7754,7 @@ public class ConnectivityServiceTest {
             mWiFiNetworkAgent.removeCapability(testCap);
             callbackWithCap.expectAvailableCallbacksValidated(mCellNetworkAgent);
             callbackWithoutCap.expectCapabilitiesWithout(testCap, mWiFiNetworkAgent);
-            verify(mMockNetd).networkSetDefault(eq(mCellNetworkAgent.getNetwork().netId));
+            verify(mMockNetd).networkSetDefault(eq(mCellNetworkAgent.getNetwork().getNetId()));
             reset(mMockNetd);
 
             mCellNetworkAgent.removeCapability(testCap);
@@ -7860,7 +7861,7 @@ public class ConnectivityServiceTest {
 
         // Connect with ipv6 link properties. Expect prefix discovery to be started.
         mCellNetworkAgent.connect(true);
-        final int cellNetId = mCellNetworkAgent.getNetwork().netId;
+        final int cellNetId = mCellNetworkAgent.getNetwork().getNetId();
         waitForIdle();
 
         verify(mMockNetd, times(1)).networkCreatePhysical(eq(cellNetId), anyInt());
@@ -8282,9 +8283,9 @@ public class ConnectivityServiceTest {
         waitForIdle();
         verify(mMockNetd, times(0)).idletimerRemoveInterface(eq(MOBILE_IFNAME), anyInt(),
                 eq(Integer.toString(TRANSPORT_CELLULAR)));
-        verify(mMockNetd, times(1)).networkDestroy(eq(mCellNetworkAgent.getNetwork().netId));
+        verify(mMockNetd, times(1)).networkDestroy(eq(mCellNetworkAgent.getNetwork().getNetId()));
         verify(mMockDnsResolver, times(1))
-                .destroyNetworkCache(eq(mCellNetworkAgent.getNetwork().netId));
+                .destroyNetworkCache(eq(mCellNetworkAgent.getNetwork().getNetId()));
 
         // Disconnect wifi
         ExpectedBroadcast b = expectConnectivityAction(TYPE_WIFI, DetailedState.DISCONNECTED);
@@ -9156,7 +9157,7 @@ public class ConnectivityServiceTest {
         reset(mMockNetd);
         mCellNetworkAgent.connect(false);
         networkCallback.expectAvailableCallbacksUnvalidated(mCellNetworkAgent);
-        final int netId = mCellNetworkAgent.getNetwork().netId;
+        final int netId = mCellNetworkAgent.getNetwork().getNetId();
 
         final String iface = "rmnet_data0";
         final InetAddress gateway = InetAddress.getByName("fe80::5678");
@@ -10183,22 +10184,22 @@ public class ConnectivityServiceTest {
         // Bring up metered cellular. This will satisfy the fallback network.
         setOemNetworkPreferenceAgentConnected(TRANSPORT_CELLULAR, true);
         verifySetOemNetworkPreferenceForPreference(uidRanges,
-                mCellNetworkAgent.getNetwork().netId, 1 /* times */,
+                mCellNetworkAgent.getNetwork().getNetId(), 1 /* times */,
                 OEM_PREF_ANY_NET_ID, 0 /* times */,
                 false /* shouldDestroyNetwork */);
 
         // Bring up ethernet with OEM_PAID. This will satisfy NET_CAPABILITY_OEM_PAID.
         setOemNetworkPreferenceAgentConnected(TRANSPORT_ETHERNET, true);
         verifySetOemNetworkPreferenceForPreference(uidRanges,
-                mEthernetNetworkAgent.getNetwork().netId, 1 /* times */,
-                mCellNetworkAgent.getNetwork().netId, 1 /* times */,
+                mEthernetNetworkAgent.getNetwork().getNetId(), 1 /* times */,
+                mCellNetworkAgent.getNetwork().getNetId(), 1 /* times */,
                 false /* shouldDestroyNetwork */);
 
         // Bring up unmetered Wi-Fi. This will satisfy NET_CAPABILITY_NOT_METERED.
         setOemNetworkPreferenceAgentConnected(TRANSPORT_WIFI, true);
         verifySetOemNetworkPreferenceForPreference(uidRanges,
-                mWiFiNetworkAgent.getNetwork().netId, 1 /* times */,
-                mEthernetNetworkAgent.getNetwork().netId, 1 /* times */,
+                mWiFiNetworkAgent.getNetwork().getNetId(), 1 /* times */,
+                mEthernetNetworkAgent.getNetwork().getNetId(), 1 /* times */,
                 false /* shouldDestroyNetwork */);
 
         // Disconnecting OEM_PAID should have no effect as it is lower in priority then unmetered.
@@ -10212,15 +10213,15 @@ public class ConnectivityServiceTest {
         // Disconnecting unmetered should put PANS on lowest priority fallback request.
         setOemNetworkPreferenceAgentConnected(TRANSPORT_WIFI, false);
         verifySetOemNetworkPreferenceForPreference(uidRanges,
-                mCellNetworkAgent.getNetwork().netId, 1 /* times */,
-                mWiFiNetworkAgent.getNetwork().netId, 0 /* times */,
+                mCellNetworkAgent.getNetwork().getNetId(), 1 /* times */,
+                mWiFiNetworkAgent.getNetwork().getNetId(), 0 /* times */,
                 true /* shouldDestroyNetwork */);
 
         // Disconnecting the fallback network should result in no connectivity.
         setOemNetworkPreferenceAgentConnected(TRANSPORT_CELLULAR, false);
         verifySetOemNetworkPreferenceForPreference(uidRanges,
                 OEM_PREF_ANY_NET_ID, 0 /* times */,
-                mCellNetworkAgent.getNetwork().netId, 0 /* times */,
+                mCellNetworkAgent.getNetwork().getNetId(), 0 /* times */,
                 true /* shouldDestroyNetwork */);
     }
 
@@ -10259,22 +10260,22 @@ public class ConnectivityServiceTest {
         // Bring up ethernet with OEM_PAID. This will satisfy NET_CAPABILITY_OEM_PAID.
         setOemNetworkPreferenceAgentConnected(TRANSPORT_ETHERNET, true);
         verifySetOemNetworkPreferenceForPreference(uidRanges,
-                mEthernetNetworkAgent.getNetwork().netId, 1 /* times */,
+                mEthernetNetworkAgent.getNetwork().getNetId(), 1 /* times */,
                 mService.mNoServiceNetwork.network.getNetId(), 1 /* times */,
                 false /* shouldDestroyNetwork */);
 
         // Bring up unmetered Wi-Fi. This will satisfy NET_CAPABILITY_NOT_METERED.
         setOemNetworkPreferenceAgentConnected(TRANSPORT_WIFI, true);
         verifySetOemNetworkPreferenceForPreference(uidRanges,
-                mWiFiNetworkAgent.getNetwork().netId, 1 /* times */,
-                mEthernetNetworkAgent.getNetwork().netId, 1 /* times */,
+                mWiFiNetworkAgent.getNetwork().getNetId(), 1 /* times */,
+                mEthernetNetworkAgent.getNetwork().getNetId(), 1 /* times */,
                 false /* shouldDestroyNetwork */);
 
         // Disconnecting unmetered should put PANS on OEM_PAID.
         setOemNetworkPreferenceAgentConnected(TRANSPORT_WIFI, false);
         verifySetOemNetworkPreferenceForPreference(uidRanges,
-                mEthernetNetworkAgent.getNetwork().netId, 1 /* times */,
-                mWiFiNetworkAgent.getNetwork().netId, 0 /* times */,
+                mEthernetNetworkAgent.getNetwork().getNetId(), 1 /* times */,
+                mWiFiNetworkAgent.getNetwork().getNetId(), 0 /* times */,
                 true /* shouldDestroyNetwork */);
 
         // Disconnecting OEM_PAID should result in no connectivity.
@@ -10282,7 +10283,7 @@ public class ConnectivityServiceTest {
         setOemNetworkPreferenceAgentConnected(TRANSPORT_ETHERNET, false);
         verifySetOemNetworkPreferenceForPreference(uidRanges,
                 mService.mNoServiceNetwork.network.getNetId(), 1 /* times */,
-                mEthernetNetworkAgent.getNetwork().netId, 0 /* times */,
+                mEthernetNetworkAgent.getNetwork().getNetId(), 0 /* times */,
                 true /* shouldDestroyNetwork */);
     }
 
@@ -10327,7 +10328,7 @@ public class ConnectivityServiceTest {
         // Bring up ethernet with OEM_PAID. This will satisfy NET_CAPABILITY_OEM_PAID.
         setOemNetworkPreferenceAgentConnected(TRANSPORT_ETHERNET, true);
         verifySetOemNetworkPreferenceForPreference(uidRanges,
-                mEthernetNetworkAgent.getNetwork().netId, 1 /* times */,
+                mEthernetNetworkAgent.getNetwork().getNetId(), 1 /* times */,
                 mService.mNoServiceNetwork.network.getNetId(), 1 /* times */,
                 false /* shouldDestroyNetwork */);
 
@@ -10335,7 +10336,7 @@ public class ConnectivityServiceTest {
         setOemNetworkPreferenceAgentConnected(TRANSPORT_ETHERNET, false);
         verifySetOemNetworkPreferenceForPreference(uidRanges,
                 mService.mNoServiceNetwork.network.getNetId(), 1 /* times */,
-                mEthernetNetworkAgent.getNetwork().netId, 0 /* times */,
+                mEthernetNetworkAgent.getNetwork().getNetId(), 0 /* times */,
                 true /* shouldDestroyNetwork */);
     }
 
@@ -10380,7 +10381,7 @@ public class ConnectivityServiceTest {
         // Bring up ethernet with OEM_PRIVATE. This will satisfy NET_CAPABILITY_OEM_PRIVATE.
         startOemManagedNetwork(false);
         verifySetOemNetworkPreferenceForPreference(uidRanges,
-                mEthernetNetworkAgent.getNetwork().netId, 1 /* times */,
+                mEthernetNetworkAgent.getNetwork().getNetId(), 1 /* times */,
                 mService.mNoServiceNetwork.network.getNetId(), 1 /* times */,
                 false /* shouldDestroyNetwork */);
 
@@ -10388,7 +10389,7 @@ public class ConnectivityServiceTest {
         stopOemManagedNetwork();
         verifySetOemNetworkPreferenceForPreference(uidRanges,
                 mService.mNoServiceNetwork.network.getNetId(), 1 /* times */,
-                mEthernetNetworkAgent.getNetwork().netId, 0 /* times */,
+                mEthernetNetworkAgent.getNetwork().getNetId(), 0 /* times */,
                 true /* shouldDestroyNetwork */);
     }
 
