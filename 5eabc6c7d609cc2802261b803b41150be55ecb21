@@ -307,6 +307,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "06bb474d_ce0ae87e",
+        "filename": "telephony/java/android/telephony/VopsSupportInfo.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1733820
+      },
+      "writtenOn": "2021-03-03T19:16:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b8a8443d_3b6df9b6",
+      "range": {
+        "startLine": 32,
+        "startChar": 7,
+        "endLine": 32,
+        "endChar": 9
+      },
+      "revId": "5eabc6c7d609cc2802261b803b41150be55ecb21",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "632b1636_9ec5117e",
