@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a6831553_88d1c31e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2021-03-03T23:09:56Z",
+      "side": 1,
+      "message": "I\u0027m not necessarily in favor of the style changes, but I\u0027m in favor of any kind of consistency here. The plan would hopefully be to give the other Zygote files in that directory the same treatment?\n\nI don\u0027t have +2 everywhere.",
+      "revId": "074e16404c2b32822bdb8b47c4e3ed35a3ec05af",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
