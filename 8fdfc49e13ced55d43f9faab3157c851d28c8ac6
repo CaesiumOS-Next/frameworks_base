@@ -16,6 +16,24 @@
       "message": "I\u0027m not sure if you want to move this CL up the relation chain? It looks like there is a lot of independent small changes right above it that may be easier to merge?",
       "revId": "8fdfc49e13ced55d43f9faab3157c851d28c8ac6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "677282c4_bfaf4557",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2021-03-03T02:33:43Z",
+      "side": 1,
+      "message": "For organizational reasons (the development for this patch has gone into internal first), I chose to build my patches on top of it. I think it\u0027s simpler as is for that reason.",
+      "parentUuid": "6923c797_9c216f23",
+      "revId": "8fdfc49e13ced55d43f9faab3157c851d28c8ac6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
