@@ -48,6 +48,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "21442465_f0a03db3",
+        "filename": "telephony/java/android/telephony/DataSpecificRegistrationInfo.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1733820
+      },
+      "writtenOn": "2021-03-03T19:15:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6c11ef8b_ae3bbf35",
+      "range": {
+        "startLine": 188,
+        "startChar": 12,
+        "endLine": 188,
+        "endChar": 72
+      },
+      "revId": "5eabc6c7d609cc2802261b803b41150be55ecb21",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ef184b16_3cecd2af",
@@ -165,6 +189,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b62d8913_3ab1ece4",
+        "filename": "telephony/java/android/telephony/LteVopsSupportInfo.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1733820
+      },
+      "writtenOn": "2021-03-03T19:15:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "79a5c774_9b1982fb",
+      "range": {
+        "startLine": 160,
+        "startChar": 19,
+        "endLine": 160,
+        "endChar": 39
+      },
+      "revId": "5eabc6c7d609cc2802261b803b41150be55ecb21",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8ee2ad37_936c46ee",
@@ -202,6 +250,30 @@
       "side": 1,
       "message": "will update",
       "parentUuid": "8ee2ad37_936c46ee",
+      "range": {
+        "startLine": 27,
+        "startChar": 3,
+        "endLine": 27,
+        "endChar": 74
+      },
+      "revId": "5eabc6c7d609cc2802261b803b41150be55ecb21",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "eb5c4e1a_4788cef2",
+        "filename": "telephony/java/android/telephony/VopsSupportInfo.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1733820
+      },
+      "writtenOn": "2021-03-03T19:15:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "46862497_9d392203",
       "range": {
         "startLine": 27,
         "startChar": 3,

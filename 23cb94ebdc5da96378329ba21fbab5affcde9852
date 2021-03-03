@@ -355,6 +355,30 @@
       },
       "revId": "23cb94ebdc5da96378329ba21fbab5affcde9852",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "38e6eade_e8fd9553",
+        "filename": "telephony/java/android/telephony/NrVopsSupportInfo.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1733820
+      },
+      "writtenOn": "2021-03-03T19:15:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "eeedd2e9_90c6d43f",
+      "range": {
+        "startLine": 113,
+        "startChar": 4,
+        "endLine": 113,
+        "endChar": 28
+      },
+      "revId": "23cb94ebdc5da96378329ba21fbab5affcde9852",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
