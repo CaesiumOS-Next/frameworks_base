@@ -34,6 +34,23 @@
       "parentUuid": "ddd4d069_6385a8d8",
       "revId": "9f6979a22bebb59734e6701f24e7fb4a73521e24",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bc8f1a80_817b3505",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1003801
+      },
+      "writtenOn": "2021-03-03T16:13:59Z",
+      "side": 1,
+      "message": "Interesting -- thanks for the patch! The change seems to be correct, but could you tell me what exactly you use it for?\n\nWe have an internal change to split up the activity manager lock (cc @jing), which might affect the semantics of this command.",
+      "revId": "9f6979a22bebb59734e6701f24e7fb4a73521e24",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
