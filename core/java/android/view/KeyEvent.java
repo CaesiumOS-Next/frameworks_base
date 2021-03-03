@@ -825,12 +825,71 @@ public class KeyEvent extends InputEvent implements Parcelable {
      */
     public static final int KEYCODE_PROFILE_SWITCH = 288;
 
+    public static final int KEYCODE_5IN1_ENTER = 424;
+    public static final int KEYCODE_EPG = 4001;
+    public static final int KEYCODE_QUICK_MENU = 4020;
+    public static final int KEYCODE_ZOOM = 4034;
+    public static final int KEYCODE_RF_LINK_STOP = 4035;
+    public static final int KEYCODE_AUDIO = 4036;
+    public static final int KEYCODE_RC_RF_UNCONNECT = 4048;
+    public static final int KEYCODE_RF_LINK_S = 4052;
+    public static final int KEYCODE_RF_LINK_F = 4053;
+    public static final int KEYCODE_NUMBER = 4056;
+    public static final int KEYCODE_USB_MEDIA = 4057;
+    public static final int KEYCODE_NETFLIX = 4062;
+    public static final int KEYCODE_YOUTUBE = 4065;
+    public static final int KEYCODE_HULU = 4066;
+    public static final int KEYCODE_SET = 4077;
+    public static final int KEYCODE_LANG = 4084;
+    public static final int KEYCODE_TEXT = 4086;
+    public static final int KEYCODE_LIST = 4090;
+    public static final int KEYCODE_LINE_TV = 4093;
+    public static final int KEYCODE_EXIT = 4095;
+    public static final int KEYCODE_IQIYI = 4096;
+    public static final int KEYCODE_DISNEY = 4097;
+    public static final int KEYCODE_TOT = 4098;
+    public static final int KEYCODE_PRIMEVIDEO = 4099;
+    public static final int KEYCODE_OKKO = 4100;
+    public static final int KEYCODE_HD = 4101;
+    public static final int KEYCODE_ZEE = 4102;
+    public static final int KEYCODE_FPTPLAYER = 4103;
+    public static final int KEYCODE_SOURCE_NEXT = 4104;
+    public static final int KEYCODE_SOURCE_PREVIOUS = 4105;
+    public static final int KEYCODE_3_LINE_INPUT = 4121;
+    public static final int KEYCODE_BML = 4122;
+    public static final int KEYCODE_TERMINAL = 4123;
+    public static final int KEYCODE_BS = 4124;
+    public static final int KEYCODE_CS = 4125;
+    public static final int KEYCODE_RECORD_LIST = 4126;
+    public static final int KEYCODE_SCHEDULE_LIST = 4128;
+    public static final int KEYCODE_BUG_REPORT = 4129;
+    public static final int KEYCODE_FREEVIEW_PLAY = 4130;
+    public static final int KEYCODE_SATELLITE_BS_CS = 4131;
+    public static final int KEYCODE_BS_CS_4K = 4132;
+    public static final int KEYCODE_U_NEXT = 4133;
+    public static final int KEYCODE_ABEMA = 4134;
+    public static final int KEYCODE_GALAVIEW = 4135;
+    public static final int KEYCODE_STAN = 4136;
+    public static final int KEYCODE_DASHBOARD = 4137;
+    public static final int KEYCODE_WATCHLIST = 4138;
+    public static final int KEYCODE_GLOBAL_PLAY = 4503;
+    public static final int KEYCODE_CMP = 4504;
+    public static final int KEYCODE_VGA = 4505;
+    public static final int KEYCODE_AV1 = 4506;
+    public static final int KEYCODE_HDMI1 = 4507;
+    public static final int KEYCODE_HDMI2 = 4508;
+    public static final int KEYCODE_HDMI3 = 4509;
+    public static final int KEYCODE_TV_ON = 4510;
+    public static final int KEYCODE_TV_OFF = 4511;
+    public static final int KEYCODE_HDMI4 = 4512;
+    public static final int KEYCODE_AV2 = 4513;
+    public static final int KEYCODE_MOUSE_KEY = 4558;
     /**
      * Integer value of the last KEYCODE. Increases as new keycodes are added to KeyEvent.
      * @hide
      */
     @TestApi
-    public static final int LAST_KEYCODE = KEYCODE_PROFILE_SWITCH;
+    public static final int LAST_KEYCODE = KEYCODE_MOUSE_KEY;
 
     // NOTE: If you add a new keycode here you must also add it to:
     //  isSystem()
