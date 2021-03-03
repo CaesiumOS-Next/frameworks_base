@@ -69,6 +69,24 @@
       "message": "Code LGTM but see Lorenzo\u0027s comments for API considerations.",
       "revId": "e4a6c677ba56416d6f0612fc77ec9d5e79485629",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3bf8da13_e8cf50bf",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1364839
+      },
+      "writtenOn": "2021-03-03T13:21:53Z",
+      "side": 1,
+      "message": "Here is the b/181751675 for making the API @removed before S ships.",
+      "parentUuid": "a3b74b69_ca9f4d07",
+      "revId": "e4a6c677ba56416d6f0612fc77ec9d5e79485629",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
