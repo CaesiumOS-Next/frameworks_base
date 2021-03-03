@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "212841d8_941882d7",
+        "filename": "tests/net/common/java/android/net/CaptivePortalTest.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1288034
+      },
+      "writtenOn": "2021-03-03T00:53:37Z",
+      "side": 0,
+      "message": "As the method is still there (although it doesn\u0027t do anything) the test should also stay; it can just check that calling the method doesn\u0027t crash though.",
+      "range": {
+        "startLine": 102,
+        "startChar": 16,
+        "endLine": 102,
+        "endChar": 28
+      },
+      "revId": "fcfec6bf2eb36033df829c0f546b3441077b2e96",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

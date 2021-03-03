@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ca9bfe21_a6db8b64",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1288034
+      },
+      "writtenOn": "2021-03-03T00:53:37Z",
+      "side": 1,
+      "message": "Nit: in general \"we\" or \"I\" is avoided in code and cover messages (go/avoidwe); in the context of an open source project it\u0027s not clear what \"we\" means.",
+      "range": {
+        "startLine": 10,
+        "startChar": 37,
+        "endLine": 10,
+        "endChar": 39
+      },
+      "revId": "e2fd00ed320e77aa25512556683d7735c86a810e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d7b4dd01_ed702bc9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1288034
+      },
+      "writtenOn": "2021-03-03T00:53:37Z",
+      "side": 1,
+      "message": "That\u0027s not why the metrics are being removed. They are being removed because they are unused and deprecated.",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 35
+      },
+      "revId": "e2fd00ed320e77aa25512556683d7735c86a810e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7f506e92_3824e06a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1288034
+      },
+      "writtenOn": "2021-03-03T00:53:37Z",
+      "side": 1,
+      "message": "Typo: legacy",
+      "range": {
+        "startLine": 10,
+        "startChar": 59,
+        "endLine": 10,
+        "endChar": 65
+      },
+      "revId": "e2fd00ed320e77aa25512556683d7735c86a810e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4bc8af7b_d7cdab65",
+        "filename": "packages/Connectivity/framework/src/android/net/CaptivePortal.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1288034
+      },
+      "writtenOn": "2021-03-03T00:53:37Z",
+      "side": 1,
+      "message": "Also mark @Deprecated",
+      "range": {
+        "startLine": 164,
+        "startChar": 5,
+        "endLine": 164,
+        "endChar": 14
+      },
+      "revId": "e2fd00ed320e77aa25512556683d7735c86a810e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
