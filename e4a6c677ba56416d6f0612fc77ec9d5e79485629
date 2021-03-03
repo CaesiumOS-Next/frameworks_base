@@ -34,6 +34,24 @@
       "parentUuid": "f31b4921_3c87635e",
       "revId": "e4a6c677ba56416d6f0612fc77ec9d5e79485629",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a3b74b69_ca9f4d07",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2021-03-03T11:27:32Z",
+      "side": 1,
+      "message": "Please add this information to the commit message.\n\nIf we\u0027re guaranteed that there are no other callers (because they don\u0027t have signature permissions), then it\u0027s OK to make this API a no-op.\n\n@removed is still the right thing to do for something that no longer does anything.  Unfortunately it doesn\u0027t look like we can do that for now because it will break the CaptivePortalLogin build.\n\nCan we file a bug to make this @removed before S ships? It\u0027s generally not OK to have an API that is not removed and doesn\u0027t do anything. Once we have a bug, pass this back to me for API approval.",
+      "parentUuid": "624d2d4a_2eaa49cf",
+      "revId": "e4a6c677ba56416d6f0612fc77ec9d5e79485629",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
