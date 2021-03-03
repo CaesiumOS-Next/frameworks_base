@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "420788ab_15e79f6c",
+        "filename": "services/core/java/com/android/server/connectivity/ProxyTracker.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 251,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2021-03-03T08:47:54Z",
+      "side": 1,
+      "message": "Style :\n\n return Uri.EMPTY.equals(...) || proxy.getPort() \u003e 0;",
+      "range": {
+        "startLine": 248,
+        "startChar": 8,
+        "endLine": 251,
+        "endChar": 21
+      },
+      "revId": "2980591b2f153e41bc1b76ffcac0c31b6d1d79f6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
