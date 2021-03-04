@@ -1,0 +1,56 @@
+{
+  "comments": [
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000008665412",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/88040?revision\u003d1",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "be902f62_1f107218",
+        "filename": "wifi/java/android/net/wifi/WifiConfiguration.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2021-03-04T13:26:43Z",
+      "side": 1,
+      "message": "Wrong casing for \"modeVarName\". static final variables should be ALL_UPPERCASE.",
+      "range": {
+        "startLine": 47,
+        "startChar": 11,
+        "endLine": 47,
+        "endChar": 51
+      },
+      "revId": "d32b8fb83d8b80e773164f78f24c17d936ad523c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000008665412",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/88040?revision\u003d1",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "4509bf54_b52ffc95",
+        "filename": "wifi/java/android/net/wifi/WifiConfiguration.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2021-03-04T13:26:43Z",
+      "side": 1,
+      "message": "Wrong casing for \"frequencyVarName\". static final variables should be ALL_UPPERCASE.",
+      "range": {
+        "startLine": 49,
+        "startChar": 11,
+        "endLine": 49,
+        "endChar": 61
+      },
+      "revId": "d32b8fb83d8b80e773164f78f24c17d936ad523c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
