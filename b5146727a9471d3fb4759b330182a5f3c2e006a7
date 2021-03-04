@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f6b41562_3498f4e5",
+        "filename": "telephony/common/com/android/internal/telephony/SipMessageParsingUtils.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1087703
+      },
+      "writtenOn": "2021-03-04T01:46:02Z",
+      "side": 1,
+      "message": "is this in the spec? wow",
+      "range": {
+        "startLine": 71,
+        "startChar": 66,
+        "endLine": 71,
+        "endChar": 67
+      },
+      "revId": "b5146727a9471d3fb4759b330182a5f3c2e006a7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5ad97f10_cb11c5e5",
+        "filename": "telephony/java/android/telephony/ims/SipMessage.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1087703
+      },
+      "writtenOn": "2021-03-04T01:46:02Z",
+      "side": 1,
+      "message": "document that this is null if the via header is not present; same with call-id",
+      "range": {
+        "startLine": 112,
+        "startChar": 12,
+        "endLine": 112,
+        "endChar": 20
+      },
+      "revId": "b5146727a9471d3fb4759b330182a5f3c2e006a7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
