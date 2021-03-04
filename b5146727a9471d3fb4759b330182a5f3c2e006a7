@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e21d0f1e_edf0fbb7",
+        "filename": "telephony/common/com/android/internal/telephony/SipMessageParsingUtils.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1098053
+      },
+      "writtenOn": "2021-03-04T02:01:22Z",
+      "side": 1,
+      "message": "haha yes, it is considered \"compact form\"",
+      "parentUuid": "f6b41562_3498f4e5",
+      "range": {
+        "startLine": 71,
+        "startChar": 66,
+        "endLine": 71,
+        "endChar": 67
+      },
+      "revId": "b5146727a9471d3fb4759b330182a5f3c2e006a7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5ad97f10_cb11c5e5",
