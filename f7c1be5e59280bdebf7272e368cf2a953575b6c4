@@ -1,0 +1,30 @@
+{
+  "comments": [
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000008661229",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1618844?revision\u003d1",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "de304f85_c366cd08",
+        "filename": "services/core/java/com/android/server/am/DataConnectionStats.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2021-03-04T10:43:06Z",
+      "side": 1,
+      "message": "Prefer to use mContext.getSystemService(TelephonyManager.class) instead to avoid the cast.",
+      "range": {
+        "startLine": 68,
+        "startChar": 16,
+        "endLine": 68,
+        "endChar": 61
+      },
+      "revId": "f7c1be5e59280bdebf7272e368cf2a953575b6c4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
