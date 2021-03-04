@@ -69,6 +69,24 @@
       "parentUuid": "bc8f1a80_817b3505",
       "revId": "9f6979a22bebb59734e6701f24e7fb4a73521e24",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6efb53fe_1b6fc697",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1840920
+      },
+      "writtenOn": "2021-03-04T07:03:24Z",
+      "side": 1,
+      "message": "Hello! Before Android 8.0, e.g., Android 7.0, the phone can resume from hanging state after we kill \"am hang\" shell command, where runHang() method is implemented in /frameworks/base/cmds/am/src/com/android/commands/am/Am.java, so the \"new Binder()\" of \"mAm.hang(new Binder(), allowRestart)\" is belongs to the client (shell cmd). \nAfter Android 8.0, runHang() method has been moved to /frameworks/base/services/core/java/com/android/server/am/ActivityManagerShellCommand.java with nearly no modification, in which the \"new Binder()\" of \"mAm.hang(new Binder(), allowRestart)\" is no longer belongs to the client (shell cmd). As a result, \"who.linkToDeath(death, 0)\" makes no sense since the Binder \"who\" is not the Binder of client (shell cmd).\nBecause of the implementaion of \"am hang\" in Android 7.0, I think that the original design of \"am hang\" allows the phone resume from hanging state after the shell cmd is gone.",
+      "parentUuid": "8f314d63_c89268b0",
+      "revId": "9f6979a22bebb59734e6701f24e7fb4a73521e24",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
