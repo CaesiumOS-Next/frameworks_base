@@ -105,6 +105,40 @@
       "parentUuid": "6efb53fe_1b6fc697",
       "revId": "9f6979a22bebb59734e6701f24e7fb4a73521e24",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "898028d1_e04d94e2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1003801
+      },
+      "writtenOn": "2021-03-04T17:14:21Z",
+      "side": 1,
+      "message": "Okay, the use case makes sense. And yes, we no longer run the client side code in a separate process, so the change seems to restore the original behavior. Let\u0027s just change the status code (see inline comment) and I\u0027ll +2.\n\n@Jing, how about also grabbing the new lock in AMS?",
+      "revId": "9f6979a22bebb59734e6701f24e7fb4a73521e24",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3ef2f83e_99108268",
+        "filename": "services/core/java/com/android/server/am/ActivityManagerShellCommand.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 1698,
+      "author": {
+        "id": 1003801
+      },
+      "writtenOn": "2021-03-04T17:14:21Z",
+      "side": 1,
+      "message": "Let\u0027s return 1.",
+      "revId": "9f6979a22bebb59734e6701f24e7fb4a73521e24",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
