@@ -124,6 +124,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b1c0dff2_549edcc5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1561214
+      },
+      "writtenOn": "2021-03-04T18:31:37Z",
+      "side": 1,
+      "message": "This API is to cause a deadlock. So we probably don\u0027t need to grab the new lock",
+      "parentUuid": "898028d1_e04d94e2",
+      "revId": "9f6979a22bebb59734e6701f24e7fb4a73521e24",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3ef2f83e_99108268",
