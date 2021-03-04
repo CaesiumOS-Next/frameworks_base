@@ -87,6 +87,24 @@
       "parentUuid": "8f314d63_c89268b0",
       "revId": "9f6979a22bebb59734e6701f24e7fb4a73521e24",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1b18baf5_419c0473",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1840920
+      },
+      "writtenOn": "2021-03-04T07:09:07Z",
+      "side": 1,
+      "message": "We may use \"am hang\" command to verify some modifications in Watchdog, e.g., the change https://android-review.googlesource.com/c/platform/frameworks/base/+/1564415 .",
+      "parentUuid": "6efb53fe_1b6fc697",
+      "revId": "9f6979a22bebb59734e6701f24e7fb4a73521e24",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
