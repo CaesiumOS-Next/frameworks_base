@@ -95,6 +95,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c02ca90b_f95e1656",
+        "filename": "telephony/java/android/telephony/LteVopsSupportInfo.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1733820
+      },
+      "writtenOn": "2021-03-05T17:49:07Z",
+      "side": 1,
+      "message": "pushed new patch, to remove getVopsSupport from base class, and keep these in subclass as they are lte specific",
+      "parentUuid": "ef184b16_3cecd2af",
+      "range": {
+        "startLine": 95,
+        "startChar": 4,
+        "endLine": 95,
+        "endChar": 45
+      },
+      "revId": "5eabc6c7d609cc2802261b803b41150be55ecb21",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "12f0659f_0150100e",
@@ -132,6 +156,30 @@
       "side": 1,
       "message": "as the value of nr is different as lte, considering some application may only care about if vops or emc is supported by the network, there 2 methods may avoid application to check the values for different instance (LTE or NR)",
       "parentUuid": "12f0659f_0150100e",
+      "range": {
+        "startLine": 99,
+        "startChar": 4,
+        "endLine": 113,
+        "endChar": 5
+      },
+      "revId": "5eabc6c7d609cc2802261b803b41150be55ecb21",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "627542e7_3e8c0edb",
+        "filename": "telephony/java/android/telephony/LteVopsSupportInfo.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1733820
+      },
+      "writtenOn": "2021-03-05T17:49:07Z",
+      "side": 1,
+      "message": "pushed new patch to keep getVopsSupport and getEmcBearerSupport in sub class, and these two in base class.",
+      "parentUuid": "13a64cee_79b99b91",
       "range": {
         "startLine": 99,
         "startChar": 4,
@@ -378,6 +426,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "613151de_94ad9f2f",
+        "filename": "telephony/java/android/telephony/VopsSupportInfo.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1733820
+      },
+      "writtenOn": "2021-03-05T17:49:07Z",
+      "side": 1,
+      "message": "new patch removed getVopsSupport from base class.",
+      "parentUuid": "9387e9c6_6e4d3f4f",
+      "range": {
+        "startLine": 37,
+        "startChar": 20,
+        "endLine": 37,
+        "endChar": 41
+      },
+      "revId": "5eabc6c7d609cc2802261b803b41150be55ecb21",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5a5f4cc6_8756ca24",
@@ -425,6 +497,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9234af93_02ec62b8",
+        "filename": "telephony/java/android/telephony/VopsSupportInfo.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1733820
+      },
+      "writtenOn": "2021-03-05T17:49:07Z",
+      "side": 1,
+      "message": "new patch removed the methods from base class",
+      "parentUuid": "8ef3c5af_5300732d",
+      "range": {
+        "startLine": 42,
+        "startChar": 23,
+        "endLine": 42,
+        "endChar": 40
+      },
+      "revId": "5eabc6c7d609cc2802261b803b41150be55ecb21",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "feb8882c_db24d98d",
@@ -462,6 +558,30 @@
       "side": 1,
       "message": "with this method, application may not need care the exact value for lte, or nr.",
       "parentUuid": "feb8882c_db24d98d",
+      "range": {
+        "startLine": 44,
+        "startChar": 4,
+        "endLine": 52,
+        "endChar": 45
+      },
+      "revId": "5eabc6c7d609cc2802261b803b41150be55ecb21",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c25e4d4e_beadeb8d",
+        "filename": "telephony/java/android/telephony/VopsSupportInfo.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1733820
+      },
+      "writtenOn": "2021-03-05T17:49:07Z",
+      "side": 1,
+      "message": "new patch removed getVopsSupport, and getEmcSupported from base class, and keep these two as most app may not care about detail value, but just support or not. not sure if that\u0027s ok?",
+      "parentUuid": "74e5b78b_0708b09c",
       "range": {
         "startLine": 44,
         "startChar": 4,
