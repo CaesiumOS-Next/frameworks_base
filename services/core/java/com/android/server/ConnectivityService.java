@@ -5473,6 +5473,8 @@ public class ConnectivityService extends IConnectivityManager.Stub
                 //  request if the app changes network state. http://b/29964605
                 enforceMeteredApnPolicy(networkCapabilities);
                 break;
+            case TRACK_BEST:
+                throw new UnsupportedOperationException("Not implemented yet");
             default:
                 throw new IllegalArgumentException("Unsupported request type " + reqType);
         }

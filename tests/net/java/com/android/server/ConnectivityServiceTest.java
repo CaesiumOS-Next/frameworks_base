@@ -10903,4 +10903,11 @@ public class ConnectivityServiceTest {
         verifyNoNetwork();
         mCm.unregisterNetworkCallback(cellCb);
     }
+
+    public void testRegisterBestMatchingNetworkCallback() throws Exception {
+        final NetworkRequest request = new NetworkRequest.Builder().build();
+        assertThrows(UnsupportedOperationException.class,
+                () -> mCm.registerBestMatchingNetworkCallback(request, new NetworkCallback(),
+                        mCsHandlerThread.getThreadHandler()));
+    }
 }
