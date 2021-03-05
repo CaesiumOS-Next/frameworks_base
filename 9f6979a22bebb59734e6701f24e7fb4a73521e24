@@ -175,6 +175,24 @@
       "parentUuid": "3ef2f83e_99108268",
       "revId": "9f6979a22bebb59734e6701f24e7fb4a73521e24",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "61240f20_76c557b8",
+        "filename": "services/core/java/com/android/server/am/ActivityManagerShellCommand.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 1698,
+      "author": {
+        "id": 1840920
+      },
+      "writtenOn": "2021-03-05T02:58:04Z",
+      "side": 1,
+      "message": "Thanks for the advice!",
+      "parentUuid": "32be4f48_3b1a4d71",
+      "revId": "9f6979a22bebb59734e6701f24e7fb4a73521e24",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
