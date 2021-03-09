@@ -52,13 +52,12 @@ import java.util.concurrent.TimeUnit;
  * Network}s.
  *
  * <p>A VCN connection based on this configuration will be brought up dynamically based on device
- * settings, and filed NetworkRequests. Underlying networks will be selected based on the services
- * required by this configuration (as represented by network capabilities), and must be part of the
- * subscription group under which this configuration is registered (see {@link
+ * settings, and filed NetworkRequests. Underlying Networks must provide INTERNET connectivity, and
+ * must be part of the subscription group under which this configuration is registered (see {@link
  * VcnManager#setVcnConfig}).
  *
- * <p>As an abstraction of a cellular network, services that can be provided by a VCN network, or
- * required for underlying networks are limited to services provided by cellular networks:
+ * <p>As an abstraction of a cellular network, services that can be provided by a VCN network are
+ * limited to services provided by cellular networks:
  *
  * <ul>
  *   <li>{@link NetworkCapabilities#NET_CAPABILITY_MMS}
@@ -156,9 +155,6 @@ public final class VcnGatewayConnectionConfig {
     private static final String EXPOSED_CAPABILITIES_KEY = "mExposedCapabilities";
     @NonNull private final SortedSet<Integer> mExposedCapabilities;
 
-    private static final String UNDERLYING_CAPABILITIES_KEY = "mUnderlyingCapabilities";
-    @NonNull private final SortedSet<Integer> mUnderlyingCapabilities;
-
     private static final String MAX_MTU_KEY = "mMaxMtu";
     private final int mMaxMtu;
 
@@ -169,12 +165,10 @@ public final class VcnGatewayConnectionConfig {
     private VcnGatewayConnectionConfig(
             @NonNull VcnControlPlaneConfig ctrlPlaneConfig,
             @NonNull Set<Integer> exposedCapabilities,
-            @NonNull Set<Integer> underlyingCapabilities,
             @NonNull long[] retryIntervalsMs,
             @IntRange(from = MIN_MTU_V6) int maxMtu) {
         mCtrlPlaneConfig = ctrlPlaneConfig;
         mExposedCapabilities = new TreeSet(exposedCapabilities);
-        mUnderlyingCapabilities = new TreeSet(underlyingCapabilities);
         mRetryIntervalsMs = retryIntervalsMs;
         mMaxMtu = maxMtu;
 
@@ -190,14 +184,10 @@ public final class VcnGatewayConnectionConfig {
 
         final PersistableBundle exposedCapsBundle =
                 in.getPersistableBundle(EXPOSED_CAPABILITIES_KEY);
-        final PersistableBundle underlyingCapsBundle =
-                in.getPersistableBundle(UNDERLYING_CAPABILITIES_KEY);
 
         mCtrlPlaneConfig = VcnControlPlaneConfig.fromPersistableBundle(ctrlPlaneConfigBundle);
         mExposedCapabilities = new TreeSet<>(PersistableBundleUtils.toList(
                 exposedCapsBundle, PersistableBundleUtils.INTEGER_DESERIALIZER));
-        mUnderlyingCapabilities = new TreeSet<>(PersistableBundleUtils.toList(
-                underlyingCapsBundle, PersistableBundleUtils.INTEGER_DESERIALIZER));
         mRetryIntervalsMs = in.getLongArray(RETRY_INTERVAL_MS_KEY);
         mMaxMtu = in.getInt(MAX_MTU_KEY);
 
@@ -211,13 +201,6 @@ public final class VcnGatewayConnectionConfig {
                 mExposedCapabilities != null && !mExposedCapabilities.isEmpty(),
                 "exposedCapsBundle was null or empty");
         for (int cap : getExposedCapabilities()) {
-            checkValidCapability(cap);
-        }
-
-        Preconditions.checkArgument(
-                mUnderlyingCapabilities != null && !mUnderlyingCapabilities.isEmpty(),
-                "underlyingCapabilities was null or empty");
-        for (int cap : getRequiredUnderlyingCapabilities()) {
             checkValidCapability(cap);
         }
 
@@ -275,20 +258,6 @@ public final class VcnGatewayConnectionConfig {
     }
 
     /**
-     * Returns all capabilities required of underlying networks.
-     *
-     * <p>The returned integer-value capabilities will be sorted in ascending numerical order.
-     *
-     * @see Builder#addRequiredUnderlyingCapability(int)
-     * @see Builder#removeRequiredUnderlyingCapability(int)
-     */
-    @NonNull
-    public int[] getRequiredUnderlyingCapabilities() {
-        // Sorted set guarantees ordering
-        return ArrayUtils.convertToIntArray(new ArrayList<>(mUnderlyingCapabilities));
-    }
-
-    /**
      * Retrieves the configured retry intervals.
      *
      * @see Builder#setRetryInterval(long[])
@@ -323,14 +292,9 @@ public final class VcnGatewayConnectionConfig {
                 PersistableBundleUtils.fromList(
                         new ArrayList<>(mExposedCapabilities),
                         PersistableBundleUtils.INTEGER_SERIALIZER);
-        final PersistableBundle underlyingCapsBundle =
-                PersistableBundleUtils.fromList(
-                        new ArrayList<>(mUnderlyingCapabilities),
-                        PersistableBundleUtils.INTEGER_SERIALIZER);
 
         result.putPersistableBundle(CTRL_PLANE_CONFIG_KEY, ctrlPlaneConfigBundle);
         result.putPersistableBundle(EXPOSED_CAPABILITIES_KEY, exposedCapsBundle);
-        result.putPersistableBundle(UNDERLYING_CAPABILITIES_KEY, underlyingCapsBundle);
         result.putLongArray(RETRY_INTERVAL_MS_KEY, mRetryIntervalsMs);
         result.putInt(MAX_MTU_KEY, mMaxMtu);
 
@@ -341,7 +305,6 @@ public final class VcnGatewayConnectionConfig {
     public int hashCode() {
         return Objects.hash(
                 mExposedCapabilities,
-                mUnderlyingCapabilities,
                 Arrays.hashCode(mRetryIntervalsMs),
                 mMaxMtu);
     }
@@ -354,7 +317,6 @@ public final class VcnGatewayConnectionConfig {
 
         final VcnGatewayConnectionConfig rhs = (VcnGatewayConnectionConfig) other;
         return mExposedCapabilities.equals(rhs.mExposedCapabilities)
-                && mUnderlyingCapabilities.equals(rhs.mUnderlyingCapabilities)
                 && Arrays.equals(mRetryIntervalsMs, rhs.mRetryIntervalsMs)
                 && mMaxMtu == rhs.mMaxMtu;
     }
@@ -365,7 +327,6 @@ public final class VcnGatewayConnectionConfig {
     public static final class Builder {
         @NonNull private final VcnControlPlaneConfig mCtrlPlaneConfig;
         @NonNull private final Set<Integer> mExposedCapabilities = new ArraySet();
-        @NonNull private final Set<Integer> mUnderlyingCapabilities = new ArraySet();
         @NonNull private long[] mRetryIntervalsMs = DEFAULT_RETRY_INTERVALS_MS;
         private int mMaxMtu = DEFAULT_MAX_MTU;
 
@@ -417,47 +378,6 @@ public final class VcnGatewayConnectionConfig {
             checkValidCapability(exposedCapability);
 
             mExposedCapabilities.remove(exposedCapability);
-            return this;
-        }
-
-        /**
-         * Require a capability for Networks underlying this VCN Gateway Connection.
-         *
-         * @param underlyingCapability the capability that a network MUST have in order to be an
-         *     underlying network for this VCN Gateway Connection.
-         * @return this {@link Builder} instance, for chaining
-         * @see VcnGatewayConnectionConfig for a list of capabilities may be required of underlying
-         *     networks
-         */
-        @NonNull
-        public Builder addRequiredUnderlyingCapability(
-                @VcnSupportedCapability int underlyingCapability) {
-            checkValidCapability(underlyingCapability);
-
-            mUnderlyingCapabilities.add(underlyingCapability);
-            return this;
-        }
-
-        /**
-         * Remove a requirement of a capability for Networks underlying this VCN Gateway Connection.
-         *
-         * <p>Calling this method will allow Networks that do NOT have this capability to be
-         * selected as an underlying network for this VCN Gateway Connection. However, underlying
-         * networks MAY still have the removed capability.
-         *
-         * @param underlyingCapability the capability that a network DOES NOT need to have in order
-         *     to be an underlying network for this VCN Gateway Connection.
-         * @return this {@link Builder} instance, for chaining
-         * @see VcnGatewayConnectionConfig for a list of capabilities may be required of underlying
-         *     networks
-         */
-        @NonNull
-        @SuppressLint("BuilderSetStyle") // For consistency with NetCaps.Builder add/removeCap
-        public Builder removeRequiredUnderlyingCapability(
-                @VcnSupportedCapability int underlyingCapability) {
-            checkValidCapability(underlyingCapability);
-
-            mUnderlyingCapabilities.remove(underlyingCapability);
             return this;
         }
 
@@ -524,7 +444,6 @@ public final class VcnGatewayConnectionConfig {
             return new VcnGatewayConnectionConfig(
                     mCtrlPlaneConfig,
                     mExposedCapabilities,
-                    mUnderlyingCapabilities,
                     mRetryIntervalsMs,
                     mMaxMtu);
         }

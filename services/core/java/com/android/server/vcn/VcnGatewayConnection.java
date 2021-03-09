@@ -614,7 +614,6 @@ public class VcnGatewayConnection extends StateMachine {
                         mVcnContext,
                         subscriptionGroup,
                         mLastSnapshot,
-                        mConnectionConfig.getRequiredUnderlyingCapabilities(),
                         mUnderlyingNetworkTrackerCallback);
         mIpSecManager = mVcnContext.getContext().getSystemService(IpSecManager.class);
 
@@ -981,7 +980,7 @@ public class VcnGatewayConnection extends StateMachine {
         // IkeSessionCallback.onClosedExceptionally(), which calls sessionClosed()
         if (exception != null) {
             mGatewayStatusCallback.onGatewayConnectionError(
-                    mConnectionConfig.getRequiredUnderlyingCapabilities(),
+                    mConnectionConfig.getExposedCapabilities(),
                     VCN_ERROR_CODE_INTERNAL_ERROR,
                     RuntimeException.class.getName(),
                     "Received "
@@ -1018,7 +1017,7 @@ public class VcnGatewayConnection extends StateMachine {
         }
 
         mGatewayStatusCallback.onGatewayConnectionError(
-                mConnectionConfig.getRequiredUnderlyingCapabilities(),
+                mConnectionConfig.getExposedCapabilities(),
                 errorCode,
                 exceptionClass,
                 exceptionMessage);
@@ -1978,13 +1977,11 @@ public class VcnGatewayConnection extends StateMachine {
                 VcnContext vcnContext,
                 ParcelUuid subscriptionGroup,
                 TelephonySubscriptionSnapshot snapshot,
-                int[] requiredUnderlyingNetworkCapabilities,
                 UnderlyingNetworkTrackerCallback callback) {
             return new UnderlyingNetworkTracker(
                     vcnContext,
                     subscriptionGroup,
                     snapshot,
-                    requiredUnderlyingNetworkCapabilities,
                     callback);
         }
 
