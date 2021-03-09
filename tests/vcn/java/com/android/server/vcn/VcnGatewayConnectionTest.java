@@ -18,6 +18,7 @@ package com.android.server.vcn;
 
 import static android.net.NetworkCapabilities.NET_CAPABILITY_NOT_METERED;
 import static android.net.NetworkCapabilities.NET_CAPABILITY_NOT_ROAMING;
+import static android.net.NetworkCapabilities.NET_CAPABILITY_NOT_VCN_MANAGED;
 import static android.net.NetworkCapabilities.TRANSPORT_CELLULAR;
 import static android.net.NetworkCapabilities.TRANSPORT_WIFI;
 
