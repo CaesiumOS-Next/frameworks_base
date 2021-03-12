@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ed3719b6_21d8e568",
+        "filename": "core/java/android/bluetooth/le/ScanSettings.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1322510
+      },
+      "writtenOn": "2021-03-12T15:30:11Z",
+      "side": 1,
+      "message": "It seems that we can\u0027t change the value of SCAN_MODE_LOW_LATENCY?\n\nframeworks/base/core/java/android/bluetooth/le/ScanSettings.java:48: error: Field android.bluetooth.le.ScanSettings.SCAN_MODE_LOW_LATENCY has changed value from 2 to 3 [ChangedValue]\n\n******************************\nYou have tried to change the API from what has been previously released in\nan SDK.  Please fix the errors listed above.\n******************************",
+      "range": {
+        "startLine": 51,
+        "startChar": 7,
+        "endLine": 52,
+        "endChar": 54
+      },
+      "revId": "50f8db1c0af25f7e0b2ca8b585f0405bab711b0b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
