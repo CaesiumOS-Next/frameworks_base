@@ -16,6 +16,29 @@
       "message": "We\u0027ve finished all the required tests and review process. Now we have \n+2 on aosp/1534836\n+2 on aosp/1535676\n+1 on aosp/1549485\n+1 on aosp/1549486 (It\u0027s missing because of a path change required by the security policy)\n\nI\u0027d like to request for the owner\u0027s approval.\n",
       "revId": "e827aec67096f1f7b0ccde8d250a0271a2c39c59",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "14f04ee6_ffbc2237",
+        "filename": "services/core/java/com/android/server/PersistentDataBlockService.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 302,
+      "author": {
+        "id": 1014443
+      },
+      "writtenOn": "2021-03-12T10:49:48Z",
+      "side": 1,
+      "message": "Why is this necessary ? Why not start with an empty sandbox ?",
+      "range": {
+        "startLine": 299,
+        "startChar": 12,
+        "endLine": 302,
+        "endChar": 13
+      },
+      "revId": "e827aec67096f1f7b0ccde8d250a0271a2c39c59",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
