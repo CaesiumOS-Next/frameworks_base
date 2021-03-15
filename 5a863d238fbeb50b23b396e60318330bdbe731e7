@@ -70,6 +70,24 @@
       "parentUuid": "8541cd0a_61c470a0",
       "revId": "5a863d238fbeb50b23b396e60318330bdbe731e7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "98def7d9_605f6d81",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1733820
+      },
+      "writtenOn": "2021-03-15T18:43:35Z",
+      "side": 1,
+      "message": "new patch has removed the method from base class. actually, now we get rid of NOT_AVAILABLE per Jack\u0027s suggestion, https://android-review.googlesource.com/c/platform/frameworks/opt/telephony/+/1584534/1..2/src/java/com/android/internal/telephony/CellularNetworkService.java#b483.\nwe will not create the instance if no indicator reported from modem. In this case, i am not sure if we still consider STATUS_NOT_AVAILABLE?",
+      "parentUuid": "43b9ca11_870e9144",
+      "revId": "5a863d238fbeb50b23b396e60318330bdbe731e7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
