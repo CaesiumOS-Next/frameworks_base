@@ -52,6 +52,24 @@
       "parentUuid": "8541cd0a_61c470a0",
       "revId": "5a863d238fbeb50b23b396e60318330bdbe731e7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "43b9ca11_870e9144",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1056478
+      },
+      "writtenOn": "2021-03-15T18:21:57Z",
+      "side": 1,
+      "message": "Moving the vopsstatus and constants to the base class still has the problem that the method is now returning a mix of statuses the are specific to the sub-classes.  \n\nWhen I look at the main tri-state values from getVopsStatus, I see:\nNOT_AVAILABLE, SUPPORTED, NOT_SUPPORTED.\n\nIf the modem cannot provide the information, does it make any sense for an instance of VopsSupportInfo to be returned at all?  I\u0027m thinking that isn\u0027t needed.\n\nIn any case, I think getVopsStatus could go in the base class with generic return values: \"STATUS_SUPPORTED\", \"STATUS_NOT_SUPPORTED\", \"STATUS_NOT_AVAILABLE\".\n\nFor the NR use-case, it looks like the only difference is whether 3gpp or non-3gpp VOPS is supported.\nSo the NR-specific method could be:\nis3GPPVopsSupported\n\nOr \ngetSupportedVopsVariant with values: VOPS_VARIANT_3GPP, VOPS_VARIANT_NON3GPP",
+      "parentUuid": "8541cd0a_61c470a0",
+      "revId": "5a863d238fbeb50b23b396e60318330bdbe731e7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }

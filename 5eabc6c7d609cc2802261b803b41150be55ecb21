@@ -594,6 +594,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "bb1472e5_e67a06d9",
+        "filename": "telephony/java/android/telephony/VopsSupportInfo.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1056478
+      },
+      "writtenOn": "2021-03-15T18:21:57Z",
+      "side": 1,
+      "message": "Okay, that\u0027s fine.  \nThe Emc acronym is still ambiguous.  It\u0027s not clear how \"emergency service\" resolves to EMC.  Either expand the acronym and link to a spec, or just rename this to:\nisEmergencyServiceSupported",
+      "parentUuid": "c25e4d4e_beadeb8d",
+      "range": {
+        "startLine": 44,
+        "startChar": 4,
+        "endLine": 52,
+        "endChar": 45
+      },
+      "revId": "5eabc6c7d609cc2802261b803b41150be55ecb21",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9f6e144a_d5cb3df0",
         "filename": "telephony/java/android/telephony/VopsSupportInfo.java",
         "patchSetId": 4

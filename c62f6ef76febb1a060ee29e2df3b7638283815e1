@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "de2d1030_77b9eeb4",
+        "filename": "telephony/java/android/telephony/VopsSupportInfo.java",
+        "patchSetId": 8
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1056478
+      },
+      "writtenOn": "2021-03-15T18:21:57Z",
+      "side": 1,
+      "message": "These abbreviations are still not intuitive.\nEither: Explicitly call out EMF in the comments and define, linking to a spec, or call this.\nOR\nName the method: isEmergencyServiceFallbackSupported\n\nAlso would be good to know WHAT emergency service fallback is; why does the caller care?",
+      "range": {
+        "startLine": 54,
+        "startChar": 28,
+        "endLine": 54,
+        "endChar": 42
+      },
+      "revId": "c62f6ef76febb1a060ee29e2df3b7638283815e1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
