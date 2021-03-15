@@ -1,0 +1,56 @@
+{
+  "comments": [
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000008998308",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1556758?revision\u003d16",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "1f399500_04acef8d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 16
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2021-03-15T17:30:56Z",
+      "side": 1,
+      "message": "\"compiles and runs\" is not a valid test stanza. Expected one of: gd/cert/run (--device|--rust|--rhost) (\u003cfilter\u003e) OR gd/fuzz/run (--host) \u003ctest\u003e OR atest (--host) \u003ctest\u003e",
+      "range": {
+        "startLine": 14,
+        "startChar": 5,
+        "endLine": 14,
+        "endChar": 23
+      },
+      "revId": "4d9bc75c6c02f0c6f0e3c4178095e4c1664e7248",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000008998306",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1556758?revision\u003d16",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "b6e2b16f_ed4494fd",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 16
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2021-03-15T17:30:56Z",
+      "side": 1,
+      "message": "Found ambiguous Merge keyword in commit message. Did you mean \"Merged-In\"?",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 52
+      },
+      "revId": "4d9bc75c6c02f0c6f0e3c4178095e4c1664e7248",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
