@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c5b175c1_3ec0bb6f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1121403
+      },
+      "writtenOn": "2021-03-15T19:58:13Z",
+      "side": 1,
+      "message": "Since we cannot change the scan mode value for existing ones, could we not comparing the numeric values of the mode, but instead treat them more explicitly? ",
+      "revId": "50f8db1c0af25f7e0b2ca8b585f0405bab711b0b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ed3719b6_21d8e568",
@@ -19,6 +36,53 @@
         "startChar": 7,
         "endLine": 52,
         "endChar": 54
+      },
+      "revId": "50f8db1c0af25f7e0b2ca8b585f0405bab711b0b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c793fc5a_be519de4",
+        "filename": "core/java/android/bluetooth/le/ScanSettings.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1121403
+      },
+      "writtenOn": "2021-03-15T19:58:13Z",
+      "side": 1,
+      "message": "No we can\u0027t, so we might need to change the underlying logic to not compare the modes by number but using a more clearly defined order.",
+      "parentUuid": "ed3719b6_21d8e568",
+      "range": {
+        "startLine": 51,
+        "startChar": 7,
+        "endLine": 52,
+        "endChar": 54
+      },
+      "revId": "50f8db1c0af25f7e0b2ca8b585f0405bab711b0b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "78729346_ae58947c",
+        "filename": "core/java/android/bluetooth/le/ScanSettings.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 293,
+      "author": {
+        "id": 1121403
+      },
+      "writtenOn": "2021-03-15T19:58:13Z",
+      "side": 1,
+      "message": "How about using a simple switch-case statement to check if the mode is valid? Just let the default case to throw the illegal argument exception",
+      "range": {
+        "startLine": 289,
+        "startChar": 12,
+        "endLine": 293,
+        "endChar": 13
       },
       "revId": "50f8db1c0af25f7e0b2ca8b585f0405bab711b0b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
