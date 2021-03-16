@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1f5d0696_b0089893",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1056478
+      },
+      "writtenOn": "2021-03-16T22:49:58Z",
+      "side": 1,
+      "message": "This is 99% of the way there; just need to fix the overlap in the consts.",
+      "revId": "76a98f0b6ecb135b8db8b8364bfa8dccc4538763",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a7cf877b_9fd24995",
+        "filename": "telephony/java/android/telephony/NrVopsSupportInfo.java",
+        "patchSetId": 9
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1056478
+      },
+      "writtenOn": "2021-03-16T22:49:58Z",
+      "side": 1,
+      "message": "The prefixing for these two should be distinct.",
+      "range": {
+        "startLine": 91,
+        "startChar": 22,
+        "endLine": 91,
+        "endChar": 33
+      },
+      "revId": "76a98f0b6ecb135b8db8b8364bfa8dccc4538763",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
