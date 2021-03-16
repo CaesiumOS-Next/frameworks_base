@@ -65,6 +65,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9d3aa5c7_83d6befb",
+        "filename": "core/java/android/bluetooth/le/ScanSettings.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1322510
+      },
+      "writtenOn": "2021-03-16T10:03:40Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "c793fc5a_be519de4",
+      "range": {
+        "startLine": 51,
+        "startChar": 7,
+        "endLine": 52,
+        "endChar": 54
+      },
+      "revId": "50f8db1c0af25f7e0b2ca8b585f0405bab711b0b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "78729346_ae58947c",
@@ -78,6 +102,30 @@
       "writtenOn": "2021-03-15T19:58:13Z",
       "side": 1,
       "message": "How about using a simple switch-case statement to check if the mode is valid? Just let the default case to throw the illegal argument exception",
+      "range": {
+        "startLine": 289,
+        "startChar": 12,
+        "endLine": 293,
+        "endChar": 13
+      },
+      "revId": "50f8db1c0af25f7e0b2ca8b585f0405bab711b0b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dd12ce4f_c347eef6",
+        "filename": "core/java/android/bluetooth/le/ScanSettings.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 293,
+      "author": {
+        "id": 1322510
+      },
+      "writtenOn": "2021-03-16T10:03:40Z",
+      "side": 1,
+      "message": "Done, thanks!",
+      "parentUuid": "78729346_ae58947c",
       "range": {
         "startLine": 289,
         "startChar": 12,
