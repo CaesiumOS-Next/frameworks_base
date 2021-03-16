@@ -1533,6 +1533,7 @@ public class ConnectivityServiceTest {
             return mPolicyTracker;
         }).when(deps).makeMultinetworkPolicyTracker(any(), any(), any());
         doReturn(true).when(deps).getCellular464XlatEnabled();
+        doReturn(TEST_TCP_INIT_RWND).when(deps).getTcpDefaultInitRwnd();
 
         return deps;
     }
