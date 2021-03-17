@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "34892ce6_70a6e3a5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1733820
+      },
+      "writtenOn": "2021-03-17T22:31:50Z",
+      "side": 1,
+      "message": "the conflict of core/api/system-current.txt due to the api change of \"Add the LCE system API\" not merge to aosp yet. will wait for that propagation or push to internal branch first.",
+      "revId": "7fa73f494c601bc7c6eabea37f99150d244bdbd9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
