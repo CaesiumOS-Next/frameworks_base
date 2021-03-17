@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "5538ebfa_77652676",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2021-03-17T14:04:39Z",
+      "side": 1,
+      "message": "we need to diff the txt files and jar files to make sure there\u0027s no problem in the merged ones. The jar file in particular could potentially have some surprises in it around annotations and stuff. Worth doing some amount of verification",
+      "revId": "4e4dfb668a013278aa6a3acafd1fa3b8decb6bd0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "b2df8a55_d3bdf332",
@@ -14,6 +31,29 @@
       "writtenOn": "2021-03-17T13:58:22Z",
       "side": 1,
       "message": "I think maybe removing the old current.txt is possibly a step too far (and should be done in a separate commit).\nI\u0027m thinking that removing the old current.txt in one commit, then renaming non-updatable-current.txt to current.txt in a subsequent one may work better with changes upstream.",
+      "revId": "4e4dfb668a013278aa6a3acafd1fa3b8decb6bd0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a8b9da47_cac98d36",
+        "filename": "services/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2021-03-17T14:04:39Z",
+      "side": 1,
+      "message": "Maybe call this current.txt now? (can do in a followup CL too, probably easier).\n\nI\u0027ve been given feedback in the past that having to update a file called \"non-updatable\" in its name is surprising/unintuitive",
+      "range": {
+        "startLine": 148,
+        "startChar": 23,
+        "endLine": 148,
+        "endChar": 52
+      },
       "revId": "4e4dfb668a013278aa6a3acafd1fa3b8decb6bd0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
