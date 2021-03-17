@@ -22,6 +22,30 @@
       },
       "revId": "3938d6b148402dc5793deb903d5b7d3d2739c823",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "39a99d5d_85b9a174",
+        "filename": "core/java/android/content/OWNERS",
+        "patchSetId": 2
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1381453
+      },
+      "writtenOn": "2021-03-17T08:41:55Z",
+      "side": 1,
+      "message": "The owners of Intent.java is a bit complicated. Jeff, I think you can check who touched the file via \u0027git blame\u0027 and add them the this OWNERS file.",
+      "parentUuid": "10e071fa_bc0d8dd7",
+      "range": {
+        "startLine": 6,
+        "startChar": 67,
+        "endLine": 6,
+        "endChar": 76
+      },
+      "revId": "3938d6b148402dc5793deb903d5b7d3d2739c823",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
