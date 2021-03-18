@@ -123,8 +123,9 @@ abstract class AndroidKeyStoreCipherSpiBase extends CipherSpi implements KeyStor
             throws InvalidKeyException {
         resetAll();
 
-        if (!(key instanceof AndroidKeyStorePrivateKey
-                || key instanceof AndroidKeyStoreSecretKey)) {
+        // Public key operations get diverted to the default provider.
+        if (opmode == Cipher.ENCRYPT_MODE
+                && (key instanceof PrivateKey || key instanceof PublicKey)) {
             try {
                 mCipher = Cipher.getInstance(getTransform());
                 String transform = getTransform();
