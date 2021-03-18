@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c8295b23_60e1441d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1288034
+      },
+      "writtenOn": "2021-03-18T06:59:44Z",
+      "side": 1,
+      "message": "LGTM as step 1 of: 1) add constants to module scope, 2) create getter/setter APIs, 3) Migrate external callers to APIs, 4) remove original constants",
+      "revId": "7dbaa16b2c533b77baa8ac305b5c46d866ad18c9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f147b01e_b44bb1d9",
+        "filename": "packages/Connectivity/framework/src/android/net/ConnectivitySettingsManager.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1288034
+      },
+      "writtenOn": "2021-03-18T06:59:44Z",
+      "side": 1,
+      "message": "Nit: Below, but can be fixed in the next patch",
+      "range": {
+        "startLine": 106,
+        "startChar": 58,
+        "endLine": 106,
+        "endChar": 63
+      },
+      "revId": "7dbaa16b2c533b77baa8ac305b5c46d866ad18c9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
