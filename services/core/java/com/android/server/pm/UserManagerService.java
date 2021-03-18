@@ -3387,13 +3387,13 @@ public class UserManagerService extends IUserManager.Stub {
             if (mForceEphemeralUsers) {
                 flags |= UserInfo.FLAG_EPHEMERAL;
             }
-        }
 
-        // Try to use a pre-created user (if available).
-        if (!preCreate && parentId < 0 && isUserTypeEligibleForPreCreation(userTypeDetails)) {
-            final UserInfo preCreatedUser = convertPreCreatedUserIfPossible(userType, flags, name);
-            if (preCreatedUser != null) {
-                return preCreatedUser;
+            // Try to use a pre-created user (if available).
+            if (!preCreate && parentId < 0 && isUserTypeEligibleForPreCreation(userTypeDetails)) {
+                final UserInfo preCreatedUser = convertPreCreatedUserIfPossibleLU(userType, flags, name);
+                if (preCreatedUser != null) {
+                    return preCreatedUser;
+                }
             }
         }
 
@@ -3594,12 +3594,10 @@ public class UserManagerService extends IUserManager.Stub {
      *
      * @return the converted user, or {@code null} if no pre-created user could be converted.
      */
-    private @Nullable UserInfo convertPreCreatedUserIfPossible(String userType,
+    @GuardedBy("mUsersLock")
+    private @Nullable UserInfo convertPreCreatedUserIfPossibleLU(String userType,
             @UserInfoFlag int flags, String name) {
-        final UserData preCreatedUserData;
-        synchronized (mUsersLock) {
-            preCreatedUserData = getPreCreatedUserLU(userType);
-        }
+        final UserData preCreatedUserData = getPreCreatedUserLU(userType);
         if (preCreatedUserData == null) {
             return null;
         }
