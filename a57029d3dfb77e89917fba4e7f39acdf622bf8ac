@@ -1,0 +1,30 @@
+{
+  "comments": [
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000009103476",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1644267?revision\u003d1",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "557cae5e_d416f063",
+        "filename": "services/core/java/com/android/server/tv/TvInputHardwareManager.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 569,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2021-03-18T05:32:43Z",
+      "side": 1,
+      "message": "Lines longer than 100 characters should be wrapped to improve readability; see https://source.android.com/setup/contribute/code-style#limit-line-length for more details.",
+      "range": {
+        "startLine": 569,
+        "startChar": 0,
+        "endLine": 569,
+        "endChar": 102
+      },
+      "revId": "a57029d3dfb77e89917fba4e7f39acdf622bf8ac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
