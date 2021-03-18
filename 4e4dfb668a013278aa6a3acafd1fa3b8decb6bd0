@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "8b3b57cd_a5b10034",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1431994
+      },
+      "writtenOn": "2021-03-18T15:26:52Z",
+      "side": 1,
+      "message": "Would it make sense to do that with presubmit artifacts and artifacts from the base build id? What\u0027s the precedent for this?",
+      "parentUuid": "5538ebfa_77652676",
+      "revId": "4e4dfb668a013278aa6a3acafd1fa3b8decb6bd0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "b2df8a55_d3bdf332",
@@ -35,6 +53,23 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "24d21f56_ca6ff2ff",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431994
+      },
+      "writtenOn": "2021-03-18T15:26:52Z",
+      "side": 1,
+      "message": "Thanks!",
+      "revId": "4e4dfb668a013278aa6a3acafd1fa3b8decb6bd0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a8b9da47_cac98d36",
@@ -48,6 +83,30 @@
       "writtenOn": "2021-03-17T14:04:39Z",
       "side": 1,
       "message": "Maybe call this current.txt now? (can do in a followup CL too, probably easier).\n\nI\u0027ve been given feedback in the past that having to update a file called \"non-updatable\" in its name is surprising/unintuitive",
+      "range": {
+        "startLine": 148,
+        "startChar": 23,
+        "endLine": 148,
+        "endChar": 52
+      },
+      "revId": "4e4dfb668a013278aa6a3acafd1fa3b8decb6bd0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ffc4a350_762cfa3f",
+        "filename": "services/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1431994
+      },
+      "writtenOn": "2021-03-18T15:26:52Z",
+      "side": 1,
+      "message": "I\u0027ll remove the old and rename the new in one step upstream, then cherry pick to AOSP, because it won\u0027t work otherwise.",
+      "parentUuid": "a8b9da47_cac98d36",
       "range": {
         "startLine": 148,
         "startChar": 23,
