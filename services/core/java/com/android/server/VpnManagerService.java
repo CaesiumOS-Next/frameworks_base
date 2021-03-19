@@ -352,7 +352,7 @@ public class VpnManagerService extends IVpnManager.Stub {
     @Override
     public void startLegacyVpn(VpnProfile profile) {
         int user = UserHandle.getUserId(mDeps.getCallingUid());
-        final LinkProperties egress = mCm.getActiveLinkProperties();
+        final LinkProperties egress = mCm.getLinkProperties(mCm.getActiveNetwork());
         if (egress == null) {
             throw new IllegalStateException("Missing active network connection");
         }
