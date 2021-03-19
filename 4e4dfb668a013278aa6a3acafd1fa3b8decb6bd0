@@ -36,6 +36,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "31c9d9c6_565331ae",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2021-03-19T08:30:17Z",
+      "side": 1,
+      "message": "I don\u0027t think the relevant artifacts are in any presubmit builds. I\u0027d recommend building android_system_server_stubs_current before and after your change and find the right artifacts in out/soong/.intermediates to diff. Ping me on chat and I can give you some more pointers. (my other comment says to remove permissions, so that diff would be expected).",
+      "parentUuid": "8b3b57cd_a5b10034",
+      "revId": "4e4dfb668a013278aa6a3acafd1fa3b8decb6bd0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "b2df8a55_d3bdf332",
