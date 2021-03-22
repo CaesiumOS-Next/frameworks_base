@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5d49a5cc_e83633aa",
+        "filename": "services/core/java/com/android/server/ConnectivityService.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 6124,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2021-03-22T02:38:11Z",
+      "side": 1,
+      "message": "This is not yet in this patchset, right ? I guess it doesn\u0027t matter too much since it will be in the next patch.",
+      "range": {
+        "startLine": 6123,
+        "startChar": 0,
+        "endLine": 6124,
+        "endChar": 66
+      },
+      "revId": "ae67988721788b99b6150aeb8904c1c9d432fb0e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
