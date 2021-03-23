@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "69baf77c_841685e8",
+        "filename": "services/core/java/com/android/server/VcnManagementService.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1060151
+      },
+      "writtenOn": "2021-03-23T23:53:10Z",
+      "side": 1,
+      "message": "I think this demonstrates to me the undesirable nature of trying to reinvent the carrier privileges management wheel. Let\u0027s see if we can migrate to CPT even before T. There are no API changes required. Maybe this is something Cody can pick up, and it would be a good step towards making it available for other system services as well.",
+      "range": {
+        "startLine": 215,
+        "startChar": 27,
+        "endLine": 215,
+        "endChar": 47
+      },
+      "revId": "085af64e0958cd62ee143bd32d078f61a0d196ea",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
