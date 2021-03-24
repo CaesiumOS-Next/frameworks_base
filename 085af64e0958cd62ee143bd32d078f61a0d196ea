@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "71f21607_334ae112",
+        "filename": "services/core/java/com/android/server/VcnManagementService.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1221725
+      },
+      "writtenOn": "2021-03-24T00:46:38Z",
+      "side": 1,
+      "message": "Ack, bug filed (b/183554244)",
+      "parentUuid": "69baf77c_841685e8",
+      "range": {
+        "startLine": 215,
+        "startChar": 27,
+        "endLine": 215,
+        "endChar": 47
+      },
+      "revId": "085af64e0958cd62ee143bd32d078f61a0d196ea",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "459e2e7d_791476a7",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-03-23T23:56:45Z",
       "side": 1,
       "message": "ACTION_PACKAGE_REPLACED?",
+      "range": {
+        "startLine": 216,
+        "startChar": 34,
+        "endLine": 216,
+        "endChar": 56
+      },
+      "revId": "085af64e0958cd62ee143bd32d078f61a0d196ea",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bfe2ed83_0e4bc65e",
+        "filename": "services/core/java/com/android/server/VcnManagementService.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 1221725
+      },
+      "writtenOn": "2021-03-24T00:46:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "459e2e7d_791476a7",
       "range": {
         "startLine": 216,
         "startChar": 34,
