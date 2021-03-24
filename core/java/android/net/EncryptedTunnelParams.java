@@ -23,7 +23,7 @@ package android.net;
  * required to establish an encrypted tunnel. APIs that depends on encrypted tunnels (e.g. {@link
  * android.net.vcn.VcnGatewayConnectionConfig}) may require callers to provide a {@link
  * EncryptedTunnelParams} instance.
+ *
+ * @see android.net.ipsec.ike.IkeTunnelParams
  */
-// TODO: b/180664474 Add "@see android.net.ipsec.ike.IkeTunnelParams" when IkeTunnelParams is
-// exposed
 public interface EncryptedTunnelParams {}
