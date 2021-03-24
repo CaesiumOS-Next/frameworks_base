@@ -1,0 +1,47 @@
+{
+  "comments": [
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000009328262",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1599153?revision\u003d11",
+      "fixSuggestions": [
+        {
+          "fixId": "92d79918_bf69a215",
+          "description": "Change to \"core/java/com/android/internal/compat/IPlatformCompat.aidl\"",
+          "replacements": [
+            {
+              "path": "core/java/com/android/internal/compat/IPlatformCompat.aidl",
+              "range": {
+                "startLine": 158,
+                "startChar": 73,
+                "endLine": 158,
+                "endChar": 83
+              },
+              "replacement": "annotation"
+            }
+          ]
+        }
+      ],
+      "key": {
+        "uuid": "45acead5_0b37fcf9",
+        "filename": "core/java/com/android/internal/compat/IPlatformCompat.aidl",
+        "patchSetId": 11
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2021-03-24T18:55:54Z",
+      "side": 1,
+      "message": "Common typo found: \"annotaiton\" -- should it be \"annotation\"?\nNote: a line containing \"common_typos_disable\" or \"common_typos_enable\" will turn off or on (respectively) the linter for subsequent lines in the file. Alternatively include the token \"NOTYPO\" within a line to skip typo linting that line or include \u0027No-Typo-Check: \u003creason\u003e\u0027in the commit message.",
+      "range": {
+        "startLine": 158,
+        "startChar": 73,
+        "endLine": 158,
+        "endChar": 83
+      },
+      "revId": "5711d2f03df49060fa7746bda25d1fb098847197",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
