@@ -74,6 +74,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "e969c55a_08722647",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2021-03-24T15:13:57Z",
+      "side": 1,
+      "message": "nice, did `diff` without javap have no diffs too? (javap could in theory be outputting insufficient information)\n\nBTW I have this, would recommend:\n\n$ cat $HOME/bin/utils/diff_cmd\n#!/bin/bash\necho \"diff -u0 \u003c($1 $2 $4) \u003c($1 $3 $4)\"\ndiff -u0 \u003c($1 $2 $4) \u003c($1 $3 $4)",
+      "parentUuid": "1f83c498_f8fecb85",
+      "revId": "4e4dfb668a013278aa6a3acafd1fa3b8decb6bd0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "b2df8a55_d3bdf332",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1
