@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "ad1344f4_9dc339d2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1092085
+      },
+      "writtenOn": "2021-03-24T16:24:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3b845821_655ada9f",
+      "range": {
+        "startLine": 9,
+        "startChar": 23,
+        "endLine": 9,
+        "endChar": 44
+      },
+      "revId": "eb5ede375ea089bed24840153dcea158708ae185",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "e741454d_f0a84892",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1
@@ -54,6 +78,30 @@
       "writtenOn": "2021-03-24T13:58:42Z",
       "side": 1,
       "message": "Please add a comment pointing to the bug so the reader can see why this is disabled w/o having to look at git blame.",
+      "range": {
+        "startLine": 88,
+        "startChar": 4,
+        "endLine": 88,
+        "endChar": 13
+      },
+      "revId": "eb5ede375ea089bed24840153dcea158708ae185",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b8474e40_35da551f",
+        "filename": "keystore/java/android/security/KeyStore2.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1092085
+      },
+      "writtenOn": "2021-03-24T16:24:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5ee354e5_8f6cdd06",
       "range": {
         "startLine": 88,
         "startChar": 4,
