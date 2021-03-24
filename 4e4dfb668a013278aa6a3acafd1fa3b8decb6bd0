@@ -92,6 +92,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "f7b9c0b8_c93c9504",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2021-03-24T15:15:03Z",
+      "side": 1,
+      "message": "usage like\n\n$ diff_cmd \"javap -c -v\" path/a path/b\n\n(it supports suffix flags too ;D)",
+      "parentUuid": "e969c55a_08722647",
+      "revId": "4e4dfb668a013278aa6a3acafd1fa3b8decb6bd0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "b2df8a55_d3bdf332",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1
