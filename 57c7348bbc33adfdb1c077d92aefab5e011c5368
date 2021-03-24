@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "74ff1aff_e22f10cf",
+        "filename": "api/dump_api_shas.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1061009
+      },
+      "writtenOn": "2021-03-24T20:20:22Z",
+      "side": 1,
+      "message": "Can we pass the explicit list of *.txt files in those dirs to git log? otherwise we\u0027ll also match changes to Android.bp, TEST_MAPPING, etc that we shouldn\u0027t",
+      "range": {
+        "startLine": 32,
+        "startChar": 0,
+        "endLine": 35,
+        "endChar": 1
+      },
+      "revId": "57c7348bbc33adfdb1c077d92aefab5e011c5368",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
