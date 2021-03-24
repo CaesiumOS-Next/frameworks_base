@@ -54,6 +54,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "1f83c498_f8fecb85",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1431994
+      },
+      "writtenOn": "2021-03-24T14:53:59Z",
+      "side": 1,
+      "message": "I\u0027ve taken the two jars, unzipped them, selected the common .class files and ran this script:\n```\nfind before_jar/ -name \u0027*.class\u0027 | sort | sed \u0027s/^before_jar\\///\u0027 \u003e before.txt\nfind after_jar/  -name \u0027*.class\u0027 | sort | sed \u0027s/^after_jar\\///\u0027  \u003e after.txt\n\necho \u0027Diff between jars\u0027\ndiff before.txt after.txt\n\necho \u0027javap diffs\u0027\necho \u0027\u0027\ncommon_files\u003d$(cat after.txt)\ntotal\u003d$(wc -l \u003c after.txt)\nprocessed\u003d0\nargs\u003d\u0027-v -s -p -constants\u0027\nfor i in $common_files;\ndo\n    processed\u003d$((processed + 1))\n    echo -ne \u0027\\r\u0027\n    echo -ne \"$processed/$total\"\n    diff \u003c(javap $args before_jar/$i | sed \u0027s/^Classfile .*$//\u0027 | sed \u0027s/Last modified.*$//\u0027) \u003c(javap $args after_jar/$i| sed \u0027s/^Classfile .*$//\u0027 | sed \u0027s/Last modified.*$//\u0027) \u0026\ndone\necho \u0027\u0027\n```\nI ran this on the jar in the S branch, and got 0 diffs using javap for the common .class files.",
+      "parentUuid": "31c9d9c6_565331ae",
+      "revId": "4e4dfb668a013278aa6a3acafd1fa3b8decb6bd0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "b2df8a55_d3bdf332",

@@ -16,6 +16,24 @@
       "message": "This causes a dependency cycle because permission wants to build against this stub. I think you should probably just take it out.",
       "revId": "3421b394c8900a5a2289ab0117214906fa274bc8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "427d383a_838f322a",
+        "filename": "StubLibraries.bp",
+        "patchSetId": 2
+      },
+      "lineNbr": 423,
+      "author": {
+        "id": 1431994
+      },
+      "writtenOn": "2021-03-24T14:53:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b6bdd2d2_c651967d",
+      "revId": "3421b394c8900a5a2289ab0117214906fa274bc8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
