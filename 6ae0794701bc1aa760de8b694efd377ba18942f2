@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "553d22ce_f826ceb8",
+        "filename": "api/dump_api_shas.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1061009
+      },
+      "writtenOn": "2021-03-25T15:15:40Z",
+      "side": 1,
+      "message": "set -e\nset -o pipefail",
+      "revId": "6ae0794701bc1aa760de8b694efd377ba18942f2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0ca1b339_54a209f5",
+        "filename": "api/dump_api_shas.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1061009
+      },
+      "writtenOn": "2021-03-25T15:15:40Z",
+      "side": 1,
+      "message": "Should limit that to *current.txt, gitlinter won\u0027t track other files.",
+      "range": {
+        "startLine": 41,
+        "startChar": 31,
+        "endLine": 41,
+        "endChar": 36
+      },
+      "revId": "6ae0794701bc1aa760de8b694efd377ba18942f2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "22527d5f_b92a6138",
+        "filename": "api/dump_api_shas.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1061009
+      },
+      "writtenOn": "2021-03-25T15:15:40Z",
+      "side": 1,
+      "message": "some repos might be new in any given release, meaning the previous ref won\u0027t exist, and git log $range will fail.\n\nMight be nice to do a `git rev-parse` on the earlier ref and drop that one if it doesn\u0027t resolve.",
+      "range": {
+        "startLine": 42,
+        "startChar": 67,
+        "endLine": 42,
+        "endChar": 73
+      },
+      "revId": "6ae0794701bc1aa760de8b694efd377ba18942f2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
