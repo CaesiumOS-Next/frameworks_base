@@ -22,6 +22,29 @@
       },
       "revId": "57c7348bbc33adfdb1c077d92aefab5e011c5368",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a2101d01_f702cd57",
+        "filename": "api/dump_api_shas.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1061009
+      },
+      "writtenOn": "2021-03-25T12:22:41Z",
+      "side": 1,
+      "message": "this needs to be filtered through uniq as well - a single CL might hit multiple directories.",
+      "range": {
+        "startLine": 41,
+        "startChar": 8,
+        "endLine": 41,
+        "endChar": 12
+      },
+      "revId": "57c7348bbc33adfdb1c077d92aefab5e011c5368",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
