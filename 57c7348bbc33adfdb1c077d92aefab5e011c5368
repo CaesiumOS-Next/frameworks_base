@@ -48,6 +48,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "81881a28_c23d2c14",
+        "filename": "api/dump_api_shas.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2021-03-25T13:23:00Z",
+      "side": 1,
+      "message": "oh, --follow only works for a single file, but for a single dir it doesn\u0027t seem to work at all. Ignore the \"might be better\" idea.",
+      "parentUuid": "22bb05d6_cee59592",
+      "range": {
+        "startLine": 32,
+        "startChar": 0,
+        "endLine": 35,
+        "endChar": 1
+      },
+      "revId": "57c7348bbc33adfdb1c077d92aefab5e011c5368",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a2101d01_f702cd57",
