@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c34b60bf_480f7615",
+        "filename": "services/core/java/com/android/server/pm/dex/ArtStatsLogUtils.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2021-03-29T18:14:18Z",
+      "side": 1,
+      "message": "I just realized this. It\u0027s ok to merge now because it\u0027s a cherry pick but this needs to be fixed.\n\nIt\u0027s not the right comparison. You need to check AndroidPackage#getBaseApkPath for primary apk and AndroidPackage#getSplitCodePaths for splits.\n\nSee the PDO how we query them. You\u0027ll need to pass this info tot the log utils.",
+      "range": {
+        "startLine": 178,
+        "startChar": 8,
+        "endLine": 178,
+        "endChar": 34
+      },
+      "revId": "5b35efd0869a0b43ed7f7107e150d382b094b75e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
