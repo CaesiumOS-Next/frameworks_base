@@ -22,6 +22,30 @@
       },
       "revId": "5b35efd0869a0b43ed7f7107e150d382b094b75e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "daaad8b4_fe4ad2ef",
+        "filename": "services/core/java/com/android/server/pm/dex/ArtStatsLogUtils.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1168158
+      },
+      "writtenOn": "2021-03-29T18:24:08Z",
+      "side": 1,
+      "message": "\"getBaseApkPath\" is the API that causes conflicts with Internal master. Will update once after fix the conflicts.",
+      "parentUuid": "c34b60bf_480f7615",
+      "range": {
+        "startLine": 178,
+        "startChar": 8,
+        "endLine": 178,
+        "endChar": 34
+      },
+      "revId": "5b35efd0869a0b43ed7f7107e150d382b094b75e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
