@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8c563123_23259366",
+        "filename": "core/java/android/util/TimeUtils.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1038039
+      },
+      "writtenOn": "2021-03-30T15:40:25Z",
+      "side": 1,
+      "message": "same values^H\n\nBut, I\u0027m getting (even more) twitchy about the number of hardcoded dates we now have.\n\nWe added one elsewhere recently (perhaps for the lower bound check...?).\n\nSettingsUI can use internal APIs, so I think you can make this \"public\" (and /** @hide */) and then reference this one from settings, then we\u0027re at least keeping the number of hard-coded dates constant. It seems reasonable to use the same date for both given the method being called.\n\nWhatever you do, the docs for \"things to consider updating every release\" should also be updated.",
+      "range": {
+        "startLine": 62,
+        "startChar": 47,
+        "endLine": 62,
+        "endChar": 57
+      },
+      "revId": "e10c5222a5db774484f8931fe1cc7c12925cf406",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
