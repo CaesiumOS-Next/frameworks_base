@@ -25,6 +25,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "06652014_e2aff157",
+        "filename": "api/dump_api_shas.sh",
+        "patchSetId": 4
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2021-03-30T16:48:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6c30c955_414f3ccc",
+      "range": {
+        "startLine": 21,
+        "startChar": 4,
+        "endLine": 21,
+        "endChar": 10
+      },
+      "revId": "131ec91d2d72cc19ec08e8a8e0b09851d5e6a40e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "092d1146_e4207f2f",
@@ -38,6 +62,30 @@
       "writtenOn": "2021-03-30T15:49:38Z",
       "side": 1,
       "message": "Does - or if not, should - this match non-public kinds of API (system / module lib / etc)?",
+      "range": {
+        "startLine": 33,
+        "startChar": 35,
+        "endLine": 33,
+        "endChar": 86
+      },
+      "revId": "131ec91d2d72cc19ec08e8a8e0b09851d5e6a40e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cce0b96d_e473afcc",
+        "filename": "api/dump_api_shas.sh",
+        "patchSetId": 4
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2021-03-30T16:48:31Z",
+      "side": 1,
+      "message": "I changed it to frameworks/base/api/... to catch all java_sdk_library that are deps of this directory.\n\nArguably it would be even more defensive to translate `bpdirs` into `git_dirs` or something like, since that is what gitlinter looks at, but I think this is sufficiently over-engineered already :)",
+      "parentUuid": "092d1146_e4207f2f",
       "range": {
         "startLine": 33,
         "startChar": 35,
@@ -71,6 +119,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "78423245_23ec3bf0",
+        "filename": "api/dump_api_shas.sh",
+        "patchSetId": 4
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2021-03-30T16:48:31Z",
+      "side": 1,
+      "message": "Not really needed. Every api dir has a current.txt. (We do look for *current.txt below), but :shrug:, belt \u0026 braces. Done",
+      "parentUuid": "27062ef0_17344f9d",
+      "range": {
+        "startLine": 39,
+        "startChar": 29,
+        "endLine": 39,
+        "endChar": 41
+      },
+      "revId": "131ec91d2d72cc19ec08e8a8e0b09851d5e6a40e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0d34bf40_9b017c1e",
@@ -84,6 +156,30 @@
       "writtenOn": "2021-03-30T15:49:38Z",
       "side": 1,
       "message": "this can contain dupes: \n\n | uniq",
+      "range": {
+        "startLine": 40,
+        "startChar": 60,
+        "endLine": 40,
+        "endChar": 64
+      },
+      "revId": "131ec91d2d72cc19ec08e8a8e0b09851d5e6a40e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "13ebe734_1faea305",
+        "filename": "api/dump_api_shas.sh",
+        "patchSetId": 4
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2021-03-30T16:48:31Z",
+      "side": 1,
+      "message": "yes, with the changed -name param above it can. Done",
+      "parentUuid": "0d34bf40_9b017c1e",
       "range": {
         "startLine": 40,
         "startChar": 60,
