@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2125e7ba_8a245b40",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1038039
+      },
+      "writtenOn": "2021-03-30T16:22:28Z",
+      "side": 1,
+      "message": "There are some intentional public API behavior changes as a result of this which should be documented in the commit to acknowledge you know you are making them and why it\u0027s ok.\n\ni.e. now the method won\u0027t return zones that have been \"replaced\". Previously it only filtered ones that were explicitly hidden by \"shownInPicker\".\n\nI think the justification is \"it fits with the javadoc\".\n\n[I recall not being a fan of exposing this method on the public API to apps, since the return value is loosely specified. IIRC, it basically returns \"what time zone IDs do we think setup wizard should show for a country?\". Changes made for apps or setup wizard have the possibility of upsetting the other, and without a decent definition of what is returned it\u0027s hard for apps to know whether it will serve their needs on all devices or how it might change]",
+      "range": {
+        "startLine": 11,
+        "startChar": 8,
+        "endLine": 11,
+        "endChar": 18
+      },
+      "revId": "52c0e97ebbd38b8ae44c2c90b75fafaa7e02aa9e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b08f05c4_d3ed4b7b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1038039
+      },
+      "writtenOn": "2021-03-30T16:22:28Z",
+      "side": 1,
+      "message": "Dropping to 0 as I think the commit comment should be updated.",
+      "revId": "52c0e97ebbd38b8ae44c2c90b75fafaa7e02aa9e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "17875159_32127e12",
+        "filename": "core/java/android/util/TimeUtils.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1038039
+      },
+      "writtenOn": "2021-03-30T16:22:28Z",
+      "side": 1,
+      "message": "Note: this doesn\u0027t call getEffectiveTimeZoneMappingsAt() but is now doing something very similar (with the addition of the extra \"shown in picker\" test).\n\nPreviously, it returned almost all zones, even ones that weren\u0027t \"effective\".",
+      "range": {
+        "startLine": 131,
+        "startChar": 64,
+        "endLine": 131,
+        "endChar": 83
+      },
+      "revId": "52c0e97ebbd38b8ae44c2c90b75fafaa7e02aa9e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
