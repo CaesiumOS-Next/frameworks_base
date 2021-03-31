@@ -70,6 +70,30 @@
       },
       "revId": "3938d6b148402dc5793deb903d5b7d3d2739c823",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5f24d95c_e5abfa94",
+        "filename": "core/java/android/content/OWNERS",
+        "patchSetId": 2
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1381446
+      },
+      "writtenOn": "2021-03-31T09:17:00Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "b0c7f3a3_05a17c39",
+      "range": {
+        "startLine": 6,
+        "startChar": 67,
+        "endLine": 6,
+        "endChar": 76
+      },
+      "revId": "3938d6b148402dc5793deb903d5b7d3d2739c823",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
