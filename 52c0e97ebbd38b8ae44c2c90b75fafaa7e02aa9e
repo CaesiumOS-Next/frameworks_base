@@ -110,6 +110,30 @@
       },
       "revId": "52c0e97ebbd38b8ae44c2c90b75fafaa7e02aa9e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "034def70_bbec0674",
+        "filename": "core/java/android/util/TimeUtils.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1038039
+      },
+      "writtenOn": "2021-03-31T16:33:53Z",
+      "side": 1,
+      "message": "Sorry, I wasn\u0027t clear. No action required.\n\nI was mostly thinking out loud / noting that you\u0027ve changed the behavior here, and why calling getEffectiveTimeZoneMappingsAt() would be redundant.\n\nAFAICT, you _could_ have used getEffectiveTimeZoneMappingsAt() and isShownInPicker() (if you were keeping the latter) for the same effect. Is that your understanding too?",
+      "parentUuid": "7210d88b_702c0ca0",
+      "range": {
+        "startLine": 131,
+        "startChar": 64,
+        "endLine": 131,
+        "endChar": 83
+      },
+      "revId": "52c0e97ebbd38b8ae44c2c90b75fafaa7e02aa9e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }

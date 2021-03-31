@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "88b5f576_b3eefdeb",
+        "filename": "core/java/android/util/TimeUtils.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1038039
+      },
+      "writtenOn": "2021-03-31T16:33:53Z",
+      "side": 1,
+      "message": "Nit: Now the constant is used for something other than settings, I suggest making the text more broad, i.e. avoid \"show\".\n\nSuggestion below. I won\u0027t be offended if you want to exclude some. There isn\u0027t a lot of info about this elsewhere (and it\u0027s an approach unique to Android AFAIK), which is why there\u0027s quite a lot of detail here.\n\n------------\n\n\u003cp\u003eThis timestamp is used in TimeUtils methods and by the SettingsUI to filter time zones to only \"effective\" ones in a country. It is compared against the notUsedAfter metadata that Android record for some time zones.\n\n\u003cp\u003eWhat is notUsedAfter?\n\n\u003cp\u003eAndroid chooses to avoid making users choose between functionally identical time zones at the expense of not being able to represent local times in the past.\n\n\u003cp\u003enotUsedAfter exists because some time zones can \"merge\" with other time zones after a given point in time (i.e. they change to have identical transitions, offsets, display names, etc.). From the notUsedAfter time, the zone will express the same local time as the one it merged with.\n\n\u003cp\u003eWhy hardcoded?\n\n\u003cp\u003eRather than using System.currentTimeMillis(), a timestamp known to be in the recent past is used to ensure consistent behavior across devices and time, and avoid assumptions that the system clock on a device is currently set correctly. The fixed value should be updated occasionally, but it doesn\u0027t have to be very often as effective time zones for a country don\u0027t change very often.",
+      "range": {
+        "startLine": 58,
+        "startChar": 35,
+        "endLine": 58,
+        "endChar": 39
+      },
+      "revId": "994079f2dc9ce0546e7f9594bf3fbcec4c7a8afb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
