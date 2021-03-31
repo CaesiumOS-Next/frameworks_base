@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "8f636b1f_b49d73ef",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1793992
+      },
+      "writtenOn": "2021-03-31T15:48:51Z",
+      "side": 1,
+      "message": "I\u0027ve changed wording, PTAL.",
+      "parentUuid": "2125e7ba_8a245b40",
+      "range": {
+        "startLine": 11,
+        "startChar": 8,
+        "endLine": 11,
+        "endChar": 18
+      },
+      "revId": "52c0e97ebbd38b8ae44c2c90b75fafaa7e02aa9e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "b08f05c4_d3ed4b7b",
@@ -54,6 +78,30 @@
       "writtenOn": "2021-03-30T16:22:28Z",
       "side": 1,
       "message": "Note: this doesn\u0027t call getEffectiveTimeZoneMappingsAt() but is now doing something very similar (with the addition of the extra \"shown in picker\" test).\n\nPreviously, it returned almost all zones, even ones that weren\u0027t \"effective\".",
+      "range": {
+        "startLine": 131,
+        "startChar": 64,
+        "endLine": 131,
+        "endChar": 83
+      },
+      "revId": "52c0e97ebbd38b8ae44c2c90b75fafaa7e02aa9e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7210d88b_702c0ca0",
+        "filename": "core/java/android/util/TimeUtils.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1793992
+      },
+      "writtenOn": "2021-03-31T15:48:51Z",
+      "side": 1,
+      "message": "But that will be inconsistent with package-private TimeZoneMapping#isEffectiveAt method, which checks notUsedAfter only.",
+      "parentUuid": "17875159_32127e12",
       "range": {
         "startLine": 131,
         "startChar": 64,
