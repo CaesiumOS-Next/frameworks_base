@@ -134,6 +134,30 @@
       },
       "revId": "52c0e97ebbd38b8ae44c2c90b75fafaa7e02aa9e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3b3c76f5_c6827c14",
+        "filename": "core/java/android/util/TimeUtils.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1793992
+      },
+      "writtenOn": "2021-03-31T16:55:13Z",
+      "side": 1,
+      "message": "Yeah, I thought about it, but to me isShownInPicker() seems to be error-prone: if one calls shownInPicker(), it is likely that notUsedAfter should also be checked.",
+      "parentUuid": "034def70_bbec0674",
+      "range": {
+        "startLine": 131,
+        "startChar": 64,
+        "endLine": 131,
+        "endChar": 83
+      },
+      "revId": "52c0e97ebbd38b8ae44c2c90b75fafaa7e02aa9e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
