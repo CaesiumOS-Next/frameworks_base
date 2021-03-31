@@ -46,6 +46,30 @@
       },
       "revId": "3938d6b148402dc5793deb903d5b7d3d2739c823",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b0c7f3a3_05a17c39",
+        "filename": "core/java/android/content/OWNERS",
+        "patchSetId": 2
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1381447
+      },
+      "writtenOn": "2021-03-31T08:39:33Z",
+      "side": 1,
+      "message": "Looks like already have others to add owners for Intent.java. We can add WM owners only for our need.\n\nper-file Intent.java \u003d toddke@google.com\nper-file Intent.java \u003d patb@google.com",
+      "parentUuid": "39a99d5d_85b9a174",
+      "range": {
+        "startLine": 6,
+        "startChar": 67,
+        "endLine": 6,
+        "endChar": 76
+      },
+      "revId": "3938d6b148402dc5793deb903d5b7d3d2739c823",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
