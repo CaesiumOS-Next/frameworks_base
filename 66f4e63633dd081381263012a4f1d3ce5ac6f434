@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7fc309c5_fc4ed78e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1793992
+      },
+      "writtenOn": "2021-04-01T16:53:23Z",
+      "side": 1,
+      "message": "Hi Michael,\nJust a friendly ping.",
+      "revId": "66f4e63633dd081381263012a4f1d3ce5ac6f434",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
