@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f3971c03_9bb9e5df",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1038080
+      },
+      "writtenOn": "2021-04-04T17:55:51Z",
+      "side": 1,
+      "message": "Hi! Came into my attention because of a rare crash just found recently in my app in play, feel free to have a look, thanks :)",
+      "revId": "39145db9481e6edbcbe879d21a7b5f7bd644ac6c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
