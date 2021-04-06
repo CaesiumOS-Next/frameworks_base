@@ -16,6 +16,23 @@
       "message": "Hi! Came into my attention because of a rare crash just found recently in my app in play, feel free to have a look, thanks :)",
       "revId": "39145db9481e6edbcbe879d21a7b5f7bd644ac6c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1af0f0e1_1ab4ca4c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1060104
+      },
+      "writtenOn": "2021-04-06T09:14:13Z",
+      "side": 1,
+      "message": "Jean-Michel, I\u0027m not sure who is the right owner for this. Please could you take a look and reassign as needed? Thanks.",
+      "revId": "39145db9481e6edbcbe879d21a7b5f7bd644ac6c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
