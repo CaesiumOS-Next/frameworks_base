@@ -33,6 +33,24 @@
       "message": "There are references in g3, especially documentation that should be updated too http://source/search?q\u003dconfig%2Fhiddenapi%20p:(piper%7C%5Eandroid)\u0026sq\u003d-file:%2F%2Fdepot%2Fgoogle3%2F(experimental%7Cobsolete)",
       "revId": "15d97d886507c3667aca922b20f522470ca2d3ff",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b5e4b16d_d2e104ac",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-04-06T18:29:07Z",
+      "side": 1,
+      "message": "Thanks for that. Moving the files is only the beginning of the refactoring. The next step is to modularize them, i.e. separated into APEX specific parts and moved to the appropriate location.\n\nI will update the documentation and any other non-functional references once they have stopped changing.",
+      "parentUuid": "2668def3_19983e3f",
+      "revId": "15d97d886507c3667aca922b20f522470ca2d3ff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
