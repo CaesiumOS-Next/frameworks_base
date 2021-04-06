@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0c0a07f6_1f9fa652",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-04-06T13:05:46Z",
+      "side": 1,
+      "message": "I split the changes to the OWNERS files out to avoid pestering general frameworks/base owners.",
+      "revId": "15d97d886507c3667aca922b20f522470ca2d3ff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
