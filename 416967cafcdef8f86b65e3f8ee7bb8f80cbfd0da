@@ -56,6 +56,30 @@
       },
       "revId": "416967cafcdef8f86b65e3f8ee7bb8f80cbfd0da",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "975defb2_e489cbbf",
+        "filename": "api/dump_api_shas.sh",
+        "patchSetId": 5
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2021-04-07T16:33:23Z",
+      "side": 1,
+      "message": "oh, good catch (if that\u0027s how it works, I\u0027m really not sure, but I believe you!) Done",
+      "parentUuid": "b0e74e5f_21038503",
+      "range": {
+        "startLine": 48,
+        "startChar": 20,
+        "endLine": 50,
+        "endChar": 74
+      },
+      "revId": "416967cafcdef8f86b65e3f8ee7bb8f80cbfd0da",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
