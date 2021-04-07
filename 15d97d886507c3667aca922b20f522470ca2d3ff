@@ -103,6 +103,24 @@
       "message": "Sorry, meant to +2 the other cl in the topic, and still looking whether we need to update .sh scripts",
       "revId": "15d97d886507c3667aca922b20f522470ca2d3ff",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "341f3d2e_0d04eb8c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2021-04-07T09:16:43Z",
+      "side": 1,
+      "message": "exclude and checksorted_sha are used in http://cs/aosp-master/frameworks/base/PREUPLOAD.cfg, we should keep them working I assume",
+      "parentUuid": "5beeaffb_4926b87b",
+      "revId": "15d97d886507c3667aca922b20f522470ca2d3ff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
