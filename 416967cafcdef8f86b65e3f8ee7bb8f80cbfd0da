@@ -33,6 +33,29 @@
       "message": "ping",
       "revId": "416967cafcdef8f86b65e3f8ee7bb8f80cbfd0da",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b0e74e5f_21038503",
+        "filename": "api/dump_api_shas.sh",
+        "patchSetId": 5
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1061009
+      },
+      "writtenOn": "2021-04-07T16:23:17Z",
+      "side": 1,
+      "message": "this doesn\u0027t work with -o pipefail. needs an `|| true` at the end or a different construct",
+      "range": {
+        "startLine": 48,
+        "startChar": 20,
+        "endLine": 50,
+        "endChar": 74
+      },
+      "revId": "416967cafcdef8f86b65e3f8ee7bb8f80cbfd0da",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
