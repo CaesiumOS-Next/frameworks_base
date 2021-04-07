@@ -139,6 +139,24 @@
       "parentUuid": "341f3d2e_0d04eb8c",
       "revId": "15d97d886507c3667aca922b20f522470ca2d3ff",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ba2314cc_5707004e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2021-04-07T09:40:21Z",
+      "side": 1,
+      "message": "We are technically \"breaking\" those tools then; in practice it is unlikely anyone is touching these files though. But at least leaving a comment is appropriate?\n\nWe can add OWNERS for those tools, someone in LON timezone can approve that I am sure; since you\u0027ll need to touch those files anyways.",
+      "parentUuid": "1fe6105c_a01fbbba",
+      "revId": "15d97d886507c3667aca922b20f522470ca2d3ff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
