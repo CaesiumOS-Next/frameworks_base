@@ -121,6 +121,24 @@
       "parentUuid": "5beeaffb_4926b87b",
       "revId": "15d97d886507c3667aca922b20f522470ca2d3ff",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1fe6105c_a01fbbba",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-04-07T09:32:49Z",
+      "side": 1,
+      "message": "We do. I\u0027d like to do those changes in a follow up CL though as they will require different owners permissions. Also, as these files are going to be split up these tools will need to be usable in all those locations which mean they need to be moved out of frameworks/base and into somewhere else, most likely tools/platform-compat.",
+      "parentUuid": "341f3d2e_0d04eb8c",
+      "revId": "15d97d886507c3667aca922b20f522470ca2d3ff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
