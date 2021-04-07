@@ -86,6 +86,23 @@
       "parentUuid": "b5e4b16d_d2e104ac",
       "revId": "15d97d886507c3667aca922b20f522470ca2d3ff",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f7a2f312_d0154b93",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2021-04-07T09:14:27Z",
+      "side": 1,
+      "message": "Sorry, meant to +2 the other cl in the topic, and still looking whether we need to update .sh scripts",
+      "revId": "15d97d886507c3667aca922b20f522470ca2d3ff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
