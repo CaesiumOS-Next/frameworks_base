@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a8c9a557_fbcfd5bd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1102563
+      },
+      "writtenOn": "2021-04-08T21:16:40Z",
+      "side": 1,
+      "message": "This CL is cherry-picked from internal CL ag/13419824",
+      "revId": "b08f66b72d7970feaa4ac68d3ecab085dba9a868",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
