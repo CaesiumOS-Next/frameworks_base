@@ -67,6 +67,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "58bec3ae_ad8241c4",
+        "filename": "StubLibraries.bp",
+        "patchSetId": 2
+      },
+      "lineNbr": 350,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2021-04-09T13:21:08Z",
+      "side": 1,
+      "message": "OK, I am not sure of the requirements here, but it seems this cl is changing where these are embedded? At least worth documenting in commit message.",
+      "parentUuid": "19aab2f2_4e614b1a",
+      "range": {
+        "startLine": 350,
+        "startChar": 18,
+        "endLine": 350,
+        "endChar": 55
+      },
+      "revId": "a4748cd10db2ca052217f6c466e509d5be223ea9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "45764434_778f2c59",
         "filename": "StubLibraries.bp",
         "patchSetId": 2
@@ -102,6 +126,30 @@
       "side": 1,
       "message": "We use a different library in each scope (public system etc)",
       "parentUuid": "45764434_778f2c59",
+      "range": {
+        "startLine": 369,
+        "startChar": 7,
+        "endLine": 369,
+        "endChar": 38
+      },
+      "revId": "a4748cd10db2ca052217f6c466e509d5be223ea9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "483fe478_57b8886c",
+        "filename": "StubLibraries.bp",
+        "patchSetId": 2
+      },
+      "lineNbr": 369,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2021-04-09T13:21:08Z",
+      "side": 1,
+      "message": "whoops.",
+      "parentUuid": "11f5c25f_94dffeca",
       "range": {
         "startLine": 369,
         "startChar": 7,
