@@ -89,6 +89,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "83567e2a_3e93e247",
+        "filename": "StubLibraries.bp",
+        "patchSetId": 2
+      },
+      "lineNbr": 350,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2021-04-09T13:40:07Z",
+      "side": 1,
+      "message": "Never mind, I confused myself reading the change and trying to track art-notices-for-framework-stubs-jar. As you mention, android_Defaults_stubs_current still has them, and whether they should be in the new stubs is a question for art team.",
+      "parentUuid": "58bec3ae_ad8241c4",
+      "range": {
+        "startLine": 350,
+        "startChar": 18,
+        "endLine": 350,
+        "endChar": 55
+      },
+      "revId": "a4748cd10db2ca052217f6c466e509d5be223ea9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "45764434_778f2c59",
