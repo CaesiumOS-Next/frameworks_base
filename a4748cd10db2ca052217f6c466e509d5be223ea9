@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9489c0be_6031e41c",
+        "filename": "StubLibraries.bp",
+        "patchSetId": 2
+      },
+      "lineNbr": 307,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2021-04-09T13:19:07Z",
+      "side": 1,
+      "message": "FYI r.android.com/1671725",
+      "revId": "a4748cd10db2ca052217f6c466e509d5be223ea9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "08792037_9f66af3b",
