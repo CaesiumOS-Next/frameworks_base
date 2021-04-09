@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "19aab2f2_4e614b1a",
+        "filename": "StubLibraries.bp",
+        "patchSetId": 2
+      },
+      "lineNbr": 350,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2021-04-09T12:45:07Z",
+      "side": 1,
+      "message": "I think it should probably go in the ART stubs? I asked Paul that question on the bug.",
+      "parentUuid": "08792037_9f66af3b",
+      "range": {
+        "startLine": 350,
+        "startChar": 18,
+        "endLine": 350,
+        "endChar": 55
+      },
+      "revId": "a4748cd10db2ca052217f6c466e509d5be223ea9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "45764434_778f2c59",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-04-09T12:41:37Z",
       "side": 1,
       "message": "can this go into android_defaults_stubs_current?",
+      "range": {
+        "startLine": 369,
+        "startChar": 7,
+        "endLine": 369,
+        "endChar": 38
+      },
+      "revId": "a4748cd10db2ca052217f6c466e509d5be223ea9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "11f5c25f_94dffeca",
+        "filename": "StubLibraries.bp",
+        "patchSetId": 2
+      },
+      "lineNbr": 369,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2021-04-09T12:45:07Z",
+      "side": 1,
+      "message": "We use a different library in each scope (public system etc)",
+      "parentUuid": "45764434_778f2c59",
       "range": {
         "startLine": 369,
         "startChar": 7,
