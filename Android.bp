@@ -324,6 +324,7 @@ java_library {
         "ext",
         "framework-updatable-stubs-module_libs_api",
         "unsupportedappusage",
+        "ota_metadata_proto_java",
     ],
     sdk_version: "core_platform",
     static_libs: [

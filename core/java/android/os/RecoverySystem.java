@@ -535,6 +535,15 @@ public class RecoverySystem {
         installPackage(context, packageFile, false);
     }
 
+    private static void allocateSpaceForUpdate(File packageFile) throws IOException {
+        ZipFile zipFile = new ZipFile(packageFile);
+        final ZipEntry entry = zipFile.getEntry("META-INF/com/android/metadata.pb");
+        if (entry == null) {
+            return;
+        }
+        zipFile.getInputStream(entry);
+    }
+
     /**
      * If the package hasn't been processed (i.e. uncrypt'd), set up
      * UNCRYPT_PACKAGE_FILE and delete BLOCK_MAP_FILE to trigger uncrypt during the
@@ -596,6 +605,9 @@ public class RecoverySystem {
                 // file as the package name instead.
                 filename = "@/cache/recovery/block.map";
             }
+
+            allocateSpaceForUpdate(packageFile);
+
 
             final String filenameArg = "--update_package=" + filename + "\n";
             final String localeArg = "--locale=" + Locale.getDefault().toLanguageTag() + "\n";
