@@ -856,32 +856,6 @@ aidl_interface {
     },
 }
 
-python_defaults {
-    name: "base_default",
-    version: {
-        py2: {
-            enabled: false,
-            embedded_launcher: false,
-        },
-        py3: {
-            enabled: true,
-            embedded_launcher: true,
-        },
-    },
-}
-
-python_binary_host {
-    name: "fontchain_linter",
-    defaults: ["base_default"],
-    main: "tools/fonts/fontchain_linter.py",
-    srcs: [
-        "tools/fonts/fontchain_linter.py",
-    ],
-    libs: [
-        "fontTools",
-    ],
-}
-
 // Avoid including Parcelable classes as we don't want to have two copies of
 // Parcelable cross the libraries. This is used by telephony-common (frameworks/opt/telephony)
 // and TeleService app (packages/services/Telephony).
