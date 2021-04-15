@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6caaf7b0_954a0b18",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308163
+      },
+      "writtenOn": "2021-04-15T06:30:21Z",
+      "side": 1,
+      "message": "I think it\u0027s fine to expose test api, right?",
+      "revId": "675ffd271b3e7c0aabc1960d53d12eb0f1257873",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
