@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "82ea0bda_cbc2eb40",
+        "filename": "services/core/java/com/android/server/ConnectivityService.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 620,
+      "author": {
+        "id": 1288034
+      },
+      "writtenOn": "2021-04-15T09:39:29Z",
+      "side": 1,
+      "message": "DnsResolverServiceManager.class should work too",
+      "range": {
+        "startLine": 620,
+        "startChar": 16,
+        "endLine": 620,
+        "endChar": 62
+      },
+      "revId": "b55fbd4e7c02c9b0f492626b33985462d8d4755f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

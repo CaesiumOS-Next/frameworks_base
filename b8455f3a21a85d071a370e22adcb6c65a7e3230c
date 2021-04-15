@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fa07d6d1_93445f5c",
+        "filename": "packages/Connectivity/framework/src/android/net/ConnectivityFrameworkInitializer.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1288034
+      },
+      "writtenOn": "2021-04-15T09:39:29Z",
+      "side": 1,
+      "message": "Unused now I think, but I\u0027d prefer this comment rather than the one currently on DnsResolverServiceManager",
+      "range": {
+        "startLine": 32,
+        "startChar": 0,
+        "endLine": 33,
+        "endChar": 68
+      },
+      "revId": "b8455f3a21a85d071a370e22adcb6c65a7e3230c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
