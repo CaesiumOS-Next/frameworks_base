@@ -1,0 +1,108 @@
+{
+  "comments": [
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000009971613",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1675677?revision\u003d1",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "83bae291_5d4eec68",
+        "filename": "services/core/java/com/android/server/net/NetworkPolicyManagerService.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 2350,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2021-04-16T16:06:20Z",
+      "side": 1,
+      "message": "Lines longer than 100 characters should be wrapped to improve readability; see https://source.android.com/setup/contribute/code-style#limit-line-length for more details.",
+      "range": {
+        "startLine": 2350,
+        "startChar": 0,
+        "endLine": 2350,
+        "endChar": 120
+      },
+      "revId": "f2c2291273258bde1a8a9023b6a0a22b2af5b2b3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000009971613",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1675677?revision\u003d1",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "04871e17_e355d35c",
+        "filename": "services/core/java/com/android/server/net/NetworkPolicyManagerService.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 2494,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2021-04-16T16:06:20Z",
+      "side": 1,
+      "message": "Lines longer than 100 characters should be wrapped to improve readability; see https://source.android.com/setup/contribute/code-style#limit-line-length for more details.",
+      "range": {
+        "startLine": 2494,
+        "startChar": 0,
+        "endLine": 2494,
+        "endChar": 129
+      },
+      "revId": "f2c2291273258bde1a8a9023b6a0a22b2af5b2b3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000009971613",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1675677?revision\u003d1",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "dec88f0d_ed101fb3",
+        "filename": "services/core/java/com/android/server/net/NetworkPolicyManagerService.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 2522,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2021-04-16T16:06:20Z",
+      "side": 1,
+      "message": "Lines longer than 100 characters should be wrapped to improve readability; see https://source.android.com/setup/contribute/code-style#limit-line-length for more details.",
+      "range": {
+        "startLine": 2522,
+        "startChar": 0,
+        "endLine": 2522,
+        "endChar": 129
+      },
+      "revId": "f2c2291273258bde1a8a9023b6a0a22b2af5b2b3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000009971613",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1675677?revision\u003d1",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "557845a0_81253786",
+        "filename": "services/core/java/com/android/server/net/NetworkPolicyManagerService.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 2530,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2021-04-16T16:06:20Z",
+      "side": 1,
+      "message": "Lines longer than 100 characters should be wrapped to improve readability; see https://source.android.com/setup/contribute/code-style#limit-line-length for more details.",
+      "range": {
+        "startLine": 2530,
+        "startChar": 0,
+        "endLine": 2530,
+        "endChar": 129
+      },
+      "revId": "f2c2291273258bde1a8a9023b6a0a22b2af5b2b3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
