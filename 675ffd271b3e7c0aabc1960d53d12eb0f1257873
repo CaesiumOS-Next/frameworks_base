@@ -16,6 +16,24 @@
       "message": "I think it\u0027s fine to expose test api, right?",
       "revId": "675ffd271b3e7c0aabc1960d53d12eb0f1257873",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "620c5346_ad41f4cd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308473
+      },
+      "writtenOn": "2021-04-16T01:54:36Z",
+      "side": 1,
+      "message": "I think so.",
+      "parentUuid": "6caaf7b0_954a0b18",
+      "revId": "675ffd271b3e7c0aabc1960d53d12eb0f1257873",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
