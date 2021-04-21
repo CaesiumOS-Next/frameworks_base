@@ -70,6 +70,30 @@
       },
       "revId": "8a7ab3dde7b8e47444eb45201e3723d237d68514",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9be111d3_af735b63",
+        "filename": "core/api/current.txt",
+        "patchSetId": 5
+      },
+      "lineNbr": 25725,
+      "author": {
+        "id": 1221725
+      },
+      "writtenOn": "2021-04-21T20:51:42Z",
+      "side": 1,
+      "message": "Done, renamed to option 1; getConfiguredSubscriptionGroups()",
+      "parentUuid": "c67aa987_7b72634c",
+      "range": {
+        "startLine": 25725,
+        "startChar": 65,
+        "endLine": 25725,
+        "endChar": 104
+      },
+      "revId": "8a7ab3dde7b8e47444eb45201e3723d237d68514",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
