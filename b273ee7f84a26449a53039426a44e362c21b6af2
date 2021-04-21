@@ -22,6 +22,30 @@
       },
       "revId": "b273ee7f84a26449a53039426a44e362c21b6af2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a17102af_f1807963",
+        "filename": "core/java/android/net/vcn/VcnManager.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1221725
+      },
+      "writtenOn": "2021-04-21T01:05:36Z",
+      "side": 1,
+      "message": "Done on implementation CL",
+      "parentUuid": "cf97f85c_f3bd87a0",
+      "range": {
+        "startLine": 170,
+        "startChar": 18,
+        "endLine": 170,
+        "endChar": 21
+      },
+      "revId": "b273ee7f84a26449a53039426a44e362c21b6af2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
