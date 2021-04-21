@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cf97f85c_f3bd87a0",
+        "filename": "core/java/android/net/vcn/VcnManager.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1060151
+      },
+      "writtenOn": "2021-04-21T00:50:41Z",
+      "side": 1,
+      "message": "privileges ... and which have an associated {VcnConfig}",
+      "range": {
+        "startLine": 170,
+        "startChar": 18,
+        "endLine": 170,
+        "endChar": 21
+      },
+      "revId": "b273ee7f84a26449a53039426a44e362c21b6af2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
