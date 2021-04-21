@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aa2cd527_099c25b9",
+        "filename": "core/api/current.txt",
+        "patchSetId": 5
+      },
+      "lineNbr": 25725,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2021-04-21T07:17:13Z",
+      "side": 1,
+      "message": "Is this actually enough ? From the method name, it looks like you can have multiple VCNs for a single subscription group. How do I list the configurations for a subscription group ?",
+      "range": {
+        "startLine": 25725,
+        "startChar": 65,
+        "endLine": 25725,
+        "endChar": 104
+      },
+      "revId": "8a7ab3dde7b8e47444eb45201e3723d237d68514",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
