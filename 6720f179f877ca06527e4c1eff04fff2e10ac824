@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7296540b_31e11c85",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1088085
+      },
+      "writtenOn": "2021-04-21T05:15:38Z",
+      "side": 1,
+      "message": "PS2 also clear the preparation state on failure",
+      "revId": "6720f179f877ca06527e4c1eff04fff2e10ac824",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
