@@ -22,6 +22,30 @@
       },
       "revId": "8a7ab3dde7b8e47444eb45201e3723d237d68514",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "56ab5221_80d09bf8",
+        "filename": "core/api/current.txt",
+        "patchSetId": 5
+      },
+      "lineNbr": 25725,
+      "author": {
+        "id": 1221725
+      },
+      "writtenOn": "2021-04-21T19:30:06Z",
+      "side": 1,
+      "message": "Hmm. We can only have a single VCN for a given subscription group. Renamed to\n\n\"getSubscriptionGroupsWithVcnConfigured()\"; thoughts?",
+      "parentUuid": "aa2cd527_099c25b9",
+      "range": {
+        "startLine": 25725,
+        "startChar": 65,
+        "endLine": 25725,
+        "endChar": 104
+      },
+      "revId": "8a7ab3dde7b8e47444eb45201e3723d237d68514",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
