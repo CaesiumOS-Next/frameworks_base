@@ -46,6 +46,30 @@
       },
       "revId": "8a7ab3dde7b8e47444eb45201e3723d237d68514",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c67aa987_7b72634c",
+        "filename": "core/api/current.txt",
+        "patchSetId": 5
+      },
+      "lineNbr": 25725,
+      "author": {
+        "id": 1060151
+      },
+      "writtenOn": "2021-04-21T19:50:32Z",
+      "side": 1,
+      "message": "I believe the double-plural is the correct grammar, but it\u0027s also ambiguous. Let\u0027s call it a sharp edge in the language.\n\nA few options:\n1) drop the explicit callout to VCN (it is the VCN manager after all): getConfiguredSubscriptionGroups()\n2) drop an implicit article \"a\" - getSubscriptionGroupsWithVcn()\n3) drop an implicit hyphen - getVcnConfiguredSubscriptionGroups()\n4) Assert the identity of subscription group to describe a VCN - getConfiguredVcns()\n\nI lean towards options 1 or 4.",
+      "parentUuid": "56ab5221_80d09bf8",
+      "range": {
+        "startLine": 25725,
+        "startChar": 65,
+        "endLine": 25725,
+        "endChar": 104
+      },
+      "revId": "8a7ab3dde7b8e47444eb45201e3723d237d68514",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
