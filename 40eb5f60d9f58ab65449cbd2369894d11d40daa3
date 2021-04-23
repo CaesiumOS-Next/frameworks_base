@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f04229ef_f7b05d98",
+        "filename": "services/Android.bp",
+        "patchSetId": 8
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2021-04-23T15:15:23Z",
+      "side": 1,
+      "message": "The presubmit is failing because there are now two rules that want to create the same file in dist.\n\nCan\u0027t you just remove this library now?",
+      "range": {
+        "startLine": 203,
+        "startChar": 24,
+        "endLine": 206,
+        "endChar": 6
+      },
+      "revId": "40eb5f60d9f58ab65449cbd2369894d11d40daa3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
