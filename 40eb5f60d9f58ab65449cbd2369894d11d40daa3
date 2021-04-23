@@ -22,6 +22,30 @@
       },
       "revId": "40eb5f60d9f58ab65449cbd2369894d11d40daa3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b5338581_d9465e94",
+        "filename": "services/Android.bp",
+        "patchSetId": 8
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1431994
+      },
+      "writtenOn": "2021-04-23T15:36:17Z",
+      "side": 1,
+      "message": "Indeed. I need to do the renaming of non-updatable-{current,removed,lint-baseline}.txt and upstream and cherry-pick it to master (because of course I do!) and wanted to also remove this library in the same commit to make it easier to understand why the rename is happening.",
+      "parentUuid": "f04229ef_f7b05d98",
+      "range": {
+        "startLine": 203,
+        "startChar": 24,
+        "endLine": 206,
+        "endChar": 6
+      },
+      "revId": "40eb5f60d9f58ab65449cbd2369894d11d40daa3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
