@@ -286,8 +286,10 @@ cc_library_shared {
                 "libstatspull",
             ],
             export_shared_lib_headers: [
-                // our headers include libnativewindow's public headers
+                // our headers include the following public headers
+                "libbinder",
                 "libnativewindow",
+                "libutils",
             ],
             export_static_lib_headers: [
                 // AndroidRuntime.h depends on nativehelper/jni.h
