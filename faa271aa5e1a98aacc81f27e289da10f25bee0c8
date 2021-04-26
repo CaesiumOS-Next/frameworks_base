@@ -16,6 +16,29 @@
       "message": "Thanks!",
       "revId": "faa271aa5e1a98aacc81f27e289da10f25bee0c8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d7801e17_c2ca86fb",
+        "filename": "StubLibraries.bp",
+        "patchSetId": 9
+      },
+      "lineNbr": 492,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2021-04-26T09:10:59Z",
+      "side": 1,
+      "message": "Should this also contain the stubs for service-art and service-permission? They seem to be in the SYSTEMSERVERCLASSPATH in AOSP",
+      "range": {
+        "startLine": 490,
+        "startChar": 0,
+        "endLine": 492,
+        "endChar": 6
+      },
+      "revId": "faa271aa5e1a98aacc81f27e289da10f25bee0c8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
