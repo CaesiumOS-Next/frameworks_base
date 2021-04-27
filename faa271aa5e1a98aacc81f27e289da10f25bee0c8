@@ -39,6 +39,30 @@
       },
       "revId": "faa271aa5e1a98aacc81f27e289da10f25bee0c8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bdaa118a_0e8dddd1",
+        "filename": "StubLibraries.bp",
+        "patchSetId": 9
+      },
+      "lineNbr": 492,
+      "author": {
+        "id": 1431994
+      },
+      "writtenOn": "2021-04-27T14:30:00Z",
+      "side": 1,
+      "message": "It cannot, because the stubs depend on `android_system_server_stubs_current` themselves",
+      "parentUuid": "d7801e17_c2ca86fb",
+      "range": {
+        "startLine": 490,
+        "startChar": 0,
+        "endLine": 492,
+        "endChar": 6
+      },
+      "revId": "faa271aa5e1a98aacc81f27e289da10f25bee0c8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
