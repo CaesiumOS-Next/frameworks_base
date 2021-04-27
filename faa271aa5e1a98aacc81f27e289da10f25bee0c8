@@ -63,6 +63,30 @@
       },
       "revId": "faa271aa5e1a98aacc81f27e289da10f25bee0c8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f591df8b_8c570f02",
+        "filename": "StubLibraries.bp",
+        "patchSetId": 9
+      },
+      "lineNbr": 492,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2021-04-27T14:49:11Z",
+      "side": 1,
+      "message": "That makes sense. Same pattern as the module lib stubs then, it won\u0027t contain the module APIs",
+      "parentUuid": "bdaa118a_0e8dddd1",
+      "range": {
+        "startLine": 490,
+        "startChar": 0,
+        "endLine": 492,
+        "endChar": 6
+      },
+      "revId": "faa271aa5e1a98aacc81f27e289da10f25bee0c8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
