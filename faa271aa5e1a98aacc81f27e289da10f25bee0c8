@@ -35,6 +35,41 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cb09b3e5_5d7c3501",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2021-04-28T14:58:49Z",
+      "side": 1,
+      "message": "no, don\u0027t think so. Sorry thought I had +2\u0027d it already (guess it got pruned.., feel free to self+2 in these situations and submit in these situations).",
+      "parentUuid": "2d7faf69_937a7848",
+      "revId": "faa271aa5e1a98aacc81f27e289da10f25bee0c8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3d4c962f_6ee5e7b1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2021-04-28T14:58:49Z",
+      "side": 1,
+      "message": "re-triggering presubmit removed the presubmit-verified label. I think you should bypass-presubmit and submit it instead",
+      "revId": "faa271aa5e1a98aacc81f27e289da10f25bee0c8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d7801e17_c2ca86fb",
