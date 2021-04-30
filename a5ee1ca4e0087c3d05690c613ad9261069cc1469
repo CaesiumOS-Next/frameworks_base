@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "467ece32_57804486",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1056478
+      },
+      "writtenOn": "2021-04-30T23:27:38Z",
+      "side": 1,
+      "message": "Bypassing presubmit; it\u0027s not worth wasting a re-run on the presubmits for this.  It is literally changing a single word in a javadoc block.  I\u0027ll save some carbon.",
+      "revId": "a5ee1ca4e0087c3d05690c613ad9261069cc1469",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
