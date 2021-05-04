@@ -16,6 +16,75 @@
       "message": "Sorry for the delay. Will take a look first thing in the morning.",
       "revId": "9de339f6895132c9c928dba8292c16cee6b49fd6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "56d26ab1_bcf983ef",
+        "filename": "tools/aapt2/format/Archive.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1339996
+      },
+      "writtenOn": "2021-05-04T20:28:24Z",
+      "side": 1,
+      "message": "Use an enum class rather than a plan enum and change WriteFile and other methods to use enum class instead of uint32_t.",
+      "range": {
+        "startLine": 36,
+        "startChar": 2,
+        "endLine": 36,
+        "endChar": 7
+      },
+      "revId": "9de339f6895132c9c928dba8292c16cee6b49fd6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b47f0a10_34c3a1eb",
+        "filename": "tools/aapt2/format/Archive.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1339996
+      },
+      "writtenOn": "2021-05-04T20:28:24Z",
+      "side": 1,
+      "message": "How about flipping this on its head and make kCompress always compress the file UNLESS a new flag, kRestrictPoorCompression, is also present? We can pass kRestrictPoorCompression wherever we want want this behavior of maybe compressing a file to occur. That way kCompress actually means that this file should be compressed rather than requiring kCompress and kForce.\n\nOr rename kForce to something more explicit like kIgnorePoorCompression. I rather the former and I understand that the fomer could cause us to introduce new code paths that do not pass in kRestrictPoorCompression, but at least its more a conscious decision to allow the heuristic to make the decision. Though looking at the method names, one would think CopyFileToArchivePreserveCompression would always preserve compression by default rather than leave it compressed if it decided the savings were not large enough.",
+      "range": {
+        "startLine": 40,
+        "startChar": 4,
+        "endLine": 40,
+        "endChar": 10
+      },
+      "revId": "9de339f6895132c9c928dba8292c16cee6b49fd6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "41010cb6_aa0c1c35",
+        "filename": "tools/aapt2/io/Util.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1339996
+      },
+      "writtenOn": "2021-05-04T20:28:24Z",
+      "side": 1,
+      "message": "Rather than allowing for flags to be passed in, just make the argument a bool named something like \"restrict_poor_compression\" and make it default to false. If restrict_poor_compression is true, then we pass kRestrictPoorCompression.",
+      "range": {
+        "startLine": 42,
+        "startChar": 42,
+        "endLine": 42,
+        "endChar": 68
+      },
+      "revId": "9de339f6895132c9c928dba8292c16cee6b49fd6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
