@@ -1,6 +1,7 @@
 {
   "comments": [
     {
+      "unresolved": false,
       "key": {
         "uuid": "90a0fb20_22e5335a",
         "filename": "/PATCHSET_LEVEL",
@@ -14,8 +15,25 @@
       "side": 1,
       "message": "Thank you for looking into it. Is there a tracking bug for this issue?",
       "revId": "4056012ee976f14255e68547ce31f30591d4bc35",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": false
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f0da4644_a3fc1397",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1754603
+      },
+      "writtenOn": "2021-05-06T11:45:28Z",
+      "side": 1,
+      "message": "I reported this issue in April 2018.\nhttps://issuetracker.google.com/issues/64826165",
+      "parentUuid": "90a0fb20_22e5335a",
+      "revId": "4056012ee976f14255e68547ce31f30591d4bc35",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
