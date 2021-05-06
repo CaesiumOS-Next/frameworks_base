@@ -66,6 +66,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c304e7fd_e9ad5ca2",
+        "filename": "tools/aapt2/format/Archive.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1456808
+      },
+      "writtenOn": "2021-05-06T19:09:02Z",
+      "side": 1,
+      "message": "If we\u0027re not too worried about diverging from legacy behavior, how do you feel about only undoing bad compression when writing binary APK files in `convert` and `link`?\n\nIMO, we should either explicitly track desired compression status, or never alter it with these kinds of optimizations in intermediate APKs.",
+      "parentUuid": "b47f0a10_34c3a1eb",
+      "range": {
+        "startLine": 40,
+        "startChar": 4,
+        "endLine": 40,
+        "endChar": 10
+      },
+      "revId": "9de339f6895132c9c928dba8292c16cee6b49fd6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "41010cb6_aa0c1c35",
         "filename": "tools/aapt2/io/Util.h",
         "patchSetId": 2
