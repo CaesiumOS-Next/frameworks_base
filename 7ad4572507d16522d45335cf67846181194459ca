@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7b85293c_72fc6ff6",
+        "filename": "tests/net/java/com/android/server/connectivity/PermissionMonitorTest.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 307,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2021-05-07T13:05:38Z",
+      "side": 0,
+      "message": "Your new tests are losing a lot of coverage here. Importantly, you removed *all* coverage for the logic inside hasRestrictedNetworkPermission pertaining to carryover apps, which was critical.\n\nPlease keep this coverage. Unit testing isCarryoverPackage is not sufficient to show that it is correctly used.",
+      "range": {
+        "startLine": 307,
+        "startChar": 16,
+        "endLine": 307,
+        "endChar": 59
+      },
+      "revId": "7ad4572507d16522d45335cf67846181194459ca",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
