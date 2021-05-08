@@ -33,6 +33,23 @@
       "message": "Jean-Michel, I\u0027m not sure who is the right owner for this. Please could you take a look and reassign as needed? Thanks.",
       "revId": "39145db9481e6edbcbe879d21a7b5f7bd644ac6c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e31e2e0a_46d6f38a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1038080
+      },
+      "writtenOn": "2021-05-08T14:33:30Z",
+      "side": 1,
+      "message": "A friendly ping :)",
+      "revId": "39145db9481e6edbcbe879d21a7b5f7bd644ac6c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
