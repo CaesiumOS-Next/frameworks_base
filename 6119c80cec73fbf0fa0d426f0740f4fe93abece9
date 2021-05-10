@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "80233a59_184c052a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1612700
+      },
+      "writtenOn": "2021-05-10T10:52:09Z",
+      "side": 1,
+      "message": " \nlog:\n\nE AndroidRuntime: *** FATAL EXCEPTION IN SYSTEM PROCESS: main\n E AndroidRuntime: java.lang.IllegalStateException: Too many receivers, total of 1000, registered for pid: 2126, callerPackage: android\n E AndroidRuntime:   at com.android.server.am.ActivityManagerService.registerReceiverWithFeature(ActivityManagerService.java:15829)\n E AndroidRuntime:   at android.app.ContextImpl.registerReceiverInternal(ContextImpl.java:1626)\n E AndroidRuntime:   at android.app.ContextImpl.registerReceiver(ContextImpl.java:1580)\n E AndroidRuntime:   at android.app.ContextImpl.registerReceiver(ContextImpl.java:1568)\n E AndroidRuntime:   at com.android.server.notification.NotificationHistoryDatabase.\u003cinit\u003e(NotificationHistoryDatabase.java:106)\n E AndroidRuntime:   at com.android.server.notification.NotificationHistoryDatabaseFactory.create(NotificationHistoryDatabaseFactory.java:38)\n E AndroidRuntime:   at com.android.server.notification.NotificationHistoryManager.                                                               getUserHistoryAndInitializeIfNeededLocked(NotificationHistoryManager.java:295)\n E AndroidRuntime:   at com.android.server.notification.NotificationHistoryManager.onHistoryEnabledChanged(NotificationHistoryManager.java:       262)\n E AndroidRuntime:   at com.android.server.notification.NotificationHistoryManager$SettingsObserver.update(NotificationHistoryManager.java:       390)\n E AndroidRuntime:   at com.android.server.notification.NotificationHistoryManager$SettingsObserver.onChange(NotificationHistoryManager.java:     379)\n E AndroidRuntime:   at android.database.ContentObserver.onChange(ContentObserver.java:187)\n E AndroidRuntime:   at android.database.ContentObserver.onChange(ContentObserver.java:200)\n E AndroidRuntime:   at android.database.ContentObserver.lambda$dispatchChange$0$ContentObserver(ContentObserver.java:282)\n E AndroidRuntime:   at android.database.-$$Lambda$ContentObserver$MgqiYb2qvgLhoXTioYXq9MvvpNk.run(Unknown Source:10)\n E AndroidRuntime:   at android.os.Handler.handleCallback(Handler.java:938)\n E AndroidRuntime:   at android.os.Handler.dispatchMessage(Handler.java:99)\n E AndroidRuntime:   at android.os.Looper.loop(Looper.java:223)\n E AndroidRuntime:   at com.android.server.SystemServer.run(SystemServer.java:653)\n E AndroidRuntime:   at com.android.server.SystemServer.main(SystemServer.java:434)\n E AndroidRuntime:   at java.lang.reflect.Method.invoke(Native Method)\n E AndroidRuntime:   at com.android.internal.os.RuntimeInit$MethodAndArgsCaller.run(RuntimeInit.java:603)\n E AndroidRuntime:   at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:925)\n\n\nD NotifHistory: onSwitchChange history to true\nD NotifHistory: onSwitchChange history to false\nD NotifHistory: onSwitchChange history to true\nD NotifHistory: onSwitchChange history to false\nD NotifHistory: onSwitchChange history to true\nD NotifHistory: onSwitchChange history to false\nD NotifHistory: onSwitchChange history to true\nD NotifHistory: onSwitchChange history to false\nD NotifHistory: onSwitchChange history to true\nD NotifHistory: onSwitchChange history to false\nD NotifHistory: onSwitchChange history to true\nD NotifHistory: onSwitchChange history to false\nD NotifHistory: onSwitchChange history to true\nD NotifHistory: onSwitchChange history to false\nD NotifHistory: onSwitchChange history to true",
+      "revId": "6119c80cec73fbf0fa0d426f0740f4fe93abece9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
