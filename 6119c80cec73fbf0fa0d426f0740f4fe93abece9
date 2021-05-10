@@ -33,6 +33,29 @@
       "message": "Hi Julia:\n   please help review this commit,thanks.",
       "revId": "6119c80cec73fbf0fa0d426f0740f4fe93abece9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "96b9caf0_f8c9dbb8",
+        "filename": "services/core/java/com/android/server/notification/NotificationHistoryManager.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 266,
+      "author": {
+        "id": 1060562
+      },
+      "writtenOn": "2021-05-10T15:54:29Z",
+      "side": 1,
+      "message": "I think you\u0027d need to register the receiver if the user turned history back on.",
+      "range": {
+        "startLine": 266,
+        "startChar": 16,
+        "endLine": 266,
+        "endChar": 17
+      },
+      "revId": "6119c80cec73fbf0fa0d426f0740f4fe93abece9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
