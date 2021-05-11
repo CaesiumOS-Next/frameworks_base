@@ -78,6 +78,7 @@ import static android.net.NetworkCapabilities.REDACT_FOR_NETWORK_SETTINGS;
 import static android.net.NetworkCapabilities.TRANSPORT_CELLULAR;
 import static android.net.NetworkCapabilities.TRANSPORT_TEST;
 import static android.net.NetworkCapabilities.TRANSPORT_VPN;
+import static android.net.NetworkCapabilities.TRANSPORT_WIFI;
 import static android.net.NetworkRequest.Type.LISTEN_FOR_BEST;
 import static android.net.shared.NetworkMonitorUtils.isPrivateDnsValidationRequired;
 import static android.os.Process.INVALID_UID;
@@ -9077,6 +9078,12 @@ public class ConnectivityService extends IConnectivityManager.Stub
         final int[] administratorUids = nai.networkCapabilities.getAdministratorUids();
         if (!CollectionUtils.contains(administratorUids, callbackUid)) {
             return false;
+        }
+
+        // Don't need to enforce location-permissions for non-WiFi Networks, as those transports do
+        // not have location-restrictions on them.
+        if (!nai.networkCapabilities.hasTransport(TRANSPORT_WIFI)) {
+            return true;
         }
 
         // LocationPermissionChecker#checkLocationPermission can throw SecurityException if the uid
