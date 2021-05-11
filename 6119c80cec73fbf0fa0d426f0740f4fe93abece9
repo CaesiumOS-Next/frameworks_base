@@ -56,6 +56,30 @@
       },
       "revId": "6119c80cec73fbf0fa0d426f0740f4fe93abece9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5cbc30e8_951d3f7b",
+        "filename": "services/core/java/com/android/server/notification/NotificationHistoryManager.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 266,
+      "author": {
+        "id": 1612700
+      },
+      "writtenOn": "2021-05-11T01:40:18Z",
+      "side": 1,
+      "message": "when disable history, set NotificationHistoryDatabase as null\n\n    private void disableHistory(NotificationHistoryDatabase userHistory, @UserIdInt int userId) {\n        userHistory.disableHistory();\n        userHistory.unregisterFileCleaupReceiver();\n\n        mUserPendingHistoryDisables.put(userId, false);\n        mHistoryEnabled.put(userId, false);\n\n        // set NotificationHistoryDatabase as null\n        mUserState.put(userId, null);\n    }\n\nwhen turn on history, call method getUserHistoryAndInitializeIfNeededLocked.get userHistory from  mUserState is null, in this case, create new NotificationHistoryDatabase by NotificationHistoryDatabaseFactory\n\n    @GuardedBy(\"mLock\")\n    private @Nullable NotificationHistoryDatabase getUserHistoryAndInitializeIfNeededLocked(\n            int userId) {\n        if (!mHistoryEnabled.get(userId)) {\n            if (DEBUG) {\n                Slog.i(TAG, \"History disabled for user \" + userId);\n            }\n            mUserState.put(userId, null);\n            return null;\n        }\n        // userHistory is null, in this case, create new NotificationHistoryDatabase\n\n        NotificationHistoryDatabase userHistory \u003d mUserState.get(userId);\n        if (userHistory \u003d\u003d null) {\n            final File historyDir \u003d new File(Environment.getDataSystemCeDirectory(userId),\n                    DIRECTORY_PER_USER);\n            userHistory \u003d NotificationHistoryDatabaseFactory.create(mContext, IoThread.getHandler(),\n                    historyDir);\n            if (mUserUnlockedStates.get(userId)) {\n                try {\n                    userHistory.init();\n                } catch (Exception e) {\n                    if (mUserManager.isUserUnlocked(userId)) {\n                        throw e; // rethrow exception - user is unlocked\n                    } else {\n                        Slog.w(TAG, \"Attempted to initialize service for \"\n                                + \"stopped or removed user \" + userId);\n                        return null;\n                    }\n                }\n            } else {\n                // locked! data unavailable\n                Slog.w(TAG, \"Attempted to initialize service for \"\n                        + \"stopped or removed user \" + userId);\n                return null;\n            }\n            mUserState.put(userId, userHistory);\n        }\n        return userHistory;\n    }\n\n when create new NotificationHistoryDatabase, will register the receiver \n    public NotificationHistoryDatabase(Context context, Handler fileWriteHandler, File dir) {\n        mContext \u003d context;\n        mAlarmManager \u003d context.getSystemService(AlarmManager.class);\n        mCurrentVersion \u003d DEFAULT_CURRENT_VERSION;\n        mFileWriteHandler \u003d fileWriteHandler;\n        mVersionFile \u003d new File(dir, \"version\");\n        mHistoryDir \u003d new File(dir, \"history\");\n        mHistoryFiles \u003d new LinkedList\u003c\u003e();\n        mBuffer \u003d new NotificationHistory();\n        mWriteBufferRunnable \u003d new WriteBufferRunnable();\n\n        IntentFilter deletionFilter \u003d new IntentFilter(ACTION_HISTORY_DELETION);\n        deletionFilter.addDataScheme(SCHEME_DELETION);\n        mContext.registerReceiver(mFileCleaupReceiver, deletionFilter);\n    }",
+      "parentUuid": "96b9caf0_f8c9dbb8",
+      "range": {
+        "startLine": 266,
+        "startChar": 16,
+        "endLine": 266,
+        "endChar": 17
+      },
+      "revId": "6119c80cec73fbf0fa0d426f0740f4fe93abece9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
