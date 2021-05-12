@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eee41161_866dea88",
+        "filename": "services/core/java/com/android/server/ConnectivityService.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 9088,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2021-05-12T10:06:49Z",
+      "side": 1,
+      "message": "I don\u0027t think this is true.\n• CBRS is location-sensitive.\n• Now that we have VCN running over WiFi and it only ever says TRANSPORT_CELLULAR, it kind of requires that we treat cell as equivalently sensitive.",
+      "range": {
+        "startLine": 9087,
+        "startChar": 81,
+        "endLine": 9088,
+        "endChar": 57
+      },
+      "revId": "940b08532f76fa58c99257b6a37beb86571a1935",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
