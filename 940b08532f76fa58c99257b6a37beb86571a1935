@@ -22,6 +22,30 @@
       },
       "revId": "940b08532f76fa58c99257b6a37beb86571a1935",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "61632186_733732cf",
+        "filename": "services/core/java/com/android/server/ConnectivityService.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 9088,
+      "author": {
+        "id": 1060151
+      },
+      "writtenOn": "2021-05-12T16:14:50Z",
+      "side": 1,
+      "message": "CBRS might (in theory) be considered location sensitive. It is not considered as such within the scope of the APIs/information available here.\n\nFor instance, a CBRS network\u0027s subscription ID and even the name of the newtork operator are not considered location sensitive. If that changes then it should change in all places equally, but I would expect that change to be driven by telephony. This CL doesn\u0027t attempt to change the state of the world, only to align with it.",
+      "parentUuid": "eee41161_866dea88",
+      "range": {
+        "startLine": 9087,
+        "startChar": 81,
+        "endLine": 9088,
+        "endChar": 57
+      },
+      "revId": "940b08532f76fa58c99257b6a37beb86571a1935",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
