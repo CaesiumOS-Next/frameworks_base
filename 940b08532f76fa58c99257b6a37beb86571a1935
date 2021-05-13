@@ -94,6 +94,30 @@
       },
       "revId": "940b08532f76fa58c99257b6a37beb86571a1935",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ab91515d_3f5b9462",
+        "filename": "services/core/java/com/android/server/ConnectivityService.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 9088,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2021-05-13T13:40:24Z",
+      "side": 1,
+      "message": "Suppose you\u0027re a small provider of CBRS. By virtue of receiving these callbacks only when you own the network, you\u0027d know where the user is just because you started receiving the callback. That\u0027s on TRANSPORT_CELLULAR.",
+      "parentUuid": "9c8ac862_4d60c837",
+      "range": {
+        "startLine": 9087,
+        "startChar": 81,
+        "endLine": 9088,
+        "endChar": 57
+      },
+      "revId": "940b08532f76fa58c99257b6a37beb86571a1935",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
