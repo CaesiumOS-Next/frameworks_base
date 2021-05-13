@@ -70,6 +70,30 @@
       },
       "revId": "940b08532f76fa58c99257b6a37beb86571a1935",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9c8ac862_4d60c837",
+        "filename": "services/core/java/com/android/server/ConnectivityService.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 9088,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2021-05-13T11:41:43Z",
+      "side": 1,
+      "message": "But in practice it\u0027s possible to know whether you have a VCN running, and we\u0027ll want to make this clearer in the future, including whether it runs over WiFi. The VCN is meant to be a network abstraction of a *carrier*, not of cellular, and we should not make that confusion.\n\nAt this point I am unconvinced we should let apps listen to this for non-wifi networks without the location permission. If you want to listen to these callbacks, you should be prepared to have the permission and to be blamed for it.",
+      "parentUuid": "fef90c4d_8e8ab4e0",
+      "range": {
+        "startLine": 9087,
+        "startChar": 81,
+        "endLine": 9088,
+        "endChar": 57
+      },
+      "revId": "940b08532f76fa58c99257b6a37beb86571a1935",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
