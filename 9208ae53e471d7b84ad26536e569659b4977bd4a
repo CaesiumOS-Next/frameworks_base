@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "96c32cfb_b8bb26cd",
+        "filename": "packages/Connectivity/tests/unit/java/com/android/server/connectivity/PermissionMonitorTest.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1288034
+      },
+      "writtenOn": "2021-05-13T15:08:47Z",
+      "side": 1,
+      "message": "I think this also needs to be called in tearDown (see the documentation: \"This needs to be called before and after using the FakeSettingsProvider class.\")",
+      "range": {
+        "startLine": 147,
+        "startChar": 29,
+        "endLine": 147,
+        "endChar": 50
+      },
+      "revId": "9208ae53e471d7b84ad26536e569659b4977bd4a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a7278a78_1c7ad101",
+        "filename": "services/core/java/com/android/server/connectivity/PermissionMonitor.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 252,
+      "author": {
+        "id": 1288034
+      },
+      "writtenOn": "2021-05-13T15:08:47Z",
+      "side": 1,
+      "message": "Why expand this check ? IIUC this allows system apps in non-primary users too ? This should be at least in the commit message if changing that behavior.",
+      "range": {
+        "startLine": 252,
+        "startChar": 20,
+        "endLine": 252,
+        "endChar": 66
+      },
+      "revId": "9208ae53e471d7b84ad26536e569659b4977bd4a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
