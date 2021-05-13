@@ -944,7 +944,7 @@ class TvInputHardwareManager implements TvInputHal.Callback {
             }
 
             updateVolume();
-            float volume = mSourceVolume * getMediaStreamVolume();
+            float volume = mSourceVolume;
             AudioGainConfig sourceGainConfig = null;
             if (mAudioSource.gains().length > 0 && volume != mCommittedVolume) {
                 AudioGain sourceGain = null;
