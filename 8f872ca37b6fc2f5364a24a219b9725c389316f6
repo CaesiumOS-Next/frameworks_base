@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "af01c3b4_3ebfc0b2",
+        "filename": "packages/Connectivity/framework/src/android/net/NetworkRequest.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 492,
+      "author": {
+        "id": 1304263
+      },
+      "writtenOn": "2021-05-14T10:59:03Z",
+      "side": 1,
+      "message": "Do we need to update the doc here? mModifiedNotVcnManaged does not only represent NET_CAPABILITY_NOT_VCN_MANAGED added/removed explicitly. It\u0027s also used as a bit that deduction is not necessary. \n\nActually, I find it\u0027s not easy to understand the behavior from the variable. \"ModifiedNotVcnManaged\" does not really mean it\u0027s modified.\nI am wondering if it should be replaced with other new memeber combing the usage in l.226",
+      "range": {
+        "startLine": 491,
+        "startChar": 15,
+        "endLine": 492,
+        "endChar": 83
+      },
+      "revId": "8f872ca37b6fc2f5364a24a219b9725c389316f6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
