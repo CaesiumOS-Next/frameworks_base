@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9331978f_e1936778",
+        "filename": "packages/Connectivity/tests/unit/java/com/android/server/connectivity/PermissionMonitorTest.java",
+        "patchSetId": 9
+      },
+      "lineNbr": 355,
+      "author": {
+        "id": 1308473
+      },
+      "writtenOn": "2021-05-16T15:52:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a820ccce_9d894a13",
+      "range": {
+        "startLine": 355,
+        "startChar": 16,
+        "endLine": 355,
+        "endChar": 70
+      },
+      "revId": "5b1315908a34f5f0911ea46a9fa758a7d4f8ae62",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6165a7b1_5f384a65",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-05-14T15:07:18Z",
       "side": 1,
       "message": "Nit: should be renamed ?",
+      "range": {
+        "startLine": 417,
+        "startChar": 16,
+        "endLine": 417,
+        "endChar": 42
+      },
+      "revId": "5b1315908a34f5f0911ea46a9fa758a7d4f8ae62",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e87968c5_f62810a2",
+        "filename": "packages/Connectivity/tests/unit/java/com/android/server/connectivity/PermissionMonitorTest.java",
+        "patchSetId": 9
+      },
+      "lineNbr": 417,
+      "author": {
+        "id": 1308473
+      },
+      "writtenOn": "2021-05-16T15:52:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6165a7b1_5f384a65",
       "range": {
         "startLine": 417,
         "startChar": 16,
