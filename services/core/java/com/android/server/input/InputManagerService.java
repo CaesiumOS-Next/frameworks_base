@@ -2033,6 +2033,8 @@ public class InputManagerService extends IInputManager.Stub
                 // It's ok if the file does not exist.
             } catch (Exception e) {
                 Slog.e(TAG, "Could not parse '" + confFile.getAbsolutePath() + "'", e);
+            } finally {
+                stream.close();
             }
         }
         return names.toArray(new String[0]);
