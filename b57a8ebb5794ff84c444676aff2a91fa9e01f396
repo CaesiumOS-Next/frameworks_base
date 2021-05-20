@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "39fdb4f5_45806077",
+        "filename": "packages/Connectivity/service/src/com/android/server/ConnectivityService.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 9179,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2021-05-20T16:02:52Z",
+      "side": 1,
+      "message": "I think it is risky to have a privacy-sensitive method like this take a NetworkAgentInfo. hasLocationPermission should only check the location permission.\n\n*Callers* of the hasLocationPermission method might have other policies, and in this case, for conndiags, the policy is that the location permission check is skipped for non-wifi networks. But that policy should be encoded in those callers, not into this method.\n\nSo: I\u0027d leave hasLocationPermission untouched in this CL, and instead, in checkConnectivityDiagnosticsPermissions, would do:\n\n\n\n        return !connectivityDiagnosticsNeedLocationPermission(nai)\n                || hasLocationPermission(nai, callbackPackageName, callbackUid);",
+      "range": {
+        "startLine": 9179,
+        "startChar": 20,
+        "endLine": 9179,
+        "endChar": 41
+      },
+      "revId": "b57a8ebb5794ff84c444676aff2a91fa9e01f396",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d47fa00a_30d16998",
+        "filename": "packages/Connectivity/service/src/com/android/server/ConnectivityService.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 9185,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2021-05-20T16:02:52Z",
+      "side": 1,
+      "message": "Per discussion, can you factor this out to a (tiny) helper method that takes an nai, and has a TODO on it to ensure a better check in the future? Something like:\n\n    private boolean connectivityDiagnosticsNeedLocationPermission(NetworkAgentInfo nai) {",
+      "range": {
+        "startLine": 9185,
+        "startChar": 16,
+        "endLine": 9185,
+        "endChar": 68
+      },
+      "revId": "b57a8ebb5794ff84c444676aff2a91fa9e01f396",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
