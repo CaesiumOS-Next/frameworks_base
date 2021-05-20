@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cfb19ccf_8924dedc",
+        "filename": "packages/Connectivity/service/src/com/android/server/ConnectivityService.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 9179,
+      "author": {
+        "id": 1463964
+      },
+      "writtenOn": "2021-05-20T20:10:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "39fdb4f5_45806077",
+      "range": {
+        "startLine": 9179,
+        "startChar": 20,
+        "endLine": 9179,
+        "endChar": 41
+      },
+      "revId": "b57a8ebb5794ff84c444676aff2a91fa9e01f396",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d47fa00a_30d16998",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-05-20T16:02:52Z",
       "side": 1,
       "message": "Per discussion, can you factor this out to a (tiny) helper method that takes an nai, and has a TODO on it to ensure a better check in the future? Something like:\n\n    private boolean connectivityDiagnosticsNeedLocationPermission(NetworkAgentInfo nai) {",
+      "range": {
+        "startLine": 9185,
+        "startChar": 16,
+        "endLine": 9185,
+        "endChar": 68
+      },
+      "revId": "b57a8ebb5794ff84c444676aff2a91fa9e01f396",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4641e744_f72a2d52",
+        "filename": "packages/Connectivity/service/src/com/android/server/ConnectivityService.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 9185,
+      "author": {
+        "id": 1463964
+      },
+      "writtenOn": "2021-05-20T20:10:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d47fa00a_30d16998",
       "range": {
         "startLine": 9185,
         "startChar": 16,
