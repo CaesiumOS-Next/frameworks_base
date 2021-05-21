@@ -90,6 +90,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9590fcba_8d7f454a",
+        "filename": "tools/aapt2/format/Archive.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1339996
+      },
+      "writtenOn": "2021-05-21T23:08:06Z",
+      "side": 1,
+      "message": "\u003e how do you feel about only undoing bad compression when writing binary APK files in `convert` and `link`?\n\nI am not 100% for that idea because we technically we only want to undo bad compression at the final link or convert command. For example, a tool could link a binary APK, convert the APK to proto to modify it, and the convert it back to a binary APK. We only want to undo bad compression at the second convert.\n\nInstead, we could have a flag in aapt2 link/convert to store files as compressed regardless of how well they compress. This would allow tools and build systems to preserve the desired compression status until the final link or convert command.\n\nWe could potentially do away with undoing back compression in convert and link completely and move that to aapt2 optimize and allow optimize to represent the final step. That could cause performance regressions however since APKs not using optimize would not have files that compress badly stored uncompressed. \n\nIn summary, we need to keep keep the legacy behavior by default to not cause regressions and we should have a new flag that can opt-out of the legacy behavior and preserve compression completely during intermediate steps. In addition, we can have this flag take effect when linking and converting to proto APKs since those are always intermediates.",
+      "parentUuid": "c304e7fd_e9ad5ca2",
+      "range": {
+        "startLine": 40,
+        "startChar": 4,
+        "endLine": 40,
+        "endChar": 10
+      },
+      "revId": "9de339f6895132c9c928dba8292c16cee6b49fd6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "41010cb6_aa0c1c35",
         "filename": "tools/aapt2/io/Util.h",
         "patchSetId": 2
