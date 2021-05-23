@@ -189,6 +189,11 @@ public class RebootEscrowManagerTests {
         }
 
         @Override
+        public boolean isNetworkConnected() {
+            return false;
+        }
+
+        @Override
         public RebootEscrowProviderInterface createRebootEscrowProviderIfNeeded() {
             mRebootEscrowProviderInUse = mDefaultRebootEscrowProvider;
             return mRebootEscrowProviderInUse;
@@ -602,7 +607,7 @@ public class RebootEscrowManagerTests {
         // Sleep 5s for the retry to complete
         Thread.sleep(5 * 1000);
         assertFalse(metricsSuccessCaptor.getValue());
-        assertEquals(Integer.valueOf(RebootEscrowManager.ERROR_RETRY_COUNT_EXHAUSTED),
+        assertEquals(Integer.valueOf(RebootEscrowManager.ERROR_NO_NETWORK),
                 metricsErrorCodeCaptor.getValue());
     }
 
