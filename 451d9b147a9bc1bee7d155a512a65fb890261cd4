@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c6c175a1_fe86ac64",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2021-05-24T15:08:14Z",
+      "side": 1,
+      "message": "LGTM assuming comments addressed. But this CL will need to be moved to packages/modules/Connectivity as soon as https://android-review.googlesource.com/q/topic:aosp_186628461_main is merged (expected 12-24h from now).",
+      "revId": "451d9b147a9bc1bee7d155a512a65fb890261cd4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5e28529c_1aa2d186",
+        "filename": "packages/Connectivity/tests/unit/java/com/android/server/ConnectivityServiceTest.java",
+        "patchSetId": 8
+      },
+      "lineNbr": 9733,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2021-05-24T15:08:14Z",
+      "side": 1,
+      "message": "ConnectivityManager.getNetworkTypeName(TYPE_WIFI)",
+      "range": {
+        "startLine": 9733,
+        "startChar": 77,
+        "endLine": 9733,
+        "endChar": 83
+      },
+      "revId": "451d9b147a9bc1bee7d155a512a65fb890261cd4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
