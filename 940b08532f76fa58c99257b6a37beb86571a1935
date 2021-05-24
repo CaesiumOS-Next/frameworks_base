@@ -142,6 +142,30 @@
       },
       "revId": "940b08532f76fa58c99257b6a37beb86571a1935",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "08151b7a_3f29430d",
+        "filename": "services/core/java/com/android/server/ConnectivityService.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 9088,
+      "author": {
+        "id": 1463964
+      },
+      "writtenOn": "2021-05-24T19:25:25Z",
+      "side": 1,
+      "message": "Marking resolved as the followup bug is filed and the CL matches our compromise.\n\nDone",
+      "parentUuid": "c1d85d56_9060237d",
+      "range": {
+        "startLine": 9087,
+        "startChar": 81,
+        "endLine": 9088,
+        "endChar": 57
+      },
+      "revId": "940b08532f76fa58c99257b6a37beb86571a1935",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
