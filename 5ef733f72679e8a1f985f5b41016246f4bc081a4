@@ -67,6 +67,23 @@
       "message": "Hi ,any update?",
       "revId": "5ef733f72679e8a1f985f5b41016246f4bc081a4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6611d2ea_7e927446",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1612700
+      },
+      "writtenOn": "2021-05-25T11:27:02Z",
+      "side": 1,
+      "message": "Hi:\n  any update?",
+      "revId": "5ef733f72679e8a1f985f5b41016246f4bc081a4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
