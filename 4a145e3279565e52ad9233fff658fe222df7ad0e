@@ -16,6 +16,41 @@
       "message": "please cp internally as well",
       "revId": "4a145e3279565e52ad9233fff658fe222df7ad0e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "76def4ba_612300c1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431994
+      },
+      "writtenOn": "2021-05-25T15:15:07Z",
+      "side": 1,
+      "message": "Thanks!",
+      "revId": "4a145e3279565e52ad9233fff658fe222df7ad0e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7f4897b9_0866cf90",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431994
+      },
+      "writtenOn": "2021-05-25T15:15:07Z",
+      "side": 1,
+      "message": "Will merge there first and mark this as a CP afterwards.",
+      "parentUuid": "34d59f37_8641d482",
+      "revId": "4a145e3279565e52ad9233fff658fe222df7ad0e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
