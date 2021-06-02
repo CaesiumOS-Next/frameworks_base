@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "45622527_fbd60a97",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1632811
+      },
+      "writtenOn": "2021-06-02T23:20:38Z",
+      "side": 1,
+      "message": "Hi Nader, can you please +1 for OWNERS?",
+      "revId": "1cd23470b004cd015626a3a995d83fe2d8e9bfeb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
