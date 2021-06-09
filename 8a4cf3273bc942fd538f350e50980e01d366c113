@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "317abf06_6437f986",
+        "filename": "services/core/java/com/android/server/pm/Installer.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2021-06-09T12:42:59Z",
+      "side": 1,
+      "message": "indicating",
+      "range": {
+        "startLine": 83,
+        "startChar": 42,
+        "endLine": 83,
+        "endChar": 50
+      },
+      "revId": "8a4cf3273bc942fd538f350e50980e01d366c113",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9ffae38d_59921b9e",
+        "filename": "services/core/java/com/android/server/pm/Installer.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 403,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2021-06-09T12:42:59Z",
+      "side": 1,
+      "message": "Analyzes",
+      "range": {
+        "startLine": 403,
+        "startChar": 7,
+        "endLine": 403,
+        "endChar": 15
+      },
+      "revId": "8a4cf3273bc942fd538f350e50980e01d366c113",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3b987f1d_d0f11fea",
+        "filename": "services/core/java/com/android/server/pm/PackageDexOptimizer.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 771,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2021-06-09T12:42:59Z",
+      "side": 1,
+      "message": "Add a helper for this?",
+      "range": {
+        "startLine": 771,
+        "startChar": 16,
+        "endLine": 771,
+        "endChar": 51
+      },
+      "revId": "8a4cf3273bc942fd538f350e50980e01d366c113",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
