@@ -12646,10 +12646,10 @@ public class ActivityManagerService extends IActivityManager.Stub
                 proto.write(ProcessOomProto.Detail.EMPTY, r.empty);
                 proto.write(ProcessOomProto.Detail.HAS_ABOVE_CLIENT, r.hasAboveClient);
 
+                long uptimeSince = curUptime - service.mLastPowerCheckUptime;
+                long timeUsed = r.curCpuTime - r.lastCpuTime;
                 if (r.setProcState >= ActivityManager.PROCESS_STATE_SERVICE) {
-                    if (r.lastCpuTime != 0) {
-                        long uptimeSince = curUptime - service.mLastPowerCheckUptime;
-                        long timeUsed = r.curCpuTime - r.lastCpuTime;
+                    if (r.lastCpuTime != 0 && uptimeSince > 0) {
                         long cpuTimeToken = proto.start(ProcessOomProto.Detail.SERVICE_RUN_TIME);
                         proto.write(ProcessOomProto.Detail.CpuRunTime.OVER_MS, uptimeSince);
                         proto.write(ProcessOomProto.Detail.CpuRunTime.USED_MS, timeUsed);
@@ -12780,7 +12780,7 @@ public class ActivityManagerService extends IActivityManager.Stub
                 pw.print(" hasAboveClient="); pw.println(r.hasAboveClient);
 
                 if (r.setProcState >= ActivityManager.PROCESS_STATE_SERVICE) {
-                    if (r.lastCpuTime != 0) {
+                    if (r.lastCpuTime != 0 && uptimeSince > 0) {
                         long timeUsed = r.curCpuTime - r.lastCpuTime;
                         pw.print(prefix);
                         pw.print("    ");
