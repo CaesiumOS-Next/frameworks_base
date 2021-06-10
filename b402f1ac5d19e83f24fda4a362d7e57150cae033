@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8641cb6e_5f1b529f",
+        "filename": "services/core/java/com/android/server/net/NetworkStatsService.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 1274,
+      "author": {
+        "id": 1221725
+      },
+      "writtenOn": "2021-06-10T23:18:00Z",
+      "side": 1,
+      "message": "Changed to use INetd.IPSEC_INTERFACE_PREFIX. Forgot we even had that.",
+      "parentUuid": "81fd6300_968574de",
+      "range": {
+        "startLine": 1274,
+        "startChar": 75,
+        "endLine": 1274,
+        "endChar": 80
+      },
+      "revId": "b402f1ac5d19e83f24fda4a362d7e57150cae033",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5ce9c44c_0dbdfdbb",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-06-10T20:57:56Z",
       "side": 1,
       "message": "The list is not guaranteed to be in any specific order AFAIK. We should probably try to be consistent about what we grab. Incidentally, I think grabbing the lowest SubId is probably almost always the \"best\" choice. :-)\n\nEither way, a comment here explaining what we\u0027re doing and why would be helpful.",
+      "range": {
+        "startLine": 1937,
+        "startChar": 45,
+        "endLine": 1937,
+        "endChar": 58
+      },
+      "revId": "b402f1ac5d19e83f24fda4a362d7e57150cae033",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "97681d46_6e69bb89",
+        "filename": "services/core/java/com/android/server/vcn/VcnGatewayConnection.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 1937,
+      "author": {
+        "id": 1221725
+      },
+      "writtenOn": "2021-06-10T23:18:00Z",
+      "side": 1,
+      "message": "Done. Ultimately, there should be only ever be one; added in comment",
+      "parentUuid": "5ce9c44c_0dbdfdbb",
       "range": {
         "startLine": 1937,
         "startChar": 45,
