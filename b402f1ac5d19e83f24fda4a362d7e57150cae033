@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "81fd6300_968574de",
+        "filename": "services/core/java/com/android/server/net/NetworkStatsService.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 1274,
+      "author": {
+        "id": 1060151
+      },
+      "writtenOn": "2021-06-10T20:57:56Z",
+      "side": 1,
+      "message": "this really makes me a sad panda. It\u0027d be great if there was another way to answer this question. A couple ideas:\n\n1) define the prefix in IpSecManager (@hide, of course); or\n2) define a small method isIpSecInterface(String ifName). We can make it really simple for now, but then it could go check against the list of active IPsec interfaces.\n\nAnother alternative: how about a method to ask VcnManagementService like isVcnInterface()? These are running in the same process, no? I don\u0027t think we\u0027re crossing a mainline boundary.",
+      "range": {
+        "startLine": 1274,
+        "startChar": 75,
+        "endLine": 1274,
+        "endChar": 80
+      },
+      "revId": "b402f1ac5d19e83f24fda4a362d7e57150cae033",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5ce9c44c_0dbdfdbb",
+        "filename": "services/core/java/com/android/server/vcn/VcnGatewayConnection.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 1937,
+      "author": {
+        "id": 1060151
+      },
+      "writtenOn": "2021-06-10T20:57:56Z",
+      "side": 1,
+      "message": "The list is not guaranteed to be in any specific order AFAIK. We should probably try to be consistent about what we grab. Incidentally, I think grabbing the lowest SubId is probably almost always the \"best\" choice. :-)\n\nEither way, a comment here explaining what we\u0027re doing and why would be helpful.",
+      "range": {
+        "startLine": 1937,
+        "startChar": 45,
+        "endLine": 1937,
+        "endChar": 58
+      },
+      "revId": "b402f1ac5d19e83f24fda4a362d7e57150cae033",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
