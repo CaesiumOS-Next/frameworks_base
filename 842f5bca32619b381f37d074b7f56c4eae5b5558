@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b001c49b_98440f05",
+        "filename": "services/core/java/com/android/server/vcn/VcnGatewayConnection.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 1930,
+      "author": {
+        "id": 1060151
+      },
+      "writtenOn": "2021-06-11T22:39:49Z",
+      "side": 1,
+      "message": "nit, set?",
+      "range": {
+        "startLine": 1930,
+        "startChar": 14,
+        "endLine": 1930,
+        "endChar": 21
+      },
+      "revId": "842f5bca32619b381f37d074b7f56c4eae5b5558",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5cb1c785_e317739b",
+        "filename": "tests/vcn/java/com/android/server/vcn/VcnGatewayConnectionTestBase.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1060151
+      },
+      "writtenOn": "2021-06-11T22:39:49Z",
+      "side": 1,
+      "message": "I doubt it will matter, but suggest to make this something nominally resembling a \"valid\" IMSI. Numeric, approximately 10 digits.",
+      "range": {
+        "startLine": 101,
+        "startChar": 56,
+        "endLine": 101,
+        "endChar": 60
+      },
+      "revId": "842f5bca32619b381f37d074b7f56c4eae5b5558",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
