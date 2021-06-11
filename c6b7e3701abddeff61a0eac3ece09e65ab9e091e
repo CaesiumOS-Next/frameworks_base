@@ -16,6 +16,52 @@
       "message": "Found a way to move this out into the VcnManager.",
       "revId": "c6b7e3701abddeff61a0eac3ece09e65ab9e091e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3fdfa2a6_37129ff5",
+        "filename": "core/java/android/net/vcn/VcnManager.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 592,
+      "author": {
+        "id": 1060151
+      },
+      "writtenOn": "2021-06-11T22:42:05Z",
+      "side": 1,
+      "message": "nit, the inconsistency between these lines is triggering my OCD.",
+      "range": {
+        "startLine": 592,
+        "startChar": 66,
+        "endLine": 592,
+        "endChar": 69
+      },
+      "revId": "c6b7e3701abddeff61a0eac3ece09e65ab9e091e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "431adfc5_0c0d6a5d",
+        "filename": "core/java/android/net/vcn/VcnManager.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 595,
+      "author": {
+        "id": 1060151
+      },
+      "writtenOn": "2021-06-11T22:42:05Z",
+      "side": 1,
+      "message": "static?",
+      "range": {
+        "startLine": 595,
+        "startChar": 4,
+        "endLine": 595,
+        "endChar": 10
+      },
+      "revId": "c6b7e3701abddeff61a0eac3ece09e65ab9e091e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
