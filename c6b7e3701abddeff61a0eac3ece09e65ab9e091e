@@ -110,6 +110,30 @@
       },
       "revId": "c6b7e3701abddeff61a0eac3ece09e65ab9e091e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bda53792_d1908ace",
+        "filename": "core/java/android/net/vcn/VcnManager.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 595,
+      "author": {
+        "id": 1060151
+      },
+      "writtenOn": "2021-06-12T00:14:10Z",
+      "side": 1,
+      "message": "grumble grumble writing worse production code so that we can test it.",
+      "parentUuid": "4b8a3c18_65553218",
+      "range": {
+        "startLine": 595,
+        "startChar": 4,
+        "endLine": 595,
+        "endChar": 10
+      },
+      "revId": "c6b7e3701abddeff61a0eac3ece09e65ab9e091e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
