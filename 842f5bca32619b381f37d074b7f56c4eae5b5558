@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "08b33cfc_9d0be211",
+        "filename": "services/core/java/com/android/server/vcn/VcnGatewayConnection.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 1930,
+      "author": {
+        "id": 1221725
+      },
+      "writtenOn": "2021-06-12T00:11:24Z",
+      "side": 1,
+      "message": "Changed to SortedSet; wanted to add that so that it\u0027s clear how we get the lowest subId.",
+      "parentUuid": "b001c49b_98440f05",
+      "range": {
+        "startLine": 1930,
+        "startChar": 14,
+        "endLine": 1930,
+        "endChar": 21
+      },
+      "revId": "842f5bca32619b381f37d074b7f56c4eae5b5558",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5cb1c785_e317739b",
         "filename": "tests/vcn/java/com/android/server/vcn/VcnGatewayConnectionTestBase.java",
         "patchSetId": 1
@@ -37,6 +61,30 @@
       "writtenOn": "2021-06-11T22:39:49Z",
       "side": 1,
       "message": "I doubt it will matter, but suggest to make this something nominally resembling a \"valid\" IMSI. Numeric, approximately 10 digits.",
+      "range": {
+        "startLine": 101,
+        "startChar": 56,
+        "endLine": 101,
+        "endChar": 60
+      },
+      "revId": "842f5bca32619b381f37d074b7f56c4eae5b5558",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3b2a4703_e372b2f1",
+        "filename": "tests/vcn/java/com/android/server/vcn/VcnGatewayConnectionTestBase.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1221725
+      },
+      "writtenOn": "2021-06-12T00:11:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5cb1c785_e317739b",
       "range": {
         "startLine": 101,
         "startChar": 56,
