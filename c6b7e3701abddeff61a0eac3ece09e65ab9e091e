@@ -41,6 +41,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d3264485_de387554",
+        "filename": "core/java/android/net/vcn/VcnManager.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 592,
+      "author": {
+        "id": 1221725
+      },
+      "writtenOn": "2021-06-12T00:11:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3fdfa2a6_37129ff5",
+      "range": {
+        "startLine": 592,
+        "startChar": 66,
+        "endLine": 592,
+        "endChar": 69
+      },
+      "revId": "c6b7e3701abddeff61a0eac3ece09e65ab9e091e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "431adfc5_0c0d6a5d",
@@ -54,6 +78,30 @@
       "writtenOn": "2021-06-11T22:42:05Z",
       "side": 1,
       "message": "static?",
+      "range": {
+        "startLine": 595,
+        "startChar": 4,
+        "endLine": 595,
+        "endChar": 10
+      },
+      "revId": "c6b7e3701abddeff61a0eac3ece09e65ab9e091e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4b8a3c18_65553218",
+        "filename": "core/java/android/net/vcn/VcnManager.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 595,
+      "author": {
+        "id": 1221725
+      },
+      "writtenOn": "2021-06-12T00:11:46Z",
+      "side": 1,
+      "message": "This is for testing purposes :) in order to test this in the mainline module, we need it to be non-static.\n\nIt might as well be, since it\u0027s a singleton instance of the VcnManager class",
+      "parentUuid": "431adfc5_0c0d6a5d",
       "range": {
         "startLine": 595,
         "startChar": 4,
