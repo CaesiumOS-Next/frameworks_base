@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "29bbe172_a3e28136",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1031448
+      },
+      "writtenOn": "2021-06-14T19:50:28Z",
+      "side": 1,
+      "message": "Hi, this new capability cause com.android.phone crash loop on development boards like db845c which do not have android.hardware.radio* services / HALs enabled.\n\nIn logcat I see the following crash in loop:\n\n\nE AndroidRuntime: FATAL EXCEPTION: RHC\nE AndroidRuntime: Process: com.android.phone, PID: 3110\nE AndroidRuntime: java.lang.NullPointerException\nE AndroidRuntime: \tat java.util.Collections$UnmodifiableCollection.\u003cinit\u003e(Collections.java:1073)\nE AndroidRuntime: \tat java.util.Collections$UnmodifiableSet.\u003cinit\u003e(Collections.java:1175)\nE AndroidRuntime: \tat java.util.Collections.unmodifiableSet(Collections.java:1165)\nE AndroidRuntime: \tat com.android.internal.telephony.RadioInterfaceCapabilityController.setupCapabilities(RadioInterfaceCapabilityController.java:129)\nE AndroidRuntime: \tat com.android.internal.telephony.RadioInterfaceCapabilityController.handleMessage(RadioInterfaceCapabilityController.java:169)\n\n\nIf I revert both the patches in the series then I no longer see this crash loop. I don\u0027t really know what is going on in this part of the code, so I would really appreciate any help in fixing this crash. I\u0027d be happy to help debug things.",
+      "revId": "1226ac6f3d9bc0f290c8cb82c3f283594581cce3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
