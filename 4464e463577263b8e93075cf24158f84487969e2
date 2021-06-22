@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b2672ba8_e5f0a79d",
+        "filename": "libs/hwui/Readback.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1388190
+      },
+      "writtenOn": "2021-06-22T18:23:29Z",
+      "side": 1,
+      "message": "nit: consider making this a function:\n std::string toString(const ARect\u0026 cropRect);",
+      "revId": "4464e463577263b8e93075cf24158f84487969e2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
