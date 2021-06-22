@@ -16,6 +16,24 @@
       "message": "nit: consider making this a function:\n std::string toString(const ARect\u0026 cropRect);",
       "revId": "4464e463577263b8e93075cf24158f84487969e2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e2b6218e_78500653",
+        "filename": "libs/hwui/Readback.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1010103
+      },
+      "writtenOn": "2021-06-22T18:43:24Z",
+      "side": 1,
+      "message": "this is a cherry pick, also why make a std::string first that\u0027s a waste",
+      "parentUuid": "b2672ba8_e5f0a79d",
+      "revId": "4464e463577263b8e93075cf24158f84487969e2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
