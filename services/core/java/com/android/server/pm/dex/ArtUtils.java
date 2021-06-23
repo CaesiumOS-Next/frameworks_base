@@ -20,6 +20,7 @@ import static com.android.server.pm.InstructionSets.getAppDexInstructionSets;
 
 import android.annotation.NonNull;
 
+import com.android.server.art.ArtPackageInfo;
 import com.android.server.pm.PackageDexOptimizer;
 import com.android.server.pm.PackageSetting;
 import com.android.server.pm.parsing.pkg.AndroidPackage;

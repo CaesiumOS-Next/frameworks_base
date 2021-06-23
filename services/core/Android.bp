@@ -10,7 +10,7 @@ package {
 filegroup {
     name: "services.core-sources-deviceconfig-interface",
     srcs: [
-         "java/com/android/server/utils/DeviceConfigInterface.java"
+        "java/com/android/server/utils/DeviceConfigInterface.java",
     ],
 }
 
@@ -45,13 +45,13 @@ genrule {
     ],
     tools: ["protologtool"],
     cmd: "$(location protologtool) transform-protolog-calls " +
-      "--protolog-class com.android.server.protolog.common.ProtoLog " +
-      "--protolog-impl-class com.android.server.protolog.ProtoLogImpl " +
-      "--protolog-cache-class 'com.android.server.protolog.ProtoLog$$Cache' " +
-      "--loggroups-class com.android.server.wm.ProtoLogGroup " +
-      "--loggroups-jar $(location :services.core.wm.protologgroups) " +
-      "--output-srcjar $(out) " +
-      "$(locations :services.core-sources)",
+        "--protolog-class com.android.server.protolog.common.ProtoLog " +
+        "--protolog-impl-class com.android.server.protolog.ProtoLogImpl " +
+        "--protolog-cache-class 'com.android.server.protolog.ProtoLog$$Cache' " +
+        "--loggroups-class com.android.server.wm.ProtoLogGroup " +
+        "--loggroups-jar $(location :services.core.wm.protologgroups) " +
+        "--output-srcjar $(out) " +
+        "$(locations :services.core-sources)",
     out: ["services.core.protolog.srcjar"],
 }
 
@@ -63,11 +63,11 @@ genrule {
     ],
     tools: ["protologtool"],
     cmd: "$(location protologtool) generate-viewer-config " +
-      "--protolog-class com.android.server.protolog.common.ProtoLog " +
-      "--loggroups-class com.android.server.wm.ProtoLogGroup " +
-      "--loggroups-jar $(location :services.core.wm.protologgroups) " +
-      "--viewer-conf $(out) " +
-      "$(locations :services.core-sources)",
+        "--protolog-class com.android.server.protolog.common.ProtoLog " +
+        "--loggroups-class com.android.server.wm.ProtoLogGroup " +
+        "--loggroups-jar $(location :services.core.wm.protologgroups) " +
+        "--viewer-conf $(out) " +
+        "$(locations :services.core-sources)",
     out: ["services.core.protolog.json"],
 }
 
@@ -78,12 +78,12 @@ genrule {
         ":services.core.protolog.json",
     ],
     cmd: "cp $(location :generate-protolog.json) $(out) && " +
-      "{ ! (diff $(out) $(location :services.core.protolog.json) | grep -q '^<') || " +
-      "{ echo -e '\\n\\n################################################################\\n#\\n" +
-      "#  ERROR: ProtoLog viewer config is stale.  To update it, run:\\n#\\n" +
-      "#  cp $(location :generate-protolog.json) " +
-      "$(location :services.core.protolog.json)\\n#\\n" +
-      "################################################################\\n\\n' >&2 && false; } }",
+        "{ ! (diff $(out) $(location :services.core.protolog.json) | grep -q '^<') || " +
+        "{ echo -e '\\n\\n################################################################\\n#\\n" +
+        "#  ERROR: ProtoLog viewer config is stale.  To update it, run:\\n#\\n" +
+        "#  cp $(location :generate-protolog.json) " +
+        "$(location :services.core.protolog.json)\\n#\\n" +
+        "################################################################\\n\\n' >&2 && false; } }",
     out: ["services.core.protolog.json"],
 }
 
@@ -91,7 +91,7 @@ genrule {
     name: "statslog-art-java-gen",
     tools: ["stats-log-api-gen"],
     cmd: "$(location stats-log-api-gen) --java $(out) --module art" +
-         " --javaPackage com.android.internal.art --javaClass ArtStatsLog --worksource",
+        " --javaPackage com.android.internal.art --javaClass ArtStatsLog --worksource",
     out: ["com/android/internal/art/ArtStatsLog.java"],
 }
 
@@ -124,6 +124,7 @@ java_library_static {
         "android.hardware.vibrator-V1-java",
         "app-compat-annotations",
         "framework-tethering.stubs.module_lib",
+        "service-art.stubs.system_server",
         "service-permission.stubs.system_server",
     ],
 
@@ -185,7 +186,7 @@ java_library {
 
 java_library_host {
     name: "core_cts_test_resources",
-    srcs: ["java/com/android/server/notification/SmallHash.java"]
+    srcs: ["java/com/android/server/notification/SmallHash.java"],
 }
 
 prebuilt_etc {
@@ -205,4 +206,3 @@ prebuilt_etc {
     name: "protolog.conf.json.gz",
     src: ":services.core.json.gz",
 }
-
