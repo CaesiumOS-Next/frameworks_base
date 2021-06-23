@@ -30324,6 +30324,19 @@ package android.os {
     field @NonNull public static final android.os.Parcelable.Creator<android.os.ResultReceiver> CREATOR;
   }
 
+  public final class ServiceManager {
+    method public static void addService(@NonNull String, @NonNull android.os.IBinder);
+    method public static void addService(@NonNull String, @NonNull android.os.IBinder, boolean);
+    method public static void addService(@NonNull String, @NonNull android.os.IBinder, boolean, int);
+    method @Nullable public static android.os.IBinder checkService(@NonNull String);
+    method @NonNull public static String[] getDeclaredInstances(@NonNull String);
+    method @Nullable public static android.os.IBinder getService(@NonNull String);
+    method public static boolean isDeclared(@NonNull String);
+    method @NonNull public static String[] listServices();
+    method @Nullable public static android.os.IBinder waitForDeclaredService(@NonNull String);
+    method @Nullable public static android.os.IBinder waitForService(@NonNull String);
+  }
+
   public final class SharedMemory implements java.io.Closeable android.os.Parcelable {
     method public void close();
     method @NonNull public static android.os.SharedMemory create(@Nullable String, int) throws android.system.ErrnoException;

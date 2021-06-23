@@ -21,14 +21,12 @@ import static android.Manifest.permission.INSTALL_PACKAGES;
 import static android.Manifest.permission.MANAGE_DEVICE_ADMINS;
 import static android.Manifest.permission.MANAGE_PROFILE_AND_DEVICE_OWNERS;
 import static android.Manifest.permission.QUERY_ALL_PACKAGES;
-import static android.Manifest.permission.READ_EXTERNAL_STORAGE;
 import static android.Manifest.permission.REQUEST_DELETE_PACKAGES;
 import static android.Manifest.permission.SET_HARMFUL_APP_WARNINGS;
 import static android.app.AppOpsManager.MODE_ALLOWED;
 import static android.app.AppOpsManager.MODE_DEFAULT;
 import static android.app.AppOpsManager.MODE_IGNORED;
 import static android.content.Intent.ACTION_MAIN;
-import static android.content.Intent.CATEGORY_BROWSABLE;
 import static android.content.Intent.CATEGORY_DEFAULT;
 import static android.content.Intent.CATEGORY_HOME;
 import static android.content.Intent.EXTRA_LONG_VERSION_CODE;
@@ -36,8 +34,6 @@ import static android.content.Intent.EXTRA_PACKAGE_NAME;
 import static android.content.Intent.EXTRA_VERSION_CODE;
 import static android.content.pm.PackageManager.CERT_INPUT_RAW_X509;
 import static android.content.pm.PackageManager.CERT_INPUT_SHA256;
-import static android.content.Intent.CATEGORY_BROWSABLE;
-import static android.content.Intent.CATEGORY_DEFAULT;
 import static android.content.pm.PackageManager.COMPONENT_ENABLED_STATE_DEFAULT;
 import static android.content.pm.PackageManager.COMPONENT_ENABLED_STATE_DISABLED;
 import static android.content.pm.PackageManager.COMPONENT_ENABLED_STATE_DISABLED_UNTIL_USED;
@@ -344,6 +340,7 @@ import com.android.server.AttributeCache;
 import com.android.server.DeviceIdleInternal;
 import com.android.server.EventLogTags;
 import com.android.server.FgThread;
+import com.android.server.LocalManagerRegistry;
 import com.android.server.LocalServices;
 import com.android.server.LockGuard;
 import com.android.server.PackageWatchdog;
@@ -351,6 +348,7 @@ import com.android.server.ServiceThread;
 import com.android.server.SystemConfig;
 import com.android.server.SystemServerInitThreadPool;
 import com.android.server.Watchdog;
+import com.android.server.art.ArtManagerLocal;
 import com.android.server.compat.CompatChange;
 import com.android.server.compat.PlatformCompat;
 import com.android.server.net.NetworkPolicyManagerInternal;
@@ -1081,6 +1079,7 @@ public class PackageManagerService extends IPackageManager.Stub
     public static class TestParams {
         public ApexManager apexManager;
         public @Nullable String appPredictionServicePackage;
+        public ArtManagerLocal artManagerLocal;
         public ArtManagerService artManagerService;
         public @Nullable String configuratorPackage;
         public int defParseFlags;
@@ -1169,6 +1168,8 @@ public class PackageManagerService extends IPackageManager.Stub
     // DexManager handles the usage of dex files (e.g. secondary files, whether or not a package
     // is used by other apps).
     private final DexManager mDexManager;
+
+    private final ArtManagerLocal mArtManagerLocal;
 
     private final ViewCompiler mViewCompiler;
 
@@ -2780,6 +2781,7 @@ public class PackageManagerService extends IPackageManager.Stub
         mUserManager = injector.getUserManagerService();
 
         mApexManager = testParams.apexManager;
+        mArtManagerLocal = testParams.artManagerLocal;
         mArtManagerService = testParams.artManagerService;
         mAvailableFeatures = testParams.availableFeatures;
         mDefParseFlags = testParams.defParseFlags;
@@ -2936,6 +2938,7 @@ public class PackageManagerService extends IPackageManager.Stub
         mDexManager =
                 new DexManager(mContext, this, mPackageDexOptimizer, mInstaller, mInstallLock);
         mArtManagerService = new ArtManagerService(mContext, this, mInstaller, mInstallLock);
+        mArtManagerLocal = LocalManagerRegistry.getManager(ArtManagerLocal.class);
         mMoveCallbacks = new MoveCallbacks(FgThread.get().getLooper());
 
         mViewCompiler = new ViewCompiler(mInstallLock, mInstaller);
@@ -25582,7 +25585,13 @@ public class PackageManagerService extends IPackageManager.Stub
             pkg = mPackages.get(packageName);
             pkgSetting = mSettings.getPackageLPr(packageName);
         }
-        return mDexManager.deleteOptimizedFiles(ArtUtils.createArtPackageInfo(pkg, pkgSetting));
+
+        if (mArtManagerLocal.enabled()) {
+            return mArtManagerLocal.deleteOptimizedFiles(
+                ArtUtils.createArtPackageInfo(pkg, pkgSetting));
+        } else {
+            return mDexManager.deleteOptimizedFiles(ArtUtils.createArtPackageInfo(pkg, pkgSetting));
+        }
     }
 
     Set<String> getUnusedPackages(long downgradeTimeThresholdMillis) {

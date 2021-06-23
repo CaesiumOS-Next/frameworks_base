@@ -74,7 +74,7 @@ public class SystemPropPoker  {
         @Override
         protected Void doInBackground(Void... params) {
             String[] services = listServices();
-            if (services == null) {
+            if (services.length == 0) {
                 Log.e(TAG, "There are no services, how odd");
                 return null;
             }
