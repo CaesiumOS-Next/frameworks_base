@@ -436,6 +436,63 @@ public final class BatteryStatsManager {
         }
     }
 
+    /**
+     * Indicates that a new BLE scan has started.
+     *
+     * @param ws Worksource (to be used for battery blaming).
+     * @param isUnoptimized Whether or not the scan has a filter.
+     */
+    @RequiresPermission(android.Manifest.permission.UPDATE_DEVICE_STATS)
+    public void reportBleScanStarted(@NonNull WorkSource ws, boolean isUnoptimized) {
+        try {
+            mBatteryStats.noteBleScanStarted(ws, isUnoptimized);
+        } catch (RemoteException e) {
+            e.rethrowFromSystemServer();
+        }
+    }
+
+    /**
+     * Indicates that an ongoing Bluetooth LE scan has stopped.
+     *
+     * @param ws Worksource (to be used for battery blaming).
+     * @param isUnoptimized Whether or not the scan has a filter.
+     */
+    @RequiresPermission(android.Manifest.permission.UPDATE_DEVICE_STATS)
+    public void reportBleScanStopped(@NonNull WorkSource ws, boolean isUnoptimized) {
+        try {
+            mBatteryStats.noteBleScanStopped(ws, isUnoptimized);
+        } catch (RemoteException e) {
+            e.rethrowFromSystemServer();
+        }
+    }
+
+    /**
+     * Indicates that Bluetooth LE has been reset.
+     */
+    @RequiresPermission(android.Manifest.permission.UPDATE_DEVICE_STATS)
+    public void reportResetBleScan() {
+        try {
+            mBatteryStats.noteResetBleScan();
+        } catch (RemoteException e) {
+            e.rethrowFromSystemServer();
+        }
+    }
+
+    /**
+     * Indicates that Bluetooth LE scan has received new results.
+     *
+     * @param ws Worksource (to be used for battery blaming).
+     * @param numNewResults How many results were received since last update.
+     */
+    @RequiresPermission(android.Manifest.permission.UPDATE_DEVICE_STATS)
+    public void reportBleScanResults(@NonNull WorkSource ws, int numNewResults) {
+        try {
+            mBatteryStats.noteBleScanResults(ws, numNewResults);
+        } catch (RemoteException e) {
+            e.rethrowFromSystemServer();
+        }
+    }
+
     private static int getDataConnectionPowerState(boolean isActive) {
         // TODO: DataConnectionRealTimeInfo is under telephony package but the constants are used
         // for both Wifi and mobile. It would make more sense to separate the constants to a
