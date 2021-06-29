@@ -1,0 +1,30 @@
+{
+  "comments": [
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000012420404",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1495262?revision\u003d4",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "7c15b67e_b8e4834c",
+        "filename": "services/core/java/com/android/server/media/projection/MediaProjectionManagerService.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 597,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2021-06-29T03:28:52Z",
+      "side": 1,
+      "message": "Lines longer than 100 characters should be wrapped to improve readability; see https://source.android.com/setup/contribute/code-style#limit-line-length for more details.",
+      "range": {
+        "startLine": 597,
+        "startChar": 0,
+        "endLine": 597,
+        "endChar": 106
+      },
+      "revId": "f233f40fb2cfa76f1bc9537fe1a56c5d599a20d4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
