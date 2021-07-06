@@ -127,7 +127,7 @@ public final class SEService {
 
     private final Object mLock = new Object();
 
-    /** The client context (e.g. activity). */
+    /** The client application context. */
     private final Context mContext;
 
     /** The backend system. */
@@ -167,7 +167,7 @@ public final class SEService {
             throw new NullPointerException("Arguments must not be null");
         }
 
-        mContext = context;
+        mContext = context.getApplicationContext();
         mSEListener.mListener = listener;
         mSEListener.mExecutor = executor;
 
