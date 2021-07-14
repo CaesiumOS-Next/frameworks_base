@@ -312,7 +312,7 @@ public class MediaNotificationProcessor {
         // for the background we only take the left side of the image to ensure
         // a smooth transition
         return Palette.from(artwork)
-                .setRegion(0, 0, artwork.getWidth() / 2, artwork.getHeight())
+                .setRegion(0, 0, (artwork.getWidth() + 1) / 2, artwork.getHeight())
                 .clearFilters() // we want all colors, red / white / black ones too!
                 .resizeBitmapArea(RESIZE_BITMAP_AREA);
     }
