@@ -275,6 +275,9 @@ public class NetworkStatsService extends INetworkStatsService.Stub {
     }
 
     private final Object mStatsLock = new Object();
+    // The lock which guards mMobileIfaces variable, callers must not grab mStatsLock
+    // after grabbing this lock.
+    private final Object mMobileIfacesLock = new Object();
 
     /** Set of currently active ifaces. */
     @GuardedBy("mStatsLock")
@@ -289,7 +292,7 @@ public class NetworkStatsService extends INetworkStatsService.Stub {
     private String mActiveIface;
 
     /** Set of any ifaces associated with mobile networks since boot. */
-    @GuardedBy("mStatsLock")
+    @GuardedBy("mMobileIfacesLock")
     private String[] mMobileIfaces = new String[0];
 
     /** Set of all ifaces currently used by traffic that does not explicitly specify a Network. */
@@ -935,7 +938,9 @@ public class NetworkStatsService extends INetworkStatsService.Stub {
 
     @Override
     public String[] getMobileIfaces() {
-        return mMobileIfaces;
+        synchronized (mMobileIfacesLock) {
+            return mMobileIfaces.clone();
+        }
     }
 
     @Override
@@ -1382,7 +1387,9 @@ public class NetworkStatsService extends INetworkStatsService.Stub {
             }
         }
 
-        mMobileIfaces = mobileIfaces.toArray(new String[mobileIfaces.size()]);
+        synchronized (mMobileIfacesLock) {
+            mMobileIfaces = mobileIfaces.toArray(new String[0]);
+        }
     }
 
     private static int getSubIdForMobile(@NonNull NetworkStateSnapshot state) {
