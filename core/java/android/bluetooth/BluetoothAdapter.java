@@ -2948,7 +2948,10 @@ public final class BluetoothAdapter {
                     synchronized (mBluetoothConnectionCallbackExecutorMap) {
                         if (!mBluetoothConnectionCallbackExecutorMap.isEmpty()) {
                             try {
-                                mService.registerBluetoothConnectionCallback(mConnectionCallback);
+                                if (mService != null) {
+                                    mService.registerBluetoothConnectionCallback
+                                            (mConnectionCallback);
+                                }
                             } catch (RemoteException e) {
                                 Log.e(TAG, "onBluetoothServiceUp: Failed to register bluetooth"
                                         + "connection callback", e);
