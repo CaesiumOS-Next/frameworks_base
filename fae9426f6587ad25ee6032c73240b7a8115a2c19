@@ -16,6 +16,24 @@
       "message": "Use queryBroadcastReceivers to check that the broadcast receiver exists or not before sending broadcast to it.\nlike:\nhttps://source.corp.google.com/android/frameworks/base/services/profcollect/src/com/android/server/profcollect/ProfcollectForwardingService.java;l\u003d339?q\u003dservices%2Fprofcollect%2Fsrc%2Fcom%2Fandroid%2Fserver%2Fprofcollect%2FProfcollectForwardingService.java",
       "revId": "fae9426f6587ad25ee6032c73240b7a8115a2c19",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e683bbbb_0fbb83e3",
+        "filename": "packages/Shell/src/com/android/shell/ProfcollectUploadReceiver.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1810984
+      },
+      "writtenOn": "2021-08-02T17:37:28Z",
+      "side": 1,
+      "message": "(Because old BetterBug may not support to receive the above uploadIntent.)",
+      "parentUuid": "944b1063_adef33cf",
+      "revId": "fae9426f6587ad25ee6032c73240b7a8115a2c19",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
