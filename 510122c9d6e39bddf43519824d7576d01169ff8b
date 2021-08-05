@@ -52,6 +52,24 @@
       "parentUuid": "b01cb09d_70e99780",
       "revId": "510122c9d6e39bddf43519824d7576d01169ff8b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5b56569b_168ce10e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1881060
+      },
+      "writtenOn": "2021-08-05T15:15:11Z",
+      "side": 1,
+      "message": "A common shared library seems fine!\nI don\u0027t really understand why the module-utils library will \n\nWho should I contact to add this stand-alone libraries for bluetooth ? Or maybe you plan to make a generic library to share accros multiples mainline modules ?\n\nI just took a look into modules-utils, and there is very few libraries, (annotation \u0026 precondition). I supposed there is someone in charge of migrating all existing module dependency to this. Do you know when it will land ?",
+      "parentUuid": "a9e2ece4_9e684174",
+      "revId": "510122c9d6e39bddf43519824d7576d01169ff8b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
