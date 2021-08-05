@@ -16,6 +16,24 @@
       "message": "+hansson@ for review since this is to go mainline and I\u0027m not sure if we allow / encourage modules to statically depend on specific files inside of the non-updateable parts of the platform.\n\nDoesn\u0027t seem great to me since it implicitly means they can\u0027t use hidden API despite being part of the non-updateable platform builds.",
       "revId": "510122c9d6e39bddf43519824d7576d01169ff8b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b01cb09d_70e99780",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2021-08-05T14:55:56Z",
+      "side": 1,
+      "message": "+1 to what Michael says. The pattern used here is one that we do not want new modules to use (nor existing modules to expand). Utility classes shared between framework and modules should be refactor into stand-alone libraries in frameworks/libs/module-utils (and build against SDK), then be linked by both framework and modules.",
+      "parentUuid": "3f2a22f2_b329e435",
+      "revId": "510122c9d6e39bddf43519824d7576d01169ff8b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
