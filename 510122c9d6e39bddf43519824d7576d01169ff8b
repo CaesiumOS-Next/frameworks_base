@@ -88,6 +88,24 @@
       "parentUuid": "5b56569b_168ce10e",
       "revId": "510122c9d6e39bddf43519824d7576d01169ff8b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "733aa251_236a61a5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2021-08-05T15:28:52Z",
+      "side": 1,
+      "message": "There\u0027s a few downsides of this approach. Primarily, the fact that some random java file right inside the platform (in a .internal package no less) is used in a mainline module is very non-obvious when someone goes to modify that bit of code. That\u0027s why we want the source files to live elsewhere for shared code.\n\nSome other downsides, most of these filegroups share the same .java files -- meaning those will be compiled multiple times, which slows down the build.\n\nThere\u0027s noone actively working on converting existing setups (though we should at some point get existing modules to migrate), but for new stuff we want to stop the bleeding.\n\nThe idea is that basically each .java file that is standalone goes into its own library (e.g. modules-utils-statemachine), and each module can then make its own \"utils\" library that combined those standalone libs, and jarjars them to their own package.",
+      "parentUuid": "5c9b9434_4c45ff0d",
+      "revId": "510122c9d6e39bddf43519824d7576d01169ff8b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
