@@ -70,6 +70,24 @@
       "parentUuid": "a9e2ece4_9e684174",
       "revId": "510122c9d6e39bddf43519824d7576d01169ff8b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5c9b9434_4c45ff0d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1881060
+      },
+      "writtenOn": "2021-08-05T15:16:32Z",
+      "side": 1,
+      "message": "Sorry for that:\nI don\u0027t really understand why the module-utils library will be different from a filegroup in frameworks/base/core, will frameworks/libs be updatable like a mainline module ?",
+      "parentUuid": "5b56569b_168ce10e",
+      "revId": "510122c9d6e39bddf43519824d7576d01169ff8b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
