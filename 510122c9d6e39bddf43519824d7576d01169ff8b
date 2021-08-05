@@ -34,6 +34,24 @@
       "parentUuid": "3f2a22f2_b329e435",
       "revId": "510122c9d6e39bddf43519824d7576d01169ff8b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a9e2ece4_9e684174",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2021-08-05T15:09:56Z",
+      "side": 1,
+      "message": "(and if anything needs/wants to use hidden API, the module utility lib needs to fork rather than clone)",
+      "parentUuid": "b01cb09d_70e99780",
+      "revId": "510122c9d6e39bddf43519824d7576d01169ff8b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
