@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3f2a22f2_b329e435",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1006497
+      },
+      "writtenOn": "2021-08-05T13:48:08Z",
+      "side": 1,
+      "message": "+hansson@ for review since this is to go mainline and I\u0027m not sure if we allow / encourage modules to statically depend on specific files inside of the non-updateable parts of the platform.\n\nDoesn\u0027t seem great to me since it implicitly means they can\u0027t use hidden API despite being part of the non-updateable platform builds.",
+      "revId": "510122c9d6e39bddf43519824d7576d01169ff8b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
