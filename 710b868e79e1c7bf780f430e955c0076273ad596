@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "93a74320_dce14cfe",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1497372
+      },
+      "writtenOn": "2021-08-12T09:11:43Z",
+      "side": 1,
+      "message": "Hello google friends, do you have any update for this patch? Thanks",
+      "revId": "710b868e79e1c7bf780f430e955c0076273ad596",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
