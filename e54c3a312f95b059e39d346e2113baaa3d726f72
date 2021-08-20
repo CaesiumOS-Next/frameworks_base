@@ -16,6 +16,23 @@
       "message": "Hi sir/madam\nThis is a new feature that i thought would be a great addition to Android. Looking forward for your review.\n\nThank You\nMadhu",
       "revId": "e54c3a312f95b059e39d346e2113baaa3d726f72",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a9719ca9_3e5943b8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1060218
+      },
+      "writtenOn": "2021-08-20T17:32:59Z",
+      "side": 1,
+      "message": "Better to get someone more familiar with global actions to review.",
+      "revId": "e54c3a312f95b059e39d346e2113baaa3d726f72",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
