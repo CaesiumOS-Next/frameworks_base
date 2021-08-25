@@ -94,6 +94,9 @@ public class CameraDeviceImpl extends CameraDevice
     private SparseArray<CaptureCallbackHolder> mCaptureCallbackMap =
             new SparseArray<CaptureCallbackHolder>();
 
+    /** map request IDs which have batchedOutputs to requestCount*/
+    private HashMap<Integer, Integer> mBatchOutputMap = new HashMap<>();
+
     private int mRepeatingRequestId = REQUEST_ID_NONE;
     // Latest repeating request list's types
     private int[] mRepeatingRequestTypes;
@@ -937,6 +940,7 @@ public class CameraDeviceImpl extends CameraDevice
             mConfiguredInput = new SimpleEntry<Integer, InputConfiguration>(REQUEST_ID_NONE, null);
             mIdle = true;
             mCaptureCallbackMap = new SparseArray<CaptureCallbackHolder>();
+            mBatchOutputMap = new HashMap<>();
             mFrameNumberTracker = new FrameNumberTracker();
 
             mCurrentSession.closeWithoutDraining();
@@ -1143,6 +1147,41 @@ public class CameraDeviceImpl extends CameraDevice
         return requestTypes;
     }
 
+    private boolean hasBatchedOutputs(List<CaptureRequest> requestList) {
+        boolean hasBatchedOutputs = true;
+        for (int i = 0; i < requestList.size(); i++) {
+            CaptureRequest request = requestList.get(i);
+            if (!request.isPartOfCRequestList()) {
+                hasBatchedOutputs = false;
+                break;
+            }
+            if (i == 0) {
+                Collection<Surface> targets = request.getTargets();
+                if (targets.size() != 2) {
+                    hasBatchedOutputs = false;
+                    break;
+                }
+            }
+        }
+        return hasBatchedOutputs;
+    }
+
+    private void updateTracker(int requestId, long frameNumber,
+            int requestType, CaptureResult result, boolean isPartialResult) {
+        int requestCount = 1;
+        // If the request has batchedOutputs update each frame within the batch.
+        if (mBatchOutputMap.containsKey(requestId)) {
+            requestCount = mBatchOutputMap.get(requestId);
+            for (int i = 0; i < requestCount; i++) {
+                mFrameNumberTracker.updateTracker(frameNumber - (requestCount - 1 - i),
+                        result, isPartialResult, requestType);
+            }
+        } else {
+            mFrameNumberTracker.updateTracker(frameNumber, result,
+                    isPartialResult, requestType);
+        }
+    }
+
     private int submitCaptureRequest(List<CaptureRequest> requestList, CaptureCallback callback,
             Executor executor, boolean repeating) throws CameraAccessException {
 
@@ -1186,6 +1225,14 @@ public class CameraDeviceImpl extends CameraDevice
 
             for (CaptureRequest request : requestArray) {
                 request.recoverStreamIdToSurface();
+            }
+
+            // If the request has batched outputs, then store the
+            // requestCount and requestId in the map.
+            boolean hasBatchedOutputs = hasBatchedOutputs(requestList);
+            if (hasBatchedOutputs) {
+                int requestCount = requestList.size();
+                mBatchOutputMap.put(requestInfo.getRequestId(), requestCount);
             }
 
             if (callback != null) {
@@ -1720,8 +1767,18 @@ public class CameraDeviceImpl extends CameraDevice
             if (DEBUG) {
                 Log.v(TAG, String.format("got error frame %d", frameNumber));
             }
-            mFrameNumberTracker.updateTracker(frameNumber,
-                    /*error*/true, request.getRequestType());
+
+            // Update FrameNumberTracker for every frame during HFR mode.
+            if (mBatchOutputMap.containsKey(requestId)) {
+                for (int i = 0; i < mBatchOutputMap.get(requestId); i++) {
+                    mFrameNumberTracker.updateTracker(frameNumber - (subsequenceId - i),
+                            /*error*/true, request.getRequestType());
+                }
+            } else {
+                mFrameNumberTracker.updateTracker(frameNumber,
+                        /*error*/true, request.getRequestType());
+            }
+
             checkAndFireSequenceComplete();
 
             // Dispatch the failure callback
@@ -1904,7 +1961,6 @@ public class CameraDeviceImpl extends CameraDevice
         public void onResultReceived(CameraMetadataNative result,
                 CaptureResultExtras resultExtras, PhysicalCaptureResultInfo physicalResults[])
                 throws RemoteException {
-
             int requestId = resultExtras.getRequestId();
             long frameNumber = resultExtras.getFrameNumber();
 
@@ -1945,8 +2001,8 @@ public class CameraDeviceImpl extends CameraDevice
                                         + frameNumber);
                     }
 
-                    mFrameNumberTracker.updateTracker(frameNumber, /*result*/null, isPartialResult,
-                            requestType);
+                    updateTracker(requestId, frameNumber, requestType, /*result*/null,
+                            isPartialResult);
 
                     return;
                 }
@@ -1958,8 +2014,9 @@ public class CameraDeviceImpl extends CameraDevice
                                         + frameNumber);
                     }
 
-                    mFrameNumberTracker.updateTracker(frameNumber, /*result*/null, isPartialResult,
-                            requestType);
+                    updateTracker(requestId, frameNumber, requestType, /*result*/null,
+                            isPartialResult);
+
                     return;
                 }
 
@@ -2065,9 +2122,7 @@ public class CameraDeviceImpl extends CameraDevice
                     Binder.restoreCallingIdentity(ident);
                 }
 
-                // Collect the partials for a total result; or mark the frame as totally completed
-                mFrameNumberTracker.updateTracker(frameNumber, finalResult, isPartialResult,
-                        requestType);
+                updateTracker(requestId, frameNumber, requestType, finalResult, isPartialResult);
 
                 // Fire onCaptureSequenceCompleted
                 if (!isPartialResult) {
