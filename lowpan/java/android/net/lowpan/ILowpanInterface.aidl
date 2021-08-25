@@ -144,9 +144,11 @@ interface ILowpanInterface {
     void startNetScan(in Map properties, ILowpanNetScanCallback listener);
     oneway void stopNetScan();
 
+    @SuppressWarnings(value={"untyped-collection"})
     void startEnergyScan(in Map properties, ILowpanEnergyScanCallback listener);
     oneway void stopEnergyScan();
 
+    @SuppressWarnings(value={"untyped-collection"})
     void addOnMeshPrefix(in IpPrefix prefix, int flags);
     oneway void removeOnMeshPrefix(in IpPrefix prefix);
 
