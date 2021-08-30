@@ -87,6 +87,30 @@
       },
       "revId": "710b868e79e1c7bf780f430e955c0076273ad596",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "20f74a7f_91c0ff5c",
+        "filename": "packages/SystemUI/src/com/android/systemui/statusbar/notification/MediaNotificationProcessor.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 315,
+      "author": {
+        "id": 1059880
+      },
+      "writtenOn": "2021-08-30T10:07:09Z",
+      "side": 1,
+      "message": "In basic AOSP, this isn\u0027t used anymore if the app is using MediaStyle and has a mediasession attached, only when none is attached. So the code isn\u0027t dead but executed very seldomly. It could still make sense to fix this.",
+      "parentUuid": "fd3536be_af570fc3",
+      "range": {
+        "startLine": 315,
+        "startChar": 34,
+        "endLine": 315,
+        "endChar": 41
+      },
+      "revId": "710b868e79e1c7bf780f430e955c0076273ad596",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
