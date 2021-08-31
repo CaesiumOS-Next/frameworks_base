@@ -111,6 +111,30 @@
       },
       "revId": "710b868e79e1c7bf780f430e955c0076273ad596",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6e1b9cbb_cbb04a3d",
+        "filename": "packages/SystemUI/src/com/android/systemui/statusbar/notification/MediaNotificationProcessor.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 315,
+      "author": {
+        "id": 1497372
+      },
+      "writtenOn": "2021-08-31T08:50:11Z",
+      "side": 1,
+      "message": "Got it, thanks for your explanation. I just updated this patch.",
+      "parentUuid": "20f74a7f_91c0ff5c",
+      "range": {
+        "startLine": 315,
+        "startChar": 34,
+        "endLine": 315,
+        "endChar": 41
+      },
+      "revId": "710b868e79e1c7bf780f430e955c0076273ad596",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
