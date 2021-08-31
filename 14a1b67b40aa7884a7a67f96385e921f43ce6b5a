@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "70bb1659_7dcc1ab8",
+        "filename": "packages/SystemUI/src/com/android/systemui/statusbar/notification/MediaNotificationProcessor.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 315,
+      "author": {
+        "id": 1060584
+      },
+      "writtenOn": "2021-08-31T14:57:16Z",
+      "side": 1,
+      "message": "Might as well Math.max(artwork.getHeight(), 1) in case Palette doesn\u0027t like that either.",
+      "range": {
+        "startLine": 315,
+        "startChar": 78,
+        "endLine": 315,
+        "endChar": 87
+      },
+      "revId": "14a1b67b40aa7884a7a67f96385e921f43ce6b5a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
