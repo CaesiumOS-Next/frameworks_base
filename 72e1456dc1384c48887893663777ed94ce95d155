@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "27808b91_1818d7eb",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1576211
+      },
+      "writtenOn": "2021-08-31T08:23:47Z",
+      "side": 1,
+      "message": "Please update the commit message so that it follows the traditional commit message pattern:\n\nsummary of up to 50 columns\n\nDetailed explanation up to 72 columns.\n\n\u003d\u003d\u003d\n\nMaybe something like:\n\nReplace object tag with img tag in javadoc\n\nThe old object-img fallback pattern is not longer required because modern browsers support svgs in img tags, and the old object src pattern violates CSP.",
+      "revId": "72e1456dc1384c48887893663777ed94ce95d155",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "71128ef1_ee7a4b08",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1576211
+      },
+      "writtenOn": "2021-08-31T08:23:47Z",
+      "side": 1,
+      "message": "I suspect this change should be merged internally, and not AOSP.",
+      "revId": "72e1456dc1384c48887893663777ed94ce95d155",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

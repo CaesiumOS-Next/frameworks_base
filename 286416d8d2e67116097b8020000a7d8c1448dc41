@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b523a5c4_553f09e4",
+        "filename": "media/java/android/media/MediaCodec.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1576211
+      },
+      "writtenOn": "2021-08-31T08:23:47Z",
+      "side": 0,
+      "message": "Do these PNG need deleting now?",
+      "range": {
+        "startLine": 65,
+        "startChar": 8,
+        "endLine": 65,
+        "endChar": 52
+      },
+      "revId": "286416d8d2e67116097b8020000a7d8c1448dc41",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
