@@ -51,6 +51,23 @@
       "parentUuid": "a9719ca9_3e5943b8",
       "revId": "e54c3a312f95b059e39d346e2113baaa3d726f72",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "913ed7de_8a2b5460",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1385606
+      },
+      "writtenOn": "2021-08-31T20:09:52Z",
+      "side": 1,
+      "message": "Hi, thanks for sending this in! Since this would add a new feature I\u0027ve passed it on to stakeholders internally, and will update with their feedback.",
+      "revId": "e54c3a312f95b059e39d346e2113baaa3d726f72",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
