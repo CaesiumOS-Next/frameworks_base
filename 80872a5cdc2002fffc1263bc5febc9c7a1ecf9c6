@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a29a0534_139e2a31",
+        "filename": "services/core/java/com/android/server/bluetooth/NewBluetoothManagerService.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1121403
+      },
+      "writtenOn": "2021-09-02T20:40:15Z",
+      "side": 1,
+      "message": "please add error log when doBind failed to help with debugging",
+      "range": {
+        "startLine": 151,
+        "startChar": 12,
+        "endLine": 151,
+        "endChar": 25
+      },
+      "revId": "80872a5cdc2002fffc1263bc5febc9c7a1ecf9c6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
