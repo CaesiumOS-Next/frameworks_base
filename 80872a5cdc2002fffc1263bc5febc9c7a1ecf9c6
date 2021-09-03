@@ -22,6 +22,54 @@
       },
       "revId": "80872a5cdc2002fffc1263bc5febc9c7a1ecf9c6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c4f3e80c_b122b090",
+        "filename": "services/core/java/com/android/server/bluetooth/NewBluetoothManagerService.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1822395
+      },
+      "writtenOn": "2021-09-03T06:32:30Z",
+      "side": 1,
+      "message": "We will do this in a follow-up CL! Thanks!",
+      "parentUuid": "a29a0534_139e2a31",
+      "range": {
+        "startLine": 151,
+        "startChar": 12,
+        "endLine": 151,
+        "endChar": 25
+      },
+      "revId": "80872a5cdc2002fffc1263bc5febc9c7a1ecf9c6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "708f6835_b6d46b9b",
+        "filename": "services/core/java/com/android/server/bluetooth/NewBluetoothManagerService.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1822395
+      },
+      "writtenOn": "2021-09-03T06:32:30Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "a29a0534_139e2a31",
+      "range": {
+        "startLine": 151,
+        "startChar": 12,
+        "endLine": 151,
+        "endChar": 25
+      },
+      "revId": "80872a5cdc2002fffc1263bc5febc9c7a1ecf9c6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
