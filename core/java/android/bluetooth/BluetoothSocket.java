@@ -95,9 +95,6 @@ public final class BluetoothSocket implements Closeable {
     /** RFCOMM socket */
     public static final int TYPE_RFCOMM = 1;
 
-    /** SCO socket */
-    public static final int TYPE_SCO = 2;
-
     /** L2CAP socket */
     public static final int TYPE_L2CAP = 3;
 

@@ -256,10 +256,6 @@ public final class BluetoothServerSocket implements Closeable {
                 sb.append("TYPE_L2CAP_LE");
                 break;
             }
-            case BluetoothSocket.TYPE_SCO: {
-                sb.append("TYPE_SCO");
-                break;
-            }
         }
         sb.append(" Channel: ").append(mChannel);
         return sb.toString();
