@@ -124,11 +124,7 @@ public final class MediaProjectionManagerService extends SystemService
     @Override
     public void onSwitchUser(int userId) {
         mMediaRouter.rebindAsUser(userId);
-        synchronized (mLock) {
-            if (mProjectionGrant != null) {
-                mProjectionGrant.stop();
-            }
-        }
+        stopActiveProjection();
     }
 
     @Override
@@ -242,6 +238,14 @@ public final class MediaProjectionManagerService extends SystemService
         }
     }
 
+    public void stopActiveProjection() {
+        synchronized (mLock) {
+            if (mProjectionGrant != null) {
+                mProjectionGrant.stop();
+            }
+        }
+    }
+
     private void dump(final PrintWriter pw) {
         pw.println("MEDIA PROJECTION MANAGER (dumpsys media_projection)");
         synchronized (mLock) {
@@ -338,9 +342,7 @@ public final class MediaProjectionManagerService extends SystemService
             }
             final long token = Binder.clearCallingIdentity();
             try {
-                if (mProjectionGrant != null) {
-                    mProjectionGrant.stop();
-                }
+                MediaProjectionManagerService.this.stopActiveProjection();
             } finally {
                 Binder.restoreCallingIdentity(token);
             }
@@ -597,13 +599,9 @@ public final class MediaProjectionManagerService extends SystemService
     private class MediaRouterCallback extends MediaRouter.SimpleCallback {
         @Override
         public void onRouteSelected(MediaRouter router, int type, MediaRouter.RouteInfo info) {
-            synchronized (mLock) {
-                if ((type & MediaRouter.ROUTE_TYPE_REMOTE_DISPLAY) != 0) {
-                    mMediaRouteInfo = info;
-                    if (mProjectionGrant != null) {
-                        mProjectionGrant.stop();
-                    }
-                }
+            if ((type & MediaRouter.ROUTE_TYPE_REMOTE_DISPLAY) != 0) {
+                mMediaRouteInfo = info;
+                stopActiveProjection();
             }
         }
 
