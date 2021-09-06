@@ -16,6 +16,29 @@
       "message": "help review this change,and I still have a question , why only supports one mediaprojection?",
       "revId": "8b4f8737bd240e208ac3daefbc896ec296cb4fc2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ef257c3a_db5b6a6f",
+        "filename": "services/core/java/com/android/server/media/projection/MediaProjectionManagerService.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 603,
+      "author": {
+        "id": 1060831
+      },
+      "writtenOn": "2021-09-06T14:19:18Z",
+      "side": 1,
+      "message": "Shouldn\u0027t this still be protected by the lock?\n\nAlthough it isn\u0027t below in onRouteUnselected() which looks odd.",
+      "range": {
+        "startLine": 603,
+        "startChar": 16,
+        "endLine": 603,
+        "endChar": 31
+      },
+      "revId": "8b4f8737bd240e208ac3daefbc896ec296cb4fc2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
