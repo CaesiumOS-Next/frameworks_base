@@ -39,6 +39,30 @@
       },
       "revId": "8b4f8737bd240e208ac3daefbc896ec296cb4fc2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "61374b7f_bb217389",
+        "filename": "services/core/java/com/android/server/media/projection/MediaProjectionManagerService.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 603,
+      "author": {
+        "id": 1422811
+      },
+      "writtenOn": "2021-09-07T02:34:05Z",
+      "side": 1,
+      "message": "If mMediaRouteInfo is locked by mlocked, then mlocked must be added to the onRouteUnselected interface. This seems really look odd, so it is recommended to add another lock to protect the mMediaRouteInfo object",
+      "parentUuid": "ef257c3a_db5b6a6f",
+      "range": {
+        "startLine": 603,
+        "startChar": 16,
+        "endLine": 603,
+        "endChar": 31
+      },
+      "revId": "8b4f8737bd240e208ac3daefbc896ec296cb4fc2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
