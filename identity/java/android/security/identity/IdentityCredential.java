@@ -134,6 +134,26 @@ public abstract class IdentityCredential {
     }
 
     /**
+     * Sets whether the usage count of an authentication key should be increased. This must be
+     * called prior to calling
+     * {@link #getEntries(byte[], Map, byte[])} or using a {@link BiometricPrompt.CryptoObject}
+     * which references this object.
+     *
+     * <p>By default this is set to true.
+     *
+     * <p>This is only implemented in feature version 202201 or later. If not implemented, the call
+     * fails with {@link UnsupportedOperationException}. See
+     * {@link android.content.pm.PackageManager#FEATURE_IDENTITY_CREDENTIAL_HARDWARE} for known
+     * feature versions.
+     *
+     * @param incrementKeyUsageCount whether the usage count of the key should be increased.
+     *
+     */
+    public void setIncrementKeyUsageCount(boolean incrementKeyUsageCount) {
+        throw new UnsupportedOperationException();
+    }
+
+    /**
      * Called by android.hardware.biometrics.CryptoObject#getOpId() to get an
      * operation handle.
      *
@@ -149,15 +169,19 @@ public abstract class IdentityCredential {
      * by using the {@link ResultData#getStatus(String, String)} method on each of the requested
      * entries.
      *
-     * <p>It is the responsibility of the calling application to know if authentication is needed
-     * and use e.g. {@link android.hardware.biometrics.BiometricPrompt} to make the user
-     * authenticate using a {@link android.hardware.biometrics.BiometricPrompt.CryptoObject} which
-     * references this object. If needed, this must be done before calling
-     * {@link #getEntries(byte[], Map, byte[], byte[])}.
-     *
      * <p>It is permissible to call this method multiple times using the same instance but if this
      * is done, the {@code sessionTranscript} parameter must be identical for each call. If this is
      * not the case, the {@link SessionTranscriptMismatchException} exception is thrown.
+     * Additionally, if this is done the same auth-key will be used.
+     *
+     * <p>The application should not make any assumptions on whether user authentication is needed.
+     * Instead, the application should request the data elements values first and then examine
+     * the returned {@link ResultData}. If {@link ResultData#STATUS_USER_AUTHENTICATION_FAILED}
+     * is returned the application should get a
+     * {@link android.hardware.biometrics.BiometricPrompt.CryptoObject} which references this
+     * object and use it with a {@link android.hardware.biometrics.BiometricPrompt}. Upon successful
+     * authentication the application may call {@link #getEntries(byte[], Map, byte[], byte[])}
+     * again.
      *
      * <p>If not {@code null} the {@code requestMessage} parameter must contain data for the request
      * from the verifier. The content can be defined in the way appropriate for the credential, but
