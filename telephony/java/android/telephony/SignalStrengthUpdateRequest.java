@@ -101,9 +101,10 @@ public final class SignalStrengthUpdateRequest implements Parcelable {
             }
 
             mSignalThresholdInfos = new ArrayList<>(signalThresholdInfos);
-            // Sort the collection with RAN ascending order, make the ordering not matter for equals
+            // Sort the collection with SignalMeasurementType ascending order, make the ordering not
+            // matter for equals
             mSignalThresholdInfos.sort(
-                    Comparator.comparingInt(SignalThresholdInfo::getRadioAccessNetworkType));
+                    Comparator.comparingInt(SignalThresholdInfo::getSignalMeasurementType));
             return this;
         }
 
@@ -144,7 +145,7 @@ public final class SignalStrengthUpdateRequest implements Parcelable {
          * @return the SignalStrengthUpdateRequest object
          *
          * @throws IllegalArgumentException if the SignalThresholdInfo collection is empty size, the
-         * radio access network type in the collection is not unique
+         * signal measurement type in the collection is not unique
          */
         public @NonNull SignalStrengthUpdateRequest build() {
             return new SignalStrengthUpdateRequest(mSignalThresholdInfos,
@@ -258,14 +259,15 @@ public final class SignalStrengthUpdateRequest implements Parcelable {
     }
 
     /**
-     * Throw IAE when the RAN in the collection is not unique.
+     * Throw IAE when the SignalMeasurementType in the collection is not unique.
      */
     private static void validate(Collection<SignalThresholdInfo> infos) {
-        Set<Integer> uniqueRan = new HashSet<>(infos.size());
+        Set<Integer> uniqueType = new HashSet<>(infos.size());
         for (SignalThresholdInfo info : infos) {
-            final int ran = info.getRadioAccessNetworkType();
-            if (!uniqueRan.add(ran)) {
-                throw new IllegalArgumentException("RAN: " + ran + " is not unique");
+            final int type = info.getSignalMeasurementType();
+            if (!uniqueType.add(type)) {
+                throw new IllegalArgumentException(
+                        "SignalMeasurementType " + type + " is not unique");
             }
         }
     }
