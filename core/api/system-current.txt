@@ -2947,6 +2947,11 @@ package android.hardware.display {
 
 package android.hardware.hdmi {
 
+  public final class HdmiAudioServiceManager {
+    method public int getEarcStatus();
+    method @NonNull public String setEarcRawCaps(@NonNull byte[]);
+  }
+
   public abstract class HdmiClient {
     method public android.hardware.hdmi.HdmiDeviceInfo getActiveSource();
     method public void sendKeyEvent(int, boolean);

@@ -5150,6 +5150,11 @@ public abstract class Context {
     @SystemApi
     public static final String HDMI_CONTROL_SERVICE = "hdmi_control";
 
+     /**
+     * For eARC audio service
+     */
+
+    public static final String HDMI_AUDIO_SERVICE = "hdmi_audio";
     /**
      * Use with {@link #getSystemService(String)} to retrieve a
      * {@link android.hardware.input.InputManager} for interacting with input devices.
