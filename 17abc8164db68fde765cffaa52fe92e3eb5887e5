@@ -16,6 +16,24 @@
       "message": "If necessary, we need to define new permission and ask TIMS to check it.\nUsing blank permission is not good.",
       "revId": "17abc8164db68fde765cffaa52fe92e3eb5887e5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a8725986_f5c44d62",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1787456
+      },
+      "writtenOn": "2021-09-21T12:24:13Z",
+      "side": 1,
+      "message": "Sony suggests wheather a permission is required or not depends on an extension interface defined by each TV Inputs.\nIf there is no security issue for some extension interfaces, TIS should be able to expose the extension interfaces w/o permission.\nThis policy is same as TIF standard API.\nFor example, TvView.unblockContent() needs android.Manifest.permission.MODIFY_PARENTAL_CONTROLS but TvView.setCaptionEnabled() doesn\u0027t need any permission.\nAlso, please note that a special permission is not required for the existing session-level vendor extension API (TvView#sendAppPrivateCommand(), TvInputCallback#onEvent(), etc.).",
+      "parentUuid": "11e4ffd4_8aedf7d5",
+      "revId": "17abc8164db68fde765cffaa52fe92e3eb5887e5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
