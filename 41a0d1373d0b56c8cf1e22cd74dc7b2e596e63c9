@@ -1,0 +1,30 @@
+{
+  "comments": [
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000015605635",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1834353?revision\u003d1",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "30839901_a82ca31e",
+        "filename": "core/java/android/hardware/camera2/CameraManager.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 427,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2021-09-23T09:16:42Z",
+      "side": 1,
+      "message": "Lines longer than 100 characters should be wrapped to improve readability; see https://source.android.com/setup/contribute/code-style#limit-line-length for more details.",
+      "range": {
+        "startLine": 427,
+        "startChar": 0,
+        "endLine": 427,
+        "endChar": 116
+      },
+      "revId": "41a0d1373d0b56c8cf1e22cd74dc7b2e596e63c9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
