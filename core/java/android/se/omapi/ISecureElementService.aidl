@@ -45,6 +45,6 @@ interface ISecureElementService {
      * receive NFC transaction events for the defined AID.
      */
     boolean[] isNFCEventAllowed(String reader, in byte[] aid,
-            in String[] packageNames);
+            in String[] packageNames, int userId);
 
 }
