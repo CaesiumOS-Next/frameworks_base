@@ -131,6 +131,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e6fbfbae_79008a21",
+        "filename": "media/java/android/media/tv/TvInputService.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 250,
+      "author": {
+        "id": 1787456
+      },
+      "writtenOn": "2021-09-29T10:58:16Z",
+      "side": 1,
+      "message": "No, there is no unavailable extension interfaces because available means supported.\nIt is static capability and it is not dynamically changed.",
+      "parentUuid": "eab0363b_13cf25ec",
+      "range": {
+        "startLine": 250,
+        "startChar": 15,
+        "endLine": 250,
+        "endChar": 24
+      },
+      "revId": "17abc8164db68fde765cffaa52fe92e3eb5887e5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d2f74c14_9895bf23",
         "filename": "media/java/android/media/tv/TvInputService.java",
         "patchSetId": 1
@@ -142,6 +166,30 @@
       "writtenOn": "2021-09-28T07:22:16Z",
       "side": 1,
       "message": "Shouldn\u0027t it be getExtensionInterfaceNames?",
+      "range": {
+        "startLine": 264,
+        "startChar": 24,
+        "endLine": 264,
+        "endChar": 55
+      },
+      "revId": "17abc8164db68fde765cffaa52fe92e3eb5887e5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4a43ffd3_00d5f3b5",
+        "filename": "media/java/android/media/tv/TvInputService.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 264,
+      "author": {
+        "id": 1787456
+      },
+      "writtenOn": "2021-09-29T10:58:16Z",
+      "side": 1,
+      "message": "Thank you for your suggestion.\nThis API returns only available interface names. (This API doesn\u0027t return IBinder interface.)\nSo, I agree that getAvailableExtensionInterfaceNames() or getExtensionInterfaceNames() is better API name. Is getAvailableExtensionInterfaceNames() too long ? If ok, I prefer getAvailableExtensionInterfaceNames().\nTvInputManger#getAvailableExtensionInterfaces() should be also changed.",
+      "parentUuid": "d2f74c14_9895bf23",
       "range": {
         "startLine": 264,
         "startChar": 24,
