@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e4a8b907_b667e6f8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1851100
+      },
+      "writtenOn": "2021-09-29T15:38:53Z",
+      "side": 1,
+      "message": "Hi Daren, could you confirm that this change doesn\u0027t undo the goal of b/157444862 and aosp/1317235? I added my understanding of the situation in https://b.corp.google.com/issues/194429425#comment9, but wanted to double check with you since I don\u0027t have full context on both changes.",
+      "revId": "c5093cfb71ececda4eaa1cd3771f5661b09336ed",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
