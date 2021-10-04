@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "17b5c4dd_d1c0fc6e",
+        "filename": "media/jni/android_media_MediaMuxer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1576211
+      },
+      "writtenOn": "2021-10-04T19:04:39Z",
+      "side": 1,
+      "message": "Can we document these two scenarios in the affected methods in MediaMuxer.java? Something along the lines of:\n\n@throws IOException If the file descriptor is not open with the correct mode. When outputting webm files, the file descriptor must be open in read/write mode. Else, the file descriptor must be open in write or read/write mode.",
+      "range": {
+        "startLine": 166,
+        "startChar": 9,
+        "endLine": 166,
+        "endChar": 15
+      },
+      "revId": "c8c193e119f63d757a6446ffad8279e6911e1395",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
