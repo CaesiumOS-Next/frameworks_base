@@ -24,6 +24,46 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0fdd3392_a7e7fff2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1013508
+      },
+      "writtenOn": "2021-10-04T21:13:56Z",
+      "side": 1,
+      "message": "Looking great, I\u0027ll give CR+2 to help unblock work across timezones, but would love to hear your thoughts to all the comments left so far.",
+      "revId": "cb1029d47c705cbcfb7d1a9082b244c0c117e8b5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a91b1008_ab4fe879",
+        "filename": "core/java/android/os/BaseBundle.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 388,
+      "author": {
+        "id": 1013508
+      },
+      "writtenOn": "2021-10-04T21:13:56Z",
+      "side": 1,
+      "message": "Thanks for adding the warning here; could you rename the method slightly to something like \"getItemwiseMap()\" to highlight that it has some additional side-effect which will cause autocomplete users to look closer at your docs?",
+      "range": {
+        "startLine": 388,
+        "startChar": 0,
+        "endLine": 388,
+        "endChar": 39
+      },
+      "revId": "cb1029d47c705cbcfb7d1a9082b244c0c117e8b5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c3686c82_63eefa38",
