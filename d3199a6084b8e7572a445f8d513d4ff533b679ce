@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "97323b8c_31fb33d6",
+        "filename": "core/java/android/app/ActivityThread.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 3727,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-10-04T20:07:48Z",
+      "side": 0,
+      "message": "what\u0027s the motivation of removing this? What has happened to the unsafe extras? (I\u0027m not sure what the email thread says - and the information isn\u0027t in the commit message or here for the record)",
+      "range": {
+        "startLine": 3727,
+        "startChar": 0,
+        "endLine": 3727,
+        "endChar": 52
+      },
+      "revId": "d3199a6084b8e7572a445f8d513d4ff533b679ce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

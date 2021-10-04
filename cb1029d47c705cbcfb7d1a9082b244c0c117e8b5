@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2af90c52_9ee602db",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-10-04T20:07:48Z",
+      "side": 1,
+      "message": "Would it be possible to breakup CLs like these? It is a bit harder to review when there are so many things happening.",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 27,
+        "endChar": 35
+      },
+      "revId": "cb1029d47c705cbcfb7d1a9082b244c0c117e8b5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c3686c82_63eefa38",
+        "filename": "core/java/android/os/Parcel.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 3478,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-10-04T20:07:48Z",
+      "side": 1,
+      "message": "nit: is this comment overfitting? L3471/L3472 should be raising alarm bells already, right? Either way, nice fix!",
+      "range": {
+        "startLine": 3473,
+        "startChar": 0,
+        "endLine": 3478,
+        "endChar": 41
+      },
+      "revId": "cb1029d47c705cbcfb7d1a9082b244c0c117e8b5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
