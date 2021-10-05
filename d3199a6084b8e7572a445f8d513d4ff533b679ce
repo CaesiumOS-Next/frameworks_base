@@ -22,6 +22,30 @@
       },
       "revId": "d3199a6084b8e7572a445f8d513d4ff533b679ce",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f1851ff2_2a36d02e",
+        "filename": "core/java/android/app/ActivityThread.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 3727,
+      "author": {
+        "id": 1133744
+      },
+      "writtenOn": "2021-10-05T12:48:02Z",
+      "side": 0,
+      "message": "Expanded on the commit message.",
+      "parentUuid": "97323b8c_31fb33d6",
+      "range": {
+        "startLine": 3727,
+        "startChar": 0,
+        "endLine": 3727,
+        "endChar": 52
+      },
+      "revId": "d3199a6084b8e7572a445f8d513d4ff533b679ce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }

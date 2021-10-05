@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "c254c4a9_811217e8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1133744
+      },
+      "writtenOn": "2021-10-05T12:48:02Z",
+      "side": 1,
+      "message": "Removed the last item, which was unrelelated. Also expanded on filterValues(). I think the 3 items are logically related to the theme of the CL. I had also spun off aosp/1842142 out of this for the reasons you mentioned. Let me know if you still want to break it down further :)",
+      "parentUuid": "2af90c52_9ee602db",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 27,
+        "endChar": 35
+      },
+      "revId": "cb1029d47c705cbcfb7d1a9082b244c0c117e8b5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "0fdd3392_a7e7fff2",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 2
@@ -64,6 +88,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "47494df5_2e9c34e1",
+        "filename": "core/java/android/os/BaseBundle.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 388,
+      "author": {
+        "id": 1133744
+      },
+      "writtenOn": "2021-10-05T12:48:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a91b1008_ab4fe879",
+      "range": {
+        "startLine": 388,
+        "startChar": 0,
+        "endLine": 388,
+        "endChar": 39
+      },
+      "revId": "cb1029d47c705cbcfb7d1a9082b244c0c117e8b5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c3686c82_63eefa38",
@@ -77,6 +125,30 @@
       "writtenOn": "2021-10-04T20:07:48Z",
       "side": 1,
       "message": "nit: is this comment overfitting? L3471/L3472 should be raising alarm bells already, right? Either way, nice fix!",
+      "range": {
+        "startLine": 3473,
+        "startChar": 0,
+        "endLine": 3478,
+        "endChar": 41
+      },
+      "revId": "cb1029d47c705cbcfb7d1a9082b244c0c117e8b5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a313737a_3ba4c940",
+        "filename": "core/java/android/os/Parcel.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 3478,
+      "author": {
+        "id": 1133744
+      },
+      "writtenOn": "2021-10-05T12:48:02Z",
+      "side": 1,
+      "message": "Shortened it. Would still like to keep it here 😊",
+      "parentUuid": "c3686c82_63eefa38",
       "range": {
         "startLine": 3473,
         "startChar": 0,
