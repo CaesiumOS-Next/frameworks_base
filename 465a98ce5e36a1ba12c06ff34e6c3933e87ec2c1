@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7bb421f5_246c708e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2021-10-12T22:19:05Z",
+      "side": 1,
+      "message": "actually, what we\u0027re adding is throwing an exception\nif we can\u0027t create the writer; we were already doing the\ninvalid file descriptor exception.",
+      "range": {
+        "startLine": 7,
+        "startChar": 28,
+        "endLine": 7,
+        "endChar": 55
+      },
+      "revId": "465a98ce5e36a1ba12c06ff34e6c3933e87ec2c1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5960a075_932b0be3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2021-10-12T22:19:05Z",
+      "side": 1,
+      "message": "code change is good.\nthe commit message and some of the comment around the MeduaMuxer constructor method could use another pass, as suggested in the comments.",
+      "revId": "465a98ce5e36a1ba12c06ff34e6c3933e87ec2c1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0652850d_4e1a745d",
+        "filename": "media/java/android/media/MediaMuxer.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 379,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2021-10-12T22:19:05Z",
+      "side": 1,
+      "message": "we need the old phrasing back -- the code does throw IOException if the file is not writable as opened.\n\nthe IllegalArgumentException piece can be updated to include \"if there is a format-specific requirement that is not met\". [which is where the r/w needs of webm\ncome into play]",
+      "range": {
+        "startLine": 378,
+        "startChar": 7,
+        "endLine": 379,
+        "endChar": 79
+      },
+      "revId": "465a98ce5e36a1ba12c06ff34e6c3933e87ec2c1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
