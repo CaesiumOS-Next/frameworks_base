@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d1b50e74_3a9cdfa0",
+        "filename": "services/core/java/com/android/server/connectivity/Vpn.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 421,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2021-10-13T10:53:37Z",
+      "side": 1,
+      "message": "What does this return ?",
+      "range": {
+        "startLine": 421,
+        "startChar": 57,
+        "endLine": 421,
+        "endChar": 58
+      },
+      "revId": "4c51298af3c9e56c49dcc50232ce8e4c6dd90036",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "da28a20d_c06a3c40",
+        "filename": "services/core/java/com/android/server/connectivity/Vpn.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 435,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2021-10-13T10:53:37Z",
+      "side": 1,
+      "message": "What does this return ?",
+      "range": {
+        "startLine": 435,
+        "startChar": 54,
+        "endLine": 435,
+        "endChar": 55
+      },
+      "revId": "4c51298af3c9e56c49dcc50232ce8e4c6dd90036",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ec07516b_9c27295a",
+        "filename": "services/core/java/com/android/server/connectivity/Vpn.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 877,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2021-10-13T10:53:37Z",
+      "side": 1,
+      "message": "I think you can simplify by moving this into startVpnProfilePrivileged.\n\nThere are three places where it\u0027s called and your new code calls startOp() in all places where the package name might not be LEGACY_VPN, so it should be fine to move startOp() inside startVpnProfilePrivileged as long as you keep the LEGACY_VPN.equals() test I think ?",
+      "range": {
+        "startLine": 873,
+        "startChar": 0,
+        "endLine": 877,
+        "endChar": 17
+      },
+      "revId": "4c51298af3c9e56c49dcc50232ce8e4c6dd90036",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0bea4262_c2190a19",
+        "filename": "services/core/java/com/android/server/connectivity/Vpn.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 1496,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2021-10-13T10:53:37Z",
+      "side": 1,
+      "message": "I find this scary because isSeamlessHandover is not final. If the catch() in l.1479 did not throw in all cases, this would log an appop when no VPN was established, and that\u0027s impossible to miss with a final local.\n\nI see two ways of addressing this.\n❶ use oldNetworkAgent !\u003d mNetworkAgent like in l.1483.\n❷ move this inside the try{} block and make the boolean final.",
+      "range": {
+        "startLine": 1496,
+        "startChar": 13,
+        "endLine": 1496,
+        "endChar": 31
+      },
+      "revId": "4c51298af3c9e56c49dcc50232ce8e4c6dd90036",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
