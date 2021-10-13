@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2468645f_36a38330",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2021-10-13T15:42:14Z",
+      "side": 1,
+      "message": "documentation fix -- good\ncode change -- it\u0027s to fit with a change in frameworks/av where I\u0027m not aligned. My preference winds up with this code change not being needed.",
+      "revId": "ed330de4852363e2e3f95d32aedc8e2287d780e3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5b12050b_8de4a838",
+        "filename": "media/jni/android_media_MediaMuxer.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2021-10-13T15:42:14Z",
+      "side": 1,
+      "message": "hold off on this, since this depends on rework in the frameworks/av/ code\nthat isn\u0027t ready yet.",
+      "range": {
+        "startLine": 168,
+        "startChar": 25,
+        "endLine": 168,
+        "endChar": 52
+      },
+      "revId": "ed330de4852363e2e3f95d32aedc8e2287d780e3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
