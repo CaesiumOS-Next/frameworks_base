@@ -401,6 +401,28 @@ public final class NfcFCardEmulation {
     /**
      * @hide
      */
+    public List<NfcFServiceInfo> getNfcFServices(int userId) {
+        try {
+            return sService.getNfcFServices(userId);
+        } catch (RemoteException e) {
+            // Try one more time
+            recoverService();
+            if (sService == null) {
+                Log.e(TAG, "Failed to recover CardEmulationService.");
+                return null;
+            }
+            try {
+                return sService.getNfcFServices(userId);
+            } catch (RemoteException ee) {
+                Log.e(TAG, "Failed to reach CardEmulationService.");
+                return null;
+            }
+        }
+    }
+
+    /**
+     * @hide
+     */
     public int getMaxNumOfRegisterableSystemCodes() {
         try {
             return sService.getMaxNumOfRegisterableSystemCodes();
