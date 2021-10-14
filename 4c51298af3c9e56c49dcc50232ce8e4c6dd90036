@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "662d4e94_480ee4ea",
+        "filename": "services/core/java/com/android/server/connectivity/Vpn.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 421,
+      "author": {
+        "id": 1308163
+      },
+      "writtenOn": "2021-10-14T13:36:03Z",
+      "side": 1,
+      "message": "Add a comment to describe it.",
+      "parentUuid": "d1b50e74_3a9cdfa0",
+      "range": {
+        "startLine": 421,
+        "startChar": 57,
+        "endLine": 421,
+        "endChar": 58
+      },
+      "revId": "4c51298af3c9e56c49dcc50232ce8e4c6dd90036",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "da28a20d_c06a3c40",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-10-13T10:53:37Z",
       "side": 1,
       "message": "What does this return ?",
+      "range": {
+        "startLine": 435,
+        "startChar": 54,
+        "endLine": 435,
+        "endChar": 55
+      },
+      "revId": "4c51298af3c9e56c49dcc50232ce8e4c6dd90036",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "77e1781c_c394aae2",
+        "filename": "services/core/java/com/android/server/connectivity/Vpn.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 435,
+      "author": {
+        "id": 1308163
+      },
+      "writtenOn": "2021-10-14T13:36:03Z",
+      "side": 1,
+      "message": "Add a comment to describe it.",
+      "parentUuid": "da28a20d_c06a3c40",
       "range": {
         "startLine": 435,
         "startChar": 54,
@@ -70,6 +118,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5bde4567_7ca7ee10",
+        "filename": "services/core/java/com/android/server/connectivity/Vpn.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 877,
+      "author": {
+        "id": 1308163
+      },
+      "writtenOn": "2021-10-14T13:36:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ec07516b_9c27295a",
+      "range": {
+        "startLine": 873,
+        "startChar": 0,
+        "endLine": 877,
+        "endChar": 17
+      },
+      "revId": "4c51298af3c9e56c49dcc50232ce8e4c6dd90036",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0bea4262_c2190a19",
@@ -83,6 +155,30 @@
       "writtenOn": "2021-10-13T10:53:37Z",
       "side": 1,
       "message": "I find this scary because isSeamlessHandover is not final. If the catch() in l.1479 did not throw in all cases, this would log an appop when no VPN was established, and that\u0027s impossible to miss with a final local.\n\nI see two ways of addressing this.\n❶ use oldNetworkAgent !\u003d mNetworkAgent like in l.1483.\n❷ move this inside the try{} block and make the boolean final.",
+      "range": {
+        "startLine": 1496,
+        "startChar": 13,
+        "endLine": 1496,
+        "endChar": 31
+      },
+      "revId": "4c51298af3c9e56c49dcc50232ce8e4c6dd90036",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "97da6ae6_c2ada1a9",
+        "filename": "services/core/java/com/android/server/connectivity/Vpn.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 1496,
+      "author": {
+        "id": 1308163
+      },
+      "writtenOn": "2021-10-14T13:36:03Z",
+      "side": 1,
+      "message": "Do you mean the case that if someone throws an exception that l.1479 cannot catch, right?\nIf so, I think move this check to the end of the try{} block and use \"oldNetworkAgent !\u003d mNetworkAgent\" is more safer.\nLet me update it.",
+      "parentUuid": "0bea4262_c2190a19",
       "range": {
         "startLine": 1496,
         "startChar": 13,
