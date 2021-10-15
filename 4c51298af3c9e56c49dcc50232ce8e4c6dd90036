@@ -187,6 +187,30 @@
       },
       "revId": "4c51298af3c9e56c49dcc50232ce8e4c6dd90036",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f04b0641_a60342b2",
+        "filename": "services/core/java/com/android/server/connectivity/Vpn.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 1496,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2021-10-15T04:34:32Z",
+      "side": 1,
+      "message": "Well I mean, it will catch all RuntimeExceptions. It\u0027s more like, if someone decides to put the \"throw e\" into an if{} or something.\n\nI thought we only needed to do ❶ or ❷, but your code that does both is fine :)",
+      "parentUuid": "97da6ae6_c2ada1a9",
+      "range": {
+        "startLine": 1496,
+        "startChar": 13,
+        "endLine": 1496,
+        "endChar": 31
+      },
+      "revId": "4c51298af3c9e56c49dcc50232ce8e4c6dd90036",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
