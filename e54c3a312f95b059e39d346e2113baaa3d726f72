@@ -122,6 +122,23 @@
       "parentUuid": "5be9a7de_7faf1a81",
       "revId": "e54c3a312f95b059e39d346e2113baaa3d726f72",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f4682a20_8eb30e7c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1890322
+      },
+      "writtenOn": "2021-10-17T08:31:55Z",
+      "side": 1,
+      "message": "Hey Beth! Any updates on this?\n\nThanks",
+      "revId": "e54c3a312f95b059e39d346e2113baaa3d726f72",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
