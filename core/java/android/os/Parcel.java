@@ -2537,7 +2537,12 @@ public final class Parcel {
             code = EX_UNSUPPORTED_OPERATION;
         } else if (e instanceof ServiceSpecificException) {
             code = EX_SERVICE_SPECIFIC;
+        } else {
+            // TODO(b/150808347): add option to turn on the exception?
+            Log.e(TAG, "Unrecognized exception type sent to Parcel. For legacy compatibility, the "
+                    + "error will be noted as a success in the call.", e);
         }
+
         return code;
     }
 
