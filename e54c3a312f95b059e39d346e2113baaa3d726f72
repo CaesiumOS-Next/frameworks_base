@@ -157,6 +157,41 @@
       "parentUuid": "f4682a20_8eb30e7c",
       "revId": "e54c3a312f95b059e39d346e2113baaa3d726f72",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b2233cff_2b212f48",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1385606
+      },
+      "writtenOn": "2021-10-19T14:47:06Z",
+      "side": 1,
+      "message": "I\u0027ve pinged the PMs again for feedback. One thing that was mentioned earlier was that a person could still use the hardware buttons to shut down without authentication, so that may be an issue, but waiting to hear back from them about supporting it",
+      "parentUuid": "dd43a187_0e6af831",
+      "revId": "e54c3a312f95b059e39d346e2113baaa3d726f72",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9ee330c4_9eedc110",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1385606
+      },
+      "writtenOn": "2021-10-19T14:47:06Z",
+      "side": 1,
+      "message": "I\u0027ve pinged the PMs ",
+      "revId": "e54c3a312f95b059e39d346e2113baaa3d726f72",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
