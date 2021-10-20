@@ -86,47 +86,60 @@ public class InsetsController implements WindowInsetsController, InsetsAnimation
         /**
          * Notifies host that {@link InsetsController#getState()} has changed.
          */
-        void notifyInsetsChanged();
+        default void notifyInsetsChanged() { }
 
-        void dispatchWindowInsetsAnimationPrepare(@NonNull WindowInsetsAnimation animation);
-        Bounds dispatchWindowInsetsAnimationStart(
-                @NonNull WindowInsetsAnimation animation, @NonNull Bounds bounds);
-        WindowInsets dispatchWindowInsetsAnimationProgress(@NonNull WindowInsets insets,
-                @NonNull List<WindowInsetsAnimation> runningAnimations);
-        void dispatchWindowInsetsAnimationEnd(@NonNull WindowInsetsAnimation animation);
+        default void dispatchWindowInsetsAnimationPrepare(
+                @NonNull WindowInsetsAnimation animation) { }
+
+        default Bounds dispatchWindowInsetsAnimationStart(
+                @NonNull WindowInsetsAnimation animation, @NonNull Bounds bounds) {
+            return bounds;
+        }
+
+        default WindowInsets dispatchWindowInsetsAnimationProgress(@NonNull WindowInsets insets,
+                @NonNull List<WindowInsetsAnimation> runningAnimations) {
+            return insets;
+        }
+
+        default void dispatchWindowInsetsAnimationEnd(@NonNull WindowInsetsAnimation animation) { }
 
         /**
          * Requests host to apply surface params in synchronized manner.
          */
-        void applySurfaceParams(final SyncRtSurfaceTransactionApplier.SurfaceParams... params);
+        default void applySurfaceParams(
+                final SyncRtSurfaceTransactionApplier.SurfaceParams... params) { }
 
         /**
          * @see ViewRootImpl#updateCompatSysUiVisibility(int, boolean, boolean)
          */
-        void updateCompatSysUiVisibility(@InternalInsetsType int type, boolean visible,
-                boolean hasControl);
+        default void updateCompatSysUiVisibility(@InternalInsetsType int type, boolean visible,
+                boolean hasControl) { }
 
         /**
          * Called when insets have been modified by the client and should be reported back to WM.
          */
-        void onInsetsModified(InsetsState insetsState);
+        default void onInsetsModified(InsetsState insetsState) { }
 
         /**
          * @return Whether the host has any callbacks it wants to synchronize the animations with.
          *         If there are no callbacks, the animation will be off-loaded to another thread and
          *         slightly different animation curves are picked.
          */
-        boolean hasAnimationCallbacks();
+        default boolean hasAnimationCallbacks() {
+            return false;
+        }
 
         /**
          * @see WindowInsetsController#setSystemBarsAppearance
          */
-        void setSystemBarsAppearance(@Appearance int appearance, @Appearance int mask);
+        default void setSystemBarsAppearance(@Appearance int appearance, @Appearance int mask) { }
 
         /**
          * @see WindowInsetsController#getSystemBarsAppearance()
          */
-        @Appearance int getSystemBarsAppearance();
+        default @Appearance int getSystemBarsAppearance() {
+            return 0;
+        }
 
         default boolean isSystemBarsAppearanceControlled() {
             return false;
@@ -135,12 +148,14 @@ public class InsetsController implements WindowInsetsController, InsetsAnimation
         /**
          * @see WindowInsetsController#setSystemBarsBehavior
          */
-        void setSystemBarsBehavior(@Behavior int behavior);
+        default void setSystemBarsBehavior(@Behavior int behavior) { }
 
         /**
          * @see WindowInsetsController#getSystemBarsBehavior
          */
-        @Behavior int getSystemBarsBehavior();
+        default @Behavior int getSystemBarsBehavior() {
+            return BEHAVIOR_DEFAULT;
+        }
 
         default boolean isSystemBarsBehaviorControlled() {
             return false;
@@ -150,7 +165,9 @@ public class InsetsController implements WindowInsetsController, InsetsAnimation
          * Releases a surface and ensure that this is done after {@link #applySurfaceParams} has
          * finished applying params.
          */
-        void releaseSurfaceControlFromRt(SurfaceControl surfaceControl);
+        default void releaseSurfaceControlFromRt(SurfaceControl surfaceControl) {
+            surfaceControl.release();
+        }
 
         /**
          * If this host is a view hierarchy, adds a pre-draw runnable to ensure proper ordering as
@@ -158,7 +175,9 @@ public class InsetsController implements WindowInsetsController, InsetsAnimation
          *
          * If this host isn't a view hierarchy, the runnable can be executed immediately.
          */
-        void addOnPreDrawRunnable(Runnable r);
+        default void addOnPreDrawRunnable(Runnable r) {
+            r.run();
+        }
 
         /**
          * Adds a runnbale to be executed during {@link Choreographer#CALLBACK_INSETS_ANIMATION}
@@ -169,29 +188,34 @@ public class InsetsController implements WindowInsetsController, InsetsAnimation
         /**
          * Obtains {@link InputMethodManager} instance from host.
          */
-        InputMethodManager getInputMethodManager();
+        default @Nullable InputMethodManager getInputMethodManager() {
+            return null;
+        }
 
         /**
          * @return title of the rootView, if it has one.
          * Note: this method is for debugging purposes only.
          */
-        @Nullable
-        String getRootViewTitle();
+        default @Nullable String getRootViewTitle() {
+            return null;
+        }
 
         /** @see ViewRootImpl#dipToPx */
-        int dipToPx(int dips);
+        default int dipToPx(int dips) {
+            return dips;
+        }
 
         /**
          * @return token associated with the host, if it has one.
          */
-        @Nullable
-        IBinder getWindowToken();
+        default @Nullable IBinder getWindowToken() {
+            return null;
+        }
 
         /**
          * @return Translator associated with the host, if it has one.
          */
-        @Nullable
-        default CompatibilityInfo.Translator getTranslator() {
+        default @Nullable CompatibilityInfo.Translator getTranslator() {
             return null;
         }
     }

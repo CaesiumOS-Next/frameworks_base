@@ -904,8 +904,9 @@ public class WindowManagerService extends IWindowManager.Stub
             synchronized (mGlobalLock) {
                 boolean changed = false;
                 if (handleChange) {
-                    changed = getDefaultDisplayContentLocked().getDisplayPolicy()
-                            .onSystemUiSettingsChanged();
+                    changed = PolicyControl.reloadFromSetting(mContext)
+                            || getDefaultDisplayContentLocked().getDisplayPolicy()
+                                    .onSystemUiSettingsChanged();
                 } else {
                     ImmersiveModeConfirmation.loadSetting(mCurrentUserId, mContext);
                 }

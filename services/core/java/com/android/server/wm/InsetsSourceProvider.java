@@ -477,15 +477,15 @@ class InsetsSourceProvider {
         }
         if (mControlTarget != null) {
             pw.print(prefix + "mControlTarget=");
-            pw.println(mControlTarget.getWindow());
+            pw.println(mControlTarget);
         }
         if (mPendingControlTarget != null) {
             pw.print(prefix + "mPendingControlTarget=");
-            pw.println(mPendingControlTarget.getWindow());
+            pw.println(mPendingControlTarget);
         }
         if (mFakeControlTarget != null) {
             pw.print(prefix + "mFakeControlTarget=");
-            pw.println(mFakeControlTarget.getWindow());
+            pw.println(mFakeControlTarget);
         }
     }
 

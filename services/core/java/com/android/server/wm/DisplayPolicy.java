@@ -2518,7 +2518,7 @@ public class DisplayPolicy {
                 win.mAttrs.insetsFlags.appearance, mTopFullscreenOpaqueWindowState,
                 mTopFullscreenOpaqueOrDimmingWindowState,
                 mDisplayContent.mInputMethodWindow, navColorWin) | opaqueAppearance;
-        final int behavior = win.mAttrs.insetsFlags.behavior;
+        final int behavior = getInsetsPolicy().getBehavior(win);
         final boolean isFullscreen = !win.getRequestedVisibility(ITYPE_STATUS_BAR)
                 || !win.getRequestedVisibility(ITYPE_NAVIGATION_BAR);
         if (mLastDisableFlags == disableFlags

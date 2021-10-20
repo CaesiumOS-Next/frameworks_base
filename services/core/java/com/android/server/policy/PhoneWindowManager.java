@@ -220,6 +220,7 @@ import com.android.server.vr.VrManagerInternal;
 import com.android.server.wm.ActivityTaskManagerInternal;
 import com.android.server.wm.DisplayPolicy;
 import com.android.server.wm.DisplayRotation;
+import com.android.server.wm.PolicyControl;
 import com.android.server.wm.WindowManagerInternal;
 import com.android.server.wm.WindowManagerInternal.AppTransitionListener;
 import com.android.server.wm.WindowManagerService;
@@ -5392,6 +5393,8 @@ public class PhoneWindowManager implements WindowManagerPolicy {
 
         pw.print(prefix); pw.println("Looper state:");
         mHandler.getLooper().dump(new PrintWriterPrinter(pw), prefix + "  ");
+
+        PolicyControl.dump(prefix, pw);
     }
 
     private static String endcallBehaviorToString(int behavior) {
