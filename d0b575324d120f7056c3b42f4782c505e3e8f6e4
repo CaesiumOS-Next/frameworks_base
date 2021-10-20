@@ -16,6 +16,23 @@
       "message": "I will trigger presubmit to detect conflicts, and also pinged b/156081776, which seems related.",
       "revId": "d0b575324d120f7056c3b42f4782c505e3e8f6e4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "666d6abe_86637055",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1576211
+      },
+      "writtenOn": "2021-10-20T15:47:10Z",
+      "side": 1,
+      "message": "Shawn, kindly add a bug reference in this CL. I don\u0027t do it myself because turns out that would required another +1 from someone else. Maybe b/156081776?\n\nThat would mean adding a line\n\nBug: 156081776\n\nin the line immediately above Change-Id:",
+      "revId": "d0b575324d120f7056c3b42f4782c505e3e8f6e4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
