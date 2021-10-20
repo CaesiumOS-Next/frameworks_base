@@ -69,6 +69,24 @@
       "parentUuid": "71128ef1_ee7a4b08",
       "revId": "72e1456dc1384c48887893663777ed94ce95d155",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "be779523_72863d9e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1576211
+      },
+      "writtenOn": "2021-10-20T13:42:20Z",
+      "side": 1,
+      "message": "I believe we should be ok to merge to AOSP, assuming there\u0027s no conflict detected in the presubmit.",
+      "parentUuid": "c6697d79_f369b329",
+      "revId": "72e1456dc1384c48887893663777ed94ce95d155",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }

@@ -46,6 +46,30 @@
       },
       "revId": "286416d8d2e67116097b8020000a7d8c1448dc41",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2167e7b9_9d285b37",
+        "filename": "media/java/android/media/MediaCodec.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1576211
+      },
+      "writtenOn": "2021-10-20T13:42:20Z",
+      "side": 0,
+      "message": "Actually scratch that, I believe deleting the pngs could break older API documentations which still refer to the PNG. For the time being, let\u0027s leave that PNG where it is.\n\nFor reference, I think the current location is: \nhttps://source.corp.google.com/piper///depot/google3/third_party/devsite/android/en/images/media/mediacodec_buffers.png",
+      "parentUuid": "ca08db54_91298a39",
+      "range": {
+        "startLine": 65,
+        "startChar": 8,
+        "endLine": 65,
+        "endChar": 52
+      },
+      "revId": "286416d8d2e67116097b8020000a7d8c1448dc41",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
