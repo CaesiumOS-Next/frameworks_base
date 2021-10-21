@@ -44,5 +44,5 @@ interface ISystemConfig {
     /**
      * @see SystemConfigManager#getEnabledComponentOverrides
      */
-    List<String> getEnabledComponentOverrides(String packageName);
+    /* List<String> getEnabledComponentOverrides(String packageName); */
 }
