@@ -240,7 +240,8 @@ public class EthernetManager {
     /**
      * A request for a tethered interface.
      */
-    public static class TetheredInterfaceRequest {
+    public static class TetheredInterfaceRequest implements
+            TetheringManager.TetheredInterfaceRequest {
         private final IEthernetManager mService;
         private final ITetheredInterfaceCallback mCb;
 
@@ -254,6 +255,7 @@ public class EthernetManager {
          * Release the request, causing the interface to revert back from tethering mode if there
          * is no other requestor.
          */
+        @Override
         public void release() {
             try {
                 mService.releaseTetheredInterface(mCb);
@@ -266,7 +268,7 @@ public class EthernetManager {
     /**
      * Callback for {@link #requestTetheredInterface(TetheredInterfaceCallback)}.
      */
-    public interface TetheredInterfaceCallback {
+    public interface TetheredInterfaceCallback extends TetheringManager.TetheredInterfaceCallback {
         /**
          * Called when the tethered interface is available.
          * @param iface The name of the interface.
