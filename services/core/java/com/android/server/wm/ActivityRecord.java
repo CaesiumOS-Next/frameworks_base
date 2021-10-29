@@ -1263,7 +1263,8 @@ final class ActivityRecord extends WindowToken implements WindowManagerService.A
     }
 
     void updatePictureInPictureMode(Rect targetRootTaskBounds, boolean forceUpdate) {
-        if (task == null || task.getRootTask() == null || !attachedToProcess()) {
+        if (task == null || task.getRootTask() == null || task.getParent() == null
+                || !attachedToProcess()) {
             return;
         }
 
