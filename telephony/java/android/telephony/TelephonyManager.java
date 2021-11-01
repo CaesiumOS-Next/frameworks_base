@@ -14845,6 +14845,7 @@ public class TelephonyManager {
                             .getTelephonyServiceManager()
                             .getSubscriptionServiceRegisterer()
                             .get());
+
             synchronized (sCacheLock) {
                 if (sISub == null && temp != null) {
                     try {
