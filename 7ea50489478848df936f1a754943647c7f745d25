@@ -16,6 +16,23 @@
       "message": "The other changes are aosp/1878695 for CTS and ag/16174326 for GTS, but I couldn\u0027t publish the edit for their content due to the code-owners check saying the file doesn\u0027t exist (bundling in the same topic didn\u0027t help). So let\u0027s submit this first and the other two later.",
       "revId": "7ea50489478848df936f1a754943647c7f745d25",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1917fd95_391751b6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1351609
+      },
+      "writtenOn": "2021-11-03T19:17:59Z",
+      "side": 1,
+      "message": "Hi Jeff, I noticed that you are the author of the change that added OWNERS for DefaultPermissionGrantPolicy.java (ag/522665) - so could you take a look at the new OWNERS list and see if they look good to you?",
+      "revId": "7ea50489478848df936f1a754943647c7f745d25",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
