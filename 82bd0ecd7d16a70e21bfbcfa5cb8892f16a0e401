@@ -22,6 +22,29 @@
       },
       "revId": "82bd0ecd7d16a70e21bfbcfa5cb8892f16a0e401",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "95c59911_9837697d",
+        "filename": "core/java/android/net/NetworkTemplate.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 809,
+      "author": {
+        "id": 1101746
+      },
+      "writtenOn": "2021-11-04T04:40:42Z",
+      "side": 1,
+      "message": "nit: insert \u0027of\u0027",
+      "range": {
+        "startLine": 809,
+        "startChar": 38,
+        "endLine": 809,
+        "endChar": 39
+      },
+      "revId": "82bd0ecd7d16a70e21bfbcfa5cb8892f16a0e401",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
