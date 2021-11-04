@@ -33,6 +33,24 @@
       "message": "Hi Jeff, I noticed that you are the author of the change that added OWNERS for DefaultPermissionGrantPolicy.java (ag/522665) - so could you take a look at the new OWNERS list and see if they look good to you?",
       "revId": "7ea50489478848df936f1a754943647c7f745d25",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "142a8a5d_04af1ff0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1351609
+      },
+      "writtenOn": "2021-11-04T00:44:02Z",
+      "side": 1,
+      "message": "Thanks!",
+      "parentUuid": "1917fd95_391751b6",
+      "revId": "7ea50489478848df936f1a754943647c7f745d25",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
