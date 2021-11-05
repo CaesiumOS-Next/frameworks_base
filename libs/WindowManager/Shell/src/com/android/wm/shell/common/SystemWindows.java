@@ -232,6 +232,12 @@ public class SystemWindows {
                 Slog.e(TAG, "Unable to get root surfacecontrol for systemui");
                 return null;
             }
+            // Shell will unlimited crash due to npe, in follow case:
+            // launch pip, exec "am crash shell(like com.android.systemui)"...
+            if (displayContext == null) {
+                Slog.e(TAG, "Unable to get display context for systemui");
+                return null;
+            }
             Context displayContext = mDisplayController.getDisplayContext(mDisplayId);
             wwm = new SysUiWindowManager(mDisplayId, displayContext, rootSurface, win);
             mWwms.put(shellRootLayer, wwm);
