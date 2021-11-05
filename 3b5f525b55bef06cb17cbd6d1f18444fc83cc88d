@@ -45,6 +45,54 @@
       },
       "revId": "3b5f525b55bef06cb17cbd6d1f18444fc83cc88d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d8146e60_f2cf8a51",
+        "filename": "services/core/java/com/android/server/vcn/VcnGatewayConnection.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 2084,
+      "author": {
+        "id": 1221725
+      },
+      "writtenOn": "2021-11-05T20:57:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "279e8d6e_d7247a66",
+      "range": {
+        "startLine": 2084,
+        "startChar": 16,
+        "endLine": 2084,
+        "endChar": 34
+      },
+      "revId": "3b5f525b55bef06cb17cbd6d1f18444fc83cc88d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "878fe06b_e383a1c9",
+        "filename": "services/core/java/com/android/server/vcn/VcnGatewayConnection.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 2084,
+      "author": {
+        "id": 1221725
+      },
+      "writtenOn": "2021-11-05T20:57:22Z",
+      "side": 1,
+      "message": "Yup. Single thread, plus UnderlyingLp is cached, and never modified.",
+      "parentUuid": "aa16b843_038a334d",
+      "range": {
+        "startLine": 2084,
+        "startChar": 51,
+        "endLine": 2084,
+        "endChar": 67
+      },
+      "revId": "3b5f525b55bef06cb17cbd6d1f18444fc83cc88d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
