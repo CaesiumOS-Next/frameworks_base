@@ -16,6 +16,115 @@
       "message": "Jeff, can you take another look at this patch now that we\u0027ve resolved all other issues?",
       "revId": "ca33a22bc61bc9d4357f2f9e812f0b119c621f21",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5908e14a_f34aab01",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1013508
+      },
+      "writtenOn": "2021-11-05T22:36:11Z",
+      "side": 1,
+      "message": "LGTM from an OWNERS PoV, but there are a few minor nits mentioned internally that I\u0027d recommend considering fixing.  Up to you if you\u0027d like to handle in a future CL.",
+      "revId": "ca33a22bc61bc9d4357f2f9e812f0b119c621f21",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "459e578d_1538aa73",
+        "filename": "packages/Shell/AndroidManifest.xml",
+        "patchSetId": 5
+      },
+      "lineNbr": 649,
+      "author": {
+        "id": 1013508
+      },
+      "writtenOn": "2021-11-05T22:36:11Z",
+      "side": 1,
+      "message": "Could you rename this slightly to reflect the type of upload?\n\nOne suggestion might be \"com.android.shell.action.PROFCOLLECT_UPLOAD\" to attempt aligning with the component and permission names.",
+      "range": {
+        "startLine": 649,
+        "startChar": 63,
+        "endLine": 649,
+        "endChar": 76
+      },
+      "revId": "ca33a22bc61bc9d4357f2f9e812f0b119c621f21",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0d9fb5f3_fdad02c2",
+        "filename": "packages/Shell/src/com/android/shell/ProfcollectUploadReceiver.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1013508
+      },
+      "writtenOn": "2021-11-05T22:36:11Z",
+      "side": 1,
+      "message": "Hm, are these extras used by the target?  If so, I\u0027d recommend finding an official extra that you could use.\n\nFor example, perhaps \"Intent.EXTRA_SUBJECT\" or \"Intent.EXTRA_PACKAGE_NAME\"?\n\nMy expectation is that the receiver isn\u0027t very interested in these details.",
+      "range": {
+        "startLine": 71,
+        "startChar": 0,
+        "endLine": 72,
+        "endChar": 81
+      },
+      "revId": "ca33a22bc61bc9d4357f2f9e812f0b119c621f21",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "af490022_115f2cd0",
+        "filename": "packages/Shell/src/com/android/shell/ProfcollectUploadReceiver.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1013508
+      },
+      "writtenOn": "2021-11-05T22:36:11Z",
+      "side": 1,
+      "message": "I\u0027d recommend removing the FLAG_GRANT_READ_URI_PERMISSION here, since a brief search of the platform internals indicates that it only works for Services and Activities.",
+      "range": {
+        "startLine": 74,
+        "startChar": 0,
+        "endLine": 74,
+        "endChar": 72
+      },
+      "revId": "ca33a22bc61bc9d4357f2f9e812f0b119c621f21",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dbaecfcd_e575d284",
+        "filename": "services/profcollect/src/com/android/server/profcollect/ProfcollectForwardingService.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 304,
+      "author": {
+        "id": 1013508
+      },
+      "writtenOn": "2021-11-05T22:36:11Z",
+      "side": 1,
+      "message": "Does this operation happen often?  If so, I\u0027d recommend dispatching this event through com.android.internal.os.BackgroundThread instead of spawning a new thread here each time.",
+      "range": {
+        "startLine": 304,
+        "startChar": 0,
+        "endLine": 304,
+        "endChar": 26
+      },
+      "revId": "ca33a22bc61bc9d4357f2f9e812f0b119c621f21",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
