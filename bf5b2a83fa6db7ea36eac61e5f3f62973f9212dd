@@ -37,6 +37,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a9e033ba_48696b62",
+        "filename": "core/java/android/bluetooth/le/BluetoothLeBroadcast.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1085519
+      },
+      "writtenOn": "2021-11-05T22:06:35Z",
+      "side": 1,
+      "message": "Please elaborate when this is used?",
+      "revId": "bf5b2a83fa6db7ea36eac61e5f3f62973f9212dd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "448fcc19_077e3474",
         "filename": "core/java/android/bluetooth/le/BluetoothLeBroadcast.java",
         "patchSetId": 4
@@ -105,6 +122,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "81194546_5713e519",
+        "filename": "core/java/android/bluetooth/le/BluetoothLeBroadcast.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1085519
+      },
+      "writtenOn": "2021-11-05T22:06:35Z",
+      "side": 1,
+      "message": "Could you elaborate \"mode\" here?",
+      "revId": "bf5b2a83fa6db7ea36eac61e5f3f62973f9212dd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c8296490_4ab46387",
         "filename": "core/java/android/bluetooth/le/BluetoothLeBroadcast.java",
         "patchSetId": 4
@@ -116,6 +150,40 @@
       "writtenOn": "2021-11-05T20:47:23Z",
       "side": 1,
       "message": "Need an IntDef for each method returning an int from a set of constants.",
+      "revId": "bf5b2a83fa6db7ea36eac61e5f3f62973f9212dd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e8fe2672_e7e8bcd0",
+        "filename": "core/java/android/bluetooth/le/BluetoothLeBroadcast.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1085519
+      },
+      "writtenOn": "2021-11-05T22:06:35Z",
+      "side": 1,
+      "message": "please explain parameters.\nHow broadcast code is set?",
+      "revId": "bf5b2a83fa6db7ea36eac61e5f3f62973f9212dd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "55f1bc04_f38bb2a6",
+        "filename": "core/java/android/bluetooth/le/BluetoothLeBroadcast.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1085519
+      },
+      "writtenOn": "2021-11-05T22:06:35Z",
+      "side": 1,
+      "message": "return parameter description is missing.",
       "revId": "bf5b2a83fa6db7ea36eac61e5f3f62973f9212dd",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
