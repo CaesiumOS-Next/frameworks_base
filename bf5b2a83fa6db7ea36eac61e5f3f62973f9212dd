@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "142b47e8_648a1dcb",
+        "filename": "core/java/android/bluetooth/le/BluetoothLeBroadcast.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1730162
+      },
+      "writtenOn": "2021-11-07T23:01:08Z",
+      "side": 1,
+      "message": "Could we set the class to meet the specification profile and role naming, such as BluetoothBAPBroadcastSource?",
+      "range": {
+        "startLine": 40,
+        "startChar": 19,
+        "endLine": 40,
+        "endChar": 39
+      },
+      "revId": "bf5b2a83fa6db7ea36eac61e5f3f62973f9212dd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7ae8eb44_5d706bbd",
         "filename": "core/java/android/bluetooth/le/BluetoothLeBroadcast.java",
         "patchSetId": 4
