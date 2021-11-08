@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a91ae63c_e589f2ac",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308504
+      },
+      "writtenOn": "2021-11-08T04:55:25Z",
+      "side": 1,
+      "message": "Remove the topic. The dependencies CL need to merged first, then update the prebuilt/sdk. After that the API in platform code would able to see the stub.",
+      "revId": "88b1c35ef4b94550c6f24b4fc5f46d11e6c03050",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
