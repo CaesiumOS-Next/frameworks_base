@@ -16,6 +16,24 @@
       "message": "nit: Maybe add \"Bug: 183487233\" in the commit message?\n\n(like https://android-review.googlesource.com/c/platform/frameworks/base/+/1784487/)",
       "revId": "6719601a7a60f1fd1612dedc77fe170e5737aa80",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7a99296c_16359b4e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1087625
+      },
+      "writtenOn": "2021-11-08T06:17:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "509c5f35_2bca3740",
+      "revId": "6719601a7a60f1fd1612dedc77fe170e5737aa80",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
