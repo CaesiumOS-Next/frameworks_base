@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "01af75b9_c2432324",
+        "filename": "services/core/java/com/android/server/vcn/VcnGatewayConnection.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 2090,
+      "author": {
+        "id": 1221725
+      },
+      "writtenOn": "2021-11-08T23:01:59Z",
+      "side": 1,
+      "message": "Already done in 2100; MtuUtils.getMtu() clamps to 1280 if the underlyingMtu is 0 (which if an exception would be the case)",
+      "parentUuid": "15f42ec6_28f04645",
+      "range": {
+        "startLine": 2090,
+        "startChar": 20,
+        "endLine": 2090,
+        "endChar": 78
+      },
+      "revId": "b4a006591875dac8c6e2af7f936ee00d71d51086",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9952fa11_8e23be24",
         "filename": "services/core/java/com/android/server/vcn/VcnGatewayConnection.java",
         "patchSetId": 4
@@ -37,6 +61,30 @@
       "writtenOn": "2021-11-08T22:55:39Z",
       "side": 1,
       "message": "or better yet, should the try/catch be encapsulated here and then return 1280 on a throw()?",
+      "range": {
+        "startLine": 2438,
+        "startChar": 6,
+        "endLine": 2438,
+        "endChar": 74
+      },
+      "revId": "b4a006591875dac8c6e2af7f936ee00d71d51086",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "53396024_99079d7a",
+        "filename": "services/core/java/com/android/server/vcn/VcnGatewayConnection.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 2438,
+      "author": {
+        "id": 1221725
+      },
+      "writtenOn": "2021-11-08T23:01:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9952fa11_8e23be24",
       "range": {
         "startLine": 2438,
         "startChar": 6,
