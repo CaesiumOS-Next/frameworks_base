@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2809969d_18238f26",
+        "filename": "core/java/android/bluetooth/le/BluetoothLeBroadcast.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1106424
+      },
+      "writtenOn": "2021-11-10T21:22:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "142b47e8_648a1dcb",
+      "range": {
+        "startLine": 40,
+        "startChar": 19,
+        "endLine": 40,
+        "endChar": 39
+      },
+      "revId": "bf5b2a83fa6db7ea36eac61e5f3f62973f9212dd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7ae8eb44_5d706bbd",
@@ -43,6 +67,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6c991085_8eedf24c",
+        "filename": "core/java/android/bluetooth/le/BluetoothLeBroadcast.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1106424
+      },
+      "writtenOn": "2021-11-10T21:22:59Z",
+      "side": 1,
+      "message": "removed",
+      "parentUuid": "7ae8eb44_5d706bbd",
+      "revId": "bf5b2a83fa6db7ea36eac61e5f3f62973f9212dd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "478daa35_eec5ae01",
         "filename": "core/java/android/bluetooth/le/BluetoothLeBroadcast.java",
         "patchSetId": 4
@@ -54,6 +96,24 @@
       "writtenOn": "2021-11-05T20:47:23Z",
       "side": 1,
       "message": "I would strongly encourage using callbacks over broadcast intents",
+      "revId": "bf5b2a83fa6db7ea36eac61e5f3f62973f9212dd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1559ccc8_7de70d1e",
+        "filename": "core/java/android/bluetooth/le/BluetoothLeBroadcast.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1106424
+      },
+      "writtenOn": "2021-11-10T21:22:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "478daa35_eec5ae01",
       "revId": "bf5b2a83fa6db7ea36eac61e5f3f62973f9212dd",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -77,6 +137,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "743a73a2_edfdb114",
+        "filename": "core/java/android/bluetooth/le/BluetoothLeBroadcast.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1106424
+      },
+      "writtenOn": "2021-11-10T21:22:59Z",
+      "side": 1,
+      "message": "removed, using callbacks instead, added description about when they are invoked",
+      "parentUuid": "a9e033ba_48696b62",
+      "revId": "bf5b2a83fa6db7ea36eac61e5f3f62973f9212dd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "448fcc19_077e3474",
         "filename": "core/java/android/bluetooth/le/BluetoothLeBroadcast.java",
         "patchSetId": 4
@@ -88,6 +166,24 @@
       "writtenOn": "2021-11-05T20:47:23Z",
       "side": 1,
       "message": "Should be moved to the BluetoothStatusCodes class and create an IntDef for these.",
+      "revId": "bf5b2a83fa6db7ea36eac61e5f3f62973f9212dd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f12358d1_2c454186",
+        "filename": "core/java/android/bluetooth/le/BluetoothLeBroadcast.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1106424
+      },
+      "writtenOn": "2021-11-10T21:22:59Z",
+      "side": 1,
+      "message": "I moved couple error codes there but shouldn\u0027t the profile specific constants be in the profile itself?",
+      "parentUuid": "448fcc19_077e3474",
       "revId": "bf5b2a83fa6db7ea36eac61e5f3f62973f9212dd",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -109,6 +205,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e59f3148_2872e6b5",
+        "filename": "core/java/android/bluetooth/le/BluetoothLeBroadcast.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1106424
+      },
+      "writtenOn": "2021-11-10T21:22:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e5c16ebb_f79f9788",
+      "revId": "bf5b2a83fa6db7ea36eac61e5f3f62973f9212dd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7ae21776_6fbc711c",
@@ -122,6 +236,24 @@
       "writtenOn": "2021-11-05T20:47:23Z",
       "side": 1,
       "message": "If these aren\u0027t supported, we should just remove them.",
+      "revId": "bf5b2a83fa6db7ea36eac61e5f3f62973f9212dd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5585a7b4_25f0fa14",
+        "filename": "core/java/android/bluetooth/le/BluetoothLeBroadcast.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1106424
+      },
+      "writtenOn": "2021-11-10T21:22:59Z",
+      "side": 1,
+      "message": "if I remove them, I get compile errors complaining about them being missing.\n\nFor now they throw unsupported but later we might have to change that. I have to think more about that.",
+      "parentUuid": "7ae21776_6fbc711c",
       "revId": "bf5b2a83fa6db7ea36eac61e5f3f62973f9212dd",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -160,6 +292,42 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9f88e109_05b06ed4",
+        "filename": "core/java/android/bluetooth/le/BluetoothLeBroadcast.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1106424
+      },
+      "writtenOn": "2021-11-10T21:22:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "81194546_5713e519",
+      "revId": "bf5b2a83fa6db7ea36eac61e5f3f62973f9212dd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9171761f_c0531d7f",
+        "filename": "core/java/android/bluetooth/le/BluetoothLeBroadcast.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1106424
+      },
+      "writtenOn": "2021-11-10T21:22:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "48cff900_1c1efbcb",
+      "revId": "bf5b2a83fa6db7ea36eac61e5f3f62973f9212dd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c8296490_4ab46387",
@@ -173,6 +341,24 @@
       "writtenOn": "2021-11-05T20:47:23Z",
       "side": 1,
       "message": "Need an IntDef for each method returning an int from a set of constants.",
+      "revId": "bf5b2a83fa6db7ea36eac61e5f3f62973f9212dd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "db7e82dc_25fb4aa1",
+        "filename": "core/java/android/bluetooth/le/BluetoothLeBroadcast.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1106424
+      },
+      "writtenOn": "2021-11-10T21:22:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c8296490_4ab46387",
       "revId": "bf5b2a83fa6db7ea36eac61e5f3f62973f9212dd",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -194,6 +380,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0f66c2f5_fe5cb5fd",
+        "filename": "core/java/android/bluetooth/le/BluetoothLeBroadcast.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1106424
+      },
+      "writtenOn": "2021-11-10T21:22:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e8fe2672_e7e8bcd0",
+      "revId": "bf5b2a83fa6db7ea36eac61e5f3f62973f9212dd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "55f1bc04_f38bb2a6",
@@ -207,6 +411,24 @@
       "writtenOn": "2021-11-05T22:06:35Z",
       "side": 1,
       "message": "return parameter description is missing.",
+      "revId": "bf5b2a83fa6db7ea36eac61e5f3f62973f9212dd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "220d2f77_4fbef6e4",
+        "filename": "core/java/android/bluetooth/le/BluetoothLeBroadcast.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1106424
+      },
+      "writtenOn": "2021-11-10T21:22:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "55f1bc04_f38bb2a6",
       "revId": "bf5b2a83fa6db7ea36eac61e5f3f62973f9212dd",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
