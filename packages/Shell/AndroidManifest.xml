@@ -562,6 +562,9 @@
     <uses-permission android:name="android.permission.UWB_PRIVILEGED" />
     <uses-permission android:name="android.permission.UWB_RANGING" />
 
+    <!-- Permissions required for CTS test - CtsWifiTestCases -->
+    <uses-permission android:name="android.permission.NEARBY_WIFI_DEVICES" />
+
     <!-- Permission required for CTS test - CtsAlarmManagerTestCases -->
     <uses-permission android:name="android.permission.UPDATE_DEVICE_STATS" />
 
