@@ -177,7 +177,11 @@ public class NetdEventListenerService extends INetdEventListener.Stub {
                 (transports != 0 && metrics != null && metrics.transports != transports);
         collectPendingMetricsSnapshot(timeMs, needEnforcingCollectMetricsAndUpdateTransports);
         if (metrics == null || needEnforcingCollectMetricsAndUpdateTransports) {
-            metrics = new NetworkMetrics(netId, transports, mConnectTb);
+            if (metrics == null) {
+                metrics = new NetworkMetrics(netId, transports, mConnectTb);
+            } else {
+                metrics = new NetworkMetrics(metrics, transports);
+            }
             mNetworkMetrics.put(netId, metrics);
         }
         return metrics;

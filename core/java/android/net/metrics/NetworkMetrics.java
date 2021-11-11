@@ -59,6 +59,14 @@ public class NetworkMetrics {
         this.summary = new Summary(netId, transports);
     }
 
+    public NetworkMetrics(NetworkMetrics metrics, long transports) {
+        this.netId = metrics.netId;
+        this.transports = transports;
+        this.connectMetrics = metrics.connectMetrics;
+        this.dnsMetrics = metrics.dnsMetrics;
+        this.summary = new Summary(metrics.netId, transports);
+    }
+
     /**
      * Get currently pending Summary statistics, if any, for this NetworkMetrics, merge them
      * into the long running Summary statistics of this NetworkMetrics, and also clear them.
