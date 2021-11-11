@@ -16,6 +16,52 @@
       "message": "This seems fine.\n\nWhile we\u0027re at it, is there anything else we want to update about contexts? ",
       "revId": "01d7b59ee73a1fd80ac8bc4e3cc2145c00e147e5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d9172693_e06048a7",
+        "filename": "core/java/android/content/Context.java",
+        "patchSetId": 38
+      },
+      "lineNbr": 6447,
+      "author": {
+        "id": 1381453
+      },
+      "writtenOn": "2021-11-11T07:59:27Z",
+      "side": 1,
+      "message": "{@link ClassLoader}",
+      "range": {
+        "startLine": 6447,
+        "startChar": 33,
+        "endLine": 6447,
+        "endChar": 57
+      },
+      "revId": "01d7b59ee73a1fd80ac8bc4e3cc2145c00e147e5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6e2c5c34_71ab44bf",
+        "filename": "core/java/android/view/WindowManager.java",
+        "patchSetId": 38
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1381453
+      },
+      "writtenOn": "2021-11-11T07:59:27Z",
+      "side": 1,
+      "message": "Overall LGTM.\nJust wondering why not using {@code WindowManager}?\n\nSo does below javaDoc.",
+      "range": {
+        "startLine": 132,
+        "startChar": 3,
+        "endLine": 132,
+        "endChar": 29
+      },
+      "revId": "01d7b59ee73a1fd80ac8bc4e3cc2145c00e147e5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
