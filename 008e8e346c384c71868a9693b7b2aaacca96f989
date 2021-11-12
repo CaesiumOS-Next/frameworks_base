@@ -33,6 +33,24 @@
       "message": "help merge this CL",
       "revId": "008e8e346c384c71868a9693b7b2aaacca96f989",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4272c790_025bf323",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1576211
+      },
+      "writtenOn": "2021-11-12T11:38:20Z",
+      "side": 1,
+      "message": "I think it makes sense to merge this regardless of who the owner is.",
+      "parentUuid": "5f2f43fb_ec0fa127",
+      "revId": "008e8e346c384c71868a9693b7b2aaacca96f989",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
