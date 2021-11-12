@@ -4465,6 +4465,18 @@ final public class MediaCodec {
     public static final String PARAMETER_KEY_HDR10_PLUS_INFO = MediaFormat.KEY_HDR10_PLUS_INFO;
 
     /**
+     * Enable/disable encoding statistics export.
+     * When enabled, the H/W encoder is requested to export available encoding statistics
+     * The value is an Integer object containing the value 1 to enable
+     * or the value 0 to disable.
+     *
+     * @see #setParameters(Bundle)
+     * @see MediaFormat#KEY_ENCODING_STATISTICS
+     */
+    public static final String PARAMETER_KEY_ENCODING_STATISTICS =
+            MediaFormat.KEY_ENCODING_STATISTICS;
+
+    /**
      * Enable/disable low latency decoding mode.
      * When enabled, the decoder doesn't hold input and output data more than
      * required by the codec standards.

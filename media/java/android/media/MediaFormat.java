@@ -1102,6 +1102,17 @@ public final class MediaFormat {
     public static final String KEY_VIDEO_QP_B_MIN = "video-qp-b-min";
 
     /**
+     * A key describing whether the encoding statistics is requested for H/W video encoder to
+     * export.
+     *
+     * The associated value is an integer.
+     * Supported values are 0/1, where 0 means statistics are not requeted and 1 means
+     * they are requested.
+     */
+
+    public static final String KEY_ENCODING_STATISTICS = "encoding-statistics";
+
+    /**
      * A key describing the audio session ID of the AudioTrack associated
      * to a tunneled video codec.
      * The associated value is an integer.
