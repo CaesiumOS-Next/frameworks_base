@@ -51,6 +51,23 @@
       "parentUuid": "5f2f43fb_ec0fa127",
       "revId": "008e8e346c384c71868a9693b7b2aaacca96f989",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "07133bab_f6beb8f5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1136369
+      },
+      "writtenOn": "2021-11-12T12:00:36Z",
+      "side": 1,
+      "message": "Jin, Jaewan or Hyundo, could you approve this change as you are the owners?",
+      "revId": "008e8e346c384c71868a9693b7b2aaacca96f989",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
