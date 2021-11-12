@@ -1,0 +1,165 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aac4070e_abe4f950",
+        "filename": "core/java/android/bluetooth/BluetoothBapBroadcastSource.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1121403
+      },
+      "writtenOn": "2021-11-12T19:31:46Z",
+      "side": 1,
+      "message": "maybe rename to BluetoothLeBroadcast to conform with existing BluetoothLeAudio API\n\nSource is implied implicitly",
+      "range": {
+        "startLine": 37,
+        "startChar": 19,
+        "endLine": 37,
+        "endChar": 46
+      },
+      "revId": "5837b95ec007ed7f13357bc683e3eda057483fb3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0a542f36_f8cda1c5",
+        "filename": "core/java/android/bluetooth/BluetoothBapBroadcastSource.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1121403
+      },
+      "writtenOn": "2021-11-12T19:31:46Z",
+      "side": 1,
+      "message": "What does close() do? Could we add documentations to it or remove?",
+      "range": {
+        "startLine": 94,
+        "startChar": 0,
+        "endLine": 98,
+        "endChar": 5
+      },
+      "revId": "5837b95ec007ed7f13357bc683e3eda057483fb3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0885f7f5_c9ed94a6",
+        "filename": "core/java/android/bluetooth/BluetoothBapBroadcastSource.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1121403
+      },
+      "writtenOn": "2021-11-12T19:31:46Z",
+      "side": 1,
+      "message": "Add a new profile in BluetoothProfile and name is as LE_AUDIO_BROADCAST ?",
+      "range": {
+        "startLine": 108,
+        "startChar": 36,
+        "endLine": 108,
+        "endChar": 40
+      },
+      "revId": "5837b95ec007ed7f13357bc683e3eda057483fb3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "54a62c24_6998d709",
+        "filename": "core/java/android/bluetooth/BluetoothBapBroadcastSource.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1121403
+      },
+      "writtenOn": "2021-11-12T19:31:46Z",
+      "side": 1,
+      "message": "so it seems there are four valid ways of using this API\n\nsetEncryptionKey(true, nonNullKey, length of 4 or 16 bytes, useExisting \u003d false);\n-\u003e this will replace existing key with the input key\n\nsetEncryptionKey(true, null, length of 4 or 16 bytes, useExisting \u003d false);\n-\u003e this will ask the system to generate a key that can be retrieved via getEncryptionKey()\n\nsetEncryptionKey(true, null, length of 4 or 16 bytes, useExisting \u003d true);\n-\u003e this will ask the system to enable encryption, but does not refresh the key\n\nsetEncryptionKey(false, doNotCare, doNotCare, doNotCare);\n-\u003e this will disable encryption (and maybe remove existing key?)\n\nall other methods of using this APIs seems invalid should throw IllegalArgumentException\n\nShould we make these use cases more explicit in the comments? or add code to enforce these logic in this run?",
+      "range": {
+        "startLine": 200,
+        "startChar": 4,
+        "endLine": 200,
+        "endChar": 97
+      },
+      "revId": "5837b95ec007ed7f13357bc683e3eda057483fb3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "15fed01c_f6af4fa5",
+        "filename": "core/java/android/bluetooth/BluetoothBapBroadcastSource.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1121403
+      },
+      "writtenOn": "2021-11-12T19:31:46Z",
+      "side": 1,
+      "message": "could we print more arguments such as enable, keyLength, whether key is null, and useExisting",
+      "range": {
+        "startLine": 201,
+        "startChar": 16,
+        "endLine": 201,
+        "endChar": 41
+      },
+      "revId": "5837b95ec007ed7f13357bc683e3eda057483fb3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d06fdc6c_feead957",
+        "filename": "core/java/android/bluetooth/BluetoothStatusCodes.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1121403
+      },
+      "writtenOn": "2021-11-12T19:31:46Z",
+      "side": 1,
+      "message": "ERROR_LE_AUDIO_BROADCAST_*****",
+      "range": {
+        "startLine": 214,
+        "startChar": 28,
+        "endLine": 214,
+        "endChar": 37
+      },
+      "revId": "5837b95ec007ed7f13357bc683e3eda057483fb3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b86ee110_01ea6aa2",
+        "filename": "core/java/android/bluetooth/BluetoothStatusCodes.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 224,
+      "author": {
+        "id": 1121403
+      },
+      "writtenOn": "2021-11-12T19:31:46Z",
+      "side": 1,
+      "message": "same as above\n\nWe don\u0027t expose the word BAP in the API layer",
+      "range": {
+        "startLine": 224,
+        "startChar": 34,
+        "endLine": 224,
+        "endChar": 38
+      },
+      "revId": "5837b95ec007ed7f13357bc683e3eda057483fb3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
