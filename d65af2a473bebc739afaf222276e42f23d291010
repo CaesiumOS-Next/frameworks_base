@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5dbaeab4_013241ff",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1124543
+      },
+      "writtenOn": "2021-11-12T19:03:27Z",
+      "side": 1,
+      "message": "It feels a bit odd to me to be checking MODIFY for a getter API but I\u0027ll leave that up to API council.",
+      "revId": "d65af2a473bebc739afaf222276e42f23d291010",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "178f7737_ee6247c8",
+        "filename": "telephony/java/android/telephony/TelephonyManager.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 12323,
+      "author": {
+        "id": 1124543
+      },
+      "writtenOn": "2021-11-12T19:03:27Z",
+      "side": 1,
+      "message": "Update @ReqPerm with MODIFY?",
+      "range": {
+        "startLine": 12323,
+        "startChar": 5,
+        "endLine": 12323,
+        "endChar": 23
+      },
+      "revId": "d65af2a473bebc739afaf222276e42f23d291010",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
