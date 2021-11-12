@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c7605dba_8151b385",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 38
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1903265
+      },
+      "writtenOn": "2021-11-12T17:22:05Z",
+      "side": 1,
+      "message": "I would have to review the docs to know if there are any other updates needed regarding contexts. I would be happy to do that at some point, but perhaps the other reviewers can provide some insights.",
+      "parentUuid": "89c8a102_db02b3bc",
+      "revId": "01d7b59ee73a1fd80ac8bc4e3cc2145c00e147e5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d9172693_e06048a7",
@@ -41,6 +59,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "65250ce3_13276792",
+        "filename": "core/java/android/content/Context.java",
+        "patchSetId": 38
+      },
+      "lineNbr": 6447,
+      "author": {
+        "id": 1903265
+      },
+      "writtenOn": "2021-11-12T17:22:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d9172693_e06048a7",
+      "range": {
+        "startLine": 6447,
+        "startChar": 33,
+        "endLine": 6447,
+        "endChar": 57
+      },
+      "revId": "01d7b59ee73a1fd80ac8bc4e3cc2145c00e147e5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6e2c5c34_71ab44bf",
@@ -54,6 +96,30 @@
       "writtenOn": "2021-11-11T07:59:27Z",
       "side": 1,
       "message": "Overall LGTM.\nJust wondering why not using {@code WindowManager}?\n\nSo does below javaDoc.",
+      "range": {
+        "startLine": 132,
+        "startChar": 3,
+        "endLine": 132,
+        "endChar": 29
+      },
+      "revId": "01d7b59ee73a1fd80ac8bc4e3cc2145c00e147e5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "96a44444_82ce0666",
+        "filename": "core/java/android/view/WindowManager.java",
+        "patchSetId": 38
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1903265
+      },
+      "writtenOn": "2021-11-12T17:22:05Z",
+      "side": 1,
+      "message": "Yes, @code would work, but I think it\u0027s really intended for strings that include angle brackets, for example: {@code List\u003cString\u003e}.",
+      "parentUuid": "6e2c5c34_71ab44bf",
       "range": {
         "startLine": 132,
         "startChar": 3,
