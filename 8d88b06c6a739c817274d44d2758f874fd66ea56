@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "28a6ce4b_042de058",
+        "filename": "core/java/android/bluetooth/BluetoothBapBroadcastSource.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1121403
+      },
+      "writtenOn": "2021-11-12T00:47:59Z",
+      "side": 1,
+      "message": "this is not used in the current API design, please remove it.",
+      "range": {
+        "startLine": 84,
+        "startChar": 0,
+        "endLine": 84,
+        "endChar": 38
+      },
+      "revId": "8d88b06c6a739c817274d44d2758f874fd66ea56",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fc7c6914_c861bd95",
+        "filename": "core/java/android/bluetooth/BluetoothBapBroadcastSource.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1121403
+      },
+      "writtenOn": "2021-11-12T00:47:59Z",
+      "side": 1,
+      "message": "same here",
+      "range": {
+        "startLine": 94,
+        "startChar": 0,
+        "endLine": 94,
+        "endChar": 56
+      },
+      "revId": "8d88b06c6a739c817274d44d2758f874fd66ea56",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4597c4b7_86db34ca",
+        "filename": "core/java/android/bluetooth/BluetoothBapBroadcastSource.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1121403
+      },
+      "writtenOn": "2021-11-12T00:47:59Z",
+      "side": 1,
+      "message": "could API user set a byte[] for the encryption key here?\n\nif the byte[] is null, then the system automatically generate one",
+      "range": {
+        "startLine": 201,
+        "startChar": 15,
+        "endLine": 201,
+        "endChar": 28
+      },
+      "revId": "8d88b06c6a739c817274d44d2758f874fd66ea56",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
