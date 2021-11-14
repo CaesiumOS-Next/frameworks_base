@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b376ef72_ef98baf2",
+        "filename": "telephony/java/android/telephony/SubscriptionManager.java",
+        "patchSetId": 8
+      },
+      "lineNbr": 1060,
+      "author": {
+        "id": 1112039
+      },
+      "writtenOn": "2021-11-14T20:46:16Z",
+      "side": 1,
+      "message": "remove the sapcing between lines",
+      "range": {
+        "startLine": 1052,
+        "startChar": 0,
+        "endLine": 1060,
+        "endChar": 6
+      },
+      "revId": "8b7bf7c729155d91ac1648376c64da0a6b749008",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
