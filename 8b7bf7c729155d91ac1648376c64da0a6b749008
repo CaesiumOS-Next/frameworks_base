@@ -22,6 +22,29 @@
       },
       "revId": "8b7bf7c729155d91ac1648376c64da0a6b749008",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "585b5033_f56a7307",
+        "filename": "telephony/java/android/telephony/SubscriptionManager.java",
+        "patchSetId": 8
+      },
+      "lineNbr": 1063,
+      "author": {
+        "id": 1112039
+      },
+      "writtenOn": "2021-11-14T20:58:37Z",
+      "side": 1,
+      "message": "My discussion with hunter was to not have \"default\" value and handle the the race condition in a generic way instead of updating every carrier config. Please check with Hunter, atleast that is what I thought as our conclusion",
+      "range": {
+        "startLine": 1063,
+        "startChar": 0,
+        "endLine": 1063,
+        "endChar": 54
+      },
+      "revId": "8b7bf7c729155d91ac1648376c64da0a6b749008",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
