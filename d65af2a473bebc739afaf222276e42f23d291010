@@ -87,6 +87,30 @@
       },
       "revId": "d65af2a473bebc739afaf222276e42f23d291010",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "830c956b_85871e57",
+        "filename": "telephony/java/android/telephony/TelephonyManager.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 12323,
+      "author": {
+        "id": 1124543
+      },
+      "writtenOn": "2021-11-15T23:06:56Z",
+      "side": 1,
+      "message": "Popping the stack a bit, do we think actually supporting MODIFY is the right call here going forward? If anything imo this should be turned into a target SDK check where app target \u003e\u003d T -\u003e MODIFY no longer works for this API (and related APIs).\n\nThat saves us from having to document MODIFY on the other APIs that popped up more recently than isDataEnabled.",
+      "parentUuid": "7548b197_d5443c77",
+      "range": {
+        "startLine": 12323,
+        "startChar": 5,
+        "endLine": 12323,
+        "endChar": 23
+      },
+      "revId": "d65af2a473bebc739afaf222276e42f23d291010",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
