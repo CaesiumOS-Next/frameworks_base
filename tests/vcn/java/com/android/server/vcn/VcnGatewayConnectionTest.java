@@ -25,6 +25,7 @@ import static android.net.NetworkCapabilities.NET_CAPABILITY_NOT_VCN_MANAGED;
 import static android.net.NetworkCapabilities.TRANSPORT_CELLULAR;
 import static android.net.NetworkCapabilities.TRANSPORT_WIFI;
 
+import static com.android.net.module.util.NetworkStackConstants.IPV6_MIN_MTU;
 import static com.android.server.vcn.VcnGatewayConnection.DUMMY_ADDR;
 import static com.android.server.vcn.VcnGatewayConnection.VcnChildSessionConfiguration;
 import static com.android.server.vcn.VcnGatewayConnection.VcnIkeSession;
@@ -47,6 +48,7 @@ import android.net.LinkAddress;
 import android.net.LinkProperties;
 import android.net.Network;
 import android.net.NetworkCapabilities;
+import android.net.RouteInfo;
 import android.net.TelephonyNetworkSpecifier;
 import android.net.vcn.VcnGatewayConnectionConfigTest;
 import android.net.vcn.VcnTransportInfo;
@@ -65,6 +67,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+import java.net.Inet6Address;
 import java.net.InetAddress;
 import java.util.Arrays;
 import java.util.Collections;
@@ -89,7 +92,7 @@ public class VcnGatewayConnectionTest extends VcnGatewayConnectionTestBase {
     private static final SubscriptionInfo TEST_SUBINFO_2 = mock(SubscriptionInfo.class);
     private static final Map<Integer, ParcelUuid> TEST_SUBID_TO_GROUP_MAP;
     private static final String TEST_TCP_BUFFER_SIZES = "1,2,3,4,5,6";
-    private static final int TEST_MTU = 1300;
+    private static final int TEST_MTU = 1440;
     private static final int TEST_MTU_DELTA = 64;
     private static final List<LinkAddress> TEST_INTERNAL_ADDRESSES =
             Arrays.asList(new LinkAddress(DUMMY_ADDR, 16));
@@ -233,6 +236,63 @@ public class VcnGatewayConnectionTest extends VcnGatewayConnectionTestBase {
         assertEquals(TEST_DNS_ADDRESSES, vcnLp1.getDnsServers());
         assertEquals(TEST_TCP_BUFFER_SIZES, vcnLp1.getTcpBufferSizes());
         assertEquals(TEST_MTU_DELTA, vcnLp1.getMtu() - vcnLp2.getMtu());
+    }
+
+    @Test
+    public void testBuildLinkPropertiesNoIpv6Addr() throws Exception {
+        verifyIpv6RoutesSupport(
+                TEST_MTU, new LinkAddress(DUMMY_ADDR, 16), false /* expectIpv6Routes */);
+    }
+
+    @Test
+    public void testBuildLinkPropertiesMtuTooLowForIpv6() throws Exception {
+        verifyIpv6RoutesSupport(IPV6_MIN_MTU, TEST_INTERNAL_ADDR, false /* expectIpv6Routes */);
+    }
+
+    @Test
+    public void testBuildLinkPropertiesWithIpv6Support() throws Exception {
+        verifyIpv6RoutesSupport(TEST_MTU, TEST_INTERNAL_ADDR, true /* expectIpv6Routes */);
+    }
+
+    private void verifyIpv6RoutesSupport(
+            int underlyingMtu, LinkAddress internalAddr, boolean expectIpv6Routes)
+            throws Exception {
+        final IpSecTunnelInterface tunnelIface =
+                mContext.getSystemService(IpSecManager.class)
+                        .createIpSecTunnelInterface(
+                                DUMMY_ADDR, DUMMY_ADDR, TEST_UNDERLYING_NETWORK_RECORD_1.network);
+
+        final LinkProperties underlyingLp = new LinkProperties();
+        underlyingLp.setInterfaceName(LOOPBACK_IFACE);
+        underlyingLp.setTcpBufferSizes(TEST_TCP_BUFFER_SIZES);
+        doReturn(underlyingMtu).when(mDeps).getUnderlyingIfaceMtu(LOOPBACK_IFACE);
+
+        // Provide an IPv6 address, to verify MTUs were checked.
+        final VcnChildSessionConfiguration childSessionConfig =
+                mock(VcnChildSessionConfiguration.class);
+        doReturn(Arrays.asList(internalAddr)).when(childSessionConfig).getInternalAddresses();
+        doReturn(TEST_DNS_ADDRESSES).when(childSessionConfig).getInternalDnsServers();
+
+        UnderlyingNetworkRecord record =
+                new UnderlyingNetworkRecord(
+                        mock(Network.class, CALLS_REAL_METHODS),
+                        new NetworkCapabilities.Builder().build(),
+                        underlyingLp,
+                        false);
+
+        final LinkProperties lp =
+                mGatewayConnection.buildConnectedLinkProperties(
+                        VcnGatewayConnectionConfigTest.buildTestConfig(),
+                        tunnelIface,
+                        childSessionConfig,
+                        record);
+
+        // Verify that no IPv6 routes were added
+        boolean hasIpv6Route = false;
+        for (RouteInfo route : lp.getRoutes()) {
+            hasIpv6Route |= route.getDestination().getAddress() instanceof Inet6Address;
+        }
+        assertEquals(expectIpv6Routes, hasIpv6Route);
     }
 
     @Test
