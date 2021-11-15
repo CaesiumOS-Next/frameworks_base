@@ -45,6 +45,30 @@
       },
       "revId": "8b7bf7c729155d91ac1648376c64da0a6b749008",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b0444e80_5b1d87e4",
+        "filename": "telephony/java/android/telephony/SubscriptionManager.java",
+        "patchSetId": 8
+      },
+      "lineNbr": 1063,
+      "author": {
+        "id": 1124543
+      },
+      "writtenOn": "2021-11-15T18:27:22Z",
+      "side": 1,
+      "message": "So I assume this is being introduced to provide a default value for CarrierConfigManager#getDefaultConfig.\n\nIt doesn\u0027t look like there is precedent for resolving an XML-specified default value from resources at runtime inside CarrierConfigManager, so I don\u0027t think there\u0027s any other way we can specify a value in the default bundle?",
+      "parentUuid": "585b5033_f56a7307",
+      "range": {
+        "startLine": 1063,
+        "startChar": 0,
+        "endLine": 1063,
+        "endChar": 54
+      },
+      "revId": "8b7bf7c729155d91ac1648376c64da0a6b749008",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
