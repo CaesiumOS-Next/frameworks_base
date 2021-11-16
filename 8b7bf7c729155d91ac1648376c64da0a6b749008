@@ -69,6 +69,30 @@
       },
       "revId": "8b7bf7c729155d91ac1648376c64da0a6b749008",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1b5a0160_8f66ec35",
+        "filename": "telephony/java/android/telephony/SubscriptionManager.java",
+        "patchSetId": 8
+      },
+      "lineNbr": 1063,
+      "author": {
+        "id": 1112039
+      },
+      "writtenOn": "2021-11-16T07:58:16Z",
+      "side": 1,
+      "message": "Nathan, can you please confirm. i see unkown is used as default value for carrier config. where exactly you plan to use default.",
+      "parentUuid": "b0444e80_5b1d87e4",
+      "range": {
+        "startLine": 1063,
+        "startChar": 0,
+        "endLine": 1063,
+        "endChar": 54
+      },
+      "revId": "8b7bf7c729155d91ac1648376c64da0a6b749008",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
