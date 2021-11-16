@@ -190,6 +190,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "34a9782c_2e6ebfd0",
+        "filename": "core/java/android/bluetooth/le/BluetoothLeBroadcast.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1546552
+      },
+      "writtenOn": "2021-11-16T01:17:51Z",
+      "side": 1,
+      "message": "It\u0027s cleaner for the profiles to not be bloated with all the constants. The constants are inserted into the docs via the IntDef annotation anyways, so it is clear to developers. It also reduces duplicate constants.",
+      "parentUuid": "f12358d1_2c454186",
+      "revId": "bf5b2a83fa6db7ea36eac61e5f3f62973f9212dd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e5c16ebb_f79f9788",
         "filename": "core/java/android/bluetooth/le/BluetoothLeBroadcast.java",
         "patchSetId": 4
@@ -254,6 +272,24 @@
       "side": 1,
       "message": "if I remove them, I get compile errors complaining about them being missing.\n\nFor now they throw unsupported but later we might have to change that. I have to think more about that.",
       "parentUuid": "7ae21776_6fbc711c",
+      "revId": "bf5b2a83fa6db7ea36eac61e5f3f62973f9212dd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eb3b2401_96edc61a",
+        "filename": "core/java/android/bluetooth/le/BluetoothLeBroadcast.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1546552
+      },
+      "writtenOn": "2021-11-16T01:17:51Z",
+      "side": 1,
+      "message": "Just curious, what\u0027s the rationale behind encouraging developers to use the BluetoothManager method instead?",
+      "parentUuid": "5585a7b4_25f0fa14",
       "revId": "bf5b2a83fa6db7ea36eac61e5f3f62973f9212dd",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
