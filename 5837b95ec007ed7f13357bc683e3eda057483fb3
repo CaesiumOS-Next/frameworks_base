@@ -49,6 +49,47 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "07200e3c_06ab52e2",
+        "filename": "core/java/android/bluetooth/BluetoothBapBroadcastSource.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1546552
+      },
+      "writtenOn": "2021-11-16T18:20:23Z",
+      "side": 1,
+      "message": "It\u0027s required if the class implements the AutoCloseable interface. This is recommended for any class that releases resources. This is usually where we unbind the service connection for some profiles.",
+      "parentUuid": "0a542f36_f8cda1c5",
+      "range": {
+        "startLine": 94,
+        "startChar": 0,
+        "endLine": 98,
+        "endChar": 5
+      },
+      "revId": "5837b95ec007ed7f13357bc683e3eda057483fb3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "62b272dd_069b6804",
+        "filename": "core/java/android/bluetooth/BluetoothBapBroadcastSource.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1546552
+      },
+      "writtenOn": "2021-11-16T18:20:23Z",
+      "side": 1,
+      "message": "We can remove this",
+      "revId": "5837b95ec007ed7f13357bc683e3eda057483fb3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0885f7f5_c9ed94a6",
         "filename": "core/java/android/bluetooth/BluetoothBapBroadcastSource.java",
         "patchSetId": 7
@@ -66,6 +107,64 @@
         "endLine": 108,
         "endChar": 40
       },
+      "revId": "5837b95ec007ed7f13357bc683e3eda057483fb3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ed9636d5_a69c7629",
+        "filename": "core/java/android/bluetooth/BluetoothBapBroadcastSource.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1546552
+      },
+      "writtenOn": "2021-11-16T18:20:23Z",
+      "side": 1,
+      "message": "Why the BluetoothManager methods over these? Also, I would recommend explicitly marking these @hide if they aren\u0027t going to be used (just to make sure they don\u0027t accidentally land in the API surface if this class is no longer @hide).",
+      "parentUuid": "0885f7f5_c9ed94a6",
+      "range": {
+        "startLine": 108,
+        "startChar": 36,
+        "endLine": 108,
+        "endChar": 40
+      },
+      "revId": "5837b95ec007ed7f13357bc683e3eda057483fb3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bc926997_e7ad3153",
+        "filename": "core/java/android/bluetooth/BluetoothBapBroadcastSource.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1546552
+      },
+      "writtenOn": "2021-11-16T18:20:23Z",
+      "side": 1,
+      "message": "For all of these, you don\u0027t need to link the IntDef or list the possible values. The IntDef annotation automatically inserts the possible values into the JavaDoc (either the @param or @return tag).",
+      "revId": "5837b95ec007ed7f13357bc683e3eda057483fb3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b7c80c6d_18e60d00",
+        "filename": "core/java/android/bluetooth/BluetoothBapBroadcastSource.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1546552
+      },
+      "writtenOn": "2021-11-16T18:20:23Z",
+      "side": 1,
+      "message": "We should define constants for the key length",
       "revId": "5837b95ec007ed7f13357bc683e3eda057483fb3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
