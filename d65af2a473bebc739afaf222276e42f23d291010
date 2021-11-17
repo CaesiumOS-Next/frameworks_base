@@ -135,6 +135,30 @@
       },
       "revId": "d65af2a473bebc739afaf222276e42f23d291010",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7f3ae538_69c45308",
+        "filename": "telephony/java/android/telephony/TelephonyManager.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 12323,
+      "author": {
+        "id": 1112039
+      },
+      "writtenOn": "2021-11-17T21:21:32Z",
+      "side": 1,
+      "message": "btw we can not pull this to qpr if make an api change. So let me get this in as it is without an api change.",
+      "parentUuid": "a2057474_48d3fab8",
+      "range": {
+        "startLine": 12323,
+        "startChar": 5,
+        "endLine": 12323,
+        "endChar": 23
+      },
+      "revId": "d65af2a473bebc739afaf222276e42f23d291010",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
