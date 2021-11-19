@@ -159,6 +159,30 @@
       },
       "revId": "d65af2a473bebc739afaf222276e42f23d291010",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f2aff284_438f0e24",
+        "filename": "telephony/java/android/telephony/TelephonyManager.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 12323,
+      "author": {
+        "id": 1081638
+      },
+      "writtenOn": "2021-11-19T22:50:46Z",
+      "side": 1,
+      "message": "Regarding \"do we think actually supporting MODIFY is the right call here going forward?\", IIRC, we intentionally removed this permission because we thought the \u0027get\u0027 API should not be gated by the \u0027set\u0027 permission.\n\nI think \"target \u003e\u003d T -\u003e MODIFY no longer works for this API\" is the right way to go.",
+      "parentUuid": "7f3ae538_69c45308",
+      "range": {
+        "startLine": 12323,
+        "startChar": 5,
+        "endLine": 12323,
+        "endChar": 23
+      },
+      "revId": "d65af2a473bebc739afaf222276e42f23d291010",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
