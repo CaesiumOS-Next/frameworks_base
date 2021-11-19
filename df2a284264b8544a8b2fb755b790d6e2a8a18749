@@ -22,6 +22,30 @@
       },
       "revId": "df2a284264b8544a8b2fb755b790d6e2a8a18749",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8e53d9fa_6ed8077f",
+        "filename": "core/java/android/os/ParcelFileDescriptor.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1013508
+      },
+      "writtenOn": "2021-11-19T20:47:40Z",
+      "side": 1,
+      "message": "Please use this existing method instead:\n\n    public static ParcelFileDescriptor dup(FileDescriptor orig) throws IOException {",
+      "parentUuid": "982f4539_1539badc",
+      "range": {
+        "startLine": 189,
+        "startChar": 0,
+        "endLine": 189,
+        "endChar": 52
+      },
+      "revId": "df2a284264b8544a8b2fb755b790d6e2a8a18749",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
