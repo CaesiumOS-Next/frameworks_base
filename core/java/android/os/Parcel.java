@@ -4397,7 +4397,7 @@ public final class Parcel {
     /**
      * Same as {@link #readSerializable()} but accepts {@code loader} parameter
      * as the primary classLoader for resolving the Serializable class; and {@code clazz} parameter
-     * as the required type.
+     * as the required type. If {@code loader} is null, it uses BootClassLoader by default.
      *
      * @throws BadParcelableException Throws BadParcelableException if the item to be deserialized
      * is not an instance of that class or any of its children class or there there was an error
@@ -4407,7 +4407,8 @@ public final class Parcel {
     public <T extends Serializable> T readSerializable(@Nullable ClassLoader loader,
             @NonNull Class<T> clazz) {
         Objects.requireNonNull(clazz);
-        return readSerializableInternal(loader, clazz);
+        return readSerializableInternal(
+                loader == null ? getClass().getClassLoader() : loader, clazz);
     }
 
     /**
