@@ -16,6 +16,24 @@
       "message": "Code LGTM, just wanted to check why this change is in AOSP? Is the Connectivity module developed in AOSP?",
       "revId": "e76537414293edd2bb6c02f5a13906a4a26756a1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ffed3441_51b232dd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308473
+      },
+      "writtenOn": "2021-11-23T16:34:13Z",
+      "side": 1,
+      "message": "Yes, we are developing connectivity module in AOSP.",
+      "parentUuid": "7bbc80a3_64ac155c",
+      "revId": "e76537414293edd2bb6c02f5a13906a4a26756a1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
