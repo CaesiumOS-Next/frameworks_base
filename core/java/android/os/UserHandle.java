@@ -66,7 +66,7 @@ public final class UserHandle implements Parcelable {
     /** @hide A user handle to indicate that we would like to send to the current
      *  user, but if this is calling from a user process then we will send it
      *  to the caller's user instead of failing with a security exception */
-    @UnsupportedAppUsage
+    @SystemApi
     public static final @NonNull UserHandle CURRENT_OR_SELF = new UserHandle(USER_CURRENT_OR_SELF);
 
     /** @hide An undefined user id */
