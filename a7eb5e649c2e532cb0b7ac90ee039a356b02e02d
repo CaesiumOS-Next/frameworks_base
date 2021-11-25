@@ -16,6 +16,23 @@
       "message": "Base",
       "revId": "a7eb5e649c2e532cb0b7ac90ee039a356b02e02d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2d4d5eaa_255e79db",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-11-25T03:56:13Z",
+      "side": 1,
+      "message": "I see that this interface is marked as vintf stable [1]. That basically means we can\u0027t make backwards incompatible changes in this interface. However, since this interface hasn\u0027t yet been frozen, we can still make any change to the \u0027current\u0027 version. Thus +1\u0027ing the AIDL-API-Review bit.\n\n[1] https://source.corp.google.com/android/frameworks/base/omapi/aidl/Android.bp;rcl\u003d82294fde4949a8dd0860908cab117a83e4871ead;l\u003d23\n\n",
+      "revId": "a7eb5e649c2e532cb0b7ac90ee039a356b02e02d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
