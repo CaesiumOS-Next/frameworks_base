@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a25c057d_514935df",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1583555
+      },
+      "writtenOn": "2021-11-26T11:14:23Z",
+      "side": 1,
+      "message": "Hi Hung-ying,\n\nCan you review for DrNo? The patch was already merged in master in https://android-review.googlesource.com/c/platform/packages/apps/Car/SystemUI/+/1890180, but this is not a direct cherry-pick since the code has been moved to a different project.\n\nThanks ",
+      "revId": "603be132290fd8848eec5ac8debba8152c221b62",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
