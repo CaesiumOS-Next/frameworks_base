@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c3edc98f_46bac0e3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1092759
+      },
+      "writtenOn": "2021-11-27T06:12:25Z",
+      "side": 1,
+      "message": "Hi Michael, the bug should be introduced by your change, please help to review and submit.\n\n```\ncommit 06aff34a8f02d43ab963c04cdeeb3a0fffbee8c2\nAuthor: Michael Wright \u003cmichaelwr@google.com\u003e\nDate:   Fri Aug 6 20:05:33 2021 +0100\n\n    Introduce new lock to avoid lock-ordering issues.\n    \n    Because of the way DMD was designed, technically the class lock is below\n    the syncroot in the lock ordering, meaning we can\u0027t call into any\n    general display classes while holding the class lock without creating\n    the possibility of deadlock. There\u0027s no real reason to use the class\n    lock in this situation though, so just introduce a local lock to\n    SensorObserver that can be above the syncroot and thus call into the\n    rest of the display stack at will.\n    \n    Bug: 195713475\n    Test: atest DisplayModeDirectorTest\n    Change-Id: Ie32660ae3a3935f0fd4001ca73fecba1e4bbba7d\n\n```",
+      "revId": "a7a5fbcffdafe2f28708c3beca2a5bbc9a7c8096",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
