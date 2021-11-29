@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "55cf730b_66c808a4",
+        "filename": "tools/locked_region_code_injection/test/lockedregioncodeinjection/TestMain.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1863710
+      },
+      "writtenOn": "2021-11-29T09:33:47Z",
+      "side": 1,
+      "message": "I haven\u0027t modified this line and anyway it qualifies as an exception to the line length limit rule.",
+      "revId": "c30e218e6c245e482f3ab591c7bb7df097661494",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6e37325f_57a918e1",
+        "filename": "tools/locked_region_code_injection/test/lockedregioncodeinjection/TestMain.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1863710
+      },
+      "writtenOn": "2021-11-29T09:33:47Z",
+      "side": 1,
+      "message": "I haven\u0027t modified this line and anyway it qualifies as an exception to the line length limit rule.",
+      "revId": "c30e218e6c245e482f3ab591c7bb7df097661494",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
