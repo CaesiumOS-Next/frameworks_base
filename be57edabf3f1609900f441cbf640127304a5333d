@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "08ed609c_531d665c",
+        "filename": "packages/Nsd/service/src/com/android/server/NsdServiceInitializer.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1288034
+      },
+      "writtenOn": "2021-11-29T11:23:31Z",
+      "side": 1,
+      "message": "Can you put this in com.android.connectivity ? It would make it easier to separate as module code (not putting the current initializers in com.android.connectivity was a mistake)",
+      "range": {
+        "startLine": 17,
+        "startChar": 8,
+        "endLine": 17,
+        "endChar": 26
+      },
+      "revId": "be57edabf3f1609900f441cbf640127304a5333d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d112f26e_d1ef5b04",
+        "filename": "packages/Nsd/service/src/com/android/server/NsdServiceInitializer.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1288034
+      },
+      "writtenOn": "2021-11-29T11:23:31Z",
+      "side": 1,
+      "message": "Nit: initialize",
+      "range": {
+        "startLine": 26,
+        "startChar": 30,
+        "endLine": 26,
+        "endChar": 37
+      },
+      "revId": "be57edabf3f1609900f441cbf640127304a5333d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
