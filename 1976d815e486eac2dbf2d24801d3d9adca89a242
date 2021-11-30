@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "07fd5a0e_3e931d90",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2021-11-30T14:59:57Z",
+      "side": 1,
+      "message": "Thank you for the prompt review! I\u0027m going to abandon this change and check it into the internal branch first because there are merge conflicts. We can continue the discussion there.",
+      "revId": "1976d815e486eac2dbf2d24801d3d9adca89a242",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

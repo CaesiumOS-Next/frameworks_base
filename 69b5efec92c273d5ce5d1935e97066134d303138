@@ -24,6 +24,54 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0ac6e6ee_86d7a95a",
+        "filename": "core/java/com/android/internal/os/SystemServerClassLoaderFactory.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2021-11-30T14:59:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "aaf499f0_e7b5c35c",
+      "range": {
+        "startLine": 33,
+        "startChar": 21,
+        "endLine": 33,
+        "endChar": 22
+      },
+      "revId": "69b5efec92c273d5ce5d1935e97066134d303138",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d24ba8d0_9eb464c2",
+        "filename": "core/java/com/android/internal/os/SystemServerClassLoaderFactory.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2021-11-30T14:59:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "aaf499f0_e7b5c35c",
+      "range": {
+        "startLine": 33,
+        "startChar": 21,
+        "endLine": 33,
+        "endChar": 22
+      },
+      "revId": "69b5efec92c273d5ce5d1935e97066134d303138",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1ee7be62_81cee1a5",
@@ -37,6 +85,30 @@
       "writtenOn": "2021-11-30T14:37:24Z",
       "side": 1,
       "message": "Can we avoid the need for passing it as a parameter and fetch it in getOrCreateClassLoader instead?",
+      "range": {
+        "startLine": 35,
+        "startChar": 7,
+        "endLine": 35,
+        "endChar": 79
+      },
+      "revId": "69b5efec92c273d5ce5d1935e97066134d303138",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f10d2279_afdcabc4",
+        "filename": "core/java/com/android/internal/os/SystemServerClassLoaderFactory.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2021-11-30T14:59:57Z",
+      "side": 1,
+      "message": "We can\u0027t. Before we actually start system_server, the parent class loader is owned by ZygoteInit, so SystemServerClassLoaderFactory has no access to it unless \nit\u0027s passed via the parameter.",
+      "parentUuid": "1ee7be62_81cee1a5",
       "range": {
         "startLine": 35,
         "startChar": 7,
@@ -70,6 +142,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5106a398_420f33c3",
+        "filename": "core/java/com/android/internal/os/SystemServerClassLoaderFactory.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2021-11-30T14:59:57Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "1eb960ff_ea66965e",
+      "range": {
+        "startLine": 38,
+        "startChar": 21,
+        "endLine": 38,
+        "endChar": 27
+      },
+      "revId": "69b5efec92c273d5ce5d1935e97066134d303138",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "df76f61a_6d9727cc",
@@ -93,6 +189,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "443c26bd_e6c22d95",
+        "filename": "core/java/com/android/internal/os/SystemServerClassLoaderFactory.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2021-11-30T14:59:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "df76f61a_6d9727cc",
+      "range": {
+        "startLine": 38,
+        "startChar": 74,
+        "endLine": 39,
+        "endChar": 69
+      },
+      "revId": "69b5efec92c273d5ce5d1935e97066134d303138",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c9e6a747_8b3febdb",
@@ -106,6 +226,30 @@
       "writtenOn": "2021-11-30T14:37:24Z",
       "side": 1,
       "message": "Ditto, not sure this helps.",
+      "range": {
+        "startLine": 580,
+        "startChar": 63,
+        "endLine": 582,
+        "endChar": 37
+      },
+      "revId": "69b5efec92c273d5ce5d1935e97066134d303138",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "acb5ba59_e1038b1f",
+        "filename": "core/java/com/android/internal/os/ZygoteInit.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 582,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2021-11-30T14:59:57Z",
+      "side": 1,
+      "message": "I copied it from the function above. I guess there were good reasons for having this comment. I\u0027ll check with Orion.",
+      "parentUuid": "c9e6a747_8b3febdb",
       "range": {
         "startLine": 580,
         "startChar": 63,
