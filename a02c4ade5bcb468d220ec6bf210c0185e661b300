@@ -1,0 +1,82 @@
+{
+  "comments": [
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000017915993",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1870375?revision\u003d4",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "e2a99d3e_865ae2e9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2021-12-02T18:50:30Z",
+      "side": 1,
+      "message": "#feature requires a tracking bug number",
+      "range": {
+        "startLine": 15,
+        "startChar": 4,
+        "endLine": 15,
+        "endChar": 13
+      },
+      "revId": "a02c4ade5bcb468d220ec6bf210c0185e661b300",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000017915993",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1870375?revision\u003d4",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "40ed3d58_a71efdc1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2021-12-02T18:50:30Z",
+      "side": 1,
+      "message": "\"Run the CTS Bluetooth Car Projection Test. This requires two\" is not a valid test stanza. Expected one of: gd/cert/run (--device|--rust|--rhost) (\u003cfilter\u003e) OR gd/fuzz/run (--host) \u003ctest\u003e OR atest (--host) \u003ctest\u003e",
+      "range": {
+        "startLine": 16,
+        "startChar": 5,
+        "endLine": 16,
+        "endChar": 66
+      },
+      "revId": "a02c4ade5bcb468d220ec6bf210c0185e661b300",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000017915994",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1870375?revision\u003d4",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "b9302d73_05bfa9c7",
+        "filename": "services/core/java/com/android/server/BluetoothManagerService.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 2853,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2021-12-02T18:50:30Z",
+      "side": 1,
+      "message": "Prefer to use mContext.getSystemService(BluetoothManager.class) instead to avoid the cast.",
+      "range": {
+        "startLine": 2853,
+        "startChar": 20,
+        "endLine": 2853,
+        "endChar": 65
+      },
+      "revId": "a02c4ade5bcb468d220ec6bf210c0185e661b300",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
