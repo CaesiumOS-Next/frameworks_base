@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0bd97892_f278db86",
+        "filename": "telephony/java/android/telephony/TelephonyManager.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 12417,
+      "author": {
+        "id": 1124543
+      },
+      "writtenOn": "2021-12-02T18:13:35Z",
+      "side": 1,
+      "message": "@ReqPerm either also needs \"carrier privileges\" (which it understands as the raw string) or @SuppressAutoDoc + manually document that carrier privs is accepted in addition to the other possible permissions",
+      "range": {
+        "startLine": 12417,
+        "startChar": 7,
+        "endLine": 12417,
+        "endChar": 30
+      },
+      "revId": "59a69e1b154600ad158efd5aaff03e9f4baf487d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
