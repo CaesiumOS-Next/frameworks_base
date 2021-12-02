@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b3d1356c_5421db12",
+        "filename": "core/java/android/bluetooth/BluetoothBapBroadcastSource.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1106424
+      },
+      "writtenOn": "2021-12-02T20:27:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "aac4070e_abe4f950",
+      "range": {
+        "startLine": 37,
+        "startChar": 19,
+        "endLine": 37,
+        "endChar": 46
+      },
+      "revId": "5837b95ec007ed7f13357bc683e3eda057483fb3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0a542f36_f8cda1c5",
@@ -88,6 +112,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ffb3b6bc_f9c93cf2",
+        "filename": "core/java/android/bluetooth/BluetoothBapBroadcastSource.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1106424
+      },
+      "writtenOn": "2021-12-02T20:27:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "62b272dd_069b6804",
+      "revId": "5837b95ec007ed7f13357bc683e3eda057483fb3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0885f7f5_c9ed94a6",
@@ -135,6 +177,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "77f7836e_7ec09044",
+        "filename": "core/java/android/bluetooth/BluetoothBapBroadcastSource.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1106424
+      },
+      "writtenOn": "2021-12-02T20:27:51Z",
+      "side": 1,
+      "message": "This is how Qualcomm was doing it but I have changed it now since LE Audio broadcasts do not establish a connection.",
+      "parentUuid": "ed9636d5_a69c7629",
+      "range": {
+        "startLine": 108,
+        "startChar": 36,
+        "endLine": 108,
+        "endChar": 40
+      },
+      "revId": "5837b95ec007ed7f13357bc683e3eda057483fb3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bc926997_e7ad3153",
@@ -148,6 +214,24 @@
       "writtenOn": "2021-11-16T18:20:23Z",
       "side": 1,
       "message": "For all of these, you don\u0027t need to link the IntDef or list the possible values. The IntDef annotation automatically inserts the possible values into the JavaDoc (either the @param or @return tag).",
+      "revId": "5837b95ec007ed7f13357bc683e3eda057483fb3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bcaad91c_4a4f69fe",
+        "filename": "core/java/android/bluetooth/BluetoothBapBroadcastSource.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1106424
+      },
+      "writtenOn": "2021-12-02T20:27:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bc926997_e7ad3153",
       "revId": "5837b95ec007ed7f13357bc683e3eda057483fb3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -169,6 +253,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "98601e29_e8dfdcf9",
+        "filename": "core/java/android/bluetooth/BluetoothBapBroadcastSource.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1106424
+      },
+      "writtenOn": "2021-12-02T20:27:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b7c80c6d_18e60d00",
+      "revId": "5837b95ec007ed7f13357bc683e3eda057483fb3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "54a62c24_6998d709",
@@ -182,6 +284,30 @@
       "writtenOn": "2021-11-12T19:31:46Z",
       "side": 1,
       "message": "so it seems there are four valid ways of using this API\n\nsetEncryptionKey(true, nonNullKey, length of 4 or 16 bytes, useExisting \u003d false);\n-\u003e this will replace existing key with the input key\n\nsetEncryptionKey(true, null, length of 4 or 16 bytes, useExisting \u003d false);\n-\u003e this will ask the system to generate a key that can be retrieved via getEncryptionKey()\n\nsetEncryptionKey(true, null, length of 4 or 16 bytes, useExisting \u003d true);\n-\u003e this will ask the system to enable encryption, but does not refresh the key\n\nsetEncryptionKey(false, doNotCare, doNotCare, doNotCare);\n-\u003e this will disable encryption (and maybe remove existing key?)\n\nall other methods of using this APIs seems invalid should throw IllegalArgumentException\n\nShould we make these use cases more explicit in the comments? or add code to enforce these logic in this run?",
+      "range": {
+        "startLine": 200,
+        "startChar": 4,
+        "endLine": 200,
+        "endChar": 97
+      },
+      "revId": "5837b95ec007ed7f13357bc683e3eda057483fb3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3e940365_1de7ed1b",
+        "filename": "core/java/android/bluetooth/BluetoothBapBroadcastSource.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1106424
+      },
+      "writtenOn": "2021-12-02T20:27:51Z",
+      "side": 1,
+      "message": "Since this API is getting very complicated, I have split it up into three.",
+      "parentUuid": "54a62c24_6998d709",
       "range": {
         "startLine": 200,
         "startChar": 4,
@@ -215,6 +341,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c16e5a8f_87f8cc3d",
+        "filename": "core/java/android/bluetooth/BluetoothBapBroadcastSource.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1106424
+      },
+      "writtenOn": "2021-12-02T20:27:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "15fed01c_f6af4fa5",
+      "range": {
+        "startLine": 201,
+        "startChar": 16,
+        "endLine": 201,
+        "endChar": 41
+      },
+      "revId": "5837b95ec007ed7f13357bc683e3eda057483fb3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d06fdc6c_feead957",
@@ -238,6 +388,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b5849daa_03648cde",
+        "filename": "core/java/android/bluetooth/BluetoothStatusCodes.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1106424
+      },
+      "writtenOn": "2021-12-02T20:27:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d06fdc6c_feead957",
+      "range": {
+        "startLine": 214,
+        "startChar": 28,
+        "endLine": 214,
+        "endChar": 37
+      },
+      "revId": "5837b95ec007ed7f13357bc683e3eda057483fb3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b86ee110_01ea6aa2",
@@ -251,6 +425,30 @@
       "writtenOn": "2021-11-12T19:31:46Z",
       "side": 1,
       "message": "same as above\n\nWe don\u0027t expose the word BAP in the API layer",
+      "range": {
+        "startLine": 224,
+        "startChar": 34,
+        "endLine": 224,
+        "endChar": 38
+      },
+      "revId": "5837b95ec007ed7f13357bc683e3eda057483fb3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e8e04317_874c84b3",
+        "filename": "core/java/android/bluetooth/BluetoothStatusCodes.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 224,
+      "author": {
+        "id": 1106424
+      },
+      "writtenOn": "2021-12-02T20:27:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b86ee110_01ea6aa2",
       "range": {
         "startLine": 224,
         "startChar": 34,

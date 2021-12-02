@@ -206,6 +206,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9361329c_b0eb9d31",
+        "filename": "core/java/android/bluetooth/le/BluetoothLeBroadcast.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1106424
+      },
+      "writtenOn": "2021-12-02T20:27:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "34a9782c_2e6ebfd0",
+      "revId": "bf5b2a83fa6db7ea36eac61e5f3f62973f9212dd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e5c16ebb_f79f9788",
@@ -290,6 +308,24 @@
       "side": 1,
       "message": "Just curious, what\u0027s the rationale behind encouraging developers to use the BluetoothManager method instead?",
       "parentUuid": "5585a7b4_25f0fa14",
+      "revId": "bf5b2a83fa6db7ea36eac61e5f3f62973f9212dd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8304dd29_7f4f4314",
+        "filename": "core/java/android/bluetooth/le/BluetoothLeBroadcast.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1106424
+      },
+      "writtenOn": "2021-12-02T20:27:51Z",
+      "side": 1,
+      "message": "I was just using what Qualcomm had but thinking more about it since LE Audio Broadcasts do not establish a connection, we should mention that in the unsupported exception.",
+      "parentUuid": "eb3b2401_96edc61a",
       "revId": "bf5b2a83fa6db7ea36eac61e5f3f62973f9212dd",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
