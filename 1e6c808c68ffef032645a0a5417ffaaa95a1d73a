@@ -33,6 +33,57 @@
       "message": "If we want to keep this, we should be releasing some resources and the class should implement the AutoCloseable interface.",
       "revId": "1e6c808c68ffef032645a0a5417ffaaa95a1d73a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c88540b5_8043ac85",
+        "filename": "core/java/android/bluetooth/BluetoothStatusCodes.java",
+        "patchSetId": 8
+      },
+      "lineNbr": 311,
+      "author": {
+        "id": 1546552
+      },
+      "writtenOn": "2021-12-03T01:41:33Z",
+      "side": 1,
+      "message": "As per pattern, the IntDef should go in the class using it, not in the BluetoothStatusCodes file.",
+      "revId": "1e6c808c68ffef032645a0a5417ffaaa95a1d73a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9e556f96_d2ca908b",
+        "filename": "core/java/android/bluetooth/BluetoothStatusCodes.java",
+        "patchSetId": 8
+      },
+      "lineNbr": 316,
+      "author": {
+        "id": 1546552
+      },
+      "writtenOn": "2021-12-03T01:41:33Z",
+      "side": 1,
+      "message": "I don\u0027t think these values belong in the status codes class. This class is more for error codes than for things like this.",
+      "revId": "1e6c808c68ffef032645a0a5417ffaaa95a1d73a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3469a76b_9041134e",
+        "filename": "core/java/android/bluetooth/BluetoothStatusCodes.java",
+        "patchSetId": 8
+      },
+      "lineNbr": 356,
+      "author": {
+        "id": 1546552
+      },
+      "writtenOn": "2021-12-03T01:41:33Z",
+      "side": 1,
+      "message": "Same here with and for the IntDef",
+      "revId": "1e6c808c68ffef032645a0a5417ffaaa95a1d73a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
