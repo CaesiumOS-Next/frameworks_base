@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "632cbbb0_ebefde73",
+        "filename": "core/java/android/bluetooth/BluetoothLeBroadcast.java",
+        "patchSetId": 8
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1546552
+      },
+      "writtenOn": "2021-12-03T01:36:30Z",
+      "side": 1,
+      "message": "nit: remove newline",
+      "revId": "1e6c808c68ffef032645a0a5417ffaaa95a1d73a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "90ba2192_6bf2c844",
+        "filename": "core/java/android/bluetooth/BluetoothLeBroadcast.java",
+        "patchSetId": 8
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1546552
+      },
+      "writtenOn": "2021-12-03T01:36:30Z",
+      "side": 1,
+      "message": "If we want to keep this, we should be releasing some resources and the class should implement the AutoCloseable interface.",
+      "revId": "1e6c808c68ffef032645a0a5417ffaaa95a1d73a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
