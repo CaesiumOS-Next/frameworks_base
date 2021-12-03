@@ -22,6 +22,30 @@
       },
       "revId": "9212e002544ca81e506183f36976d6af477a526d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "20037fd3_acc66e19",
+        "filename": "telephony/java/android/service/carrier/CarrierService.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1609802
+      },
+      "writtenOn": "2021-12-03T19:43:50Z",
+      "side": 1,
+      "message": "oh, I almost forget we have sc-v2 that may increase the version_codes. It is quite likely. So switch to Build.VERSION_CODES#TIRAMISU instead. \nThanks",
+      "parentUuid": "e1ea8697_9d1dd8ff",
+      "range": {
+        "startLine": 134,
+        "startChar": 61,
+        "endLine": 134,
+        "endChar": 73
+      },
+      "revId": "9212e002544ca81e506183f36976d6af477a526d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
