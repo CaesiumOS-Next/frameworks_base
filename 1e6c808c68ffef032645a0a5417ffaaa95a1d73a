@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5c875d3b_f2c0ca28",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 8
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1106424
+      },
+      "writtenOn": "2021-12-03T18:26:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5aede515_db5cb653",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 14
+      },
+      "revId": "1e6c808c68ffef032645a0a5417ffaaa95a1d73a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "632cbbb0_ebefde73",
@@ -37,6 +61,24 @@
       "writtenOn": "2021-12-03T01:36:30Z",
       "side": 1,
       "message": "nit: remove newline",
+      "revId": "1e6c808c68ffef032645a0a5417ffaaa95a1d73a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7bccc081_0e3b2eba",
+        "filename": "core/java/android/bluetooth/BluetoothLeBroadcast.java",
+        "patchSetId": 8
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1106424
+      },
+      "writtenOn": "2021-12-03T18:26:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "632cbbb0_ebefde73",
       "revId": "1e6c808c68ffef032645a0a5417ffaaa95a1d73a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -58,6 +100,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b9de47ae_7a6fe409",
+        "filename": "core/java/android/bluetooth/BluetoothLeBroadcast.java",
+        "patchSetId": 8
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1106424
+      },
+      "writtenOn": "2021-12-03T18:26:50Z",
+      "side": 1,
+      "message": "removed, we will need it later. Will add it then.",
+      "parentUuid": "90ba2192_6bf2c844",
+      "revId": "1e6c808c68ffef032645a0a5417ffaaa95a1d73a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c88540b5_8043ac85",
@@ -71,6 +131,24 @@
       "writtenOn": "2021-12-03T01:41:33Z",
       "side": 1,
       "message": "As per pattern, the IntDef should go in the class using it, not in the BluetoothStatusCodes file.",
+      "revId": "1e6c808c68ffef032645a0a5417ffaaa95a1d73a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ee1c3366_cba5d389",
+        "filename": "core/java/android/bluetooth/BluetoothStatusCodes.java",
+        "patchSetId": 8
+      },
+      "lineNbr": 311,
+      "author": {
+        "id": 1106424
+      },
+      "writtenOn": "2021-12-03T18:26:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c88540b5_8043ac85",
       "revId": "1e6c808c68ffef032645a0a5417ffaaa95a1d73a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -92,6 +170,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b6f437a6_df675bad",
+        "filename": "core/java/android/bluetooth/BluetoothStatusCodes.java",
+        "patchSetId": 8
+      },
+      "lineNbr": 316,
+      "author": {
+        "id": 1106424
+      },
+      "writtenOn": "2021-12-03T18:26:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9e556f96_d2ca908b",
+      "revId": "1e6c808c68ffef032645a0a5417ffaaa95a1d73a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3469a76b_9041134e",
@@ -105,6 +201,24 @@
       "writtenOn": "2021-12-03T01:41:33Z",
       "side": 1,
       "message": "Same here with and for the IntDef",
+      "revId": "1e6c808c68ffef032645a0a5417ffaaa95a1d73a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "38f7c903_0cfcc192",
+        "filename": "core/java/android/bluetooth/BluetoothStatusCodes.java",
+        "patchSetId": 8
+      },
+      "lineNbr": 356,
+      "author": {
+        "id": 1106424
+      },
+      "writtenOn": "2021-12-03T18:26:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3469a76b_9041134e",
       "revId": "1e6c808c68ffef032645a0a5417ffaaa95a1d73a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
