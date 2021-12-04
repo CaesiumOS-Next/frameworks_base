@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "46203aed_7b94b1cf",
+        "filename": "core/java/android/bluetooth/BluetoothProfile.java",
+        "patchSetId": 10
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 1121403
+      },
+      "writtenOn": "2021-12-04T00:07:22Z",
+      "side": 1,
+      "message": "this is a public API please run\n\nm api-stubs-docs-non-updatable-update-current-api\n\nto update api-current.txt and include it in the patch or mark the API as @hide",
+      "range": {
+        "startLine": 236,
+        "startChar": 0,
+        "endLine": 239,
+        "endChar": 32
+      },
+      "revId": "59bed19c9ee76afe94c2d2b78f3b965778527ff8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
