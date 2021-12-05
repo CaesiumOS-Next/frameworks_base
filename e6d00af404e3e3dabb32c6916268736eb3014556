@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2b434861_426e9732",
+        "filename": "telephony/java/android/service/carrier/CarrierService.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1121193
+      },
+      "writtenOn": "2021-12-05T23:14:21Z",
+      "side": 1,
+      "message": "how are we going to enforce this?",
+      "range": {
+        "startLine": 134,
+        "startChar": 37,
+        "endLine": 136,
+        "endChar": 68
+      },
+      "revId": "e6d00af404e3e3dabb32c6916268736eb3014556",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
