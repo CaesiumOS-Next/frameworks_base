@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b2790493_e3cdee0d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1121403
+      },
+      "writtenOn": "2021-12-06T19:39:36Z",
+      "side": 1,
+      "message": "nit: please use 208222452 for broadcast assistant APIs",
+      "range": {
+        "startLine": 10,
+        "startChar": 5,
+        "endLine": 10,
+        "endChar": 14
+      },
+      "revId": "3b240a12b214c76792c5524dc8e5988c8963598a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f3abf35b_cfda3bb1",
+        "filename": "core/java/android/bluetooth/BluetoothLeBroadcastSourceChannel.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1121403
+      },
+      "writtenOn": "2021-12-06T19:39:36Z",
+      "side": 1,
+      "message": "just to confirm, is mSubGroupId ignored in this comparison? if so, could we add a javadoc indicating why some internal states are compared, but some are not?",
+      "range": {
+        "startLine": 98,
+        "startChar": 20,
+        "endLine": 100,
+        "endChar": 47
+      },
+      "revId": "3b240a12b214c76792c5524dc8e5988c8963598a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4d00d63f_fae7f117",
+        "filename": "core/java/android/bluetooth/BluetoothLeBroadcastSourceChannel.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1121403
+      },
+      "writtenOn": "2021-12-06T19:39:36Z",
+      "side": 1,
+      "message": "same as below",
+      "range": {
+        "startLine": 201,
+        "startChar": 0,
+        "endLine": 201,
+        "endChar": 58
+      },
+      "revId": "3b240a12b214c76792c5524dc8e5988c8963598a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "72bb0547_eb795d44",
+        "filename": "core/java/android/bluetooth/BluetoothLeBroadcastSourceChannel.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 224,
+      "author": {
+        "id": 1121403
+      },
+      "writtenOn": "2021-12-06T19:39:36Z",
+      "side": 1,
+      "message": "remove this? as it can create many logs if enabled (every time when this class transit through binder boundaries",
+      "range": {
+        "startLine": 224,
+        "startChar": 8,
+        "endLine": 224,
+        "endChar": 43
+      },
+      "revId": "3b240a12b214c76792c5524dc8e5988c8963598a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
