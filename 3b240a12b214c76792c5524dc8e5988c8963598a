@@ -26,6 +26,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "cc1315fc_63ead5ed",
+        "filename": "core/java/android/bluetooth/BluetoothLeBroadcastSourceChannel.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1546552
+      },
+      "writtenOn": "2021-12-06T22:02:30Z",
+      "side": 1,
+      "message": "Please add nullability annotations to all non-primitive params and return values",
+      "revId": "3b240a12b214c76792c5524dc8e5988c8963598a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f3abf35b_cfda3bb1",
         "filename": "core/java/android/bluetooth/BluetoothLeBroadcastSourceChannel.java",
         "patchSetId": 1
@@ -43,6 +60,40 @@
         "endLine": 100,
         "endChar": 47
       },
+      "revId": "3b240a12b214c76792c5524dc8e5988c8963598a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6857bf6a_27258933",
+        "filename": "core/java/android/bluetooth/BluetoothLeBroadcastSourceChannel.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1546552
+      },
+      "writtenOn": "2021-12-06T22:02:30Z",
+      "side": 1,
+      "message": "This should be placed on the param (right before \"int status\"). Otherwise, it is associated with the return value.",
+      "revId": "3b240a12b214c76792c5524dc8e5988c8963598a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "98e693a5_9dbb9816",
+        "filename": "core/java/android/bluetooth/BluetoothLeBroadcastSourceChannel.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1546552
+      },
+      "writtenOn": "2021-12-06T22:02:30Z",
+      "side": 1,
+      "message": "Please import the NonNull annotation so we don\u0027t need to fully write out \"android.annotation.NonNull\" each time.",
       "revId": "3b240a12b214c76792c5524dc8e5988c8963598a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
