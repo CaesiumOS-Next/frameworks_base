@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3dd17c50_60b8a35c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1351609
+      },
+      "writtenOn": "2021-12-06T10:14:23Z",
+      "side": 1,
+      "message": "Can only +1 on this branch and repo combination",
+      "revId": "ae4bf7dda6c89207ce690cf0d4235de4d5528f04",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
