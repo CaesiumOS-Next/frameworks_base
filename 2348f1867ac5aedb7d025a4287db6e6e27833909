@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "33293900_4ffcb93a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1573716
+      },
+      "writtenOn": "2021-12-06T23:11:52Z",
+      "side": 1,
+      "message": "as per http://b/203461517, added mustPlayShutterSound",
+      "revId": "2348f1867ac5aedb7d025a4287db6e6e27833909",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
