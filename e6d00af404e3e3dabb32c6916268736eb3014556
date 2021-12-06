@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "894096e2_11eeaab3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1609802
+      },
+      "writtenOn": "2021-12-06T16:32:12Z",
+      "side": 1,
+      "message": "+ Tyler for public API review.\nThanks!",
+      "revId": "e6d00af404e3e3dabb32c6916268736eb3014556",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2b434861_426e9732",
@@ -14,6 +31,30 @@
       "writtenOn": "2021-12-05T23:14:21Z",
       "side": 1,
       "message": "how are we going to enforce this?",
+      "range": {
+        "startLine": 134,
+        "startChar": 37,
+        "endLine": 136,
+        "endChar": 68
+      },
+      "revId": "e6d00af404e3e3dabb32c6916268736eb3014556",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "42f4b9c6_f8ef8a07",
+        "filename": "telephony/java/android/service/carrier/CarrierService.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1609802
+      },
+      "writtenOn": "2021-12-06T16:32:12Z",
+      "side": 1,
+      "message": "I will take it as a follow-up. I am not 100% sure if the enforcement is worthy (comparing the \u0027recommended\u0027 implementation now) and how we can achieve it.\n\nThe current implementation (fall back to onLoadConfig(id)) targets the maximum compatibility. Nothing breaks if Carrier App continues overriding onLoadConfig(id) only. \n\nTo enforce app with target SDK T+ overriding the new onLoadConfig, we have to e.g. throw exception to explicitly break it. And carrier app without updating will stop working. This is quite serious, considering the carrier config values are essential for the services...",
+      "parentUuid": "2b434861_426e9732",
       "range": {
         "startLine": 134,
         "startChar": 37,
