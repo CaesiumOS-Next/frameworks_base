@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8594214c_7fb6e28c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1396139
+      },
+      "writtenOn": "2021-12-06T09:16:06Z",
+      "side": 1,
+      "message": "Hi, team\nWe are Xiaomi technical team from China, We found some memory leak report from test system, for example:\nLeakInfoSummary: [\u0027In com.miui.daemon:2.0:30.\u0027, \u0027* com.android.mms.ui.SmartMessagePreferencesActivity has leaked:\u0027, \u0027* GC ROOT AppOpsManager$4.!(val$callback)! (anonymous subclass of com.android.internal.app.IAppOpsStartedCallback$Stub)\u0027, \u0027* references PermissionUsageHelper.!(mContext)!\u0027, \u0027* leaks SmartMessagePreferencesActivity\u0027]\nWe had avoided it temporarily use getApplicationContext, and we suggest to fix it on source code.",
+      "revId": "190f80852f027e6219fec4a6540de982cb0330cc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
