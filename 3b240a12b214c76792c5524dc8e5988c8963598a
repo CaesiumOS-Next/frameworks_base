@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bd95a1a3_38644cc0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1106424
+      },
+      "writtenOn": "2021-12-07T01:41:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b2790493_e3cdee0d",
+      "range": {
+        "startLine": 10,
+        "startChar": 5,
+        "endLine": 10,
+        "endChar": 14
+      },
+      "revId": "3b240a12b214c76792c5524dc8e5988c8963598a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cc1315fc_63ead5ed",
@@ -37,6 +61,24 @@
       "writtenOn": "2021-12-06T22:02:30Z",
       "side": 1,
       "message": "Please add nullability annotations to all non-primitive params and return values",
+      "revId": "3b240a12b214c76792c5524dc8e5988c8963598a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "60f564ec_aadf0ca1",
+        "filename": "core/java/android/bluetooth/BluetoothLeBroadcastSourceChannel.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1106424
+      },
+      "writtenOn": "2021-12-07T01:41:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cc1315fc_63ead5ed",
       "revId": "3b240a12b214c76792c5524dc8e5988c8963598a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -64,6 +106,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b5dde4ee_3555bc71",
+        "filename": "core/java/android/bluetooth/BluetoothLeBroadcastSourceChannel.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1106424
+      },
+      "writtenOn": "2021-12-07T01:41:55Z",
+      "side": 1,
+      "message": "added both mSubgroupId and mMetadata",
+      "parentUuid": "f3abf35b_cfda3bb1",
+      "range": {
+        "startLine": 98,
+        "startChar": 20,
+        "endLine": 100,
+        "endChar": 47
+      },
+      "revId": "3b240a12b214c76792c5524dc8e5988c8963598a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6857bf6a_27258933",
@@ -81,6 +147,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b388f3ff_2415f822",
+        "filename": "core/java/android/bluetooth/BluetoothLeBroadcastSourceChannel.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1106424
+      },
+      "writtenOn": "2021-12-07T01:41:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6857bf6a_27258933",
+      "revId": "3b240a12b214c76792c5524dc8e5988c8963598a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "98e693a5_9dbb9816",
@@ -94,6 +178,24 @@
       "writtenOn": "2021-12-06T22:02:30Z",
       "side": 1,
       "message": "Please import the NonNull annotation so we don\u0027t need to fully write out \"android.annotation.NonNull\" each time.",
+      "revId": "3b240a12b214c76792c5524dc8e5988c8963598a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9df9770c_2d608b73",
+        "filename": "core/java/android/bluetooth/BluetoothLeBroadcastSourceChannel.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1106424
+      },
+      "writtenOn": "2021-12-07T01:41:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "98e693a5_9dbb9816",
       "revId": "3b240a12b214c76792c5524dc8e5988c8963598a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -121,6 +223,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a01380ee_a8bf54ba",
+        "filename": "core/java/android/bluetooth/BluetoothLeBroadcastSourceChannel.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1106424
+      },
+      "writtenOn": "2021-12-07T01:41:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4d00d63f_fae7f117",
+      "range": {
+        "startLine": 201,
+        "startChar": 0,
+        "endLine": 201,
+        "endChar": 58
+      },
+      "revId": "3b240a12b214c76792c5524dc8e5988c8963598a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "72bb0547_eb795d44",
@@ -134,6 +260,30 @@
       "writtenOn": "2021-12-06T19:39:36Z",
       "side": 1,
       "message": "remove this? as it can create many logs if enabled (every time when this class transit through binder boundaries",
+      "range": {
+        "startLine": 224,
+        "startChar": 8,
+        "endLine": 224,
+        "endChar": 43
+      },
+      "revId": "3b240a12b214c76792c5524dc8e5988c8963598a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ed8b38be_23b5c5d2",
+        "filename": "core/java/android/bluetooth/BluetoothLeBroadcastSourceChannel.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 224,
+      "author": {
+        "id": 1106424
+      },
+      "writtenOn": "2021-12-07T01:41:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "72bb0547_eb795d44",
       "range": {
         "startLine": 224,
         "startChar": 8,
