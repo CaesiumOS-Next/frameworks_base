@@ -20,9 +20,23 @@ package {
 }
 
 filegroup {
+    name: "services.connectivity-netstats-sources",
+    srcs: [
+        "src/com/android/server/net/NetworkIdentity*.java",
+        "src/com/android/server/net/NetworkStats*.java",
+    ],
+    path: "src",
+    visibility: [
+        "//frameworks/base/services/core",
+    ],
+}
+
+filegroup {
     name: "services.connectivity-nsd-sources",
     srcs: [
-        "src/**/*.java",
+        "src/com/android/server/INativeDaemon*.java",
+        "src/com/android/server/NativeDaemon*.java",
+        "src/com/android/server/Nsd*.java",
     ],
     path: "src",
     visibility: [
