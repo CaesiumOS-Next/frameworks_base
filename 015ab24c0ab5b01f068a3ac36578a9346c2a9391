@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4c1d9b21_3c8c97f4",
+        "filename": "core/java/android/bluetooth/le/BluetoothLeScanner.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 517,
+      "author": {
+        "id": 1306903
+      },
+      "writtenOn": "2021-12-07T06:34:24Z",
+      "side": 1,
+      "message": "Is Log.DEBUG default enabled? This is going to be quite spammy if we print out every each of the scan results.",
+      "range": {
+        "startLine": 517,
+        "startChar": 36,
+        "endLine": 517,
+        "endChar": 45
+      },
+      "revId": "015ab24c0ab5b01f068a3ac36578a9346c2a9391",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
