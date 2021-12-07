@@ -46,6 +46,30 @@
       },
       "revId": "015ab24c0ab5b01f068a3ac36578a9346c2a9391",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d0f3faa3_95915768",
+        "filename": "core/java/android/bluetooth/le/BluetoothLeScanner.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 517,
+      "author": {
+        "id": 1869660
+      },
+      "writtenOn": "2021-12-07T07:35:21Z",
+      "side": 1,
+      "message": "I also checked default log level. Log.DEBUG is not enabled by default.",
+      "parentUuid": "d08683d6_a6993c11",
+      "range": {
+        "startLine": 517,
+        "startChar": 36,
+        "endLine": 517,
+        "endChar": 45
+      },
+      "revId": "015ab24c0ab5b01f068a3ac36578a9346c2a9391",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
