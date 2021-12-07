@@ -71,6 +71,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8f21a52a_5c41d739",
+        "filename": "media/java/android/media/MediaActionSound.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 248,
+      "author": {
+        "id": 1010050
+      },
+      "writtenOn": "2021-12-07T19:27:56Z",
+      "side": 1,
+      "message": "I\u0027d leave this out, since it\u0027s not that accurate and you need to use this API with the old API as well (for example, panorama capture), and \u0027camera1\u0027 isn\u0027t really a good term to use outside of our team, since the old API is android.hardware.Camera.\n\nSo I\u0027d just expand on what the app should do in the second paragraph:\n\n\"If this method returns true, applications are strongly recommended to use MediaActionSound.play(SHUTTER_CLICK) or START_VIDEO_RECORDING whenever it captures images or video to storage or sends them over the network.\"\n\nor similar.",
+      "range": {
+        "startLine": 248,
+        "startChar": 77,
+        "endLine": 248,
+        "endChar": 92
+      },
+      "revId": "2448ddfd55856a9e70a5e670360630476c04cfb6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9db3d679_fb1bd8e8",
         "filename": "media/java/android/media/MediaActionSound.java",
         "patchSetId": 3
@@ -82,6 +105,30 @@
       "writtenOn": "2021-12-07T19:22:34Z",
       "side": 1,
       "message": "I am curious. Can this be made a static function given that we are not accessing any member variables?",
+      "range": {
+        "startLine": 253,
+        "startChar": 19,
+        "endLine": 253,
+        "endChar": 39
+      },
+      "revId": "2448ddfd55856a9e70a5e670360630476c04cfb6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "88905092_e2aa850f",
+        "filename": "media/java/android/media/MediaActionSound.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 253,
+      "author": {
+        "id": 1010050
+      },
+      "writtenOn": "2021-12-07T19:27:56Z",
+      "side": 1,
+      "message": "It would be nice to make it static, yes - then the user doesn\u0027t have to actually construct a MediaActionSound to query.",
+      "parentUuid": "9db3d679_fb1bd8e8",
       "range": {
         "startLine": 253,
         "startChar": 19,
