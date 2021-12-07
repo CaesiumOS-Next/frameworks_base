@@ -16,6 +16,23 @@
       "message": "readability review",
       "revId": "2448ddfd55856a9e70a5e670360630476c04cfb6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "98bfcee0_976dae56",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1573716
+      },
+      "writtenOn": "2021-12-07T16:02:37Z",
+      "side": 1,
+      "message": "add readability reviewer",
+      "revId": "2448ddfd55856a9e70a5e670360630476c04cfb6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
