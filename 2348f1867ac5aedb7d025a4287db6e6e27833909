@@ -16,6 +16,52 @@
       "message": "as per http://b/203461517, added mustPlayShutterSound",
       "revId": "2348f1867ac5aedb7d025a4287db6e6e27833909",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6b1255cb_d9f180e7",
+        "filename": "media/java/android/media/MediaActionSound.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 249,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2021-12-07T08:58:06Z",
+      "side": 1,
+      "message": "developers",
+      "range": {
+        "startLine": 249,
+        "startChar": 19,
+        "endLine": 249,
+        "endChar": 29
+      },
+      "revId": "2348f1867ac5aedb7d025a4287db6e6e27833909",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4e387895_95ca97b3",
+        "filename": "media/java/android/media/MediaActionSound.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 261,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2021-12-07T08:58:06Z",
+      "side": 1,
+      "message": "I would default to true to be conservative",
+      "range": {
+        "startLine": 261,
+        "startChar": 84,
+        "endLine": 261,
+        "endChar": 89
+      },
+      "revId": "2348f1867ac5aedb7d025a4287db6e6e27833909",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
