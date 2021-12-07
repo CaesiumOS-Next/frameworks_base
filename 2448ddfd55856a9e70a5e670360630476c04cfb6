@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "c21dbc1d_7bc51a11",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1092583
+      },
+      "writtenOn": "2021-12-07T18:21:01Z",
+      "side": 1,
+      "message": "The convention we use are:\n\nBug: 203461517\n\nThat way the system can recognize this change is targeted for that bug.",
+      "revId": "2448ddfd55856a9e70a5e670360630476c04cfb6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "51b8bb2f_108a2474",
@@ -48,6 +65,52 @@
       "writtenOn": "2021-12-07T17:48:49Z",
       "side": 1,
       "message": "It may be worth grouping this change and the CTS change into one topic. That way, they will be verified and merged together. ",
+      "revId": "2448ddfd55856a9e70a5e670360630476c04cfb6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a7e96aba_9aca5a97",
+        "filename": "media/java/android/media/MediaActionSound.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 259,
+      "author": {
+        "id": 1092583
+      },
+      "writtenOn": "2021-12-07T18:21:01Z",
+      "side": 1,
+      "message": "We want to keep the logcat output to minimum in normal operations. So probably remove this?",
+      "range": {
+        "startLine": 259,
+        "startChar": 12,
+        "endLine": 259,
+        "endChar": 91
+      },
+      "revId": "2448ddfd55856a9e70a5e670360630476c04cfb6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "939f7320_144194aa",
+        "filename": "media/java/android/media/MediaActionSound.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 261,
+      "author": {
+        "id": 1092583
+      },
+      "writtenOn": "2021-12-07T18:21:01Z",
+      "side": 1,
+      "message": "Should we default to false in case the exception happens? That seems to be the old logic.",
+      "range": {
+        "startLine": 261,
+        "startChar": 23,
+        "endLine": 261,
+        "endChar": 88
+      },
       "revId": "2448ddfd55856a9e70a5e670360630476c04cfb6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
