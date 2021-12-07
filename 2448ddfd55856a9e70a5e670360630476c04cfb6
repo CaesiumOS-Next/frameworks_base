@@ -33,6 +33,23 @@
       "message": "add readability reviewer",
       "revId": "2448ddfd55856a9e70a5e670360630476c04cfb6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "26e8f3ed_a2993d40",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1092583
+      },
+      "writtenOn": "2021-12-07T17:48:49Z",
+      "side": 1,
+      "message": "It may be worth grouping this change and the CTS change into one topic. That way, they will be verified and merged together. ",
+      "revId": "2448ddfd55856a9e70a5e670360630476c04cfb6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
