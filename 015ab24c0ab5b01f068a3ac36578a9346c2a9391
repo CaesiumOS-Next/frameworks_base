@@ -22,6 +22,30 @@
       },
       "revId": "015ab24c0ab5b01f068a3ac36578a9346c2a9391",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d08683d6_a6993c11",
+        "filename": "core/java/android/bluetooth/le/BluetoothLeScanner.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 517,
+      "author": {
+        "id": 1869660
+      },
+      "writtenOn": "2021-12-07T07:05:00Z",
+      "side": 1,
+      "message": "It was like this in internal branch. Though I can merge this log with the adjacent log.",
+      "parentUuid": "4c1d9b21_3c8c97f4",
+      "range": {
+        "startLine": 517,
+        "startChar": 36,
+        "endLine": 517,
+        "endChar": 45
+      },
+      "revId": "015ab24c0ab5b01f068a3ac36578a9346c2a9391",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
