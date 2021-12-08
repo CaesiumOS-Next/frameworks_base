@@ -68,6 +68,24 @@
       "message": "Hmm, my reading here makes it seem like we\u0027d be committing to the wire format, which we may not be ready to do?\n\n* https://cs.android.com/android/platform/superproject/+/master:frameworks/base/core/java/android/os/Parcelable.java;l\u003d187?q\u003dJavaOnlyStableParcelable\n\nAre there more docs on what the \"stable\" commitment means?",
       "revId": "ae4bf7dda6c89207ce690cf0d4235de4d5528f04",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "af49a6d9_3f54c9ff",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1561651
+      },
+      "writtenOn": "2021-12-08T02:30:56Z",
+      "side": 1,
+      "message": "From my understanding, it is only a commitment on the existence of that parcel: https://source.android.com/devices/architecture/aidl/aidl-annotations#javaonlystableparcelable.",
+      "parentUuid": "77806ec0_8567a12e",
+      "revId": "ae4bf7dda6c89207ce690cf0d4235de4d5528f04",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
