@@ -38,10 +38,4 @@ cc_library_host_static {
         "frameworks/native/libs/ui/include_private",
     ],
     export_include_dirs: ["."],
-
-    target: {
-        windows: {
-            enabled: true,
-        }
-    },
 }
