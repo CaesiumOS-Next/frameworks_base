@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "776c0709_5c89455f",
+        "filename": "core/java/android/bluetooth/BluetoothLeBroadcastSourceChannel.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1085519
+      },
+      "writtenOn": "2021-12-08T12:47:22Z",
+      "side": 1,
+      "message": "Why not to have representation of complete subgroup, which seem to be more valid for the user?\n\nNow, when there is a subgroup with two BISes (left/right) channel, which share same metadata, we need two objects of BluetoothLeBroadcastSourceChannel\n\nAlso the user need to have BAP knowledge on how Basic Audio Announcement is built to make use of subgroup etc.\n\nCould you elaborate how it will be used?",
+      "revId": "4fb5383de1e9eff82969bd888f1935f2e6bd7dfb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
