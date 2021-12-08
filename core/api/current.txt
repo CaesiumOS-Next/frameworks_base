@@ -41064,6 +41064,7 @@ package android.telephony {
     field public static final String KEY_OPPORTUNISTIC_NETWORK_PING_PONG_TIME_LONG = "opportunistic_network_ping_pong_time_long";
     field public static final String KEY_PING_TEST_BEFORE_DATA_SWITCH_BOOL = "ping_test_before_data_switch_bool";
     field public static final String KEY_PREFER_2G_BOOL = "prefer_2g_bool";
+    field public static final String KEY_PREFER_3G_BOOL = "prefer_3g_bool";
     field public static final String KEY_PREVENT_CLIR_ACTIVATION_AND_DEACTIVATION_CODE_BOOL = "prevent_clir_activation_and_deactivation_code_bool";
     field public static final String KEY_RADIO_RESTART_FAILURE_CAUSES_INT_ARRAY = "radio_restart_failure_causes_int_array";
     field public static final String KEY_RCS_CONFIG_SERVER_URL_STRING = "rcs_config_server_url_string";
