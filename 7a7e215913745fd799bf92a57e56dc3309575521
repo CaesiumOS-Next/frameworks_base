@@ -16,6 +16,29 @@
       "message": "Code revisions to address review comments. ",
       "revId": "7a7e215913745fd799bf92a57e56dc3309575521",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "72e85f57_8c5a6b6d",
+        "filename": "media/java/android/media/MediaActionSound.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1092583
+      },
+      "writtenOn": "2021-12-09T21:02:30Z",
+      "side": 1,
+      "message": "nit: Since result is initialized to false on line 120, we wouldn\u0027t need this line.",
+      "range": {
+        "startLine": 126,
+        "startChar": 12,
+        "endLine": 126,
+        "endChar": 27
+      },
+      "revId": "7a7e215913745fd799bf92a57e56dc3309575521",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
