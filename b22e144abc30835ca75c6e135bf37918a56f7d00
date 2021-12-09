@@ -1,0 +1,56 @@
+{
+  "comments": [
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000018196303",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1870375?revision\u003d11",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "b4e11b39_5a28dc1f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 11
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2021-12-09T00:00:39Z",
+      "side": 1,
+      "message": "Change must include a \"Tag:\" stanza. Valid tags are #compatibility #stability #security #feature #floss #gd-refactor #refactor. See: go/managing-bluetooth-cl-risk",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 0
+      },
+      "revId": "b22e144abc30835ca75c6e135bf37918a56f7d00",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000018196303",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1870375?revision\u003d11",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "565c6436_edc4feab",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 11
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2021-12-09T00:00:39Z",
+      "side": 1,
+      "message": "\"Run the CTS Bluetooth Car Projection Test. This requires two\" is not a valid test stanza. Expected one of: gd/cert/run (--device|--rust|--rhost) (\u003cfilter\u003e) OR gd/fuzz/run (--host) \u003ctest\u003e OR atest (--host) \u003ctest\u003e",
+      "range": {
+        "startLine": 15,
+        "startChar": 5,
+        "endLine": 15,
+        "endChar": 66
+      },
+      "revId": "b22e144abc30835ca75c6e135bf37918a56f7d00",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
