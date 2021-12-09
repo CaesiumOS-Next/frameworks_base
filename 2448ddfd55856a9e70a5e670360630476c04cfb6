@@ -20,6 +20,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "2c0d96d8_e62869cc",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1573716
+      },
+      "writtenOn": "2021-12-09T20:54:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c21dbc1d_7bc51a11",
+      "revId": "2448ddfd55856a9e70a5e670360630476c04cfb6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "51b8bb2f_108a2474",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 3
@@ -110,6 +128,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bb862174_095182d4",
+        "filename": "media/java/android/media/MediaActionSound.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 248,
+      "author": {
+        "id": 1573716
+      },
+      "writtenOn": "2021-12-09T20:54:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8f21a52a_5c41d739",
+      "range": {
+        "startLine": 248,
+        "startChar": 77,
+        "endLine": 248,
+        "endChar": 92
+      },
+      "revId": "2448ddfd55856a9e70a5e670360630476c04cfb6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9db3d679_fb1bd8e8",
@@ -157,6 +199,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "aa138c8b_5c9f0bc1",
+        "filename": "media/java/android/media/MediaActionSound.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 253,
+      "author": {
+        "id": 1573716
+      },
+      "writtenOn": "2021-12-09T20:54:58Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "88905092_e2aa850f",
+      "range": {
+        "startLine": 253,
+        "startChar": 19,
+        "endLine": 253,
+        "endChar": 39
+      },
+      "revId": "2448ddfd55856a9e70a5e670360630476c04cfb6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5abc0df8_06a666b2",
@@ -170,6 +236,24 @@
       "writtenOn": "2021-12-07T21:27:01Z",
       "side": 1,
       "message": "Maybe we could just use AudioManager.getService() instead?\nIt\u0027s package-private but we\u0027re in the same package now.",
+      "revId": "2448ddfd55856a9e70a5e670360630476c04cfb6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8c86b54d_b9fcbbfb",
+        "filename": "media/java/android/media/MediaActionSound.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 255,
+      "author": {
+        "id": 1573716
+      },
+      "writtenOn": "2021-12-09T20:54:58Z",
+      "side": 1,
+      "message": "Unfortunately I made the changes in the AOSP and not internal repo. AudioManager.getService is still private (updated recently to package-private internally).",
+      "parentUuid": "5abc0df8_06a666b2",
       "revId": "2448ddfd55856a9e70a5e670360630476c04cfb6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -197,6 +281,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fa73e68b_c8429d2a",
+        "filename": "media/java/android/media/MediaActionSound.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 259,
+      "author": {
+        "id": 1573716
+      },
+      "writtenOn": "2021-12-09T20:54:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a7e96aba_9aca5a97",
+      "range": {
+        "startLine": 259,
+        "startChar": 12,
+        "endLine": 259,
+        "endChar": 91
+      },
+      "revId": "2448ddfd55856a9e70a5e670360630476c04cfb6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "939f7320_144194aa",
@@ -210,6 +318,30 @@
       "writtenOn": "2021-12-07T18:21:01Z",
       "side": 1,
       "message": "Should we default to false in case the exception happens? That seems to be the old logic.",
+      "range": {
+        "startLine": 261,
+        "startChar": 23,
+        "endLine": 261,
+        "endChar": 88
+      },
+      "revId": "2448ddfd55856a9e70a5e670360630476c04cfb6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "efa88870_9fb9097c",
+        "filename": "media/java/android/media/MediaActionSound.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 261,
+      "author": {
+        "id": 1573716
+      },
+      "writtenOn": "2021-12-09T20:54:58Z",
+      "side": 1,
+      "message": "hmm.. true. Eric suggested a more conservative default https://android-review.googlesource.com/c/platform/frameworks/base/+/1911999/comment/4e387895_95ca97b3/\n\nI think using the existing default behavior makes sense. Wdyt elaurent@google.com?",
+      "parentUuid": "939f7320_144194aa",
       "range": {
         "startLine": 261,
         "startChar": 23,
