@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0dc1bdca_787b23c5",
+        "filename": "services/java/com/android/server/SystemServer.java",
+        "patchSetId": 9
+      },
+      "lineNbr": 1946,
+      "author": {
+        "id": 1288034
+      },
+      "writtenOn": "2021-12-10T10:37:17Z",
+      "side": 1,
+      "message": "This should be moved to ConnectivityServiceInitializer once the class is moved into the same module, but this makes sense as a first step.",
+      "range": {
+        "startLine": 1946,
+        "startChar": 14,
+        "endLine": 1946,
+        "endChar": 24
+      },
+      "revId": "e90f865abea66d2bbdd33c8e7b5422a53b42b1c8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
