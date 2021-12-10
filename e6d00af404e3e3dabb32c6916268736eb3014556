@@ -36,6 +36,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "24f6d3c4_5dc0c757",
+        "filename": "core/api/current.txt",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1609802
+      },
+      "writtenOn": "2021-12-10T20:05:24Z",
+      "side": 1,
+      "message": "The CTS case is updated to cover the cases with the new introduced CarrierService#onLoadConfig method.\n\nAs the onLoadConfig is triggered by platform for a real carrier app, it is a bit difficult to introduce test cases cover the function itself. b/210143342 created to enrich the test cases related to carrier service.",
+      "parentUuid": "4814263d_c0fcbe20",
+      "revId": "e6d00af404e3e3dabb32c6916268736eb3014556",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2b434861_426e9732",
@@ -83,6 +101,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c481383e_e3b475aa",
+        "filename": "telephony/java/android/service/carrier/CarrierService.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1609802
+      },
+      "writtenOn": "2021-12-10T20:05:24Z",
+      "side": 1,
+      "message": "b/210143342 created to cover the CTS cases enrichment.",
+      "parentUuid": "42f4b9c6_f8ef8a07",
+      "range": {
+        "startLine": 134,
+        "startChar": 37,
+        "endLine": 136,
+        "endChar": 68
+      },
+      "revId": "e6d00af404e3e3dabb32c6916268736eb3014556",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "720e6ade_7488f14c",
@@ -96,6 +138,30 @@
       "writtenOn": "2021-12-09T19:14:25Z",
       "side": 1,
       "message": "Use an @NonNull return type and assume PersistableBundle#EMPTY is the empty return type.",
+      "range": {
+        "startLine": 151,
+        "startChar": 4,
+        "endLine": 152,
+        "endChar": 13
+      },
+      "revId": "e6d00af404e3e3dabb32c6916268736eb3014556",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "976b2e9a_46e23fc5",
+        "filename": "telephony/java/android/service/carrier/CarrierService.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1609802
+      },
+      "writtenOn": "2021-12-10T20:05:24Z",
+      "side": 1,
+      "message": "The original public API (onLoadConfig without subscription support) requires the behavior to return null, indicating the default config value should be used.\n\nTo keep the backward compat (e.g.as you see, the new API fallbacks to old API behavior without carrier app overriding), we have to follow the same behavior.\n\nPlease let me know if this is still an concern for you.\nThanks",
+      "parentUuid": "720e6ade_7488f14c",
       "range": {
         "startLine": 151,
         "startChar": 4,
