@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7ad699c0_e1690df5",
+        "filename": "tools/locked_region_code_injection/test/lockedregioncodeinjection/TestMain.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1061009
+      },
+      "writtenOn": "2021-12-10T09:36:59Z",
+      "side": 1,
+      "message": "optional nit: would be nice to automate this if you have the time",
+      "range": {
+        "startLine": 45,
+        "startChar": 0,
+        "endLine": 45,
+        "endChar": 28
+      },
+      "revId": "fc7aabcf2e390a8a8977f58ffb030b0c26b211ab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
