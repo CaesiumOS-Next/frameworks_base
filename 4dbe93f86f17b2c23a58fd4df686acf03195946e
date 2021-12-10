@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b8570171_3ddb5b24",
+        "filename": "core/java/android/net/NetworkTemplate.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 548,
+      "author": {
+        "id": 1385042
+      },
+      "writtenOn": "2021-12-10T04:16:23Z",
+      "side": 1,
+      "message": "IIUC, this can be removed.",
+      "range": {
+        "startLine": 548,
+        "startChar": 4,
+        "endLine": 548,
+        "endChar": 24
+      },
+      "revId": "4dbe93f86f17b2c23a58fd4df686acf03195946e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "11a6372a_c0f89e31",
+        "filename": "core/java/android/net/NetworkTemplate.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 560,
+      "author": {
+        "id": 1385042
+      },
+      "writtenOn": "2021-12-10T04:16:23Z",
+      "side": 1,
+      "message": "ditto.",
+      "range": {
+        "startLine": 560,
+        "startChar": 4,
+        "endLine": 560,
+        "endChar": 24
+      },
+      "revId": "4dbe93f86f17b2c23a58fd4df686acf03195946e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9cca70be_74b39428",
+        "filename": "core/java/android/net/NetworkTemplate.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 572,
+      "author": {
+        "id": 1385042
+      },
+      "writtenOn": "2021-12-10T04:16:23Z",
+      "side": 1,
+      "message": "You don\u0027t actually need this, right? Just like the constructor at l.386, you did not add @SystemApi again.",
+      "range": {
+        "startLine": 572,
+        "startChar": 4,
+        "endLine": 572,
+        "endChar": 58
+      },
+      "revId": "4dbe93f86f17b2c23a58fd4df686acf03195946e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
