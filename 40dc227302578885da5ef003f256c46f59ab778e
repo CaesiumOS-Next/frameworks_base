@@ -1,0 +1,47 @@
+{
+  "comments": [
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000018325459",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1920049?revision\u003d2",
+      "fixSuggestions": [
+        {
+          "fixId": "6224996d_e5350fcf",
+          "description": "Change to \"tools/aapt2/cmd/Util.cpp\"",
+          "replacements": [
+            {
+              "path": "tools/aapt2/cmd/Util.cpp",
+              "range": {
+                "startLine": 454,
+                "startChar": 35,
+                "endLine": 454,
+                "endChar": 45
+              },
+              "replacement": "initialized"
+            }
+          ]
+        }
+      ],
+      "key": {
+        "uuid": "6ec29b81_630b66d4",
+        "filename": "tools/aapt2/cmd/Util.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 454,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2021-12-13T01:11:39Z",
+      "side": 1,
+      "message": "Common typo found: \"initilized\" -- should it be \"initialized\"?\nNote: a line containing \"common_typos_disable\" or \"common_typos_enable\" will turn off or on (respectively) the linter for subsequent lines in the file. Alternatively include the token \"NOTYPO\" within a line to skip typo linting that line or include \u0027No-Typo-Check: \u003creason\u003e\u0027in the commit message.",
+      "range": {
+        "startLine": 454,
+        "startChar": 35,
+        "endLine": 454,
+        "endChar": 45
+      },
+      "revId": "40dc227302578885da5ef003f256c46f59ab778e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
