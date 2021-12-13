@@ -16,6 +16,23 @@
       "message": "Rebased and renamed to getAvailableExtensionInterfaceNames.",
       "revId": "45a54d87fe8a8e5a0748568028deb4cd81ce7ccc",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a32ebeec_a8b05198",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1443524
+      },
+      "writtenOn": "2021-12-13T23:24:54Z",
+      "side": 1,
+      "message": "Hi Sungsoo, can you help on API review ?",
+      "revId": "45a54d87fe8a8e5a0748568028deb4cd81ce7ccc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
