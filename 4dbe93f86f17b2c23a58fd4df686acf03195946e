@@ -48,6 +48,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "93115039_6b883c08",
+        "filename": "core/java/android/net/NetworkTemplate.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 548,
+      "author": {
+        "id": 1306837
+      },
+      "writtenOn": "2021-12-13T03:38:50Z",
+      "side": 1,
+      "message": "It seems remove @UnsupportedAppUsage breaks the linter.\nRestored.\n\nAnalyzer Description: Detects changes to non-SDK APIs.\nOwner: android-app-compat-engprod@google.com\n\nMoved a method from the unsupported list to the blocked list: \u0027Landroid/net/NetworkTemplate;-\u003egetMatchRule()I\u0027\nFor more info, see go/nonsdk-lists\nCheck usage at http://nonsdk/usage/Landroid%2Fnet%2FNetworkTemplate%3B-%3EgetMatchRule%28%29I",
+      "parentUuid": "d548cc2e_ba488267",
+      "range": {
+        "startLine": 548,
+        "startChar": 4,
+        "endLine": 548,
+        "endChar": 24
+      },
+      "revId": "4dbe93f86f17b2c23a58fd4df686acf03195946e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "11a6372a_c0f89e31",
