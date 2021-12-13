@@ -46,6 +46,7 @@ import static android.net.NetworkTemplate.buildTemplateWifiWildcard;
 import static android.net.TetheringManager.ACTION_TETHER_STATE_CHANGED;
 import static android.net.TrafficStats.KB_IN_BYTES;
 import static android.net.TrafficStats.MB_IN_BYTES;
+import static android.net.TrafficStats.UID_TETHERING;
 import static android.net.TrafficStats.UNSUPPORTED;
 import static android.os.Trace.TRACE_TAG_NETWORK;
 import static android.provider.Settings.Global.NETSTATS_AUGMENT_ENABLED;
@@ -90,6 +91,7 @@ import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
 import android.database.ContentObserver;
 import android.net.DataUsageRequest;
+import android.net.INetd;
 import android.net.INetworkManagementEventObserver;
 import android.net.INetworkStatsService;
 import android.net.INetworkStatsSession;
@@ -107,6 +109,7 @@ import android.net.NetworkStatsCollection;
 import android.net.NetworkStatsHistory;
 import android.net.NetworkTemplate;
 import android.net.TelephonyNetworkSpecifier;
+import android.net.TetherStatsParcel;
 import android.net.TrafficStats;
 import android.net.UnderlyingNetworkInfo;
 import android.net.Uri;
@@ -127,6 +130,7 @@ import android.os.Message;
 import android.os.Messenger;
 import android.os.PowerManager;
 import android.os.RemoteException;
+import android.os.ServiceSpecificException;
 import android.os.SystemClock;
 import android.os.Trace;
 import android.os.UserHandle;
@@ -153,6 +157,7 @@ import com.android.internal.util.ArrayUtils;
 import com.android.internal.util.DumpUtils;
 import com.android.internal.util.FileRotator;
 import com.android.internal.util.IndentingPrintWriter;
+import com.android.net.module.util.BaseNetdUnsolicitedEventListener;
 import com.android.net.module.util.BinderUtils;
 import com.android.server.EventLogTags;
 import com.android.server.LocalServices;
@@ -207,7 +212,6 @@ public class NetworkStatsService extends INetworkStatsService.Stub {
     private static final String TAG_NETSTATS_ERROR = "netstats_error";
 
     private final Context mContext;
-    private final INetworkManagementService mNetworkManager;
     private final NetworkStatsFactory mStatsFactory;
     private final AlarmManager mAlarmManager;
     private final Clock mClock;
@@ -221,6 +225,9 @@ public class NetworkStatsService extends INetworkStatsService.Stub {
 
     private final ContentObserver mContentObserver;
     private final ContentResolver mContentResolver;
+
+    protected INetd mNetd;
+    private final NetdCallback mNetdCallback;
 
     @VisibleForTesting
     public static final String ACTION_NETWORK_STATS_POLL =
@@ -404,14 +411,15 @@ public class NetworkStatsService extends INetworkStatsService.Stub {
         }
     }
 
-    public static NetworkStatsService create(Context context,
-                INetworkManagementService networkManager) {
+    /** Creates a new NetworkStatsService */
+    public static NetworkStatsService create(Context context) {
         AlarmManager alarmManager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
         PowerManager powerManager = (PowerManager) context.getSystemService(Context.POWER_SERVICE);
         PowerManager.WakeLock wakeLock =
                 powerManager.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK, TAG);
 
-        final NetworkStatsService service = new NetworkStatsService(context, networkManager,
+        final NetworkStatsService service = new NetworkStatsService(context,
+                INetd.Stub.asInterface((IBinder) context.getSystemService(Context.NETD_SERVICE)),
                 alarmManager, wakeLock, getDefaultClock(),
                 new DefaultNetworkStatsSettings(context), new NetworkStatsFactory(),
                 new NetworkStatsObservers(), getDefaultSystemDir(), getDefaultBaseDir(),
@@ -424,14 +432,11 @@ public class NetworkStatsService extends INetworkStatsService.Stub {
     // This must not be called outside of tests, even within the same package, as this constructor
     // does not register the local service. Use the create() helper above.
     @VisibleForTesting
-    NetworkStatsService(Context context, INetworkManagementService networkManager,
-            AlarmManager alarmManager, PowerManager.WakeLock wakeLock, Clock clock,
-            NetworkStatsSettings settings, NetworkStatsFactory factory,
-            NetworkStatsObservers statsObservers, File systemDir, File baseDir,
-            @NonNull Dependencies deps) {
+    NetworkStatsService(Context context, INetd netd, AlarmManager alarmManager,
+            PowerManager.WakeLock wakeLock, Clock clock, NetworkStatsSettings settings,
+            NetworkStatsFactory factory, NetworkStatsObservers statsObservers, File systemDir,
+            File baseDir, @NonNull Dependencies deps) {
         mContext = Objects.requireNonNull(context, "missing Context");
-        mNetworkManager = Objects.requireNonNull(networkManager,
-                "missing INetworkManagementService");
         mAlarmManager = Objects.requireNonNull(alarmManager, "missing AlarmManager");
         mClock = Objects.requireNonNull(clock, "missing Clock");
         mSettings = Objects.requireNonNull(settings, "missing NetworkStatsSettings");
@@ -450,6 +455,13 @@ public class NetworkStatsService extends INetworkStatsService.Stub {
         mContentResolver = mContext.getContentResolver();
         mContentObserver = mDeps.makeContentObserver(mHandler, mSettings,
                 mNetworkStatsSubscriptionsMonitor);
+        mNetd = netd;
+        mNetdCallback = new NetdCallback();
+        try {
+            mNetd.registerUnsolicitedEventListener(mNetdCallback);
+        } catch (RemoteException | ServiceSpecificException e) {
+            Log.wtf(TAG, "Error registering event listener :", e);
+        }
     }
 
     /**
@@ -505,6 +517,26 @@ public class NetworkStatsService extends INetworkStatsService.Stub {
                 new NetworkStatsManagerInternalImpl());
     }
 
+    /**
+     * Observer that watches for {@link INetdUnsolicitedEventListener} alerts.
+     */
+    private class NetdCallback extends BaseNetdUnsolicitedEventListener {
+        @Override
+        public void onQuotaLimitReached(@NonNull String alertName, @NonNull String ifName) {
+            // only someone like NMS should be calling us
+            NetworkStack.checkNetworkStackPermission(mContext);
+
+            if (LIMIT_GLOBAL_ALERT.equals(alertName)) {
+                // kick off background poll to collect network stats unless there is already
+                // such a call pending; UID stats are handled during normal polling interval.
+                if (!mHandler.hasMessages(MSG_PERFORM_POLL_REGISTER_ALERT)) {
+                    mHandler.sendEmptyMessageDelayed(MSG_PERFORM_POLL_REGISTER_ALERT,
+                            mSettings.getPollDelay());
+                }
+            }
+        }
+    }
+
     public void systemReady() {
         synchronized (mStatsLock) {
             mSystemReady = true;
@@ -547,12 +579,6 @@ public class NetworkStatsService extends INetworkStatsService.Stub {
         // persist stats during clean shutdown
         final IntentFilter shutdownFilter = new IntentFilter(ACTION_SHUTDOWN);
         mContext.registerReceiver(mShutdownReceiver, shutdownFilter);
-
-        try {
-            mNetworkManager.registerObserver(mAlertObserver);
-        } catch (RemoteException e) {
-            // ignored; service lives in system_server
-        }
 
         //  schedule periodic pall alarm based on {@link NetworkStatsSettings#getPollInterval()}.
         final PendingIntent pollIntent =
@@ -644,7 +670,7 @@ public class NetworkStatsService extends INetworkStatsService.Stub {
      */
     private void registerGlobalAlert() {
         try {
-            mNetworkManager.setGlobalAlert(mGlobalAlertBytes);
+            mNetd.bandwidthSetGlobalAlert(mGlobalAlertBytes);
         } catch (IllegalStateException e) {
             Slog.w(TAG, "problem registering for global alert: " + e);
         } catch (RemoteException e) {
@@ -1954,13 +1980,40 @@ public class NetworkStatsService extends INetworkStatsService.Stub {
      */
     // TODO: Remove this by implementing {@link NetworkStatsProvider} for non-offloaded
     //  tethering stats.
-    private NetworkStats getNetworkStatsTethering(int how) throws RemoteException {
+    @VisibleForTesting
+    NetworkStats getNetworkStatsTethering(int how) throws RemoteException {
+         // We only need to return per-UID stats. Per-device stats are already counted by
+        // interface counters.
+        if (how != STATS_PER_UID) {
+            return new NetworkStats(SystemClock.elapsedRealtime(), 0);
+        }
+
+        final NetworkStats stats;
         try {
-            return mNetworkManager.getNetworkStatsTethering(how);
+            final TetherStatsParcel[] tetherStatsVec = mNetd.tetherGetStats();
+            stats = new NetworkStats(SystemClock.elapsedRealtime(), tetherStatsVec.length);
+            final NetworkStats.Entry entry = new NetworkStats.Entry();
+
+            for (TetherStatsParcel tetherStats : tetherStatsVec) {
+                try {
+                    entry.iface = tetherStats.iface;
+                    entry.uid = UID_TETHERING;
+                    entry.set = SET_DEFAULT;
+                    entry.tag = TAG_NONE;
+                    entry.rxBytes   = tetherStats.rxBytes;
+                    entry.rxPackets = tetherStats.rxPackets;
+                    entry.txBytes   = tetherStats.txBytes;
+                    entry.txPackets = tetherStats.txPackets;
+                    stats.combineValues(entry);
+                } catch (ArrayIndexOutOfBoundsException e) {
+                    throw new IllegalStateException("invalid tethering stats " + e);
+                }
+            }
         } catch (IllegalStateException e) {
             Log.wtf(TAG, "problem reading network stats", e);
             return new NetworkStats(0L, 10);
         }
+        return stats;
     }
 
     // TODO: It is copied from ConnectivityService, consider refactor these check permission
