@@ -21,6 +21,10 @@ import android.annotation.Nullable;
 import android.annotation.RequiresPermission;
 import android.annotation.SystemApi;
 import android.annotation.TestApi;
+import android.app.compat.CompatChanges;
+import android.compat.annotation.ChangeId;
+import android.compat.annotation.Disabled;
+import android.compat.annotation.EnabledSince;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.PowerExemptionManager;
@@ -43,6 +47,35 @@ public class BroadcastOptions {
     private int mMaxManifestReceiverApiLevel = Build.VERSION_CODES.CUR_DEVELOPMENT;
     private boolean mDontSendToRestrictedApps = false;
     private boolean mAllowBackgroundActivityStarts;
+    private long mRequiredCompatChangeId = CHANGE_INVALID;
+    private boolean mRequiredCompatChangeEnabled = true;
+
+    /**
+     * {@link ChangeId} which is invalid.
+     *
+     * @hide
+     */
+    public static final long CHANGE_INVALID = Long.MIN_VALUE;
+
+    /**
+     * {@link ChangeId} which is always enabled, for testing purposes.
+     *
+     * @hide
+     */
+    @TestApi
+    @ChangeId
+    @EnabledSince(targetSdkVersion = android.os.Build.VERSION_CODES.BASE)
+    public static final long CHANGE_ALWAYS_ENABLED = 209888056L;
+
+    /**
+     * {@link ChangeId} which is always disabled, for testing purposes.
+     *
+     * @hide
+     */
+    @TestApi
+    @ChangeId
+    @Disabled
+    public static final long CHANGE_ALWAYS_DISABLED = 210856463L;
 
     /**
      * How long to temporarily put an app on the power allowlist when executing this broadcast
@@ -83,6 +116,12 @@ public class BroadcastOptions {
      */
     private static final String KEY_ALLOW_BACKGROUND_ACTIVITY_STARTS =
             "android:broadcast.allowBackgroundActivityStarts";
+
+    private static final String KEY_REQUIRED_COMPAT_CHANGE_ID =
+            "android:broadcast.requiredCompatChangeId";
+
+    private static final String KEY_REQUIRED_COMPAT_CHANGE_ENABLED =
+            "android:broadcast.requiredCompatChangeEnabled";
 
     /**
      * @hide
@@ -130,6 +169,8 @@ public class BroadcastOptions {
         mDontSendToRestrictedApps = opts.getBoolean(KEY_DONT_SEND_TO_RESTRICTED_APPS, false);
         mAllowBackgroundActivityStarts = opts.getBoolean(KEY_ALLOW_BACKGROUND_ACTIVITY_STARTS,
                 false);
+        mRequiredCompatChangeId = opts.getLong(KEY_REQUIRED_COMPAT_CHANGE_ID, CHANGE_INVALID);
+        mRequiredCompatChangeEnabled = opts.getBoolean(KEY_REQUIRED_COMPAT_CHANGE_ENABLED, true);
     }
 
     /**
@@ -230,16 +271,28 @@ public class BroadcastOptions {
      * Set the minimum target API level of receivers of the broadcast.  If an application
      * is targeting an API level less than this, the broadcast will not be delivered to
      * them.  This only applies to receivers declared in the app's AndroidManifest.xml.
+     *
+     * @deprecated to give developers the most flexibility during beta releases,
+     *             we strongly encourage using {@link ChangeId} instead of
+     *             target SDK checks; callers should use
+     *             {@link #setRequiredCompatChange(long, boolean)} instead.
      * @hide
      */
+    @Deprecated
     public void setMinManifestReceiverApiLevel(int apiLevel) {
         mMinManifestReceiverApiLevel = apiLevel;
     }
 
     /**
      * Return {@link #setMinManifestReceiverApiLevel}.
+     *
+     * @deprecated to give developers the most flexibility during beta releases,
+     *             we strongly encourage using {@link ChangeId} instead of
+     *             target SDK checks; callers should use
+     *             {@link #setRequiredCompatChange(long, boolean)} instead.
      * @hide
      */
+    @Deprecated
     public int getMinManifestReceiverApiLevel() {
         return mMinManifestReceiverApiLevel;
     }
@@ -248,20 +301,32 @@ public class BroadcastOptions {
      * Set the maximum target API level of receivers of the broadcast.  If an application
      * is targeting an API level greater than this, the broadcast will not be delivered to
      * them.  This only applies to receivers declared in the app's AndroidManifest.xml.
+     *
+     * @deprecated to give developers the most flexibility during beta releases,
+     *             we strongly encourage using {@link ChangeId} instead of
+     *             target SDK checks; callers should use
+     *             {@link #setRequiredCompatChange(long, boolean)} instead.
      * @hide
      */
     @TestApi
     @SystemApi(client = SystemApi.Client.MODULE_LIBRARIES)
+    @Deprecated
     public void setMaxManifestReceiverApiLevel(int apiLevel) {
         mMaxManifestReceiverApiLevel = apiLevel;
     }
 
     /**
      * Return {@link #setMaxManifestReceiverApiLevel}.
+     *
+     * @deprecated to give developers the most flexibility during beta releases,
+     *             we strongly encourage using {@link ChangeId} instead of
+     *             target SDK checks; callers should use
+     *             {@link #setRequiredCompatChange(long, boolean)} instead.
      * @hide
      */
     @TestApi
     @SystemApi(client = SystemApi.Client.MODULE_LIBRARIES)
+    @Deprecated
     public int getMaxManifestReceiverApiLevel() {
         return mMaxManifestReceiverApiLevel;
     }
@@ -301,6 +366,53 @@ public class BroadcastOptions {
     }
 
     /**
+     * When set, this broadcast will only be delivered to apps which have the
+     * given {@link ChangeId} in the given state.
+     * <p>
+     * Each {@link BroadcastOptions} instance supports only a single
+     * {@link ChangeId} requirement, so any subsequent calls will override any
+     * previously defined requirement.
+     * <p>
+     * This requirement applies to both manifest registered and runtime
+     * registered receivers.
+     *
+     * @param changeId the {@link ChangeId} to inspect
+     * @param enabled the required enabled state of the inspected
+     *            {@link ChangeId} for this broadcast to be delivered
+     * @see CompatChanges#isChangeEnabled
+     * @see #clearRequiredCompatChange()
+     */
+    public void setRequiredCompatChange(long changeId, boolean enabled) {
+        mRequiredCompatChangeId = changeId;
+        mRequiredCompatChangeEnabled = enabled;
+    }
+
+    /**
+     * Clear any previously defined requirement for this broadcast requested via
+     * {@link #setRequiredCompatChange(long, boolean)}.
+     */
+    public void clearRequiredCompatChange() {
+        mRequiredCompatChangeId = CHANGE_INVALID;
+        mRequiredCompatChangeEnabled = true;
+    }
+
+    /**
+     * Test if the given app meets the {@link ChangeId} state required by this
+     * broadcast, if any.
+     *
+     * @hide
+     */
+    @TestApi
+    public boolean testRequiredCompatChange(int uid) {
+        if (mRequiredCompatChangeId != CHANGE_INVALID) {
+            return CompatChanges.isChangeEnabled(mRequiredCompatChangeId,
+                    uid) == mRequiredCompatChangeEnabled;
+        } else {
+            return true;
+        }
+    }
+
+    /**
      * Returns the created options as a Bundle, which can be passed to
      * {@link android.content.Context#sendBroadcast(android.content.Intent)
      * Context.sendBroadcast(Intent)} and related methods.
@@ -327,6 +439,10 @@ public class BroadcastOptions {
         }
         if (mAllowBackgroundActivityStarts) {
             b.putBoolean(KEY_ALLOW_BACKGROUND_ACTIVITY_STARTS, true);
+        }
+        if (mRequiredCompatChangeId != CHANGE_INVALID) {
+            b.putLong(KEY_REQUIRED_COMPAT_CHANGE_ID, mRequiredCompatChangeId);
+            b.putBoolean(KEY_REQUIRED_COMPAT_CHANGE_ENABLED, mRequiredCompatChangeEnabled);
         }
         return b.isEmpty() ? null : b;
     }
