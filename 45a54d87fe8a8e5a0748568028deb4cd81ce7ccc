@@ -33,6 +33,23 @@
       "message": "Hi Sungsoo, can you help on API review ?",
       "revId": "45a54d87fe8a8e5a0748568028deb4cd81ce7ccc",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "11e90908_da63236a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1018371
+      },
+      "writtenOn": "2021-12-15T11:06:06Z",
+      "side": 1,
+      "message": "Sorry for lat. This was outside of my radar.",
+      "revId": "45a54d87fe8a8e5a0748568028deb4cd81ce7ccc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
