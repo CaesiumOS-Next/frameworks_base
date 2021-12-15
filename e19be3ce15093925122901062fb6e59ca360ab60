@@ -70,6 +70,30 @@
       },
       "revId": "e19be3ce15093925122901062fb6e59ca360ab60",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "20423cd9_f4cfb00f",
+        "filename": "packages/SettingsLib/src/com/android/settingslib/bluetooth/CachedBluetoothDeviceManager.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 235,
+      "author": {
+        "id": 1730162
+      },
+      "writtenOn": "2021-12-15T02:44:36Z",
+      "side": 1,
+      "message": "We call getMemberDevice in several place. I think that it\u0027s not a good way to make a copy set for each call.",
+      "parentUuid": "20595766_4157f3f5",
+      "range": {
+        "startLine": 235,
+        "startChar": 20,
+        "endLine": 235,
+        "endChar": 59
+      },
+      "revId": "e19be3ce15093925122901062fb6e59ca360ab60",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
