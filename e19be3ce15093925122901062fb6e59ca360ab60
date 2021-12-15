@@ -22,6 +22,30 @@
       },
       "revId": "e19be3ce15093925122901062fb6e59ca360ab60",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "39d816ff_4f085426",
+        "filename": "packages/SettingsLib/src/com/android/settingslib/bluetooth/CachedBluetoothDeviceManager.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 235,
+      "author": {
+        "id": 1730162
+      },
+      "writtenOn": "2021-12-15T02:08:57Z",
+      "side": 1,
+      "message": "We can\u0027t remove the object from the set as iterating, It causes ConcurrentModificationException. So copy it to array for iterating here in order to remove item from it safely.",
+      "parentUuid": "a1dce4a3_c144d1ef",
+      "range": {
+        "startLine": 235,
+        "startChar": 20,
+        "endLine": 235,
+        "endChar": 59
+      },
+      "revId": "e19be3ce15093925122901062fb6e59ca360ab60",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
