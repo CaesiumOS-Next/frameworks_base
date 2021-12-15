@@ -152,10 +152,8 @@ class RemoteAnimationController implements DeathRecipient {
                 Slog.e(TAG, "Failed to start remote animation", e);
                 onAnimationFinished();
             }
-            if (ProtoLogImpl.isEnabled(WM_DEBUG_REMOTE_ANIMATIONS)) {
                 ProtoLog.d(WM_DEBUG_REMOTE_ANIMATIONS, "startAnimation(): Notify animation start:");
                 writeStartDebugStatement();
-            }
         });
         setRunningRemoteAnimation(true);
     }
