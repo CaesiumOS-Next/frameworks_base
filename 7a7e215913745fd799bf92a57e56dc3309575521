@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "5485cc9f_3d44395e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1010050
+      },
+      "writtenOn": "2021-12-15T19:27:45Z",
+      "side": 1,
+      "message": "For context for follow-up API council review, it\u0027d be good to expand this a bit:\n\n\"This replaces the already-deprecated android.hardware.Camera.CameraInfo#canDisableShutterSound field.\"",
+      "revId": "7a7e215913745fd799bf92a57e56dc3309575521",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "12fbac39_310640d7",
@@ -14,6 +31,23 @@
       "writtenOn": "2021-12-09T20:54:58Z",
       "side": 1,
       "message": "Code revisions to address review comments. ",
+      "revId": "7a7e215913745fd799bf92a57e56dc3309575521",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b84d700a_8bb8b006",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1010050
+      },
+      "writtenOn": "2021-12-15T19:27:45Z",
+      "side": 1,
+      "message": "Just one commit message nit, otherwise looks good!",
       "revId": "7a7e215913745fd799bf92a57e56dc3309575521",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
