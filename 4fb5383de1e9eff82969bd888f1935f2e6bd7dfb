@@ -34,6 +34,24 @@
       "parentUuid": "776c0709_5c89455f",
       "revId": "4fb5383de1e9eff82969bd888f1935f2e6bd7dfb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "10fabcbf_bd3457f8",
+        "filename": "core/java/android/bluetooth/BluetoothLeBroadcastSourceChannel.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1106424
+      },
+      "writtenOn": "2021-12-16T17:50:22Z",
+      "side": 1,
+      "message": "Qualcomm responded that this class is not being used and can be removed. There were some references to this in their code but I went through them and I think this can be safely removed.\n\nWill abandon this change.",
+      "parentUuid": "efdb298d_c1b25d82",
+      "revId": "4fb5383de1e9eff82969bd888f1935f2e6bd7dfb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
