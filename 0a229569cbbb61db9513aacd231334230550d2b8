@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "598e3762_b6b55128",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1573716
+      },
+      "writtenOn": "2021-12-16T04:29:40Z",
+      "side": 1,
+      "message": "Resolved review comments:\n   - removed unnecessary value setting in exception\n   - added additional details to commit message",
+      "revId": "0a229569cbbb61db9513aacd231334230550d2b8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
