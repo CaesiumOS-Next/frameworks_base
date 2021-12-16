@@ -132,6 +132,7 @@ package android.media {
     method public int getVolume();
     method @NonNull public static android.media.BtProfileConnectionInfo hearingAidInfo(boolean);
     method @NonNull public static android.media.BtProfileConnectionInfo leAudio(boolean, boolean);
+    method @NonNull public static android.media.BtProfileConnectionInfo leAudioBroadcast(boolean);
     method public void writeToParcel(@NonNull android.os.Parcel, int);
     field @NonNull public static final android.os.Parcelable.Creator<android.media.BtProfileConnectionInfo> CREATOR;
   }

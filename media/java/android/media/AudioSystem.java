@@ -976,6 +976,8 @@ public class AudioSystem
     public static final int DEVICE_OUT_BLE_HEADSET = 0x20000000;
     /** @hide */
     public static final int DEVICE_OUT_BLE_SPEAKER = 0x20000001;
+    /** @hide */
+    public static final int DEVICE_OUT_BLE_BROADCAST = 0x20000002;
 
     /** @hide */
     public static final int DEVICE_OUT_DEFAULT = DEVICE_BIT_DEFAULT;

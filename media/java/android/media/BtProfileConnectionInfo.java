@@ -38,6 +38,7 @@ public final class BtProfileConnectionInfo implements Parcelable {
             BluetoothProfile.HEADSET, // Can only be set by BtHelper
             BluetoothProfile.HEARING_AID,
             BluetoothProfile.LE_AUDIO,
+            BluetoothProfile.LE_AUDIO_BROADCAST,
     })
     @Retention(RetentionPolicy.SOURCE)
     public @interface BtProfile {}
@@ -127,6 +128,17 @@ public final class BtProfileConnectionInfo implements Parcelable {
             boolean isLeOutput) {
         return new BtProfileConnectionInfo(BluetoothProfile.LE_AUDIO, suppressNoisyIntent, -1,
             isLeOutput);
+    }
+
+    /**
+     * constructor for le audio broadcast info
+     *
+     * @param suppressNoisyIntent if true the {@link AudioManager.ACTION_AUDIO_BECOMING_NOISY}
+     * intent will not be sent.
+     */
+    public static @NonNull BtProfileConnectionInfo leAudioBroadcast(boolean suppressNoisyIntent) {
+        return new BtProfileConnectionInfo(BluetoothProfile.LE_AUDIO_BROADCAST, suppressNoisyIntent,
+            -1, true);
     }
 
     /**
