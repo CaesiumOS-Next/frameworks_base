@@ -187,6 +187,30 @@
       },
       "revId": "7198145a18c1209f4e77e8c832791a676a260739",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "22090d49_cd96cdce",
+        "filename": "telephony/java/android/service/carrier/CarrierService.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1056478
+      },
+      "writtenOn": "2021-12-16T00:30:36Z",
+      "side": 1,
+      "message": "I think the API should keep with sub ids since that\u0027s the concept we use elsewhere for carrier config (ie getConfigForSubId)..",
+      "parentUuid": "a99d2d6f_b208ec62",
+      "range": {
+        "startLine": 208,
+        "startChar": 0,
+        "endLine": 214,
+        "endChar": 0
+      },
+      "revId": "7198145a18c1209f4e77e8c832791a676a260739",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
