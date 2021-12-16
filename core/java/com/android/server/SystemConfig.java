@@ -57,6 +57,7 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -1748,20 +1749,28 @@ public class SystemConfig {
         }
     }
 
-
     /**
-     * Returns the module name for a file in the apex module's partition.
+     * Returns the module name for the permissions.xml file in the apex module's partition.
      */
-    private String getApexModuleNameFromFilePath(Path path, Path apexDirectoryPath) {
+    private String getApexModuleNameFromPermissionFilePath(Path path, Path apexDirectoryPath) {
         if (!path.startsWith(apexDirectoryPath)) {
             throw new IllegalArgumentException("File " + path + " is not part of an APEX.");
         }
-        // File must be in <apex_directory>/<module_name>/[extra_paths/]<xml_file>
-        if (path.getNameCount() <= (apexDirectoryPath.getNameCount() + 1)) {
-            throw new IllegalArgumentException("File " + path + " is in the APEX partition,"
-                                                + " but not inside a module.");
+        final Path apexRelativePath = apexDirectoryPath.relativize(path);
+        final int nameCount = apexRelativePath.getNameCount();
+        if (nameCount < 2) {
+            throw new IllegalArgumentException("File " + path + " is directly inside an APEX.");
         }
-        return path.getName(apexDirectoryPath.getNameCount()).toString();
+        final String moduleName = apexRelativePath.getName(0).toString();
+        final Path moduleRelativePath = apexRelativePath.subpath(1, nameCount);
+        final Path permissionsPath = Paths.get("etc", "permissions");
+        // File must be in <apex_directory>/<module_name>/etc/permissions
+        if (!moduleRelativePath.startsWith(permissionsPath)) {
+            throw new IllegalArgumentException("Apex priv-app permissions allowlist " + path
+                    + " is misplaced. It should be under "
+                    + "<apex_directory>/<module_name>/etc/permissions/");
+        }
+        return moduleName;
     }
 
     /**
@@ -1771,7 +1780,10 @@ public class SystemConfig {
     public void readApexPrivAppPermissions(XmlPullParser parser, File permFile,
             Path apexDirectoryPath) throws IOException, XmlPullParserException {
         final String moduleName =
-                getApexModuleNameFromFilePath(permFile.toPath(), apexDirectoryPath);
+                getApexModuleNameFromPermissionFilePath(permFile.toPath(), apexDirectoryPath);
+        if (moduleName == null) {
+            return;
+        }
         final ArrayMap<String, ArraySet<String>> privAppPermissions;
         if (mApexPrivAppPermissions.containsKey(moduleName)) {
             privAppPermissions = mApexPrivAppPermissions.get(moduleName);
