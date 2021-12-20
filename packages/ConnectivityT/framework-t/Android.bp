@@ -49,7 +49,7 @@ filegroup {
     ],
     path: "aidl-export",
     visibility: [
-        "//visibility:private",
+        "//packages/modules/Connectivity:__subpackages__",
     ],
 }
 
