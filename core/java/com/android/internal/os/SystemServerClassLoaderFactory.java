@@ -16,10 +16,17 @@
 
 package com.android.internal.os;
 
+import android.content.pm.ApplicationInfo;
+import android.content.pm.PackageInfo;
 import android.os.Build;
 import android.util.ArrayMap;
 
+import com.android.server.pm.ApexManager;
+
 import dalvik.system.PathClassLoader;
+
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /** @hide */
 public final class SystemServerClassLoaderFactory {
@@ -29,22 +36,86 @@ public final class SystemServerClassLoaderFactory {
     private static final ArrayMap<String, PathClassLoader> sLoadedPaths = new ArrayMap<>();
 
     /**
-     * Creates and caches a ClassLoader for the jar at the given path, or returns a cached
-     * ClassLoader if it exists.
+     * Creates and caches a ClassLoader for the jar at the given path.
+     *
+     * This method should only be called by ZygoteInit to prefetch jars. For other users, use
+     * `getOrMaybeCreateClassLoader` instead.
      *
      * The parent class loader should always be the system server class loader. Changing it has
      * implications that require discussion with the mainline team.
      *
      * @hide for internal use only
      */
-    public static PathClassLoader getOrCreateClassLoader(String path, ClassLoader parent) {
-        PathClassLoader pathClassLoader = sLoadedPaths.get(path);
-        if (pathClassLoader == null) {
-            pathClassLoader = (PathClassLoader) ClassLoaderFactory.createClassLoader(
-                    path, /*librarySearchPath=*/null, /*libraryPermittedPath=*/null, parent,
-                    Build.VERSION.SDK_INT, /*isNamespaceShared=*/true , /*classLoaderName=*/null);
-            sLoadedPaths.put(path, pathClassLoader);
+    /* package */ static PathClassLoader createClassLoader(String path, ClassLoader parent) {
+        if (sLoadedPaths.containsKey(path)) {
+            throw new IllegalStateException("A ClassLoader for " + path + " already exists");
         }
+        PathClassLoader pathClassLoader = (PathClassLoader) ClassLoaderFactory.createClassLoader(
+                path, /*librarySearchPath=*/null, /*libraryPermittedPath=*/null, parent,
+                Build.VERSION.SDK_INT, /*isNamespaceShared=*/true , /*classLoaderName=*/null);
+        sLoadedPaths.put(path, pathClassLoader);
         return pathClassLoader;
+    }
+
+    /**
+     * Returns a cached ClassLoader to be used at runtime for the jar at the given path. Or, creates
+     * one if it is not prefetched and is allowed to be created at runtime.
+     *
+     * The parent class loader should always be the system server class loader. Changing it has
+     * implications that require discussion with the mainline team.
+     *
+     * @hide for internal use only
+     */
+    public static PathClassLoader getOrMaybeCreateClassLoader(String path, ClassLoader parent) {
+        PathClassLoader pathClassLoader = sLoadedPaths.get(path);
+        if (pathClassLoader != null) {
+            return pathClassLoader;
+        }
+        if (!allowClassLoaderCreation(path)) {
+            throw new RuntimeException("Creating a ClassLoader from " + path + " is not allowed. "
+                    + "Please make sure that the jar is listed in "
+                    + "`PRODUCT_APEX_STANDALONE_SYSTEM_SERVER_JARS` in the Makefile and added as a "
+                    + "`standalone_contents` of a `systemserverclasspath_fragment` in "
+                    + "`Android.bp`.");
+        }
+        return createClassLoader(path, parent);
+    }
+
+    /**
+     * Returns true if a class loader for the jar is allowed to be created at runtime if the jar is
+     * not prefetched on startup.
+     */
+    private static boolean allowClassLoaderCreation(String path) {
+        if (!Build.IS_DEBUGGABLE) {
+            return true;
+        }
+        // Currently, we only enforce prefetching for APEX jars.
+        if (!path.startsWith("/apex/")) {
+            return true;
+        }
+        // APEXes for testing only are okay to ignore.
+        if (isInTestApex(path)) {
+            return true;
+        }
+        return false;
+    }
+
+    /**
+     * Return true if the jar is in a test APEX.
+     */
+    private static boolean isInTestApex(String path) {
+        Pattern p = Pattern.compile("^/apex/(.*?)/");
+        Matcher m = p.matcher(path);
+        if (m.find()) {
+            String packageName = m.group(1);
+            PackageInfo packageInfo = ApexManager.getInstance()
+                    .getPackageInfo(packageName, ApexManager.MATCH_ACTIVE_PACKAGE);
+            if (packageInfo != null) {
+                if ((!packageInfo.applicationInfo.flags & ApplicationInfo.FLAG_TEST_ONLY) != 0) {
+                    return true;
+                }
+            }
+        }
+        return false;
     }
 }
