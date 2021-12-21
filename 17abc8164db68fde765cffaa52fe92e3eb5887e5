@@ -246,6 +246,30 @@
       },
       "revId": "17abc8164db68fde765cffaa52fe92e3eb5887e5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f6e9e360_615dc4d2",
+        "filename": "media/java/android/media/tv/TvInputService.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 264,
+      "author": {
+        "id": 1787456
+      },
+      "writtenOn": "2021-12-21T00:15:40Z",
+      "side": 1,
+      "message": "Hi Sungsoo,\nWe have already changed getAvailableExtensionInterfaces() to getAvailableExtensionInterfaceNames() to follow your suggestion.\nIs getAvailableExtensionInterfaceNames() ok for you ?\nThank you.",
+      "parentUuid": "eec95b75_b7b29b3d",
+      "range": {
+        "startLine": 264,
+        "startChar": 24,
+        "endLine": 264,
+        "endChar": 55
+      },
+      "revId": "17abc8164db68fde765cffaa52fe92e3eb5887e5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
