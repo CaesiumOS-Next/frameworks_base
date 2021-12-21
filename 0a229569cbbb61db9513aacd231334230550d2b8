@@ -16,6 +16,23 @@
       "message": "Resolved review comments:\n   - removed unnecessary value setting in exception\n   - added additional details to commit message",
       "revId": "0a229569cbbb61db9513aacd231334230550d2b8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9ad28665_04a74b84",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1573716
+      },
+      "writtenOn": "2021-12-21T16:11:02Z",
+      "side": 1,
+      "message": "ready to verify and autosubmit",
+      "revId": "0a229569cbbb61db9513aacd231334230550d2b8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
