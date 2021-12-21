@@ -21,6 +21,7 @@ import android.annotation.Nullable;
 import android.annotation.UserIdInt;
 import android.content.Context;
 import android.content.pm.UserInfo;
+import android.os.Build;
 import android.os.Environment;
 import android.os.SystemClock;
 import android.os.Trace;
@@ -114,10 +115,34 @@ public final class SystemServiceManager implements Dumpable {
      * @return The service instance.
      */
     public SystemService startServiceFromJar(String className, String path) {
-        PathClassLoader pathClassLoader = SystemServerClassLoaderFactory.getOrCreateClassLoader(
-                path, this.getClass().getClassLoader());
+        PathClassLoader pathClassLoader;
+        try {
+            pathClassLoader = SystemServerClassLoaderFactory.getOrCreateClassLoader(
+                    path, this.getClass().getClassLoader(), allowClassLoaderCreation(path));
+        } catch (IllegalArgumentException ex) {
+            throw new RuntimeException("Loading a service from " + path + " is not allowed. Please "
+                    + "make sure that the jar is listed in "
+                    + "`PRODUCT_APEX_STANDALONE_SYSTEM_SERVER_JARS` in the Makefile and added as a "
+                    + "`standalone_contents` of a `systemserverclasspath_fragment` in "
+                    + "`Android.bp`.");
+        }
         final Class<SystemService> serviceClass = loadClassFromLoader(className, pathClassLoader);
         return startService(serviceClass);
+    }
+
+    /**
+     * Returns true if a class loader for the jar is allowed to be created at runtime if the jar is
+     * not prefetched on startup.
+     */
+    private boolean allowClassLoaderCreation(String path) {
+        if (!Build.IS_DEBUGGABLE) {
+            return true;
+        }
+        // Currently, we only enforce prefetching for APEX jars.
+        if (!path.startsWith("/apex/")) {
+            return true;
+        }
+        return false;
     }
 
     /*

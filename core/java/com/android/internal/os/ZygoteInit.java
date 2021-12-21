@@ -587,7 +587,7 @@ public class ZygoteInit {
         for (String jar : envStr.split(":")) {
             try {
                 SystemServerClassLoaderFactory.getOrCreateClassLoader(
-                        jar, getOrCreateSystemServerClassLoader());
+                        jar, getOrCreateSystemServerClassLoader(), /*allowCreation=*/ true);
             } catch (Error e) {
                 // We don't want the process to crash for this error because prefetching is just an
                 // optimization.

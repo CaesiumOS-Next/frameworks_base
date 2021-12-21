@@ -37,9 +37,13 @@ public final class SystemServerClassLoaderFactory {
      *
      * @hide for internal use only
      */
-    public static PathClassLoader getOrCreateClassLoader(String path, ClassLoader parent) {
+    public static PathClassLoader getOrCreateClassLoader(String path, ClassLoader parent,
+            boolean allowCreation) {
         PathClassLoader pathClassLoader = sLoadedPaths.get(path);
         if (pathClassLoader == null) {
+            if (!allowCreation) {
+                throw new IllegalArgumentException(path + " is not found in the cache");
+            }
             pathClassLoader = (PathClassLoader) ClassLoaderFactory.createClassLoader(
                     path, /*librarySearchPath=*/null, /*libraryPermittedPath=*/null, parent,
                     Build.VERSION.SDK_INT, /*isNamespaceShared=*/true , /*classLoaderName=*/null);
