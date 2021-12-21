@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "902ae372_6c3f1090",
+        "filename": "services/core/java/com/android/server/connectivity/Vpn.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 521,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2021-12-21T07:56:43Z",
+      "side": 1,
+      "message": "Don\u0027t we always have a category ?",
+      "range": {
+        "startLine": 521,
+        "startChar": 8,
+        "endLine": 521,
+        "endChar": 29
+      },
+      "revId": "9e2bed5ac3aec4cd19550680c03e7a670e2d550f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eec7bdfc_b5e8b008",
+        "filename": "services/core/java/com/android/server/connectivity/Vpn.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 3431,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2021-12-21T07:56:43Z",
+      "side": 1,
+      "message": "I don\u0027t think we should send this here ; this is the VPN app turning itself off. This message is for when the user turned the VPN off from Settings or chose a different VPN for this used ID.",
+      "range": {
+        "startLine": 3431,
+        "startChar": 76,
+        "endLine": 3431,
+        "endChar": 93
+      },
+      "revId": "9e2bed5ac3aec4cd19550680c03e7a670e2d550f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
