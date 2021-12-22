@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a8f0c303_14f61f37",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2021-12-22T08:44:59Z",
+      "side": 1,
+      "message": "You could keep the annotation as a comment, but what you have is fine",
+      "revId": "8f6a3c1c09814fad45c713e31afcc02870bc2a3c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
