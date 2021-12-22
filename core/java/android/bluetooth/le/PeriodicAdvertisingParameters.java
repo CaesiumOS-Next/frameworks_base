@@ -26,8 +26,19 @@ import android.os.Parcelable;
  */
 public final class PeriodicAdvertisingParameters implements Parcelable {
 
-    private static final int INTERVAL_MIN = 80;
-    private static final int INTERVAL_MAX = 65519;
+    /**
+     * Minimum value for periodic advertising interval.
+     *
+     * @hide
+     */
+    public static final int INTERVAL_MIN = 80;
+
+    /**
+     * Maximum value for periodic advertising interval.
+     *
+     * @hide
+     */
+    public static final int INTERVAL_MAX = 65519;
 
     private final boolean mIncludeTxPower;
     private final int mInterval;
