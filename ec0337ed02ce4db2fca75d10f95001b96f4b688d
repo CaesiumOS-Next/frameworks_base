@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "729026d4_199fbf4d",
+        "filename": "packages/ConnectivityT/framework-t/src/android/app/usage/NetworkStatsManager.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 510,
+      "author": {
+        "id": 1306837
+      },
+      "writtenOn": "2021-12-23T08:55:48Z",
+      "side": 1,
+      "message": "I don\u0027t think this is related to statsProvider, maybe remove this.",
+      "range": {
+        "startLine": 510,
+        "startChar": 12,
+        "endLine": 510,
+        "endChar": 63
+      },
+      "revId": "ec0337ed02ce4db2fca75d10f95001b96f4b688d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9b624fcf_1120dc1e",
+        "filename": "packages/ConnectivityT/framework-t/src/android/app/usage/NetworkStatsManager.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 513,
+      "author": {
+        "id": 1306837
+      },
+      "writtenOn": "2021-12-23T08:55:48Z",
+      "side": 1,
+      "message": "IIUC for APIs we\u0027ll need to use Set\u003cString\u003e instead of arrays.\nPlease convert them to array and pass it into the service.",
+      "range": {
+        "startLine": 513,
+        "startChar": 25,
+        "endLine": 513,
+        "endChar": 34
+      },
+      "revId": "ec0337ed02ce4db2fca75d10f95001b96f4b688d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
