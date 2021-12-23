@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "29a4dbd5_bfb8d59d",
+        "filename": "packages/ConnectivityT/framework-t/src/android/app/usage/NetworkStatsManager.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 510,
+      "author": {
+        "id": 1364839
+      },
+      "writtenOn": "2021-12-23T14:31:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "729026d4_199fbf4d",
+      "range": {
+        "startLine": 510,
+        "startChar": 12,
+        "endLine": 510,
+        "endChar": 63
+      },
+      "revId": "ec0337ed02ce4db2fca75d10f95001b96f4b688d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9b624fcf_1120dc1e",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-12-23T08:55:48Z",
       "side": 1,
       "message": "IIUC for APIs we\u0027ll need to use Set\u003cString\u003e instead of arrays.\nPlease convert them to array and pass it into the service.",
+      "range": {
+        "startLine": 513,
+        "startChar": 25,
+        "endLine": 513,
+        "endChar": 34
+      },
+      "revId": "ec0337ed02ce4db2fca75d10f95001b96f4b688d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "88382560_dfbb173c",
+        "filename": "packages/ConnectivityT/framework-t/src/android/app/usage/NetworkStatsManager.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 513,
+      "author": {
+        "id": 1364839
+      },
+      "writtenOn": "2021-12-23T14:31:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9b624fcf_1120dc1e",
       "range": {
         "startLine": 513,
         "startChar": 25,
