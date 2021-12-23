@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c1d31221_5cfc66f3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1297255
+      },
+      "writtenOn": "2021-12-23T01:10:44Z",
+      "side": 1,
+      "message": "Can we statically link the PolicyDirection file so that we can still use this annotation?",
+      "revId": "925384083bb6f6c9386198f1e945dc94868643e0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
