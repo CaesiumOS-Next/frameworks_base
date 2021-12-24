@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bccfd8b5_a563a62c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1306837
+      },
+      "writtenOn": "2021-12-24T01:23:07Z",
+      "side": 1,
+      "message": "LGTM as long as TH is happy.",
+      "revId": "6888d292880ff89952ca888373a8235ed54cb261",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bcead38a_c38cc6b2",
+        "filename": "packages/ConnectivityT/framework-t/src/android/app/usage/NetworkStatsManager.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 516,
+      "author": {
+        "id": 1306837
+      },
+      "writtenOn": "2021-12-24T01:23:07Z",
+      "side": 1,
+      "message": "IIUC this could be just 0",
+      "range": {
+        "startLine": 516,
+        "startChar": 31,
+        "endLine": 516,
+        "endChar": 52
+      },
+      "revId": "6888d292880ff89952ca888373a8235ed54cb261",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
