@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "40052841_cf2bab6a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2021-12-27T14:06:54Z",
+      "side": 1,
+      "message": "Almost certainly fine but I\u0027m too tired to have confidence so you\u0027ll have to wait until tomorrow for +2",
+      "revId": "ff2b1011e0caa7d7eaaf6c2f8148cbe60916ffc0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e1c8bb98_bf286665",
+        "filename": "packages/ConnectivityT/framework-t/src/android/net/NetworkStatsCollection.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2021-12-27T14:06:54Z",
+      "side": 1,
+      "message": "Not sure who thought themself clever, but n.log(n) is the complexity of Arrays.sort.\n\n  final int[] uids \u003d new int[mStats.size()];\n  for (int i \u003d 0; i \u003c mStats.size(); i++) {\n    final Key \u003d mStats.keyAt(i);\n    if (NetworkStatsAccess.isAccessibleToUser(key.uid, callerUid, accessLevel)) {\n      uids[j++] \u003d key.uid;\n    }\n  }\n  final int result \u003d Arrays.copyOfRange(uids, 0, j);\n  Arrays.sort(result);\n  return result;\n\nOr\n\n  final ArrayList\u003cInteger\u003e uids \u003d new ArrayList\u003c\u003e;\n  for (int i \u003d 0; i \u003c mStats.size(); i++) {\n  final Key \u003d mStats.keyAt(i);\n  if (NetworkStatsAccess.isAccessibleToUser(key.uid, callerUid, accessLevel)) {\n      uids.add(key.uid);\n    }\n  }\n  final int[] u \u003d CollectionUtils.toIntArray(uids);\n  ArrayUtils.sort(u);\n  return u;",
+      "range": {
+        "startLine": 195,
+        "startChar": 0,
+        "endLine": 207,
+        "endChar": 48
+      },
+      "revId": "ff2b1011e0caa7d7eaaf6c2f8148cbe60916ffc0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1d8b125e_9e7f567c",
+        "filename": "packages/ConnectivityT/framework-t/src/android/net/NetworkStatsHistory.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 353,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2021-12-27T14:06:54Z",
+      "side": 1,
+      "message": "negative ?",
+      "range": {
+        "startLine": 353,
+        "startChar": 67,
+        "endLine": 353,
+        "endChar": 73
+      },
+      "revId": "ff2b1011e0caa7d7eaaf6c2f8148cbe60916ffc0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
