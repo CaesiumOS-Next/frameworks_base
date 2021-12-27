@@ -41,6 +41,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "691df613_2d09368e",
+        "filename": "packages/ConnectivityT/framework-t/src/android/net/NetworkStatsCollection.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1306837
+      },
+      "writtenOn": "2021-12-27T15:10:44Z",
+      "side": 1,
+      "message": "I see your points.\nLet\u0027s address this in follow-up patches since this is pure refactoring.\nI would like to try SortedSet if feasible.",
+      "parentUuid": "e1c8bb98_bf286665",
+      "range": {
+        "startLine": 195,
+        "startChar": 0,
+        "endLine": 207,
+        "endChar": 48
+      },
+      "revId": "ff2b1011e0caa7d7eaaf6c2f8148cbe60916ffc0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1d8b125e_9e7f567c",
@@ -54,6 +78,30 @@
       "writtenOn": "2021-12-27T14:06:54Z",
       "side": 1,
       "message": "negative ?",
+      "range": {
+        "startLine": 353,
+        "startChar": 67,
+        "endLine": 353,
+        "endChar": 73
+      },
+      "revId": "ff2b1011e0caa7d7eaaf6c2f8148cbe60916ffc0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "da8c5c2b_9fa6bddf",
+        "filename": "packages/ConnectivityT/framework-t/src/android/net/NetworkStatsHistory.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 353,
+      "author": {
+        "id": 1306837
+      },
+      "writtenOn": "2021-12-27T15:10:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1d8b125e_9e7f567c",
       "range": {
         "startLine": 353,
         "startChar": 67,
