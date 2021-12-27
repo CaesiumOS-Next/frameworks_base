@@ -16,6 +16,24 @@
       "message": "Can we statically link the PolicyDirection file so that we can still use this annotation?",
       "revId": "925384083bb6f6c9386198f1e945dc94868643e0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bc8b4f84_1d157aae",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1385042
+      },
+      "writtenOn": "2021-12-27T03:56:06Z",
+      "side": 1,
+      "message": "Original idea was to create a static lib for this class. However, at ag/16263219 mainline team mentioned that making the annotation available in a static library will give people the illusion it will work properly for public APIs when it will not. The annotation can be used within the module where it\u0027s defined so our plan is to remove the usage from framework and move the annotation class to the module.",
+      "parentUuid": "c1d31221_5cfc66f3",
+      "revId": "925384083bb6f6c9386198f1e945dc94868643e0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
