@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f47e68c7_93375a14",
+        "filename": "services/core/java/com/android/server/vcn/VcnGatewayConnection.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1060151
+      },
+      "writtenOn": "2021-12-28T17:26:34Z",
+      "side": 0,
+      "message": "These annotations serve a purpose. I\u0027m not in favor of just removing documentation for the sake of convenience. Do you need to add a copy of the annotation somewhere else and use that?",
+      "range": {
+        "startLine": 57,
+        "startChar": 31,
+        "endLine": 57,
+        "endChar": 46
+      },
+      "revId": "6c8544e0683ffe4ae42c64f46d516d1d872f1cc5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
