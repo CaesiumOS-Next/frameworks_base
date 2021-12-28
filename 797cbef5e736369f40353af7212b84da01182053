@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4fec1ada_c5bfabbc",
+        "filename": "services/core/java/com/android/server/connectivity/Vpn.java",
+        "patchSetId": 9
+      },
+      "lineNbr": 524,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2021-12-28T08:04:24Z",
+      "side": 1,
+      "message": "You can\u0027t assume this will always be the case. If you absolutely need an ArrayList then say new ArrayList\u003c\u003e(underlyingNetworks)\n\nAnyway, this should only be one Network object. IkeV2VpnRunner only ever has one underlying network, and we also bake that in the API because we only pass one NetworkCapabilities and one LinkProperties, so it wouldn\u0027t make sense to have a list of underlying networks.\n\nIf in the future we have VpnManager VPNs with multiple underlying networks then we\u0027ll extend this API to have arrays for all three parameters, but I don\u0027t think this is going to happen any time soon.",
+      "range": {
+        "startLine": 524,
+        "startChar": 54,
+        "endLine": 524,
+        "endChar": 74
+      },
+      "revId": "797cbef5e736369f40353af7212b84da01182053",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
