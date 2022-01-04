@@ -451,6 +451,41 @@ public final class BluetoothLeAudio implements BluetoothProfile, AutoCloseable {
     }
 
     /**
+     * Get list of the grups lead devices
+     *
+     * Lead device is the device that can be used as an active device in the system.
+     * Active devices points to the Audio Device for the Le Audio group.
+     * This method returns a list of Lead devices for all the connected LE Audio
+     * groups and those devices should be used in the setActiveDevice() method by other parts
+     * of the system, which wants to setActive a particular Le Audio Group.
+     *
+     * Note: getActiveDevice() returns the Lead device for the currently active LE Audio group.
+     */
+    @RequiresBluetoothConnectPermission
+    @RequiresPermission(android.Manifest.permission.BLUETOOTH_CONNECT)
+    public @NonNull List<BluetoothDevice> getConnectedGroupLeadDevices() {
+        if (VDBG) log("getConnectedGroupLeadDevices()");
+        final IBluetoothLeAudio service = getService();
+        final List<BluetoothDevice> defaultValue = new ArrayList<BluetoothDevice>();
+        if (service == null) {
+            Log.w(TAG, "Proxy not attached to service");
+            if (DBG) log(Log.getStackTraceString(new Throwable()));
+        } else if (mAdapter.isEnabled()) {
+            try {
+                final SynchronousResultReceiver<List<BluetoothDevice>> recv =
+                        new SynchronousResultReceiver();
+                service.getConnectedGroupLeadDevices(mAttributionSource, recv);
+                return Attributable.setAttributionSource(
+                        recv.awaitResultNoInterrupt(getSyncTimeout()).getValue(defaultValue),
+                        mAttributionSource);
+            } catch (RemoteException | TimeoutException e) {
+                Log.e(TAG, e.toString() + "\n" + Log.getStackTraceString(new Throwable()));
+            }
+        }
+        return defaultValue;
+    }
+
+    /**
      * {@inheritDoc}
      */
     @Override
