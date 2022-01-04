@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "82c91d47_d6cf650a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1881060
+      },
+      "writtenOn": "2022-01-04T09:06:22Z",
+      "side": 1,
+      "message": "I extracted the systemUI manifest change from aosp/1863058 because of the flaky pre-submit. I want to merge the permission on this one and then restart the pre-submit on the original one.",
+      "revId": "d0ad45540940b754a7f580f77d36a0840657d649",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
