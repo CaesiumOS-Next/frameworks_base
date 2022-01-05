@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d8223a00_12a35f12",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 14
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2022-01-05T11:20:35Z",
+      "side": 1,
+      "message": "Happy with this as long as the question gets answered",
+      "revId": "ca27e705e9744879f9f61810f70f6efd4d9ffa19",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dd0e4957_6df07fc0",
+        "filename": "packages/ConnectivityT/framework-t/src/android/net/NetworkTemplate.java",
+        "patchSetId": 14
+      },
+      "lineNbr": 1114,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2022-01-05T11:20:35Z",
+      "side": 1,
+      "message": "DEFAULT_NETWORK_ALL is @hide and therefore unusable by clients, but it\u0027s part of this intdef. Should we expose it ?",
+      "range": {
+        "startLine": 1114,
+        "startChar": 61,
+        "endLine": 1114,
+        "endChar": 75
+      },
+      "revId": "ca27e705e9744879f9f61810f70f6efd4d9ffa19",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
