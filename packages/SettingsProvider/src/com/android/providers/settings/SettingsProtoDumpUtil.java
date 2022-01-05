@@ -970,63 +970,6 @@ class SettingsProtoDumpUtil {
                 Settings.Global.NATIVE_FLAGS_HEALTH_CHECK_ENABLED,
                 GlobalSettingsProto.NATIVE_FLAGS_HEALTH_CHECK_ENABLED);
 
-        final long netstatsToken = p.start(GlobalSettingsProto.NETSTATS);
-        dumpSetting(s, p,
-                Settings.Global.NETSTATS_ENABLED,
-                GlobalSettingsProto.Netstats.ENABLED);
-        dumpSetting(s, p,
-                Settings.Global.NETSTATS_POLL_INTERVAL,
-                GlobalSettingsProto.Netstats.POLL_INTERVAL);
-        dumpSetting(s, p,
-                Settings.Global.NETSTATS_TIME_CACHE_MAX_AGE,
-                GlobalSettingsProto.Netstats.TIME_CACHE_MAX_AGE);
-        dumpSetting(s, p,
-                Settings.Global.NETSTATS_GLOBAL_ALERT_BYTES,
-                GlobalSettingsProto.Netstats.GLOBAL_ALERT_BYTES);
-        dumpSetting(s, p,
-                Settings.Global.NETSTATS_SAMPLE_ENABLED,
-                GlobalSettingsProto.Netstats.SAMPLE_ENABLED);
-        dumpSetting(s, p,
-                Settings.Global.NETSTATS_AUGMENT_ENABLED,
-                GlobalSettingsProto.Netstats.AUGMENT_ENABLED);
-        dumpSetting(s, p,
-                Settings.Global.NETSTATS_DEV_BUCKET_DURATION,
-                GlobalSettingsProto.Netstats.DEV_BUCKET_DURATION);
-        dumpSetting(s, p,
-                Settings.Global.NETSTATS_DEV_PERSIST_BYTES,
-                GlobalSettingsProto.Netstats.DEV_PERSIST_BYTES);
-        dumpSetting(s, p,
-                Settings.Global.NETSTATS_DEV_ROTATE_AGE,
-                GlobalSettingsProto.Netstats.DEV_ROTATE_AGE);
-        dumpSetting(s, p,
-                Settings.Global.NETSTATS_DEV_DELETE_AGE,
-                GlobalSettingsProto.Netstats.DEV_DELETE_AGE);
-        dumpSetting(s, p,
-                Settings.Global.NETSTATS_UID_BUCKET_DURATION,
-                GlobalSettingsProto.Netstats.UID_BUCKET_DURATION);
-        dumpSetting(s, p,
-                Settings.Global.NETSTATS_UID_PERSIST_BYTES,
-                GlobalSettingsProto.Netstats.UID_PERSIST_BYTES);
-        dumpSetting(s, p,
-                Settings.Global.NETSTATS_UID_ROTATE_AGE,
-                GlobalSettingsProto.Netstats.UID_ROTATE_AGE);
-        dumpSetting(s, p,
-                Settings.Global.NETSTATS_UID_DELETE_AGE,
-                GlobalSettingsProto.Netstats.UID_DELETE_AGE);
-        dumpSetting(s, p,
-                Settings.Global.NETSTATS_UID_TAG_BUCKET_DURATION,
-                GlobalSettingsProto.Netstats.UID_TAG_BUCKET_DURATION);
-        dumpSetting(s, p,
-                Settings.Global.NETSTATS_UID_TAG_PERSIST_BYTES,
-                GlobalSettingsProto.Netstats.UID_TAG_PERSIST_BYTES);
-        dumpSetting(s, p,
-                Settings.Global.NETSTATS_UID_TAG_ROTATE_AGE,
-                GlobalSettingsProto.Netstats.UID_TAG_ROTATE_AGE);
-        dumpSetting(s, p,
-                Settings.Global.NETSTATS_UID_TAG_DELETE_AGE,
-                GlobalSettingsProto.Netstats.UID_TAG_DELETE_AGE);
-        p.end(netstatsToken);
-
         final long networkToken = p.start(GlobalSettingsProto.NETWORK);
         dumpSetting(s, p,
                 Settings.Global.NETWORK_PREFERENCE,
