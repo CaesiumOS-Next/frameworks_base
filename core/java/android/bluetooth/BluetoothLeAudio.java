@@ -20,6 +20,7 @@ package android.bluetooth;
 import static android.bluetooth.BluetoothUtils.getSyncTimeout;
 
 import android.Manifest;
+import android.annotation.IntDef;
 import android.annotation.NonNull;
 import android.annotation.Nullable;
 import android.annotation.RequiresPermission;
@@ -36,6 +37,8 @@ import android.util.Log;
 
 import com.android.modules.utils.SynchronousResultReceiver;
 
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.TimeoutException;
@@ -329,6 +332,40 @@ public final class BluetoothLeAudio implements BluetoothProfile, AutoCloseable {
      * @hide
      */
     public static final int GROUP_NODE_REMOVED = IBluetoothLeAudio.GROUP_NODE_REMOVED;
+
+    /**
+     * Indicates the audio location invalid.
+     * @hide
+     */
+    public static final int AUDIO_LOCATION_INVALID = 0x0000;
+
+    /**
+     * Indicates the audio location front left.
+     * @hide
+     */
+    public static final int AUDIO_LOCATION_FRONT_LEFT = 0x0001;
+
+    /**
+     * Indicates the audio location front right.
+     * @hide
+     */
+    public static final int AUDIO_LOCATION_FRONT_RIGHT = 0x0002;
+
+    /**
+     * Indicates the audio location front left and right.
+     * @hide
+     */
+    public static final int AUDIO_LOCATION_FRONT_LEFT_AND_RIGHT = 0x0003;
+
+    /** @hide */
+    @IntDef(value = {
+            AUDIO_LOCATION_INVALID,
+            AUDIO_LOCATION_FRONT_LEFT,
+            AUDIO_LOCATION_FRONT_RIGHT,
+            AUDIO_LOCATION_FRONT_LEFT_AND_RIGHT,
+    })
+    @Retention(RetentionPolicy.SOURCE)
+    public @interface AudioLocation {}
 
     private final BluetoothProfileConnector<IBluetoothLeAudio> mProfileConnector =
             new BluetoothProfileConnector(this, BluetoothProfile.LE_AUDIO, "BluetoothLeAudio",
@@ -721,6 +758,33 @@ public final class BluetoothLeAudio implements BluetoothProfile, AutoCloseable {
         }
         return defaultValue;
     }
+
+    /**
+     * Get the audio location for the device.
+     * @param device the bluetooth device
+     * @return audio location for the device
+     *
+     * @hide
+     */
+    @RequiresBluetoothConnectPermission
+    @RequiresPermission(allOf = {
+            android.Manifest.permission.BLUETOOTH_CONNECT,
+            android.Manifest.permission.BLUETOOTH_PRIVILEGED
+    })
+    public @AudioLocation int getAudioLocation(@NonNull BluetoothDevice device) {
+        if (VDBG) log("getAudioLocation()");
+        final IBluetoothLeAudio service = getService();
+        final int defaultLocation = AUDIO_LOCATION_INVALID;
+        if (service == null) {
+            Log.w(TAG, "Proxy not attached to service");
+            if (DBG) log(Log.getStackTraceString(new Throwable()));
+        } else if (mAdapter.isEnabled()) {
+            //TODO: add the implementation.
+            if (VDBG) log("getAudioLocation() from LE audio service");
+        }
+        return defaultLocation;
+    }
+
 
     /**
      * Set connection policy of the profile
