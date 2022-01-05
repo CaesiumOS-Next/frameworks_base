@@ -2893,8 +2893,7 @@ public class ActivityManager {
         public static final int FLAG_PERSISTENT = 1<<1;
 
         /**
-         * Constant for {@link #flags}: this process is associated with a
-         * persistent system app.
+         * Constant for {@link #flags}: this process has activities running
          * @hide
          */
         @UnsupportedAppUsage(maxTargetSdk = Build.VERSION_CODES.R, trackingBug = 170729553)
@@ -2903,6 +2902,8 @@ public class ActivityManager {
         /**
          * Flags of information.  May be any of
          * {@link #FLAG_CANT_SAVE_STATE}.
+         * {@link #FLAG_PERSISTENT}.
+         * {@link #FLAG_HAS_ACTIVITIES}.
          * @hide
          */
         @UnsupportedAppUsage
@@ -3180,7 +3181,7 @@ public class ActivityManager {
 
         /**
          * Constant for {@link #importanceReasonCode}: one of the application's
-         * content providers is being used by another process.  The pid of
+         * services is being used by another process.  The pid of
          * the client process is in {@link #importanceReasonPid} and the
          * target provider in this process is in
          * {@link #importanceReasonComponent}.
