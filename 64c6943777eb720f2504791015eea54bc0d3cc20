@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8fa806f8_8ac472d4",
+        "filename": "packages/ConnectivityT/framework-t/src/android/net/NetworkStats.java",
+        "patchSetId": 19
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2022-01-06T13:48:46Z",
+      "side": 1,
+      "message": "Maybe \"set value meaning any set except debug sets\"",
+      "range": {
+        "startLine": 86,
+        "startChar": 27,
+        "endLine": 86,
+        "endChar": 75
+      },
+      "revId": "64c6943777eb720f2504791015eea54bc0d3cc20",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ee7e9d46_51c9bfba",
+        "filename": "packages/ConnectivityT/framework-t/src/android/net/NetworkStats.java",
+        "patchSetId": 19
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2022-01-06T13:48:46Z",
+      "side": 1,
+      "message": "Does this link actually work ? set is a private member.",
+      "range": {
+        "startLine": 86,
+        "startChar": 8,
+        "endLine": 86,
+        "endChar": 21
+      },
+      "revId": "64c6943777eb720f2504791015eea54bc0d3cc20",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

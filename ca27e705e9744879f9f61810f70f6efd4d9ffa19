@@ -20,6 +20,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "71168758_164d844f",
+        "filename": "packages/ConnectivityT/framework-t/src/android/net/NetworkStats.java",
+        "patchSetId": 14
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2022-01-06T13:48:46Z",
+      "side": 1,
+      "message": "Will this be a problem for internal callers that actually use this ?\n\nISTM that SET_DEBUG_START was never a set to begin with and should never have been included. But VPN_IN and VPN_OUT are actual sets right ? Is there any caller using these by passing it to a method with the annotation ?",
+      "range": {
+        "startLine": 117,
+        "startChar": 0,
+        "endLine": 119,
+        "endChar": 27
+      },
+      "revId": "ca27e705e9744879f9f61810f70f6efd4d9ffa19",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "dd0e4957_6df07fc0",
         "filename": "packages/ConnectivityT/framework-t/src/android/net/NetworkTemplate.java",
         "patchSetId": 14
