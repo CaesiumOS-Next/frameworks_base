@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "996ab64c_b01b0468",
+        "filename": "services/core/java/com/android/server/connectivity/Vpn.java",
+        "patchSetId": 11
+      },
+      "lineNbr": 519,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2022-01-06T03:21:59Z",
+      "side": 1,
+      "message": "Do you know what the behavior is if the package declares multiple services that handle this action ?",
+      "range": {
+        "startLine": 519,
+        "startChar": 52,
+        "endLine": 519,
+        "endChar": 76
+      },
+      "revId": "7cf1954f8ec47b80ee6c8386d052a8a95d9b0516",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d9520dff_43c221d4",
+        "filename": "services/core/java/com/android/server/connectivity/Vpn.java",
+        "patchSetId": 11
+      },
+      "lineNbr": 531,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2022-01-06T03:21:59Z",
+      "side": 1,
+      "message": "Curious : what exceptions did you see thrown here ?",
+      "range": {
+        "startLine": 531,
+        "startChar": 17,
+        "endLine": 531,
+        "endChar": 35
+      },
+      "revId": "7cf1954f8ec47b80ee6c8386d052a8a95d9b0516",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9e5c7121_ff2e8a88",
+        "filename": "services/core/java/com/android/server/connectivity/Vpn.java",
+        "patchSetId": 11
+      },
+      "lineNbr": 1055,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2022-01-06T03:21:59Z",
+      "side": 1,
+      "message": "I think these capabilities need to be appropriately redacted : see ConnectivityService#networkCapabilitiesRestrictedForCallerPermissions",
+      "range": {
+        "startLine": 1055,
+        "startChar": 28,
+        "endLine": 1055,
+        "endChar": 48
+      },
+      "revId": "7cf1954f8ec47b80ee6c8386d052a8a95d9b0516",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
