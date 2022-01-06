@@ -68,6 +68,23 @@
       },
       "revId": "7cf1954f8ec47b80ee6c8386d052a8a95d9b0516",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0f357191_e67c070f",
+        "filename": "services/core/java/com/android/server/connectivity/Vpn.java",
+        "patchSetId": 11
+      },
+      "lineNbr": 1055,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2022-01-06T03:36:51Z",
+      "side": 1,
+      "message": "Both of these (caps and properties) are incorrect – here we need to pass the capabilities and properties of the underlying network, not of the VPN.",
+      "revId": "7cf1954f8ec47b80ee6c8386d052a8a95d9b0516",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
