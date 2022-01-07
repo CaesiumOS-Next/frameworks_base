@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e56d23e8_c1f6da8b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1385042
+      },
+      "writtenOn": "2022-01-07T12:50:45Z",
+      "side": 1,
+      "message": "LGTM with a nit.",
+      "revId": "70fb5a6238cfaad7a6983ee4c1ceede300b6849d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
