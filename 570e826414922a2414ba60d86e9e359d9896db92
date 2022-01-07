@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1f7994f1_b827f71a",
+        "filename": "native/android/libandroid_net.map.txt",
+        "patchSetId": 3
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1003247
+      },
+      "writtenOn": "2022-01-07T14:49:15Z",
+      "side": 1,
+      "message": "this looks wrong, seeing as it is inline",
+      "range": {
+        "startLine": 23,
+        "startChar": 4,
+        "endLine": 23,
+        "endChar": 22
+      },
+      "revId": "570e826414922a2414ba60d86e9e359d9896db92",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8df1e304_a04e88cd",
+        "filename": "native/android/net.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1003247
+      },
+      "writtenOn": "2022-01-07T14:49:15Z",
+      "side": 1,
+      "message": "did you mean to write \n\nint android_tag_socket(int sockfd, int tag) {\n  return tagSocket(sockfd, tag, -1)\n}\n\nhere instead of in the .h?\n\nyou either need to put it here instead of in .h, or you need to remove it from the map.\n\nstatic inline header file functions don\u0027t actually exist in the library.\n\nthinking about it, putting it here instead of in header file is probably slightly better, because it means in future we can change -1 for Android U without having to recompile everything (since this file is a dynamically linked part of the system)",
+      "revId": "570e826414922a2414ba60d86e9e359d9896db92",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
