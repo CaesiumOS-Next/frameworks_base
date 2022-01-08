@@ -22,6 +22,30 @@
       },
       "revId": "6c8544e0683ffe4ae42c64f46d516d1d872f1cc5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b088b74f_88d22a7e",
+        "filename": "services/core/java/com/android/server/vcn/VcnGatewayConnection.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2022-01-08T01:06:01Z",
+      "side": 0,
+      "message": "Yeah let\u0027s make a copy here, and another one for the IKEv2 module",
+      "parentUuid": "f47e68c7_93375a14",
+      "range": {
+        "startLine": 57,
+        "startChar": 31,
+        "endLine": 57,
+        "endChar": 46
+      },
+      "revId": "6c8544e0683ffe4ae42c64f46d516d1d872f1cc5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
