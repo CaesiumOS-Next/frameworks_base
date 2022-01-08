@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cad9bf66_6d44e790",
+        "filename": "services/core/java/com/android/server/vcn/TelephonySubscriptionTracker.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1221725
+      },
+      "writtenOn": "2022-01-08T01:44:43Z",
+      "side": 1,
+      "message": "There is; mostly just here for documentation, so we leave a bit of a trail of breadcrumbs. This is already the case.",
+      "parentUuid": "05c4f6b0_eda0b1e3",
+      "range": {
+        "startLine": 141,
+        "startChar": 10,
+        "endLine": 141,
+        "endChar": 64
+      },
+      "revId": "31d56f82984a79b1869c79b4e8c53f7e3fb2a2fe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "147a42cd_02e83776",
@@ -61,6 +85,30 @@
       "side": 1,
       "message": "Ben explained it to me. It\u0027s working as-is.",
       "parentUuid": "147a42cd_02e83776",
+      "range": {
+        "startLine": 295,
+        "startChar": 16,
+        "endLine": 295,
+        "endChar": 40
+      },
+      "revId": "31d56f82984a79b1869c79b4e8c53f7e3fb2a2fe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7030a63e_26a71096",
+        "filename": "services/core/java/com/android/server/vcn/TelephonySubscriptionTracker.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 295,
+      "author": {
+        "id": 1221725
+      },
+      "writtenOn": "2022-01-08T01:44:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "97cd198f_ba33b0d4",
       "range": {
         "startLine": 295,
         "startChar": 16,
