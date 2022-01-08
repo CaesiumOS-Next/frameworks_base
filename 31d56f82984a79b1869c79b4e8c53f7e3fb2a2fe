@@ -45,6 +45,30 @@
       },
       "revId": "31d56f82984a79b1869c79b4e8c53f7e3fb2a2fe",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "97cd198f_ba33b0d4",
+        "filename": "services/core/java/com/android/server/vcn/TelephonySubscriptionTracker.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 295,
+      "author": {
+        "id": 1060151
+      },
+      "writtenOn": "2022-01-08T01:07:10Z",
+      "side": 1,
+      "message": "Ben explained it to me. It\u0027s working as-is.",
+      "parentUuid": "147a42cd_02e83776",
+      "range": {
+        "startLine": 295,
+        "startChar": 16,
+        "endLine": 295,
+        "endChar": 40
+      },
+      "revId": "31d56f82984a79b1869c79b4e8c53f7e3fb2a2fe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
