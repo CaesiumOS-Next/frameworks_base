@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "05c4f6b0_eda0b1e3",
+        "filename": "services/core/java/com/android/server/vcn/TelephonySubscriptionTracker.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1060151
+      },
+      "writtenOn": "2022-01-08T00:47:32Z",
+      "side": 1,
+      "message": "I believe there\u0027s a programmatic way to enforce this, no? If it\u0027s that important, you can get Thread.getId and compare to the VcnManagementService\u0027s thread.",
+      "range": {
+        "startLine": 141,
+        "startChar": 10,
+        "endLine": 141,
+        "endChar": 64
+      },
+      "revId": "31d56f82984a79b1869c79b4e8c53f7e3fb2a2fe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "147a42cd_02e83776",
+        "filename": "services/core/java/com/android/server/vcn/TelephonySubscriptionTracker.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 295,
+      "author": {
+        "id": 1060151
+      },
+      "writtenOn": "2022-01-08T00:47:32Z",
+      "side": 1,
+      "message": "Hmm... maybe I\u0027m reading this wrong, but I\u0027m not sure that the SubIdsBySlotId.keySet returns the slots in any particular order, so you could get them in reverse order, at which point I believe this has the ability to remove the wrong slot\u0027s subId no?",
+      "range": {
+        "startLine": 295,
+        "startChar": 16,
+        "endLine": 295,
+        "endChar": 40
+      },
+      "revId": "31d56f82984a79b1869c79b4e8c53f7e3fb2a2fe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
