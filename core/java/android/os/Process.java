@@ -127,8 +127,8 @@ public class Process {
      * Defines the UID/GID for the NFC service process.
      * @hide
      */
-    @UnsupportedAppUsage(maxTargetSdk = Build.VERSION_CODES.R, trackingBug = 170729553)
     @TestApi
+    @SystemApi(client = MODULE_LIBRARIES)
     public static final int NFC_UID = 1027;
 
     /**
