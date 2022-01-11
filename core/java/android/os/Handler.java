@@ -719,6 +719,7 @@ public class Handler {
     public boolean sendMessageAtTime(@NonNull Message msg, long uptimeMillis) {
         MessageQueue queue = mQueue;
         if (queue == null) {
+            msg.recycleUnchecked();
             RuntimeException e = new RuntimeException(
                     this + " sendMessageAtTime() called with no mQueue");
             Log.w("Looper", e.getMessage(), e);
@@ -742,6 +743,7 @@ public class Handler {
     public final boolean sendMessageAtFrontOfQueue(@NonNull Message msg) {
         MessageQueue queue = mQueue;
         if (queue == null) {
+            msg.recycleUnchecked();
             RuntimeException e = new RuntimeException(
                 this + " sendMessageAtTime() called with no mQueue");
             Log.w("Looper", e.getMessage(), e);
