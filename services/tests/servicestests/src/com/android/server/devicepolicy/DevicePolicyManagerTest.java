@@ -87,6 +87,7 @@ import android.app.admin.DevicePolicyManagerInternal;
 import android.app.admin.DevicePolicyManagerLiteInternal;
 import android.app.admin.FactoryResetProtectionPolicy;
 import android.app.admin.PasswordMetrics;
+import android.app.admin.PreferentialNetworkServicePreference;
 import android.app.admin.SystemUpdatePolicy;
 import android.content.BroadcastReceiver;
 import android.content.ComponentName;
@@ -4099,6 +4100,57 @@ public class DevicePolicyManagerTest extends DpmTestBase {
                 any(),
                 any()
         );
+    }
+
+    @Test
+    public void testGetSetPreferentialNetworkServicePreference() throws Exception {
+        PreferentialNetworkServicePreference preferentialNetworkServicePreferenceDefault =
+                (new PreferentialNetworkServicePreference.Builder())
+                        .setPreferentialNetworkServiceEnabled(false).build();
+        PreferentialNetworkServicePreference preferentialNetworkServicePreferenceEnabled =
+                (new PreferentialNetworkServicePreference.Builder())
+                        .setPreferentialNetworkServiceEnabled(true).build();
+        assertExpectException(SecurityException.class, null,
+                () -> dpm.setPreferentialNetworkServicePreference(
+                        preferentialNetworkServicePreferenceDefault));
+
+        assertExpectException(SecurityException.class, null,
+                () -> dpm.isPreferentialNetworkServiceEnabled());
+
+        final int managedProfileUserId = 15;
+        final int managedProfileAdminUid = UserHandle.getUid(managedProfileUserId, 19436);
+        addManagedProfile(admin1, managedProfileAdminUid, admin1);
+        mContext.binder.callingUid = managedProfileAdminUid;
+
+        dpm.setPreferentialNetworkServicePreference(preferentialNetworkServicePreferenceDefault);
+        assertThat(dpm.isPreferentialNetworkServiceEnabled()).isFalse();
+        assertThat(dpm.getPreferentialNetworkServicePreference()
+                .isPreferentialNetworkServiceEnabled()).isFalse();
+
+        ProfileNetworkPreference preferenceDetails =
+                new ProfileNetworkPreference.Builder()
+                        .setPreference(PROFILE_NETWORK_PREFERENCE_DEFAULT)
+                        .build();
+        List<ProfileNetworkPreference> preferences = new ArrayList<>();
+        preferences.add(preferenceDetails);
+        verify(getServices().connectivityManager, times(1))
+                .setProfileNetworkPreferences(UserHandle.of(managedProfileUserId), preferences,
+                        null, null);
+
+        dpm.setPreferentialNetworkServicePreference(preferentialNetworkServicePreferenceEnabled);
+        assertThat(dpm.isPreferentialNetworkServiceEnabled()).isTrue();
+        assertThat(dpm.getPreferentialNetworkServicePreference()
+                .isPreferentialNetworkServiceEnabled()).isTrue();
+
+        ProfileNetworkPreference preferenceDetails2 =
+                new ProfileNetworkPreference.Builder()
+                        .setPreference(PROFILE_NETWORK_PREFERENCE_ENTERPRISE)
+                        .build();
+        List<ProfileNetworkPreference> preferences2 = new ArrayList<>();
+        preferences2.add(preferenceDetails);
+        verify(getServices().connectivityManager, times(1))
+                .setProfileNetworkPreferences(UserHandle.of(managedProfileUserId), preferences2,
+                        null, null);
     }
 
     @Test
