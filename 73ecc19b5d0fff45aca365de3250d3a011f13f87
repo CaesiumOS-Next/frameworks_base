@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "035dfb55_96cc1bce",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2022-01-12T15:09:16Z",
+      "side": 1,
+      "message": "LGTM assuming 32 is changed to 33.",
+      "revId": "73ecc19b5d0fff45aca365de3250d3a011f13f87",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bee88c89_380cd034",
