@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bee88c89_380cd034",
+        "filename": "native/android/libandroid_net.map.txt",
+        "patchSetId": 4
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2022-01-12T15:07:21Z",
+      "side": 1,
+      "message": "Actually I think this cannot be 32, because 32 is SCv2. Change to 33?",
+      "range": {
+        "startLine": 21,
+        "startChar": 58,
+        "endLine": 21,
+        "endChar": 60
+      },
+      "revId": "73ecc19b5d0fff45aca365de3250d3a011f13f87",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
