@@ -39,6 +39,30 @@
       },
       "revId": "73ecc19b5d0fff45aca365de3250d3a011f13f87",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c54a41df_80501f9e",
+        "filename": "native/android/libandroid_net.map.txt",
+        "patchSetId": 4
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1349877
+      },
+      "writtenOn": "2022-01-12T15:23:45Z",
+      "side": 1,
+      "message": "I missed this one.\nThanks for catching this.",
+      "parentUuid": "bee88c89_380cd034",
+      "range": {
+        "startLine": 21,
+        "startChar": 58,
+        "endLine": 21,
+        "endChar": 60
+      },
+      "revId": "73ecc19b5d0fff45aca365de3250d3a011f13f87",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
