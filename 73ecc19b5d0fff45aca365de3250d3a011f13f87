@@ -63,6 +63,30 @@
       },
       "revId": "73ecc19b5d0fff45aca365de3250d3a011f13f87",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "86412804_46a8e8ab",
+        "filename": "native/android/libandroid_net.map.txt",
+        "patchSetId": 4
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1003247
+      },
+      "writtenOn": "2022-01-13T00:56:18Z",
+      "side": 1,
+      "message": "might need to file a T stopship bug to fix this up in case sc-qpr3 ends up using 33 for whatever reason and T ships as 34 (not 33).",
+      "parentUuid": "c54a41df_80501f9e",
+      "range": {
+        "startLine": 21,
+        "startChar": 58,
+        "endLine": 21,
+        "endChar": 60
+      },
+      "revId": "73ecc19b5d0fff45aca365de3250d3a011f13f87",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
