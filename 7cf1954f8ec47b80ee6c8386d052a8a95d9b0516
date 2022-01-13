@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ee37f911_16cb205d",
+        "filename": "services/core/java/com/android/server/connectivity/Vpn.java",
+        "patchSetId": 11
+      },
+      "lineNbr": 519,
+      "author": {
+        "id": 1308163
+      },
+      "writtenOn": "2022-01-13T03:14:46Z",
+      "side": 1,
+      "message": "There is only one service will handle this action, and it\u0027s decided by the declared sequence in AndroidManifest.xml.\n\nFor example, if the AndroidManifest.xml is something like below, then \"MyService2\" will handle this action.\n\n```\n\u003cservice\n    android:name\u003d\".MyService2\"\n    android:enabled\u003d\"true\"\n    android:exported\u003d\"true\"\u003e\n    \u003cintent-filter\u003e\n        \u003caction android:name\u003d\"android.net.action.VPN_MANAGER_ERROR\" /\u003e\n        \u003ccategory android:name\u003d\"android.net.category.ERROR_USER_DEACTIVATED\" /\u003e\n        \u003ccategory android:name\u003d\"android.net.category.ERROR_IKE\" /\u003e\n        \u003ccategory android:name\u003d\"android.net.category.ERROR_NETWORK\" /\u003e\n    \u003c/intent-filter\u003e\n\u003c/service\u003e\n\n\u003cservice\n    android:name\u003d\".MyService\"\n    android:enabled\u003d\"true\"\n    android:exported\u003d\"true\"\u003e\n    \u003cintent-filter\u003e\n        \u003caction android:name\u003d\"android.net.action.VPN_MANAGER_ERROR\" /\u003e\n        \u003ccategory android:name\u003d\"android.net.category.ERROR_USER_DEACTIVATED\" /\u003e\n        \u003ccategory android:name\u003d\"android.net.category.ERROR_IKE\" /\u003e\n        \u003ccategory android:name\u003d\"android.net.category.ERROR_NETWORK\" /\u003e\n    \u003c/intent-filter\u003e\n\u003c/service\u003e\n```\n\n... and if the AndroidManifest.xml is something like below, then \"MyService\" will handle this action.\n\n```\n\u003cservice\n    android:name\u003d\".MyService\"\n    android:enabled\u003d\"true\"\n    android:exported\u003d\"true\"\u003e\n    \u003cintent-filter\u003e\n        \u003caction android:name\u003d\"android.net.action.VPN_MANAGER_ERROR\" /\u003e\n        \u003ccategory android:name\u003d\"android.net.category.ERROR_USER_DEACTIVATED\" /\u003e\n        \u003ccategory android:name\u003d\"android.net.category.ERROR_IKE\" /\u003e\n        \u003ccategory android:name\u003d\"android.net.category.ERROR_NETWORK\" /\u003e\n    \u003c/intent-filter\u003e\n\u003c/service\u003e\n\n\u003cservice\n    android:name\u003d\".MyService2\"\n    android:enabled\u003d\"true\"\n    android:exported\u003d\"true\"\u003e\n    \u003cintent-filter\u003e\n        \u003caction android:name\u003d\"android.net.action.VPN_MANAGER_ERROR\" /\u003e\n        \u003ccategory android:name\u003d\"android.net.category.ERROR_USER_DEACTIVATED\" /\u003e\n        \u003ccategory android:name\u003d\"android.net.category.ERROR_IKE\" /\u003e\n        \u003ccategory android:name\u003d\"android.net.category.ERROR_NETWORK\" /\u003e\n    \u003c/intent-filter\u003e\n\u003c/service\u003e\n```",
+      "parentUuid": "996ab64c_b01b0468",
+      "range": {
+        "startLine": 519,
+        "startChar": 52,
+        "endLine": 519,
+        "endChar": 76
+      },
+      "revId": "7cf1954f8ec47b80ee6c8386d052a8a95d9b0516",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d9520dff_43c221d4",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-01-06T03:21:59Z",
       "side": 1,
       "message": "Curious : what exceptions did you see thrown here ?",
+      "range": {
+        "startLine": 531,
+        "startChar": 17,
+        "endLine": 531,
+        "endChar": 35
+      },
+      "revId": "7cf1954f8ec47b80ee6c8386d052a8a95d9b0516",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "62747f21_74a6a04b",
+        "filename": "services/core/java/com/android/server/connectivity/Vpn.java",
+        "patchSetId": 11
+      },
+      "lineNbr": 531,
+      "author": {
+        "id": 1308163
+      },
+      "writtenOn": "2022-01-13T03:14:46Z",
+      "side": 1,
+      "message": "I just saw ContextImpl#startService() may throw RuntimeException, so I caught it.\nBTW, Vpn#startAlwaysOnVpn() did the same thing.\n\nContextImpl#startService() -\u003e ContextImpl#startServiceCommon() -\u003e if catch RemoteException -\u003e Call RemoteException#rethrowFromSystemServer() -\u003e throw RuntimeException",
+      "parentUuid": "d9520dff_43c221d4",
       "range": {
         "startLine": 531,
         "startChar": 17,
@@ -83,6 +131,48 @@
       "writtenOn": "2022-01-06T03:36:51Z",
       "side": 1,
       "message": "Both of these (caps and properties) are incorrect – here we need to pass the capabilities and properties of the underlying network, not of the VPN.",
+      "revId": "7cf1954f8ec47b80ee6c8386d052a8a95d9b0516",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8334c60c_6f0952f4",
+        "filename": "services/core/java/com/android/server/connectivity/Vpn.java",
+        "patchSetId": 11
+      },
+      "lineNbr": 1055,
+      "author": {
+        "id": 1308163
+      },
+      "writtenOn": "2022-01-13T03:14:46Z",
+      "side": 1,
+      "message": "Ah, right.\nThanks for catching this!\nUpdated.",
+      "parentUuid": "0f357191_e67c070f",
+      "revId": "7cf1954f8ec47b80ee6c8386d052a8a95d9b0516",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b86349eb_5c20a59d",
+        "filename": "services/core/java/com/android/server/connectivity/Vpn.java",
+        "patchSetId": 11
+      },
+      "lineNbr": 1055,
+      "author": {
+        "id": 1308163
+      },
+      "writtenOn": "2022-01-13T03:14:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9e5c7121_ff2e8a88",
+      "range": {
+        "startLine": 1055,
+        "startChar": 28,
+        "endLine": 1055,
+        "endChar": 48
+      },
       "revId": "7cf1954f8ec47b80ee6c8386d052a8a95d9b0516",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
