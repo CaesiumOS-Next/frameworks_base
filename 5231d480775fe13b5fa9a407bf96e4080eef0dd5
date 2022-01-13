@@ -1,0 +1,56 @@
+{
+  "comments": [
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000019189625",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1870375?revision\u003d13",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "c947471a_338b8baa",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 13
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2022-01-13T07:57:27Z",
+      "side": 1,
+      "message": "Change must include a \"Tag:\" stanza. Valid tags are #compatibility #stability #security #feature #floss #gd-refactor #refactor. See: go/managing-bluetooth-cl-risk",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 0
+      },
+      "revId": "5231d480775fe13b5fa9a407bf96e4080eef0dd5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000019189625",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1870375?revision\u003d13",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "218ca2a3_da47e889",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 13
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2022-01-13T07:57:27Z",
+      "side": 1,
+      "message": "\"Run the CTS Bluetooth Rfcomm Handoff service Test. This requires\" is not a valid test stanza. Expected one of: gd/cert/run (--device|--rust|--rhost) (\u003cfilter\u003e) OR gd/fuzz/run (--host) \u003ctest\u003e OR atest (--host) \u003ctest\u003e",
+      "range": {
+        "startLine": 15,
+        "startChar": 5,
+        "endLine": 15,
+        "endChar": 70
+      },
+      "revId": "5231d480775fe13b5fa9a407bf96e4080eef0dd5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
