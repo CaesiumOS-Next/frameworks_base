@@ -1,0 +1,30 @@
+{
+  "comments": [
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000019241750",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1870375?revision\u003d16",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "beb747d4_11ba19e6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 16
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2022-01-14T06:04:48Z",
+      "side": 1,
+      "message": "\"Run the CTS Bluetooth Rfcomm Handoff service Test. This requires\" is not a valid test stanza. Expected one of: gd/cert/run (--device|--rust|--rhost) (\u003cfilter\u003e) OR gd/fuzz/run (--host) \u003ctest\u003e OR atest (--host) \u003ctest\u003e",
+      "range": {
+        "startLine": 15,
+        "startChar": 5,
+        "endLine": 15,
+        "endChar": 70
+      },
+      "revId": "601f87fbe46bb56a78dca5cb5e23c3d9b6a92963",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
