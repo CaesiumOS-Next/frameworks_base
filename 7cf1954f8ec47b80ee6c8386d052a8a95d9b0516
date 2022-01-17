@@ -48,6 +48,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ef9186ef_6909fe47",
+        "filename": "services/core/java/com/android/server/connectivity/Vpn.java",
+        "patchSetId": 11
+      },
+      "lineNbr": 519,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2022-01-17T07:58:22Z",
+      "side": 1,
+      "message": "Okay, so the first one listed in the manifest. Sounds good.",
+      "parentUuid": "ee37f911_16cb205d",
+      "range": {
+        "startLine": 519,
+        "startChar": 52,
+        "endLine": 519,
+        "endChar": 76
+      },
+      "revId": "7cf1954f8ec47b80ee6c8386d052a8a95d9b0516",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d9520dff_43c221d4",
