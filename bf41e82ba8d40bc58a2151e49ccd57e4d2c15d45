@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c306b395_1bf4127c",
+        "filename": "services/core/java/com/android/server/connectivity/Vpn.java",
+        "patchSetId": 17
+      },
+      "lineNbr": 516,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2022-01-17T08:16:41Z",
+      "side": 1,
+      "message": "// This reads members like mPackage and mSessionKey, so it must only be called from a synchronized method\n@GuardedBy(\"this\")\nprivate synchronized",
+      "range": {
+        "startLine": 516,
+        "startChar": 4,
+        "endLine": 516,
+        "endChar": 11
+      },
+      "revId": "bf41e82ba8d40bc58a2151e49ccd57e4d2c15d45",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "62d1e9a7_20bfe2dd",
+        "filename": "services/core/java/com/android/server/connectivity/Vpn.java",
+        "patchSetId": 17
+      },
+      "lineNbr": 2470,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2022-01-17T08:16:41Z",
+      "side": 1,
+      "message": "Annotate the methods with @Nullable\nAlso add a comment for when it returns null (when there is no underlying network)",
+      "range": {
+        "startLine": 2470,
+        "startChar": 8,
+        "endLine": 2470,
+        "endChar": 17
+      },
+      "revId": "bf41e82ba8d40bc58a2151e49ccd57e4d2c15d45",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ff77aa69_963ddaa2",
+        "filename": "services/core/java/com/android/server/connectivity/Vpn.java",
+        "patchSetId": 17
+      },
+      "lineNbr": 2786,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2022-01-17T08:16:41Z",
+      "side": 1,
+      "message": "We should not assign this.\n\nOption 1 :\n- Remove the |network| argument\nOption 2 :\n- Simply remove this line, but keep the argument unused\nOption 3 :\n- if (network !\u003d mActiveNetwork) return;\n\nI think option 1 is the best.",
+      "range": {
+        "startLine": 2786,
+        "startChar": 12,
+        "endLine": 2786,
+        "endChar": 37
+      },
+      "revId": "bf41e82ba8d40bc58a2151e49ccd57e4d2c15d45",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d92f4ef5_5b60c246",
+        "filename": "services/core/java/com/android/server/connectivity/VpnIkev2Utils.java",
+        "patchSetId": 17
+      },
+      "lineNbr": 396,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2022-01-17T08:16:41Z",
+      "side": 1,
+      "message": "Maybe write that this is the IKEv2 runner",
+      "range": {
+        "startLine": 396,
+        "startChar": 25,
+        "endLine": 396,
+        "endChar": 74
+      },
+      "revId": "bf41e82ba8d40bc58a2151e49ccd57e4d2c15d45",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
