@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c2eb25a8_221efbd3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1561936
+      },
+      "writtenOn": "2022-01-18T06:06:25Z",
+      "side": 1,
+      "message": "Hello,\nIt is a rare issue, but we applied it because it is an issue that the device is reset.\nSamsung device applied R OS first, and there was no side effect.\nPlease review it.",
+      "revId": "be8c94260dcc41bf7fd2dea4652224a36925f0b0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
