@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "699c3c38_27d5d6c2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1888950
+      },
+      "writtenOn": "2022-01-19T03:03:15Z",
+      "side": 1,
+      "message": "Please submit into packages/modules/Bluetooth/framework",
+      "revId": "be650eb0332e3275b3ba7d49893bf180189b868f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
