@@ -2555,4 +2555,10 @@ interface ITelephony {
      * @return the service name of the modem service which bind to.
      */
     String getModemService();
+
+    /**
+     * Sets a voice service state from telecom based on the current PhoneAccounts registered. See
+     * PhoneAccount#CAPABILITY_VOICE_CALLING_AVAILABLE.
+     */
+    void setVoiceServiceStateOverride(int subId, boolean hasService, String callingPackage);
 }
