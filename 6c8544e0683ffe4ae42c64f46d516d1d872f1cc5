@@ -70,6 +70,30 @@
       },
       "revId": "6c8544e0683ffe4ae42c64f46d516d1d872f1cc5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2320709d_6b8501b1",
+        "filename": "services/core/java/com/android/server/vcn/VcnGatewayConnection.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1385042
+      },
+      "writtenOn": "2022-01-19T06:59:40Z",
+      "side": 0,
+      "message": "Yes, I kept the annotation in framework(aosp/1928465) for VCN and have a copy in IKEv2 module(aosp/1940505). So, we don\u0027t need this CL anymore.",
+      "parentUuid": "6c622d74_be7008a8",
+      "range": {
+        "startLine": 57,
+        "startChar": 31,
+        "endLine": 57,
+        "endChar": 46
+      },
+      "revId": "6c8544e0683ffe4ae42c64f46d516d1d872f1cc5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
