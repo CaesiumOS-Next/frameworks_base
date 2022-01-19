@@ -46,6 +46,30 @@
       },
       "revId": "6c8544e0683ffe4ae42c64f46d516d1d872f1cc5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6c622d74_be7008a8",
+        "filename": "services/core/java/com/android/server/vcn/VcnGatewayConnection.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1221725
+      },
+      "writtenOn": "2022-01-19T06:37:41Z",
+      "side": 0,
+      "message": "Gentle ping on this, can we make a copy here?",
+      "parentUuid": "b088b74f_88d22a7e",
+      "range": {
+        "startLine": 57,
+        "startChar": 31,
+        "endLine": 57,
+        "endChar": 46
+      },
+      "revId": "6c8544e0683ffe4ae42c64f46d516d1d872f1cc5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
