@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "11970572_9208c791",
+        "filename": "services/core/java/com/android/server/connectivity/Vpn.java",
+        "patchSetId": 17
+      },
+      "lineNbr": 516,
+      "author": {
+        "id": 1308163
+      },
+      "writtenOn": "2022-01-20T04:48:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c306b395_1bf4127c",
+      "range": {
+        "startLine": 516,
+        "startChar": 4,
+        "endLine": 516,
+        "endChar": 11
+      },
+      "revId": "bf41e82ba8d40bc58a2151e49ccd57e4d2c15d45",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "62d1e9a7_20bfe2dd",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-01-17T08:16:41Z",
       "side": 1,
       "message": "Annotate the methods with @Nullable\nAlso add a comment for when it returns null (when there is no underlying network)",
+      "range": {
+        "startLine": 2470,
+        "startChar": 8,
+        "endLine": 2470,
+        "endChar": 17
+      },
+      "revId": "bf41e82ba8d40bc58a2151e49ccd57e4d2c15d45",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2d029816_b9425092",
+        "filename": "services/core/java/com/android/server/connectivity/Vpn.java",
+        "patchSetId": 17
+      },
+      "lineNbr": 2470,
+      "author": {
+        "id": 1308163
+      },
+      "writtenOn": "2022-01-20T04:48:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "62d1e9a7_20bfe2dd",
       "range": {
         "startLine": 2470,
         "startChar": 8,
@@ -70,6 +118,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "14d7ba61_45a63102",
+        "filename": "services/core/java/com/android/server/connectivity/Vpn.java",
+        "patchSetId": 17
+      },
+      "lineNbr": 2786,
+      "author": {
+        "id": 1308163
+      },
+      "writtenOn": "2022-01-20T04:48:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ff77aa69_963ddaa2",
+      "range": {
+        "startLine": 2786,
+        "startChar": 12,
+        "endLine": 2786,
+        "endChar": 37
+      },
+      "revId": "bf41e82ba8d40bc58a2151e49ccd57e4d2c15d45",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d92f4ef5_5b60c246",
@@ -83,6 +155,30 @@
       "writtenOn": "2022-01-17T08:16:41Z",
       "side": 1,
       "message": "Maybe write that this is the IKEv2 runner",
+      "range": {
+        "startLine": 396,
+        "startChar": 25,
+        "endLine": 396,
+        "endChar": 74
+      },
+      "revId": "bf41e82ba8d40bc58a2151e49ccd57e4d2c15d45",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "096a0c73_d57ee0f3",
+        "filename": "services/core/java/com/android/server/connectivity/VpnIkev2Utils.java",
+        "patchSetId": 17
+      },
+      "lineNbr": 396,
+      "author": {
+        "id": 1308163
+      },
+      "writtenOn": "2022-01-20T04:48:56Z",
+      "side": 1,
+      "message": "In fact, mTag is \"IkeV2VpnRunner\", so maybe that\u0027s fine?\nThe log is something like,\n```\nIkeV2VpnRunner: Receiving network capabilities changed on network: 100\nIkeV2VpnRunner: Receiving link properties changed on network: 100\n```",
+      "parentUuid": "d92f4ef5_5b60c246",
       "range": {
         "startLine": 396,
         "startChar": 25,
