@@ -259,7 +259,7 @@ public final class ImsReasonInfo implements Parcelable {
     /**
      * SIP response 480 : Temporarily Unavailable
      */
-    public static final int CODE_SIP_TEMPRARILY_UNAVAILABLE = 336;
+    public static final int CODE_SIP_TEMPORARILY_UNAVAILABLE = 336;
     /**
      * SIP response 484 : Address Incomplete
      */
