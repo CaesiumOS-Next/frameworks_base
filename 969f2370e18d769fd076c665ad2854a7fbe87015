@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "14e87f1f_4b48c482",
+        "filename": "services/devicepolicy/java/com/android/server/devicepolicy/DevicePolicyManagerService.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 17542,
+      "author": {
+        "id": 1059499
+      },
+      "writtenOn": "2022-01-24T11:06:23Z",
+      "side": 1,
+      "message": "Not used any more.",
+      "range": {
+        "startLine": 17541,
+        "startChar": 7,
+        "endLine": 17542,
+        "endChar": 92
+      },
+      "revId": "969f2370e18d769fd076c665ad2854a7fbe87015",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
