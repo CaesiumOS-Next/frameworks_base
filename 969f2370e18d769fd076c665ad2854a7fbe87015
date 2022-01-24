@@ -22,6 +22,30 @@
       },
       "revId": "969f2370e18d769fd076c665ad2854a7fbe87015",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "69c52126_1b419789",
+        "filename": "services/devicepolicy/java/com/android/server/devicepolicy/DevicePolicyManagerService.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 17542,
+      "author": {
+        "id": 1112039
+      },
+      "writtenOn": "2022-01-24T15:54:42Z",
+      "side": 1,
+      "message": "I can address this in the next patch. Dont want to rerun the presubmit",
+      "parentUuid": "14e87f1f_4b48c482",
+      "range": {
+        "startLine": 17541,
+        "startChar": 7,
+        "endLine": 17542,
+        "endChar": 92
+      },
+      "revId": "969f2370e18d769fd076c665ad2854a7fbe87015",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
