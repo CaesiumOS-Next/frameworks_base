@@ -213,7 +213,7 @@ public class AudioService extends IAudioService.Stub
     protected static final boolean DEBUG_AP = false;
 
     /** Debug volumes */
-    protected static final boolean DEBUG_VOL = false;
+    protected static final boolean DEBUG_VOL = true;
 
     /** debug calls to devices APIs */
     protected static final boolean DEBUG_DEVICES = false;
@@ -2658,7 +2658,7 @@ public class AudioService extends IAudioService.Stub
         if (DEBUG_VOL) Log.d(TAG, "adjustSuggestedStreamVolume() stream=" + suggestedStreamType
                 + ", flags=" + flags + ", caller=" + caller
                 + ", volControlStream=" + mVolumeControlStream
-                + ", userSelect=" + mUserSelectedVolumeControlStream);
+                + ", userSelect=" + mUserSelectedVolumeControlStream, new Exception());
         if (direction != AudioManager.ADJUST_SAME) {
             sVolumeLogger.log(new VolumeEvent(VolumeEvent.VOL_ADJUST_SUGG_VOL, suggestedStreamType,
                     direction/*val1*/, flags/*val2*/, new StringBuilder(callingPackage)
@@ -2818,8 +2818,11 @@ public class AudioService extends IAudioService.Stub
 
         // skip a2dp absolute volume control request when the device
         // is not an a2dp device
-        if (!AudioSystem.DEVICE_OUT_ALL_A2DP_SET.contains(device)
+        if ((!AudioSystem.DEVICE_OUT_ALL_A2DP_SET.contains(device)
+                && !AudioSystem.DEVICE_OUT_ALL_BLE_SET.contains(device))
                 && (flags & AudioManager.FLAG_BLUETOOTH_ABS_VOLUME) != 0) {
+            Log.d("XXX", "FLAG_BLUETOOTH_ABS_VOLUME arrived, "
+                    + "but the device is not in a2dp OR BLE set. Skipping.");
             return;
         }
 
@@ -2945,6 +2948,9 @@ public class AudioService extends IAudioService.Stub
             }
 
             int newIndex = mStreamStates[streamType].getIndex(device);
+            Log.d("XXX", "[adjustStreamVolume] oldIndex=" + oldIndex);
+            Log.d("XXX", "[adjustStreamVolume] newIndex=" + newIndex
+                    + ", maxIndex=" + mStreamStates[streamType].getMaxIndex());
 
             // Check if volume update should be send to AVRCP
             if (streamTypeAlias == AudioSystem.STREAM_MUSIC
@@ -2958,9 +2964,10 @@ public class AudioService extends IAudioService.Stub
             }
 
             if (device == AudioSystem.DEVICE_OUT_BLE_HEADSET
-                    && streamType == getBluetoothContextualVolumeStream()) {
+                    && streamType == getBluetoothContextualVolumeStream()
+                    && (flags & AudioManager.FLAG_BLUETOOTH_ABS_VOLUME) == 0) {
                 if (DEBUG_VOL) {
-                    Log.d(TAG, "adjustSreamVolume postSetLeAudioVolumeIndex index="
+                    Log.d(TAG, "adjustStreamVolume postSetLeAudioVolumeIndex index="
                             + newIndex + " stream=" + streamType);
                 }
                 mDeviceBroker.postSetLeAudioVolumeIndex(newIndex,
@@ -3558,10 +3565,15 @@ public class AudioService extends IAudioService.Stub
         final int device = getDeviceForStream(streamType);
         int oldIndex;
 
+        Log.d("XXX", "[AudioSystem] device=" + device);
+
         // skip a2dp absolute volume control request when the device
         // is not an a2dp device
-        if (!AudioSystem.DEVICE_OUT_ALL_A2DP_SET.contains(device)
+        if ((!AudioSystem.DEVICE_OUT_ALL_A2DP_SET.contains(device)
+             && !AudioSystem.DEVICE_OUT_ALL_BLE_SET.contains(device))
                 && (flags & AudioManager.FLAG_BLUETOOTH_ABS_VOLUME) != 0) {
+            Log.d("XXX", "FLAG_BLUETOOTH_ABS_VOLUME arrived, "
+                    + "but the device is not in a2dp OR BLE set. Skipping.");
             return;
         }
         // If we are being called by the system (e.g. hardware keys) check for current user
@@ -3602,7 +3614,8 @@ public class AudioService extends IAudioService.Stub
             }
 
             if (device == AudioSystem.DEVICE_OUT_BLE_HEADSET
-                    && streamType == getBluetoothContextualVolumeStream()) {
+                    && streamType == getBluetoothContextualVolumeStream()
+                    && (flags & AudioManager.FLAG_BLUETOOTH_ABS_VOLUME) == 0) {
                 if (DEBUG_VOL) {
                     Log.d(TAG, "adjustSreamVolume postSetLeAudioVolumeIndex index="
                             + index + " stream=" + streamType);
