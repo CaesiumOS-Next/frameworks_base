@@ -2502,7 +2502,7 @@ public class GlobalActionsDialogLite implements DialogInterface.OnDismissListene
 
             // close first, as popup windows will not fade during the animation
             dismissOverflow(false);
-            dismissPowerOptions(false);
+            dismissPowerOptions();
         }
 
         void dismissWithAnimation(Runnable animation) {
@@ -2516,7 +2516,7 @@ public class GlobalActionsDialogLite implements DialogInterface.OnDismissListene
         protected void completeDismiss() {
             mShowing = false;
             dismissOverflow(true);
-            dismissPowerOptions(true);
+            dismissPowerOptions();
             mNotificationShadeWindowController.setRequestTopUi(false, TAG);
             mSysUiState.setFlag(SYSUI_STATE_GLOBAL_ACTIONS_SHOWING, false)
                     .commitUpdate(mContext.getDisplayId());
@@ -2533,13 +2533,9 @@ public class GlobalActionsDialogLite implements DialogInterface.OnDismissListene
             }
         }
 
-        protected final void dismissPowerOptions(boolean immediate) {
+        protected final void dismissPowerOptions() {
             if (mPowerOptionsDialog != null) {
-                if (immediate) {
-                    mPowerOptionsDialog.dismiss();
-                } else {
-                    mPowerOptionsDialog.dismiss();
-                }
+                mPowerOptionsDialog.dismiss();
             }
         }
 
@@ -2577,7 +2573,7 @@ public class GlobalActionsDialogLite implements DialogInterface.OnDismissListene
         public void refreshDialog() {
             // ensure dropdown menus are dismissed before re-initializing the dialog
             dismissOverflow(true);
-            dismissPowerOptions(true);
+            dismissPowerOptions();
 
             // re-create dialog
             initializeLayout();
