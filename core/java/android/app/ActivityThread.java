@@ -6665,9 +6665,9 @@ public final class ActivityThread extends ClientTransactionHandler
         Trace.traceEnd(Trace.TRACE_TAG_ACTIVITY_MANAGER);
 
         // For backward compatibility, TrafficStats needs static access to the application context.
-        // But for isolated apps which cannot access network related services, service discovery
-        // is restricted. Hence, calling this would result in NPE.
-        if (!Process.isIsolated()) {
+        // But for isolated and supplemental apps which cannot access network related services,
+        // service discovery is restricted. Hence, calling this would result in crash.
+        if (!Process.isIsolated() && !Process.isSupplemental()) {
             TrafficStats.init(appContext);
         }
 
