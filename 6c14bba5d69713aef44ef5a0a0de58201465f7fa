@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "aecc4059_126e0235",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1061057
+      },
+      "writtenOn": "2022-01-25T08:55:45Z",
+      "side": 1,
+      "message": "We will not merge this CL as it has caused regression on many devices.\n",
+      "revId": "6c14bba5d69713aef44ef5a0a0de58201465f7fa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
