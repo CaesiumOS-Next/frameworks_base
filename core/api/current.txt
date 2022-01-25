@@ -21862,6 +21862,7 @@ package android.media {
     method public boolean isFeatureRequired(String);
     method public boolean isFeatureSupported(String);
     method public boolean isFormatSupported(android.media.MediaFormat);
+    field public static final int COLOR_FORMAT_YUVP010 = 54; // 0x36
     field @Deprecated public static final int COLOR_Format12bitRGB444 = 3; // 0x3
     field @Deprecated public static final int COLOR_Format16bitARGB1555 = 5; // 0x5
     field @Deprecated public static final int COLOR_Format16bitARGB4444 = 4; // 0x4
