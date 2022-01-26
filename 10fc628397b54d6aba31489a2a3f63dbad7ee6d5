@@ -3,6 +3,23 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "5b01f8bc_8b1a4ba0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1060151
+      },
+      "writtenOn": "2022-01-26T21:59:52Z",
+      "side": 1,
+      "message": "This CL doesn\u0027t include CTS because it is already supported by CTS. In fact, its purpose is to properly expose an API that\u0027s already used by CTS.",
+      "revId": "10fc628397b54d6aba31489a2a3f63dbad7ee6d5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "49b43f1c_659d9e44",
         "filename": "core/api/system-current.txt",
         "patchSetId": 1
