@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8b8fa24c_5752a615",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 21
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2022-01-27T11:27:23Z",
+      "side": 1,
+      "message": "Threading is now broken I think",
+      "revId": "4bc867f292386b75bacf2923a2b354581f130d1e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f833e805_dd61c516",
+        "filename": "services/core/java/com/android/server/connectivity/Vpn.java",
+        "patchSetId": 21
+      },
+      "lineNbr": 2569,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2022-01-27T11:27:23Z",
+      "side": 1,
+      "message": "Our code usually uses the return-fast policy.\n\n  if (mNetworkCapabilities \u003d\u003d null) return null;\n  return mConn...",
+      "range": {
+        "startLine": 2569,
+        "startChar": 12,
+        "endLine": 2569,
+        "endChar": 47
+      },
+      "revId": "4bc867f292386b75bacf2923a2b354581f130d1e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d50d6fac_e144ebfa",
+        "filename": "services/core/java/com/android/server/connectivity/Vpn.java",
+        "patchSetId": 21
+      },
+      "lineNbr": 2570,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2022-01-27T11:27:23Z",
+      "side": 1,
+      "message": "I think you\u0027re not on the right thread to read this ? It\u0027s not protected by anything and it\u0027s written on the thread on which the callback is called.",
+      "range": {
+        "startLine": 2570,
+        "startChar": 76,
+        "endLine": 2570,
+        "endChar": 96
+      },
+      "revId": "4bc867f292386b75bacf2923a2b354581f130d1e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
