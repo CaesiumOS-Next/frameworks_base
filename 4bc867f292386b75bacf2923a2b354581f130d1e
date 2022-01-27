@@ -41,6 +41,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c69dd97f_816fd3eb",
+        "filename": "services/core/java/com/android/server/connectivity/Vpn.java",
+        "patchSetId": 21
+      },
+      "lineNbr": 2569,
+      "author": {
+        "id": 1308163
+      },
+      "writtenOn": "2022-01-27T13:56:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f833e805_dd61c516",
+      "range": {
+        "startLine": 2569,
+        "startChar": 12,
+        "endLine": 2569,
+        "endChar": 47
+      },
+      "revId": "4bc867f292386b75bacf2923a2b354581f130d1e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d50d6fac_e144ebfa",
@@ -54,6 +78,30 @@
       "writtenOn": "2022-01-27T11:27:23Z",
       "side": 1,
       "message": "I think you\u0027re not on the right thread to read this ? It\u0027s not protected by anything and it\u0027s written on the thread on which the callback is called.",
+      "range": {
+        "startLine": 2570,
+        "startChar": 76,
+        "endLine": 2570,
+        "endChar": 96
+      },
+      "revId": "4bc867f292386b75bacf2923a2b354581f130d1e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "681cb4bb_8dc93c0e",
+        "filename": "services/core/java/com/android/server/connectivity/Vpn.java",
+        "patchSetId": 21
+      },
+      "lineNbr": 2570,
+      "author": {
+        "id": 1308163
+      },
+      "writtenOn": "2022-01-27T13:56:50Z",
+      "side": 1,
+      "message": "What about using synchronized to fix this problem?",
+      "parentUuid": "d50d6fac_e144ebfa",
       "range": {
         "startLine": 2570,
         "startChar": 76,
