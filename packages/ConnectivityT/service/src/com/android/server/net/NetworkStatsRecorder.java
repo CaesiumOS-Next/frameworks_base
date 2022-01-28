@@ -21,6 +21,7 @@ import static android.net.TrafficStats.KB_IN_BYTES;
 import static android.net.TrafficStats.MB_IN_BYTES;
 import static android.text.format.DateUtils.YEAR_IN_MILLIS;
 
+import android.annotation.NonNull;
 import android.net.NetworkIdentitySet;
 import android.net.NetworkStats;
 import android.net.NetworkStats.NonMonotonicObserver;
@@ -31,6 +32,7 @@ import android.net.NetworkTemplate;
 import android.net.TrafficStats;
 import android.os.Binder;
 import android.os.DropBoxManager;
+import android.os.SystemClock;
 import android.service.NetworkStatsRecorderProto;
 import android.util.IndentingPrintWriter;
 import android.util.Log;
@@ -68,7 +70,7 @@ public class NetworkStatsRecorder {
 
     private static final String TAG_NETSTATS_DUMP = "netstats_dump";
 
-    /** Dump before deleting in {@link #recoverFromWtf()}. */
+    /** Dump before deleting in {@link #recoverAndDeleteData()}. */
     private static final boolean DUMP_BEFORE_DELETE = true;
 
     private final FileRotator mRotator;
@@ -156,6 +158,15 @@ public class NetworkStatsRecorder {
         return mSinceBoot;
     }
 
+    public long getBucketDuration() {
+        return mBucketDuration;
+    }
+
+    @NonNull
+    public String getCookie() {
+        return mCookie;
+    }
+
     /**
      * Load complete history represented by {@link FileRotator}. Caches
      * internally as a {@link WeakReference}, and updated with future
@@ -189,10 +200,10 @@ public class NetworkStatsRecorder {
             res.recordCollection(mPending);
         } catch (IOException e) {
             Log.wtf(TAG, "problem completely reading network stats", e);
-            recoverFromWtf();
+            recoverAndDeleteData();
         } catch (OutOfMemoryError e) {
             Log.wtf(TAG, "problem completely reading network stats", e);
-            recoverFromWtf();
+            recoverAndDeleteData();
         }
         return res;
     }
@@ -300,10 +311,10 @@ public class NetworkStatsRecorder {
                 mPending.reset();
             } catch (IOException e) {
                 Log.wtf(TAG, "problem persisting pending stats", e);
-                recoverFromWtf();
+                recoverAndDeleteData();
             } catch (OutOfMemoryError e) {
                 Log.wtf(TAG, "problem persisting pending stats", e);
-                recoverFromWtf();
+                recoverAndDeleteData();
             }
         }
     }
@@ -319,10 +330,10 @@ public class NetworkStatsRecorder {
                 mRotator.rewriteAll(new RemoveUidRewriter(mBucketDuration, uids));
             } catch (IOException e) {
                 Log.wtf(TAG, "problem removing UIDs " + Arrays.toString(uids), e);
-                recoverFromWtf();
+                recoverAndDeleteData();
             } catch (OutOfMemoryError e) {
                 Log.wtf(TAG, "problem removing UIDs " + Arrays.toString(uids), e);
-                recoverFromWtf();
+                recoverAndDeleteData();
             }
         }
 
@@ -349,8 +360,7 @@ public class NetworkStatsRecorder {
      * Rewriter combining disk data with an existing collection, with optional cutoff date.
      *
      * This rewriter combines the content of a passed {@link NetworkStatsCollection} with anything
-     * read from disk, and write the resulting combined set to disk. Clears the original
-     * {@link NetworkStatsCollection} when finished writing.
+     * read from disk, and write the resulting combined set to disk.
      * If a cutoff is supplied, any data from disk before the cutoff is dropped.
      */
     private static class CombiningRewriter implements FileRotator.Rewriter {
@@ -392,7 +402,6 @@ public class NetworkStatsRecorder {
         @Override
         public void write(OutputStream out) throws IOException {
             mCollection.write(out);
-            mCollection.reset();
         }
     }
 
@@ -479,6 +488,51 @@ public class NetworkStatsRecorder {
         mRotator.rewriteAll(new CombiningRewriter(collection, cutoff));
     }
 
+    /**
+     * Import a collection inherited from previous boots of the device.
+     *
+     * This method is used to import collections inherited from files saved by older
+     * versions of Android into the current version of NetworkStats. It will merge data
+     * passed as an argument with the current data on disk, dropping any stats from the
+     * data stored on disk before |dropDataBefore|. The imported collection must end
+     * before or at the cutoff, and the cutoff must happen before the start of the last
+     * boot of the device.
+     *
+     * Note : If any data on disk starts before the passed cutoff, that data WILL BE DROPPED.
+     * This is to avoid cases of double counting in case the migration has to run
+     * multiple times, power loss cases, or the timestamp on new boot was tampered with.
+     *
+     * @param collection some collection to import
+     * @param dropDataBefore the cutoff timestamp at which to drop data from disk
+     * @throws IOException if the files can't be written to disk
+     * @throws IllegalArgumentException if the collection ends after the last boot
+     */
+    public void importAncestralCollectionLocked(@NonNull final NetworkStatsCollection collection,
+            final long dropDataBefore)
+            throws IOException {
+        final long bootTimestamp = System.currentTimeMillis() - SystemClock.elapsedRealtime();
+        if (bootTimestamp < dropDataBefore) {
+            throw new IllegalArgumentException("Refusing to drop data more recent than the last "
+                    + "boot time");
+        }
+        if (dropDataBefore < collection.getEndMillis()) {
+            throw new IllegalArgumentException("Refusing to merge data more recent than the "
+                    + "supplied cutoff");
+        }
+
+        if (mRotator != null) {
+            mRotator.rewriteSingle(new CombiningRewriter(collection, collection.getEndMillis()),
+                    collection.getStartMillis(), collection.getEndMillis());
+        }
+
+        // Also record against the complete dataset when present. Since the imported traffic
+        // happened before the last boot, there is no need to update SinceBoot or the Pending set.
+        final NetworkStatsCollection complete = mComplete != null ? mComplete.get() : null;
+        if (complete != null) {
+            complete.recordCollection(collection);
+        }
+    }
+
     public void dumpLocked(IndentingPrintWriter pw, boolean fullHistory) {
         if (mPending != null) {
             pw.print("Pending bytes: "); pw.println(mPending.getTotalBytes());
@@ -510,7 +564,7 @@ public class NetworkStatsRecorder {
      * Recover from {@link FileRotator} failure by dumping state to
      * {@link DropBoxManager} and deleting contents.
      */
-    private void recoverFromWtf() {
+    void recoverAndDeleteData() {
         if (DUMP_BEFORE_DELETE) {
             final ByteArrayOutputStream os = new ByteArrayOutputStream();
             try {
