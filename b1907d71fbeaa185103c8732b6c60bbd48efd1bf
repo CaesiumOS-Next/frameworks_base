@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0377565a_cbd2efb8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1470463
+      },
+      "writtenOn": "2022-01-29T04:25:05Z",
+      "side": 1,
+      "message": "Hi Josh and Jean,\n\nAs owners of the files in this CL (Josh for AndroidManifest.xml and Jean for all others), can you please review? Thanks!",
+      "revId": "b1907d71fbeaa185103c8732b6c60bbd48efd1bf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
