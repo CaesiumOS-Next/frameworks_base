@@ -358,12 +358,37 @@ public class EthernetManager {
         return proxy;
     }
 
+    /**
+     * Updates the configuration of an automotive device's ethernet network.
+     *
+     * Requires {@link PackageManager.FEATURE_AUTOMOTIVE}. The {@link EthernetNetworkUpdateRequest}
+     * {@code request} argument describes how to update configuration for this network.
+     * Use {@link StaticIpConfiguration.Builder} to build a {@code StaticIpConfiguration} object for
+     * this network to put inside the {@code request}.
+     * Similarly, use {@link NetworkCapabilities.Builder} to build a {@code NetworkCapabilities}
+     * object for this network to put inside the {@code request}.
+     *
+     * If non-null, the listener will be called exactly once after this is called, unless
+     * a synchronous exception was thrown.
+     *
+     * @param iface the name of the interface to act upon.
+     * @param request the {@link EthernetNetworkUpdateRequest} used to set an ethernet network's
+     *                {@link StaticIpConfiguration} and {@link NetworkCapabilities} values.
+     * @param executor an {@link Executor} to execute the listener on. Optional if listener is null.
+     * @param listener an optional {@link BiConsumer} to listen for completion of the operation.
+     * @throws SecurityException if the process doesn't hold
+     *                          {@link android.Manifest.permission.MANAGE_ETHERNET_NETWORKS}.
+     * @throws UnsupportedOperationException if called on a non-automotive device.
+     * @hide
+     */
+    @SystemApi
     @RequiresPermission(android.Manifest.permission.MANAGE_ETHERNET_NETWORKS)
-    private void updateConfiguration(
+    public void updateConfiguration(
             @NonNull String iface,
             @NonNull EthernetNetworkUpdateRequest request,
             @Nullable @CallbackExecutor Executor executor,
             @Nullable BiConsumer<Network, EthernetNetworkManagementException> listener) {
+        Objects.requireNonNull(request, "request must be non-null");
         final InternalNetworkManagementListener proxy = getInternalNetworkManagementListener(
                 executor, listener);
         try {
@@ -373,11 +398,25 @@ public class EthernetManager {
         }
     }
 
+    /**
+     * Set an ethernet network's link state up. If the link state is already up, no change will be
+     * made.
+     *
+     * @param iface the name of the interface to act upon.
+     * @param executor an {@link Executor} to execute the listener on. Optional if listener is null.
+     * @param listener an optional {@link BiConsumer} to listen for completion of the operation.
+     * @throws SecurityException if the process doesn't hold
+     *                          {@link android.Manifest.permission.MANAGE_ETHERNET_NETWORKS}.
+     * @throws UnsupportedOperationException if called on a non-automotive device.
+     * @hide
+     */
+    @SystemApi
     @RequiresPermission(android.Manifest.permission.MANAGE_ETHERNET_NETWORKS)
-    private void connectNetwork(
+    public void connectNetwork(
             @NonNull String iface,
             @Nullable @CallbackExecutor Executor executor,
             @Nullable BiConsumer<Network, EthernetNetworkManagementException> listener) {
+        Objects.requireNonNull(iface, "iface must be non-null");
         final InternalNetworkManagementListener proxy = getInternalNetworkManagementListener(
                 executor, listener);
         try {
@@ -387,11 +426,25 @@ public class EthernetManager {
         }
     }
 
+    /**
+     * Set an ethernet network's link state down. If the link state is already down, no change will
+     * be made.
+     *
+     * @param iface the name of the interface to act upon.
+     * @param executor an {@link Executor} to execute the listener on. Optional if listener is null.
+     * @param listener an optional {@link BiConsumer} to listen for completion of the operation.
+     * @throws SecurityException if the process doesn't hold
+     *                          {@link android.Manifest.permission.MANAGE_ETHERNET_NETWORKS}.
+     * @throws UnsupportedOperationException if called on a non-automotive device.
+     * @hide
+     */
+    @SystemApi
     @RequiresPermission(android.Manifest.permission.MANAGE_ETHERNET_NETWORKS)
-    private void disconnectNetwork(
+    public void disconnectNetwork(
             @NonNull String iface,
             @Nullable @CallbackExecutor Executor executor,
             @Nullable BiConsumer<Network, EthernetNetworkManagementException> listener) {
+        Objects.requireNonNull(iface, "iface must be non-null");
         final InternalNetworkManagementListener proxy = getInternalNetworkManagementListener(
                 executor, listener);
         try {
