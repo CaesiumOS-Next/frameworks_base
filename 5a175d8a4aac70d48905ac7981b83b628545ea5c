@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8170d828_c7891b52",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1542950
+      },
+      "writtenOn": "2022-02-04T19:50:58Z",
+      "side": 1,
+      "message": "Bypass lint as CTS tests for the API already exist in TelephonyManagerTest",
+      "revId": "5a175d8a4aac70d48905ac7981b83b628545ea5c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
