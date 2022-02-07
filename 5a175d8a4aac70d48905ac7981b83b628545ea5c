@@ -16,6 +16,23 @@
       "message": "Bypass lint as CTS tests for the API already exist in TelephonyManagerTest",
       "revId": "5a175d8a4aac70d48905ac7981b83b628545ea5c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "599f2323_1310febc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1929200
+      },
+      "writtenOn": "2022-02-07T17:23:11Z",
+      "side": 1,
+      "message": "Hi Tyler, this is the cp of an approved CL https://googleplex-android-review.git.corp.google.com/c/platform/frameworks/base/+/16710432, thank you.",
+      "revId": "5a175d8a4aac70d48905ac7981b83b628545ea5c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
