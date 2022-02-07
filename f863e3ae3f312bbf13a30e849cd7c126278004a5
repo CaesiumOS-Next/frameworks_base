@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8660174e_0d58baf1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1056478
+      },
+      "writtenOn": "2022-02-07T17:27:41Z",
+      "side": 1,
+      "message": "Cherry-pick from internal:\nhttps://googleplex-android-review.git.corp.google.com/c/platform/frameworks/base/+/16284012",
+      "revId": "f863e3ae3f312bbf13a30e849cd7c126278004a5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
