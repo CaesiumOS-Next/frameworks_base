@@ -37,16 +37,23 @@ import java.io.IOException;
 import java.util.UUID;
 
 /**
- * Service to be sub-classed and exposed by (privileged) apps which want to report
- * system traces.
+ * Helper class for use by services in (privileged) apps which want to report system traces.
  * <p>
- * Subclasses should implement the onReportTrace method to handle traces reported
- * to them.
+ * Such services should call bindWithCallback to receive an IBinder class which can be returned
+ * in OnBind.
  * </p>
  * <pre>
- *    public class SampleReportService extends TraceReportService {
+ *    public class SampleService extends Service implements TraceReportServiceHelper.Callback {
+ *        private IBinder mBinder = null;
  *        public void onReportTrace(TraceParams args) {
  *            // --- Implementation goes here ---
+ *        }
+ *
+ *        public IBinder onBind(@NonNull Intent intent){
+ *            if (mBinder == null) {
+ *                mBinder = TraceReportServiceHelper.bindWithCallback(this);
+ *            }
+ *            return mBinder;
  *        }
  *    }
  * </pre>
@@ -56,7 +63,7 @@ import java.util.UUID;
  * </p>
  * <pre>
  *   &lt;application>
- *        &lt;service android:name=".SampleReportService"
+ *        &lt;service android:name=".SampleService"
  *               android:permission="android.permission.BIND_TRACE_REPORT_SERVICE">
  *       &lt;/service>
  *   &lt;/application>
@@ -68,9 +75,8 @@ import java.util.UUID;
  * @hide
  */
 @SystemApi(client = PRIVILEGED_APPS)
-public class TraceReportService extends Service {
-    private static final String TAG = "TraceReportService";
-    private Messenger mMessenger = null;
+public class TraceReportServiceHelper {
+    private static final String TAG = "TraceReportServiceHelp";
 
     /**
      * Public to allow this to be used by TracingServiceProxy in system_server.
@@ -78,6 +84,8 @@ public class TraceReportService extends Service {
      * @hide
      */
     public static final int MSG_REPORT_TRACE = 1;
+
+    private final Callback mCallback;
 
     /**
      * Contains information about the trace which is being reported.
@@ -112,26 +120,22 @@ public class TraceReportService extends Service {
         }
     }
 
-    // Methods to override.
-    /**
-     * Called when a trace is reported and sent to this class.
-     *
-     * Note: the trace file descriptor should not be persisted beyond the lifetime of this
-     * function as it is owned by the framework and will be closed immediately after this function
-     * returns: if future use of the fd is needed, it should be duped.
-     */
-    public void onReportTrace(@NonNull TraceParams args) {
+    public interface Callback {
+        /**
+         * Called when a trace is reported and sent to this service.
+         *
+         * Note: the trace file descriptor should not be persisted beyond the lifetime of this
+         * function as it is owned by the framework and will be closed immediately after this function
+         * returns: if future use of the fd is needed, it should be duped.
+         */
+        void onReportTrace(@NonNull TraceParams args);
     }
 
-    // Optional methods to override.
-    // Realistically, these methods are internal implementation details but since this class is
-    // a SystemApi, it's better to err on the side of flexibility just in-case we need to override
-    // these methods down the line.
+    private TraceReportServiceHelper(@NonNull Callback callback) {
+        mCallback = callback;
+    }
 
-    /**
-     * Handles binder calls from system_server.
-     */
-    public boolean onMessage(@NonNull Message msg) {
+    private boolean onMessage(@NonNull Message msg) {
         if (msg.what == MSG_REPORT_TRACE) {
             if (!(msg.obj instanceof TraceReportParams)) {
                 Log.e(TAG, "Received invalid type for report trace message.");
@@ -139,7 +143,7 @@ public class TraceReportService extends Service {
             }
             TraceParams params = new TraceParams((TraceReportParams) msg.obj);
             try {
-                onReportTrace(params);
+                mCallback.onReportTrace(params);
             } finally {
                 try {
                     params.getFd().close();
@@ -151,15 +155,8 @@ public class TraceReportService extends Service {
         return false;
     }
 
-    /**
-     * Returns an IBinder for handling binder calls from system_server.
-     */
-    @Nullable
-    @Override
-    public IBinder onBind(@NonNull Intent intent) {
-        if (mMessenger == null) {
-            mMessenger = new Messenger(new Handler(Looper.getMainLooper(), this::onMessage));
-        }
-        return mMessenger.getBinder();
+    public static IBinder bindWithCallback(@NonNull Callback callback) {
+        TraceReportServiceHelper helper = new TraceReportServiceHelper(callback);
+        return new Messenger(new Handler(Looper.getMainLooper(), helper::onMessage)).getBinder();
     }
 }
