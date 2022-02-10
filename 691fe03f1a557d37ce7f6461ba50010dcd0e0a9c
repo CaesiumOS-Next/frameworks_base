@@ -35,6 +35,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "107842b5_e38f0b6f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2022-02-10T17:12:01Z",
+      "side": 1,
+      "message": "Yeah, the intention is that javadoc describes what this constant is. It\u0027s not a method where you would want to describe how to use it, or list all possible use cases I guess.",
+      "parentUuid": "3bfb2d59_d74f9a8c",
+      "revId": "691fe03f1a557d37ce7f6461ba50010dcd0e0a9c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "14fc98b8_15105326",
