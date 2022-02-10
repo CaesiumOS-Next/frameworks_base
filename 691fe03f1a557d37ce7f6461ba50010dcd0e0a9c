@@ -76,6 +76,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "90108bcb_e8daaf70",
+        "filename": "core/java/android/os/Build.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 404,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2022-02-10T17:12:45Z",
+      "side": 1,
+      "message": "yeahp",
+      "parentUuid": "14fc98b8_15105326",
+      "range": {
+        "startLine": 404,
+        "startChar": 62,
+        "endLine": 404,
+        "endChar": 66
+      },
+      "revId": "691fe03f1a557d37ce7f6461ba50010dcd0e0a9c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c136e4c4_4aeb6273",
@@ -89,6 +113,30 @@
       "writtenOn": "2022-02-10T16:23:19Z",
       "side": 1,
       "message": "string (as it might not be a codename)",
+      "range": {
+        "startLine": 407,
+        "startChar": 30,
+        "endLine": 407,
+        "endChar": 38
+      },
+      "revId": "691fe03f1a557d37ce7f6461ba50010dcd0e0a9c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1d3fb6c4_74cdd75b",
+        "filename": "core/java/android/os/Build.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 407,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2022-02-10T17:12:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c136e4c4_4aeb6273",
       "range": {
         "startLine": 407,
         "startChar": 30,
