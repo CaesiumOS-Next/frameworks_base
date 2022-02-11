@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "20b2bb98_95c0ee32",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1141048
+      },
+      "writtenOn": "2022-02-11T20:32:42Z",
+      "side": 1,
+      "message": "Hi Sebastian, thanks for the patches. If I understand the associated bug and changes correctly, the modifications aim to provide a way for camera clients to adjust the mirroring which is usually applied on front facing cameras? ",
+      "revId": "ba4b43a518d470663e62a697b500667fe096567f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
