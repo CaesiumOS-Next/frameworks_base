@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fa3dc4ed_64781b78",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1392279
+      },
+      "writtenOn": "2022-02-14T12:31:05Z",
+      "side": 1,
+      "message": "Hi, I added some public APIs to Canvas and Paint for backdrop-filter effects in View system.\nUsing builtin skia engine, this can do the iOS-like backdrop blur effect in well performance.\n\nThanks for your reviewing. Please inform me with any suggestion.\n\nBTW. I can\u0027t do format check in some cpp files because there are many errors in previous code.",
+      "revId": "c1db6d44ff43b9c9cc754b77592fbd769ae46917",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
