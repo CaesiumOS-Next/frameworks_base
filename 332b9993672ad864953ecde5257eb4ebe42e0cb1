@@ -16,6 +16,24 @@
       "message": "If Evan agrees, I would actually just add to the main OWNERS file.",
       "revId": "332b9993672ad864953ecde5257eb4ebe42e0cb1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f5585f89_fdc3557f",
+        "filename": "packages/SettingsLib/src/com/android/settingslib/devicestate/OWNERS",
+        "patchSetId": 4
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1903387
+      },
+      "writtenOn": "2022-02-14T11:58:41Z",
+      "side": 1,
+      "message": "Personally not sure that I feel comfortable enough to get review requests for code outside of settingslib/devicestate. Do you want me to add you to the main one?",
+      "parentUuid": "204969a9_cca14f73",
+      "revId": "332b9993672ad864953ecde5257eb4ebe42e0cb1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
