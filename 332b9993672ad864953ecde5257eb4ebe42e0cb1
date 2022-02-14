@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "204969a9_cca14f73",
+        "filename": "packages/SettingsLib/src/com/android/settingslib/devicestate/OWNERS",
+        "patchSetId": 4
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1363592
+      },
+      "writtenOn": "2022-02-14T11:56:02Z",
+      "side": 1,
+      "message": "If Evan agrees, I would actually just add to the main OWNERS file.",
+      "revId": "332b9993672ad864953ecde5257eb4ebe42e0cb1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
