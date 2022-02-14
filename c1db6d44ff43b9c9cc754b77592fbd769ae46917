@@ -141,6 +141,24 @@
       "parentUuid": "c67a9a62_10438c51",
       "revId": "c1db6d44ff43b9c9cc754b77592fbd769ae46917",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b21bab61_547566e5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1392279
+      },
+      "writtenOn": "2022-02-14T17:40:19Z",
+      "side": 1,
+      "message": "Thanks John. You are right. This may happen when the alpha animation is applied to the target View or maybe it\u0027s parents.\nI will check this out and try to find a solution.",
+      "parentUuid": "e570ec70_184c50f8",
+      "revId": "c1db6d44ff43b9c9cc754b77592fbd769ae46917",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
