@@ -33,6 +33,24 @@
       "message": "This isn\u0027t necessary for the feature of doing backdrop-filters inside the View system. You can just make a RenderNode for that.\n\nThis API addition isn\u0027t necessarily bad, however it\u0027s not something we\u0027re interested in at this time. The particular problem is that `Canvas#saveLayer` doesn\u0027t do a good job of caching the result between frames, and it\u0027s harder to retrofit that API to have adequate damage tracking than it is to instead invest further in RenderNode as an API concept.\n\nSo the direction we\u0027re heading is more along the lines of replacing usages of Canvas#saveLayer with RenderNodes. Then the existing damage tracking \u0026 layer update systems work \u0026 work well, improving performance overall. The usage of that is a bit clunkier, but not terribly so and is the type of thing that Jetpack Compose or other AndroidX helpers can streamline.",
       "revId": "c1db6d44ff43b9c9cc754b77592fbd769ae46917",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "92e83218_a5677b7d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1392279
+      },
+      "writtenOn": "2022-02-14T15:43:16Z",
+      "side": 1,
+      "message": "Hi John. Thanks for your comment.\nI\u0027m a little confused because AFAIK the backdrop-filters actually can NOT be done with RenderNodes.\nThat\u0027s right RenderNode and `Canvas#saveLayer` are all designed to focus on a *new* layer of content and RenderNode is better for this.\n\nBut `Canvas#saveLayer` can do more with the *previous* content. I\u0027m talking about the third and fourth parameters in SkCanvas::SaveLayerRec. And this is the key to filter a *backdrop* content, not *current* content.",
+      "parentUuid": "edae0fd4_e7ddd89a",
+      "revId": "c1db6d44ff43b9c9cc754b77592fbd769ae46917",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
