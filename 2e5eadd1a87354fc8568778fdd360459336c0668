@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "facbe0fb_f5f00e18",
+        "filename": "services/core/java/com/android/server/connectivity/Vpn.java",
+        "patchSetId": 29
+      },
+      "lineNbr": 1057,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2022-02-14T08:04:51Z",
+      "side": 1,
+      "message": "As we discussed, the simplest way to address the threading is to move this call to the handler thread, because the user event is not ordered with respect to the network events.\n\nHere you would simply write : \n  mExecutor.execute(() -\u003e sendEventToVpnManagerApp...)\n\nAnd you\u0027d also do this in onDefaultNetworkCapabilitiesChanged\n\nThen for safety, you have sendEventToVpnManagerApp check that it is running on the right thread. You can check that the thread is the correct one by passing a ThreadFactory to newSingleThreadExecutor so that it builds a thread that you control.",
+      "range": {
+        "startLine": 1057,
+        "startChar": 20,
+        "endLine": 1057,
+        "endChar": 44
+      },
+      "revId": "2e5eadd1a87354fc8568778fdd360459336c0668",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
