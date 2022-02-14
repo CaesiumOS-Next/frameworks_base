@@ -51,6 +51,24 @@
       "parentUuid": "edae0fd4_e7ddd89a",
       "revId": "c1db6d44ff43b9c9cc754b77592fbd769ae46917",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1f852102_3d40a321",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1392279
+      },
+      "writtenOn": "2022-02-14T15:47:43Z",
+      "side": 1,
+      "message": "To be more specified, I found a similar solution here in flutter/engine.\nhttps://github.com/flutter/engine/blob/HEAD/flow/layers/backdrop_filter_layer.cc#L59\n\nThe Flutter team are using `SkCanvas::SaveLayerRec` to do nearly the same thing. The difference is they are using the `SkImageFilter* backdrop` param and I\u0027m using the `saveLayerFlags` to get previous (aka backdrop) content.",
+      "parentUuid": "92e83218_a5677b7d",
+      "revId": "c1db6d44ff43b9c9cc754b77592fbd769ae46917",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
