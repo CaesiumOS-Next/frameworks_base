@@ -105,6 +105,24 @@
       "parentUuid": "856ad285_c913e81b",
       "revId": "c1db6d44ff43b9c9cc754b77592fbd769ae46917",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c67a9a62_10438c51",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1392279
+      },
+      "writtenOn": "2022-02-14T17:12:46Z",
+      "side": 1,
+      "message": "As for consistent behavior, you are right. This solution will get less content if it\u0027s already inside a `saveLayer`.\n\nI think that is not a common case for developers using this feature.\nAnd, after all that result matches the expectation for exactly what `saveLayer` does. It\u0027s not a bug.",
+      "parentUuid": "6b1c4f97_3f5df64f",
+      "revId": "c1db6d44ff43b9c9cc754b77592fbd769ae46917",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
