@@ -69,6 +69,24 @@
       "parentUuid": "92e83218_a5677b7d",
       "revId": "c1db6d44ff43b9c9cc754b77592fbd769ae46917",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "856ad285_c913e81b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1010103
+      },
+      "writtenOn": "2022-02-14T16:16:35Z",
+      "side": 1,
+      "message": "Oh I missed that this is also doing the saveLayer that initializes to the existing content. We are definitely not going to re-expose that on saveLayer. It\u0027s very, very slow, which is why that capability was removed in the first place. It also can be flaky, since the content is different depending on whether or not the View or one of its ancestors is already on a layer.\n\nWe are interested in addressing the use case of \"I want to blur behind my View\", but only when we have a solution that has both adequate performance \u0026 consistent behavior.",
+      "parentUuid": "1f852102_3d40a321",
+      "revId": "c1db6d44ff43b9c9cc754b77592fbd769ae46917",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
