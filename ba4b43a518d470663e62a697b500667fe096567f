@@ -16,6 +16,24 @@
       "message": "Hi Sebastian, thanks for the patches. If I understand the associated bug and changes correctly, the modifications aim to provide a way for camera clients to adjust the mirroring which is usually applied on front facing cameras? ",
       "revId": "ba4b43a518d470663e62a697b500667fe096567f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "99e3f95c_b3d482d5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1765482
+      },
+      "writtenOn": "2022-02-14T10:07:19Z",
+      "side": 1,
+      "message": "Hi Emilian, that is correct. External cameras currently have no consistent behaviour (Camera1 API mirrors, Camera2 API does not), and only the user knows the actual facing.",
+      "parentUuid": "20b2bb98_95c0ee32",
+      "revId": "ba4b43a518d470663e62a697b500667fe096567f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
