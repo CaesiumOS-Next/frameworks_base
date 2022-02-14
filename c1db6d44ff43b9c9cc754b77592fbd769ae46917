@@ -16,6 +16,23 @@
       "message": "Hi, I added some public APIs to Canvas and Paint for backdrop-filter effects in View system.\nUsing builtin skia engine, this can do the iOS-like backdrop blur effect in well performance.\n\nThanks for your reviewing. Please inform me with any suggestion.\n\nBTW. I can\u0027t do format check in some cpp files because there are many errors in previous code.",
       "revId": "c1db6d44ff43b9c9cc754b77592fbd769ae46917",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "edae0fd4_e7ddd89a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1010103
+      },
+      "writtenOn": "2022-02-14T15:25:10Z",
+      "side": 1,
+      "message": "This isn\u0027t necessary for the feature of doing backdrop-filters inside the View system. You can just make a RenderNode for that.\n\nThis API addition isn\u0027t necessarily bad, however it\u0027s not something we\u0027re interested in at this time. The particular problem is that `Canvas#saveLayer` doesn\u0027t do a good job of caching the result between frames, and it\u0027s harder to retrofit that API to have adequate damage tracking than it is to instead invest further in RenderNode as an API concept.\n\nSo the direction we\u0027re heading is more along the lines of replacing usages of Canvas#saveLayer with RenderNodes. Then the existing damage tracking \u0026 layer update systems work \u0026 work well, improving performance overall. The usage of that is a bit clunkier, but not terribly so and is the type of thing that Jetpack Compose or other AndroidX helpers can streamline.",
+      "revId": "c1db6d44ff43b9c9cc754b77592fbd769ae46917",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
