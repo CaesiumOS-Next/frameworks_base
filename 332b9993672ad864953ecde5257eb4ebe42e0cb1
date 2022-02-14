@@ -34,6 +34,24 @@
       "parentUuid": "204969a9_cca14f73",
       "revId": "332b9993672ad864953ecde5257eb4ebe42e0cb1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bd4935d5_60dd56bd",
+        "filename": "packages/SettingsLib/src/com/android/settingslib/devicestate/OWNERS",
+        "patchSetId": 4
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1363592
+      },
+      "writtenOn": "2022-02-14T12:13:21Z",
+      "side": 1,
+      "message": "I can do that as a separate CL to not block this one, so let\u0027s leave this is as is. Thank you!",
+      "parentUuid": "f5585f89_fdc3557f",
+      "revId": "332b9993672ad864953ecde5257eb4ebe42e0cb1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
