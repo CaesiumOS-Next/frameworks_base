@@ -87,6 +87,24 @@
       "parentUuid": "1f852102_3d40a321",
       "revId": "c1db6d44ff43b9c9cc754b77592fbd769ae46917",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6b1c4f97_3f5df64f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1392279
+      },
+      "writtenOn": "2022-02-14T17:05:46Z",
+      "side": 1,
+      "message": "Hi John, thanks for your review.\nThe blur effect did consumes more on hardware resources. I can understand your concern about performance and so do I.\n\nAs for performance, I wrote a demo in this change and ran it in a device with a MediaTek DM 900, which is a mid-end soc, and a 1080p \u0026 120hz screen. It runs smoothly and I didn\u0027t see noticeable jank. I also tested it in a device with MediaTek Helio G85, a low-end soc, with 720p \u0026 60hz screen and it also performs well.\nIn my opinion that is already adequate.\nYou can build and give it a try in the devices you concerned about, and share the result with me, thanks for that.\n\nThere is a skia gm test called `SaveLayerWithBackdropGM` and you can see the benchmark in https://perf.skia.org/e/?queries\u003dname%3DGM_savelayer_with_backdrop%26os%3DAndroid.\n\nThis solution is already way better than any existing attempts, and it\u0027s backed by skia. I think maybe this is the best solution we currently could have.",
+      "parentUuid": "856ad285_c913e81b",
+      "revId": "c1db6d44ff43b9c9cc754b77592fbd769ae46917",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
