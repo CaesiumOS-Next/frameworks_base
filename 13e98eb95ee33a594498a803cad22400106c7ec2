@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b9c01bd8_8de86838",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1003801
+      },
+      "writtenOn": "2022-02-15T17:33:29Z",
+      "side": 1,
+      "message": "you need to update frameworks/base/data/etc/privapp-permissions-platform.xml too",
+      "revId": "13e98eb95ee33a594498a803cad22400106c7ec2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5d21ab3c_1ae519d9",
