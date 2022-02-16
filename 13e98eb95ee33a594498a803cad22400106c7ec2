@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2a9b0461_ad949919",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1322948
+      },
+      "writtenOn": "2022-02-16T07:23:08Z",
+      "side": 1,
+      "message": "done, thanks!",
+      "parentUuid": "b9c01bd8_8de86838",
+      "revId": "13e98eb95ee33a594498a803cad22400106c7ec2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5d21ab3c_1ae519d9",
@@ -31,6 +49,30 @@
       "writtenOn": "2022-02-15T15:53:37Z",
       "side": 1,
       "message": "please mention / summarize here why it\u0027s needed",
+      "range": {
+        "startLine": 512,
+        "startChar": 0,
+        "endLine": 512,
+        "endChar": 79
+      },
+      "revId": "13e98eb95ee33a594498a803cad22400106c7ec2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b1fcf4ae_c550127b",
+        "filename": "packages/Shell/AndroidManifest.xml",
+        "patchSetId": 2
+      },
+      "lineNbr": 512,
+      "author": {
+        "id": 1322948
+      },
+      "writtenOn": "2022-02-16T07:23:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5d21ab3c_1ae519d9",
       "range": {
         "startLine": 512,
         "startChar": 0,
