@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0af736b6_f8e961bc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1018026
+      },
+      "writtenOn": "2022-02-17T00:52:50Z",
+      "side": 1,
+      "message": "The breakage in TH is two fold\n- the with-phones target requires change to add project to manifest in goog, which TH does not support.\n- other error is due to long-broken-test_suites target.",
+      "revId": "1e68091361d6f9abda3748e1b93edf5b2c41148a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
