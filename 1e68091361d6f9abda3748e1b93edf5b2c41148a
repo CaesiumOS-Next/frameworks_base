@@ -50,6 +50,24 @@
       "message": "remove?",
       "revId": "1e68091361d6f9abda3748e1b93edf5b2c41148a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cf49b8ed_0ee2d6bb",
+        "filename": "media/java/Android.bp",
+        "patchSetId": 3
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1018026
+      },
+      "writtenOn": "2022-02-17T15:56:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "886a4914_3426030f",
+      "revId": "1e68091361d6f9abda3748e1b93edf5b2c41148a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
