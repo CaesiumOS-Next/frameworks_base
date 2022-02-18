@@ -159,6 +159,9 @@ cc_test {
     ],
     host_supported: true,
     test_suites: ["general-tests"],
+    tidy_timeout_srcs: [
+        "tests/IdmapTests.cpp",
+    ],
     srcs: [
         "tests/BinaryStreamVisitorTests.cpp",
         "tests/CommandLineOptionsTests.cpp",

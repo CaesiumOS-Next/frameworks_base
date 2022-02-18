@@ -671,6 +671,10 @@ cc_test {
     shared_libs: [
         "libmemunreachable",
     ],
+    tidy_timeout_srcs: [
+        "tests/unit/CanvasOpTests.cpp",
+        "tests/unit/RenderNodeDrawableTests.cpp",
+    ],
     srcs: [
         "tests/unit/main.cpp",
         "tests/unit/ABitmapTests.cpp",

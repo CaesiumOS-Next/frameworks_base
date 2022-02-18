@@ -148,6 +148,11 @@ cc_test {
         // This is to suppress warnings/errors from gtest
         "-Wno-unnamed-type-template-args",
     ],
+    tidy_timeout_srcs: [
+        "tests/AssetManager2_test.cpp",
+        "tests/Idmap_test.cpp",
+        "tests/Theme_test.cpp",
+    ],
     srcs: [
         // Helpers/infra for testing.
         "tests/CommonHelpers.cpp",

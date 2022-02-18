@@ -127,6 +127,9 @@ cc_test {
     name: "service.incremental_test",
     defaults: ["service.incremental-defaults"],
     test_suites: ["device-tests"],
+    tidy_timeout_srcs: [
+        "test/IncrementalServiceTest.cpp",
+    ],
     srcs: [
         ":service.incremental_srcs",
         "test/IncrementalServiceTest.cpp",

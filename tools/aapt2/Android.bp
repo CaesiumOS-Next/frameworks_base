@@ -175,6 +175,19 @@ cc_library_host_static {
 // ==========================================================
 cc_test_host {
     name: "aapt2_tests",
+    tidy_timeout_srcs: [
+        "compile/NinePatch_test.cpp",
+        "configuration/ConfigurationParser_test.cpp",
+        "format/binary/TableFlattener_test.cpp",
+        "format/binary/XmlFlattener_test.cpp",
+        "format/proto/ProtoSerialize_test.cpp",
+        "java/JavaClassGenerator_test.cpp",
+        "java/ProguardRules_test.cpp",
+        "link/ManifestFixer_test.cpp",
+        "ResourceParser_test.cpp",
+        "ResourceUtils_test.cpp",
+        "StringPool_test.cpp",
+    ],
     srcs: [
         "test/Builders.cpp",
         "test/Common.cpp",
