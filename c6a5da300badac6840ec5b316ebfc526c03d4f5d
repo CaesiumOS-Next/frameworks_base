@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fb250003_ccce61cb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1090594
+      },
+      "writtenOn": "2022-02-21T16:15:08Z",
+      "side": 1,
+      "message": "This change fixes the issue shown in this video: https://www.youtube.com/watch?v\u003dWH7RfO71Ofg",
+      "revId": "c6a5da300badac6840ec5b316ebfc526c03d4f5d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
