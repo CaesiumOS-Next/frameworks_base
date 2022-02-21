@@ -3,6 +3,52 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6f55b01f_fc519b04",
+        "filename": "services/core/java/com/android/server/connectivity/Vpn.java",
+        "patchSetId": 29
+      },
+      "lineNbr": 517,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2022-02-21T16:10:13Z",
+      "side": 1,
+      "message": "I don\u0027t really see the link ? synchronized lets you establish critical sections that can\u0027t be entered at the same time by multiple threads and provide guarantees of visibility of ordering. What does this have to do with reading the members here ?\n\nI mean, not only I don\u0027t understand the reasoning, but also I think it doesn\u0027t do anything at all. You can still write to these members on another thread while this is running, and you don\u0027t seem to have any ordering guarantees between these reads and the multiple writes.",
+      "range": {
+        "startLine": 516,
+        "startChar": 0,
+        "endLine": 517,
+        "endChar": 27
+      },
+      "revId": "2e5eadd1a87354fc8568778fdd360459336c0668",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4e3abe6e_c9dc59cd",
+        "filename": "services/core/java/com/android/server/connectivity/Vpn.java",
+        "patchSetId": 29
+      },
+      "lineNbr": 532,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2022-02-21T16:10:13Z",
+      "side": 1,
+      "message": "errorClass",
+      "range": {
+        "startLine": 532,
+        "startChar": 54,
+        "endLine": 532,
+        "endChar": 63
+      },
+      "revId": "2e5eadd1a87354fc8568778fdd360459336c0668",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "facbe0fb_f5f00e18",
         "filename": "services/core/java/com/android/server/connectivity/Vpn.java",
         "patchSetId": 29
@@ -19,6 +65,121 @@
         "startChar": 20,
         "endLine": 1057,
         "endChar": 44
+      },
+      "revId": "2e5eadd1a87354fc8568778fdd360459336c0668",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "56fca743_c9482040",
+        "filename": "services/core/java/com/android/server/connectivity/Vpn.java",
+        "patchSetId": 29
+      },
+      "lineNbr": 2475,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2022-02-21T16:10:13Z",
+      "side": 1,
+      "message": "Why not declare this abstract ? No implementation really makes sense here",
+      "range": {
+        "startLine": 2475,
+        "startChar": 8,
+        "endLine": 2475,
+        "endChar": 17
+      },
+      "revId": "2e5eadd1a87354fc8568778fdd360459336c0668",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4f46bf36_3f32cb47",
+        "filename": "services/core/java/com/android/server/connectivity/Vpn.java",
+        "patchSetId": 29
+      },
+      "lineNbr": 2479,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2022-02-21T16:10:13Z",
+      "side": 1,
+      "message": "Nullability",
+      "range": {
+        "startLine": 2479,
+        "startChar": 18,
+        "endLine": 2479,
+        "endChar": 37
+      },
+      "revId": "2e5eadd1a87354fc8568778fdd360459336c0668",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f0b61ca8_bb5cb5af",
+        "filename": "services/core/java/com/android/server/connectivity/Vpn.java",
+        "patchSetId": 29
+      },
+      "lineNbr": 2551,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2022-02-21T16:10:13Z",
+      "side": 1,
+      "message": "Can you please add comments on the threading model for these members ?",
+      "range": {
+        "startLine": 2551,
+        "startChar": 26,
+        "endLine": 2551,
+        "endChar": 45
+      },
+      "revId": "2e5eadd1a87354fc8568778fdd360459336c0668",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1dbcfa01_65b5763c",
+        "filename": "services/core/java/com/android/server/connectivity/Vpn.java",
+        "patchSetId": 29
+      },
+      "lineNbr": 2572,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2022-02-21T16:10:13Z",
+      "side": 1,
+      "message": "This is pretty expensive to compute every time. I was going to tell you to compute it once at the start and cache it, but it seems there is already mOwnerUID ?",
+      "range": {
+        "startLine": 2572,
+        "startChar": 20,
+        "endLine": 2572,
+        "endChar": 48
+      },
+      "revId": "2e5eadd1a87354fc8568778fdd360459336c0668",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "51f4de0b_c5f2f3ae",
+        "filename": "services/core/java/com/android/server/connectivity/VpnIkev2Utils.java",
+        "patchSetId": 29
+      },
+      "lineNbr": 396,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2022-02-21T16:10:13Z",
+      "side": 1,
+      "message": "Maybe this is not as useful as it could – it doesn\u0027t print the capabilities, and the message is probably longer than it should. How about something like\n\n Log.d(mTag, \"NC changed for net \" + network + \" : \" + networkCapabilities)",
+      "range": {
+        "startLine": 396,
+        "startChar": 24,
+        "endLine": 396,
+        "endChar": 87
       },
       "revId": "2e5eadd1a87354fc8568778fdd360459336c0668",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
