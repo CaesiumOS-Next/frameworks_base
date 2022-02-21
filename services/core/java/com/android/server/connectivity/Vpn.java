@@ -278,6 +278,11 @@ public class Vpn {
     // The user id of initiating VPN.
     private final int mUserId;
 
+    // This is used to make sure that sending VPN manager event and receiving network events
+    // (e.g. NetworkCapabilities & LinkProperties) are ordered, so that there will not be a
+    // threading issue.
+    private final ExecutorService mExecutorService = Executors.newSingleThreadExecutor();
+
     interface RetryScheduler {
         void checkInterruptAndDelay(boolean sleepLonger) throws InterruptedException;
     }
@@ -518,23 +523,32 @@ public class Vpn {
     // This reads members like mPackage and mSessionKey, so it must only be called from a
     // synchronized method.
     @GuardedBy("this")
-    private synchronized boolean sendEventToVpnManagerApp(@NonNull String category, int errorType,
-            int errorCode) {
-        if (mVpnRunner == null || VpnConfig.LEGACY_VPN.equals(mPackage)) return false;
+    private synchronized boolean sendEventToVpnManagerApp(@NonNull String category, int errorClass,
+            int errorCode, Context userIdContext, VpnRunner vpnRunner, int userId,
+            String packageName) {
+        // final VpnRunner vpnRunner = (vpn == null) ? mVpnRunner : vpn.mVpnRunner;
+        // final String packageName = (vpn == null) ? mPackage : vpn.mPackage;
+        // final Context userIdContext = (vpn == null) ? mUserIdContext : vpn.mUserIdContext;
+        Log.d(TAG, "sendEventToVpnManagerApp: packageName = " + packageName + ", category = "
+                + category + ", errorClass = " + errorClass + ", errorCode = " + errorCode
+                + ", vpnRunner = " + vpnRunner + ", userIdContext = " + userIdContext);
+        if (vpnRunner == null || VpnConfig.LEGACY_VPN.equals(packageName)) return false;
+        Log.d(TAG, "sendEventToVpnManagerApp: underlying network = "
+                + vpnRunner.getUnderlyingNetwork());
         final Intent intent = new Intent(VpnManager.ACTION_VPN_MANAGER_EVENT);
-        intent.setPackage(mPackage);
+        intent.setPackage(packageName);
         intent.addCategory(category);
         intent.putExtra(VpnManager.EXTRA_SESSION_KEY, mSessionKey);
-        intent.putExtra(VpnManager.EXTRA_UNDERLYING_NETWORK, mVpnRunner.getUnderlyingNetwork());
+        intent.putExtra(VpnManager.EXTRA_UNDERLYING_NETWORK, vpnRunner.getUnderlyingNetwork());
         intent.putExtra(VpnManager.EXTRA_UNDERLYING_NETWORK_CAPABILITIES,
-                mVpnRunner.getRedactedNetworkCapabilitiesOfUnderlyingNetwork());
+                vpnRunner.getRedactedNetworkCapabilitiesOfUnderlyingNetwork(userId, packageName));
         intent.putExtra(VpnManager.EXTRA_UNDERLYING_LINK_PROPERTIES,
-                mVpnRunner.getRedactedLinkPropertiesOfUnderlyingNetwork());
+                vpnRunner.getRedactedLinkPropertiesOfUnderlyingNetwork(userId, packageName));
         intent.putExtra(VpnManager.EXTRA_TIMESTAMP, SystemClock.elapsedRealtime());
-        intent.putExtra(VpnManager.EXTRA_ERROR_CLASS, errorType);
+        intent.putExtra(VpnManager.EXTRA_ERROR_CLASS, errorClass);
         intent.putExtra(VpnManager.EXTRA_ERROR_CODE, errorCode);
         try {
-            return mUserIdContext.startService(intent) != null;
+            return userIdContext.startService(intent) != null;
         } catch (RuntimeException e) {
             Log.e(TAG, "Service of VpnManager app " + intent + " failed to start", e);
             return false;
@@ -1056,8 +1070,14 @@ public class Vpn {
                             AppOpsManager.OPSTR_ESTABLISH_VPN_MANAGER, mOwnerUID, mPackage, null);
 
                     // Only need to send the event when the VpnManager app is deactivated.
-                    sendEventToVpnManagerApp(VpnManager.CATEGORY_EVENT_DEACTIVATED_BY_USER,
-                            VpnManager.ERROR_CLASS_NOT_RECOVERABLE, 0 /* errorCode */);
+                    Log.d(TAG, "prepareInternal: mPackage = " + mPackage + ", mVpnRunner = "
+                            + mVpnRunner + ", mUserIdContext = " + mUserIdContext
+                            + ", underlying network = " + mVpnRunner.getUnderlyingNetwork());
+                    mExecutorService.execute(() -> sendEventToVpnManagerApp(
+                            VpnManager.CATEGORY_EVENT_DEACTIVATED_BY_USER,
+                            VpnManager.ERROR_CLASS_NOT_RECOVERABLE, 0 /* errorCode */,
+                            mUserIdContext, mVpnRunner, mUserId, mPackage));
+                    Log.d(TAG, "prepareInternal: mVpnRunner = " + mVpnRunner);
                 }
                 // cleanupVpnStateLocked() is called from mVpnRunner.exit()
                 mVpnRunner.exit();
@@ -2478,11 +2498,13 @@ public class Vpn {
             return null;
         }
 
-        protected NetworkCapabilities getRedactedNetworkCapabilitiesOfUnderlyingNetwork() {
+        protected NetworkCapabilities getRedactedNetworkCapabilitiesOfUnderlyingNetwork(int userId,
+                String packagNeame) {
             return null;
         }
 
-        protected LinkProperties getRedactedLinkPropertiesOfUnderlyingNetwork() {
+        protected LinkProperties getRedactedLinkPropertiesOfUnderlyingNetwork(int userId,
+                String packageName) {
             return null;
         }
     }
@@ -2568,17 +2590,19 @@ public class Vpn {
         }
 
         @Override
-        protected NetworkCapabilities getRedactedNetworkCapabilitiesOfUnderlyingNetwork() {
+        protected NetworkCapabilities getRedactedNetworkCapabilitiesOfUnderlyingNetwork(int userId,
+                String packageName) {
             if (mNetworkCapabilities == null) return null;
             return mConnectivityManager.redactNetworkCapabilitiesForPackage(mNetworkCapabilities,
-                    getAppUid(mPackage, mUserId), mPackage);
+                    getAppUid(packageName, userId), packageName);
         }
 
         @Override
-        protected LinkProperties getRedactedLinkPropertiesOfUnderlyingNetwork() {
+        protected LinkProperties getRedactedLinkPropertiesOfUnderlyingNetwork(int userId,
+                String packageName) {
             if (mLinkProperties == null) return null;
             return mConnectivityManager.redactLinkPropertiesForPackage(mLinkProperties,
-                    getAppUid(mPackage, mUserId), mPackage);
+                    getAppUid(packageName, userId), packageName);
         }
 
         @Override
@@ -2786,12 +2810,12 @@ public class Vpn {
 
         /** Called when the NetworkCapabilities of underlying network is changed */
         public void onDefaultNetworkCapabilitiesChanged(@NonNull NetworkCapabilities nc) {
-            mNetworkCapabilities = nc;
+            mExecutorService.execute(() -> mNetworkCapabilities = nc);
         }
 
         /** Called when the LinkProperties of underlying network is changed */
         public void onDefaultNetworkLinkPropertiesChanged(@NonNull LinkProperties lp) {
-            mLinkProperties = lp;
+            mExecutorService.execute(() -> mLinkProperties = lp);
         }
 
         /** Marks the state as FAILED, and disconnects. */
@@ -2842,38 +2866,45 @@ public class Vpn {
                         // All the above failures are configuration errors, and are terminal
                         sendEventToVpnManagerApp(VpnManager.CATEGORY_EVENT_IKE_ERROR,
                                 VpnManager.ERROR_CLASS_NOT_RECOVERABLE,
-                                ikeException.getErrorType());
+                                ikeException.getErrorType(), mUserIdContext, mVpnRunner,
+                                mUserId, mPackage);
                         markFailedAndDisconnect(exception);
                         return;
                     // All other cases possibly recoverable.
                     default:
                         sendEventToVpnManagerApp(VpnManager.CATEGORY_EVENT_IKE_ERROR,
-                                VpnManager.ERROR_CLASS_RECOVERABLE, ikeException.getErrorType());
+                                VpnManager.ERROR_CLASS_RECOVERABLE, ikeException.getErrorType(),
+                                mUserIdContext, mVpnRunner, mUserId, mPackage);
                 }
             } else if (exception instanceof IllegalArgumentException) {
                 // Failed to build IKE/ChildSessionParams; fatal profile configuration error
                 // Sending CATEGORY_ERROR_USER_DEACTIVATED is not perfect but this is a more proper
                 // event to the user by comparing with other 2 events.
                 sendEventToVpnManagerApp(VpnManager.CATEGORY_EVENT_DEACTIVATED_BY_USER,
-                        VpnManager.ERROR_CLASS_NOT_RECOVERABLE, 0 /* errorCode */);
+                        VpnManager.ERROR_CLASS_NOT_RECOVERABLE, 0 /* errorCode */,
+                        mUserIdContext, mVpnRunner, mUserId, mPackage);
                 markFailedAndDisconnect(exception);
                 return;
             } else if (isException(exception, UnknownHostException.class)) {
                 sendEventToVpnManagerApp(VpnManager.CATEGORY_EVENT_NETWORK_ERROR,
                         VpnManager.ERROR_CLASS_NOT_RECOVERABLE,
-                        VpnManager.ERROR_CODE_NETWORK_UNKNOWN_HOST);
+                        VpnManager.ERROR_CODE_NETWORK_UNKNOWN_HOST,
+                        mUserIdContext, mVpnRunner, mUserId, mPackage);
                 markFailedAndDisconnect(exception);
                 return;
             } else if (isException(exception, IkeTimeoutException.class)) {
                 sendEventToVpnManagerApp(VpnManager.CATEGORY_EVENT_NETWORK_ERROR,
                         VpnManager.ERROR_CLASS_RECOVERABLE,
-                        VpnManager.ERROR_CODE_NETWORK_PROTOCOL_TIMEOUT);
+                        VpnManager.ERROR_CODE_NETWORK_PROTOCOL_TIMEOUT,
+                        mUserIdContext, mVpnRunner, mUserId, mPackage);
             } else if (isException(exception, IkeNetworkLostException.class)) {
                 sendEventToVpnManagerApp(VpnManager.CATEGORY_EVENT_NETWORK_ERROR,
-                        VpnManager.ERROR_CLASS_RECOVERABLE, VpnManager.ERROR_CODE_NETWORK_LOST);
+                        VpnManager.ERROR_CLASS_RECOVERABLE, VpnManager.ERROR_CODE_NETWORK_LOST,
+                        mUserIdContext, mVpnRunner, mUserId, mPackage);
             } else if (isException(exception, IOException.class)) {
                 sendEventToVpnManagerApp(VpnManager.CATEGORY_EVENT_NETWORK_ERROR,
-                        VpnManager.ERROR_CLASS_RECOVERABLE, VpnManager.ERROR_CODE_NETWORK_IO);
+                        VpnManager.ERROR_CLASS_RECOVERABLE, VpnManager.ERROR_CODE_NETWORK_IO,
+                        mUserIdContext, mVpnRunner, mUserId, mPackage);
             } else if (exception != null) {
                 Log.d(TAG, "onSessionLost: exception = " + exception);
             }
