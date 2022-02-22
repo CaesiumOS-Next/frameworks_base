@@ -52,6 +52,24 @@
       "parentUuid": "98792d9b_72073c4f",
       "revId": "b6f3d37719dad5e08a26c898f1fbd885426a03c8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6f0e95d1_07c90118",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1010103
+      },
+      "writtenOn": "2022-02-22T21:01:02Z",
+      "side": 1,
+      "message": "I\u0027m not questioning the running of clang-tidy or the TIMEOUT, that parts seems clear \u0026 useful enough. Rather I\u0027m not sure why we need this what seems to be an ignore list though instead of just globally ignoring timeout warnings or something like that?",
+      "parentUuid": "6d376908_31e09afd",
+      "revId": "b6f3d37719dad5e08a26c898f1fbd885426a03c8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
