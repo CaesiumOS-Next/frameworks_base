@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1e0a90eb_ef14f13b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1010103
+      },
+      "writtenOn": "2022-02-22T17:28:18Z",
+      "side": 1,
+      "message": "I\u0027m not entirely sure how (or if) I\u0027m expected to maintain this or what the benefit is. The timeouts look to \"just\" produce warnings? Manually updating these lists when code structure happens to change or not such that clang-tidy is unhappy seems error prone (and also if clang-tidy gets faster will we notice?).",
+      "revId": "b6f3d37719dad5e08a26c898f1fbd885426a03c8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
