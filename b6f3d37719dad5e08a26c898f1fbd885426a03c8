@@ -70,6 +70,24 @@
       "parentUuid": "6d376908_31e09afd",
       "revId": "b6f3d37719dad5e08a26c898f1fbd885426a03c8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b066383d_ecf1d933",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1010056
+      },
+      "writtenOn": "2022-02-22T21:07:04Z",
+      "side": 1,
+      "message": "Ah, we have issues right now with files that may be borderline. This makes manual daily reports harder to read/address because the same warnings can disappear/reappear (think of a file that bounces between 89 seconds and 91 seconds). It also seems wasteful to knowingly start long-running jobs that we know we\u0027ll kill after 90 seconds (the current timeout value).",
+      "parentUuid": "6f0e95d1_07c90118",
+      "revId": "b6f3d37719dad5e08a26c898f1fbd885426a03c8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
