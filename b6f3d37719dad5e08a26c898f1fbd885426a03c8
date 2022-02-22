@@ -34,6 +34,24 @@
       "parentUuid": "1e0a90eb_ef14f13b",
       "revId": "b6f3d37719dad5e08a26c898f1fbd885426a03c8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6d376908_31e09afd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1010056
+      },
+      "writtenOn": "2022-02-22T20:56:04Z",
+      "side": 1,
+      "message": "No build is currently broken when clang-tidy diagnostics appear/disappear. They are not considered errors for the builds where clang-tidy is running globally. This timeout keeps build resources better utilized since we\u0027re also unlikely to look at large files from the daily reports that we get for changed tidy diagnostics (new ones appearing). Excluding these borderline or long cases helps with flakiness right now, since our process is very manual. The eventual goal is to surface all tidy diagnostics via gerrit lints, which can then be ignored/handled as project owners see fit.",
+      "parentUuid": "98792d9b_72073c4f",
+      "revId": "b6f3d37719dad5e08a26c898f1fbd885426a03c8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
