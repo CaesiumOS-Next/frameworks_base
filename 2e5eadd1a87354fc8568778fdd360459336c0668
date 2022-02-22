@@ -49,6 +49,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3a6f6598_76b2eb73",
+        "filename": "services/core/java/com/android/server/connectivity/Vpn.java",
+        "patchSetId": 29
+      },
+      "lineNbr": 532,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2022-02-22T01:15:13Z",
+      "side": 1,
+      "message": "We made some changes to the API and now we have two kinds of events : errors and non-errors. CATEGORY_DEACTIVATED_BY_USER is not an error, and therefore doesn\u0027t send ERROR_CLASS and ERROR_CODE now – you can check the documentation on ACTION_VPN_MANAGER_EVENT.",
+      "range": {
+        "startLine": 532,
+        "startChar": 35,
+        "endLine": 532,
+        "endChar": 52
+      },
+      "revId": "2e5eadd1a87354fc8568778fdd360459336c0668",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "facbe0fb_f5f00e18",
         "filename": "services/core/java/com/android/server/connectivity/Vpn.java",
         "patchSetId": 29
@@ -65,6 +88,29 @@
         "startChar": 20,
         "endLine": 1057,
         "endChar": 44
+      },
+      "revId": "2e5eadd1a87354fc8568778fdd360459336c0668",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b1993429_2e7528b8",
+        "filename": "services/core/java/com/android/server/connectivity/Vpn.java",
+        "patchSetId": 29
+      },
+      "lineNbr": 1057,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2022-02-22T01:15:13Z",
+      "side": 1,
+      "message": "So I think this will also send the error when the VPN turned itself off explicitly. Is this intended ? I don\u0027t think this is necessarily a big problem, though I wonder if it\u0027s what we should do. What do you think ?",
+      "range": {
+        "startLine": 1057,
+        "startChar": 56,
+        "endLine": 1057,
+        "endChar": 90
       },
       "revId": "2e5eadd1a87354fc8568778fdd360459336c0668",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
