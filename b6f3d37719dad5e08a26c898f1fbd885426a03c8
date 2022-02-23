@@ -88,6 +88,24 @@
       "parentUuid": "6f0e95d1_07c90118",
       "revId": "b6f3d37719dad5e08a26c898f1fbd885426a03c8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4bc525b1_72816bf3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1010103
+      },
+      "writtenOn": "2022-02-23T23:54:13Z",
+      "side": 1,
+      "message": "I\u0027ll +2 but I\u0027d really push for this to be handled some other way if possible (like if the reports could just filter out files that don\u0027t appear consistently in the last \u003cN\u003e days or whatever). Scattering this tooling report filtering based on arbitrary timeouts throughout the Android.bp\u0027s of the system doesn\u0027t seem like it\u0027s going to scale very well or be well maintained overall.",
+      "parentUuid": "b066383d_ecf1d933",
+      "revId": "b6f3d37719dad5e08a26c898f1fbd885426a03c8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
