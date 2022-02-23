@@ -673,7 +673,9 @@ public class HdmiCecNetwork {
         while (it.hasNext()) {
             int path = it.next();
             int devicePortId = physicalAddressToPortId(path);
-            if (devicePortId == portId || devicePortId == Constants.INVALID_PORT_ID) {
+            if (!isLocalDeviceAddress(path)
+                    && (devicePortId == portId
+                        || devicePortId == Constants.INVALID_PORT_ID)) {
                 it.remove();
             }
         }
@@ -682,8 +684,11 @@ public class HdmiCecNetwork {
             int key = mDeviceInfos.keyAt(i);
             int physicalAddress = mDeviceInfos.get(key).getPhysicalAddress();
             int devicePortId = physicalAddressToPortId(physicalAddress);
-            if (devicePortId == portId || devicePortId == Constants.INVALID_PORT_ID) {
-                toRemove.add(key);
+            int logicalAddress = mDeviceInfos.get(key).getLogicalAddress();
+            if (!isLocalDeviceAddress(physicalAddress)
+                    && (devicePortId == portId
+                        || devicePortId == Constants.INVALID_PORT_ID)) {
+                toRemove.add(logicalAddress);
             }
         }
         for (Integer key : toRemove) {
