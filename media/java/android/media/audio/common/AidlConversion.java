@@ -518,6 +518,10 @@ public class AidlConversion {
                         return AudioFormat.ENCODING_DTS_UHD_P1;
                     } else if (MediaFormat.MIMETYPE_AUDIO_DRA.equals(aidl.encoding)) {
                         return AudioFormat.ENCODING_DRA;
+                    } else if (MediaFormat.MIMETYPE_AUDIO_DTS_HD_MA.equals(aidl.encoding)) {
+                        return AudioFormat.ENCODING_DTS_HD_MA;
+                    } else if (MediaFormat.MIMETYPE_AUDIO_DTS_UHD_P2.equals(aidl.encoding)) {
+                        return AudioFormat.ENCODING_DTS_UHD_P2;
                     } else {
                         return AudioFormat.ENCODING_INVALID;
                     }
