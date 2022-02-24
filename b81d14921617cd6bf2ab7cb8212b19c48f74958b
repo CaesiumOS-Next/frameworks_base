@@ -16,6 +16,52 @@
       "message": "Is this really necessary?",
       "revId": "b81d14921617cd6bf2ab7cb8212b19c48f74958b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5acb66eb_9a807a95",
+        "filename": "core/java/android/provider/Settings.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 241,
+      "author": {
+        "id": 1056478
+      },
+      "writtenOn": "2022-02-24T20:40:33Z",
+      "side": 1,
+      "message": "Its not clear from this description what this is for and when it would be used.\nWho is raising this intent?  I presume the settings app implements it.\nWhat result would be shown?  THere doesn\u0027t seem to be any extras coming into this to indicate as such. \n\nHow does this differ from ACTION_TETHER_PROVISIONING_UI?",
+      "range": {
+        "startLine": 241,
+        "startChar": 7,
+        "endLine": 241,
+        "endChar": 78
+      },
+      "revId": "b81d14921617cd6bf2ab7cb8212b19c48f74958b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b35e1087_5cba814c",
+        "filename": "core/java/android/provider/Settings.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 245,
+      "author": {
+        "id": 1056478
+      },
+      "writtenOn": "2022-02-24T20:40:33Z",
+      "side": 1,
+      "message": "What does this mean?  I see it mentioned elsewhere, but it is not clear what safeguarding would be performed?",
+      "range": {
+        "startLine": 244,
+        "startChar": 6,
+        "endLine": 245,
+        "endChar": 30
+      },
+      "revId": "b81d14921617cd6bf2ab7cb8212b19c48f74958b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
