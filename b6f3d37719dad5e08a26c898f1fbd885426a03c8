@@ -106,6 +106,24 @@
       "parentUuid": "b066383d_ecf1d933",
       "revId": "b6f3d37719dad5e08a26c898f1fbd885426a03c8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0d2712cb_69e85a90",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1052399
+      },
+      "writtenOn": "2022-02-24T00:32:02Z",
+      "side": 1,
+      "message": "The suggestion to compare last N days results might help too. So far our nightly build and diff tool only compare with the previous run.",
+      "parentUuid": "4bc525b1_72816bf3",
+      "revId": "b6f3d37719dad5e08a26c898f1fbd885426a03c8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
