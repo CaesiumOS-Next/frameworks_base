@@ -91,6 +91,29 @@
       },
       "revId": "484db7bcb043246aab74b73053c54f79d9d47695",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "914e9905_d8f3ba80",
+        "filename": "core/java/android/provider/Settings.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 255,
+      "author": {
+        "id": 1138358
+      },
+      "writtenOn": "2022-02-25T20:02:22Z",
+      "side": 1,
+      "message": "How about TETHER_UNSUPPORTED_CARRIER_UI",
+      "range": {
+        "startLine": 255,
+        "startChar": 38,
+        "endLine": 255,
+        "endChar": 65
+      },
+      "revId": "484db7bcb043246aab74b73053c54f79d9d47695",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
