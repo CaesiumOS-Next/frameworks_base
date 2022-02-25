@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "be955709_178a0070",
+        "filename": "core/java/android/provider/Settings.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 241,
+      "author": {
+        "id": 1138358
+      },
+      "writtenOn": "2022-02-25T20:00:52Z",
+      "side": 1,
+      "message": "is NOT supported by the carrier.",
+      "range": {
+        "startLine": 241,
+        "startChar": 67,
+        "endLine": 241,
+        "endChar": 97
+      },
+      "revId": "484db7bcb043246aab74b73053c54f79d9d47695",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a62425c0_671a67eb",
+        "filename": "core/java/android/provider/Settings.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 244,
+      "author": {
+        "id": 1138358
+      },
+      "writtenOn": "2022-02-25T20:00:52Z",
+      "side": 1,
+      "message": "this dialog activity will be started",
+      "range": {
+        "startLine": 244,
+        "startChar": 55,
+        "endLine": 244,
+        "endChar": 89
+      },
+      "revId": "484db7bcb043246aab74b73053c54f79d9d47695",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9fe20193_953f1cf5",
+        "filename": "core/java/android/provider/Settings.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 245,
+      "author": {
+        "id": 1138358
+      },
+      "writtenOn": "2022-02-25T20:00:52Z",
+      "side": 1,
+      "message": "tell the user that",
+      "range": {
+        "startLine": 245,
+        "startChar": 7,
+        "endLine": 245,
+        "endChar": 19
+      },
+      "revId": "484db7bcb043246aab74b73053c54f79d9d47695",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5e229dd1_fcab23d0",
+        "filename": "core/java/android/provider/Settings.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 249,
+      "author": {
+        "id": 1138358
+      },
+      "writtenOn": "2022-02-25T20:00:52Z",
+      "side": 1,
+      "message": "Can remove, since CTS is used to enforce the activity exists.",
+      "range": {
+        "startLine": 247,
+        "startChar": 0,
+        "endLine": 249,
+        "endChar": 30
+      },
+      "revId": "484db7bcb043246aab74b73053c54f79d9d47695",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
