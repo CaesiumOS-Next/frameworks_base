@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "de340a19_e9bcf4c0",
+        "filename": "services/core/java/com/android/server/infra/OWNERS",
+        "patchSetId": 2
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 1013984
+      },
+      "writtenOn": "2022-02-25T04:43:18Z",
+      "side": 1,
+      "message": "not needed, you\u0027re already on the OWNERS above",
+      "range": {
+        "startLine": 4,
+        "startChar": 0,
+        "endLine": 4,
+        "endChar": 18
+      },
+      "revId": "7a6f3ac35584903255faa2755b41afab9c5b1c9d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
