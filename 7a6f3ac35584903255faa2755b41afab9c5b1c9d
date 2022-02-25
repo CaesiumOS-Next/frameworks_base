@@ -22,6 +22,30 @@
       },
       "revId": "7a6f3ac35584903255faa2755b41afab9c5b1c9d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "617809a8_ad3e88c5",
+        "filename": "services/core/java/com/android/server/infra/OWNERS",
+        "patchSetId": 2
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 1525114
+      },
+      "writtenOn": "2022-02-25T05:27:52Z",
+      "side": 1,
+      "message": "I added it for future proofing. Some time down the line, after I stop working on CloudSearch, I didn\u0027t want this package to again not have any owners.",
+      "parentUuid": "de340a19_e9bcf4c0",
+      "range": {
+        "startLine": 4,
+        "startChar": 0,
+        "endLine": 4,
+        "endChar": 18
+      },
+      "revId": "7a6f3ac35584903255faa2755b41afab9c5b1c9d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
