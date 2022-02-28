@@ -26,6 +26,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c2724e25_9b419800",
+        "filename": "telephony/java/android/telephony/CarrierConfigManager.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 3792,
+      "author": {
+        "id": 1138358
+      },
+      "writtenOn": "2022-02-28T23:14:46Z",
+      "side": 1,
+      "message": "in dB?",
+      "range": {
+        "startLine": 3792,
+        "startChar": 33,
+        "endLine": 3792,
+        "endChar": 54
+      },
+      "revId": "7346628d4f277f36a0c41ae28f41a29c74edddfc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3786c977_60298aac",
         "filename": "telephony/java/android/telephony/CarrierConfigManager.java",
         "patchSetId": 1
@@ -49,6 +72,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9eba5ec4_a44c37fd",
+        "filename": "telephony/java/android/telephony/CarrierConfigManager.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 3812,
+      "author": {
+        "id": 1138358
+      },
+      "writtenOn": "2022-02-28T23:14:46Z",
+      "side": 1,
+      "message": "in dB?",
+      "range": {
+        "startLine": 3812,
+        "startChar": 36,
+        "endLine": 3812,
+        "endChar": 54
+      },
+      "revId": "7346628d4f277f36a0c41ae28f41a29c74edddfc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ef250406_d41d6a32",
         "filename": "telephony/java/android/telephony/CarrierConfigManager.java",
         "patchSetId": 1
@@ -65,6 +111,29 @@
         "startChar": 0,
         "endLine": 6203,
         "endChar": 81
+      },
+      "revId": "7346628d4f277f36a0c41ae28f41a29c74edddfc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4b018bb4_b5dbd2d6",
+        "filename": "telephony/java/android/telephony/CellSignalStrengthLte.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 406,
+      "author": {
+        "id": 1138358
+      },
+      "writtenOn": "2022-02-28T23:14:46Z",
+      "side": 1,
+      "message": ".. in dB",
+      "range": {
+        "startLine": 406,
+        "startChar": 44,
+        "endLine": 406,
+        "endChar": 49
       },
       "revId": "7346628d4f277f36a0c41ae28f41a29c74edddfc",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
