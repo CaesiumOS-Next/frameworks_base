@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "008c74f3_b7b9af25",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1056478
+      },
+      "writtenOn": "2022-03-01T20:59:44Z",
+      "side": 1,
+      "message": "Discussed this with the team who made the change. Allowing this API change as it resulted from feedback from a new change (carrier config key for tethering) added in T.",
+      "revId": "ad950aa3a2e98561f3cced358ba84bc393ea07d2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
