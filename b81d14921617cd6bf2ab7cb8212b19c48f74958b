@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d22d07c1_2dc9750d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1432429
+      },
+      "writtenOn": "2022-03-01T07:29:04Z",
+      "side": 1,
+      "message": "yes.",
+      "parentUuid": "6e68cd04_f286a201",
+      "revId": "b81d14921617cd6bf2ab7cb8212b19c48f74958b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5acb66eb_9a807a95",
@@ -55,6 +73,30 @@
       "side": 1,
       "message": "I write some context to make it more detail.\n\nAnd, there is no extra value within this action.",
       "parentUuid": "5acb66eb_9a807a95",
+      "range": {
+        "startLine": 241,
+        "startChar": 7,
+        "endLine": 241,
+        "endChar": 78
+      },
+      "revId": "b81d14921617cd6bf2ab7cb8212b19c48f74958b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "88890967_d96ecd4a",
+        "filename": "core/java/android/provider/Settings.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 241,
+      "author": {
+        "id": 1432429
+      },
+      "writtenOn": "2022-03-01T07:29:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2bb2a0e5_dc0148d7",
       "range": {
         "startLine": 241,
         "startChar": 7,
