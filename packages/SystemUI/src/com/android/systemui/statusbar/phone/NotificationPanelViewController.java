@@ -3787,8 +3787,19 @@ public class NotificationPanelViewController extends PanelViewController {
 
     public ViewPropertyAnimator fadeOut(long startDelayMs, long durationMs, Runnable endAction) {
         return mView.animate().alpha(0).setStartDelay(startDelayMs).setDuration(
-                durationMs).setInterpolator(Interpolators.ALPHA_OUT).withLayer().withEndAction(
-                endAction);
+                durationMs).setInterpolator(Interpolators.ALPHA_OUT).withLayer()
+                .setListener(new AnimatorListenerAdapter() {
+                    @Override
+                    public void onAnimationCancel(Animator animation) {
+                        endAction.run();
+                        mView.animate().setListener(null);
+                    }
+                    @Override
+                    public void onAnimationEnd(Animator animation) {
+                        endAction.run();
+                        mView.animate().setListener(null);
+                    }
+                });
     }
 
     public void resetViewGroupFade() {
