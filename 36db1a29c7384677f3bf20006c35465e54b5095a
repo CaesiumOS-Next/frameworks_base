@@ -3,6 +3,46 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e65b561d_a114bc7a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1385042
+      },
+      "writtenOn": "2022-03-02T04:02:50Z",
+      "side": 1,
+      "message": "nit: adds",
+      "range": {
+        "startLine": 12,
+        "startChar": 17,
+        "endLine": 12,
+        "endChar": 20
+      },
+      "revId": "36db1a29c7384677f3bf20006c35465e54b5095a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "51191e29_c23c3ae5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1385042
+      },
+      "writtenOn": "2022-03-02T04:02:50Z",
+      "side": 1,
+      "message": "LGTM but please see comment about TAG_NONE.",
+      "revId": "36db1a29c7384677f3bf20006c35465e54b5095a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "afe13623_1e5dd243",
         "filename": "packages/ConnectivityT/framework-t/src/android/app/usage/NetworkStats.java",
         "patchSetId": 1
@@ -134,6 +174,29 @@
         "startChar": 5,
         "endLine": 927,
         "endChar": 12
+      },
+      "revId": "36db1a29c7384677f3bf20006c35465e54b5095a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ef120946_f38e5fc8",
+        "filename": "packages/ConnectivityT/framework-t/src/android/net/NetworkStats.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1385042
+      },
+      "writtenOn": "2022-03-02T04:02:50Z",
+      "side": 1,
+      "message": "BTW, we probably don\u0027t have chance to do this once TAG_NONE is exposed.",
+      "range": {
+        "startLine": 129,
+        "startChar": 4,
+        "endLine": 129,
+        "endChar": 40
       },
       "revId": "36db1a29c7384677f3bf20006c35465e54b5095a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
