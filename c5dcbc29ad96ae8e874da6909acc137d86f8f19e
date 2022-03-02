@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "819177d5_677af00b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1359095
+      },
+      "writtenOn": "2022-03-02T20:09:39Z",
+      "side": 1,
+      "message": "Hi Raman,\n\nMight you have a moment to +2 this change?\n\nThanks!",
+      "revId": "c5dcbc29ad96ae8e874da6909acc137d86f8f19e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
