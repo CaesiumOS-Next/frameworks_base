@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "26acdb93_e1c70d7a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1306837
+      },
+      "writtenOn": "2022-03-02T07:54:13Z",
+      "side": 1,
+      "message": "TH blocked by aosp/1964907",
+      "revId": "6aa1555ba4d0e4960c607d2d5efbb12ee43c0207",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

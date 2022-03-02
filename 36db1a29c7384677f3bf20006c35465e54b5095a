@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "2db3a2bc_6f097b07",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1306837
+      },
+      "writtenOn": "2022-03-02T07:54:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e65b561d_a114bc7a",
+      "range": {
+        "startLine": 12,
+        "startChar": 17,
+        "endLine": 12,
+        "endChar": 20
+      },
+      "revId": "36db1a29c7384677f3bf20006c35465e54b5095a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "51191e29_c23c3ae5",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1
@@ -64,6 +88,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7959a406_76611649",
+        "filename": "packages/ConnectivityT/framework-t/src/android/app/usage/NetworkStats.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 478,
+      "author": {
+        "id": 1306837
+      },
+      "writtenOn": "2022-03-02T07:54:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "afe13623_1e5dd243",
+      "range": {
+        "startLine": 478,
+        "startChar": 53,
+        "endLine": 478,
+        "endChar": 54
+      },
+      "revId": "36db1a29c7384677f3bf20006c35465e54b5095a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "84d87b54_babda178",
@@ -77,6 +125,30 @@
       "writtenOn": "2022-03-02T04:00:22Z",
       "side": 1,
       "message": "I think the recent guidance is to copy the documentation",
+      "range": {
+        "startLine": 534,
+        "startChar": 7,
+        "endLine": 534,
+        "endChar": 79
+      },
+      "revId": "36db1a29c7384677f3bf20006c35465e54b5095a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e98a7008_502d4517",
+        "filename": "packages/ConnectivityT/framework-t/src/android/app/usage/NetworkStatsManager.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 534,
+      "author": {
+        "id": 1306837
+      },
+      "writtenOn": "2022-03-02T07:54:13Z",
+      "side": 1,
+      "message": "I don\u0027t really like this rule since it make the javadoc harder to maintain but still done.",
+      "parentUuid": "84d87b54_babda178",
       "range": {
         "startLine": 534,
         "startChar": 7,
@@ -110,6 +182,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "54dbe267_9650bdab",
+        "filename": "packages/ConnectivityT/framework-t/src/android/app/usage/NetworkStatsManager.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 581,
+      "author": {
+        "id": 1306837
+      },
+      "writtenOn": "2022-03-02T07:54:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6af26ba5_88707881",
+      "range": {
+        "startLine": 581,
+        "startChar": 36,
+        "endLine": 581,
+        "endChar": 40
+      },
+      "revId": "36db1a29c7384677f3bf20006c35465e54b5095a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "90ab05fb_cd230b94",
@@ -123,6 +219,30 @@
       "writtenOn": "2022-03-02T04:00:22Z",
       "side": 1,
       "message": "copy doc",
+      "range": {
+        "startLine": 788,
+        "startChar": 7,
+        "endLine": 788,
+        "endChar": 11
+      },
+      "revId": "36db1a29c7384677f3bf20006c35465e54b5095a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "be8ef2a3_850a8a9c",
+        "filename": "packages/ConnectivityT/framework-t/src/android/app/usage/NetworkStatsManager.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 788,
+      "author": {
+        "id": 1306837
+      },
+      "writtenOn": "2022-03-02T07:54:13Z",
+      "side": 1,
+      "message": "1. done\n\n2. Not for thic CL, do we want to @deprecate this given the alternative api (the one with handler) is already there?",
+      "parentUuid": "90ab05fb_cd230b94",
       "range": {
         "startLine": 788,
         "startChar": 7,
@@ -156,6 +276,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "7579f29b_30e8e8f4",
+        "filename": "packages/ConnectivityT/framework-t/src/android/app/usage/NetworkStatsManager.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 845,
+      "author": {
+        "id": 1306837
+      },
+      "writtenOn": "2022-03-02T07:54:13Z",
+      "side": 1,
+      "message": "Hmmm.\nThis is already public for years.\nIf a caller who did not handle NPE in their app then it will crash, right?\nAlthough we did not document what RuntimeException will be thrown, is it ok to change that?",
+      "parentUuid": "e1695c27_66a0e6df",
+      "range": {
+        "startLine": 845,
+        "startChar": 22,
+        "endLine": 845,
+        "endChar": 46
+      },
+      "revId": "36db1a29c7384677f3bf20006c35465e54b5095a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "c8aede8a_88d35d3f",
@@ -179,6 +323,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8245b0e0_585e4547",
+        "filename": "packages/ConnectivityT/framework-t/src/android/app/usage/NetworkStatsManager.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 927,
+      "author": {
+        "id": 1306837
+      },
+      "writtenOn": "2022-03-02T07:54:13Z",
+      "side": 1,
+      "message": "Oooooooops",
+      "parentUuid": "c8aede8a_88d35d3f",
+      "range": {
+        "startLine": 927,
+        "startChar": 5,
+        "endLine": 927,
+        "endChar": 12
+      },
+      "revId": "36db1a29c7384677f3bf20006c35465e54b5095a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ef120946_f38e5fc8",
@@ -192,6 +360,30 @@
       "writtenOn": "2022-03-02T04:02:50Z",
       "side": 1,
       "message": "BTW, we probably don\u0027t have chance to do this once TAG_NONE is exposed.",
+      "range": {
+        "startLine": 129,
+        "startChar": 4,
+        "endLine": 129,
+        "endChar": 40
+      },
+      "revId": "36db1a29c7384677f3bf20006c35465e54b5095a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "654b231e_1ec7474b",
+        "filename": "packages/ConnectivityT/framework-t/src/android/net/NetworkStats.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1306837
+      },
+      "writtenOn": "2022-03-02T07:54:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ef120946_f38e5fc8",
       "range": {
         "startLine": 129,
         "startChar": 4,
