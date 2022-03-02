@@ -33,6 +33,24 @@
       "message": "why not use the existing lock object? can you add a test?",
       "revId": "be8c94260dcc41bf7fd2dea4652224a36925f0b0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b6d438db_82ef7bd6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1561936
+      },
+      "writtenOn": "2022-03-02T07:27:47Z",
+      "side": 1,
+      "message": "1)why not use the existing lock object?\nI intented not to affect the performance of other parts as much as possible.\n\n2)can you add a test?\nThis is once issue I only got the issue callstack.\nI have no idea how to add a test.\nCan you tell me a good test method for adding synchronized issue?",
+      "parentUuid": "6df251dc_31922214",
+      "revId": "be8c94260dcc41bf7fd2dea4652224a36925f0b0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
