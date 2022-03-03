@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b25660ac_611f02b6",
+        "filename": "services/core/java/com/android/server/notification/NotificationManagerService.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 7563,
+      "author": {
+        "id": 1871105
+      },
+      "writtenOn": "2022-03-03T18:33:28Z",
+      "side": 0,
+      "message": "The handling for the initial reset of the notification light can be found here:\n \nhttps://cs.android.com/android/platform/superproject/+/master:frameworks/base/services/core/java/com/android/server/notification/NotificationManagerService.java;l\u003d7500\n\nWhere this logic, in combination with the reset above, causes the notification light to be extinguished.",
+      "range": {
+        "startLine": 7563,
+        "startChar": 8,
+        "endLine": 7563,
+        "endChar": 50
+      },
+      "revId": "5870ba5acefe450afef671124ce16f9604e45c8a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
