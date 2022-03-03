@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fa2a5941_19d260f1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1060562
+      },
+      "writtenOn": "2022-03-03T18:58:22Z",
+      "side": 1,
+      "message": "FLAG_ONLY_ALERT_ONCE + an updated notifications \u003d\u003d no alerting behavior (no sound, lights, or vibration)",
+      "revId": "cd2b0845687d38466fbf1c84dcb66e50d1861fad",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
