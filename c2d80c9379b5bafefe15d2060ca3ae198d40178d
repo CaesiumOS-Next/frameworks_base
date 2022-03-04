@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7611a585_0f18a5ba",
+        "filename": "services/core/java/com/android/server/notification/NotificationManagerService.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 7567,
+      "author": {
+        "id": 1004882
+      },
+      "writtenOn": "2022-03-04T20:21:16Z",
+      "side": 1,
+      "message": "If the notification light was showing for this notification, then it should continue to show when updated.",
+      "revId": "c2d80c9379b5bafefe15d2060ca3ae198d40178d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
