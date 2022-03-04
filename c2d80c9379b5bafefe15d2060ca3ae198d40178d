@@ -34,6 +34,24 @@
       "parentUuid": "7611a585_0f18a5ba",
       "revId": "c2d80c9379b5bafefe15d2060ca3ae198d40178d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "deb10832_4fe41816",
+        "filename": "services/core/java/com/android/server/notification/NotificationManagerService.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 7567,
+      "author": {
+        "id": 1004882
+      },
+      "writtenOn": "2022-03-04T21:05:43Z",
+      "side": 1,
+      "message": "Should there be consistency between vibrate + sound and the light alerting types?  From what the API documentation states, the intention of the flag does not seem to be to stop sound or vibration or turn off the light on an update, but instead to update the notification without sound/vibration/ticker(?):\n\n FLAG_ONLY_ALERT_ONCE\n\n public static final int FLAG_ONLY_ALERT_ONCE\n\n Bit to be bitwise-ored into the flags field that should be set if you would only\n like the sound, vibrate and ticker to be played if the notification was not\n already showing.\n\nDo you have another suggestion on how this can be solved?  The issue is that when a notification is silently updated, the notification light is turned off, causing end users to miss messages and notifications.\n\nIt is also noteworthy that this \u0027turn light off\u0027 behaviour was introduced in P and before that, the notification light was unaffected by this flag.\n\nThanks for taking the time to discuss this.",
+      "parentUuid": "7db9b037_ec72c8f1",
+      "revId": "c2d80c9379b5bafefe15d2060ca3ae198d40178d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
