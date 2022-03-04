@@ -16,6 +16,24 @@
       "message": "FLAG_ONLY_ALERT_ONCE + an updated notifications \u003d\u003d no alerting behavior (no sound, lights, or vibration)",
       "revId": "cd2b0845687d38466fbf1c84dcb66e50d1861fad",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f025ddf9_e32d7e53",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1004882
+      },
+      "writtenOn": "2022-03-04T13:20:59Z",
+      "side": 1,
+      "message": "Hi Julia, \n\nThank you for the comment/review.\n\n\u003e FLAG_ONLY_ALERT_ONCE + an updated notifications \u003d\u003d no alerting behavior (no sound, lights, or vibration)\n\nI agree with the above logic, but the current behaviour is that the light is turned off when the updated notification comes in, rather than leaving it in the blinking state (end user has not interacted with the notification and the light just turns off).\n\nI think the current logic is not correct, but the Sony solution to remove this flag handling is also not correct, as the light should not be possible to re-trigger if the end user has viewed the notification in the shade.\n\nI\u0027ll have more of a dig and see if I can find a better solution.",
+      "parentUuid": "fa2a5941_19d260f1",
+      "revId": "cd2b0845687d38466fbf1c84dcb66e50d1861fad",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
