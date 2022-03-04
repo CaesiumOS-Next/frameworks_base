@@ -16,6 +16,24 @@
       "message": "If the notification light was showing for this notification, then it should continue to show when updated.",
       "revId": "c2d80c9379b5bafefe15d2060ca3ae198d40178d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7db9b037_ec72c8f1",
+        "filename": "services/core/java/com/android/server/notification/NotificationManagerService.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 7567,
+      "author": {
+        "id": 1060562
+      },
+      "writtenOn": "2022-03-04T20:24:20Z",
+      "side": 1,
+      "message": "That\u0027s inconsistent with the other alerting types - updating a notification with this flag will stop the current vibration and sound",
+      "parentUuid": "7611a585_0f18a5ba",
+      "revId": "c2d80c9379b5bafefe15d2060ca3ae198d40178d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
