@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "68f9fcc9_a2f9be38",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1833664
+      },
+      "writtenOn": "2022-03-09T00:09:34Z",
+      "side": 1,
+      "message": "Just thoughts/suggestions in my comments. Nothing requiring changes for +2 from me.",
+      "revId": "0e916d04be2de4ca14b9b2606f57ebd118c31ed2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1f4f1452_cb87cf98",
+        "filename": "keystore/java/android/security/keystore2/AndroidKeyStoreKeyPairGeneratorSpi.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1833664
+      },
+      "writtenOn": "2022-03-09T00:09:34Z",
+      "side": 1,
+      "message": "Should we bother to limit `XDH` so it can only be used with the wrong types of curves?\n\nThat would be technically correct, but I feel it\u0027s probably more work that it\u0027s worth. Just raising the idea here in case you think we should go the extra mile and block P256 with XDH (which, I think, will work as this is coded).",
+      "range": {
+        "startLine": 114,
+        "startChar": 36,
+        "endLine": 114,
+        "endChar": 70
+      },
+      "revId": "0e916d04be2de4ca14b9b2606f57ebd118c31ed2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

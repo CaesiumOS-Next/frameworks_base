@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6ca711d9_dc35e7a7",
+        "filename": "keystore/java/android/security/keystore2/AndroidKeyStoreProvider.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1833664
+      },
+      "writtenOn": "2022-03-09T00:09:34Z",
+      "side": 0,
+      "message": "Is the right way to do this to add aliases like conscrypt?\n\nhttps://cs.android.com/android/platform/superproject/+/master:external/conscrypt/common/src/main/java/org/conscrypt/OpenSSLProvider.java;drc\u003d04b2b0e206afe64d33baca8bc602f1f13ca0d6d2;l\u003d208\n\n```\nput(\"KeyFactory.XDH\", PREFIX + \"OpenSSLXDHKeyFactory\");\nput(\"Alg.Alias.KeyFactory.1.3.101.110\", \"XDH\");\n```\n\nThough, now that I think about it, we don\u0027t seem to be supporting these aliases for anything else. So it is probably not appropriate to add now. However, do you think we should file a bug? IMO it would be good for Android to be as compatible with other providers as possible.",
+      "revId": "5a5a4504a5e4fb336f1cc0f796e39ce9ba58ad61",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
