@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "57867577_fe5ac348",
+        "filename": "core/api/system-current.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 7067,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2022-03-16T08:00:07Z",
+      "side": 1,
+      "message": "NETWORK_SETTINGS and make this module-lib?",
+      "range": {
+        "startLine": 7067,
+        "startChar": 59,
+        "endLine": 7067,
+        "endChar": 79
+      },
+      "revId": "6c1b02aa2a18b16f5a2f739323401e496f54d866",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f57f6846_1158989d",
+        "filename": "core/api/system-current.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 7068,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2022-03-16T08:00:07Z",
+      "side": 1,
+      "message": "Suggest not adding this one and only having the one that takes an Executor.",
+      "range": {
+        "startLine": 7068,
+        "startChar": 119,
+        "endLine": 7068,
+        "endChar": 120
+      },
+      "revId": "6c1b02aa2a18b16f5a2f739323401e496f54d866",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "62fa45f4_3fae05b1",
+        "filename": "packages/ConnectivityT/framework-t/src/android/net/EthernetManager.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 653,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2022-03-16T08:00:07Z",
+      "side": 1,
+      "message": "Use Objects.requireNonNull instead.",
+      "range": {
+        "startLine": 653,
+        "startChar": 22,
+        "endLine": 653,
+        "endChar": 42
+      },
+      "revId": "6c1b02aa2a18b16f5a2f739323401e496f54d866",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
