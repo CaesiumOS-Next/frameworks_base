@@ -7064,9 +7064,12 @@ package android.metrics {
 package android.net {
 
   public class EthernetManager {
+    method @RequiresPermission(android.Manifest.permission.ACCESS_NETWORK_STATE) public void addEthernetEnabledListener(@NonNull java.util.concurrent.Executor, @NonNull java.util.function.Consumer<java.lang.Boolean>);
+    method @RequiresPermission(android.Manifest.permission.ACCESS_NETWORK_STATE) public void addEthernetEnabledListener(@NonNull java.util.function.Consumer<java.lang.Boolean>);
     method @RequiresPermission(anyOf={android.net.NetworkStack.PERMISSION_MAINLINE_NETWORK_STACK, android.Manifest.permission.NETWORK_STACK, android.Manifest.permission.MANAGE_ETHERNET_NETWORKS}) public void connectNetwork(@NonNull String, @Nullable java.util.concurrent.Executor, @Nullable java.util.function.BiConsumer<android.net.Network,android.net.EthernetNetworkManagementException>);
     method @RequiresPermission(anyOf={android.net.NetworkStack.PERMISSION_MAINLINE_NETWORK_STACK, android.Manifest.permission.NETWORK_STACK, android.Manifest.permission.MANAGE_ETHERNET_NETWORKS}) public void disconnectNetwork(@NonNull String, @Nullable java.util.concurrent.Executor, @Nullable java.util.function.BiConsumer<android.net.Network,android.net.EthernetNetworkManagementException>);
     method @NonNull @RequiresPermission(anyOf={android.Manifest.permission.NETWORK_STACK, android.net.NetworkStack.PERMISSION_MAINLINE_NETWORK_STACK}) public android.net.EthernetManager.TetheredInterfaceRequest requestTetheredInterface(@NonNull java.util.concurrent.Executor, @NonNull android.net.EthernetManager.TetheredInterfaceCallback);
+    method @RequiresPermission(anyOf={android.net.NetworkStack.PERMISSION_MAINLINE_NETWORK_STACK, android.Manifest.permission.NETWORK_STACK, android.Manifest.permission.MANAGE_ETHERNET_NETWORKS}) public void setEthernetEnabled(boolean);
     method @RequiresPermission(anyOf={android.net.NetworkStack.PERMISSION_MAINLINE_NETWORK_STACK, android.Manifest.permission.NETWORK_STACK, android.Manifest.permission.MANAGE_ETHERNET_NETWORKS}) public void updateConfiguration(@NonNull String, @NonNull android.net.EthernetNetworkUpdateRequest, @Nullable java.util.concurrent.Executor, @Nullable java.util.function.BiConsumer<android.net.Network,android.net.EthernetNetworkManagementException>);
   }
 

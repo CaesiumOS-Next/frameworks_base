@@ -21,6 +21,7 @@ import android.net.IpConfiguration;
 /** @hide */
 oneway interface IEthernetServiceListener
 {
+    void onEthernetEnabled(boolean enabled);
     void onInterfaceStateChanged(String iface, int state, int role,
             in IpConfiguration configuration);
 }
