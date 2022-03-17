@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b718f4fd_23f3d5dc",
+        "filename": "core/api/system-current.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 7067,
+      "author": {
+        "id": 1308504
+      },
+      "writtenOn": "2022-03-17T09:38:21Z",
+      "side": 1,
+      "message": "Maybe ACCESS_NETWORK_STATE is enough ? This just read the state instead of changing the state. Since the detail implementation is just registering service listener once, if read ethernet state can\u0027t use the same permission as read interface state, we need to separate the callback register which is more complicated.",
+      "parentUuid": "57867577_fe5ac348",
+      "range": {
+        "startLine": 7067,
+        "startChar": 59,
+        "endLine": 7067,
+        "endChar": 79
+      },
+      "revId": "6c1b02aa2a18b16f5a2f739323401e496f54d866",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f57f6846_1158989d",
         "filename": "core/api/system-current.txt",
         "patchSetId": 1
@@ -37,6 +61,30 @@
       "writtenOn": "2022-03-16T08:00:07Z",
       "side": 1,
       "message": "Suggest not adding this one and only having the one that takes an Executor.",
+      "range": {
+        "startLine": 7068,
+        "startChar": 119,
+        "endLine": 7068,
+        "endChar": 120
+      },
+      "revId": "6c1b02aa2a18b16f5a2f739323401e496f54d866",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a261587f_2a4c41ca",
+        "filename": "core/api/system-current.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 7068,
+      "author": {
+        "id": 1308504
+      },
+      "writtenOn": "2022-03-17T09:38:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f57f6846_1158989d",
       "range": {
         "startLine": 7068,
         "startChar": 119,
@@ -60,6 +108,30 @@
       "writtenOn": "2022-03-16T08:00:07Z",
       "side": 1,
       "message": "Use Objects.requireNonNull instead.",
+      "range": {
+        "startLine": 653,
+        "startChar": 22,
+        "endLine": 653,
+        "endChar": 42
+      },
+      "revId": "6c1b02aa2a18b16f5a2f739323401e496f54d866",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "efea34ee_74abcb28",
+        "filename": "packages/ConnectivityT/framework-t/src/android/net/EthernetManager.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 653,
+      "author": {
+        "id": 1308504
+      },
+      "writtenOn": "2022-03-17T09:38:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "62fa45f4_3fae05b1",
       "range": {
         "startLine": 653,
         "startChar": 22,
