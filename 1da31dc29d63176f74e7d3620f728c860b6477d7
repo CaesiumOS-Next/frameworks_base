@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "82a10dd4_ee150ab6",
+        "filename": "services/core/java/com/android/server/accounts/AccountManagerService.java",
+        "patchSetId": 9
+      },
+      "lineNbr": 2104,
+      "author": {
+        "id": 1362778
+      },
+      "writtenOn": "2022-03-17T15:54:37Z",
+      "side": 1,
+      "message": "Add another check for new account name",
+      "range": {
+        "startLine": 2104,
+        "startChar": 67,
+        "endLine": 2104,
+        "endChar": 74
+      },
+      "revId": "1da31dc29d63176f74e7d3620f728c860b6477d7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
