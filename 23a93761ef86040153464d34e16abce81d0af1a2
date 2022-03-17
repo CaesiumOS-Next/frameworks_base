@@ -1,0 +1,84 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "14462f9f_70f20db2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2022-03-17T10:17:17Z",
+      "side": 1,
+      "message": "LGTM assuming comments addressed.",
+      "revId": "23a93761ef86040153464d34e16abce81d0af1a2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2d3e144a_bc7075b5",
+        "filename": "packages/ConnectivityT/framework-t/src/android/net/EthernetManager.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2022-03-17T10:17:17Z",
+      "side": 1,
+      "message": "Indicates that Ethernet",
+      "range": {
+        "startLine": 91,
+        "startChar": 7,
+        "endLine": 91,
+        "endChar": 24
+      },
+      "revId": "23a93761ef86040153464d34e16abce81d0af1a2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1dcd38f4_31bb43bc",
+        "filename": "packages/ConnectivityT/framework-t/src/android/net/EthernetManager.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2022-03-17T10:17:17Z",
+      "side": 1,
+      "message": "Indicates that",
+      "range": {
+        "startLine": 99,
+        "startChar": 7,
+        "endLine": 99,
+        "endChar": 24
+      },
+      "revId": "23a93761ef86040153464d34e16abce81d0af1a2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "25c21899_c8c24cf3",
+        "filename": "packages/ConnectivityT/framework-t/src/android/net/EthernetNetworkUpdateRequest.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2022-03-17T10:17:17Z",
+      "side": 1,
+      "message": "Per discussion, there should be no changes to this file in this CL.",
+      "revId": "23a93761ef86040153464d34e16abce81d0af1a2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
