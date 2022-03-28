@@ -16,6 +16,24 @@
       "message": "Hi, I would like to invite you to do a code review for me, thanks a lot!",
       "revId": "74ebac1b467b7b9c8ebaf4929f29a76a8ce5918e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6af92ce4_a326debf",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1381465
+      },
+      "writtenOn": "2022-03-28T08:49:17Z",
+      "side": 1,
+      "message": "We have fixed it in the internal branch.",
+      "parentUuid": "55d97dda_e4115a9a",
+      "revId": "74ebac1b467b7b9c8ebaf4929f29a76a8ce5918e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
