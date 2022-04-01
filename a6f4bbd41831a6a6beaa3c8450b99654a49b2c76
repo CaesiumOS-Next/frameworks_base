@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b0098af2_c8318092",
+        "filename": "telephony/OWNERS",
+        "patchSetId": 7
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1056478
+      },
+      "writtenOn": "2022-04-01T15:53:24Z",
+      "side": 0,
+      "message": "Removed by mistake?",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 20
+      },
+      "revId": "a6f4bbd41831a6a6beaa3c8450b99654a49b2c76",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "466c4185_48be0ccb",
+        "filename": "telephony/OWNERS",
+        "patchSetId": 7
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1056478
+      },
+      "writtenOn": "2022-04-01T15:53:24Z",
+      "side": 0,
+      "message": "Same here?",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 19
+      },
+      "revId": "a6f4bbd41831a6a6beaa3c8450b99654a49b2c76",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
