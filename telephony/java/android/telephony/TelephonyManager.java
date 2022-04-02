@@ -3213,6 +3213,7 @@ public class TelephonyManager {
                     SIM_STATE_CARD_RESTRICTED,
                     SIM_STATE_LOADED,
                     SIM_STATE_PRESENT,
+                    SIM_STATE_IMSI,
             })
     public @interface SimState {}
 
@@ -3264,6 +3265,13 @@ public class TelephonyManager {
      */
     @SystemApi
     public static final int SIM_STATE_PRESENT = TelephonyProtoEnums.SIM_STATE_PRESENT;  // 11
+
+    /**
+     * SIM card state: SIM Card is Imsi_ready
+     * @hide
+     */
+    @SystemApi
+    public static final int SIM_STATE_IMSI = TelephonyProtoEnums.SIM_STATE_IMSI;  // 12
 
     /**
      * Extra included in {@link #ACTION_SIM_CARD_STATE_CHANGED} and

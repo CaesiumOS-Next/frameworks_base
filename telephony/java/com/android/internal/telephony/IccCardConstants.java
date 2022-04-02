@@ -90,7 +90,9 @@ public class IccCardConstants {
         @UnsupportedAppUsage
         CARD_IO_ERROR,  /** ordinal(8) == {@See TelephonyManager#SIM_STATE_CARD_IO_ERROR} */
         CARD_RESTRICTED,/** ordinal(9) == {@See TelephonyManager#SIM_STATE_CARD_RESTRICTED} */
-        LOADED;         /** ordinal(9) == {@See TelephonyManager#SIM_STATE_LOADED} */
+        LOADED;         /** ordinal(10) == {@See TelephonyManager#SIM_STATE_LOADED} */
+        PRESENT;        /** ordinal(11) == {@See TelephonyManager#SIM_STATE_PRESENT} */
+        IMSI_READY;     /** ordinal(12) == {@See TelephonyManager#SIM_STATE_IMSI} */
 
         public boolean isPinLocked() {
             return ((this == PIN_REQUIRED) || (this == PUK_REQUIRED));
