@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8454426c_a30c2adc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1013030
+      },
+      "writtenOn": "2022-04-04T07:27:11Z",
+      "side": 1,
+      "message": "LGTM, but looks like inCryptKeeperBounce is still used by \u0027com.google.android.inputmethod.latin\u0027 (albeit through reflection, so maybe won\u0027t crash). We can check the policy for this with API council?",
+      "revId": "cfa79b56e198814401cac9de76c9e7bbb4baea9d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
