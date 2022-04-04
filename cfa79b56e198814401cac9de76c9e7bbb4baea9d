@@ -16,6 +16,24 @@
       "message": "LGTM, but looks like inCryptKeeperBounce is still used by \u0027com.google.android.inputmethod.latin\u0027 (albeit through reflection, so maybe won\u0027t crash). We can check the policy for this with API council?",
       "revId": "cfa79b56e198814401cac9de76c9e7bbb4baea9d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f31b4850_a1b87d69",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1137063
+      },
+      "writtenOn": "2022-04-04T17:41:43Z",
+      "side": 1,
+      "message": "All the methods being removed by this CL have `@hide` but not `@UnsupportedAppUsage`, so my understanding is that they are safe to remove.\n\nThe app in question doesn\u0027t call `inCryptKeeperBounce()` on devices running P or higher, so it won\u0027t be affected:\n\n    if (Build.VERSION.SDK_INT \u003e\u003d VERSION_CODES.P) {\n      // This is API is blocked since O, return false directly to avoid unnecessary reflection.\n      return false;\n    }",
+      "parentUuid": "8454426c_a30c2adc",
+      "revId": "cfa79b56e198814401cac9de76c9e7bbb4baea9d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
