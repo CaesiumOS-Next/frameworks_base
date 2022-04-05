@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "086e8148_fa5a7089",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1900056
+      },
+      "writtenOn": "2022-04-05T18:37:02Z",
+      "side": 1,
+      "message": "There are two main problem with this patch (copied from the linked bug):\n \n\u003e 1. It doesn\u0027t handle the situation where the listener is being changed from a non-null value to a non-null value. The behavior in the bug is not limited to the listener being updated to null. It can show up any time a new listener is set (and the old one garbage collected), regardless of whether the new listener is null or non-null.\n\u003e \n\u003e 2. Assuming we can add similar line of code for when the listener changes to a non-null value, we still risk dropping callbacks when the change happens. Any callbacks that were in flight when the change happened will be dropped silently instead of being sent to either old or new listener.\n\nFor (2), I\u0027d like the frames to be redirected to the new listener instead of being silently dropped.\n",
+      "revId": "5ca362f6ed954d1a33dbff995096d43e1ba1f04a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
