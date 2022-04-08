@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a11c3a95_62a82d0c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1137063
+      },
+      "writtenOn": "2022-04-08T00:06:57Z",
+      "side": 1,
+      "message": "Bypassing lint warning \"Deleted a method from the max-target-o list: \u0027Landroid/os/storage/StorageManager;-\u003einCryptKeeperBounce()Z\u0027\" because the method no longer appears to be used -- see commit message\n",
+      "revId": "bd13f84152449a3ead6fa8604fd31f48c0224676",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
