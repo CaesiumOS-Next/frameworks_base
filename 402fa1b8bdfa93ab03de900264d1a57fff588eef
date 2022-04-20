@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e84fad3d_2bf2d8bd",
+        "filename": "services/core/java/com/android/server/connectivity/Vpn.java",
+        "patchSetId": 36
+      },
+      "lineNbr": 1101,
+      "author": {
+        "id": 1221725
+      },
+      "writtenOn": "2022-04-20T05:56:53Z",
+      "side": 1,
+      "message": "Off the top of my mind, two ways to make this thread-safe are to:\n1. Put this entire call into a synchronized block\n2. Make this \"sendEventToVpnManagerApp\" get the package and session key by itself. \n\nNote that for (2), you\u0027d probably have to fork into a version with and without underlying network info.",
+      "range": {
+        "startLine": 1101,
+        "startChar": 20,
+        "endLine": 1101,
+        "endChar": 44
+      },
+      "revId": "402fa1b8bdfa93ab03de900264d1a57fff588eef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
