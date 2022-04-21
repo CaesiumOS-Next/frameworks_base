@@ -46,6 +46,30 @@
       },
       "revId": "402fa1b8bdfa93ab03de900264d1a57fff588eef",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c7a00253_e2e14208",
+        "filename": "services/core/java/com/android/server/connectivity/Vpn.java",
+        "patchSetId": 36
+      },
+      "lineNbr": 1101,
+      "author": {
+        "id": 1308163
+      },
+      "writtenOn": "2022-04-21T16:12:34Z",
+      "side": 1,
+      "message": "The call here(prepareInternal()) is already guarded by VPN instance lock.\n\nIn aosp/2030267, I let the caller of sendEventToVpnManagerApp() to prepare all the fields that sendEventToVpnManagerApp() needs, so if the caller is guarded by VPN instance lock, I think the thread is safe.",
+      "parentUuid": "86783235_ff852647",
+      "range": {
+        "startLine": 1101,
+        "startChar": 20,
+        "endLine": 1101,
+        "endChar": 44
+      },
+      "revId": "402fa1b8bdfa93ab03de900264d1a57fff588eef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
