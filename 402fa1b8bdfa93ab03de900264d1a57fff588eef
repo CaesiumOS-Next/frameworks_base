@@ -22,6 +22,30 @@
       },
       "revId": "402fa1b8bdfa93ab03de900264d1a57fff588eef",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "86783235_ff852647",
+        "filename": "services/core/java/com/android/server/connectivity/Vpn.java",
+        "patchSetId": 36
+      },
+      "lineNbr": 1101,
+      "author": {
+        "id": 1221725
+      },
+      "writtenOn": "2022-04-21T03:57:53Z",
+      "side": 1,
+      "message": "Suggest doing something along the lines of:\n\n    // Takes only local-parameters, no fields, since those would require\n    // synchronized access\n    private makeAndSendEvent(eventCategory, errorClass, errorCode) {\n        final Intent intent \u003d makeIntent(eventCategory, errorClass, errorCode);\n        // Send intent outside of synchronized block/method, in case intent\n        // sending takes a long time.\n        sendIntent(intent)\n    }\n    private synchronized intent makeIntent(eventCategory, errorClass, errorCode) {\n        // build intent, access fields that are guarded by the VPN instance lock.\n    }",
+      "parentUuid": "e84fad3d_2bf2d8bd",
+      "range": {
+        "startLine": 1101,
+        "startChar": 20,
+        "endLine": 1101,
+        "endChar": 44
+      },
+      "revId": "402fa1b8bdfa93ab03de900264d1a57fff588eef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
