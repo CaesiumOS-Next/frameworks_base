@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fb97b7b4_d2b58ea3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 39
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1221725
+      },
+      "writtenOn": "2022-04-22T05:52:30Z",
+      "side": 1,
+      "message": "In the interest of time, let\u0027s write some CTS to make sure that the appropriate manager events are sent? It\u0027ll both more important than unit tests, and might actually be easier.",
+      "revId": "1544e8d1fea336dfd061d32181016ca368df9de5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
