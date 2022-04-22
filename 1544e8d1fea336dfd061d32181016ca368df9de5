@@ -33,6 +33,24 @@
       "message": "This should be super easy to CTS test? :) ",
       "revId": "1544e8d1fea336dfd061d32181016ca368df9de5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "878f9090_02c7bae8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 39
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308163
+      },
+      "writtenOn": "2022-04-22T14:28:08Z",
+      "side": 1,
+      "message": "I\u0027m not sure, it seems like we need to provide a VPN app which registers the VPN manager event in CTS and launch it.\nThen enable/disable VPN and see if the VPN app can receive the event or not.",
+      "parentUuid": "53deed2c_42edf50f",
+      "revId": "1544e8d1fea336dfd061d32181016ca368df9de5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
