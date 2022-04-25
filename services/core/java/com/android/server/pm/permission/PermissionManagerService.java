@@ -3064,8 +3064,12 @@ public class PermissionManagerService extends IPermissionManager.Stub {
         // Persist the runtime permissions state for users with changes. If permissions
         // were revoked because no app in the shared user declares them we have to
         // write synchronously to avoid losing runtime permissions state.
+        // Also write synchronously if we changed any install permission for an updated app, because
+        // the install permission state is likely already fixed before update, and if we lose the
+        // changes here the app won't be reconsidered for newly-added install permissions.
         if (callback != null) {
-            callback.onPermissionUpdated(updatedUserIds, runtimePermissionsRevoked);
+            callback.onPermissionUpdated(updatedUserIds,
+                    (replace && changedInstallPermission) || runtimePermissionsRevoked);
         }
 
         for (int userId : updatedUserIds) {
