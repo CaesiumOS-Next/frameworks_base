@@ -16,6 +16,23 @@
       "message": "This will allow the GraphicsEnvironment code to query the legacy driver.",
       "revId": "f90ac3dc840caf6b7814c08ac7ae2b75ff96a973",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "97d6f591_faebeac5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1098333
+      },
+      "writtenOn": "2022-04-27T17:34:28Z",
+      "side": 1,
+      "message": "Try to re-start presubmit after creating the topic for both CLs",
+      "revId": "f90ac3dc840caf6b7814c08ac7ae2b75ff96a973",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
