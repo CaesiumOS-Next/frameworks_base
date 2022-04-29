@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0165e9e0_05781807",
+        "filename": "services/core/java/com/android/server/connectivity/Vpn.java",
+        "patchSetId": 44
+      },
+      "lineNbr": 1113,
+      "author": {
+        "id": 1221725
+      },
+      "writtenOn": "2022-04-29T00:30:44Z",
+      "side": 1,
+      "message": "Does this need a SDK guard? Perhaps we should abstract this out?",
+      "range": {
+        "startLine": 1113,
+        "startChar": 0,
+        "endLine": 1113,
+        "endChar": 91
+      },
+      "revId": "5f6595dd3595ad2ad2aa7966aa5885ddcb04604b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
