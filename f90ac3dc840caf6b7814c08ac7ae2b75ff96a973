@@ -101,6 +101,23 @@
       "message": "May I get an OWNERS approval please?",
       "revId": "f90ac3dc840caf6b7814c08ac7ae2b75ff96a973",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1ebe2f24_222b8c23",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1098333
+      },
+      "writtenOn": "2022-05-02T16:31:17Z",
+      "side": 1,
+      "message": "Thank you!",
+      "revId": "f90ac3dc840caf6b7814c08ac7ae2b75ff96a973",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
