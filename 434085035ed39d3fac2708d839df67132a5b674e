@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "99dfb75f_5cd2867c",
+        "filename": "services/core/java/com/android/server/connectivity/Vpn.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 2626,
+      "author": {
+        "id": 1308163
+      },
+      "writtenOn": "2022-05-04T01:54:05Z",
+      "side": 1,
+      "message": "typo: switches",
+      "range": {
+        "startLine": 2626,
+        "startChar": 54,
+        "endLine": 2626,
+        "endChar": 62
+      },
+      "revId": "434085035ed39d3fac2708d839df67132a5b674e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3a371413_f31bb751",
+        "filename": "services/core/java/com/android/server/connectivity/Vpn.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 2626,
+      "author": {
+        "id": 1308163
+      },
+      "writtenOn": "2022-05-04T01:54:05Z",
+      "side": 1,
+      "message": "Maybe lower case?",
+      "range": {
+        "startLine": 2626,
+        "startChar": 80,
+        "endLine": 2626,
+        "endChar": 81
+      },
+      "revId": "434085035ed39d3fac2708d839df67132a5b674e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a014ea57_0faea4b0",
+        "filename": "services/core/java/com/android/server/connectivity/Vpn.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 2684,
+      "author": {
+        "id": 1308163
+      },
+      "writtenOn": "2022-05-04T01:54:05Z",
+      "side": 1,
+      "message": "Could you add parentheses for \"mCurrentToken \u003d\u003d token\"?\ne.g. (mCurrentToken \u003d\u003d token) \u0026\u0026 mIsRunning\n\nI think it\u0027s more readable.",
+      "range": {
+        "startLine": 2684,
+        "startChar": 19,
+        "endLine": 2684,
+        "endChar": 55
+      },
+      "revId": "434085035ed39d3fac2708d839df67132a5b674e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "37adbee4_c27c0407",
+        "filename": "services/core/java/com/android/server/connectivity/Vpn.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 2863,
+      "author": {
+        "id": 1308163
+      },
+      "writtenOn": "2022-05-04T01:54:05Z",
+      "side": 1,
+      "message": "mCurrentToken",
+      "range": {
+        "startLine": 2863,
+        "startChar": 30,
+        "endLine": 2863,
+        "endChar": 37
+      },
+      "revId": "434085035ed39d3fac2708d839df67132a5b674e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
