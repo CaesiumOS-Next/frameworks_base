@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5079433e_9b9a4f37",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1221725
+      },
+      "writtenOn": "2022-05-05T01:23:33Z",
+      "side": 1,
+      "message": "Nit long line",
+      "range": {
+        "startLine": 9,
+        "startChar": 72,
+        "endLine": 9,
+        "endChar": 74
+      },
+      "revId": "d9d2e50fe3b4f0079fa84e524f5040c106dd2a17",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d19044a8_61d1be50",
+        "filename": "services/core/java/com/android/server/connectivity/Vpn.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 2738,
+      "author": {
+        "id": 1221725
+      },
+      "writtenOn": "2022-05-05T01:23:33Z",
+      "side": 1,
+      "message": "Is it possible for this to have changed without the token changing, and create incorrect capabilities?\n\neg:\n- IKE connects on network 101, with MOBIKE, but callbacks not fired yet\n- New network 102 appears, migration starts\n- IKE callbacks for connect on 101 fire, NetworkAgent built with underlying network 102\n- IKE migration finishes, and underlying switched to 102.\n\nDo we need to also cache the Network in the callback(s)?",
+      "range": {
+        "startLine": 2738,
+        "startChar": 64,
+        "endLine": 2738,
+        "endChar": 78
+      },
+      "revId": "d9d2e50fe3b4f0079fa84e524f5040c106dd2a17",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
