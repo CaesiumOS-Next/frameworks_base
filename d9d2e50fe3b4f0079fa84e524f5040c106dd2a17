@@ -45,6 +45,30 @@
       },
       "revId": "d9d2e50fe3b4f0079fa84e524f5040c106dd2a17",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9eeb97d0_edb894df",
+        "filename": "services/core/java/com/android/server/connectivity/Vpn.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 2738,
+      "author": {
+        "id": 1297255
+      },
+      "writtenOn": "2022-05-05T01:53:53Z",
+      "side": 1,
+      "message": "With this CL it is impossible because MOBIKE is not enabled yet. Resolved this comment in the followup CL where MOBIKE is enabled",
+      "parentUuid": "d19044a8_61d1be50",
+      "range": {
+        "startLine": 2738,
+        "startChar": 64,
+        "endLine": 2738,
+        "endChar": 78
+      },
+      "revId": "d9d2e50fe3b4f0079fa84e524f5040c106dd2a17",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
