@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8ef90e0e_b9907d5e",
+        "filename": "services/core/java/com/android/server/connectivity/Vpn.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 2628,
+      "author": {
+        "id": 1221725
+      },
+      "writtenOn": "2022-05-06T06:07:22Z",
+      "side": 1,
+      "message": "It\u0027ll take a bloody long time to do so, but what if this rolls over?\n\nDoes it matter? or do we need a way to catch that?",
+      "range": {
+        "startLine": 2628,
+        "startChar": 16,
+        "endLine": 2628,
+        "endChar": 19
+      },
+      "revId": "76d60147bf1a2e718405eaf0b6ef8d37ce960d66",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
