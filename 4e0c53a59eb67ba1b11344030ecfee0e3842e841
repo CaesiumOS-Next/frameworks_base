@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a9d931f3_32e747b9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2022-05-07T13:36:20Z",
+      "side": 1,
+      "message": "do we have a bug number?\nwe try to include a line:\nBug: ####",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 0
+      },
+      "revId": "4e0c53a59eb67ba1b11344030ecfee0e3842e841",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4b317e4d_b7b38496",
+        "filename": "media/java/android/media/MediaFormat.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 237,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2022-05-07T13:36:20Z",
+      "side": 1,
+      "message": "a space before the @see",
+      "revId": "4e0c53a59eb67ba1b11344030ecfee0e3842e841",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b22c8fae_8d5fd066",
+        "filename": "media/java/android/media/MediaFormat.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2022-05-07T13:36:20Z",
+      "side": 1,
+      "message": "no trailing s.",
+      "revId": "4e0c53a59eb67ba1b11344030ecfee0e3842e841",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
