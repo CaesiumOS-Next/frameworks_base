@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2ce51ad3_a53e875e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1950630
+      },
+      "writtenOn": "2022-05-09T19:45:02Z",
+      "side": 1,
+      "message": "Update: use @link instead of @see.",
+      "revId": "3bcb5a46498924025fcfc753b82734bbd48b59f0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
