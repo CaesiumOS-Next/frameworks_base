@@ -16,6 +16,23 @@
       "message": "Hi, please help me review the change, thanks!",
       "revId": "3286a950a0caa290be9d616d2d391a5cc12f42cb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cd1f5eb0_315efa35",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1015328
+      },
+      "writtenOn": "2022-05-09T11:38:52Z",
+      "side": 1,
+      "message": "Thank you for catching this.  Unfortunately, volatile wont be enough to guarantee a fix, since the check for null and equality check are still separate.  We\u0027ll have to either lock the access or cache the foreground variable for use in the runnable",
+      "revId": "3286a950a0caa290be9d616d2d391a5cc12f42cb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
