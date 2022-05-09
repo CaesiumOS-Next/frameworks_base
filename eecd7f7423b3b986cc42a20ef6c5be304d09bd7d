@@ -16,6 +16,23 @@
       "message": "Addressed comment.",
       "revId": "eecd7f7423b3b986cc42a20ef6c5be304d09bd7d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d276a88d_de67f1fa",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2022-05-09T21:50:05Z",
+      "side": 1,
+      "message": "adding jean-michel, who is our media rep to the API council.\nsince this makes the symbol visible to the SDK documents, they want to review it.\n\nI don\u0027t expect any pushback about the actual constant; they may chafe at the timing (since we were supposed to finalize SDK stuff a while back). Not much you can do about that one.",
+      "revId": "eecd7f7423b3b986cc42a20ef6c5be304d09bd7d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
