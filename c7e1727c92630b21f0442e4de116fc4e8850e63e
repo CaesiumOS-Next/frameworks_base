@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f5108bbf_c83093e8",
+        "filename": "media/java/android/media/MediaFormat.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 1060286
+      },
+      "writtenOn": "2022-05-09T21:00:27Z",
+      "side": 1,
+      "message": "I had meant inline like this.",
+      "range": {
+        "startLine": 234,
+        "startChar": 1,
+        "endLine": 238,
+        "endChar": 77
+      },
+      "revId": "c7e1727c92630b21f0442e4de116fc4e8850e63e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
