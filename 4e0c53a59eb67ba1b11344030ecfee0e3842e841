@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6c7dfd54_63a77e74",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1950630
+      },
+      "writtenOn": "2022-05-09T17:44:05Z",
+      "side": 1,
+      "message": "Added bug number.",
+      "parentUuid": "a9d931f3_32e747b9",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 0
+      },
+      "revId": "4e0c53a59eb67ba1b11344030ecfee0e3842e841",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4b317e4d_b7b38496",
@@ -41,6 +65,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7f1b9cd4_6a186d22",
+        "filename": "media/java/android/media/MediaFormat.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 237,
+      "author": {
+        "id": 1950630
+      },
+      "writtenOn": "2022-05-09T17:44:05Z",
+      "side": 1,
+      "message": "Same indent as other @see in the file.",
+      "parentUuid": "4b317e4d_b7b38496",
+      "revId": "4e0c53a59eb67ba1b11344030ecfee0e3842e841",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b22c8fae_8d5fd066",
@@ -54,6 +96,24 @@
       "writtenOn": "2022-05-07T13:36:20Z",
       "side": 1,
       "message": "no trailing s.",
+      "revId": "4e0c53a59eb67ba1b11344030ecfee0e3842e841",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a7d1b935_9fb02476",
+        "filename": "media/java/android/media/MediaFormat.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 1950630
+      },
+      "writtenOn": "2022-05-09T17:44:05Z",
+      "side": 1,
+      "message": "Removed trailing s.",
+      "parentUuid": "b22c8fae_8d5fd066",
       "revId": "4e0c53a59eb67ba1b11344030ecfee0e3842e841",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
