@@ -33,6 +33,24 @@
       "message": "Thank you for catching this.  Unfortunately, volatile wont be enough to guarantee a fix, since the check for null and equality check are still separate.  We\u0027ll have to either lock the access or cache the foreground variable for use in the runnable",
       "revId": "3286a950a0caa290be9d616d2d391a5cc12f42cb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "485b8334_d22bd4cf",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1870086
+      },
+      "writtenOn": "2022-05-10T07:55:04Z",
+      "side": 1,
+      "message": "Thank you for your reply! How about this? We can avoid lock:\n*********************************************************************************\n                    final String packageName \u003d info.topActivity.getPackageName();\n                    // If the app didn\u0027t change, there\u0027s nothing to do. Otherwise, we have to\n                    // update the category and re-apply the brightness correction.\n                    if (packageName !\u003d null\n                            \u0026\u0026 packageName.equals(mForegroundAppPackageName)) {\n                        return;\n                    }\n*********************************************************************************",
+      "parentUuid": "cd1f5eb0_315efa35",
+      "revId": "3286a950a0caa290be9d616d2d391a5cc12f42cb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
