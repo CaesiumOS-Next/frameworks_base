@@ -46,6 +46,29 @@
       },
       "revId": "76d60147bf1a2e718405eaf0b6ef8d37ce960d66",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0cc7fc5a_2dc4315a",
+        "filename": "services/core/java/com/android/server/connectivity/Vpn.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 2878,
+      "author": {
+        "id": 1221725
+      },
+      "writtenOn": "2022-05-12T05:36:35Z",
+      "side": 1,
+      "message": "Can we add javadoc for the method?\n\nSimilar to the one on onSessionLost(token, exception)?",
+      "range": {
+        "startLine": 2878,
+        "startChar": 8,
+        "endLine": 2878,
+        "endChar": 14
+      },
+      "revId": "76d60147bf1a2e718405eaf0b6ef8d37ce960d66",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
