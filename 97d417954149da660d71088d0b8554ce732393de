@@ -22,6 +22,30 @@
       },
       "revId": "97d417954149da660d71088d0b8554ce732393de",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1f9b1f34_4c56b033",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1297255
+      },
+      "writtenOn": "2022-05-13T18:31:33Z",
+      "side": 1,
+      "message": "Just verified locally that it passed VpnTest unit tests?",
+      "parentUuid": "9a269687_46038493",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 24
+      },
+      "revId": "97d417954149da660d71088d0b8554ce732393de",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
