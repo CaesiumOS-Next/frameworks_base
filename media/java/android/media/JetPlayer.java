@@ -59,6 +59,7 @@ import java.lang.ref.WeakReference;
  *
  * <p>Use {@link #getJetPlayer()} to construct a JetPlayer instance. JetPlayer is a singleton class.
  */
+@Deprecated
 public class JetPlayer
 {    
     //--------------------------------------------
