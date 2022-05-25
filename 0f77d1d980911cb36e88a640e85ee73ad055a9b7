@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4c9651cb_d9171aa9",
+        "filename": "libs/hwui/jni/Typeface.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1396566
+      },
+      "writtenOn": "2022-05-25T19:57:36Z",
+      "side": 1,
+      "message": "Can the Java code for createFromArray just call the existing one with a null value for fallbackPtr?",
+      "revId": "0f77d1d980911cb36e88a640e85ee73ad055a9b7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
