@@ -16,6 +16,24 @@
       "message": "Can the Java code for createFromArray just call the existing one with a null value for fallbackPtr?",
       "revId": "0f77d1d980911cb36e88a640e85ee73ad055a9b7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4e461417_68a62313",
+        "filename": "libs/hwui/jni/Typeface.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1396566
+      },
+      "writtenOn": "2022-05-25T20:00:28Z",
+      "side": 1,
+      "message": "Wait, isn\u0027t this already supported?\n\nhttps://source.corp.google.com/piper///depot/google3/java/com/google/thirdparty/robolectric/nativeruntime/shadows/ShadowNativeTypeface.java;l\u003d147-150?q\u003dshadownativetypeface\u0026sq\u003dpackage:piper%20file:%2F%2Fdepot%2Fgoogle3%20-file:google3%2Fexperimental",
+      "parentUuid": "4c9651cb_d9171aa9",
+      "revId": "0f77d1d980911cb36e88a640e85ee73ad055a9b7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
