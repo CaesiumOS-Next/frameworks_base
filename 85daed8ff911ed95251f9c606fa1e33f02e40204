@@ -16,6 +16,24 @@
       "message": "this can be removed",
       "revId": "85daed8ff911ed95251f9c606fa1e33f02e40204",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bc720187_1d938dee",
+        "filename": "libs/hwui/jni/Typeface.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1938931
+      },
+      "writtenOn": "2022-05-26T17:35:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c6e7c24d_c8f76e14",
+      "revId": "85daed8ff911ed95251f9c606fa1e33f02e40204",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
