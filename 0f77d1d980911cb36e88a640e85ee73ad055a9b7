@@ -70,6 +70,24 @@
       "parentUuid": "3f291ff6_98575739",
       "revId": "0f77d1d980911cb36e88a640e85ee73ad055a9b7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2692546e_881115ea",
+        "filename": "libs/hwui/jni/Typeface.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1938931
+      },
+      "writtenOn": "2022-05-26T17:30:32Z",
+      "side": 1,
+      "message": "Worked on this offline with Michael. We were missing a define in our arguments that gave the function an env and clazz variable as well.",
+      "parentUuid": "c741ff1d_27618d01",
+      "revId": "0f77d1d980911cb36e88a640e85ee73ad055a9b7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
