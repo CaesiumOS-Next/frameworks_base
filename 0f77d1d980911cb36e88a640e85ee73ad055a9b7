@@ -52,6 +52,24 @@
       "parentUuid": "4e461417_68a62313",
       "revId": "0f77d1d980911cb36e88a640e85ee73ad055a9b7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c741ff1d_27618d01",
+        "filename": "libs/hwui/jni/Typeface.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1396566
+      },
+      "writtenOn": "2022-05-26T05:30:05Z",
+      "side": 1,
+      "message": "This issue is quite baffling. It seems like the jlongArray is invalid, and trying to do an operation on it throws a segfault. It\u0027s strange because the value is non-null. I haven\u0027t seen this type of behavior in JNI before.",
+      "parentUuid": "3f291ff6_98575739",
+      "revId": "0f77d1d980911cb36e88a640e85ee73ad055a9b7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
