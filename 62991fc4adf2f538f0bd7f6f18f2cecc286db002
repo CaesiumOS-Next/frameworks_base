@@ -22,6 +22,29 @@
       },
       "revId": "62991fc4adf2f538f0bd7f6f18f2cecc286db002",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2166b902_5be6022e",
+        "filename": "services/core/java/com/android/server/connectivity/Vpn.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 733,
+      "author": {
+        "id": 1221725
+      },
+      "writtenOn": "2022-06-03T04:41:22Z",
+      "side": 1,
+      "message": "I presume this is correct, given that it\u0027s what we do, but it\u0027s a parameter called \"sync\" and then maps to \"informWhitelistChanged\" in DeviceIdleController.\n\nCan you check to make sure that this is indeed the right value? At worst, it\u0027s maintaining the known-functional behavior from VpnService, but there might be some limitations that are imposed as a result of this.",
+      "range": {
+        "startLine": 733,
+        "startChar": 66,
+        "endLine": 733,
+        "endChar": 71
+      },
+      "revId": "62991fc4adf2f538f0bd7f6f18f2cecc286db002",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
