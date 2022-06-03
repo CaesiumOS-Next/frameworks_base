@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "11d984b8_d95edde2",
+        "filename": "services/core/java/com/android/server/connectivity/Vpn.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1221725
+      },
+      "writtenOn": "2022-06-03T04:31:29Z",
+      "side": 1,
+      "message": "Nit: Grammar. \"the\" or \"a\" but not both.\n\n(I probably wrote this, but that was meant as a proof of concept; please read through before actually using it)",
+      "range": {
+        "startLine": 196,
+        "startChar": 43,
+        "endLine": 196,
+        "endChar": 48
+      },
+      "revId": "62991fc4adf2f538f0bd7f6f18f2cecc286db002",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
