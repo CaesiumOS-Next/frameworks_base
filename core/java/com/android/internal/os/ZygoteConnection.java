@@ -34,6 +34,7 @@ import android.system.ErrnoException;
 import android.system.Os;
 import android.system.StructPollfd;
 import android.util.Log;
+import android.os.Debug;
 
 import dalvik.system.VMRuntime;
 import dalvik.system.ZygoteHooks;
@@ -250,6 +251,7 @@ class ZygoteConnection {
                 if (parsedArgs.mInvokeWith != null || parsedArgs.mStartChildZygote
                         || !multipleOK || peer.getUid() != Process.SYSTEM_UID) {
                     // Continue using old code for now. TODO: Handle these cases in the other path.
+                    Debug.traceMemoryFootprintBegin("forkAndSpecialize");
                     pid = Zygote.forkAndSpecialize(parsedArgs.mUid, parsedArgs.mGid,
                             parsedArgs.mGids, parsedArgs.mRuntimeFlags, rlimits,
                             parsedArgs.mMountExternal, parsedArgs.mSeInfo, parsedArgs.mNiceName,
@@ -258,6 +260,7 @@ class ZygoteConnection {
                             parsedArgs.mIsTopApp, parsedArgs.mPkgDataInfoList,
                             parsedArgs.mAllowlistedDataInfoList, parsedArgs.mBindMountAppDataDirs,
                             parsedArgs.mBindMountAppStorageDirs);
+                    Debug.traceMemoryFootprintEnd();
 
                     try {
                         if (pid == 0) {

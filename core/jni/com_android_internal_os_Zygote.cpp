@@ -88,6 +88,7 @@
 #include <nativehelper/ScopedLocalRef.h>
 #include <nativehelper/ScopedPrimitiveArray.h>
 #include <nativehelper/ScopedUtfChars.h>
+#include "android_os_Debug.h"
 #include "core_jni_helpers.h"
 #include "fd_utils.h"
 #include "filesystem_utils.h"
@@ -2307,6 +2308,23 @@ pid_t zygote::ForkCommon(JNIEnv* env, bool is_system_server,
   pid_t pid = fork();
 
   if (pid == 0) {
+    if (ATRACE_ENABLED()) {
+      // RssAnon doesn't start from 0 after fork, add one tracepoint as starting point.
+      UniqueFile file = MakeUniqueFile("/proc/self/status", "re");
+      char line[64];
+      while (file != nullptr && fgets(line, sizeof(line), file.get())) {
+        long v;
+        if (sscanf(line, "RssAnon: %ld kB", &v) == 1) {
+          ATRACE_INT64("rssAnon (KB)", v);
+          break;
+        }
+      }
+
+      struct mallinfo info = mallinfo();
+      ATRACE_INT64("scudo allocated (KB)", info.uordblks / 1024);
+      ATRACE_INT64("scudo free (KB)", info.fordblks / 1024);
+    }
+
     if (is_priority_fork) {
       setpriority(PRIO_PROCESS, 0, PROCESS_PRIORITY_MAX);
     } else {

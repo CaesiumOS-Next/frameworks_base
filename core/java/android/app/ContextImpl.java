@@ -3203,7 +3203,9 @@ class ContextImpl extends Context {
             mAutofillOptions = container.mAutofillOptions;
         } else {
             mBasePackageName = packageInfo.mPackageName;
+            Debug.traceMemoryFootprintBegin("packageInfo.getApplicationInfo");
             ApplicationInfo ainfo = packageInfo.getApplicationInfo();
+            Debug.traceMemoryFootprintEnd();
             if (ainfo.uid == Process.SYSTEM_UID && ainfo.uid != Process.myUid()) {
                 // Special case: system components allow themselves to be loaded in to other
                 // processes.  For purposes of app ops, we must then consider the context as
@@ -3217,9 +3219,13 @@ class ContextImpl extends Context {
 
         mOpPackageName = overrideOpPackageName != null ? overrideOpPackageName : opPackageName;
         mParams = Objects.requireNonNull(params);
+        Debug.traceMemoryFootprintBegin("createAttributionSource");
         mAttributionSource = createAttributionSource(attributionTag, nextAttributionSource,
                 params.getRenouncedPermissions());
+        Debug.traceMemoryFootprintEnd();
+        Debug.traceMemoryFootprintBegin("new ApplicationContentResolver");
         mContentResolver = new ApplicationContentResolver(this, mainThread);
+        Debug.traceMemoryFootprintEnd();
     }
 
     private @NonNull AttributionSource createAttributionSource(@Nullable String attributionTag,

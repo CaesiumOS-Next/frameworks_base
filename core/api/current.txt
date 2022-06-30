@@ -31284,6 +31284,8 @@ package android.os {
     method public static void stopMethodTracing();
     method public static void stopNativeTracing();
     method public static long threadCpuTimeNanos();
+    method public static void traceMemoryFootprintBegin(@NonNull String);
+    method public static void traceMemoryFootprintEnd();
     method public static void waitForDebugger();
     method public static boolean waitingForDebugger();
     field public static final int SHOW_CLASSLOADER = 2; // 0x2

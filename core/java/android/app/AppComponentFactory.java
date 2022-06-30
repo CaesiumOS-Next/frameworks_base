@@ -21,6 +21,7 @@ import android.content.BroadcastReceiver;
 import android.content.ContentProvider;
 import android.content.Intent;
 import android.content.pm.ApplicationInfo;
+import android.os.Debug;
 
 /**
  * Interface used to control the instantiation of manifest elements.
@@ -73,7 +74,13 @@ public class AppComponentFactory {
     public @NonNull Application instantiateApplication(@NonNull ClassLoader cl,
             @NonNull String className)
             throws InstantiationException, IllegalAccessException, ClassNotFoundException {
-        return (Application) cl.loadClass(className).newInstance();
+        Debug.traceMemoryFootprintBegin("instantiateApplication (loadClass)");
+        Class clazz = cl.loadClass(className);
+        Debug.traceMemoryFootprintEnd();
+        Debug.traceMemoryFootprintBegin("instantiateApplication (newInstance)");
+        Application app = (Application) clazz.newInstance();
+        Debug.traceMemoryFootprintEnd();
+        return app;
     }
 
     /**

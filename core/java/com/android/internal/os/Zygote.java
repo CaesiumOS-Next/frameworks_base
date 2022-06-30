@@ -30,6 +30,7 @@ import android.net.Credentials;
 import android.net.LocalServerSocket;
 import android.net.LocalSocket;
 import android.os.Build;
+import android.os.Debug;
 import android.os.FactoryTest;
 import android.os.IVold;
 import android.os.Process;
@@ -869,6 +870,16 @@ public final class Zygote {
                                  args.mBindMountAppDataDirs, args.mBindMountAppStorageDirs);
 
             Trace.traceEnd(Trace.TRACE_TAG_ACTIVITY_MANAGER);
+
+            Debug.traceMemoryFootprint();
+
+            // Run it few more times to estimate overhead (latency and memory footprint)
+            // Find a clean one in the trace where no housekeeping/daemon threads
+            // are starting or running.
+            Debug.traceMemoryFootprint();
+            Debug.traceMemoryFootprint();
+            Debug.traceMemoryFootprint();
+            Debug.traceMemoryFootprint();
 
             return ZygoteInit.zygoteInit(args.mTargetSdkVersion,
                                          args.mDisabledCompatChanges,

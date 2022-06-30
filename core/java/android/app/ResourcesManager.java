@@ -35,6 +35,7 @@ import android.content.res.ResourcesImpl;
 import android.content.res.ResourcesKey;
 import android.content.res.loader.ResourcesLoader;
 import android.hardware.display.DisplayManagerGlobal;
+import android.os.Debug;
 import android.os.IBinder;
 import android.os.Process;
 import android.os.Trace;
@@ -1111,11 +1112,15 @@ public class ResourcesManager {
                     overrideConfig,
                     compatInfo,
                     loaders == null ? null : loaders.toArray(new ResourcesLoader[0]));
+            Debug.traceMemoryFootprintBegin("getSystemClassLoader");
             classLoader = classLoader != null ? classLoader : ClassLoader.getSystemClassLoader();
+            Debug.traceMemoryFootprintEnd();
 
             // Preload the ApkAssets required by the key to prevent performing heavy I/O while the
             // ResourcesManager lock is held.
+            Debug.traceMemoryFootprintBegin("createApkAssetsSupplierNotLocked");
             final ApkAssetsSupplier assetsSupplier = createApkAssetsSupplierNotLocked(key);
+            Debug.traceMemoryFootprintEnd();
 
             if (overrideDisplayId != null) {
                 rebaseKeyForDisplay(key, overrideDisplayId);
@@ -1128,7 +1133,9 @@ public class ResourcesManager {
                 resources = createResourcesForActivity(activityToken, key, initialOverrideConfig,
                         overrideDisplayId, classLoader, assetsSupplier);
             } else {
+                Debug.traceMemoryFootprintBegin("createResources");
                 resources = createResources(key, classLoader, assetsSupplier);
+                Debug.traceMemoryFootprintEnd();
             }
             return resources;
         } finally {

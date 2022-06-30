@@ -1884,6 +1884,38 @@ public final class Debug
         return VMDebug.getRuntimeStat(statName);
     }
 
+    /** @hide */
+    public static void traceMemoryFootprint() {
+        if (!Trace.isEnabled()) return;
+
+        MemoryInfo memoryInfo = new MemoryInfo();
+        getMemoryInfo(memoryInfo);
+        long[] rss = Process.getRss(Process.myPid());
+        if (rss.length == 4) {
+            Trace.traceCounter(Trace.TRACE_TAG_APP, "rssAnon (KB)", (int) rss[2]);
+        }
+        Trace.traceCounter(Trace.TRACE_TAG_APP, "private-dirty (KB)",
+                memoryInfo.getTotalPrivateDirty());
+        Trace.traceCounter(Trace.TRACE_TAG_APP, "scudo allocated (KB)",
+                (int) (getNativeHeapAllocatedSize() / 1_024));
+        Trace.traceCounter(Trace.TRACE_TAG_APP, "scudo free (KB)",
+                (int) (getNativeHeapFreeSize() / 1_024));
+    }
+
+    public static void traceMemoryFootprintBegin(@NonNull String methodName) {
+        if (!Trace.isEnabled()) return;
+
+        traceMemoryFootprint();
+        Trace.traceBegin(Trace.TRACE_TAG_APP, methodName);
+    }
+
+    public static void traceMemoryFootprintEnd() {
+        if (!Trace.isEnabled()) return;
+
+        traceMemoryFootprint();
+        Trace.traceEnd(Trace.TRACE_TAG_APP);
+    }
+
     /**
      * Returns a map of the names/values of the runtime statistics
      * that {@link #getRuntimeStat(String)} supports.

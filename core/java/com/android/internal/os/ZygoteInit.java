@@ -27,6 +27,7 @@ import android.compat.annotation.UnsupportedAppUsage;
 import android.content.pm.SharedLibraryInfo;
 import android.content.res.Resources;
 import android.os.Build;
+import android.os.Debug;
 import android.os.Environment;
 import android.os.IInstalld;
 import android.os.Process;
@@ -908,9 +909,11 @@ public class ZygoteInit {
 
         Trace.traceBegin(Trace.TRACE_TAG_ACTIVITY_MANAGER, "ZygoteInit");
         RuntimeInit.redirectLogStreams();
-
         RuntimeInit.commonInit();
+        Trace.traceEnd(Trace.TRACE_TAG_ACTIVITY_MANAGER);
+        Debug.traceMemoryFootprintBegin("nativeZygoteInit");
         ZygoteInit.nativeZygoteInit();
+        Debug.traceMemoryFootprintEnd();
         return RuntimeInit.applicationInit(targetSdkVersion, disabledCompatChanges, argv,
                 classLoader);
     }

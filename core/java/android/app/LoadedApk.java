@@ -37,6 +37,7 @@ import android.content.res.CompatibilityInfo;
 import android.content.res.Resources;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Debug;
 import android.os.Environment;
 import android.os.FileUtils;
 import android.os.GraphicsEnvironment;
@@ -1123,7 +1124,9 @@ public final class LoadedApk {
     public ClassLoader getClassLoader() {
         synchronized (mLock) {
             if (mClassLoader == null) {
+                Debug.traceMemoryFootprintBegin("createOrUpdateClassLoaderLocked");
                 createOrUpdateClassLoaderLocked(null /*addedPaths*/);
+                Debug.traceMemoryFootprintEnd();
             }
             return mClassLoader;
         }
@@ -1356,6 +1359,7 @@ public final class LoadedApk {
     @UnsupportedAppUsage
     public Resources getResources() {
         if (mResources == null) {
+            Debug.traceMemoryFootprintBegin("getResources");
             final String[] splitPaths;
             try {
                 splitPaths = getSplitPaths(null);
@@ -1365,13 +1369,17 @@ public final class LoadedApk {
             }
 
             if (Process.myUid() == mApplicationInfo.uid) {
+                Debug.traceMemoryFootprintBegin(
+                        "ResourcesManager.getInstance().initializeApplicationPaths");
                 ResourcesManager.getInstance().initializeApplicationPaths(mResDir, splitPaths);
+                Debug.traceMemoryFootprintEnd();
             }
 
             mResources = ResourcesManager.getInstance().getResources(null, mResDir,
                     splitPaths, mLegacyOverlayDirs, mOverlayPaths,
                     mApplicationInfo.sharedLibraryFiles, null, null, getCompatibilityInfo(),
                     getClassLoader(), null);
+            Debug.traceMemoryFootprintEnd();
         }
         return mResources;
     }
@@ -1401,6 +1409,7 @@ public final class LoadedApk {
         if (mApplication != null) {
             return mApplication;
         }
+        Debug.traceMemoryFootprint();
         Trace.traceBegin(Trace.TRACE_TAG_ACTIVITY_MANAGER, "makeApplication");
 
         synchronized (sApplications) {
@@ -1455,8 +1464,10 @@ public final class LoadedApk {
             // The network security config needs to be aware of multiple
             // applications in the same process to handle discrepancies
             NetworkSecurityConfigProvider.handleNewApplication(appContext);
+            Debug.traceMemoryFootprintBegin("newApplication");
             app = mActivityThread.mInstrumentation.newApplication(
                     cl, appClass, appContext);
+            Debug.traceMemoryFootprintEnd();
             appContext.setOuterContext(app);
         } catch (Exception e) {
             if (!mActivityThread.mInstrumentation.onException(app, e)) {
@@ -1487,6 +1498,7 @@ public final class LoadedApk {
             }
         }
 
+        Debug.traceMemoryFootprint();
         Trace.traceEnd(Trace.TRACE_TAG_ACTIVITY_MANAGER);
 
         return app;

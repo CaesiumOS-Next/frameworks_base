@@ -25,6 +25,7 @@ import android.content.type.DefaultMimeMapFactory;
 import android.net.TrafficStats;
 import android.os.Build;
 import android.os.DeadObjectException;
+import android.os.Debug;
 import android.os.IBinder;
 import android.os.Process;
 import android.os.SystemProperties;
@@ -230,9 +231,11 @@ public class RuntimeInit {
          * set handlers; these apply to all threads in the VM. Apps can replace
          * the default handler, but not the pre handler.
          */
+        Debug.traceMemoryFootprintBegin("set loggingHandler");
         LoggingHandler loggingHandler = new LoggingHandler();
         RuntimeHooks.setUncaughtExceptionPreHandler(loggingHandler);
         Thread.setDefaultUncaughtExceptionHandler(new KillApplicationHandler(loggingHandler));
+        Debug.traceMemoryFootprintEnd();
 
         /*
          * Install a time zone supplier that uses the Android persistent time zone system property.
@@ -246,8 +249,10 @@ public class RuntimeInit {
          * can't use the system property here since the logger has almost
          * certainly already been initialized.
          */
+        Debug.traceMemoryFootprintBegin("reset logging config");
         LogManager.getLogManager().reset();
         new AndroidConfig();
+        Debug.traceMemoryFootprintEnd();
 
         /*
          * Sets the default HTTP User-Agent used by HttpURLConnection.
@@ -258,7 +263,9 @@ public class RuntimeInit {
         /*
          * Wire socket tagging to traffic stats.
          */
+        Debug.traceMemoryFootprintBegin("attachSocketTagger");
         TrafficStats.attachSocketTagger();
+        Debug.traceMemoryFootprintEnd();
 
         initialized = true;
     }
@@ -374,6 +381,8 @@ public class RuntimeInit {
         VMRuntime.getRuntime().setDisabledCompatChanges(disabledCompatChanges);
 
         final Arguments args = new Arguments(argv);
+
+        Debug.traceMemoryFootprint();
 
         // The end of of the RuntimeInit event (see #zygoteInit).
         Trace.traceEnd(Trace.TRACE_TAG_ACTIVITY_MANAGER);
@@ -549,6 +558,7 @@ public class RuntimeInit {
 
         public void run() {
             try {
+                Debug.traceMemoryFootprint();
                 mMethod.invoke(null, new Object[] { mArgs });
             } catch (IllegalAccessException ex) {
                 throw new RuntimeException(ex);

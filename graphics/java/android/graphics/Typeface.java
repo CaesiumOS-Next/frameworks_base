@@ -36,6 +36,7 @@ import android.graphics.fonts.FontVariationAxis;
 import android.graphics.fonts.SystemFonts;
 import android.icu.util.ULocale;
 import android.os.Build;
+import android.os.Debug;
 import android.os.ParcelFileDescriptor;
 import android.os.SharedMemory;
 import android.os.SystemProperties;
@@ -1263,7 +1264,9 @@ public class Typeface {
             @NonNull ByteBuffer buffer, @NonNull Map<String, Typeface> out)
             throws IOException {
         int typefacesBytesCount = buffer.getInt();
+        Debug.traceMemoryFootprintBegin("nativeReadTypefaces");
         long[] nativePtrs = nativeReadTypefaces(buffer.slice());
+        Debug.traceMemoryFootprintEnd();
         if (nativePtrs == null) {
             throw new IOException("Could not read typefaces");
         }
@@ -1327,12 +1330,16 @@ public class Typeface {
             if (sharedMemory == null) {
                 // FontManagerService is not started. This may happen in FACTORY_TEST_LOW_LEVEL
                 // mode for example.
+                Debug.traceMemoryFootprintBegin("loadPreinstalledSystemFontMap");
                 loadPreinstalledSystemFontMap();
+                Debug.traceMemoryFootprintEnd();
                 return;
             }
             sSystemFontMapBuffer = sharedMemory.mapReadOnly().order(ByteOrder.BIG_ENDIAN);
             Map<String, Typeface> systemFontMap = new ArrayMap<>();
+            Debug.traceMemoryFootprintBegin("deserializeFontMap");
             long[] nativePtrs = deserializeFontMap(sSystemFontMapBuffer, systemFontMap);
+            Debug.traceMemoryFootprintEnd();
 
             // Initialize native font APIs. The native font API will read fonts.xml by itself if
             // Typeface is initialized with loadPreinstalledSystemFontMap.

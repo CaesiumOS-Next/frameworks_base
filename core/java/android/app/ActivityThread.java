@@ -2135,9 +2135,11 @@ public final class ActivityThread extends ClientTransactionHandler
             if (DEBUG_MESSAGES) Slog.v(TAG, ">>> handling: " + codeToString(msg.what));
             switch (msg.what) {
                 case BIND_APPLICATION:
+                    Debug.traceMemoryFootprint();
                     Trace.traceBegin(Trace.TRACE_TAG_ACTIVITY_MANAGER, "bindApplication");
                     AppBindData data = (AppBindData)msg.obj;
                     handleBindApplication(data);
+                    Debug.traceMemoryFootprint();
                     Trace.traceEnd(Trace.TRACE_TAG_ACTIVITY_MANAGER);
                     break;
                 case EXIT_APPLICATION:
@@ -2169,8 +2171,10 @@ public final class ActivityThread extends ClientTransactionHandler
                     Trace.traceEnd(Trace.TRACE_TAG_ACTIVITY_MANAGER);
                     break;
                 case BIND_SERVICE:
+                    Debug.traceMemoryFootprint();
                     Trace.traceBegin(Trace.TRACE_TAG_ACTIVITY_MANAGER, "serviceBind");
                     handleBindService((BindServiceData)msg.obj);
+                    Debug.traceMemoryFootprint();
                     Trace.traceEnd(Trace.TRACE_TAG_ACTIVITY_MANAGER);
                     break;
                 case UNBIND_SERVICE:
@@ -4517,6 +4521,9 @@ public final class ActivityThread extends ClientTransactionHandler
     }
 
     private void handleBindService(BindServiceData data) {
+        Debug.traceMemoryFootprintBegin("gc");
+        Runtime.getRuntime().gc();
+        Debug.traceMemoryFootprintEnd();
         CreateServiceData createData = mServicesData.get(data.token);
         Service s = mServices.get(data.token);
         if (DEBUG_SERVICE)
@@ -6511,7 +6518,9 @@ public final class ActivityThread extends ClientTransactionHandler
     @UnsupportedAppUsage
     private void handleBindApplication(AppBindData data) {
         // Register the UI Thread as a sensitive thread to the runtime.
+        Debug.traceMemoryFootprintBegin("registerSensitiveThread");
         VMRuntime.registerSensitiveThread();
+        Debug.traceMemoryFootprintEnd();
         // In the case the stack depth property exists, pass it down to the runtime.
         String property = SystemProperties.get("debug.allocTracker.stackDepth");
         if (property.length() != 0) {
@@ -6526,7 +6535,9 @@ public final class ActivityThread extends ClientTransactionHandler
 
         AppCompatCallbacks.install(data.disabledCompatChanges);
         // Let libcore handle any compat changes after installing the list of compat changes.
+        Debug.traceMemoryFootprintBegin("handleCompatChangesBeforeBindingApplication");
         AppSpecializationHooks.handleCompatChangesBeforeBindingApplication();
+        Debug.traceMemoryFootprintEnd();
 
         // Initialize the zip path validator callback depending on the targetSdk.
         // This has to be after AppCompatCallbacks#install() so that the Compat
@@ -6534,8 +6545,10 @@ public final class ActivityThread extends ClientTransactionHandler
         initZipPathValidatorCallback();
 
         mBoundApplication = data;
+        Debug.traceMemoryFootprintBegin("setConfiguration");
         mConfigurationController.setConfiguration(data.config);
         mConfigurationController.setCompatConfiguration(data.config);
+        Debug.traceMemoryFootprintEnd();
         mConfiguration = mConfigurationController.getConfiguration();
 
         mProfiler = new Profiler();
@@ -6561,7 +6574,9 @@ public final class ActivityThread extends ClientTransactionHandler
 
         // Pass data directory path to ART. This is used for caching information and
         // should be set before any application code is loaded.
+        Debug.traceMemoryFootprintBegin("setProcessDataDirectory");
         VMRuntime.setProcessDataDirectory(data.appInfo.dataDir);
+        Debug.traceMemoryFootprintEnd();
 
         if (mProfiler.profileFd != null) {
             mProfiler.startProfiling();
@@ -6591,7 +6606,9 @@ public final class ActivityThread extends ClientTransactionHandler
          * the spawning of this process. Without doing this this process would have the incorrect
          * system time zone.
          */
+        Debug.traceMemoryFootprintBegin("TimeZone.setDefault");
         TimeZone.setDefault(null);
+        Debug.traceMemoryFootprintEnd();
 
         /*
          * Set the LocaleList. This may change once we create the App Context.
@@ -6600,7 +6617,9 @@ public final class ActivityThread extends ClientTransactionHandler
 
         if (Typeface.ENABLE_LAZY_TYPEFACE_INITIALIZATION) {
             try {
+                Debug.traceMemoryFootprintBegin("Typeface.setSystemFontMap");
                 Typeface.setSystemFontMap(data.mSerializedSystemFontMap);
+                Debug.traceMemoryFootprintEnd();
             } catch (IOException | ErrnoException e) {
                 Slog.e(TAG, "Failed to parse serialized system font map");
                 Typeface.loadPreinstalledSystemFontMap();
@@ -6613,11 +6632,15 @@ public final class ActivityThread extends ClientTransactionHandler
              * reflect configuration changes. The configuration object passed
              * in AppBindData can be safely assumed to be up to date
              */
+            Debug.traceMemoryFootprintBegin("applyConfigurationToResources");
             mResourcesManager.applyConfigurationToResources(data.config, data.compatInfo);
+            Debug.traceMemoryFootprintEnd();
             mCurDefaultDisplayDpi = data.config.densityDpi;
 
             // This calls mResourcesManager so keep it within the synchronized block.
+            Debug.traceMemoryFootprintBegin("applyCompatConfiguration");
             mConfigurationController.applyCompatConfiguration();
+            Debug.traceMemoryFootprintEnd();
         }
 
         final boolean isSdkSandbox = data.sdkSandboxClientAppPackage != null;
@@ -6628,7 +6651,9 @@ public final class ActivityThread extends ClientTransactionHandler
         }
 
         if (agent != null) {
+            Debug.traceMemoryFootprintBegin("handleAttachAgent");
             handleAttachAgent(agent, data.info);
+            Debug.traceMemoryFootprintEnd();
         }
 
         /**
@@ -6715,7 +6740,9 @@ public final class ActivityThread extends ClientTransactionHandler
             ii = null;
         }
 
+        Debug.traceMemoryFootprintBegin("createAppContext");
         final ContextImpl appContext = ContextImpl.createAppContext(this, data.info);
+        Debug.traceMemoryFootprintEnd();
         mConfigurationController.updateLocaleListFromAppContext(appContext);
 
         // Initialize the default http proxy in this process.
@@ -6824,7 +6851,11 @@ public final class ActivityThread extends ClientTransactionHandler
                     + data.instrumentationName + ": " + e.toString(), e);
             }
             try {
+                Debug.traceMemoryFootprint();
+                Trace.traceBegin(Trace.TRACE_TAG_ACTIVITY_MANAGER, "callApplicationOnCreate");
                 mInstrumentation.callApplicationOnCreate(app);
+                Debug.traceMemoryFootprint();
+                Trace.traceEnd(Trace.TRACE_TAG_ACTIVITY_MANAGER);
             } catch (Exception e) {
                 if (!mInstrumentation.onException(app, e)) {
                     throw new RuntimeException(
@@ -7632,9 +7663,13 @@ public final class ActivityThread extends ClientTransactionHandler
             android.ddm.DdmHandleAppName.setAppName("<pre-initialized>",
                                                     UserHandle.myUserId());
             RuntimeInit.setApplicationObject(mAppThread.asBinder());
+            Debug.traceMemoryFootprintBegin("ActivityManager.getService");
             final IActivityManager mgr = ActivityManager.getService();
+            Debug.traceMemoryFootprintEnd();
             try {
+                Debug.traceMemoryFootprintBegin("attachApplication");
                 mgr.attachApplication(mAppThread, startSeq);
+                Debug.traceMemoryFootprintEnd();
             } catch (RemoteException ex) {
                 throw ex.rethrowFromSystemServer();
             }
@@ -7898,6 +7933,7 @@ public final class ActivityThread extends ClientTransactionHandler
     }
 
     public static void main(String[] args) {
+        Debug.traceMemoryFootprint();
         Trace.traceBegin(Trace.TRACE_TAG_ACTIVITY_MANAGER, "ActivityThreadMain");
 
         // Install selective syscall interception
@@ -7914,12 +7950,16 @@ public final class ActivityThread extends ClientTransactionHandler
         final File configDir = Environment.getUserConfigDirectory(UserHandle.myUserId());
         TrustedCertificateStore.setDefaultUserDirectory(configDir);
 
+        Debug.traceMemoryFootprintBegin("initializeMainlineModules");
         // Call per-process mainline module initialization.
         initializeMainlineModules();
+        Debug.traceMemoryFootprintEnd();
 
         Process.setArgV0("<pre-initialized>");
 
+        Debug.traceMemoryFootprintBegin("prepareMainLooper");
         Looper.prepareMainLooper();
+        Debug.traceMemoryFootprintEnd();
 
         // Find the value for {@link #PROC_START_SEQ_IDENT} if provided on the command line.
         // It will be in the format "seq=114"
@@ -7932,8 +7972,11 @@ public final class ActivityThread extends ClientTransactionHandler
                 }
             }
         }
+
+        Debug.traceMemoryFootprintBegin("new & attach ActivityThread");
         ActivityThread thread = new ActivityThread();
         thread.attach(false, startSeq);
+        Debug.traceMemoryFootprintEnd();
 
         if (sMainThreadHandler == null) {
             sMainThreadHandler = thread.getHandler();
@@ -7945,6 +7988,7 @@ public final class ActivityThread extends ClientTransactionHandler
         }
 
         // End of event ActivityThreadMain.
+        Debug.traceMemoryFootprint();
         Trace.traceEnd(Trace.TRACE_TAG_ACTIVITY_MANAGER);
         Looper.loop();
 
