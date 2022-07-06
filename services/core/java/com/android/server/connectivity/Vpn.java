@@ -3342,7 +3342,8 @@ public class Vpn {
                     errorCode = VpnManager.ERROR_CODE_NETWORK_IO;
                 }
             } else if (exception != null) {
-                Log.wtf(TAG, "onSessionLost: exception = " + exception);
+                Log.e(TAG, "onSessionLost: unexpected exception = " + exception);
+                errorClass = VpnManager.ERROR_CLASS_NOT_RECOVERABLE;
             }
 
             synchronized (Vpn.this) {
