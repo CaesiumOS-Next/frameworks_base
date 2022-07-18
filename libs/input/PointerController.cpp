@@ -148,6 +148,15 @@ void PointerController::clearSpotsLocked() REQUIRES(mLock) {
     }
 }
 
+void PointerController::clearSpot(int32_t displayId){
+    std::scoped_lock lock(mLock);
+    clearSpotLocked(displayId);
+}
+
+void PointerController::clearSpotLocked(int32_t displayId) REQUIRES(mLock) {
+    mLocked.spotControllers.at(displayId).clearSpots();
+}
+
 void PointerController::setInactivityTimeout(InactivityTimeout inactivityTimeout) {
     mContext.setInactivityTimeout(inactivityTimeout);
 }

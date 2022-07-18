@@ -64,6 +64,7 @@ public:
     virtual void setSpots(const PointerCoords* spotCoords, const uint32_t* spotIdToIndex,
                           BitSet32 spotIdBits, int32_t displayId);
     virtual void clearSpots();
+    virtual void clearSpot(int32_t displayId);
 
     void updatePointerIcon(int32_t iconId);
     void setCustomPointerIcon(const SpriteIcon& icon);
@@ -91,6 +92,7 @@ private:
     PointerController(const sp<PointerControllerPolicyInterface>& policy, const sp<Looper>& looper,
                       const sp<SpriteController>& spriteController);
     void clearSpotsLocked();
+    void clearSpotLocked(int32_t displayId);
 };
 
 } // namespace android
