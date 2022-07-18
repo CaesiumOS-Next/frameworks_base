@@ -3699,8 +3699,10 @@ final public class MediaCodec {
      * @param index The index of a client-owned input buffer previously
      *              returned from a call to {@link #dequeueInputBuffer}.
      *
-     * @return the format for the output buffer, or null if the index
-     * is not a dequeued output buffer.
+     * @return the format for the output buffer.
+     *
+     * @throws IllegalStateException if the index is not a dequeued
+     *                               output buffer.
      */
     @NonNull
     public final MediaFormat getOutputFormat(int index) {
@@ -3976,10 +3978,12 @@ final public class MediaCodec {
      *              returned from a call to {@link #dequeueInputBuffer},
      *              or received via an onInputBufferAvailable callback.
      *
-     * @return the input buffer, or null if the index is not a dequeued
-     * input buffer, or if the codec is configured for surface input.
+     * @return the input buffer. Returns null if the codec is configured
+     * with an input surface instead of input buffers.
      *
-     * @throws IllegalStateException if not in the Executing state.
+     * @throws IllegalStateException if the codec is not in the Executing
+     *                               state or if the index is not a dequeued
+     *                               input buffer.
      * @throws MediaCodec.CodecException upon codec error.
      */
     @Nullable
@@ -4012,11 +4016,11 @@ final public class MediaCodec {
      *              returned from a call to {@link #dequeueInputBuffer},
      *              or received via an onInputBufferAvailable callback.
      *
-     * @return the input image, or null if the index is not a
-     * dequeued input buffer, or not a ByteBuffer that contains a
-     * raw image.
+     * @return the input image. Returns null if the bytebuffer indicated
+     * by index does not contain a raw image.
      *
-     * @throws IllegalStateException if not in the Executing state.
+     * @throws IllegalStateException if the codec not in the Executing state or
+     *                               if the index is not a dequeued input buffer.
      * @throws MediaCodec.CodecException upon codec error.
      */
     @Nullable
@@ -4050,10 +4054,12 @@ final public class MediaCodec {
      *              returned from a call to {@link #dequeueOutputBuffer},
      *              or received via an onOutputBufferAvailable callback.
      *
-     * @return the output buffer, or null if the index is not a dequeued
-     * output buffer, or the codec is configured with an output surface.
+     * @return the corresponding output buffer. Returns null if the codec
+     * is configured with an output surface instead of output buffers.
      *
-     * @throws IllegalStateException if not in the Executing state.
+     * @throws IllegalStateException if the codec is not in the Executing
+     *                               state or if the index is not a dequeued
+     *                               output buffer.
      * @throws MediaCodec.CodecException upon codec error.
      */
     @Nullable
@@ -4084,11 +4090,12 @@ final public class MediaCodec {
      *              returned from a call to {@link #dequeueOutputBuffer},
      *              or received via an onOutputBufferAvailable callback.
      *
-     * @return the output image, or null if the index is not a
-     * dequeued output buffer, not a raw video frame, or if the codec
-     * was configured with an output surface.
+     * @return the corresponding output image. Returns null if the codec
+     * is configured with an output surface instead of output buffers.
      *
-     * @throws IllegalStateException if not in the Executing state.
+     * @throws IllegalStateException if the codec is not in the Executing state
+     *                               or if the index is not a dequeued output
+     *                               buffer, not a raw video frame.
      * @throws MediaCodec.CodecException upon codec error.
      */
     @Nullable
