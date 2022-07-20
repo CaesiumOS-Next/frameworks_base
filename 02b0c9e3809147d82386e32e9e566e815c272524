@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fbfd878c_21ceea06",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2022-07-20T19:01:36Z",
+      "side": 1,
+      "message": "These two CLs don\u0027t need to be in a topic branch.\nThis CL just changes the documentation and both these can land independent of each of other.",
+      "revId": "02b0c9e3809147d82386e32e9e566e815c272524",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
