@@ -34,6 +34,121 @@
       "parentUuid": "fbfd878c_21ceea06",
       "revId": "02b0c9e3809147d82386e32e9e566e815c272524",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5041007d_276eda3f",
+        "filename": "media/java/android/media/MediaCodec.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 4020,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2022-07-21T17:35:43Z",
+      "side": 1,
+      "message": "this doesn\u0027t work for me. Try this sentence instead:\n\n@return the input image.  Returns null if the bytebuffer indicated by index\ndoes not contain a raw image.\n\n----\n[an invalid index is covered by the @throws phrase.\nseparating this into 2 sentences makes it clear when we get an image and when we get a null.  The existing phrasing is contradictory.",
+      "range": {
+        "startLine": 4019,
+        "startChar": 7,
+        "endLine": 4020,
+        "endChar": 46
+      },
+      "revId": "02b0c9e3809147d82386e32e9e566e815c272524",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "39dcc32d_be256c28",
+        "filename": "media/java/android/media/MediaCodec.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 4022,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2022-07-21T17:35:43Z",
+      "side": 1,
+      "message": "if the codec is not in the executing state ...",
+      "range": {
+        "startLine": 4022,
+        "startChar": 40,
+        "endLine": 4022,
+        "endChar": 43
+      },
+      "revId": "02b0c9e3809147d82386e32e9e566e815c272524",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9d8001f9_7759a728",
+        "filename": "media/java/android/media/MediaCodec.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 4058,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2022-07-21T17:35:43Z",
+      "side": 1,
+      "message": "same sort of restructuring as i suggest for line 4019:\n\n@return the corresponding output buffer.  Returns null if the codec is configured with an output surface instead of output buffers.\n\n[2 sentences make it cleaner].",
+      "range": {
+        "startLine": 4057,
+        "startChar": 14,
+        "endLine": 4058,
+        "endChar": 25
+      },
+      "revId": "02b0c9e3809147d82386e32e9e566e815c272524",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bab89347_b1faff22",
+        "filename": "media/java/android/media/MediaCodec.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 4062,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2022-07-21T17:35:43Z",
+      "side": 1,
+      "message": "verify this:\n\nthe return clause says \"null if codec is configured to output to surface\".\nin such a case, i would expect all index\u0027es are invalid and that would\nsay that we should always get an IllegalStateException if the codec is outputting to a surface.\n\nseems to be a bit of a contradiction between the two.",
+      "range": {
+        "startLine": 4061,
+        "startChar": 0,
+        "endLine": 4062,
+        "endChar": 51
+      },
+      "revId": "02b0c9e3809147d82386e32e9e566e815c272524",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b887287a_c8678113",
+        "filename": "media/java/android/media/MediaCodec.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 4093,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2022-07-21T17:35:43Z",
+      "side": 1,
+      "message": "use 2 sentences like the above examples.",
+      "range": {
+        "startLine": 4093,
+        "startChar": 21,
+        "endLine": 4093,
+        "endChar": 44
+      },
+      "revId": "02b0c9e3809147d82386e32e9e566e815c272524",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
