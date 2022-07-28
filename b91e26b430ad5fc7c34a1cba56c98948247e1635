@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2222ed41_dd0ce3ae",
+        "filename": "services/core/java/com/android/server/connectivity/Vpn.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 556,
+      "author": {
+        "id": 1304263
+      },
+      "writtenOn": "2022-07-28T10:51:47Z",
+      "side": 1,
+      "message": "updated\n\nisIkev2VpnRunner() could not be used here. Non-static method could not be called here. Also, that is actually different mVpnRunner though they\u0027re pointed to the same object.",
+      "parentUuid": "65479aed_c367bbeb",
+      "range": {
+        "startLine": 556,
+        "startChar": 16,
+        "endLine": 556,
+        "endChar": 26
+      },
+      "revId": "b91e26b430ad5fc7c34a1cba56c98948247e1635",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d94a7ecd_0a9f9d87",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-07-28T08:49:53Z",
       "side": 1,
       "message": "You can use `isIkev2VpnRunner()` instead.",
+      "range": {
+        "startLine": 713,
+        "startChar": 21,
+        "endLine": 713,
+        "endChar": 59
+      },
+      "revId": "b91e26b430ad5fc7c34a1cba56c98948247e1635",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bdfb5b09_a4b81b6c",
+        "filename": "services/core/java/com/android/server/connectivity/Vpn.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 713,
+      "author": {
+        "id": 1304263
+      },
+      "writtenOn": "2022-07-28T10:51:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d94a7ecd_0a9f9d87",
       "range": {
         "startLine": 713,
         "startChar": 21,
@@ -70,6 +118,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "70936cb8_0e185a42",
+        "filename": "services/core/java/com/android/server/connectivity/Vpn.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 722,
+      "author": {
+        "id": 1304263
+      },
+      "writtenOn": "2022-07-28T10:51:47Z",
+      "side": 1,
+      "message": "The callback will be sent in the executor thread. Add a comment to annotate that.",
+      "parentUuid": "684deb60_d5d0d548",
+      "range": {
+        "startLine": 722,
+        "startChar": 20,
+        "endLine": 722,
+        "endChar": 74
+      },
+      "revId": "b91e26b430ad5fc7c34a1cba56c98948247e1635",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b85d347b_0b32dbf0",
@@ -83,6 +155,30 @@
       "writtenOn": "2022-07-28T08:49:53Z",
       "side": 1,
       "message": "Why do we need this? From the current design, both of mSession and mMobikeEnabled are not guarded by IkeV2VpnRunner, I think what we need to do is ensuring they are accessed in the executor thread.",
+      "range": {
+        "startLine": 3151,
+        "startChar": 8,
+        "endLine": 3151,
+        "endChar": 21
+      },
+      "revId": "b91e26b430ad5fc7c34a1cba56c98948247e1635",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e5f25641_1a09ba2d",
+        "filename": "services/core/java/com/android/server/connectivity/Vpn.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 3151,
+      "author": {
+        "id": 1304263
+      },
+      "writtenOn": "2022-07-28T10:51:47Z",
+      "side": 1,
+      "message": "make sense",
+      "parentUuid": "b85d347b_0b32dbf0",
       "range": {
         "startLine": 3151,
         "startChar": 8,
@@ -116,6 +212,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d1c789b5_946d415c",
+        "filename": "services/core/java/com/android/server/connectivity/Vpn.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 3251,
+      "author": {
+        "id": 1304263
+      },
+      "writtenOn": "2022-07-28T10:51:47Z",
+      "side": 1,
+      "message": "Updated to always calling from Executor thread.",
+      "parentUuid": "23ab21c6_eeec658d",
+      "range": {
+        "startLine": 3251,
+        "startChar": 12,
+        "endLine": 3251,
+        "endChar": 37
+      },
+      "revId": "b91e26b430ad5fc7c34a1cba56c98948247e1635",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "82e3586c_7b1a5e1f",
@@ -129,6 +249,30 @@
       "writtenOn": "2022-07-28T08:49:53Z",
       "side": 1,
       "message": "mActiveNetwork is updated in executor thread, but onValidationStatus() is run in IkeV2VpnRunner thread, there might be a threading issue when this method is executed and mActiveNetwork is also updated.\n\nDo we want to run `startIkeSession(mActiveNetwork)` in executor thread?\n\nSomething like:\n```\nmExecutor.execute(() -\u003e {\n    startIkeSession(mActiveNetwork);\n});\n```",
+      "range": {
+        "startLine": 3264,
+        "startChar": 36,
+        "endLine": 3264,
+        "endChar": 50
+      },
+      "revId": "b91e26b430ad5fc7c34a1cba56c98948247e1635",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "20d3e554_f52afb23",
+        "filename": "services/core/java/com/android/server/connectivity/Vpn.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 3264,
+      "author": {
+        "id": 1304263
+      },
+      "writtenOn": "2022-07-28T10:51:47Z",
+      "side": 1,
+      "message": "updated",
+      "parentUuid": "82e3586c_7b1a5e1f",
       "range": {
         "startLine": 3264,
         "startChar": 36,
