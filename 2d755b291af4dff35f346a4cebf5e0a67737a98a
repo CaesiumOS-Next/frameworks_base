@@ -16,6 +16,24 @@
       "message": "Do we have a corresponding test for the behavior? If not, it\u0027d be great to add it with this one.",
       "revId": "2d755b291af4dff35f346a4cebf5e0a67737a98a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3d1461a3_eb4b7e27",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1554022
+      },
+      "writtenOn": "2022-08-01T06:49:12Z",
+      "side": 1,
+      "message": "We have updated tests in CodecUnitTest for this behaviour in this CL -  https://android-review.googlesource.com/c/platform/cts/+/2159450\nAll these tests validate the exception handling in bytebuffer mode.",
+      "parentUuid": "fafa2773_196d0517",
+      "revId": "2d755b291af4dff35f346a4cebf5e0a67737a98a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
