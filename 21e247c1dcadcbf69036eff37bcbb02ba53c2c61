@@ -16,6 +16,41 @@
       "message": "Systemui may crash on first boot.\n\nCrash trace.\n07-29 07:25:00.846  1741  1741 E AndroidRuntime: FATAL EXCEPTION: main\n07-29 07:25:00.846  1741  1741 E AndroidRuntime: Process: com.android.systemui, PID: 1741\n07-29 07:25:00.846  1741  1741 E AndroidRuntime: java.lang.RuntimeException: Unable to create service com.android.systemui.SystemUIService: java.lang.SecurityException: Observing sensor privacy changes requires the following permission: android.permission.OBSERVE_SENSOR_PRIVACY\n... ...\n07-29 07:25:00.846  1741  1741 E AndroidRuntime: Caused by: java.lang.SecurityException: Observing sensor privacy changes requires the following permission: android.permission.OBSERVE_SENSOR_PRIVACY\n... ...\n07-29 07:25:00.846  1741  1741 E AndroidRuntime: \tat com.android.systemui.statusbar.policy.IndividualSensorPrivacyControllerImpl.init(IndividualSensorPrivacyControllerImpl.java:48)\n",
       "revId": "21e247c1dcadcbf69036eff37bcbb02ba53c2c61",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9380e091_20423e0b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1480715
+      },
+      "writtenOn": "2022-08-02T15:49:44Z",
+      "side": 1,
+      "message": "Hi, Could you please file a bug? ",
+      "revId": "21e247c1dcadcbf69036eff37bcbb02ba53c2c61",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d15eff3f_21a77bc0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1480715
+      },
+      "writtenOn": "2022-08-02T15:49:44Z",
+      "side": 1,
+      "message": "Thanks for finding the issue. Could you please file a bug so we can followup in the bug?",
+      "parentUuid": "381bfd55_cf460018",
+      "revId": "21e247c1dcadcbf69036eff37bcbb02ba53c2c61",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
