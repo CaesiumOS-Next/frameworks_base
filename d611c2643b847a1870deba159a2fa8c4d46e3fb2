@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b257d5ee_b78614a7",
+        "filename": "services/core/java/com/android/server/connectivity/Vpn.java",
+        "patchSetId": 9
+      },
+      "lineNbr": 3271,
+      "author": {
+        "id": 1221725
+      },
+      "writtenOn": "2022-08-02T00:49:11Z",
+      "side": 1,
+      "message": "Let\u0027s also rate-limit this, so if a network fails validation at startup, we don\u0027t thrash it every 30s.\n\nPerhaps we can use a similar retry mechanism that is used for the reconnect-retries?",
+      "range": {
+        "startLine": 3271,
+        "startChar": 20,
+        "endLine": 3271,
+        "endChar": 35
+      },
+      "revId": "d611c2643b847a1870deba159a2fa8c4d46e3fb2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
