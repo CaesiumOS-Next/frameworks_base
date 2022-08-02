@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "942513a6_847565bf",
+        "filename": "services/core/java/com/android/server/connectivity/Vpn.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 2721,
+      "author": {
+        "id": 1221725
+      },
+      "writtenOn": "2022-08-02T00:43:12Z",
+      "side": 1,
+      "message": "never be reset in the lifetime of this Ikev2VpnRunner (it does get reset across runs)",
+      "range": {
+        "startLine": 2721,
+        "startChar": 71,
+        "endLine": 2721,
+        "endChar": 76
+      },
+      "revId": "1b7a56b8f7ff1cbce55eed5b289af56c7dd27d56",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
