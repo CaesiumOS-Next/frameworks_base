@@ -22,6 +22,30 @@
       },
       "revId": "d611c2643b847a1870deba159a2fa8c4d46e3fb2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ddde41f8_b36ee228",
+        "filename": "services/core/java/com/android/server/connectivity/Vpn.java",
+        "patchSetId": 9
+      },
+      "lineNbr": 3271,
+      "author": {
+        "id": 1304263
+      },
+      "writtenOn": "2022-08-03T06:12:38Z",
+      "side": 1,
+      "message": "The reset will only be performed after data stall was suspected, and data stall detection will be triggered until getting the first validation pass. So we do not do the reset for a VPN network that never validated.\n\nApply similar retry mechanism here",
+      "parentUuid": "b257d5ee_b78614a7",
+      "range": {
+        "startLine": 3271,
+        "startChar": 20,
+        "endLine": 3271,
+        "endChar": 35
+      },
+      "revId": "d611c2643b847a1870deba159a2fa8c4d46e3fb2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }

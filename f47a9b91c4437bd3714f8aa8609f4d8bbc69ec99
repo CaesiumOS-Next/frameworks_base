@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "639207bc_1aa13240",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 12
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1304263
+      },
+      "writtenOn": "2022-08-03T06:12:38Z",
+      "side": 1,
+      "message": "MOBIKE part is moved to aosp/2171149 as discussed in the meeting",
+      "revId": "f47a9b91c4437bd3714f8aa8609f4d8bbc69ec99",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
