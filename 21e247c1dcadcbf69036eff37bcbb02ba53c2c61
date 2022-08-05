@@ -69,6 +69,24 @@
       "parentUuid": "9380e091_20423e0b",
       "revId": "21e247c1dcadcbf69036eff37bcbb02ba53c2c61",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "036edc77_40a37318",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1093248
+      },
+      "writtenOn": "2022-08-05T03:13:28Z",
+      "side": 1,
+      "message": "Hi Google:\nMaybe the last code has delayed the systemui startup.\nhttps://cs.android.com/android/_/android/platform/frameworks/base/+/2f630c61f79d9767df6bab1d038205778a6b212e\n\nThanks.",
+      "parentUuid": "288083d3_45d3c2dc",
+      "revId": "21e247c1dcadcbf69036eff37bcbb02ba53c2c61",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
