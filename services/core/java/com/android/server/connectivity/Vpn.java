@@ -4042,9 +4042,8 @@ public class Vpn {
         // To stop the VPN profile, the caller must be the current prepared package and must be
         // running an Ikev2VpnProfile.
         if (isCurrentIkev2VpnLocked(packageName)) {
-            notifyVpnManagerVpnStopped(packageName, mOwnerUID);
-
             mVpnRunner.exit();
+            notifyVpnManagerVpnStopped(packageName, mOwnerUID);
         }
     }
 
