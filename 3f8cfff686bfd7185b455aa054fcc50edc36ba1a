@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0735d57e_a2807614",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 13
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1221725
+      },
+      "writtenOn": "2022-08-17T06:30:41Z",
+      "side": 1,
+      "message": "Overall well thought out :) thank you.",
+      "revId": "3f8cfff686bfd7185b455aa054fcc50edc36ba1a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b0396678_2544d4ab",
+        "filename": "services/core/java/com/android/server/connectivity/Vpn.java",
+        "patchSetId": 13
+      },
+      "lineNbr": 2777,
+      "author": {
+        "id": 1221725
+      },
+      "writtenOn": "2022-08-17T06:30:41Z",
+      "side": 1,
+      "message": "Does this need to be a separate retry count? What\u0027s the difference between the two?\n\n(we probably just need a bit of documentation)",
+      "range": {
+        "startLine": 2777,
+        "startChar": 20,
+        "endLine": 2777,
+        "endChar": 40
+      },
+      "revId": "3f8cfff686bfd7185b455aa054fcc50edc36ba1a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9eea83bd_60ac6815",
+        "filename": "services/core/java/com/android/server/connectivity/Vpn.java",
+        "patchSetId": 13
+      },
+      "lineNbr": 3254,
+      "author": {
+        "id": 1221725
+      },
+      "writtenOn": "2022-08-17T06:30:41Z",
+      "side": 1,
+      "message": "Generally, I\u0027d suggest using if/else, unless it\u0027s simple early-return checks. If there\u0027s logic in the if, the if/else is cleaner to show it\u0027s bifurcated.",
+      "range": {
+        "startLine": 3254,
+        "startChar": 0,
+        "endLine": 3254,
+        "endChar": 23
+      },
+      "revId": "3f8cfff686bfd7185b455aa054fcc50edc36ba1a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "87a3873b_5a8ff14e",
+        "filename": "services/core/java/com/android/server/connectivity/Vpn.java",
+        "patchSetId": 13
+      },
+      "lineNbr": 3261,
+      "author": {
+        "id": 1221725
+      },
+      "writtenOn": "2022-08-17T06:30:41Z",
+      "side": 1,
+      "message": "Let\u0027s add a comment here that this will reset old state if it exists.",
+      "range": {
+        "startLine": 3261,
+        "startChar": 20,
+        "endLine": 3261,
+        "endChar": 35
+      },
+      "revId": "3f8cfff686bfd7185b455aa054fcc50edc36ba1a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
