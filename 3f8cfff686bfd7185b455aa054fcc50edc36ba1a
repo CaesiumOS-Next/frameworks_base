@@ -41,6 +41,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b6a4830f_460c5510",
+        "filename": "services/core/java/com/android/server/connectivity/Vpn.java",
+        "patchSetId": 13
+      },
+      "lineNbr": 2777,
+      "author": {
+        "id": 1304263
+      },
+      "writtenOn": "2022-08-18T03:23:26Z",
+      "side": 1,
+      "message": "They control different things and reset with different condition, so I think it should not use the same conuter.\n\nAdd documentation on the variable.",
+      "parentUuid": "b0396678_2544d4ab",
+      "range": {
+        "startLine": 2777,
+        "startChar": 20,
+        "endLine": 2777,
+        "endChar": 40
+      },
+      "revId": "3f8cfff686bfd7185b455aa054fcc50edc36ba1a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9eea83bd_60ac6815",
@@ -64,6 +88,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4600e8a1_7210cf72",
+        "filename": "services/core/java/com/android/server/connectivity/Vpn.java",
+        "patchSetId": 13
+      },
+      "lineNbr": 3254,
+      "author": {
+        "id": 1304263
+      },
+      "writtenOn": "2022-08-18T03:23:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9eea83bd_60ac6815",
+      "range": {
+        "startLine": 3254,
+        "startChar": 0,
+        "endLine": 3254,
+        "endChar": 23
+      },
+      "revId": "3f8cfff686bfd7185b455aa054fcc50edc36ba1a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "87a3873b_5a8ff14e",
@@ -77,6 +125,30 @@
       "writtenOn": "2022-08-17T06:30:41Z",
       "side": 1,
       "message": "Let\u0027s add a comment here that this will reset old state if it exists.",
+      "range": {
+        "startLine": 3261,
+        "startChar": 20,
+        "endLine": 3261,
+        "endChar": 35
+      },
+      "revId": "3f8cfff686bfd7185b455aa054fcc50edc36ba1a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4cd55593_b951c3c9",
+        "filename": "services/core/java/com/android/server/connectivity/Vpn.java",
+        "patchSetId": 13
+      },
+      "lineNbr": 3261,
+      "author": {
+        "id": 1304263
+      },
+      "writtenOn": "2022-08-18T03:23:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "87a3873b_5a8ff14e",
       "range": {
         "startLine": 3261,
         "startChar": 20,
