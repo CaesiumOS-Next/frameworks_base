@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dd3e89fd_b8ebcd0f",
+        "filename": "core/java/com/android/internal/app/ResolverListAdapter.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 634,
+      "author": {
+        "id": 1581786
+      },
+      "writtenOn": "2022-08-26T16:38:27Z",
+      "side": 1,
+      "message": "I believe this should be `holder`",
+      "range": {
+        "startLine": 634,
+        "startChar": 12,
+        "endLine": 634,
+        "endChar": 16
+      },
+      "revId": "5fefc9f5381cf97e0d6c48eaa3d7cdde55a63fc4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
