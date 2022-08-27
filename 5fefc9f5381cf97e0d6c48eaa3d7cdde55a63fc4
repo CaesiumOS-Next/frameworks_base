@@ -22,6 +22,30 @@
       },
       "revId": "5fefc9f5381cf97e0d6c48eaa3d7cdde55a63fc4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1f87462f_288bf506",
+        "filename": "core/java/com/android/internal/app/ResolverListAdapter.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 634,
+      "author": {
+        "id": 1093248
+      },
+      "writtenOn": "2022-08-27T02:23:44Z",
+      "side": 1,
+      "message": "Sorry, it has been updated.",
+      "parentUuid": "dd3e89fd_b8ebcd0f",
+      "range": {
+        "startLine": 634,
+        "startChar": 12,
+        "endLine": 634,
+        "endChar": 16
+      },
+      "revId": "5fefc9f5381cf97e0d6c48eaa3d7cdde55a63fc4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
