@@ -16,6 +16,24 @@
       "message": "The only goal of the probe mode is to implement this function without fully creating the effect. \nfully creating the effect has potential side effects on other active use case an we must avoid doing it in the context of checking if an effect is supported or not.\nWe need to investigate other \" indication but can has some false positives.\n",
       "revId": "613ab49a07391ee8c1ae1e8e841902f873f84803",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2f7777fa_d1b51201",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1150374
+      },
+      "writtenOn": "2022-08-29T11:06:39Z",
+      "side": 1,
+      "message": "I felt this change was necessary for device effects because in probe mode, there are no checks for effect library api version. If the library api version is not 3.1 then effect creation will fail but probe mode indicates otherwise.",
+      "parentUuid": "7f965b06_2f2fc486",
+      "revId": "613ab49a07391ee8c1ae1e8e841902f873f84803",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
