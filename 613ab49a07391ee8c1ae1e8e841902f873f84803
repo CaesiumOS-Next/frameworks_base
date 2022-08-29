@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7f965b06_2f2fc486",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2022-08-29T08:01:43Z",
+      "side": 1,
+      "message": "The only goal of the probe mode is to implement this function without fully creating the effect. \nfully creating the effect has potential side effects on other active use case an we must avoid doing it in the context of checking if an effect is supported or not.\nWe need to investigate other \" indication but can has some false positives.\n",
+      "revId": "613ab49a07391ee8c1ae1e8e841902f873f84803",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
