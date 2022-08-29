@@ -34,6 +34,24 @@
       "parentUuid": "7f965b06_2f2fc486",
       "revId": "613ab49a07391ee8c1ae1e8e841902f873f84803",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e621ef95_300fe67c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2022-08-29T12:56:25Z",
+      "side": 1,
+      "message": "in this case we need to modify the implementation of the probe mode for device effects to add whatever additional verifications are needed",
+      "parentUuid": "2f7777fa_d1b51201",
+      "revId": "613ab49a07391ee8c1ae1e8e841902f873f84803",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
