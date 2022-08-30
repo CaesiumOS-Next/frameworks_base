@@ -52,6 +52,24 @@
       "parentUuid": "2f7777fa_d1b51201",
       "revId": "613ab49a07391ee8c1ae1e8e841902f873f84803",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "666d547d_1dbb0888",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1150374
+      },
+      "writtenOn": "2022-08-30T07:02:59Z",
+      "side": 1,
+      "message": "@Mikhail, Unrelated to the above discussion, the  EffectUtils::effectDescriptorToHal() does not populate apiVersion field of effect_descriptor_t. This field points to effect control interface version. \n\nTo address the above problem the library interface version of that effect is needed and this info is not available with af.",
+      "parentUuid": "e621ef95_300fe67c",
+      "revId": "613ab49a07391ee8c1ae1e8e841902f873f84803",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
