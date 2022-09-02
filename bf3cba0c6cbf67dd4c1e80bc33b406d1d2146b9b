@@ -33,6 +33,23 @@
       "message": "Hung-ying, can you please provide the DrNO+1? ",
       "revId": "bf3cba0c6cbf67dd4c1e80bc33b406d1d2146b9b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d244f571_12d50848",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1388190
+      },
+      "writtenOn": "2022-09-02T23:58:33Z",
+      "side": 1,
+      "message": "Ping for DrNo",
+      "revId": "bf3cba0c6cbf67dd4c1e80bc33b406d1d2146b9b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
