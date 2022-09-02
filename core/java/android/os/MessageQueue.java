@@ -427,6 +427,7 @@ public final class MessageQueue {
             throw new IllegalStateException("Main thread not allowed to quit.");
         }
 
+        SparseArray<FileDescriptorRecord> records = null;
         synchronized (this) {
             if (mQuitting) {
                 return;
@@ -439,8 +440,25 @@ public final class MessageQueue {
                 removeAllMessagesLocked();
             }
 
+            if (mFileDescriptorRecords.size() > 0) {
+                records = mFileDescriptorRecords.clone();
+                for (int i = 0; i < records.size(); i++) {
+                    removeOnFileDescriptorEventListener(records.valueAt(i).mDescriptor);
+                }
+            }
+
             // We can assume mPtr != 0 because mQuitting was previously false.
             nativeWake(mPtr);
+        }
+
+        if (records != null) {
+            Log.w(TAG, "", new RuntimeException("Forget to "
+                  + "removeOnFileDescriptorEventListener before quit."
+                  + " Total listeners:" + records.size()));
+            for (int i = 0; i < records.size(); i++) {
+                Log.w(TAG, " [" + i + "] = {fdNum=" + records.keyAt(i)
+                      + ", listener=" + records.valueAt(i).mListener + "}" );
+            }
         }
     }
 
