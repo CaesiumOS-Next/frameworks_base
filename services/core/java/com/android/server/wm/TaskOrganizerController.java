@@ -811,6 +811,19 @@ class TaskOrganizerController extends ITaskOrganizerController.Stub {
                     task.mTaskOrganizer.asBinder());
             if (state != null) {
                 state.mOrganizer.onTaskInfoChanged(task, newInfo);
+                if (!mService.getTransitionController().isShellTransitionsEnabled()) {
+                    final DisplayContent mDc = mService.mRootWindowContainer
+                                                           .getTopFocusedDisplayContent();
+                    Task focusTask = mDc.mFocusedApp == null ? null : mDc.mFocusedApp.getTask();
+                    if (!task.inMultiWindowMode() && task.getChildCount() == 2
+                             && task.getRootTask() == task
+                             && task.shouldBeVisible(null)
+                             && focusTask != null
+                             && focusTask.inMultiWindowMode()
+                             && focusTask.getRootTask() == task) {
+                       mDc.mShellTaskChanging = true;
+                    }
+               }
             }
         }
     }

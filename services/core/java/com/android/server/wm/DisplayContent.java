@@ -700,6 +700,8 @@ class DisplayContent extends RootDisplayArea implements WindowManagerPolicy.Disp
     // well and thus won't change the top resumed / focused record
     boolean mDontMoveToTop;
 
+    boolean mShellTaskChanging;
+
     /**
      * The helper of policy controller.
      *
@@ -4589,7 +4591,8 @@ class DisplayContent extends RootDisplayArea implements WindowManagerPolicy.Disp
     void onWindowFreezeTimeout() {
         Slog.w(TAG_WM, "Window freeze timeout expired.");
         mWmService.mWindowsFreezingScreen = WINDOWS_FREEZING_SCREENS_TIMEOUT;
-
+        mShellTaskChanging = false;
+        
         forAllWindows(w -> {
             if (!w.getOrientationChanging()) {
                 return;

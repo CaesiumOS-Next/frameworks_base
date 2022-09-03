@@ -3608,6 +3608,9 @@ class WindowContainer<E extends WindowContainer> extends ConfigurationContainer<
     boolean onSyncFinishedDrawing() {
         if (mSyncState == SYNC_STATE_NONE) return false;
         mSyncState = SYNC_STATE_READY;
+        if (asWindowState() != null && asWindowState().inMultiWindowMode()) {
+            mDisplayContent.mShellTaskChanging = false;
+        }
         mWmService.mWindowPlacerLocked.requestTraversal();
         ProtoLog.v(WM_DEBUG_SYNC_ENGINE, "onSyncFinishedDrawing %s", this);
         return true;

@@ -6109,6 +6109,40 @@ public class WindowManagerService extends IWindowManager.Stub
                     mClientFreezingScreen, numOpeningApps);
             return;
         }
+        ActivityRecord focusedApp = displayContent != null ? displayContent.mFocusedApp : null;
+        Task focusedTask = focusedApp == null ? null : focusedApp.getTask();
+        Task focusedRootTask = focusedTask == null ? null : focusedTask.getRootTask();
+        if (!mAtmService.getTransitionController().isShellTransitionsEnabled()
+                      && focusedRootTask != null
+                      && focusedTask.inMultiWindowMode()
+                      && focusedRootTask.isOrganized()
+                      && focusedRootTask.getChildCount() == 2) {
+               final boolean shellTransitions = displayContent.mTransitionController
+                                                                .getTransitionPlayer() != null;
+               final SurfaceControl.Transaction transaction =
+                        shellTransitions ? displayContent.getSyncTransaction()
+                                         : displayContent.getPendingTransaction();
+               final WindowContainer parent = focusedTask.getParent();
+               if (parent != null) {
+                   if (displayContent.mShellTaskChanging) {
+                       Slog.d(TAG,"waiting for synctransaction done.");
+                       return;
+                   }
+                   final Task t = parent.asTask();
+                   if (t != null && (t.getBounds().left != t.getLastSurfacePosition().x
+                                     || t.getBounds().top != t.getLastSurfacePosition().y)) {
+                       t.updateSurfacePosition(transaction);
+                       if (t.getBounds().left != t.getLastSurfacePosition().x
+                                 || t.getBounds().top != t.getLastSurfacePosition().y) {
+                          Slog.d(TAG,"waiting for surface position updated right:" + t
+                                + " pos:"+ t.getLastSurfacePosition() + " bounds:"+ t.getBounds());
+                          return;
+                       }
+                   }
+               }
+        } else {
+               if (displayContent != null) displayContent.mShellTaskChanging = false;
+        }
 
         Trace.traceBegin(TRACE_TAG_WINDOW_MANAGER, "WMS.doStopFreezingDisplayLocked-"
                 + mLastFinishedFreezeSource);

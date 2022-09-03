@@ -317,6 +317,7 @@ class AsyncRotationController extends FadeAnimationController implements Consume
                 synchronized (mService.mGlobalLock) {
                     Slog.i(TAG, "Async rotation timeout: " + mTargetWindowTokens);
                     mIsStartTransactionCommitted = true;
+                    mDisplayContent.mShellTaskChanging = false;
                     mDisplayContent.finishAsyncRotationIfPossible();
                     mService.mWindowPlacerLocked.performSurfacePlacement();
                 }
