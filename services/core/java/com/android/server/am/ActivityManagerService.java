@@ -17788,8 +17788,8 @@ public class ActivityManagerService extends IActivityManager.Stub
     /**
      * Reset the dropbox rate limiter
      */
-    void resetDropboxRateLimiter() {
-        mDropboxRateLimiter.reset();
+    void resetDropboxRateLimiter(boolean flag) {
+        mDropboxRateLimiter.reset(flag);
     }
 
     /**

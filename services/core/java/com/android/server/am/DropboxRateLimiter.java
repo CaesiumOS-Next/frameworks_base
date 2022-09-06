@@ -26,6 +26,7 @@ import com.android.internal.annotations.GuardedBy;
 /** Rate limiter for adding errors into dropbox. */
 public class DropboxRateLimiter {
     private static final String TAG = "DropboxRateLimiter";
+    public static boolean reset_flag = false;
     // After RATE_LIMIT_ALLOWED_ENTRIES have been collected (for a single breakdown of
     // process/eventType) further entries will be rejected until RATE_LIMIT_BUFFER_DURATION has
     // elapsed, after which the current count for this breakdown will be reset.
@@ -62,6 +63,10 @@ public class DropboxRateLimiter {
         synchronized (mErrorClusterRecords) {
             // Remove expired records if enough time has passed since the last cleanup.
             maybeRemoveExpiredRecords(now);
+
+            if (reset_flag == true) {
+                reset_rate_limiter();
+            }
 
             ErrorRecord errRecord = mErrorClusterRecords.get(errorKey(eventType, processName));
             if (errRecord == null) {
@@ -108,12 +113,16 @@ public class DropboxRateLimiter {
     }
 
     /** Resets the rate limiter memory. */
-    void reset() {
+    void reset_rate_limiter() {
         synchronized (mErrorClusterRecords) {
             mErrorClusterRecords.clear();
         }
         mLastMapCleanUp = 0L;
         Slog.i(TAG, "Rate limiter reset.");
+    }
+    /** set reset_flag. */
+    void reset(boolean flag) {
+        reset_flag = flag;
     }
 
     String errorKey(String eventType, String processName) {
