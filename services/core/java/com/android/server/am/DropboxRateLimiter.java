@@ -105,6 +105,15 @@ public class DropboxRateLimiter {
         mLastMapCleanUp = now;
     }
 
+    /** Resets the rate limiter memory. */
+    public void reset() {
+        synchronized (mErrorClusterRecords) {
+            mErrorClusterRecords.clear();
+        }
+        mLastMapCleanUp = 0L;
+        Slog.i(TAG, "Rate limiter reset.");
+    }
+
     String errorKey(String eventType, String processName) {
         return eventType + processName;
     }
