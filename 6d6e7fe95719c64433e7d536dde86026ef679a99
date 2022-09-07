@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4985de89_689b859b",
+        "filename": "services/core/java/com/android/server/connectivity/Vpn.java",
+        "patchSetId": 17
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 1221725
+      },
+      "writtenOn": "2022-09-07T08:48:20Z",
+      "side": 1,
+      "message": "Suggest a bit more about how this is used:\n\n\"If a session has not successfully revalidated after the delay, the session will be torn down and restarted in an attempt to recover. Delay counter is reset on successful validation only\"",
+      "range": {
+        "startLine": 230,
+        "startChar": 0,
+        "endLine": 230,
+        "endChar": 6
+      },
+      "revId": "6d6e7fe95719c64433e7d536dde86026ef679a99",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5dd5f9d1_72b154a5",
+        "filename": "services/core/java/com/android/server/connectivity/Vpn.java",
+        "patchSetId": 17
+      },
+      "lineNbr": 2808,
+      "author": {
+        "id": 1221725
+      },
+      "writtenOn": "2022-09-07T08:48:20Z",
+      "side": 1,
+      "message": "Hmm, doesn\u0027t a new IKE session get opened each time the retry fails? would that always reset this?",
+      "range": {
+        "startLine": 2807,
+        "startChar": 74,
+        "endLine": 2808,
+        "endChar": 17
+      },
+      "revId": "6d6e7fe95719c64433e7d536dde86026ef679a99",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cf806307_02a35937",
+        "filename": "services/core/java/com/android/server/connectivity/Vpn.java",
+        "patchSetId": 17
+      },
+      "lineNbr": 2907,
+      "author": {
+        "id": 1221725
+      },
+      "writtenOn": "2022-09-07T08:48:20Z",
+      "side": 1,
+      "message": "As above, not sure if this should be reset here. It\u0027d lead to the case of:\n\nData stall suspected -\u003e Schedule (30s) -\u003e Restart IKE session -\u003e Validation failed -\u003e Schedule (30s)...\n\nWhereas we probably want the second scheduled data stall handler to be an increasing delay so we don\u0027t keep the device up that much.\n\nCould you think through this and verify? One way or another, could you help me understand why this is correct/incorrect?",
+      "range": {
+        "startLine": 2906,
+        "startChar": 0,
+        "endLine": 2907,
+        "endChar": 37
+      },
+      "revId": "6d6e7fe95719c64433e7d536dde86026ef679a99",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "50b13766_aef01967",
+        "filename": "services/core/java/com/android/server/connectivity/Vpn.java",
+        "patchSetId": 17
+      },
+      "lineNbr": 3000,
+      "author": {
+        "id": 1221725
+      },
+      "writtenOn": "2022-09-07T08:48:20Z",
+      "side": 1,
+      "message": "Nit i think you can do \"this::onValidationStatus\" as a method reference",
+      "range": {
+        "startLine": 3000,
+        "startChar": 37,
+        "endLine": 3000,
+        "endChar": 73
+      },
+      "revId": "6d6e7fe95719c64433e7d536dde86026ef679a99",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
