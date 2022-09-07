@@ -46,6 +46,39 @@ public class Matrix {
     @Deprecated
     public Matrix() {}
 
+    private static boolean overlap(float[] a, int aStart, int aLength, float[] b, int bStart, int bLength) {
+      if (a != b) {
+          return false;
+      }
+
+      if (aStart == bStart) {
+          return true;
+      }
+
+      int aEnd = aStart + aLength;
+      int bEnd = bStart + bLength;
+
+      if (aEnd == bEnd) {
+          return true;
+      }
+
+      if (aStart < bStart && bStart < aEnd) {
+          return true;
+      }
+      if (aStart < bEnd   && bEnd   < aEnd) {
+          return true;
+      }
+
+      if (bStart < aStart && aStart < bEnd) {
+          return true;
+      }
+      if (bStart < aEnd   && aEnd   < bEnd) {
+          return true;
+      }
+
+      return false;
+    }
+
     /**
      * Multiplies two 4x4 matrices together and stores the result in a third 4x4
      * matrix. In matrix notation: result = lhs x rhs. Due to the way
@@ -69,8 +102,84 @@ public class Matrix {
      * resultOffset + 16 > result.length or lhsOffset + 16 > lhs.length or
      * rhsOffset + 16 > rhs.length.
      */
-    public static native void multiplyMM(float[] result, int resultOffset,
-            float[] lhs, int lhsOffset, float[] rhs, int rhsOffset);
+    public static void multiplyMM(float[] result, int resultOffset,
+            float[] lhs, int lhsOffset, float[] rhs, int rhsOffset) {
+        // error checking
+        if (result == null) {
+            throw new IllegalArgumentException("result == null");
+        }
+        if (lhs == null) {
+            throw new IllegalArgumentException("lhs == null");
+        }
+        if (rhs == null) {
+            throw new IllegalArgumentException("rhs == null");
+        }
+        if (resultOffset < 0) {
+            throw new IllegalArgumentException("resultOffset < 0");
+        }
+        if (lhsOffset < 0) {
+            throw new IllegalArgumentException("lhsOffset < 0");
+        }
+        if (rhsOffset < 0) {
+            throw new IllegalArgumentException("rhsOffset < 0");
+        }
+        if (result.length < resultOffset + 16) {
+            throw new IllegalArgumentException("result.length < resultOffset + 16");
+        }
+        if (lhs.length < lhsOffset + 16) {
+            throw new IllegalArgumentException("lhs.length < lhsOffset + 16");
+        }
+        if (rhs.length < rhsOffset + 16) {
+            throw new IllegalArgumentException("rhs.length < rhsOffset + 16");
+        }
+
+        // Check for overlap between rhs and result or lhs and result
+        if ( overlap(result, resultOffset, 16, lhs, lhsOffset, 16) || overlap(result, resultOffset, 16, rhs, rhsOffset, 16) ) {
+            for (int i=0; i<4; i++) {
+                final float rhs_i0 = rhs[ 4*i + 0 + rhsOffset ];
+                float ri0 = lhs[ 0 + lhsOffset ] * rhs_i0;
+                float ri1 = lhs[ 1 + lhsOffset ] * rhs_i0;
+                float ri2 = lhs[ 2 + lhsOffset ] * rhs_i0;
+                float ri3 = lhs[ 3 + 16 ] * rhs_i0;
+                for (int j=1; j<4; j++) {
+                    final float rhs_ij = rhs[ 4*i + j + rhsOffset];
+                    ri0 += lhs[ 4*j + 0 + lhsOffset ] * rhs_ij;
+                    ri1 += lhs[ 4*j + 1 + lhsOffset ] * rhs_ij;
+                    ri2 += lhs[ 4*j + 2 + lhsOffset ] * rhs_ij;
+                    ri3 += lhs[ 4*j + 3 + lhsOffset ] * rhs_ij;
+                }
+                sTemp[ 4*i + 0 ] = ri0;
+                sTemp[ 4*i + 1 ] = ri1;
+                sTemp[ 4*i + 2 ] = ri2;
+                sTemp[ 4*i + 3 ] = ri3;
+            }
+
+            // copy from sTemp to result
+            for (int i=0; i < 16; i++) {
+                result[ i + resultOffset ] = sTemp[ i ];
+            }
+
+        } else {
+            for (int i=0; i<4; i++) {
+                final float rhs_i0 = rhs[ 4*i + 0 + rhsOffset ];
+                float ri0 = lhs[ 0 + lhsOffset ] * rhs_i0;
+                float ri1 = lhs[ 1 + lhsOffset ] * rhs_i0;
+                float ri2 = lhs[ 2 + lhsOffset ] * rhs_i0;
+                float ri3 = lhs[ 3 + 16 ] * rhs_i0;
+                for (int j=1; j<4; j++) {
+                    final float rhs_ij = rhs[ 4*i + j + rhsOffset];
+                    ri0 += lhs[ 4*j + 0 + lhsOffset ] * rhs_ij;
+                    ri1 += lhs[ 4*j + 1 + lhsOffset ] * rhs_ij;
+                    ri2 += lhs[ 4*j + 2 + lhsOffset ] * rhs_ij;
+                    ri3 += lhs[ 4*j + 3 + lhsOffset ] * rhs_ij;
+                }
+                result[ 4*i + 0 + resultOffset ] = ri0;
+                result[ 4*i + 1 + resultOffset ] = ri1;
+                result[ 4*i + 2 + resultOffset ] = ri2;
+                result[ 4*i + 3 + resultOffset ] = ri3;
+            }
+        }
+    }
 
     /**
      * Multiplies a 4 element vector by a 4x4 matrix and stores the result in a
@@ -94,9 +203,80 @@ public class Matrix {
      * or lhsMatOffset + 16 > lhsMat.length or
      * rhsVecOffset + 4 > rhsVec.length.
      */
-    public static native void multiplyMV(float[] resultVec,
+    public static void multiplyMV(float[] resultVec,
             int resultVecOffset, float[] lhsMat, int lhsMatOffset,
-            float[] rhsVec, int rhsVecOffset);
+            float[] rhsVec, int rhsVecOffset) {
+        // error checking
+        if (resultVec == null) {
+            throw new IllegalArgumentException("resultVec == null");
+        }
+        if (lhsMat == null) {
+            throw new IllegalArgumentException("lhsMat == null");
+        }
+        if (rhsVec == null) {
+            throw new IllegalArgumentException("rhsVec == null");
+        }
+        if (resultVecOffset < 0) {
+            throw new IllegalArgumentException("resultVecOffset < 0");
+        }
+        if (lhsMatOffset < 0) {
+            throw new IllegalArgumentException("lhsMatOffset < 0");
+        }
+        if (rhsVecOffset < 0) {
+            throw new IllegalArgumentException("rhsVecOffset < 0");
+        }
+        if (resultVec.length < resultVecOffset + 4) {
+            throw new IllegalArgumentException("resultVec.length < resultVecOffset + 4");
+        }
+        if (lhsMat.length < lhsMatOffset + 16) {
+            throw new IllegalArgumentException("lhsMat.length < lhsMatOffset + 16");
+        }
+        if (rhsVec.length < rhsVecOffset + 4) {
+            throw new IllegalArgumentException("rhsVec.length < rhsVecOffset + 4");
+        }
+
+        // Check for overlap between rhs and result or lhs and result
+        if ( overlap(resultVec, resultVecOffset, 4, lhsMat, lhsMatOffset, 16) || overlap(resultVec, resultVecOffset, 4, rhsVec, rhsVecOffset, 4) ) {
+            sTemp[ 0 ] = lhsMat[0 + 4 * 0 + lhsMatOffset] * rhsVec[0 + rhsVecOffset] +
+                         lhsMat[0 + 4 * 1 + lhsMatOffset] * rhsVec[1 + rhsVecOffset] +
+                         lhsMat[0 + 4 * 2 + lhsMatOffset] * rhsVec[2 + rhsVecOffset] +
+                         lhsMat[0 + 4 * 3 + lhsMatOffset] * rhsVec[3 + rhsVecOffset];
+            sTemp[ 1 ] = lhsMat[1 + 4 * 0 + lhsMatOffset] * rhsVec[0 + rhsVecOffset] +
+                         lhsMat[1 + 4 * 1 + lhsMatOffset] * rhsVec[1 + rhsVecOffset] +
+                         lhsMat[1 + 4 * 2 + lhsMatOffset] * rhsVec[2 + rhsVecOffset] +
+                         lhsMat[1 + 4 * 3 + lhsMatOffset] * rhsVec[3 + rhsVecOffset];
+            sTemp[ 2 ] = lhsMat[2 + 4 * 0 + lhsMatOffset] * rhsVec[0 + rhsVecOffset] +
+                         lhsMat[2 + 4 * 1 + lhsMatOffset] * rhsVec[1 + rhsVecOffset] +
+                         lhsMat[2 + 4 * 2 + lhsMatOffset] * rhsVec[2 + rhsVecOffset] +
+                         lhsMat[2 + 4 * 3 + lhsMatOffset] * rhsVec[3 + rhsVecOffset];
+            sTemp[ 3 ] = lhsMat[3 + 4 * 0 + lhsMatOffset] * rhsVec[0 + rhsVecOffset] +
+                         lhsMat[3 + 4 * 1 + lhsMatOffset] * rhsVec[1 + rhsVecOffset] +
+                         lhsMat[3 + 4 * 2 + lhsMatOffset] * rhsVec[2 + rhsVecOffset] +
+                         lhsMat[3 + 4 * 3 + lhsMatOffset] * rhsVec[3 + rhsVecOffset];
+
+            resultVec[ 0 + resultVecOffset ] = sTemp[ 0 ];
+            resultVec[ 1 + resultVecOffset ] = sTemp[ 1 ];
+            resultVec[ 2 + resultVecOffset ] = sTemp[ 2 ];
+            resultVec[ 3 + resultVecOffset ] = sTemp[ 3 ];
+        } else {
+            resultVec[ 0 + resultVecOffset ] = lhsMat[0 + 4 * 0 + lhsMatOffset] * rhsVec[0 + rhsVecOffset] +
+                                               lhsMat[0 + 4 * 1 + lhsMatOffset] * rhsVec[1 + rhsVecOffset] +
+                                               lhsMat[0 + 4 * 2 + lhsMatOffset] * rhsVec[2 + rhsVecOffset] +
+                                               lhsMat[0 + 4 * 3 + lhsMatOffset] * rhsVec[3 + rhsVecOffset];
+            resultVec[ 1 + resultVecOffset ] = lhsMat[1 + 4 * 0 + lhsMatOffset] * rhsVec[0 + rhsVecOffset] +
+                                               lhsMat[1 + 4 * 1 + lhsMatOffset] * rhsVec[1 + rhsVecOffset] +
+                                               lhsMat[1 + 4 * 2 + lhsMatOffset] * rhsVec[2 + rhsVecOffset] +
+                                               lhsMat[1 + 4 * 3 + lhsMatOffset] * rhsVec[3 + rhsVecOffset];
+            resultVec[ 2 + resultVecOffset ] = lhsMat[2 + 4 * 0 + lhsMatOffset] * rhsVec[0 + rhsVecOffset] +
+                                               lhsMat[2 + 4 * 1 + lhsMatOffset] * rhsVec[1 + rhsVecOffset] +
+                                               lhsMat[2 + 4 * 2 + lhsMatOffset] * rhsVec[2 + rhsVecOffset] +
+                                               lhsMat[2 + 4 * 3 + lhsMatOffset] * rhsVec[3 + rhsVecOffset];
+            resultVec[ 3 + resultVecOffset ] = lhsMat[3 + 4 * 0 + lhsMatOffset] * rhsVec[0 + rhsVecOffset] +
+                                               lhsMat[3 + 4 * 1 + lhsMatOffset] * rhsVec[1 + rhsVecOffset] +
+                                               lhsMat[3 + 4 * 2 + lhsMatOffset] * rhsVec[2 + rhsVecOffset] +
+                                               lhsMat[3 + 4 * 3 + lhsMatOffset] * rhsVec[3 + rhsVecOffset];
+        }
+    }
 
     /**
      * Transposes a 4 x 4 matrix.
