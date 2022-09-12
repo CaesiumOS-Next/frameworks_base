@@ -830,29 +830,8 @@ public abstract class VibrationEffect implements Parcelable {
      *     .addPrimitive(VibrationEffect.Composition.PRIMITIVE_TICK, 1.0f, 100)
      *     .compose();}</pre>
      *
-     * <p>Composition elements can also be {@link VibrationEffect} instances, including other
-     * compositions, and off durations, which are periods of time when the vibrator will be
-     * turned off. Here is an example of a composition that "warms up" with a light tap,
-     * a stronger double tap, then repeats a vibration pattern indefinitely:
-     *
-     * <pre>
-     * {@code VibrationEffect repeatingEffect = VibrationEffect.startComposition()
-     *     .addPrimitive(VibrationEffect.Composition.PRIMITIVE_LOW_TICK)
-     *     .addOffDuration(Duration.ofMillis(10))
-     *     .addEffect(VibrationEffect.createPredefined(VibrationEffect.EFFECT_DOUBLE_CLICK))
-     *     .addOffDuration(Duration.ofMillis(50))
-     *     .addEffect(VibrationEffect.createWaveform(pattern, repeatIndex))
-     *     .compose();}</pre>
-     *
      * <p>When choosing to play a composed effect, you should check that individual components are
-     * supported by the device by using the appropriate vibrator method:
-     *
-     * <ul>
-     *     <li>Primitive support can be checked using {@link Vibrator#arePrimitivesSupported}.
-     *     <li>Effect support can be checked using {@link Vibrator#areEffectsSupported}.
-     *     <li>Amplitude control for one-shot and waveforms with amplitude values can be checked
-     *         using {@link Vibrator#hasAmplitudeControl}.
-     * </ul>
+     * supported by the device by using {@link Vibrator#arePrimitivesSupported}.
      *
      * @see VibrationEffect#startComposition()
      */
