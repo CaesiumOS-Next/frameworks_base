@@ -70,6 +70,24 @@
       "parentUuid": "e621ef95_300fe67c",
       "revId": "613ab49a07391ee8c1ae1e8e841902f873f84803",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8d63b220_effdc02d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2022-09-12T18:52:17Z",
+      "side": 1,
+      "message": "This is my analysis. When the request comes to create the effect for a device, the vendor EffectFactory checks the C API version supported by the module: https://cs.android.com/android/platform/superproject/+/master:frameworks/av/media/libeffects/factory/EffectsFactory.c;l\u003d301;drc\u003dd700529501d45ab3d0a0b506b2b76cb0212cf5ce, and fails the creation if it\u0027s less than 3.1. We don\u0027t pass the legacy C API version via the HIDL layer intentionally—because it\u0027s an implementation detail.\n\nThe fact that the effect is needed for a device session is only passed to the HAL during the effect creation (or probing). The problem is that for probing, the request never goes further than the framework. The \"probe\" flag is part of the framework interface only, lacking from the HIDL HAL interface: https://cs.android.com/android/platform/superproject/+/master:hardware/interfaces/audio/effect/7.0/IEffectsFactory.hal;l\u003d60;drc\u003d60ced768f3d54ddd7c0dabb1422379ad0a5990ba. Thus, the DeviceEffectManager of the AudioFlinger can only look at the effect descriptor in the probe mode: https://cs.android.com/android/platform/superproject/+/master:frameworks/av/services/audioflinger/DeviceEffectManager.cpp;l\u003d141;drc\u003d2a05df2563f083c875425a5846aa158c0d7f2ab6, where there is not enough information to make a correct decision.\n\nIt seems to me that the correct way to solve this problem would require extending the HAL interface, which we can\u0027t to for HIDL. Thus, we can only ensure that we implement the right approach in AIDL, for example by making \"probe\" going all the way down to HAL, or providing enough information in the effect descriptor so that the framework can make an informed decision.",
+      "parentUuid": "666d547d_1dbb0888",
+      "revId": "613ab49a07391ee8c1ae1e8e841902f873f84803",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
