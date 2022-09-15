@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9d276440_fc6c7131",
+        "filename": "media/java/android/media/MediaMuxer.java",
+        "patchSetId": 8
+      },
+      "lineNbr": 377,
+      "author": {
+        "id": 1576211
+      },
+      "writtenOn": "2022-09-15T23:22:22Z",
+      "side": 1,
+      "message": "I think this piece of information belongs in the fd @param. And we can leave the throws clause as it ways, I believe.",
+      "range": {
+        "startLine": 375,
+        "startChar": 52,
+        "endLine": 377,
+        "endChar": 45
+      },
+      "revId": "e461d612eb7fe0ff1e8a32c4efbcf732ae1e2796",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
