@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e11377dc_c61feb49",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1937565
+      },
+      "writtenOn": "2022-09-16T12:17:09Z",
+      "side": 1,
+      "message": "Pat, Winson: sorry for springing this on you without prior discussion.\n\nWe face a lot of difficult-to-debug issues from mainline tests, and need more data in the bugreports.\n\nThe data we need originates from derive_sdk, but that\u0027s a binary that runs (and exists) early during boot, so can\u0027t be used. apexd would be a good candidate to hold the data, but that service is also killed early.\n\nThe package manager felt like the next best candidate. WDTY?",
+      "revId": "46c545282f6ef47ab51db4fc545ae8a67b090302",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
