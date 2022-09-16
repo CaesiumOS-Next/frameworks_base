@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "db3775f3_41ed3c56",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1102879
+      },
+      "writtenOn": "2022-09-16T02:41:05Z",
+      "side": 1,
+      "message": "BTW, just curious that do you really run the all unit tests in frameworks/base, because I found many of the tests failed\n",
+      "revId": "dffd11fce6b703994112a24224fbb41a14b37bc5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
