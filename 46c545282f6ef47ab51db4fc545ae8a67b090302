@@ -16,6 +16,29 @@
       "message": "Pat, Winson: sorry for springing this on you without prior discussion.\n\nWe face a lot of difficult-to-debug issues from mainline tests, and need more data in the bugreports.\n\nThe data we need originates from derive_sdk, but that\u0027s a binary that runs (and exists) early during boot, so can\u0027t be used. apexd would be a good candidate to hold the data, but that service is also killed early.\n\nThe package manager felt like the next best candidate. WDTY?",
       "revId": "46c545282f6ef47ab51db4fc545ae8a67b090302",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5f6a304e_b726791a",
+        "filename": "services/core/java/com/android/server/pm/DumpHelper.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 615,
+      "author": {
+        "id": 1937565
+      },
+      "writtenOn": "2022-09-16T12:18:42Z",
+      "side": 1,
+      "message": "Not sure if we should be doing file IO during dump (time + potentially unstable system if dump is triggered because of a crash). Would it be better to read the data when the package manager starts and keep it cached in memory throughout the package manager\u0027s lifetime?",
+      "range": {
+        "startLine": 615,
+        "startChar": 56,
+        "endLine": 615,
+        "endChar": 77
+      },
+      "revId": "46c545282f6ef47ab51db4fc545ae8a67b090302",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
