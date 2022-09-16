@@ -22,6 +22,30 @@
       },
       "revId": "e461d612eb7fe0ff1e8a32c4efbcf732ae1e2796",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c4fd9c97_dc76f7f6",
+        "filename": "media/java/android/media/MediaMuxer.java",
+        "patchSetId": 8
+      },
+      "lineNbr": 377,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2022-09-16T03:46:00Z",
+      "side": 1,
+      "message": "Santiago,\nThis was updated as a response to the review comment at\nhttps://android-review.googlesource.com/c/platform/frameworks/base/+/1842097/comments/0652850d_4e1a745d\n\nPlease let us know if you still prefer we retain the thorws clause as it was before.\nThanks,",
+      "parentUuid": "9d276440_fc6c7131",
+      "range": {
+        "startLine": 375,
+        "startChar": 52,
+        "endLine": 377,
+        "endChar": 45
+      },
+      "revId": "e461d612eb7fe0ff1e8a32c4efbcf732ae1e2796",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
