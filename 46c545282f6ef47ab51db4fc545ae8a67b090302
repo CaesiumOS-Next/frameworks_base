@@ -39,6 +39,30 @@
       },
       "revId": "46c545282f6ef47ab51db4fc545ae8a67b090302",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fa47df83_9a134e83",
+        "filename": "services/core/java/com/android/server/pm/DumpHelper.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 615,
+      "author": {
+        "id": 1061144
+      },
+      "writtenOn": "2022-09-19T16:38:53Z",
+      "side": 1,
+      "message": "How expensive would this method call be? I think so long as we put some sort of timeout in place to account for deadlocks, failing FS or similar, this should be fine.\n\nGenerally doing expensive things during dump may be reasonable if it wouldn\u0027t cause watchdog or similar and would be preferred to caching essentially debugging info in memory.",
+      "parentUuid": "5f6a304e_b726791a",
+      "range": {
+        "startLine": 615,
+        "startChar": 56,
+        "endLine": 615,
+        "endChar": 77
+      },
+      "revId": "46c545282f6ef47ab51db4fc545ae8a67b090302",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
