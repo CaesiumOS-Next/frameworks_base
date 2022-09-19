@@ -4158,6 +4158,10 @@ public class Vpn {
      * Triggers an update of the VPN network's excluded UIDs if a VPN is running.
      */
     public synchronized void refreshPlatformVpnAppExclusionList() {
+        // Restricted users cannot configure VPNs. This is called from VpnManagerService on system
+        // thread. Silently return because throwing exception here will crash the system.
+        if (mUserManager.getUserInfo(mUserId).isRestricted()) return;
+
         updateAppExclusionList(getAppExclusionList(mPackage));
     }
 
