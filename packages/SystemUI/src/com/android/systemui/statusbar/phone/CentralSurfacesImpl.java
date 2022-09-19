@@ -3385,6 +3385,7 @@ public class CentralSurfacesImpl extends CoreStartable implements
                 mStatusBarKeyguardViewManager.reset(true);
             } else if ((mState == StatusBarState.KEYGUARD
                     && !mStatusBarKeyguardViewManager.bouncerIsOrWillBeShowing())
+                    && isKeyguardSecure()
                     || mState == StatusBarState.SHADE_LOCKED) {
                 mStatusBarKeyguardViewManager.showGenericBouncer(true /* scrimmed */);
             }
