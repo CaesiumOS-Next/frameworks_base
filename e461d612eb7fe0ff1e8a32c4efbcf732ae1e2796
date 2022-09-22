@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b081fae5_9340c6f3",
+        "filename": "media/java/android/media/MediaMuxer.java",
+        "patchSetId": 8
+      },
+      "lineNbr": 344,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2022-09-22T00:58:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f3f47406_f7c304a8",
+      "range": {
+        "startLine": 344,
+        "startChar": 27,
+        "endLine": 344,
+        "endChar": 63
+      },
+      "revId": "e461d612eb7fe0ff1e8a32c4efbcf732ae1e2796",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9d276440_fc6c7131",
@@ -85,6 +109,30 @@
       "side": 1,
       "message": "I think what Ray is saying in that comment is that we need the `@throws IOException` javadoc (that is, we cannot remove it), which I agree with (assuming we do throw IOException, but this is something I didn\u0027t check - happy to discuss this further).\n\nWhat I\u0027m saying is that documenting requirements for a specific parameter should happen at @param. So, in this documentation, the part that says:\n\n```\nWhen outputting webm files, the file descriptor must be open ...\n```  \n\nIMHO belongs in the @param documentation. To make things clear, I think the javadoc\u0027s final state should be something along the lines of:\n\n```\nCreates a media muxer that writes to the specified FileDescriptor.\n\n\u003cp\u003eThe caller must not use the file referenced by the specified {@code fd} before calling {@link #stop}.\n\n\u003cp\u003e It is the caller\u0027s responsibility to close the file descriptor, which is safe to do so as soon as this call returns.\n\n@param fd The FileDescriptor of the output media file. If {@code format} is {@link OutputFormat.MUXER_OUTPUT_WEBM}, {@code fd} must be open in read-write mode. Otherwise, write mode is sufficient, but read-write is also accepted.\n@param format The format of the output media file.\n@see android.media.MediaMuxer.OutputFormat\n@throws IllegalArgumentException if {@code format} is not supported, or if {@code fd} is not open in the expected mode.\n@throws IOException if an error occurs while performing an IO operation.\n```\n\nPlease note that I removed the summary line (first sentence in the javadoc) that says \"Constructor\", as this is obvious from the context. I also added \u003cp\u003e tags. We should make similar changes in the other constructor, for consistency.\n\nRay might want to (not?) LGTM this proposal.",
       "parentUuid": "c4fd9c97_dc76f7f6",
+      "range": {
+        "startLine": 375,
+        "startChar": 52,
+        "endLine": 377,
+        "endChar": 45
+      },
+      "revId": "e461d612eb7fe0ff1e8a32c4efbcf732ae1e2796",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "25a46d81_d4302ee6",
+        "filename": "media/java/android/media/MediaMuxer.java",
+        "patchSetId": 8
+      },
+      "lineNbr": 377,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2022-09-22T00:58:38Z",
+      "side": 1,
+      "message": "Santiago,\nThank you for details.\nHave changed the javadoc as suggested.",
+      "parentUuid": "f592cae5_735c6755",
       "range": {
         "startLine": 375,
         "startChar": 52,
