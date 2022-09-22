@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4125805b_2da58e4a",
+        "filename": "media/jni/android_media_MediaMuxer.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1576211
+      },
+      "writtenOn": "2022-09-22T14:14:45Z",
+      "side": 1,
+      "message": "Super nit: Can be collapsed into a single line.",
+      "range": {
+        "startLine": 171,
+        "startChar": 16,
+        "endLine": 171,
+        "endChar": 41
+      },
+      "revId": "f573377f9314738327081d67eb43f6cdb0e70281",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
