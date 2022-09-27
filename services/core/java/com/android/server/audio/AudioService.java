@@ -3280,7 +3280,8 @@ public class AudioService extends IAudioService.Stub
                             && mHdmiCecVolumeControlEnabled
                             && streamTypeAlias == AudioSystem.STREAM_MUSIC
                             // vol change on a full volume device
-                            && isFullVolumeDevice(device)) {
+                            &&  (isFullVolumeDevice(device)
+                                || fullVolumeHdmiClient instanceof HdmiTvClient)) {
                         int keyCode = KeyEvent.KEYCODE_UNKNOWN;
                         switch (direction) {
                             case AudioManager.ADJUST_RAISE:
