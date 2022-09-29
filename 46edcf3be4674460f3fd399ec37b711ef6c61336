@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ecd79b49_769a7440",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1562839
+      },
+      "writtenOn": "2022-09-29T19:33:09Z",
+      "side": 1,
+      "message": "Consider pulling out this patchset as its independent from the others in the relation chain so that it can land independently",
+      "revId": "46edcf3be4674460f3fd399ec37b711ef6c61336",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
