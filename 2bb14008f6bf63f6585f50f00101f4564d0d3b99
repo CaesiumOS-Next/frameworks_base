@@ -16,6 +16,24 @@
       "message": "https://android-review.googlesource.com/c/platform/frameworks/base/+/2198759 seems to fix the issue this CL is trying to address.",
       "revId": "2bb14008f6bf63f6585f50f00101f4564d0d3b99",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9ee61a5d_7564d48e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1969350
+      },
+      "writtenOn": "2022-10-04T03:29:56Z",
+      "side": 1,
+      "message": "in GSI version is OK?",
+      "parentUuid": "b3b8047d_ccf1ac45",
+      "revId": "2bb14008f6bf63f6585f50f00101f4564d0d3b99",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
