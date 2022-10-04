@@ -125,13 +125,20 @@ public final class Bitmap implements Parcelable {
             boolean requestPremultiplied, byte[] ninePatchChunk,
             NinePatch.InsetStruct ninePatchInsets) {
         this(nativeBitmap, width, height, density, requestPremultiplied, ninePatchChunk,
-                ninePatchInsets, true);
+                ninePatchInsets, true, 0);
+    }
+
+    Bitmap(long nativeBitmap, int width, int height, int density,
+            boolean requestPremultiplied, byte[] ninePatchChunk,
+            NinePatch.InsetStruct ninePatchInsets, boolean fromMalloc) {
+        this(nativeBitmap, width, height, density, requestPremultiplied, ninePatchChunk,
+            ninePatchInsets, true, 0);
     }
 
     // called from JNI and Bitmap_Delegate.
     Bitmap(long nativeBitmap, int width, int height, int density,
             boolean requestPremultiplied, byte[] ninePatchChunk,
-            NinePatch.InsetStruct ninePatchInsets, boolean fromMalloc) {
+            NinePatch.InsetStruct ninePatchInsets, boolean fromMalloc, long ashmemID) {
         if (nativeBitmap == 0) {
             throw new RuntimeException("internal error: native bitmap is 0");
         }
