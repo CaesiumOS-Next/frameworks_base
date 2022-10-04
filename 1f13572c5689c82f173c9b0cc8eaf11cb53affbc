@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0da6c693_5c273aaf",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1306837
+      },
+      "writtenOn": "2022-10-04T03:16:39Z",
+      "side": 1,
+      "message": "From the callstack on the bug, it seems to me https://android-review.googlesource.com/c/platform/frameworks/base/+/2198759 should fix your problem.\nCould you kindly check that first instead of rebasing on top of it?\n-2 to prevent from accidental submission.",
+      "revId": "1f13572c5689c82f173c9b0cc8eaf11cb53affbc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
