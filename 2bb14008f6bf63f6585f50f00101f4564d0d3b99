@@ -34,6 +34,24 @@
       "parentUuid": "b3b8047d_ccf1ac45",
       "revId": "2bb14008f6bf63f6585f50f00101f4564d0d3b99",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4615eb0b_1eb4e9f6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1061057
+      },
+      "writtenOn": "2022-10-04T03:35:03Z",
+      "side": 1,
+      "message": "I am cherry picking the CL to android13-gsi:\nhttps://android-review.googlesource.com/c/platform/frameworks/base/+/2240973/\n\nSo if you can confirm the fix, then GSI will be ok.",
+      "parentUuid": "9ee61a5d_7564d48e",
+      "revId": "2bb14008f6bf63f6585f50f00101f4564d0d3b99",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
