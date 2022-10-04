@@ -16,6 +16,24 @@
       "message": "Should we move this release statement now that you have your new logic using the AHardwareBuffer later in the function?  I know that SkImage takes a ref so this code won\u0027t cause an issue now, but it may not be clear to future readers.",
       "revId": "788306eb35d636a726ba889aee2128edabc4fb32",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2d349c06_12b115ba",
+        "filename": "libs/hwui/DeferredLayerUpdater.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1010103
+      },
+      "writtenOn": "2022-10-04T20:28:52Z",
+      "side": 1,
+      "message": "Done (although I went with just moving up the describe instead of down the _release)",
+      "parentUuid": "545ca2f9_1321e806",
+      "revId": "788306eb35d636a726ba889aee2128edabc4fb32",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
