@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8b0b48b3_de0869a4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1010103
+      },
+      "writtenOn": "2022-10-07T15:37:12Z",
+      "side": 1,
+      "message": "ping for review; Ram your +2 wasn\u0027t sticky",
+      "revId": "4fdd88cfdf4700b5e959f4439774cba72d12e427",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
