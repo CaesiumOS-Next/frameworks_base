@@ -22,6 +22,30 @@
       },
       "revId": "7d74257788de2b4cbaa510968e81c29c83ab056c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "85ae45bf_9f00a7d4",
+        "filename": "media/java/android/media/MediaMuxer.java",
+        "patchSetId": 10
+      },
+      "lineNbr": 372,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2022-10-07T17:22:12Z",
+      "side": 1,
+      "message": "It seems like instead of ., # was needed.\nThe build that had failed with patchset 10 is now passing with patchset 12.",
+      "parentUuid": "98adcbfb_b4916e6d",
+      "range": {
+        "startLine": 372,
+        "startChar": 12,
+        "endLine": 372,
+        "endChar": 46
+      },
+      "revId": "7d74257788de2b4cbaa510968e81c29c83ab056c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
