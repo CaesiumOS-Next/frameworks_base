@@ -2947,6 +2947,18 @@ public abstract class PackageManager {
     public static final String FEATURE_OPENGLES_EXTENSION_PACK = "android.hardware.opengles.aep";
 
     /**
+     * Feature for {@link #getSystemAvailableFeatures()} and {@link #hasSystemFeature(String)}.
+     * This feature indicates whether device supports running protected virtual machines.
+     *
+     * @see
+     * <a href="https://source.android.com/docs/core/virtualization">Android Virtualization Framework</a>
+     * @hide
+     */
+    @SystemApi
+    @SdkConstant(SdkConstantType.FEATURE)
+    public static final String FEATURE_VIRTUALIZATION_PROTECTED_VM =
+            "android.hardware.virtualization.protected_vm";
+    /**
      * Feature for {@link #getSystemAvailableFeatures} and
      * {@link #hasSystemFeature(String, int)}: If this feature is supported, the Vulkan
      * implementation on this device is hardware accelerated, and the Vulkan native API will
