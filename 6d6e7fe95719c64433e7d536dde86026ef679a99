@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "baaaa399_a06c6bb7",
+        "filename": "services/core/java/com/android/server/connectivity/Vpn.java",
+        "patchSetId": 17
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 1304263
+      },
+      "writtenOn": "2022-10-13T09:11:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4985de89_689b859b",
+      "range": {
+        "startLine": 230,
+        "startChar": 0,
+        "endLine": 230,
+        "endChar": 6
+      },
+      "revId": "6d6e7fe95719c64433e7d536dde86026ef679a99",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5dd5f9d1_72b154a5",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-09-07T08:48:20Z",
       "side": 1,
       "message": "Hmm, doesn\u0027t a new IKE session get opened each time the retry fails? would that always reset this?",
+      "range": {
+        "startLine": 2807,
+        "startChar": 74,
+        "endLine": 2808,
+        "endChar": 17
+      },
+      "revId": "6d6e7fe95719c64433e7d536dde86026ef679a99",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4128d5bf_d9766597",
+        "filename": "services/core/java/com/android/server/connectivity/Vpn.java",
+        "patchSetId": 17
+      },
+      "lineNbr": 2808,
+      "author": {
+        "id": 1304263
+      },
+      "writtenOn": "2022-10-13T09:11:07Z",
+      "side": 1,
+      "message": "removed. mDataStallRetryCount should only be reset when the VPN pass network validation.",
+      "parentUuid": "5dd5f9d1_72b154a5",
       "range": {
         "startLine": 2807,
         "startChar": 74,
@@ -70,6 +118,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "94585848_0c243e0d",
+        "filename": "services/core/java/com/android/server/connectivity/Vpn.java",
+        "patchSetId": 17
+      },
+      "lineNbr": 2907,
+      "author": {
+        "id": 1304263
+      },
+      "writtenOn": "2022-10-13T09:11:07Z",
+      "side": 1,
+      "message": "Data stall detection will only triggered after getting first validated network. If the VPN stay s in unvalidated, mDataStallSuspected will not be true, i.e. it won\u0027t cause a loop with the minimal retry timer. But the timer will execute only one time, so it should only reset when the validation result is positive.",
+      "parentUuid": "cf806307_02a35937",
+      "range": {
+        "startLine": 2906,
+        "startChar": 0,
+        "endLine": 2907,
+        "endChar": 37
+      },
+      "revId": "6d6e7fe95719c64433e7d536dde86026ef679a99",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "50b13766_aef01967",
@@ -83,6 +155,30 @@
       "writtenOn": "2022-09-07T08:48:20Z",
       "side": 1,
       "message": "Nit i think you can do \"this::onValidationStatus\" as a method reference",
+      "range": {
+        "startLine": 3000,
+        "startChar": 37,
+        "endLine": 3000,
+        "endChar": 73
+      },
+      "revId": "6d6e7fe95719c64433e7d536dde86026ef679a99",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3d595be4_c3df2949",
+        "filename": "services/core/java/com/android/server/connectivity/Vpn.java",
+        "patchSetId": 17
+      },
+      "lineNbr": 3000,
+      "author": {
+        "id": 1304263
+      },
+      "writtenOn": "2022-10-13T09:11:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "50b13766_aef01967",
       "range": {
         "startLine": 3000,
         "startChar": 37,
