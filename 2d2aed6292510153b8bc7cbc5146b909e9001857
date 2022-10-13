@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "afac6a89_278f1305",
+        "filename": "services/core/java/com/android/server/TelephonyRegistry.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 2582,
+      "author": {
+        "id": 1609802
+      },
+      "writtenOn": "2022-10-13T02:17:10Z",
+      "side": 1,
+      "message": "nits: this may be worthy a loge. A @NonNull parameter received null object. An error msg may draw more attention to dig what is going on.",
+      "range": {
+        "startLine": 2582,
+        "startChar": 16,
+        "endLine": 2582,
+        "endChar": 19
+      },
+      "revId": "2d2aed6292510153b8bc7cbc5146b909e9001857",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
