@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "612e5f0e_c879a44e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1863710
+      },
+      "writtenOn": "2022-10-14T16:17:44Z",
+      "side": 1,
+      "message": "I need a code owner approval on this change. We have to make `yield` calls explicit, as in Java 17 it is also a keyword. Thank you.",
+      "revId": "a34c0861b815201ac2c52adeec93a661a4838380",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
