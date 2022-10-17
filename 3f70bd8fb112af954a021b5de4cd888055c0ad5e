@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1cb31f81_769232db",
+        "filename": "services/core/java/com/android/server/connectivity/Vpn.java",
+        "patchSetId": 18
+      },
+      "lineNbr": 3275,
+      "author": {
+        "id": 1221725
+      },
+      "writtenOn": "2022-10-17T19:07:13Z",
+      "side": 1,
+      "message": "Will this reschedule it if it already exists? Is it possible to get NOT_VALIDATED twice in a row?",
+      "range": {
+        "startLine": 3275,
+        "startChar": 16,
+        "endLine": 3275,
+        "endChar": 76
+      },
+      "revId": "3f70bd8fb112af954a021b5de4cd888055c0ad5e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
