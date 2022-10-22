@@ -27,8 +27,10 @@ import android.icu.util.Calendar;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
+import android.location.LocationRequest;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.HandlerExecutor;
 import android.os.Looper;
 import android.os.Message;
 import android.util.ArrayMap;
@@ -157,8 +159,11 @@ public final class TwilightService extends SystemService
         Slog.d(TAG, "startListening");
 
         // Start listening for location updates (default: low power, max 1h, min 10m).
-        mLocationManager.requestLocationUpdates(
-                null /* default */, this, Looper.getMainLooper());
+        final LocationRequest locationRequest = new LocationRequest.Builder(60 * 60 * 1000)
+                 .setQuality(LocationRequest.QUALITY_LOW_POWER)
+                 .build();
+        final HandlerExecutor handlerExecutor = new HandlerExecutor(new Handler(Looper.getMainLooper()));
+        mLocationManager.requestLocationUpdates(locationRequest.getProvider(), locationRequest, handlerExecutor, this);
 
         // Request the device's location immediately if a previous location isn't available.
         if (mLocationManager.getLastLocation() == null) {
