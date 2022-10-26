@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2203ad8f_e762c609",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 19
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1221725
+      },
+      "writtenOn": "2022-10-26T04:55:46Z",
+      "side": 1,
+      "message": "Generally looks good, i\u0027ll take another look tomorrow with fresh eyes.",
+      "revId": "49d781a7ff41be569aa716c9e049d77bf5625b9a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fab34eff_c11ba9a8",
+        "filename": "services/core/java/com/android/server/connectivity/Vpn.java",
+        "patchSetId": 19
+      },
+      "lineNbr": 237,
+      "author": {
+        "id": 1221725
+      },
+      "writtenOn": "2022-10-26T04:55:46Z",
+      "side": 1,
+      "message": "Question - what\u0027s the validation failure timer? if possible, we should give it time to retry a failure at least once before triggering this aggressive restart.",
+      "range": {
+        "startLine": 237,
+        "startChar": 63,
+        "endLine": 237,
+        "endChar": 66
+      },
+      "revId": "49d781a7ff41be569aa716c9e049d77bf5625b9a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
