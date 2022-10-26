@@ -22,6 +22,30 @@
       },
       "revId": "3f70bd8fb112af954a021b5de4cd888055c0ad5e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "39ac8e35_ac4cf752",
+        "filename": "services/core/java/com/android/server/connectivity/Vpn.java",
+        "patchSetId": 18
+      },
+      "lineNbr": 3275,
+      "author": {
+        "id": 1304263
+      },
+      "writtenOn": "2022-10-26T03:15:51Z",
+      "side": 1,
+      "message": "Thanks for catching this. Yes, it\u0027s possible. Update design to skip other invalid status.",
+      "parentUuid": "1cb31f81_769232db",
+      "range": {
+        "startLine": 3275,
+        "startChar": 16,
+        "endLine": 3275,
+        "endChar": 76
+      },
+      "revId": "3f70bd8fb112af954a021b5de4cd888055c0ad5e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
