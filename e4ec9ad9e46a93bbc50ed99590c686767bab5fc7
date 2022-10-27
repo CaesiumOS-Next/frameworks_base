@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a16d5965_8c1729c8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431413
+      },
+      "writtenOn": "2022-10-27T04:06:07Z",
+      "side": 1,
+      "message": "If we have to use JNI for farmhash, is it still the fastest hash implementation we can use? JNI will introduce latency. Might be faster to just use another hashing algorithm that doesn\u0027t require JNI.",
+      "revId": "e4ec9ad9e46a93bbc50ed99590c686767bab5fc7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
