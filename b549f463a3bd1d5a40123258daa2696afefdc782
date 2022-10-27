@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2baa994b_8567f84e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1042276
+      },
+      "writtenOn": "2022-10-27T17:36:41Z",
+      "side": 1,
+      "message": "PTAL (owner vote is needed for ApkChecksums.java), this is a clean cherry-pick from goog/master.",
+      "revId": "b549f463a3bd1d5a40123258daa2696afefdc782",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
