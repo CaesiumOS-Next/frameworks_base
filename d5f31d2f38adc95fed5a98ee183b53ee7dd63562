@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a2cf71d7_82c8d230",
+        "filename": "core/jni/com_android_internal_expresslog_Counter.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1010103
+      },
+      "writtenOn": "2022-11-01T19:40:47Z",
+      "side": 1,
+      "message": "core/jni should be using explicit registration and not the auto-magic name lookup, see https://source.corp.google.com/android/frameworks/base/core/jni/AndroidRuntime.cpp;rcl\u003dfd0ce0a9b7a3e78db89c1ee87c32fbe07eee7f5d;l\u003d1496",
+      "range": {
+        "startLine": 33,
+        "startChar": 35,
+        "endLine": 33,
+        "endChar": 90
+      },
+      "revId": "d5f31d2f38adc95fed5a98ee183b53ee7dd63562",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b99a213a_50ea1c84",
+        "filename": "core/jni/com_android_internal_expresslog_Counter.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1010103
+      },
+      "writtenOn": "2022-11-01T19:40:47Z",
+      "side": 1,
+      "message": "nit, should use instead ScopedUtfChars from nativehelper ( https://source.corp.google.com/android/libnativehelper/header_only_include/nativehelper/scoped_utf_chars.h;rcl\u003dHEAD;l\u003d35 )\n\nAs a bonus that\u0027ll also throw a NullPointerException if metricNameObj is null since it looks like that\u0027s really a bug in the caller.",
+      "range": {
+        "startLine": 36,
+        "startChar": 35,
+        "endLine": 36,
+        "endChar": 52
+      },
+      "revId": "d5f31d2f38adc95fed5a98ee183b53ee7dd63562",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0a184274_f1e33069",
+        "filename": "core/jni/com_android_internal_expresslog_Counter.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1010103
+      },
+      "writtenOn": "2022-11-01T19:40:47Z",
+      "side": 1,
+      "message": "s/NULL/nullptr/",
+      "range": {
+        "startLine": 36,
+        "startChar": 68,
+        "endLine": 36,
+        "endChar": 72
+      },
+      "revId": "d5f31d2f38adc95fed5a98ee183b53ee7dd63562",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b166f86d_16162b1a",
+        "filename": "core/jni/com_android_internal_expresslog_Counter.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1010103
+      },
+      "writtenOn": "2022-11-01T19:40:47Z",
+      "side": 1,
+      "message": "`strlen(nullptr)` is undefined behavior.\n\nAlso Fingerprint64 looks to not accept a nullptr either.",
+      "range": {
+        "startLine": 38,
+        "startChar": 68,
+        "endLine": 38,
+        "endChar": 91
+      },
+      "revId": "d5f31d2f38adc95fed5a98ee183b53ee7dd63562",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
