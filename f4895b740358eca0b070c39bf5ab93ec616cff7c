@@ -16,6 +16,23 @@
       "message": "registro para la señal",
       "revId": "f4895b740358eca0b070c39bf5ab93ec616cff7c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8704bedb_d0437c69",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1870086
+      },
+      "writtenOn": "2022-11-01T07:13:05Z",
+      "side": 1,
+      "message": "Presubmit-Verified-1 does not seem to be caused by the patch, please help me check it, thanks!",
+      "revId": "f4895b740358eca0b070c39bf5ab93ec616cff7c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
