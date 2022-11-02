@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dc602468_5dcfaf4b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1387508
+      },
+      "writtenOn": "2022-11-02T13:21:04Z",
+      "side": 1,
+      "message": "Do you have a bug with a POC of the issue fixed here? I\u0027m not sure I understand what the issue is.\n\nrequestListeningState should always be called with a context of the current user.",
+      "revId": "3a68e89a6b1923f3f0654a01f1f0010143a57038",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
