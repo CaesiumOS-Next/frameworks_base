@@ -16,6 +16,23 @@
       "message": "@John Reck\nMany thanks for the guidance - I have applied all your comments\n\nThank you",
       "revId": "6a95311c136b3f4eebbfaea38e00aba0ecf5e1b1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2c806200_9b8d3dbd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1010103
+      },
+      "writtenOn": "2022-11-02T00:05:45Z",
+      "side": 1,
+      "message": "JNI LGTM but I\u0027m not familiar enough with the Java side goals here to +2 that",
+      "revId": "6a95311c136b3f4eebbfaea38e00aba0ecf5e1b1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
