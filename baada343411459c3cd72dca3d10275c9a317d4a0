@@ -70,6 +70,30 @@
       },
       "revId": "baada343411459c3cd72dca3d10275c9a317d4a0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "63fc38b0_165215a6",
+        "filename": "core/java/com/android/internal/expresslog/Counter.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1061217
+      },
+      "writtenOn": "2022-11-02T23:27:54Z",
+      "side": 1,
+      "message": "it\u0027s a minor issue. not blocking 😊",
+      "parentUuid": "a66bd903_41765cca",
+      "range": {
+        "startLine": 41,
+        "startChar": 62,
+        "endLine": 41,
+        "endChar": 73
+      },
+      "revId": "baada343411459c3cd72dca3d10275c9a317d4a0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
