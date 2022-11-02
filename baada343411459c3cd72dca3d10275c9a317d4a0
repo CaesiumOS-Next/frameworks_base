@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "df6c5abe_d39824d8",
+        "filename": "core/java/com/android/internal/expresslog/Counter.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1061217
+      },
+      "writtenOn": "2022-11-02T02:54:35Z",
+      "side": 1,
+      "message": "is negative amount valid?",
+      "range": {
+        "startLine": 41,
+        "startChar": 62,
+        "endLine": 41,
+        "endChar": 73
+      },
+      "revId": "baada343411459c3cd72dca3d10275c9a317d4a0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
