@@ -22,6 +22,30 @@
       },
       "revId": "baada343411459c3cd72dca3d10275c9a317d4a0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "597c4b5f_18a2a384",
+        "filename": "core/java/com/android/internal/expresslog/Counter.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1827146
+      },
+      "writtenOn": "2022-11-02T03:48:14Z",
+      "side": 1,
+      "message": "Technically - yes, semantically - it is invalid input\nWe can add check here and throw an exception in case of input less than 1",
+      "parentUuid": "df6c5abe_d39824d8",
+      "range": {
+        "startLine": 41,
+        "startChar": 62,
+        "endLine": 41,
+        "endChar": 73
+      },
+      "revId": "baada343411459c3cd72dca3d10275c9a317d4a0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
