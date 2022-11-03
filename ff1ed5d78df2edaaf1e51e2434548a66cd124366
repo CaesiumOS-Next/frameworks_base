@@ -35,6 +35,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "953b1a6f_afb4efd3",
+        "filename": "core/java/com/android/internal/expresslog/Counter.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1827146
+      },
+      "writtenOn": "2022-11-03T17:56:17Z",
+      "side": 1,
+      "message": "updated in follow up CL https://r.android.com/2285193",
+      "parentUuid": "d5aaa552_6648bcfa",
+      "revId": "ff1ed5d78df2edaaf1e51e2434548a66cd124366",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b866fca7_039210e0",
@@ -48,6 +66,24 @@
       "writtenOn": "2022-11-03T16:49:52Z",
       "side": 1,
       "message": "add OWNERS, you can use\n\n`per-file *expresslog* \u003d file:/services/core/java/com/android/server/stats/OWNERS`",
+      "revId": "ff1ed5d78df2edaaf1e51e2434548a66cd124366",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fb6a51ed_959bb19a",
+        "filename": "core/jni/com_android_internal_expresslog_Counter.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1827146
+      },
+      "writtenOn": "2022-11-03T17:56:17Z",
+      "side": 1,
+      "message": "updated in follow up CL https://r.android.com/2285193",
+      "parentUuid": "b866fca7_039210e0",
       "revId": "ff1ed5d78df2edaaf1e51e2434548a66cd124366",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
