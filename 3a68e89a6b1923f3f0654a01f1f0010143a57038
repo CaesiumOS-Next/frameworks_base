@@ -16,6 +16,24 @@
       "message": "Do you have a bug with a POC of the issue fixed here? I\u0027m not sure I understand what the issue is.\n\nrequestListeningState should always be called with a context of the current user.",
       "revId": "3a68e89a6b1923f3f0654a01f1f0010143a57038",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1baea9de_e0a6e54c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1974140
+      },
+      "writtenOn": "2022-11-03T02:43:33Z",
+      "side": 1,
+      "message": "When user is changed after new user is created, QSTileHost.onTuningChanged callback will be called and below sequence can be occured.\n - Run tile.destroy().  \n - Run  createTile(tileSpec).\n - But \"tile.destroy()\"\" use handler thread. So, CustomTile.create() can be called before old user`s customTile object`s handleDestroy().\n - So, TileServices.getTileWrapper(CustomTile tile) will be runed firstly. And new user`s tile(CustomTile object) will be added to TileServices`s mTiles list with the tile`s component name(key).\n - And then old user`s customTile`s handleDestroy() is called. So, TileServices.freeService(CustomTile tile, TileServiceManager service) will be called.\n - At that time, new user`s tile(CustomTile object) will be removed by \"mTiles.remove(tile.getComponent())\". Because component name is same between old user and new user.\n - After that, TileServices`s mTiles list don`t contain the customTile`s object. \n - So, when run requestListening(ComponentName component) ,  operation will be blocked by below code.\n            CustomTile customTile \u003d getTileForComponent(component);\n            if (customTile \u003d\u003d null) {\n                Log.d(\"TileServices\", \"Couldn\u0027t find tile for \" + component);\n                return;\n            }",
+      "parentUuid": "dc602468_5dcfaf4b",
+      "revId": "3a68e89a6b1923f3f0654a01f1f0010143a57038",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
