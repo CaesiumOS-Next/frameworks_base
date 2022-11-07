@@ -34,6 +34,23 @@
       "parentUuid": "dc602468_5dcfaf4b",
       "revId": "3a68e89a6b1923f3f0654a01f1f0010143a57038",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "52bf2bab_23a01322",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1387508
+      },
+      "writtenOn": "2022-11-07T14:41:49Z",
+      "side": 1,
+      "message": "Thanks for the patch. We\u0027ll evaluate its inclusion",
+      "revId": "3a68e89a6b1923f3f0654a01f1f0010143a57038",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
