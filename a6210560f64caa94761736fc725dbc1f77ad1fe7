@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9e89d06e_db943f4d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1004882
+      },
+      "writtenOn": "2022-11-07T08:51:01Z",
+      "side": 1,
+      "message": "juliacr@\n\nPlease take a look at this one when you get the time.\n\nCurrently when using a device out of the box or factory resetting a device, it is possible for an end user to disable individual notification channels for system apps or default apps that should be in a \u0027fixed\u0027 state, e.g. System UI, CellBroadcastReceiver and more.  Then when restarting the device, those channels are permanently locked in the off state.",
+      "revId": "a6210560f64caa94761736fc725dbc1f77ad1fe7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
