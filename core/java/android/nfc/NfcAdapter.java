@@ -618,7 +618,7 @@ public final class NfcAdapter {
     /** get handle to NFC service interface */
     private static INfcAdapter getServiceInterface() {
         /* get a handle to NFC service */
-        IBinder b = ServiceManager.getService("nfc");
+        IBinder b = ServiceManager.waitForService("nfc");
         if (b == null) {
             return null;
         }
