@@ -702,6 +702,7 @@ public class CompanionDeviceManagerService extends SystemService {
             if (!active && !shouldBindPackage(userId, packageName)) {
                 if (DEBUG) Log.d(TAG, "Last listener unregistered. Unbinding application.");
                 mCompanionAppController.unbindCompanionApplication(userId, packageName);
+                onDeviceDisappearedInternal(association.getId());
             }
         }
 
