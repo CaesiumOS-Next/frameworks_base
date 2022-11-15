@@ -9,6 +9,17 @@
       "name": "PackageManagerServiceHostTests"
     }
   ],
+  "kernel-presubmit": [
+    {
+      "name": "PackageManagerServiceHostTests",
+      "options": [
+        {
+          // TODO(b/197552347) (crashes postsubmit)
+          "exclude-filter": "com.android.server.pm.test.OverlayActorVisibilityTest#testVisibilityByOverlayable"
+        }
+      ]
+    }
+  ],
   "imports": [
     {
       "path": "frameworks/base/services/tests/PackageManagerServiceTests/unit"
