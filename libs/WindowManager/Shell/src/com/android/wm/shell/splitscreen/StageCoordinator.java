@@ -414,6 +414,13 @@ class StageCoordinator implements SplitLayout.SplitLayoutHandler,
         mShouldUpdateRecents = false;
         mIsDividerRemoteAnimating = true;
         final WindowContainerTransaction wct = new WindowContainerTransaction();
+
+        if (isTaskVanished(wct, mainTaskId, sideTaskId,
+                pendingIntent, fillInIntent, sideOptions, withIntent)) {
+            mTaskOrganizer.applyTransaction(wct);
+            return;
+        }
+
         final WindowContainerTransaction evictWct = new WindowContainerTransaction();
         prepareEvictChildTasks(SPLIT_POSITION_TOP_OR_LEFT, evictWct);
         prepareEvictChildTasks(SPLIT_POSITION_BOTTOM_OR_RIGHT, evictWct);
@@ -1903,4 +1910,31 @@ class StageCoordinator implements SplitLayout.SplitLayoutHandler,
             pw.println(prefix + "mHasChildren=" + mHasChildren);
         }
     }
+
+    private boolean isTaskVanished(WindowContainerTransaction wct, int mainTaskId, int sideTaskId,
+                                   PendingIntent pendingIntent, Intent fillInIntent,
+                                   Bundle sideOptions, boolean withIntent) {
+        ActivityManager.RecentTaskInfo mainTask = mRecentTasks.get().getTaskFromRecentTasks(mainTaskId);
+        ActivityManager.RecentTaskInfo sideTask = mRecentTasks.get().getTaskFromRecentTasks(sideTaskId);
+        if (sideTaskId == INVALID_TASK_ID) {
+            if (mainTask == null && withIntent) {
+                Slog.i(TAG, "Side taskId is invalid and main task " + mainTaskId + " is null.");
+                wct.sendPendingIntent(pendingIntent, fillInIntent, sideOptions);
+                return true;
+            }
+        } else {
+            if (mainTask != null && sideTask == null) {
+                Slog.i(TAG, "Side task " + sideTaskId + " is null, start main task.");
+                wct.startTask(mainTaskId, null);
+                return true;
+            }
+            if (mainTask == null && sideTask != null) {
+                Slog.i(TAG, "Main task " + mainTaskId + " is null, start side task.");
+                wct.startTask(sideTaskId, null);
+                return true;
+            }
+        }
+        return false;
+    }
+
 }

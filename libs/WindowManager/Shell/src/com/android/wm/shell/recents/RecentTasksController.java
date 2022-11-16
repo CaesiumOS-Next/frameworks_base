@@ -134,6 +134,19 @@ public class RecentTasksController implements TaskStackListenerCallback,
                 taskId1, taskId2, splitBounds);
     }
 
+    public ActivityManager.RecentTaskInfo getTaskFromRecentTasks(int taskId) {
+        List<ActivityManager.RecentTaskInfo> tasks = ActivityTaskManager.getInstance().getRecentTasks(
+                Integer.MAX_VALUE, ActivityManager.RECENT_IGNORE_UNAVAILABLE,
+                ActivityManager.getCurrentUser());
+        for (int i = 0; i < tasks.size(); i++) {
+            final ActivityManager.RecentTaskInfo task = tasks.get(i);
+            if (task.taskId == taskId) {
+                return task;
+            }
+        }
+        return null;
+    }
+
     /**
      * Removes a split pair.
      */
