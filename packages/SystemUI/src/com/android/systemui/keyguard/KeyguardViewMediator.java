@@ -2445,6 +2445,7 @@ public class KeyguardViewMediator extends CoreStartable implements Dumpable,
                     }
                 }
                 setShowingLocked(mShowing, true /* force */);
+                hideLocked();
                 return;
             }
             mHiding = false;
