@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5ae685fd_b92224fe",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 12
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1840920
+      },
+      "writtenOn": "2022-11-19T06:52:43Z",
+      "side": 1,
+      "message": "Hello, could you help to run Presubmit-Verified again? Thanks!\n\nI can\u0027t see the failed cases in Presubmit-Verified. Maybe there are some code conflicts with the internal branch.",
+      "revId": "220d4f950f3db0c1ce4b367a95ef865feb006855",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
