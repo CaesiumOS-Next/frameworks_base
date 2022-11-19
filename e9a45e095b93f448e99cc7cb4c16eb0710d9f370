@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ff385ab6_0e5403cc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2022-11-19T06:37:01Z",
+      "side": 1,
+      "message": "Cherrypicking to AOSP so that we can promote the errorprone warning that finds this to an error.",
+      "revId": "e9a45e095b93f448e99cc7cb4c16eb0710d9f370",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
