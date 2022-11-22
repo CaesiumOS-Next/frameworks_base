@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2253f46d_a8491437",
+        "filename": "core/java/android/app/ActivityThread.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 6621,
+      "author": {
+        "id": 1083168
+      },
+      "writtenOn": "2022-11-22T23:15:29Z",
+      "side": 0,
+      "message": "Done",
+      "parentUuid": "36ba5ede_0e283fbc",
+      "range": {
+        "startLine": 6621,
+        "startChar": 12,
+        "endLine": 6621,
+        "endChar": 40
+      },
+      "revId": "8ea0d57f8df7bba4f1037fb9c499fde067a3ac62",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bd83cfd0_b80292cb",
@@ -84,6 +108,30 @@
       "writtenOn": "2022-11-22T23:15:12Z",
       "side": 0,
       "message": "Done",
+      "parentUuid": "f9aa1d58_afd202b3",
+      "range": {
+        "startLine": 6623,
+        "startChar": 0,
+        "endLine": 6625,
+        "endChar": 0
+      },
+      "revId": "8ea0d57f8df7bba4f1037fb9c499fde067a3ac62",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2aad19d4_c3bdead5",
+        "filename": "core/java/android/app/ActivityThread.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 6625,
+      "author": {
+        "id": 1083168
+      },
+      "writtenOn": "2022-11-22T23:15:29Z",
+      "side": 0,
+      "message": "Message is printed here: https://android.googlesource.com/platform/frameworks/base/+/0b703be0c58eb83c85852bb04969a5d2a7ebba71/services/core/java/com/android/server/am/AppWaitingForDebuggerDialog.java",
       "parentUuid": "f9aa1d58_afd202b3",
       "range": {
         "startLine": 6623,
