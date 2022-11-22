@@ -16,6 +16,23 @@
       "message": "Ping. And also, adding all OWNERS.",
       "revId": "9b348a16015dcdb4b0796d672c29595984cecf31",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6a0985bc_c2382be3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1101726
+      },
+      "writtenOn": "2022-11-22T22:29:14Z",
+      "side": 1,
+      "message": "Please refrain from adding _all_ owners at once. This risks no one reviewing the CL because no one is sure who is supposed to.",
+      "revId": "9b348a16015dcdb4b0796d672c29595984cecf31",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
