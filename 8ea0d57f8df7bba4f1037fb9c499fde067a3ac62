@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bd83cfd0_b80292cb",
+        "filename": "core/java/android/app/ActivityThread.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 6625,
+      "author": {
+        "id": 1170688
+      },
+      "writtenOn": "2022-11-22T23:11:01Z",
+      "side": 0,
+      "message": "Are there any other messages printed out to indicate that the app is waiting for debugger? Can you print out the correct port number?",
+      "range": {
+        "startLine": 6623,
+        "startChar": 0,
+        "endLine": 6625,
+        "endChar": 0
+      },
+      "revId": "8ea0d57f8df7bba4f1037fb9c499fde067a3ac62",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
