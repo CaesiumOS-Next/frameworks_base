@@ -16,6 +16,24 @@
       "message": "nit: wouldn\u0027t it be more concise if we flip it?\ni.e.\n```\nif (DEBUG_DISABLE_SCREEN_DECORATIONS) {\n    // print debug stuff\n} else {\n    // print non debug stuff\n}\n```\n\nsame for the below.",
       "revId": "7b824dcbcab336685c9efb58f1e5e307320644b3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "63a46953_8df639cb",
+        "filename": "packages/SystemUI/src/com/android/systemui/ScreenDecorations.java",
+        "patchSetId": 15
+      },
+      "lineNbr": 975,
+      "author": {
+        "id": 1840920
+      },
+      "writtenOn": "2022-11-28T07:47:24Z",
+      "side": 1,
+      "message": "Thanks for review!",
+      "parentUuid": "d874b54a_55f44d8d",
+      "revId": "7b824dcbcab336685c9efb58f1e5e307320644b3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
