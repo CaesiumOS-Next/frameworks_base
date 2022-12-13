@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "63c9bc53_97075a16",
+        "filename": "core/java/android/hardware/HardwareBuffer.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 327,
+      "author": {
+        "id": 1010103
+      },
+      "writtenOn": "2022-12-13T14:21:02Z",
+      "side": 1,
+      "message": "The docs change LGTM but this shouldn\u0027t be here. ISE isn\u0027t a checked exception so there\u0027s no benefit to having this on the method signature. It just complicates the API check \u0026 potentially confuses users who think they\u0027re now expected to actually catch \u0026 handle this exception when they aren\u0027t.",
+      "range": {
+        "startLine": 327,
+        "startChar": 24,
+        "endLine": 327,
+        "endChar": 52
+      },
+      "revId": "a015eb0481d879c9e5d9e8ff7f0085d93d4d4e90",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
