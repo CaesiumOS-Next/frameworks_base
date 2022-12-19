@@ -2905,9 +2905,10 @@ public class Vpn {
                     (r, exe) -> {
                         Log.d(TAG, "Runnable " + r + " rejected by the mExecutor");
                     });
+            // IKEv2 VPN only supports exclusion list.
             setVpnNetworkPreference(mSessionKey,
                     createUserAndRestrictedProfilesRanges(mUserId,
-                            mConfig.allowedApplications, mConfig.disallowedApplications));
+                            null /* allowedApplications */, mConfig.disallowedApplications));
         }
 
         @Override
@@ -3315,9 +3316,10 @@ public class Vpn {
             synchronized (Vpn.this) {
                 // Ignore stale runner.
                 if (mVpnRunner != this) return;
+                // IKEv2 VPN only supports exclusion list.
                 setVpnNetworkPreference(mSessionKey,
                         createUserAndRestrictedProfilesRanges(mUserId,
-                                mConfig.allowedApplications, mConfig.disallowedApplications));
+                                null /* allowedApplications */, mConfig.disallowedApplications));
             }
             if (underlyingNetwork == null) {
                 Log.d(TAG, "There is no active network for starting an IKE session");
@@ -4488,9 +4490,10 @@ public class Vpn {
                         .setUids(createUserAndRestrictedProfilesRanges(
                                 mUserId, null /* allowedApplications */, excludedApps))
                         .build();
+                // IKEv2 VPN only supports exclusion list.
                 setVpnNetworkPreference(getSessionKeyLocked(),
                         createUserAndRestrictedProfilesRanges(mUserId,
-                                mConfig.allowedApplications, mConfig.disallowedApplications));
+                                null /* allowedApplications */, mConfig.disallowedApplications));
                 doSendNetworkCapabilities(mNetworkAgent, mNetworkCapabilities);
             }
         }
