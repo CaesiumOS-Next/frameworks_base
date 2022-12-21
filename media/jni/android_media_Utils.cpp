@@ -26,9 +26,6 @@
 
 #define ALIGN(x, mask) ( ((x) + (mask) - 1) & ~((mask) - 1) )
 
-// Must be in sync with the value in HeicCompositeStream.cpp
-#define CAMERA3_HEIC_BLOB_ID 0x00FE
-
 namespace android {
 
 // -----------Utility functions used by ImageReader/Writer JNI-----------------

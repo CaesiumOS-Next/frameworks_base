@@ -62,6 +62,8 @@ typedef struct camera3_jpeg_blob_v2 {
 enum {
       CAMERA3_JPEG_BLOB_ID = 0x00FF,
       CAMERA3_JPEG_APP_SEGMENTS_BLOB_ID = 0x0100,
+      // Must be in sync with the value in HeicCompositeStream.cpp
+      CAMERA3_HEIC_BLOB_ID = 0x00FE,
 };
 
 };  // namespace android
