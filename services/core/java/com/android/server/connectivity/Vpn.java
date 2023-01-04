@@ -21,12 +21,14 @@ import static android.Manifest.permission.CONTROL_VPN;
 import static android.content.pm.PackageManager.PERMISSION_GRANTED;
 import static android.net.NetworkCapabilities.NET_CAPABILITY_NOT_METERED;
 import static android.net.NetworkCapabilities.NET_CAPABILITY_NOT_VPN;
+import static android.net.NetworkCapabilities.TRANSPORT_CELLULAR;
 import static android.net.NetworkCapabilities.TRANSPORT_VPN;
 import static android.net.RouteInfo.RTN_THROW;
 import static android.net.RouteInfo.RTN_UNREACHABLE;
 import static android.net.VpnManager.NOTIFICATION_CHANNEL_VPN;
 import static android.os.PowerWhitelistManager.REASON_VPN;
 import static android.os.UserHandle.PER_USER_RANGE;
+import static android.telephony.CarrierConfigManager.KEY_MIN_UDP_PORT_4500_NAT_TIMEOUT_SEC_INT;
 
 import static com.android.net.module.util.NetworkStackConstants.IPV6_MIN_MTU;
 import static com.android.server.vcn.util.PersistableBundleUtils.STRING_DESERIALIZER;
@@ -125,12 +127,16 @@ import android.security.keystore.KeyProperties;
 import android.system.keystore2.Domain;
 import android.system.keystore2.KeyDescriptor;
 import android.system.keystore2.KeyPermission;
+import android.telephony.CarrierConfigManager;
+import android.telephony.SubscriptionManager;
+import android.telephony.TelephonyManager;
 import android.text.TextUtils;
 import android.util.ArraySet;
 import android.util.IndentingPrintWriter;
 import android.util.LocalLog;
 import android.util.Log;
 import android.util.Range;
+import android.util.SparseArray;
 
 import com.android.internal.R;
 import com.android.internal.annotations.GuardedBy;
@@ -258,6 +264,10 @@ public class Vpn {
     private final ConnectivityManager mConnectivityManager;
     private final AppOpsManager mAppOpsManager;
     private final ConnectivityDiagnosticsManager mConnectivityDiagnosticsManager;
+    private final TelephonyManager mTelephonyManager;
+    private final CarrierConfigManager mCarrierConfigManager;
+    private final SubscriptionManager mSubscriptionManager;
+
     // The context is for specific user which is created from mUserId
     private final Context mUserIdContext;
     @VisibleForTesting final Dependencies mDeps;
@@ -302,6 +312,23 @@ public class Vpn {
     private static final int MAX_EVENTS_LOGS = 20;
     private final LocalLog mUnderlyNetworkChanges = new LocalLog(MAX_EVENTS_LOGS);
     private final LocalLog mVpnManagerEvents = new LocalLog(MAX_EVENTS_LOGS);
+
+    /** Default NAT keepalive value. */
+    private static final int DEFAULT_MIN_UDP_PORT_4500_NAT_TIMEOUT_SEC = 300;
+    /**
+     * Default keepalive value to consider long-lived TCP connections are expensive on the
+     * VPN network from battery usage point of view.
+     * TODO: consider reading from setting.
+     */
+    @VisibleForTesting
+    static final int DEFAULT_LONG_LIVED_TCP_CONNS_EXPENSIVE_TIMEOUT_SEC = 150;
+    /**
+     * Cached Map of <subscription ID, Integer keepalive> since retrieving the PersistableBundle
+     * and the target value from CarrierConfigManager is somewhat expensive as it has hundreds of
+     * fields. This cache is cleared when the carrier config changes to ensure data freshness.
+     */
+    @GuardedBy("this")
+    private final SparseArray<Integer> mCachedKeepalivePerSubId = new SparseArray<>();
 
     /**
      * Whether to keep the connection active after rebooting, or upgrading or reinstalling. This
@@ -616,6 +643,10 @@ public class Vpn {
         mUserIdContext = context.createContextAsUser(UserHandle.of(userId), 0 /* flags */);
         mConnectivityDiagnosticsManager =
                 mContext.getSystemService(ConnectivityDiagnosticsManager.class);
+        mCarrierConfigManager = mContext.getSystemService(CarrierConfigManager.class);
+        mTelephonyManager = mContext.getSystemService(TelephonyManager.class);
+        mSubscriptionManager = mContext.getSystemService(SubscriptionManager.class);
+
         mDeps = deps;
         mNms = netService;
         mNetd = netd;
@@ -1575,10 +1606,11 @@ public class Vpn {
         capsBuilder.setAdministratorUids(new int[] {mOwnerUID});
         capsBuilder.setUids(createUserAndRestrictedProfilesRanges(mUserId,
                 mConfig.allowedApplications, mConfig.disallowedApplications));
-
-        capsBuilder.setTransportInfo(
-                new VpnTransportInfo(getActiveVpnType(), mConfig.session, mConfig.allowBypass,
-                        false /* longLivedTcpConnectionsExpensive */));
+        final NetworkCapabilities underlyNc = (mConfig.underlyingNetworks != null)
+                ? mConnectivityManager.getNetworkCapabilities(mConfig.underlyingNetworks[0]) : null;
+        capsBuilder.setTransportInfo(createVpnTransportInfo(
+                getActiveVpnType(), mConfig.session, mConfig.allowBypass,
+                getKeepaliveForSubId(getFirstSubIdForNetworkCapabilities(underlyNc))));
 
         // Only apps targeting Q and above can explicitly declare themselves as metered.
         // These VPNs are assumed metered unless they state otherwise.
@@ -2883,6 +2915,16 @@ public class Vpn {
          */
         private int mRetryCount = 0;
 
+        private final BroadcastReceiver mCarrierConfigReceiver = new BroadcastReceiver() {
+            @Override
+            public void onReceive(Context context, Intent intent) {
+                if (CarrierConfigManager.ACTION_CARRIER_CONFIG_CHANGED
+                        .equals(intent.getAction())) {
+                    mExecutor.execute(() -> onCarrierConfigChanged());
+                }
+            }
+        };
+
         IkeV2VpnRunner(
                 @NonNull Ikev2VpnProfile profile, @NonNull ScheduledThreadPoolExecutor executor) {
             super(TAG);
@@ -2908,6 +2950,37 @@ public class Vpn {
             setVpnNetworkPreference(mSessionKey,
                     createUserAndRestrictedProfilesRanges(mUserId,
                             mConfig.allowedApplications, mConfig.disallowedApplications));
+            // Monitor carrier config changes.
+            final IntentFilter filter = new IntentFilter();
+            filter.addAction(CarrierConfigManager.ACTION_CARRIER_CONFIG_CHANGED);
+            mContext.registerReceiver(mCarrierConfigReceiver, filter);
+        }
+
+        private void onCarrierConfigChanged() {
+            synchronized (Vpn.this) {
+                // Always reset even in stale runner because cached values should be fetched again
+                // from carrier config.
+                mCachedKeepalivePerSubId.clear();
+            }
+            final NetworkCapabilities nc =
+                    mConnectivityManager.getNetworkCapabilities(mActiveNetwork);
+            if (nc == null) return;
+
+            final Set<Integer> subIds = nc.getSubscriptionIds();
+            if (nc.hasTransport(TRANSPORT_CELLULAR) && subIds.size() > 0) {
+                synchronized (Vpn.this) {
+                    // Ignore stale runner.
+                    if (mVpnRunner != this) return;
+
+                    final int keepalive = getKeepaliveForSubId(
+                            getFirstSubIdForNetworkCapabilities(nc));
+                    final VpnTransportInfo info = createVpnTransportInfo(
+                            getActiveVpnType(), mConfig.session, mConfig.allowBypass, keepalive);
+                    mNetworkCapabilities = new NetworkCapabilities.Builder(mNetworkCapabilities)
+                            .setTransportInfo(info).build();
+                    doSendNetworkCapabilities(mNetworkAgent, mNetworkCapabilities);
+                }
+            }
         }
 
         @Override
@@ -3405,6 +3478,20 @@ public class Vpn {
         /** Called when the NetworkCapabilities of underlying network is changed */
         public void onDefaultNetworkCapabilitiesChanged(@NonNull NetworkCapabilities nc) {
             mUnderlyingNetworkCapabilities = nc;
+            synchronized (Vpn.this) {
+                // Ignore stale runner.
+                if (mVpnRunner != this) return;
+
+                mNetworkCapabilities = new NetworkCapabilities.Builder(mNetworkCapabilities)
+                        .setTransportInfo(createVpnTransportInfo(
+                                getActiveVpnType(), mConfig.session, mConfig.allowBypass,
+                                getKeepaliveForSubId(
+                                        getFirstSubIdForNetworkCapabilities(nc))))
+                        .build();
+                if (mNetworkAgent == null) return;
+
+                doSendNetworkCapabilities(mNetworkAgent, mNetworkCapabilities);
+            }
         }
 
         /** Called when the LinkProperties of underlying network is changed */
@@ -3760,6 +3847,7 @@ public class Vpn {
 
             resetIkeState();
 
+            mContext.unregisterReceiver(mCarrierConfigReceiver);
             mConnectivityManager.unregisterNetworkCallback(mNetworkCallback);
             mConnectivityDiagnosticsManager.unregisterConnectivityDiagnosticsCallback(
                     mDiagnosticsCallback);
@@ -4746,6 +4834,8 @@ public class Vpn {
                     pw.println("Reset session scheduled");
                 }
             }
+            pw.println("mCachedKeepalivePerSubId=" + mCachedKeepalivePerSubId);
+
             pw.println("mUnderlyNetworkChanges (most recent first):");
             pw.increaseIndent();
             mUnderlyNetworkChanges.reverseDump(pw);
@@ -4756,5 +4846,51 @@ public class Vpn {
             mVpnManagerEvents.reverseDump(pw);
             pw.decreaseIndent();
         }
+    }
+
+    private int getFirstSubIdForNetworkCapabilities(@Nullable NetworkCapabilities nc) {
+        if (nc == null) return SubscriptionManager.INVALID_SUBSCRIPTION_ID;
+
+        for (int subId : nc.getSubscriptionIds()) {
+            return subId;
+        }
+        return SubscriptionManager.INVALID_SUBSCRIPTION_ID;
+    }
+
+    private VpnTransportInfo createVpnTransportInfo(int type, String sessionId, boolean bypassable,
+            int keepalive) {
+        return new VpnTransportInfo(type, sessionId, bypassable,
+                keepalive < DEFAULT_LONG_LIVED_TCP_CONNS_EXPENSIVE_TIMEOUT_SEC);
+    }
+
+    private int getKeepaliveForSubId(int subId) {
+        // Get carrier config for IKEV2 VPN only.
+        if (!isIkev2VpnRunner()) return DEFAULT_MIN_UDP_PORT_4500_NAT_TIMEOUT_SEC;
+
+        if (subId == SubscriptionManager.INVALID_SUBSCRIPTION_ID) {
+            Log.d(TAG, "Invalid subId");
+            return DEFAULT_MIN_UDP_PORT_4500_NAT_TIMEOUT_SEC;
+        }
+
+        if (mCachedKeepalivePerSubId.contains(subId)) {
+            Log.d(TAG, "Get cached keepalive config");
+            return mCachedKeepalivePerSubId.get(subId).intValue();
+        }
+
+        final TelephonyManager perSubTm = mTelephonyManager.createForSubscriptionId(subId);
+        if (perSubTm.getSimApplicationState() != TelephonyManager.SIM_STATE_LOADED) {
+            Log.d(TAG, "SIM card is not ready on sub " + subId);
+            return DEFAULT_MIN_UDP_PORT_4500_NAT_TIMEOUT_SEC;
+        }
+
+        final PersistableBundle carrierConfig = mCarrierConfigManager.getConfigForSubId(subId);
+        if (!CarrierConfigManager.isConfigForIdentifiedCarrier(carrierConfig)) {
+            return DEFAULT_MIN_UDP_PORT_4500_NAT_TIMEOUT_SEC;
+        }
+        final int natKeepalive = carrierConfig.getInt(KEY_MIN_UDP_PORT_4500_NAT_TIMEOUT_SEC_INT);
+        mCachedKeepalivePerSubId.put(subId, natKeepalive);
+
+        Log.d(TAG, "Get customized keepalive=" + natKeepalive);
+        return natKeepalive;
     }
 }
