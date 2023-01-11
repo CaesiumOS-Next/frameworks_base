@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a05caed6_95669f2d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1312644
+      },
+      "writtenOn": "2023-01-11T19:11:34Z",
+      "side": 1,
+      "message": "any reasons why this is done in aosp/master?\nI\u0027d appreciate if we could cherry-pick to tm-qpr-dev.",
+      "revId": "5ab90aebaf07678f8841768c997f76ecb5c2db34",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
