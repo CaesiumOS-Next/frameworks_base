@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "c24e09f2_457ea2f6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1947461
+      },
+      "writtenOn": "2023-01-11T08:40:50Z",
+      "side": 1,
+      "message": "\u003e Are we sure that we want to set up an entirely new namespace, including doing all the server-side and work?\n\nAccording to Xiao, setting up did not take much time.\nhttps://g3doc.corp.google.com/company/teams/android-core-experiments/new/dev_guide/namespaces.md?cl\u003dhead#creating-a-namespace\nSo I thought this is acceptable.\n\u003e Also, if we do set up a new tethering_native namespace, will we be able to have one experiment set both tethering_native flags and tethering flags?\n\nIf we create tethering_native for native experiment, the flag value in the tethering_native is available to Java and native code.\nSo we can use tethering_native namespace if we want to use flag value from Java and native code.",
+      "parentUuid": "60c185f5_527b4fb7",
+      "range": {
+        "startLine": 11,
+        "startChar": 204,
+        "endLine": 11,
+        "endChar": 205
+      },
+      "revId": "01e857ececcca45c87517d20edc106641dc897b5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "40aa2faa_6e01aa57",
