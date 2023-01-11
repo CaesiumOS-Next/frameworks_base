@@ -1,5 +1,46 @@
 {
-  "comments": [],
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "60c185f5_527b4fb7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2023-01-11T08:12:24Z",
+      "side": 1,
+      "message": "Might want to say add something like:\n\n\"Even if we decide that we want to use flags from native code in the Tethering module, we will do so using a new namespace, tethering_native.\"\n\nThat said - is this really true? Are we sure that we want to set up an entirely new namespace, including doing all the server-side and work? Also, if we do set up a new tethering_native namespace, will we be able to have one experiment set both tethering_native flags and tethering flags?\n\nIf the answer to the above is \"no\", then we might be better off simply merging this CL into tm-qpr-dev (fixes the test) and making the sepolicy change in U that makes native code work on U+.\n\nIt\u0027s true that using the same namespace might be a bit more confusing (\"why can native tethering code read flags only starting in U? java works fine\"), but I think the alternative is confusing too (\"why do I need to put the flag in a different namespace depending on whether native code or java code reads it\"?).",
+      "range": {
+        "startLine": 11,
+        "startChar": 204,
+        "endLine": 11,
+        "endChar": 205
+      },
+      "revId": "01e857ececcca45c87517d20edc106641dc897b5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "40aa2faa_6e01aa57",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2023-01-11T08:12:24Z",
+      "side": 1,
+      "message": "LGTM if we\u0027re sure this is the way to go. See inline.",
+      "revId": "01e857ececcca45c87517d20edc106641dc897b5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ],
   "submitRequirementResults": [
     {
       "submitRequirement": {
