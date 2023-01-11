@@ -48,6 +48,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "2a806d5a_ab0ccba1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1288034
+      },
+      "writtenOn": "2023-01-11T09:01:24Z",
+      "side": 1,
+      "message": "I\u0027m not a fan of making \"tethering\" work as-is in native for U+, because we may not notice that it is not getting propagated properly on older platforms, and think that we\u0027re testing things that we are not. If we use a namespace from native I\u0027d rather have it called differently (like tethering_u_plus_native) to make it explicit that it\u0027s only propagated on U+.",
+      "parentUuid": "c24e09f2_457ea2f6",
+      "range": {
+        "startLine": 11,
+        "startChar": 204,
+        "endLine": 11,
+        "endChar": 205
+      },
+      "revId": "01e857ececcca45c87517d20edc106641dc897b5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "40aa2faa_6e01aa57",
