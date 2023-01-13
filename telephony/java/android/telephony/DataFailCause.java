@@ -997,7 +997,8 @@ public final class DataFailCause {
      */
     public static final int IWLAN_CONGESTION = 0x3C8C;
 
-    /** IKE configuration error resulting in failure  */
+    /** IKE configuration error resulting in failure,
+     * below IWLAN error codes are defined by the UE and do not relate to any 3GPP spec value */
     public static final int IWLAN_IKEV2_CONFIG_FAILURE = 0x4000;
     /**
      * Sent in the response to an IKE_AUTH message when, for some reason,
@@ -1012,6 +1013,8 @@ public final class DataFailCause {
     public static final int IWLAN_DNS_RESOLUTION_NAME_FAILURE = 0x4004;
     /** No response received from the DNS Server due to a timeout*/
     public static final int IWLAN_DNS_RESOLUTION_TIMEOUT = 0x4005;
+    /** IKE Session closed before child session opened*/
+    public static final int IWLAN_IKE_SESSION_CLOSED_BEFORE_CHILD_SESSION_OPENED = 0x4013;
 
     // OEM sepecific error codes. To be used by OEMs when they don't
     // want to reveal error code which would be replaced by ERROR_UNSPECIFIED
@@ -1505,6 +1508,8 @@ public final class DataFailCause {
         sFailCauseMap.put(IWLAN_IKEV2_CERT_INVALID, "IWLAN_IKEV2_CERT_INVALID");
         sFailCauseMap.put(IWLAN_DNS_RESOLUTION_NAME_FAILURE, "IWLAN_DNS_RESOLUTION_NAME_FAILURE");
         sFailCauseMap.put(IWLAN_DNS_RESOLUTION_TIMEOUT, "IWLAN_DNS_RESOLUTION_TIMEOUT");
+        sFailCauseMap.put(IWLAN_IKE_SESSION_CLOSED_BEFORE_CHILD_SESSION_OPENED,
+                "IWLAN_IKE_SESSION_CLOSED_BEFORE_CHILD_SESSION_OPENED");
         sFailCauseMap.put(OEM_DCFAILCAUSE_1, "OEM_DCFAILCAUSE_1");
         sFailCauseMap.put(OEM_DCFAILCAUSE_2, "OEM_DCFAILCAUSE_2");
         sFailCauseMap.put(OEM_DCFAILCAUSE_3, "OEM_DCFAILCAUSE_3");
