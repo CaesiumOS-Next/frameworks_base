@@ -34,6 +34,8 @@ import android.content.res.Resources.NotFoundException;
 import android.graphics.Color;
 import android.graphics.Point;
 import android.graphics.Rect;
+import android.os.ParcelFileDescriptor;
+import android.os.Process;
 import android.os.RemoteException;
 import android.os.ShellCommand;
 import android.os.UserHandle;
@@ -44,12 +46,16 @@ import android.view.Display;
 import android.view.IWindowManager;
 import android.view.ViewDebug;
 
+import com.android.internal.annotations.GuardedBy;
 import com.android.internal.os.ByteTransferPipe;
 import com.android.internal.protolog.ProtoLogImpl;
 import com.android.server.wm.LetterboxConfiguration.LetterboxBackgroundType;
 import com.android.server.wm.LetterboxConfiguration.LetterboxHorizontalReachabilityPosition;
 import com.android.server.wm.LetterboxConfiguration.LetterboxVerticalReachabilityPosition;
 
+import java.io.BufferedInputStream;
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
@@ -551,6 +557,47 @@ public class WindowManagerShellCommand extends ShellCommand {
         return 0;
     }
 
+    @GuardedBy("mInternal.mGlobalLock")
+    private void dumpLocalWindowsLocked(
+            ArrayList<WindowState> wsList, ZipOutputStream out, PrintWriter pw) {
+        if (wsList.isEmpty()) {
+            return;
+        }
+        File tmpFile = new File("/data/system/tmp_dump_local_visible_window.bin");
+        try {
+            if (!tmpFile.exists()) {
+                tmpFile.createNewFile();
+            }
+            for (WindowState ws : wsList) {
+                try {
+                    // This is only for compatibility with binder interface.
+                    ParcelFileDescriptor pfd = ParcelFileDescriptor.open(
+                            tmpFile, ParcelFileDescriptor.MODE_WRITE_ONLY);
+                    w.mClient.executeCommand(ViewDebug.REMOTE_COMMAND_DUMP_ENCODED, null, pfd);
+                } catch (RemoteException e) {
+                    //This should never happen since it's a local binder call.
+                }
+                out.putNextEntry(new ZipEntry(ws.getName()));
+                try (BufferedInputStream bis = new BufferedInputStream(
+                        new FileInputStream(tmpFile))) {
+                    final int sz = 8192;
+                    byte[] buf = new byte[sz];
+                    int n = 0;
+                    while ((n = bis.read(buf, 0, sz)) >= 0) {
+                        out.write(buf, 0, n);
+                    }
+                }
+            }
+        } catch (IOException e) {
+            // Catch exception here so that dump of remote windows won't be affected.
+            pw.println("Error dump local window: " + e.getMessage());
+        } finally {
+            if (tmpFile.exists()) {
+                tmpFile.delete();
+            }
+        }
+    }
+
     private int runDumpVisibleWindowViews(PrintWriter pw) {
         if (!mInternal.checkCallingPermission(android.Manifest.permission.DUMP,
                 "runDumpVisibleWindowViews()")) {
@@ -559,6 +606,7 @@ public class WindowManagerShellCommand extends ShellCommand {
 
         try (ZipOutputStream out = new ZipOutputStream(getRawOutputStream())) {
             ArrayList<Pair<String, ByteTransferPipe>> requestList = new ArrayList<>();
+            ArrayList<WindowState> syncRequestList = new ArrayList<>();
             synchronized (mInternal.mGlobalLock) {
                 final RecentTasks recentTasks = mInternal.mAtmService.getRecentTasks();
                 final int recentsComponentUid = recentTasks != null
@@ -568,6 +616,10 @@ public class WindowManagerShellCommand extends ShellCommand {
                 mInternal.mRoot.forAllWindows(w -> {
                     final boolean isRecents = (w.getUid() == recentsComponentUid);
                     if (w.isVisible() || isRecents) {
+                        if (w.getPid() == Process.myPid()) {
+                            syncRequestList.add(w);
+                            return;
+                        }
                         ByteTransferPipe pipe = null;
                         try {
                             pipe = new ByteTransferPipe();
@@ -582,6 +634,7 @@ public class WindowManagerShellCommand extends ShellCommand {
                         }
                     }
                 }, false /* traverseTopToBottom */);
+                dumpLocalWindowsLocked(syncRequestList, out, pw);
             }
             for (Pair<String, ByteTransferPipe> entry : requestList) {
                 byte[] data;
