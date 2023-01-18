@@ -672,6 +672,14 @@ public class MediaRecorder implements AudioRouting,
         public static final int VORBIS = 6;
         /** Opus audio codec */
         public static final int OPUS = 7;
+
+        /** flac audio codec  */
+        public static final int FLAC = 8;
+        /** High Efficiency AAC v1 (HE-AACv1) audio codec */
+        public static final int HE_AAC_V1 = 9;
+        /** High Efficiency AAC v2  (HE-AACv2) audio codec */
+        public static final int HE_AAC_V2 = 10;
+
     }
 
     /**
@@ -686,6 +694,9 @@ public class MediaRecorder implements AudioRouting,
         AudioEncoder.AAC_ELD,
         AudioEncoder.VORBIS,
         AudioEncoder.OPUS,
+        AudioEncoder.FLAC,
+        AudioEncoder.HE_AAC_V1,
+        AudioEncoder.HE_AAC_V2,
     })
     @Retention(RetentionPolicy.SOURCE)
     public @interface AudioEncoderValues {}
