@@ -89,7 +89,11 @@ public class MediaProfileReader
             audioEncoder != MediaRecorder.AudioEncoder.AMR_WB &&
             audioEncoder != MediaRecorder.AudioEncoder.AAC &&
             audioEncoder != MediaRecorder.AudioEncoder.HE_AAC &&
-            audioEncoder != MediaRecorder.AudioEncoder.AAC_ELD) {
+            audioEncoder != MediaRecorder.AudioEncoder.HE_AAC_PS &&
+            audioEncoder != MediaRecorder.AudioEncoder.AAC_ELD &&
+            audioEncoder != MediaRecorder.AudioEncoder.VORBIS &&
+            audioEncoder != MediaRecorder.AudioEncoder.OPUS &&
+            audioEncoder != MediaRecorder.AudioEncoder.FLAC) {
             throw new IllegalArgumentException("Unsupported audio encodeer " + audioEncoder);
         }
         return audioEncoderMap.get(audioEncoder);
@@ -129,6 +133,10 @@ public class MediaProfileReader
         audioEncoderMap.put(MediaRecorder.AudioEncoder.AMR_WB, "amrwb");
         audioEncoderMap.put(MediaRecorder.AudioEncoder.AAC, "aac");
         audioEncoderMap.put(MediaRecorder.AudioEncoder.HE_AAC, "heaac");
+        audioEncoderMap.put(MediaRecorder.AudioEncoder.HE_AAC_PS, "heaacps");
         audioEncoderMap.put(MediaRecorder.AudioEncoder.AAC_ELD, "aaceld");
+        audioEncoderMap.put(MediaRecorder.AudioEncoder.VORBIS, "vorbis");
+        audioEncoderMap.put(MediaRecorder.AudioEncoder.OPUS, "opus");
+        audioEncoderMap.put(MediaRecorder.AudioEncoder.FLAC, "flac");
     }
 }

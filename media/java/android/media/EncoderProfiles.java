@@ -396,12 +396,15 @@ public final class EncoderProfiles
                 return MediaFormat.MIMETYPE_AUDIO_AMR_WB;
             } else if (codec == MediaRecorder.AudioEncoder.AAC
                     || codec == MediaRecorder.AudioEncoder.HE_AAC
+                    || codec == MediaRecorder.AudioEncoder.HE_AAC_PS
                     || codec == MediaRecorder.AudioEncoder.AAC_ELD) {
                 return MediaFormat.MIMETYPE_AUDIO_AAC;
             } else if (codec == MediaRecorder.AudioEncoder.VORBIS) {
                 return MediaFormat.MIMETYPE_AUDIO_VORBIS;
             } else if (codec == MediaRecorder.AudioEncoder.OPUS) {
                 return MediaFormat.MIMETYPE_AUDIO_OPUS;
+            } else if (codec == MediaRecorder.AudioEncoder.FLAC) {
+                return MediaFormat.MIMETYPE_AUDIO_FLAC;
             }
             // we should never be here
             throw new RuntimeException("Unknown codec");
