@@ -628,6 +628,13 @@ public final class DisplayManagerService extends SystemService {
             updateSettingsLocked();
 
             updateUserDisabledHdrTypesFromSettingsLocked();
+            if (!mAreUserDisabledHdrTypesAllowed) {
+                mLogicalDisplayMapper.forEachLocked(
+                        display -> {
+                            display.setUserDisabledHdrTypes(mUserDisabledHdrTypes);
+                            handleLogicalDisplayChangedLocked(display);
+                        });
+            }
             updateUserPreferredDisplayModeSettingsLocked();
         }
 
