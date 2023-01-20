@@ -1821,18 +1821,27 @@ static void SpecializeCommon(JNIEnv* env, uid_t uid, gid_t gid, jintArray gids, 
         // allow a tie-down of the proper system server selinux domain.
         // We don't prefetch when the system server is being profiled to avoid
         // loading AOT code.
+        auto start_time = std::chrono::system_clock::now();
         env->CallStaticObjectMethod(gZygoteInitClass, gGetOrCreateSystemServerClassLoader);
         if (env->ExceptionCheck()) {
             // Be robust here. The Java code will attempt to create the classloader
             // at a later point (but may not have rights to use AoT artifacts).
             env->ExceptionClear();
         }
+        auto end_time = std::chrono::system_clock::now();
+        std::chrono::duration<double, std::milli> elapsed_ms = end_time - start_time;
+        LOG(INFO) << "jiakaiz gGetOrCreateSystemServerClassLoader took " << elapsed_ms.count()
+                  << "ms.";
         // Also prefetch standalone system server jars. The reason for doing this here is the same
         // as above.
         env->CallStaticVoidMethod(gZygoteInitClass, gPrefetchStandaloneSystemServerJars);
         if (env->ExceptionCheck()) {
             env->ExceptionClear();
         }
+        auto end_time2 = std::chrono::system_clock::now();
+        std::chrono::duration<double, std::milli> elapsed_ms2 = end_time2 - end_time;
+        LOG(INFO) << "jiakaiz gPrefetchStandaloneSystemServerJars took " << elapsed_ms2.count()
+                  << "ms.";
     }
 
     if (setresgid(gid, gid, gid) == -1) {
