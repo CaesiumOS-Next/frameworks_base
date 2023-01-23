@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "12e431ab_ccb7b11c",
+        "filename": "services/core/java/com/android/server/connectivity/NetdEventListenerService.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 287,
+      "author": {
+        "id": 1101726
+      },
+      "writtenOn": "2023-01-23T20:53:08Z",
+      "side": 1,
+      "message": "Technically, we can just replace this class now?  Having a constructor just copy all these values would be cleaner but its location doesn\u0027t allow it.\n\nI wanted to limit the delta so I didn\u0027t attempt removing it.",
+      "range": {
+        "startLine": 287,
+        "startChar": 8,
+        "endLine": 287,
+        "endChar": 19
+      },
+      "revId": "ac7e7ad1b6022a43e5e374385ae6e56ff445f274",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
