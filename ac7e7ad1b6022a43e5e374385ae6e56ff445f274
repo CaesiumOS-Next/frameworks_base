@@ -22,6 +22,30 @@
       },
       "revId": "ac7e7ad1b6022a43e5e374385ae6e56ff445f274",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ebfd2553_7f68d772",
+        "filename": "services/core/java/com/android/server/connectivity/NetdEventListenerService.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 287,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2023-01-23T22:33:47Z",
+      "side": 1,
+      "message": "Using WakeupEventParcel instead of android.net.metrics.WakeupEvent SGTM, but:\n\n1. If WakeupEvent is used by stuff in the bootclasspath (e.g., IpConnectivityLog) then I think we can\u0027t do because we probably don\u0027t want the netd AIDL interfaces on the bootclasspath.\n2. It\u0027s possible that some code depends on the string representation. if so I guess we can write a custom method, different from its toString(), that takes an event and returns the same string that the old code would have returned.\n\nIf you can\u0027t replace it, I guess you could add a convenience method to WakeupEvent.\n\n    static WakeupEvent fromParcelable(WakeupEventParcel parcel) {\n        WakeupEvent event \u003d new WakeupEvent();\n        event.prefix \u003d parcel.prefix;\n        ...\n        return event;\n    }",
+      "parentUuid": "12e431ab_ccb7b11c",
+      "range": {
+        "startLine": 287,
+        "startChar": 8,
+        "endLine": 287,
+        "endChar": 19
+      },
+      "revId": "ac7e7ad1b6022a43e5e374385ae6e56ff445f274",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
