@@ -22,16 +22,9 @@
 #include <utils/RefBase.h>
 
 namespace android {
+struct IDescramblerHal;
 
-namespace hardware {
-namespace cas {
-namespace native {
-namespace V1_0 {
-struct IDescrambler;
-}}}}
-using hardware::cas::native::V1_0::IDescrambler;
-
-sp<IDescrambler> GetDescrambler(JNIEnv *env, jobject obj);
+sp<IDescramblerHal> GetDescrambler(JNIEnv *env, jobject obj);
 
 }  // namespace android
 

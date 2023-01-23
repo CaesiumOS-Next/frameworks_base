@@ -21,11 +21,9 @@
 #include "android_media_MediaDescrambler.h"
 #include "android_runtime/AndroidRuntime.h"
 #include "android_os_HwRemoteBinder.h"
+#include "IDescramblerHal.h"
 #include <nativehelper/JNIHelp.h>
 
-#include <android/hardware/cas/native/1.0/BpHwDescrambler.h>
-#include <android/hardware/cas/native/1.0/BnHwDescrambler.h>
-#include <android/hardware/cas/native/1.0/IDescrambler.h>
 #include <binder/MemoryDealer.h>
 #include <hidl/HidlSupport.h>
 #include <hidlmemory/FrameworkUtils.h>
@@ -46,6 +44,7 @@ using hardware::hidl_string;
 using hardware::hidl_vec;
 using namespace hardware::cas::V1_0;
 using namespace hardware::cas::native::V1_0;
+using SubSampleHidl = hardware::cas::native::V1_0::SubSample;
 
 struct JDescrambler : public RefBase {
     JDescrambler(JNIEnv *env, jobject descramberBinderObj);
@@ -67,7 +66,7 @@ protected:
     virtual ~JDescrambler();
 
 private:
-    sp<IDescrambler> mDescrambler;
+    sp<IDescramblerHal> mDescrambler;
     sp<IMemory> mMem;
     sp<MemoryDealer> mDealer;
     sp<HidlMemory> mHidlMemory;
@@ -157,15 +156,14 @@ JDescrambler::~JDescrambler() {
     mDealer.clear();
 }
 
-sp<IDescrambler> GetDescrambler(JNIEnv *env, jobject obj) {
-    if (obj != NULL) {
-        sp<hardware::IBinder> hwBinder =
-                JHwRemoteBinder::GetNativeContext(env, obj)->getBinder();
-
-        if (hwBinder != NULL) {
-            return hardware::fromBinder<
-                    IDescrambler, BpHwDescrambler, BnHwDescrambler>(hwBinder);
-        }
+sp<IDescramblerHal> GetDescrambler(JNIEnv *env, jobject obj) {
+    sp<IDescramblerHal> descrambler = sp<IDescramblerHal>::make();
+    sp<hardware::IBinder> hwBinder;
+    if (obj != NULL){
+        hwBinder = JHwRemoteBinder::GetNativeContext(env, obj)->getBinder();
+    }
+    if (descrambler->init(hwBinder)) {
+      return descrambler;
     }
     return NULL;
 }
@@ -202,7 +200,7 @@ bool JDescrambler::ensureBufferCapacity(size_t neededSize) {
 status_t JDescrambler::descramble(
         uint32_t key,
         ssize_t totalLength,
-        const hidl_vec<SubSample>& subSamples,
+        const hidl_vec<SubSampleHidl>& subSamples,
         const void *srcPtr,
         jint srcOffset,
         void *dstPtr,
@@ -289,10 +287,10 @@ static void android_media_MediaDescrambler_native_setup(
 
 static ssize_t getSubSampleInfo(JNIEnv *env, jint numSubSamples,
         jintArray numBytesOfClearDataObj, jintArray numBytesOfEncryptedDataObj,
-        hidl_vec<SubSample> *outSubSamples) {
+        hidl_vec<SubSampleHidl> *outSubSamples) {
 
     if (numSubSamples <= 0 ||
-            numSubSamples >= (signed)(INT32_MAX / sizeof(SubSample))) {
+            numSubSamples >= (signed)(INT32_MAX / sizeof(SubSampleHidl))) {
         // subSamples array may silently overflow if number of samples are
         // too large.  Use INT32_MAX as maximum allocation size may be less
         // than SIZE_MAX on some platforms.
@@ -314,7 +312,7 @@ static ssize_t getSubSampleInfo(JNIEnv *env, jint numSubSamples,
             : env->GetIntArrayElements(numBytesOfEncryptedDataObj, &isCopy);
 
     outSubSamples->resize(numSubSamples);
-    SubSample *subSamples = outSubSamples->data();
+    SubSampleHidl *subSamples = outSubSamples->data();
     if (subSamples == NULL) {
         ALOGE("Failed to allocate SubSample array!");
         return -1;
@@ -386,7 +384,7 @@ static jint android_media_MediaDescrambler_native_descramble(
         return -1;
     }
 
-    hidl_vec<SubSample> subSamples;
+    hidl_vec<SubSampleHidl> subSamples;
     ssize_t totalLength = getSubSampleInfo(
             env, numSubSamples, numBytesOfClearDataObj,
             numBytesOfEncryptedDataObj, &subSamples);
@@ -467,4 +465,3 @@ int register_android_media_Descrambler(JNIEnv *env) {
     return AndroidRuntime::registerNativeMethods(env,
                 "android/media/MediaDescrambler", gMethods, NELEM(gMethods));
 }
-

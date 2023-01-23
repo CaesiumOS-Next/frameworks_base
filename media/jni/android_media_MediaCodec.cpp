@@ -30,6 +30,7 @@
 #include "android_runtime/AndroidRuntime.h"
 #include "android_runtime/android_view_Surface.h"
 #include "android_util_Binder.h"
+#include "IDescramblerHal.h"
 #include "jni.h"
 #include <nativehelper/JNIHelp.h>
 #include <nativehelper/ScopedLocalRef.h>
@@ -38,8 +39,6 @@
 #include <C2BlockInternal.h>
 #include <C2Buffer.h>
 #include <C2PlatformSupport.h>
-
-#include <android/hardware/cas/native/1.0/IDescrambler.h>
 
 #include <android_runtime/android_hardware_HardwareBuffer.h>
 
@@ -336,7 +335,7 @@ status_t JMediaCodec::configure(
         const sp<AMessage> &format,
         const sp<IGraphicBufferProducer> &bufferProducer,
         const sp<ICrypto> &crypto,
-        const sp<IDescrambler> &descrambler,
+        const sp<IDescramblerHal> &descrambler,
         int flags) {
     sp<Surface> client;
     if (bufferProducer != NULL) {
@@ -1471,7 +1470,7 @@ static void android_media_MediaCodec_native_configure(
         crypto = JCrypto::GetCrypto(env, jcrypto);
     }
 
-    sp<IDescrambler> descrambler;
+    sp<IDescramblerHal> descrambler;
     if (descramblerBinderObj != NULL) {
         descrambler = GetDescrambler(env, descramblerBinderObj);
     }
@@ -3470,7 +3469,7 @@ static const JNINativeMethod gMethods[] = {
 
     { "native_configure",
       "([Ljava/lang/String;[Ljava/lang/Object;Landroid/view/Surface;"
-      "Landroid/media/MediaCrypto;Landroid/os/IHwBinder;I)V",
+      "Landroid/media/MediaCrypto;Landroid/os/IBinder;I)V",
       (void *)android_media_MediaCodec_native_configure },
 
     { "native_setSurface",

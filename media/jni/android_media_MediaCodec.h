@@ -39,18 +39,14 @@ struct ALooper;
 struct AMessage;
 struct AString;
 struct ICrypto;
+struct IDescramblerHal;
 class IGraphicBufferProducer;
 struct MediaCodec;
 struct PersistentSurface;
 class Surface;
 namespace hardware {
 class HidlMemory;
-namespace cas {
-namespace native {
-namespace V1_0 {
-struct IDescrambler;
-}}}}
-using hardware::cas::native::V1_0::IDescrambler;
+}
 
 struct JMediaCodec : public AHandler {
     JMediaCodec(
@@ -73,7 +69,7 @@ struct JMediaCodec : public AHandler {
             const sp<AMessage> &format,
             const sp<IGraphicBufferProducer> &bufferProducer,
             const sp<ICrypto> &crypto,
-            const sp<IDescrambler> &descrambler,
+            const sp<IDescramblerHal> &descrambler,
             int flags);
 
     status_t setSurface(
