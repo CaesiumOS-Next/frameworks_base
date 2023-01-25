@@ -46,6 +46,30 @@
       },
       "revId": "ac7e7ad1b6022a43e5e374385ae6e56ff445f274",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d2eac59b_9339ef6f",
+        "filename": "services/core/java/com/android/server/connectivity/NetdEventListenerService.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 287,
+      "author": {
+        "id": 1101726
+      },
+      "writtenOn": "2023-01-25T00:29:44Z",
+      "side": 1,
+      "message": "2) is definitely an issue. There are 3 fields that are different.\nIt is used in WakeupStats so it is a little scary.\n\nI can\u0027t add a method or a constructor to WakeupEvent because I don\u0027t think I can/should add it as a dependency in that jar. I will add a helper method in this class.",
+      "parentUuid": "ebfd2553_7f68d772",
+      "range": {
+        "startLine": 287,
+        "startChar": 8,
+        "endLine": 287,
+        "endChar": 19
+      },
+      "revId": "ac7e7ad1b6022a43e5e374385ae6e56ff445f274",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
