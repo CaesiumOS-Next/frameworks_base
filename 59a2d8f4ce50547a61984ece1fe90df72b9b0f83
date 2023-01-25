@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4929ca74_e2f8930f",
+        "filename": "services/core/java/android/os/BatteryStatsInternal.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1003473
+      },
+      "writtenOn": "2023-01-25T03:37:46Z",
+      "side": 1,
+      "message": "Maybe `noteWakeupForIncomingNetworkTraffic` or something like that?  Just for clarity.",
+      "range": {
+        "startLine": 74,
+        "startChar": 25,
+        "endLine": 74,
+        "endChar": 41
+      },
+      "revId": "59a2d8f4ce50547a61984ece1fe90df72b9b0f83",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
