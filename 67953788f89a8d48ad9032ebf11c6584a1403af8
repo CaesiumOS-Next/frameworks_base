@@ -16,6 +16,24 @@
       "message": "No tests?",
       "revId": "67953788f89a8d48ad9032ebf11c6584a1403af8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5d074d55_06d051df",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1101726
+      },
+      "writtenOn": "2023-01-25T02:39:10Z",
+      "side": 1,
+      "message": "Running tests now.",
+      "parentUuid": "675dcfc1_0caf22d6",
+      "revId": "67953788f89a8d48ad9032ebf11c6584a1403af8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
