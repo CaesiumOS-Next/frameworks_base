@@ -16,6 +16,52 @@
       "message": "PTAL. Thanks!",
       "revId": "db490f39310f34ee6b9aeec54dca4ddd1fa7d43d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "355a5b50_2a323480",
+        "filename": "core/java/android/app/ProfilerInfo.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2023-01-30T11:09:20Z",
+      "side": 1,
+      "message": "It should be fine to move these as static final int.",
+      "range": {
+        "startLine": 106,
+        "startChar": 19,
+        "endLine": 106,
+        "endChar": 24
+      },
+      "revId": "db490f39310f34ee6b9aeec54dca4ddd1fa7d43d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2d14e2eb_4e17649e",
+        "filename": "services/core/java/com/android/server/am/ActivityManagerShellCommand.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2023-01-30T11:09:20Z",
+      "side": 1,
+      "message": "extra space",
+      "range": {
+        "startLine": 177,
+        "startChar": 15,
+        "endLine": 177,
+        "endChar": 17
+      },
+      "revId": "db490f39310f34ee6b9aeec54dca4ddd1fa7d43d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
