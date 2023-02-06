@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "65c96a4c_ad55d2c6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1725686
+      },
+      "writtenOn": "2023-02-06T09:01:16Z",
+      "side": 1,
+      "message": "@yanha@google.com could you please review? My +2 doesn\u0027t count, because I updated the commit message and with that became \u0027uploader\u0027.",
+      "revId": "4f3044e93e90e6741a5b9aa6f96d5dd6b5977c0f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
