@@ -1,0 +1,130 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "adb97bff_2ee2a914",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1951823
+      },
+      "writtenOn": "2023-02-07T11:34:34Z",
+      "side": 1,
+      "message": "Please wrap this CL description to 72 character lines.",
+      "revId": "a2c66655e08bdf6daf7a9d3232176ee65a618109",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4eeff0fd_008b9f2d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1951823
+      },
+      "writtenOn": "2023-02-07T11:34:34Z",
+      "side": 1,
+      "message": "Nit: missing space",
+      "range": {
+        "startLine": 9,
+        "startChar": 60,
+        "endLine": 9,
+        "endChar": 70
+      },
+      "revId": "a2c66655e08bdf6daf7a9d3232176ee65a618109",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "44c7e65a_00761591",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1951823
+      },
+      "writtenOn": "2023-02-07T11:34:34Z",
+      "side": 1,
+      "message": "Nit: typo (\"then\"?)",
+      "range": {
+        "startLine": 12,
+        "startChar": 35,
+        "endLine": 12,
+        "endChar": 38
+      },
+      "revId": "a2c66655e08bdf6daf7a9d3232176ee65a618109",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "22a1a8f9_e3b1b4ef",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1951823
+      },
+      "writtenOn": "2023-02-07T11:34:34Z",
+      "side": 1,
+      "message": "@prabirmsp@google.com In b/263335137#comment6 (not publicly readable) you say this fix isn\u0027t what we want. Could you elaborate here?",
+      "revId": "a2c66655e08bdf6daf7a9d3232176ee65a618109",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9c5dba03_09d74c4c",
+        "filename": "libs/input/PointerController.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1951823
+      },
+      "writtenOn": "2023-02-07T11:34:34Z",
+      "side": 1,
+      "message": "If the `ui::Transform::RotationFlags` enum changes, this will break, and there\u0027s no indication in the enum\u0027s definition that this code is depending on specific values of it. At the very least, we need to refer to values from the enum instead of `0x7`.\n\nHowever, what\u0027s the purpose of this mask? All it seems to do is remove `ROT_INVALID` from the possible values it might have. Why do you need to do that? A better way to do it, that refers to the `RotationFlags` values, would be like so:\n\n```c++\nconst uint32_t orientation \u003d transform.getOrientation \u0026 ~ui::Transform::ROT_INVALID;\nif (orientation \u003d\u003d ui::Transform::ROT_270) {\n    ...\n```",
+      "range": {
+        "startLine": 157,
+        "startChar": 0,
+        "endLine": 158,
+        "endChar": 50
+      },
+      "revId": "a2c66655e08bdf6daf7a9d3232176ee65a618109",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "412ae7df_bc195528",
+        "filename": "libs/input/PointerController.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1951823
+      },
+      "writtenOn": "2023-02-07T11:34:34Z",
+      "side": 1,
+      "message": "These `if`s can be merged into one",
+      "range": {
+        "startLine": 166,
+        "startChar": 0,
+        "endLine": 167,
+        "endChar": 30
+      },
+      "revId": "a2c66655e08bdf6daf7a9d3232176ee65a618109",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
