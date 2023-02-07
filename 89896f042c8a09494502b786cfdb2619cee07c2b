@@ -16,6 +16,23 @@
       "message": "Plz help review. Thanks!",
       "revId": "89896f042c8a09494502b786cfdb2619cee07c2b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2c2bad18_627c3006",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1902133
+      },
+      "writtenOn": "2023-02-07T09:29:15Z",
+      "side": 1,
+      "message": "Hi, is there any update?",
+      "revId": "89896f042c8a09494502b786cfdb2619cee07c2b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
