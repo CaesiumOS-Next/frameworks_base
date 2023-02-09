@@ -22,6 +22,30 @@
       },
       "revId": "9c9aef32181870ccd17b714572b2e31416dadba6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "813d5391_e43a34fc",
+        "filename": "core/java/android/nfc/cardemulation/CardEmulation.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 271,
+      "author": {
+        "id": 1074459
+      },
+      "writtenOn": "2023-02-09T19:54:18Z",
+      "side": 1,
+      "message": "Oops. missed amending the commit.",
+      "parentUuid": "4c5fe0cf_7664d21b",
+      "range": {
+        "startLine": 271,
+        "startChar": 64,
+        "endLine": 271,
+        "endChar": 84
+      },
+      "revId": "9c9aef32181870ccd17b714572b2e31416dadba6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
