@@ -16,6 +16,24 @@
       "message": "SecureNfc is not only used by HCE.\nThe javadoc should be updated.",
       "revId": "f4937f4ac6141a793591eb45daa710f477d6a7c9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f92e0fe2_0e4bb9e7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1887710
+      },
+      "writtenOn": "2023-02-09T19:45:19Z",
+      "side": 1,
+      "message": "Fixed the feature checking in the SecureNfc functions.",
+      "parentUuid": "d0d53eb6_347d011a",
+      "revId": "f4937f4ac6141a793591eb45daa710f477d6a7c9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
