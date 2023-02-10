@@ -16,6 +16,23 @@
       "message": "Just a small docs update based on a bug we had recently.",
       "revId": "88d3170a415923cea1547b8bef46b4dc29b64490",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8eed9424_21412678",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1959840
+      },
+      "writtenOn": "2023-02-10T17:59:44Z",
+      "side": 1,
+      "message": "LGTM",
+      "revId": "88d3170a415923cea1547b8bef46b4dc29b64490",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
