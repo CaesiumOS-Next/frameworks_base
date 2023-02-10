@@ -34,6 +34,24 @@
       "parentUuid": "d0d53eb6_347d011a",
       "revId": "f4937f4ac6141a793591eb45daa710f477d6a7c9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "58229335_62cd1639",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1328430
+      },
+      "writtenOn": "2023-02-10T02:57:18Z",
+      "side": 1,
+      "message": "The javadoc should be updated according to the new feature flag checking implementation. \nThere might be devices with flag FEATURE_NFC_OFF_HOST_CARD_EMULATION_UICC / FEATURE_NFC_OFF_HOST_CARD_EMULATION_ESE without FEATURE_NFC?",
+      "parentUuid": "f92e0fe2_0e4bb9e7",
+      "revId": "f4937f4ac6141a793591eb45daa710f477d6a7c9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
