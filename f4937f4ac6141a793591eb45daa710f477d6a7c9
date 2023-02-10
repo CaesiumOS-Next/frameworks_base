@@ -52,6 +52,24 @@
       "parentUuid": "f92e0fe2_0e4bb9e7",
       "revId": "f4937f4ac6141a793591eb45daa710f477d6a7c9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "88d4016e_c01fc998",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1887710
+      },
+      "writtenOn": "2023-02-10T12:15:52Z",
+      "side": 1,
+      "message": "Add checking off-Host CE feature, and edit the javadoc.",
+      "parentUuid": "58229335_62cd1639",
+      "revId": "f4937f4ac6141a793591eb45daa710f477d6a7c9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
