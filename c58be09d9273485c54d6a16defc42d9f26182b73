@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9939a9de_ebc2bf2b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1894735
+      },
+      "writtenOn": "2023-02-13T13:43:38Z",
+      "side": 1,
+      "message": "Hi Amith, this is the same CL as 21127471 but submitting to aosp. I had to do this because there are some differences in ActivityManagerShellCommand and it wasn\u0027t possible to rearrange this patch that avoids merge conflicts. PTAL. Thanks!",
+      "revId": "c58be09d9273485c54d6a16defc42d9f26182b73",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
