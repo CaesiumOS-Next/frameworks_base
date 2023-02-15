@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c3b0b93f_5c4e51c1",
+        "filename": "core/java/android/nfc/NfcAdapter.java",
+        "patchSetId": 11
+      },
+      "lineNbr": 626,
+      "author": {
+        "id": 1328430
+      },
+      "writtenOn": "2023-02-15T08:19:00Z",
+      "side": 1,
+      "message": "is there any condition that you use the two flags separately?\nOr it could be combined as one flag sHasCeFeature?",
+      "range": {
+        "startLine": 621,
+        "startChar": 12,
+        "endLine": 626,
+        "endChar": 99
+      },
+      "revId": "377eb26253dc72b7b598f774368bcdf012390d6b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
