@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3a535507_1bea0c50",
+        "filename": "core/api/current.txt",
+        "patchSetId": 7
+      },
+      "lineNbr": 27339,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2023-02-15T09:46:27Z",
+      "side": 1,
+      "message": "Can you make this consistent with the carrier config key, which is KEY_MIN_UDP_PORT_4500_NAT_TIMEOUT_SEC_INT ? So maybe getMinUdpPort4500NatTimeoutSec ?",
+      "range": {
+        "startLine": 27339,
+        "startChar": 22,
+        "endLine": 27339,
+        "endChar": 53
+      },
+      "revId": "26a38e6eb22bee9e613ce801582aaa996df39c2c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
