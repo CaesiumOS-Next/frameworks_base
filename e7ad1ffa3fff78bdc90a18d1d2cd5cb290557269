@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "85f529f5_3aa0a02a",
+        "filename": "core/java/android/net/vcn/VcnGatewayConnectionConfig.java",
+        "patchSetId": 10
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1060151
+      },
+      "writtenOn": "2023-02-15T19:25:43Z",
+      "side": 1,
+      "message": "Minimum of 2 minutes? Jeebus.",
+      "range": {
+        "startLine": 88,
+        "startChar": 68,
+        "endLine": 88,
+        "endChar": 71
+      },
+      "revId": "e7ad1ffa3fff78bdc90a18d1d2cd5cb290557269",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ca370348_124831f3",
+        "filename": "core/java/android/net/vcn/VcnGatewayConnectionConfig.java",
+        "patchSetId": 10
+      },
+      "lineNbr": 477,
+      "author": {
+        "id": 1060151
+      },
+      "writtenOn": "2023-02-15T19:25:43Z",
+      "side": 1,
+      "message": "nit: returns",
+      "range": {
+        "startLine": 477,
+        "startChar": 7,
+        "endLine": 477,
+        "endChar": 16
+      },
+      "revId": "e7ad1ffa3fff78bdc90a18d1d2cd5cb290557269",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
