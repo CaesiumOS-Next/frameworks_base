@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e68cf1b6_b12f1b75",
+        "filename": "core/java/android/net/vcn/VcnGatewayConnectionConfig.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2023-02-15T09:39:57Z",
+      "side": 1,
+      "message": "This seems like it would have very severe power implications. Can we require that all VCNs use higher values?",
+      "range": {
+        "startLine": 88,
+        "startChar": 68,
+        "endLine": 88,
+        "endChar": 70
+      },
+      "revId": "99a85ec63bbe69b2a4db4075e2cca57a730aa372",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "95321722_2f41d3d7",
+        "filename": "core/java/android/net/vcn/VcnGatewayConnectionConfig.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 249,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2023-02-15T09:39:57Z",
+      "side": 1,
+      "message": "ints are always non-null.",
+      "range": {
+        "startLine": 249,
+        "startChar": 12,
+        "endLine": 249,
+        "endChar": 24
+      },
+      "revId": "99a85ec63bbe69b2a4db4075e2cca57a730aa372",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "87df0d5c_2bcf45a5",
+        "filename": "core/java/android/net/vcn/VcnGatewayConnectionConfig.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 343,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2023-02-15T09:39:57Z",
+      "side": 1,
+      "message": "\" + MIN_UDP_PORT_4500_NAT_TIMEOUT_SECONDS + \"s\"",
+      "range": {
+        "startLine": 343,
+        "startChar": 63,
+        "endLine": 343,
+        "endChar": 66
+      },
+      "revId": "99a85ec63bbe69b2a4db4075e2cca57a730aa372",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "88a65bae_345a48f9",
+        "filename": "core/java/android/net/vcn/VcnGatewayConnectionConfig.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 754,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2023-02-15T09:39:57Z",
+      "side": 1,
+      "message": "I don\u0027t think there is an RFC about this. There will be android-specific documentation I think (ask Ane), but that\u0027s in the works so nothing to link to at the moment.\n\nMaybe say that if it\u0027s not, then running a VPN will result in disrupted connectivity or low battery life, or both?\n\nThat said, I suppose that if we expose this to platform VPNs (which is the goal here, right?), then at least they can set the areLongLivedTcpConnectionsExpensive bit and have priv-apps bypass the VPN if they deem that they have enough security already.",
+      "range": {
+        "startLine": 754,
+        "startChar": 50,
+        "endLine": 754,
+        "endChar": 64
+      },
+      "revId": "99a85ec63bbe69b2a4db4075e2cca57a730aa372",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "deb5b6c2_839d9531",
+        "filename": "tests/vcn/java/android/net/vcn/VcnGatewayConnectionConfigTest.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2023-02-15T09:39:57Z",
+      "side": 1,
+      "message": "You don\u0027t read or assert this anywhere? Or is it done in some sub-test?",
+      "range": {
+        "startLine": 110,
+        "startChar": 25,
+        "endLine": 110,
+        "endChar": 56
+      },
+      "revId": "99a85ec63bbe69b2a4db4075e2cca57a730aa372",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
