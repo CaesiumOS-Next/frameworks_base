@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7ac5375a_d55a4fd5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 18
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1221725
+      },
+      "writtenOn": "2023-02-16T08:12:30Z",
+      "side": 1,
+      "message": "Test failures were known-flaky",
+      "revId": "9ba9e079b7f12b207c4061af9a6b30baa503d631",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
