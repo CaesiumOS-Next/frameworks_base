@@ -33,7 +33,7 @@
 namespace {
 
 jclass zipEntryClass;
-// The method ID for ZipEntry.<init>(String,String,JJJIII[BJJ)
+// The method ID for ZipEntry.<init>(String,String,JJJIII[BJ)
 jmethodID zipEntryCtor;
 
 void throwIoException(JNIEnv* env, const int32_t errorCode) {
