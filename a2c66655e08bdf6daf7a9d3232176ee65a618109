@@ -167,6 +167,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5f2ec740_0ab1667f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1951823
+      },
+      "writtenOn": "2023-02-17T12:08:11Z",
+      "side": 1,
+      "message": "Re-opening — I\u0027d like to hear from Prabir.",
+      "parentUuid": "aa50e1b1_291553e4",
+      "revId": "a2c66655e08bdf6daf7a9d3232176ee65a618109",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9c5dba03_09d74c4c",
         "filename": "libs/input/PointerController.cpp",
         "patchSetId": 1
@@ -202,6 +220,30 @@
       "side": 1,
       "message": "Done",
       "parentUuid": "9c5dba03_09d74c4c",
+      "range": {
+        "startLine": 157,
+        "startChar": 0,
+        "endLine": 158,
+        "endChar": 50
+      },
+      "revId": "a2c66655e08bdf6daf7a9d3232176ee65a618109",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "310750f6_5dbf3219",
+        "filename": "libs/input/PointerController.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1951823
+      },
+      "writtenOn": "2023-02-17T12:08:11Z",
+      "side": 1,
+      "message": "Please can you answer my question about why you need to remove `ROT_INVALID` from the values?",
+      "parentUuid": "938b530e_bc087a82",
       "range": {
         "startLine": 157,
         "startChar": 0,
