@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "db71761d_7f175ca7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1949425
+      },
+      "writtenOn": "2023-02-17T06:17:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "adb97bff_2ee2a914",
+      "revId": "a2c66655e08bdf6daf7a9d3232176ee65a618109",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4eeff0fd_008b9f2d",
@@ -31,6 +49,30 @@
       "writtenOn": "2023-02-07T11:34:34Z",
       "side": 1,
       "message": "Nit: missing space",
+      "range": {
+        "startLine": 9,
+        "startChar": 60,
+        "endLine": 9,
+        "endChar": 70
+      },
+      "revId": "a2c66655e08bdf6daf7a9d3232176ee65a618109",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4a53736e_48041c40",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1949425
+      },
+      "writtenOn": "2023-02-17T06:17:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4eeff0fd_008b9f2d",
       "range": {
         "startLine": 9,
         "startChar": 60,
@@ -64,6 +106,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0fcd666a_87d8d09d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1949425
+      },
+      "writtenOn": "2023-02-17T06:17:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "44c7e65a_00761591",
+      "range": {
+        "startLine": 12,
+        "startChar": 35,
+        "endLine": 12,
+        "endChar": 38
+      },
+      "revId": "a2c66655e08bdf6daf7a9d3232176ee65a618109",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "22a1a8f9_e3b1b4ef",
@@ -77,6 +143,24 @@
       "writtenOn": "2023-02-07T11:34:34Z",
       "side": 1,
       "message": "@prabirmsp@google.com In b/263335137#comment6 (not publicly readable) you say this fix isn\u0027t what we want. Could you elaborate here?",
+      "revId": "a2c66655e08bdf6daf7a9d3232176ee65a618109",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "aa50e1b1_291553e4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1949425
+      },
+      "writtenOn": "2023-02-17T06:17:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "22a1a8f9_e3b1b4ef",
       "revId": "a2c66655e08bdf6daf7a9d3232176ee65a618109",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -104,6 +188,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "938b530e_bc087a82",
+        "filename": "libs/input/PointerController.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1949425
+      },
+      "writtenOn": "2023-02-17T06:17:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9c5dba03_09d74c4c",
+      "range": {
+        "startLine": 157,
+        "startChar": 0,
+        "endLine": 158,
+        "endChar": 50
+      },
+      "revId": "a2c66655e08bdf6daf7a9d3232176ee65a618109",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "412ae7df_bc195528",
@@ -117,6 +225,30 @@
       "writtenOn": "2023-02-07T11:34:34Z",
       "side": 1,
       "message": "These `if`s can be merged into one",
+      "range": {
+        "startLine": 166,
+        "startChar": 0,
+        "endLine": 167,
+        "endChar": 30
+      },
+      "revId": "a2c66655e08bdf6daf7a9d3232176ee65a618109",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8f536701_0a199886",
+        "filename": "libs/input/PointerController.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1949425
+      },
+      "writtenOn": "2023-02-17T06:17:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "412ae7df_bc195528",
       "range": {
         "startLine": 166,
         "startChar": 0,
