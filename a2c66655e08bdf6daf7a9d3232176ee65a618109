@@ -256,6 +256,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "80b0827b_31a0cfa4",
+        "filename": "libs/input/PointerController.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1949425
+      },
+      "writtenOn": "2023-02-20T13:15:16Z",
+      "side": 1,
+      "message": "I think 0x7 encapsulates all 3 rotations and I only care about these three rotation states. So with the result returned by getOrientation \u0026 0x7. Now I think it\u0027s okay not to remove it. I just need to deal with ROT_270.",
+      "parentUuid": "310750f6_5dbf3219",
+      "range": {
+        "startLine": 157,
+        "startChar": 0,
+        "endLine": 158,
+        "endChar": 50
+      },
+      "revId": "a2c66655e08bdf6daf7a9d3232176ee65a618109",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "412ae7df_bc195528",
         "filename": "libs/input/PointerController.cpp",
         "patchSetId": 1
