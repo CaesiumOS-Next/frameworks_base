@@ -16,6 +16,24 @@
       "message": "It\u0027s not immediately obvious to me how this is related to https://issuetracker.google.com/263074833 - can you please expand on that either here or on the bug?\n\nIf this is an unrelated fix please remove the Bug: tag from the CL description or update it point to a relevant bug.",
       "revId": "111ad9578841c63fe9328c8017886d3ca8441b4b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8cf02071_99e5742b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1988269
+      },
+      "writtenOn": "2023-02-21T12:15:26Z",
+      "side": 1,
+      "message": "the bug is caused by the dirty content of ringtone file.\n1.set a big mp3 file as ringtone and then set a small ogg file as ringtone, if the cache file is not deleted before openOutputStream, cache file will be mixed with ogg and mp3.\n2.when playback this file,it happen to meet the defect of OggExtractor,it takes long time in findPrevGranulePosition() since this function will read the source from the end,it reads a lot of mp3 contents instead of ogg and then watchdog timeout triggered.",
+      "parentUuid": "9dee28b8_250ccbce",
+      "revId": "111ad9578841c63fe9328c8017886d3ca8441b4b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
