@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9dee28b8_250ccbce",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1643005
+      },
+      "writtenOn": "2023-02-21T10:05:40Z",
+      "side": 1,
+      "message": "It\u0027s not immediately obvious to me how this is related to https://issuetracker.google.com/263074833 - can you please expand on that either here or on the bug?\n\nIf this is an unrelated fix please remove the Bug: tag from the CL description or update it point to a relevant bug.",
+      "revId": "111ad9578841c63fe9328c8017886d3ca8441b4b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
