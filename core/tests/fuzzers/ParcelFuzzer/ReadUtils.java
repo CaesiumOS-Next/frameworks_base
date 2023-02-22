@@ -20,6 +20,7 @@ import android.os.IBinder;
 import android.os.IInterface;
 import android.os.Parcel;
 import android.os.Parcelable;
+import android.util.Log;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -430,6 +431,71 @@ public class ReadUtils {
                         HashMap<String, String> hashMap = new HashMap<>();
                         TestClassLoader loader = new TestClassLoader();
                         parcel.readMap(hashMap, loader, String.class, String.class);
+                    },
+                    (parcel, provider) -> {
+                        Parcel p = null;
+                        try {
+                            SingleDataParcelable a  = SingleDataParcelable.CREATOR
+                                    .createFromParcel(parcel);
+                            p = Parcel.obtain();
+                            a.writeToParcel(p, 0);
+
+                            int position = p.dataPosition();
+                            p.setDataPosition(0);
+
+                            SingleDataParcelable.CREATOR.createFromParcel(p);
+                            if (position != p.dataPosition()) {
+                                Log.e("ParcelFuzzer", "SingleDataParcelable: Error "
+                                        + "occurred in serialization. Position doesn't match!");
+                            }
+                        } catch (Exception e) {
+                            throw e;
+                        } finally {
+                            p.recycle();
+                        }
+                    },
+                    (parcel, provider) -> {
+                        Parcel p = null;
+                        try {
+                            EmptyParcelable a  = EmptyParcelable.CREATOR.createFromParcel(parcel);
+                            p = Parcel.obtain();
+                            a.writeToParcel(p, 0);
+
+                            int position = p.dataPosition();
+                            p.setDataPosition(0);
+
+                            EmptyParcelable.CREATOR.createFromParcel(p);
+                            if (position != p.dataPosition()) {
+                                Log.e("ParcelFuzzer", "EmptyParcelable: Error occurred "
+                                        + "in serialization. Position doesn't match!");
+                            }
+                        } catch (Exception e) {
+                            throw e;
+                        } finally {
+                            p.recycle();
+                        }
+                    },
+                    (parcel, provider) -> {
+                        Parcel p = null;
+                        try {
+                            GenericDataParcelable a  = GenericDataParcelable.CREATOR
+                                    .createFromParcel(parcel);
+                            p = Parcel.obtain();
+                            a.writeToParcel(p, 0);
+
+                            int position = p.dataPosition();
+                            p.setDataPosition(0);
+
+                            GenericDataParcelable.CREATOR.createFromParcel(p);
+                            if (position != p.dataPosition()) {
+                                Log.e("ParcelFuzzer", "GenericDataParcelable: Error "
+                                        + "occurred in serialization. Position doesn't match!");
+                            }
+                        } catch (Exception e) {
+                            throw e;
+                        } finally {
+                            p.recycle();
+                        }
                     },
             };
 }
