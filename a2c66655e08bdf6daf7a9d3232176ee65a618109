@@ -237,6 +237,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0467fa96_57dc2ea5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1949425
+      },
+      "writtenOn": "2023-02-23T02:19:20Z",
+      "side": 1,
+      "message": "Please share the solved patch to case b/258373215.thanks!\nhttps://partnerissuetracker.corp.google.com/issues/258151333",
+      "parentUuid": "027efdc4_a60e08b6",
+      "revId": "a2c66655e08bdf6daf7a9d3232176ee65a618109",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9c5dba03_09d74c4c",
