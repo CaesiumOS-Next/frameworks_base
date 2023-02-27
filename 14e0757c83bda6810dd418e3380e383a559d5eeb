@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d75046e5_0fa98136",
+        "filename": "services/core/java/com/android/server/audio/AudioService.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 5110,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2023-02-27T10:07:03Z",
+      "side": 1,
+      "message": "please send this information with MSG_UPDATE_AUDIO_MODE message and don\u0027t use a class member for this.\nYou can create a data struct UpdateAudioModeInfo with the following members:\n   int mode\n   int pid\n   String packageName\n   boolean force",
+      "range": {
+        "startLine": 5110,
+        "startChar": 0,
+        "endLine": 5110,
+        "endChar": 38
+      },
+      "revId": "14e0757c83bda6810dd418e3380e383a559d5eeb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
