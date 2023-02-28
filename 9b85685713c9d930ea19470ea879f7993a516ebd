@@ -48,6 +48,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "da1d1349_47dd2ca2",
+        "filename": "services/core/java/com/android/server/connectivity/NetdEventListenerService.java",
+        "patchSetId": 14
+      },
+      "lineNbr": 287,
+      "author": {
+        "id": 1101726
+      },
+      "writtenOn": "2023-02-28T02:11:19Z",
+      "side": 1,
+      "message": "Reverted to throwing since NumberFormatException could be thrown afterwards anyway.",
+      "parentUuid": "1fbed8fa_4619de91",
+      "range": {
+        "startLine": 286,
+        "startChar": 12,
+        "endLine": 287,
+        "endChar": 69
+      },
+      "revId": "9b85685713c9d930ea19470ea879f7993a516ebd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d0689cd2_8915a63d",
