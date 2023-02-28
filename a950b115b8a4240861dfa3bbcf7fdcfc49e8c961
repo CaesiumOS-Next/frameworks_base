@@ -34,6 +34,24 @@
       "parentUuid": "117b1e04_a8b2be5d",
       "revId": "a950b115b8a4240861dfa3bbcf7fdcfc49e8c961",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8e83c528_6fb1b187",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1060562
+      },
+      "writtenOn": "2023-02-28T03:16:51Z",
+      "side": 1,
+      "message": "Test failure: com.android.server.notification.PreferencesHelperTest#testReadXml_oldXml_migrates\n\nWanted but not invoked:\nmPermissionHelper.setNotificationPermission(\n    PackagePermission{packageName\u003d\u0027com.example.n_mr1\u0027, userId\u003d0, granted\u003dtrue, userSet\u003dfalse}\n);\n-\u003e at com.android.server.notification.PermissionHelper.setNotificationPermission(Unknown Source:34)\nActually, there were zero interactions with this mock.\n\n\tat com.android.server.notification.PermissionHelper.setNotificationPermission(Unknown Source:34)\n\tat com.android.server.notification.PreferencesHelperTest.testReadXml_oldXml_migrates(PreferencesHelperTest.java:679)",
+      "parentUuid": "a49d6343_b3b486d9",
+      "revId": "a950b115b8a4240861dfa3bbcf7fdcfc49e8c961",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
