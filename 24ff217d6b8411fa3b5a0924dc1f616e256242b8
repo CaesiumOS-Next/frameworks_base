@@ -22,6 +22,54 @@
       },
       "revId": "24ff217d6b8411fa3b5a0924dc1f616e256242b8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "74cccf1c_df55bf9a",
+        "filename": "services/core/java/com/android/server/connectivity/NetdEventListenerService.java",
+        "patchSetId": 17
+      },
+      "lineNbr": 310,
+      "author": {
+        "id": 1101726
+      },
+      "writtenOn": "2023-02-28T04:12:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e1e036c5_3639a818",
+      "range": {
+        "startLine": 310,
+        "startChar": 12,
+        "endLine": 310,
+        "endChar": 16
+      },
+      "revId": "24ff217d6b8411fa3b5a0924dc1f616e256242b8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "12c3e9f8_41591b11",
+        "filename": "services/core/java/com/android/server/connectivity/NetdEventListenerService.java",
+        "patchSetId": 17
+      },
+      "lineNbr": 310,
+      "author": {
+        "id": 1101726
+      },
+      "writtenOn": "2023-02-28T04:12:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e1e036c5_3639a818",
+      "range": {
+        "startLine": 310,
+        "startChar": 12,
+        "endLine": 310,
+        "endChar": 16
+      },
+      "revId": "24ff217d6b8411fa3b5a0924dc1f616e256242b8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
