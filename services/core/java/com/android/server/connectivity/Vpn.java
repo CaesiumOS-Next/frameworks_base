@@ -3436,6 +3436,12 @@ public class Vpn {
         boolean maybeMigrateIkeSession(@NonNull Network underlyingNetwork) {
             if (mSession == null || !mMobikeEnabled) return false;
 
+            // If the underlying network capabilities is null while attempting performing migration,
+            // it means a new default network is reported and the network capabilities is reset
+            // temporarily. Migration is expected to be performed after receiving network
+            // capabilities update. Return true here to prevent restarting a new session.
+            if (mUnderlyingNetworkCapabilities == null) return true;
+
             // IKE session can schedule a migration event only when IKE AUTH is finished
             // and mMobikeEnabled is true.
             Log.d(TAG, "Migrate IKE Session with token "
