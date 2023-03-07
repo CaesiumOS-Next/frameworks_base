@@ -45,6 +45,30 @@
       },
       "revId": "9ecf346af7d993881f0da71e8aea6b27bfd68ce0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9c476598_a61a4977",
+        "filename": "services/tests/servicestests/src/com/android/server/locksettings/RebootEscrowManagerTests.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 352,
+      "author": {
+        "id": 1952191
+      },
+      "writtenOn": "2023-03-07T23:30:59Z",
+      "side": 1,
+      "message": "Sure, do you know of an alternative solution for the tests to wait till the handler finishes processing all events?",
+      "parentUuid": "9eda5261_ba3673f9",
+      "range": {
+        "startLine": 351,
+        "startChar": 0,
+        "endLine": 352,
+        "endChar": 24
+      },
+      "revId": "9ecf346af7d993881f0da71e8aea6b27bfd68ce0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
