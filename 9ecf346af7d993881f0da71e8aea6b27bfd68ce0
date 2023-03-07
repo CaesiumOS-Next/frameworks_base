@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fda79d34_2eb1e782",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1137063
+      },
+      "writtenOn": "2023-03-07T18:20:53Z",
+      "side": 1,
+      "message": "You\u0027ll have to submit this change to the internal master branch first, since otherwise there will be a merge conflict when this is automerged to there.",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 52
+      },
+      "revId": "9ecf346af7d993881f0da71e8aea6b27bfd68ce0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9eda5261_ba3673f9",
+        "filename": "services/tests/servicestests/src/com/android/server/locksettings/RebootEscrowManagerTests.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 352,
+      "author": {
+        "id": 1137063
+      },
+      "writtenOn": "2023-03-07T18:20:53Z",
+      "side": 1,
+      "message": "Please don\u0027t use `Thread.sleep()` in unit tests; this will make them flaky :-(",
+      "range": {
+        "startLine": 351,
+        "startChar": 0,
+        "endLine": 352,
+        "endChar": 24
+      },
+      "revId": "9ecf346af7d993881f0da71e8aea6b27bfd68ce0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
