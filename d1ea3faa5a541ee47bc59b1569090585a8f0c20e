@@ -1,5 +1,23 @@
 {
-  "comments": [],
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d326ab90_923a4d46",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 15
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1975975
+      },
+      "writtenOn": "2023-03-08T03:51:52Z",
+      "side": 1,
+      "message": "Fix the feature flag mis-checking cause exception issue\n\nSome HCE supported functions return UnsupportedOperationException\nwhen they were called by HCE only devices. Add the condition to\nfix the issue.\n\nBug: 267846276\nTest: Run \"Screen off HCE Payment\" with CtsVerifier and see if it will\ncrash\n\nChange-Id: Ibdacf947dcfc9e57015a03e38b836745b7353713\nMerged-In: Ibdacf947dcfc9e57015a03e38b836745b7353713",
+      "revId": "d1ea3faa5a541ee47bc59b1569090585a8f0c20e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ],
   "submitRequirementResults": [
     {
       "submitRequirement": {
