@@ -1,0 +1,107 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "12bb1f84_ce946713",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1137063
+      },
+      "writtenOn": "2023-03-08T23:03:25Z",
+      "side": 1,
+      "message": "Please expand the commit message to describe the problem and solution.",
+      "revId": "01957375d6022f99c2bde17661d315971f452a70",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dd5979fc_ccff5cac",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1137063
+      },
+      "writtenOn": "2023-03-08T23:03:25Z",
+      "side": 1,
+      "message": "Add Bug ID",
+      "revId": "01957375d6022f99c2bde17661d315971f452a70",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2b667eeb_71b8e1bf",
+        "filename": "services/core/java/com/android/server/locksettings/LockSettingsService.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 518,
+      "author": {
+        "id": 1137063
+      },
+      "writtenOn": "2023-03-08T23:03:25Z",
+      "side": 1,
+      "message": "This is creating a new ServiceThread and Handler.  Shouldn\u0027t the existing ServiceThread and Handler of LockSettingsService be reused?",
+      "range": {
+        "startLine": 518,
+        "startChar": 20,
+        "endLine": 518,
+        "endChar": 52
+      },
+      "revId": "01957375d6022f99c2bde17661d315971f452a70",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "77f2624f_7864479f",
+        "filename": "services/core/java/com/android/server/locksettings/RebootEscrowManager.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 425,
+      "author": {
+        "id": 1137063
+      },
+      "writtenOn": "2023-03-08T23:03:25Z",
+      "side": 1,
+      "message": "Why is this part being changed?",
+      "range": {
+        "startLine": 425,
+        "startChar": 20,
+        "endLine": 425,
+        "endChar": 28
+      },
+      "revId": "01957375d6022f99c2bde17661d315971f452a70",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9fc2c521_755c7ff2",
+        "filename": "services/tests/servicestests/src/com/android/server/locksettings/RebootEscrowManagerTests.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 361,
+      "author": {
+        "id": 1137063
+      },
+      "writtenOn": "2023-03-08T23:03:25Z",
+      "side": 1,
+      "message": "I think there should be a helper function that does both `mService.callToRebootEscrowIfNeeded()` and `waitForHandler()`.",
+      "range": {
+        "startLine": 360,
+        "startChar": 0,
+        "endLine": 361,
+        "endChar": 25
+      },
+      "revId": "01957375d6022f99c2bde17661d315971f452a70",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
