@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "00e6b95f_e4ffbea6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1952191
+      },
+      "writtenOn": "2023-03-08T22:54:20Z",
+      "side": 1,
+      "message": "I think there\u0027s no longer a merge conflict after passing the handler through the constructor.",
+      "parentUuid": "fda79d34_2eb1e782",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 52
+      },
+      "revId": "9ecf346af7d993881f0da71e8aea6b27bfd68ce0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9eda5261_ba3673f9",
@@ -109,6 +133,30 @@
       "side": 1,
       "message": "Maybe use `mHandler.runWithScissors(() -\u003e { }, 0);`?  I found this here: https://android.googlesource.com/platform/frameworks/base.git/+/2b67e534428cd95923ae9dc1c836f170384a9865/core/tests/coretests/src/android/hardware/display/DisplayManagerGlobalTest.java#124",
       "parentUuid": "1f3c5e67_dbd4a175",
+      "range": {
+        "startLine": 351,
+        "startChar": 0,
+        "endLine": 352,
+        "endChar": 24
+      },
+      "revId": "9ecf346af7d993881f0da71e8aea6b27bfd68ce0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cc43a5cd_d2a2c51b",
+        "filename": "services/tests/servicestests/src/com/android/server/locksettings/RebootEscrowManagerTests.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 352,
+      "author": {
+        "id": 1952191
+      },
+      "writtenOn": "2023-03-08T22:54:20Z",
+      "side": 1,
+      "message": "Thanks! used count down latch.",
+      "parentUuid": "95bbb5f6_603cb9ae",
       "range": {
         "startLine": 351,
         "startChar": 0,

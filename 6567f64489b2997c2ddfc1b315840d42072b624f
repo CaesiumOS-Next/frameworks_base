@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "09c21b12_a2afff9c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1952191
+      },
+      "writtenOn": "2023-03-08T22:54:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b43bf180_8c8fdb7d",
+      "range": {
+        "startLine": 9,
+        "startChar": 6,
+        "endLine": 9,
+        "endChar": 11
+      },
+      "revId": "6567f64489b2997c2ddfc1b315840d42072b624f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4727964a_001c7e1d",
@@ -85,6 +109,30 @@
       "side": 1,
       "message": "It just seems that the Handler belongs as a property of the object, instead of passed to this method on an ad-hoc basis.",
       "parentUuid": "559874a5_f9debba9",
+      "range": {
+        "startLine": 791,
+        "startChar": 37,
+        "endLine": 791,
+        "endChar": 53
+      },
+      "revId": "6567f64489b2997c2ddfc1b315840d42072b624f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8e241951_73e4eb1f",
+        "filename": "services/core/java/com/android/server/locksettings/RebootEscrowManager.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 791,
+      "author": {
+        "id": 1952191
+      },
+      "writtenOn": "2023-03-08T22:54:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f34955bc_5e353899",
       "range": {
         "startLine": 791,
         "startChar": 37,
