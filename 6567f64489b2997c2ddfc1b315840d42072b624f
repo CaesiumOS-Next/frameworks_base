@@ -45,6 +45,30 @@
       },
       "revId": "6567f64489b2997c2ddfc1b315840d42072b624f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "559874a5_f9debba9",
+        "filename": "services/core/java/com/android/server/locksettings/RebootEscrowManager.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 791,
+      "author": {
+        "id": 1952191
+      },
+      "writtenOn": "2023-03-08T00:33:38Z",
+      "side": 1,
+      "message": "Making sure I\u0027m not missing anything here, why would there be a difference whether the handler is passed via the construtor or directly to this function? Either way, the same mHandler from LockSettingsService is used throughout this class. \n\nIt might be cleaner to clean up all the references to the handler here and only pass it into the constructor if that\u0027s what you mean.",
+      "parentUuid": "4727964a_001c7e1d",
+      "range": {
+        "startLine": 791,
+        "startChar": 37,
+        "endLine": 791,
+        "endChar": 53
+      },
+      "revId": "6567f64489b2997c2ddfc1b315840d42072b624f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
