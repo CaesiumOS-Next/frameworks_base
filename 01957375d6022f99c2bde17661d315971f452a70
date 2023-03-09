@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c29fa450_36db8c9a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1952191
+      },
+      "writtenOn": "2023-03-09T19:18:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "12bb1f84_ce946713",
+      "revId": "01957375d6022f99c2bde17661d315971f452a70",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "dd5979fc_ccff5cac",
@@ -35,6 +53,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3226e5e1_02a5c43b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1952191
+      },
+      "writtenOn": "2023-03-09T19:18:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dd5979fc_ccff5cac",
+      "revId": "01957375d6022f99c2bde17661d315971f452a70",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2b667eeb_71b8e1bf",
@@ -48,6 +84,30 @@
       "writtenOn": "2023-03-08T23:03:25Z",
       "side": 1,
       "message": "This is creating a new ServiceThread and Handler.  Shouldn\u0027t the existing ServiceThread and Handler of LockSettingsService be reused?",
+      "range": {
+        "startLine": 518,
+        "startChar": 20,
+        "endLine": 518,
+        "endChar": 52
+      },
+      "revId": "01957375d6022f99c2bde17661d315971f452a70",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5787a7b1_aa673bde",
+        "filename": "services/core/java/com/android/server/locksettings/LockSettingsService.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 518,
+      "author": {
+        "id": 1952191
+      },
+      "writtenOn": "2023-03-09T19:18:13Z",
+      "side": 1,
+      "message": "Thanks for catching, done.",
+      "parentUuid": "2b667eeb_71b8e1bf",
       "range": {
         "startLine": 518,
         "startChar": 20,
@@ -81,6 +141,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b9331e5c_97b86826",
+        "filename": "services/core/java/com/android/server/locksettings/RebootEscrowManager.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 425,
+      "author": {
+        "id": 1952191
+      },
+      "writtenOn": "2023-03-09T19:18:13Z",
+      "side": 1,
+      "message": "oops, thanks.",
+      "parentUuid": "77f2624f_7864479f",
+      "range": {
+        "startLine": 425,
+        "startChar": 20,
+        "endLine": 425,
+        "endChar": 28
+      },
+      "revId": "01957375d6022f99c2bde17661d315971f452a70",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9fc2c521_755c7ff2",
@@ -94,6 +178,30 @@
       "writtenOn": "2023-03-08T23:03:25Z",
       "side": 1,
       "message": "I think there should be a helper function that does both `mService.callToRebootEscrowIfNeeded()` and `waitForHandler()`.",
+      "range": {
+        "startLine": 360,
+        "startChar": 0,
+        "endLine": 361,
+        "endChar": 25
+      },
+      "revId": "01957375d6022f99c2bde17661d315971f452a70",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2759fa96_705f31d6",
+        "filename": "services/tests/servicestests/src/com/android/server/locksettings/RebootEscrowManagerTests.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 361,
+      "author": {
+        "id": 1952191
+      },
+      "writtenOn": "2023-03-09T19:18:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9fc2c521_755c7ff2",
       "range": {
         "startLine": 360,
         "startChar": 0,
