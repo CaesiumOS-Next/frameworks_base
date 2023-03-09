@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0c70c340_c798e2f5",
+        "filename": "services/core/java/com/android/server/locksettings/LockSettingsService.java",
+        "patchSetId": 9
+      },
+      "lineNbr": 432,
+      "author": {
+        "id": 1137063
+      },
+      "writtenOn": "2023-03-09T19:28:21Z",
+      "side": 1,
+      "message": "Assign directly to mHandlerThread",
+      "range": {
+        "startLine": 432,
+        "startChar": 16,
+        "endLine": 432,
+        "endChar": 43
+      },
+      "revId": "95ed261cc6065d38c2b66c3a872c1066fb4ddb2c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "82519a8b_fc5fe643",
+        "filename": "services/tests/servicestests/src/com/android/server/locksettings/RebootEscrowManagerTests.java",
+        "patchSetId": 9
+      },
+      "lineNbr": 349,
+      "author": {
+        "id": 1137063
+      },
+      "writtenOn": "2023-03-09T19:28:21Z",
+      "side": 1,
+      "message": "Use a timeout of at least 5 seconds, please.  We do not want these tests to be flaky.",
+      "range": {
+        "startLine": 349,
+        "startChar": 20,
+        "endLine": 349,
+        "endChar": 21
+      },
+      "revId": "95ed261cc6065d38c2b66c3a872c1066fb4ddb2c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
