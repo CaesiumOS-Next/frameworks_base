@@ -16,6 +16,75 @@
       "message": "LGTM now.  I\u0027ll wait a day before upgrading my +1 to +2, in case Rubin wants to review this too.",
       "revId": "1d859017194116f2a1ee03e3f049d4374596d48a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3349b26b_1d2caa37",
+        "filename": "services/core/java/com/android/server/locksettings/LockSettingsService.java",
+        "patchSetId": 10
+      },
+      "lineNbr": 896,
+      "author": {
+        "id": 1059499
+      },
+      "writtenOn": "2023-03-10T09:42:21Z",
+      "side": 1,
+      "message": "No need to pass this in as you now have access to the handler internally.",
+      "range": {
+        "startLine": 896,
+        "startChar": 61,
+        "endLine": 896,
+        "endChar": 69
+      },
+      "revId": "1d859017194116f2a1ee03e3f049d4374596d48a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7216a1d9_9c80075d",
+        "filename": "services/core/java/com/android/server/locksettings/RebootEscrowManager.java",
+        "patchSetId": 10
+      },
+      "lineNbr": 822,
+      "author": {
+        "id": 1059499
+      },
+      "writtenOn": "2023-03-10T09:42:21Z",
+      "side": 1,
+      "message": "Is this the right layout of offloading to handler? there are other calls to setRebootEscrowReady() (L854) here which isn\u0027t offloaded so that\u0027s kind of inconsistent. Should we offload the call to mRebootEscrowListener.onPreparedForReboot() instead?",
+      "range": {
+        "startLine": 822,
+        "startChar": 25,
+        "endLine": 822,
+        "endChar": 52
+      },
+      "revId": "1d859017194116f2a1ee03e3f049d4374596d48a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "711b99fa_5fc005e3",
+        "filename": "services/tests/servicestests/src/com/android/server/locksettings/RebootEscrowManagerTests.java",
+        "patchSetId": 10
+      },
+      "lineNbr": 349,
+      "author": {
+        "id": 1059499
+      },
+      "writtenOn": "2023-03-10T09:42:21Z",
+      "side": 1,
+      "message": "assertTrue",
+      "range": {
+        "startLine": 349,
+        "startChar": 8,
+        "endLine": 349,
+        "endChar": 9
+      },
+      "revId": "1d859017194116f2a1ee03e3f049d4374596d48a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
