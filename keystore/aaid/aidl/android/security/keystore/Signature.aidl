@@ -14,9 +14,14 @@
  * limitations under the License.
  */
 
-package android.security.keymaster;
+package android.security.keystore;
 
-/* The cpp_header is relative to system/security/keystore/include
- * Link against libkeystore_binder to make use of the native implementation of this Parcelable.
+/**
+ * Represents a signature data read from the package file.
  */
-parcelable KeyAttestationApplicationId cpp_header "keystore/KeyAttestationApplicationId.h";
+parcelable Signature {
+	/**
+	 * Signature data
+	 */
+	byte[] data;
+}

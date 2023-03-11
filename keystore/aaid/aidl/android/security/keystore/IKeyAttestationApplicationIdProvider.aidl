@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2016, The Android Open Source Project
+ * Copyright (c) 2023, The Android Open Source Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,19 +14,16 @@
  * limitations under the License.
  */
 
-package android.security.keymaster;
+package android.security.keystore;
 
-import android.security.keymaster.KeyAttestationApplicationId;
-import android.security.keymaster.KeyAttestationPackageInfo;
-import android.content.pm.Signature;
+import android.security.keystore.KeyAttestationApplicationId;
+import android.security.keystore.KeyAttestationPackageInfo;
 
-/**
- * This must be kept manually in sync with system/security/keystore until AIDL
- * can generate both Java and C++ bindings.
- *
- * @hide
- */
+/** @hide */
 interface IKeyAttestationApplicationIdProvider {
-    /* keep in sync with /system/security/keystore/keystore_attestation_id.cpp */
+    /**
+     * The provides information describing the possible applications identified by a UID.
+     * @hide
+     */
     KeyAttestationApplicationId getKeyAttestationApplicationId(int uid);
 }
