@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c8d9e9cb_ba36ab0e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1996421
+      },
+      "writtenOn": "2023-03-13T02:46:56Z",
+      "side": 1,
+      "message": "Hi Eric,can you help to check the error in persubmit-verified cause we have no permission, should we fix it or not?",
+      "revId": "b7d0381b52c2702dd09aba369bdcdcc62608fc76",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
