@@ -67,6 +67,23 @@
       "message": "Amith, friendly ping :)",
       "revId": "c58be09d9273485c54d6a16defc42d9f26182b73",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f83a875c_539787b5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2023-03-14T15:57:07Z",
+      "side": 1,
+      "message": "Global approve as simple cherry-pick.",
+      "revId": "c58be09d9273485c54d6a16defc42d9f26182b73",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
