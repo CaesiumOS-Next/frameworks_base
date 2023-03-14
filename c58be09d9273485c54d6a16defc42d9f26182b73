@@ -50,6 +50,23 @@
       "message": "Amith, Ping on this CL :). This is the same ag/21127471 but submitting to aosp",
       "revId": "c58be09d9273485c54d6a16defc42d9f26182b73",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7443154d_99757895",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1894735
+      },
+      "writtenOn": "2023-03-14T15:48:03Z",
+      "side": 1,
+      "message": "Amith, friendly ping :)",
+      "revId": "c58be09d9273485c54d6a16defc42d9f26182b73",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
