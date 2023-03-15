@@ -271,6 +271,13 @@ public class Vpn {
     static final int DEFAULT_UDP_PORT_4500_NAT_TIMEOUT_SEC_INT = 5 * 60;
 
     /**
+     * Default keepalive value to consider long-lived TCP connections are expensive on the
+     * VPN network from battery usage point of view.
+     * TODO: consider reading from setting.
+     */
+    @VisibleForTesting
+    static final int DEFAULT_LONG_LIVED_TCP_CONNS_EXPENSIVE_TIMEOUT_SEC = 60;
+    /**
      *  Prefer using {@link IkeSessionParams.ESP_IP_VERSION_AUTO} and
      *  {@link IkeSessionParams.ESP_ENCAP_TYPE_AUTO} for ESP packets.
      *
@@ -1670,9 +1677,18 @@ public class Vpn {
         capsBuilder.setUids(createUserAndRestrictedProfilesRanges(mUserId,
                 mConfig.allowedApplications, mConfig.disallowedApplications));
 
-        capsBuilder.setTransportInfo(
-                new VpnTransportInfo(getActiveVpnType(), mConfig.session, mConfig.allowBypass,
-                        false /* longLivedTcpConnectionsExpensive */));
+        final boolean expensive;
+        if (isIkev2VpnRunner()) {
+            final int delay = ((IkeV2VpnRunner) mVpnRunner).getOrGuessKeepaliveDelaySeconds();
+            expensive = areLongLivedTcpConnectionsExpensive(delay);
+        } else {
+            expensive = false;
+        }
+        capsBuilder.setTransportInfo(new VpnTransportInfo(
+                getActiveVpnType(),
+                mConfig.session,
+                mConfig.allowBypass,
+                expensive));
 
         // Only apps targeting Q and above can explicitly declare themselves as metered.
         // These VPNs are assumed metered unless they state otherwise.
@@ -1702,6 +1718,10 @@ public class Vpn {
             Binder.restoreCallingIdentity(token);
         }
         updateState(DetailedState.CONNECTED, "agentConnect");
+    }
+
+    private static boolean areLongLivedTcpConnectionsExpensive(int keepaliveDelaySec) {
+        return keepaliveDelaySec < DEFAULT_LONG_LIVED_TCP_CONNS_EXPENSIVE_TIMEOUT_SEC;
     }
 
     private boolean canHaveRestrictedProfile(int userId) {
@@ -2988,10 +3008,8 @@ public class Vpn {
                             // Ignore stale runner.
                             if (mVpnRunner != Vpn.IkeV2VpnRunner.this) return;
 
-                            maybeMigrateIkeSession(mActiveNetwork);
+                            maybeMigrateIkeSessionAndUpdateVpnTransportInfo(mActiveNetwork);
                         }
-                        // TODO: update the longLivedTcpConnectionsExpensive value in the
-                        //  networkcapabilities of the VPN network.
                     }
         };
 
@@ -3442,7 +3460,7 @@ public class Vpn {
                 return;
             }
 
-            if (maybeMigrateIkeSession(underlyingNetwork)) return;
+            if (maybeMigrateIkeSessionAndUpdateVpnTransportInfo(underlyingNetwork)) return;
 
             startIkeSession(underlyingNetwork);
         }
@@ -3478,6 +3496,20 @@ public class Vpn {
                         + carrierconfig.mccMnc + ")");
             }
             return natKeepalive;
+        }
+
+        private int getOrGuessKeepaliveDelaySeconds() {
+            final int delay;
+
+            if (mProfile.isAutomaticNattKeepaliveTimerEnabled()) {
+                delay = guessNattKeepaliveTimerForNetwork();
+            } else if (mProfile.getIkeTunnelConnectionParams() != null) {
+                delay = mProfile.getIkeTunnelConnectionParams()
+                        .getIkeSessionParams().getNattKeepAliveDelaySeconds();
+            } else {
+                delay = DEFAULT_UDP_PORT_4500_NAT_TIMEOUT_SEC_INT;
+            }
+            return delay;
         }
 
         private CarrierConfigInfo getCarrierConfig() {
@@ -3549,7 +3581,33 @@ public class Vpn {
             return new CarrierConfigInfo(mccMnc, natKeepalive, encapType, ipVersion);
         }
 
-        boolean maybeMigrateIkeSession(@NonNull Network underlyingNetwork) {
+        boolean maybeMigrateIkeSessionAndUpdateVpnTransportInfo(
+                @NonNull Network underlyingNetwork) {
+            final int keepaliveDelaySec = getOrGuessKeepaliveDelaySeconds();
+            final boolean migrated = maybeMigrateIkeSession(underlyingNetwork, keepaliveDelaySec);
+            if (migrated) {
+                updateVpnTransportInfoAndNetCap(keepaliveDelaySec);
+            }
+            return migrated;
+        }
+
+        public void updateVpnTransportInfoAndNetCap(int keepaliveDelaySec) {
+            final VpnTransportInfo info = new VpnTransportInfo(
+                    getActiveVpnType(),
+                    mConfig.session,
+                    mConfig.allowBypass,
+                    areLongLivedTcpConnectionsExpensive(keepaliveDelaySec));
+            final boolean ncUpdateRequired = !info.equals(mNetworkCapabilities.getTransportInfo());
+            if (ncUpdateRequired) {
+                mNetworkCapabilities = new NetworkCapabilities.Builder(mNetworkCapabilities)
+                        .setTransportInfo(info)
+                        .build();
+                doSendNetworkCapabilities(mNetworkAgent, mNetworkCapabilities);
+            }
+        }
+
+        private boolean maybeMigrateIkeSession(@NonNull Network underlyingNetwork,
+                int keepaliveDelaySeconds) {
             if (mSession == null || !mMobikeEnabled) return false;
 
             // IKE session can schedule a migration event only when IKE AUTH is finished
@@ -3574,15 +3632,6 @@ public class Vpn {
                 encapType = ESP_ENCAP_TYPE_AUTO;
             }
 
-            final int keepaliveDelaySeconds;
-            if (mProfile.isAutomaticNattKeepaliveTimerEnabled()) {
-                keepaliveDelaySeconds = guessNattKeepaliveTimerForNetwork();
-            } else if (mProfile.getIkeTunnelConnectionParams() != null) {
-                keepaliveDelaySeconds = mProfile.getIkeTunnelConnectionParams()
-                        .getIkeSessionParams().getNattKeepAliveDelaySeconds();
-            } else {
-                keepaliveDelaySeconds = DEFAULT_UDP_PORT_4500_NAT_TIMEOUT_SEC_INT;
-            }
             mSession.setNetwork(underlyingNetwork, ipVersion, encapType, keepaliveDelaySeconds);
             return true;
         }
@@ -3663,7 +3712,7 @@ public class Vpn {
                 startOrMigrateIkeSession(mActiveNetwork);
             } else if (!nc.getSubscriptionIds().equals(oldNc.getSubscriptionIds())) {
                 // Renew carrierConfig values.
-                maybeMigrateIkeSession(mActiveNetwork);
+                maybeMigrateIkeSessionAndUpdateVpnTransportInfo(mActiveNetwork);
             }
         }
 
@@ -3691,7 +3740,7 @@ public class Vpn {
                         Log.d(TAG, "Data stall suspected");
 
                         // Trigger MOBIKE.
-                        maybeMigrateIkeSession(mActiveNetwork);
+                        maybeMigrateIkeSessionAndUpdateVpnTransportInfo(mActiveNetwork);
                         mDataStallSuspected = true;
                     }
                 }
