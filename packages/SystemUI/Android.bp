@@ -177,6 +177,7 @@ android_library {
         "lottie",
         "LowLightDreamLib",
         "motion_tool_lib",
+        "renderscript_toolkit",
     ],
     manifest: "AndroidManifest.xml",
 
