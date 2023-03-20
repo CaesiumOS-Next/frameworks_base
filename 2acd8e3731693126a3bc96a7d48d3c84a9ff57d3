@@ -16,6 +16,23 @@
       "message": "I don\u0027t have OWNERS rights in this branch, @jjaggi@google.com, could you please help to review?",
       "revId": "2acd8e3731693126a3bc96a7d48d3c84a9ff57d3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a60b5f39_42412385",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1972920
+      },
+      "writtenOn": "2023-03-20T06:15:42Z",
+      "side": 1,
+      "message": "@jjaggi@google.com, treehugger does not merge code automatically, do it need to manually merge？",
+      "revId": "2acd8e3731693126a3bc96a7d48d3c84a9ff57d3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
