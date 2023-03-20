@@ -1,5 +1,23 @@
 {
-  "comments": [],
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b9dbe193_4fd5804b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1004882
+      },
+      "writtenOn": "2023-03-20T07:43:26Z",
+      "side": 1,
+      "message": "juliacr@\n\nThank you for fixing the test failure - I got access to Android U and have been working on that for the last few weeks with not much time for anything else.",
+      "revId": "d88ec3d719b7035c2334875bec11216a25c111b7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ],
   "submitRequirementResults": [
     {
       "submitRequirement": {
