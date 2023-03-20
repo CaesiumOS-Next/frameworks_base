@@ -16,6 +16,23 @@
       "message": "Hi Eric,can you help to check the error in persubmit-verified cause we have no permission, should we fix it or not?",
       "revId": "b7d0381b52c2702dd09aba369bdcdcc62608fc76",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "66873e3f_0f757851",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1996421
+      },
+      "writtenOn": "2023-03-20T11:36:38Z",
+      "side": 1,
+      "message": "Hi Eric,this patch needs to be submitted manually.Could you help to check it again.Thanks.",
+      "revId": "b7d0381b52c2702dd09aba369bdcdcc62608fc76",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
