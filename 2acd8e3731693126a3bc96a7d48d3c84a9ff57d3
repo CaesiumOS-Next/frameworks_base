@@ -50,6 +50,24 @@
       "message": "Shouldn\u0027t this be submitted to master?",
       "revId": "2acd8e3731693126a3bc96a7d48d3c84a9ff57d3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d4854655_9418207b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1972920
+      },
+      "writtenOn": "2023-03-21T03:02:54Z",
+      "side": 1,
+      "message": "No，google have rewritten and improved the letterbox logic significantly in Android S and T releases, So there is a big difference between the master branch and Android11-dev.",
+      "parentUuid": "e623bd0c_9d41cd94",
+      "revId": "2acd8e3731693126a3bc96a7d48d3c84a9ff57d3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
