@@ -68,6 +68,23 @@
       "message": "Would a better solution be to store the pair ComponentName + userId as keys in the map? That way, we can guarantee that the correct entry always gets removed.",
       "revId": "3a68e89a6b1923f3f0654a01f1f0010143a57038",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "68e33feb_0da3b80d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1387508
+      },
+      "writtenOn": "2023-03-30T13:44:56Z",
+      "side": 1,
+      "message": "Given the lack of response, this bug has been fixed internally using a different solution. The patch will appear in a future release.",
+      "revId": "3a68e89a6b1923f3f0654a01f1f0010143a57038",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
