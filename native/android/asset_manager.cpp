@@ -14,6 +14,15 @@
  * limitations under the License.
  */
 
+// These functions are in the LP32 NDK ABI with a 32-bit off_t, but the
+// platform is compiled with _FILE_OFFSET_BITS=64.  Rename the NDK
+// declarations out of the way so __RENAME_IF_FILE_OFFSET64 doesn't rename
+// the 32-bit off_t implementations.
+#define AAsset_getLength public_AAsset_getLength
+#define AAsset_getRemainingLength public_AAsset_getRemainingLength
+#define AAsset_openFileDescriptor public_AAsset_openFileDescriptor
+#define AAsset_seek public_AAsset_seek
+
 #define LOG_TAG "NAsset"
 #include <utils/Log.h>
 
@@ -27,6 +36,21 @@
 
 #include "jni.h"
 #include <nativehelper/JNIHelp.h>
+
+#undef AAsset_getLength
+#undef AAsset_getRemainingLength
+#undef AAsset_openFileDescriptor
+#undef AAsset_seek
+
+// The declarations for these functions were skipped above, redeclare
+// them with extern "C" here.
+extern "C" __bionic_legacy_compat_off_t AAsset_seek(AAsset* asset,
+                                                    __bionic_legacy_compat_off_t offset,
+                                                    int whence);
+extern "C" __bionic_legacy_compat_off_t AAsset_getLength(AAsset* asset);
+extern "C" __bionic_legacy_compat_off_t AAsset_getRemainingLength(AAsset* asset);
+extern "C" int AAsset_openFileDescriptor(AAsset* asset, __bionic_legacy_compat_off_t* outStart,
+                                         __bionic_legacy_compat_off_t* outLength);
 
 using namespace android;
 
@@ -151,8 +175,8 @@ int AAsset_read(AAsset* asset, void* buf, size_t count)
     return asset->mAsset->read(buf, (size_t)count);
 }
 
-off_t AAsset_seek(AAsset* asset, off_t offset, int whence)
-{
+__bionic_legacy_compat_off_t AAsset_seek(AAsset* asset, __bionic_legacy_compat_off_t offset,
+                                         int whence) {
     return asset->mAsset->seek(offset, whence);
 }
 
@@ -172,8 +196,7 @@ const void* AAsset_getBuffer(AAsset* asset)
     return asset->mAsset->getBuffer(false);
 }
 
-off_t AAsset_getLength(AAsset* asset)
-{
+__bionic_legacy_compat_off_t AAsset_getLength(AAsset* asset) {
     return asset->mAsset->getLength();
 }
 
@@ -182,8 +205,7 @@ off64_t AAsset_getLength64(AAsset* asset)
     return asset->mAsset->getLength();
 }
 
-off_t AAsset_getRemainingLength(AAsset* asset)
-{
+__bionic_legacy_compat_off_t AAsset_getRemainingLength(AAsset* asset) {
     return asset->mAsset->getRemainingLength();
 }
 
@@ -192,14 +214,14 @@ off64_t AAsset_getRemainingLength64(AAsset* asset)
     return asset->mAsset->getRemainingLength();
 }
 
-int AAsset_openFileDescriptor(AAsset* asset, off_t* outStart, off_t* outLength)
-{
+int AAsset_openFileDescriptor(AAsset* asset, __bionic_legacy_compat_off_t* outStart,
+                              __bionic_legacy_compat_off_t* outLength) {
     off64_t outStart64, outLength64;
 
     int ret = asset->mAsset->openFileDescriptor(&outStart64, &outLength64);
 
-    *outStart = off_t(outStart64);
-    *outLength = off_t(outLength64);
+    *outStart = __bionic_legacy_compat_off_t(outStart64);
+    *outLength = __bionic_legacy_compat_off_t(outLength64);
     return ret;
 }
 
