@@ -297,13 +297,13 @@ public class Application extends ContextWrapper implements ComponentCallbacks2 {
         mCallbacksController.unregisterCallbacks(callback);
     }
 
-    public void registerActivityLifecycleCallbacks(ActivityLifecycleCallbacks callback) {
+    public void registerActivityLifecycleCallbacks(@NonNull ActivityLifecycleCallbacks callback) {
         synchronized (mActivityLifecycleCallbacks) {
             mActivityLifecycleCallbacks.add(callback);
         }
     }
 
-    public void unregisterActivityLifecycleCallbacks(ActivityLifecycleCallbacks callback) {
+    public void unregisterActivityLifecycleCallbacks(@NonNull ActivityLifecycleCallbacks callback) {
         synchronized (mActivityLifecycleCallbacks) {
             mActivityLifecycleCallbacks.remove(callback);
         }
