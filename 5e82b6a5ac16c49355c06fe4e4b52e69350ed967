@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "78fc415a_2cb8c1c0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1056478
+      },
+      "writtenOn": "2023-04-03T22:27:51Z",
+      "side": 1,
+      "message": "Clean cherry-pick of internal CL.",
+      "revId": "5e82b6a5ac16c49355c06fe4e4b52e69350ed967",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
