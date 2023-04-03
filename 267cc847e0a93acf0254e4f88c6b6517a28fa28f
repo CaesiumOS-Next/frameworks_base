@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e7c906d5_4ec7de74",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1972300
+      },
+      "writtenOn": "2023-04-03T11:06:49Z",
+      "side": 1,
+      "message": "When we use localNightMode of appcompat, contextMenuPopup\u0027s background refers decorview\u0027s context and it make some issue. (https://issuetracker.google.com/issues/276473378)\nPlease checks that modification has any side effect.",
+      "revId": "267cc847e0a93acf0254e4f88c6b6517a28fa28f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
