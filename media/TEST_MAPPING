@@ -12,7 +12,7 @@
       ]
     },
     {
-      "name": "GtsMediaTestCases",
+      "name": "WvtsDeviceTestCases",
       "options" : [
         {
           "include-annotation": "android.platform.test.annotations.Presubmit"
