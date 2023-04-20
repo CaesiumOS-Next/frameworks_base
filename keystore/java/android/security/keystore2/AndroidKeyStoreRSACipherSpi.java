@@ -290,14 +290,21 @@ abstract class AndroidKeyStoreRSACipherSpi extends AndroidKeyStoreCipherSpiBase 
 
         @Override
         protected final void addAlgorithmSpecificParametersToBegin(
-                @NonNull List<KeyParameter> parameters) {
-            super.addAlgorithmSpecificParametersToBegin(parameters);
+                @NonNull List<KeyParameter> parameters, MgfDigestPresence mgfDigestPresence) {
+            super.addAlgorithmSpecificParametersToBegin(parameters, mgfDigestPresence);
             parameters.add(KeyStore2ParameterUtils.makeEnum(
                     KeymasterDefs.KM_TAG_DIGEST, mKeymasterDigest
             ));
-            parameters.add(KeyStore2ParameterUtils.makeEnum(
-                    KeymasterDefs.KM_TAG_RSA_OAEP_MGF_DIGEST, mKeymasterMgf1Digest
-            ));
+            // Only add the KM_TAG_RSA_OAEP_MGF_DIGEST tag to begin() if the MGF Digest is
+            // present in the key properties. Keys generated prior to Android 14 did not have
+            // this tag (Keystore didn't add it) so specifying any MGF digest tag would cause
+            // a begin() operation (on an Android 14 device) to fail (with a key that was generated
+            // on Android 13 or below).
+            if (mgfDigestPresence == MgfDigestPresence.MGF_DIGEST_TAG_PRESENT) {
+                parameters.add(KeyStore2ParameterUtils.makeEnum(
+                        KeymasterDefs.KM_TAG_RSA_OAEP_MGF_DIGEST, mKeymasterMgf1Digest
+                ));
+            }
         }
 
         @Override
@@ -379,6 +386,13 @@ abstract class AndroidKeyStoreRSACipherSpi extends AndroidKeyStoreCipherSpiBase 
     protected String getTransform() {
         return "RSA/ECB/" + KeyProperties.EncryptionPadding.fromKeymaster(mKeymasterPadding);
     }
+
+//    @Override
+//    protected final void addAlgorithmSpecificParametersToBegin(
+//            @NonNull List<KeyParameter> parameters) {
+//        throw new IllegalStateException("For RSA Ciphers, the MGF Digest presence must be"
+//                + " specified");
+//    }
 
     @Override
     protected final void initKey(int opmode, Key key) throws InvalidKeyException {
@@ -482,8 +496,7 @@ abstract class AndroidKeyStoreRSACipherSpi extends AndroidKeyStoreCipherSpiBase 
     }
 
     @Override
-    protected void addAlgorithmSpecificParametersToBegin(
-            @NonNull List<KeyParameter> parameters) {
+    protected void addAlgorithmSpecificParametersToBegin(@NonNull List<KeyParameter> parameters) {
         parameters.add(KeyStore2ParameterUtils.makeEnum(
                 KeymasterDefs.KM_TAG_ALGORITHM, KeymasterDefs.KM_ALGORITHM_RSA
         ));

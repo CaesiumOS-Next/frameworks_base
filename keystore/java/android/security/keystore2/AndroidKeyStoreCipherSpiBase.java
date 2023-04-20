@@ -71,6 +71,11 @@ abstract class AndroidKeyStoreCipherSpiBase extends CipherSpi implements KeyStor
     private static final String TAG = "AndroidKeyStoreCipherSpiBase";
     public static final String DEFAULT_MGF1_DIGEST = "SHA-1";
 
+    enum MgfDigestPresence {
+        MGF_DIGEST_TAG_PRESENT,
+        MGF_DIGEST_TAG_NOT_PRESENT
+    };
+
     // Fields below are populated by Cipher.init and KeyStore.begin and should be preserved after
     // doFinal finishes.
     private boolean mEncrypting;
@@ -173,7 +178,7 @@ abstract class AndroidKeyStoreCipherSpiBase extends CipherSpi implements KeyStor
             init(opmode, key, random);
             initAlgorithmSpecificParameters();
             try {
-                ensureKeystoreOperationInitialized();
+                ensureKeystoreOperationInitialized(getMgfDigestTagPresenceFromKeyProperties(key));
             } catch (InvalidAlgorithmParameterException e) {
                 throw new InvalidKeyException(e);
             }
@@ -183,6 +188,21 @@ abstract class AndroidKeyStoreCipherSpiBase extends CipherSpi implements KeyStor
                 resetAll();
             }
         }
+    }
+
+    private static MgfDigestPresence getMgfDigestTagPresenceFromKeyProperties(
+            Key key) {
+        if (!(key instanceof AndroidKeyStoreKey)) {
+            return MgfDigestPresence.MGF_DIGEST_TAG_NOT_PRESENT;
+        }
+        for (android.system.keystore2.Authorization authorization :
+                ((AndroidKeyStoreKey) key).getAuthorizations()) {
+            if (authorization.keyParameter.tag == KeymasterDefs.KM_TAG_RSA_OAEP_MGF_DIGEST) {
+                return MgfDigestPresence.MGF_DIGEST_TAG_PRESENT;
+            }
+        }
+
+        return MgfDigestPresence.MGF_DIGEST_TAG_NOT_PRESENT;
     }
 
     @Override
@@ -206,7 +226,7 @@ abstract class AndroidKeyStoreCipherSpiBase extends CipherSpi implements KeyStor
         try {
             init(opmode, key, random);
             initAlgorithmSpecificParameters(params);
-            ensureKeystoreOperationInitialized();
+            ensureKeystoreOperationInitialized(getMgfDigestTagPresenceFromKeyProperties(key));
             success = true;
         } finally {
             if (!success) {
@@ -236,7 +256,7 @@ abstract class AndroidKeyStoreCipherSpiBase extends CipherSpi implements KeyStor
         try {
             init(opmode, key, random);
             initAlgorithmSpecificParameters(params);
-            ensureKeystoreOperationInitialized();
+            ensureKeystoreOperationInitialized(getMgfDigestTagPresenceFromKeyProperties(key));
             success = true;
         } finally {
             if (!success) {
@@ -310,7 +330,8 @@ abstract class AndroidKeyStoreCipherSpiBase extends CipherSpi implements KeyStor
         mCachedException = null;
     }
 
-    private void ensureKeystoreOperationInitialized() throws InvalidKeyException,
+    private void ensureKeystoreOperationInitialized(MgfDigestPresence mgfDigestPresence)
+            throws InvalidKeyException,
             InvalidAlgorithmParameterException {
         if (mMainDataStreamer != null) {
             return;
@@ -323,7 +344,7 @@ abstract class AndroidKeyStoreCipherSpiBase extends CipherSpi implements KeyStor
         }
 
         List<KeyParameter> parameters = new ArrayList<>();
-        addAlgorithmSpecificParametersToBegin(parameters);
+        addAlgorithmSpecificParametersToBegin(parameters, mgfDigestPresence);
 
         int purpose;
         if (mKeymasterPurposeOverride != -1) {
@@ -404,7 +425,7 @@ abstract class AndroidKeyStoreCipherSpiBase extends CipherSpi implements KeyStor
             return null;
         }
         try {
-            ensureKeystoreOperationInitialized();
+            ensureKeystoreOperationInitialized(getMgfDigestTagPresenceFromKeyProperties(mKey));
         } catch (InvalidKeyException | InvalidAlgorithmParameterException e) {
             mCachedException = e;
             return null;
@@ -520,7 +541,7 @@ abstract class AndroidKeyStoreCipherSpiBase extends CipherSpi implements KeyStor
         }
 
         try {
-            ensureKeystoreOperationInitialized();
+            ensureKeystoreOperationInitialized(getMgfDigestTagPresenceFromKeyProperties(mKey));
         } catch (InvalidKeyException | InvalidAlgorithmParameterException e) {
             mCachedException = e;
             return;
@@ -597,7 +618,7 @@ abstract class AndroidKeyStoreCipherSpiBase extends CipherSpi implements KeyStor
         }
 
         try {
-            ensureKeystoreOperationInitialized();
+            ensureKeystoreOperationInitialized(getMgfDigestTagPresenceFromKeyProperties(mKey));
         } catch (InvalidKeyException | InvalidAlgorithmParameterException e) {
             throw (IllegalBlockSizeException) new IllegalBlockSizeException().initCause(e);
         }
@@ -1006,10 +1027,27 @@ abstract class AndroidKeyStoreCipherSpiBase extends CipherSpi implements KeyStor
      * Invoked to add algorithm-specific parameters for the KeyStore's {@code begin} operation.
      *
      * @param parameters keystore/keymaster arguments to be populated with algorithm-specific
-     *        parameters.
+     *                   parameters.
      */
     protected abstract void addAlgorithmSpecificParametersToBegin(
             @NonNull List<KeyParameter> parameters);
+
+    /**
+     * Invoked to add algorithm-specific parameters for the KeyStore's {@code begin} operation,
+     * indicating whether the MGF Digest is present in the key characteristics or not.
+     * The default implementation provided here simply ignores this indicator since it is only
+     * needed for very specific engines.
+     *
+     * @param parameters keystore/keymaster arguments to be populated with algorithm-specific
+     *                   parameters.
+     * @param mgfDigestPresence whether the MGF Digest is present in the key characteristics
+     *                          or not (i.e. were any MGF Digests specified during key creation
+     *                          time).
+     */
+    protected void addAlgorithmSpecificParametersToBegin(
+            @NonNull List<KeyParameter> parameters, MgfDigestPresence mgfDigestPresence) {
+        addAlgorithmSpecificParametersToBegin(parameters);
+    }
 
     /**
      * Invoked to obtain algorithm-specific parameters from the result of the KeyStore's
