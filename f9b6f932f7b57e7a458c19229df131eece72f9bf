@@ -39,6 +39,24 @@
       "message": "It feels odd to be passing a single RSA-specific boolean flag as an argument to all of the ciphers, including the ones that have nothing to do with MGF digests.\n\nI guess the class hierarchy means that some commonality is inevitable, but maybe make the change seem a bit more general by passing a `[]Authorizations key_auths` parameter instead, and move the code that pulls out the specific MGF-digest tag into the RSA-specific class?",
       "revId": "f9b6f932f7b57e7a458c19229df131eece72f9bf",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6d3a1c03_af6b9b29",
+        "filename": "keystore/java/android/security/keystore2/AndroidKeyStoreCipherSpiBase.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 1078064
+      },
+      "writtenOn": "2023-04-26T09:51:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c9ab1474_6d3e3244",
+      "revId": "f9b6f932f7b57e7a458c19229df131eece72f9bf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
