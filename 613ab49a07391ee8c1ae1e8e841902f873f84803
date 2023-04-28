@@ -88,6 +88,23 @@
       "parentUuid": "666d547d_1dbb0888",
       "revId": "613ab49a07391ee8c1ae1e8e841902f873f84803",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e60171ca_866ab83c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1956242
+      },
+      "writtenOn": "2023-04-28T01:15:05Z",
+      "side": 1,
+      "message": "Filed a bug b/279989001 to track this, I think we may want to implement probe mode of `isEffectSupportedForDevice` with same verifications (or as much as we can) as non-probe mode without creating actual effect.",
+      "revId": "613ab49a07391ee8c1ae1e8e841902f873f84803",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
