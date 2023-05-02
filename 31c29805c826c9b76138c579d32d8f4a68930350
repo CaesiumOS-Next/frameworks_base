@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1c0c09ec_b88691f9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2023-05-02T11:17:33Z",
+      "side": 1,
+      "message": "As I turns out, I think it\u0027s loads more work to move ApiDocs.bp than I had anticipated :\\ I\u0027m considering moving just StubLibraries.bp now and leaving ApiDocs.bp in the root. Somewhat inconsistent.. WDYT?\n\n(For context, see aosp/2571332 whicih tries to move ApiDocs.bp -- it\u0027s referring to the `docs` dir which therefore needs to move as well. However there are loads of old make rules that refer to the full path of that docs dir and updating them all doesn\u0027t seem worthwhile).",
+      "revId": "31c29805c826c9b76138c579d32d8f4a68930350",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
