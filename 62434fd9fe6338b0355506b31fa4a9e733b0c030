@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c36697c0_b140edfc",
+        "filename": "services/searchui/java/com/android/server/searchui/SearchUiPerUserService.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 301,
+      "author": {
+        "id": 1203519
+      },
+      "writtenOn": "2023-05-03T20:20:42Z",
+      "side": 0,
+      "message": "As stated here",
+      "range": {
+        "startLine": 301,
+        "startChar": 55,
+        "endLine": 301,
+        "endChar": 78
+      },
+      "revId": "62434fd9fe6338b0355506b31fa4a9e733b0c030",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
