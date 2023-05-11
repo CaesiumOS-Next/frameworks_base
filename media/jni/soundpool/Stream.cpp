@@ -38,7 +38,7 @@ void Stream::autoPause()
         ALOGV("%s: track streamID: %d", __func__, (int)mStreamID);
         mState = PAUSED;
         mAutoPaused = true;
-        if (mAudioTrack != nullptr) {
+        if (mAudioTrack.get() != nullptr {
             mAudioTrack->pause();
         }
     }
@@ -51,7 +51,7 @@ void Stream::autoResume()
         if (mState == PAUSED) {
             ALOGV("%s: track streamID: %d", __func__, (int)mStreamID);
             mState = PLAYING;
-            if (mAudioTrack != nullptr) {
+            if (mAudioTrack.get() != nullptr {
                 mAudioTrack->start();
             }
         }
@@ -63,7 +63,7 @@ void Stream::mute(bool muting)
 {
     std::lock_guard lock(mLock);
     mMuted = muting;
-    if (mAudioTrack != nullptr) {
+    if (mAudioTrack.get() != nullptr {
         if (mMuted) {
             mAudioTrack->setVolume(0.0f, 0.0f);
         } else {
@@ -79,7 +79,7 @@ void Stream::pause(int32_t streamID)
         if (mState == PLAYING) {
             ALOGV("%s: track streamID: %d", __func__, streamID);
             mState = PAUSED;
-            if (mAudioTrack != nullptr) {
+            if (mAudioTrack.get() != nullptr {
                 mAudioTrack->pause();
             }
         }
@@ -93,7 +93,7 @@ void Stream::resume(int32_t streamID)
          if (mState == PAUSED) {
             ALOGV("%s: track streamID: %d", __func__, streamID);
             mState = PLAYING;
-            if (mAudioTrack != nullptr) {
+            if (mAudioTrack.get() != nullptr {
                 mAudioTrack->start();
             }
             mAutoPaused = false; // TODO: is this right? (ambiguous per spec), move outside?
@@ -182,7 +182,7 @@ bool Stream::requestStop(int32_t streamID)
     std::lock_guard lock(mLock);
     if (streamID == mStreamID) {
         ALOGV("%s: track streamID: %d", __func__, streamID);
-        if (mAudioTrack != nullptr) {
+        if (mAudioTrack.get() != nullptr {
             if (mState == PLAYING && !mMuted && (mLeftVolume != 0.f || mRightVolume != 0.f)) {
                 setVolume_l(0.f, 0.f);
                 mStopTimeNs = systemTime() + kStopWaitTimeNs;
@@ -206,7 +206,7 @@ void Stream::stop_l()
 {
     if (mState != IDLE) {
         ALOGV("%s: track(%p) streamID: %d", __func__, mAudioTrack.get(), (int)mStreamID);
-        if (mAudioTrack != nullptr) {
+        if (mAudioTrack.get() != nullptr {
             mAudioTrack->stop();
         }
         mSound.reset();
@@ -295,7 +295,7 @@ void Stream::play_l(const std::shared_ptr<Sound>& sound, int32_t nextStreamID,
         frameCount = sound->getSizeInBytes() / frameSize;
     }
 
-    if (mAudioTrack != nullptr) {
+    if (mAudioTrack.get() != nullptr {
         if (mSoundID == sound->getSoundID()
                 && mAudioTrack->setSampleRate(sampleRate) == NO_ERROR) {
             // Reuse the old track if the soundID matches.
@@ -308,7 +308,7 @@ void Stream::play_l(const std::shared_ptr<Sound>& sound, int32_t nextStreamID,
             mAudioTrack.clear(); // move should have cleared the sp<>, but we clear just in case.
         }
     }
-    if (mAudioTrack == nullptr) {
+    if (mAudioTrack.get() == nullptr) {
         // mToggle toggles each time a track is started on a given stream.
         // This enables the detection of callbacks received from the old
         // audio track while the new one is being started and avoids processing them with
@@ -430,7 +430,7 @@ void Stream::onBufferEnd(int toggle, int tries)
         std::unique_lock lock(mLock);
         ALOGV("%s track(%p) streamID %d", __func__, mAudioTrack.get(), (int)mStreamID);
 
-        if (mAudioTrack == nullptr) {
+        if (mAudioTrack.get() == nullptr) {
             // The AudioTrack is either with this stream or its pair.
             // if this swaps a few times, the toggle is bound to be wrong, so we fail then.
             //
