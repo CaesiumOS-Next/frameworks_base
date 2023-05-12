@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5888d0dc_e53d762d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1511003
+      },
+      "writtenOn": "2023-05-12T08:18:13Z",
+      "side": 1,
+      "message": "Vishnu or Chavi can either of you review, without the owners approval I cannot merge it. Thanks",
+      "revId": "fc373d9f3331c12b30a71a3d0cdcb97c763ee4fc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
