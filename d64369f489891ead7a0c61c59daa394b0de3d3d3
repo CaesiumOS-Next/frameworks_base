@@ -46,6 +46,30 @@
       },
       "revId": "d64369f489891ead7a0c61c59daa394b0de3d3d3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "94289443_22d4872a",
+        "filename": "packages/services/CameraExtensionsProxy/src/com/android/cameraextensions/CameraExtensionsProxyService.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 1048,
+      "author": {
+        "id": 1010050
+      },
+      "writtenOn": "2023-05-19T17:47:23Z",
+      "side": 1,
+      "message": "I\u0027d pick the least-disruptive option if there\u0027s no great technical reason to pick one or the other.  But let\u0027s make sure we test this path to the extent we can.",
+      "parentUuid": "107de479_6c7b07b1",
+      "range": {
+        "startLine": 1048,
+        "startChar": 0,
+        "endLine": 1048,
+        "endChar": 72
+      },
+      "revId": "d64369f489891ead7a0c61c59daa394b0de3d3d3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
