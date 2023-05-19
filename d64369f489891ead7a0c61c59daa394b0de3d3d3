@@ -22,6 +22,30 @@
       },
       "revId": "d64369f489891ead7a0c61c59daa394b0de3d3d3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "107de479_6c7b07b1",
+        "filename": "packages/services/CameraExtensionsProxy/src/com/android/cameraextensions/CameraExtensionsProxyService.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 1048,
+      "author": {
+        "id": 1141048
+      },
+      "writtenOn": "2023-05-19T16:16:38Z",
+      "side": 1,
+      "message": "Interesting point, Eddy what do you think? We can go ahead and just update the CameraX docs?",
+      "parentUuid": "93e79b71_82cacfc3",
+      "range": {
+        "startLine": 1048,
+        "startChar": 0,
+        "endLine": 1048,
+        "endChar": 72
+      },
+      "revId": "d64369f489891ead7a0c61c59daa394b0de3d3d3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
