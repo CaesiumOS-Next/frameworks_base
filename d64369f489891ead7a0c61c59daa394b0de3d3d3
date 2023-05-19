@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "93e79b71_82cacfc3",
+        "filename": "packages/services/CameraExtensionsProxy/src/com/android/cameraextensions/CameraExtensionsProxyService.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 1048,
+      "author": {
+        "id": 1481938
+      },
+      "writtenOn": "2023-05-19T07:23:10Z",
+      "side": 1,
+      "message": "Emilian,  does it make sense to change the javadoc to reflect the current behavior instead of changing the behavior for the sake of compatibility ?\n\nCurrently both Camera2 / CameraX has the behavior of requiring OEM to decrement the ref to release the image.  I am afraid of breaking the behavior of other OEMs if we changed the behavior.",
+      "range": {
+        "startLine": 1048,
+        "startChar": 0,
+        "endLine": 1048,
+        "endChar": 72
+      },
+      "revId": "d64369f489891ead7a0c61c59daa394b0de3d3d3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
