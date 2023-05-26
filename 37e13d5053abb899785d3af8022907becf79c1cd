@@ -39,6 +39,30 @@
       },
       "revId": "37e13d5053abb899785d3af8022907becf79c1cd",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0735032f_1e5d41bf",
+        "filename": "core/java/android/text/util/Linkify.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 675,
+      "author": {
+        "id": 1934235
+      },
+      "writtenOn": "2023-05-26T21:20:24Z",
+      "side": 1,
+      "message": "thank you.",
+      "parentUuid": "97771f18_94b8f21c",
+      "range": {
+        "startLine": 675,
+        "startChar": 8,
+        "endLine": 675,
+        "endChar": 13
+      },
+      "revId": "37e13d5053abb899785d3af8022907becf79c1cd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
