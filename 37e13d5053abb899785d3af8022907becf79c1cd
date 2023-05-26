@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "97771f18_94b8f21c",
+        "filename": "core/java/android/text/util/Linkify.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 675,
+      "author": {
+        "id": 1106808
+      },
+      "writtenOn": "2023-05-26T21:10:46Z",
+      "side": 1,
+      "message": "i believe this should be deleted since it will allow the value to be set only once. (which means when if regionCode is set in the `if` block below it would not be able to (and this should be a compile time error)",
+      "range": {
+        "startLine": 675,
+        "startChar": 8,
+        "endLine": 675,
+        "endChar": 13
+      },
+      "revId": "37e13d5053abb899785d3af8022907becf79c1cd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
