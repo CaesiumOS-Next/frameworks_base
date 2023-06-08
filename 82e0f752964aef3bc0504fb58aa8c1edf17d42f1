@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6d4ef6e1_a4e88b62",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1891398
+      },
+      "writtenOn": "2023-06-08T09:29:25Z",
+      "side": 1,
+      "message": "Please review this cherry-pick",
+      "revId": "82e0f752964aef3bc0504fb58aa8c1edf17d42f1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
