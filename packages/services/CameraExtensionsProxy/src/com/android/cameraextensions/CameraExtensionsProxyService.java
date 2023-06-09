@@ -1325,35 +1325,21 @@ public class CameraExtensionsProxyService extends Service {
 
         @Override
         public IPreviewImageProcessorImpl getPreviewImageProcessor() {
-            PreviewImageProcessorImpl processor;
-            try {
-                processor = (PreviewImageProcessorImpl) mPreviewExtender.getProcessor();
-            } catch (ClassCastException e) {
-                Log.e(TAG, "Failed casting preview processor!");
-                return null;
+            if (mPreviewExtender.getProcessor() instanceof PreviewImageProcessorImpl) {
+                return new PreviewImageProcessorImplStub(
+                        (PreviewImageProcessorImpl) mPreviewExtender.getProcessor(), mCameraId);
             }
-
-            if (processor != null) {
-                return new PreviewImageProcessorImplStub(processor, mCameraId);
-            }
-
+            Log.e(TAG, "Failed casting preview processor!");
             return null;
         }
 
         @Override
         public IRequestUpdateProcessorImpl getRequestUpdateProcessor() {
-            RequestUpdateProcessorImpl processor;
-            try {
-                processor = (RequestUpdateProcessorImpl) mPreviewExtender.getProcessor();
-            } catch (ClassCastException e) {
-                Log.e(TAG, "Failed casting preview processor!");
-                return null;
+            if (mPreviewExtender.getProcessor() instanceof RequestUpdateProcessorImpl) {
+                return new RequestUpdateProcessorImplStub(
+                        (RequestUpdateProcessorImpl) mPreviewExtender.getProcessor(), mCameraId);
             }
-
-            if (processor != null) {
-                return new RequestUpdateProcessorImplStub(processor, mCameraId);
-            }
-
+            Log.e(TAG, "Failed casting preview processor!");
             return null;
         }
 

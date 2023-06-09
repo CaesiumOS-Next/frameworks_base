@@ -10428,15 +10428,13 @@ public abstract class PackageManager {
             if (rval == null) {
                 return false;
             }
-            ApplicationInfoQuery other;
-            try {
-                other = (ApplicationInfoQuery) rval;
-            } catch (ClassCastException ex) {
-                return false;
+            if (rval instanceof ApplicationInfoQuery) {
+                ApplicationInfoQuery other = (ApplicationInfoQuery) rval;
+                return Objects.equals(packageName, other.packageName)
+                        && flags == other.flags
+                        && userId == other.userId;
             }
-            return Objects.equals(packageName, other.packageName)
-                    && flags == other.flags
-                    && userId == other.userId;
+            return false;
         }
     }
 
@@ -10531,14 +10529,13 @@ public abstract class PackageManager {
                 return false;
             }
             PackageInfoQuery other;
-            try {
+            if (rval instanceof PackageInfoQuery) {
                 other = (PackageInfoQuery) rval;
-            } catch (ClassCastException ex) {
-                return false;
+                return Objects.equals(packageName, other.packageName)
+                        && flags == other.flags
+                        && userId == other.userId;
             }
-            return Objects.equals(packageName, other.packageName)
-                    && flags == other.flags
-                    && userId == other.userId;
+            return false;
         }
     }
 

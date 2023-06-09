@@ -637,14 +637,11 @@ public abstract class AdapterView<T extends Adapter> extends ViewGroup {
      */
     public int getPositionForView(View view) {
         View listItem = view;
-        try {
-            View v;
-            while ((v = (View) listItem.getParent()) != null && !v.equals(this)) {
-                listItem = v;
-            }
-        } catch (ClassCastException e) {
-            // We made it up to the window without find this list view
-            return INVALID_POSITION;
+        View v;
+        while (listItem.getParent() instanceof View
+                && ((v = (View) listItem.getParent()) != null)
+                && !v.equals(this)) {
+            listItem = v;
         }
 
         if (listItem != null) {
