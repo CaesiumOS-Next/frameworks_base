@@ -110,6 +110,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "76d644bc_a0bd7c3e",
+        "filename": "keystore/java/android/security/keystore2/AndroidKeyStoreKeyPairGeneratorSpi.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 840,
+      "author": {
+        "id": 1896276
+      },
+      "writtenOn": "2023-06-13T17:22:39Z",
+      "side": 1,
+      "message": "To access variable in forEach(), it has to be final. hence I made this final array.",
+      "parentUuid": "b3cb1b49_baa3617d",
+      "range": {
+        "startLine": 840,
+        "startChar": 16,
+        "endLine": 840,
+        "endChar": 72
+      },
+      "revId": "93f95adad38a3bda85534e046fc4ce9f991e1a1f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "055ebb5d_6afe21b4",
@@ -123,6 +147,30 @@
       "writtenOn": "2023-06-13T17:07:19Z",
       "side": 1,
       "message": "This behavior is different from before. We\u0027re always going to set SHA1 for MGF1 digest, but previously we\u0027d only set it if the digest algorithms were specified.\n\nThis behavior now seems to match what the key pair generator does. Was it wrong previously, and now you\u0027ve fixed it? Or is something else going on here?",
+      "range": {
+        "startLine": 535,
+        "startChar": 0,
+        "endLine": 544,
+        "endChar": 21
+      },
+      "revId": "93f95adad38a3bda85534e046fc4ce9f991e1a1f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c6ed7697_cfab8f04",
+        "filename": "keystore/java/android/security/keystore2/AndroidKeyStoreSpi.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 544,
+      "author": {
+        "id": 1896276
+      },
+      "writtenOn": "2023-06-13T17:22:39Z",
+      "side": 1,
+      "message": "It is fixed, I observed it was wrong earlier. The default MGF digest has to be added even though the user did not specify it (Actully there was no way to specify it earlier, now we have added that method.)",
+      "parentUuid": "055ebb5d_6afe21b4",
       "range": {
         "startLine": 535,
         "startChar": 0,
