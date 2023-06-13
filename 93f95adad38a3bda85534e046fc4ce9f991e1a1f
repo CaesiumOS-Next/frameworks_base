@@ -134,6 +134,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "406dd808_4e332c4d",
+        "filename": "keystore/java/android/security/keystore2/AndroidKeyStoreKeyPairGeneratorSpi.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 840,
+      "author": {
+        "id": 1833664
+      },
+      "writtenOn": "2023-06-13T17:28:02Z",
+      "side": 1,
+      "message": "I forgot about that closure capture rule in Java.\n\nGot it!",
+      "parentUuid": "76d644bc_a0bd7c3e",
+      "range": {
+        "startLine": 840,
+        "startChar": 16,
+        "endLine": 840,
+        "endChar": 72
+      },
+      "revId": "93f95adad38a3bda85534e046fc4ce9f991e1a1f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "055ebb5d_6afe21b4",
