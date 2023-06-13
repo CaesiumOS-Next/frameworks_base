@@ -16,6 +16,121 @@
       "message": "I would like your attention on below point.\n\nIn this change we have added a setter method in KeyGenParameterSpec and KeyProtection, but I have kept a change of adding the default MGF digest if it is not specified as it is.",
       "revId": "93f95adad38a3bda85534e046fc4ce9f991e1a1f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "44de66c2_b9af16df",
+        "filename": "core/api/current.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1833664
+      },
+      "writtenOn": "2023-06-13T17:07:19Z",
+      "side": 1,
+      "message": "Seems like perhaps we should have some new tests for this. I think the positive test are covered, but what about error cases? e.g. what if an invalid MGF digest is set? In that case we should verify the appropriate exception is thrown.\n\nAlso, given that isMgfDigestsSpecified is brand new, we should include a CTS test for that.",
+      "range": {
+        "startLine": 0,
+        "startChar": 0,
+        "endLine": 0,
+        "endChar": 0
+      },
+      "revId": "93f95adad38a3bda85534e046fc4ce9f991e1a1f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b8a8f8c6_edef6c44",
+        "filename": "keystore/java/android/security/keystore/KeyGenParameterSpec.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 585,
+      "author": {
+        "id": 1833664
+      },
+      "writtenOn": "2023-06-13T17:07:19Z",
+      "side": 1,
+      "message": "nit: I think it would be nice to spell this out as \"mask generation function\", both here as well is in the other public API docs.",
+      "range": {
+        "startLine": 585,
+        "startChar": 23,
+        "endLine": 585,
+        "endChar": 26
+      },
+      "revId": "93f95adad38a3bda85534e046fc4ce9f991e1a1f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "19132ff4_c02ca6ad",
+        "filename": "keystore/java/android/security/keystore/KeyGenParameterSpec.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 597,
+      "author": {
+        "id": 1833664
+      },
+      "writtenOn": "2023-06-13T17:07:19Z",
+      "side": 1,
+      "message": "nit: let\u0027s change capitalization to \"MGF digests\"",
+      "range": {
+        "startLine": 597,
+        "startChar": 45,
+        "endLine": 597,
+        "endChar": 56
+      },
+      "revId": "93f95adad38a3bda85534e046fc4ce9f991e1a1f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b3cb1b49_baa3617d",
+        "filename": "keystore/java/android/security/keystore2/AndroidKeyStoreKeyPairGeneratorSpi.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 840,
+      "author": {
+        "id": 1833664
+      },
+      "writtenOn": "2023-06-13T17:07:19Z",
+      "side": 1,
+      "message": "Why is this an array? Were we passing it as a reference in the past?\n\nAFAICT, we\u0027re only touching this variable locally, so we could remove the array.",
+      "range": {
+        "startLine": 840,
+        "startChar": 16,
+        "endLine": 840,
+        "endChar": 72
+      },
+      "revId": "93f95adad38a3bda85534e046fc4ce9f991e1a1f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "055ebb5d_6afe21b4",
+        "filename": "keystore/java/android/security/keystore2/AndroidKeyStoreSpi.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 544,
+      "author": {
+        "id": 1833664
+      },
+      "writtenOn": "2023-06-13T17:07:19Z",
+      "side": 1,
+      "message": "This behavior is different from before. We\u0027re always going to set SHA1 for MGF1 digest, but previously we\u0027d only set it if the digest algorithms were specified.\n\nThis behavior now seems to match what the key pair generator does. Was it wrong previously, and now you\u0027ve fixed it? Or is something else going on here?",
+      "range": {
+        "startLine": 535,
+        "startChar": 0,
+        "endLine": 544,
+        "endChar": 21
+      },
+      "revId": "93f95adad38a3bda85534e046fc4ce9f991e1a1f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
