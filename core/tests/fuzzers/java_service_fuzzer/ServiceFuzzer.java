@@ -20,11 +20,6 @@ import randomparcel.FuzzBinder;
 
 public class ServiceFuzzer {
 
-    static {
-        // Initialize fuzzService and JNI dependencies
-        FuzzBinder.init();
-    }
-
     public static void fuzzerTestOneInput(FuzzedDataProvider data) {
         TestService service = new TestService();
         FuzzBinder.fuzzService(service, data.consumeRemainingAsBytes());
