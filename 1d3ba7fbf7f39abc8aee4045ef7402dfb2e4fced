@@ -16,6 +16,24 @@
       "message": "This is being proposed as I haven\u0027t figured out a better way to accomplish the same task at this point - cross-arch emulation of RISCV is slow and there are speed limitations on the hardware used to emulate today. As a result, the average time it takes for the default permission grants to run during SystemServer startup is on the order of 160 seconds. I\u0027m rounding up here to 3 minutes to give a bit more than the average time it takes to resolve the request.\n\nI don\u0027t have sufficient background to understand what decides the timeout in the first place, so if this needs to be scoped to RISCV builds in some way, I can look into how to do that (but pointers would be appreciated)!",
       "revId": "1d3ba7fbf7f39abc8aee4045ef7402dfb2e4fced",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c1c3b9a2_ffd7eb83",
+        "filename": "core/java/android/permission/PermissionControllerManager.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1351609
+      },
+      "writtenOn": "2023-06-21T00:24:31Z",
+      "side": 1,
+      "message": "I don\u0027t know a way to do that. Meanwhile, have you tried the multiplier property mentioned in chat?",
+      "parentUuid": "16db9c37_975624ce",
+      "revId": "1d3ba7fbf7f39abc8aee4045ef7402dfb2e4fced",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
