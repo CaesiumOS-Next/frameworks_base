@@ -115,9 +115,7 @@ constructor(
     private val callbackMutex = Mutex()
     private val callbacks = mutableSetOf<UserCallback>()
     private val userInfos: Flow<List<UserInfo>> =
-        repository.userInfos.map { userInfos ->
-            userInfos.filter { it.isFull }
-        }
+        repository.userInfos.map { userInfos -> userInfos.filter { it.isFull } }
 
     /** List of current on-device users to select from. */
     val users: Flow<List<UserModel>>
@@ -724,7 +722,9 @@ constructor(
         userId: Int,
     ): Drawable {
         if (isGuest) {
-            return checkNotNull(applicationContext.getDrawable(R.drawable.ic_account_circle))
+            return checkNotNull(
+                applicationContext.getDrawable(com.android.settingslib.R.drawable.ic_account_circle)
+            )
         }
 
         // TODO(b/246631653): cache the bitmaps to avoid the background work to fetch them.

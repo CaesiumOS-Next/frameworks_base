@@ -148,7 +148,7 @@ private constructor(
             viewKey = model.id,
             name =
                 if (model.isGuest && model.isSelected) {
-                    Text.Resource(R.string.guest_exit_quick_settings_button)
+                    Text.Resource(com.android.settingslib.R.string.guest_exit_quick_settings_button)
                 } else {
                     model.name
                 },
