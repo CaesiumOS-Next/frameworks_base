@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c6b690ec_86b3d0f3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002669
+      },
+      "writtenOn": "2023-06-26T21:01:50Z",
+      "side": 1,
+      "message": "@Prabir,\n\nCan you help us review this or add the correct person to the review for us? We wanted to expose this API so that we can use it from third-party application such as chromium so that they can use InputManager to determine if a specific game controller is current associated with a specific display in a multi-display and multi-controller scenario.",
+      "revId": "aa163c929512af28552c2c1e3cf7bd841a1d2618",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
