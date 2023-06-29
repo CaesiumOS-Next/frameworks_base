@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b75c572d_98314bfd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1149384
+      },
+      "writtenOn": "2023-06-29T18:45:06Z",
+      "side": 1,
+      "message": "Why do you need to know this information? If a window A positioned on display A receives a MotionEvent, then you know this MotionEvent is supposed to go to display A. You can then check deviceId of the MotionEvent to see which device sent it.",
+      "parentUuid": "c6b690ec_86b3d0f3",
+      "revId": "aa163c929512af28552c2c1e3cf7bd841a1d2618",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6377361a_ed608ef9",
         "filename": "core/java/android/hardware/input/InputManager.java",
         "patchSetId": 1
