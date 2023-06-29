@@ -39,6 +39,30 @@
       },
       "revId": "aa163c929512af28552c2c1e3cf7bd841a1d2618",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "84a3c20a_6ea4b3c7",
+        "filename": "core/java/android/hardware/input/InputManager.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 1218,
+      "author": {
+        "id": 1995555
+      },
+      "writtenOn": "2023-06-29T17:44:38Z",
+      "side": 1,
+      "message": "I have changed to deviceId to match with the parameter that is used in IInputManager.aidl",
+      "parentUuid": "6377361a_ed608ef9",
+      "range": {
+        "startLine": 1218,
+        "startChar": 14,
+        "endLine": 1218,
+        "endChar": 23
+      },
+      "revId": "aa163c929512af28552c2c1e3cf7bd841a1d2618",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
