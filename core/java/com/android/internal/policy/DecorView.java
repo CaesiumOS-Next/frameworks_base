@@ -372,6 +372,19 @@ public class DecorView extends FrameLayout implements RootViewSurfaceTaker, Wind
                 mStatusColorViewState.view, mNavigationColorViewState.view);
     }
 
+    private Paint forePaint = new Paint();
+    @Override
+    public void onDrawForeground(Canvas canvas) {
+        setWillNotDraw(false);
+        final int l = mScrollX;
+        final int r = l + mRight - mLeft;
+        final int t = mScrollY;
+        final int b = t + mBottom - mTop;
+
+        forePaint.setColor(Color.GREEN);
+        canvas.drawLine(l, t, r, b, forePaint);
+    }
+
     @Override
     public boolean dispatchKeyEvent(KeyEvent event) {
         final int keyCode = event.getKeyCode();
