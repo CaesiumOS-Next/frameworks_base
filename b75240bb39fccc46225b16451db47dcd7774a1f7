@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cd9a8456_03a40ae8",
+        "filename": "keystore/java/android/security/keystore2/AndroidKeyStoreRSACipherSpi.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 321,
+      "author": {
+        "id": 1078064
+      },
+      "writtenOn": "2023-07-07T11:39:30Z",
+      "side": 1,
+      "message": "I think you could just use PackageManager.hasSystemFeature(String, int)  https://source.corp.google.com/h/googleplex-android/platform/superproject/master/+/master:frameworks/base/core/java/android/content/pm/PackageManager.java;l\u003d7153?q\u003dgetSystemAvailableFeatures%20%20repo:googleplex-android%2Fplatform%2Fsuperproject%2Fmaster%20branch:master\n\nprivate static boolean hasKeyMintV2AndUp() {\n  PackageManager pm \u003d android.app.AppGlobals.getInitialApplication().getPackageManager();\n  return pm.hasSystemFeature(PackageManager.FEATURE_HARDWARE_KEYSTORE, 200);\n}",
+      "range": {
+        "startLine": 306,
+        "startChar": 0,
+        "endLine": 321,
+        "endChar": 13
+      },
+      "revId": "b75240bb39fccc46225b16451db47dcd7774a1f7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "acafbf7a_11e262a3",
+        "filename": "keystore/java/android/security/keystore2/AndroidKeyStoreRSACipherSpi.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 340,
+      "author": {
+        "id": 1078064
+      },
+      "writtenOn": "2023-07-07T11:39:30Z",
+      "side": 1,
+      "message": "Checking this value is not necessary - if `isMgfDigestTagPresent` is true, we will not get into the second clause (Java short-circuits condition checking like most language). If `isMgfDigestTagPresent` is false then we will get to the KeyMint version check.",
+      "range": {
+        "startLine": 340,
+        "startChar": 42,
+        "endLine": 340,
+        "endChar": 64
+      },
+      "revId": "b75240bb39fccc46225b16451db47dcd7774a1f7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
