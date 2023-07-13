@@ -624,13 +624,13 @@ final class RemotePrintService implements DeathRecipient {
                 return;
             }
             mBinding = false;
-            mPrintService = IPrintService.Stub.asInterface(service);
             try {
                 service.linkToDeath(RemotePrintService.this, 0);
             } catch (RemoteException re) {
                 handleBinderDied();
                 return;
             }
+            mPrintService = IPrintService.Stub.asInterface(service);
             try {
                 mPrintService.setClient(mPrintServiceClient);
             } catch (RemoteException re) {
