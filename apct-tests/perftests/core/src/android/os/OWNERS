@@ -1,1 +1,2 @@
 per-file PackageParsingPerfTest.kt = file:/services/core/java/com/android/server/pm/OWNERS
+per-file VibratorPerfTest.kt = file:/services/core/java/com/android/server/vibrator/OWNERS
