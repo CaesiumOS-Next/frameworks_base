@@ -1096,7 +1096,8 @@ class TaskFragment extends WindowContainer<WindowContainer> {
                     continue;
                 }
                 return TASK_FRAGMENT_VISIBILITY_INVISIBLE;
-            } else if (otherWindowingMode == WINDOWING_MODE_MULTI_WINDOW
+            } else if ((otherWindowingMode == WINDOWING_MODE_MULTI_WINDOW
+                    || otherWindowingMode == WINDOWING_MODE_FREEFORM)
                     && other.matchParentBounds()) {
                 if (isTranslucent(other, starting)) {
                     // Can be visible behind a translucent TaskFragment.
