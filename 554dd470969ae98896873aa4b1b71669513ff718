@@ -16,6 +16,23 @@
       "message": "Hi, @brup@google.com, please help review the change, thank you very much!",
       "revId": "554dd470969ae98896873aa4b1b71669513ff718",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8d6cb3ff_d0df8b58",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1015328
+      },
+      "writtenOn": "2023-07-26T13:32:12Z",
+      "side": 1,
+      "message": "Thank you for the contribution.",
+      "revId": "554dd470969ae98896873aa4b1b71669513ff718",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
