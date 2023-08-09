@@ -24,6 +24,7 @@ import static com.android.internal.util.FrameworkStatsLog.BOOT_TIME_EVENT_ELAPSE
 
 import android.app.ApplicationLoaders;
 import android.compat.annotation.UnsupportedAppUsage;
+import android.net.http.HttpEngine;
 import android.content.pm.SharedLibraryInfo;
 import android.content.res.Resources;
 import android.os.Build;
@@ -175,6 +176,7 @@ public class ZygoteInit {
         Log.i(TAG, "Preloading shared libraries...");
         System.loadLibrary("android");
         System.loadLibrary("jnigraphics");
+        HttpEngine.loadLibrary();
 
         // TODO(b/206676167): This library is only used for renderscript today. When renderscript is
         // removed, this load can be removed as well.
