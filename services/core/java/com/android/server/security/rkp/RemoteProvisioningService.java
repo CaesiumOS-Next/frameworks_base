@@ -24,6 +24,7 @@ import android.os.RemoteException;
 import android.security.rkp.IGetRegistrationCallback;
 import android.security.rkp.IRemoteProvisioning;
 import android.security.rkp.service.RegistrationProxy;
+import android.security.rkp.service.RemoteProvisioningShellCommand;
 import android.util.Log;
 
 import com.android.internal.util.DumpUtils;
@@ -105,14 +106,13 @@ public class RemoteProvisioningService extends SystemService {
         @Override
         protected void dump(FileDescriptor fd, PrintWriter pw, String[] args) {
             if (!DumpUtils.checkDumpPermission(getContext(), TAG, pw)) return;
-            new RemoteProvisioningShellCommand().dump(pw);
+            new RemoteProvisioningShellCommand(getContext()).dump(pw, args);
         }
 
         @Override
         public int handleShellCommand(ParcelFileDescriptor in, ParcelFileDescriptor out,
                 ParcelFileDescriptor err, String[] args) {
-            return new RemoteProvisioningShellCommand().exec(this, in.getFileDescriptor(),
-                    out.getFileDescriptor(), err.getFileDescriptor(), args);
+            return new RemoteProvisioningShellCommand(getContext()).exec(this, in, out, err, args);
         }
     }
 }
