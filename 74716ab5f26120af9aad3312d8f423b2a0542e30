@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8de95797_ce6cc17c",
+        "filename": "apex/jobscheduler/service/java/com/android/server/job/JobSchedulerService.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 1608,
+      "author": {
+        "id": 1059872
+      },
+      "writtenOn": "2023-08-18T22:37:47Z",
+      "side": 1,
+      "message": "a valid clock state",
+      "range": {
+        "startLine": 1608,
+        "startChar": 33,
+        "endLine": 1608,
+        "endChar": 46
+      },
+      "revId": "74716ab5f26120af9aad3312d8f423b2a0542e30",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7db271f9_36632932",
+        "filename": "apex/jobscheduler/service/java/com/android/server/job/JobStore.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1059872
+      },
+      "writtenOn": "2023-08-18T22:37:47Z",
+      "side": 1,
+      "message": "a valid value",
+      "range": {
+        "startLine": 160,
+        "startChar": 28,
+        "endLine": 160,
+        "endChar": 35
+      },
+      "revId": "74716ab5f26120af9aad3312d8f423b2a0542e30",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e1e49cfd_f6f1fbdc",
+        "filename": "apex/jobscheduler/service/java/com/android/server/job/JobStore.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 933,
+      "author": {
+        "id": 1059872
+      },
+      "writtenOn": "2023-08-18T22:37:47Z",
+      "side": 1,
+      "message": "validation",
+      "range": {
+        "startLine": 933,
+        "startChar": 28,
+        "endLine": 933,
+        "endChar": 35
+      },
+      "revId": "74716ab5f26120af9aad3312d8f423b2a0542e30",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
