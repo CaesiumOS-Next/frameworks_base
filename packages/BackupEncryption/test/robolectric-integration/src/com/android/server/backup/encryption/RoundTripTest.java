@@ -266,7 +266,7 @@ public class RoundTripTest {
     }
 
     /**
-     * Dummy backup data endpoint. This stores the data so we can use it in subsequent test steps.
+     * Placeholder backup data endpoint. This stores the data so we can use it in subsequent test steps.
      */
     private static class DummyServer implements CryptoBackupServer {
         private static final String DUMMY_DOC_ID = "DummyDoc";

@@ -381,7 +381,7 @@ public class CrossProfileAppsServiceImplRoboTest {
 
     @Test
     public void setInteractAcrossProfilesAppOp_toAllowed_whenNotAbleToRequest_doesNotSet() {
-        mockCrossProfileAppNotWhitelisted();
+        mockCrossProfileAppWhitelisted();
         mCrossProfileAppsServiceImpl.setInteractAcrossProfilesAppOp(
                 CROSS_PROFILE_APP_PACKAGE_NAME, MODE_ALLOWED);
         assertThat(getCrossProfileAppOp()).isNotEqualTo(MODE_ALLOWED);
@@ -389,7 +389,7 @@ public class CrossProfileAppsServiceImplRoboTest {
 
     @Test
     public void setInteractAcrossProfilesAppOp_toAllowed_whenNotAbleToRequest_doesNotSendBroadcast() {
-        mockCrossProfileAppNotWhitelisted();
+        mockCrossProfileAppWhitelisted();
         mCrossProfileAppsServiceImpl.setInteractAcrossProfilesAppOp(
                 CROSS_PROFILE_APP_PACKAGE_NAME, MODE_ALLOWED);
         assertThat(receivedCanInteractAcrossProfilesChangedBroadcast()).isFalse();
@@ -494,7 +494,7 @@ public class CrossProfileAppsServiceImplRoboTest {
 
     @Test
     public void canConfigureInteractAcrossProfiles_packageNotWhitelisted_returnsFalse() {
-        mockCrossProfileAppNotWhitelisted();
+        mockCrossProfileAppWhitelisted();
         assertThat(mCrossProfileAppsServiceImpl
                 .canConfigureInteractAcrossProfiles(CROSS_PROFILE_APP_PACKAGE_NAME))
                 .isFalse();
@@ -526,7 +526,7 @@ public class CrossProfileAppsServiceImplRoboTest {
 
     @Test
     public void canUserAttemptToConfigureInteractAcrossProfiles_packageNotWhitelisted_returnsTrue() {
-        mockCrossProfileAppNotWhitelisted();
+        mockCrossProfileAppWhitelisted();
         assertThat(mCrossProfileAppsServiceImpl
                 .canUserAttemptToConfigureInteractAcrossProfiles(CROSS_PROFILE_APP_PACKAGE_NAME))
                 .isTrue();

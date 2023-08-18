@@ -17821,7 +17821,7 @@ public class DevicePolicyManagerService extends BaseIDevicePolicyManager {
                     targetUserId,
                     PackageManager.INSTALL_ALL_WHITELIST_RESTRICTED_PERMISSIONS,
                     PackageManager.INSTALL_REASON_POLICY,
-                    /* whiteListedPermissions= */ null);
+                    /* allowListedPermissions= */ null);
         } catch (RemoteException e) {
             // Does not happen, same process
         }
