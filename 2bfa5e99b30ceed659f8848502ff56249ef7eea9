@@ -16,6 +16,24 @@
       "message": "nit, this sounds more like a \"sentinel\".",
       "revId": "2bfa5e99b30ceed659f8848502ff56249ef7eea9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b8210b77_5323be18",
+        "filename": "services/tests/servicestests/utils/com/android/server/testutils/TestHandler.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 2025641
+      },
+      "writtenOn": "2023-08-21T22:58:40Z",
+      "side": 1,
+      "message": "I don\u0027t have enough context to determine -- would you prefer I changed this to \"sentinel\"?",
+      "parentUuid": "a415ebea_88e7e5d9",
+      "revId": "2bfa5e99b30ceed659f8848502ff56249ef7eea9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
