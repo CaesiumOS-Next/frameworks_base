@@ -320,6 +320,8 @@ cc_library_shared {
             ],
             srcs: [
                 "LayoutlibLoader.cpp",
+                // Utilized to get rendered result pixels
+                ":libmedia_host_common",
             ],
             include_dirs: [
                 "external/vulkan-headers/include",
@@ -422,6 +424,8 @@ cc_library_shared {
                 "com_android_internal_util_VirtualRefBasePtr.cpp",
                 "android_view_Surface.cpp",
                 "RobolectricNativeRuntime.cpp",
+                // Utilized to get rendered result pixels
+                ":libmedia_host_common",
             ],
             static_libs: [
                 "libnativehelper",
