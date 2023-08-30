@@ -9168,6 +9168,7 @@ public class AudioService extends IAudioService.Stub
 
     /*package*/ void setAvrcpAbsoluteVolumeSupported(boolean support) {
         mAvrcpAbsVolSupported = support;
+        AudioSystem.setParameters("hal_param_bt_avrcp_supported=" + (support ? "1":"0"));
         sendMsg(mAudioHandler, MSG_SET_DEVICE_VOLUME, SENDMSG_QUEUE,
                     AudioSystem.DEVICE_OUT_BLUETOOTH_A2DP, 0,
                     mStreamStates[AudioSystem.STREAM_MUSIC], 0);
