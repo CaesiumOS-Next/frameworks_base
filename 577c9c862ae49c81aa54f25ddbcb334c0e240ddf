@@ -70,6 +70,30 @@
       },
       "revId": "577c9c862ae49c81aa54f25ddbcb334c0e240ddf",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5db15d95_fd27eb6f",
+        "filename": "core/java/android/os/ServiceManager.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 248,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-09-13T19:44:48Z",
+      "side": 1,
+      "message": "I think this change makes sense. For processes without permission, in HIDL and AIDL it was always intentional the service acts as if the service doesn\u0027t exist at all. This is kind of like when a permission isn\u0027t granted, the app can\u0027t distinguish whether the permission wasn\u0027t granted or whether the system doesn\u0027t implement this feature.",
+      "parentUuid": "2356ffed_74631d05",
+      "range": {
+        "startLine": 248,
+        "startChar": 35,
+        "endLine": 248,
+        "endChar": 54
+      },
+      "revId": "577c9c862ae49c81aa54f25ddbcb334c0e240ddf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
