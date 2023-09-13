@@ -22,6 +22,30 @@
       },
       "revId": "577c9c862ae49c81aa54f25ddbcb334c0e240ddf",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ed196d78_0072ab4d",
+        "filename": "core/java/android/os/ServiceManager.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 248,
+      "author": {
+        "id": 1386891
+      },
+      "writtenOn": "2023-09-13T05:30:38Z",
+      "side": 1,
+      "message": "The only information from SecurityException is message(\u0027SELinux denied\u0027), we might parse the message, but it\u0027s an unstable way to check.",
+      "parentUuid": "e686efd6_ecc1718a",
+      "range": {
+        "startLine": 248,
+        "startChar": 35,
+        "endLine": 248,
+        "endChar": 54
+      },
+      "revId": "577c9c862ae49c81aa54f25ddbcb334c0e240ddf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
