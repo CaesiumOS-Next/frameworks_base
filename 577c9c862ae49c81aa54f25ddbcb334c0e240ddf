@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e686efd6_ecc1718a",
+        "filename": "core/java/android/os/ServiceManager.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 248,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2023-09-13T05:23:59Z",
+      "side": 1,
+      "message": "We may want to check if the security exception was due to the absence of the context or something else, in which case we might want to re-throw it.",
+      "range": {
+        "startLine": 248,
+        "startChar": 35,
+        "endLine": 248,
+        "endChar": 54
+      },
+      "revId": "577c9c862ae49c81aa54f25ddbcb334c0e240ddf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
