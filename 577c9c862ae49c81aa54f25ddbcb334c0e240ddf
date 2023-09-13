@@ -46,6 +46,30 @@
       },
       "revId": "577c9c862ae49c81aa54f25ddbcb334c0e240ddf",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2356ffed_74631d05",
+        "filename": "core/java/android/os/ServiceManager.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 248,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2023-09-13T13:45:04Z",
+      "side": 1,
+      "message": "Ok, then I think the distinction should be made in the native side.\n\nhttps://cs.android.com/android/platform/superproject/main/+/main:frameworks/native/cmds/servicemanager/Access.cpp;drc\u003db6d38bcf24888f11cb3bf0ceaf2b6e30dd683853;l\u003d159\n\nHere, we currently return false for both selabel_lookup failure and actionAllowed failure. The two failures shall be handled differently.",
+      "parentUuid": "ed196d78_0072ab4d",
+      "range": {
+        "startLine": 248,
+        "startChar": 35,
+        "endLine": 248,
+        "endChar": 54
+      },
+      "revId": "577c9c862ae49c81aa54f25ddbcb334c0e240ddf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
