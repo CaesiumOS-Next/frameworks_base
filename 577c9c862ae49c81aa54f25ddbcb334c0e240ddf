@@ -94,6 +94,30 @@
       },
       "revId": "577c9c862ae49c81aa54f25ddbcb334c0e240ddf",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4bba2871_836579c5",
+        "filename": "core/java/android/os/ServiceManager.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 248,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2023-09-14T12:59:34Z",
+      "side": 1,
+      "message": "Ok. If you are fine with this, so do I. :)",
+      "parentUuid": "5db15d95_fd27eb6f",
+      "range": {
+        "startLine": 248,
+        "startChar": 35,
+        "endLine": 248,
+        "endChar": 54
+      },
+      "revId": "577c9c862ae49c81aa54f25ddbcb334c0e240ddf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
