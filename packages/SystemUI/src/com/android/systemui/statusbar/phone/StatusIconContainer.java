@@ -153,6 +153,9 @@ public class StatusIconContainer extends AlphaOptimizedLinearLayout {
             StatusIconDisplayable icon = (StatusIconDisplayable) getChildAt(i);
             if (icon.isIconVisible() && !icon.isIconBlocked()
                     && !mIgnoredSlots.contains(icon.getSlot())) {
+                if (icon.getVisibleState() == STATE_DOT) {
+                    mNeedsUnderflow = true;
+                }
                 mMeasureViews.add((View) icon);
             }
         }
@@ -164,7 +167,7 @@ public class StatusIconContainer extends AlphaOptimizedLinearLayout {
 
         // Measure all children so that they report the correct width
         int childWidthSpec = MeasureSpec.makeMeasureSpec(width, MeasureSpec.UNSPECIFIED);
-        mNeedsUnderflow = mShouldRestrictIcons && visibleCount > MAX_ICONS;
+        mNeedsUnderflow |= mShouldRestrictIcons && visibleCount > MAX_ICONS;
         for (int i = 0; i < visibleCount; i++) {
             // Walking backwards
             View child = mMeasureViews.get(visibleCount - i - 1);
