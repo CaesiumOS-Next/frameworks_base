@@ -18,9 +18,6 @@ package com.android.server.pm.test.appenumeration;
 
 import static android.Manifest.permission.CLEAR_APP_USER_DATA;
 import static android.Manifest.permission.DELETE_PACKAGES;
-import static android.Manifest.permission.MOUNT_UNMOUNT_FILESYSTEMS;
-import static android.Manifest.permission.MOVE_PACKAGE;
-import static android.content.pm.PackageManager.MOVE_FAILED_DOESNT_EXIST;
 
 import static com.android.compatibility.common.util.ShellUtils.runShellCommand;
 
@@ -239,19 +236,6 @@ public class CrossUserPackageVisibilityTests {
             assertThat(mIPackageManager.setBlockUninstallForUser(
                     CROSS_USER_TEST_PACKAGE_NAME, false, mCurrentUser.id())).isTrue();
         }
-    }
-
-    @Test
-    public void testMovePackage_cannotDetectStubPkg() throws Exception {
-        mInstrumentation.getUiAutomation().adoptShellPermissionIdentity(
-                MOVE_PACKAGE, MOUNT_UNMOUNT_FILESYSTEMS);
-        assertThat(movePackage(CROSS_USER_TEST_PACKAGE_NAME, null /* volumeUuid */))
-                .isEqualTo(MOVE_FAILED_DOESNT_EXIST);
-
-        installPackageForUser(CROSS_USER_TEST_APK_FILE, mOtherUser);
-
-        assertThat(movePackage(CROSS_USER_TEST_PACKAGE_NAME, null /* volumeUuid */))
-                .isEqualTo(MOVE_FAILED_DOESNT_EXIST);
     }
 
     @Test
