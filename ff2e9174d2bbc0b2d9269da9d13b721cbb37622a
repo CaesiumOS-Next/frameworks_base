@@ -16,6 +16,23 @@
       "message": "Hi, PTAL this change. I\u0027m marking SMS short code 8080 as free in Poland, as per https://isap.sejm.gov.pl/isap.nsf/download.xsp/WDU20230001703/T/D20231703L.pdf (legal text in Polish, sorry).\n\nAct of July 28, 2023 on combating fraud in electronic communications, article 5, paragraph 2 specifies that the Polish telecommunication companies must provide the number 8080 for free to report phishing text messages.",
       "revId": "ff2e9174d2bbc0b2d9269da9d13b721cbb37622a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "05602ec8_8b093434",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 2048830
+      },
+      "writtenOn": "2023-09-27T17:29:41Z",
+      "side": 1,
+      "message": "Hi, sorry for bumping this. Is there anything I should improve in this PR?\n\njayachandranc@google.com: I\u0027ve added you as a reviewer, because I found you in a recent commits to this file (and you\u0027re in the OWNERS too). Hope you don\u0027t mind.\n\nThanks.",
+      "revId": "ff2e9174d2bbc0b2d9269da9d13b721cbb37622a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
