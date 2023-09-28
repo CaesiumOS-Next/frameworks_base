@@ -961,4 +961,10 @@ interface IWindowManager
      * treatment.
      */
     boolean isLetterboxBackgroundMultiColored();
+
+    /**
+     * Check if is ImmersiveMode
+     *
+     */
+    boolean isImmersiveMode();
 }
