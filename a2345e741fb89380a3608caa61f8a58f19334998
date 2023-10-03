@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "48d278fc_2ebbc66e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 2048830
+      },
+      "writtenOn": "2023-10-03T12:49:34Z",
+      "side": 1,
+      "message": "Sure. The bug ID is b/303074341. I\u0027ve also updated the commit mesasge.\n\nI\u0027m not sure I picked a correct component. I decided to go with \"network/messaging\" (I\u0027ve also considered \"Framework\"). Sorry if I made a wrong call.",
+      "revId": "a2345e741fb89380a3608caa61f8a58f19334998",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
