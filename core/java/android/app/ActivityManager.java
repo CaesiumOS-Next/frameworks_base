@@ -110,8 +110,7 @@ import java.util.concurrent.Executor;
 /**
  * <p>
  * This class gives information about, and interacts
- * with, activities, services, and the containing
- * process.
+ * with, activities, services, and the containing process.
  * </p>
  *
  * <p>
