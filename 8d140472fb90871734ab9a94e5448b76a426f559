@@ -67,6 +67,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ae0b8206_366f4d26",
+        "filename": "core/java/android/os/SystemConfigManager.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1061144
+      },
+      "writtenOn": "2023-10-10T17:18:15Z",
+      "side": 1,
+      "message": "Understood, but guarding with this permission is not recommended (ack that the method just above this does - I don\u0027t think that was appropriate either). This permission is a normal permission and requiring it just to read this list would result in any caller that wants to read this list also being able to see all packages on device (even if they just wanted to see if they were on the list).\n\nThe way to avoid revealing packages that a caller shouldn\u0027t have visibility of is by filtering the results as suggested.",
+      "parentUuid": "5d03cee0_f170ed47",
+      "range": {
+        "startLine": 170,
+        "startChar": 0,
+        "endLine": 170,
+        "endChar": 71
+      },
+      "revId": "8d140472fb90871734ab9a94e5448b76a426f559",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0b034c14_e28d7f0a",
         "filename": "services/java/com/android/server/SystemConfigService.java",
         "patchSetId": 2
