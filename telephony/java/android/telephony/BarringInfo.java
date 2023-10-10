@@ -202,6 +202,24 @@ public final class BarringInfo implements Parcelable {
                     && mConditionalBarringTimeSeconds == other.mConditionalBarringTimeSeconds;
         }
 
+        private static String barringTypeToString(@BarringType int barringType) {
+            switch (barringType) {
+                case BARRING_TYPE_NONE: return "NONE";
+                case BARRING_TYPE_CONDITIONAL: return "CONDITIONAL";
+                case BARRING_TYPE_UNCONDITIONAL: return "UNCONDITIONAL";
+                case BARRING_TYPE_UNKNOWN: return "UNKNOWN";
+                default: return "UNKNOWN(" + barringType + ")";
+            }
+        }
+
+        @Override
+        public String toString() {
+            return "BarringServiceInfo {mBarringType=" + barringTypeToString(mBarringType)
+                    + ", mIsConditionallyBarred=" + mIsConditionallyBarred
+                    + ", mConditionalBarringFactor=" + mConditionalBarringFactor
+                    + ", mConditionalBarringTimeSeconds=" + mConditionalBarringTimeSeconds + "}";
+        }
+
         /** @hide */
         public BarringServiceInfo(Parcel p) {
             mBarringType = p.readInt();
