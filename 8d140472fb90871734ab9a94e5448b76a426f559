@@ -126,6 +126,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9f898a5c_d97061ac",
+        "filename": "core/java/android/os/SystemConfigManager.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1004882
+      },
+      "writtenOn": "2023-10-10T17:33:28Z",
+      "side": 1,
+      "message": "Ah of course, I had only thought about apps with existing access. Thanks.\n\nAs this API is only intended for use by the Settings app, perhaps it would be better to add this to the hidden API block list, or is there a better way to restrict access?",
+      "parentUuid": "ae0b8206_366f4d26",
+      "range": {
+        "startLine": 170,
+        "startChar": 0,
+        "endLine": 170,
+        "endChar": 71
+      },
+      "revId": "8d140472fb90871734ab9a94e5448b76a426f559",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0b034c14_e28d7f0a",
         "filename": "services/java/com/android/server/SystemConfigService.java",
         "patchSetId": 2
