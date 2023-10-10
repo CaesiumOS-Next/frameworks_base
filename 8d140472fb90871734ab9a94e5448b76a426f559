@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cdbfced5_75da6f9d",
+        "filename": "core/java/android/os/SystemConfigManager.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1061144
+      },
+      "writtenOn": "2023-10-10T16:28:31Z",
+      "side": 1,
+      "message": "Let\u0027s not guard this with this permission. Instead, let\u0027s just return the set of packages that are visible to the user.",
+      "range": {
+        "startLine": 170,
+        "startChar": 0,
+        "endLine": 170,
+        "endChar": 71
+      },
+      "revId": "8d140472fb90871734ab9a94e5448b76a426f559",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0b034c14_e28d7f0a",
+        "filename": "services/java/com/android/server/SystemConfigService.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1061144
+      },
+      "writtenOn": "2023-10-10T16:28:31Z",
+      "side": 1,
+      "message": "Assuming we remove the permission protection, we should just filter the set of packages on the results of `PackageManagerInternal.canQueryPackage(Binder.getCallingUid(), forceEnabledPackage)`",
+      "range": {
+        "startLine": 116,
+        "startChar": 0,
+        "endLine": 116,
+        "endChar": 73
+      },
+      "revId": "8d140472fb90871734ab9a94e5448b76a426f559",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
