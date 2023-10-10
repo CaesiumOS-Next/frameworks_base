@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7bea2310_a24ea526",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1004882
+      },
+      "writtenOn": "2023-10-10T17:10:20Z",
+      "side": 1,
+      "message": "Thanks for the quick review!",
+      "revId": "8d140472fb90871734ab9a94e5448b76a426f559",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cdbfced5_75da6f9d",
@@ -14,6 +31,30 @@
       "writtenOn": "2023-10-10T16:28:31Z",
       "side": 1,
       "message": "Let\u0027s not guard this with this permission. Instead, let\u0027s just return the set of packages that are visible to the user.",
+      "range": {
+        "startLine": 170,
+        "startChar": 0,
+        "endLine": 170,
+        "endChar": 71
+      },
+      "revId": "8d140472fb90871734ab9a94e5448b76a426f559",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5d03cee0_f170ed47",
+        "filename": "core/java/android/os/SystemConfigManager.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1004882
+      },
+      "writtenOn": "2023-10-10T17:10:20Z",
+      "side": 1,
+      "message": "The list of force enabled apps will be visible to every user, this permission was an attempt to restrict the API with a suitable permission to avoid it being accessible to 3P apps via reflection or similar.",
+      "parentUuid": "cdbfced5_75da6f9d",
       "range": {
         "startLine": 170,
         "startChar": 0,
