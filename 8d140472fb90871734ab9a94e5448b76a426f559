@@ -174,6 +174,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5c7695d7_2d2b09c8",
+        "filename": "core/java/android/os/SystemConfigManager.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1004882
+      },
+      "writtenOn": "2023-10-11T15:41:35Z",
+      "side": 1,
+      "message": "Ah that was bad timing on my part.  I will update the change with your suggestion.  I actually just wrote something similar:\n\nAs the apps contained in the list of force enabled apps will be a subset of the preinstalled apps, and not personally identifiable, there should be no need to take the overhead of filtering the list.",
+      "parentUuid": "9f898a5c_d97061ac",
+      "range": {
+        "startLine": 170,
+        "startChar": 0,
+        "endLine": 170,
+        "endChar": 71
+      },
+      "revId": "8d140472fb90871734ab9a94e5448b76a426f559",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0b034c14_e28d7f0a",
         "filename": "services/java/com/android/server/SystemConfigService.java",
         "patchSetId": 2
