@@ -150,6 +150,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "48523167_6f7c56b5",
+        "filename": "core/java/android/os/SystemConfigManager.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1061144
+      },
+      "writtenOn": "2023-10-11T15:33:08Z",
+      "side": 1,
+      "message": "The best way to restrict to settings is to protect it with a permission that only settings has. Perhaps CHANGE_COMPONENT_ENABLED_STATE since only apps that are able to enable / disable apps should need to know which apps are on this list? \n\nThat said, I don\u0027t know that this really needs to be protected. It\u0027s just a static list, presumably of preloaded packages (on the enforcing side, we should only honor preloaded packages). Nothing about this reveals user behavior so it\u0027s not a privacy concern or similar.\n\nEither way, for the sake of consistency it would be best to filter the return based on the callers visibility as recommended.",
+      "parentUuid": "9f898a5c_d97061ac",
+      "range": {
+        "startLine": 170,
+        "startChar": 0,
+        "endLine": 170,
+        "endChar": 71
+      },
+      "revId": "8d140472fb90871734ab9a94e5448b76a426f559",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0b034c14_e28d7f0a",
         "filename": "services/java/com/android/server/SystemConfigService.java",
         "patchSetId": 2
