@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d7be6779_f74ea16f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1137063
+      },
+      "writtenOn": "2023-10-16T21:24:39Z",
+      "side": 1,
+      "message": "Since this topic modifies `frameworks/base/core/java/android/app/`, it hits the known test failure in `MockingOomAdjusterTests` (b/300106850).  That is the only blocking test failure.  The only option is to bypass presubmit.",
+      "revId": "af83f177321381f9584c67413c85b7e6e3206edb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
