@@ -2548,6 +2548,8 @@ public final class ProcessList {
         if (DEBUG_PROCESSES) Slog.v(TAG_PROCESSES, "startProcess: name=" + processName
                 + " app=" + app + " knownToBeDead=" + knownToBeDead
                 + " thread=" + (app != null ? app.getThread() : null)
+                + " a=" + allowWhileBooting
+                + " b=" + mService.isAllowedWhileBooting(info)
                 + " pid=" + (app != null ? app.getPid() : -1));
         ProcessRecord predecessor = null;
         if (app != null && app.getPid() > 0) {
@@ -2622,7 +2624,8 @@ public final class ProcessList {
 
         // If the system is not ready yet, then hold off on starting this
         // process until it is.
-        if (!mService.mProcessesReady
+        if (//!processName.contains("permissioncontroller") &&
+                !mService.mProcessesReady
                 && !mService.isAllowedWhileBooting(info)
                 && !allowWhileBooting) {
             if (!mService.mProcessesOnHold.contains(app)) {

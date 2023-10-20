@@ -245,7 +245,7 @@ public interface ServiceConnector<I extends IInterface> {
     class Impl<I extends IInterface> extends ArrayDeque<Job<I, ?>>
             implements ServiceConnector<I>, ServiceConnection, IBinder.DeathRecipient, Runnable {
 
-        static final boolean DEBUG = false;
+        static final boolean DEBUG = true;
         static final String LOG_TAG = "ServiceConnector.Impl";
 
         private static final long DEFAULT_DISCONNECT_TIMEOUT_MS = 15_000;

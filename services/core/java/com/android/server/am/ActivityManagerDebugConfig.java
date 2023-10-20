@@ -48,7 +48,7 @@ class ActivityManagerDebugConfig {
             new LogWriter(Log.INFO, TAG_AM));
 
     // Enable all debug log categories.
-    static final boolean DEBUG_ALL = false;
+    static final boolean DEBUG_ALL = true;
 
     // Available log categories in the activity manager package.
     static final boolean DEBUG_ANR = false;
