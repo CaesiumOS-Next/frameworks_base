@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1e4363e6_dbed698b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1131829
+      },
+      "writtenOn": "2023-10-23T14:15:42Z",
+      "side": 1,
+      "message": "The change is comment-only and is strictly removing lines, so any test failure are unrelated.",
+      "revId": "4ac6ce156d12c804c6751b0721e2dcbadac46b97",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
