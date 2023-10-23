@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "232099f7_ccc14ebb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1061144
+      },
+      "writtenOn": "2023-10-23T16:26:13Z",
+      "side": 1,
+      "message": "Generally LGTM at this point.",
+      "revId": "5ccfc64355839fb7dd7b175b788cb4e5fe7f990c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "808b1284_3896c6ca",
+        "filename": "services/core/java/com/android/server/SystemConfig.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 322,
+      "author": {
+        "id": 1061144
+      },
+      "writtenOn": "2023-10-23T16:26:13Z",
+      "side": 1,
+      "message": "Can we rename this? The feature isn\u0027t \"force enabling\" them which implies some sort of guarantee that the OS will always re-enable if disabled, but instead we\u0027re only preventing the user from disabling in settings. Naming is hard, but a few ideas:\n\nmUserDisableDisallowedPackages?\nmPreventUserDisablePackages?\nmBlockUserDisablePackages?\n\n```suggestion\n    private final ArrayList\u003cString\u003e mBlockUserDisablePackages \u003d new ArrayList\u003c\u003e();\n```",
+      "range": {
+        "startLine": 322,
+        "startChar": 36,
+        "endLine": 322,
+        "endChar": 58
+      },
+      "revId": "5ccfc64355839fb7dd7b175b788cb4e5fe7f990c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
