@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7fa97e73_3cdef725",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1407716
+      },
+      "writtenOn": "2023-10-24T20:42:53Z",
+      "side": 1,
+      "message": "Cherry-pick from internal branches.",
+      "revId": "2c42929c53254aa8c0ece2a8be19fdebe5e91eb6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
