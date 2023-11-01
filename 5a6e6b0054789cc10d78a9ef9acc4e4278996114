@@ -16,6 +16,23 @@
       "message": "https://android-review.googlesource.com/c/platform/frameworks/base/+/2801574\nThe above solution will cause deadlock issues.\n\n1. BtHelper.this-\u003e mBluetoothAudioStateLock\ndisconnectHeadset-\u003esetBtScoActiveDevice-\u003eresetBluetoothSco-\u003eclearA2dpSuspended\n\n2. mBluetoothAudioStateLock-\u003eBtHelper.this\nsetA2dpSuspended-\u003esetA2dpSuspended-\u003eupdateAudioHalBluetoothState",
       "revId": "5a6e6b0054789cc10d78a9ef9acc4e4278996114",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dadc8ee7_9aa69bca",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1932906
+      },
+      "writtenOn": "2023-11-01T02:51:10Z",
+      "side": 1,
+      "message": "Can you help me to review, thank you!",
+      "revId": "5a6e6b0054789cc10d78a9ef9acc4e4278996114",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
