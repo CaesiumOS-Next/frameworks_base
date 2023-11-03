@@ -118,6 +118,8 @@ import java.util.stream.Collectors;
  * <tr><td>{@link #KEY_MPEGH_REFERENCE_CHANNEL_LAYOUT}</td>
  *     <td>Integer</td><td><b>decoder-only</b>, optional, if content is MPEG-H audio,
  *         specifies the preferred reference channel layout of the stream.</td></tr>
+ * <tr><td>{@link #KEY_MAX_OUTPUT_SIZE}</td><td>Integer</td><td>optional, used with large audio frame support, specifies max size of output buffer in bytes.</td></tr>
+ * <tr><td>{@link #KEY_OUTPUT_SIZE_THRESHOLD}</td><td>Integer</td><td>optional, used with large audio frame support, specifies threshold output size in bytes.</td></tr>
  * </table>
  *
  * Subtitle formats have the following keys:
@@ -454,6 +456,20 @@ public final class MediaFormat {
      * The associated value is an integer
      */
     public static final String KEY_MAX_INPUT_SIZE = "max-input-size";
+
+    /**
+     * A key describing the maximum size in bytes of a buffer of data
+     * at the output as described by this MediaFormat
+     * The associated value is an integer
+     */
+    public static final String KEY_MAX_OUTPUT_SIZE = "max-output-size";
+
+    /**
+     * A key describing the threshold size in bytes of a buffer of data
+     * at the output as described by this MediaFormat
+     * The associated value is an integer
+     */
+    public static final String KEY_OUTPUT_SIZE_THRESHOLD = "output-size-threshold";
 
     /**
      * A key describing the pixel aspect ratio width.
