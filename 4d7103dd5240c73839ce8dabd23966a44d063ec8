@@ -3,6 +3,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a8be5891_a7529fd8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1833664
+      },
+      "writtenOn": "2023-11-15T18:59:27Z",
+      "side": 1,
+      "message": "I\u0027m guessing missing keystore isn\u0027t supposed to happen very often -- should we include a log message?",
+      "revId": "4d7103dd5240c73839ce8dabd23966a44d063ec8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6c1699aa_cd1b552a",
         "filename": "keystore/java/android/security/KeyStore2.java",
         "patchSetId": 4
@@ -14,6 +31,30 @@
       "writtenOn": "2023-11-15T18:52:43Z",
       "side": 1,
       "message": "instead of catching the NPE, let\u0027s not dereference mBinder (in line 148) if it\u0027s null .",
+      "range": {
+        "startLine": 151,
+        "startChar": 10,
+        "endLine": 154,
+        "endChar": 9
+      },
+      "revId": "4d7103dd5240c73839ce8dabd23966a44d063ec8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c6cb0f45_6552ba6c",
+        "filename": "keystore/java/android/security/KeyStore2.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1833664
+      },
+      "writtenOn": "2023-11-15T18:59:27Z",
+      "side": 1,
+      "message": "We\u0027ll also need to remove `Objects.requireNonNull`",
+      "parentUuid": "6c1699aa_cd1b552a",
       "range": {
         "startLine": 151,
         "startChar": 10,
