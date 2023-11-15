@@ -16,6 +16,7 @@
 
 package com.android.server.appop;
 
+import static android.app.ActivityManager.RunningAppProcessInfo.IMPORTANCE_CACHED;
 import static android.app.AppOpsManager.ATTRIBUTION_CHAIN_ID_NONE;
 import static android.app.AppOpsManager.ATTRIBUTION_FLAG_TRUSTED;
 import static android.app.AppOpsManager.CALL_BACK_ON_SWITCHED_OP;
@@ -2860,6 +2861,15 @@ public class AppOpsService extends IAppOpsService.Stub {
         }
     }
 
+    private boolean isUidCached(int uid) {
+        if (mActivityManagerInternal == null) {
+            return false;
+        }
+        int procState = mActivityManagerInternal.getUidProcessState(uid);
+        int importance = ActivityManager.RunningAppProcessInfo.procStateToImportance(procState);
+        return importance >= IMPORTANCE_CACHED;
+    }
+
     /**
      * Collect an {@link AsyncNotedAppOp}.
      *
@@ -2892,7 +2902,7 @@ public class AppOpsService extends IAppOpsService.Stub {
                             attributionTag, message);
                 }
 
-                if (callbacks != null) {
+                if (callbacks != null && !isUidCached(uid)) {
                     callbacks.broadcast((cb) -> {
                         try {
                             cb.opNoted(asyncNotedOp);
