@@ -36,6 +36,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "aeb1cade_e94409ea",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1833664
+      },
+      "writtenOn": "2023-11-16T16:26:48Z",
+      "side": 1,
+      "message": "If we\u0027re throwing an exception, then there\u0027s no need to log.\n\nI think throwing a `KeystoreException` here is better than returning null, so that\u0027s a good change.",
+      "parentUuid": "8c9cea95_0f46093f",
+      "revId": "4d7103dd5240c73839ce8dabd23966a44d063ec8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6c1699aa_cd1b552a",
