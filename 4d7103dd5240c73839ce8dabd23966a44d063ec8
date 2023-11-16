@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8c9cea95_0f46093f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1857230
+      },
+      "writtenOn": "2023-11-16T11:26:02Z",
+      "side": 1,
+      "message": "`Log.e(TAG, \"error in getService\", e);` ok?",
+      "parentUuid": "a8be5891_a7529fd8",
+      "revId": "4d7103dd5240c73839ce8dabd23966a44d063ec8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6c1699aa_cd1b552a",
         "filename": "keystore/java/android/security/KeyStore2.java",
         "patchSetId": 4
