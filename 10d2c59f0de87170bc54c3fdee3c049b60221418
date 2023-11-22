@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b2439333_05e7c0da",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1101746
+      },
+      "writtenOn": "2023-11-22T18:50:12Z",
+      "side": 1,
+      "message": "Another cherrypick from the internal main.",
+      "revId": "10d2c59f0de87170bc54c3fdee3c049b60221418",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
