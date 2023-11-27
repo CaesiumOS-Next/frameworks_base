@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f7df8eff_dfcff5dc",
+        "filename": "keystore/java/android/security/KeyStore2.java",
+        "patchSetId": 11
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1078064
+      },
+      "writtenOn": "2023-11-27T12:03:54Z",
+      "side": 1,
+      "message": "A more appropriate exception would be IllegalStateException - I would suggest still keeping the exception to be a runtime exception, because there is nothing the caller can do by catching the Keystore exception (and it\u0027s not really a Keystore error).",
+      "range": {
+        "startLine": 148,
+        "startChar": 22,
+        "endLine": 148,
+        "endChar": 39
+      },
+      "revId": "4c52d993f657f31462e2236b7c571be8908c8908",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2e82b7d9_e57296d1",
+        "filename": "keystore/java/android/security/KeyStore2.java",
+        "patchSetId": 11
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1078064
+      },
+      "writtenOn": "2023-11-27T12:03:54Z",
+      "side": 1,
+      "message": "A more accurate error message would be:\n\"Could not connect to Keystore service. Keystore may have crashed or not been initialized\".",
+      "range": {
+        "startLine": 149,
+        "startChar": 17,
+        "endLine": 149,
+        "endChar": 49
+      },
+      "revId": "4c52d993f657f31462e2236b7c571be8908c8908",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
