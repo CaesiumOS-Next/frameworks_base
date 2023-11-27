@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a49682a9_dd88ecf8",
+        "filename": "keystore/java/android/security/KeyStore2.java",
+        "patchSetId": 11
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1857230
+      },
+      "writtenOn": "2023-11-27T12:32:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f7df8eff_dfcff5dc",
+      "range": {
+        "startLine": 148,
+        "startChar": 22,
+        "endLine": 148,
+        "endChar": 39
+      },
+      "revId": "4c52d993f657f31462e2236b7c571be8908c8908",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2e82b7d9_e57296d1",
@@ -37,6 +61,30 @@
       "writtenOn": "2023-11-27T12:03:54Z",
       "side": 1,
       "message": "A more accurate error message would be:\n\"Could not connect to Keystore service. Keystore may have crashed or not been initialized\".",
+      "range": {
+        "startLine": 149,
+        "startChar": 17,
+        "endLine": 149,
+        "endChar": 49
+      },
+      "revId": "4c52d993f657f31462e2236b7c571be8908c8908",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3f95bf6e_3ccc025c",
+        "filename": "keystore/java/android/security/KeyStore2.java",
+        "patchSetId": 11
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1857230
+      },
+      "writtenOn": "2023-11-27T12:32:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2e82b7d9_e57296d1",
       "range": {
         "startLine": 149,
         "startChar": 17,
