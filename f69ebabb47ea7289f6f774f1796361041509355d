@@ -22,6 +22,30 @@
       },
       "revId": "f69ebabb47ea7289f6f774f1796361041509355d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "13d2ca03_179381fb",
+        "filename": "core/res/res/xml/sms_short_codes.xml",
+        "patchSetId": 6
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 2041834
+      },
+      "writtenOn": "2023-11-28T05:12:15Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "b47f1525_2d65f362",
+      "range": {
+        "startLine": 108,
+        "startChar": 57,
+        "endLine": 108,
+        "endChar": 58
+      },
+      "revId": "f69ebabb47ea7289f6f774f1796361041509355d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
