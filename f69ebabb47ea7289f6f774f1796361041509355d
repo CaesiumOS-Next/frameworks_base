@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b47f1525_2d65f362",
+        "filename": "core/res/res/xml/sms_short_codes.xml",
+        "patchSetId": 6
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1141163
+      },
+      "writtenOn": "2023-11-28T04:47:35Z",
+      "side": 1,
+      "message": "i suspect this is the problem..this looks different from others.. can you copy paste this from above line?",
+      "range": {
+        "startLine": 108,
+        "startChar": 57,
+        "endLine": 108,
+        "endChar": 58
+      },
+      "revId": "f69ebabb47ea7289f6f774f1796361041509355d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
