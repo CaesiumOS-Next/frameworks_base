@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3a277b01_de966f57",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1561214
+      },
+      "writtenOn": "2023-11-29T00:31:33Z",
+      "side": 1,
+      "message": "What is the impact to the regular developers, including platform developers and app developers? How about the bugtool support?",
+      "revId": "d5fb34cc3c2799dc60fbb66d8914e5973a454223",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
