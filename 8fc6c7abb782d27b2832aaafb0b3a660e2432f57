@@ -37,6 +37,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1e2aff32_cc5c0356",
+        "filename": "core/java/android/nfc/NfcActivityManager.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 376,
+      "author": {
+        "id": 1328430
+      },
+      "writtenOn": "2023-12-04T04:14:23Z",
+      "side": 1,
+      "message": "It seems like you want to block the API when enableReaderMode API is used?\nWould it provide unexpected result when there is no return value in this API design? maybe move the checking to NfcAdapter to return exception so the caller is aware that this operation does not take effect?",
+      "range": {
+        "startLine": 374,
+        "startChar": 8,
+        "endLine": 376,
+        "endChar": 9
+      },
+      "revId": "8fc6c7abb782d27b2832aaafb0b3a660e2432f57",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "727d88f9_32a27187",
         "filename": "core/java/android/nfc/NfcAdapter.java",
         "patchSetId": 2
