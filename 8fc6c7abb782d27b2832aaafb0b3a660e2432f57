@@ -60,6 +60,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "be445e01_2a6d682a",
+        "filename": "core/java/android/nfc/NfcAdapter.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 1751,
+      "author": {
+        "id": 1997690
+      },
+      "writtenOn": "2023-12-04T07:23:49Z",
+      "side": 1,
+      "message": "How about creating constants for ISO_15693 and Kovio types as well.\nThis API will allow other tech types or only A, B and F types?",
+      "revId": "8fc6c7abb782d27b2832aaafb0b3a660e2432f57",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "727d88f9_32a27187",
         "filename": "core/java/android/nfc/NfcAdapter.java",
         "patchSetId": 2
