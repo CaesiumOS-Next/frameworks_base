@@ -16,6 +16,63 @@
       "message": "jackcwyu@: Can you also review this new API proposal?",
       "revId": "8fc6c7abb782d27b2832aaafb0b3a660e2432f57",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9fcfcd19_4bb055f3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1328430
+      },
+      "writtenOn": "2023-12-04T03:47:28Z",
+      "side": 1,
+      "message": "will there be any tests implemented to cover the new APIs?",
+      "revId": "8fc6c7abb782d27b2832aaafb0b3a660e2432f57",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "727d88f9_32a27187",
+        "filename": "core/java/android/nfc/NfcAdapter.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 1765,
+      "author": {
+        "id": 1328430
+      },
+      "writtenOn": "2023-12-04T03:47:28Z",
+      "side": 1,
+      "message": "the implementation does not seem to follow this statement. no checking to block the enable polling request for no RW mode devices and enable listen request for no ce deivces.",
+      "range": {
+        "startLine": 1764,
+        "startChar": 7,
+        "endLine": 1765,
+        "endChar": 93
+      },
+      "revId": "8fc6c7abb782d27b2832aaafb0b3a660e2432f57",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "82882e97_932c858d",
+        "filename": "core/java/android/nfc/NfcAdapter.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 1776,
+      "author": {
+        "id": 1328430
+      },
+      "writtenOn": "2023-12-04T03:47:28Z",
+      "side": 1,
+      "message": "why using enableReaderMode API together with the new API setDiscoveryTech? wouldn\u0027t there be conflict to use two APIs in the same time (#1776+#1785)?",
+      "revId": "8fc6c7abb782d27b2832aaafb0b3a660e2432f57",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
