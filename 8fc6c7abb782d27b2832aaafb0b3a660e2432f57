@@ -35,6 +35,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "60c6dae2_bce63ded",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1576846
+      },
+      "writtenOn": "2023-12-05T18:58:52Z",
+      "side": 1,
+      "message": "Yes. I added CTS API tests",
+      "parentUuid": "9fcfcd19_4bb055f3",
+      "revId": "8fc6c7abb782d27b2832aaafb0b3a660e2432f57",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1e2aff32_cc5c0356",
@@ -48,6 +66,30 @@
       "writtenOn": "2023-12-04T04:14:23Z",
       "side": 1,
       "message": "It seems like you want to block the API when enableReaderMode API is used?\nWould it provide unexpected result when there is no return value in this API design? maybe move the checking to NfcAdapter to return exception so the caller is aware that this operation does not take effect?",
+      "range": {
+        "startLine": 374,
+        "startChar": 8,
+        "endLine": 376,
+        "endChar": 9
+      },
+      "revId": "8fc6c7abb782d27b2832aaafb0b3a660e2432f57",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a0786157_b2a662a3",
+        "filename": "core/java/android/nfc/NfcActivityManager.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 376,
+      "author": {
+        "id": 1576846
+      },
+      "writtenOn": "2023-12-05T18:58:52Z",
+      "side": 1,
+      "message": "But how would I know in the NfcAdapter if the readerMode is in action? Form the other side it is the whole point not to use them together. I think the enableReaderMode() API could be deprecated in the future. It is just no way to get the callback with this API, that\u0027s why I do not want to deprecate enableReaderMode() now.",
+      "parentUuid": "1e2aff32_cc5c0356",
       "range": {
         "startLine": 374,
         "startChar": 8,
@@ -75,6 +117,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1372a71f_aeb88ec1",
+        "filename": "core/java/android/nfc/NfcAdapter.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 1751,
+      "author": {
+        "id": 1576846
+      },
+      "writtenOn": "2023-12-05T18:58:52Z",
+      "side": 1,
+      "message": "These flags already exist: FLAG_READER_NFC_V and FLAG_READER_NFC_BARCODE",
+      "parentUuid": "be445e01_2a6d682a",
+      "revId": "8fc6c7abb782d27b2832aaafb0b3a660e2432f57",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "727d88f9_32a27187",
@@ -98,6 +158,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "83c7f9f2_64731e18",
+        "filename": "core/java/android/nfc/NfcAdapter.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 1765,
+      "author": {
+        "id": 1576846
+      },
+      "writtenOn": "2023-12-05T18:58:52Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "727d88f9_32a27187",
+      "range": {
+        "startLine": 1764,
+        "startChar": 7,
+        "endLine": 1765,
+        "endChar": 93
+      },
+      "revId": "8fc6c7abb782d27b2832aaafb0b3a660e2432f57",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "82882e97_932c858d",
@@ -111,6 +195,24 @@
       "writtenOn": "2023-12-04T03:47:28Z",
       "side": 1,
       "message": "why using enableReaderMode API together with the new API setDiscoveryTech? wouldn\u0027t there be conflict to use two APIs in the same time (#1776+#1785)?",
+      "revId": "8fc6c7abb782d27b2832aaafb0b3a660e2432f57",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a8d34e05_1e13e001",
+        "filename": "core/java/android/nfc/NfcAdapter.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 1776,
+      "author": {
+        "id": 1576846
+      },
+      "writtenOn": "2023-12-05T18:58:52Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "82882e97_932c858d",
       "revId": "8fc6c7abb782d27b2832aaafb0b3a660e2432f57",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
