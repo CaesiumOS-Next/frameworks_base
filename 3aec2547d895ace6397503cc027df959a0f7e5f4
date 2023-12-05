@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "36d09245_a117d19c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1986461
+      },
+      "writtenOn": "2023-12-05T23:03:24Z",
+      "side": 1,
+      "message": "@lorenzo@google.com can you review this change?",
+      "revId": "3aec2547d895ace6397503cc027df959a0f7e5f4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d5141a0c_8e8f24e6",
+        "filename": "services/core/java/com/android/server/SystemConfig.java",
+        "patchSetId": 8
+      },
+      "lineNbr": 509,
+      "author": {
+        "id": 1986461
+      },
+      "writtenOn": "2023-12-05T23:03:24Z",
+      "side": 1,
+      "message": "```suggestion\n    public @NonNull ArrayList\u003cString\u003e getPreventUserDisablePackages() {\n```",
+      "revId": "3aec2547d895ace6397503cc027df959a0f7e5f4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
