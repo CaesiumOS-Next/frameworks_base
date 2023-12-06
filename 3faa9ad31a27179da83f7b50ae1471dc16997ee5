@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6800c164_9d5be44d",
+        "filename": "core/java/android/security/net/config/ApplicationConfig.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 2016367
+      },
+      "writtenOn": "2023-12-06T20:44:17Z",
+      "side": 1,
+      "message": "Can we have the RFC mentioned here like the one in NetworkSecurityPolicy? That could help developers understand more about Certificate Transparency verification.\n\n```\n\u003cp\u003eSee RFC6962 section 3.3 for more details.\n```",
+      "range": {
+        "startLine": 155,
+        "startChar": 0,
+        "endLine": 158,
+        "endChar": 7
+      },
+      "revId": "3faa9ad31a27179da83f7b50ae1471dc16997ee5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
