@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4acd83c5_699b5ce5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1929300
+      },
+      "writtenOn": "2023-12-06T16:05:56Z",
+      "side": 1,
+      "message": "AOSP-first CL for CT",
+      "revId": "774ac39e7c2a2d36b8fa2fb251b9c02f6aa0566e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
