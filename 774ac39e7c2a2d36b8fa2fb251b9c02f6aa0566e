@@ -16,6 +16,69 @@
       "message": "AOSP-first CL for CT",
       "revId": "774ac39e7c2a2d36b8fa2fb251b9c02f6aa0566e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6b46e98a_5af1f52c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1013508
+      },
+      "writtenOn": "2023-12-06T17:41:13Z",
+      "side": 1,
+      "message": "API shape LGTM, feedback is slight wording changes on the docs.\n\nSecond request is please add CTS in the same Gerrit topic to exercise your new API.  😊",
+      "revId": "774ac39e7c2a2d36b8fa2fb251b9c02f6aa0566e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d7c7a721_9695d976",
+        "filename": "core/java/android/security/net/config/ApplicationConfig.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1013508
+      },
+      "writtenOn": "2023-12-06T17:41:13Z",
+      "side": 1,
+      "message": "Could you word this a bit differently to highlight that the app is making a request which is up to an HTTP library to respect and enforce?  (This API isn\u0027t able to promise that it\u0027s actually enforced.)\n\n\u003e Returns {@code true} if this app has requested that \u003ca href\u003d\"https://en.wikipedia.org/wiki/Certificate_Transparency\"\u003eCertificate Transparency\u003c/a\u003e be enforced when it makes \u003ca href\u003d\"https://en.wikipedia.org/wiki/Transport_Layer_Security\"\u003eTLS\u003c/a\u003e connections to {@code hostname}.",
+      "range": {
+        "startLine": 155,
+        "startChar": 0,
+        "endLine": 157,
+        "endChar": 0
+      },
+      "revId": "774ac39e7c2a2d36b8fa2fb251b9c02f6aa0566e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "71058186_27e07ece",
+        "filename": "core/java/android/security/net/config/ApplicationConfig.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1013508
+      },
+      "writtenOn": "2023-12-06T17:41:13Z",
+      "side": 1,
+      "message": "Add a @NonNull annotation to the argument.",
+      "range": {
+        "startLine": 158,
+        "startChar": 65,
+        "endLine": 158,
+        "endChar": 71
+      },
+      "revId": "774ac39e7c2a2d36b8fa2fb251b9c02f6aa0566e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
