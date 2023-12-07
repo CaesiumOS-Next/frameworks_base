@@ -80,6 +80,7 @@ import android.os.VibrationEffect;
 import android.os.vibrator.StepSegment;
 import android.os.vibrator.VibrationEffectSegment;
 import android.provider.DeviceConfig;
+import android.sysprop.InputProperties;
 import android.text.TextUtils;
 import android.util.ArrayMap;
 import android.util.IndentingPrintWriter;
@@ -321,6 +322,9 @@ public class InputManagerService extends IInputManager.Stub
     // Manages Keyboard modifier keys remapping
     private final KeyRemapper mKeyRemapper;
 
+    // State of stylus hover pointer toggle
+    private boolean mStylusHoverPointerEnabled;
+
     // Maximum number of milliseconds to wait for input event injection.
     private static final int INJECTION_TIMEOUT_MILLIS = 30 * 1000;
 
@@ -556,9 +560,6 @@ public class InputManagerService extends IInputManager.Stub
         mKeyboardBacklightController.systemRunning();
         mKeyRemapper.systemRunning();
 
-        mNative.setStylusPointerIconEnabled(
-                Objects.requireNonNull(mContext.getSystemService(InputManager.class))
-                        .isStylusPointerIconEnabled());
     }
 
     private void reloadDeviceAliases() {
@@ -2759,6 +2760,11 @@ public class InputManagerService extends IInputManager.Stub
         return mKeyRemapper.getKeyRemapping();
     }
 
+    @Override // Binder call
+    public boolean isStylusPointerIconEnabled() {
+        return mStylusHoverPointerEnabled;
+    }
+
     // Native callback.
     @SuppressWarnings("unused")
     private String getDeviceAlias(String uniqueId) {
@@ -3417,6 +3423,15 @@ public class InputManagerService extends IInputManager.Stub
         lp.setTitle("FocusEventDebugView - display " + mContext.getDisplayId());
         lp.inputFeatures |= WindowManager.LayoutParams.INPUT_FEATURE_NO_INPUT_CHANNEL;
         wm.addView(view, lp);
+    }
+
+    void setStylusPointerEnabled(boolean value) {
+        // The hover pointer should only be shown when the config enableStylusPointerIcon is set to
+        // true. This allows OEMs to enable/disable the pointer globally
+        mStylusHoverPointerEnabled = (mContext.getResources()
+                .getBoolean(com.android.internal.R.bool.config_enableStylusPointerIcon) && value)
+               || InputProperties.force_enable_stylus_pointer_icon().orElse(false);
+        mNative.setStylusPointerIconEnabled(mStylusHoverPointerEnabled);
     }
 
     interface KeyboardBacklightControllerInterface {
