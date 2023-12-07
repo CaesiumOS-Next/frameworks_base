@@ -11696,6 +11696,16 @@ public final class Settings {
         public static final String LOCK_SCREEN_WEATHER_ENABLED = "lockscreen_weather_enabled";
 
         /**
+         * Toggle for enabling stylus pointer icon. When enabled pointer icon will be shown.
+         * Enabling this alone won't enable the stylus pointer; config_enableStylusPointerIcon
+         * needs to be true as well.
+         *
+         * @hide
+         */
+        @Readable
+        public static final String STYLUS_POINTER_ICON_ENABLED = "stylus_pointer_icon_enabled";
+
+        /**
          * These entries are considered common between the personal and the managed profile,
          * since the managed profile doesn't get to change them.
          */
