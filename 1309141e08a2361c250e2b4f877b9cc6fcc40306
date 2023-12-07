@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dc54cc8a_a898e8c2",
+        "filename": "core/java/android/security/net/config/ApplicationConfig.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1334152
+      },
+      "writtenOn": "2023-12-07T10:14:21Z",
+      "side": 1,
+      "message": "s/false/DEFAULT_CERTIFICATE_TRANSPARENCY_VERIFICATION_REQUIRED/ maybe?",
+      "range": {
+        "startLine": 168,
+        "startChar": 18,
+        "endLine": 168,
+        "endChar": 23
+      },
+      "revId": "1309141e08a2361c250e2b4f877b9cc6fcc40306",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0ef4828e_ec353e6e",
+        "filename": "core/java/android/security/net/config/ConfigNetworkSecurityPolicy.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1334152
+      },
+      "writtenOn": "2023-12-07T10:14:21Z",
+      "side": 1,
+      "message": "And happily the wiring is already in libcore.net.NetworkSecurityPolicy, although I don\u0027t think anything in the core libraries needs to be aware of it.\n\nIt could be a route for getting the information into Conscrypt though.",
+      "revId": "1309141e08a2361c250e2b4f877b9cc6fcc40306",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
