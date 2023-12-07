@@ -43,6 +43,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "c7f41f2b_606416ad",
+        "filename": "core/java/android/security/net/config/ApplicationConfig.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1929300
+      },
+      "writtenOn": "2023-12-07T11:07:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dc54cc8a_a898e8c2",
+      "range": {
+        "startLine": 168,
+        "startChar": 18,
+        "endLine": 168,
+        "endChar": 23
+      },
+      "revId": "1309141e08a2361c250e2b4f877b9cc6fcc40306",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "0ef4828e_ec353e6e",
         "filename": "core/java/android/security/net/config/ConfigNetworkSecurityPolicy.java",
         "patchSetId": 5
