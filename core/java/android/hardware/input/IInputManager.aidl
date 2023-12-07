@@ -236,4 +236,6 @@ interface IInputManager {
     void unregisterKeyboardBacklightListener(IKeyboardBacklightListener listener);
 
     HostUsiVersion getHostUsiVersionFromDisplayConfig(int displayId);
+
+    boolean isStylusPointerIconEnabled();
 }

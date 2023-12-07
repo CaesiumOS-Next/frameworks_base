@@ -79,7 +79,9 @@ class InputSettingsObserver extends ContentObserver {
                                 Settings.Global.MAXIMUM_OBSCURING_OPACITY_FOR_TOUCH),
                         (reason) -> updateMaximumObscuringOpacityForTouch()),
                 Map.entry(Settings.System.getUriFor(Settings.System.SHOW_KEY_PRESSES),
-                        (reason) -> updateShowKeyPresses()));
+                        (reason) -> updateShowKeyPresses()),
+                Map.entry(Settings.Secure.getUriFor(Settings.Secure.STYLUS_POINTER_ENABLED),
+                        (reason) -> updateStylusPointerEnabled()));
     }
 
     /**
@@ -199,5 +201,13 @@ class InputSettingsObserver extends ContentObserver {
             return;
         }
         mNative.setMaximumObscuringOpacityForTouch(opacity);
+    }
+
+    private void updateStylusPointerEnabled() {
+        final boolean enabled = Settings.Secure.getIntForUser(mContext.getContentResolver(),
+                Settings.Secure.STYLUS_POINTER_ENABLED,
+                Settings.Secure.STYLUS_POINTER_ENABLED_DEFAULT_VALUE,
+                UserHandle.USER_CURRENT) != 0;
+        mService.setStylusPointerEnabled(enabled);
     }
 }

@@ -319,8 +319,14 @@ public class InputSettings {
     }
 
     /**
-     * Whether a pointer icon will be shown over the location of a
-     * stylus pointer.
+     * Whether a pointer icon will be shown over the location of a stylus pointer. The return value
+     * depends on config config_enableStylusPointerIcon or the debug system property
+     * persist.debug.input.force_enable_stylus_pointer_icon. Since the actual state for hover
+     * depends on user preference use {@link InputManager#isStylusPointerIconEnabled} for getting
+     * the current state.
+     *
+     * @param context The application context.
+     *
      * @hide
      */
     public static boolean isStylusPointerIconEnabled(@NonNull Context context) {

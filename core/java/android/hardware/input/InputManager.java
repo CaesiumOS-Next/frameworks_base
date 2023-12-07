@@ -73,13 +73,6 @@ public final class InputManager {
     private final IInputManager mIm;
 
     /**
-     * Whether a PointerIcon is shown for stylus pointers.
-     * Obtain using {@link #isStylusPointerIconEnabled()}.
-     */
-    @Nullable
-    private Boolean mIsStylusPointerIconEnabled = null;
-
-    /**
      * Broadcast Action: Query available keyboard layouts.
      * <p>
      * The input manager service locates available keyboard layouts
@@ -1036,10 +1029,11 @@ public final class InputManager {
      * stylus pointer, false if there is no pointer icon shown for styluses.
      */
     public boolean isStylusPointerIconEnabled() {
-        if (mIsStylusPointerIconEnabled == null) {
-            mIsStylusPointerIconEnabled = InputSettings.isStylusPointerIconEnabled(mContext);
+        try {
+            return mIm.isStylusPointerIconEnabled();
+        } catch (RemoteException ex) {
+            throw ex.rethrowFromSystemServer();
         }
-        return mIsStylusPointerIconEnabled;
     }
 
     /**
