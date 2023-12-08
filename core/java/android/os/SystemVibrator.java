@@ -61,11 +61,19 @@ public class SystemVibrator extends Vibrator {
     @GuardedBy("mLock")
     private VibratorInfo mVibratorInfo;
 
+    private final int[] mVibratorIds;
+
     @UnsupportedAppUsage
     public SystemVibrator(Context context) {
         super(context);
         mContext = context;
         mVibratorManager = mContext.getSystemService(VibratorManager.class);
+
+        if (mVibratorManager != null) {
+           mVibratorIds = mVibratorManager.getVibratorIds();
+		} else {
+		   mVibratorIds = new int[0];
+        }										        }
     }
 
     @Override
@@ -213,8 +221,13 @@ public class SystemVibrator extends Vibrator {
             Log.w(TAG, "Failed to vibrate; no vibrator manager.");
             return;
         }
-        CombinedVibration combinedEffect = CombinedVibration.createParallel(effect);
-        mVibratorManager.vibrate(uid, opPkg, combinedEffect, reason, attributes);
+
+        if (vibratorIds.length != 0) {
+            CombinedVibration combinedEffect = CombinedVibration.startParallel()
+                                                .addVibrator(mVibratorIds[0], effect)
+                                                .combine();
+            mVibratorManager.vibrate(uid, opPkg, combinedEffect, reason, attributes);
+        }
     }
 
     @Override
