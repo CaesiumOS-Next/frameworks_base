@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b421d60a_c2f56102",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1004882
+      },
+      "writtenOn": "2023-12-08T12:06:08Z",
+      "side": 1,
+      "message": "patb@\n\nWould it be OK to +2 this one again?  Thanks!",
+      "revId": "8c32076ef1b457c512f2d7fd4414c636b3a687dc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
