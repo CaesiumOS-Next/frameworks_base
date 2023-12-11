@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "19035dd5_5bb9e72f",
+        "filename": "services/texttospeech/java/com/android/server/texttospeech/TextToSpeechManagerPerUserService.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1838141
+      },
+      "writtenOn": "2023-12-11T07:20:26Z",
+      "side": 1,
+      "message": "Was your intention to add a \"return\" here? I am not sure I understand what is the fix here. Maybe I am missing something...",
+      "range": {
+        "startLine": 151,
+        "startChar": 13,
+        "endLine": 153,
+        "endChar": 17
+      },
+      "revId": "841c28b334424c1267cd235d258c43b0d07df666",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
