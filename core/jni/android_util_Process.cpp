@@ -282,6 +282,11 @@ void android_os_Process_setProcessGroup(JNIEnv* env, jobject clazz, int pid, jin
 void android_os_Process_setProcessFrozen(
         JNIEnv *env, jobject clazz, jint pid, jint uid, jboolean freeze)
 {
+    if (uid < 0) {
+        jniThrowIllegalArgumentException(env, "uid is negative");
+        return;
+    }
+
     bool success = true;
 
     if (freeze) {
@@ -305,6 +310,10 @@ jint android_os_Process_getProcessGroup(JNIEnv* env, jobject clazz, jint pid)
 }
 
 jint android_os_Process_createProcessGroup(JNIEnv* env, jobject clazz, jint uid, jint pid) {
+    if (uid < 0) {
+        return jniThrowIllegalArgumentException(env, "uid is negative");
+    }
+
     return createProcessGroup(uid, pid);
 }
 
@@ -590,12 +599,19 @@ void android_os_Process_setArgV0(JNIEnv* env, jobject clazz, jstring name)
 
 jint android_os_Process_setUid(JNIEnv* env, jobject clazz, jint uid)
 {
+    if (uid < 0) {
+        return jniThrowIllegalArgumentException(env, "uid is negative");
+    }
+
     return setuid(uid) == 0 ? 0 : errno;
 }
 
-jint android_os_Process_setGid(JNIEnv* env, jobject clazz, jint uid)
-{
-    return setgid(uid) == 0 ? 0 : errno;
+jint android_os_Process_setGid(JNIEnv* env, jobject clazz, jint gid) {
+    if (gid < 0) {
+        return jniThrowIllegalArgumentException(env, "gid is negative");
+    }
+
+    return setgid(gid) == 0 ? 0 : errno;
 }
 
 static int pid_compare(const void* v1, const void* v2)
@@ -661,7 +677,7 @@ void android_os_Process_readProcLines(JNIEnv* env, jobject clazz, jstring fileSt
 
     jsize count = env->GetArrayLength(reqFields);
     if (count > env->GetArrayLength(outFields)) {
-        jniThrowException(env, "java/lang/IllegalArgumentException", "Array lengths differ");
+        jniThrowIllegalArgumentException(env, "Array lengths differ");
         return;
     }
 
@@ -1235,11 +1251,19 @@ jintArray android_os_Process_getPidsForCommands(JNIEnv* env, jobject clazz,
 
 jint android_os_Process_killProcessGroup(JNIEnv* env, jobject clazz, jint uid, jint pid)
 {
+    if (uid < 0) {
+        return jniThrowIllegalArgumentException(env, "uid is negative");
+    }
+
     return killProcessGroup(uid, pid, SIGKILL);
 }
 
 jint android_os_Process_sendSignalToProcessGroup(JNIEnv* env, jobject clazz, jint uid, jint pid,
                                                  jint signal) {
+    if (uid < 0) {
+        return jniThrowIllegalArgumentException(env, "uid is negative");
+    }
+
     return sendSignalToProcessGroup(uid, pid, signal);
 }
 
@@ -1258,6 +1282,11 @@ static jint android_os_Process_nativePidFdOpen(JNIEnv* env, jobject, jint pid, j
 }
 
 void android_os_Process_freezeCgroupUID(JNIEnv* env, jobject clazz, jint uid, jboolean freeze) {
+    if (uid < 0) {
+        jniThrowIllegalArgumentException(env, "uid is negative");
+        return;
+    }
+
     bool success = true;
 
     if (freeze) {
