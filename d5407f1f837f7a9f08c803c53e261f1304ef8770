@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ab9599b0_94474fba",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1981500
+      },
+      "writtenOn": "2023-12-11T15:17:43Z",
+      "side": 1,
+      "message": "Thanks",
+      "revId": "d5407f1f837f7a9f08c803c53e261f1304ef8770",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "79e3b6b0_064abafd",
+        "filename": "core/java/android/os/SystemVibrator.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 1981500
+      },
+      "writtenOn": "2023-12-11T15:17:43Z",
+      "side": 1,
+      "message": "This will force the vibration to run on one vibrator all the time, even if the device has multiple vibrators. This will probably fix the tests but could cause other issues for future devices.",
+      "revId": "d5407f1f837f7a9f08c803c53e261f1304ef8770",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
