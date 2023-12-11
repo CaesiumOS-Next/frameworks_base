@@ -1,0 +1,107 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b0e9c0ca_5a535e9c",
+        "filename": "services/core/java/com/android/server/BootReceiver.java",
+        "patchSetId": 16
+      },
+      "lineNbr": 386,
+      "author": {
+        "id": 1337780
+      },
+      "writtenOn": "2023-12-11T13:57:19Z",
+      "side": 1,
+      "message": "since we now always pass the Tombstone proto, we probably do not need to read it again here?",
+      "range": {
+        "startLine": 386,
+        "startChar": 44,
+        "endLine": 386,
+        "endChar": 56
+      },
+      "revId": "4829d73270ee8d3fcc61a22fd7b25baa99512fa4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1d9e185a_965204f3",
+        "filename": "services/core/java/com/android/server/os/NativeTombstoneManager.java",
+        "patchSetId": 16
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1337780
+      },
+      "writtenOn": "2023-12-11T13:57:19Z",
+      "side": 1,
+      "message": "should we get the process name from the Tombstone proto if the TombstoneFile is not present?\n\nnit: should we add a method to ParsedTombstone to get the process name?",
+      "revId": "4829d73270ee8d3fcc61a22fd7b25baa99512fa4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "da6456b5_fd2bbedd",
+        "filename": "services/core/java/com/android/server/os/NativeTombstoneManager.java",
+        "patchSetId": 16
+      },
+      "lineNbr": 353,
+      "author": {
+        "id": 1337780
+      },
+      "writtenOn": "2023-12-11T13:57:19Z",
+      "side": 1,
+      "message": "This field seem to be always required. We should maybe return Tombstone instead of Optional and return an Optional\u003cParsedTombstone\u003e when both field are not present.",
+      "range": {
+        "startLine": 353,
+        "startChar": 24,
+        "endLine": 353,
+        "endChar": 33
+      },
+      "revId": "4829d73270ee8d3fcc61a22fd7b25baa99512fa4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2c3ad31c_71b8b2f1",
+        "filename": "services/core/java/com/android/server/os/NativeTombstoneManager.java",
+        "patchSetId": 16
+      },
+      "lineNbr": 481,
+      "author": {
+        "id": 1337780
+      },
+      "writtenOn": "2023-12-11T13:57:19Z",
+      "side": 1,
+      "message": "I think in this case, we want to ignore the proto. These crashes are app crashes we are already reported through the ActivityManager.",
+      "range": {
+        "startLine": 481,
+        "startChar": 27,
+        "endLine": 481,
+        "endChar": 42
+      },
+      "revId": "4829d73270ee8d3fcc61a22fd7b25baa99512fa4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "648e7c1f_b8a666c5",
+        "filename": "services/core/java/com/android/server/os/NativeTombstoneManager.java",
+        "patchSetId": 16
+      },
+      "lineNbr": 497,
+      "author": {
+        "id": 1337780
+      },
+      "writtenOn": "2023-12-11T13:57:19Z",
+      "side": 1,
+      "message": "Should we ignore this one as well?",
+      "revId": "4829d73270ee8d3fcc61a22fd7b25baa99512fa4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
