@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "28e1795a_9e2b7684",
+        "filename": "services/core/java/com/android/server/BootReceiver.java",
+        "patchSetId": 16
+      },
+      "lineNbr": 386,
+      "author": {
+        "id": 1872107
+      },
+      "writtenOn": "2023-12-12T11:45:48Z",
+      "side": 1,
+      "message": "Done, I think if we change the type of proto used for the TombstoneProtoWithHeaders, then we might be able to avoid writing the temp file completely, but I will do that in a followup change",
+      "parentUuid": "b0e9c0ca_5a535e9c",
+      "range": {
+        "startLine": 386,
+        "startChar": 44,
+        "endLine": 386,
+        "endChar": 56
+      },
+      "revId": "4829d73270ee8d3fcc61a22fd7b25baa99512fa4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1d9e185a_965204f3",
@@ -41,6 +65,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fde32836_7d72ee69",
+        "filename": "services/core/java/com/android/server/os/NativeTombstoneManager.java",
+        "patchSetId": 16
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1872107
+      },
+      "writtenOn": "2023-12-12T11:45:48Z",
+      "side": 1,
+      "message": "Done, with the change to optionals the case where tombstonefile is not present should no longer exist",
+      "parentUuid": "1d9e185a_965204f3",
+      "revId": "4829d73270ee8d3fcc61a22fd7b25baa99512fa4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "da6456b5_fd2bbedd",
@@ -54,6 +96,30 @@
       "writtenOn": "2023-12-11T13:57:19Z",
       "side": 1,
       "message": "This field seem to be always required. We should maybe return Tombstone instead of Optional and return an Optional\u003cParsedTombstone\u003e when both field are not present.",
+      "range": {
+        "startLine": 353,
+        "startChar": 24,
+        "endLine": 353,
+        "endChar": 33
+      },
+      "revId": "4829d73270ee8d3fcc61a22fd7b25baa99512fa4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3b43758e_a6cb6aab",
+        "filename": "services/core/java/com/android/server/os/NativeTombstoneManager.java",
+        "patchSetId": 16
+      },
+      "lineNbr": 353,
+      "author": {
+        "id": 1872107
+      },
+      "writtenOn": "2023-12-12T11:45:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "da6456b5_fd2bbedd",
       "range": {
         "startLine": 353,
         "startChar": 24,
@@ -87,6 +153,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "57ee8cfc_72ec9bad",
+        "filename": "services/core/java/com/android/server/os/NativeTombstoneManager.java",
+        "patchSetId": 16
+      },
+      "lineNbr": 481,
+      "author": {
+        "id": 1872107
+      },
+      "writtenOn": "2023-12-12T11:45:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2c3ad31c_71b8b2f1",
+      "range": {
+        "startLine": 481,
+        "startChar": 27,
+        "endLine": 481,
+        "endChar": 42
+      },
+      "revId": "4829d73270ee8d3fcc61a22fd7b25baa99512fa4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "648e7c1f_b8a666c5",
@@ -100,6 +190,24 @@
       "writtenOn": "2023-12-11T13:57:19Z",
       "side": 1,
       "message": "Should we ignore this one as well?",
+      "revId": "4829d73270ee8d3fcc61a22fd7b25baa99512fa4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b7a3a590_5f4775c9",
+        "filename": "services/core/java/com/android/server/os/NativeTombstoneManager.java",
+        "patchSetId": 16
+      },
+      "lineNbr": 497,
+      "author": {
+        "id": 1872107
+      },
+      "writtenOn": "2023-12-12T11:45:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "648e7c1f_b8a666c5",
       "revId": "4829d73270ee8d3fcc61a22fd7b25baa99512fa4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
