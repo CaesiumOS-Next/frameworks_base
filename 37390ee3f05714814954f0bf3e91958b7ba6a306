@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "73f82bdc_c4bb511b",
+        "filename": "services/core/java/com/android/server/os/NativeTombstoneManager.java",
+        "patchSetId": 19
+      },
+      "lineNbr": 453,
+      "author": {
+        "id": 1872107
+      },
+      "writtenOn": "2023-12-12T15:00:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cba37aba_6507e15c",
+      "range": {
+        "startLine": 453,
+        "startChar": 22,
+        "endLine": 453,
+        "endChar": 36
+      },
+      "revId": "37390ee3f05714814954f0bf3e91958b7ba6a306",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "dc2b08e2_439dd926",
@@ -37,6 +61,24 @@
       "writtenOn": "2023-12-12T14:26:07Z",
       "side": 1,
       "message": "nit: create a getCrashReason function and directly set result.mCrashReason",
+      "revId": "37390ee3f05714814954f0bf3e91958b7ba6a306",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7c3135e5_b45551ed",
+        "filename": "services/core/java/com/android/server/os/NativeTombstoneManager.java",
+        "patchSetId": 19
+      },
+      "lineNbr": 464,
+      "author": {
+        "id": 1872107
+      },
+      "writtenOn": "2023-12-12T15:00:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dc2b08e2_439dd926",
       "revId": "37390ee3f05714814954f0bf3e91958b7ba6a306",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
