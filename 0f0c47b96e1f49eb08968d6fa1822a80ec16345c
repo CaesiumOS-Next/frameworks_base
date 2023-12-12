@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eaf36e1a_2286f61e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1990625
+      },
+      "writtenOn": "2023-12-12T13:52:22Z",
+      "side": 1,
+      "message": "Hi jiangyou.li@unisoc.com, thank you for the patch. Can you provide a test that showcases the NPE? E.g. in `TextToSpeechTests` or `TextToSpeechServiceTest`.",
+      "revId": "0f0c47b96e1f49eb08968d6fa1822a80ec16345c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
