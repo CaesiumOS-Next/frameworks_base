@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cba37aba_6507e15c",
+        "filename": "services/core/java/com/android/server/os/NativeTombstoneManager.java",
+        "patchSetId": 19
+      },
+      "lineNbr": 453,
+      "author": {
+        "id": 1337780
+      },
+      "writtenOn": "2023-12-12T14:26:07Z",
+      "side": 1,
+      "message": "nit: I would move this code outside of the try/catch as they cannot throw IoException.\n\nYou would then just be able to declare the variable and set its value on the same line.",
+      "range": {
+        "startLine": 453,
+        "startChar": 22,
+        "endLine": 453,
+        "endChar": 36
+      },
+      "revId": "37390ee3f05714814954f0bf3e91958b7ba6a306",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dc2b08e2_439dd926",
+        "filename": "services/core/java/com/android/server/os/NativeTombstoneManager.java",
+        "patchSetId": 19
+      },
+      "lineNbr": 464,
+      "author": {
+        "id": 1337780
+      },
+      "writtenOn": "2023-12-12T14:26:07Z",
+      "side": 1,
+      "message": "nit: create a getCrashReason function and directly set result.mCrashReason",
+      "revId": "37390ee3f05714814954f0bf3e91958b7ba6a306",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
