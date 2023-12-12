@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "01d5f4f5_63d11b35",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1741425
+      },
+      "writtenOn": "2023-12-12T21:16:04Z",
+      "side": 1,
+      "message": "Good catch! But why do we get these wrong uid at all? Is it because the app is killed when those APIs are called?",
+      "revId": "df0cb025b6c5b9a772ad2b60db6b3d9eea540b85",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
