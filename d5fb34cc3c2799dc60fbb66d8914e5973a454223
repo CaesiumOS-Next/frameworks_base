@@ -16,6 +16,29 @@
       "message": "What is the impact to the regular developers, including platform developers and app developers? How about the bugtool support?",
       "revId": "d5fb34cc3c2799dc60fbb66d8914e5973a454223",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "689fff18_90bcdd27",
+        "filename": "services/core/jni/OWNERS",
+        "patchSetId": 6
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-12-12T20:54:48Z",
+      "side": 1,
+      "message": "should this be a file with a team who owns this instead of an individual?",
+      "range": {
+        "startLine": 32,
+        "startChar": 47,
+        "endLine": 32,
+        "endChar": 66
+      },
+      "revId": "d5fb34cc3c2799dc60fbb66d8914e5973a454223",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
