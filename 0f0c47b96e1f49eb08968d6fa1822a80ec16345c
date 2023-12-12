@@ -16,6 +16,23 @@
       "message": "Hi jiangyou.li@unisoc.com, thank you for the patch. Can you provide a test that showcases the NPE? E.g. in `TextToSpeechTests` or `TextToSpeechServiceTest`.",
       "revId": "0f0c47b96e1f49eb08968d6fa1822a80ec16345c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1fa12519_129395aa",
+        "filename": "services/texttospeech/java/com/android/server/texttospeech/TextToSpeechManagerPerUserService.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1990625
+      },
+      "writtenOn": "2023-12-12T13:53:45Z",
+      "side": 1,
+      "message": "Callback belongs to the client, right? I think the correct message would be something like\n\n```\nClient disconnected, not sending engine disconnect callback\n```",
+      "revId": "0f0c47b96e1f49eb08968d6fa1822a80ec16345c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
