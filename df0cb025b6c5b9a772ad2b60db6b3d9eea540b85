@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "204f3bc7_9b736d9b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1930620
+      },
+      "writtenOn": "2023-12-12T21:17:57Z",
+      "side": 1,
+      "message": "I found one reason that\u0027s probably my fault, but I\u0027m not sure if it covers all the cases. If userId is negative here, we get a negative packageUID: https://cs.android.com/android/platform/superproject/main/+/main:frameworks/base/services/core/java/com/android/server/am/ProcessList.java;l\u003d2992?q\u003dkillPackageProcessesLSP\u0026ss\u003dandroid%2Fplatform%2Fsuperproject%2Fmain\n\nI\u0027m working on a fix which calls out with PackageManagerInternal.getPackageUid to get the real one.",
+      "parentUuid": "01d5f4f5_63d11b35",
+      "revId": "df0cb025b6c5b9a772ad2b60db6b3d9eea540b85",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5da46977_76ac4beb",
