@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3680b0d0_ed63dbbd",
+        "filename": "services/core/java/com/android/server/BootReceiver.java",
+        "patchSetId": 18
+      },
+      "lineNbr": 361,
+      "author": {
+        "id": 1872107
+      },
+      "writtenOn": "2023-12-12T13:26:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "010a3038_63237c6c",
+      "revId": "df2db6b28a2d67fb4e78b772922245acf5320e6c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7fb984aa_5bf1ac01",
@@ -31,6 +49,30 @@
       "writtenOn": "2023-12-12T13:19:26Z",
       "side": 1,
       "message": "should we move the following line here? \ndb.addText(TAG_TOMBSTONE, tombstoneWithoutMemory);\n\nrecordFileTimestamp makes sure we do not log the same issues twice\n\nMaybe something to do in a follow up CL to  keep the existing behavior in this commit?",
+      "range": {
+        "startLine": 368,
+        "startChar": 16,
+        "endLine": 368,
+        "endChar": 35
+      },
+      "revId": "df2db6b28a2d67fb4e78b772922245acf5320e6c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "02c4a96b_34ebdba0",
+        "filename": "services/core/java/com/android/server/BootReceiver.java",
+        "patchSetId": 18
+      },
+      "lineNbr": 368,
+      "author": {
+        "id": 1872107
+      },
+      "writtenOn": "2023-12-12T13:26:34Z",
+      "side": 1,
+      "message": "Sure, sounds good, I\u0027ll change it in a followup",
+      "parentUuid": "7fb984aa_5bf1ac01",
       "range": {
         "startLine": 368,
         "startChar": 16,
