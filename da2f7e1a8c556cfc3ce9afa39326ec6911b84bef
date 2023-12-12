@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d6492f56_9dc22e99",
+        "filename": "services/tests/servicestests/src/com/android/server/BootReceiverTest.java",
+        "patchSetId": 20
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-12-12T20:55:41Z",
+      "side": 1,
+      "message": "OWNERS still needs to be updated for this",
+      "range": {
+        "startLine": 26,
+        "startChar": 13,
+        "endLine": 26,
+        "endChar": 29
+      },
+      "revId": "da2f7e1a8c556cfc3ce9afa39326ec6911b84bef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
