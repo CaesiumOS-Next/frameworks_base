@@ -87,6 +87,30 @@
       },
       "revId": "d5fb34cc3c2799dc60fbb66d8914e5973a454223",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "039026be_2461d39f",
+        "filename": "services/core/jni/OWNERS",
+        "patchSetId": 6
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1872107
+      },
+      "writtenOn": "2023-12-13T15:59:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a6bfdc05_ba107417",
+      "range": {
+        "startLine": 32,
+        "startChar": 47,
+        "endLine": 32,
+        "endChar": 66
+      },
+      "revId": "d5fb34cc3c2799dc60fbb66d8914e5973a454223",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
