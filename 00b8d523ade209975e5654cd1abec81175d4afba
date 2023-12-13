@@ -46,6 +46,30 @@
       },
       "revId": "00b8d523ade209975e5654cd1abec81175d4afba",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "073957b5_41ba9e97",
+        "filename": "core/jni/com_android_internal_os_ZygoteCommandBuffer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 461,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2023-12-13T15:37:18Z",
+      "side": 1,
+      "message": "yeah, i usually recommend against printing errno as an int, since it varies between OS (and even architecture for the same OS).\n\nnote that current versions of Android have the GNU extension strerrorname_np() which is less useless, and sometimes more desirable than strerror():\n```\n/**\n * [strerrorname_np(3)](http://man7.org/linux/man-pages/man3/strerrordesc_np.3.html)\n * returns the name of the errno constant corresponding to its argument.\n * `strerrorname_np(38)` would return \"ENOSYS\", because `ENOSYS` is errno 38. This\n * is mostly useful for error reporting in cases where a string like \"ENOSYS\" is\n * more readable than a string like \"Function not implemented\", which would be\n * returned by strerror().\n *\n * Returns a pointer to a string, or null for unknown errno values.\n *\n * Available since API level 35.\n */\n#if defined(__USE_GNU)\nconst char* _Nullable strerrorname_np(int __errno_value) __INTRODUCED_IN(35);\n#endif\n```",
+      "parentUuid": "a24aac14_8e414611",
+      "range": {
+        "startLine": 461,
+        "startChar": 45,
+        "endLine": 461,
+        "endChar": 47
+      },
+      "revId": "00b8d523ade209975e5654cd1abec81175d4afba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
