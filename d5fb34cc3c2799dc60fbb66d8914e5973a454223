@@ -63,6 +63,30 @@
       },
       "revId": "d5fb34cc3c2799dc60fbb66d8914e5973a454223",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a6bfdc05_ba107417",
+        "filename": "services/core/jni/OWNERS",
+        "patchSetId": 6
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1337780
+      },
+      "writtenOn": "2023-12-13T14:17:34Z",
+      "side": 1,
+      "message": "Let\u0027s add a file similar to frameworks/base/PERFORMANCE_OWNERS, STABILITY_OWNERS",
+      "parentUuid": "cfa4a6ce_977311b6",
+      "range": {
+        "startLine": 32,
+        "startChar": 47,
+        "endLine": 32,
+        "endChar": 66
+      },
+      "revId": "d5fb34cc3c2799dc60fbb66d8914e5973a454223",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
