@@ -22,6 +22,30 @@
       },
       "revId": "da2f7e1a8c556cfc3ce9afa39326ec6911b84bef",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f0a83138_b3c47de9",
+        "filename": "services/tests/servicestests/src/com/android/server/BootReceiverTest.java",
+        "patchSetId": 20
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1872107
+      },
+      "writtenOn": "2023-12-13T14:12:18Z",
+      "side": 1,
+      "message": "There were some weird merge issues with this file that I was unable to resolve (it showed this change getting a conflict with itself), so I split that into a separate change: https://android-review.git.corp.google.com/c/platform/frameworks/base/+/2873696",
+      "parentUuid": "d6492f56_9dc22e99",
+      "range": {
+        "startLine": 26,
+        "startChar": 13,
+        "endLine": 26,
+        "endChar": 29
+      },
+      "revId": "da2f7e1a8c556cfc3ce9afa39326ec6911b84bef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
