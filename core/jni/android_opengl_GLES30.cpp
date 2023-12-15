@@ -757,7 +757,7 @@ android_glGenQueries__I_3II
     const char * _exceptionType = NULL;
     const char * _exceptionMessage = NULL;
     GLuint *ids_base = (GLuint *) 0;
-    jint _remaining;
+    jint _remaining [[maybe_unused]];
     GLuint *ids = (GLuint *) 0;
 
     if (!ids_ref) {
@@ -837,7 +837,7 @@ android_glDeleteQueries__I_3II
     const char * _exceptionType = NULL;
     const char * _exceptionMessage = NULL;
     GLuint *ids_base = (GLuint *) 0;
-    jint _remaining;
+    jint _remaining [[maybe_unused]];
     GLuint *ids = (GLuint *) 0;
 
     if (!ids_ref) {
@@ -947,7 +947,7 @@ android_glGetQueryiv__II_3II
     const char * _exceptionType = NULL;
     const char * _exceptionMessage = NULL;
     GLint *params_base = (GLint *) 0;
-    jint _remaining;
+    jint _remaining [[maybe_unused]];
     GLint *params = (GLint *) 0;
 
     if (!params_ref) {
@@ -1029,7 +1029,7 @@ android_glGetQueryObjectuiv__II_3II
     const char * _exceptionType = NULL;
     const char * _exceptionMessage = NULL;
     GLuint *params_base = (GLuint *) 0;
-    jint _remaining;
+    jint _remaining [[maybe_unused]];
     GLuint *params = (GLuint *) 0;
 
     if (!params_ref) {
@@ -1133,7 +1133,7 @@ android_glDrawBuffers__I_3II
     const char * _exceptionType = NULL;
     const char * _exceptionMessage = NULL;
     GLenum *bufs_base = (GLenum *) 0;
-    jint _remaining;
+    jint _remaining [[maybe_unused]];
     GLenum *bufs = (GLenum *) 0;
 
     if (!bufs_ref) {
@@ -1213,7 +1213,7 @@ android_glUniformMatrix2x3fv__IIZ_3FI
     const char * _exceptionType = NULL;
     const char * _exceptionMessage = NULL;
     GLfloat *value_base = (GLfloat *) 0;
-    jint _remaining;
+    jint _remaining [[maybe_unused]];
     GLfloat *value = (GLfloat *) 0;
 
     if (!value_ref) {
@@ -1297,7 +1297,7 @@ android_glUniformMatrix3x2fv__IIZ_3FI
     const char * _exceptionType = NULL;
     const char * _exceptionMessage = NULL;
     GLfloat *value_base = (GLfloat *) 0;
-    jint _remaining;
+    jint _remaining [[maybe_unused]];
     GLfloat *value = (GLfloat *) 0;
 
     if (!value_ref) {
@@ -1381,7 +1381,7 @@ android_glUniformMatrix2x4fv__IIZ_3FI
     const char * _exceptionType = NULL;
     const char * _exceptionMessage = NULL;
     GLfloat *value_base = (GLfloat *) 0;
-    jint _remaining;
+    jint _remaining [[maybe_unused]];
     GLfloat *value = (GLfloat *) 0;
 
     if (!value_ref) {
@@ -1465,7 +1465,7 @@ android_glUniformMatrix4x2fv__IIZ_3FI
     const char * _exceptionType = NULL;
     const char * _exceptionMessage = NULL;
     GLfloat *value_base = (GLfloat *) 0;
-    jint _remaining;
+    jint _remaining [[maybe_unused]];
     GLfloat *value = (GLfloat *) 0;
 
     if (!value_ref) {
@@ -1549,7 +1549,7 @@ android_glUniformMatrix3x4fv__IIZ_3FI
     const char * _exceptionType = NULL;
     const char * _exceptionMessage = NULL;
     GLfloat *value_base = (GLfloat *) 0;
-    jint _remaining;
+    jint _remaining [[maybe_unused]];
     GLfloat *value = (GLfloat *) 0;
 
     if (!value_ref) {
@@ -1633,7 +1633,7 @@ android_glUniformMatrix4x3fv__IIZ_3FI
     const char * _exceptionType = NULL;
     const char * _exceptionMessage = NULL;
     GLfloat *value_base = (GLfloat *) 0;
-    jint _remaining;
+    jint _remaining [[maybe_unused]];
     GLfloat *value = (GLfloat *) 0;
 
     if (!value_ref) {
@@ -1794,7 +1794,7 @@ android_glDeleteVertexArrays__I_3II
     const char * _exceptionType = NULL;
     const char * _exceptionMessage = NULL;
     GLuint *arrays_base = (GLuint *) 0;
-    jint _remaining;
+    jint _remaining [[maybe_unused]];
     GLuint *arrays = (GLuint *) 0;
 
     if (!arrays_ref) {
@@ -1874,7 +1874,7 @@ android_glGenVertexArrays__I_3II
     const char * _exceptionType = NULL;
     const char * _exceptionMessage = NULL;
     GLuint *arrays_base = (GLuint *) 0;
-    jint _remaining;
+    jint _remaining [[maybe_unused]];
     GLuint *arrays = (GLuint *) 0;
 
     if (!arrays_ref) {
@@ -1965,7 +1965,7 @@ android_glGetIntegeri_v__II_3II
     const char * _exceptionType = NULL;
     const char * _exceptionMessage = NULL;
     GLint *data_base = (GLint *) 0;
-    jint _remaining;
+    jint _remaining [[maybe_unused]];
     GLint *data = (GLint *) 0;
 
     if (!data_ref) {
@@ -2136,16 +2136,16 @@ android_glGetTransformFeedbackVarying__III_3II_3II_3II_3BI
     const char * _exceptionType;
     const char * _exceptionMessage;
     GLsizei *length_base = (GLsizei *) 0;
-    jint _lengthRemaining;
+    jint _lengthRemaining [[maybe_unused]];
     GLsizei *length = (GLsizei *) 0;
     GLint *size_base = (GLint *) 0;
-    jint _sizeRemaining;
+    jint _sizeRemaining [[maybe_unused]];
     GLint *size = (GLint *) 0;
     GLenum *type_base = (GLenum *) 0;
-    jint _typeRemaining;
+    jint _typeRemaining [[maybe_unused]];
     GLenum *type = (GLenum *) 0;
     char *name_base = (char *) 0;
-    jint _nameRemaining;
+    jint _nameRemaining [[maybe_unused]];
     char *name = (char *) 0;
 
     if (length_ref) {
@@ -2324,10 +2324,10 @@ android_glGetTransformFeedbackVarying1
     const char * _exceptionType;
     const char * _exceptionMessage;
     GLint *size_base = (GLint *) 0;
-    jint _sizeRemaining;
+    jint _sizeRemaining [[maybe_unused]];
     GLint *size = (GLint *) 0;
     GLenum *type_base = (GLenum *) 0;
-    jint _typeRemaining;
+    jint _typeRemaining [[maybe_unused]];
     GLenum *type = (GLenum *) 0;
 
     jstring result = 0;
@@ -2524,7 +2524,7 @@ android_glGetVertexAttribIiv__II_3II
     const char * _exceptionType = NULL;
     const char * _exceptionMessage = NULL;
     GLint *params_base = (GLint *) 0;
-    jint _remaining;
+    jint _remaining [[maybe_unused]];
     GLint *params = (GLint *) 0;
 
     if (!params_ref) {
@@ -2606,7 +2606,7 @@ android_glGetVertexAttribIuiv__II_3II
     const char * _exceptionType = NULL;
     const char * _exceptionMessage = NULL;
     GLuint *params_base = (GLuint *) 0;
-    jint _remaining;
+    jint _remaining [[maybe_unused]];
     GLuint *params = (GLuint *) 0;
 
     if (!params_ref) {
@@ -2714,7 +2714,7 @@ android_glVertexAttribI4iv__I_3II
     const char * _exceptionType = NULL;
     const char * _exceptionMessage = NULL;
     GLint *v_base = (GLint *) 0;
-    jint _remaining;
+    jint _remaining [[maybe_unused]];
     GLint *v = (GLint *) 0;
 
     if (!v_ref) {
@@ -2794,7 +2794,7 @@ android_glVertexAttribI4uiv__I_3II
     const char * _exceptionType = NULL;
     const char * _exceptionMessage = NULL;
     GLuint *v_base = (GLuint *) 0;
-    jint _remaining;
+    jint _remaining [[maybe_unused]];
     GLuint *v = (GLuint *) 0;
 
     if (!v_ref) {
@@ -2874,7 +2874,7 @@ android_glGetUniformuiv__II_3II
     const char * _exceptionType = NULL;
     const char * _exceptionMessage = NULL;
     GLuint *params_base = (GLuint *) 0;
-    jint _remaining;
+    jint _remaining [[maybe_unused]];
     GLuint *params = (GLuint *) 0;
 
     if (!params_ref) {
@@ -3037,7 +3037,7 @@ android_glUniform1uiv__II_3II
     const char * _exceptionType = NULL;
     const char * _exceptionMessage = NULL;
     GLuint *value_base = (GLuint *) 0;
-    jint _remaining;
+    jint _remaining [[maybe_unused]];
     GLuint *value = (GLuint *) 0;
 
     if (!value_ref) {
@@ -3119,7 +3119,7 @@ android_glUniform2uiv__II_3II
     const char * _exceptionType = NULL;
     const char * _exceptionMessage = NULL;
     GLuint *value_base = (GLuint *) 0;
-    jint _remaining;
+    jint _remaining [[maybe_unused]];
     GLuint *value = (GLuint *) 0;
 
     if (!value_ref) {
@@ -3201,7 +3201,7 @@ android_glUniform3uiv__II_3II
     const char * _exceptionType = NULL;
     const char * _exceptionMessage = NULL;
     GLuint *value_base = (GLuint *) 0;
-    jint _remaining;
+    jint _remaining [[maybe_unused]];
     GLuint *value = (GLuint *) 0;
 
     if (!value_ref) {
@@ -3283,7 +3283,7 @@ android_glUniform4uiv__II_3II
     const char * _exceptionType = NULL;
     const char * _exceptionMessage = NULL;
     GLuint *value_base = (GLuint *) 0;
-    jint _remaining;
+    jint _remaining [[maybe_unused]];
     GLuint *value = (GLuint *) 0;
 
     if (!value_ref) {
@@ -3365,7 +3365,7 @@ android_glClearBufferiv__II_3II
     const char * _exceptionType = NULL;
     const char * _exceptionMessage = NULL;
     GLint *value_base = (GLint *) 0;
-    jint _remaining;
+    jint _remaining [[maybe_unused]];
     GLint *value = (GLint *) 0;
 
     if (!value_ref) {
@@ -3447,7 +3447,7 @@ android_glClearBufferuiv__II_3II
     const char * _exceptionType = NULL;
     const char * _exceptionMessage = NULL;
     GLuint *value_base = (GLuint *) 0;
-    jint _remaining;
+    jint _remaining [[maybe_unused]];
     GLuint *value = (GLuint *) 0;
 
     if (!value_ref) {
@@ -3529,7 +3529,7 @@ android_glClearBufferfv__II_3FI
     const char * _exceptionType = NULL;
     const char * _exceptionMessage = NULL;
     GLfloat *value_base = (GLfloat *) 0;
-    jint _remaining;
+    jint _remaining [[maybe_unused]];
     GLfloat *value = (GLfloat *) 0;
 
     if (!value_ref) {
@@ -3798,10 +3798,10 @@ android_glGetActiveUniformsiv__II_3III_3II
     const char * _exceptionType = NULL;
     const char * _exceptionMessage = NULL;
     GLuint *uniformIndices_base = (GLuint *) 0;
-    jint _uniformIndicesRemaining;
+    jint _uniformIndicesRemaining [[maybe_unused]];
     GLuint *uniformIndices = (GLuint *) 0;
     GLint *params_base = (GLint *) 0;
-    jint _paramsRemaining;
+    jint _paramsRemaining [[maybe_unused]];
     GLint *params = (GLint *) 0;
 
     if (!uniformIndices_ref) {
@@ -3961,7 +3961,7 @@ android_glGetActiveUniformBlockiv__III_3II
     const char * _exceptionType = NULL;
     const char * _exceptionMessage = NULL;
     GLint *params_base = (GLint *) 0;
-    jint _remaining;
+    jint _remaining [[maybe_unused]];
     GLint *params = (GLint *) 0;
 
     if (!params_ref) {
@@ -4045,10 +4045,10 @@ android_glGetActiveUniformBlockName_III_3II_3BI
     const char* _exceptionType;
     const char* _exceptionMessage;
     GLsizei* _length_base = (GLsizei*)0;
-    jint _lengthRemaining;
+    jint _lengthRemaining [[maybe_unused]];
     GLsizei* _length = (GLsizei*)0;
     GLchar* _name_base = (GLchar*)0;
-    jint _nameRemaining;
+    jint _nameRemaining [[maybe_unused]];
     GLchar* _name = (GLchar*)0;
 
     if (length_ref) {
@@ -4284,7 +4284,7 @@ android_glGetInteger64v__I_3JI
     const char * _exceptionType = NULL;
     const char * _exceptionMessage = NULL;
     GLint64 *params_base = (GLint64 *) 0;
-    jint _remaining;
+    jint _remaining [[maybe_unused]];
     GLint64 *params = (GLint64 *) 0;
 
     if (!params_ref) {
@@ -4364,10 +4364,10 @@ android_glGetSynciv__JII_3II_3II
     const char * _exceptionType = NULL;
     const char * _exceptionMessage = NULL;
     GLsizei *length_base = (GLsizei *) 0;
-    jint _lengthRemaining;
+    jint _lengthRemaining [[maybe_unused]];
     GLsizei *length = (GLsizei *) 0;
     GLint *values_base = (GLint *) 0;
-    jint _valuesRemaining;
+    jint _valuesRemaining [[maybe_unused]];
     GLint *values = (GLint *) 0;
 
     if (length_ref) {
@@ -4484,7 +4484,7 @@ android_glGetInteger64i_v__II_3JI
     const char * _exceptionType = NULL;
     const char * _exceptionMessage = NULL;
     GLint64 *data_base = (GLint64 *) 0;
-    jint _remaining;
+    jint _remaining [[maybe_unused]];
     GLint64 *data = (GLint64 *) 0;
 
     if (!data_ref) {
@@ -4566,7 +4566,7 @@ android_glGetBufferParameteri64v__II_3JI
     const char * _exceptionType = NULL;
     const char * _exceptionMessage = NULL;
     GLint64 *params_base = (GLint64 *) 0;
-    jint _remaining;
+    jint _remaining [[maybe_unused]];
     GLint64 *params = (GLint64 *) 0;
 
     if (!params_ref) {
@@ -4648,7 +4648,7 @@ android_glGenSamplers__I_3II
     const char * _exceptionType = NULL;
     const char * _exceptionMessage = NULL;
     GLuint *samplers_base = (GLuint *) 0;
-    jint _remaining;
+    jint _remaining [[maybe_unused]];
     GLuint *samplers = (GLuint *) 0;
 
     if (!samplers_ref) {
@@ -4728,7 +4728,7 @@ android_glDeleteSamplers__I_3II
     const char * _exceptionType = NULL;
     const char * _exceptionMessage = NULL;
     GLuint *samplers_base = (GLuint *) 0;
-    jint _remaining;
+    jint _remaining [[maybe_unused]];
     GLuint *samplers = (GLuint *) 0;
 
     if (!samplers_ref) {
@@ -4840,7 +4840,7 @@ android_glSamplerParameteriv__II_3II
     const char * _exceptionType = NULL;
     const char * _exceptionMessage = NULL;
     GLint *param_base = (GLint *) 0;
-    jint _remaining;
+    jint _remaining [[maybe_unused]];
     GLint *param = (GLint *) 0;
 
     if (!param_ref) {
@@ -4933,7 +4933,7 @@ android_glSamplerParameterfv__II_3FI
     const char * _exceptionType = NULL;
     const char * _exceptionMessage = NULL;
     GLfloat *param_base = (GLfloat *) 0;
-    jint _remaining;
+    jint _remaining [[maybe_unused]];
     GLfloat *param = (GLfloat *) 0;
 
     if (!param_ref) {
@@ -5015,7 +5015,7 @@ android_glGetSamplerParameteriv__II_3II
     const char * _exceptionType = NULL;
     const char * _exceptionMessage = NULL;
     GLint *params_base = (GLint *) 0;
-    jint _remaining;
+    jint _remaining [[maybe_unused]];
     GLint *params = (GLint *) 0;
 
     if (!params_ref) {
@@ -5097,7 +5097,7 @@ android_glGetSamplerParameterfv__II_3FI
     const char * _exceptionType = NULL;
     const char * _exceptionMessage = NULL;
     GLfloat *params_base = (GLfloat *) 0;
-    jint _remaining;
+    jint _remaining [[maybe_unused]];
     GLfloat *params = (GLfloat *) 0;
 
     if (!params_ref) {
@@ -5199,7 +5199,7 @@ android_glDeleteTransformFeedbacks__I_3II
     const char * _exceptionType = NULL;
     const char * _exceptionMessage = NULL;
     GLuint *ids_base = (GLuint *) 0;
-    jint _remaining;
+    jint _remaining [[maybe_unused]];
     GLuint *ids = (GLuint *) 0;
 
     if (!ids_ref) {
@@ -5279,7 +5279,7 @@ android_glGenTransformFeedbacks__I_3II
     const char * _exceptionType = NULL;
     const char * _exceptionMessage = NULL;
     GLuint *ids_base = (GLuint *) 0;
-    jint _remaining;
+    jint _remaining [[maybe_unused]];
     GLuint *ids = (GLuint *) 0;
 
     if (!ids_ref) {
@@ -5386,10 +5386,10 @@ android_glGetProgramBinary__II_3II_3IILjava_nio_Buffer_2
     jarray _array = (jarray) 0;
     jint _bufferOffset = (jint) 0;
     GLsizei *length_base = (GLsizei *) 0;
-    jint _lengthRemaining;
+    jint _lengthRemaining [[maybe_unused]];
     GLsizei *length = (GLsizei *) 0;
     GLenum *binaryFormat_base = (GLenum *) 0;
-    jint _binaryFormatRemaining;
+    jint _binaryFormatRemaining [[maybe_unused]];
     GLenum *binaryFormat = (GLenum *) 0;
     jint _binaryRemaining;
     GLvoid *binary = (GLvoid *) 0;
@@ -5592,7 +5592,7 @@ android_glInvalidateFramebuffer__II_3II
     const char * _exceptionType = NULL;
     const char * _exceptionMessage = NULL;
     GLenum *attachments_base = (GLenum *) 0;
-    jint _remaining;
+    jint _remaining [[maybe_unused]];
     GLenum *attachments = (GLenum *) 0;
 
     if (!attachments_ref) {
@@ -5674,7 +5674,7 @@ android_glInvalidateSubFramebuffer__II_3IIIIII
     const char * _exceptionType = NULL;
     const char * _exceptionMessage = NULL;
     GLenum *attachments_base = (GLenum *) 0;
-    jint _remaining;
+    jint _remaining [[maybe_unused]];
     GLenum *attachments = (GLenum *) 0;
 
     if (!attachments_ref) {
@@ -5791,7 +5791,7 @@ android_glGetInternalformativ__IIII_3II
     const char * _exceptionType = NULL;
     const char * _exceptionMessage = NULL;
     GLint *params_base = (GLint *) 0;
-    jint _remaining;
+    jint _remaining [[maybe_unused]];
     GLint *params = (GLint *) 0;
 
     if (!params_ref) {
