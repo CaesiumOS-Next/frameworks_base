@@ -69,6 +69,24 @@
       "message": "I didn\u0027t read the change, but agree with the commit message. Thus +1.",
       "revId": "67be94d538b60362b70e214c6bc0f112670bf6a1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5a298657_439b2889",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1061057
+      },
+      "writtenOn": "2023-12-20T03:16:05Z",
+      "side": 1,
+      "message": "Ideally for GSI, we\u0027d like to be able to do some checking before flashing/installing GSI to a device to avoid unnecessary troubleshooting afterwards. Agree that the benefit of the original boot-time checking is only marginal.",
+      "parentUuid": "be7c7b98_6e8b2197",
+      "revId": "67be94d538b60362b70e214c6bc0f112670bf6a1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
