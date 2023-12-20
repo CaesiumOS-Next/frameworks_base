@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "df868da4_7b7f05d3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-12-20T01:10:16Z",
+      "side": 1,
+      "message": "I think this makes sense - maybe we should let a few people ack, like GSI team that may rely on this (but I think they should use b/313732799)?",
+      "revId": "67be94d538b60362b70e214c6bc0f112670bf6a1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
