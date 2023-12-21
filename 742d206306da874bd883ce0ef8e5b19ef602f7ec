@@ -73,6 +73,30 @@
       },
       "revId": "742d206306da874bd883ce0ef8e5b19ef602f7ec",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9cd32d85_8627df6b",
+        "filename": "media/java/android/media/AudioHalVersionInfo.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2023-12-21T01:24:34Z",
+      "side": 1,
+      "message": "Yes. That list is updated by aosp/2883514 in the same topic.",
+      "parentUuid": "4a148391_363040a9",
+      "range": {
+        "startLine": 78,
+        "startChar": 18,
+        "endLine": 78,
+        "endChar": 69
+      },
+      "revId": "742d206306da874bd883ce0ef8e5b19ef602f7ec",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
