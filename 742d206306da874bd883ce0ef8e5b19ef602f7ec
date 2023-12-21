@@ -16,6 +16,23 @@
       "message": "Same as aosp/2862771.",
       "revId": "742d206306da874bd883ce0ef8e5b19ef602f7ec",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "52ba52dd_03ffc964",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2023-12-21T01:14:25Z",
+      "side": 1,
+      "message": "Same as aosp/2862771.",
+      "revId": "742d206306da874bd883ce0ef8e5b19ef602f7ec",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
