@@ -121,6 +121,30 @@
       },
       "revId": "742d206306da874bd883ce0ef8e5b19ef602f7ec",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9dbe0a21_96a1a869",
+        "filename": "media/java/android/media/AudioHalVersionInfo.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2023-12-21T19:42:15Z",
+      "side": 1,
+      "message": "Got it :) Let me fix that.",
+      "parentUuid": "bf57987e_a784601d",
+      "range": {
+        "startLine": 78,
+        "startChar": 18,
+        "endLine": 78,
+        "endChar": 69
+      },
+      "revId": "742d206306da874bd883ce0ef8e5b19ef602f7ec",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
