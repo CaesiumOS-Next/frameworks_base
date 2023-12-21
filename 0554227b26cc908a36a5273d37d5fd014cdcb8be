@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0a21b495_74f9dde1",
+        "filename": "core/java/android/nfc/cardemulation/ApduServiceInfo.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 375,
+      "author": {
+        "id": 1306902
+      },
+      "writtenOn": "2023-12-21T07:23:16Z",
+      "side": 1,
+      "message": "b/317293523\n\nIt should be true for dynamic register AID.",
+      "range": {
+        "startLine": 375,
+        "startChar": 0,
+        "endLine": 375,
+        "endChar": 73
+      },
+      "revId": "0554227b26cc908a36a5273d37d5fd014cdcb8be",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0b917a3a_a6f0f8aa",
         "filename": "core/java/android/nfc/cardemulation/CardEmulation.java",
         "patchSetId": 2
