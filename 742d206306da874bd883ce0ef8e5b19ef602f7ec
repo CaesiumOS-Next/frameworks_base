@@ -33,6 +33,23 @@
       "message": "Same as aosp/2862771.",
       "revId": "742d206306da874bd883ce0ef8e5b19ef602f7ec",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c1464d68_2aa029f4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2023-12-21T01:15:46Z",
+      "side": 1,
+      "message": "Andy, could you please approve? Eric is OOO, and Shunkai is not an owner.",
+      "revId": "742d206306da874bd883ce0ef8e5b19ef602f7ec",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
