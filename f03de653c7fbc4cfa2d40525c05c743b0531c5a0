@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4174ea61_4e9287bb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1045544
+      },
+      "writtenOn": "2023-12-28T10:50:34Z",
+      "side": 1,
+      "message": "LGTM. Please add only one or two reviewers to CLs in future - adding dozens of people at once is more likely to get your review request ignored.",
+      "revId": "f03de653c7fbc4cfa2d40525c05c743b0531c5a0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
