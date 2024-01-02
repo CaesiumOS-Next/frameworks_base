@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a6409f72_2bc88705",
+        "filename": "services/core/java/com/android/server/am/ProcessList.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 3017,
+      "author": {
+        "id": 1561214
+      },
+      "writtenOn": "2024-01-02T20:11:25Z",
+      "side": 1,
+      "message": "I\u0027m wondering if this is correct here or not....\n\nBecause at line 2966 above, we\u0027re actually adding packages with dependencies to this package into the killing targets. And if we\u0027re freezing the whole package UID here, it might be wrong - think about this case, if we\u0027re killing package_A, which is a dependence of process_B (its main package is package_B), we might be ending up freezing the whole package_B, where it could be running other processes.",
+      "range": {
+        "startLine": 3017,
+        "startChar": 12,
+        "endLine": 3017,
+        "endChar": 65
+      },
+      "revId": "e8d230ca091c6ec6bceed8d9b6fa4647503c5faa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
