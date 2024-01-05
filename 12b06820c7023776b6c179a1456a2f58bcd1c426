@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "94cad1c8_b63178e0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 14
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2024-01-05T08:32:15Z",
+      "side": 1,
+      "message": "LGTM for frameworks/base top-level OWNERS. That said, can we add OWNERS for these files? Perhaps the package manager team? Pat?",
+      "revId": "12b06820c7023776b6c179a1456a2f58bcd1c426",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
