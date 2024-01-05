@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0d46fb5c_4655a26f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1576846
+      },
+      "writtenOn": "2024-01-05T00:30:35Z",
+      "side": 1,
+      "message": "@hallstrom: this is the same change that was merged in the morning, but for the AOSP",
+      "revId": "57d49fdc195d0de8006701f7f862fc94694781c4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
