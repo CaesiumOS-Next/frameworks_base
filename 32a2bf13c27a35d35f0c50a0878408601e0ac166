@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8c3eccb9_91eb15af",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1951823
+      },
+      "writtenOn": "2024-01-05T10:44:10Z",
+      "side": 1,
+      "message": "Much more readable, thanks! Adding the rest of the team",
+      "revId": "32a2bf13c27a35d35f0c50a0878408601e0ac166",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4268c27b_db5e23b1",
+        "filename": "data/keyboards/Android.bp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1951823
+      },
+      "writtenOn": "2024-01-05T10:44:10Z",
+      "side": 1,
+      "message": "Nit: the [AOSP copyright statement](http://go/android-style#use-javadoc-standard-comments) no longer includes the `(C)`, and the year should be bumped to 2024 now :-)",
+      "range": {
+        "startLine": 1,
+        "startChar": 13,
+        "endLine": 1,
+        "endChar": 21
+      },
+      "revId": "32a2bf13c27a35d35f0c50a0878408601e0ac166",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
