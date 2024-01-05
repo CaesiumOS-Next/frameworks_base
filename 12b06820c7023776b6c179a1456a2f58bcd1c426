@@ -34,6 +34,23 @@
       "parentUuid": "94cad1c8_b63178e0",
       "revId": "12b06820c7023776b6c179a1456a2f58bcd1c426",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "80d254c8_19da2017",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 14
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1986461
+      },
+      "writtenOn": "2024-01-05T21:54:25Z",
+      "side": 1,
+      "message": "@patb@google.com are you able to re-review now? Rebases lost previous approval",
+      "revId": "12b06820c7023776b6c179a1456a2f58bcd1c426",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
