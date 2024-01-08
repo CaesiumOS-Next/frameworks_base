@@ -51,6 +51,23 @@
       "message": "@patb@google.com are you able to re-review now? Rebases lost previous approval",
       "revId": "12b06820c7023776b6c179a1456a2f58bcd1c426",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9dbec971_ee84008e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 14
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2024-01-08T23:48:17Z",
+      "side": 1,
+      "message": "Identical to PS9 which was approved by patb@ .",
+      "revId": "12b06820c7023776b6c179a1456a2f58bcd1c426",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
