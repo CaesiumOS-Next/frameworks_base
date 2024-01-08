@@ -62,6 +62,54 @@
       },
       "revId": "32a2bf13c27a35d35f0c50a0878408601e0ac166",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1137689a_5743bdeb",
+        "filename": "data/keyboards/Android.bp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1307893
+      },
+      "writtenOn": "2024-01-08T01:24:01Z",
+      "side": 1,
+      "message": "Removed the \u0027(C)\u0027 \n\nBut we should keep the year to 2010. (go/bp-it)\n\nPer this thread, retain or add a copyright header. Do not update the year if it already exists. Use the current year when adding a new copyright header, in case no copyright header is found in the Android.mk file.",
+      "parentUuid": "4268c27b_db5e23b1",
+      "range": {
+        "startLine": 1,
+        "startChar": 13,
+        "endLine": 1,
+        "endChar": 21
+      },
+      "revId": "32a2bf13c27a35d35f0c50a0878408601e0ac166",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0027c5a1_543f7ec0",
+        "filename": "data/keyboards/Android.bp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1307893
+      },
+      "writtenOn": "2024-01-08T01:24:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "63887b67_ea61c4a7",
+      "range": {
+        "startLine": 1,
+        "startChar": 17,
+        "endLine": 1,
+        "endChar": 21
+      },
+      "revId": "32a2bf13c27a35d35f0c50a0878408601e0ac166",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
