@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "9ac792d4_468e7df9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 14
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1078064
+      },
+      "writtenOn": "2024-01-10T14:14:17Z",
+      "side": 1,
+      "message": "Nit: Add a detailed explanation that the error is added for AAID because failure by Keystore2 to get the calling app\u0027s information should be a transient one and it is more correct to fail the key generation request than to attest to a key without providing the generating app\u0027s information (which exposes the requesting client to proxy attacks).",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 60
+      },
+      "revId": "39d1c987da98c09c8d63d4ab5e6e07aa95c7694e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "7b6932e9_feb969f5",
@@ -14,6 +37,23 @@
       "writtenOn": "2024-01-09T14:46:46Z",
       "side": 1,
       "message": "Adding for file ownership",
+      "revId": "39d1c987da98c09c8d63d4ab5e6e07aa95c7694e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "093c70d0_8e25abe1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 14
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1078064
+      },
+      "writtenOn": "2024-01-10T14:14:17Z",
+      "side": 1,
+      "message": "Per OOB discussion, this CL is going to be reworked by Shaq.\n\nTwo things that need to be changed in Keystore2\u0027s C++ code:\n* Process the error returned by the KeyAttestationApplicationIdProviderService if that service fails to get the application info.\n* If Keystore2 fails to connect to this service completely (i.e. binder RPC failure) then it needs to issue the same error as above.",
       "revId": "39d1c987da98c09c8d63d4ab5e6e07aa95c7694e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
