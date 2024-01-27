@@ -22,6 +22,7 @@ import static com.android.server.pm.PackageManagerServiceUtils.logCriticalInfo;
 
 import android.annotation.NonNull;
 import android.annotation.Nullable;
+import android.annotation.SystemApi;
 import android.content.ContentResolver;
 import android.content.Context;
 import android.content.pm.ApplicationInfo;
@@ -73,6 +74,7 @@ import java.util.concurrent.TimeUnit;
  *
  * @hide
  */
+@SystemApi(client = SystemApi.Client.SYSTEM_SERVER)
 public class RescueParty {
     @VisibleForTesting
     static final String PROP_ENABLE_RESCUE = "persist.sys.enable_rescue";
@@ -124,7 +126,7 @@ public class RescueParty {
             | ApplicationInfo.FLAG_SYSTEM;
 
     /** Register the Rescue Party observer as a Package Watchdog health observer */
-    public static void registerHealthObserver(Context context) {
+    public static void registerHealthObserver(@NonNull Context context) {
         PackageWatchdog.getInstance(context).registerHealthObserver(
                 RescuePartyObserver.getInstance(context));
     }
@@ -169,8 +171,11 @@ public class RescueParty {
      * Check if we're currently attempting to reboot for a factory reset. This method must
      * return true if RescueParty tries to reboot early during a boot loop, since the device
      * will not be fully booted at this time.
+<<<<<<< PATCH SET (62d667 [CrashRecovery] RescueParty as SystemApi)
+=======
      *
      * TODO(gavincorkery): Rename method since its scope has expanded.
+>>>>>>> BASE      (d808fa Merge "Avoid mockito in MotionPredictorBenchmark" into main)
      */
     public static boolean isAttemptingFactoryReset() {
         return isFactoryResetPropertySet() || isRebootPropertySet();
@@ -188,7 +193,7 @@ public class RescueParty {
      * Called when {@code SettingsProvider} has been published, which is a good
      * opportunity to reset any settings depending on our rescue level.
      */
-    public static void onSettingsProviderPublished(Context context) {
+    public static void onSettingsProviderPublished(@NonNull Context context) {
         handleNativeRescuePartyResets();
         ContentResolver contentResolver = context.getContentResolver();
         DeviceConfig.setMonitorCallback(
@@ -203,7 +208,7 @@ public class RescueParty {
      * to avoid rolled back modules consuming flag values only expected to work
      * on modules of newer versions.
      */
-    public static void resetDeviceConfigForPackages(List<String> packageNames) {
+    public static void resetDeviceConfigForPackages(@Nullable List<String> packageNames) {
         if (packageNames == null) {
             return;
         }
@@ -613,7 +618,7 @@ public class RescueParty {
         }
 
         /** Creates or gets singleton instance of RescueParty. */
-        public static RescuePartyObserver getInstance(Context context) {
+        public static RescuePartyObserver getInstance(@NonNull Context context) {
             synchronized (RescuePartyObserver.class) {
                 if (sRescuePartyObserver == null) {
                     sRescuePartyObserver = new RescuePartyObserver(context);
@@ -639,7 +644,7 @@ public class RescueParty {
 
         @Override
         public int onHealthCheckFailed(@Nullable VersionedPackage failedPackage,
-                @FailureReasons int failureReason, int mitigationCount) {
+                @NonNull @FailureReasons int failureReason, @NonNull int mitigationCount) {
             if (!isDisabled() && (failureReason == PackageWatchdog.FAILURE_REASON_APP_CRASH
                     || failureReason == PackageWatchdog.FAILURE_REASON_APP_NOT_RESPONDING)) {
                 return mapRescueLevelToUserImpact(getRescueLevel(mitigationCount,
@@ -651,7 +656,7 @@ public class RescueParty {
 
         @Override
         public boolean execute(@Nullable VersionedPackage failedPackage,
-                @FailureReasons int failureReason, int mitigationCount) {
+                @NonNull @FailureReasons int failureReason, @NonNull int mitigationCount) {
             if (isDisabled()) {
                 return false;
             }
@@ -673,7 +678,7 @@ public class RescueParty {
         }
 
         @Override
-        public boolean mayObservePackage(String packageName) {
+        public boolean mayObservePackage(@NonNull String packageName) {
             PackageManager pm = mContext.getPackageManager();
             try {
                 // A package is a module if this is non-null
@@ -687,7 +692,7 @@ public class RescueParty {
         }
 
         @Override
-        public int onBootLoop(int mitigationCount) {
+        public int onBootLoop(@NonNull int mitigationCount) {
             if (isDisabled()) {
                 return PackageHealthObserverImpact.USER_IMPACT_LEVEL_0;
             }
@@ -695,7 +700,7 @@ public class RescueParty {
         }
 
         @Override
-        public boolean executeBootLoopMitigation(int mitigationCount) {
+        public boolean executeBootLoopMitigation(@NonNull int mitigationCount) {
             if (isDisabled()) {
                 return false;
             }
