@@ -16,6 +16,24 @@
       "message": "language tag?",
       "revId": "ab9329557f1a57f2189ceb8669cbd4e2b77c1051",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "74bacc33_d8bf3e24",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1396566
+      },
+      "writtenOn": "2024-01-31T17:39:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e2274abb_1ab0cb03",
+      "revId": "ab9329557f1a57f2189ceb8669cbd4e2b77c1051",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
