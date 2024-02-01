@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "41fb3853_f492aea0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 21
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1078064
+      },
+      "writtenOn": "2024-02-01T10:00:37Z",
+      "side": 1,
+      "message": "David has a good point about the inter-dependency between the KA Application ID Provider and Keystore error codes. KeyMint and Keystore already share some error codes, let\u0027s not increase the scope of dependency on Keystore error codes.",
+      "revId": "753140ff87dff745627886ee5518082e247b6695",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "27baa4b1_e431ca49",
