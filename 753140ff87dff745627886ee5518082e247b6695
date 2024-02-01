@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "27baa4b1_e431ca49",
+        "filename": "services/core/java/com/android/server/security/KeyAttestationApplicationIdProviderService.java",
+        "patchSetId": 21
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1836235
+      },
+      "writtenOn": "2024-02-01T09:57:38Z",
+      "side": 1,
+      "message": "This effectively makes the `IKeyAttestationApplicationIdProvider` interface depend on the `IKeystoreService`\u0027s error code enums just for the sake of re-using one constant.\n\nI think it would be better for `IKeyAttestationApplicationIdProvider` to have its own numbering space of service-specific error codes.",
+      "revId": "753140ff87dff745627886ee5518082e247b6695",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2d7171c1_1799c422",
+        "filename": "services/core/java/com/android/server/security/KeyAttestationApplicationIdProviderService.java",
+        "patchSetId": 21
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1836235
+      },
+      "writtenOn": "2024-02-01T09:57:38Z",
+      "side": 1,
+      "message": "This is effectively changing the `IKeyAttestationApplicationIdProvider` interface spec, so that particular service-specific errors have a meaning -- please can we update `IKeyAttestationApplicationIdProvider.aidl` to document this.",
+      "revId": "753140ff87dff745627886ee5518082e247b6695",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
