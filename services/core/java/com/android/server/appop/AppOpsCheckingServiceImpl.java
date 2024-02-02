@@ -886,9 +886,9 @@ public class AppOpsCheckingServiceImpl implements AppOpsCheckingServiceInterface
                     }
                     return;
                 } catch (XmlPullParserException e) {
-                    throw new RuntimeException(e);
+                    Slog.w(TAG, "Failed parsing " + e);
                 } catch (IOException e) {
-                    throw new RuntimeException(e);
+                    Slog.w(TAG, "Failed parsing " + e);
                 }
             }
         }
