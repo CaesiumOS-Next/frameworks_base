@@ -1,0 +1,101 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5ac1b1e3_b6be7627",
+        "filename": "Android.bp",
+        "patchSetId": 25
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1836235
+      },
+      "writtenOn": "2024-02-02T07:38:04Z",
+      "side": 1,
+      "message": "Presumably this is no longer needed?",
+      "revId": "2a42f0a804e0def55d27b04ec94d48ee67d060c4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6c7117e4_1b04aaa4",
+        "filename": "keystore/aaid/aidl/android/security/keystore/IKeyAttestationApplicationIdProvider.aidl",
+        "patchSetId": 25
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1836235
+      },
+      "writtenOn": "2024-02-02T07:38:04Z",
+      "side": 1,
+      "message": "nit: this is an AIDL interface, which can theoretically be used by clients in any language -- including languages without exceptions.",
+      "range": {
+        "startLine": 25,
+        "startChar": 49,
+        "endLine": 25,
+        "endChar": 80
+      },
+      "revId": "2a42f0a804e0def55d27b04ec94d48ee67d060c4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d2fd5954_95f9027c",
+        "filename": "keystore/aaid/aidl/android/security/keystore/KeyAttestationApplicationResult.aidl",
+        "patchSetId": 25
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1836235
+      },
+      "writtenOn": "2024-02-02T07:38:04Z",
+      "side": 1,
+      "message": "nit: I\u0027m [told](https://android-review.git.corp.google.com/c/platform/hardware/interfaces/+/2847414/16/security/secretkeeper/aidl/android/hardware/security/secretkeeper/ErrorCode.aidl) it\u0027s more conventional to put [error code values as ERROR_ constants in the main interface definition](https://cs.android.com/android/platform/superproject/main/+/main:hardware/interfaces/security/secretkeeper/aidl/android/hardware/security/secretkeeper/ISecretkeeper.aidl;l\u003d67;bpv\u003d0)",
+      "revId": "2a42f0a804e0def55d27b04ec94d48ee67d060c4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "040dcd1f_2c2a4b62",
+        "filename": "keystore/aaid/aidl/android/security/keystore/KeyAttestationApplicationResult.aidl",
+        "patchSetId": 25
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1836235
+      },
+      "writtenOn": "2024-02-02T07:38:04Z",
+      "side": 1,
+      "message": "Usually best to reserve the value 0 for OK, to avoid the possibility of confusion.",
+      "range": {
+        "startLine": 26,
+        "startChar": 44,
+        "endLine": 26,
+        "endChar": 45
+      },
+      "revId": "2a42f0a804e0def55d27b04ec94d48ee67d060c4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "29f63642_f3f16c13",
+        "filename": "services/core/java/com/android/server/security/KeyAttestationApplicationIdProviderService.java",
+        "patchSetId": 25
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1836235
+      },
+      "writtenOn": "2024-02-02T07:38:04Z",
+      "side": 1,
+      "message": "nit: The message doesn\u0027t really add anything not already described by the error code. Would a string like `\"No packages for uid \" + uid` work?",
+      "revId": "2a42f0a804e0def55d27b04ec94d48ee67d060c4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
