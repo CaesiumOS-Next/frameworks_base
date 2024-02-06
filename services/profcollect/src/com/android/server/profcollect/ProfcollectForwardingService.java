@@ -314,7 +314,7 @@ public final class ProfcollectForwardingService extends SystemService {
             Log.w(LOG_TAG, "Couldn't get ArtManagerLocal");
             return;
         }
-        aml.setBatchDexoptStartCallback(ForkJoinPool.commonPool(),
+        aml.setBatchDexoptStartCallback(Runnable::Run,
                 (snapshot, reason, defaultPackages, builder, passedSignal) -> {
                     traceOnDex2oatStart();
                 });
