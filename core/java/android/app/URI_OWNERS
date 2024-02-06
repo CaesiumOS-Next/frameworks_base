@@ -1,0 +1,3 @@
+# ComponentCaller
+per-file ComponentCaller.java = file:/services/core/java/com/android/server/uri/OWNERS
+per-file ComponentCaller.java = brufino@google.com,mpgroover@google.com
