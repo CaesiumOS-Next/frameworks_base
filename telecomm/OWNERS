@@ -1,10 +1,5 @@
 set noparent
 
-breadley@google.com
-tgunn@google.com
-xiaotonj@google.com
-rgreenwalt@google.com
-grantmenke@google.com
-pmadapurmath@google.com
-tjstuart@google.com
-huiwang@google.com
+# Bug component: 151185
+
+include platform/packages/services/Telecomm:/OWNERS
