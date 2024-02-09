@@ -22,6 +22,30 @@
       },
       "revId": "08cb492eba6ae2958be75761e3697a71055d709f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "704444bf_32350efc",
+        "filename": "media/java/android/media/MediaFormat.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 2382,
+      "author": {
+        "id": 1150374
+      },
+      "writtenOn": "2024-02-09T15:46:45Z",
+      "side": 1,
+      "message": "Java layer is setting string directly. But to set string, there is an API which can be used directly instead of doing it manually. This string is converted to C2StructQpRectInfo",
+      "parentUuid": "e5f3aa07_d2c5a0c8",
+      "range": {
+        "startLine": 2382,
+        "startChar": 12,
+        "endLine": 2382,
+        "endChar": 86
+      },
+      "revId": "08cb492eba6ae2958be75761e3697a71055d709f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
