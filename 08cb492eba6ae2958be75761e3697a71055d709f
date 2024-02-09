@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e5f3aa07_d2c5a0c8",
+        "filename": "media/java/android/media/MediaFormat.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 2382,
+      "author": {
+        "id": 1392607
+      },
+      "writtenOn": "2024-02-09T05:15:04Z",
+      "side": 1,
+      "message": "Question: java layer user configure in `QpOffsetRect`, then convert to string and parse the string to C2 layer. C2 layer converts it back as an struct then parse to HAL. Is my understanding correct?",
+      "range": {
+        "startLine": 2382,
+        "startChar": 12,
+        "endLine": 2382,
+        "endChar": 86
+      },
+      "revId": "08cb492eba6ae2958be75761e3697a71055d709f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
