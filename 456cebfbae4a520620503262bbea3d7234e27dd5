@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c65e54f3_4fb73005",
+        "filename": "media/java/android/media/MediaFormat.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 2361,
+      "author": {
+        "id": 1150374
+      },
+      "writtenOn": "2024-02-11T00:08:37Z",
+      "side": 1,
+      "message": "EMPTY_QPOFFSET_RECT",
+      "range": {
+        "startLine": 2361,
+        "startChar": 43,
+        "endLine": 2361,
+        "endChar": 92
+      },
+      "revId": "456cebfbae4a520620503262bbea3d7234e27dd5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
