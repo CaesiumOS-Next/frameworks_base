@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c2c2f01e_a4d3e7cc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1546599
+      },
+      "writtenOn": "2024-02-12T21:13:58Z",
+      "side": 1,
+      "message": "This conflicts with aosp/2864416.\nOne of the CLs needs to be rebased.\n\nKeeping this open just to avoid submitting both at the same time.",
+      "revId": "8998d7c743d9f370e1836c26899f4455dde7b090",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
