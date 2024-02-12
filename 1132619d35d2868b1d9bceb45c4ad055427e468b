@@ -45,6 +45,30 @@
       },
       "revId": "1132619d35d2868b1d9bceb45c4ad055427e468b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2d5772e0_d0d5199b",
+        "filename": "media/java/android/media/MediaCodec.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 5061,
+      "author": {
+        "id": 1392607
+      },
+      "writtenOn": "2024-02-12T19:15:46Z",
+      "side": 1,
+      "message": "Hi Lajos.\n\nThis API is still aiming at byte buffer input mode but non block model. We are thinking it will be a common case that the encoding and detecting are not running on the same thread, and the detecting thread will config the ROI and the timestamp and the encoding thread will need the timestamp for synchronization. Yes in that case the detecting thread need to be ahead of the encoding thread, and this should be managed by the users. If the detecting thread is behind, the ROI configuration will be ignored. We also have the mechanism to empty the ROI configuration queue to prevent it from overwhelming.",
+      "parentUuid": "3a47606e_edbc84b4",
+      "range": {
+        "startLine": 5061,
+        "startChar": 0,
+        "endLine": 5061,
+        "endChar": 4
+      },
+      "revId": "1132619d35d2868b1d9bceb45c4ad055427e468b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
