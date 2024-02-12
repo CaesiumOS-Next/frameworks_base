@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0b9077c3_77fdb1dc",
+        "filename": "libs/WindowManager/Shell/src/com/android/wm/shell/splitscreen/StageCoordinator.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 1469,
+      "author": {
+        "id": 1592288
+      },
+      "writtenOn": "2024-02-12T20:51:04Z",
+      "side": 1,
+      "message": "I think we might also need to call `clearSplitPairedInRecents(exitReason)` after `prepareExitSplitScreen(stage, wct)`. \nSimilar to how `SplitScreenController#prepareExitSplitScreen()` handles it.",
+      "range": {
+        "startLine": 1469,
+        "startChar": 8,
+        "endLine": 1469,
+        "endChar": 30
+      },
+      "revId": "bcb6408bb98924f5dfd8567171ea63a0e6dc216e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
