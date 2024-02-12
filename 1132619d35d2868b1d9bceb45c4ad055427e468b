@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c03ff11a_0590b045",
+        "filename": "media/java/android/media/MediaCodec.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 2265,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2024-02-12T18:27:24Z",
+      "side": 1,
+      "message": "this seems stange to me as there would be likely many other modes that an API would not be compatible with.",
+      "range": {
+        "startLine": 2265,
+        "startChar": 17,
+        "endLine": 2265,
+        "endChar": 61
+      },
+      "revId": "1132619d35d2868b1d9bceb45c4ad055427e468b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3a47606e_edbc84b4",
+        "filename": "media/java/android/media/MediaCodec.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 5061,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2024-02-12T18:27:24Z",
+      "side": 1,
+      "message": "I feel that this API will create more issues than it will solve. E.g. applications will still have to manage that this call is called before an input reaches the codec, but the main use of this API is surface mode, and there apps have no control over that.",
+      "range": {
+        "startLine": 5061,
+        "startChar": 0,
+        "endLine": 5061,
+        "endChar": 4
+      },
+      "revId": "1132619d35d2868b1d9bceb45c4ad055427e468b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
