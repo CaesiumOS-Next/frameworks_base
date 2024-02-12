@@ -16,6 +16,115 @@
       "message": "This conflicts with aosp/2864416.\nOne of the CLs needs to be rebased.\n\nKeeping this open just to avoid submitting both at the same time.",
       "revId": "8998d7c743d9f370e1836c26899f4455dde7b090",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "26dacbcb_b58393fa",
+        "filename": "media/java/android/media/MediaCodecInfo.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2024-02-12T22:13:05Z",
+      "side": 1,
+      "message": "nit: are",
+      "range": {
+        "startLine": 172,
+        "startChar": 61,
+        "endLine": 172,
+        "endChar": 63
+      },
+      "revId": "8998d7c743d9f370e1836c26899f4455dde7b090",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "06548034_2d4dd744",
+        "filename": "media/java/android/media/MediaCodecInfo.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2024-02-12T22:13:05Z",
+      "side": 1,
+      "message": "I would add, \"or present in a user directory\" to cover files apps.",
+      "revId": "8998d7c743d9f370e1836c26899f4455dde7b090",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2eb78111_d785be43",
+        "filename": "media/java/android/media/MediaCodecInfo.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2024-02-12T22:13:05Z",
+      "side": 1,
+      "message": "I would change this to \"wholly controls\".",
+      "range": {
+        "startLine": 175,
+        "startChar": 0,
+        "endLine": 175,
+        "endChar": 12
+      },
+      "revId": "8998d7c743d9f370e1836c26899f4455dde7b090",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "540088aa_c4ee3a52",
+        "filename": "media/java/android/media/MediaCodecInfo.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 763,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2024-02-12T22:13:05Z",
+      "side": 1,
+      "message": "can we describe this feature based on the risk profile?\n\nIf true, the codec is only suitable for trusted content (content fully controlled\nby the application). [If the device policy allows], this codec will not run in a\nsandbox, and the application may crash if the codec receives malicious content.\n\n\nI am now realizing that this feature may have been intended for the Rust codecs...\nDo we need to signal that the Rust codecs are running in-process? We could leave that up to the internal implementation. Otherwise, we could have 2 features.\nOne for the in-process Rust codecs that are safe for all contents, and the in-process C++ codecs that are for trusted content only.\n\nThe Rust codecs will not need any confirmation from the app, e.g. they can be used by a legacy app, but the C++ codecs will need explicit opt-in by the app who vouch that they are processing trusted content.",
+      "range": {
+        "startLine": 763,
+        "startChar": 20,
+        "endLine": 763,
+        "endChar": 72
+      },
+      "revId": "8998d7c743d9f370e1836c26899f4455dde7b090",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "46b4bddd_a20129d7",
+        "filename": "media/java/android/media/MediaCodecInfo.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 767,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2024-02-12T22:13:05Z",
+      "side": 1,
+      "message": "this wording is very tempting for developers. Can we name it instead on the risk profile?\n\nE.g. FEATURE_TrustedContentOnly?",
+      "range": {
+        "startLine": 767,
+        "startChar": 35,
+        "endLine": 767,
+        "endChar": 52
+      },
+      "revId": "8998d7c743d9f370e1836c26899f4455dde7b090",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
