@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "33583760_7b9a4e8c",
+        "filename": "core/api/current.txt",
+        "patchSetId": 6
+      },
+      "lineNbr": 23681,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2024-02-12T18:29:13Z",
+      "side": 0,
+      "message": "can we move that to the first CL that adds this?",
+      "range": {
+        "startLine": 23681,
+        "startChar": 11,
+        "endLine": 23681,
+        "endChar": 21
+      },
+      "revId": "1132619d35d2868b1d9bceb45c4ad055427e468b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
