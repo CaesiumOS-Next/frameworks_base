@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d13ff438_d48be3b9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1546599
+      },
+      "writtenOn": "2024-02-13T19:29:58Z",
+      "side": 1,
+      "message": "Dichen,\nThis CL is not for sticky vs non-sticky handling.\nThis was to signal to the encoder that ROI is to enabled based on setFeatureEnabled() which is now addressed in aosp/2868674.",
+      "parentUuid": "0f208da2_96c544cc",
+      "revId": "456cebfbae4a520620503262bbea3d7234e27dd5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "dc57331c_49101244",
         "filename": "core/api/current.txt",
         "patchSetId": 6
