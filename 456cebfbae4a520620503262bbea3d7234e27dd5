@@ -56,6 +56,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d4cbbdde_d8442abe",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1392607
+      },
+      "writtenOn": "2024-02-13T19:32:20Z",
+      "side": 1,
+      "message": "Yes I saw that part. But this CL also has `serviceRoiResetRequest()` which I didn\u0027t see it\u0027s moved to https://android-review.git.corp.google.com/c/platform/frameworks/av/+/2868674",
+      "parentUuid": "d13ff438_d48be3b9",
+      "revId": "456cebfbae4a520620503262bbea3d7234e27dd5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "dc57331c_49101244",
         "filename": "core/api/current.txt",
         "patchSetId": 6
