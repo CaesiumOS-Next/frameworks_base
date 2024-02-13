@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d10e3fa9_484a0fdd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1546599
+      },
+      "writtenOn": "2024-02-13T18:57:44Z",
+      "side": 1,
+      "message": "This CL is no longer needed.\nhttps://android-review.git.corp.google.com/c/platform/frameworks/av/+/2868674 handles required changes.\n\nRam,\nCan you please abandon this CL?\nThanks.",
+      "revId": "456cebfbae4a520620503262bbea3d7234e27dd5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "dc57331c_49101244",
