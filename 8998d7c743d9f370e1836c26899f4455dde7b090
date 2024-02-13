@@ -41,6 +41,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8f7d8e9a_14594a71",
+        "filename": "media/java/android/media/MediaCodecInfo.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2024-02-13T09:01:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "26dacbcb_b58393fa",
+      "range": {
+        "startLine": 172,
+        "startChar": 61,
+        "endLine": 172,
+        "endChar": 63
+      },
+      "revId": "8998d7c743d9f370e1836c26899f4455dde7b090",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "06548034_2d4dd744",
@@ -58,6 +82,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c417f62e_46f617fe",
+        "filename": "media/java/android/media/MediaCodecInfo.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2024-02-13T09:01:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "06548034_2d4dd744",
+      "revId": "8998d7c743d9f370e1836c26899f4455dde7b090",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2eb78111_d785be43",
@@ -71,6 +113,30 @@
       "writtenOn": "2024-02-12T22:13:05Z",
       "side": 1,
       "message": "I would change this to \"wholly controls\".",
+      "range": {
+        "startLine": 175,
+        "startChar": 0,
+        "endLine": 175,
+        "endChar": 12
+      },
+      "revId": "8998d7c743d9f370e1836c26899f4455dde7b090",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ea575075_8e82d247",
+        "filename": "media/java/android/media/MediaCodecInfo.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2024-02-13T09:01:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2eb78111_d785be43",
       "range": {
         "startLine": 175,
         "startChar": 0,
@@ -106,6 +172,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4d95f306_feb85590",
+        "filename": "media/java/android/media/MediaCodecInfo.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 763,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2024-02-13T09:01:54Z",
+      "side": 1,
+      "message": "PTAL",
+      "parentUuid": "540088aa_c4ee3a52",
+      "range": {
+        "startLine": 763,
+        "startChar": 20,
+        "endLine": 763,
+        "endChar": 72
+      },
+      "revId": "8998d7c743d9f370e1836c26899f4455dde7b090",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "46b4bddd_a20129d7",
         "filename": "media/java/android/media/MediaCodecInfo.java",
         "patchSetId": 1
@@ -117,6 +207,30 @@
       "writtenOn": "2024-02-12T22:13:05Z",
       "side": 1,
       "message": "this wording is very tempting for developers. Can we name it instead on the risk profile?\n\nE.g. FEATURE_TrustedContentOnly?",
+      "range": {
+        "startLine": 767,
+        "startChar": 35,
+        "endLine": 767,
+        "endChar": 52
+      },
+      "revId": "8998d7c743d9f370e1836c26899f4455dde7b090",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1550d0c5_e6277111",
+        "filename": "media/java/android/media/MediaCodecInfo.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 767,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2024-02-13T09:01:54Z",
+      "side": 1,
+      "message": "PTAL",
+      "parentUuid": "46b4bddd_a20129d7",
       "range": {
         "startLine": 767,
         "startChar": 35,
