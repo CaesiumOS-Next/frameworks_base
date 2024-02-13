@@ -213,6 +213,30 @@
       },
       "revId": "1132619d35d2868b1d9bceb45c4ad055427e468b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "118cad8a_52792b95",
+        "filename": "media/java/android/media/MediaCodec.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 5061,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2024-02-13T21:42:49Z",
+      "side": 1,
+      "message": "IIUC aosp/2956374 makes the RoI param transient regardless of which path it takes --- both `setParameters` and `setParametersDeferred`.\n\nSo back to `setParametersDeferred`: the difference from `setParameters` is that it allows the app to set the param for the future timestamp.\n\nWithout the API:\n* the app needs to match the param with `queueInputBuffer` manually, possibly cross-thread.\n\nWith the API:\n* if the app is okay with some params dropping if the analysis runs behind\n  * the app can use `setParametersDeferred` and does not need to synchronize.\n* if the app wants to make sure all buffers have the adequate params\n  * the app still needs to synchronize so that `setParametersDeferred` happens before `queueInputBuffer`\n\nSo I think even with this API the app may need to synchronize in their code anyway.  Please let me know if I missed anything.",
+      "parentUuid": "c8da2650_d8f14829",
+      "range": {
+        "startLine": 5061,
+        "startChar": 0,
+        "endLine": 5061,
+        "endChar": 4
+      },
+      "revId": "1132619d35d2868b1d9bceb45c4ad055427e468b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
