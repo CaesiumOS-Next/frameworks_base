@@ -237,6 +237,30 @@
       },
       "revId": "1132619d35d2868b1d9bceb45c4ad055427e468b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c1c2e974_0014e9a7",
+        "filename": "media/java/android/media/MediaCodec.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 5061,
+      "author": {
+        "id": 1929890
+      },
+      "writtenOn": "2024-02-13T22:26:01Z",
+      "side": 1,
+      "message": "How is setParameter used by an app in terms of its effective time? Is it honored on the very next frame queued in display order ? Is this guaranteed on all platforms?",
+      "parentUuid": "118cad8a_52792b95",
+      "range": {
+        "startLine": 5061,
+        "startChar": 0,
+        "endLine": 5061,
+        "endChar": 4
+      },
+      "revId": "1132619d35d2868b1d9bceb45c4ad055427e468b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
