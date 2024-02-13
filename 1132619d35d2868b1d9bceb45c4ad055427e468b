@@ -93,6 +93,30 @@
       },
       "revId": "1132619d35d2868b1d9bceb45c4ad055427e468b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "343beae2_b12fe5de",
+        "filename": "media/java/android/media/MediaCodec.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 5061,
+      "author": {
+        "id": 1392607
+      },
+      "writtenOn": "2024-02-13T18:57:12Z",
+      "side": 1,
+      "message": "Hi Wonsik,\n\nI prefer to keep this API in Android instead of moving it to support library. We have existing API `setParameter()` and we respect its nature of being sticky. And We will add this new API `setParameterDeferred()` and this one will be non-sticky, which will take effect only at the given timestamp. I think this is full functionality for users\u0027 control flow for both sticky and non-sticky configurations. Otherwise, I don\u0027t this it is a good user experience to have to rely on support library for non-sticky configurations.\n\nAlso, I think this API is not only target at ROI, but other run-time non-sticky configurations. E.g. dynamic HDR info or other may be added in the future.",
+      "parentUuid": "60e404df_dc6d7cef",
+      "range": {
+        "startLine": 5061,
+        "startChar": 0,
+        "endLine": 5061,
+        "endChar": 4
+      },
+      "revId": "1132619d35d2868b1d9bceb45c4ad055427e468b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
