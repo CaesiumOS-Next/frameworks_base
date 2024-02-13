@@ -261,6 +261,30 @@
       },
       "revId": "1132619d35d2868b1d9bceb45c4ad055427e468b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0f041c12_972d3342",
+        "filename": "media/java/android/media/MediaCodec.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 5061,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2024-02-13T22:54:03Z",
+      "side": 1,
+      "message": "Yes setParameters() apply to the next queued frame (display/decode order doesn\u0027t matter). This implementation also relies on that to implement `setParametersDeferred`. This was not documented but we can add the documentation \u0026 test for this release cycle as part of this feature.",
+      "parentUuid": "c1c2e974_0014e9a7",
+      "range": {
+        "startLine": 5061,
+        "startChar": 0,
+        "endLine": 5061,
+        "endChar": 4
+      },
+      "revId": "1132619d35d2868b1d9bceb45c4ad055427e468b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
