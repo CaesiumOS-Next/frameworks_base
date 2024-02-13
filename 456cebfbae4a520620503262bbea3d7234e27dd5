@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0f208da2_96c544cc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1392607
+      },
+      "writtenOn": "2024-02-13T19:21:27Z",
+      "side": 1,
+      "message": "The stickiness part is not yet moved to the native CL?",
+      "parentUuid": "d10e3fa9_484a0fdd",
+      "revId": "456cebfbae4a520620503262bbea3d7234e27dd5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "dc57331c_49101244",
         "filename": "core/api/current.txt",
         "patchSetId": 6
