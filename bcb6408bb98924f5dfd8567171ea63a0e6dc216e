@@ -22,6 +22,30 @@
       },
       "revId": "bcb6408bb98924f5dfd8567171ea63a0e6dc216e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a90cb830_77ed75e1",
+        "filename": "libs/WindowManager/Shell/src/com/android/wm/shell/splitscreen/StageCoordinator.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 1469,
+      "author": {
+        "id": 1815205
+      },
+      "writtenOn": "2024-02-13T12:24:23Z",
+      "side": 1,
+      "message": "Hi! Thanks for your comment.\n\nclearSplitPairedInRecents is called before startDismissTransition in a few places where it is called, but not in every place.\n\nThe split pair in recents is removed in prepareDismissAnimation, see https://cs.android.com/android/platform/superproject/main/+/main:frameworks/base/libs/WindowManager/Shell/src/com/android/wm/shell/splitscreen/StageCoordinator.java;l\u003d2956?q\u003dprepareDismissAnimation\u0026ss\u003dandroid\n\nI guess the only time where the split pair would not be removed is when the dismiss transition is aborted for some reason, but in that case do we want to remove the pair?\n\nI guess it wont hurt to call clearSplitPairedInRecents here, I think it will be the best solution.",
+      "parentUuid": "0b9077c3_77fdb1dc",
+      "range": {
+        "startLine": 1469,
+        "startChar": 8,
+        "endLine": 1469,
+        "endChar": 30
+      },
+      "revId": "bcb6408bb98924f5dfd8567171ea63a0e6dc216e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
