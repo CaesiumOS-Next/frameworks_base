@@ -26,6 +26,99 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b813148d_460ea364",
+        "filename": "core/api/current.txt",
+        "patchSetId": 6
+      },
+      "lineNbr": 23774,
+      "author": {
+        "id": 1392607
+      },
+      "writtenOn": "2024-02-13T18:44:17Z",
+      "side": 1,
+      "message": "No this shouldn\u0027t be public. We\u0027ll fix.",
+      "parentUuid": "dc57331c_49101244",
+      "range": {
+        "startLine": 23774,
+        "startChar": 30,
+        "endLine": 23774,
+        "endChar": 36
+      },
+      "revId": "456cebfbae4a520620503262bbea3d7234e27dd5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "602ed053_ceb29abb",
+        "filename": "media/java/android/media/MediaCodec.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 2374,
+      "author": {
+        "id": 1392607
+      },
+      "writtenOn": "2024-02-13T18:44:17Z",
+      "side": 1,
+      "message": "I think we can force resetting the value to an empty rect config if we see a QP map config or a rect config at this stage, and read only one rect/qp map config in case user use string instead of the standard key and set multiple configurations.",
+      "range": {
+        "startLine": 2373,
+        "startChar": 24,
+        "endLine": 2374,
+        "endChar": 61
+      },
+      "revId": "456cebfbae4a520620503262bbea3d7234e27dd5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fcb55929_f75a100b",
+        "filename": "media/java/android/media/MediaCodec.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 2377,
+      "author": {
+        "id": 1392607
+      },
+      "writtenOn": "2024-02-13T18:44:17Z",
+      "side": 1,
+      "message": "I don\u0027t think we need this at this stage. We only pass an empty rect config. This flag should only flip if we see a true ROI config at run time.",
+      "range": {
+        "startLine": 2375,
+        "startChar": 24,
+        "endLine": 2377,
+        "endChar": 25
+      },
+      "revId": "456cebfbae4a520620503262bbea3d7234e27dd5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cdb9c393_38d0c08f",
+        "filename": "media/java/android/media/MediaCodec.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 3770,
+      "author": {
+        "id": 1392607
+      },
+      "writtenOn": "2024-02-13T18:44:17Z",
+      "side": 1,
+      "message": "I don\u0027t know if this is correct. Should we use `mCodec.native_queueHardwareBuffer` or `mCodec.native_queueLinearBlock` and a key/value pair with an empty rect ROI config, or does `setParameter()` also work in block model?",
+      "range": {
+        "startLine": 3770,
+        "startChar": 12,
+        "endLine": 3770,
+        "endChar": 34
+      },
+      "revId": "456cebfbae4a520620503262bbea3d7234e27dd5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c65e54f3_4fb73005",
         "filename": "media/java/android/media/MediaFormat.java",
         "patchSetId": 6
