@@ -46,6 +46,30 @@
       },
       "revId": "bcb6408bb98924f5dfd8567171ea63a0e6dc216e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "49a0edbb_01a2361b",
+        "filename": "libs/WindowManager/Shell/src/com/android/wm/shell/splitscreen/StageCoordinator.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 1469,
+      "author": {
+        "id": 1592288
+      },
+      "writtenOn": "2024-02-13T20:00:25Z",
+      "side": 1,
+      "message": "Ah yeah you\u0027re right, sorry I missed that.  \nAlso because of your change in `shouldBreakPairedTaskInRecents()` for the exit_reason_unknown I think that it should dismiss the split pair in recents correctly.\n\nSorry for the back and forth but let\u0027s not add that call here to avoid any unnecessary confusion. \nLooks good as it was before.",
+      "parentUuid": "a90cb830_77ed75e1",
+      "range": {
+        "startLine": 1469,
+        "startChar": 8,
+        "endLine": 1469,
+        "endChar": 30
+      },
+      "revId": "bcb6408bb98924f5dfd8567171ea63a0e6dc216e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
