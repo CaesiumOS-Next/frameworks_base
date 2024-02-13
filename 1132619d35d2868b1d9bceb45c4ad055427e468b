@@ -189,6 +189,30 @@
       },
       "revId": "1132619d35d2868b1d9bceb45c4ad055427e468b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4d9d8f26_599d81c9",
+        "filename": "media/java/android/media/MediaCodec.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 5061,
+      "author": {
+        "id": 1546599
+      },
+      "writtenOn": "2024-02-13T21:01:56Z",
+      "side": 1,
+      "message": "Dichen,\nFew things that are needed in addition to this API at java level.\n\n- An equivalent API at NDK level\n- An API to clear the parameters queued so far\n\nFew things to be aligned/documented\n- What happens during flush?\n- Any limits to be placed on how many such parameters can be queued ahead.\n- Documentation on when this new API is to be used and when can the old one be used.\n- Any restrictions on how these APIs will co-exist?",
+      "parentUuid": "c8da2650_d8f14829",
+      "range": {
+        "startLine": 5061,
+        "startChar": 0,
+        "endLine": 5061,
+        "endChar": 4
+      },
+      "revId": "1132619d35d2868b1d9bceb45c4ad055427e468b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
