@@ -41,6 +41,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "af3b2389_eb3d89e0",
+        "filename": "media/java/android/media/MediaCodecInfo.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 1800,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2024-02-13T19:02:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ee5e02e9_1b45d9b4",
+      "range": {
+        "startLine": 1800,
+        "startChar": 67,
+        "endLine": 1800,
+        "endChar": 68
+      },
+      "revId": "518f3d7650caef1b1cc3cb7b67562f3e2fa7ef84",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "dbdf2f33_df3bb1ec",
@@ -54,6 +78,30 @@
       "writtenOn": "2024-02-13T16:20:49Z",
       "side": 1,
       "message": "I think we still want to require this flag during configure if using a MEMORY_SAFE or TRUSTED_CONTENT_ONLY codec, to ensure that upgrading apps (who are not aware of this new security model classification) will not unknowingly instantiate anything but a sandboxed codec. (E.g. they may have their own findDecoderForFormat implementation that will not get automatically updated for this SDK).\n\nThat would still go well with the findDecoderForFormat() API as we are in-deed finding a codec that works with the format that contains the security-model.\n\nWith that in mind, we could even shorten this key to KEY_SECURITY_MODEL as it is not solely used for filtering, but designates the desired security model.\n\"\nThat said, we may need to call this \"MIN_SECURITY_MODEL\". E.g. the app may have trusted content, but we may not have any codecs that is only for trusted content, so we would want to return a memory safe one if available, and a sandboxed one as a last resort.",
+      "range": {
+        "startLine": 1755,
+        "startChar": 46,
+        "endLine": 1757,
+        "endChar": 54
+      },
+      "revId": "518f3d7650caef1b1cc3cb7b67562f3e2fa7ef84",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a843c28f_5fe90118",
+        "filename": "media/java/android/media/MediaFormat.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 1757,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2024-02-13T19:02:39Z",
+      "side": 1,
+      "message": "* renamed to SECURITY_MODEL\n* modified the doc to describe the behavior at findDecoder/EncoderForFormat and configure.\n\nOn MIN_SECURITY_MODEL, I think there may be a specific use case of searching for codecs out of sandbox, so keeping this as flags.",
+      "parentUuid": "dbdf2f33_df3bb1ec",
       "range": {
         "startLine": 1755,
         "startChar": 46,

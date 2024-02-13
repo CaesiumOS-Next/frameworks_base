@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e362a359_8a209e26",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2024-02-13T19:02:39Z",
+      "side": 1,
+      "message": "Removed the FEATURE, so no longer has a conflict.",
+      "parentUuid": "c2c2f01e_a4d3e7cc",
+      "revId": "8998d7c743d9f370e1836c26899f4455dde7b090",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "26dacbcb_b58393fa",
