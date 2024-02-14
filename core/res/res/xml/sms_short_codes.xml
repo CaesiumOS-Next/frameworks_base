@@ -324,4 +324,7 @@
     <!-- South Africa -->
     <shortcode country="za" pattern="\\d{1,5}" free="44136|30791|36056" />
 
+     <!-- South Africa -->
+    <shortcode country="zw" pattern="\\d{1,5}" free="33679" />
+
 </shortcodes>
