@@ -285,6 +285,30 @@
       },
       "revId": "1132619d35d2868b1d9bceb45c4ad055427e468b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e00d82aa_18bee772",
+        "filename": "media/java/android/media/MediaCodec.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 5061,
+      "author": {
+        "id": 1392607
+      },
+      "writtenOn": "2024-02-14T00:04:58Z",
+      "side": 1,
+      "message": "I offline talked with Wonsik, the stickiness won\u0027t be a problem. We can document that keys ROI configuration are not sticky in java layer and even if user set the ROI from `setParameters()` that can be non-sticky.\n\nThe discussion now is regarding \"whether app developers can benefit from this new API\".\n\nWithout the new API, user will need some synchronization algorithms to call `queueInputBuffer()` and `setParameters()` one by one. With the new API there will still be some synchronization algorithms to make sure `setParametersDeferred()` happens ahead of `queueInputBuffer()`, but I see there is already some benefit that user can pre-queue a few configurations before calling `queueInputBuffer()`\n\nThe next question is, since this is a benefit, do we want this logic to land in Android or Android support library, or let app developers to keep. I would still prefer having it in Android since NDK developer will miss this function if it\u0027s landed in support library.",
+      "parentUuid": "0f041c12_972d3342",
+      "range": {
+        "startLine": 5061,
+        "startChar": 0,
+        "endLine": 5061,
+        "endChar": 4
+      },
+      "revId": "1132619d35d2868b1d9bceb45c4ad055427e468b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
