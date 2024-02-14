@@ -333,6 +333,30 @@
       },
       "revId": "1132619d35d2868b1d9bceb45c4ad055427e468b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5882fdfa_53c6d839",
+        "filename": "media/java/android/media/MediaCodec.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 5061,
+      "author": {
+        "id": 1392607
+      },
+      "writtenOn": "2024-02-14T21:18:34Z",
+      "side": 1,
+      "message": "I had an offline discussion with Arif and Wonsik. Based on the potential risk this new API may introduce (e.g. synchronization, compatibility with large audio frame, etc), the implementation difficulties and the Android releasing timeline, we agreed to drop this API. ROI configuration will still be accomplished via `setParameters()`.\n\nThere are a few things to notices:\n1. In `setParameters()` the configuration will take effect in the next queued frame (including but not limited to ROI configuration). This should be clearly documented and tested.\n2. The ROI configurations in java (and NDK) public API are non-sticky, but at C2 level they are sticky. This should also be documented. Framework should handle the stickiness part by sending an zero ROI configuration down to C2 if there is no ROI configuration for the current frame.",
+      "parentUuid": "2f7bfb7d_c755e510",
+      "range": {
+        "startLine": 5061,
+        "startChar": 0,
+        "endLine": 5061,
+        "endChar": 4
+      },
+      "revId": "1132619d35d2868b1d9bceb45c4ad055427e468b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
