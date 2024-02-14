@@ -309,6 +309,30 @@
       },
       "revId": "1132619d35d2868b1d9bceb45c4ad055427e468b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2f7bfb7d_c755e510",
+        "filename": "media/java/android/media/MediaCodec.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 5061,
+      "author": {
+        "id": 1392607
+      },
+      "writtenOn": "2024-02-14T01:18:05Z",
+      "side": 1,
+      "message": "RE I\u0027ve added more descriptions about the internal configuration queue in the design, and perhaps we can update java doc.",
+      "parentUuid": "e00d82aa_18bee772",
+      "range": {
+        "startLine": 5061,
+        "startChar": 0,
+        "endLine": 5061,
+        "endChar": 4
+      },
+      "revId": "1132619d35d2868b1d9bceb45c4ad055427e468b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
