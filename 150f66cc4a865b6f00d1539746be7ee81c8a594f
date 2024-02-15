@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f390a1d7_a51ffee4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1951823
+      },
+      "writtenOn": "2024-02-15T14:50:23Z",
+      "side": 1,
+      "message": "It appears that we don\u0027t own the `INPUT_OWNERS` file, so we need additional approval. Wale, could you take a look?",
+      "revId": "150f66cc4a865b6f00d1539746be7ee81c8a594f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
