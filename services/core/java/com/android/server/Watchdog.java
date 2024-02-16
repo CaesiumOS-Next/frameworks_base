@@ -909,6 +909,7 @@ public class Watchdog implements Dumpable {
         report.append(ResourcePressureUtil.currentPsiState());
         ProcessCpuTracker processCpuTracker = new ProcessCpuTracker(false);
         StringWriter tracesFileException = new StringWriter();
+        Log.w(TAG, "asdf dumping native pids");
         final File stack = StackTracesDumpHelper.dumpStackTraces(
                 pids, processCpuTracker, new SparseBooleanArray(),
                 CompletableFuture.completedFuture(getInterestingNativePids()), tracesFileException,
