@@ -16,6 +16,24 @@
       "message": "I think you would need to define `RollbackObserverTests` somewhere?",
       "revId": "4ec57054125f9345ef31308df3b461cd9c084f20",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ac7ecdff_2b5bd649",
+        "filename": "services/tests/mockingservicestests/src/com/android/server/rollback/TEST_MAPPING",
+        "patchSetId": 2
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 1977615
+      },
+      "writtenOn": "2024-02-21T16:35:11Z",
+      "side": 1,
+      "message": "Saw some examples on how it is done for nested directories. We can use the android.bp defined in services/tests/mockingservicestests and use the same name with include filter. Added the include filter with rollback folder.",
+      "parentUuid": "c55f0727_f5f2d8eb",
+      "revId": "4ec57054125f9345ef31308df3b461cd9c084f20",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
