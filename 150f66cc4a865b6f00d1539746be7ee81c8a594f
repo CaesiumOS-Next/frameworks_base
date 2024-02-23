@@ -16,6 +16,23 @@
       "message": "It appears that we don\u0027t own the `INPUT_OWNERS` file, so we need additional approval. Wale, could you take a look?",
       "revId": "150f66cc4a865b6f00d1539746be7ee81c8a594f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6e0fd45d_0f8fdad1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1057059
+      },
+      "writtenOn": "2024-02-23T18:24:45Z",
+      "side": 1,
+      "message": "Let\u0027s also give INPUT_OWNERS owners on INPUT_OWNERS file by adding a per-file owner for it in https://source.corp.google.com/h/googleplex-android/platform/superproject/main/+/main:frameworks/base/OWNERS",
+      "revId": "150f66cc4a865b6f00d1539746be7ee81c8a594f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
