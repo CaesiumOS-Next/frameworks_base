@@ -64,6 +64,9 @@ import android.util.SparseBooleanArray;
 import com.android.internal.annotations.GuardedBy;
 import com.android.internal.util.ArrayUtils;
 import com.android.internal.util.Preconditions;
+import com.android.server.LocalServices;
+import com.android.server.om.OverlayManagerService;
+import com.android.server.pm.permission.PermissionManagerServiceInternal;
 import com.android.server.pm.pkg.AndroidPackage;
 import com.android.server.pm.pkg.ArchiveState;
 import com.android.server.pm.pkg.PackageStateInternal;
@@ -526,6 +529,8 @@ final class DeletePackageHelper {
             // as well and fall back to existing code in system partition
             deleteInstalledSystemPackage(action, allUserHandles, writeSettings);
             mPm.restoreDisabledSystemPackageLIF(action, allUserHandles, writeSettings);
+            LocalServices.getService(OverlayManagerService.class)
+                    .updatePackageManagerInternal(packageName, userId);
         } else {
             if (DEBUG_REMOVE) Slog.d(TAG, "Removing non-system package: " + ps.getPackageName());
             if (ps.isIncremental()) {
