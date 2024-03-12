@@ -34,6 +34,24 @@
       "parentUuid": "c1064de7_d224d335",
       "revId": "8f23c0060484d9d1603491af10c5508c03d51e74",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4ff25c75_eb878584",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1592288
+      },
+      "writtenOn": "2024-03-12T17:47:40Z",
+      "side": 1,
+      "message": "This has been merged internally with sha 5fc6a3bb2ab8261e670ac3441fe6bdb3daae7c7d",
+      "parentUuid": "a6ce6483_735560f7",
+      "revId": "8f23c0060484d9d1603491af10c5508c03d51e74",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
