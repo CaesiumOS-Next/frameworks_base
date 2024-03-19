@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b8ce8aa9_7fb3d9fb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1956258
+      },
+      "writtenOn": "2024-03-19T18:30:37Z",
+      "side": 1,
+      "message": "This change is WIP and I have to verify the block size changes on page agnostic build. \nThings remaining here: \n1. Adding tests for package manager installation flows\n2. Adding punching holes for zip files\n3. Checking any performance regressions during installation.\n4. Checking storage on page agnostic builds\n5. Deciding to do this for 32/64 elfs. right now header types used are 64 bit.",
+      "revId": "30f58db1f617d4a62c61cd116e2cab3016e0cb49",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
