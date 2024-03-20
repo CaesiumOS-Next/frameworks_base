@@ -1638,7 +1638,9 @@ public class SystemConfig {
                 String gidStr = parser.getAttributeValue(null, "gid");
                 if (gidStr != null) {
                     int gid = Process.getGidForName(gidStr);
-                    perm.gids = appendInt(perm.gids, gid);
+                    if (gid > 0) {
+                        perm.gids = appendInt(perm.gids, gid);
+                    }
                 } else {
                     Slog.w(TAG, "<group> without gid at "
                             + parser.getPositionDescription());
