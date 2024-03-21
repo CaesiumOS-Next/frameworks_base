@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a062f9b0_f5b8838a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1013030
+      },
+      "writtenOn": "2024-03-21T09:45:33Z",
+      "side": 1,
+      "message": "Looks like we fixed the javadoc instead and this can be abandoned?",
+      "revId": "7303a80f7c0f079c0be2a437ee0365d3502aec32",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
