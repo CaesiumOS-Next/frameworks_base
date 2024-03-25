@@ -36,6 +36,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "a8ee3039_5ceaf27f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1778340
+      },
+      "writtenOn": "2024-03-25T17:56:20Z",
+      "side": 1,
+      "message": "If it is part of the bugfix, then yes include it. If it is part of the UX change to continue touch exploration then put it there.",
+      "parentUuid": "bc3a98f2_c84bd063",
+      "revId": "ebad235d3b932a4ee82dc241baf1facc83264fc4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "589792d8_81165851",
