@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "fbb64fe6_61b8f663",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1889140
+      },
+      "writtenOn": "2024-03-26T18:35:05Z",
+      "side": 1,
+      "message": "There are elf files for 32-bit and 64-bit architectures, and the elf header size change. We should mention in which types of files the holes will be puched:\n\nElf32_Ehdr\nhttps://cs.android.com/android/platform/superproject/main/+/main:bionic/libc/kernel/uapi/linux/elf.h;l\u003d176\n\n\nElf64_Ehdr\nhttps://cs.android.com/android/platform/superproject/main/+/main:bionic/libc/kernel/uapi/linux/elf.h;l\u003d192",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 26
+      },
+      "revId": "30f58db1f617d4a62c61cd116e2cab3016e0cb49",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "b8ce8aa9_7fb3d9fb",
@@ -14,6 +37,23 @@
       "writtenOn": "2024-03-19T18:30:37Z",
       "side": 1,
       "message": "This change is WIP and I have to verify the block size changes on page agnostic build. \nThings remaining here: \n1. Adding tests for package manager installation flows\n2. Adding punching holes for zip files\n3. Checking any performance regressions during installation.\n4. Checking storage on page agnostic builds\n5. Deciding to do this for 32/64 elfs. right now header types used are 64 bit.",
+      "revId": "30f58db1f617d4a62c61cd116e2cab3016e0cb49",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b7f16ebf_0ffa279b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1889140
+      },
+      "writtenOn": "2024-03-26T18:35:05Z",
+      "side": 1,
+      "message": "There a",
       "revId": "30f58db1f617d4a62c61cd116e2cab3016e0cb49",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -36,6 +76,98 @@
         "startChar": 30,
         "endLine": 25,
         "endChar": 31
+      },
+      "revId": "30f58db1f617d4a62c61cd116e2cab3016e0cb49",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ffb8359f_be20bde9",
+        "filename": "core/java/com/android/internal/content/FileSystemUtils.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1889140
+      },
+      "writtenOn": "2024-03-26T18:35:05Z",
+      "side": 1,
+      "message": "Will this method be used for elf64 and elf32 files?",
+      "range": {
+        "startLine": 25,
+        "startChar": 23,
+        "endLine": 25,
+        "endChar": 34
+      },
+      "revId": "30f58db1f617d4a62c61cd116e2cab3016e0cb49",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a6d856b2_582830dc",
+        "filename": "core/java/com/android/internal/content/FileSystemUtils.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1889140
+      },
+      "writtenOn": "2024-03-26T18:35:05Z",
+      "side": 1,
+      "message": "if it is only for elf64 files, we could na",
+      "range": {
+        "startLine": 25,
+        "startChar": 23,
+        "endLine": 25,
+        "endChar": 35
+      },
+      "revId": "30f58db1f617d4a62c61cd116e2cab3016e0cb49",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c7d3148c_eac80fe6",
+        "filename": "core/java/com/android/internal/content/FileSystemUtils.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1889140
+      },
+      "writtenOn": "2024-03-26T18:35:05Z",
+      "side": 1,
+      "message": "If this functionality only applies to f2fs, should we move it to F2fsUtils?\n\nhttps://cs.android.com/android/platform/superproject/main/+/main:frameworks/base/core/java/com/android/internal/content/F2fsUtils.java",
+      "range": {
+        "startLine": 29,
+        "startChar": 31,
+        "endLine": 29,
+        "endChar": 52
+      },
+      "revId": "30f58db1f617d4a62c61cd116e2cab3016e0cb49",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d1452a5e_4a45f99a",
+        "filename": "core/jni/com_android_internal_content_FileSystemUtils.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1889140
+      },
+      "writtenOn": "2024-03-26T18:35:05Z",
+      "side": 1,
+      "message": "if we are assuming that filePath points to elf64 files, should we validate that that is true?\n\nIn the Elf64_ehdr, there is an array of 16 chars e_ident[]:\n\n```\nIndexes [0-3] contains the magic number\ne_ident[0] \u003d  0x7F\ne_ident[1] \u003d  E\ne_ident[2] \u003d  L\ne_ident[3] \u003d  F\n```\n\nThe Index [4] indicates the ELF class, that could be ELFCLASS32 for 32-bit binaries or ELFCLASS64 for 64-bit binaries.\n\n\nWe can use Index [4] to validate the class:\n\nhttps://cs.android.com/android/platform/superproject/main/+/main:bionic/libc/kernel/uapi/linux/elf.h;l\u003d288\n\nhttps://cs.android.com/android/platform/superproject/main/+/main:bionic/libc/kernel/uapi/linux/elf.h;l\u003d178",
+      "range": {
+        "startLine": 46,
+        "startChar": 3,
+        "endLine": 48,
+        "endChar": 50
       },
       "revId": "30f58db1f617d4a62c61cd116e2cab3016e0cb49",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
@@ -77,6 +209,30 @@
       "writtenOn": "2024-03-21T01:25:36Z",
       "side": 1,
       "message": "check whether eofbit or failbit is set - if the inputStream fails or reaches end of file, Elf64_Ehdr may not be fully read and may be uninitialized",
+      "range": {
+        "startLine": 54,
+        "startChar": 4,
+        "endLine": 54,
+        "endChar": 15
+      },
+      "revId": "30f58db1f617d4a62c61cd116e2cab3016e0cb49",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ebe53f4d_e230be42",
+        "filename": "core/jni/com_android_internal_content_FileSystemUtils.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1889140
+      },
+      "writtenOn": "2024-03-26T18:35:05Z",
+      "side": 1,
+      "message": "We already have a class that can be reused to parse ELF64 files:\n\nhttps://cs.android.com/android/platform/superproject/main/+/main:system/memory/libmeminfo/libelf64/parse.cpp;l\u003d51;bpv\u003d0",
+      "parentUuid": "cd1b43f6_0ca0af23",
       "range": {
         "startLine": 54,
         "startChar": 4,
@@ -358,6 +514,29 @@
         "startChar": 17,
         "endLine": 23,
         "endChar": 20
+      },
+      "revId": "30f58db1f617d4a62c61cd116e2cab3016e0cb49",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e3bb4411_603653c1",
+        "filename": "core/jni/com_android_internal_content_FileSystemUtils.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1889140
+      },
+      "writtenOn": "2024-03-26T18:35:05Z",
+      "side": 1,
+      "message": "Please add a description.",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 66
       },
       "revId": "30f58db1f617d4a62c61cd116e2cab3016e0cb49",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
