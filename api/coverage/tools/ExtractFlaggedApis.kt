@@ -29,14 +29,27 @@ fun main(args: Array<String>) {
         pkg.allClasses()
             .filter { it.methods().size > 0 }
             .forEach {
-                for (method in it.methods()) {
-                    val flagValue =
-                        method.modifiers
-                            .findAnnotation("android.annotation.FlaggedApi")
-                            ?.findAttribute("value")
-                            ?.value
-                            ?.value()
-                    if (flagValue != null && flagValue is String) {
+                val classFlag =
+                    it.modifiers
+                        .findAnnotation("android.annotation.FlaggedApi")
+                        ?.findAttribute("value")
+                        ?.value
+                        ?.value()
+                // If a class is annotated by @FlaggedApi, all of its methods and constructors are
+                // flagged.
+                if (classFlag != null && classFlag is String) {
+                    for (ctor in it.constructors()) {
+                        var api =
+                            JavaMethod.newBuilder()
+                                .setPackageName(packageName)
+                                .setClassName(it.fullName())
+                                .setMethodName(ctor.name())
+                        for (param in ctor.parameters()) {
+                            api.addParameters(param.type().toTypeString())
+                        }
+                        addFlaggedApi(builder, api, classFlag)
+                    }
+                    for (method in it.methods()) {
                         var api =
                             JavaMethod.newBuilder()
                                 .setPackageName(packageName)
@@ -45,17 +58,47 @@ fun main(args: Array<String>) {
                         for (param in method.parameters()) {
                             api.addParameters(param.type().toTypeString())
                         }
-                        if (builder.containsFlagToApi(flagValue)) {
-                            var updatedApis =
-                                builder
-                                    .getFlagToApiOrThrow(flagValue)
-                                    .toBuilder()
-                                    .addJavaMethods(api)
-                                    .build()
-                            builder.putFlagToApi(flagValue, updatedApis)
-                        } else {
-                            var apis = FlaggedApis.newBuilder().addJavaMethods(api).build()
-                            builder.putFlagToApi(flagValue, apis)
+                        addFlaggedApi(builder, api, classFlag)
+                    }
+                } else {
+                    // If a class is not annotated by @FlaggedApi, find methods and constructors
+                    // annotated by @FlaggedApi.
+                    for (ctor in it.constructors()) {
+                        val methodFlag =
+                            ctor.modifiers
+                                .findAnnotation("android.annotation.FlaggedApi")
+                                ?.findAttribute("value")
+                                ?.value
+                                ?.value()
+                        if (methodFlag != null && methodFlag is String) {
+                            var api =
+                                JavaMethod.newBuilder()
+                                    .setPackageName(packageName)
+                                    .setClassName(it.fullName())
+                                    .setMethodName(ctor.name())
+                            for (param in ctor.parameters()) {
+                                api.addParameters(param.type().toTypeString())
+                            }
+                            addFlaggedApi(builder, api, methodFlag)
+                        }
+                    }
+                    for (method in it.methods()) {
+                        val methodValue =
+                            method.modifiers
+                                .findAnnotation("android.annotation.FlaggedApi")
+                                ?.findAttribute("value")
+                                ?.value
+                                ?.value()
+                        if (methodValue != null && methodValue is String) {
+                            var api =
+                                JavaMethod.newBuilder()
+                                    .setPackageName(packageName)
+                                    .setClassName(it.fullName())
+                                    .setMethodName(method.name())
+                            for (param in method.parameters()) {
+                                api.addParameters(param.type().toTypeString())
+                            }
+                            addFlaggedApi(builder, api, methodValue)
                         }
                     }
                 }
@@ -63,4 +106,14 @@ fun main(args: Array<String>) {
     }
     val flagApiMap = builder.build()
     FileWriter(args[1]).use { it.write(flagApiMap.toString()) }
+}
+
+fun addFlaggedApi(builder: FlagApiMap.Builder, api: JavaMethod.Builder, flag: String) {
+    if (builder.containsFlagToApi(flag)) {
+        var updatedApis = builder.getFlagToApiOrThrow(flag).toBuilder().addJavaMethods(api).build()
+        builder.putFlagToApi(flag, updatedApis)
+    } else {
+        var apis = FlaggedApis.newBuilder().addJavaMethods(api).build()
+        builder.putFlagToApi(flag, apis)
+    }
 }
