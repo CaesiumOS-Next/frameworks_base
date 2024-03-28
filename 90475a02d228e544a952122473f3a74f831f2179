@@ -1,0 +1,228 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1f168345_265cfc12",
+        "filename": "core/jni/com_android_internal_content_FileSystemUtils.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1480715
+      },
+      "writtenOn": "2024-03-28T19:01:53Z",
+      "side": 1,
+      "message": "Sorry my C++ skill rusty. Could you explain a bit more about the logic around programHeaders? Thanks!",
+      "range": {
+        "startLine": 43,
+        "startChar": 47,
+        "endLine": 43,
+        "endChar": 61
+      },
+      "revId": "90475a02d228e544a952122473f3a74f831f2179",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3f8ccf5b_8f1af9cb",
+        "filename": "core/jni/com_android_internal_content_FileSystemUtils.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1480715
+      },
+      "writtenOn": "2024-03-28T19:01:53Z",
+      "side": 1,
+      "message": "Looking at the [man page](https://man7.org/linux/man-pages/man2/fallocate.2.html), this would cause the file size to rename the same? Would the `lstat` result in line 88 stay the same as before?",
+      "range": {
+        "startLine": 82,
+        "startChar": 45,
+        "endLine": 82,
+        "endChar": 64
+      },
+      "revId": "90475a02d228e544a952122473f3a74f831f2179",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a747d1bb_f0ae067c",
+        "filename": "core/jni/com_android_internal_content_FileSystemUtils.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1480715
+      },
+      "writtenOn": "2024-03-28T19:01:53Z",
+      "side": 1,
+      "message": "close the fd?",
+      "revId": "90475a02d228e544a952122473f3a74f831f2179",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5848784f_1b8ee573",
+        "filename": "core/jni/com_android_internal_content_FileSystemUtils.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1480715
+      },
+      "writtenOn": "2024-03-28T19:01:53Z",
+      "side": 1,
+      "message": "close inputStream here? Or make inputStream a unique pointer with a custom deleter",
+      "range": {
+        "startLine": 107,
+        "startChar": 7,
+        "endLine": 107,
+        "endChar": 8
+      },
+      "revId": "90475a02d228e544a952122473f3a74f831f2179",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "da42b935_347899c6",
+        "filename": "core/jni/com_android_internal_content_FileSystemUtils.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1480715
+      },
+      "writtenOn": "2024-03-28T19:01:53Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 134,
+        "startChar": 11,
+        "endLine": 134,
+        "endChar": 12
+      },
+      "revId": "90475a02d228e544a952122473f3a74f831f2179",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cac1f3ad_244c0c60",
+        "filename": "core/jni/com_android_internal_content_FileSystemUtils.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1480715
+      },
+      "writtenOn": "2024-03-28T19:01:53Z",
+      "side": 1,
+      "message": "nit: Perhaps elaborate a bit more to explain \"punch holes\", for people who aren\u0027t familiar with the concept? (E.g., remove filesystem blocks for file ranges that contain only zeros, as a way to reduce disk space usage)",
+      "range": {
+        "startLine": 23,
+        "startChar": 17,
+        "endLine": 23,
+        "endChar": 30
+      },
+      "revId": "90475a02d228e544a952122473f3a74f831f2179",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aee5737d_7bae8da7",
+        "filename": "core/jni/com_android_internal_content_NativeLibraryHelper.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1480715
+      },
+      "writtenOn": "2024-03-28T19:01:53Z",
+      "side": 1,
+      "message": "Move to line 172",
+      "range": {
+        "startLine": 179,
+        "startChar": 8,
+        "endLine": 179,
+        "endChar": 64
+      },
+      "revId": "90475a02d228e544a952122473f3a74f831f2179",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "52e1def9_1d77b209",
+        "filename": "core/jni/com_android_internal_content_NativeLibraryHelper.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 285,
+      "author": {
+        "id": 1480715
+      },
+      "writtenOn": "2024-03-28T19:01:53Z",
+      "side": 1,
+      "message": "nit: probably better to do it before line 254. In fact maybe you can reuse the `fd` before it\u0027s closed in line 252",
+      "range": {
+        "startLine": 280,
+        "startChar": 4,
+        "endLine": 285,
+        "endChar": 0
+      },
+      "revId": "90475a02d228e544a952122473f3a74f831f2179",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b81efddc_50541047",
+        "filename": "core/tests/FileSystemUtilsTest/Android.bp",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1480715
+      },
+      "writtenOn": "2024-03-28T19:01:53Z",
+      "side": 1,
+      "message": "Please fix this ERROR reported by Android Ownership Lint: Ownership attribution is mandatory for new test targets. Target \u0027FileSystemUtilsTests\u0027 is missing an owner. Please refer to the ownership guidelines doc go/new-android-ownership-model for more information.\n\nAnalyzer Description: Validates test targets attribution.\nOwner: crumpet-eng@google.com\n\nOwnership attribution is mandatory for new test targets. Target \u0027FileSystemUtilsTests\u0027 is missing an owner. Please refer to the ownership guidelines doc go/new-android-ownership-model for more information.",
+      "range": {
+        "startLine": 0,
+        "startChar": 0,
+        "endLine": 0,
+        "endChar": 0
+      },
+      "revId": "90475a02d228e544a952122473f3a74f831f2179",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6384cabe_93f038e5",
+        "filename": "core/tests/FileSystemUtilsTest/AndroidManifest.xml",
+        "patchSetId": 5
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1480715
+      },
+      "writtenOn": "2024-03-28T19:01:53Z",
+      "side": 1,
+      "message": "Is this needed?",
+      "range": {
+        "startLine": 21,
+        "startChar": 10,
+        "endLine": 21,
+        "endChar": 51
+      },
+      "revId": "90475a02d228e544a952122473f3a74f831f2179",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
