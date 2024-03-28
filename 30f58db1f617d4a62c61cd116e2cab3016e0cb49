@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "12319f86_af47aac4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1956258
+      },
+      "writtenOn": "2024-03-28T16:21:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fbb64fe6_61b8f663",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 26
+      },
+      "revId": "30f58db1f617d4a62c61cd116e2cab3016e0cb49",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "b8ce8aa9_7fb3d9fb",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 2
@@ -54,6 +78,24 @@
       "writtenOn": "2024-03-26T18:35:05Z",
       "side": 1,
       "message": "There a",
+      "revId": "30f58db1f617d4a62c61cd116e2cab3016e0cb49",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0b54b6b6_79dffab8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1956258
+      },
+      "writtenOn": "2024-03-28T16:21:41Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "b7f16ebf_0ffa279b",
       "revId": "30f58db1f617d4a62c61cd116e2cab3016e0cb49",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -127,6 +169,78 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4791bbe3_40eb3853",
+        "filename": "core/java/com/android/internal/content/FileSystemUtils.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1956258
+      },
+      "writtenOn": "2024-03-28T16:21:41Z",
+      "side": 1,
+      "message": "Only elf64. but I removed this JNI as only Cpp interface was necessary.",
+      "parentUuid": "ffb8359f_be20bde9",
+      "range": {
+        "startLine": 25,
+        "startChar": 23,
+        "endLine": 25,
+        "endChar": 34
+      },
+      "revId": "30f58db1f617d4a62c61cd116e2cab3016e0cb49",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7f755c18_f0c7baf8",
+        "filename": "core/java/com/android/internal/content/FileSystemUtils.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1956258
+      },
+      "writtenOn": "2024-03-28T16:21:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a14318a7_6847b6cc",
+      "range": {
+        "startLine": 25,
+        "startChar": 30,
+        "endLine": 25,
+        "endChar": 31
+      },
+      "revId": "30f58db1f617d4a62c61cd116e2cab3016e0cb49",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6be4cf4b_75ded16a",
+        "filename": "core/java/com/android/internal/content/FileSystemUtils.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1956258
+      },
+      "writtenOn": "2024-03-28T16:21:41Z",
+      "side": 1,
+      "message": "I removed this JNI as it turns out only Cpp interface was necessary for integration.",
+      "parentUuid": "a6d856b2_582830dc",
+      "range": {
+        "startLine": 25,
+        "startChar": 23,
+        "endLine": 25,
+        "endChar": 35
+      },
+      "revId": "30f58db1f617d4a62c61cd116e2cab3016e0cb49",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c7d3148c_eac80fe6",
@@ -140,6 +254,30 @@
       "writtenOn": "2024-03-26T18:35:05Z",
       "side": 1,
       "message": "If this functionality only applies to f2fs, should we move it to F2fsUtils?\n\nhttps://cs.android.com/android/platform/superproject/main/+/main:frameworks/base/core/java/com/android/internal/content/F2fsUtils.java",
+      "range": {
+        "startLine": 29,
+        "startChar": 31,
+        "endLine": 29,
+        "endChar": 52
+      },
+      "revId": "30f58db1f617d4a62c61cd116e2cab3016e0cb49",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "09f8463f_c2dcb27d",
+        "filename": "core/java/com/android/internal/content/FileSystemUtils.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1956258
+      },
+      "writtenOn": "2024-03-28T16:21:41Z",
+      "side": 1,
+      "message": "This is not f2fs specific functionality. both ext4 and f2fs implement this.",
+      "parentUuid": "c7d3148c_eac80fe6",
       "range": {
         "startLine": 29,
         "startChar": 31,
@@ -173,6 +311,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "46f4394b_d28d4abe",
+        "filename": "core/jni/com_android_internal_content_FileSystemUtils.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1956258
+      },
+      "writtenOn": "2024-03-28T16:21:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d1452a5e_4a45f99a",
+      "range": {
+        "startLine": 46,
+        "startChar": 3,
+        "endLine": 48,
+        "endChar": 50
+      },
+      "revId": "30f58db1f617d4a62c61cd116e2cab3016e0cb49",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "62fadea4_718127e3",
@@ -186,6 +348,30 @@
       "writtenOn": "2024-03-21T01:25:36Z",
       "side": 1,
       "message": "check if eofbit/failbit is set",
+      "range": {
+        "startLine": 51,
+        "startChar": 16,
+        "endLine": 51,
+        "endChar": 21
+      },
+      "revId": "30f58db1f617d4a62c61cd116e2cab3016e0cb49",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ea26078f_0885ef5f",
+        "filename": "core/jni/com_android_internal_content_FileSystemUtils.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1956258
+      },
+      "writtenOn": "2024-03-28T16:21:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "62fadea4_718127e3",
       "range": {
         "startLine": 51,
         "startChar": 16,
@@ -243,6 +429,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b478d0cc_07457b4d",
+        "filename": "core/jni/com_android_internal_content_FileSystemUtils.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1956258
+      },
+      "writtenOn": "2024-03-28T16:21:41Z",
+      "side": 1,
+      "message": "This class also parses section headers and section which is not needed at this point. I avoided using it due to extra I/O. https://cs.android.com/android/platform/superproject/main/+/main:system/memory/libmeminfo/libelf64/parse.cpp;l\u003d159;drc\u003d994a12994d0712e4a9719b54cc801865af983b62",
+      "parentUuid": "ebe53f4d_e230be42",
+      "range": {
+        "startLine": 54,
+        "startChar": 4,
+        "endLine": 54,
+        "endChar": 15
+      },
+      "revId": "30f58db1f617d4a62c61cd116e2cab3016e0cb49",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bbe65ebe_e6b44b93",
@@ -256,6 +466,30 @@
       "writtenOn": "2024-03-21T01:25:36Z",
       "side": 1,
       "message": "same",
+      "range": {
+        "startLine": 64,
+        "startChar": 16,
+        "endLine": 64,
+        "endChar": 21
+      },
+      "revId": "30f58db1f617d4a62c61cd116e2cab3016e0cb49",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "606e682a_ac563586",
+        "filename": "core/jni/com_android_internal_content_FileSystemUtils.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1956258
+      },
+      "writtenOn": "2024-03-28T16:21:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bbe65ebe_e6b44b93",
       "range": {
         "startLine": 64,
         "startChar": 16,
@@ -289,6 +523,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2a0e58d3_63a7cef4",
+        "filename": "core/jni/com_android_internal_content_FileSystemUtils.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1956258
+      },
+      "writtenOn": "2024-03-28T16:21:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "91e3c389_910503b1",
+      "range": {
+        "startLine": 69,
+        "startChar": 20,
+        "endLine": 69,
+        "endChar": 24
+      },
+      "revId": "30f58db1f617d4a62c61cd116e2cab3016e0cb49",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "93fc5aeb_4da19314",
@@ -302,6 +560,30 @@
       "writtenOn": "2024-03-21T01:25:36Z",
       "side": 1,
       "message": "suggest:\n\n```\nIF_ALOGD() {\n    struct stat beforePunch;\n    lstat(filePath, \u0026beforePunch);\n    ALOGD(\"Size before punching holes st_blocks: %llu, st_blksize: %lld, st_size: %lld\",\n          beforePunch.st_blocks, beforePunch.st_blksize, beforePunch.st_size);\n    ALOGD(\"Total number of LOAD segments %llu\", programHeaders.size());\n}\n```\n\n(same below)",
+      "range": {
+        "startLine": 79,
+        "startChar": 0,
+        "endLine": 83,
+        "endChar": 71
+      },
+      "revId": "30f58db1f617d4a62c61cd116e2cab3016e0cb49",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4cabf0eb_0e70ed2e",
+        "filename": "core/jni/com_android_internal_content_FileSystemUtils.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1956258
+      },
+      "writtenOn": "2024-03-28T16:21:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "93fc5aeb_4da19314",
       "range": {
         "startLine": 79,
         "startChar": 0,
@@ -335,6 +617,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a29eb874_f5b9a6f4",
+        "filename": "core/jni/com_android_internal_content_FileSystemUtils.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1956258
+      },
+      "writtenOn": "2024-03-28T16:21:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7186a6f5_962387e4",
+      "range": {
+        "startLine": 85,
+        "startChar": 0,
+        "endLine": 85,
+        "endChar": 30
+      },
+      "revId": "30f58db1f617d4a62c61cd116e2cab3016e0cb49",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fce64e24_0815ac01",
@@ -348,6 +654,30 @@
       "writtenOn": "2024-03-21T01:25:36Z",
       "side": 1,
       "message": "no need for this argument",
+      "range": {
+        "startLine": 86,
+        "startChar": 65,
+        "endLine": 86,
+        "endChar": 68
+      },
+      "revId": "30f58db1f617d4a62c61cd116e2cab3016e0cb49",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8809419d_feea3b0c",
+        "filename": "core/jni/com_android_internal_content_FileSystemUtils.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1956258
+      },
+      "writtenOn": "2024-03-28T16:21:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fce64e24_0815ac01",
       "range": {
         "startLine": 86,
         "startChar": 65,
@@ -381,6 +711,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0046b357_ea104a6f",
+        "filename": "core/jni/com_android_internal_content_FileSystemUtils.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1956258
+      },
+      "writtenOn": "2024-03-28T16:21:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c7210f51_73004038",
+      "range": {
+        "startLine": 88,
+        "startChar": 34,
+        "endLine": 88,
+        "endChar": 35
+      },
+      "revId": "30f58db1f617d4a62c61cd116e2cab3016e0cb49",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e7747a50_8a9d05b7",
@@ -394,6 +748,30 @@
       "writtenOn": "2024-03-21T01:25:36Z",
       "side": 1,
       "message": "The file contents may trigger an overflow if the file is malformed:\n\n```\nuint64_t punchOffset;\nif (__builtin_add_overflow(programHeaders[index].p_offset, programHeaders[index].p_filesz, \u0026punchOffset)) { return false; }\n```\n\nIt may also be necessary to ignore invalid contents instead of punching holes.",
+      "range": {
+        "startLine": 89,
+        "startChar": 31,
+        "endLine": 89,
+        "endChar": 93
+      },
+      "revId": "30f58db1f617d4a62c61cd116e2cab3016e0cb49",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9d9b2f6a_5680bf84",
+        "filename": "core/jni/com_android_internal_content_FileSystemUtils.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1956258
+      },
+      "writtenOn": "2024-03-28T16:21:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e7747a50_8a9d05b7",
       "range": {
         "startLine": 89,
         "startChar": 31,
@@ -427,6 +805,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c8cf9760_bd2a6558",
+        "filename": "core/jni/com_android_internal_content_FileSystemUtils.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1956258
+      },
+      "writtenOn": "2024-03-28T16:21:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cc0aa167_d6b6ffed",
+      "range": {
+        "startLine": 90,
+        "startChar": 28,
+        "endLine": 90,
+        "endChar": 76
+      },
+      "revId": "30f58db1f617d4a62c61cd116e2cab3016e0cb49",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "165aeae8_c400b9af",
@@ -440,6 +842,30 @@
       "writtenOn": "2024-03-21T01:25:36Z",
       "side": 1,
       "message": "nit: add debug mode to read contents and make sure they are really zero there? I\u0027m assuming you tried that out locally?",
+      "range": {
+        "startLine": 92,
+        "startChar": 8,
+        "endLine": 94,
+        "endChar": 5
+      },
+      "revId": "30f58db1f617d4a62c61cd116e2cab3016e0cb49",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b3ae8628_07f7062d",
+        "filename": "core/jni/com_android_internal_content_FileSystemUtils.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1956258
+      },
+      "writtenOn": "2024-03-28T16:21:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "165aeae8_c400b9af",
       "range": {
         "startLine": 92,
         "startChar": 8,
@@ -473,6 +899,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1aa6604f_e7170f0d",
+        "filename": "core/jni/com_android_internal_content_FileSystemUtils.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1956258
+      },
+      "writtenOn": "2024-03-28T16:21:41Z",
+      "side": 1,
+      "message": "realized that JNI here wasn\u0027t necessary as this will be called from Cpp code only. Removed it.",
+      "parentUuid": "48fb1dd7_4a475e37",
+      "range": {
+        "startLine": 108,
+        "startChar": 4,
+        "endLine": 108,
+        "endChar": 19
+      },
+      "revId": "30f58db1f617d4a62c61cd116e2cab3016e0cb49",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9b663cf7_0f54db90",
@@ -486,6 +936,30 @@
       "writtenOn": "2024-03-21T01:25:36Z",
       "side": 1,
       "message": "nit: You can use \"#pragma once\" if you want",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 57
+      },
+      "revId": "30f58db1f617d4a62c61cd116e2cab3016e0cb49",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "578bafa8_87be9e6e",
+        "filename": "core/jni/com_android_internal_content_FileSystemUtils.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1956258
+      },
+      "writtenOn": "2024-03-28T16:21:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9b663cf7_0f54db90",
       "range": {
         "startLine": 16,
         "startChar": 0,
@@ -542,6 +1016,54 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8012e38d_640eb79c",
+        "filename": "core/jni/com_android_internal_content_FileSystemUtils.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1956258
+      },
+      "writtenOn": "2024-03-28T16:21:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f9d39e9a_241017f8",
+      "range": {
+        "startLine": 23,
+        "startChar": 17,
+        "endLine": 23,
+        "endChar": 20
+      },
+      "revId": "30f58db1f617d4a62c61cd116e2cab3016e0cb49",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "53c8e1e1_56e44eb8",
+        "filename": "core/jni/com_android_internal_content_FileSystemUtils.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1956258
+      },
+      "writtenOn": "2024-03-28T16:21:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e3bb4411_603653c1",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 66
+      },
+      "revId": "30f58db1f617d4a62c61cd116e2cab3016e0cb49",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1866571c_73411222",
@@ -555,6 +1077,30 @@
       "writtenOn": "2024-03-21T01:25:36Z",
       "side": 1,
       "message": "nit: should we check error? or explicitly ignore with \"(void)punchHolesInElf...\"",
+      "range": {
+        "startLine": 171,
+        "startChar": 8,
+        "endLine": 171,
+        "endChar": 23
+      },
+      "revId": "30f58db1f617d4a62c61cd116e2cab3016e0cb49",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "29a5cb4a_ad1cca87",
+        "filename": "core/jni/com_android_internal_content_NativeLibraryHelper.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1956258
+      },
+      "writtenOn": "2024-03-28T16:21:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1866571c_73411222",
       "range": {
         "startLine": 171,
         "startChar": 8,
@@ -588,6 +1134,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6d039da0_70477e84",
+        "filename": "core/jni/com_android_internal_content_NativeLibraryHelper.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 1956258
+      },
+      "writtenOn": "2024-03-28T16:21:41Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "71d3cd08_b5839600",
+      "range": {
+        "startLine": 220,
+        "startChar": 0,
+        "endLine": 228,
+        "endChar": 5
+      },
+      "revId": "30f58db1f617d4a62c61cd116e2cab3016e0cb49",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c9170d04_b209aa2a",
@@ -601,6 +1171,30 @@
       "writtenOn": "2024-03-21T01:25:36Z",
       "side": 1,
       "message": "should we check to make sure it\u0027s not f2fs here (or that it is ext4)?",
+      "range": {
+        "startLine": 272,
+        "startChar": 0,
+        "endLine": 275,
+        "endChar": 35
+      },
+      "revId": "30f58db1f617d4a62c61cd116e2cab3016e0cb49",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6c2c5b65_d07c0d52",
+        "filename": "core/jni/com_android_internal_content_NativeLibraryHelper.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 275,
+      "author": {
+        "id": 1956258
+      },
+      "writtenOn": "2024-03-28T16:21:41Z",
+      "side": 1,
+      "message": "This call will basically just return for f2fs right now. need to evaluate f2fs compression vs punch holes effect on native libs.",
+      "parentUuid": "c9170d04_b209aa2a",
       "range": {
         "startLine": 272,
         "startChar": 0,
