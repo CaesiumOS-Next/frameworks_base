@@ -168,6 +168,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c02c4dc5_b8f4b7c3",
+        "filename": "core/jni/com_android_internal_content_FileSystemUtils.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1499410
+      },
+      "writtenOn": "2024-03-29T01:08:52Z",
+      "side": 1,
+      "message": "\u003e In the case, the lstat or stat would return the same numbers then. \n\nFor `st_size`, yes. For `st_blocks` it would be less.",
+      "parentUuid": "a7fea610_29c5b0e3",
+      "range": {
+        "startLine": 82,
+        "startChar": 45,
+        "endLine": 82,
+        "endChar": 64
+      },
+      "revId": "90475a02d228e544a952122473f3a74f831f2179",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a747d1bb_f0ae067c",
         "filename": "core/jni/com_android_internal_content_FileSystemUtils.cpp",
         "patchSetId": 5
