@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "19782733_7c478f61",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1956258
+      },
+      "writtenOn": "2024-03-29T21:40:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d985009b_f589b0ed",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 51
+      },
+      "revId": "90475a02d228e544a952122473f3a74f831f2179",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1f168345_265cfc12",
@@ -190,6 +214,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9d47b9c3_67ea0b7d",
+        "filename": "core/jni/com_android_internal_content_FileSystemUtils.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1956258
+      },
+      "writtenOn": "2024-03-29T21:40:20Z",
+      "side": 1,
+      "message": "From test logs, stats for installation embedded_native_libs_test_app.apk. Note: ELF was 64bit aligned during tests.\n```\nSize before punching holes st_blocks: 2072, st_blksize: 4096, st_size: 1058429\nSize after punching holes st_blocks: 1832, st_blksize: 4096, st_size: 1058429\n```",
+      "parentUuid": "c02c4dc5_b8f4b7c3",
+      "range": {
+        "startLine": 82,
+        "startChar": 45,
+        "endLine": 82,
+        "endChar": 64
+      },
+      "revId": "90475a02d228e544a952122473f3a74f831f2179",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a747d1bb_f0ae067c",
@@ -248,6 +296,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fe6882fd_6332d89f",
+        "filename": "core/jni/com_android_internal_content_FileSystemUtils.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1956258
+      },
+      "writtenOn": "2024-03-29T21:40:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5848784f_1b8ee573",
+      "range": {
+        "startLine": 107,
+        "startChar": 7,
+        "endLine": 107,
+        "endChar": 8
+      },
+      "revId": "90475a02d228e544a952122473f3a74f831f2179",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "da42b935_347899c6",
@@ -261,6 +333,30 @@
       "writtenOn": "2024-03-28T19:01:53Z",
       "side": 1,
       "message": "ditto",
+      "range": {
+        "startLine": 134,
+        "startChar": 11,
+        "endLine": 134,
+        "endChar": 12
+      },
+      "revId": "90475a02d228e544a952122473f3a74f831f2179",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "843cc015_f1f78adf",
+        "filename": "core/jni/com_android_internal_content_FileSystemUtils.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1956258
+      },
+      "writtenOn": "2024-03-29T21:40:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "da42b935_347899c6",
       "range": {
         "startLine": 134,
         "startChar": 11,
@@ -294,6 +390,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "85a5c5ba_868b4f4a",
+        "filename": "core/jni/com_android_internal_content_FileSystemUtils.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1956258
+      },
+      "writtenOn": "2024-03-29T21:40:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cac1f3ad_244c0c60",
+      "range": {
+        "startLine": 23,
+        "startChar": 17,
+        "endLine": 23,
+        "endChar": 30
+      },
+      "revId": "90475a02d228e544a952122473f3a74f831f2179",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "aee5737d_7bae8da7",
@@ -307,6 +427,30 @@
       "writtenOn": "2024-03-28T19:01:53Z",
       "side": 1,
       "message": "Move to line 172",
+      "range": {
+        "startLine": 179,
+        "startChar": 8,
+        "endLine": 179,
+        "endChar": 64
+      },
+      "revId": "90475a02d228e544a952122473f3a74f831f2179",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "00481719_08da56f8",
+        "filename": "core/jni/com_android_internal_content_NativeLibraryHelper.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1956258
+      },
+      "writtenOn": "2024-03-29T21:40:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "aee5737d_7bae8da7",
       "range": {
         "startLine": 179,
         "startChar": 8,
@@ -340,6 +484,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9d917458_84c6b395",
+        "filename": "core/jni/com_android_internal_content_NativeLibraryHelper.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 285,
+      "author": {
+        "id": 1956258
+      },
+      "writtenOn": "2024-03-29T21:40:20Z",
+      "side": 1,
+      "message": "ifstream doesn\u0027t support reading from fd directly.",
+      "parentUuid": "52e1def9_1d77b209",
+      "range": {
+        "startLine": 280,
+        "startChar": 4,
+        "endLine": 285,
+        "endChar": 0
+      },
+      "revId": "90475a02d228e544a952122473f3a74f831f2179",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b81efddc_50541047",
@@ -363,6 +531,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "29e5d0ad_d989ee0a",
+        "filename": "core/tests/FileSystemUtilsTest/Android.bp",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1956258
+      },
+      "writtenOn": "2024-03-29T21:40:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b81efddc_50541047",
+      "range": {
+        "startLine": 0,
+        "startChar": 0,
+        "endLine": 0,
+        "endChar": 0
+      },
+      "revId": "90475a02d228e544a952122473f3a74f831f2179",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6384cabe_93f038e5",
@@ -376,6 +568,30 @@
       "writtenOn": "2024-03-28T19:01:53Z",
       "side": 1,
       "message": "Is this needed?",
+      "range": {
+        "startLine": 21,
+        "startChar": 10,
+        "endLine": 21,
+        "endChar": 51
+      },
+      "revId": "90475a02d228e544a952122473f3a74f831f2179",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5bce599a_18c9f440",
+        "filename": "core/tests/FileSystemUtilsTest/AndroidManifest.xml",
+        "patchSetId": 5
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1956258
+      },
+      "writtenOn": "2024-03-29T21:40:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6384cabe_93f038e5",
       "range": {
         "startLine": 21,
         "startChar": 10,
