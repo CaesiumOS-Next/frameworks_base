@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d985009b_f589b0ed",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1499410
+      },
+      "writtenOn": "2024-03-29T00:39:51Z",
+      "side": 1,
+      "message": "Lets expand the description more to help with review.\n\nSay what, why, and how.\n\nGive an example and show how the ELF header data is being used to determine where the punch holes should happen.\n\nShow the numbers for before and after punch holes.",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 51
+      },
+      "revId": "90475a02d228e544a952122473f3a74f831f2179",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1f168345_265cfc12",
         "filename": "core/jni/com_android_internal_content_FileSystemUtils.cpp",
         "patchSetId": 5
@@ -14,6 +37,30 @@
       "writtenOn": "2024-03-28T19:01:53Z",
       "side": 1,
       "message": "Sorry my C++ skill rusty. Could you explain a bit more about the logic around programHeaders? Thanks!",
+      "range": {
+        "startLine": 43,
+        "startChar": 47,
+        "endLine": 43,
+        "endChar": 61
+      },
+      "revId": "90475a02d228e544a952122473f3a74f831f2179",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0d9bab3b_b7c60b06",
+        "filename": "core/jni/com_android_internal_content_FileSystemUtils.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1499410
+      },
+      "writtenOn": "2024-03-29T00:39:51Z",
+      "side": 1,
+      "message": "Hi Song, program header in this context refers to the ELF program header. It is being used in the patch to determine where the holes/paddings are located without needing to do a seek. \n\nFor more details you can take a look at the ELF spec:\n\nhttps://www.cs.cmu.edu/afs/cs/academic/class/15213-f00/docs/elf.pdf",
+      "parentUuid": "1f168345_265cfc12",
       "range": {
         "startLine": 43,
         "startChar": 47,
@@ -47,6 +94,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "131a5f0b_3cfdd3e4",
+        "filename": "core/jni/com_android_internal_content_FileSystemUtils.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1499410
+      },
+      "writtenOn": "2024-03-29T00:39:51Z",
+      "side": 1,
+      "message": "The file\u0027s extent (range) i.e the apparent size would stay the same. The allocated blocks should be less.",
+      "parentUuid": "3f8ccf5b_8f1af9cb",
+      "range": {
+        "startLine": 82,
+        "startChar": 45,
+        "endLine": 82,
+        "endChar": 64
+      },
+      "revId": "90475a02d228e544a952122473f3a74f831f2179",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a747d1bb_f0ae067c",
@@ -60,6 +131,24 @@
       "writtenOn": "2024-03-28T19:01:53Z",
       "side": 1,
       "message": "close the fd?",
+      "revId": "90475a02d228e544a952122473f3a74f831f2179",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6f9c8b78_2838ee2e",
+        "filename": "core/jni/com_android_internal_content_FileSystemUtils.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1499410
+      },
+      "writtenOn": "2024-03-29T00:39:51Z",
+      "side": 1,
+      "message": "Should close once it drops out of scope - unique_fd",
+      "parentUuid": "a747d1bb_f0ae067c",
       "revId": "90475a02d228e544a952122473f3a74f831f2179",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
