@@ -144,6 +144,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "763e8edd_7690944a",
+        "filename": "core/jni/com_android_internal_content_FileSystemUtils.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1956258
+      },
+      "writtenOn": "2024-03-29T01:01:56Z",
+      "side": 1,
+      "message": "st_blocks here gives out the actual number of blocks which are being used by file.",
+      "parentUuid": "a7fea610_29c5b0e3",
+      "range": {
+        "startLine": 82,
+        "startChar": 45,
+        "endLine": 82,
+        "endChar": 64
+      },
+      "revId": "90475a02d228e544a952122473f3a74f831f2179",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a747d1bb_f0ae067c",
         "filename": "core/jni/com_android_internal_content_FileSystemUtils.cpp",
         "patchSetId": 5
