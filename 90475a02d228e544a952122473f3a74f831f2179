@@ -120,6 +120,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a7fea610_29c5b0e3",
+        "filename": "core/jni/com_android_internal_content_FileSystemUtils.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1480715
+      },
+      "writtenOn": "2024-03-29T00:59:04Z",
+      "side": 1,
+      "message": "In the case, the `lstat` or `stat` would return the same numbers then. Perhaps change `lstat` to `du` or something that checks the disk space usage?",
+      "parentUuid": "131a5f0b_3cfdd3e4",
+      "range": {
+        "startLine": 82,
+        "startChar": 45,
+        "endLine": 82,
+        "endChar": 64
+      },
+      "revId": "90475a02d228e544a952122473f3a74f831f2179",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a747d1bb_f0ae067c",
         "filename": "core/jni/com_android_internal_content_FileSystemUtils.cpp",
         "patchSetId": 5
