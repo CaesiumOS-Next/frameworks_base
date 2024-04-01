@@ -16,6 +16,52 @@
       "message": "Moved the tests to separate cl.",
       "revId": "4f8d9b77937fae74940d8331a4c8f0968cbab2dc",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "70f719cd_c837b6c5",
+        "filename": "core/jni/com_android_internal_content_FileSystemUtils.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1480715
+      },
+      "writtenOn": "2024-04-01T15:54:04Z",
+      "side": 1,
+      "message": "nit: please fix the build warnings in this file",
+      "range": {
+        "startLine": 49,
+        "startChar": 61,
+        "endLine": 49,
+        "endChar": 82
+      },
+      "revId": "4f8d9b77937fae74940d8331a4c8f0968cbab2dc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1600f7fe_6985d1c1",
+        "filename": "core/jni/com_android_internal_content_NativeLibraryHelper.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 282,
+      "author": {
+        "id": 1480715
+      },
+      "writtenOn": "2024-04-01T15:54:04Z",
+      "side": 1,
+      "message": "`ALOGW`? The code doesn\u0027t treat it as a hard failure here",
+      "range": {
+        "startLine": 282,
+        "startChar": 8,
+        "endLine": 282,
+        "endChar": 13
+      },
+      "revId": "4f8d9b77937fae74940d8331a4c8f0968cbab2dc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
