@@ -418,7 +418,7 @@ void ASurfaceTransaction_setBuffer(ASurfaceTransaction* aSurfaceTransaction,
 
 void ASurfaceTransaction_setGeometry(ASurfaceTransaction* aSurfaceTransaction,
                                      ASurfaceControl* aSurfaceControl, const ARect& source,
-                                     const ARect& destination, int32_t transform) {
+                                     const ARect& destination, ANativeWindowTransform transform) {
     CHECK_NOT_NULL(aSurfaceTransaction);
     CHECK_NOT_NULL(aSurfaceControl);
     CHECK_VALID_RECT(source);
@@ -667,16 +667,16 @@ void ASurfaceTransaction_setColor(ASurfaceTransaction* aSurfaceTransaction,
 
 void ASurfaceTransaction_setFrameRate(ASurfaceTransaction* aSurfaceTransaction,
                                       ASurfaceControl* aSurfaceControl, float frameRate,
-                                      int8_t compatibility) {
+                                      ANativeWindow_FrameRateCompatibility compatibility) {
     ASurfaceTransaction_setFrameRateWithChangeStrategy(
             aSurfaceTransaction, aSurfaceControl, frameRate, compatibility,
             ANATIVEWINDOW_CHANGE_FRAME_RATE_ONLY_IF_SEAMLESS);
 }
 
-void ASurfaceTransaction_setFrameRateWithChangeStrategy(ASurfaceTransaction* aSurfaceTransaction,
-                                                        ASurfaceControl* aSurfaceControl,
-                                                        float frameRate, int8_t compatibility,
-                                                        int8_t changeFrameRateStrategy) {
+void ASurfaceTransaction_setFrameRateWithChangeStrategy(
+        ASurfaceTransaction* aSurfaceTransaction, ASurfaceControl* aSurfaceControl, float frameRate,
+        ANativeWindow_FrameRateCompatibility compatibility,
+        ANativeWindow_ChangeFrameRateStrategy changeFrameRateStrategy) {
     CHECK_NOT_NULL(aSurfaceTransaction);
     CHECK_NOT_NULL(aSurfaceControl);
     Transaction* transaction = ASurfaceTransaction_to_Transaction(aSurfaceTransaction);
