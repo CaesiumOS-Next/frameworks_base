@@ -346,6 +346,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "36174012_f7b4b2df",
+        "filename": "core/jni/com_android_internal_content_FileSystemUtils.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2024-04-03T01:03:37Z",
+      "side": 1,
+      "message": "ifstream will automatically close when being destructed. Can we please change it back? we should not need custom deleter. This is not Java ;P",
+      "parentUuid": "fe6882fd_6332d89f",
+      "range": {
+        "startLine": 107,
+        "startChar": 7,
+        "endLine": 107,
+        "endChar": 8
+      },
+      "revId": "90475a02d228e544a952122473f3a74f831f2179",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "da42b935_347899c6",
         "filename": "core/jni/com_android_internal_content_FileSystemUtils.cpp",
         "patchSetId": 5

@@ -1,0 +1,159 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b23f02b4_557cac0a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2024-04-03T01:03:37Z",
+      "side": 1,
+      "message": "This looks great! We have appcompat results as well?",
+      "revId": "25693e66febf9fd35e52ebc68f4163d853dbebf6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f28ccb25_b5567099",
+        "filename": "core/jni/com_android_internal_content_FileSystemUtils.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2024-04-03T01:03:37Z",
+      "side": 1,
+      "message": "same",
+      "range": {
+        "startLine": 43,
+        "startChar": 53,
+        "endLine": 43,
+        "endChar": 62
+      },
+      "revId": "25693e66febf9fd35e52ebc68f4163d853dbebf6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "534227c6_d8622049",
+        "filename": "core/jni/com_android_internal_content_FileSystemUtils.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2024-04-03T01:03:37Z",
+      "side": 1,
+      "message": "hey, one last thing - are we 100% sure that we can\u0027t verify the file is really 0 here always? Are we sure it\u0027s too slow to read. If we ever accidentally delete data here, it could be an issue.",
+      "range": {
+        "startLine": 79,
+        "startChar": 12,
+        "endLine": 79,
+        "endChar": 29
+      },
+      "revId": "25693e66febf9fd35e52ebc68f4163d853dbebf6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0a38f5bf_05b67be9",
+        "filename": "core/jni/com_android_internal_content_FileSystemUtils.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2024-04-03T01:03:37Z",
+      "side": 1,
+      "message": "nit: maybe make it clear \"should be zero: ...\" or similar, since people might not realize that is the idea if they are looking later",
+      "range": {
+        "startLine": 80,
+        "startChar": 19,
+        "endLine": 80,
+        "endChar": 47
+      },
+      "revId": "25693e66febf9fd35e52ebc68f4163d853dbebf6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f095c844_64cf7a90",
+        "filename": "core/jni/com_android_internal_content_FileSystemUtils.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2024-04-03T01:03:37Z",
+      "side": 1,
+      "message": "could this one overflow?",
+      "range": {
+        "startLine": 85,
+        "startChar": 66,
+        "endLine": 85,
+        "endChar": 89
+      },
+      "revId": "25693e66febf9fd35e52ebc68f4163d853dbebf6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d2c2225a_6eb0c1d4",
+        "filename": "core/jni/com_android_internal_content_FileSystemUtils.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2024-04-03T01:03:37Z",
+      "side": 1,
+      "message": "nit: recommend naming this offset, because it doesn\u0027t have to be a zip file",
+      "range": {
+        "startLine": 29,
+        "startChar": 54,
+        "endLine": 29,
+        "endChar": 63
+      },
+      "revId": "25693e66febf9fd35e52ebc68f4163d853dbebf6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "540801a2_74077196",
+        "filename": "core/jni/com_android_internal_content_FileSystemUtils.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2024-04-03T01:03:37Z",
+      "side": 1,
+      "message": "nit: recommend avoid default argument, since it\u0027s always specified in the current code I think. the main reason is, if you need to add a new argument, it makes it easier to see in client code something needs to be done",
+      "range": {
+        "startLine": 29,
+        "startChar": 63,
+        "endLine": 29,
+        "endChar": 67
+      },
+      "revId": "25693e66febf9fd35e52ebc68f4163d853dbebf6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
