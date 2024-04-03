@@ -66,6 +66,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3bdd39f0_59ff3dad",
+        "filename": "core/jni/com_android_internal_content_FileSystemUtils.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1499410
+      },
+      "writtenOn": "2024-04-03T06:02:53Z",
+      "side": 1,
+      "message": "If we have any gaps \u003e 1 block (4096) I think we can be sure they are all zeroes. Since that would be padding inserted by the static linker.\n\n@waghpawan@google.com could you only do the fallocate() in the case punchLen is at least 4096.\n\nIt would avoid the syscall in ELFs not build with separate loadble segments or separate code.",
+      "parentUuid": "534227c6_d8622049",
+      "range": {
+        "startLine": 79,
+        "startChar": 12,
+        "endLine": 79,
+        "endChar": 29
+      },
+      "revId": "25693e66febf9fd35e52ebc68f4163d853dbebf6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0a38f5bf_05b67be9",
         "filename": "core/jni/com_android_internal_content_FileSystemUtils.cpp",
         "patchSetId": 7
