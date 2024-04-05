@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d8efa97a_41e51fd2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1956258
+      },
+      "writtenOn": "2024-04-05T23:37:35Z",
+      "side": 1,
+      "message": "Yes, results are updated on the bug. There are no new failures with this change. Also, skipping holes for non zero content now.",
+      "parentUuid": "b23f02b4_557cac0a",
+      "revId": "25693e66febf9fd35e52ebc68f4163d853dbebf6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f28ccb25_b5567099",
@@ -31,6 +49,30 @@
       "writtenOn": "2024-04-03T01:03:37Z",
       "side": 1,
       "message": "same",
+      "range": {
+        "startLine": 43,
+        "startChar": 53,
+        "endLine": 43,
+        "endChar": 62
+      },
+      "revId": "25693e66febf9fd35e52ebc68f4163d853dbebf6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ade4a3c2_d1ca11fd",
+        "filename": "core/jni/com_android_internal_content_FileSystemUtils.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1956258
+      },
+      "writtenOn": "2024-04-05T23:37:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f28ccb25_b5567099",
       "range": {
         "startLine": 43,
         "startChar": 53,
@@ -88,6 +130,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fb617745_51a241de",
+        "filename": "core/jni/com_android_internal_content_FileSystemUtils.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1956258
+      },
+      "writtenOn": "2024-04-05T23:37:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3bdd39f0_59ff3dad",
+      "range": {
+        "startLine": 79,
+        "startChar": 12,
+        "endLine": 79,
+        "endChar": 29
+      },
+      "revId": "25693e66febf9fd35e52ebc68f4163d853dbebf6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0a38f5bf_05b67be9",
@@ -101,6 +167,30 @@
       "writtenOn": "2024-04-03T01:03:37Z",
       "side": 1,
       "message": "nit: maybe make it clear \"should be zero: ...\" or similar, since people might not realize that is the idea if they are looking later",
+      "range": {
+        "startLine": 80,
+        "startChar": 19,
+        "endLine": 80,
+        "endChar": 47
+      },
+      "revId": "25693e66febf9fd35e52ebc68f4163d853dbebf6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5af8168b_5f73df14",
+        "filename": "core/jni/com_android_internal_content_FileSystemUtils.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1956258
+      },
+      "writtenOn": "2024-04-05T23:37:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0a38f5bf_05b67be9",
       "range": {
         "startLine": 80,
         "startChar": 19,
@@ -157,6 +247,54 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ff4e0cef_8ce8bd31",
+        "filename": "core/jni/com_android_internal_content_FileSystemUtils.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1956258
+      },
+      "writtenOn": "2024-04-05T23:37:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f095c844_64cf7a90",
+      "range": {
+        "startLine": 85,
+        "startChar": 66,
+        "endLine": 85,
+        "endChar": 89
+      },
+      "revId": "25693e66febf9fd35e52ebc68f4163d853dbebf6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e28d8c77_eb922f18",
+        "filename": "core/jni/com_android_internal_content_FileSystemUtils.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1956258
+      },
+      "writtenOn": "2024-04-05T23:37:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "421f5f22_8ff988d3",
+      "range": {
+        "startLine": 85,
+        "startChar": 8,
+        "endLine": 85,
+        "endChar": 17
+      },
+      "revId": "25693e66febf9fd35e52ebc68f4163d853dbebf6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d2c2225a_6eb0c1d4",
@@ -193,6 +331,54 @@
       "writtenOn": "2024-04-03T01:03:37Z",
       "side": 1,
       "message": "nit: recommend avoid default argument, since it\u0027s always specified in the current code I think. the main reason is, if you need to add a new argument, it makes it easier to see in client code something needs to be done",
+      "range": {
+        "startLine": 29,
+        "startChar": 63,
+        "endLine": 29,
+        "endChar": 67
+      },
+      "revId": "25693e66febf9fd35e52ebc68f4163d853dbebf6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b1518e85_d67fe57d",
+        "filename": "core/jni/com_android_internal_content_FileSystemUtils.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1956258
+      },
+      "writtenOn": "2024-04-05T23:37:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d2c2225a_6eb0c1d4",
+      "range": {
+        "startLine": 29,
+        "startChar": 54,
+        "endLine": 29,
+        "endChar": 63
+      },
+      "revId": "25693e66febf9fd35e52ebc68f4163d853dbebf6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "155a9395_b5cbed32",
+        "filename": "core/jni/com_android_internal_content_FileSystemUtils.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1956258
+      },
+      "writtenOn": "2024-04-05T23:37:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "540801a2_74077196",
       "range": {
         "startLine": 29,
         "startChar": 63,
