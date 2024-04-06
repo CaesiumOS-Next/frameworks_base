@@ -66,6 +66,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6b0d5f9f_d20236a2",
+        "filename": "core/jni/com_android_internal_content_FileSystemUtils.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1499410
+      },
+      "writtenOn": "2024-04-06T01:32:39Z",
+      "side": 1,
+      "message": "The padding should be no more than 12KB for 16kB-alignment and no more than 60kB for 64kB alignment. I don\u0027t think static linker supports arbitrarily large p_align. We could read in 60kB chunks to be safe.",
+      "parentUuid": "fad4a799_50e5c893",
+      "range": {
+        "startLine": 86,
+        "startChar": 36,
+        "endLine": 86,
+        "endChar": 44
+      },
+      "revId": "d2a001a4762d18144ec6c9a743c3d26bb77b9638",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4e9be9b8_a4a6a199",
         "filename": "core/jni/com_android_internal_content_FileSystemUtils.cpp",
         "patchSetId": 9
