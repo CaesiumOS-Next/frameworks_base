@@ -490,6 +490,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a27249b1_15aa332a",
+        "filename": "core/jni/com_android_internal_content_FileSystemUtils.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2024-04-09T23:41:46Z",
+      "side": 1,
+      "message": "memcmp is a compiler builtin and it does realize what\u0027s going on here (compares to 0), but yeah I actually can\u0027t believe how much the the lambda is optimized for this case (it\u0027s unrolled - and memcpy doesn\u0027t get unrolled here) - I guess I\u0027m used to seeing bigger lambdas?\n\nAnyway, we could do the test, but I std::all_of does seem faster to me for -Os, which we use in Android:\nhttps://godbolt.org/z/zeedeo1eY\n\nThanks Kelvin!",
+      "parentUuid": "f1ef50b9_0896de15",
+      "range": {
+        "startLine": 93,
+        "startChar": 22,
+        "endLine": 93,
+        "endChar": 98
+      },
+      "revId": "d2a001a4762d18144ec6c9a743c3d26bb77b9638",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2fb6f55f_13fc4f91",
         "filename": "core/jni/com_android_internal_content_FileSystemUtils.cpp",
         "patchSetId": 9
