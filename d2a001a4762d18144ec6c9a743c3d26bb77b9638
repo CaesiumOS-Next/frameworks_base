@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6359d89a_5d3222f3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1956258
+      },
+      "writtenOn": "2024-04-09T22:04:09Z",
+      "side": 1,
+      "message": "Added @zhangkelvin@google.com",
+      "parentUuid": "db47c256_2220ef3b",
+      "revId": "d2a001a4762d18144ec6c9a743c3d26bb77b9638",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4e8d76e7_8fcdbaa7",
@@ -114,6 +132,54 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "33e7b1c4_7b312e99",
+        "filename": "core/jni/com_android_internal_content_FileSystemUtils.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1956258
+      },
+      "writtenOn": "2024-04-09T22:04:09Z",
+      "side": 1,
+      "message": "ReadFullyAtOffset API doesn\u0027t return how much data is read in given buffer. Which means provided buffer will need clearing after each read. Without read length info, it will be hard to tell if the zeros in read buffer are from file or buffer itself.",
+      "parentUuid": "4e8d76e7_8fcdbaa7",
+      "range": {
+        "startLine": 86,
+        "startChar": 0,
+        "endLine": 86,
+        "endChar": 46
+      },
+      "revId": "d2a001a4762d18144ec6c9a743c3d26bb77b9638",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3ca80d90_34b019f5",
+        "filename": "core/jni/com_android_internal_content_FileSystemUtils.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1956258
+      },
+      "writtenOn": "2024-04-09T22:04:09Z",
+      "side": 1,
+      "message": "this was done to avoid repeated I/O. there is log for this and we can use find-logs to see if there are any more cases like this. I will followup for chunk reads. Also, ReadOffsetFully doesn\u0027t return how much data is actually read. This has to be fixed first to resolve the chunk reads. If it reaches end of the file while chunking, last chunk will never be punched.",
+      "parentUuid": "8a1ff1dc_b9949e2e",
+      "range": {
+        "startLine": 86,
+        "startChar": 36,
+        "endLine": 86,
+        "endChar": 44
+      },
+      "revId": "d2a001a4762d18144ec6c9a743c3d26bb77b9638",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4e9be9b8_a4a6a199",
         "filename": "core/jni/com_android_internal_content_FileSystemUtils.cpp",
         "patchSetId": 9
@@ -125,6 +191,30 @@
       "writtenOn": "2024-04-06T00:30:12Z",
       "side": 1,
       "message": "if this returns false, we should have an error log and return false from this function or \u0027continue\u0027. That would mean the offset is beyond the end of the file",
+      "range": {
+        "startLine": 87,
+        "startChar": 8,
+        "endLine": 87,
+        "endChar": 25
+      },
+      "revId": "d2a001a4762d18144ec6c9a743c3d26bb77b9638",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ad1955aa_dbc5e0f3",
+        "filename": "core/jni/com_android_internal_content_FileSystemUtils.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1956258
+      },
+      "writtenOn": "2024-04-09T22:04:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4e9be9b8_a4a6a199",
       "range": {
         "startLine": 87,
         "startChar": 8,
@@ -160,6 +250,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "76a0a3a8_b074511d",
+        "filename": "core/jni/com_android_internal_content_FileSystemUtils.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1956258
+      },
+      "writtenOn": "2024-04-09T22:04:09Z",
+      "side": 1,
+      "message": "memcmp will need zero array for comparison which has allocation cost. something like this can be done but I don\u0027t think it is really readable.\n\n```\nstatic int memvcmp(void *memory, unsigned char val, unsigned int size)\n{\n    unsigned char *mm \u003d (unsigned char*)memory;\n    return (*mm \u003d\u003d val) \u0026\u0026 memcmp(mm, mm + 1, size - 1) \u003d\u003d 0;\n}\n\n```",
+      "parentUuid": "d651c55a_934591ff",
+      "range": {
+        "startLine": 93,
+        "startChar": 22,
+        "endLine": 93,
+        "endChar": 98
+      },
+      "revId": "d2a001a4762d18144ec6c9a743c3d26bb77b9638",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2fb6f55f_13fc4f91",
         "filename": "core/jni/com_android_internal_content_FileSystemUtils.cpp",
         "patchSetId": 9
@@ -171,6 +285,30 @@
       "writtenOn": "2024-04-06T00:13:04Z",
       "side": 1,
       "message": "and you could ALOGE this, and maybe setup find-logs for it, so we can understand why this happens",
+      "range": {
+        "startLine": 95,
+        "startChar": 13,
+        "endLine": 95,
+        "endChar": 14
+      },
+      "revId": "d2a001a4762d18144ec6c9a743c3d26bb77b9638",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2728404c_46c64db2",
+        "filename": "core/jni/com_android_internal_content_FileSystemUtils.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1956258
+      },
+      "writtenOn": "2024-04-09T22:04:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2fb6f55f_13fc4f91",
       "range": {
         "startLine": 95,
         "startChar": 13,
@@ -194,6 +332,30 @@
       "writtenOn": "2024-04-06T00:30:12Z",
       "side": 1,
       "message": "can this overflow?",
+      "range": {
+        "startLine": 149,
+        "startChar": 22,
+        "endLine": 149,
+        "endChar": 50
+      },
+      "revId": "d2a001a4762d18144ec6c9a743c3d26bb77b9638",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9c0ed0a2_ff78c690",
+        "filename": "core/jni/com_android_internal_content_FileSystemUtils.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1956258
+      },
+      "writtenOn": "2024-04-09T22:04:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d73eab2f_6c653c3c",
       "range": {
         "startLine": 149,
         "startChar": 22,
