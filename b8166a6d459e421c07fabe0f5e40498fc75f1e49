@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "db21e216_5a23e2e0",
+        "filename": "core/jni/com_android_internal_content_FileSystemUtils.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1710792
+      },
+      "writtenOn": "2024-04-09T23:48:50Z",
+      "side": 1,
+      "message": "Add `constexpr` specifier",
+      "range": {
+        "startLine": 97,
+        "startChar": 77,
+        "endLine": 97,
+        "endChar": 78
+      },
+      "revId": "b8166a6d459e421c07fabe0f5e40498fc75f1e49",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
