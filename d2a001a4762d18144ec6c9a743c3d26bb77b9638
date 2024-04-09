@@ -466,6 +466,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f1ef50b9_0896de15",
+        "filename": "core/jni/com_android_internal_content_FileSystemUtils.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1710792
+      },
+      "writtenOn": "2024-04-09T23:29:11Z",
+      "side": 1,
+      "message": "memcmp compares two memory regions, so there\u0027s 2 memory access per comparison. Versus STL compares a memory region with a compile time constant, and there\u0027s only 1 memory access per comparison. I don\u0027t think STL calls are going to be significantly slower. And readability matters as well.",
+      "parentUuid": "60c63f12_0c194cef",
+      "range": {
+        "startLine": 93,
+        "startChar": 22,
+        "endLine": 93,
+        "endChar": 98
+      },
+      "revId": "d2a001a4762d18144ec6c9a743c3d26bb77b9638",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2fb6f55f_13fc4f91",
         "filename": "core/jni/com_android_internal_content_FileSystemUtils.cpp",
         "patchSetId": 9
