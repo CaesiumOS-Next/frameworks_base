@@ -228,6 +228,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "61f06cd8_6a93c695",
+        "filename": "core/jni/com_android_internal_content_FileSystemUtils.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2024-04-09T22:14:40Z",
+      "side": 1,
+      "message": "So:\n1. move the buffer outside of the loop\n2. prefer malloc/realloc instead of using std::vector, so if this returns nullptr, you can return, instead of aborting on out of memory\n3. please do chunking if you can, it could be like this, maybe?\n\n```\nconstexpr size_t kChunk \u003d 60 * 1024;\nfor (size_t i \u003d punchLen; i \u003c punchStartOffset; i +\u003d kChunk) {\n    size_t uncheckedChunkEnd;\n    if (!__builtin_add_overflow(i, kChunk, \u0026uncheckedChunkEnd)) ...\n    ... \u003d ReadFullyAtOffset(fd, buffer.data(), i, std::min(uncheckedChunkEnd, punchStartOffset));\n    ...\n    fallocate\n}\n```",
+      "parentUuid": "a778ce5f_6145899c",
+      "range": {
+        "startLine": 86,
+        "startChar": 36,
+        "endLine": 86,
+        "endChar": 44
+      },
+      "revId": "d2a001a4762d18144ec6c9a743c3d26bb77b9638",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4e9be9b8_a4a6a199",
         "filename": "core/jni/com_android_internal_content_FileSystemUtils.cpp",
         "patchSetId": 9
