@@ -180,6 +180,54 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e8dcdfca_4c18dfa4",
+        "filename": "core/jni/com_android_internal_content_FileSystemUtils.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2024-04-09T22:08:34Z",
+      "side": 1,
+      "message": "let\u0027s do this now, we can see with flagging.",
+      "parentUuid": "33e7b1c4_7b312e99",
+      "range": {
+        "startLine": 86,
+        "startChar": 0,
+        "endLine": 86,
+        "endChar": 46
+      },
+      "revId": "d2a001a4762d18144ec6c9a743c3d26bb77b9638",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a778ce5f_6145899c",
+        "filename": "core/jni/com_android_internal_content_FileSystemUtils.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2024-04-09T22:08:34Z",
+      "side": 1,
+      "message": "It will be repeated I/O - the same I/O cost, whether it happens in a single  ReadFullyAtOffset call or another.\n\nStill, it would be better to re-use the buffer.",
+      "parentUuid": "3ca80d90_34b019f5",
+      "range": {
+        "startLine": 86,
+        "startChar": 36,
+        "endLine": 86,
+        "endChar": 44
+      },
+      "revId": "d2a001a4762d18144ec6c9a743c3d26bb77b9638",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4e9be9b8_a4a6a199",
         "filename": "core/jni/com_android_internal_content_FileSystemUtils.cpp",
         "patchSetId": 9
@@ -262,6 +310,30 @@
       "side": 1,
       "message": "memcmp will need zero array for comparison which has allocation cost. something like this can be done but I don\u0027t think it is really readable.\n\n```\nstatic int memvcmp(void *memory, unsigned char val, unsigned int size)\n{\n    unsigned char *mm \u003d (unsigned char*)memory;\n    return (*mm \u003d\u003d val) \u0026\u0026 memcmp(mm, mm + 1, size - 1) \u003d\u003d 0;\n}\n\n```",
       "parentUuid": "d651c55a_934591ff",
+      "range": {
+        "startLine": 93,
+        "startChar": 22,
+        "endLine": 93,
+        "endChar": 98
+      },
+      "revId": "d2a001a4762d18144ec6c9a743c3d26bb77b9638",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8358bebc_35c89930",
+        "filename": "core/jni/com_android_internal_content_FileSystemUtils.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2024-04-09T22:08:34Z",
+      "side": 1,
+      "message": "This is a very famous way to use memcmp - everyone should know it, and leave a comment if not. Calling a lambda a few thousands times would be a big waste.",
+      "parentUuid": "76a0a3a8_b074511d",
       "range": {
         "startLine": 93,
         "startChar": 22,
