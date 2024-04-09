@@ -514,6 +514,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e16bd18a_854b27e0",
+        "filename": "core/jni/com_android_internal_content_FileSystemUtils.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2024-04-09T23:48:41Z",
+      "side": 1,
+      "message": "Though - I\u0027m actually not sure, given memcpy appears to be operating on 16-bytes at a time there? Anyway, neither of these implementations is bad for this.",
+      "parentUuid": "a27249b1_15aa332a",
+      "range": {
+        "startLine": 93,
+        "startChar": 22,
+        "endLine": 93,
+        "endChar": 98
+      },
+      "revId": "d2a001a4762d18144ec6c9a743c3d26bb77b9638",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2fb6f55f_13fc4f91",
         "filename": "core/jni/com_android_internal_content_FileSystemUtils.cpp",
         "patchSetId": 9
