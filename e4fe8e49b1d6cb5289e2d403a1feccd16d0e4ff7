@@ -98,6 +98,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "35c31091_831588d3",
+        "filename": "core/jni/com_android_internal_content_FileSystemUtils.cpp",
+        "patchSetId": 12
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2024-04-10T17:37:03Z",
+      "side": 1,
+      "message": "It cannot use std::vector or new - because they will abort on OOM.",
+      "parentUuid": "7216c47e_8df43721",
+      "range": {
+        "startLine": 62,
+        "startChar": 22,
+        "endLine": 62,
+        "endChar": 25
+      },
+      "revId": "e4fe8e49b1d6cb5289e2d403a1feccd16d0e4ff7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "fa518428_6060de99",
         "filename": "core/jni/com_android_internal_content_FileSystemUtils.cpp",
         "patchSetId": 12
