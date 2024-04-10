@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8e7eb944_35afbe66",
+        "filename": "core/jni/com_android_internal_content_FileSystemUtils.cpp",
+        "patchSetId": 12
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1956258
+      },
+      "writtenOn": "2024-04-10T17:00:32Z",
+      "side": 1,
+      "message": "It was vector before. @smoreland@google.com Do you think 60KB buffer can cause OOM now? I think it is small enough to be allocated on heap.",
+      "parentUuid": "2cf3047e_67dffca5",
+      "range": {
+        "startLine": 62,
+        "startChar": 22,
+        "endLine": 62,
+        "endChar": 25
+      },
+      "revId": "e4fe8e49b1d6cb5289e2d403a1feccd16d0e4ff7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "fa518428_6060de99",
         "filename": "core/jni/com_android_internal_content_FileSystemUtils.cpp",
         "patchSetId": 12
@@ -78,6 +102,30 @@
       "writtenOn": "2024-04-10T16:24:19Z",
       "side": 1,
       "message": "L115 should guarantee this, you could do CHECK_LE(readLength, kChunkSize)?\n\n(it\u0027s b/c if endPosition \u003e\u003d uncheckedChunkEnd, then uncheckedChunkEnd - position \u003d kChunkSize. Otherwise, if endPosition \u003c uncheckedChunkEnd, it will be even smaller)",
+      "range": {
+        "startLine": 122,
+        "startChar": 0,
+        "endLine": 122,
+        "endChar": 58
+      },
+      "revId": "e4fe8e49b1d6cb5289e2d403a1feccd16d0e4ff7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9582ac8a_6603dd2e",
+        "filename": "core/jni/com_android_internal_content_FileSystemUtils.cpp",
+        "patchSetId": 12
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1956258
+      },
+      "writtenOn": "2024-04-10T17:00:32Z",
+      "side": 1,
+      "message": "Thanks, I don\u0027t think the hard failure is necessary here since L115 already guarantee this.",
+      "parentUuid": "770ff30a_02731a57",
       "range": {
         "startLine": 122,
         "startChar": 0,
