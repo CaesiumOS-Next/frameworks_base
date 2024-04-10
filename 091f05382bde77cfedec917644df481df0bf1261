@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7730fc29_ca1f463c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 16
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1956258
+      },
+      "writtenOn": "2024-04-10T23:31:03Z",
+      "side": 1,
+      "message": "Can this be re-stamped please? I moved the integration with package manager to in separate cl here : https://android-review.git.corp.google.com/c/platform/frameworks/base/+/3037684/3. \nI will first try to land the topic \"punch_holes\" and then enable it with build flag.",
+      "revId": "091f05382bde77cfedec917644df481df0bf1261",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
