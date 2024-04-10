@@ -50,6 +50,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "fa518428_6060de99",
+        "filename": "core/jni/com_android_internal_content_FileSystemUtils.cpp",
+        "patchSetId": 12
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1710792
+      },
+      "writtenOn": "2024-04-10T16:51:05Z",
+      "side": 1,
+      "message": "Why is raw delete used rather than RAII?",
+      "revId": "e4fe8e49b1d6cb5289e2d403a1feccd16d0e4ff7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "770ff30a_02731a57",
         "filename": "core/jni/com_android_internal_content_FileSystemUtils.cpp",
         "patchSetId": 12
