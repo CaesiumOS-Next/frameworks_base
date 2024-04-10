@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0dc392dd_b0c0a0f2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1366584
+      },
+      "writtenOn": "2024-04-10T08:06:47Z",
+      "side": 1,
+      "message": "LGTM, xutan@ mind help confirm?\nseems regression from Ifbd2bc1a5966325b5bc28e58a19fcd3e05aafdf2",
+      "revId": "6d12cf4df1aab56dee4bb53e7fc6cfd5cedfb3e5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
