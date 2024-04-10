@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9635d2cf_01230b9b",
+        "filename": "core/jni/com_android_internal_content_FileSystemUtils.cpp",
+        "patchSetId": 14
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1710792
+      },
+      "writtenOn": "2024-04-10T18:10:56Z",
+      "side": 1,
+      "message": "buffer sizes of powers of two are usually used, is there a reason we pick 60K here?",
+      "revId": "2cb30fedf24d84568c36434612c1d40f2d9650e2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1f13762d_fb991c6c",
+        "filename": "core/jni/com_android_internal_content_FileSystemUtils.cpp",
+        "patchSetId": 14
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1710792
+      },
+      "writtenOn": "2024-04-10T18:10:56Z",
+      "side": 1,
+      "message": "leave a comment explaining that we need to gracefully handle allocation failures hence can\u0027t use STL containers.",
+      "revId": "2cb30fedf24d84568c36434612c1d40f2d9650e2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
