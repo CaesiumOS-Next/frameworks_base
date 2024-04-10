@@ -122,6 +122,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "be08ae12_cbe551e0",
+        "filename": "core/jni/com_android_internal_content_FileSystemUtils.cpp",
+        "patchSetId": 12
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1710792
+      },
+      "writtenOn": "2024-04-10T17:38:26Z",
+      "side": 1,
+      "message": "What is our expectation for this routine? gracefully return an error on OOM? Then we probably can\u0027t allocate any memory on the heap. Buffers which are small enough(~16KB?) might be suitable on the stack.",
+      "parentUuid": "35c31091_831588d3",
+      "range": {
+        "startLine": 62,
+        "startChar": 22,
+        "endLine": 62,
+        "endChar": 25
+      },
+      "revId": "e4fe8e49b1d6cb5289e2d403a1feccd16d0e4ff7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "fa518428_6060de99",
         "filename": "core/jni/com_android_internal_content_FileSystemUtils.cpp",
         "patchSetId": 12
