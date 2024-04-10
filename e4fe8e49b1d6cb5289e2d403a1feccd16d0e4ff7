@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "549fb1f9_e5b05fa2",
+        "filename": "core/jni/com_android_internal_content_FileSystemUtils.cpp",
+        "patchSetId": 12
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2024-04-10T16:24:19Z",
+      "side": 1,
+      "message": "CPP \u0027new\u0027 will still abort on OOM, so it will never be nullptr.\n\nAlso - no need to copy the \u0027delete\u0027 everywhere.\n\nOne way to do it:\n\n```\nstd::unique_ptr\u003cuint8_t*, decltype(free)\u003e buffer(static_cast\u003cuint8_t*\u003e(malloc(kChunkSize)), \u0026free);\n```\n\nThen - it will automatically be deleted, and buffer.get() will be nullptr (instead of throwing an exception). It\u0027s fine to mix the C call and C++ calls, they all go to the same heap, but the CPP STL will throw exceptions 😞",
+      "range": {
+        "startLine": 62,
+        "startChar": 22,
+        "endLine": 62,
+        "endChar": 25
+      },
+      "revId": "e4fe8e49b1d6cb5289e2d403a1feccd16d0e4ff7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "770ff30a_02731a57",
+        "filename": "core/jni/com_android_internal_content_FileSystemUtils.cpp",
+        "patchSetId": 12
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2024-04-10T16:24:19Z",
+      "side": 1,
+      "message": "L115 should guarantee this, you could do CHECK_LE(readLength, kChunkSize)?\n\n(it\u0027s b/c if endPosition \u003e\u003d uncheckedChunkEnd, then uncheckedChunkEnd - position \u003d kChunkSize. Otherwise, if endPosition \u003c uncheckedChunkEnd, it will be even smaller)",
+      "range": {
+        "startLine": 122,
+        "startChar": 0,
+        "endLine": 122,
+        "endChar": 58
+      },
+      "revId": "e4fe8e49b1d6cb5289e2d403a1feccd16d0e4ff7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
