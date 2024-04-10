@@ -144,6 +144,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6f00d8bd_2e9aefac",
+        "filename": "core/jni/com_android_internal_content_FileSystemUtils.cpp",
+        "patchSetId": 12
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1956258
+      },
+      "writtenOn": "2024-04-10T18:02:20Z",
+      "side": 1,
+      "message": "Buffer is 60KB here thats why on the heap. We don\u0027t want to crash by oom exception if this buffer can throw. I missed the exception part with malloc initially since new will always throw. I changed it to use unique ptr with malloc now.",
+      "parentUuid": "be08ae12_cbe551e0",
+      "range": {
+        "startLine": 62,
+        "startChar": 22,
+        "endLine": 62,
+        "endChar": 25
+      },
+      "revId": "e4fe8e49b1d6cb5289e2d403a1feccd16d0e4ff7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fa518428_6060de99",
@@ -157,6 +181,24 @@
       "writtenOn": "2024-04-10T16:51:05Z",
       "side": 1,
       "message": "Why is raw delete used rather than RAII?",
+      "revId": "e4fe8e49b1d6cb5289e2d403a1feccd16d0e4ff7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "04296f6c_78a7e745",
+        "filename": "core/jni/com_android_internal_content_FileSystemUtils.cpp",
+        "patchSetId": 12
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1956258
+      },
+      "writtenOn": "2024-04-10T18:02:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fa518428_6060de99",
       "revId": "e4fe8e49b1d6cb5289e2d403a1feccd16d0e4ff7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -198,6 +240,30 @@
       "side": 1,
       "message": "Thanks, I don\u0027t think the hard failure is necessary here since L115 already guarantee this.",
       "parentUuid": "770ff30a_02731a57",
+      "range": {
+        "startLine": 122,
+        "startChar": 0,
+        "endLine": 122,
+        "endChar": 58
+      },
+      "revId": "e4fe8e49b1d6cb5289e2d403a1feccd16d0e4ff7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "64968901_848761a5",
+        "filename": "core/jni/com_android_internal_content_FileSystemUtils.cpp",
+        "patchSetId": 12
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1956258
+      },
+      "writtenOn": "2024-04-10T18:02:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9582ac8a_6603dd2e",
       "range": {
         "startLine": 122,
         "startChar": 0,
