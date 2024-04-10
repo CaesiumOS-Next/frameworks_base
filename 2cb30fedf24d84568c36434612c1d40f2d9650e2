@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a751ce77_8ef67dbb",
+        "filename": "core/jni/com_android_internal_content_FileSystemUtils.cpp",
+        "patchSetId": 14
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1956258
+      },
+      "writtenOn": "2024-04-10T18:24:27Z",
+      "side": 1,
+      "message": "Changed it to 64KB. It was based on assumption that LOAD segment can\u0027t have padding more than 60KB.",
+      "parentUuid": "9635d2cf_01230b9b",
+      "revId": "2cb30fedf24d84568c36434612c1d40f2d9650e2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1f13762d_fb991c6c",
@@ -31,6 +49,24 @@
       "writtenOn": "2024-04-10T18:10:56Z",
       "side": 1,
       "message": "leave a comment explaining that we need to gracefully handle allocation failures hence can\u0027t use STL containers.",
+      "revId": "2cb30fedf24d84568c36434612c1d40f2d9650e2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "752d9985_3b990b97",
+        "filename": "core/jni/com_android_internal_content_FileSystemUtils.cpp",
+        "patchSetId": 14
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1956258
+      },
+      "writtenOn": "2024-04-10T18:24:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1f13762d_fb991c6c",
       "revId": "2cb30fedf24d84568c36434612c1d40f2d9650e2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
