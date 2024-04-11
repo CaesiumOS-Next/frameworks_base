@@ -33,6 +33,23 @@
       "message": "can you add OWNERS for this or make sure there is a bug to cleanup/remove use of this, especially if it will break?",
       "revId": "6afbaed286bbbb7152410c7a5d0e5e0c21c7e073",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b820fe8e_a74c3a78",
+        "filename": "services/core/jni/linux/usb/f_accessory.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1006497
+      },
+      "writtenOn": "2024-04-11T17:20:30Z",
+      "side": 1,
+      "message": "Should this header be updated to explain why this file exists? Pointing to the general docs on the generated headers seems misleading.",
+      "revId": "6afbaed286bbbb7152410c7a5d0e5e0c21c7e073",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
