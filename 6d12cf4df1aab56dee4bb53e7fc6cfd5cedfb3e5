@@ -33,6 +33,24 @@
       "message": "The presubmit was failed. Can anyone help me check the result?",
       "revId": "6d12cf4df1aab56dee4bb53e7fc6cfd5cedfb3e5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b09f957d_7637db96",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1366584
+      },
+      "writtenOn": "2024-04-11T04:28:41Z",
+      "side": 1,
+      "message": "too much merge conflict, maybe we can fix in our internal branch instead of aosp.",
+      "parentUuid": "8beb1148_a0123626",
+      "revId": "6d12cf4df1aab56dee4bb53e7fc6cfd5cedfb3e5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
