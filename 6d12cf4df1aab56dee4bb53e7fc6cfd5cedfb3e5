@@ -16,6 +16,23 @@
       "message": "LGTM, xutan@ mind help confirm?\nseems regression from Ifbd2bc1a5966325b5bc28e58a19fcd3e05aafdf2",
       "revId": "6d12cf4df1aab56dee4bb53e7fc6cfd5cedfb3e5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8beb1148_a0123626",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1792527
+      },
+      "writtenOn": "2024-04-11T03:18:56Z",
+      "side": 1,
+      "message": "The presubmit was failed. Can anyone help me check the result?",
+      "revId": "6d12cf4df1aab56dee4bb53e7fc6cfd5cedfb3e5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
