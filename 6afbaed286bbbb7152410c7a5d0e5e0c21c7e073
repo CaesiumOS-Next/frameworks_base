@@ -50,6 +50,24 @@
       "message": "Should this header be updated to explain why this file exists? Pointing to the general docs on the generated headers seems misleading.",
       "revId": "6afbaed286bbbb7152410c7a5d0e5e0c21c7e073",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a8cf5f1b_030493c0",
+        "filename": "services/core/jni/linux/usb/f_accessory.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1019050
+      },
+      "writtenOn": "2024-04-15T20:04:18Z",
+      "side": 1,
+      "message": "I don\u0027t think that\u0027s necessary since this should hopefully be a temporary band-aid. At some point it should be removed (and I think it should happen soon). The functionality is, literally, being removed so if this code is not modified it will stop functioning at all on newer kernels.\n\nAlso, kernel headers are sort of special, so I think it\u0027s best to keep it exactly as parsed.",
+      "parentUuid": "b820fe8e_a74c3a78",
+      "revId": "6afbaed286bbbb7152410c7a5d0e5e0c21c7e073",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
