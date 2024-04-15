@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2ff16052_bfb3791d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1109308
+      },
+      "writtenOn": "2024-04-15T16:02:07Z",
+      "side": 1,
+      "message": "@wilsonshih@google.com, do you mind boosting your vote to +2? I made changes to the commit message, which means my +2 vote isn\u0027t counted in the CR anymore. That is blocking this CL.",
+      "revId": "0515147882499983b95d2ba3db0d1ba9b7b68496",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
