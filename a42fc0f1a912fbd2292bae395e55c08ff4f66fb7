@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0690eb4b_bb872b71",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1576211
+      },
+      "writtenOn": "2024-04-19T11:44:54Z",
+      "side": 1,
+      "message": "Just for ref: b/335209102 is supposed to have fixed this breakage (but the fix was merged before my CL).",
+      "revId": "a42fc0f1a912fbd2292bae395e55c08ff4f66fb7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
