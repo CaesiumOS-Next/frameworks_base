@@ -2115,12 +2115,6 @@ public class AudioDeviceBroker {
     private static final int MSG_I_BT_SERVICE_DISCONNECTED_PROFILE = 22;
     private static final int MSG_IL_BT_SERVICE_CONNECTED_PROFILE = 23;
 
-    // process external command to (dis)connect an A2DP device, obj is BtDeviceConnectionInfo
-    private static final int MSG_L_A2DP_DEVICE_CONNECTION_CHANGE_EXT = 29;
-
-    // process external command to (dis)connect a hearing aid device
-    private static final int MSG_L_HEARING_AID_DEVICE_CONNECTION_CHANGE_EXT = 31;
-
     private static final int MSG_IL_SAVE_PREF_DEVICES_FOR_STRATEGY = 32;
     private static final int MSG_I_SAVE_REMOVE_PREF_DEVICES_FOR_STRATEGY = 33;
 
@@ -2165,8 +2159,6 @@ public class AudioDeviceBroker {
             case MSG_IIL_BTLEAUDIO_TIMEOUT:
             case MSG_L_BLUETOOTH_DEVICE_CONFIG_CHANGE:
             case MSG_TOGGLE_HDMI:
-            case MSG_L_A2DP_DEVICE_CONNECTION_CHANGE_EXT:
-            case MSG_L_HEARING_AID_DEVICE_CONNECTION_CHANGE_EXT:
             case MSG_CHECK_MUTE_MUSIC:
                 return true;
             default:
@@ -2293,7 +2285,6 @@ public class AudioDeviceBroker {
         MESSAGES_MUTE_MUSIC = new HashSet<>();
         MESSAGES_MUTE_MUSIC.add(MSG_L_SET_BT_ACTIVE_DEVICE);
         MESSAGES_MUTE_MUSIC.add(MSG_L_BLUETOOTH_DEVICE_CONFIG_CHANGE);
-        MESSAGES_MUTE_MUSIC.add(MSG_L_A2DP_DEVICE_CONNECTION_CHANGE_EXT);
         MESSAGES_MUTE_MUSIC.add(MSG_IIL_SET_FORCE_BT_A2DP_USE);
     }
 
@@ -2312,7 +2303,6 @@ public class AudioDeviceBroker {
         }
         // Do not mute on bluetooth event if music is playing on a wired headset.
         if ((message == MSG_L_SET_BT_ACTIVE_DEVICE
-                || message == MSG_L_A2DP_DEVICE_CONNECTION_CHANGE_EXT
                 || message == MSG_L_BLUETOOTH_DEVICE_CONFIG_CHANGE)
                 && AudioSystem.isStreamActive(AudioSystem.STREAM_MUSIC, 0)
                 && hasIntersection(mDeviceInventory.DEVICE_OVERRIDE_A2DP_ROUTE_ON_PLUG_SET,
