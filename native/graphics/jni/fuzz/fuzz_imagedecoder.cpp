@@ -14,75 +14,67 @@
  * limitations under the License.
  */
 
-#include <android/imagedecoder.h>
-
-#include <binder/IPCThreadState.h>
-#include <stddef.h>
-#include <stdint.h>
-#include <cstdlib>
-#include <memory>
+#include "ImageDecoderFuzzerBase.h"
 
 #ifdef PNG_MUTATOR_DEFINE_LIBFUZZER_CUSTOM_MUTATOR
 #include <fuzz/png_mutator.h>
 #endif
 
-struct DecoderDeleter {
-    void operator()(AImageDecoder* decoder) const { AImageDecoder_delete(decoder); }
-};
+#define FOURCC(c1, c2, c3, c4) ((c1) << 24 | (c2) << 16 | (c3) << 8 | (c4))
 
-using DecoderPointer = std::unique_ptr<AImageDecoder, DecoderDeleter>;
-
-static DecoderPointer makeDecoder(const uint8_t* data, size_t size) {
-    AImageDecoder* decoder = nullptr;
-    int result = AImageDecoder_createFromBuffer(data, size, &decoder);
-    if (result != ANDROID_IMAGE_DECODER_SUCCESS) {
-        // This was not a valid image.
-        return nullptr;
-    }
-    return DecoderPointer(decoder);
+/**
+ * Reverse all 4 bytes in a 32bit value.
+ * e.g. 0x12345678 -> 0x78563412
+ */
+static uint32_t endianSwap32(uint32_t value) {
+    return ((value & 0xFF) << 24) | ((value & 0xFF00) << 8) | ((value & 0xFF0000) >> 8) |
+            (value >> 24);
 }
 
-struct PixelFreer {
-    void operator()(void* pixels) const { std::free(pixels); }
+static bool isFtyp(const uint8_t* data, size_t size) {
+    constexpr int32_t headerSize = 8;
+    constexpr int32_t chunkTypeOffset = 4;
+    constexpr int32_t ftypFourCCVal = FOURCC('f', 't', 'y', 'p');
+    if (size >= headerSize) {
+        const uint32_t* chunk = reinterpret_cast<const uint32_t*>(data + chunkTypeOffset);
+        if (endianSwap32(*chunk) == ftypFourCCVal) {
+            return true;
+        }
+    }
+    return false;
+}
+
+class imageDecoderFuzzer : public imgFuzzerHelper {
+public:
+    imageDecoderFuzzer(const uint8_t* data, size_t size) : imgFuzzerHelper(data, size) {}
+    bool initData();
 };
 
-using PixelPointer = std::unique_ptr<void, PixelFreer>;
+bool imageDecoderFuzzer::initData() {
+    bool result;
+    /**
+     * Use maximum of 80% of buffer for creating decoder and save atleast 20% for fuzzing other APIs
+     */
+    int32_t maxDataSize = (mDataProvider.remaining_bytes() * 80) / 100;
+    int32_t dataSize = mDataProvider.ConsumeIntegralInRange<int32_t>(0, maxDataSize);
+    std::vector<uint8_t> inputBuffer = mDataProvider.ConsumeBytes<uint8_t>(dataSize);
+    if (isFtyp(inputBuffer.data(), inputBuffer.size())) {
+        /* We want to ignore HEIF data when fuzzing non-HEIF image decoders. Use 'FTYP'
+         * as a signal to ignore, though note that this excludes more than just HEIF.
+         * But when this code was added, `AImageDecoder` did not support any formats
+         * in 'FTYP' besides HEIF.
+         */
+        return false;
+    }
+    result = init(inputBuffer.data(), inputBuffer.size());
+    return result;
+}
 
 extern "C" int LLVMFuzzerTestOneInput(const uint8_t* data, size_t size) {
-    // Without this call, decoding HEIF may time out on binder IPC calls.
-    android::ProcessState::self()->startThreadPool();
-
-    DecoderPointer decoder = makeDecoder(data, size);
-    if (!decoder) {
+    imageDecoderFuzzer fuzz(data, size);
+    if (!fuzz.initData()) {
         return 0;
     }
-
-    const AImageDecoderHeaderInfo* info = AImageDecoder_getHeaderInfo(decoder.get());
-    int32_t width = AImageDecoderHeaderInfo_getWidth(info);
-    int32_t height = AImageDecoderHeaderInfo_getHeight(info);
-
-    // Set an arbitrary limit on the size of an image. The fuzzer runs with a
-    // limited amount of memory, and keeping this allocation small allows the
-    // fuzzer to continue running to try to find more serious problems. This
-    // size is large enough to hold a photo taken by a current gen phone.
-    constexpr int32_t kMaxDimension = 5000;
-    if (width > kMaxDimension || height > kMaxDimension) {
-        return 0;
-    }
-
-    size_t stride = AImageDecoder_getMinimumStride(decoder.get());
-    size_t pixelSize = height * stride;
-    auto pixels = PixelPointer(std::malloc(pixelSize));
-    if (!pixels.get()) {
-        return 0;
-    }
-
-    while (true) {
-        int result = AImageDecoder_decodeImage(decoder.get(), pixels.get(), stride, pixelSize);
-        if (result != ANDROID_IMAGE_DECODER_SUCCESS) break;
-
-        result = AImageDecoder_advanceFrame(decoder.get());
-        if (result != ANDROID_IMAGE_DECODER_SUCCESS) break;
-    }
+    fuzz.process();
     return 0;
 }
