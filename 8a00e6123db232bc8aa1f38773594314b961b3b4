@@ -16,6 +16,23 @@
       "message": "roosa@ omakoto@ , please have a look\nBR\nMattias",
       "revId": "8a00e6123db232bc8aa1f38773594314b961b3b4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d8176192_472b5219",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1003403
+      },
+      "writtenOn": "2024-04-29T14:59:19Z",
+      "side": 1,
+      "message": "Removing myself as a reviewer. Let me know if, after code review, you still need me for OWNERS.",
+      "revId": "8a00e6123db232bc8aa1f38773594314b961b3b4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
