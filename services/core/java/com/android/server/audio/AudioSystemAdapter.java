@@ -16,6 +16,9 @@
 
 package com.android.server.audio;
 
+import static android.media.audiopolicy.Flags.FLAG_MULTI_ZONE_AUDIO;
+
+import android.annotation.FlaggedApi;
 import android.annotation.NonNull;
 import android.annotation.Nullable;
 import android.media.AudioAttributes;
@@ -294,6 +297,13 @@ public class AudioSystemAdapter implements AudioSystem.RoutingUpdateCallback,
                 mDevicesForAttrCache.clear();
             }
         }
+    }
+
+    @FlaggedApi(FLAG_MULTI_ZONE_AUDIO)
+    public @NonNull ArrayList<AudioDeviceAttributes> getDevicesForAttributes(
+            @NonNull AudioAttributes attributes, int uid, boolean forVolume) {
+        // not using cache for version with UID. Would need to generate a key with UserId? Uid?
+        return AudioSystem.getDevicesForAttributes(attributes, uid, forVolume);
     }
 
     /**
