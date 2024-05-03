@@ -31,9 +31,6 @@ using std::strstream;
 uint64_t encode_field_id(const Privacy* p) { return (uint64_t)p->type << 32 | p->field_id; }
 
 string Privacy::toString() const {
-    if (this == NULL) {
-        return "Privacy{null}";
-    }
     strstream os;
     os << "Privacy{field_id=" << field_id << " type=" << ((int)type)
             << " children=" << ((void*)children) << " policy=" << ((int)policy) << "}";
