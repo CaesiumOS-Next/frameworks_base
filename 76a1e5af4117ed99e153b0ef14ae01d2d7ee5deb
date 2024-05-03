@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "76af230d_7ce10644",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1246512
+      },
+      "writtenOn": "2024-05-03T13:20:00Z",
+      "side": 1,
+      "message": "Is it possible to get more information from Lint?\nThe pre-submit tests all passes when doing repo upload.",
+      "revId": "76a1e5af4117ed99e153b0ef14ae01d2d7ee5deb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
