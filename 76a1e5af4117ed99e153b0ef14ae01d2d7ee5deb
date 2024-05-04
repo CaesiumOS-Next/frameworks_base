@@ -41,6 +41,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "44daef65_7d85988a",
+        "filename": "core/java/com/android/internal/content/om/OverlayConfigParser.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 339,
+      "author": {
+        "id": 1246512
+      },
+      "writtenOn": "2024-05-04T06:44:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "479e9dec_5459c842",
+      "range": {
+        "startLine": 339,
+        "startChar": 23,
+        "endLine": 339,
+        "endChar": 33
+      },
+      "revId": "76a1e5af4117ed99e153b0ef14ae01d2d7ee5deb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "651f1940_860d0b1f",
@@ -54,6 +78,30 @@
       "writtenOn": "2024-05-03T18:56:36Z",
       "side": 1,
       "message": "nit: looks like you\u0027ve updated it to braces now\n```suggestion\n                throw new IllegalStateException(\"Malformed property, unmatched braces, in: \"\n```",
+      "range": {
+        "startLine": 369,
+        "startChar": 79,
+        "endLine": 369,
+        "endChar": 90
+      },
+      "revId": "76a1e5af4117ed99e153b0ef14ae01d2d7ee5deb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "74120764_966ff64d",
+        "filename": "core/java/com/android/internal/content/om/OverlayConfigParser.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 369,
+      "author": {
+        "id": 1246512
+      },
+      "writtenOn": "2024-05-04T06:44:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "651f1940_860d0b1f",
       "range": {
         "startLine": 369,
         "startChar": 79,
@@ -87,6 +135,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "54ac222f_4e28b30b",
+        "filename": "core/java/com/android/internal/content/om/OverlayConfigParser.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 374,
+      "author": {
+        "id": 1246512
+      },
+      "writtenOn": "2024-05-04T06:44:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "91706b58_b0c4dd45",
+      "range": {
+        "startLine": 374,
+        "startChar": 41,
+        "endLine": 374,
+        "endChar": 51
+      },
+      "revId": "76a1e5af4117ed99e153b0ef14ae01d2d7ee5deb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a4c68d6d_18337736",
@@ -100,6 +172,30 @@
       "writtenOn": "2024-05-03T18:56:36Z",
       "side": 1,
       "message": "nit: better to move this past the name check, or reword to make it clear the name is only found, but not yet being used\nAlso, put it in quotes so that if there are invisible symbols or spaces in the name it\u0027s easier to debug",
+      "range": {
+        "startLine": 380,
+        "startChar": 0,
+        "endLine": 380,
+        "endChar": 85
+      },
+      "revId": "76a1e5af4117ed99e153b0ef14ae01d2d7ee5deb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a96ef09d_ff631f10",
+        "filename": "core/java/com/android/internal/content/om/OverlayConfigParser.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 380,
+      "author": {
+        "id": 1246512
+      },
+      "writtenOn": "2024-05-04T06:44:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a4c68d6d_18337736",
       "range": {
         "startLine": 380,
         "startChar": 0,
@@ -133,6 +229,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "70fd2fe5_1126b0bc",
+        "filename": "core/java/com/android/internal/content/om/OverlayConfigParser.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 387,
+      "author": {
+        "id": 1246512
+      },
+      "writtenOn": "2024-05-04T06:44:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "37977fe8_fdf8c668",
+      "range": {
+        "startLine": 387,
+        "startChar": 58,
+        "endLine": 387,
+        "endChar": 66
+      },
+      "revId": "76a1e5af4117ed99e153b0ef14ae01d2d7ee5deb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ffd8198e_73cd1d2a",
@@ -156,6 +276,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fd28309a_49a34003",
+        "filename": "core/java/com/android/internal/content/om/OverlayConfigParser.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 391,
+      "author": {
+        "id": 1246512
+      },
+      "writtenOn": "2024-05-04T06:44:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ffd8198e_73cd1d2a",
+      "range": {
+        "startLine": 391,
+        "startChar": 37,
+        "endLine": 391,
+        "endChar": 38
+      },
+      "revId": "76a1e5af4117ed99e153b0ef14ae01d2d7ee5deb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "83f86916_13dc3b4b",
@@ -169,6 +313,30 @@
       "writtenOn": "2024-05-03T18:56:36Z",
       "side": 1,
       "message": "very nit: may be easier to understand the function if this part is put at the if:\n```\nif (propStartPos \u003d\u003d -1) {\n    return configPath;\n}\n\n// the rest of the function without nesting\n```",
+      "range": {
+        "startLine": 401,
+        "startChar": 12,
+        "endLine": 401,
+        "endChar": 30
+      },
+      "revId": "76a1e5af4117ed99e153b0ef14ae01d2d7ee5deb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c42e2752_82f9d900",
+        "filename": "core/java/com/android/internal/content/om/OverlayConfigParser.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 401,
+      "author": {
+        "id": 1246512
+      },
+      "writtenOn": "2024-05-04T06:44:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "83f86916_13dc3b4b",
       "range": {
         "startLine": 401,
         "startChar": 12,
