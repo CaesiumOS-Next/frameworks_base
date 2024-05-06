@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e7294eac_68e6d7fe",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1778340
+      },
+      "writtenOn": "2024-05-06T16:35:34Z",
+      "side": 1,
+      "message": "Unfortunately this is a UX question more than a bugfix. I would file this as a bug and discuss it with the appropriate people.",
+      "revId": "d5337b4c0ed5d503d109c96dca02aa93c3f8eece",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
