@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "afc6e477_500bdde1",
+        "filename": "services/core/java/com/android/server/vcn/routeselection/IpSecPacketLossDetector.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 299,
+      "author": {
+        "id": 1297255
+      },
+      "writtenOn": "2024-05-06T19:58:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9d7566ee_bd43e166",
+      "range": {
+        "startLine": 297,
+        "startChar": 8,
+        "endLine": 299,
+        "endChar": 9
+      },
+      "revId": "e39320afbde68c109aea57cfc87bb91574fd3273",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4a2e5e93_2e3a5bcf",
@@ -37,6 +61,30 @@
       "writtenOn": "2024-05-01T18:26:12Z",
       "side": 1,
       "message": "I\u0027d prefer that the flag actually wrap _all_ the code that\u0027s being added if possible. I know, in this case, it\u0027s all pretty trivial, but I think there\u0027s a valid philosophy behind it.",
+      "range": {
+        "startLine": 320,
+        "startChar": 20,
+        "endLine": 320,
+        "endChar": 58
+      },
+      "revId": "e39320afbde68c109aea57cfc87bb91574fd3273",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "02e5efe7_cfec0953",
+        "filename": "services/core/java/com/android/server/vcn/routeselection/IpSecPacketLossDetector.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 320,
+      "author": {
+        "id": 1297255
+      },
+      "writtenOn": "2024-05-06T19:58:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4a2e5e93_2e3a5bcf",
       "range": {
         "startLine": 320,
         "startChar": 20,
