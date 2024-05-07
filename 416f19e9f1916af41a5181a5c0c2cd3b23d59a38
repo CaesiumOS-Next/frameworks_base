@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f8f089c1_3e1ccecc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1934235
+      },
+      "writtenOn": "2024-05-07T16:57:44Z",
+      "side": 1,
+      "message": "The device should be connected to internet to get the latest OTA update. Then, if we run this CTS test, it will pass.",
+      "revId": "416f19e9f1916af41a5181a5c0c2cd3b23d59a38",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
