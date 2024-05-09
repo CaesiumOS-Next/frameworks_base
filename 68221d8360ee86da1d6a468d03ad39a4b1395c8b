@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b7023bc5_436a10fd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1972300
+      },
+      "writtenOn": "2024-05-09T15:05:01Z",
+      "side": 1,
+      "message": "could some one make it presubmit-ready state?",
+      "revId": "68221d8360ee86da1d6a468d03ad39a4b1395c8b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
