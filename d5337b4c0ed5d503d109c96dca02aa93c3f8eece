@@ -16,6 +16,42 @@
       "message": "Unfortunately this is a UX question more than a bugfix. I would file this as a bug and discuss it with the appropriate people.",
       "revId": "d5337b4c0ed5d503d109c96dca02aa93c3f8eece",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c8775f8f_f284167b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 3307287
+      },
+      "writtenOn": "2024-05-10T14:40:19Z",
+      "side": 1,
+      "message": "Hi Ameer! As Jared is OOTO this week, I\u0027ve helped file a bug for him here: https://issuetracker.google.com/issues/339767740\n\nWhen you say discuss it with the appropriate people -- will the appropriate people be informed of this? Or is there additional outreach required by our team?",
+      "parentUuid": "e7294eac_68e6d7fe",
+      "revId": "d5337b4c0ed5d503d109c96dca02aa93c3f8eece",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "095253f1_7961b2d2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 3307287
+      },
+      "writtenOn": "2024-05-10T14:40:19Z",
+      "side": 1,
+      "message": "Sounds good!",
+      "parentUuid": "e7294eac_68e6d7fe",
+      "revId": "d5337b4c0ed5d503d109c96dca02aa93c3f8eece",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
