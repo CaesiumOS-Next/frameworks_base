@@ -1,0 +1,45 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3643f8d2_b9ef3517",
+        "filename": "cmds/bootanimation/BootAnimation.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 714,
+      "author": {
+        "id": 1470474
+      },
+      "writtenOn": "2024-05-10T18:18:27Z",
+      "side": 1,
+      "message": "I\u0027m not sure if this helps. You\u0027re still using newWidth and newHeight to configure the surface size.\n\nDo you need to be using mWidth and mHeight instead, since that takes into account the size limitation?",
+      "range": {
+        "startLine": 714,
+        "startChar": 28,
+        "endLine": 714,
+        "endChar": 73
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "33d4e942_0cdb3967",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "cmds/bootanimation/BootAnimation.cpp",
+              "range": {
+                "startLine": 714,
+                "startChar": 0,
+                "endLine": 715,
+                "endChar": 0
+              },
+              "replacement": "    mFlingerSurfaceControl-\u003eupdateDefaultBufferSize(mWidth, mHeight);\n"
+            }
+          ]
+        }
+      ],
+      "revId": "8b3844e6fc131df07583f76bcaedd6b8fad98de9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
