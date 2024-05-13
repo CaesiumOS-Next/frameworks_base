@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4eefe00f_adc949c0",
+        "filename": "core/java/com/android/internal/content/om/OverlayConfigParser.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 256,
+      "author": {
+        "id": 1246512
+      },
+      "writtenOn": "2024-05-13T06:59:17Z",
+      "side": 1,
+      "message": "we could use FunctionalInterface defined in Java instead of defining a custom interface here.\n\nWill update",
+      "range": {
+        "startLine": 246,
+        "startChar": 4,
+        "endLine": 256,
+        "endChar": 1
+      },
+      "revId": "a3c3d392fb39c62024447aabb0d405596b239836",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
