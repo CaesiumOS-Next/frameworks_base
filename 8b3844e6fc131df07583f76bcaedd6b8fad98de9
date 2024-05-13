@@ -40,6 +40,30 @@
       ],
       "revId": "8b3844e6fc131df07583f76bcaedd6b8fad98de9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f387f191_acf91c17",
+        "filename": "cmds/bootanimation/BootAnimation.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 714,
+      "author": {
+        "id": 1518386
+      },
+      "writtenOn": "2024-05-13T01:23:49Z",
+      "side": 1,
+      "message": "It\u0027s a typo, thanks for reminder",
+      "parentUuid": "3643f8d2_b9ef3517",
+      "range": {
+        "startLine": 714,
+        "startChar": 28,
+        "endLine": 714,
+        "endChar": 73
+      },
+      "revId": "8b3844e6fc131df07583f76bcaedd6b8fad98de9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
