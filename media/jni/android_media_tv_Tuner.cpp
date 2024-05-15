@@ -1448,7 +1448,7 @@ jobject JTuner::getFrontendIds() {
     return obj;
 }
 
-jobject JTuner::openFrontendByHandle(int feHandle) {
+jobject JTuner::openFrontendByHandle(jlong feHandle) {
     // TODO: Handle reopening frontend with different handle
     sp<FrontendClient> feClient = sTunerClient->openFrontend(feHandle);
     if (feClient == nullptr) {
@@ -1824,7 +1824,7 @@ jobjectArray JTuner::getFrontendStatusReadiness(jintArray types) {
     return valObj;
 }
 
-jobject JTuner::openLnbByHandle(int handle) {
+jobject JTuner::openLnbByHandle(jlong handle) {
     if (sTunerClient == nullptr) {
         return nullptr;
     }
@@ -1833,7 +1833,7 @@ jobject JTuner::openLnbByHandle(int handle) {
     sp<LnbClientCallbackImpl> callback = new LnbClientCallbackImpl();
     lnbClient = sTunerClient->openLnb(handle);
     if (lnbClient == nullptr) {
-        ALOGD("Failed to open lnb, handle = %d", handle);
+        ALOGD("Failed to open lnb, handle = %ld", handle);
         return nullptr;
     }
 
@@ -1947,7 +1947,7 @@ int JTuner::setLna(bool enable) {
     return (int)result;
 }
 
-Result JTuner::openDemux(int handle) {
+Result JTuner::openDemux(jlong handle) {
     if (sTunerClient == nullptr) {
         return Result::NOT_INITIALIZED;
     }
@@ -2215,7 +2215,7 @@ jobject JTuner::getDemuxCaps() {
             numBytesInSectionFilter, filterCaps, filterCapsList, linkCaps, bTimeFilter);
 }
 
-jobject JTuner::getDemuxInfo(int handle) {
+jobject JTuner::getDemuxInfo(jlong handle) {
     if (sTunerClient == nullptr) {
         ALOGE("tuner is not initialized");
         return nullptr;
@@ -3768,8 +3768,8 @@ static jobject android_media_tv_Tuner_get_frontend_ids(JNIEnv *env, jobject thiz
     return tuner->getFrontendIds();
 }
 
-static jobject android_media_tv_Tuner_open_frontend_by_handle(
-        JNIEnv *env, jobject thiz, jint handle) {
+static jobject android_media_tv_Tuner_open_frontend_by_handle(JNIEnv *env, jobject thiz,
+                                                              jlong handle) {
     sp<JTuner> tuner = getTuner(env, thiz);
     return tuner->openFrontendByHandle(handle);
 }
@@ -3901,7 +3901,7 @@ static jobject android_media_tv_Tuner_get_frontend_info(JNIEnv *env, jobject thi
     return tuner->getFrontendInfo(id);
 }
 
-static jobject android_media_tv_Tuner_open_lnb_by_handle(JNIEnv *env, jobject thiz, jint handle) {
+static jobject android_media_tv_Tuner_open_lnb_by_handle(JNIEnv *env, jobject thiz, jlong handle) {
     sp<JTuner> tuner = getTuner(env, thiz);
     return tuner->openLnbByHandle(handle);
 }
@@ -4690,12 +4690,12 @@ static jobject android_media_tv_Tuner_get_demux_caps(JNIEnv* env, jobject thiz) 
     return tuner->getDemuxCaps();
 }
 
-static jobject android_media_tv_Tuner_get_demux_info(JNIEnv* env, jobject thiz, jint handle) {
+static jobject android_media_tv_Tuner_get_demux_info(JNIEnv *env, jobject thiz, jlong handle) {
     sp<JTuner> tuner = getTuner(env, thiz);
     return tuner->getDemuxInfo(handle);
 }
 
-static jint android_media_tv_Tuner_open_demux(JNIEnv* env, jobject thiz, jint handle) {
+static jint android_media_tv_Tuner_open_demux(JNIEnv *env, jobject thiz, jlong handle) {
     sp<JTuner> tuner = getTuner(env, thiz);
     return (jint)tuner->openDemux(handle);
 }
@@ -4706,7 +4706,7 @@ static jint android_media_tv_Tuner_close_tuner(JNIEnv* env, jobject thiz) {
     return (jint)tuner->close();
 }
 
-static jint android_media_tv_Tuner_close_demux(JNIEnv* env, jobject thiz, jint /* handle */) {
+static jint android_media_tv_Tuner_close_demux(JNIEnv *env, jobject thiz, jlong /* handle */) {
     sp<JTuner> tuner = getTuner(env, thiz);
     return tuner->closeDemux();
 }
@@ -4766,7 +4766,7 @@ static jobjectArray android_media_tv_Tuner_get_frontend_status_readiness(JNIEnv 
     return tuner->getFrontendStatusReadiness(types);
 }
 
-static jint android_media_tv_Tuner_close_frontend(JNIEnv* env, jobject thiz, jint /* handle */) {
+static jint android_media_tv_Tuner_close_frontend(JNIEnv *env, jobject thiz, jlong /* handle */) {
     sp<JTuner> tuner = getTuner(env, thiz);
     return tuner->closeFrontend();
 }
