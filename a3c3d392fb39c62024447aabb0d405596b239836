@@ -22,6 +22,30 @@
       },
       "revId": "a3c3d392fb39c62024447aabb0d405596b239836",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e11675fe_722b98c5",
+        "filename": "core/java/com/android/internal/content/om/OverlayConfigParser.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 256,
+      "author": {
+        "id": 1246512
+      },
+      "writtenOn": "2024-05-16T14:06:56Z",
+      "side": 1,
+      "message": "Discussed internally, and we keep the interface here but annotated it",
+      "parentUuid": "4eefe00f_adc949c0",
+      "range": {
+        "startLine": 246,
+        "startChar": 4,
+        "endLine": 256,
+        "endChar": 1
+      },
+      "revId": "a3c3d392fb39c62024447aabb0d405596b239836",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
