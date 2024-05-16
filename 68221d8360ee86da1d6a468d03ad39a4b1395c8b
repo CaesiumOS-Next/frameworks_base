@@ -80,6 +80,30 @@
       },
       "revId": "68221d8360ee86da1d6a468d03ad39a4b1395c8b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8ad77c4d_bc93fce4",
+        "filename": "core/java/com/android/internal/policy/DecorView.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 859,
+      "author": {
+        "id": 1045544
+      },
+      "writtenOn": "2024-05-16T09:40:05Z",
+      "side": 1,
+      "message": "The failing tests were 2x a launcher unit test (irrelevant) and 2x a failure to run code coverage (also irrelevant). I think you can safely go back to not null-checking.",
+      "parentUuid": "adb60f15_5040dadd",
+      "range": {
+        "startLine": 859,
+        "startChar": 12,
+        "endLine": 859,
+        "endChar": 76
+      },
+      "revId": "68221d8360ee86da1d6a468d03ad39a4b1395c8b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
