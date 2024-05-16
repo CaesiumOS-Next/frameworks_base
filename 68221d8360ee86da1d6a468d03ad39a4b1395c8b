@@ -18,6 +18,23 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3fdff4bb_aae3a6e6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1972300
+      },
+      "writtenOn": "2024-05-16T00:00:33Z",
+      "side": 1,
+      "message": "thanks for comments. after conversation, i will update patch",
+      "revId": "68221d8360ee86da1d6a468d03ad39a4b1395c8b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2d841203_6c7f8a1b",
@@ -31,6 +48,30 @@
       "writtenOn": "2024-05-15T08:56:22Z",
       "side": 1,
       "message": "It might have been clear before, but one year later - can you tell us a situation when this statement isn\u0027t true?\n\nIt looks like `showPopup` already assumes `originalView` is non-null in one place and `originalView` should already have a context, shouldn\u0027t it?",
+      "range": {
+        "startLine": 859,
+        "startChar": 12,
+        "endLine": 859,
+        "endChar": 76
+      },
+      "revId": "68221d8360ee86da1d6a468d03ad39a4b1395c8b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "adb60f15_5040dadd",
+        "filename": "core/java/com/android/internal/policy/DecorView.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 859,
+      "author": {
+        "id": 1972300
+      },
+      "writtenOn": "2024-05-16T00:00:33Z",
+      "side": 1,
+      "message": "When I first did, I also believed the original view was not null, but pre-submission failed with patchset 2. Because I can\u0027t see the pre–submission test result, I guess and update about the case that the original view is null because this api doesn\u0027t guarantee nonnull.\n\n* when I look at this code, it looks like checking the null of the view :: GetContext\u0027t does not seem necessary.\n\nabout nullability of originalView, it need to be check it again.\n\ncould i shared the fail result of presubmit?",
+      "parentUuid": "2d841203_6c7f8a1b",
       "range": {
         "startLine": 859,
         "startChar": 12,
