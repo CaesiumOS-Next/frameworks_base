@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6c448465_f1ddf6c0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1972300
+      },
+      "writtenOn": "2024-05-17T02:31:14Z",
+      "side": 1,
+      "message": "Removed null checking logic. Thank you for your comments on my review.\nand please presubmit-Ready flag true for testing.",
+      "revId": "cf89eb0ec8fa45cbf5c916792752923a435028cb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

@@ -104,6 +104,30 @@
       },
       "revId": "68221d8360ee86da1d6a468d03ad39a4b1395c8b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d2f94e7c_ff470c5c",
+        "filename": "core/java/com/android/internal/policy/DecorView.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 859,
+      "author": {
+        "id": 1972300
+      },
+      "writtenOn": "2024-05-17T02:31:14Z",
+      "side": 1,
+      "message": "thank you for sharing a result of presubmit :+1:",
+      "parentUuid": "8ad77c4d_bc93fce4",
+      "range": {
+        "startLine": 859,
+        "startChar": 12,
+        "endLine": 859,
+        "endChar": 76
+      },
+      "revId": "68221d8360ee86da1d6a468d03ad39a4b1395c8b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
