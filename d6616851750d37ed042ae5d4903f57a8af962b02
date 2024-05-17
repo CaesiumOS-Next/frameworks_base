@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d9d5d67e_e9d549c0",
+        "filename": "services/core/java/com/android/server/am/OomAdjuster.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 1316,
+      "author": {
+        "id": 1561214
+      },
+      "writtenOn": "2024-05-17T23:52:10Z",
+      "side": 1,
+      "message": "don\u0027t create this list every time, it\u0027s expensive...",
+      "revId": "d6616851750d37ed042ae5d4903f57a8af962b02",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5f2ad301_334981f3",
+        "filename": "services/core/java/com/android/server/am/OomAdjuster.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 1374,
+      "author": {
+        "id": 1561214
+      },
+      "writtenOn": "2024-05-17T23:52:10Z",
+      "side": 1,
+      "message": "Actually, I\u0027m thinking, since it\u0027s literally getting killed here, do we really need to update the adj scores for them upfront...",
+      "revId": "d6616851750d37ed042ae5d4903f57a8af962b02",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "416d39b3_b92327f4",
+        "filename": "services/core/java/com/android/server/am/OomAdjuster.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 3223,
+      "author": {
+        "id": 1561214
+      },
+      "writtenOn": "2024-05-17T23:52:10Z",
+      "side": 1,
+      "message": "ditto",
+      "revId": "d6616851750d37ed042ae5d4903f57a8af962b02",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "efb35ed1_bb1c0832",
+        "filename": "services/core/java/com/android/server/am/OomAdjuster.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 3226,
+      "author": {
+        "id": 1561214
+      },
+      "writtenOn": "2024-05-17T23:52:10Z",
+      "side": 1,
+      "message": "can we reuse the code in the `applyOomAdjLSP`?",
+      "revId": "d6616851750d37ed042ae5d4903f57a8af962b02",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
