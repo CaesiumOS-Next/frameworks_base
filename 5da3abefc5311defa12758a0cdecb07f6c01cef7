@@ -16,6 +16,23 @@
       "message": "Hi Eric Laurent, can you help me to review? thank you!",
       "revId": "5da3abefc5311defa12758a0cdecb07f6c01cef7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "65806d94_e4d08cd3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2024-05-23T14:37:52Z",
+      "side": 1,
+      "message": "Those APIs are deprecated and it is preferable not to maintain them.",
+      "revId": "5da3abefc5311defa12758a0cdecb07f6c01cef7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
