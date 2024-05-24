@@ -1,0 +1,130 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ac9d21cf_330e17dc",
+        "filename": "services/core/java/com/android/server/am/OomAdjuster.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 1335,
+      "author": {
+        "id": 1561214
+      },
+      "writtenOn": "2024-05-24T19:10:25Z",
+      "side": 1,
+      "message": "You don\u0027t need to maintain this variable. The `app.isKilledByAm()` should be good enough.",
+      "revId": "52fff15c91cfa76ebdb12c9f11d74810327c8034",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "76bc9267_281dc1f6",
+        "filename": "services/core/java/com/android/server/am/OomAdjuster.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 3249,
+      "author": {
+        "id": 1561214
+      },
+      "writtenOn": "2024-05-24T19:10:25Z",
+      "side": 1,
+      "message": "Can we add a feature flag per trunk-stable requirements?",
+      "range": {
+        "startLine": 3249,
+        "startChar": 16,
+        "endLine": 3249,
+        "endChar": 33
+      },
+      "revId": "52fff15c91cfa76ebdb12c9f11d74810327c8034",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6e603598_0f75033a",
+        "filename": "services/core/java/com/android/server/am/OomAdjuster.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 3250,
+      "author": {
+        "id": 1561214
+      },
+      "writtenOn": "2024-05-24T19:10:25Z",
+      "side": 1,
+      "message": "Can we not create new object here, just use the Process record? Because the oom adj update happens very very frequently. Creating temporarily objects for every update, will increase GC pressure.",
+      "range": {
+        "startLine": 3250,
+        "startChar": 36,
+        "endLine": 3250,
+        "endChar": 51
+      },
+      "revId": "52fff15c91cfa76ebdb12c9f11d74810327c8034",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cb73b20f_1942599b",
+        "filename": "services/core/java/com/android/server/am/ProcessList.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 1569,
+      "author": {
+        "id": 1561214
+      },
+      "writtenOn": "2024-05-24T19:10:25Z",
+      "side": 1,
+      "message": "Move it to `static final`?",
+      "range": {
+        "startLine": 1568,
+        "startChar": 0,
+        "endLine": 1569,
+        "endChar": 78
+      },
+      "revId": "52fff15c91cfa76ebdb12c9f11d74810327c8034",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e216063b_6606c142",
+        "filename": "services/core/java/com/android/server/am/ProcessList.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 1573,
+      "author": {
+        "id": 1561214
+      },
+      "writtenOn": "2024-05-24T19:10:25Z",
+      "side": 1,
+      "message": "nit: don\u0027t use iterators in framework code as its cost is high.\n\n`for (int i \u003d 0, size \u003d procs.size(); i \u003c size; i++)`",
+      "range": {
+        "startLine": 1573,
+        "startChar": 8,
+        "endLine": 1573,
+        "endChar": 38
+      },
+      "revId": "52fff15c91cfa76ebdb12c9f11d74810327c8034",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "06304a95_1a6635a7",
+        "filename": "services/core/java/com/android/server/am/ProcessList.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 1579,
+      "author": {
+        "id": 1561214
+      },
+      "writtenOn": "2024-05-24T19:10:25Z",
+      "side": 1,
+      "message": "do you need to set `total_procs_in_buf \u003d 0` here?",
+      "revId": "52fff15c91cfa76ebdb12c9f11d74810327c8034",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
