@@ -16,6 +16,23 @@
       "message": "Removed null checking logic. Thank you for your comments on my review.\nand please presubmit-Ready flag true for testing.",
       "revId": "cf89eb0ec8fa45cbf5c916792752923a435028cb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0323a48b_4b30b9dd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1972300
+      },
+      "writtenOn": "2024-05-27T09:26:26Z",
+      "side": 1,
+      "message": "@rgl@google.com\nI resolved your comments. please check my review again. thanks you.",
+      "revId": "cf89eb0ec8fa45cbf5c916792752923a435028cb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
