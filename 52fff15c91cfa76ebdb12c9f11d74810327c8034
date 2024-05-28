@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0dba7230_3a4f824a",
+        "filename": "services/core/java/com/android/server/am/OomAdjuster.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 1335,
+      "author": {
+        "id": 1956645
+      },
+      "writtenOn": "2024-05-28T18:30:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ac9d21cf_330e17dc",
+      "revId": "52fff15c91cfa76ebdb12c9f11d74810327c8034",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "76bc9267_281dc1f6",
@@ -31,6 +49,30 @@
       "writtenOn": "2024-05-24T19:10:25Z",
       "side": 1,
       "message": "Can we add a feature flag per trunk-stable requirements?",
+      "range": {
+        "startLine": 3249,
+        "startChar": 16,
+        "endLine": 3249,
+        "endChar": 33
+      },
+      "revId": "52fff15c91cfa76ebdb12c9f11d74810327c8034",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "95d19923_7cccabe2",
+        "filename": "services/core/java/com/android/server/am/OomAdjuster.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 3249,
+      "author": {
+        "id": 1956645
+      },
+      "writtenOn": "2024-05-28T18:30:28Z",
+      "side": 1,
+      "message": "Done, added new flag `batchingOomAdj()`.",
+      "parentUuid": "76bc9267_281dc1f6",
       "range": {
         "startLine": 3249,
         "startChar": 16,
@@ -64,6 +106,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "24824dbc_f85deb5a",
+        "filename": "services/core/java/com/android/server/am/OomAdjuster.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 3250,
+      "author": {
+        "id": 1956645
+      },
+      "writtenOn": "2024-05-28T18:30:28Z",
+      "side": 1,
+      "message": "Done, refactored to use Process record.",
+      "parentUuid": "6e603598_0f75033a",
+      "range": {
+        "startLine": 3250,
+        "startChar": 36,
+        "endLine": 3250,
+        "endChar": 51
+      },
+      "revId": "52fff15c91cfa76ebdb12c9f11d74810327c8034",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cb73b20f_1942599b",
@@ -77,6 +143,30 @@
       "writtenOn": "2024-05-24T19:10:25Z",
       "side": 1,
       "message": "Move it to `static final`?",
+      "range": {
+        "startLine": 1568,
+        "startChar": 0,
+        "endLine": 1569,
+        "endChar": 78
+      },
+      "revId": "52fff15c91cfa76ebdb12c9f11d74810327c8034",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d3c64354_e32688f4",
+        "filename": "services/core/java/com/android/server/am/ProcessList.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 1569,
+      "author": {
+        "id": 1956645
+      },
+      "writtenOn": "2024-05-28T18:30:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cb73b20f_1942599b",
       "range": {
         "startLine": 1568,
         "startChar": 0,
@@ -110,6 +200,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c2ae5550_68ba917f",
+        "filename": "services/core/java/com/android/server/am/ProcessList.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 1573,
+      "author": {
+        "id": 1956645
+      },
+      "writtenOn": "2024-05-28T18:30:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e216063b_6606c142",
+      "range": {
+        "startLine": 1573,
+        "startChar": 8,
+        "endLine": 1573,
+        "endChar": 38
+      },
+      "revId": "52fff15c91cfa76ebdb12c9f11d74810327c8034",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "06304a95_1a6635a7",
@@ -123,6 +237,24 @@
       "writtenOn": "2024-05-24T19:10:25Z",
       "side": 1,
       "message": "do you need to set `total_procs_in_buf \u003d 0` here?",
+      "revId": "52fff15c91cfa76ebdb12c9f11d74810327c8034",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0321dbf5_c0c789b6",
+        "filename": "services/core/java/com/android/server/am/ProcessList.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 1579,
+      "author": {
+        "id": 1956645
+      },
+      "writtenOn": "2024-05-28T18:30:28Z",
+      "side": 1,
+      "message": "Good catch!",
+      "parentUuid": "06304a95_1a6635a7",
       "revId": "52fff15c91cfa76ebdb12c9f11d74810327c8034",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
