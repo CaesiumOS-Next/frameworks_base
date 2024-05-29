@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "794c78bf_706df105",
+        "filename": "services/core/java/com/android/server/am/ProcessList.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 1574,
+      "author": {
+        "id": 1561214
+      },
+      "writtenOn": "2024-05-29T03:22:26Z",
+      "side": 1,
+      "message": "question: if the `app.size()` is 0, we\u0027ll be writing only the command `[LMK_PROCS_PRIO]` into the socket. Is the LMKD ready to handle this case?",
+      "revId": "ea369ce6ad4f945d79542c160e9dda438be771c6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "17e917f7_b6fb6898",
+        "filename": "services/core/java/com/android/server/am/ProcessList.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 1575,
+      "author": {
+        "id": 1561214
+      },
+      "writtenOn": "2024-05-29T03:22:26Z",
+      "side": 1,
+      "message": "nit: `for (int i \u003d 0, size \u003d apps.size(); i \u003c size; i++)`. Otherwise the `apps.size()` will be called in each iteration.",
+      "range": {
+        "startLine": 1575,
+        "startChar": 8,
+        "endLine": 1575,
+        "endChar": 47
+      },
+      "revId": "ea369ce6ad4f945d79542c160e9dda438be771c6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
