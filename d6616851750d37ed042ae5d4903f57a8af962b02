@@ -107,6 +107,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9ce3f2eb_7e4f6bce",
+        "filename": "services/core/java/com/android/server/am/OomAdjuster.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 1374,
+      "author": {
+        "id": 1956645
+      },
+      "writtenOn": "2024-05-30T19:12:30Z",
+      "side": 1,
+      "message": "I think we can revert this this logic back to where it was originally, this entire flow happens when `!app.isKilledByAm()` ([here](https://cs.android.com/android/platform/superproject/main/+/main:frameworks/base/services/core/java/com/android/server/am/OomAdjuster.java;l\u003d1318;drc\u003d97e29daa3ddd6defb221d7ffc7140348c33d8b55)).\n\nWhat do you think? Would you want it revert the logic to its original location or keep it as is right now?",
+      "parentUuid": "d0dd66ab_2f224f4b",
+      "revId": "d6616851750d37ed042ae5d4903f57a8af962b02",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "416d39b3_b92327f4",
