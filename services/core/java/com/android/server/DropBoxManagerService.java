@@ -106,7 +106,11 @@ public final class DropBoxManagerService extends SystemService {
     private static final int DEFAULT_AGE_SECONDS = 3 * 86400;
     private static final int DEFAULT_MAX_FILES = 1000;
     private static final int DEFAULT_MAX_FILES_LOWRAM = 300;
+<<<<<<< PATCH SET (b329ef Stop adding large proto tombstones to dropbox.)
+    public static final int DEFAULT_QUOTA_KB = 10 * 1024;
+=======
     private static final int DEFAULT_QUOTA_KB = Build.IS_USERDEBUG ? 20 * 1024 : 10 * 1024;
+>>>>>>> BASE      (921b17 Merge "Workaround bad GC of tombstone watcher." into main)
     private static final int DEFAULT_QUOTA_PERCENT = 10;
     private static final int DEFAULT_RESERVE_PERCENT = 0;
     private static final int QUOTA_RESCAN_MILLIS = 5000;
