@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0dcc218e_2657d11c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2024-06-04T22:14:16Z",
+      "side": 1,
+      "message": "Note, this was introduced in https://android-review.git.corp.google.com/c/platform/frameworks/base/+/2858705. Adding other people involved with that CL.",
+      "revId": "df29b7fe3ac149674027b61ee3664bdc8a3af1c7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
