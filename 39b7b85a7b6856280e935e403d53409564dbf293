@@ -1,0 +1,49 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "56b12972_be72b570",
+        "filename": "services/core/java/com/android/server/wm/EmbeddedWindowController.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1320563
+      },
+      "writtenOn": "2024-06-06T12:31:54Z",
+      "side": 1,
+      "message": "Use `final IBinder windowToken \u003d window.getWindowToken();`\n(see the suggested fix)",
+      "fixSuggestions": [
+        {
+          "fixId": "2c147c66_2347165e",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "services/core/java/com/android/server/wm/EmbeddedWindowController.java",
+              "range": {
+                "startLine": 71,
+                "startChar": 0,
+                "endLine": 72,
+                "endChar": 0
+              },
+              "replacement": "            final IBinder windowToken \u003d window.getWindowToken();\n            mWindowsByWindowToken.put(windowToken, window);\n"
+            },
+            {
+              "path": "services/core/java/com/android/server/wm/EmbeddedWindowController.java",
+              "range": {
+                "startLine": 77,
+                "startChar": 0,
+                "endLine": 78,
+                "endChar": 0
+              },
+              "replacement": "                    mWindowsByWindowToken.remove(windowToken);\n"
+            }
+          ]
+        }
+      ],
+      "revId": "39b7b85a7b6856280e935e403d53409564dbf293",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
