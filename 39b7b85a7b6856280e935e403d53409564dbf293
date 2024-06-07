@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "954adf76_38b587ca",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1975825
+      },
+      "writtenOn": "2024-06-07T02:45:37Z",
+      "side": 1,
+      "message": "Yes,this seems more robust!Thanks!",
+      "revId": "39b7b85a7b6856280e935e403d53409564dbf293",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "56b12972_be72b570",
@@ -42,6 +59,24 @@
           ]
         }
       ],
+      "revId": "39b7b85a7b6856280e935e403d53409564dbf293",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "88b446a8_f3b3f58c",
+        "filename": "services/core/java/com/android/server/wm/EmbeddedWindowController.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1975825
+      },
+      "writtenOn": "2024-06-07T02:45:37Z",
+      "side": 1,
+      "message": "Fix applied.",
+      "parentUuid": "56b12972_be72b570",
       "revId": "39b7b85a7b6856280e935e403d53409564dbf293",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
