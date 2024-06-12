@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f9474a2a_d1f7bcf4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1101726
+      },
+      "writtenOn": "2024-06-12T19:59:24Z",
+      "side": 1,
+      "message": "Build breakage in b/346810068. Should be fixed now.",
+      "revId": "3c096ce09ef2355f7754f7467fda41d9dad9dbaa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
