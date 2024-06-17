@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "80588fd2_5f969b25",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2024-06-17T13:12:35Z",
+      "side": 1,
+      "message": "There were too many breakages switching to make `findViewById(int)` `@Nullable` so this change removes the `@Nullable` so the Metalava hack can be removed and b/347672184 tracks the work to re-add them.",
+      "revId": "de08dbd7088163e095238598f9fc85c6b93702c1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
