@@ -34,6 +34,23 @@
       "parentUuid": "80588fd2_5f969b25",
       "revId": "de08dbd7088163e095238598f9fc85c6b93702c1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "de52b495_684356ba",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2024-06-17T15:55:49Z",
+      "side": 1,
+      "message": "Michael, would you be able to approve this using your global approver powers? Each file seems to have different sets of owners.",
+      "revId": "de08dbd7088163e095238598f9fc85c6b93702c1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
