@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c5e85219_8867752f",
+        "filename": "nfc/java/android/nfc/INfcAdapter.aidl",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1306902
+      },
+      "writtenOn": "2024-06-19T12:24:59Z",
+      "side": 1,
+      "message": "By default AIDL support List, don\u0027t need to import here.\n\nhttps://developer.android.com/develop/background-work/services/aidl#Create",
+      "range": {
+        "startLine": 39,
+        "startChar": 0,
+        "endLine": 39,
+        "endChar": 22
+      },
+      "revId": "df0016a89af982dc39db44577e7cd7af15153297",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
