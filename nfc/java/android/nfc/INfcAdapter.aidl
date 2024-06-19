@@ -109,4 +109,5 @@ interface INfcAdapter
     void registerOemExtensionCallback(INfcOemExtensionCallback callbacks);
     void unregisterOemExtensionCallback(INfcOemExtensionCallback callbacks);
     void clearPreference();
+    List<String> fetchActiveNfceeList();
 }
