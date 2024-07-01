@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2b20521e_5b16b635",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 3516515
+      },
+      "writtenOn": "2024-07-01T10:02:35Z",
+      "side": 1,
+      "message": "```\n06-19 16:21:07.482  1000  2357  2657 E AndroidRuntime: *** FATAL EXCEPTION IN SYSTEM PROCESS: PowerManagerService\n06-19 16:21:07.482  1000  2357  2657 E AndroidRuntime: java.lang.IndexOutOfBoundsException: Index 2 out of bounds for length 2\n06-19 16:21:07.482  1000  2357  2657 E AndroidRuntime:     at jdk.internal.util.Preconditions.outOfBounds(Preconditions.java:64)\n06-19 16:21:07.482  1000  2357  2657 E AndroidRuntime:     at jdk.internal.util.Preconditions.outOfBoundsCheckIndex(Preconditions.java:70)\n06-19 16:21:07.482  1000  2357  2657 E AndroidRuntime:     at jdk.internal.util.Preconditions.checkIndex(Preconditions.java:266)\n06-19 16:21:07.482  1000  2357  2657 E AndroidRuntime:     at java.util.Objects.checkIndex(Objects.java:359)\n06-19 16:21:07.482  1000  2357  2657 E AndroidRuntime:     at java.util.ArrayList.get(ArrayList.java:434)\n06-19 16:21:07.482  1000  2357  2657 E AndroidRuntime:     at com.android.server.wm.WindowContainer.getChildAt(WindowContainer.java:570)\n06-19 16:21:07.482  1000  2357  2657 E AndroidRuntime:     at com.android.server.wm.RootWindowContainer.getDisplayContent(RootWindowContainer.java:1485)\n06-19 16:21:07.482  1000  2357  2657 E AndroidRuntime:     at com.android.server.wm.WindowManagerService$LocalService.waitForAllWindowsDrawn(WindowManagerService.java:8712)\n06-19 16:21:07.482  1000  2357  2657 E AndroidRuntime:     at com.android.server.policy.PhoneWindowManager.screenTurningOn(PhoneWindowManager.java:5437)\n06-19 16:21:07.482  1000  2357  2657 E AndroidRuntime:     at com.android.server.policy.BaseMiuiPhoneWindowManager.screenTurningOn(BaseMiuiPhoneWindowManager.java:609)\n06-19 16:21:07.482  1000  2357  2657 E AndroidRuntime:     at com.android.server.display.DisplayPowerController.setScreenState(DisplayPowerController.java:2591)\n06-19 16:21:07.482  1000  2357  2657 E AndroidRuntime:     at com.android.server.display.DisplayPowerController.setScreenState(DisplayPowerController.java:2528)\n06-19 16:21:07.482  1000  2357  2657 E AndroidRuntime:     at com.android.server.display.DisplayPowerController.animateScreenStateChange(DisplayPowerController.java:2707)\n06-19 16:21:07.482  1000  2357  2657 E AndroidRuntime:     at com.android.server.display.DisplayPowerController.updatePowerStateInternal(DisplayPowerController.java:1710)\n06-19 16:21:07.482  1000  2357  2657 E AndroidRuntime:     at com.android.server.display.DisplayPowerController.updatePowerState(DisplayPowerController.java:1548)\n06-19 16:21:07.482  1000  2357  2657 E AndroidRuntime:     at com.android.server.display.DisplayPowerController.-$$Nest$mupdatePowerState(Unknown Source:0)\n06-19 16:21:07.482  1000  2357  2657 E AndroidRuntime:     at com.android.server.display.DisplayPowerController$DisplayControllerHandler.handleMessage(DisplayPowerController.java:3686)\n06-19 16:21:07.482  1000  2357  2657 E AndroidRuntime:     at android.os.Handler.dispatchMessage(Handler.java:106)\n06-19 16:21:07.482  1000  2357  2657 E AndroidRuntime:     at android.os.Looper.loopOnce(Looper.java:222)\n06-19 16:21:07.482  1000  2357  2657 E AndroidRuntime:     at android.os.Looper.loop(Looper.java:314)\n06-19 16:21:07.482  1000  2357  2657 E AndroidRuntime:     at android.os.HandlerThread.run(HandlerThread.java:67)\n06-19 16:21:07.482  1000  2357  2657 E AndroidRuntime:     at com.android.server.ServiceThread.run(ServiceThread.java:46)\n```",
+      "revId": "48e4832c3297d589b5ab0fdee3642a26a114d5c1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
