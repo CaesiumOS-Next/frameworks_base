@@ -92,10 +92,8 @@ public class LmkdConnection {
     private LocalSocket mLmkdSocket = null;
 
     // socket I/O streams
-    @GuardedBy("mLmkdSocketLock")
-    private OutputStream mLmkdOutputStream = null;
-    @GuardedBy("mLmkdSocketLock")
-    private InputStream mLmkdInputStream = null;
+    private volatile OutputStream mLmkdOutputStream = null;
+    private volatile InputStream mLmkdInputStream = null;
 
     // buffer to store incoming data
     private final ByteBuffer mInputBuf =
@@ -177,6 +175,8 @@ public class LmkdConnection {
                 mMsgQueue.removeOnFileDescriptorEventListener(
                         mLmkdSocket.getFileDescriptor());
                 IoUtils.closeQuietly(mLmkdSocket);
+                mLmkdOutputStream = null;
+                mLmkdInputStream = null;
                 mLmkdSocket = null;
             }
             // wake up reply waiters if any
@@ -262,24 +262,31 @@ public class LmkdConnection {
     }
 
     private boolean write(ByteBuffer buf) {
-        synchronized (mLmkdSocketLock) {
+        OutputStream stream = mLmkdOutputStream;
+        boolean result = false;
+
+        if (stream != null) {
             try {
-                mLmkdOutputStream.write(buf.array(), 0, buf.position());
+                stream.write(buf.array(), 0, buf.position());
+                result = true;
             } catch (IOException ex) {
-                return false;
             }
-            return true;
         }
+
+        return result;
     }
 
     private int read(ByteBuffer buf) {
-        synchronized (mLmkdSocketLock) {
+        InputStream stream = mLmkdInputStream;
+        int result = -1;
+
+        if (stream != null) {
             try {
-                return mLmkdInputStream.read(buf.array(), 0, buf.array().length);
+                result = stream.read(buf.array(), 0, buf.array().length);
             } catch (IOException ex) {
             }
-            return -1;
         }
+        return result;
     }
 
     /**
