@@ -16,6 +16,24 @@
       "message": "Fix seems reasonable as getPkg may return null in some expected situations such as archiving and this is just for the sake of logging. However, I\u0027m concerned that we have a system PackageSetting without an associated AndroidPackage. Archiving isn\u0027t currently supported for them. Do you have any more details on how it got into this state?",
       "revId": "270ce4496db01d5324999498bfd60a10cd5f10ab",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8851907a_cc30d0e6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1480715
+      },
+      "writtenOn": "2024-07-02T16:25:32Z",
+      "side": 1,
+      "message": "+1 code path involved in this change is for system apps without an updated data version. How can those apps lose their AndroidPackage given that they are on the read-only partition?",
+      "parentUuid": "ba8a5e57_d314788b",
+      "revId": "270ce4496db01d5324999498bfd60a10cd5f10ab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
