@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b1e6f83d_827973a5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1561651
+      },
+      "writtenOn": "2024-07-02T02:38:04Z",
+      "side": 1,
+      "message": "Adding an OWNER file for this specific service. I couldn\u0027t find a more obvious reference (we have system/security/OWNERS but neither Bram nor I are in; there is also libcore/OWNERS but I am not sure this is what we want.) Let me know your thoughts. Thanks.",
+      "revId": "8a573ea4b559652f7a46162b39feea22172f287a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7dac4f80_b22b7d9b",
+        "filename": "services/core/java/com/android/server/OWNERS",
+        "patchSetId": 1
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1561651
+      },
+      "writtenOn": "2024-07-02T02:38:04Z",
+      "side": 1,
+      "message": "Partial match to capture CertBlocklister and CertBlacklister.",
+      "range": {
+        "startLine": 53,
+        "startChar": 13,
+        "endLine": 53,
+        "endChar": 14
+      },
+      "revId": "8a573ea4b559652f7a46162b39feea22172f287a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
