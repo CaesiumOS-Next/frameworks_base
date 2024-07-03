@@ -2916,8 +2916,8 @@ public abstract class Context {
             @Nullable String initialData, @Nullable  Bundle initialExtras);
 
     /**
-     * Similar to above but takes array of names of permissions that a receiver must hold in order
-     * to receive your broadcast. If empty, no permissions are required.
+     * Similar to above but takes array of names of permissions that a receiver must hold all in
+     * order to receive your broadcast. If empty, no permissions are required.
      *
      * @see #sendOrderedBroadcastAsUser(Intent, UserHandle, String,
      *       BroadcastReceiver, Handler, int, String, Bundle)
