@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "0ce33023_e420ba4f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1363994
+      },
+      "writtenOn": "2024-07-03T12:18:45Z",
+      "side": 1,
+      "message": "One potential alternative would be to reference system/ca-certificates/OWNERS, and extend that, but the current list LGTM as well -- your call :)",
+      "parentUuid": "b1e6f83d_827973a5",
+      "revId": "8a573ea4b559652f7a46162b39feea22172f287a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "7dac4f80_b22b7d9b",
