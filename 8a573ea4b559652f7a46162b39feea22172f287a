@@ -38,6 +38,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "62c7776d_f65fb5c5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1561651
+      },
+      "writtenOn": "2024-07-03T23:40:32Z",
+      "side": 1,
+      "message": "Ack, thanks for looking into it. I\u0027ll go ahead with this version for now, but if Pete or Miguel prefer the alternate option, I can send an update.",
+      "parentUuid": "0ce33023_e420ba4f",
+      "revId": "8a573ea4b559652f7a46162b39feea22172f287a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "7dac4f80_b22b7d9b",
         "filename": "services/core/java/com/android/server/OWNERS",
         "patchSetId": 1
