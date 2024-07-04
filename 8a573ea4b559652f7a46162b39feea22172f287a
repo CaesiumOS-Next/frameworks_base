@@ -73,6 +73,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "085a9bd2_e19c494d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1561651
+      },
+      "writtenOn": "2024-07-04T01:45:54Z",
+      "side": 1,
+      "message": "Thanks.",
+      "parentUuid": "27b47a57_78ade596",
+      "revId": "8a573ea4b559652f7a46162b39feea22172f287a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "7dac4f80_b22b7d9b",
         "filename": "services/core/java/com/android/server/OWNERS",
         "patchSetId": 1
