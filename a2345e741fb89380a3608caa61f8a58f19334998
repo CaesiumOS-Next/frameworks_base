@@ -16,6 +16,23 @@
       "message": "Sure. The bug ID is b/303074341. I\u0027ve also updated the commit mesasge.\n\nI\u0027m not sure I picked a correct component. I decided to go with \"network/messaging\" (I\u0027ve also considered \"Framework\"). Sorry if I made a wrong call.",
       "revId": "a2345e741fb89380a3608caa61f8a58f19334998",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "03c858d1_cc767033",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 3523966
+      },
+      "writtenOn": "2024-07-09T13:33:24Z",
+      "side": 1,
+      "message": "Hi, I\u0027m from CERT Polska team that is a national-level computer security incident response team in Poland (CSIRT NASK). One of our responsibilities is handling reports about malicious SMS text messages that are sent using 8080 number that is free of charge for Polish users. It\u0027s an official number and Polish telecom operators are obligated by act linked by Jarosław Jedynak to serve it without additional fees (https://isap.sejm.gov.pl/isap.nsf/download.xsp/WDU20230001703/T/D20231703L.pdf) explicitly by Article 5. point 2. of this act.\n\nReports sent using this number directly help us fighting phishing campaigns in Poland as CSIRT NASK actively cooperates with Polish ISPs to block phishing domains and messages.\n\nUnfortunately we don\u0027t have any materials in English about it because this service was made solely for Polish users but you can read more about this number with help of Google Translate:\n\n- https://cert-pl.translate.goog/lista-ostrzezen/?_x_tr_sl\u003dpl\u0026_x_tr_tl\u003den\u0026_x_tr_hl\u003dpl\u0026_x_tr_pto\u003dwapp\n- https://www-gov-pl.translate.goog/web/baza-wiedzy/uwaga-csirt-nask-ostrzega-w-okresie-przedswiatecznej-goraczki-zakupowej-wraca-popularne-oszustwo-na-przesylke?_x_tr_sl\u003dpl\u0026_x_tr_tl\u003den\u0026_x_tr_hl\u003dpl\u0026_x_tr_pto\u003dwapp\n\nBut what worries us most is that we periodically receive questions from users who are disturbed by warnings about additional fees. We really hope this patch will resolve this issue in the future.\n\nIs there anything we can do that will help you in proceeding further with this patch?",
+      "revId": "a2345e741fb89380a3608caa61f8a58f19334998",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
