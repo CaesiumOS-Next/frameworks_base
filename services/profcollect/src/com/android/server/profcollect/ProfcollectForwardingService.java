@@ -398,7 +398,6 @@ public final class ProfcollectForwardingService extends SystemService {
                 if (randomNum >= traceFrequency) {
                     return;
                 }
-                final int traceDelay = 1000;
                 final int traceDuration = 5000;
                 final String traceTag = "camera";
                 BackgroundThread.get().getThreadHandler().postDelayed(() -> {
@@ -408,7 +407,7 @@ public final class ProfcollectForwardingService extends SystemService {
                     } catch (RemoteException e) {
                         Log.e(LOG_TAG, "Failed to initiate trace: " + e.getMessage());
                     }
-                }, traceDelay);
+                });
             }
         }, null);
     }
