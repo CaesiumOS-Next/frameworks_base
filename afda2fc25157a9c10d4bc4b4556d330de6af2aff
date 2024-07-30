@@ -1,0 +1,82 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9605179b_d9dbf36d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1644696
+      },
+      "writtenOn": "2024-07-30T17:06:21Z",
+      "side": 1,
+      "message": "defer CR+2 To Kelvin",
+      "revId": "afda2fc25157a9c10d4bc4b4556d330de6af2aff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ef786363_160a898d",
+        "filename": "core/java/android/os/UpdateEngine.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 248,
+      "author": {
+        "id": 1644696
+      },
+      "writtenOn": "2024-07-30T17:06:21Z",
+      "side": 1,
+      "message": "nit: per line definition for statuses\n\ne.g.\n```\npublic static final int NEED_...;\npublic static final int CLEANUP_...;\n```",
+      "range": {
+        "startLine": 248,
+        "startChar": 8,
+        "endLine": 248,
+        "endChar": 33
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "65ce5859_b395345f",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "core/java/android/os/UpdateEngine.java",
+              "range": {
+                "startLine": 242,
+                "startChar": 0,
+                "endLine": 243,
+                "endChar": 0
+              },
+              "replacement": "        public static final int DISABLED \u003d 9;\n"
+            },
+            {
+              "path": "core/java/android/os/UpdateEngine.java",
+              "range": {
+                "startLine": 248,
+                "startChar": 0,
+                "endLine": 249,
+                "endChar": 0
+              },
+              "replacement": "        public static final int NEED_PERMISSION_TO_UPDATE \u003d 10;\n"
+            },
+            {
+              "path": "core/java/android/os/UpdateEngine.java",
+              "range": {
+                "startLine": 253,
+                "startChar": 0,
+                "endLine": 254,
+                "endChar": 0
+              },
+              "replacement": "        public static final int CLEANUP_PREVIOUS_UPDATE \u003d 11;\n"
+            }
+          ]
+        }
+      ],
+      "revId": "afda2fc25157a9c10d4bc4b4556d330de6af2aff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
