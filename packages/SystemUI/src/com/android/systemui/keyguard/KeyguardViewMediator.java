@@ -63,6 +63,7 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.pm.PackageManager.NameNotFoundException;
 import android.content.pm.UserInfo;
+import android.graphics.Rect;
 import android.graphics.Matrix;
 import android.hardware.biometrics.BiometricSourceType;
 import android.media.AudioAttributes;
@@ -1246,6 +1247,9 @@ public class KeyguardViewMediator implements CoreStartable, Dumpable,
                                     final float surfaceHeight =
                                             mRemoteAnimationTarget.screenSpaceBounds.height();
 
+                                    final Rect surfaceBounds =
+                                            mRemoteAnimationTarget.screenSpaceBounds;
+
                                     // Fade for all types of activities.
                                     SyncRtSurfaceTransactionApplier.SurfaceParams.Builder
                                             paramsBuilder =
@@ -1259,8 +1263,9 @@ public class KeyguardViewMediator implements CoreStartable, Dumpable,
                                                     * surfaceHeight
                                                     * UNOCCLUDE_TRANSLATE_DISTANCE_PERCENT);
 
-                                    paramsBuilder.withMatrix(mUnoccludeMatrix).withCornerRadius(
-                                            mWindowCornerRadius);
+                                    paramsBuilder.withMatrix(mUnoccludeMatrix)
+                                            .withCornerRadius(mWindowCornerRadius)
+                                            .withWindowCrop(surfaceBounds);
 
                                     applier.scheduleApply(paramsBuilder.build());
                                 });

@@ -902,6 +902,7 @@ class KeyguardUnlockAnimationController @Inject constructor(
                 if (keyguardViewController.viewRootImpl.view?.visibility != View.VISIBLE &&
                         sc?.isValid == true) {
                     with(SurfaceControl.Transaction()) {
+                        setWindowCrop(sc, surfaceBehindRemoteAnimationTarget.screenSpaceBounds)
                         setMatrix(sc, surfaceBehindMatrix, tmpFloat)
                         setCornerRadius(sc, roundedCornerRadius)
                         setAlpha(sc, animationAlpha)
@@ -911,6 +912,7 @@ class KeyguardUnlockAnimationController @Inject constructor(
                     applyParamsToSurface(
                             SyncRtSurfaceTransactionApplier.SurfaceParams.Builder(
                                     surfaceBehindRemoteAnimationTarget.leash)
+=                                   .withWindowCrop(surfaceBehindRemoteAnimationTarget.screenSpaceBounds)
                                     .withMatrix(surfaceBehindMatrix)
                                     .withCornerRadius(roundedCornerRadius)
                                     .withAlpha(animationAlpha)
