@@ -69,10 +69,6 @@ class DisplayRotationCoordinator {
      * query the default display's current rotation via {@link #getDefaultDisplayCurrentRotation()}.
      */
     void setDefaultDisplayRotationChangedCallback(@NonNull Runnable callback) {
-        if (mDefaultDisplayRotationChangedCallback != null) {
-            throw new UnsupportedOperationException("Multiple clients unsupported");
-        }
-
         mDefaultDisplayRotationChangedCallback = callback;
 
         if (mDefaultDisplayCurrentRotation != mDefaultDisplayDefaultRotation) {
