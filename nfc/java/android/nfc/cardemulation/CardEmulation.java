@@ -23,6 +23,7 @@ import android.annotation.Nullable;
 import android.annotation.RequiresPermission;
 import android.annotation.SdkConstant;
 import android.annotation.SdkConstant.SdkConstantType;
+import android.annotation.StringDef;
 import android.annotation.SystemApi;
 import android.annotation.UserHandleAware;
 import android.annotation.UserIdInt;
@@ -43,6 +44,8 @@ import android.provider.Settings;
 import android.provider.Settings.SettingNotFoundException;
 import android.util.Log;
 
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
 import java.util.HashMap;
 import java.util.HexFormat;
 import java.util.List;
@@ -865,6 +868,19 @@ public final class CardEmulation {
                 sService.setServiceEnabledForCategoryOther(userId, service, status), false);
     }
 
+    /** @hide */
+    @StringDef({
+        ProtocolAndTechnologyRoute.DH,
+        ProtocolAndTechnologyRoute.ESE,
+        ProtocolAndTechnologyRoute.UICC
+    })
+    @Retention(RetentionPolicy.SOURCE)
+    @interface ProtocolAndTechnologyRoute {
+        String DH = "DH";
+        String ESE = "ESE";
+        String UICC = "UICC";
+    }
+
      /**
       * Setting NFC controller routing table, which includes Protocol Route and Technology Route,
       * while this Activity is in the foreground.
@@ -878,7 +894,11 @@ public final class CardEmulation {
       * }</pre>
       * </p>
       * Also activities must call this method when it goes to the background,
-      * with all parameters set to null.
+      * with all parameters set to null. Only the package of the
+      * currently preferred service (the service set as preferred by the current foreground
+      * application via {@link CardEmulation#setPreferredService(Activity, ComponentName)} or the
+      * current Default Wallet Role Holder {@link android.app.role.RoleManager#ROLE_WALLET}),
+      * otherwise a call to this method will fail and return false.
       * @param activity The Activity that requests NFC controller routing table to be changed.
       * @param protocol ISO-DEP route destination, which can be "DH" or "UICC" or "ESE".
       * @param technology Tech-A, Tech-B route destination, which can be "DH" or "UICC" or "ESE".
@@ -887,16 +907,21 @@ public final class CardEmulation {
       * This is a high risk API and only included to support mainline effort
       * @hide
       */
-    public boolean overrideRoutingTable(Activity activity, String protocol, String technology) {
-        if (activity == null) {
-            throw new NullPointerException("activity or service or category is null");
-        }
+    @SystemApi
+    @FlaggedApi(Flags.FLAG_NFC_OVERRIDE_RECOVER_ROUTING_TABLE)
+    public boolean overrideRoutingTable(
+            @NonNull Activity activity, @ProtocolAndTechnologyRoute String protocol,
+            @ProtocolAndTechnologyRoute String technology) {
         if (!activity.isResumed()) {
             throw new IllegalArgumentException("Activity must be resumed.");
         }
         return callServiceReturn(() ->
                 sService.overrideRoutingTable(
-                    mContext.getUser().getIdentifier(), protocol, technology), false);
+                    mContext.getUser().getIdentifier(),
+                    protocol,
+                    technology,
+                    mContext.getPackageName()),
+                    false);
     }
 
     /**
@@ -908,10 +933,9 @@ public final class CardEmulation {
      *
      * @hide
      */
-    public boolean recoverRoutingTable(Activity activity) {
-        if (activity == null) {
-            throw new NullPointerException("activity is null");
-        }
+    @SystemApi
+    @FlaggedApi(Flags.FLAG_NFC_OVERRIDE_RECOVER_ROUTING_TABLE)
+    public boolean recoverRoutingTable(@NonNull Activity activity) {
         if (!activity.isResumed()) {
             throw new IllegalArgumentException("Activity must be resumed.");
         }
