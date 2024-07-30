@@ -16,6 +16,47 @@
       "message": "API Review+1. Assigning to Tyler for final API review.",
       "revId": "40b9351992f7cead9a407ebaa4e391a9c6805600",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0542bd2e_6b0f064e",
+        "filename": "nfc/java/android/nfc/NfcOemExtension.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1056478
+      },
+      "writtenOn": "2024-07-30T18:08:37Z",
+      "side": 1,
+      "message": "go/android-api-guidelines#framework-rethrow-remoteexception\n\nAlthough this isn\u0027t calling into the system service, the general pattern used elsewhere is to call [e.reThrowAsRuntimeException](https://source.corp.google.com/h/googleplex-android/platform/superproject/main/+/main:frameworks/base/core/java/android/os/RemoteException.java;bpv\u003d1;bpt\u003d1;l\u003d63?q\u003dRemoteException\u0026ct\u003dos\u0026sq\u003dgit:googleplex-android%2Fplatform%2Fsuperproject%2Fmain@main\u0026gsn\u003drethrowAsRuntimeException\u0026gs\u003dKYTHE%3A%2F%2Fkythe%3A%2F%2Fgoogleplex-android.googlesource.com%2Fplatform%2Fsuperproject%2Fmain%2F%2Fmain%3Flang%3Djava%3Fpath%3Dandroid.os.RemoteException%2340bee8001623f896e3b35718cb1523205b23f2487982045dd67c8f85ecbbc2a0) rather than absorbing the remote exception.  A remote exception would be a fatal error and it would be better for the caller to know rather than silently absorbing the exception and returning an empty list (go/android-api-guidelines#return-error).  I suspect a remote exception would be a fatal error so there is likely no need to return a specific exception or error code here?",
+      "range": {
+        "startLine": 187,
+        "startChar": 12,
+        "endLine": 187,
+        "endChar": 56
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "0db23f13_140ebd0e",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "nfc/java/android/nfc/NfcOemExtension.java",
+              "range": {
+                "startLine": 187,
+                "startChar": 0,
+                "endLine": 188,
+                "endChar": 0
+              },
+              "replacement": "            e.rethrowAsRuntimeException();\n"
+            }
+          ]
+        }
+      ],
+      "revId": "40b9351992f7cead9a407ebaa4e391a9c6805600",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
