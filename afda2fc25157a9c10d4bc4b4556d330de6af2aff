@@ -55,6 +55,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e1002e31_7075d200",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1991091
+      },
+      "writtenOn": "2024-07-31T18:13:38Z",
+      "side": 1,
+      "message": "Hi Kelvin,\n\nI downloaded latest main with `repo` and I was able to repro the issue and issue the fixes needed for `system-lint-baseline.txt` and I can build AOSP for userdebug cuttlefish.\nThe changes the build required were way more than the ones for my changes. It seems the build system should have only required\n```\nUnflaggedApi: android.os.UpdateEngine.UpdateStatusConstants#CLEANUP_PREVIOUS_UPDATE:\n    New API must be flagged with @FlaggedApi: field android.os.UpdateEngine.UpdateStatusConstants.CLEANUP_PREVIOUS_UPDATE\nUnflaggedApi: android.os.UpdateEngine.UpdateStatusConstants#NEED_PERMISSION_TO_UPDATE:\n    New API must be flagged with @FlaggedApi: field android.os.UpdateEngine.UpdateStatusConstants.NEED_PERMISSION_TO_UPDATE\n```\nbut it added more. \nIt seems a way to get over this linting issue I could use the annotation `@FlaggedApi` as shown in these guidelines for API changes https://android.googlesource.com/platform/developers/docs/+/refs/heads/master/api-guidelines/index.md\nNot sure what is the preference here",
+      "parentUuid": "99cabf0a_5ba82282",
+      "revId": "afda2fc25157a9c10d4bc4b4556d330de6af2aff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ef786363_160a898d",
         "filename": "core/java/android/os/UpdateEngine.java",
         "patchSetId": 1
