@@ -37,6 +37,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "99cabf0a_5ba82282",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1991091
+      },
+      "writtenOn": "2024-07-31T01:52:33Z",
+      "side": 1,
+      "message": "hi Kelvin,\nIt seems that the need to update system-lint-baseline.txt suggests there was a problem with linting correct? I am not sure if this was due to my mistake of not including \"public static final int\" to the variables. Not sure if treehugger ran before or after I fixed that.\nI am able to build fine locally (although I am building my company\u0027s AOSP branch). I am not able to see what specifically needs to be updated in system-lint-baseline.txt, not sure if you can share that, or if you can re-run treehugger with the changes in case that was the issue with linting",
+      "parentUuid": "e3bc7307_175f845f",
+      "revId": "afda2fc25157a9c10d4bc4b4556d330de6af2aff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ef786363_160a898d",
         "filename": "core/java/android/os/UpdateEngine.java",
         "patchSetId": 1
