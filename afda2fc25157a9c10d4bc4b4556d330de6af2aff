@@ -94,6 +94,30 @@
       ],
       "revId": "afda2fc25157a9c10d4bc4b4556d330de6af2aff",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c92f12e1_74257e7a",
+        "filename": "core/java/android/os/UpdateEngine.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 248,
+      "author": {
+        "id": 1991091
+      },
+      "writtenOn": "2024-07-31T00:49:38Z",
+      "side": 1,
+      "message": "Fix applied.",
+      "parentUuid": "ef786363_160a898d",
+      "range": {
+        "startLine": 248,
+        "startChar": 8,
+        "endLine": 248,
+        "endChar": 33
+      },
+      "revId": "afda2fc25157a9c10d4bc4b4556d330de6af2aff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
