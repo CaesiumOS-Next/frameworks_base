@@ -18,6 +18,23 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ded86d69_68ab0e99",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1576846
+      },
+      "writtenOn": "2024-07-31T22:02:48Z",
+      "side": 1,
+      "message": "Please rebase and rebuild the system-current.txt (m framework-nfc.stubs.source.system-update-current-api)",
+      "revId": "40b9351992f7cead9a407ebaa4e391a9c6805600",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0542bd2e_6b0f064e",
