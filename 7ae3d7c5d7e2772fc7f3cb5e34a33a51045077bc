@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a79d4d3b_80be9bb9",
+        "filename": "api/api.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 2027575
+      },
+      "writtenOn": "2024-07-31T13:42:11Z",
+      "side": 1,
+      "message": "what is this code!!?",
+      "range": {
+        "startLine": 75,
+        "startChar": 0,
+        "endLine": 75,
+        "endChar": 14
+      },
+      "revId": "7ae3d7c5d7e2772fc7f3cb5e34a33a51045077bc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
