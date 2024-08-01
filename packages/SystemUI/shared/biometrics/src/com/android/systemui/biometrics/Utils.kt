@@ -39,8 +39,6 @@ import android.view.WindowMetrics
 import android.view.accessibility.AccessibilityEvent
 import android.view.accessibility.AccessibilityManager
 import com.android.internal.widget.LockPatternUtils
-import java.lang.annotation.Retention
-import java.lang.annotation.RetentionPolicy
 
 object Utils {
     const val CREDENTIAL_PIN = 1
@@ -130,7 +128,7 @@ object Utils {
             ?: Insets.NONE
     }
 
-    @Retention(RetentionPolicy.SOURCE)
+    @Retention(AnnotationRetention.SOURCE)
     @IntDef(CREDENTIAL_PIN, CREDENTIAL_PATTERN, CREDENTIAL_PASSWORD)
     annotation class CredentialType
 }
