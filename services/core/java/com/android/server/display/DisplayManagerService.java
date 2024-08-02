@@ -2985,6 +2985,7 @@ public final class DisplayManagerService extends SystemService {
                     .setSize(displayInfo.getNaturalWidth(), displayInfo.getNaturalHeight())
                     .setCaptureSecureLayers(true)
                     .setAllowProtected(true)
+                    .setHintForSeamlessTransition(true)
                     .build();
         }
         return ScreenCapture.captureDisplay(captureArgs);
