@@ -74,6 +74,30 @@
       ],
       "revId": "40b9351992f7cead9a407ebaa4e391a9c6805600",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "92a7d945_0e469de7",
+        "filename": "nfc/java/android/nfc/NfcOemExtension.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1074459
+      },
+      "writtenOn": "2024-08-02T04:35:27Z",
+      "side": 1,
+      "message": "This is a common pattern across NFC API\u0027s. I\u0027m fixing existing calls in a separate CL: aosp/3202012. Will rebase and fix this new API, once that is done.",
+      "parentUuid": "0542bd2e_6b0f064e",
+      "range": {
+        "startLine": 187,
+        "startChar": 12,
+        "endLine": 187,
+        "endChar": 56
+      },
+      "revId": "40b9351992f7cead9a407ebaa4e391a9c6805600",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
