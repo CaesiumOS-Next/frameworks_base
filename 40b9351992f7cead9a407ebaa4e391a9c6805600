@@ -98,6 +98,30 @@
       },
       "revId": "40b9351992f7cead9a407ebaa4e391a9c6805600",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c8bb9353_429074be",
+        "filename": "nfc/java/android/nfc/NfcOemExtension.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1074459
+      },
+      "writtenOn": "2024-08-06T06:19:39Z",
+      "side": 1,
+      "message": "Migrated to the new helper method which does use [e.rethrowAsRuntimeException](https://cs.android.com/android/platform/superproject/main/+/main:frameworks/base/nfc/java/android/nfc/NfcAdapter.java;drc\u003d82f2b2ec992ea6d6bdfd34f1f858b350e76ed20b;l\u003d983) after attempting to reconnect to the nfc service once (to handle cases where the NFC process crashed without crashing the apps holding stale binder handles)",
+      "parentUuid": "92a7d945_0e469de7",
+      "range": {
+        "startLine": 187,
+        "startChar": 12,
+        "endLine": 187,
+        "endChar": 56
+      },
+      "revId": "40b9351992f7cead9a407ebaa4e391a9c6805600",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
