@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4f0461a0_d54dbd01",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1991091
+      },
+      "writtenOn": "2024-08-07T15:48:20Z",
+      "side": 1,
+      "message": "Hello, I just wanted to check on this since it got stale. It seems that it needed 2 approvers + someone with \"API-Review\" permissions. Wondering if its okay if I add other people that in the history have approved for \"system-current.txt\" or if there are other suggestions on how to move this forward?",
+      "revId": "a0236d25ae2ddc85559ea47f69a08bf59375340d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
