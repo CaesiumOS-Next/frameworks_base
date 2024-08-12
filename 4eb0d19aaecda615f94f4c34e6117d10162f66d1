@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cd2a7490_986174cb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1553715
+      },
+      "writtenOn": "2024-08-12T13:41:50Z",
+      "side": 1,
+      "message": "Evan, can you also CR+2? AOSP CLs need two CR votes",
+      "revId": "4eb0d19aaecda615f94f4c34e6117d10162f66d1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
