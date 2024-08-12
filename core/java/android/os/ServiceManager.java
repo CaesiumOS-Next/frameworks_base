@@ -330,10 +330,21 @@ public final class ServiceManager {
      * @hide
      */
     public static IBinder waitForService(@NonNull String name) {
-        return Binder.allowBlocking(waitForServiceNative(name));
+        return Binder.allowBlocking(waitForServiceNative(name, Integer.MAX_VALUE /* timeoutMs */));
     }
 
-    private static native IBinder waitForServiceNative(@NonNull String name);
+    /**
+     * Same as above, but with a timeout.
+     * 
+     * @return {@code null} only if there are permission problems or fatal errors.
+     * @throws IllegalArgumentException if {@code timeoutMs} is negative
+     * @hide
+     */
+    public static IBinder waitForService(@NonNull String name, int timeoutMs) {
+        return Binder.allowBlocking(waitForServiceNative(name, timeoutMs));
+    }
+
+    private static native IBinder waitForServiceNative(@NonNull String name, int timeoutMs);
 
     /**
      * Returns the specified service from the service manager, if declared.

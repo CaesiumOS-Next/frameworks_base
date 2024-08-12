@@ -29,8 +29,10 @@ namespace android {
 
 // Native because we have a client-side wait in waitForService() and we do not
 // want an unnecessary second copy of it.
-static jobject android_os_ServiceManager_waitForServiceNative(JNIEnv* env, jclass /* clazzObj */,
-                                                              jstring serviceNameObj) {
+static jobject android_os_ServiceManager_waitForServiceNative(JNIEnv* env,
+                                                              jclass /* clazzObj */,
+                                                              jstring serviceNameObj,
+                                                              jint timeoutMs) {
     const jchar* serviceName = env->GetStringCritical(serviceNameObj, nullptr);
     if (!serviceName) {
         jniThrowNullPointerException(env, nullptr);
@@ -39,8 +41,12 @@ static jobject android_os_ServiceManager_waitForServiceNative(JNIEnv* env, jclas
     String16 nameCopy = String16(reinterpret_cast<const char16_t *>(serviceName),
             env->GetStringLength(serviceNameObj));
     env->ReleaseStringCritical(serviceNameObj, serviceName);
+    if (timeoutMs < 0) {
+        jniThrowException(env, "java/lang/IllegalArgumentException", "Invalid negative timeout");
+        return nullptr;
+    }
 
-    sp<IBinder> service = defaultServiceManager()->waitForService(nameCopy);
+    sp<IBinder> service = defaultServiceManager()->waitForService(nameCopy, timeoutMs);
 
     if (!service) {
         return nullptr;
@@ -53,7 +59,7 @@ static jobject android_os_ServiceManager_waitForServiceNative(JNIEnv* env, jclas
 
 static const JNINativeMethod method_table[] = {
         /* name, signature, funcPtr */
-        {"waitForServiceNative", "(Ljava/lang/String;)Landroid/os/IBinder;",
+        {"waitForServiceNative", "(Ljava/lang/String;I)Landroid/os/IBinder;",
          (void*)android_os_ServiceManager_waitForServiceNative},
 };
 
