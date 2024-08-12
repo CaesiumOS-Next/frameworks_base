@@ -33,6 +33,23 @@
       "message": "Hi Evan, could you give an API review on this? Thanks!",
       "revId": "a0236d25ae2ddc85559ea47f69a08bf59375340d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "337ba19b_9cce8287",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1146169
+      },
+      "writtenOn": "2024-08-12T20:11:47Z",
+      "side": 1,
+      "message": "LGTM, constants match what is in update_status.h",
+      "revId": "a0236d25ae2ddc85559ea47f69a08bf59375340d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
