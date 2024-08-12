@@ -1,0 +1,179 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d05bdbce_867cf8f2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 3492818
+      },
+      "writtenOn": "2024-08-12T16:29:12Z",
+      "side": 1,
+      "message": "Thanks for the change. See below a few nits.",
+      "revId": "67b220393de8d75615c5c8df97b098403a3fa13f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1e73ec3b_344d5c6a",
+        "filename": "core/java/android/util/NtpTrustedTime.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 690,
+      "author": {
+        "id": 3492818
+      },
+      "writtenOn": "2024-08-12T16:29:12Z",
+      "side": 1,
+      "message": "activeNetwork",
+      "range": {
+        "startLine": 690,
+        "startChar": 26,
+        "endLine": 690,
+        "endChar": 40
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "640f9e58_77bacf1a",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "core/java/android/util/NtpTrustedTime.java",
+              "range": {
+                "startLine": 690,
+                "startChar": 0,
+                "endLine": 692,
+                "endChar": 0
+              },
+              "replacement": "            final Network activeNetwork \u003d connectivityManager.getActiveNetwork();\n            if (activeNetwork \u003d\u003d null) {\n"
+            },
+            {
+              "path": "core/java/android/util/NtpTrustedTime.java",
+              "range": {
+                "startLine": 696,
+                "startChar": 0,
+                "endLine": 697,
+                "endChar": 0
+              },
+              "replacement": "                    activeNetwork);\n"
+            }
+          ]
+        }
+      ],
+      "revId": "67b220393de8d75615c5c8df97b098403a3fa13f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "06c09db4_7bb470f0",
+        "filename": "core/java/android/util/NtpTrustedTime.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 695,
+      "author": {
+        "id": 3492818
+      },
+      "writtenOn": "2024-08-12T16:29:12Z",
+      "side": 1,
+      "message": "networkCapabilities",
+      "range": {
+        "startLine": 695,
+        "startChar": 38,
+        "endLine": 695,
+        "endChar": 42
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "f32f2c29_6a8c394b",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "core/java/android/util/NtpTrustedTime.java",
+              "range": {
+                "startLine": 695,
+                "startChar": 0,
+                "endLine": 696,
+                "endChar": 0
+              },
+              "replacement": "            final NetworkCapabilities networkCapabilities \u003d connectivityManager.getNetworkCapabilities(\n"
+            },
+            {
+              "path": "core/java/android/util/NtpTrustedTime.java",
+              "range": {
+                "startLine": 697,
+                "startChar": 0,
+                "endLine": 698,
+                "endChar": 0
+              },
+              "replacement": "            if (networkCapabilities \u003d\u003d null) {\n"
+            },
+            {
+              "path": "core/java/android/util/NtpTrustedTime.java",
+              "range": {
+                "startLine": 701,
+                "startChar": 0,
+                "endLine": 703,
+                "endChar": 0
+              },
+              "replacement": "            final boolean hasActualConnection \u003d networkCapabilities.hasCapability(\n                    NetworkCapabilities.NET_CAPABILITY_INTERNET) \u0026\u0026 networkCapabilities.hasCapability(\n"
+            }
+          ]
+        }
+      ],
+      "revId": "67b220393de8d75615c5c8df97b098403a3fa13f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c64b85ed_145ba315",
+        "filename": "core/java/android/util/NtpTrustedTime.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 701,
+      "author": {
+        "id": 3492818
+      },
+      "writtenOn": "2024-08-12T16:29:12Z",
+      "side": 1,
+      "message": "isConnectedToInternet?",
+      "range": {
+        "startLine": 701,
+        "startChar": 26,
+        "endLine": 701,
+        "endChar": 45
+      },
+      "revId": "67b220393de8d75615c5c8df97b098403a3fa13f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "29c2cfa7_56907d69",
+        "filename": "core/java/android/util/NtpTrustedTime.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 714,
+      "author": {
+        "id": 3492818
+      },
+      "writtenOn": "2024-08-12T16:29:12Z",
+      "side": 1,
+      "message": "would \"no internet connectivity\" be incorrect?",
+      "range": {
+        "startLine": 714,
+        "startChar": 50,
+        "endLine": 714,
+        "endChar": 70
+      },
+      "revId": "67b220393de8d75615c5c8df97b098403a3fa13f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
