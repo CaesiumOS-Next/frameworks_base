@@ -50,6 +50,24 @@
       "message": "LGTM, constants match what is in update_status.h",
       "revId": "a0236d25ae2ddc85559ea47f69a08bf59375340d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a59d89be_a2b3c60b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1710792
+      },
+      "writtenOn": "2024-08-12T20:15:21Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "4f0461a0_d54dbd01",
+      "revId": "a0236d25ae2ddc85559ea47f69a08bf59375340d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
