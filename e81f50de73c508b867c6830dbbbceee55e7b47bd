@@ -43,6 +43,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "113db438_b860df96",
+        "filename": "core/api/system-lint-baseline.txt",
+        "patchSetId": 3
+      },
+      "lineNbr": 338,
+      "author": {
+        "id": 1991091
+      },
+      "writtenOn": "2024-08-13T21:45:05Z",
+      "side": 1,
+      "message": "Hi Evan, I will give that a try, I intially `repo sync`ed main and during compilation I got those linting errors, which they are for sure unrelated. I will try again and just leave the \"unflagged api\" change in `system-lint-baseline.txt` if you are okay with not adding the `@FlaggedApi` annotations",
+      "parentUuid": "e20220cf_8385b085",
+      "range": {
+        "startLine": 338,
+        "startChar": 0,
+        "endLine": 338,
+        "endChar": 15
+      },
+      "revId": "e81f50de73c508b867c6830dbbbceee55e7b47bd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7891b272_14edf9f5",
         "filename": "core/java/android/os/UpdateEngine.java",
         "patchSetId": 3
