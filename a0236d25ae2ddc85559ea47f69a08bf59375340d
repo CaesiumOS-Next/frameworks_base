@@ -36,6 +36,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f76f276e_cb83a8ea",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1724998
+      },
+      "writtenOn": "2024-08-13T18:01:00Z",
+      "side": 1,
+      "message": "thanks. I have updated the component. Please add the bug id to description",
+      "parentUuid": "76da9f69_d46c6887",
+      "revId": "a0236d25ae2ddc85559ea47f69a08bf59375340d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4f0461a0_d54dbd01",
