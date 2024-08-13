@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "473df4fb_539e4a9d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1146169
+      },
+      "writtenOn": "2024-08-13T21:18:18Z",
+      "side": 1,
+      "message": "Sorry for the churn. Removing API +1 until the API is flagged appropriately.",
+      "revId": "e81f50de73c508b867c6830dbbbceee55e7b47bd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7891b272_14edf9f5",
+        "filename": "core/java/android/os/UpdateEngine.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 248,
+      "author": {
+        "id": 1146169
+      },
+      "writtenOn": "2024-08-13T21:18:18Z",
+      "side": 1,
+      "message": "Sorry, I\u0027m actually realizing now that the updated lint baseline was hiding this warning. But this constant and the one below it I think will require @FlaggedApi annotations, and a corresponding Flag defined for these.\n\nI need to figure out what the right approach for this is. Whether it\u0027s on us to create the flag and it to be used here, or if the owner of this CL can create the flag. I will update with what I find out.",
+      "range": {
+        "startLine": 248,
+        "startChar": 32,
+        "endLine": 248,
+        "endChar": 57
+      },
+      "revId": "e81f50de73c508b867c6830dbbbceee55e7b47bd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
