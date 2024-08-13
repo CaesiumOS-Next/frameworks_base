@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4dc57515_8201f7df",
+        "filename": "AconfigFlags.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 848,
+      "author": {
+        "id": 1000701
+      },
+      "writtenOn": "2024-08-13T20:38:23Z",
+      "side": 1,
+      "message": "This looks dangerous. If you have a flag being accessed both by code on the system partition and code in an apex, they each need to be using different java_aconfig_libraries, with different containers set.",
+      "revId": "b1916ac63afbaefa8571bfafcbfe6ae5f888bad1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
