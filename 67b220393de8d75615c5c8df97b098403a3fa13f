@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "46af209f_7d71c3e6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1275415
+      },
+      "writtenOn": "2024-08-13T01:45:14Z",
+      "side": 1,
+      "message": "Thanks for your review. I\u0027m glad to accept your suggestions, please take another look.",
+      "parentUuid": "d05bdbce_867cf8f2",
+      "revId": "67b220393de8d75615c5c8df97b098403a3fa13f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1e73ec3b_344d5c6a",
@@ -65,6 +83,30 @@
           ]
         }
       ],
+      "revId": "67b220393de8d75615c5c8df97b098403a3fa13f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "62f98f9b_19627b41",
+        "filename": "core/java/android/util/NtpTrustedTime.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 690,
+      "author": {
+        "id": 1275415
+      },
+      "writtenOn": "2024-08-13T01:45:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1e73ec3b_344d5c6a",
+      "range": {
+        "startLine": 690,
+        "startChar": 26,
+        "endLine": 690,
+        "endChar": 40
+      },
       "revId": "67b220393de8d75615c5c8df97b098403a3fa13f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -130,6 +172,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "21a6e6e1_f51392f6",
+        "filename": "core/java/android/util/NtpTrustedTime.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 695,
+      "author": {
+        "id": 1275415
+      },
+      "writtenOn": "2024-08-13T01:45:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "06c09db4_7bb470f0",
+      "range": {
+        "startLine": 695,
+        "startChar": 38,
+        "endLine": 695,
+        "endChar": 42
+      },
+      "revId": "67b220393de8d75615c5c8df97b098403a3fa13f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c64b85ed_145ba315",
@@ -153,6 +219,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e4ca3c05_3df3eea1",
+        "filename": "core/java/android/util/NtpTrustedTime.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 701,
+      "author": {
+        "id": 1275415
+      },
+      "writtenOn": "2024-08-13T01:45:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c64b85ed_145ba315",
+      "range": {
+        "startLine": 701,
+        "startChar": 26,
+        "endLine": 701,
+        "endChar": 45
+      },
+      "revId": "67b220393de8d75615c5c8df97b098403a3fa13f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "29c2cfa7_56907d69",
@@ -166,6 +256,30 @@
       "writtenOn": "2024-08-12T16:29:12Z",
       "side": 1,
       "message": "would \"no internet connectivity\" be incorrect?",
+      "range": {
+        "startLine": 714,
+        "startChar": 50,
+        "endLine": 714,
+        "endChar": 70
+      },
+      "revId": "67b220393de8d75615c5c8df97b098403a3fa13f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "859740d1_e1b541b5",
+        "filename": "core/java/android/util/NtpTrustedTime.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 714,
+      "author": {
+        "id": 1275415
+      },
+      "writtenOn": "2024-08-13T01:45:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "29c2cfa7_56907d69",
       "range": {
         "startLine": 714,
         "startChar": 50,
