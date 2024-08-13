@@ -20,6 +20,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e20220cf_8385b085",
+        "filename": "core/api/system-lint-baseline.txt",
+        "patchSetId": 3
+      },
+      "lineNbr": 338,
+      "author": {
+        "id": 1146169
+      },
+      "writtenOn": "2024-08-13T21:35:22Z",
+      "side": 1,
+      "message": "For this entire file: \n\nCan you please remove these changes to `system-lint-baseline.txt`? They seem unrelated to the API change (except for the \"unflagged api\" errors), and I don\u0027t think we want to change the baseline. If there are lint errors related to this API change, they should be fixed.",
+      "range": {
+        "startLine": 338,
+        "startChar": 0,
+        "endLine": 338,
+        "endChar": 15
+      },
+      "revId": "e81f50de73c508b867c6830dbbbceee55e7b47bd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7891b272_14edf9f5",
         "filename": "core/java/android/os/UpdateEngine.java",
         "patchSetId": 3
