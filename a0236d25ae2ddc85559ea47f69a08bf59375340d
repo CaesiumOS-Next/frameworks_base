@@ -54,6 +54,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2fff8002_cb84d6d8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1991091
+      },
+      "writtenOn": "2024-08-13T18:17:36Z",
+      "side": 1,
+      "message": "commit message was updated with the bug id",
+      "parentUuid": "f76f276e_cb83a8ea",
+      "revId": "a0236d25ae2ddc85559ea47f69a08bf59375340d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4f0461a0_d54dbd01",
