@@ -67,6 +67,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1f914cce_0a6358e1",
+        "filename": "core/api/system-lint-baseline.txt",
+        "patchSetId": 3
+      },
+      "lineNbr": 338,
+      "author": {
+        "id": 1146169
+      },
+      "writtenOn": "2024-08-13T21:46:57Z",
+      "side": 1,
+      "message": "Sorry, I should have been more clear. Those APIs need to be flagged, and we should remove all lint-baseline changes. The only thing I am looking into is to figure out what the easiest way to add flags would be.",
+      "parentUuid": "113db438_b860df96",
+      "range": {
+        "startLine": 338,
+        "startChar": 0,
+        "endLine": 338,
+        "endChar": 15
+      },
+      "revId": "e81f50de73c508b867c6830dbbbceee55e7b47bd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7891b272_14edf9f5",
         "filename": "core/java/android/os/UpdateEngine.java",
         "patchSetId": 3
