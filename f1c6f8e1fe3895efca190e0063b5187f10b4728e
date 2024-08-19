@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b9ff4a03_7979b8cd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1982145
+      },
+      "writtenOn": "2024-08-19T18:23:54Z",
+      "side": 1,
+      "message": "@fayey@google.com, reminder to please make some naming suggestions in these CLs.\nIt might be easier to make the suggestions in the TEST_MAPPING rather than the android.bp because you have a little more context there.  Either way works for me.\nThanks.",
+      "revId": "f1c6f8e1fe3895efca190e0063b5187f10b4728e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
