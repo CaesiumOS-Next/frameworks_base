@@ -34,6 +34,47 @@
       "parentUuid": "4dc57515_8201f7df",
       "revId": "b1916ac63afbaefa8571bfafcbfe6ae5f888bad1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e2968ce1_df4a3f39",
+        "filename": "AconfigFlags.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 848,
+      "author": {
+        "id": 1583551
+      },
+      "writtenOn": "2024-08-22T19:00:32Z",
+      "side": 1,
+      "message": "The flag needs to be declared in one container, marked exportable, and then exported via another module, and that exported module used in the other container, in order for both containers to see the same flag value.  See also the comment below.",
+      "parentUuid": "e28fb319_d80bc545",
+      "revId": "b1916ac63afbaefa8571bfafcbfe6ae5f888bad1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4a76bb70_d8f16ec5",
+        "filename": "AconfigFlags.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 998,
+      "author": {
+        "id": 1583551
+      },
+      "writtenOn": "2024-08-22T19:00:32Z",
+      "side": 1,
+      "message": "This is an example of how to export the flag for use in another container.",
+      "range": {
+        "startLine": 972,
+        "startChar": 0,
+        "endLine": 998,
+        "endChar": 0
+      },
+      "revId": "b1916ac63afbaefa8571bfafcbfe6ae5f888bad1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
