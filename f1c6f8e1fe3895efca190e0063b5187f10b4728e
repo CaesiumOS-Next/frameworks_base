@@ -16,6 +16,144 @@
       "message": "@fayey@google.com, reminder to please make some naming suggestions in these CLs.\nIt might be easier to make the suggestions in the TEST_MAPPING rather than the android.bp because you have a little more context there.  Either way works for me.\nThanks.",
       "revId": "f1c6f8e1fe3895efca190e0063b5187f10b4728e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e4cd35b0_dacb0c5e",
+        "filename": "core/java/android/permission/TEST_MAPPING",
+        "patchSetId": 4
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 1351609
+      },
+      "writtenOn": "2024-08-22T00:17:56Z",
+      "side": 1,
+      "message": "```suggestion\n            \"name\": \"CtsPermissionTestCases_Framework_Permission\"\n```",
+      "range": {
+        "startLine": 4,
+        "startChar": 21,
+        "endLine": 4,
+        "endChar": 54
+      },
+      "revId": "f1c6f8e1fe3895efca190e0063b5187f10b4728e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f2a4d4b0_585af6bb",
+        "filename": "core/java/com/android/internal/infra/TEST_MAPPING",
+        "patchSetId": 4
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1351609
+      },
+      "writtenOn": "2024-08-22T00:17:56Z",
+      "side": 1,
+      "message": "```suggestion\n      \"name\": \"CtsPermissionTestCases_Framework_Infra\"\n```",
+      "range": {
+        "startLine": 12,
+        "startChar": 15,
+        "endLine": 12,
+        "endChar": 52
+      },
+      "revId": "f1c6f8e1fe3895efca190e0063b5187f10b4728e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8ad4daa4_5f2d85ca",
+        "filename": "native/android/TEST_MAPPING",
+        "patchSetId": 4
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1351609
+      },
+      "writtenOn": "2024-08-22T00:17:56Z",
+      "side": 1,
+      "message": "```suggestion\n       \"name\": \"CtsPermissionTestCases_Native\",\n```",
+      "range": {
+        "startLine": 8,
+        "startChar": 16,
+        "endLine": 8,
+        "endChar": 49
+      },
+      "revId": "f1c6f8e1fe3895efca190e0063b5187f10b4728e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4722ae0f_730e6d7e",
+        "filename": "services/core/java/com/android/server/appop/TEST_MAPPING",
+        "patchSetId": 4
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1351609
+      },
+      "writtenOn": "2024-08-22T00:17:56Z",
+      "side": 1,
+      "message": "```suggestion\n            \"name\": \"CtsPermissionTestCases_SystemServer_PermissionAndAppOp\"\n```",
+      "range": {
+        "startLine": 31,
+        "startChar": 21,
+        "endLine": 31,
+        "endChar": 64
+      },
+      "revId": "f1c6f8e1fe3895efca190e0063b5187f10b4728e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d9a86954_20b48d0d",
+        "filename": "services/core/java/com/android/server/pm/permission/TEST_MAPPING",
+        "patchSetId": 4
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 1351609
+      },
+      "writtenOn": "2024-08-22T00:17:56Z",
+      "side": 1,
+      "message": "```suggestion\n            \"name\": \"CtsPermissionTestCases_SystemServer_PermissionAndAppOp\"\n```",
+      "range": {
+        "startLine": 4,
+        "startChar": 21,
+        "endLine": 4,
+        "endChar": 64
+      },
+      "revId": "f1c6f8e1fe3895efca190e0063b5187f10b4728e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "26028bc4_5b8f9be6",
+        "filename": "services/core/java/com/android/server/policy/TEST_MAPPING",
+        "patchSetId": 4
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1351609
+      },
+      "writtenOn": "2024-08-22T00:17:56Z",
+      "side": 1,
+      "message": "```suggestion\n      \"name\": \"CtsPermissionTestCases_SystemServer_Policy\"\n```",
+      "range": {
+        "startLine": 49,
+        "startChar": 15,
+        "endLine": 49,
+        "endChar": 68
+      },
+      "revId": "f1c6f8e1fe3895efca190e0063b5187f10b4728e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
