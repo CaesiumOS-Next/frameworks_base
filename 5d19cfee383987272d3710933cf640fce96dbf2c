@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5204b921_cc3b2912",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1347262
+      },
+      "writtenOn": "2024-08-23T09:54:59Z",
+      "side": 1,
+      "message": "I don\u0027t see how this would help, NotificationManagerService is created/started after WindowManagerService:\n\n- https://cs.android.com/android/platform/superproject/main/+/main:frameworks/base/services/java/com/android/server/SystemServer.java;drc\u003d828ac71890d4a5947e926600bb605cb5233af51a;l\u003d2195\n \n- https://cs.android.com/android/platform/superproject/main/+/main:frameworks/base/services/java/com/android/server/SystemServer.java;drc\u003d828ac71890d4a5947e926600bb605cb5233af51a;l\u003d1663",
+      "revId": "5d19cfee383987272d3710933cf640fce96dbf2c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
