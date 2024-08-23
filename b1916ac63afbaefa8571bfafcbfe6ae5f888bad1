@@ -56,6 +56,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "46da9675_76211638",
+        "filename": "AconfigFlags.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 848,
+      "author": {
+        "id": 1886292
+      },
+      "writtenOn": "2024-08-23T04:55:57Z",
+      "side": 1,
+      "message": "Thanks for the explanation.\n\nI updated CL to use exported mode.\n\nBy the way, It seems @FlaggedApi annotation is required for \u0027Exported Mode\u0027 based on \u0027Flag Containers\u0027 g3doc(https://g3doc.corp.google.com/company/teams/android-core-experiments/trunk-stable/flag-containers.md?cl\u003dhead). \nHowever, we don\u0027t have @FlaggedApi usage for this flag. We will use this flag just to synchronize operation between system module(netd) \u0026 mainline module(Connectivity).\n\nCan we share this flag with \u0027Exported Mode\u0027 without @FlaggedApi?",
+      "parentUuid": "e2968ce1_df4a3f39",
+      "revId": "b1916ac63afbaefa8571bfafcbfe6ae5f888bad1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4a76bb70_d8f16ec5",
         "filename": "AconfigFlags.bp",
         "patchSetId": 1
