@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "06f36094_9a935a04",
+        "filename": "core/java/android/net/flags.aconfig",
+        "patchSetId": 2
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1947461
+      },
+      "writtenOn": "2024-08-23T06:18:32Z",
+      "side": 1,
+      "message": "If we move other socket destroy code as well, maybe `connectivity_service_destroy_socket`?\nhttps://android-review.git.corp.google.com/c/platform/system/netd/+/2856866/comments/eef741f6_94cb4e9f",
+      "range": {
+        "startLine": 40,
+        "startChar": 9,
+        "endLine": 40,
+        "endChar": 63
+      },
+      "revId": "5096032327b671966130716326c3ccff20f8080a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
