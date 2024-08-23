@@ -41,6 +41,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d9b17db1_637adeb7",
+        "filename": "core/java/android/permission/TEST_MAPPING",
+        "patchSetId": 4
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 1351609
+      },
+      "writtenOn": "2024-08-23T23:40:41Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "e4cd35b0_dacb0c5e",
+      "range": {
+        "startLine": 4,
+        "startChar": 21,
+        "endLine": 4,
+        "endChar": 54
+      },
+      "revId": "f1c6f8e1fe3895efca190e0063b5187f10b4728e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f2a4d4b0_585af6bb",
@@ -54,6 +78,30 @@
       "writtenOn": "2024-08-22T00:17:56Z",
       "side": 1,
       "message": "```suggestion\n      \"name\": \"CtsPermissionTestCases_Framework_Infra\"\n```",
+      "range": {
+        "startLine": 12,
+        "startChar": 15,
+        "endLine": 12,
+        "endChar": 52
+      },
+      "revId": "f1c6f8e1fe3895efca190e0063b5187f10b4728e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f8f73afb_ae7fa323",
+        "filename": "core/java/com/android/internal/infra/TEST_MAPPING",
+        "patchSetId": 4
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1351609
+      },
+      "writtenOn": "2024-08-23T23:40:41Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "f2a4d4b0_585af6bb",
       "range": {
         "startLine": 12,
         "startChar": 15,
@@ -87,6 +135,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d1155067_968b805a",
+        "filename": "native/android/TEST_MAPPING",
+        "patchSetId": 4
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1351609
+      },
+      "writtenOn": "2024-08-23T23:40:41Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "8ad4daa4_5f2d85ca",
+      "range": {
+        "startLine": 8,
+        "startChar": 16,
+        "endLine": 8,
+        "endChar": 49
+      },
+      "revId": "f1c6f8e1fe3895efca190e0063b5187f10b4728e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4722ae0f_730e6d7e",
@@ -100,6 +172,30 @@
       "writtenOn": "2024-08-22T00:17:56Z",
       "side": 1,
       "message": "```suggestion\n            \"name\": \"CtsPermissionTestCases_SystemServer_PermissionAndAppOp\"\n```",
+      "range": {
+        "startLine": 31,
+        "startChar": 21,
+        "endLine": 31,
+        "endChar": 64
+      },
+      "revId": "f1c6f8e1fe3895efca190e0063b5187f10b4728e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "082ae3e0_9e60b45b",
+        "filename": "services/core/java/com/android/server/appop/TEST_MAPPING",
+        "patchSetId": 4
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1351609
+      },
+      "writtenOn": "2024-08-23T23:40:41Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "4722ae0f_730e6d7e",
       "range": {
         "startLine": 31,
         "startChar": 21,
@@ -133,6 +229,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6cc49c1e_8d5656e8",
+        "filename": "services/core/java/com/android/server/pm/permission/TEST_MAPPING",
+        "patchSetId": 4
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 1351609
+      },
+      "writtenOn": "2024-08-23T23:40:41Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "d9a86954_20b48d0d",
+      "range": {
+        "startLine": 4,
+        "startChar": 21,
+        "endLine": 4,
+        "endChar": 64
+      },
+      "revId": "f1c6f8e1fe3895efca190e0063b5187f10b4728e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "26028bc4_5b8f9be6",
@@ -146,6 +266,30 @@
       "writtenOn": "2024-08-22T00:17:56Z",
       "side": 1,
       "message": "```suggestion\n      \"name\": \"CtsPermissionTestCases_SystemServer_Policy\"\n```",
+      "range": {
+        "startLine": 49,
+        "startChar": 15,
+        "endLine": 49,
+        "endChar": 68
+      },
+      "revId": "f1c6f8e1fe3895efca190e0063b5187f10b4728e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5a9c3120_0008b5fe",
+        "filename": "services/core/java/com/android/server/policy/TEST_MAPPING",
+        "patchSetId": 4
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1351609
+      },
+      "writtenOn": "2024-08-23T23:40:41Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "26028bc4_5b8f9be6",
       "range": {
         "startLine": 49,
         "startChar": 15,
