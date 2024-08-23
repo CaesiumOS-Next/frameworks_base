@@ -117,6 +117,30 @@
       },
       "revId": "b1916ac63afbaefa8571bfafcbfe6ae5f888bad1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "54dad86e_2d81a005",
+        "filename": "AconfigFlags.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 998,
+      "author": {
+        "id": 1583551
+      },
+      "writtenOn": "2024-08-23T16:37:20Z",
+      "side": 1,
+      "message": "yes.\n\nIf the `aconfig_declarations` module says `container: \"system\"` (and export/import is used to get the value to the other containers), then the system image build will be the value seen by all containers.",
+      "parentUuid": "917cae14_5b5cb959",
+      "range": {
+        "startLine": 972,
+        "startChar": 0,
+        "endLine": 998,
+        "endChar": 0
+      },
+      "revId": "b1916ac63afbaefa8571bfafcbfe6ae5f888bad1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
