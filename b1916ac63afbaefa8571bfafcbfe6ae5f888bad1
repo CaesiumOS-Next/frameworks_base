@@ -75,6 +75,30 @@
       },
       "revId": "b1916ac63afbaefa8571bfafcbfe6ae5f888bad1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "917cae14_5b5cb959",
+        "filename": "AconfigFlags.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 998,
+      "author": {
+        "id": 1947461
+      },
+      "writtenOn": "2024-08-23T02:53:06Z",
+      "side": 1,
+      "message": "Thank you for your suggestion.  \nIf we set container: \"system\" and export to other containers, other containers will see the flag value which is decided at platform build time, right?\n\nIn our use case, platform code and module code must see the same value and flag value should be based on platform.",
+      "parentUuid": "4a76bb70_d8f16ec5",
+      "range": {
+        "startLine": 972,
+        "startChar": 0,
+        "endLine": 998,
+        "endChar": 0
+      },
+      "revId": "b1916ac63afbaefa8571bfafcbfe6ae5f888bad1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
