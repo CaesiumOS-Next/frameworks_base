@@ -33,6 +33,24 @@
       "message": "Can we move this to the already existing `synchronized` block?",
       "revId": "48e4832c3297d589b5ab0fdee3642a26a114d5c1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "731f1c6b_88c82057",
+        "filename": "services/core/java/com/android/server/wm/WindowManagerService.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 7989,
+      "author": {
+        "id": 3516515
+      },
+      "writtenOn": "2024-08-28T03:34:19Z",
+      "side": 1,
+      "message": "maybe,but running \u0027message.sendTotarget()\u0027 need to judge if the container is empty,so i think it should be outside.",
+      "parentUuid": "ab3edfa3_0332b81c",
+      "revId": "48e4832c3297d589b5ab0fdee3642a26a114d5c1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
