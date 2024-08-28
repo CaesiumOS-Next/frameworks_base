@@ -51,6 +51,24 @@
       "parentUuid": "ab3edfa3_0332b81c",
       "revId": "48e4832c3297d589b5ab0fdee3642a26a114d5c1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "89d287a5_de0eea13",
+        "filename": "services/core/java/com/android/server/wm/WindowManagerService.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 7989,
+      "author": {
+        "id": 1955350
+      },
+      "writtenOn": "2024-08-28T16:16:57Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "731f1c6b_88c82057",
+      "revId": "48e4832c3297d589b5ab0fdee3642a26a114d5c1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
