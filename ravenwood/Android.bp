@@ -107,7 +107,7 @@ java_library {
         "androidx.test.monitor-for-device",
     ],
     libs: [
-        "android.test.mock",
+        "android.test.mock.stubs",
         "framework-minus-apex.ravenwood",
         "ravenwood-framework",
         "services.core.ravenwood",
