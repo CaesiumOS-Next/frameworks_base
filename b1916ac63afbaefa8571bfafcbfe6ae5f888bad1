@@ -72,6 +72,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "eb5f17ef_985d421e",
+        "filename": "AconfigFlags.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 848,
+      "author": {
+        "id": 1886292
+      },
+      "writtenOn": "2024-08-30T02:24:35Z",
+      "side": 1,
+      "message": "@zhidou@google.com answered this through chat.\nIt can work as Exported Mode, but it\u0027s not recommended to use this mode for non API feature.\nI will exceptionally use \u0027export mode\u0027 for this feature.",
+      "parentUuid": "46da9675_76211638",
+      "revId": "b1916ac63afbaefa8571bfafcbfe6ae5f888bad1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4a76bb70_d8f16ec5",
