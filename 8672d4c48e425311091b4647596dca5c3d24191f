@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "beef781c_4c28aa98",
+        "filename": "services/core/java/com/android/server/audio/AudioDeviceInventory.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 1217,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2024-09-04T09:37:41Z",
+      "side": 0,
+      "message": "this method and the corresponding message and handling should be removed from AudioDeviceBroker.\nSame thing for postSaveRemovePreferredDevices, postSaveSetDeviceAsNonDefault, postSaveRemoveDeviceAsNonDefault, postSaveSetPreferredDevicesForCapturePreset, postSaveClearPreferredDevicesForCapturePreset",
+      "range": {
+        "startLine": 1217,
+        "startChar": 26,
+        "endLine": 1217,
+        "endChar": 53
+      },
+      "revId": "8672d4c48e425311091b4647596dca5c3d24191f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
