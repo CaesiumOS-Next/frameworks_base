@@ -22,6 +22,30 @@
       },
       "revId": "8672d4c48e425311091b4647596dca5c3d24191f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "63bfed81_78ca0ded",
+        "filename": "services/core/java/com/android/server/audio/AudioDeviceInventory.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 1217,
+      "author": {
+        "id": 1427192
+      },
+      "writtenOn": "2024-09-05T04:53:16Z",
+      "side": 0,
+      "message": "rename onSaveSetXXX to saveXXX as other corresponding msg and functions are removed",
+      "parentUuid": "beef781c_4c28aa98",
+      "range": {
+        "startLine": 1217,
+        "startChar": 26,
+        "endLine": 1217,
+        "endChar": 53
+      },
+      "revId": "8672d4c48e425311091b4647596dca5c3d24191f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }

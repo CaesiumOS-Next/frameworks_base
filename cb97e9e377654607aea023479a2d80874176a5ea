@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fbcde430_ab945026",
+        "filename": "services/core/java/com/android/server/audio/AudioDeviceInventory.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 750,
+      "author": {
+        "id": 1427192
+      },
+      "writtenOn": "2024-09-05T04:53:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "954f606f_b8d80a22",
+      "range": {
+        "startLine": 750,
+        "startChar": 12,
+        "endLine": 750,
+        "endChar": 29
+      },
+      "revId": "cb97e9e377654607aea023479a2d80874176a5ea",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "064c9805_3c96cc40",
@@ -37,6 +61,30 @@
       "writtenOn": "2024-09-04T09:37:41Z",
       "side": 1,
       "message": "preferred here and below",
+      "range": {
+        "startLine": 1212,
+        "startChar": 24,
+        "endLine": 1212,
+        "endChar": 32
+      },
+      "revId": "cb97e9e377654607aea023479a2d80874176a5ea",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "90ce181b_1e8641d5",
+        "filename": "services/core/java/com/android/server/audio/AudioDeviceInventory.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 1212,
+      "author": {
+        "id": 1427192
+      },
+      "writtenOn": "2024-09-05T04:53:16Z",
+      "side": 1,
+      "message": "removed as other functions are removed",
+      "parentUuid": "064c9805_3c96cc40",
       "range": {
         "startLine": 1212,
         "startChar": 24,
