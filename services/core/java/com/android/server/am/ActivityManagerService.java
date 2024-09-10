@@ -11052,7 +11052,9 @@ public class ActivityManagerService extends IActivityManager.Stub
                 }
             }
             if (dumpAll) {
-                dumpAppRestrictionController(pw);
+                synchronized (this) {
+                    dumpAppRestrictionController(pw);
+                }
             }
         }
         Binder.restoreCallingIdentity(origId);
