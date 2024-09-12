@@ -299,8 +299,10 @@ class AppIdPermissionPolicy : SchemePolicy() {
             var newFlags = oldFlags
             newFlags =
                 if (
-                    newFlags.hasBits(PermissionFlags.ROLE) ||
-                        newFlags.hasBits(PermissionFlags.PREGRANT)
+                    packageState.isSystem && (
+                        newFlags.hasBits(PermissionFlags.ROLE) ||
+                            newFlags.hasBits(PermissionFlags.PREGRANT)
+                    )
                 ) {
                     newFlags or PermissionFlags.RUNTIME_GRANTED
                 } else {
