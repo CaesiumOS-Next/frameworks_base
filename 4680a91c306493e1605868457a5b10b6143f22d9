@@ -16,6 +16,29 @@
       "message": "Hi google team,\ncan you help to review the updated patch\n\nThanks",
       "revId": "4680a91c306493e1605868457a5b10b6143f22d9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6217a27b_6ecbc9fb",
+        "filename": "services/core/java/com/android/server/audio/AudioDeviceInventory.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 1216,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2024-09-12T04:44:51Z",
+      "side": 1,
+      "message": "this needs to be performed with local binder context:\n\ntry (SafeCloseable ignored \u003d ClearCallingIdentityContext.create()) {\n ....\n}\n\ngiven setPreferredDevicesForStrategy() already clears the calling context before calling AudioSystem we should probably remove this calling context clearing from setPreferredDevicesForStrategy() and move it up here and enclose both method calls.\n\nSame for all other modified methods",
+      "range": {
+        "startLine": 1216,
+        "startChar": 0,
+        "endLine": 1216,
+        "endChar": 59
+      },
+      "revId": "4680a91c306493e1605868457a5b10b6143f22d9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
