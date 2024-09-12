@@ -39,6 +39,30 @@
       },
       "revId": "4680a91c306493e1605868457a5b10b6143f22d9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "212afc8b_2e129f7f",
+        "filename": "services/core/java/com/android/server/audio/AudioDeviceInventory.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 1216,
+      "author": {
+        "id": 1427192
+      },
+      "writtenOn": "2024-09-12T05:56:14Z",
+      "side": 1,
+      "message": "Hi Eric,\nsetPreferredDevicesForStrategy is also called in reapplyExternalDevicesRoles().\nSo there will be no calling context clearing in reapplyExternalDevicesRoles .\nwill it be a issue ?",
+      "parentUuid": "6217a27b_6ecbc9fb",
+      "range": {
+        "startLine": 1216,
+        "startChar": 0,
+        "endLine": 1216,
+        "endChar": 59
+      },
+      "revId": "4680a91c306493e1605868457a5b10b6143f22d9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
