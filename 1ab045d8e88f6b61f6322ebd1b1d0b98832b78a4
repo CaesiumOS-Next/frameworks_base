@@ -52,6 +52,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b0753fef_ef807440",
+        "filename": "services/core/java/com/android/server/VcnManagementService.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 492,
+      "author": {
+        "id": 1297255
+      },
+      "writtenOn": "2024-09-13T23:35:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "36a713a9_96662db3",
+      "range": {
+        "startLine": 492,
+        "startChar": 22,
+        "endLine": 492,
+        "endChar": 33
+      },
+      "revId": "1ab045d8e88f6b61f6322ebd1b1d0b98832b78a4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a52a7f67_22efd6ad",
@@ -65,6 +89,30 @@
       "writtenOn": "2024-09-13T23:14:18Z",
       "side": 1,
       "message": "Can we make this 2?",
+      "range": {
+        "startLine": 149,
+        "startChar": 29,
+        "endLine": 149,
+        "endChar": 47
+      },
+      "revId": "1ab045d8e88f6b61f6322ebd1b1d0b98832b78a4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "737adcb8_1953724a",
+        "filename": "tests/vcn/java/com/android/server/VcnManagementServiceTest.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1297255
+      },
+      "writtenOn": "2024-09-13T23:35:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a52a7f67_22efd6ad",
       "range": {
         "startLine": 149,
         "startChar": 29,
