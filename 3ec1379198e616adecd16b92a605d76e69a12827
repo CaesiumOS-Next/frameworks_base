@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c85ea3a0_7d18627b",
+        "filename": "services/core/java/com/android/server/audio/AudioDeviceInventory.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 1238,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2024-09-13T14:55:42Z",
+      "side": 1,
+      "message": "please remove, this is not true: this method can be called without holding mDevicesLock at it syncs on it internally\n\nsame thing for all methods below",
+      "range": {
+        "startLine": 1238,
+        "startChar": 0,
+        "endLine": 1238,
+        "endChar": 30
+      },
+      "revId": "3ec1379198e616adecd16b92a605d76e69a12827",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

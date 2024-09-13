@@ -87,6 +87,30 @@
       },
       "revId": "4680a91c306493e1605868457a5b10b6143f22d9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "22375d3a_9d2fb5c6",
+        "filename": "services/core/java/com/android/server/audio/AudioDeviceInventory.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 1216,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2024-09-13T14:55:42Z",
+      "side": 1,
+      "message": "reapplyExternalDevicesRoles() is always called from the message Handler and never from a binder thread so the calling context is always good.",
+      "parentUuid": "e505adc1_ba2b3661",
+      "range": {
+        "startLine": 1216,
+        "startChar": 0,
+        "endLine": 1216,
+        "endChar": 59
+      },
+      "revId": "4680a91c306493e1605868457a5b10b6143f22d9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
