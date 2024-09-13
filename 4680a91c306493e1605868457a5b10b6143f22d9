@@ -63,6 +63,30 @@
       },
       "revId": "4680a91c306493e1605868457a5b10b6143f22d9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e505adc1_ba2b3661",
+        "filename": "services/core/java/com/android/server/audio/AudioDeviceInventory.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 1216,
+      "author": {
+        "id": 1427192
+      },
+      "writtenOn": "2024-09-13T03:26:01Z",
+      "side": 1,
+      "message": "Hi Eric,\nafter go through the logic, there is no context clearing  for addDevicesRoleForStrategy called in reapplyExternalDevicesRoles neither.\nSo I think no issue with setPreferredDevicesForStrategy in reapplyExternalDevicesRoles without context clearing calling.\n\nPlease help to review  diff patch 3-\u003e5 for context clearing calling change.\nThanks",
+      "parentUuid": "212afc8b_2e129f7f",
+      "range": {
+        "startLine": 1216,
+        "startChar": 0,
+        "endLine": 1216,
+        "endChar": 59
+      },
+      "revId": "4680a91c306493e1605868457a5b10b6143f22d9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
