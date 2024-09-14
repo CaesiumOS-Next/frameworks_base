@@ -22,6 +22,30 @@
       },
       "revId": "3ec1379198e616adecd16b92a605d76e69a12827",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "27b5a32d_24175ae5",
+        "filename": "services/core/java/com/android/server/audio/AudioDeviceInventory.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 1238,
+      "author": {
+        "id": 1427192
+      },
+      "writtenOn": "2024-09-14T01:29:34Z",
+      "side": 1,
+      "message": "You are right. We have made the changes and update the commit message.\nThank you",
+      "parentUuid": "c85ea3a0_7d18627b",
+      "range": {
+        "startLine": 1238,
+        "startChar": 0,
+        "endLine": 1238,
+        "endChar": 30
+      },
+      "revId": "3ec1379198e616adecd16b92a605d76e69a12827",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
