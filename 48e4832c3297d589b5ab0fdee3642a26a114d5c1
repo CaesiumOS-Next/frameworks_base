@@ -69,6 +69,24 @@
       "parentUuid": "731f1c6b_88c82057",
       "revId": "48e4832c3297d589b5ab0fdee3642a26a114d5c1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e6a9ee88_37ee7970",
+        "filename": "services/core/java/com/android/server/wm/WindowManagerService.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 7989,
+      "author": {
+        "id": 1650177
+      },
+      "writtenOn": "2024-09-18T13:31:59Z",
+      "side": 1,
+      "message": "What about refactoring the code?\n\n```\n        @Override\n        public void waitForAllWindowsDrawn(Message message, long timeout, int displayId) {\n            Objects.requireNonNull(message.getTarget());\n            boolean allWindowsDrawn \u003d false;\n            synchronized (mGlobalLock) {\n                allWindowsDrawn \u003d waitForAllWindowsDrawnLocked(message, timeout, displayId);\n            }\n            if (allWindowsDrawn) {\n                message.sendToTarget();\n            }\n        }\n        \n        /** Return {@code true} if all windows have been drawn. */\n        private boolean waitForAllWindowsDrawnLocked(Message message, long timeout, int displayId) {\n            final WindowContainer\u003c?\u003e container \u003d displayId \u003d\u003d INVALID_DISPLAY\n                    ? mRoot : mRoot.getDisplayContent(displayId);\n            if (container \u003d\u003d null) {\n                // The waiting container doesn\u0027t exist, no need to wait. Treat as drawn\n                return true;\n            }\n            container.waitForAllWindowsDrawn();\n            mWindowPlacerLocked.requestTraversal();\n            mH.removeMessages(H.WAITING_FOR_DRAWN_TIMEOUT, container);\n            if (container.mWaitingForDrawn.isEmpty()) {\n                return true;\n            }\n            if (Trace.isTagEnabled(TRACE_TAG_WINDOW_MANAGER)) {\n                for (int i \u003d 0; i \u003c container.mWaitingForDrawn.size(); i++) {\n                    traceStartWaitingForWindowDrawn(container.mWaitingForDrawn.get(i));\n                }\n            }\n\n            mWaitingForDrawnCallbacks.put(container, message);\n            mH.sendNewMessageDelayed(H.WAITING_FOR_DRAWN_TIMEOUT, container, timeout);\n            checkDrawnWindowsLocked();\n            return false;\n        }\n    }\n```",
+      "parentUuid": "89d287a5_de0eea13",
+      "revId": "48e4832c3297d589b5ab0fdee3642a26a114d5c1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
