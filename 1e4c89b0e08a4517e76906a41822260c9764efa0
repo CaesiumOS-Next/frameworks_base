@@ -16,6 +16,23 @@
       "message": "@joeo@google.com Please can you review the change ?",
       "revId": "1e4c89b0e08a4517e76906a41822260c9764efa0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b37dfe54_e3acd3e8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1505109
+      },
+      "writtenOn": "2024-09-19T15:17:23Z",
+      "side": 1,
+      "message": "LGTM",
+      "revId": "1e4c89b0e08a4517e76906a41822260c9764efa0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
