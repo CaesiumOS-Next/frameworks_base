@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d1665f55_b7488bee",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1950315
+      },
+      "writtenOn": "2024-09-20T23:10:38Z",
+      "side": 1,
+      "message": "I don\u0027t think there\u0027s a explicit need for supporting this scan code, right? Is there any keyboard that is currently not working properly?",
+      "revId": "d97525f50dc49e529b773ceb54f30d7ac3f39def",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
