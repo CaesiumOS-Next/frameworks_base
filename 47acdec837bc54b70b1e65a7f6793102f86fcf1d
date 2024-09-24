@@ -91,6 +91,30 @@
       },
       "revId": "47acdec837bc54b70b1e65a7f6793102f86fcf1d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b5b518dc_81a99bb6",
+        "filename": "services/core/java/com/android/server/audio/AudioDeviceInventory.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 1138,
+      "author": {
+        "id": 1427192
+      },
+      "writtenOn": "2024-09-24T02:31:31Z",
+      "side": 1,
+      "message": "would you review the updated patch 7 for GuardedBy statement and private channge.",
+      "parentUuid": "26251358_7dfc1e25",
+      "range": {
+        "startLine": 1138,
+        "startChar": 8,
+        "endLine": 1138,
+        "endChar": 25
+      },
+      "revId": "47acdec837bc54b70b1e65a7f6793102f86fcf1d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
