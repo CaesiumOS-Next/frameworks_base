@@ -50,6 +50,24 @@
       "message": "Please make sure that the GuardedBy statements are held",
       "revId": "47acdec837bc54b70b1e65a7f6793102f86fcf1d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2398e8b6_fe2f98ea",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1427192
+      },
+      "writtenOn": "2024-09-24T01:34:41Z",
+      "side": 1,
+      "message": "Hi Vlad\nYes, we have resolved the GuardedBy statements in patch 6.\nCould you please check again? if anything missed , please let us known the code line.\n\nthanks",
+      "parentUuid": "e218f06a_877f9cd3",
+      "revId": "47acdec837bc54b70b1e65a7f6793102f86fcf1d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
