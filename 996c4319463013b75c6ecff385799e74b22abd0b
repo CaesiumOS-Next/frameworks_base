@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fafc25bb_2e7550ed",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1427192
+      },
+      "writtenOn": "2024-09-24T10:53:00Z",
+      "side": 1,
+      "message": "Hi Eric, vlad\nCould you help to review it again. we updated commit msg on patch 8 to fix spelling mistake\n\nThanks",
+      "revId": "996c4319463013b75c6ecff385799e74b22abd0b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
