@@ -68,6 +68,29 @@
       "parentUuid": "e218f06a_877f9cd3",
       "revId": "47acdec837bc54b70b1e65a7f6793102f86fcf1d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "26251358_7dfc1e25",
+        "filename": "services/core/java/com/android/server/audio/AudioDeviceInventory.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 1138,
+      "author": {
+        "id": 1570284
+      },
+      "writtenOn": "2024-09-24T01:44:32Z",
+      "side": 1,
+      "message": "This looks like it is only called from AudioDeviceInventory now. Can we make this private? Also adding the @GuardedBy(\"mDevicesLock\") would make sure that it is only called with the lock held. Same would apply for the other changed package methods",
+      "range": {
+        "startLine": 1138,
+        "startChar": 8,
+        "endLine": 1138,
+        "endChar": 25
+      },
+      "revId": "47acdec837bc54b70b1e65a7f6793102f86fcf1d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
