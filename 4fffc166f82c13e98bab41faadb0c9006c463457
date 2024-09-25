@@ -1,0 +1,152 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5dabd53b_5285fb0f",
+        "filename": "nfc/java/android/nfc/NfcOemExtension.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 342,
+      "author": {
+        "id": 1074459
+      },
+      "writtenOn": "2024-09-25T01:16:44Z",
+      "side": 1,
+      "message": "nit: Callback to indicate the app chooser activity should be launched for handling CE transaction.\n\n\nThis is invoked for example when there are more than 1 app installed that can handle the HCE transaction.",
+      "range": {
+        "startLine": 342,
+        "startChar": 11,
+        "endLine": 342,
+        "endChar": 59
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "2b36fec8_124ded86",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "nfc/java/android/nfc/NfcOemExtension.java",
+              "range": {
+                "startLine": 342,
+                "startChar": 0,
+                "endLine": 344,
+                "endChar": 0
+              },
+              "replacement": "         * Callback to indicate the app chooser activity should be launched for handling CE\n         * transaction. This is invoked for example when there are more than 1 app installed that\n         * can handle the HCE transaction.\n"
+            }
+          ]
+        }
+      ],
+      "revId": "4fffc166f82c13e98bab41faadb0c9006c463457",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "53184f59_36b6cdf7",
+        "filename": "nfc/java/android/nfc/NfcOemExtension.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 350,
+      "author": {
+        "id": 1074459
+      },
+      "writtenOn": "2024-09-25T01:16:44Z",
+      "side": 1,
+      "message": "nit: rename to `onLaunchHceAppChooserActivity()`.",
+      "range": {
+        "startLine": 350,
+        "startChar": 13,
+        "endLine": 350,
+        "endChar": 29
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "71717ea6_cf30cd96",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "nfc/java/android/nfc/NfcOemExtension.java",
+              "range": {
+                "startLine": 350,
+                "startChar": 0,
+                "endLine": 353,
+                "endChar": 0
+              },
+              "replacement": "        void onLaunchHceAppChooserActivity(@NonNull String selectedAid,\n                                           @NonNull List\u003cApduServiceInfo\u003e services,\n                                           @NonNull ComponentName failedComponent,\n                                           @NonNull String category);\n"
+            },
+            {
+              "path": "nfc/java/android/nfc/NfcOemExtension.java",
+              "range": {
+                "startLine": 666,
+                "startChar": 0,
+                "endLine": 668,
+                "endChar": 0
+              },
+              "replacement": "        public void onLaunchHceAppChooserActivity(String selectedAid,\n                                                  List\u003cApduServiceInfo\u003e services,\n                                                  ComponentName failedComponent, String category)\n"
+            },
+            {
+              "path": "nfc/java/android/nfc/NfcOemExtension.java",
+              "range": {
+                "startLine": 673,
+                "startChar": 0,
+                "endLine": 674,
+                "endChar": 0
+              },
+              "replacement": "                        ex.execute(() -\u003e cb.onLaunchHceAppChooserActivity(\n"
+            }
+          ]
+        }
+      ],
+      "revId": "4fffc166f82c13e98bab41faadb0c9006c463457",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ff7bb7ce_68b808f8",
+        "filename": "nfc/java/android/nfc/NfcOemExtension.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 355,
+      "author": {
+        "id": 1074459
+      },
+      "writtenOn": "2024-09-25T01:16:44Z",
+      "side": 1,
+      "message": "nit: Callback to indicate tap again dialog should be launched for handling HCE transaction.\n\nThis is invoked for example when a CE service needs the device to unlocked before handling the transaction.",
+      "range": {
+        "startLine": 355,
+        "startChar": 11,
+        "endLine": 355,
+        "endChar": 66
+      },
+      "revId": "4fffc166f82c13e98bab41faadb0c9006c463457",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f888c1a0_5692b620",
+        "filename": "nfc/java/android/nfc/NfcOemExtension.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 361,
+      "author": {
+        "id": 1074459
+      },
+      "writtenOn": "2024-09-25T01:16:44Z",
+      "side": 1,
+      "message": "nit: rename to `onLaunchHceTapAgainDialog()`.",
+      "range": {
+        "startLine": 361,
+        "startChar": 13,
+        "endLine": 361,
+        "endChar": 29
+      },
+      "revId": "4fffc166f82c13e98bab41faadb0c9006c463457",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
