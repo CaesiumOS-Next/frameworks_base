@@ -3518,7 +3518,10 @@ class Transition implements BLASTSyncEngine.TransactionReadyListener {
     void continueTransitionReady() {
         --mReadyTrackerOld.mDeferReadyDepth;
         // Apply ready in case it is waiting for the previous defer call.
-        applyReady();
+        if (isCollecting()) {
+            // Too late, transition already started playing, so don't apply ready.
+            applyReady();
+        }
     }
 
     @Override
