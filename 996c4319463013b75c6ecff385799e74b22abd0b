@@ -16,6 +16,23 @@
       "message": "Hi Eric, vlad\nCould you help to review it again. we updated commit msg on patch 8 to fix spelling mistake\n\nThanks",
       "revId": "996c4319463013b75c6ecff385799e74b22abd0b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0ae768ed_7ce4c6c3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1077922
+      },
+      "writtenOn": "2024-09-25T08:38:57Z",
+      "side": 1,
+      "message": "Hi Eric , Jean Michel \nwould you please review the updated patch  and grante review score ?\n\nThanks",
+      "revId": "996c4319463013b75c6ecff385799e74b22abd0b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
