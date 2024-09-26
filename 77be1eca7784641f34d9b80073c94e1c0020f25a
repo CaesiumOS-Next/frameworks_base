@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "abe8ac67_9996b2e7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1966830
+      },
+      "writtenOn": "2024-09-26T19:12:20Z",
+      "side": 1,
+      "message": "Hi Santos, This is an API change request from Bluetooth service, as we need to identify the sleep reason to configure Bluetooth suspend behavior. I wonder if you could help review this change?",
+      "revId": "77be1eca7784641f34d9b80073c94e1c0020f25a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
