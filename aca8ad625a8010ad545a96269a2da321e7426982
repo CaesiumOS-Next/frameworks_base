@@ -43,6 +43,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9375990f_ae103772",
+        "filename": "nfc/java/android/nfc/NfcOemExtension.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 318,
+      "author": {
+        "id": 1891081
+      },
+      "writtenOn": "2024-09-27T21:19:56Z",
+      "side": 1,
+      "message": "\u003e is it possible to just pass the Tag in here instead?\n\nThis callback is supposed to be used here: https://cs.android.com/android/platform/superproject/main/+/main:packages/apps/Nfc/src/com/android/nfc/NfcDispatcher.java;l\u003d856?q\u003dtryndef. We can only get the first package but not the Tag.\n\n\u003e Is it guaranteed the OEM will be able to provide an Intent?\n\nI think it\u0027s not guaranteed, so we used a consumer here and wait for a timeout. We may use `getAppSearchIntent(firstPackage)` instead in this case.",
+      "parentUuid": "5f7feb0f_c84b732c",
+      "range": {
+        "startLine": 317,
+        "startChar": 32,
+        "endLine": 318,
+        "endChar": 48
+      },
+      "revId": "aca8ad625a8010ad545a96269a2da321e7426982",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e90b8813_5db986a0",
         "filename": "nfc/java/android/nfc/NfcOemExtension.java",
         "patchSetId": 3
@@ -78,6 +102,30 @@
           ]
         }
       ],
+      "revId": "aca8ad625a8010ad545a96269a2da321e7426982",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d50877c0_1add9fab",
+        "filename": "nfc/java/android/nfc/NfcOemExtension.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 354,
+      "author": {
+        "id": 1891081
+      },
+      "writtenOn": "2024-09-27T21:19:56Z",
+      "side": 1,
+      "message": "We use this callback when HCE get `MSG_UNHANDLED` meaning the component is failed to be resolved. In this case we need to launch resolver by calling [launchResolver](https://cs.android.com/android/platform/superproject/main/+/main:packages/apps/Nfc/src/com/android/nfc/cardemulation/HostEmulationManager.java;l\u003d1109;bpv\u003d1;bpt\u003d1)",
+      "parentUuid": "e90b8813_5db986a0",
+      "range": {
+        "startLine": 354,
+        "startChar": 43,
+        "endLine": 354,
+        "endChar": 82
+      },
       "revId": "aca8ad625a8010ad545a96269a2da321e7426982",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
