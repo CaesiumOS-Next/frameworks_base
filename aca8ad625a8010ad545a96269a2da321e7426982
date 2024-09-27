@@ -16,6 +16,70 @@
       "message": "Over to tyler for API +2.",
       "revId": "aca8ad625a8010ad545a96269a2da321e7426982",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5f7feb0f_c84b732c",
+        "filename": "nfc/java/android/nfc/NfcOemExtension.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 318,
+      "author": {
+        "id": 1056478
+      },
+      "writtenOn": "2024-09-27T20:22:10Z",
+      "side": 1,
+      "message": "You mention this comes from the tag; is it possible to just pass the Tag in here instead?  \n\nIs it guaranteed the OEM will be able to provide an Intent?",
+      "range": {
+        "startLine": 317,
+        "startChar": 32,
+        "endLine": 318,
+        "endChar": 48
+      },
+      "revId": "aca8ad625a8010ad545a96269a2da321e7426982",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e90b8813_5db986a0",
+        "filename": "nfc/java/android/nfc/NfcOemExtension.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 354,
+      "author": {
+        "id": 1056478
+      },
+      "writtenOn": "2024-09-27T20:22:10Z",
+      "side": 1,
+      "message": "I presume the `selectedAid`, `services` and `category` are all used to determine which activity to launch; it is not clear what a \"failedComponent\" is in this context though.",
+      "range": {
+        "startLine": 354,
+        "startChar": 43,
+        "endLine": 354,
+        "endChar": 82
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "7293c628_0858e545",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "nfc/java/android/nfc/NfcOemExtension.java",
+              "range": {
+                "startLine": 349,
+                "startChar": 0,
+                "endLine": 350,
+                "endChar": 0
+              },
+              "replacement": "         * @param failedComponent the component failed to be resolved. This is used to determine\n         *                       which activity to launch.\n"
+            }
+          ]
+        }
+      ],
+      "revId": "aca8ad625a8010ad545a96269a2da321e7426982",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
