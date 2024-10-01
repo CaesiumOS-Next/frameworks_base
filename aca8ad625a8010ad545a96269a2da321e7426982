@@ -67,6 +67,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "bc8e4d9e_d29a941f",
+        "filename": "nfc/java/android/nfc/NfcOemExtension.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 318,
+      "author": {
+        "id": 1098053
+      },
+      "writtenOn": "2024-10-01T22:05:24Z",
+      "side": 1,
+      "message": "\u003e  We can only get the first package but not the Tag.\n\nLooks like you do have access to the packages from that link - Should it be up to the OEM to decide which of the OEM packages to create the Intent from? For example, if the first package is no longer valid, but the second is?\n\n\u003e I think it\u0027s not guaranteed\n\nIs it valid for the oem to pass in `intentConsumer#accept(null)` in this case? If so, can you document this and what will happen if the OEM does this (\"fallback to first package\", etc..)",
+      "parentUuid": "9375990f_ae103772",
+      "range": {
+        "startLine": 317,
+        "startChar": 32,
+        "endLine": 318,
+        "endChar": 48
+      },
+      "revId": "aca8ad625a8010ad545a96269a2da321e7426982",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e90b8813_5db986a0",
         "filename": "nfc/java/android/nfc/NfcOemExtension.java",
         "patchSetId": 3
@@ -120,6 +144,30 @@
       "side": 1,
       "message": "We use this callback when HCE get `MSG_UNHANDLED` meaning the component is failed to be resolved. In this case we need to launch resolver by calling [launchResolver](https://cs.android.com/android/platform/superproject/main/+/main:packages/apps/Nfc/src/com/android/nfc/cardemulation/HostEmulationManager.java;l\u003d1109;bpv\u003d1;bpt\u003d1)",
       "parentUuid": "e90b8813_5db986a0",
+      "range": {
+        "startLine": 354,
+        "startChar": 43,
+        "endLine": 354,
+        "endChar": 82
+      },
+      "revId": "aca8ad625a8010ad545a96269a2da321e7426982",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bb4f60e4_ab27053f",
+        "filename": "nfc/java/android/nfc/NfcOemExtension.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 354,
+      "author": {
+        "id": 1098053
+      },
+      "writtenOn": "2024-10-01T22:05:24Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "d50877c0_1add9fab",
       "range": {
         "startLine": 354,
         "startChar": 43,
