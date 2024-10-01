@@ -84,6 +84,7 @@ import com.android.internal.annotations.GuardedBy;
 import com.android.internal.annotations.VisibleForTesting;
 import com.android.internal.annotations.VisibleForTesting.Visibility;
 import com.android.net.module.util.BinderUtils;
+import com.android.net.module.util.HandlerUtils;
 import com.android.net.module.util.LocationPermissionChecker;
 import com.android.net.module.util.PermissionUtils;
 import com.android.server.vcn.TelephonySubscriptionTracker;
@@ -428,6 +429,7 @@ public class VcnManagementService extends IVcnManagementService.Stub {
     }
 
     /** Notifies the VcnManagementService that external dependencies can be set up. */
+    @Override
     public void systemReady() {
         mNetworkProvider.register();
         mContext.getSystemService(ConnectivityManager.class)
@@ -504,7 +506,7 @@ public class VcnManagementService extends IVcnManagementService.Stub {
     }
 
     private void enforceManageTestNetworksForTestMode(@NonNull VcnConfig vcnConfig) {
-        if (vcnConfig.isTestModeProfile()) {
+        if (vcnConfig.isTestMode()) {
             mContext.enforceCallingPermission(
                     android.Manifest.permission.MANAGE_TEST_NETWORKS,
                     "Test-mode require the MANAGE_TEST_NETWORKS permission");
@@ -742,8 +744,7 @@ public class VcnManagementService extends IVcnManagementService.Stub {
         final VcnCallbackImpl vcnCallback = new VcnCallbackImpl(subscriptionGroup);
 
         final VcnContext vcnContext =
-                mDeps.newVcnContext(
-                        mContext, mLooper, mNetworkProvider, config.isTestModeProfile());
+                mDeps.newVcnContext(mContext, mLooper, mNetworkProvider, config.isTestMode());
         final Vcn newInstance =
                 mDeps.newVcn(vcnContext, subscriptionGroup, config, mLastSnapshot, vcnCallback);
         mVcns.put(subscriptionGroup, newInstance);
@@ -801,9 +802,9 @@ public class VcnManagementService extends IVcnManagementService.Stub {
                 mConfigs.put(subscriptionGroup, config);
                 startOrUpdateVcnLocked(subscriptionGroup, config);
 
-                writeConfigsToDiskLocked();
-            }
-        });
+                        writeConfigsToDiskLocked();
+                    }
+                });
     }
 
     private void enforceCarrierPrivilegeOrProvisioningPackage(
@@ -995,17 +996,17 @@ public class VcnManagementService extends IVcnManagementService.Stub {
         BinderUtils.withCleanCallingIdentity(() -> {
             PolicyListenerBinderDeath listenerBinderDeath = new PolicyListenerBinderDeath(listener);
 
-            synchronized (mLock) {
-                mRegisteredPolicyListeners.put(listener.asBinder(), listenerBinderDeath);
+                    synchronized (mLock) {
+                        mRegisteredPolicyListeners.put(listener.asBinder(), listenerBinderDeath);
 
-                try {
-                    listener.asBinder().linkToDeath(listenerBinderDeath, 0 /* flags */);
-                } catch (RemoteException e) {
-                    // Remote binder already died - cleanup registered Listener
-                    listenerBinderDeath.binderDied();
-                }
-            }
-        });
+                        try {
+                            listener.asBinder().linkToDeath(listenerBinderDeath, 0 /* flags */);
+                        } catch (RemoteException e) {
+                            // Remote binder already died - cleanup registered Listener
+                            listenerBinderDeath.binderDied();
+                        }
+                    }
+                });
     }
 
     /** Removes the provided listener from receiving VcnUnderlyingNetworkPolicy updates. */
@@ -1024,11 +1025,11 @@ public class VcnManagementService extends IVcnManagementService.Stub {
                 PolicyListenerBinderDeath listenerBinderDeath =
                         mRegisteredPolicyListeners.remove(listener.asBinder());
 
-                if (listenerBinderDeath != null) {
-                    listener.asBinder().unlinkToDeath(listenerBinderDeath, 0 /* flags */);
-                }
-            }
-        });
+                        if (listenerBinderDeath != null) {
+                            listener.asBinder().unlinkToDeath(listenerBinderDeath, 0 /* flags */);
+                        }
+                    }
+                });
     }
 
     private ParcelUuid getSubGroupForNetworkCapabilities(
@@ -1088,65 +1089,73 @@ public class VcnManagementService extends IVcnManagementService.Stub {
             // mutates
             final NetworkCapabilities ncCopy = new NetworkCapabilities(networkCapabilities);
 
-            final ParcelUuid subGrp = getSubGroupForNetworkCapabilities(ncCopy);
-            boolean isVcnManagedNetwork = false;
-            boolean isRestricted = false;
-            synchronized (mLock) {
-                final Vcn vcn = mVcns.get(subGrp);
-                final VcnConfig vcnConfig = mConfigs.get(subGrp);
-                if (vcn != null) {
-                    if (vcnConfig == null) {
-                        // TODO: b/284381334 Investigate for the root cause of this issue
-                        // and handle it properly
-                        logWtf("Vcn instance exists but VcnConfig does not for " + subGrp);
-                    }
+                    final ParcelUuid subGrp = getSubGroupForNetworkCapabilities(ncCopy);
+                    boolean isVcnManagedNetwork = false;
+                    boolean isRestricted = false;
+                    synchronized (mLock) {
+                        final Vcn vcn = mVcns.get(subGrp);
+                        final VcnConfig vcnConfig = mConfigs.get(subGrp);
+                        if (vcn != null) {
+                            if (vcnConfig == null) {
+                                // TODO: b/284381334 Investigate for the root cause of this issue
+                                // and handle it properly
+                                logWtf("Vcn instance exists but VcnConfig does not for " + subGrp);
+                            }
 
-                    if (vcn.getStatus() == VCN_STATUS_CODE_ACTIVE) {
-                        isVcnManagedNetwork = true;
-                    }
+                            if (vcn.getStatus() == VCN_STATUS_CODE_ACTIVE) {
+                                isVcnManagedNetwork = true;
+                            }
 
-                    final Set<Integer> restrictedTransports = mDeps.getRestrictedTransports(
-                            subGrp, mLastSnapshot, vcnConfig);
-                    for (int restrictedTransport : restrictedTransports) {
-                        if (ncCopy.hasTransport(restrictedTransport)) {
-                            if (restrictedTransport == TRANSPORT_CELLULAR
-                                    || restrictedTransport == TRANSPORT_TEST) {
-                                // For cell or test network, only mark it as restricted when
-                                // the VCN is in active mode.
-                                isRestricted |= (vcn.getStatus() == VCN_STATUS_CODE_ACTIVE);
-                            } else {
-                                isRestricted = true;
-                                break;
+                            final Set<Integer> restrictedTransports =
+                                    mDeps.getRestrictedTransports(subGrp, mLastSnapshot, vcnConfig);
+                            for (int restrictedTransport : restrictedTransports) {
+                                if (ncCopy.hasTransport(restrictedTransport)) {
+                                    if (restrictedTransport == TRANSPORT_CELLULAR
+                                            || restrictedTransport == TRANSPORT_TEST) {
+                                        // For cell or test network, only mark it as restricted when
+                                        // the VCN is in active mode.
+                                        isRestricted |= (vcn.getStatus() == VCN_STATUS_CODE_ACTIVE);
+                                    } else {
+                                        isRestricted = true;
+                                        break;
+                                    }
+                                }
                             }
                         }
                     }
-                }
-            }
 
-            final NetworkCapabilities.Builder ncBuilder = new NetworkCapabilities.Builder(ncCopy);
+                    final NetworkCapabilities.Builder ncBuilder =
+                            new NetworkCapabilities.Builder(ncCopy);
 
-            if (isVcnManagedNetwork) {
-                ncBuilder.removeCapability(
-                        NetworkCapabilities.NET_CAPABILITY_NOT_VCN_MANAGED);
-            } else {
-                ncBuilder.addCapability(NetworkCapabilities.NET_CAPABILITY_NOT_VCN_MANAGED);
-            }
+                    if (isVcnManagedNetwork) {
+                        ncBuilder.removeCapability(
+                                NetworkCapabilities.NET_CAPABILITY_NOT_VCN_MANAGED);
+                    } else {
+                        ncBuilder.addCapability(NetworkCapabilities.NET_CAPABILITY_NOT_VCN_MANAGED);
+                    }
 
-            if (isRestricted) {
-                ncBuilder.removeCapability(
-                        NetworkCapabilities.NET_CAPABILITY_NOT_RESTRICTED);
-            }
+                    if (isRestricted) {
+                        ncBuilder.removeCapability(
+                                NetworkCapabilities.NET_CAPABILITY_NOT_RESTRICTED);
+                    }
 
-            final NetworkCapabilities result = ncBuilder.build();
-            final VcnUnderlyingNetworkPolicy policy = new VcnUnderlyingNetworkPolicy(
-                    mTrackingNetworkCallback
-                            .requiresRestartForImmutableCapabilityChanges(result, linkProperties),
-                    result);
+                    final NetworkCapabilities result = ncBuilder.build();
+                    final VcnUnderlyingNetworkPolicy policy =
+                            new VcnUnderlyingNetworkPolicy(
+                                    mTrackingNetworkCallback
+                                            .requiresRestartForImmutableCapabilityChanges(
+                                                    result, linkProperties),
+                                    result);
 
-            logVdbg("getUnderlyingNetworkPolicy() called for caps: " + networkCapabilities
-                        + "; and lp: " + linkProperties + "; result = " + policy);
-            return policy;
-        });
+                    logVdbg(
+                            "getUnderlyingNetworkPolicy() called for caps: "
+                                    + networkCapabilities
+                                    + "; and lp: "
+                                    + linkProperties
+                                    + "; result = "
+                                    + policy);
+                    return policy;
+                });
     }
 
     /** Binder death recipient used to remove registered VcnStatusCallbacks. */
@@ -1332,41 +1341,46 @@ public class VcnManagementService extends IVcnManagementService.Stub {
         final IndentingPrintWriter pw = new IndentingPrintWriter(writer, "| ");
 
         // Post to handler thread to prevent ConcurrentModificationExceptions, and avoid lock-hell.
-        mHandler.runWithScissors(() -> {
-            mNetworkProvider.dump(pw);
-            pw.println();
+        HandlerUtils.runWithScissorsForDump(
+                mHandler,
+                () -> {
+                    mNetworkProvider.dump(pw);
+                    pw.println();
 
-            mTrackingNetworkCallback.dump(pw);
-            pw.println();
+                    mTrackingNetworkCallback.dump(pw);
+                    pw.println();
 
-            synchronized (mLock) {
-                mLastSnapshot.dump(pw);
-                pw.println();
+                    synchronized (mLock) {
+                        mLastSnapshot.dump(pw);
+                        pw.println();
 
-                pw.println("mConfigs:");
-                pw.increaseIndent();
-                for (Entry<ParcelUuid, VcnConfig> entry : mConfigs.entrySet()) {
-                    pw.println(entry.getKey() + ": "
-                            + entry.getValue().getProvisioningPackageName());
-                }
-                pw.decreaseIndent();
-                pw.println();
+                        pw.println("mConfigs:");
+                        pw.increaseIndent();
+                        for (Entry<ParcelUuid, VcnConfig> entry : mConfigs.entrySet()) {
+                            pw.println(
+                                    entry.getKey()
+                                            + ": "
+                                            + entry.getValue().getProvisioningPackageName());
+                        }
+                        pw.decreaseIndent();
+                        pw.println();
 
-                pw.println("mVcns:");
-                pw.increaseIndent();
-                for (Vcn vcn : mVcns.values()) {
-                    vcn.dump(pw);
-                }
-                pw.decreaseIndent();
-                pw.println();
-            }
+                        pw.println("mVcns:");
+                        pw.increaseIndent();
+                        for (Vcn vcn : mVcns.values()) {
+                            vcn.dump(pw);
+                        }
+                        pw.decreaseIndent();
+                        pw.println();
+                    }
 
-            pw.println("Local log:");
-            pw.increaseIndent();
-            LOCAL_LOG.dump(pw);
-            pw.decreaseIndent();
-            pw.println();
-        }, DUMP_TIMEOUT_MILLIS);
+                    pw.println("Local log:");
+                    pw.increaseIndent();
+                    LOCAL_LOG.dump(pw);
+                    pw.decreaseIndent();
+                    pw.println();
+                },
+                DUMP_TIMEOUT_MILLIS);
     }
 
     // TODO(b/180452282): Make name more generic and implement directly with VcnManagementService
