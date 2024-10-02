@@ -89,6 +89,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "efff652d_741975f3",
+        "filename": "nfc/java/android/nfc/NfcOemExtension.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 318,
+      "author": {
+        "id": 1891081
+      },
+      "writtenOn": "2024-10-02T17:32:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bc8e4d9e_d29a941f",
+      "range": {
+        "startLine": 317,
+        "startChar": 32,
+        "endLine": 318,
+        "endChar": 48
+      },
+      "revId": "aca8ad625a8010ad545a96269a2da321e7426982",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e90b8813_5db986a0",
