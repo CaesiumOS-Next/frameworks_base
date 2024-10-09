@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "742c5c73_71384b6f",
+        "filename": "libs/WindowManager/Jetpack/src/androidx/window/extensions/embedding/SplitController.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 3042,
+      "author": {
+        "id": 1650177
+      },
+      "writtenOn": "2024-10-09T17:57:02Z",
+      "side": 1,
+      "message": "Too long, please add a line break",
+      "range": {
+        "startLine": 3041,
+        "startChar": 98,
+        "endLine": 3042,
+        "endChar": 40
+      },
+      "revId": "55d15475bbfa433c8cfd5595108eff3628298bce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
