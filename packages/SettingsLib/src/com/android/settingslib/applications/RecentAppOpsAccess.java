@@ -18,6 +18,7 @@ package com.android.settingslib.applications;
 
 
 import android.app.AppOpsManager;
+import android.app.AppOpsManager.OpEntry;
 import android.content.Context;
 import android.content.PermissionChecker;
 import android.content.pm.ApplicationInfo;
@@ -135,21 +136,22 @@ public class RecentAppOpsAccess {
             String packageName = ops.getPackageName();
             int uid = ops.getUid();
             UserHandle user = UserHandle.getUserHandleForUid(uid);
+            List<OpEntry> entries = ops.getOps();
 
             if (!shouldHideAppsByUsers.containsKey(user)) {
                 shouldHideAppsByUsers.put(user, shouldHideUser(um, user));
             }
 
-            // Don't show apps belonging to background users except for profiles that shouldn't
-            // be shown in quiet mode.
-            if (!profiles.contains(user) || shouldHideAppsByUsers.get(user)) {
-                continue;
-            }
-
             // Don't show apps that do not have user sensitive location permissions
             boolean showApp = true;
             if (!showSystemApps) {
-                for (int op : mOps) {
+                // Don't show apps belonging to background users except for profiles that shouldn't
+                // be shown in quiet mode.
+                if (!profiles.contains(user) || shouldHideAppsByUsers.get(user)) {
+                    continue;
+                }
+                for (OpEntry entry : entries) {
+                    int op = entry.getOp();
                     final String permission = AppOpsManager.opToPermission(op);
                     if (permission == null) {
                         // Some ops like OP_PHONE_CALL_MICROPHONE don't have corresponding
