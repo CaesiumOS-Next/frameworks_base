@@ -828,12 +828,12 @@ final class UiModeManagerService extends SystemService {
         }
 
         private void setNightModeInternal(int mode, int customModeType) {
-            if (isNightModeLocked() && (getContext().checkCallingOrSelfPermission(
-                    android.Manifest.permission.MODIFY_DAY_NIGHT_MODE)
-                    != PackageManager.PERMISSION_GRANTED)) {
-                Slog.e(TAG, "Night mode locked, requires MODIFY_DAY_NIGHT_MODE permission");
-                return;
-            }
+            // if (isNightModeLocked() && (getContext().checkCallingOrSelfPermission(
+            //         android.Manifest.permission.MODIFY_DAY_NIGHT_MODE)
+            //         != PackageManager.PERMISSION_GRANTED)) {
+            //     Slog.e(TAG, "Night mode locked, requires MODIFY_DAY_NIGHT_MODE permission");
+            //     return;
+            // }
             switch (mode) {
                 case UiModeManager.MODE_NIGHT_NO:
                 case UiModeManager.MODE_NIGHT_YES:
