@@ -23,6 +23,7 @@ import static android.media.codec.Flags.FLAG_HLG_EDITING;
 import static android.media.codec.Flags.FLAG_IN_PROCESS_SW_AUDIO_CODEC;
 import static android.media.codec.Flags.FLAG_NULL_OUTPUT_SURFACE;
 import static android.media.codec.Flags.FLAG_REGION_OF_INTEREST;
+import static android.media.codec.Flags.FLAG_APV_SUPPORT;
 import static android.media.MediaCodec.GetFlag;
 
 import android.annotation.FlaggedApi;
@@ -4468,6 +4469,75 @@ public final class MediaCodecInfo {
         /** AC-4 codec level corresponding to mdcompat 4 as per ETSI TS 103 190-2 v1.2.1 */
         @SuppressLint("AllUpper")
         public static final int AC4Level4       = 0x10;
+
+        // Profiles and levels for APV Codec, corresponding to the definitions in
+        // "Advanced Professional Video", 10.1. Profiles and Levels
+        // found at https://www.ietf.org/archive/id/draft-lim-apv-01.html
+
+        @SuppressLint("AllUpper")
+        @FlaggedApi(FLAG_APV_SUPPORT)
+        public static final int APV422Profile10 =  0x01;
+        @SuppressLint("AllUpper")
+        @FlaggedApi(FLAG_APV_SUPPORT)
+        public static final int APV422Profile12 =  0x02;
+        @SuppressLint("AllUpper")
+        @FlaggedApi(FLAG_APV_SUPPORT)
+        public static final int APV444Profile10 =  0x04;
+        @SuppressLint("AllUpper")
+        @FlaggedApi(FLAG_APV_SUPPORT)
+        public static final int APV444Profile12 =  0x08;
+        @SuppressLint("AllUpper")
+        @FlaggedApi(FLAG_APV_SUPPORT)
+        public static final int APV4444Profile10 = 0x10;
+        @SuppressLint("AllUpper")
+        @FlaggedApi(FLAG_APV_SUPPORT)
+        public static final int APV4444Profile12 = 0x20;
+        @SuppressLint("AllUpper")
+        @FlaggedApi(FLAG_APV_SUPPORT)
+        public static final int APV400Profile10 =  0x40;
+
+        @SuppressLint("AllUpper")
+        @FlaggedApi(FLAG_APV_SUPPORT)
+        public static final int APVLevel1 =  0x1;
+        @SuppressLint("AllUpper")
+        @FlaggedApi(FLAG_APV_SUPPORT)
+        public static final int APVLevel11 = 0x2;
+        @SuppressLint("AllUpper")
+        @FlaggedApi(FLAG_APV_SUPPORT)
+        public static final int APVLevel2 =  0x4;
+        @SuppressLint("AllUpper")
+        @FlaggedApi(FLAG_APV_SUPPORT)
+        public static final int APVLevel21 = 0x8;
+        @SuppressLint("AllUpper")
+        @FlaggedApi(FLAG_APV_SUPPORT)
+        public static final int APVLevel3 =  0x10;
+        @SuppressLint("AllUpper")
+        @FlaggedApi(FLAG_APV_SUPPORT)
+        public static final int APVLevel31 = 0x20;
+        @SuppressLint("AllUpper")
+        @FlaggedApi(FLAG_APV_SUPPORT)
+        public static final int APVLevel4 =  0x40;
+        @SuppressLint("AllUpper")
+        @FlaggedApi(FLAG_APV_SUPPORT)
+        public static final int APVLevel41 = 0x80;
+        @SuppressLint("AllUpper")
+        @FlaggedApi(FLAG_APV_SUPPORT)
+        public static final int APVLevel5 =  0x100;
+        @SuppressLint("AllUpper")
+        @FlaggedApi(FLAG_APV_SUPPORT)
+        public static final int APVLevel51 = 0x200;
+        @SuppressLint("AllUpper")
+        @FlaggedApi(FLAG_APV_SUPPORT)
+        public static final int APVLevel6 =  0x400;
+        @SuppressLint("AllUpper")
+        @FlaggedApi(FLAG_APV_SUPPORT)
+        public static final int APVLevel61 = 0x800;
+        @SuppressLint("AllUpper")
+        @FlaggedApi(FLAG_APV_SUPPORT)
+        public static final int APVLevel7 =  0x1000;
+        @SuppressLint("AllUpper")
+        @FlaggedApi(FLAG_APV_SUPPORT)
+        public static final int APVLevel71 = 0x2000;
 
         /**
          * The profile of the media content. Depending on the type of media this can be
