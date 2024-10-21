@@ -16,6 +16,24 @@
       "message": "maybe move this comment down before l.4 and add a `# HW Trust team` comment here?",
       "revId": "433ccda3c63effc6f3f7364209b6ef624e3bcb59",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e1b7b098_7674687e",
+        "filename": "keystore/tests/OWNERS",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1833664
+      },
+      "writtenOn": "2024-10-21T16:51:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "58d37a86_0b6eee05",
+      "revId": "433ccda3c63effc6f3f7364209b6ef624e3bcb59",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
