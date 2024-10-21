@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6cb93fe9_385dc93e",
+        "filename": "keystore/tests/OWNERS",
+        "patchSetId": 2
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 1833664
+      },
+      "writtenOn": "2024-10-21T18:02:20Z",
+      "side": 1,
+      "message": "@jbires@google.com Please +2 to accept your new-found responsibility 😊\n\n(or delegate!)",
+      "range": {
+        "startLine": 3,
+        "startChar": 0,
+        "endLine": 3,
+        "endChar": 6
+      },
+      "revId": "753133d0c16330da1ace026e52ae2e2181f3a583",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
