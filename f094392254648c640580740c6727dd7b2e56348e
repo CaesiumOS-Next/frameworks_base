@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d9e8ad29_83932b32",
+        "filename": "nfc/java/android/nfc/OemLogItems.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1891081
+      },
+      "writtenOn": "2024-10-23T20:15:48Z",
+      "side": 1,
+      "message": "We can only use primitive type in public API. It\u0027s better to have some subclasses for `OemLogItems` (e.g. `OemLogEnable` for calling enable() case, `OemLogDataChanged` for DATA_CHANGE case) to avoid null values.",
+      "range": {
+        "startLine": 114,
+        "startChar": 12,
+        "endLine": 114,
+        "endChar": 19
+      },
+      "revId": "f094392254648c640580740c6727dd7b2e56348e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2c319a7d_749a2dee",
+        "filename": "nfc/java/android/nfc/OemLogItems.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1891081
+      },
+      "writtenOn": "2024-10-23T20:15:48Z",
+      "side": 1,
+      "message": "From the other CL, seems this field will only be \"enable()\" and \"disable()\". Are these all the possible values? If so, we need to use IntDef here to list the possible values.",
+      "range": {
+        "startLine": 115,
+        "startChar": 12,
+        "endLine": 115,
+        "endChar": 18
+      },
+      "revId": "f094392254648c640580740c6727dd7b2e56348e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
