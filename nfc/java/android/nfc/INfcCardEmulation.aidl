@@ -17,6 +17,8 @@
 package android.nfc;
 
 import android.content.ComponentName;
+import android.nfc.IPreferredServiceStateListener;
+
 import android.nfc.cardemulation.AidGroup;
 import android.nfc.cardemulation.ApduServiceInfo;
 import android.os.RemoteCallback;
@@ -55,4 +57,7 @@ interface INfcCardEmulation
     boolean isAutoChangeEnabled();
     List<String> getRoutingStatus();
     void overwriteRoutingTable(int userHandle, String emptyAid, String protocol, String tech, String sc);
+
+    void registerPreferredServiceStateListener(in IPreferredServiceStateListener listener);
+    void unregisterPreferredServiceStateListener(in IPreferredServiceStateListener listener);
 }

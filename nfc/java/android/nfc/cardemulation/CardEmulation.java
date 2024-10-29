@@ -17,6 +17,7 @@
 package android.nfc.cardemulation;
 
 import android.Manifest;
+import android.annotation.CallbackExecutor;
 import android.annotation.FlaggedApi;
 import android.annotation.IntDef;
 import android.annotation.NonNull;
@@ -36,12 +37,14 @@ import android.content.pm.PackageManager;
 import android.nfc.Constants;
 import android.nfc.Flags;
 import android.nfc.INfcCardEmulation;
+import android.nfc.IPreferredServiceStateListener;
 import android.nfc.NfcAdapter;
 import android.os.Build;
 import android.os.RemoteException;
 import android.os.UserHandle;
 import android.provider.Settings;
 import android.provider.Settings.SettingNotFoundException;
+import android.util.ArrayMap;
 import android.util.Log;
 
 import java.lang.annotation.Retention;
@@ -50,6 +53,8 @@ import java.util.HashMap;
 import java.util.HexFormat;
 import java.util.List;
 import java.util.Locale;
+import java.util.Objects;
+import java.util.concurrent.Executor;
 import java.util.regex.Pattern;
 
 /**
@@ -1075,5 +1080,80 @@ public final class CardEmulation {
             case PROTOCOL_AND_TECHNOLOGY_ROUTE_DEFAULT -> "default";
             default -> throw new IllegalStateException("Unexpected value: " + route);
         };
+    }
+
+    /** Listener for preferred service state changes. */
+    @FlaggedApi(android.nfc.Flags.FLAG_NFC_EVENT_LISTENER)
+    @FunctionalInterface
+    public interface PreferredServiceStateListener {
+        /**
+         * This method is called when this service gains or loses preferred Nfc service status.
+         *
+         * @param isPreferred true is this service has become the preferred Nfc service, false if it
+         *     is no longer the preferred service
+         */
+        @FlaggedApi(android.nfc.Flags.FLAG_NFC_EVENT_LISTENER)
+        void onPreferredServiceChanged(boolean isPreferred);
+    }
+
+    private ArrayMap<PreferredServiceStateListener, Executor> mPreferredServiceStateListeners =
+            new ArrayMap<>();
+
+    final IPreferredServiceStateListener mIPreferredServiceStateListener =
+            new IPreferredServiceStateListener.Stub() {
+                public void onPreferredServiceChanged(ComponentName componentName, int userId) {
+                    boolean isPreferred =
+                            userId == mContext.getUser().getIdentifier()
+                                    && componentName != null
+                                    && Objects.equals(
+                                            mContext.getPackageName(),
+                                            componentName.getPackageName());
+                    mPreferredServiceStateListeners.forEach(
+                            (listener, executor) -> {
+                                executor.execute(
+                                        () -> listener.onPreferredServiceChanged(isPreferred));
+                            });
+                }
+            };
+
+    /**
+     * Register a listener for changes to the currently preferred service, either the Default
+     * Wallet Role holder (see {@link android.app.role.RoleManager#ROLE_WALLET}) or the preferred
+     * service of the foreground activity  set with
+     * {@link #setPreferredService(Activity, ComponentName)}
+     *
+     * @param executor The Executor to run the call back with
+     * @param listener The listener to register
+     */
+    @FlaggedApi(android.nfc.Flags.FLAG_NFC_EVENT_LISTENER)
+    public void registerPreferredServiceStateListener(
+            @NonNull @CallbackExecutor Executor executor,
+            @NonNull PreferredServiceStateListener listener) {
+        mPreferredServiceStateListeners.put(listener, executor);
+        if (mPreferredServiceStateListeners.size() == 1) {
+            callService(
+                    () ->
+                            sService.registerPreferredServiceStateListener(
+                                    mIPreferredServiceStateListener));
+        }
+    }
+
+    /**
+     * Unregister a preferred service listern that was previously registered with
+     * {@link #registerPreferredServiceStateListener(Executor, PreferredServiceStateListener)}
+     *
+     * @param listener The previously registred listener to unregister
+     */
+
+    @FlaggedApi(android.nfc.Flags.FLAG_NFC_EVENT_LISTENER)
+    public void unregisterPreferredServiceStateListener(
+            @NonNull PreferredServiceStateListener listener) {
+        mPreferredServiceStateListeners.remove(listener);
+        if (mPreferredServiceStateListeners.size() == 0) {
+            callService(
+                    () ->
+                            sService.unregisterPreferredServiceStateListener(
+                                    mIPreferredServiceStateListener));
+        }
     }
 }

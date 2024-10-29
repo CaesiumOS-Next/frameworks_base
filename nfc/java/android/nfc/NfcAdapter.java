@@ -49,6 +49,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.IBinder;
 import android.os.RemoteException;
+import android.util.ArrayMap;
 import android.util.Log;
 
 import java.io.IOException;
@@ -2885,5 +2886,64 @@ public final class NfcAdapter {
             }
         }
         return mNfcOemExtension;
+    }
+
+    /** Listener for observe mode state changes. */
+    @FlaggedApi(android.nfc.Flags.FLAG_NFC_EVENT_LISTENER)
+    @FunctionalInterface
+    public interface ObserveModeStateListener {
+        /**
+         * This method is called when this service is the preferred Nfc service and Observe mode has
+         * been enabled or disabled.
+         *
+         * @param isEnabled true if observe mode has been enabled, false if it has been disabled
+         */
+        @FlaggedApi(android.nfc.Flags.FLAG_NFC_EVENT_LISTENER)
+        void onObserveModeStateChanged(boolean isEnabled);
+    }
+
+    private final IObserveModeStateListener mIObserveModeStateListener =
+            new IObserveModeStateListener.Stub() {
+                public void onObserveModeStateChanged(boolean isEnabled) {
+                    mObserveModeStateListeners.forEach(
+                            (listener, executor) -> {
+                                executor.execute(
+                                        () -> listener.onObserveModeStateChanged(isEnabled));
+                            });
+                }
+            };
+
+    private ArrayMap<ObserveModeStateListener, Executor> mObserveModeStateListeners =
+            new ArrayMap<>();
+
+    /**
+     * Register a listener for changes in the observe mode state.
+     *
+     * @param listener The listener to registre for observe mode state changes
+     */
+    @FlaggedApi(android.nfc.Flags.FLAG_NFC_EVENT_LISTENER)
+    public void registerObserveModeStateListener(
+            @NonNull @CallbackExecutor Executor executor,
+            @NonNull ObserveModeStateListener listener) {
+        mObserveModeStateListeners.put(listener, executor);
+        if (mObserveModeStateListeners.size() == 1) {
+            callService(
+                    () -> sService.registerObserveModeStateListener(mIObserveModeStateListener));
+        }
+    }
+
+    /**
+     * Unregister listener for observe mode state changes that was previously registed with
+     * {@link #registerObserveModeStateListener(Executor, ObserveModeStateListener)}
+     *
+     * @param listener The previously registerd listener
+     */
+    @FlaggedApi(android.nfc.Flags.FLAG_NFC_EVENT_LISTENER)
+    public void unregisterObserveModeStateListener(@NonNull ObserveModeStateListener listener) {
+        mObserveModeStateListeners.remove(listener);
+        if (mObserveModeStateListeners.size() == 0) {
+            callService(
+                    () -> sService.unregisterObserveModeStateListener(mIObserveModeStateListener));
+        }
     }
 }

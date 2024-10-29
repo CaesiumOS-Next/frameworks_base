@@ -37,6 +37,7 @@ import android.nfc.NfcAntennaInfo;
 import android.nfc.WlcListenerDeviceInfo;
 import android.nfc.cardemulation.PollingFrame;
 import android.os.Bundle;
+import android.nfc.IObserveModeStateListener;
 
 /**
  * @hide
@@ -117,4 +118,8 @@ interface INfcAdapter
     void triggerInitialization();
     boolean getSettingStatus();
     boolean isTagPresent();
+
+    void registerObserveModeStateListener(in IObserveModeStateListener listener);
+    void unregisterObserveModeStateListener(in IObserveModeStateListener listener);
+
 }
