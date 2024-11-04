@@ -277,6 +277,17 @@ public class CarrierConfigManager {
             "call_barring_visibility_bool";
 
     /**
+     * Flag indicating whether or not changing the "Call Barring" settings require password.
+     * If true, show password dialog to require password.
+     * If false, hide password dialog to skip password validation.
+     *
+     * Enabled by default.
+     * @hide
+     */
+    public static final String KEY_CALL_BARRING_REQUIRE_PASSWORD_BOOL =
+            "call_barring_require_password_bool";
+
+    /**
      * Flag indicating whether or not changing the call barring password via the "Call Barring"
      * settings menu is supported. If true, the option will be visible in the "Call
      * Barring" settings menu. If false, the option will not be visible.
@@ -10672,6 +10683,7 @@ public class CarrierConfigManager {
 
         sDefaults.putBoolean(KEY_CARRIER_VOLTE_PROVISIONED_BOOL, false);
         sDefaults.putBoolean(KEY_CALL_BARRING_VISIBILITY_BOOL, false);
+        sDefaults.putBoolean(KEY_CALL_BARRING_REQUIRE_PASSWORD_BOOL, true);
         sDefaults.putBoolean(KEY_CALL_BARRING_SUPPORTS_PASSWORD_CHANGE_BOOL, true);
         sDefaults.putBoolean(KEY_CALL_BARRING_SUPPORTS_DEACTIVATE_ALL_BOOL, true);
         sDefaults.putInt(KEY_CALL_BARRING_DEFAULT_SERVICE_CLASS_INT, SERVICE_CLASS_VOICE);
