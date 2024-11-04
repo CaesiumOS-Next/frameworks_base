@@ -323,6 +323,21 @@ cc_aconfig_library {
     aconfig_declarations: "android.security.flags-aconfig",
 }
 
+aconfig_declarations {
+    name: "android.security.flags_responsible_api-aconfig",
+    package: "android.security",
+    container: "system",
+    exportable: true,
+    srcs: ["core/java/android/security/responsible_api_flags.aconfig"],
+}
+
+java_aconfig_library {
+    name: "android.security.flags-aconfig-java-export",
+    aconfig_declarations: "android.security.flags_responsible_api-aconfig",
+    mode: "exported",
+    defaults: ["framework-minus-apex-aconfig-java-defaults"],
+}
+
 // UsageStats
 aconfig_declarations {
     name: "android.app.usage.flags-aconfig",
