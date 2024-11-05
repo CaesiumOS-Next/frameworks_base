@@ -29,6 +29,7 @@
 #include <binder/Stability.h>
 #include <binderthreadstate/CallerUtils.h>
 #include <cutils/atomic.h>
+#include <cutils/trace.h>
 #include <fcntl.h>
 #include <inttypes.h>
 #include <log/log.h>
@@ -1541,6 +1542,9 @@ static jboolean android_os_BinderProxy_transact(JNIEnv* env, jobject obj,
     //printf("Transact from Java code to %p sending: ", target); data->print();
     status_t err = target->transact(code, *data, reply, flags);
     //if (reply) printf("Transact from Java code to %p received: ", target); reply->print();
+    atrace_begin(ATRACE_TAG_AIDL,
+                 (std::string("target->transact: ") + statusToString(err)).c_str());
+    atrace_end(ATRACE_TAG_AIDL);
 
     if (err == NO_ERROR) {
         return JNI_TRUE;
@@ -1548,6 +1552,9 @@ static jboolean android_os_BinderProxy_transact(JNIEnv* env, jobject obj,
 
     env->CallStaticVoidMethod(gBinderOffsets.mClass, gBinderOffsets.mTransactionCallback, getpid(),
                               code, flags, err);
+    atrace_begin(ATRACE_TAG_AIDL,
+                 (std::string("env->CallStaticVoidMethod: ") + statusToString(err)).c_str());
+    atrace_end(ATRACE_TAG_AIDL);
 
     if (err == UNKNOWN_TRANSACTION) {
         return JNI_FALSE;

@@ -17,6 +17,7 @@
 package android.os;
 
 import android.compat.annotation.UnsupportedAppUsage;
+import android.os.Trace;
 
 /**
  * Native implementation of the service manager.  Most clients will only
@@ -36,12 +37,17 @@ public final class ServiceManagerNative {
      */
     @UnsupportedAppUsage
     public static IServiceManager asInterface(IBinder obj) {
+        Trace.traceBegin(Trace.TRACE_TAG_ACTIVITY_MANAGER, "ServiceManagerNative.asInterface");
+
         if (obj == null) {
             return null;
         }
 
         // ServiceManager is never local
-        return new ServiceManagerProxy(obj);
+        IServiceManager out = new ServiceManagerProxy(obj);
+        Trace.traceEnd(Trace.TRACE_TAG_ACTIVITY_MANAGER);
+
+        return out;
     }
 }
 
@@ -49,28 +55,42 @@ public final class ServiceManagerNative {
 // mRemote is no longer used
 class ServiceManagerProxy implements IServiceManager {
     public ServiceManagerProxy(IBinder remote) {
+        Trace.traceBegin(
+                Trace.TRACE_TAG_ACTIVITY_MANAGER, "ServiceManagerProxy.ServiceManagerProxy()");
         mRemote = remote;
         mServiceManager = IServiceManager.Stub.asInterface(this.getNativeServiceManager());
+        Trace.traceEnd(Trace.TRACE_TAG_ACTIVITY_MANAGER);
     }
 
     public IBinder asBinder() {
+        Trace.traceBegin(Trace.TRACE_TAG_ACTIVITY_MANAGER, "ServiceManagerProxy.asBinder()");
+        Trace.traceEnd(Trace.TRACE_TAG_ACTIVITY_MANAGER);
         return mRemote;
     }
 
     // TODO(b/355394904): This function has been deprecated, please use getService2 instead.
     @UnsupportedAppUsage
     public IBinder getService(String name) throws RemoteException {
+        Trace.traceBegin(Trace.TRACE_TAG_ACTIVITY_MANAGER, "ServiceManagerProxy.getService()");
         // Same as checkService (old versions of servicemanager had both methods).
-        return checkService(name).getBinder();
+        IBinder out = checkService(name).getBinder();
+        Trace.traceEnd(Trace.TRACE_TAG_ACTIVITY_MANAGER);
+        return out;
     }
 
     public Service getService2(String name) throws RemoteException {
         // Same as checkService (old versions of servicemanager had both methods).
-        return checkService(name);
+        Trace.traceBegin(Trace.TRACE_TAG_ACTIVITY_MANAGER, "ServiceManagerProxy.getService2()");
+        Service out = checkService(name);
+        Trace.traceEnd(Trace.TRACE_TAG_ACTIVITY_MANAGER);
+        return out;
     }
 
     public Service checkService(String name) throws RemoteException {
-        return mServiceManager.checkService(name);
+        Trace.traceBegin(Trace.TRACE_TAG_ACTIVITY_MANAGER, "ServiceManagerProxy.checkService()");
+        Service out = mServiceManager.checkService(name);
+        Trace.traceEnd(Trace.TRACE_TAG_ACTIVITY_MANAGER);
+        return out;
     }
 
     public void addService(String name, IBinder service, boolean allowIsolated, int dumpPriority)
