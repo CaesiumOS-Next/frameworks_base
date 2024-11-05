@@ -61,6 +61,7 @@ import static com.android.server.pm.PackageManagerShellCommandDataLoader.Metadat
 
 import android.Manifest;
 import android.annotation.AnyThread;
+import android.annotation.FlaggedApi;
 import android.annotation.IntDef;
 import android.annotation.NonNull;
 import android.annotation.Nullable;
@@ -186,6 +187,7 @@ import com.android.internal.util.Preconditions;
 import com.android.modules.utils.TypedXmlPullParser;
 import com.android.modules.utils.TypedXmlSerializer;
 import com.android.server.LocalServices;
+import com.android.server.art.ArtManagerLocal;
 import com.android.server.pm.Installer.InstallerException;
 import com.android.server.pm.dex.DexManager;
 import com.android.server.pm.pkg.AndroidPackage;
@@ -848,7 +850,11 @@ public class PackageInstallerSession extends IPackageInstallerSession.Stub {
             if (file.getName().endsWith(REMOVE_MARKER_EXTENSION)) return false;
             if (file.getName().endsWith(V4Signature.EXT)) return false;
             if (isAppMetadata(file)) return false;
-            if (DexMetadataHelper.isDexMetadataFile(file)) return false;
+            if (com.android.art.flags.Flags.artServiceV3()) {
+                if (ArtManagerLocal.isArtManagedInstallFile(file.getPath())) return false;
+            } else {
+                if (DexMetadataHelper.isDexMetadataFile(file)) return false;
+            }
             if (VerityUtils.isFsveritySignatureFile(file)) return false;
             if (ApkChecksums.isDigestOrDigestSignatureFile(file)) return false;
             return true;
@@ -3892,6 +3898,23 @@ public class PackageInstallerSession extends IPackageInstallerSession.Stub {
                 DexMetadataHelper.isFsVerityRequired());
     }
 
+    @FlaggedApi(com.android.art.flags.Flags.FLAG_ART_SERVICE_V3)
+    @GuardedBy("mLock")
+    private void maybeStageArtManagedInstallFilesLocked(File origFile, File targetFile)
+            throws PackageManagerException {
+        for (String path : ArtManagerLocal.findArtManagedInstallFiles(origFile.getPath())) {
+            File artManagedFile = new File(path);
+            if (!FileUtils.isValidExtFilename(artManagedFile.getName())) {
+                throw new PackageManagerException(
+                        INSTALL_FAILED_INVALID_APK, "Invalid filename: " + artManagedFile);
+            }
+            File targetArtManagedFile =
+                    new File(ArtManagerLocal.rewriteArtManagedInstallFilePathForApk(
+                            path, targetFile.getPath()));
+            stageFileLocked(artManagedFile, targetArtManagedFile);
+        }
+    }
+
     private IncrementalFileStorages getIncrementalFileStorages() {
         synchronized (mLock) {
             return mIncrementalFileStorages;
@@ -4001,8 +4024,13 @@ public class PackageInstallerSession extends IPackageInstallerSession.Stub {
                 && VerityUtils.isFsVeritySupported()) {
             maybeStageV4SignatureLocked(origFile, targetFile);
         }
-        // Stage dex metadata (.dm) and corresponding fs-verity signature if present.
-        maybeStageDexMetadataLocked(origFile, targetFile);
+        // Stage ART managed install files (e.g., dex metadata (.dm)) and corresponding fs-verity
+        // signature if present.
+        if (com.android.art.flags.Flags.artServiceV3()) {
+            maybeStageArtManagedInstallFilesLocked(origFile, targetFile);
+        } else {
+            maybeStageDexMetadataLocked(origFile, targetFile);
+        }
         // Stage checksums (.digests) if present.
         maybeStageDigestsLocked(origFile, targetFile, splitName);
     }
@@ -4035,12 +4063,19 @@ public class PackageInstallerSession extends IPackageInstallerSession.Stub {
             maybeInheritV4SignatureLocked(origFile);
         }
 
-        // Inherit the dex metadata if present.
-        final File dexMetadataFile =
-                DexMetadataHelper.findDexMetadataForFile(origFile);
-        if (dexMetadataFile != null) {
-            mResolvedInheritedFiles.add(dexMetadataFile);
-            maybeInheritFsveritySignatureLocked(dexMetadataFile);
+        // Inherit ART managed install files (e.g., dex metadata (.dm)) if present.
+        if (com.android.art.flags.Flags.artServiceV3()) {
+            for (String path : ArtManagerLocal.findArtManagedInstallFiles(origFile.getPath())) {
+                File artManagedFile = new File(path);
+                mResolvedInheritedFiles.add(artManagedFile);
+                maybeInheritFsveritySignatureLocked(artManagedFile);
+            }
+        } else {
+            final File dexMetadataFile = DexMetadataHelper.findDexMetadataForFile(origFile);
+            if (dexMetadataFile != null) {
+                mResolvedInheritedFiles.add(dexMetadataFile);
+                maybeInheritFsveritySignatureLocked(dexMetadataFile);
+            }
         }
         // Inherit the digests if present.
         final File digestsFile = ApkChecksums.findDigestsForFile(origFile);
