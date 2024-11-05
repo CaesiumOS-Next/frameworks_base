@@ -3,6 +3,46 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e76aa628_f8244e79",
+        "filename": "data/sounds/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1318142
+      },
+      "writtenOn": "2024-11-05T22:32:39Z",
+      "side": 1,
+      "message": "```suggestion\n// Copyright (C) 2024 The Android Open Source Project\n//\n// Licensed under the Apache License, Version 2.0 (the \"License\");\n// you may not use this file except in compliance with the License.\n// You may obtain a copy of the License at\n//\n//      http://www.apache.org/licenses/LICENSE-2.0\n//\n// Unless required by applicable law or agreed to in writing, software\n// distributed under the License is distributed on an \"AS IS\" BASIS,\n// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\n// See the License for the specific language governing permissions and\n// limitations under the License.\n\npackage {\n    default_applicable_licenses: [\"Android-Apache-2.0\"],\n}\n\nphony {\n```",
+      "revId": "92f27a909d7d6acc7fb3de6510dcb3735e3340d5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e4b7ba87_20e3af45",
+        "filename": "data/sounds/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1318142
+      },
+      "writtenOn": "2024-11-05T22:32:39Z",
+      "side": 1,
+      "message": "Can this be removed? so the modules defined here can replace these PRODUCT_COPY_FILES: https://source.corp.google.com/search?q\u003dc:Alarm_Beep_01.ogg\u0026sq\u003drepo:googleplex-android%2Fplatform%2Fsuperproject%2Fmain%20b:main",
+      "range": {
+        "startLine": 45,
+        "startChar": 4,
+        "endLine": 45,
+        "endChar": 26
+      },
+      "revId": "92f27a909d7d6acc7fb3de6510dcb3735e3340d5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3541cfb6_07b3154e",
         "filename": "data/sounds/Android.bp",
         "patchSetId": 1
