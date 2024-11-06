@@ -83,6 +83,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7c85097f_db23b28c",
+        "filename": "data/sounds/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1318142
+      },
+      "writtenOn": "2024-11-06T01:24:35Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "5af806d6_1b3f8364",
+      "range": {
+        "startLine": 45,
+        "startChar": 4,
+        "endLine": 45,
+        "endChar": 26
+      },
+      "revId": "92f27a909d7d6acc7fb3de6510dcb3735e3340d5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3541cfb6_07b3154e",
