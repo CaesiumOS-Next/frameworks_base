@@ -1,0 +1,45 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a7737cf7_8c82d7d7",
+        "filename": "nfc/java/android/nfc/NfcOemExtension.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 379,
+      "author": {
+        "id": 1074459
+      },
+      "writtenOn": "2024-11-06T20:12:12Z",
+      "side": 1,
+      "message": "`that routing table is full and the OEM can optionally launch a dialog to request the user to remove some Card Emulation apps from the device to free routing table space.`",
+      "range": {
+        "startLine": 377,
+        "startChar": 32,
+        "endLine": 379,
+        "endChar": 24
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "bc876d78_8e06f418",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "nfc/java/android/nfc/NfcOemExtension.java",
+              "range": {
+                "startLine": 377,
+                "startChar": 0,
+                "endLine": 380,
+                "endChar": 0
+              },
+              "replacement": "         * Callback to indicate that routing table is full and the OEM can optionally launch a\n         * dialog to request the user to remove some Card Emulation apps to free routing table\n         * space.\n"
+            }
+          ]
+        }
+      ],
+      "revId": "6157c096c909f8c393ec61656a012fa4d5d31b2b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
