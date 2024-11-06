@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c9e36c08_f5846f99",
+        "filename": "data/sounds/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2024-11-06T01:10:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e76aa628_f8244e79",
+      "revId": "92f27a909d7d6acc7fb3de6510dcb3735e3340d5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e4b7ba87_20e3af45",
@@ -43,6 +61,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5af806d6_1b3f8364",
+        "filename": "data/sounds/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2024-11-06T01:10:39Z",
+      "side": 1,
+      "message": "I\u0027d like to keep mk files as-is. It seems like there are non-trivial scripts autogenerating mk files depending on variables. I think it\u0027s very likely to cause regression if we remove such mk files and use fixed lists like this.",
+      "parentUuid": "e4b7ba87_20e3af45",
+      "range": {
+        "startLine": 45,
+        "startChar": 4,
+        "endLine": 45,
+        "endChar": 26
+      },
+      "revId": "92f27a909d7d6acc7fb3de6510dcb3735e3340d5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3541cfb6_07b3154e",
         "filename": "data/sounds/Android.bp",
         "patchSetId": 1
@@ -54,6 +96,30 @@
       "writtenOn": "2024-11-05T09:11:37Z",
       "side": 1,
       "message": "we can you srcs and dsts like\n\nsrcs: [\"effects/ogg/Effect_Tick_48k.ogg\", \"effects/ogg/KeypressDelete_120_48k.ogg\"],\ndsts: [\"Effect_Tick.ogg\", \"KeypressDelete.ogg\"],\n\nbut not sure if it is better for readability",
+      "range": {
+        "startLine": 245,
+        "startChar": 4,
+        "endLine": 245,
+        "endChar": 7
+      },
+      "revId": "92f27a909d7d6acc7fb3de6510dcb3735e3340d5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b444b6af_1069c846",
+        "filename": "data/sounds/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 245,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2024-11-06T01:10:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3541cfb6_07b3154e",
       "range": {
         "startLine": 245,
         "startChar": 4,
