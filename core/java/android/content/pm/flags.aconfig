@@ -293,3 +293,12 @@ flag {
     bug: "362425551"
     is_fixed_read_only: true
 }
+
+flag {
+    name: "app_compat_option_16kb"
+    is_exported: true
+    namespace: "devoptions_settings"
+    description: "Feature flag to enable 16kb app compat mode from manifest, package manager and settings level."
+    bug: "371049373"
+    is_fixed_read_only: true
+}

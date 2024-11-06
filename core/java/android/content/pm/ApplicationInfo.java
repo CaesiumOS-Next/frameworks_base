@@ -1442,6 +1442,81 @@ public class ApplicationInfo extends PackageItemInfo implements Parcelable {
         }
     }
 
+    /**
+     * Initial value for mAppCompat16KbMode
+     */
+    @FlaggedApi(Flags.FLAG_APP_COMPAT_OPTION_16KB)
+    public static final int APP_COMPAT_16KB_MODE_UNDEFINED = -1;
+
+    /**
+     * if set, Extract libs forcefully for 16KB device and show warning dialog.
+     */
+    @FlaggedApi(Flags.FLAG_APP_COMPAT_OPTION_16KB)
+    public static final int APP_COMPAT_16KB_MODE_APK_NOT_ALIGNED = 0;
+
+    /**
+     * if set, Load 4KB aligned ELFs on 16KB device in compat mode and show warning dialog.
+     */
+    @FlaggedApi(Flags.FLAG_APP_COMPAT_OPTION_16KB)
+    public static final int APP_COMPAT_16KB_MODE_ELF_NOT_ALIGNED = 1;
+
+    /**
+     * if set, Extract libs forcefully for 16KB device, Load 4KB aligned ELFs on 16KB device in
+     * compat mode and show warning dialog.
+     */
+    @FlaggedApi(Flags.FLAG_APP_COMPAT_OPTION_16KB)
+    public static final int APP_COMPAT_16KB_MODE_APK_AND_ELF_NOT_ALIGNED = 2;
+
+    /**
+     * Run in 16kB app compat mode. This flag will be set explicitly through settings.
+     * If set, 16kb app compat warning dialogs will still show up.
+     */
+    @FlaggedApi(Flags.FLAG_APP_COMPAT_OPTION_16KB)
+    public static final int APP_COMPAT_16KB_MODE_SETTINGS_OVERRIDE_ENABLE = 3;
+
+    /**
+     * Disable 16kb app compat mode through settings. It should only affect ELF loading as
+     * app is already installed.
+     */
+    @FlaggedApi(Flags.FLAG_APP_COMPAT_OPTION_16KB)
+    public static final int APP_COMPAT_16KB_MODE_SETTINGS_OVERRIDE_DISABLE = 4;
+
+    /**
+     * Run in 16kB app compat mode. This flag will be set explicitly through manifest.
+     * If set, hide the 16kb app compat warning dialogs. This has the highest priority to enable
+     * compat mode.
+     */
+    @FlaggedApi(Flags.FLAG_APP_COMPAT_OPTION_16KB)
+    public static final int APP_COMPAT_16KB_MODE_MANIFEST_OVERRIDE_ENABLE = 5;
+
+    /**
+     * Disable 16kb app compat mode. This has the highest priority to disable compat mode.
+     */
+    @FlaggedApi(Flags.FLAG_APP_COMPAT_OPTION_16KB)
+    public static final int APP_COMPAT_16KB_MODE_MANIFEST_OVERRIDE_DISABLE = 6;
+
+    /**
+     * 16KB app compat status for the app. App can have native shared libs which are not page
+     * aligned, LOAD segments inside the shared libs have to be page aligned.
+     * Apps can specify the override in manifest file as well.
+     *
+     */
+    private @AppCompat16KbMode int mAppCompat16KbMode = APP_COMPAT_16KB_MODE_UNDEFINED;
+
+    /** {@hide} */
+    @IntDef(prefix = { "APP_COMPAT_16KB_MODE_" }, value = {
+            APP_COMPAT_16KB_MODE_UNDEFINED,
+            APP_COMPAT_16KB_MODE_APK_NOT_ALIGNED,
+            APP_COMPAT_16KB_MODE_ELF_NOT_ALIGNED,
+            APP_COMPAT_16KB_MODE_APK_AND_ELF_NOT_ALIGNED,
+            APP_COMPAT_16KB_MODE_MANIFEST_OVERRIDE_ENABLE,
+            APP_COMPAT_16KB_MODE_MANIFEST_OVERRIDE_DISABLE,
+            APP_COMPAT_16KB_MODE_SETTINGS_OVERRIDE_ENABLE,
+            APP_COMPAT_16KB_MODE_SETTINGS_OVERRIDE_DISABLE,
+    })
+    @Retention(RetentionPolicy.SOURCE)
+    public @interface AppCompat16KbMode {}
+
     /** @hide */
     public String classLoaderName;
 
@@ -1770,7 +1845,9 @@ public class ApplicationInfo extends PackageItemInfo implements Parcelable {
             pw.println(prefix + "enableOnBackInvokedCallback=" + isOnBackInvokedCallbackEnabled());
             pw.println(prefix + "allowCrossUidActivitySwitchFromBelow="
                     + allowCrossUidActivitySwitchFromBelow);
-
+            if (mAppCompat16KbMode != APP_COMPAT_16KB_MODE_UNDEFINED) {
+                pw.println(prefix + "mAppCompat16KbMode=" + mAppCompat16KbMode);
+            }
         }
         pw.println(prefix + "createTimestamp=" + createTimestamp);
         if (mKnownActivityEmbeddingCerts != null) {
@@ -1890,6 +1967,10 @@ public class ApplicationInfo extends PackageItemInfo implements Parcelable {
             }
             proto.write(ApplicationInfoProto.Detail.ALLOW_CROSS_UID_ACTIVITY_SWITCH_FROM_BELOW,
                     allowCrossUidActivitySwitchFromBelow);
+            if (mAppCompat16KbMode != APP_COMPAT_16KB_MODE_UNDEFINED) {
+                proto.write(ApplicationInfoProto.Detail.ENABLE_APP_COMPAT_16KB_MODE,
+                        mAppCompat16KbMode);
+            }
             proto.end(detailToken);
         }
         if (!ArrayUtils.isEmpty(mKnownActivityEmbeddingCerts)) {
@@ -2017,6 +2098,7 @@ public class ApplicationInfo extends PackageItemInfo implements Parcelable {
         localeConfigRes = orig.localeConfigRes;
         allowCrossUidActivitySwitchFromBelow = orig.allowCrossUidActivitySwitchFromBelow;
         createTimestamp = SystemClock.uptimeMillis();
+        mAppCompat16KbMode = orig.mAppCompat16KbMode;
     }
 
     public String toString() {
@@ -2121,6 +2203,7 @@ public class ApplicationInfo extends PackageItemInfo implements Parcelable {
         }
         dest.writeInt(localeConfigRes);
         dest.writeInt(allowCrossUidActivitySwitchFromBelow ? 1 : 0);
+        dest.writeInt(mAppCompat16KbMode);
 
         sForStringSet.parcel(mKnownActivityEmbeddingCerts, dest, flags);
     }
@@ -2221,6 +2304,7 @@ public class ApplicationInfo extends PackageItemInfo implements Parcelable {
         }
         localeConfigRes = source.readInt();
         allowCrossUidActivitySwitchFromBelow = source.readInt() != 0;
+        mAppCompat16KbMode = source.readInt();
 
         mKnownActivityEmbeddingCerts = sForStringSet.unparcel(source);
         if (mKnownActivityEmbeddingCerts.isEmpty()) {
@@ -2740,6 +2824,22 @@ public class ApplicationInfo extends PackageItemInfo implements Parcelable {
     /** {@hide} */
     public void setRequestRawExternalStorageAccess(@Nullable Boolean value) {
         requestRawExternalStorageAccess = value;
+    }
+
+    /** {@hide} */
+    @FlaggedApi(Flags.FLAG_APP_COMPAT_OPTION_16KB)
+    public void setAppCompat16KbMode(@AppCompat16KbMode int value) {
+        mAppCompat16KbMode = value;
+    }
+
+    /**
+     * Returns whether application is running in appcompat mode or it has requested to run in
+     * appcompat mode
+     */
+    @AppCompat16KbMode
+    @FlaggedApi(Flags.FLAG_APP_COMPAT_OPTION_16KB)
+    public int getAppCompat16KbMode() {
+        return mAppCompat16KbMode;
     }
 
     /**

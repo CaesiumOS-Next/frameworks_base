@@ -848,4 +848,8 @@ interface IPackageManager {
     int getAppMetadataSource(String packageName, int userId);
 
     ComponentName getDomainVerificationAgent(int userId);
+
+    void setAppCompat16KbModeOverride(in String packageName, int mode);
+
+    int getAppCompat16KbMode(in String packageName);
 }

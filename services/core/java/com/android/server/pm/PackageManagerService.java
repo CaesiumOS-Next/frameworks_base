@@ -5848,6 +5848,49 @@ public class PackageManagerService implements PackageSender, TestUtilityService 
                     userId, callingPackage);
         }
 
+        @Override
+        public void setAppCompat16KbModeOverride(String packageName, int mode) {
+            final int callingUid = Binder.getCallingUid();
+            final int callingAppId = UserHandle.getAppId(callingUid);
+            final int userId = UserHandle.getCallingUserId();
+            final Computer snapshot = snapshotComputer();
+
+            snapshot.enforceCrossUserPermission(callingUid, userId, true /*requireFullPermission*/,
+                    true /*checkShell*/, "setAppCompat16KbModeOverride");
+
+            if (!PackageManagerServiceUtils.isSystemOrRoot(callingAppId)) {
+                throw new SecurityException("Caller must be the system app.");
+            }
+
+            PackageStateMutator.Result result = commitPackageStateMutation(null, packageName,
+                    packageState -> packageState.setAppCompat16KbMode(mode));
+            if (result.isSpecificPackageNull()) {
+                throw new IllegalArgumentException("Unknown package: " + packageName);
+            }
+            scheduleWriteSettings();
+        }
+
+        @Override
+        public int getAppCompat16KbMode(String packageName) {
+            final int callingUid = Binder.getCallingUid();
+            final int callingAppId = UserHandle.getAppId(callingUid);
+            final int userId = UserHandle.getCallingUserId();
+            final Computer snapshot = snapshotComputer();
+
+            snapshot.enforceCrossUserPermission(
+                    callingUid, userId, false /* requireFullPermission */,
+                    false /* checkShell */, "isAppCompat16KbModeEnabled");
+
+            if (!PackageManagerServiceUtils.isSystemOrRoot(callingAppId)) {
+                throw new SecurityException("Caller must be the system app.");
+            }
+
+            PackageStateInternal packageState = snapshot.getPackageStateForInstalledAndFiltered(
+                    packageName, callingUid, userId);
+
+            return packageState == null ? -1 : packageState.getAppCompat16KbMode();
+        }
+
         @android.annotation.EnforcePermission(android.Manifest.permission.MANAGE_USERS)
         @Override
         public boolean setApplicationHiddenSettingAsUser(String packageName, boolean hidden,

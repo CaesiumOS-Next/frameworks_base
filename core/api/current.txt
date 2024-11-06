@@ -12158,6 +12158,7 @@ package android.content.pm {
     method public boolean areAttributionsUserVisible();
     method public int describeContents();
     method public void dump(android.util.Printer, String);
+    method @FlaggedApi("android.content.pm.app_compat_option_16kb") public int getAppCompat16KbMode();
     method public static CharSequence getCategoryTitle(android.content.Context, int);
     method public int getGwpAsanMode();
     method @NonNull public java.util.Set<java.lang.String> getKnownActivityEmbeddingCerts();
@@ -12170,6 +12171,14 @@ package android.content.pm {
     method public boolean isResourceOverlay();
     method public boolean isVirtualPreload();
     method public CharSequence loadDescription(android.content.pm.PackageManager);
+    field @FlaggedApi("android.content.pm.app_compat_option_16kb") public static final int APP_COMPAT_16KB_MODE_APK_AND_ELF_NOT_ALIGNED = 2; // 0x2
+    field @FlaggedApi("android.content.pm.app_compat_option_16kb") public static final int APP_COMPAT_16KB_MODE_APK_NOT_ALIGNED = 0; // 0x0
+    field @FlaggedApi("android.content.pm.app_compat_option_16kb") public static final int APP_COMPAT_16KB_MODE_ELF_NOT_ALIGNED = 1; // 0x1
+    field @FlaggedApi("android.content.pm.app_compat_option_16kb") public static final int APP_COMPAT_16KB_MODE_MANIFEST_OVERRIDE_DISABLE = 6; // 0x6
+    field @FlaggedApi("android.content.pm.app_compat_option_16kb") public static final int APP_COMPAT_16KB_MODE_MANIFEST_OVERRIDE_ENABLE = 5; // 0x5
+    field @FlaggedApi("android.content.pm.app_compat_option_16kb") public static final int APP_COMPAT_16KB_MODE_SETTINGS_OVERRIDE_DISABLE = 4; // 0x4
+    field @FlaggedApi("android.content.pm.app_compat_option_16kb") public static final int APP_COMPAT_16KB_MODE_SETTINGS_OVERRIDE_ENABLE = 3; // 0x3
+    field @FlaggedApi("android.content.pm.app_compat_option_16kb") public static final int APP_COMPAT_16KB_MODE_UNDEFINED = -1; // 0xffffffff
     field public static final int CATEGORY_ACCESSIBILITY = 8; // 0x8
     field public static final int CATEGORY_AUDIO = 1; // 0x1
     field public static final int CATEGORY_GAME = 0; // 0x0

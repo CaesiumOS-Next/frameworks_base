@@ -257,6 +257,15 @@ public class PackageStateMutator {
 
         @NonNull
         @Override
+        public PackageStateWrite setAppCompat16KbMode(@ApplicationInfo.AppCompat16KbMode int mode) {
+            if (mState != null) {
+                mState.setAppCompat16KbMode(mode);
+            }
+            return this;
+        }
+
+        @NonNull
+        @Override
         public PackageStateWrite setUpdateAvailable(boolean updateAvailable) {
             if (mState != null) {
                 mState.setUpdateAvailable(updateAvailable);

@@ -392,6 +392,10 @@ public class PackageImpl implements ParsedPackage, AndroidPackageInternal,
     private int memtagMode;
     @ApplicationInfo.NativeHeapZeroInitialized
     private int nativeHeapZeroInitialized;
+
+    @ApplicationInfo.AppCompat16KbMode
+    private int mAppCompat16KbMode;
+
     @Nullable
     @DataClass.ParcelWith(Parcelling.BuiltIn.ForBoolean.class)
     private Boolean requestRawExternalStorageAccess;
@@ -1095,6 +1099,12 @@ public class PackageImpl implements ParsedPackage, AndroidPackageInternal,
     @Override
     public int getNativeHeapZeroInitialized() {
         return nativeHeapZeroInitialized;
+    }
+
+    @ApplicationInfo.AppCompat16KbMode
+    @Override
+    public int getAppCompat16KbMode() {
+        return mAppCompat16KbMode;
     }
 
     @Override
@@ -2187,6 +2197,13 @@ public class PackageImpl implements ParsedPackage, AndroidPackageInternal,
     }
 
     @Override
+    public PackageImpl setAppCompat16KbMode(
+            @ApplicationInfo.AppCompat16KbMode int value) {
+        mAppCompat16KbMode = value;
+        return this;
+    }
+
+    @Override
     public PackageImpl setNetworkSecurityConfigResourceId(int value) {
         networkSecurityConfigRes = value;
         return this;
@@ -2669,6 +2686,7 @@ public class PackageImpl implements ParsedPackage, AndroidPackageInternal,
             appInfo.setKnownActivityEmbeddingCerts(mKnownActivityEmbeddingCerts);
         }
         appInfo.allowCrossUidActivitySwitchFromBelow = mAllowCrossUidActivitySwitchFromBelow;
+        appInfo.setAppCompat16KbMode(mAppCompat16KbMode);
 
         return appInfo;
     }
@@ -3264,6 +3282,7 @@ public class PackageImpl implements ParsedPackage, AndroidPackageInternal,
         dest.writeLong(this.mBooleans);
         dest.writeLong(this.mBooleans2);
         dest.writeBoolean(this.mAllowCrossUidActivitySwitchFromBelow);
+        dest.writeInt(this.mAppCompat16KbMode);
     }
 
     public PackageImpl(Parcel in) {
@@ -3431,6 +3450,7 @@ public class PackageImpl implements ParsedPackage, AndroidPackageInternal,
         this.mBooleans = in.readLong();
         this.mBooleans2 = in.readLong();
         this.mAllowCrossUidActivitySwitchFromBelow = in.readBoolean();
+        this.mAppCompat16KbMode = in.readInt();
 
         assignDerivedFields();
         assignDerivedFields2();

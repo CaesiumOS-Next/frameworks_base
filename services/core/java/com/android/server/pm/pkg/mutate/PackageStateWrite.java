@@ -46,6 +46,13 @@ public interface PackageStateWrite {
     @NonNull
     PackageStateWrite setCategoryOverride(@ApplicationInfo.Category int category);
 
+
+    /**
+     * set 16Kb App compat mode. @see ApplicationInfo.AppCompat16KbMode
+     */
+    @NonNull
+    PackageStateWrite setAppCompat16KbMode(@ApplicationInfo.AppCompat16KbMode int mode);
+
     @NonNull
     PackageStateWrite setUpdateAvailable(boolean updateAvailable);
 

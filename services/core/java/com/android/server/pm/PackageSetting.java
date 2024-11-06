@@ -216,6 +216,8 @@ public class PackageSetting extends SettingBase implements PackageStateInternal 
     /** @see PackageState#getCategoryOverride() */
     private int categoryOverride = ApplicationInfo.CATEGORY_UNDEFINED;
 
+    private int mAppCompat16KbMode = ApplicationInfo.APP_COMPAT_16KB_MODE_UNDEFINED;
+
     @NonNull
     private final PackageStateUnserialized pkgState = new PackageStateUnserialized(this);
 
@@ -753,6 +755,8 @@ public class PackageSetting extends SettingBase implements PackageStateInternal 
         }
 
         copyMimeGroups(other.mimeGroups);
+        mAppCompat16KbMode = other.mAppCompat16KbMode;
+
         pkgState.updateFrom(other.pkgState);
         onChanged();
     }
@@ -1520,6 +1524,19 @@ public class PackageSetting extends SettingBase implements PackageStateInternal 
         this.categoryOverride = categoryHint;
         onChanged();
         return this;
+    }
+
+    /**
+     * @see Set 16lb App compat mode.
+     */
+    public PackageSetting setAppCompat16KbMode(int mode) {
+        this.mAppCompat16KbMode = mode;
+        onChanged();
+        return this;
+    }
+
+    public int getAppCompat16KbMode() {
+        return mAppCompat16KbMode;
     }
 
     public PackageSetting setLegacyNativeLibraryPath(

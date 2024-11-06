@@ -198,6 +198,14 @@ public interface PackageState {
     int getCategoryOverride();
 
     /**
+     * Value set through {@link IPackageManager#setAppCompat16KbMode(String, int)}.
+     *
+     * @see AndroidPackage#getAppCompat16KbMode()
+     * @hide
+     */
+    int getAppCompat16KbMode();
+
+    /**
      * The install time CPU override, if any. This value is written at install time
      * and doesn't change during the life of an install. If non-null,
      * {@link #getPrimaryCpuAbiLegacy()} will also contain the same value.

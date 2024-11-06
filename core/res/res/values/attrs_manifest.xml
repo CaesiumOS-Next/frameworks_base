@@ -1849,6 +1849,15 @@
        <enum name="sync" value="2" />
     </attr>
 
+    <!-- This attribute will be used to override app compatibility mode on 16kB devices.
+         If set to enable, Natives lib will be extracted from APK if they are not page aligned on
+         16KB device. 4KB natives libs will be loaded app-compat mode if they are eligible.
+         @FlaggedApi("android.content.pm.app_compat_option_16kb") -->
+    <attr name="runWith16kbAppCompatMode">
+        <enum name="enable" value="5" />
+        <enum name="disable" value="6" />
+    </attr>
+
     <!-- Attribution tag to be used for permission sub-attribution if a
       permission is checked in  {@link android.content.Context#sendBroadcast(Intent, String)}.
       Multiple tags can be specified separated by '|'.
@@ -2170,6 +2179,9 @@
         <attr name="gwpAsanMode" />
 
         <attr name="memtagMode" />
+
+        <!-- @FlaggedApi("android.content.pm.app_compat_option_16kb") -->
+        <attr name="runWith16kbAppCompatMode" />
 
         <!-- If {@code true} enables automatic zero initialization of all native heap
              allocations. -->

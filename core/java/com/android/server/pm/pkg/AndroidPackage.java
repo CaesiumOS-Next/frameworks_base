@@ -853,6 +853,14 @@ public interface AndroidPackage {
     int getMemtagMode();
 
     /**
+     * @see ApplicationInfo#getAppCompat16KbMode()
+     * @see R.styleable#AndroidManifestApplication_appCompat16kBMode
+     * @hide
+     */
+    @ApplicationInfo.AppCompat16KbMode
+    int getAppCompat16KbMode();
+
+    /**
      * TODO(b/135203078): Make all the Bundles immutable (and non-null by shared empty reference?)
      * @see R.styleable#AndroidManifestMetaData
      * @hide
