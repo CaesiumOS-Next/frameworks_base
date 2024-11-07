@@ -125,6 +125,8 @@ combined_apis {
     }),
 }
 
+// Make sure that the Android public API is compatible with the
+// previously released public API.
 java_genrule {
     name: "frameworks-base-api-current-compat",
     srcs: [
@@ -141,6 +143,8 @@ java_genrule {
         "$(location :frameworks-base-api-current.txt)",
 }
 
+// Make sure that the Android system API is compatible with the
+// previously released system API.
 java_genrule {
     name: "frameworks-base-api-system-current-compat",
     srcs: [
@@ -153,6 +157,10 @@ java_genrule {
     out: ["updated-baseline.txt"],
     tools: ["metalava"],
     cmd: metalava_cmd +
+        // Make sure to only report issues found in the system API and not
+        // duplicate issues found in the public API which will be reported by
+        // "frameworks-base-api-current-compat"
+        "--show-annotation android.annotation.SystemApi\\(client=android.annotation.SystemApi.Client.PRIVILEGED_APPS\\)" +
         "--check-compatibility:api:released $(location :android.api.public.latest) " +
         "--check-compatibility:api:released $(location :android.api.system.latest) " +
         "--baseline:compatibility:released $(location :android-incompatibilities.api.system.latest) " +
@@ -161,6 +169,8 @@ java_genrule {
         "$(location :frameworks-base-api-system-current.txt)",
 }
 
+// Make sure that the Android module-lib API is compatible with the
+// previously released module-lib API.
 java_genrule {
     name: "frameworks-base-api-module-lib-current-compat",
     srcs: [
@@ -175,6 +185,11 @@ java_genrule {
     out: ["updated-baseline.txt"],
     tools: ["metalava"],
     cmd: metalava_cmd +
+        // Make sure to only report issues found in the module-lib API and not
+        // duplicate issues found in the system API which will be reported by
+        // "frameworks-base-api-system-current-compat"
+        "--show-annotation android.annotation.SystemApi\\(client=android.annotation.SystemApi.Client.PRIVILEGED_APPS\\)" +
+        "--show-annotation android.annotation.SystemApi\\(client=android.annotation.SystemApi.Client.MODULE_LIBRARIES\\)" +
         "--check-compatibility:api:released $(location :android.api.public.latest) " +
         "--check-compatibility:api:released $(location :android.api.system.latest) " +
         "--check-compatibility:api:released $(location :android.api.module-lib.latest) " +
