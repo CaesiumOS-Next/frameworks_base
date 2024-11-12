@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9c41b030_bf5ad382",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1061144
+      },
+      "writtenOn": "2024-11-12T15:06:26Z",
+      "side": 1,
+      "message": "This is an expected and supported state. If an SD Card that contains an app\u0027s APK is removed or an app is archived, it will not have a representative APK that is scanned and thus will not have an AndroidPackage object, but it\u0027s data and state must be maintained until its APK is returned to the device.",
+      "revId": "0a46a36a9df1e87794bccf0544686cc8e3e684f4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
