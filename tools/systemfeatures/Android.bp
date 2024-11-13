@@ -6,6 +6,7 @@ package {
     //   SPDX-license-identifier-Apache-2.0
     default_applicable_licenses: ["frameworks_base_license"],
     default_team: "trendy_team_system_performance",
+    default_visibility: ["//visibility:private"],
 }
 
 java_library_host {
@@ -91,4 +92,25 @@ sh_test_host {
     test_options: {
         unit_test: true,
     },
+}
+
+bootstrap_go_package {
+    name: "soong-systemfeatures",
+    pkgPath: "android/soong/systemfeatures",
+    deps: [
+        "blueprint",
+        "blueprint-proptools",
+        "soong",
+        "soong-android",
+        "soong-java",
+    ],
+    srcs: ["system_features.go"],
+    testSrcs: ["system_features_test.go"],
+    pluginFor: ["soong_build"],
+}
+
+java_system_features_srcs {
+    name: "systemfeatures-gen-srcs",
+    full_class_name: "com.android.internal.pm.RoSystemFeatures",
+    visibility: ["//frameworks/base:__subpackages__"],
 }
