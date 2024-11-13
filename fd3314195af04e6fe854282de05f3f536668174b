@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "41358989_1101f5d9",
+        "filename": "services/core/java/com/android/server/pm/PackageManagerService.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 3018,
+      "author": {
+        "id": 3516048
+      },
+      "writtenOn": "2024-11-13T09:13:02Z",
+      "side": 1,
+      "message": "- PackageManagerService.updatePackagesIfNeeded() is called in SystemServer.startOtherServices.\n- Before calling updatePackagesIfNeeded(), new display metrics has been updated.",
+      "parentUuid": "e3bf861c_596446ec",
+      "range": {
+        "startLine": 3018,
+        "startChar": 16,
+        "endLine": 3018,
+        "endChar": 38
+      },
+      "revId": "fd3314195af04e6fe854282de05f3f536668174b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c0138054_320d5fc4",
