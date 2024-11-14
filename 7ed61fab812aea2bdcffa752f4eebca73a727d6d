@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b392c50b_61e9d27d",
+        "filename": "services/core/java/com/android/server/pm/PackageManagerService.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 3021,
+      "author": {
+        "id": 1480715
+      },
+      "writtenOn": "2024-11-14T15:49:53Z",
+      "side": 1,
+      "message": "just for completeness, let\u0027s also check if `displayManager` is null here",
+      "range": {
+        "startLine": 3021,
+        "startChar": 7,
+        "endLine": 3021,
+        "endChar": 8
+      },
+      "revId": "7ed61fab812aea2bdcffa752f4eebca73a727d6d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
