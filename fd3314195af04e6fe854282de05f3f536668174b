@@ -71,6 +71,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ebdf4117_0c2f65af",
+        "filename": "services/core/java/com/android/server/pm/PackageManagerService.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 3020,
+      "author": {
+        "id": 3516048
+      },
+      "writtenOn": "2024-11-14T03:23:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c0138054_320d5fc4",
+      "range": {
+        "startLine": 3020,
+        "startChar": 7,
+        "endLine": 3020,
+        "endChar": 9
+      },
+      "revId": "fd3314195af04e6fe854282de05f3f536668174b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "913ac4cc_75ee7133",
@@ -112,6 +136,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "82e9249b_19b5876f",
+        "filename": "services/core/java/com/android/server/pm/PackageManagerService.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 3021,
+      "author": {
+        "id": 3516048
+      },
+      "writtenOn": "2024-11-14T03:23:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "913ac4cc_75ee7133",
+      "range": {
+        "startLine": 3021,
+        "startChar": 16,
+        "endLine": 3021,
+        "endChar": 83
+      },
+      "revId": "fd3314195af04e6fe854282de05f3f536668174b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "381c9362_8ce54173",
@@ -125,6 +173,30 @@
       "writtenOn": "2024-11-13T02:57:25Z",
       "side": 1,
       "message": "Check whether null is returned here before use.\nAlthough it should be rare, but ```getDisplay``` could return null.",
+      "range": {
+        "startLine": 3022,
+        "startChar": 23,
+        "endLine": 3022,
+        "endChar": 33
+      },
+      "revId": "fd3314195af04e6fe854282de05f3f536668174b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e24a67b3_b6ca369f",
+        "filename": "services/core/java/com/android/server/pm/PackageManagerService.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 3022,
+      "author": {
+        "id": 3516048
+      },
+      "writtenOn": "2024-11-14T03:23:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "381c9362_8ce54173",
       "range": {
         "startLine": 3022,
         "startChar": 23,
