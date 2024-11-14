@@ -57,6 +57,30 @@
       ],
       "revId": "1442c48db148caa98ce03cdb79a21387559f2fbe",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0f109f7d_37f9d26a",
+        "filename": "location/java/android/location/Geocoder.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 3524514
+      },
+      "writtenOn": "2024-11-14T19:20:02Z",
+      "side": 1,
+      "message": "There are instances where various developers would want to disable certain system services. So in some instances we disable location service, which from what we have observed, this nullifies this value. Therefore, it is a more graceful way of handling this scenario by checking if it is null or not. Hope that clarifies things 😊",
+      "parentUuid": "a18379d6_62b707e6",
+      "range": {
+        "startLine": 86,
+        "startChar": 25,
+        "endLine": 86,
+        "endChar": 27
+      },
+      "revId": "1442c48db148caa98ce03cdb79a21387559f2fbe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
