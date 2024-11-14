@@ -105,6 +105,29 @@
       },
       "revId": "1442c48db148caa98ce03cdb79a21387559f2fbe",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f0c6361a_2d58b977",
+        "filename": "media/java/android/media/session/MediaSessionManager.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 379,
+      "author": {
+        "id": 2003670
+      },
+      "writtenOn": "2024-11-14T20:12:01Z",
+      "side": 1,
+      "message": "Just like in Geocoder, this should never be null either. If it was somehow null, then it would probably fail somewhere else as well and a null pointer exception would have bubbled up sooner.\n\nIt would be useful to see a bug report or at least verbal reasoning of how we can get into this situation at all. Such a possibility would be dangerous for other parts of the code too and a guard-check like that would need to be inserted earlier/into more places",
+      "range": {
+        "startLine": 376,
+        "startChar": 0,
+        "endLine": 379,
+        "endChar": 9
+      },
+      "revId": "1442c48db148caa98ce03cdb79a21387559f2fbe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
