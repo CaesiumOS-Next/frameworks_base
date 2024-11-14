@@ -81,6 +81,30 @@
       },
       "revId": "1442c48db148caa98ce03cdb79a21387559f2fbe",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1c9e3bcd_a53d4d3c",
+        "filename": "location/java/android/location/Geocoder.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1146013
+      },
+      "writtenOn": "2024-11-14T19:24:50Z",
+      "side": 1,
+      "message": "Ack.",
+      "parentUuid": "0f109f7d_37f9d26a",
+      "range": {
+        "startLine": 86,
+        "startChar": 25,
+        "endLine": 86,
+        "endChar": 27
+      },
+      "revId": "1442c48db148caa98ce03cdb79a21387559f2fbe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
