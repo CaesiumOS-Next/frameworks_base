@@ -152,6 +152,30 @@
       },
       "revId": "1442c48db148caa98ce03cdb79a21387559f2fbe",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "481d204a_1650d027",
+        "filename": "media/java/android/media/session/MediaSessionManager.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 379,
+      "author": {
+        "id": 1643005
+      },
+      "writtenOn": "2024-11-15T14:59:03Z",
+      "side": 1,
+      "message": "Would you be able to give some more concrete details about exactly what you\u0027re doing, and what \"disable certain services\" involves? I think that will help us better understand why this change is needed.\n\nIf there\u0027s details that you\u0027re not able to share publicly, could you put them in a partner issue instead? Assign it to jbibik@ or reply with the link here and we can continue the discussion there.\n\nhttps://issuetracker.google.com/issues/new?component\u003d1025092\u0026template\u003d0",
+      "parentUuid": "6de56bec_a55665ce",
+      "range": {
+        "startLine": 376,
+        "startChar": 0,
+        "endLine": 379,
+        "endChar": 9
+      },
+      "revId": "1442c48db148caa98ce03cdb79a21387559f2fbe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
