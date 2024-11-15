@@ -128,6 +128,30 @@
       },
       "revId": "1442c48db148caa98ce03cdb79a21387559f2fbe",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6de56bec_a55665ce",
+        "filename": "media/java/android/media/session/MediaSessionManager.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 379,
+      "author": {
+        "id": 3524514
+      },
+      "writtenOn": "2024-11-15T12:02:28Z",
+      "side": 1,
+      "message": "Hey Julia, the reasoning would be very similar to the one I provided in Geocoder, for various reasons we and other developers, need/want to disable certain services, which in this case would nullify some of the framework components. So null checking to handle it gracefully.\n\nThis is not necessary a bug, as it is an option that all developers have to toggle on/off services. It\u0027s just a matter of making the process easier and more robust to such allowed actions. Hope that clarifies things 😊",
+      "parentUuid": "f0c6361a_2d58b977",
+      "range": {
+        "startLine": 376,
+        "startChar": 0,
+        "endLine": 379,
+        "endChar": 9
+      },
+      "revId": "1442c48db148caa98ce03cdb79a21387559f2fbe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
