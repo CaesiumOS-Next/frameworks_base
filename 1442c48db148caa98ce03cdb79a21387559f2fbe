@@ -176,6 +176,30 @@
       },
       "revId": "1442c48db148caa98ce03cdb79a21387559f2fbe",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a40e2ad0_6fdb3a83",
+        "filename": "media/java/android/media/session/MediaSessionManager.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 379,
+      "author": {
+        "id": 3524514
+      },
+      "writtenOn": "2024-11-15T15:17:24Z",
+      "side": 1,
+      "message": "I\u0027ll try my best to give as much detail as I\u0027m able to give. Considering that AOSP is used to run various types of devices, and not just phones, by us and other partners. There are cases for specific devices where some services are not required/not needed for the functionality of a device. Therefore these services are then disabled for the image of that specific device type to make it lighter (the service is removed from the device\u0027s image).\n\nHowever, with the current implementation of AOSP, these services are often assumed existent in frameworks which is not the case with many non-phone devices and thus produce nullpointer exceptions. The whole points of these null pointer checks is to handle those unique device-specific edge cases so that AOSP is more compatible with all device types for all partners.",
+      "parentUuid": "481d204a_1650d027",
+      "range": {
+        "startLine": 376,
+        "startChar": 0,
+        "endLine": 379,
+        "endChar": 9
+      },
+      "revId": "1442c48db148caa98ce03cdb79a21387559f2fbe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
