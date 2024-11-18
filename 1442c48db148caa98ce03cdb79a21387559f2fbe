@@ -200,6 +200,30 @@
       },
       "revId": "1442c48db148caa98ce03cdb79a21387559f2fbe",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8ddea25f_07a7dc53",
+        "filename": "media/java/android/media/session/MediaSessionManager.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 379,
+      "author": {
+        "id": 1643005
+      },
+      "writtenOn": "2024-11-18T09:38:30Z",
+      "side": 1,
+      "message": "\u003e Therefore these services are then disabled for the image of that specific device type to make it lighter (the service is removed from the device\u0027s image).\n\nWhat is returned from `Context.getSystemService(MediaSessionManager.class)` on such a device? It seems it should return `null`, in which case I think nobody should be invoking these methods (because they can\u0027t get an instance of `MediaSessionManager` to invoke them on - so there\u0027s no need for the null checking at this level? \n\nApologies if we don\u0027t fully understand the problem you\u0027re solving here - but until we do so (perhaps by filing the partner issue suggested above), I\u0027m afraid we are unlikely to approve this change.",
+      "parentUuid": "a40e2ad0_6fdb3a83",
+      "range": {
+        "startLine": 376,
+        "startChar": 0,
+        "endLine": 379,
+        "endChar": 9
+      },
+      "revId": "1442c48db148caa98ce03cdb79a21387559f2fbe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
