@@ -224,6 +224,30 @@
       },
       "revId": "1442c48db148caa98ce03cdb79a21387559f2fbe",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3de095a9_f1cfb352",
+        "filename": "media/java/android/media/session/MediaSessionManager.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 379,
+      "author": {
+        "id": 3524514
+      },
+      "writtenOn": "2024-11-18T10:30:20Z",
+      "side": 1,
+      "message": "That makes perfect sense, I\u0027ll try gathering as much detail as I can and get back to you soon with all the answers, and fill in the partner issue as suggested. Thank you very much for the prompt responses.\n\nIn the meantime, I\u0027ll limit the changes to the Geocoder change as that was the approved change. And I\u0027ll get back to you as soon as I have the additional details.",
+      "parentUuid": "8ddea25f_07a7dc53",
+      "range": {
+        "startLine": 376,
+        "startChar": 0,
+        "endLine": 379,
+        "endChar": 9
+      },
+      "revId": "1442c48db148caa98ce03cdb79a21387559f2fbe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
