@@ -16,6 +16,24 @@
       "message": "Hi @sooniln@google.com, can I please get a re-approval for this change? As the vote was reset when I updated the patchset. Thanks 😊",
       "revId": "5dc21225c57c74985b741b1565eabafb75cdd2f3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4ab8d525_cd022f0f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 3524514
+      },
+      "writtenOn": "2024-11-18T17:40:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a3084769_31f082cb",
+      "revId": "5dc21225c57c74985b741b1565eabafb75cdd2f3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
