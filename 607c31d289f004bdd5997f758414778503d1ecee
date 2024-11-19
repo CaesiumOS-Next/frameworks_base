@@ -16,6 +16,29 @@
       "message": "@schfan@google.com soft ping",
       "revId": "607c31d289f004bdd5997f758414778503d1ecee",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "74b681ba_bfd3a837",
+        "filename": "services/core/java/com/android/server/pm/PackageManagerService.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 3026,
+      "author": {
+        "id": 1480715
+      },
+      "writtenOn": "2024-11-19T02:14:34Z",
+      "side": 1,
+      "message": "nit: Let\u0027s make a separate method, just like `performFstrimIfNeeded` above, and directly call the new method from SystemServer. That will make debugging easier if anything goes wrong with the new method.",
+      "range": {
+        "startLine": 3020,
+        "startChar": 8,
+        "endLine": 3026,
+        "endChar": 9
+      },
+      "revId": "607c31d289f004bdd5997f758414778503d1ecee",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
