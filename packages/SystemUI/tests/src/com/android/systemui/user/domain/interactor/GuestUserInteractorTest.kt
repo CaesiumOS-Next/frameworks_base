@@ -27,6 +27,7 @@ import com.android.internal.logging.UiEventLogger
 import com.android.systemui.GuestResetOrExitSessionReceiver
 import com.android.systemui.GuestResumeSessionReceiver
 import com.android.systemui.SysuiTestCase
+import com.android.systemui.kosmos.testScope
 import com.android.systemui.statusbar.policy.DeviceProvisionedController
 import com.android.systemui.user.data.repository.FakeUserRepository
 import com.android.systemui.user.domain.model.ShowDialogRequestModel
@@ -34,8 +35,9 @@ import com.android.systemui.util.mockito.any
 import com.android.systemui.util.mockito.kotlinArgumentCaptor
 import com.android.systemui.util.mockito.whenever
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.runBlocking
-import kotlinx.coroutines.test.TestCoroutineScope
+import kotlinx.coroutines.test.TestScope
+import kotlinx.coroutines.test.UnconfinedTestDispatcher
+import kotlinx.coroutines.test.runTest
 import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -62,9 +64,11 @@ class GuestUserInteractorTest : SysuiTestCase() {
     @Mock private lateinit var resetOrExitSessionReceiver: GuestResetOrExitSessionReceiver
     @Mock private lateinit var otherContext: Context
 
+    private val testDispatcher = UnconfinedTestDispatcher()
+    private val testScope = TestScope(testDispatcher)
     private lateinit var underTest: GuestUserInteractor
 
-    private lateinit var scope: TestCoroutineScope
+    private lateinit var scope: TestScope
     private lateinit var repository: FakeUserRepository
 
     @Before
@@ -72,7 +76,7 @@ class GuestUserInteractorTest : SysuiTestCase() {
         MockitoAnnotations.initMocks(this)
         whenever(manager.createGuest(any())).thenReturn(GUEST_USER_INFO)
 
-        scope = TestCoroutineScope()
+        scope = kosmos.testScope
         repository = FakeUserRepository()
         repository.setUserInfos(ALL_USERS)
 
@@ -83,8 +87,8 @@ class GuestUserInteractorTest : SysuiTestCase() {
         GuestUserInteractor(
             applicationContext = context,
             applicationScope = scope,
-            mainDispatcher = IMMEDIATE,
-            backgroundDispatcher = IMMEDIATE,
+            mainDispatcher = testDispatcher,
+            backgroundDispatcher = testDispatcher,
             manager = manager,
             repository = repository,
             deviceProvisionedController = deviceProvisionedController,
@@ -92,7 +96,7 @@ class GuestUserInteractorTest : SysuiTestCase() {
             refreshUsersScheduler =
                 RefreshUsersScheduler(
                     applicationScope = scope,
-                    mainDispatcher = IMMEDIATE,
+                    mainDispatcher = testDispatcher,
                     repository = repository,
                 ),
             uiEventLogger = uiEventLogger,
@@ -118,7 +122,7 @@ class GuestUserInteractorTest : SysuiTestCase() {
 
     @Test
     fun onDeviceBootCompleted_allowedToAdd_createGuest() =
-        runBlocking(IMMEDIATE) {
+        testScope.runTest {
             setAllowedToAdd()
 
             underTest.onDeviceBootCompleted()
@@ -129,7 +133,7 @@ class GuestUserInteractorTest : SysuiTestCase() {
 
     @Test
     fun onDeviceBootCompleted_awaitProvisioning_andCreateGuest() =
-        runBlocking(IMMEDIATE) {
+        testScope.runTest {
             setAllowedToAdd(isAllowed = false)
             underTest.onDeviceBootCompleted()
             val captor =
@@ -145,7 +149,7 @@ class GuestUserInteractorTest : SysuiTestCase() {
 
     @Test
     fun createAndSwitchTo() =
-        runBlocking(IMMEDIATE) {
+        testScope.runTest {
             underTest.createAndSwitchTo(
                 showDialog = showDialog,
                 dismissDialog = dismissDialog,
@@ -160,7 +164,7 @@ class GuestUserInteractorTest : SysuiTestCase() {
 
     @Test
     fun createAndSwitchTo_failsToCreate_doesNotSwitchTo() =
-        runBlocking(IMMEDIATE) {
+        testScope.runTest {
             whenever(manager.createGuest(any())).thenReturn(null)
 
             underTest.createAndSwitchTo(
@@ -177,7 +181,7 @@ class GuestUserInteractorTest : SysuiTestCase() {
 
     @Test
     fun exit_returnsToTargetUser() =
-        runBlocking(IMMEDIATE) {
+        testScope.runTest {
             repository.setSelectedUserInfo(GUEST_USER_INFO)
 
             val targetUserId = NON_GUEST_USER_INFO.id
@@ -197,7 +201,7 @@ class GuestUserInteractorTest : SysuiTestCase() {
 
     @Test
     fun exit_returnsToLastNonGuest() =
-        runBlocking(IMMEDIATE) {
+        testScope.runTest {
             val expectedUserId = NON_GUEST_USER_INFO.id
             whenever(manager.getUserInfo(expectedUserId)).thenReturn(NON_GUEST_USER_INFO)
             repository.lastSelectedNonGuestUserId = expectedUserId
@@ -219,7 +223,7 @@ class GuestUserInteractorTest : SysuiTestCase() {
 
     @Test
     fun exit_lastNonGuestWasRemoved_returnsToMainUser() =
-        runBlocking(IMMEDIATE) {
+        testScope.runTest {
             val removedUserId = 310
             val mainUserId = 10
             repository.lastSelectedNonGuestUserId = removedUserId
@@ -242,7 +246,7 @@ class GuestUserInteractorTest : SysuiTestCase() {
 
     @Test
     fun exit_guestWasEphemeral_itIsRemoved() =
-        runBlocking(IMMEDIATE) {
+        testScope.runTest {
             whenever(manager.markGuestForDeletion(anyInt())).thenReturn(true)
             repository.setUserInfos(listOf(NON_GUEST_USER_INFO, EPHEMERAL_GUEST_USER_INFO))
             repository.setSelectedUserInfo(EPHEMERAL_GUEST_USER_INFO)
@@ -265,7 +269,7 @@ class GuestUserInteractorTest : SysuiTestCase() {
 
     @Test
     fun exit_forceRemoveGuest_itIsRemoved() =
-        runBlocking(IMMEDIATE) {
+        testScope.runTest {
             whenever(manager.markGuestForDeletion(anyInt())).thenReturn(true)
             repository.setSelectedUserInfo(GUEST_USER_INFO)
             val targetUserId = NON_GUEST_USER_INFO.id
@@ -287,7 +291,7 @@ class GuestUserInteractorTest : SysuiTestCase() {
 
     @Test
     fun exit_selectedDifferentFromGuestUser_doNothing() =
-        runBlocking(IMMEDIATE) {
+        testScope.runTest {
             repository.setSelectedUserInfo(NON_GUEST_USER_INFO)
 
             underTest.exit(
@@ -304,7 +308,7 @@ class GuestUserInteractorTest : SysuiTestCase() {
 
     @Test
     fun exit_selectedIsActuallyNotAguestUser_doNothing() =
-        runBlocking(IMMEDIATE) {
+        testScope.runTest {
             repository.setSelectedUserInfo(NON_GUEST_USER_INFO)
 
             underTest.exit(
@@ -321,7 +325,7 @@ class GuestUserInteractorTest : SysuiTestCase() {
 
     @Test
     fun remove_returnsToTargetUser() =
-        runBlocking(IMMEDIATE) {
+        testScope.runTest {
             whenever(manager.markGuestForDeletion(anyInt())).thenReturn(true)
             repository.setSelectedUserInfo(GUEST_USER_INFO)
 
@@ -342,7 +346,7 @@ class GuestUserInteractorTest : SysuiTestCase() {
 
     @Test
     fun remove_selectedDifferentFromGuestUser_doNothing() =
-        runBlocking(IMMEDIATE) {
+        testScope.runTest {
             whenever(manager.markGuestForDeletion(anyInt())).thenReturn(true)
             repository.setSelectedUserInfo(NON_GUEST_USER_INFO)
 
@@ -359,7 +363,7 @@ class GuestUserInteractorTest : SysuiTestCase() {
 
     @Test
     fun remove_selectedIsActuallyNotAguestUser_doNothing() =
-        runBlocking(IMMEDIATE) {
+        testScope.runTest {
             whenever(manager.markGuestForDeletion(anyInt())).thenReturn(true)
             repository.setSelectedUserInfo(NON_GUEST_USER_INFO)
 
@@ -395,11 +399,7 @@ class GuestUserInteractorTest : SysuiTestCase() {
     companion object {
         private val IMMEDIATE = Dispatchers.Main.immediate
         private val NON_GUEST_USER_INFO =
-            UserInfo(
-                /* id= */ 818,
-                /* name= */ "non_guest",
-                /* flags= */ UserInfo.FLAG_FULL,
-            )
+            UserInfo(/* id= */ 818, /* name= */ "non_guest", /* flags= */ UserInfo.FLAG_FULL)
         private val GUEST_USER_INFO =
             UserInfo(
                 /* id= */ 669,
@@ -416,10 +416,6 @@ class GuestUserInteractorTest : SysuiTestCase() {
                 /* flags= */ UserInfo.FLAG_EPHEMERAL or UserInfo.FLAG_FULL,
                 UserManager.USER_TYPE_FULL_GUEST,
             )
-        private val ALL_USERS =
-            listOf(
-                NON_GUEST_USER_INFO,
-                GUEST_USER_INFO,
-            )
+        private val ALL_USERS = listOf(NON_GUEST_USER_INFO, GUEST_USER_INFO)
     }
 }
