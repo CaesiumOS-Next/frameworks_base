@@ -33,6 +33,24 @@
       "message": "Oh interesting -- the next question though, is how do we update the other set of golden files....\n\nBut sure, I\u0027ll take it. At least now we can have the test back. Hopefully we\u0027ll switch to Java 21 soon-ish. If not, maybe I can come up with some other approach. The fact that the test can break when the javac output changes is not really a great thing in the first place.\n\nThanks for following it up through!",
       "revId": "3e3d88e9bdbe2bb723fe0a4dfa249c08a7aad1a2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "94b3010d_9e87f34c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1863710
+      },
+      "writtenOn": "2024-11-21T17:37:24Z",
+      "side": 1,
+      "message": "Yeah, it\u0027s not ideal. What I did was run the diff-and-update-golden.sh script and copied the output to the new location, restoring the old ones. The process is a bit longer.\n\nIt\u0027d be good to have something more robust. Especially the class file versions will change every time we update.\n\nHopefully the flag will be ramped up to 100% for 25Q2.",
+      "parentUuid": "b6a12d38_21692b75",
+      "revId": "3e3d88e9bdbe2bb723fe0a4dfa249c08a7aad1a2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
