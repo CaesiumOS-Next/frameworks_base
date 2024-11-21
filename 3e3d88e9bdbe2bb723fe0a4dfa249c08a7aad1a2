@@ -16,6 +16,23 @@
       "message": "Hi Makoto, could you please have a look? I was trying to solve this by using a folder conditional on the flag, but that got more complicated than it seemed necessary. Is it OK if the check will try and match through alternate dirs?\nI\u0027ve also done a diff between existing images and the RELEASE_TARGET_JAVA_21 and the changes are as expected - class file versions have been updated and unused synthetic fields are no longer generated.",
       "revId": "3e3d88e9bdbe2bb723fe0a4dfa249c08a7aad1a2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b6a12d38_21692b75",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1003801
+      },
+      "writtenOn": "2024-11-21T17:30:29Z",
+      "side": 1,
+      "message": "Oh interesting -- the next question though, is how do we update the other set of golden files....\n\nBut sure, I\u0027ll take it. At least now we can have the test back. Hopefully we\u0027ll switch to Java 21 soon-ish. If not, maybe I can come up with some other approach. The fact that the test can break when the javac output changes is not really a great thing in the first place.\n\nThanks for following it up through!",
+      "revId": "3e3d88e9bdbe2bb723fe0a4dfa249c08a7aad1a2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
