@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "defcd08a_3c887085",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1863710
+      },
+      "writtenOn": "2024-11-21T16:59:41Z",
+      "side": 1,
+      "message": "Hi Makoto, could you please have a look? I was trying to solve this by using a folder conditional on the flag, but that got more complicated than it seemed necessary. Is it OK if the check will try and match through alternate dirs?\nI\u0027ve also done a diff between existing images and the RELEASE_TARGET_JAVA_21 and the changes are as expected - class file versions have been updated and unused synthetic fields are no longer generated.",
+      "revId": "3e3d88e9bdbe2bb723fe0a4dfa249c08a7aad1a2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
