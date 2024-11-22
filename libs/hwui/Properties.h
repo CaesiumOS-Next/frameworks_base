@@ -369,6 +369,7 @@ public:
     static void setStretchEffectBehavior(StretchEffectBehavior behavior) {
         stretchEffectBehavior = behavior;
     }
+    static int defaultMaxGpuFontAtlasBytes;
 
     // Represents if drawing is enabled. Should only be Off in headless testing environments
     static DrawingEnabled drawingEnabled;
