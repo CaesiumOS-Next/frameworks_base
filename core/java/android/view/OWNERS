@@ -1,3 +1,6 @@
+# Bug component: 1519745 = per-file WindowMetrics*
+    charlesccchen@google.com
+
 # Bug component: 25700
 
 romainguy@google.com
@@ -88,6 +91,9 @@ per-file OnReceiveContentListener.java = file:/core/java/android/widget/OWNERS
 per-file ContentInfo.java = file:/core/java/android/service/autofill/OWNERS
 per-file ContentInfo.java = file:/core/java/android/widget/OWNERS
 per-file view_flags.aconfig = file:/services/core/java/com/android/server/wm/OWNERS
+
+# WindowMetrics
+per-file WindowMetrics* = charlesccchen@google.com
 
 # WindowManager
 per-file ContentRecordingSession.aidl = file:/services/core/java/com/android/server/wm/OWNERS
