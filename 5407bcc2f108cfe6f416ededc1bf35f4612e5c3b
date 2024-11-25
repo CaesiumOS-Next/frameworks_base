@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1f51fdc0_63312c9f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1246512
+      },
+      "writtenOn": "2024-11-25T08:32:10Z",
+      "side": 1,
+      "message": "Friendly ping @Evan, anything new about how to handle the changes in the api?",
+      "revId": "5407bcc2f108cfe6f416ededc1bf35f4612e5c3b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
