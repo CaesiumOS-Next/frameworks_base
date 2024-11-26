@@ -16,6 +16,23 @@
       "message": "Upstream from Meta 😊",
       "revId": "d9af829cd430a5662bcf422152c3ee70bd519801",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2621cfcb_d6a02737",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1650177
+      },
+      "writtenOn": "2024-11-26T03:38:12Z",
+      "side": 1,
+      "message": "Looks like a new feature to me. Adding Mark for Android USB.",
+      "revId": "d9af829cd430a5662bcf422152c3ee70bd519801",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
