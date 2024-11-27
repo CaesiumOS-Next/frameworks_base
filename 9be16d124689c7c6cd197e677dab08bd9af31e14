@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8c0ded3b_effbffd6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1639046
+      },
+      "writtenOn": "2024-11-27T03:39:29Z",
+      "side": 1,
+      "message": "Separate some changes into aosp/3377692.",
+      "revId": "9be16d124689c7c6cd197e677dab08bd9af31e14",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
