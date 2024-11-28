@@ -33,6 +33,24 @@
       "message": "Winson is out. I don\u0027t have enough context to why we don\u0027t support multi finger here, but I remember that we intentionally made the choice. Adding Tiger here since he has a few footprints in the file.",
       "revId": "63884e0fb8156a9e1df3e492fc1d37b0d72c41b1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "47645db0_3184bf67",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1975825
+      },
+      "writtenOn": "2024-11-28T01:26:26Z",
+      "side": 1,
+      "message": "But the first time when user operate is multitouch-supported.   This can be confusing to users, and we have received some feedback about it.",
+      "parentUuid": "c5b4bad7_3553eead",
+      "revId": "63884e0fb8156a9e1df3e492fc1d37b0d72c41b1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
