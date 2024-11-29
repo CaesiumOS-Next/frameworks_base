@@ -319,6 +319,8 @@ final public class MediaMuxer {
     @UnsupportedAppUsage(maxTargetSdk = Build.VERSION_CODES.R, trackingBug = 170729553)
     private long mNativeObject;
 
+    private final Object mLock = new Object();
+
     private String convertMuxerStateCodeToString(int aState) {
         switch (aState) {
             case MUXER_STATE_UNINITIALIZED:
@@ -409,11 +411,16 @@ final public class MediaMuxer {
         if (degrees != 0 && degrees != 90  && degrees != 180 && degrees != 270) {
             throw new IllegalArgumentException("Unsupported angle: " + degrees);
         }
-        if (mState == MUXER_STATE_INITIALIZED) {
-            nativeSetOrientationHint(mNativeObject, degrees);
-        } else {
-            throw new IllegalStateException("Can't set rotation degrees due" +
-                    " to wrong state(" + convertMuxerStateCodeToString(mState) + ")");
+        synchronized (mLock) {
+            if (mState == MUXER_STATE_INITIALIZED && mNativeObject != 0) {
+                nativeSetOrientationHint(mNativeObject, degrees);
+            } else {
+                throw new IllegalStateException(
+                        "Can't set rotation degrees due"
+                                + " to wrong state("
+                                + convertMuxerStateCodeToString(mState)
+                                + ")");
+            }
         }
     }
 
@@ -445,11 +452,15 @@ final public class MediaMuxer {
             throw new IllegalArgumentException(msg);
         }
 
-        if (mState == MUXER_STATE_INITIALIZED && mNativeObject != 0) {
-            nativeSetLocation(mNativeObject, latitudex10000, longitudex10000);
-        } else {
-            throw new IllegalStateException("Can't set location due to wrong state("
-                                             + convertMuxerStateCodeToString(mState) + ")");
+        synchronized (mLock) {
+            if (mState == MUXER_STATE_INITIALIZED && mNativeObject != 0) {
+                nativeSetLocation(mNativeObject, latitudex10000, longitudex10000);
+            } else {
+                throw new IllegalStateException(
+                        "Can't set location due to wrong state("
+                                + convertMuxerStateCodeToString(mState)
+                                + ")");
+            }
         }
     }
 
@@ -461,15 +472,19 @@ final public class MediaMuxer {
      * or Muxer is released
      */
     public void start() {
-        if (mNativeObject == 0) {
-            throw new IllegalStateException("Muxer has been released!");
-        }
-        if (mState == MUXER_STATE_INITIALIZED) {
-            nativeStart(mNativeObject);
-            mState = MUXER_STATE_STARTED;
-        } else {
-            throw new IllegalStateException("Can't start due to wrong state("
-                                             + convertMuxerStateCodeToString(mState) + ")");
+        synchronized (mLock) {
+            if (mNativeObject == 0) {
+                throw new IllegalStateException("Muxer has been released!");
+            }
+            if (mState == MUXER_STATE_INITIALIZED) {
+                nativeStart(mNativeObject);
+                mState = MUXER_STATE_STARTED;
+            } else {
+                throw new IllegalStateException(
+                        "Can't start due to wrong state("
+                                + convertMuxerStateCodeToString(mState)
+                                + ")");
+            }
         }
     }
 
@@ -479,17 +494,21 @@ final public class MediaMuxer {
      * @throws IllegalStateException if muxer is in the wrong state.
      */
     public void stop() {
-        if (mState == MUXER_STATE_STARTED) {
-            try {
-                nativeStop(mNativeObject);
-            } catch (Exception e) {
-                throw e;
-            } finally {
-                mState = MUXER_STATE_STOPPED;
+        synchronized (mLock) {
+            if (mState == MUXER_STATE_STARTED && mNativeObject != 0) {
+                try {
+                    nativeStop(mNativeObject);
+                } catch (Exception e) {
+                    throw e;
+                } finally {
+                    mState = MUXER_STATE_STOPPED;
+                }
+            } else {
+                throw new IllegalStateException(
+                        "Can't stop due to wrong state("
+                                + convertMuxerStateCodeToString(mState)
+                                + ")");
             }
-        } else {
-            throw new IllegalStateException("Can't stop due to wrong state("
-                                             + convertMuxerStateCodeToString(mState) + ")");
         }
     }
 
@@ -699,12 +718,6 @@ final public class MediaMuxer {
         if (format == null) {
             throw new IllegalArgumentException("format must not be null.");
         }
-        if (mState != MUXER_STATE_INITIALIZED) {
-            throw new IllegalStateException("Muxer is not initialized.");
-        }
-        if (mNativeObject == 0) {
-            throw new IllegalStateException("Muxer has been released!");
-        }
         int trackIndex = -1;
         // Convert the MediaFormat into key-value pairs and send to the native.
         Map<String, Object> formatMap = format.getMap();
@@ -721,7 +734,15 @@ final public class MediaMuxer {
                 values[i] = entry.getValue();
                 ++i;
             }
-            trackIndex = nativeAddTrack(mNativeObject, keys, values);
+            synchronized (mLock) {
+                if (mState != MUXER_STATE_INITIALIZED) {
+                    throw new IllegalStateException("Muxer is not initialized.");
+                }
+                if (mNativeObject == 0) {
+                    throw new IllegalStateException("Muxer has been released!");
+                }
+                trackIndex = nativeAddTrack(mNativeObject, keys, values);
+            }
         } else {
             throw new IllegalArgumentException("format must not be empty.");
         }
@@ -775,17 +796,24 @@ final public class MediaMuxer {
                     " valid buffer offset and size");
         }
 
-        if (mNativeObject == 0) {
-            throw new IllegalStateException("Muxer has been released!");
-        }
+        synchronized (mLock) {
+            if (mNativeObject == 0) {
+                throw new IllegalStateException("Muxer has been released!");
+            }
 
-        if (mState != MUXER_STATE_STARTED) {
-            throw new IllegalStateException("Can't write, muxer is not started");
-        }
+            if (mState != MUXER_STATE_STARTED) {
+                throw new IllegalStateException("Can't write, muxer is not started");
+            }
 
-        nativeWriteSampleData(mNativeObject, trackIndex, byteBuf,
-                bufferInfo.offset, bufferInfo.size,
-                bufferInfo.presentationTimeUs, bufferInfo.flags);
+            nativeWriteSampleData(
+                    mNativeObject,
+                    trackIndex,
+                    byteBuf,
+                    bufferInfo.offset,
+                    bufferInfo.size,
+                    bufferInfo.presentationTimeUs,
+                    bufferInfo.flags);
+        }
     }
 
     /**
@@ -797,11 +825,13 @@ final public class MediaMuxer {
         if (mState == MUXER_STATE_STARTED) {
             stop();
         }
-        if (mNativeObject != 0) {
-            nativeRelease(mNativeObject);
-            mNativeObject = 0;
-            mCloseGuard.close();
+        synchronized (mLock) {
+            if (mNativeObject != 0) {
+                nativeRelease(mNativeObject);
+                mNativeObject = 0;
+                mCloseGuard.close();
+            }
+            mState = MUXER_STATE_UNINITIALIZED;
         }
-        mState = MUXER_STATE_UNINITIALIZED;
     }
 }
