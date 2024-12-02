@@ -1337,7 +1337,14 @@ class Transition implements BLASTSyncEngine.TransactionReadyListener {
         // Commit wallpaper visibility after activity, because usually the wallpaper target token is
         // an activity, and wallpaper's visibility depends on activity's visibility.
         for (int i = mParticipants.size() - 1; i >= 0; --i) {
-            final WallpaperWindowToken wt = mParticipants.valueAt(i).asWallpaperToken();
+            WindowContainer wc = mParticipants.valueAt(i);
+            WallpaperWindowToken wt = wc.asWallpaperToken();
+            if (wt == null) {
+                WindowState windowState = wc.asWindowState();
+                if (windowState != null) {
+                    wt = windowState.mToken.asWallpaperToken();
+                }
+            }
             if (wt == null) continue;
             final WindowState target = wt.mDisplayContent.mWallpaperController.getWallpaperTarget();
             final boolean isTargetInvisible = target == null || !target.mToken.isVisible();
