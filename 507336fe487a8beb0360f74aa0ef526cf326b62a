@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "79cd0e71_8213697e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1366584
+      },
+      "writtenOn": "2024-12-03T12:29:53Z",
+      "side": 1,
+      "message": "@akulian soft ping",
+      "revId": "507336fe487a8beb0360f74aa0ef526cf326b62a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
