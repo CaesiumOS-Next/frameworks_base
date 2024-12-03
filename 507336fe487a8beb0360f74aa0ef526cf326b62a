@@ -16,6 +16,23 @@
       "message": "@akulian soft ping",
       "revId": "507336fe487a8beb0360f74aa0ef526cf326b62a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d212cbb0_5c4ad965",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1097438
+      },
+      "writtenOn": "2024-12-03T20:46:29Z",
+      "side": 1,
+      "message": "Adding @patb@google.com for visibility and any input as the owner for PackageManagerService.",
+      "revId": "507336fe487a8beb0360f74aa0ef526cf326b62a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
