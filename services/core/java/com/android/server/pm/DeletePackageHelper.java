@@ -70,6 +70,8 @@ import com.android.server.pm.pkg.PackageStateInternal;
 import com.android.server.pm.pkg.PackageUserState;
 import com.android.server.wm.ActivityTaskManagerInternal;
 
+import java.util.Objects;
+
 import dalvik.system.VMRuntime;
 
 /**
@@ -266,6 +268,7 @@ final class DeletePackageHelper {
         }
 
         if (res) {
+            handlePostUninstallForOverlay(info);
             final boolean killApp = (deleteFlags & PackageManager.DELETE_DONT_KILL_APP) == 0;
             final boolean isArchived = (deleteFlags & PackageManager.DELETE_ARCHIVE) != 0;
             mBroadcastHelper.sendPackageRemovedBroadcasts(info, mPm, killApp,
@@ -348,6 +351,25 @@ final class DeletePackageHelper {
         }
 
         return res ? DELETE_SUCCEEDED : PackageManager.DELETE_FAILED_INTERNAL_ERROR;
+    }
+
+    private void handlePostUninstallForOverlay(PackageRemovedInfo info) {
+        if (mPm.mInjector.getOverlayManagerInternal() == null) {
+            return;
+        }
+        final int[] userIds = Objects.requireNonNullElseGet(info.mBroadcastUsers,
+                mUserManagerInternal::getUserIds);
+        for (int userId : userIds) {
+            if (info.mIsRemovedPackageSystemUpdate) {
+                // system app update uninstall
+                mPm.mInjector.getOverlayManagerInternal()
+                        .handlePackageAdded(info.mRemovedPackage, userId);
+            } else {
+                // non-system app uninstall
+                mPm.mInjector.getOverlayManagerInternal()
+                        .handlePackageRemoved(info.mRemovedPackage, userId);
+            }
+        }
     }
 
     /** Deletes dexopt artifacts for the given package*/
