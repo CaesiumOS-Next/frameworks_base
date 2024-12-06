@@ -33,6 +33,23 @@
       "message": "LGTM",
       "revId": "1e4c89b0e08a4517e76906a41822260c9764efa0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a6ddc1a3_fad16e61",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000701
+      },
+      "writtenOn": "2024-12-06T21:39:39Z",
+      "side": 1,
+      "message": "This change is pretty user visible. I think it needs to be behind a flag.",
+      "revId": "1e4c89b0e08a4517e76906a41822260c9764efa0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
