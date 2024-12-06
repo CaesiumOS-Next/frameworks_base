@@ -124,4 +124,5 @@ interface INfcAdapter
     int commitRouting();
     boolean isTagIntentAllowed(in String pkg, in int Userid);
     IT4tNdefNfcee getT4tNdefNfceeInterface();
+    boolean setHalConfig(in int config, in int value);
 }

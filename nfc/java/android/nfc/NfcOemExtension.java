@@ -818,6 +818,18 @@ public final class NfcOemExtension {
     }
 
     /**
+     * Sends a configuration for the NFC HAL.
+     * @param config configuration identifier
+     * @param value configuration value
+     * @return true the configuration was corerclty applied
+     */
+    @FlaggedApi(Flags.FLAG_NFC_OEM_EXTENSION)
+    @RequiresPermission(android.Manifest.permission.WRITE_SECURE_SETTINGS)
+    public boolean setHalConfig(int config, int value) {
+        return NfcAdapter.callServiceReturn(() -> NfcAdapter.sService.setHalConfig(config, value), false);
+    }
+
+    /**
      * Overwrites NFC controller routing table, which includes Protocol Route, Technology Route,
      * and Empty AID Route.
      *
