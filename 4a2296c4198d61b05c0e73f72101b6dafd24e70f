@@ -16,6 +16,23 @@
       "message": "Upstream from Meta 😊",
       "revId": "4a2296c4198d61b05c0e73f72101b6dafd24e70f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8f14364c_339346b3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1470474
+      },
+      "writtenOn": "2024-12-06T19:41:59Z",
+      "side": 1,
+      "message": "The new apis in this patch are hidden; apps cannot call these, so this would be dead code in AOSP.\n\nWas the intent to propose public apis for the SDK?",
+      "revId": "4a2296c4198d61b05c0e73f72101b6dafd24e70f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
