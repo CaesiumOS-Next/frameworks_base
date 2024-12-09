@@ -33,6 +33,23 @@
       "message": "The new apis in this patch are hidden; apps cannot call these, so this would be dead code in AOSP.\n\nWas the intent to propose public apis for the SDK?",
       "revId": "4a2296c4198d61b05c0e73f72101b6dafd24e70f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7167052e_58956b01",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1010103
+      },
+      "writtenOn": "2024-12-09T15:57:57Z",
+      "side": 1,
+      "message": "This should either be public API with notes that it\u0027s invalidated after every call to updateTexImage or it should just be abandoned as SurfaceTexture cannot not make the migration to Vulkan so it\u0027s on an inevitable deprecation path. ImageReader is the more flexible, more capable alternative that\u0027s already available.",
+      "revId": "4a2296c4198d61b05c0e73f72101b6dafd24e70f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
