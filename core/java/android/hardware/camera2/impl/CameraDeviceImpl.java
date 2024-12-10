@@ -2269,15 +2269,18 @@ public class CameraDeviceImpl extends CameraDevice
                     return;
                 }
 
-                // TODO: Handle CameraCharacteristics access from CaptureResult correctly.
-                result.set(CameraCharacteristics.LENS_INFO_SHADING_MAP_SIZE,
-                        getCharacteristics().get(CameraCharacteristics.LENS_INFO_SHADING_MAP_SIZE));
-
                 final CaptureCallbackHolder holder =
                         CameraDeviceImpl.this.mCaptureCallbackMap.get(requestId);
 
                 boolean isPartialResult =
                         (resultExtras.getPartialResultCount() < mTotalPartialCount);
+
+                // TODO: Handle CameraCharacteristics access from CaptureResult correctly.
+                if(isPartialResult == false)
+                {
+                    result.set(CameraCharacteristics.LENS_INFO_SHADING_MAP_SIZE,
+                            getCharacteristics().get(CameraCharacteristics.LENS_INFO_SHADING_MAP_SIZE));
+                }
 
                 // Check if we have a callback for this
                 if (holder == null) {
