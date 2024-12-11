@@ -44,6 +44,24 @@
       ],
       "revId": "f153f7c154be91ab854626d85ce307118b3a8558",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a4768d1c_4e4c067c",
+        "filename": "apct-tests/perftests/core/src/android/libcore/ZipFilePerfTest.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1071150
+      },
+      "writtenOn": "2024-12-11T09:21:51Z",
+      "side": 1,
+      "message": "The method is `timeZipFileOpen()` and that\u0027s what it appears to be doing.",
+      "parentUuid": "fff23e79_60ccc7db",
+      "revId": "f153f7c154be91ab854626d85ce307118b3a8558",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ],
   "submitRequirementResults": [
