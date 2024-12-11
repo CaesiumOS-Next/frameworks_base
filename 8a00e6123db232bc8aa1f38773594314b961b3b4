@@ -68,6 +68,24 @@
       "parentUuid": "669e447d_fcd3aa9b",
       "revId": "8a00e6123db232bc8aa1f38773594314b961b3b4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ca81f850_14b1aa44",
+        "filename": "core/java/android/os/Looper.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 319,
+      "author": {
+        "id": 1059977
+      },
+      "writtenOn": "2024-12-11T17:18:03Z",
+      "side": 1,
+      "message": "I\u0027m not sure I understand the question or the requirement.\nLet me try to clarify my requirement.\n\nLooper init is hot code. I need to know that we\u0027re not adding any more work to it in the common path (where logging is not enabled). If we add more work, but only if logging is explicitly enabled, that\u0027s ok.\nIf you can modify your change to meet the above criteria then this will remove any performance-related objections that I have.\n\nDoes this make sense?\nThank you for working with us.",
+      "parentUuid": "9d6290cc_7ae936b1",
+      "revId": "8a00e6123db232bc8aa1f38773594314b961b3b4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
