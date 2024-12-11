@@ -1,5 +1,51 @@
 {
-  "comments": [],
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fff23e79_60ccc7db",
+        "filename": "apct-tests/perftests/core/src/android/libcore/ZipFilePerfTest.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1059977
+      },
+      "writtenOn": "2024-12-11T00:37:58Z",
+      "side": 1,
+      "message": "Why was it necessary to pause/resume timing here such that closing the ZipFile was not done under timing?\nNote that we _don\u0027t_ do this in `ZipFileReadPerfTest` and `BufferedZipFilePerfTest`, only here in `ZipFilePerfTest`.",
+      "fixSuggestions": [
+        {
+          "fixId": "28404a60_a6455327",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "apct-tests/perftests/core/src/android/libcore/ZipFilePerfTest.java",
+              "range": {
+                "startLine": 73,
+                "startChar": 0,
+                "endLine": 74,
+                "endChar": 0
+              },
+              "replacement": ""
+            },
+            {
+              "path": "apct-tests/perftests/core/src/android/libcore/ZipFilePerfTest.java",
+              "range": {
+                "startLine": 75,
+                "startChar": 0,
+                "endLine": 76,
+                "endChar": 0
+              },
+              "replacement": ""
+            }
+          ]
+        }
+      ],
+      "revId": "f153f7c154be91ab854626d85ce307118b3a8558",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ],
   "submitRequirementResults": [
     {
       "submitRequirement": {
