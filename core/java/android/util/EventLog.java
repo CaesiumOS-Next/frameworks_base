@@ -36,6 +36,7 @@ import java.nio.ByteOrder;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashMap;
+import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -59,9 +60,14 @@ public class EventLog {
 
     private static final String TAG = "EventLog";
 
-    private static final String TAGS_FILE = "/system/etc/event-log-tags";
-    private static final String COMMENT_PATTERN = "^\\s*(#.*)?$";
-    private static final String TAG_PATTERN = "^\\s*(\\d+)\\s+(\\w+)\\s*(\\(.*\\))?\\s*$";
+    private static final List<String> TAGS_FILES = List.of(
+        "/system/etc/event-log-tags",
+        "/system_ext/etc/event-log-tags",
+        "/product/etc/event-log-tags",
+        "/vendor/etc/event-log-tags"
+    );
+    private static final Pattern COMMENT_PATTERN = Pattern.compile("^\\s*(#.*)?$");
+    private static final Pattern TAG_PATTERN = Pattern.compile("^\\s*(\\d+)\\s+(\\w+)\\s*(\\(.*\\))?\\s*$");
     private static HashMap<String, Integer> sTagCodes = null;
     private static HashMap<Integer, String> sTagNames = null;
 
@@ -427,7 +433,7 @@ public class EventLog {
     }
 
     /**
-     * Read TAGS_FILE, populating sTagCodes and sTagNames, if not already done.
+     * Read TAGS_FILES, populating sTagCodes and sTagNames, if not already done.
      */
     @android.ravenwood.annotation.RavenwoodReplace
     private static synchronized void readTagsFile() {
@@ -436,19 +442,31 @@ public class EventLog {
         sTagCodes = new HashMap<String, Integer>();
         sTagNames = new HashMap<Integer, String>();
 
-        Pattern comment = Pattern.compile(COMMENT_PATTERN);
-        Pattern tag = Pattern.compile(TAG_PATTERN);
-        BufferedReader reader = null;
+        for (String tagsFile : TAGS_FILES) {
+            try {
+                readSingleTagFile(tagsFile);
+            } catch (IOException e) {
+                if (tagsFile == "/system/etc/event-log-tags") {
+                    Log.wtf(TAG, "Error reading " + tagsFile, e);
+                } else {
+                    // The non-system event-log-tags files are new and may not exist on older
+                    // devices
+                    Log.w(TAG, "Error reading " + tagsFile, e);
+                }
+                // Leave the maps existing but unpopulated
+            }
+        }
+    }
+
+    private static void readSingleTagFile(String file) throws IOException {
         String line;
-
-        try {
-            reader = new BufferedReader(new FileReader(TAGS_FILE), 256);
+        try(BufferedReader reader = new BufferedReader(new FileReader(file), 256)) {
             while ((line = reader.readLine()) != null) {
-                if (comment.matcher(line).matches()) continue;
+                if (COMMENT_PATTERN.matcher(line).matches()) continue;
 
-                Matcher m = tag.matcher(line);
+                Matcher m = TAG_PATTERN.matcher(line);
                 if (!m.matches()) {
-                    Log.wtf(TAG, "Bad entry in " + TAGS_FILE + ": " + line);
+                    Log.wtf(TAG, "Bad entry in " + file + ": " + line);
                     continue;
                 }
 
@@ -457,14 +475,9 @@ public class EventLog {
                     String name = m.group(2);
                     registerTagLocked(num, name);
                 } catch (NumberFormatException e) {
-                    Log.wtf(TAG, "Error in " + TAGS_FILE + ": " + line, e);
+                    Log.wtf(TAG, "Error in " + file + ": " + line, e);
                 }
             }
-        } catch (IOException e) {
-            Log.wtf(TAG, "Error reading " + TAGS_FILE, e);
-            // Leave the maps existing but unpopulated
-        } finally {
-            try { if (reader != null) reader.close(); } catch (IOException e) {}
         }
     }
 
