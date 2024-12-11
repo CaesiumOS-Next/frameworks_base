@@ -50,6 +50,24 @@
       "message": "I understand why this property is useful. But most Loopers don\u0027t have slow logging at all, so reading this property eagerly will be a wasted effort.\nCan we read the property when slow log is set? For instance in `Looper#setSlowLogThresholdMs`?",
       "revId": "8a00e6123db232bc8aa1f38773594314b961b3b4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9d6290cc_7ae936b1",
+        "filename": "core/java/android/os/Looper.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 319,
+      "author": {
+        "id": 3155470
+      },
+      "writtenOn": "2024-12-11T08:27:19Z",
+      "side": 1,
+      "message": "Hmm, wouldn\u0027t it be a bit inconsistent reading it there when the other looper logging properties are read in loop()? Also if it\u0027s read there, is there a way to force the property to be read the same way \"start \u0026\u0026 stop\" does for the ones set in loop().",
+      "parentUuid": "669e447d_fcd3aa9b",
+      "revId": "8a00e6123db232bc8aa1f38773594314b961b3b4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
