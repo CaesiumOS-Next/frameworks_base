@@ -86,6 +86,24 @@
       "parentUuid": "9d6290cc_7ae936b1",
       "revId": "8a00e6123db232bc8aa1f38773594314b961b3b4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "244292c6_efaff4cd",
+        "filename": "core/java/android/os/Looper.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 319,
+      "author": {
+        "id": 1041495
+      },
+      "writtenOn": "2024-12-12T08:23:02Z",
+      "side": 1,
+      "message": "Reading the verbose prop only on `setSlowLogThresholdMs` is not enough -- it won\u0027t work for threads that log because of `thresholdOverride`.\n\nReading the prop on both `setSlowLogThresholdMs` _and_ in loop() if thresholdOverride \u003e 0 might be enough to cover all the cases. This would require adding a new field to store the value (since it can no longer be kept on the stack as in the current patch).\n\nBut is Looper init really that hot? It\u0027s once per Looper thread, right?",
+      "parentUuid": "ca81f850_14b1aa44",
+      "revId": "8a00e6123db232bc8aa1f38773594314b961b3b4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
