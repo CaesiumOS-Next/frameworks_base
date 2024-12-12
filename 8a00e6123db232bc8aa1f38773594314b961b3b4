@@ -35,6 +35,23 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cd247220_7d504a97",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1003801
+      },
+      "writtenOn": "2024-12-12T18:52:19Z",
+      "side": 1,
+      "message": "(I\u0027ll give an owner vote once it gets a +2 from shai)",
+      "revId": "8a00e6123db232bc8aa1f38773594314b961b3b4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "669e447d_fcd3aa9b",
@@ -120,6 +137,109 @@
       "side": 1,
       "message": "I understand why you\u0027d find my comment surprising! Let me try to rephrase.\nTo clarify, it\u0027s not hot in the sense that it gets called a lot, but it does get called in CUJs like app startup.\nI\u0027ve seen cases before where SysProp reads stall on SysProp flushes. I don\u0027t want to add the risk of such a stall to every app startup.\n\nI\u0027m happy with whatever solution you can come up with that doesn\u0027t read a sysprop unless the need for it was demonstrated by an explicit call to enable logging on this looper, and doesn\u0027t happen by default and during a CUJ.",
       "parentUuid": "244292c6_efaff4cd",
+      "revId": "8a00e6123db232bc8aa1f38773594314b961b3b4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f4b26820_3e7e128d",
+        "filename": "core/java/android/os/Looper.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 319,
+      "author": {
+        "id": 1003801
+      },
+      "writtenOn": "2024-12-12T18:52:19Z",
+      "side": 1,
+      "message": "Yup, I wrote the original slow-looper-log code and my assumption was reading sysprops was _very_ fast. (I\u0027ve used sysprops in many places with for similar purposes)\n\nIf reading the sysprop is actually slow, then yeah we should avoid even doing it....\n\nBut I heard that the reason (or one of the reasons?) sysprop access got slow recently was because aconfig flags started using it a _lot_, but I believe they\u0027ve already moved away from sysprops.\n\nIs reading sysprops still a concern?\n\n(If it\u0027s really that slow, I\u0027m worried becase a lot of apps do Log.isLoggablle(), which I believe is just a wrapper around a sysprop read...)",
+      "parentUuid": "5246ad7b_17b4812c",
+      "revId": "8a00e6123db232bc8aa1f38773594314b961b3b4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8b2b8dc1_07839b9c",
+        "filename": "core/java/android/os/Looper.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 319,
+      "author": {
+        "id": 1003801
+      },
+      "writtenOn": "2024-12-12T18:52:19Z",
+      "side": 1,
+      "message": "Should it be process global, rather than per-thread?",
+      "fixSuggestions": [
+        {
+          "fixId": "978d004f_76f8dfe8",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "core/java/android/os/Looper.java",
+              "range": {
+                "startLine": 88,
+                "startChar": 0,
+                "endLine": 88,
+                "endChar": 0
+              },
+              "replacement": "    private boolean mVerboseLogging;\n"
+            },
+            {
+              "path": "core/java/android/os/Looper.java",
+              "range": {
+                "startLine": 188,
+                "startChar": 0,
+                "endLine": 189,
+                "endChar": 0
+              },
+              "replacement": "            final long ident, final int thresholdOverride) {\n"
+            },
+            {
+              "path": "core/java/android/os/Looper.java",
+              "range": {
+                "startLine": 251,
+                "startChar": 0,
+                "endLine": 252,
+                "endChar": 0
+              },
+              "replacement": "            if (!me.mSlowDeliveryDetected || me.mVerboseLogging) {\n"
+            },
+            {
+              "path": "core/java/android/os/Looper.java",
+              "range": {
+                "startLine": 316,
+                "startChar": 0,
+                "endLine": 321,
+                "endChar": 0
+              },
+              "replacement": ""
+            },
+            {
+              "path": "core/java/android/os/Looper.java",
+              "range": {
+                "startLine": 328,
+                "startChar": 0,
+                "endLine": 329,
+                "endChar": 0
+              },
+              "replacement": "            if (!loopOnce(me, ident, thresholdOverride)) {\n"
+            },
+            {
+              "path": "core/java/android/os/Looper.java",
+              "range": {
+                "startLine": 446,
+                "startChar": 0,
+                "endLine": 446,
+                "endChar": 0
+              },
+              "replacement": "\n    /**\n     * Enable/Disable verbose logging with a system prop. e.g.\n     * adb shell \u0027setprop log.looper.slow.verbose false \u0026\u0026 stop \u0026\u0026 start\u0027\n     * {@hide}\n     */\n    public void setVerboseLogging(boolean verboseLogging) {\n        mVerboseLogging \u003d verboseLogging;\n    }\n"
+            }
+          ]
+        }
+      ],
       "revId": "8a00e6123db232bc8aa1f38773594314b961b3b4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
