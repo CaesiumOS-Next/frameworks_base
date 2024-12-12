@@ -104,6 +104,24 @@
       "parentUuid": "ca81f850_14b1aa44",
       "revId": "8a00e6123db232bc8aa1f38773594314b961b3b4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5246ad7b_17b4812c",
+        "filename": "core/java/android/os/Looper.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 319,
+      "author": {
+        "id": 1059977
+      },
+      "writtenOn": "2024-12-12T18:33:54Z",
+      "side": 1,
+      "message": "I understand why you\u0027d find my comment surprising! Let me try to rephrase.\nTo clarify, it\u0027s not hot in the sense that it gets called a lot, but it does get called in CUJs like app startup.\nI\u0027ve seen cases before where SysProp reads stall on SysProp flushes. I don\u0027t want to add the risk of such a stall to every app startup.\n\nI\u0027m happy with whatever solution you can come up with that doesn\u0027t read a sysprop unless the need for it was demonstrated by an explicit call to enable logging on this looper, and doesn\u0027t happen by default and during a CUJ.",
+      "parentUuid": "244292c6_efaff4cd",
+      "revId": "8a00e6123db232bc8aa1f38773594314b961b3b4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
