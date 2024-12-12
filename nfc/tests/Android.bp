@@ -53,10 +53,18 @@ android_test {
         "libdexmakerjvmtiagent",
         "libstaticjvmtiagent",
     ],
+<<<<<<< PATCH SET (29515a Test:  Adding test cases for NfcA)
+    // Include all test java files.
+    srcs: [
+        "src/**/*.java",
+        ":framework-nfc-updatable-sources",
+||||||| BASE
+=======
     srcs: [
         "src/**/*.java",
         ":framework-nfc-updatable-sources",
         ":framework-nfc-non-updatable-sources",
+>>>>>>> BASE      (554930 Merge "nfc(framework): Split non-updatable portion to a sepa)
     ],
     platform_apis: true,
     certificate: "platform",
