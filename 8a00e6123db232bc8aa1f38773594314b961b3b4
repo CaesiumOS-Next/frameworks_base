@@ -260,6 +260,42 @@
       "parentUuid": "f4b26820_3e7e128d",
       "revId": "8a00e6123db232bc8aa1f38773594314b961b3b4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "abe2feed_bd910a17",
+        "filename": "core/java/android/os/Looper.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 319,
+      "author": {
+        "id": 3155470
+      },
+      "writtenOn": "2024-12-13T10:49:06Z",
+      "side": 1,
+      "message": "We prefer the global one, see my other commment for more details",
+      "parentUuid": "8b2b8dc1_07839b9c",
+      "revId": "8a00e6123db232bc8aa1f38773594314b961b3b4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d5ee6730_4eef1270",
+        "filename": "core/java/android/os/Looper.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 319,
+      "author": {
+        "id": 3155470
+      },
+      "writtenOn": "2024-12-13T10:49:06Z",
+      "side": 1,
+      "message": "Me and Snild have discused the patch a bit internally and have submited a new patch-set.\n\nFor our purposes, having one single global property is the best solution. It makes it easy to apply to for all loopers with a single \"adb setprop ... \u0026\u0026 stop \u0026\u0026 start\". One could have a per thread field with setter funcitons as well, which would then get overridden by the global one in a similar way as the thresholds. However, it might be better to add that in seperate patch.\n\nIn this patch-set, the sysprop is only read if there\u0027s a thresold override set, so no additional sysprop reads in the default case. We considered, as proposed in earlier comments, to also read it in Looper#setSlowLogThresholdMs and setting a verbose field that\u0027s checked in loopOnce.\n\nBut since setSlowLogThresholdMs is mostly set by system server, and it\u0027s restarted anyway when doing \"stop \u0026\u0026 start\", reading it there as well would proably not be that useful. Removing the need for a dedicated field, allows us to keep the original solution, where we pass the value as function argument.",
+      "parentUuid": "ff27b3a8_0cbf3723",
+      "revId": "8a00e6123db232bc8aa1f38773594314b961b3b4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
