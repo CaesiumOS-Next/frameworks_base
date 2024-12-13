@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5f09bdfd_186c9af8",
+        "filename": "core/java/android/os/Looper.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 266,
+      "author": {
+        "id": 1059977
+      },
+      "writtenOn": "2024-12-13T17:29:43Z",
+      "side": 1,
+      "message": "```suggestion\n            } else if (slow) {\n                // A slow delivery is detected, suppressing further logs unless verbose logging\n                // is enabled.\n                me.mSlowDeliveryDetected \u003d true;\n            }\n```",
+      "range": {
+        "startLine": 260,
+        "startChar": 0,
+        "endLine": 266,
+        "endChar": 13
+      },
+      "revId": "cc980bcb0e540017e847529a084585a43d0e7d66",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
