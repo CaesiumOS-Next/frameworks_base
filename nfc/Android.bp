@@ -9,26 +9,18 @@ package {
 }
 
 filegroup {
-    name: "framework-nfc-non-updatable-sources",
-    path: "java",
-    srcs: [
-        "java/android/nfc/NfcServiceManager.java",
-        "java/android/nfc/cardemulation/ApduServiceInfo.aidl",
-        "java/android/nfc/cardemulation/ApduServiceInfo.java",
-        "java/android/nfc/cardemulation/NfcFServiceInfo.aidl",
-        "java/android/nfc/cardemulation/NfcFServiceInfo.java",
-        "java/android/nfc/cardemulation/AidGroup.aidl",
-        "java/android/nfc/cardemulation/AidGroup.java",
-    ],
-}
-
-filegroup {
     name: "framework-nfc-updatable-sources",
     path: "java",
     srcs: [
         "java/**/*.java",
         "java/**/*.aidl",
     ],
+<<<<<<< PATCH SET (717a28 Revert "Revert "nfc(framework): Split non-updatable portion )
+||||||| BASE
+    exclude_srcs: [
+        ":framework-nfc-non-updatable-sources",
+    ],
+=======
     visibility: [
         "//frameworks/base:__subpackages__",
         "//packages/apps/Nfc:__subpackages__",
@@ -37,6 +29,7 @@ filegroup {
     exclude_srcs: [
         ":framework-nfc-non-updatable-sources",
     ],
+>>>>>>> BASE      (7b1f85 Merge "Merge 24Q4 into AOSP main" into main)
 }
 
 java_sdk_library {
