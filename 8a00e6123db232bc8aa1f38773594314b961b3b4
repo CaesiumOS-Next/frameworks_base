@@ -314,6 +314,24 @@
       "parentUuid": "abe2feed_bd910a17",
       "revId": "8a00e6123db232bc8aa1f38773594314b961b3b4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e7154214_850d44d8",
+        "filename": "core/java/android/os/Looper.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 319,
+      "author": {
+        "id": 3155470
+      },
+      "writtenOn": "2024-12-16T12:19:34Z",
+      "side": 1,
+      "message": "Yeah, you have a point. The latest patch-set address this, adding a static field.",
+      "parentUuid": "2d8e7782_dd422219",
+      "revId": "8a00e6123db232bc8aa1f38773594314b961b3b4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
