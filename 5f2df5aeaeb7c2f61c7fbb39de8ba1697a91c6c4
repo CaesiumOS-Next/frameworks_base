@@ -1,0 +1,59 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eb65ce04_51d977d8",
+        "filename": "core/java/android/os/Looper.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 322,
+      "author": {
+        "id": 1003801
+      },
+      "writtenOn": "2024-12-16T17:35:18Z",
+      "side": 1,
+      "message": "This still can change though, if someone does `setprop log.looper.slow.verbose false` and `setprop log.looper.slow.verbose true` explicitly?\n\nAn easy way to achieve it is to read it in the class initializaer into a static field, but that wouldn\u0027t work because of zygote preload.\n\nTo prevent zygote preloading, you can use an inner class with a special name:\n\n```\n    private static class NoImagePreloadHolder {\n        final boolean sVerboseLogging \u003d\n                SystemProperties.getBoolean(\"log.looper.slow.verbose\", false);\n    }\n``\n\nIf you use it, `sVerboseLogging` would be set when it\u0027s accessed first time, and subsequent reads will return the same value.",
+      "fixSuggestions": [
+        {
+          "fixId": "4c2ee0db_5a6119d3",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "core/java/android/os/Looper.java",
+              "range": {
+                "startLine": 79,
+                "startChar": 0,
+                "endLine": 80,
+                "endChar": 0
+              },
+              "replacement": "    private static boolean sVerboseLogging \u003d SystemProperties.getBoolean(\"log.looper.slow.verbose\",\n            false);\n"
+            },
+            {
+              "path": "core/java/android/os/Looper.java",
+              "range": {
+                "startLine": 318,
+                "startChar": 0,
+                "endLine": 325,
+                "endChar": 0
+              },
+              "replacement": ""
+            },
+            {
+              "path": "core/java/android/os/Looper.java",
+              "range": {
+                "startLine": 471,
+                "startChar": 0,
+                "endLine": 472,
+                "endChar": 0
+              },
+              "replacement": ""
+            }
+          ]
+        }
+      ],
+      "revId": "5f2df5aeaeb7c2f61c7fbb39de8ba1697a91c6c4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
