@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a7ad1d91_b17358e1",
+        "filename": "keystore/java/android/security/keystore2/AndroidKeyStoreSpi.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 1011,
+      "author": {
+        "id": 1896276
+      },
+      "writtenOn": "2024-12-17T11:55:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ee8495ca_2a0a49c7",
+      "range": {
+        "startLine": 1011,
+        "startChar": 23,
+        "endLine": 1011,
+        "endChar": 52
+      },
+      "revId": "86978f7462ad9aaf7160ea2e176849f2ebefe318",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5203eba2_eb88d71e",
@@ -37,6 +61,30 @@
       "writtenOn": "2024-12-11T18:23:07Z",
       "side": 1,
       "message": "This should remain as `DEFAULT_MGF1_DIGEST` for easier cross-referencing in the codebase of where the default digest algorithm is used.",
+      "range": {
+        "startLine": 1025,
+        "startChar": 69,
+        "endLine": 1025,
+        "endChar": 94
+      },
+      "revId": "86978f7462ad9aaf7160ea2e176849f2ebefe318",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f01be505_83ec02d1",
+        "filename": "keystore/java/android/security/keystore2/AndroidKeyStoreSpi.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 1025,
+      "author": {
+        "id": 1896276
+      },
+      "writtenOn": "2024-12-17T11:55:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5203eba2_eb88d71e",
       "range": {
         "startLine": 1025,
         "startChar": 69,
