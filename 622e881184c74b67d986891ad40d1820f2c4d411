@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "270dd0e8_bcecee9e",
+        "filename": "services/core/java/com/android/server/am/SettingsToPropertiesMapper.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1882770
+      },
+      "writtenOn": "2024-12-19T14:23:33Z",
+      "side": 1,
+      "message": "Is there any harm always include this namespace rather than based on if this feature is turned on like other legacy namespaces?",
+      "revId": "622e881184c74b67d986891ad40d1820f2c4d411",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
