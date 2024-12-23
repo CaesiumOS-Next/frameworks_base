@@ -373,8 +373,10 @@ class InsetsStateController {
         array.add(provider);
     }
 
-    void notifyControlChanged(InsetsControlTarget target, InsetsSourceProvider provider) {
-        addToPendingControlMaps(target, provider);
+    void notifyControlChanged(@Nullable InsetsControlTarget target, InsetsSourceProvider provider) {
+        if (target != null) {
+            addToPendingControlMaps(target, provider);
+        }
         notifyPendingInsetsControlChanged();
 
         if (android.view.inputmethod.Flags.refactorInsetsController()) {
