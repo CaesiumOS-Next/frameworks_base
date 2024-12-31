@@ -70,6 +70,24 @@
       "parentUuid": "602cee58_b9e9c5d1",
       "revId": "8ffa37d2f437a6dec43c54080938eb3cce6d840f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d9ff23b7_614e0dad",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 3183690
+      },
+      "writtenOn": "2024-12-31T13:20:20Z",
+      "side": 1,
+      "message": "@hcutts@google.com\n\nLet me explain what I mean with an example, such as the following two URL examples:\n1 http://www.oneedu.cn/\nIf other modules register this url and set notifyForDescendants to true.\n2 http://www.oneedu.cn/Index.htm\nThen url2 will be a descendant of url1, and if url1 changes, url2 will also be notified.",
+      "parentUuid": "d4babfd0_c05c5cfb",
+      "revId": "8ffa37d2f437a6dec43c54080938eb3cce6d840f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
