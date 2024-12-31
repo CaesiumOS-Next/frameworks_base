@@ -52,6 +52,24 @@
       "parentUuid": "602cee58_b9e9c5d1",
       "revId": "8ffa37d2f437a6dec43c54080938eb3cce6d840f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d4babfd0_c05c5cfb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1951823
+      },
+      "writtenOn": "2024-12-31T13:09:33Z",
+      "side": 1,
+      "message": "No, from a quick look in CodeSearch I\u0027m pretty sure that `registerContentObserver` is only called for `InputSettingsObserver` in `registerAndUpdate`; no other code is registering it to observe URIs. If we\u0027re not interested in a URI, we shouldn\u0027t be receiving updates for it in the first place.",
+      "parentUuid": "602cee58_b9e9c5d1",
+      "revId": "8ffa37d2f437a6dec43c54080938eb3cce6d840f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
