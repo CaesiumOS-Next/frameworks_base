@@ -16,6 +16,24 @@
       "message": "This fix seems inoccuous enough, but the fact that `onChange` is getting called for a URI that we didn\u0027t register as an observer of is suspicious to me, and I think this fix may mask an underlying issue. Can you log the URI when your Monkey test fails, so that we can work out what\u0027s going on?\n\nFrom a quick look at the code, I wonder if this is because we pass `true` for `notifyForDescendants` when calling [`registerContentObserver`](https://developer.android.com/reference/android/content/ContentResolver#registerContentObserver(android.net.Uri,%20boolean,%20android.database.ContentObserver)) in `registerAndUpdate` (line 123). That\u0027s the only way I can see that we might get change notifications for a URI that we don\u0027t have an observer for. It might be worth trying setting that parameter to `false` and seeing if that fixes your test, instead.",
       "revId": "8ffa37d2f437a6dec43c54080938eb3cce6d840f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "602cee58_b9e9c5d1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 3183690
+      },
+      "writtenOn": "2024-12-31T12:52:25Z",
+      "side": 1,
+      "message": "@hcutts@google.com \n  I think it may be that someone else\u0027s code is set to true, and the leaf descendants are notified of this. If you set it to true, it will only affect your descendants. We need to avoid the impact, just like other aosp code, and only process the URIs we are interested in.Do you think?\n \n Thanks.",
+      "parentUuid": "d3d729aa_4c17520b",
+      "revId": "8ffa37d2f437a6dec43c54080938eb3cce6d840f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
