@@ -106,6 +106,24 @@
       "parentUuid": "d9ff23b7_614e0dad",
       "revId": "8ffa37d2f437a6dec43c54080938eb3cce6d840f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "65f70daf_34879d72",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1951823
+      },
+      "writtenOn": "2024-12-31T13:57:59Z",
+      "side": 1,
+      "message": "`notifyForDescendents` is set for each observer (see line 124), not each URI, so it doesn\u0027t matter what the module that registered the URI intended.\n\nI don\u0027t see why `selfChange` is relevant here, but I think you\u0027re misunderstanding what it means; `selfChange` [indicates whether the change being notified was caused by this observer](https://developer.android.com/reference/android/database/ContentObserver#deliverSelfNotifications()), not whether the URI was registered by the observer.",
+      "parentUuid": "3ee523cb_755ad610",
+      "revId": "8ffa37d2f437a6dec43c54080938eb3cce6d840f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
