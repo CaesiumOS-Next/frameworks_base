@@ -88,6 +88,24 @@
       "parentUuid": "d4babfd0_c05c5cfb",
       "revId": "8ffa37d2f437a6dec43c54080938eb3cce6d840f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3ee523cb_755ad610",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 3183690
+      },
+      "writtenOn": "2024-12-31T13:44:29Z",
+      "side": 1,
+      "message": "If selfChange is true, it indicates that the callback is caused by a change in the URL registered by itself. If it is false, it should be caused by changes in other URLs.",
+      "parentUuid": "d9ff23b7_614e0dad",
+      "revId": "8ffa37d2f437a6dec43c54080938eb3cce6d840f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
