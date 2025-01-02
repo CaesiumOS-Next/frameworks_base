@@ -536,8 +536,8 @@ public final class SensorPrivacyService extends SystemService {
                     user.getIdentifier());
             String inputMethodPackageName = null;
             if (inputMethodComponent != null) {
-                inputMethodPackageName = ComponentName.unflattenFromString(
-                        inputMethodComponent).getPackageName();
+                final ComponentName comp = ComponentName.unflattenFromString(inputMethodComponent);
+                inputMethodPackageName = comp != null ? comp.getPackageName() : null;
             }
 
             int capability;
