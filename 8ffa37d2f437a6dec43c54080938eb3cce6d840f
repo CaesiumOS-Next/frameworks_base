@@ -196,6 +196,24 @@
       "parentUuid": "c12b7c1f_003a3788",
       "revId": "8ffa37d2f437a6dec43c54080938eb3cce6d840f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "60f86429_451d8742",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1951823
+      },
+      "writtenOn": "2025-01-02T14:54:10Z",
+      "side": 1,
+      "message": "Ah, I see. Is that what is happening when your test fails? If so, we should handle nulls specifically to avoid masking other issues:\n\n```java\n    @Override\n    public void onChange(boolean selfChange, @Nullable Uri uri) {\n        if (uri \u003d\u003d null) {\n            mObservers.get(uri).accept(\"setting changed\");\n        }\n    }\n```\n\nAs far as I can tell, this will only happen when the [deprecated `android.database.ContentObservable#notifyChange(boolean)`](https://cs.android.com/android/platform/superproject/main/+/main:frameworks/base/core/java/android/database/ContentObservable.java;l\u003d85;drc\u003db4d6320e2ae398b36f0aaafb2ecd83609d2d99af) or [`#dispatchChange(boolean)`](https://cs.android.com/android/platform/superproject/main/+/main:frameworks/base/core/java/android/database/ContentObservable.java;l\u003d50;drc\u003db4d6320e2ae398b36f0aaafb2ecd83609d2d99af) methods are being called from somewhere, which doesn\u0027t happen in AOSP. So you may want to investigate where the call is coming from, since it could be indicative of a settings update happening which would then be ignored by `InputSettingsObserver`.",
+      "parentUuid": "7ed18c5e_3ae50bee",
+      "revId": "8ffa37d2f437a6dec43c54080938eb3cce6d840f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
