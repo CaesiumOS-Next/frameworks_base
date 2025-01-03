@@ -249,6 +249,24 @@
       "parentUuid": "60f86429_451d8742",
       "revId": "8ffa37d2f437a6dec43c54080938eb3cce6d840f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8510fe61_dc439a3c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1951823
+      },
+      "writtenOn": "2025-01-03T11:45:02Z",
+      "side": 1,
+      "message": "As I explained above, I\u0027m concerned that the current CL could cause us not to notice other problems. If `onChange` is being called for a URI which we don\u0027t have an observer for, that could mean that settings changes don\u0027t get applied properly, and so we should crash rather than just silently fail to apply the setting update.\n\nIf it solves your problem, please just handle the `null` case in this CL. If that doesn\u0027t solve your problem, please provide more details about the test scenario, specifically what URI is being passed to `onChange` to cause the crash.",
+      "parentUuid": "f12dc64e_d4096d1b",
+      "revId": "8ffa37d2f437a6dec43c54080938eb3cce6d840f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
