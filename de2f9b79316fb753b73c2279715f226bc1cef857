@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "707ee713_582f3853",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2025-01-06T18:40:48Z",
+      "side": 1,
+      "message": "Same comment Martijn gave in b/379657756#comment7, let\u0027s discuss there. The Parcel object should not be null here, so we should fix the code which causes it to be null.",
+      "revId": "de2f9b79316fb753b73c2279715f226bc1cef857",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
