@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5afa8b00_eaa26113",
+        "filename": "packages/Vcn/service-b/Android.bp",
+        "patchSetId": 4
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1060151
+      },
+      "writtenOn": "2025-01-06T21:17:13Z",
+      "side": 1,
+      "message": "Is the wildcard necessary/preferable here?",
+      "range": {
+        "startLine": 42,
+        "startChar": 26,
+        "endLine": 42,
+        "endChar": 28
+      },
+      "revId": "b66ca8b068a201bb683092d61bac65eb400ebc7a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
