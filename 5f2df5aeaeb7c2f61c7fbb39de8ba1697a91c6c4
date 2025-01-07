@@ -72,6 +72,24 @@
       "parentUuid": "eb65ce04_51d977d8",
       "revId": "5f2df5aeaeb7c2f61c7fbb39de8ba1697a91c6c4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cf82defe_d407272e",
+        "filename": "core/java/android/os/Looper.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 322,
+      "author": {
+        "id": 1003801
+      },
+      "writtenOn": "2025-01-07T17:57:14Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "2efabedf_40e1a47b",
+      "revId": "5f2df5aeaeb7c2f61c7fbb39de8ba1697a91c6c4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
