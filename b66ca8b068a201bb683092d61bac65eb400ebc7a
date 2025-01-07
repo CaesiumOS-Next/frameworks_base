@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "103163c2_6cf03c5c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1060151
+      },
+      "writtenOn": "2025-01-07T23:57:13Z",
+      "side": 1,
+      "message": "I am not happy about this. Photocopies are at least a yellow flag. But... I am trusting that given the arcane nature of mainline+flag building, this is the least-worst option, and I embrace the idea of not spending unnecessary time trying to think of a clever solution when a little brute force will suffice.",
+      "revId": "b66ca8b068a201bb683092d61bac65eb400ebc7a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5afa8b00_eaa26113",
