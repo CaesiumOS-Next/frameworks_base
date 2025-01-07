@@ -332,6 +332,24 @@
       "parentUuid": "2d8e7782_dd422219",
       "revId": "8a00e6123db232bc8aa1f38773594314b961b3b4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6729c113_b96de069",
+        "filename": "core/java/android/os/Looper.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 319,
+      "author": {
+        "id": 1059977
+      },
+      "writtenOn": "2025-01-07T17:34:33Z",
+      "side": 1,
+      "message": "Thank you. I\u0027m ok with your latest change. Let\u0027s hear from Makoto next.",
+      "parentUuid": "d5ee6730_4eef1270",
+      "revId": "8a00e6123db232bc8aa1f38773594314b961b3b4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
