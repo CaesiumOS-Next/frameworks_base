@@ -22,6 +22,30 @@
       },
       "revId": "b66ca8b068a201bb683092d61bac65eb400ebc7a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0f229cae_21d80c43",
+        "filename": "packages/Vcn/service-b/Android.bp",
+        "patchSetId": 4
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1297255
+      },
+      "writtenOn": "2025-01-07T23:55:45Z",
+      "side": 1,
+      "message": "Yes it is necessary. Otherwise, only files direcly under service-utils will be included. Subdirectories will be ignored",
+      "parentUuid": "5afa8b00_eaa26113",
+      "range": {
+        "startLine": 42,
+        "startChar": 26,
+        "endLine": 42,
+        "endChar": 28
+      },
+      "revId": "b66ca8b068a201bb683092d61bac65eb400ebc7a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
