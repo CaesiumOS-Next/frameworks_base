@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9aef15a1_ebb10373",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 2068221
+      },
+      "writtenOn": "2025-01-07T09:29:21Z",
+      "side": 1,
+      "message": "@omakoto@google.com and @shayba@google.com, do you have time to look into the latest patch-set adding the suggested NoImagePreloadHolder class?",
+      "revId": "ee3538b3fb461c246de2e3cf61123def8bfdc845",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
