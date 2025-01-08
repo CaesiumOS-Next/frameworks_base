@@ -368,6 +368,24 @@
       "parentUuid": "e7154214_850d44d8",
       "revId": "8a00e6123db232bc8aa1f38773594314b961b3b4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d6857314_aae140e3",
+        "filename": "core/java/android/os/Looper.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 319,
+      "author": {
+        "id": 3155470
+      },
+      "writtenOn": "2025-01-08T07:55:14Z",
+      "side": 1,
+      "message": "Got a +2, so I reslove this commment to make submit requirements happy",
+      "parentUuid": "6729c113_b96de069",
+      "revId": "8a00e6123db232bc8aa1f38773594314b961b3b4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
