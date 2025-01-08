@@ -401,7 +401,9 @@ final class PersistentDataStore {
 
         public boolean setSelectedKeyboardLayouts(@NonNull Set<String> selectedLayouts) {
             if (Objects.equals(mSelectedKeyboardLayouts, selectedLayouts)) {
-                return false;
+                // return false;
+                Slog.d(InputManagerService.TAG, "Layouts are equal, but still show notification");
+                return true;
             }
             mSelectedKeyboardLayouts = new HashSet<>(selectedLayouts);
             return true;
