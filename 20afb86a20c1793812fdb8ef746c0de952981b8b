@@ -16,6 +16,23 @@
       "message": "Unfortunately errorprone currently mangles imports if you change them *at all*, so you have to fix it up using `google-java-format -i --aosp --fix-imports-only`. We should probably do this automatically in soong (I\u0027ll chase separately).",
       "revId": "20afb86a20c1793812fdb8ef746c0de952981b8b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d27a984f_cd889fec",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1064003
+      },
+      "writtenOn": "2025-01-08T20:50:22Z",
+      "side": 1,
+      "message": "Sigh, given all the merge conflicts, I\u0027ll have to stage this internally first.",
+      "revId": "20afb86a20c1793812fdb8ef746c0de952981b8b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
