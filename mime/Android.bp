@@ -129,7 +129,12 @@ filegroup {
     visibility: [
         "//visibility:private",
     ],
+<<<<<<< HEAD   (e4603f Merge "Modify the log information of semaphore in finishFram)
     device_common_srcs: [
+||||||| BASE
+=======
+    srcs: [
+>>>>>>> BRANCH (4a2f13 Add alternative for old debian mime types)
         ":debian.mime.types.minimized-alt",
         ":android.mime.types.minimized",
         ":vendor.mime.types.minimized",
