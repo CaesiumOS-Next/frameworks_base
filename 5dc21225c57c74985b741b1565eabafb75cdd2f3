@@ -68,6 +68,23 @@
       "message": "Hi @yuhany@google.com @mstogaitis@google.com @etn@google.com, Can I please get a second +2 code review for this change. And get a re-trigger for presubmit-ready? Thanks :)",
       "revId": "5dc21225c57c74985b741b1565eabafb75cdd2f3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "126ad758_d8a7493d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 3524514
+      },
+      "writtenOn": "2025-01-13T11:36:37Z",
+      "side": 1,
+      "message": "Goodmorning, can I please get a presubmit-ready +1 trigger vote? Thanks.",
+      "revId": "5dc21225c57c74985b741b1565eabafb75cdd2f3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
