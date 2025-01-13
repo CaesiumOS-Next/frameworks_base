@@ -70,6 +70,9 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.concurrent.LinkedBlockingQueue;
+import java.util.concurrent.ThreadPoolExecutor;
+import java.util.concurrent.TimeUnit;
 
 /**
  * Loads global system configuration info.
@@ -333,6 +336,7 @@ public class SystemConfig {
     // for Phone and Location. As such, apps MUST only ever be added to this list if they
     // obtain user consent to access their location through other means.
     final ArraySet<String> mDisabledUntilUsedPreinstalledCarrierApps = new ArraySet<>();
+    private final ArrayMap<String, String> mEnabledInSkuOverride = new ArrayMap<>();
 
     // These are the packages of carrier-associated apps which should be disabled until used until
     // a SIM is inserted which grants carrier privileges to that carrier app.
@@ -358,6 +362,7 @@ public class SystemConfig {
     // Map of packagesNames to userTypes. Stored temporarily until cleared by UserManagerService().
     private ArrayMap<String, Set<String>> mPackageToUserTypeWhitelist = new ArrayMap<>();
     private ArrayMap<String, Set<String>> mPackageToUserTypeBlacklist = new ArrayMap<>();
+    private Object mInstallInUserTypeLock = new Object();
 
     private final ArraySet<String> mRollbackWhitelistedPackages = new ArraySet<>();
     private final ArraySet<String> mWhitelistedStagedInstallers = new ArraySet<>();
@@ -673,6 +678,14 @@ public class SystemConfig {
         readAllPermissionsFromXml();
         readAllPermissionsFromEnvironment();
 
+        // Remove enabled-in-sku-override packages from disabled-in-sku.
+        for (String pkgname : mEnabledInSkuOverride.keySet()) {
+            if (!mDisabledUntilUsedPreinstalledCarrierApps.remove(pkgname)) {
+                Slog.w(TAG, "<enabled-in-sku-override> packagename:"
+                        + mEnabledInSkuOverride.get(pkgname) + " not included in disabled-in-sku");
+            }
+        }
+
         // Apply global feature removal last, after all features have been read.
         // This only needs to happen once.
         for (String featureName : mUnavailableFeatures) {
@@ -681,14 +694,15 @@ public class SystemConfig {
     }
 
     private void readAllPermissionsFromXml() {
-        final XmlPullParser parser = Xml.newPullParser();
+        ThreadPoolExecutor executor = new ThreadPoolExecutor(4, 4, 1, TimeUnit.SECONDS,
+                new LinkedBlockingQueue<>());
 
         // Read configuration from system
-        readPermissions(parser, Environment.buildPath(
+        readPermissions(executor, Environment.buildPath(
                 Environment.getRootDirectory(), "etc", "sysconfig"), ALLOW_ALL);
 
         // Read configuration from the old permissions dir
-        readPermissions(parser, Environment.buildPath(
+        readPermissions(executor, Environment.buildPath(
                 Environment.getRootDirectory(), "etc", "permissions"), ALLOW_ALL);
 
         // Vendors are only allowed to customize these
@@ -698,18 +712,18 @@ public class SystemConfig {
             // For backward compatibility
             vendorPermissionFlag |= (ALLOW_PERMISSIONS | ALLOW_APP_CONFIGS);
         }
-        readPermissions(parser, Environment.buildPath(
+        readPermissions(executor, Environment.buildPath(
                 Environment.getVendorDirectory(), "etc", "sysconfig"), vendorPermissionFlag);
-        readPermissions(parser, Environment.buildPath(
+        readPermissions(executor, Environment.buildPath(
                 Environment.getVendorDirectory(), "etc", "permissions"), vendorPermissionFlag);
 
         String vendorSkuProperty = SystemProperties.get(VENDOR_SKU_PROPERTY, "");
         if (!vendorSkuProperty.isEmpty()) {
             String vendorSkuDir = "sku_" + vendorSkuProperty;
-            readPermissions(parser, Environment.buildPath(
+            readPermissions(executor, Environment.buildPath(
                     Environment.getVendorDirectory(), "etc", "sysconfig", vendorSkuDir),
                     vendorPermissionFlag);
-            readPermissions(parser, Environment.buildPath(
+            readPermissions(executor, Environment.buildPath(
                     Environment.getVendorDirectory(), "etc", "permissions", vendorSkuDir),
                     vendorPermissionFlag);
         }
@@ -717,18 +731,18 @@ public class SystemConfig {
         // Allow ODM to customize system configs as much as Vendor, because /odm is another
         // vendor partition other than /vendor.
         int odmPermissionFlag = vendorPermissionFlag;
-        readPermissions(parser, Environment.buildPath(
+        readPermissions(executor, Environment.buildPath(
                 Environment.getOdmDirectory(), "etc", "sysconfig"), odmPermissionFlag);
-        readPermissions(parser, Environment.buildPath(
+        readPermissions(executor, Environment.buildPath(
                 Environment.getOdmDirectory(), "etc", "permissions"), odmPermissionFlag);
 
         String skuProperty = SystemProperties.get(SKU_PROPERTY, "");
         if (!skuProperty.isEmpty()) {
             String skuDir = "sku_" + skuProperty;
 
-            readPermissions(parser, Environment.buildPath(
+            readPermissions(executor, Environment.buildPath(
                     Environment.getOdmDirectory(), "etc", "sysconfig", skuDir), odmPermissionFlag);
-            readPermissions(parser, Environment.buildPath(
+            readPermissions(executor, Environment.buildPath(
                     Environment.getOdmDirectory(), "etc", "permissions", skuDir),
                     odmPermissionFlag);
         }
@@ -736,9 +750,9 @@ public class SystemConfig {
         // Allow OEM to customize these
         int oemPermissionFlag = ALLOW_FEATURES | ALLOW_OEM_PERMISSIONS | ALLOW_ASSOCIATIONS
                 | ALLOW_VENDOR_APEX;
-        readPermissions(parser, Environment.buildPath(
+        readPermissions(executor, Environment.buildPath(
                 Environment.getOemDirectory(), "etc", "sysconfig"), oemPermissionFlag);
-        readPermissions(parser, Environment.buildPath(
+        readPermissions(executor, Environment.buildPath(
                 Environment.getOemDirectory(), "etc", "permissions"), oemPermissionFlag);
 
         // Allow Product to customize these configs
@@ -753,31 +767,37 @@ public class SystemConfig {
             // DEVICE_INITIAL_SDK_INT for the devices without product interface enforcement.
             productPermissionFlag = ALLOW_ALL;
         }
-        readPermissions(parser, Environment.buildPath(
+        readPermissions(executor, Environment.buildPath(
                 Environment.getProductDirectory(), "etc", "sysconfig"), productPermissionFlag);
-        readPermissions(parser, Environment.buildPath(
+        readPermissions(executor, Environment.buildPath(
                 Environment.getProductDirectory(), "etc", "permissions"), productPermissionFlag);
 
         String productSkuProperty = SystemProperties.get(PRODUCT_SKU_PROPERTY, "");
         if (!productSkuProperty.isEmpty()) {
             String productSkuDir = "sku_" + productSkuProperty;
-            readPermissions(parser, Environment.buildPath(
+            readPermissions(executor, Environment.buildPath(
                     Environment.getProductDirectory(), "etc", "sysconfig", productSkuDir),
                     productPermissionFlag);
-            readPermissions(parser, Environment.buildPath(
+            readPermissions(executor, Environment.buildPath(
                     Environment.getProductDirectory(), "etc", "permissions", productSkuDir),
                     productPermissionFlag);
         }
 
         // Allow /system_ext to customize all system configs
-        readPermissions(parser, Environment.buildPath(
+        readPermissions(executor, Environment.buildPath(
                 Environment.getSystemExtDirectory(), "etc", "sysconfig"), ALLOW_ALL);
-        readPermissions(parser, Environment.buildPath(
+        readPermissions(executor, Environment.buildPath(
                 Environment.getSystemExtDirectory(), "etc", "permissions"), ALLOW_ALL);
 
         // Skip loading configuration from apex if it is not a system process.
         if (!isSystemProcess()) {
-            return;
+            try {
+                executor.shutdown();
+                executor.awaitTermination(10, TimeUnit.SECONDS);
+                return;
+            } catch (InterruptedException e) {
+                Slog.w(TAG, "Interrupted while reading permissions.");
+            }
         }
         // Read configuration of features, libs and priv-app permissions from apex module.
         int apexPermissionFlag = ALLOW_LIBS | ALLOW_FEATURES | ALLOW_PRIVAPP_PERMISSIONS;
@@ -789,9 +809,22 @@ public class SystemConfig {
             if (f.isFile() || f.getPath().contains("@")) {
                 continue;
             }
-            readPermissions(parser, Environment.buildPath(f, "etc", "permissions"),
+            readPermissions(executor, Environment.buildPath(f, "etc", "permissions"),
                     apexPermissionFlag);
         }
+        try {
+            executor.shutdown();
+            executor.awaitTermination(10, TimeUnit.SECONDS);
+        } catch (InterruptedException e) {
+            Slog.w(TAG, "Interrupted while reading permissions.");
+        }
+    }
+
+    private void readPermissions(ThreadPoolExecutor executor, File libraryDir,
+            int permissionFlag) {
+        executor.execute(() -> {
+            readPermissions(Xml.newPullParser(), libraryDir, permissionFlag);
+        });
     }
 
     @VisibleForTesting
@@ -910,7 +943,9 @@ public class SystemConfig {
                             String gidStr = parser.getAttributeValue(null, "gid");
                             if (gidStr != null) {
                                 int gid = android.os.Process.getGidForName(gidStr);
-                                mGlobalGids = appendInt(mGlobalGids, gid);
+                                synchronized (mGlobalGids) {
+                                    mGlobalGids = appendInt(mGlobalGids, gid);
+                                }
                             } else {
                                 Slog.w(TAG, "<" + name + "> without gid in " + permFile + " at "
                                         + parser.getPositionDescription());
@@ -961,12 +996,14 @@ public class SystemConfig {
                                 break;
                             }
                             perm = perm.intern();
-                            ArraySet<String> perms = mSystemPermissions.get(uid);
-                            if (perms == null) {
-                                perms = new ArraySet<String>();
-                                mSystemPermissions.put(uid, perms);
+                            synchronized (mSystemPermissions) {
+                                ArraySet<String> perms = mSystemPermissions.get(uid);
+                                if (perms == null) {
+                                    perms = new ArraySet<String>();
+                                    mSystemPermissions.put(uid, perms);
+                                }
+                                perms.add(perm);
                             }
-                            perms.add(perm);
                         } else {
                             logNotAllowedInPartition(name, permFile, parser);
                         }
@@ -1010,7 +1047,9 @@ public class SystemConfig {
                                             ldependency == null
                                                     ? new String[0] : ldependency.split(":"),
                                             bcpSince, bcpBefore);
-                                    mSharedLibraries.put(lname, entry);
+                                    synchronized (mSharedLibraries) {
+                                        mSharedLibraries.put(lname, entry);
+                                    }
                                 } else {
                                     final StringBuilder msg = new StringBuilder(
                                             "Ignore shared library ").append(lname).append(":");
@@ -1060,7 +1099,9 @@ public class SystemConfig {
                                 Slog.w(TAG, "<" + name + "> without name in " + permFile
                                         + " at " + parser.getPositionDescription());
                             } else {
-                                mUnavailableFeatures.add(fname);
+                                synchronized (mUnavailableFeatures) {
+                                    mUnavailableFeatures.add(fname);
+                                }
                             }
                         } else {
                             logNotAllowedInPartition(name, permFile, parser);
@@ -1074,7 +1115,9 @@ public class SystemConfig {
                                 Slog.w(TAG, "<" + name + "> without package in "
                                         + permFile + " at " + parser.getPositionDescription());
                             } else {
-                                mAllowInPowerSaveExceptIdle.add(pkgname);
+                                synchronized (mAllowInPowerSaveExceptIdle) {
+                                    mAllowInPowerSaveExceptIdle.add(pkgname);
+                                }
                             }
                         } else {
                             logNotAllowedInPartition(name, permFile, parser);
@@ -1088,7 +1131,9 @@ public class SystemConfig {
                                 Slog.w(TAG, "<" + name + "> without package in "
                                         + permFile + " at " + parser.getPositionDescription());
                             } else {
-                                mAllowInPowerSave.add(pkgname);
+                                synchronized (mAllowInPowerSave) {
+                                    mAllowInPowerSave.add(pkgname);
+                                }
                             }
                         } else {
                             logNotAllowedInPartition(name, permFile, parser);
@@ -1102,7 +1147,9 @@ public class SystemConfig {
                                 Slog.w(TAG, "<" + name + "> without package in "
                                         + permFile + " at " + parser.getPositionDescription());
                             } else {
-                                mAllowInDataUsageSave.add(pkgname);
+                                synchronized (mAllowInDataUsageSave) {
+                                    mAllowInDataUsageSave.add(pkgname);
+                                }
                             }
                         } else {
                             logNotAllowedInPartition(name, permFile, parser);
@@ -1116,7 +1163,9 @@ public class SystemConfig {
                                 Slog.w(TAG, "<" + name + "> without package in "
                                         + permFile + " at " + parser.getPositionDescription());
                             } else {
-                                mAllowUnthrottledLocation.add(pkgname);
+                                synchronized (mAllowUnthrottledLocation) {
+                                    mAllowUnthrottledLocation.add(pkgname);
+                                }
                             }
                         } else {
                             logNotAllowedInPartition(name, permFile, parser);
@@ -1132,17 +1181,19 @@ public class SystemConfig {
                                 Slog.w(TAG, "<" + name + "> without package in "
                                         + permFile + " at " + parser.getPositionDescription());
                             } else {
-                                ArraySet<String> tags = mAllowAdasSettings.get(pkgname);
-                                if (tags == null || !tags.isEmpty()) {
-                                    if (tags == null) {
-                                        tags = new ArraySet<>(1);
-                                        mAllowAdasSettings.put(pkgname, tags);
-                                    }
-                                    if (!"*".equals(attributionTag)) {
-                                        if ("null".equals(attributionTag)) {
-                                            attributionTag = null;
+                                synchronized (mAllowAdasSettings) {
+                                    ArraySet<String> tags = mAllowAdasSettings.get(pkgname);
+                                    if (tags == null || !tags.isEmpty()) {
+                                        if (tags == null) {
+                                            tags = new ArraySet<>(1);
+                                            mAllowAdasSettings.put(pkgname, tags);
                                         }
-                                        tags.add(attributionTag);
+                                        if (!"*".equals(attributionTag)) {
+                                            if ("null".equals(attributionTag)) {
+                                                attributionTag = null;
+                                            }
+                                            tags.add(attributionTag);
+                                        }
                                     }
                                 }
                             }
@@ -1158,7 +1209,9 @@ public class SystemConfig {
                                 Slog.w(TAG, "<" + name + "> without package in "
                                         + permFile + " at " + parser.getPositionDescription());
                             } else {
-                                mAllowlistCameraPrivacy.add(pkgname);
+                                synchronized (mAllowlistCameraPrivacy) {
+                                    mAllowlistCameraPrivacy.add(pkgname);
+                                }
                             }
                         } else {
                             logNotAllowedInPartition(name, permFile, parser);
@@ -1174,17 +1227,20 @@ public class SystemConfig {
                                 Slog.w(TAG, "<" + name + "> without package in "
                                         + permFile + " at " + parser.getPositionDescription());
                             } else {
-                                ArraySet<String> tags = mAllowIgnoreLocationSettings.get(pkgname);
-                                if (tags == null || !tags.isEmpty()) {
-                                    if (tags == null) {
-                                        tags = new ArraySet<>(1);
-                                        mAllowIgnoreLocationSettings.put(pkgname, tags);
-                                    }
-                                    if (!"*".equals(attributionTag)) {
-                                        if ("null".equals(attributionTag)) {
-                                            attributionTag = null;
+                                synchronized (mAllowIgnoreLocationSettings) {
+                                    ArraySet<String> tags =
+                                            mAllowIgnoreLocationSettings.get(pkgname);
+                                    if (tags == null || !tags.isEmpty()) {
+                                        if (tags == null) {
+                                            tags = new ArraySet<>(1);
+                                            mAllowIgnoreLocationSettings.put(pkgname, tags);
                                         }
-                                        tags.add(attributionTag);
+                                        if (!"*".equals(attributionTag)) {
+                                            if ("null".equals(attributionTag)) {
+                                                attributionTag = null;
+                                            }
+                                            tags.add(attributionTag);
+                                        }
                                     }
                                 }
                             }
@@ -1200,7 +1256,9 @@ public class SystemConfig {
                                 Slog.w(TAG, "<" + name + "> without action in "
                                         + permFile + " at " + parser.getPositionDescription());
                             } else {
-                                mAllowImplicitBroadcasts.add(action);
+                                synchronized (mAllowImplicitBroadcasts) {
+                                    mAllowImplicitBroadcasts.add(action);
+                                }
                             }
                         } else {
                             logNotAllowedInPartition(name, permFile, parser);
@@ -1214,7 +1272,9 @@ public class SystemConfig {
                                 Slog.w(TAG, "<" + name + "> without package in " + permFile
                                         + " at " + parser.getPositionDescription());
                             } else {
-                                mLinkedApps.add(pkgname);
+                                synchronized (mLinkedApps) {
+                                    mLinkedApps.add(pkgname);
+                                }
                             }
                         } else {
                             logNotAllowedInPartition(name, permFile, parser);
@@ -1228,7 +1288,9 @@ public class SystemConfig {
                                 Slog.w(TAG, "<" + name + "> without package in "
                                         + permFile + " at " + parser.getPositionDescription());
                             } else {
-                                mBgRestrictionExemption.add(pkgname);
+                                synchronized (mBgRestrictionExemption) {
+                                    mBgRestrictionExemption.add(pkgname);
+                                }
                             }
                         } else {
                             logNotAllowedInPartition(name, permFile, parser);
@@ -1246,7 +1308,9 @@ public class SystemConfig {
                                 Slog.w(TAG, "<" + name + "> without class in "
                                         + permFile + " at " + parser.getPositionDescription());
                             } else {
-                                mDefaultVrComponents.add(new ComponentName(pkgname, clsname));
+                                synchronized (mDefaultVrComponents) {
+                                    mDefaultVrComponents.add(new ComponentName(pkgname, clsname));
+                                }
                             }
                         } else {
                             logNotAllowedInPartition(name, permFile, parser);
@@ -1269,7 +1333,9 @@ public class SystemConfig {
                                             + serviceName + " in " + permFile
                                             + " at " + parser.getPositionDescription());
                                 } else {
-                                    mBackupTransportWhitelist.add(cn);
+                                    synchronized (mBackupTransportWhitelist) {
+                                        mBackupTransportWhitelist.add(cn);
+                                    }
                                 }
                             }
                         } else {
@@ -1303,16 +1369,18 @@ public class SystemConfig {
                                         break;
                                     }
                                 }
-                                List<CarrierAssociatedAppEntry> associatedPkgs =
-                                        mDisabledUntilUsedPreinstalledCarrierAssociatedApps.get(
-                                                carrierPkgname);
-                                if (associatedPkgs == null) {
-                                    associatedPkgs = new ArrayList<>();
-                                    mDisabledUntilUsedPreinstalledCarrierAssociatedApps.put(
-                                            carrierPkgname, associatedPkgs);
+                                synchronized (mDisabledUntilUsedPreinstalledCarrierAssociatedApps) {
+                                    List<CarrierAssociatedAppEntry> associatedPkgs =
+                                            mDisabledUntilUsedPreinstalledCarrierAssociatedApps.get(
+                                                    carrierPkgname);
+                                    if (associatedPkgs == null) {
+                                        associatedPkgs = new ArrayList<>();
+                                        mDisabledUntilUsedPreinstalledCarrierAssociatedApps.put(
+                                                carrierPkgname, associatedPkgs);
+                                    }
+                                    associatedPkgs.add(
+                                            new CarrierAssociatedAppEntry(pkgname, addedInSdk));
                                 }
-                                associatedPkgs.add(
-                                        new CarrierAssociatedAppEntry(pkgname, addedInSdk));
                             }
                         } else {
                             logNotAllowedInPartition(name, permFile, parser);
@@ -1329,7 +1397,9 @@ public class SystemConfig {
                                                 + "package in " + permFile + " at "
                                                 + parser.getPositionDescription());
                             } else {
-                                mDisabledUntilUsedPreinstalledCarrierApps.add(pkgname);
+                                synchronized (mDisabledUntilUsedPreinstalledCarrierApps) {
+                                    mDisabledUntilUsedPreinstalledCarrierApps.add(pkgname);
+                                }
                             }
                         } else {
                             logNotAllowedInPartition(name, permFile, parser);
@@ -1344,10 +1414,12 @@ public class SystemConfig {
                                         "<" + name + "> without "
                                                 + "package in " + permFile + " at "
                                                 + parser.getPositionDescription());
-                            } else if (!mDisabledUntilUsedPreinstalledCarrierApps.remove(pkgname)) {
-                                Slog.w(TAG,
-                                        "<" + name + "> packagename:" + pkgname + " not included"
-                                                + "in disabled-in-sku");
+                            } else {
+                                synchronized (mEnabledInSkuOverride) {
+                                    // Packages in this set will later be removed from packages in
+                                    // mDisabledUntilUsedPreinstalledCarrierApps.
+                                    mEnabledInSkuOverride.put(pkgname, permFile.toString());
+                                }
                             }
                         } else {
                             logNotAllowedInPartition(name, permFile, parser);
@@ -1371,20 +1443,35 @@ public class SystemConfig {
                             boolean apex = permFile.toPath().startsWith(
                                     Environment.getApexDirectory().toPath() + "/");
                             if (vendor) {
-                                readPrivAppPermissions(parser,
-                                        mPermissionAllowlist.getVendorPrivilegedAppAllowlist());
+                                synchronized (mPermissionAllowlist
+                                        .getVendorPrivilegedAppAllowlist()) {
+                                    readPrivAppPermissions(parser, mPermissionAllowlist
+                                            .getVendorPrivilegedAppAllowlist());
+                                }
                             } else if (product) {
-                                readPrivAppPermissions(parser,
-                                        mPermissionAllowlist.getProductPrivilegedAppAllowlist());
+                                synchronized (mPermissionAllowlist
+                                        .getProductPrivilegedAppAllowlist()) {
+                                    readPrivAppPermissions(parser, mPermissionAllowlist
+                                            .getProductPrivilegedAppAllowlist());
+                                }
                             } else if (systemExt) {
-                                readPrivAppPermissions(parser,
-                                        mPermissionAllowlist.getSystemExtPrivilegedAppAllowlist());
+                                synchronized (mPermissionAllowlist
+                                        .getSystemExtPrivilegedAppAllowlist()) {
+                                    readPrivAppPermissions(parser, mPermissionAllowlist
+                                            .getSystemExtPrivilegedAppAllowlist());
+                                }
                             } else if (apex) {
-                                readApexPrivAppPermissions(parser, permFile,
-                                        Environment.getApexDirectory().toPath());
+                                synchronized (mPermissionAllowlist
+                                        .getApexPrivilegedAppAllowlists()) {
+                                    readApexPrivAppPermissions(parser, permFile,
+                                            Environment.getApexDirectory().toPath());
+                                }
                             } else {
-                                readPrivAppPermissions(parser,
-                                        mPermissionAllowlist.getPrivilegedAppAllowlist());
+                                synchronized (mPermissionAllowlist
+                                        .getPrivilegedAppAllowlist()) {
+                                    readPrivAppPermissions(parser, mPermissionAllowlist
+                                            .getPrivilegedAppAllowlist());
+                                }
                             }
                         } else {
                             logNotAllowedInPartition(name, permFile, parser);
@@ -1408,20 +1495,35 @@ public class SystemConfig {
                             boolean apex = permFile.toPath().startsWith(
                                     Environment.getApexDirectory().toPath() + "/");
                             if (vendor) {
-                                readSignatureAppPermissions(parser,
-                                        mPermissionAllowlist.getVendorSignatureAppAllowlist());
+                                synchronized (mPermissionAllowlist
+                                        .getVendorSignatureAppAllowlist()) {
+                                    readSignatureAppPermissions(parser, mPermissionAllowlist
+                                            .getVendorSignatureAppAllowlist());
+                                }
                             } else if (product) {
-                                readSignatureAppPermissions(parser,
-                                        mPermissionAllowlist.getProductSignatureAppAllowlist());
+                                synchronized (mPermissionAllowlist
+                                        .getProductSignatureAppAllowlist()) {
+                                    readSignatureAppPermissions(parser, mPermissionAllowlist
+                                            .getProductSignatureAppAllowlist());
+                                }
                             } else if (systemExt) {
-                                readSignatureAppPermissions(parser,
-                                        mPermissionAllowlist.getSystemExtSignatureAppAllowlist());
+                                synchronized (mPermissionAllowlist
+                                        .getSystemExtSignatureAppAllowlist()) {
+                                    readSignatureAppPermissions(parser, mPermissionAllowlist
+                                            .getSystemExtSignatureAppAllowlist());
+                                }
                             } else if (apex) {
-                                readSignatureAppPermissions(parser,
-                                        mPermissionAllowlist.getApexSignatureAppAllowlist());
+                                synchronized (mPermissionAllowlist
+                                        .getApexSignatureAppAllowlist()) {
+                                    readSignatureAppPermissions(parser, mPermissionAllowlist
+                                            .getApexSignatureAppAllowlist());
+                                }
                             } else {
-                                readSignatureAppPermissions(parser,
-                                        mPermissionAllowlist.getSignatureAppAllowlist());
+                                synchronized (mPermissionAllowlist
+                                        .getSignatureAppAllowlist()) {
+                                    readSignatureAppPermissions(parser, mPermissionAllowlist
+                                            .getSignatureAppAllowlist());
+                                }
                             }
                         } else {
                             logNotAllowedInPartition(name, permFile, parser);
@@ -1430,7 +1532,9 @@ public class SystemConfig {
                     } break;
                     case "oem-permissions": {
                         if (allowOemPermissions) {
-                            readOemPermissions(parser);
+                            synchronized (mPermissionAllowlist.getOemAppAllowlist()) {
+                                readOemPermissions(parser);
+                            }
                         } else {
                             logNotAllowedInPartition(name, permFile, parser);
                             XmlUtils.skipCurrentTag(parser);
@@ -1443,7 +1547,9 @@ public class SystemConfig {
                                 Slog.w(TAG, "<" + name + "> without package in "
                                         + permFile + " at " + parser.getPositionDescription());
                             } else {
-                                mHiddenApiPackageWhitelist.add(pkgname);
+                                synchronized (mHiddenApiPackageWhitelist) {
+                                    mHiddenApiPackageWhitelist.add(pkgname);
+                                }
                             }
                         } else {
                             logNotAllowedInPartition(name, permFile, parser);
@@ -1468,13 +1574,15 @@ public class SystemConfig {
                             }
                             target = target.intern();
                             allowed = allowed.intern();
-                            ArraySet<String> associations = mAllowedAssociations.get(target);
-                            if (associations == null) {
-                                associations = new ArraySet<>();
-                                mAllowedAssociations.put(target, associations);
+                            synchronized (mAllowedAssociations) {
+                                ArraySet<String> associations = mAllowedAssociations.get(target);
+                                if (associations == null) {
+                                    associations = new ArraySet<>();
+                                    mAllowedAssociations.put(target, associations);
+                                }
+                                Slog.i(TAG, "Adding association: " + target + " <- " + allowed);
+                                associations.add(allowed);
                             }
-                            Slog.i(TAG, "Adding association: " + target + " <- " + allowed);
-                            associations.add(allowed);
                         } else {
                             logNotAllowedInPartition(name, permFile, parser);
                         }
@@ -1486,7 +1594,9 @@ public class SystemConfig {
                             Slog.w(TAG, "<" + name + "> without package in " + permFile
                                     + " at " + parser.getPositionDescription());
                         } else {
-                            mAppDataIsolationWhitelistedApps.add(pkgname);
+                            synchronized (mAppDataIsolationWhitelistedApps) {
+                                mAppDataIsolationWhitelistedApps.add(pkgname);
+                            }
                         }
                         XmlUtils.skipCurrentTag(parser);
                     } break;
@@ -1496,7 +1606,9 @@ public class SystemConfig {
                             Slog.w(TAG, "<" + name + "> without package in " + permFile
                                     + " at " + parser.getPositionDescription());
                         } else {
-                            mBugreportWhitelistedPackages.add(pkgname);
+                            synchronized (mBugreportWhitelistedPackages) {
+                                mBugreportWhitelistedPackages.add(pkgname);
+                            }
                         }
                         XmlUtils.skipCurrentTag(parser);
                     } break;
@@ -1506,14 +1618,18 @@ public class SystemConfig {
                             Slog.w(TAG, "<" + name + "> without package in " + permFile
                                     + " at " + parser.getPositionDescription());
                         } else {
-                            mPreventUserDisablePackages.add(pkgname);
+                            synchronized (mPreventUserDisablePackages) {
+                                mPreventUserDisablePackages.add(pkgname);
+                            }
                         }
                         XmlUtils.skipCurrentTag(parser);
                     } break;
                     case "install-in-user-type": {
                         // NB: We allow any directory permission to declare install-in-user-type.
-                        readInstallInUserType(parser,
-                                mPackageToUserTypeWhitelist, mPackageToUserTypeBlacklist);
+                        synchronized (mInstallInUserTypeLock) {
+                            readInstallInUserType(parser,
+                                    mPackageToUserTypeWhitelist, mPackageToUserTypeBlacklist);
+                        }
                     } break;
                     case "named-actor": {
                         String namespace = TextUtils.safeIntern(
@@ -1534,22 +1650,24 @@ public class SystemConfig {
                             throw new IllegalStateException("Defining " + actorName + " as "
                                     + pkgName + " for the android namespace is not allowed");
                         } else {
-                            if (mNamedActors == null) {
-                                mNamedActors = new ArrayMap<>();
-                            }
+                            synchronized (mNamedActors) {
+                                if (mNamedActors == null) {
+                                    mNamedActors = new ArrayMap<>();
+                                }
 
-                            Map<String, String> nameToPkgMap = mNamedActors.get(namespace);
-                            if (nameToPkgMap == null) {
-                                nameToPkgMap = new ArrayMap<>();
-                                mNamedActors.put(namespace, nameToPkgMap);
-                            } else if (nameToPkgMap.containsKey(actorName)) {
-                                String existing = nameToPkgMap.get(actorName);
-                                throw new IllegalStateException("Duplicate actor definition for "
-                                        + namespace + "/" + actorName
-                                        + "; defined as both " + existing + " and " + pkgName);
-                            }
+                                Map<String, String> nameToPkgMap = mNamedActors.get(namespace);
+                                if (nameToPkgMap == null) {
+                                    nameToPkgMap = new ArrayMap<>();
+                                    mNamedActors.put(namespace, nameToPkgMap);
+                                } else if (nameToPkgMap.containsKey(actorName)) {
+                                    String existing = nameToPkgMap.get(actorName);
+                                    throw new IllegalStateException("Duplicate actor definition "
+                                            + "for " + namespace + "/" + actorName
+                                            + "; defined as both " + existing + " and " + pkgName);
+                                }
 
-                            nameToPkgMap.put(actorName, pkgName);
+                                nameToPkgMap.put(actorName, pkgName);
+                            }
                         }
                         XmlUtils.skipCurrentTag(parser);
                     } break;
@@ -1560,13 +1678,15 @@ public class SystemConfig {
                                 Slog.w(TAG, "<" + name + "> without package in " + permFile
                                         + " at " + parser.getPositionDescription());
                             } else {
-                                if (TextUtils.isEmpty(mOverlayConfigSignaturePackage)) {
-                                    mOverlayConfigSignaturePackage = pkgName.intern();
-                                } else {
-                                    throw new IllegalStateException("Reference signature package "
-                                                  + "defined as both "
-                                                  + mOverlayConfigSignaturePackage
-                                                  + " and " + pkgName);
+                                synchronized (mOverlayConfigSignaturePackage) {
+                                    if (TextUtils.isEmpty(mOverlayConfigSignaturePackage)) {
+                                        mOverlayConfigSignaturePackage = pkgName.intern();
+                                    } else {
+                                        throw new IllegalStateException("Reference signature "
+                                                      + "package defined as both "
+                                                      + mOverlayConfigSignaturePackage
+                                                      + " and " + pkgName);
+                                    }
                                 }
                             }
                         } else {
@@ -1580,7 +1700,9 @@ public class SystemConfig {
                             Slog.w(TAG, "<" + name + "> without package in " + permFile
                                     + " at " + parser.getPositionDescription());
                         } else {
-                            mRollbackWhitelistedPackages.add(pkgname);
+                            synchronized (mRollbackWhitelistedPackages) {
+                                mRollbackWhitelistedPackages.add(pkgname);
+                            }
                         }
                         XmlUtils.skipCurrentTag(parser);
                     } break;
@@ -1593,7 +1715,9 @@ public class SystemConfig {
                                 Slog.w(TAG, "<" + name + "> without package in " + permFile
                                         + " at " + parser.getPositionDescription());
                             } else {
-                                mWhitelistedStagedInstallers.add(pkgname);
+                                synchronized (mWhitelistedStagedInstallers) {
+                                    mWhitelistedStagedInstallers.add(pkgname);
+                                }
                             }
                             if (isModulesInstaller) {
                                 if (mModulesInstallerPackageName != null) {
@@ -1621,7 +1745,9 @@ public class SystemConfig {
                                         + " at " + parser.getPositionDescription());
                             }
                             if (pkgName != null && installerPkgName != null) {
-                                mAllowedVendorApexes.put(pkgName, installerPkgName);
+                                synchronized (mAllowedVendorApexes) {
+                                    mAllowedVendorApexes.put(pkgName, installerPkgName);
+                                }
                             }
                         } else {
                             logNotAllowedInPartition(name, permFile, parser);
@@ -1635,7 +1761,9 @@ public class SystemConfig {
                                 Slog.w(TAG, "<" + name + "> without package in " + permFile
                                         + " at " + parser.getPositionDescription());
                             } else {
-                                mInstallConstraintsAllowlist.add(packageName);
+                                synchronized (mInstallConstraintsAllowlist) {
+                                    mInstallConstraintsAllowlist.add(packageName);
+                                }
                             }
                         } else {
                             logNotAllowedInPartition(name, permFile, parser);
@@ -1654,7 +1782,9 @@ public class SystemConfig {
                             Slog.w(TAG, "<" + name + "> without valid installer in " + permFile
                                     + " at " + parser.getPositionDescription());
                         } else {
-                            mUpdateOwnersForSystemApps.put(packageName, installerName);
+                            synchronized (mUpdateOwnersForSystemApps) {
+                                mUpdateOwnersForSystemApps.put(packageName, installerName);
+                            }
                         }
                         XmlUtils.skipCurrentTag(parser);
                     } break;
@@ -1668,7 +1798,9 @@ public class SystemConfig {
                             Slog.w(TAG, "<" + name + "> without stopped in " + permFile
                                     + " at " + parser.getPositionDescription());
                         } else if (!Boolean.parseBoolean(stopped)) {
-                            mInitialNonStoppedSystemPackages.add(pkgName);
+                            synchronized (mInitialNonStoppedSystemPackages) {
+                                mInitialNonStoppedSystemPackages.add(pkgName);
+                            }
                         }
                     } break;
                     case "allow-package-shareduid": {
@@ -1681,7 +1813,9 @@ public class SystemConfig {
                             Slog.w(TAG, "<" + name + "> without shareduid in " + permFile
                                     + " at " + parser.getPositionDescription());
                         } else {
-                            mPackageToSharedUidAllowList.put(pkgName, sharedUid);
+                            synchronized (mPackageToSharedUidAllowList) {
+                                mPackageToSharedUidAllowList.put(pkgName, sharedUid);
+                            }
                         }
                     } break;
                     case "asl-file": {
@@ -1694,7 +1828,9 @@ public class SystemConfig {
                             Slog.w(TAG, "<" + name + "> without valid path in " + permFile
                                     + " at " + parser.getPositionDescription());
                         } else {
-                            mAppMetadataFilePaths.put(packageName, path);
+                            synchronized (mAppMetadataFilePaths) {
+                                mAppMetadataFilePaths.put(packageName, path);
+                            }
                         }
                     } break;
                     case "require-strict-signature": {
@@ -1704,7 +1840,9 @@ public class SystemConfig {
                                 Slog.w(TAG, "<" + name + "> without valid package in " + permFile
                                         + " at " + parser.getPositionDescription());
                             } else {
-                                mPreinstallPackagesWithStrictSignatureCheck.add(packageName);
+                                synchronized (mPreinstallPackagesWithStrictSignatureCheck) {
+                                    mPreinstallPackagesWithStrictSignatureCheck.add(packageName);
+                                }
                             }
                         }
                     } break;
@@ -1720,7 +1858,9 @@ public class SystemConfig {
                         } else {
                             try {
                                 final int oemDefinedUid = Integer.parseInt(uidValue);
-                                mOemDefinedUids.put(uidName, oemDefinedUid);
+                                synchronized (mOemDefinedUids) {
+                                    mOemDefinedUids.put(uidName, oemDefinedUid);
+                                }
                             } catch (NumberFormatException e) {
                                 Slog.w(TAG, "<" + name + "> with invalid uid value: "
                                         + uidValue + " in " + permFile
@@ -1733,7 +1873,9 @@ public class SystemConfig {
                             SignedPackage signedPackage = parseEnhancedConfirmationTrustedPackage(
                                     parser, permFile, name);
                             if (signedPackage != null) {
-                                mEnhancedConfirmationTrustedPackages.add(signedPackage);
+                                synchronized (mEnhancedConfirmationTrustedPackages) {
+                                    mEnhancedConfirmationTrustedPackages.add(signedPackage);
+                                }
                             }
                             break;
                         }
@@ -1743,7 +1885,9 @@ public class SystemConfig {
                             SignedPackage signedPackage = parseEnhancedConfirmationTrustedPackage(
                                     parser, permFile, name);
                             if (signedPackage != null) {
-                                mEnhancedConfirmationTrustedInstallers.add(signedPackage);
+                                synchronized (mEnhancedConfirmationTrustedInstallers) {
+                                    mEnhancedConfirmationTrustedInstallers.add(signedPackage);
+                                }
                             }
                             break;
                         }
@@ -1878,13 +2022,15 @@ public class SystemConfig {
 
     void readPermission(XmlPullParser parser, String name)
             throws IOException, XmlPullParserException {
-        if (mPermissions.containsKey(name)) {
-            throw new IllegalStateException("Duplicate permission definition for " + name);
-        }
-
         final boolean perUser = XmlUtils.readBooleanAttribute(parser, "perUser", false);
         final PermissionEntry perm = new PermissionEntry(name, perUser);
-        mPermissions.put(name, perm);
+        synchronized (mPermissions) {
+            if (mPermissions.containsKey(name)) {
+                throw new IllegalStateException("Duplicate permission definition for " + name);
+            }
+
+            mPermissions.put(name, perm);
+        }
 
         int outerDepth = parser.getDepth();
         int type;
@@ -2057,7 +2203,10 @@ public class SystemConfig {
             }
         }
         if (!newPermissions.isEmpty()) {
-            mSplitPermissions.add(new SplitPermissionInfo(splitPerm, newPermissions, targetSdk));
+            synchronized (mSplitPermissions) {
+                mSplitPermissions.add(
+                        new SplitPermissionInfo(splitPerm, newPermissions, targetSdk));
+            }
         }
     }
 
@@ -2093,15 +2242,17 @@ public class SystemConfig {
 
                 clsname = clsname.intern();
 
-                ArrayMap<String, Boolean> componentEnabledStates =
-                        mPackageComponentEnabledState.get(pkgname);
-                if (componentEnabledStates == null) {
-                    componentEnabledStates = new ArrayMap<>();
-                    mPackageComponentEnabledState.put(pkgname,
-                            componentEnabledStates);
-                }
+                synchronized (mPackageComponentEnabledState) {
+                    ArrayMap<String, Boolean> componentEnabledStates =
+                            mPackageComponentEnabledState.get(pkgname);
+                    if (componentEnabledStates == null) {
+                        componentEnabledStates = new ArrayMap<>();
+                        mPackageComponentEnabledState.put(pkgname,
+                                componentEnabledStates);
+                    }
 
-                componentEnabledStates.put(clsname, !"false".equals(enabled));
+                    componentEnabledStates.put(clsname, !"false".equals(enabled));
+                }
             }
         }
     }
@@ -2135,6 +2286,9 @@ public class SystemConfig {
                 String soname = line.trim().split(" ")[0];
                 SharedLibraryEntry entry = new SharedLibraryEntry(
                         soname, soname, new String[0], true);
+                // This isn't modified under a lock (as in readPermissionsFromXml) because
+                // readAllPermissions and readPublicNativeLibraries are called in sequence. There
+                // isn't a risk of concurrent modification.
                 mSharedLibraries.put(entry.name, entry);
             }
         } catch (FileNotFoundException e) {
