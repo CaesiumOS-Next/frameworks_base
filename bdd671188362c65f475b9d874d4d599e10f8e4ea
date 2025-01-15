@@ -1,0 +1,160 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f1d5e9bd_fe9ff995",
+        "filename": "services/core/java/com/android/server/audio/AudioService.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 14665,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2025-01-15T19:05:30Z",
+      "side": 1,
+      "message": "Please fix this ERROR reported by Common Typos: Common typo found: \"implementaion\" -- should it be \"implementation\"?\n\nAnalyzer Description: Linter for catching common typos motivated by go/todo-fail and go/lol-codesearch. Shared with google3 common typos library go/common-typos.\nOwner: ayeaye-team@google.com\n\nCommon typo found: \"implementaion\" -- should it be \"implementation\"?\nNote: a line containing \"common_typos_disable\" or \"common_typos_enable\" will turn off or on (respectively) the linter for subsequent lines in the file. Alternatively include the token \"NOTYPO\" within a line to skip typo linting that line or include \u0027No-Typo-Check: \u003creason\u003e\u0027in the commit message.",
+      "range": {
+        "startLine": 14665,
+        "startChar": 15,
+        "endLine": 14665,
+        "endChar": 28
+      },
+      "revId": "bdd671188362c65f475b9d874d4d599e10f8e4ea",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3cbcd678_00f8c935",
+        "filename": "services/core/java/com/android/server/audio/AudioService.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 14685,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2025-01-15T19:05:30Z",
+      "side": 1,
+      "message": "I suppose, `key` is also `@NonNull`",
+      "range": {
+        "startLine": 14685,
+        "startChar": 37,
+        "endLine": 14685,
+        "endChar": 43
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "fe0e81eb_9acd688f",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "services/core/java/com/android/server/audio/AudioService.java",
+              "range": {
+                "startLine": 14685,
+                "startChar": 0,
+                "endLine": 14686,
+                "endChar": 0
+              },
+              "replacement": "    private long getDelayByKeyDevice(@NonNull String key, @NonNull AudioDeviceAttributes device) {\n"
+            }
+          ]
+        }
+      ],
+      "revId": "bdd671188362c65f475b9d874d4d599e10f8e4ea",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e6cea25a_1bed3953",
+        "filename": "services/core/java/com/android/server/audio/AudioService.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 14703,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2025-01-15T19:05:30Z",
+      "side": 1,
+      "message": "Not needed since it\u0027s already `0` thanks to the initialization.",
+      "range": {
+        "startLine": 14701,
+        "startChar": 18,
+        "endLine": 14703,
+        "endChar": 17
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "58d94711_4fbd5dd3",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "services/core/java/com/android/server/audio/AudioService.java",
+              "range": {
+                "startLine": 14701,
+                "startChar": 0,
+                "endLine": 14703,
+                "endChar": 0
+              },
+              "replacement": ""
+            }
+          ]
+        }
+      ],
+      "revId": "bdd671188362c65f475b9d874d4d599e10f8e4ea",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "df9ed9a9_3138d661",
+        "filename": "services/core/java/com/android/server/audio/AudioService.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 14710,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2025-01-15T19:05:30Z",
+      "side": 1,
+      "message": "Again, this is not needed since it\u0027s `0` from the start, and assignment of a new value is the last operation we do, so we don\u0027t need to consider resetting in the case of a failure somewhere else.",
+      "range": {
+        "startLine": 14710,
+        "startChar": 0,
+        "endLine": 14710,
+        "endChar": 28
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "1b2d899f_4c578ae5",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "services/core/java/com/android/server/audio/AudioService.java",
+              "range": {
+                "startLine": 14701,
+                "startChar": 0,
+                "endLine": 14703,
+                "endChar": 0
+              },
+              "replacement": ""
+            },
+            {
+              "path": "services/core/java/com/android/server/audio/AudioService.java",
+              "range": {
+                "startLine": 14708,
+                "startChar": 0,
+                "endLine": 14713,
+                "endChar": 0
+              },
+              "replacement": "            } \n        } catch (NullPointerException e) {}\n"
+            }
+          ]
+        }
+      ],
+      "revId": "bdd671188362c65f475b9d874d4d599e10f8e4ea",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
