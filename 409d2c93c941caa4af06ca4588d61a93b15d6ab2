@@ -41,6 +41,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8be295b3_d6b66a5b",
+        "filename": "services/core/java/com/android/server/audio/AudioService.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 14678,
+      "author": {
+        "id": 1478901
+      },
+      "writtenOn": "2025-01-15T03:34:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "58be20d7_eee53da2",
+      "range": {
+        "startLine": 14678,
+        "startChar": 13,
+        "endLine": 14678,
+        "endChar": 25
+      },
+      "revId": "409d2c93c941caa4af06ca4588d61a93b15d6ab2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d642c6ff_693dba77",
@@ -54,6 +78,30 @@
       "writtenOn": "2025-01-15T00:52:22Z",
       "side": 1,
       "message": "I think we need to add a comment with an example of reply and an explanation of what we are doing here.",
+      "range": {
+        "startLine": 14680,
+        "startChar": 0,
+        "endLine": 14680,
+        "endChar": 13
+      },
+      "revId": "409d2c93c941caa4af06ca4588d61a93b15d6ab2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c4de02c2_becc4ce6",
+        "filename": "services/core/java/com/android/server/audio/AudioService.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 14680,
+      "author": {
+        "id": 1478901
+      },
+      "writtenOn": "2025-01-15T03:34:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d642c6ff_693dba77",
       "range": {
         "startLine": 14680,
         "startChar": 0,
@@ -87,6 +135,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "42da9e86_b4b5557c",
+        "filename": "services/core/java/com/android/server/audio/AudioService.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 14695,
+      "author": {
+        "id": 1478901
+      },
+      "writtenOn": "2025-01-15T03:34:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ae7063e1_e40c8272",
+      "range": {
+        "startLine": 14691,
+        "startChar": 0,
+        "endLine": 14695,
+        "endChar": 0
+      },
+      "revId": "409d2c93c941caa4af06ca4588d61a93b15d6ab2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "97cedc48_f7454521",
@@ -100,6 +172,30 @@
       "writtenOn": "2025-01-15T00:52:22Z",
       "side": 1,
       "message": "We should have this logic in a function to avoid duplicating the code.",
+      "range": {
+        "startLine": 14733,
+        "startChar": 0,
+        "endLine": 14749,
+        "endChar": 0
+      },
+      "revId": "409d2c93c941caa4af06ca4588d61a93b15d6ab2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d22c1452_e6635686",
+        "filename": "services/core/java/com/android/server/audio/AudioService.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 14749,
+      "author": {
+        "id": 1478901
+      },
+      "writtenOn": "2025-01-15T03:34:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "97cedc48_f7454521",
       "range": {
         "startLine": 14733,
         "startChar": 0,
