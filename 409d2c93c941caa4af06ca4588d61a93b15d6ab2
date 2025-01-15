@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "34a204c7_7311ae7d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2025-01-15T00:52:22Z",
+      "side": 1,
+      "message": "Thanks Kuowei! The approach looks good, some comments.",
+      "revId": "409d2c93c941caa4af06ca4588d61a93b15d6ab2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "58be20d7_eee53da2",
+        "filename": "services/core/java/com/android/server/audio/AudioService.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 14678,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2025-01-15T00:52:22Z",
+      "side": 1,
+      "message": "Maybe just assign `\u003d 0` here to avoid multiple fallbacks where we do the same thing?",
+      "range": {
+        "startLine": 14678,
+        "startChar": 13,
+        "endLine": 14678,
+        "endChar": 25
+      },
+      "revId": "409d2c93c941caa4af06ca4588d61a93b15d6ab2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d642c6ff_693dba77",
+        "filename": "services/core/java/com/android/server/audio/AudioService.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 14680,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2025-01-15T00:52:22Z",
+      "side": 1,
+      "message": "I think we need to add a comment with an example of reply and an explanation of what we are doing here.",
+      "range": {
+        "startLine": 14680,
+        "startChar": 0,
+        "endLine": 14680,
+        "endChar": 13
+      },
+      "revId": "409d2c93c941caa4af06ca4588d61a93b15d6ab2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ae7063e1_e40c8272",
+        "filename": "services/core/java/com/android/server/audio/AudioService.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 14695,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2025-01-15T00:52:22Z",
+      "side": 1,
+      "message": "Can be a bit shorter:\n\n```\n    delayMillis \u003d Long.parseLong(\n        end \u003d\u003d -1 ? reply.substring(start) : reply.substring(start, end));\n```",
+      "range": {
+        "startLine": 14691,
+        "startChar": 0,
+        "endLine": 14695,
+        "endChar": 0
+      },
+      "revId": "409d2c93c941caa4af06ca4588d61a93b15d6ab2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "97cedc48_f7454521",
+        "filename": "services/core/java/com/android/server/audio/AudioService.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 14749,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2025-01-15T00:52:22Z",
+      "side": 1,
+      "message": "We should have this logic in a function to avoid duplicating the code.",
+      "range": {
+        "startLine": 14733,
+        "startChar": 0,
+        "endLine": 14749,
+        "endChar": 0
+      },
+      "revId": "409d2c93c941caa4af06ca4588d61a93b15d6ab2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
