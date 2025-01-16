@@ -24,7 +24,6 @@ import static android.Manifest.permission.WRITE_DEVICE_CONFIG;
 import static com.android.internal.util.FrameworkStatsLog.AUTH_DEPRECATED_APIUSED__DEPRECATED_API__API_BIOMETRIC_MANAGER_CAN_AUTHENTICATE;
 
 import android.annotation.ElapsedRealtimeLong;
-import android.annotation.FlaggedApi;
 import android.annotation.IntDef;
 import android.annotation.NonNull;
 import android.annotation.Nullable;
@@ -113,7 +112,6 @@ public class BiometricManager {
      * Returned from {@link BiometricManager#getLastAuthenticationTime(int)} when no matching
      * successful authentication has been performed since boot.
      */
-    @FlaggedApi(Flags.FLAG_LAST_AUTHENTICATION_TIME)
     public static final long BIOMETRIC_NO_AUTHENTICATION =
             BiometricConstants.BIOMETRIC_NO_AUTHENTICATION;
 
@@ -770,7 +768,6 @@ public class BiometricManager {
      */
     @RequiresPermission(USE_BIOMETRIC)
     @ElapsedRealtimeLong
-    @FlaggedApi(Flags.FLAG_LAST_AUTHENTICATION_TIME)
     public long getLastAuthenticationTime(
             @BiometricManager.Authenticators.Types int authenticators) {
         if (authenticators == 0
