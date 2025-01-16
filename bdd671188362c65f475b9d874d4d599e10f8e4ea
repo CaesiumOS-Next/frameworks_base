@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "45afcb80_9c6b60f5",
+        "filename": "services/core/java/com/android/server/audio/AudioService.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 14665,
+      "author": {
+        "id": 1478901
+      },
+      "writtenOn": "2025-01-16T03:32:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f1d5e9bd_fe9ff995",
+      "range": {
+        "startLine": 14665,
+        "startChar": 15,
+        "endLine": 14665,
+        "endChar": 28
+      },
+      "revId": "bdd671188362c65f475b9d874d4d599e10f8e4ea",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3cbcd678_00f8c935",
@@ -65,6 +89,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1b9ed6f3_e4ca096c",
+        "filename": "services/core/java/com/android/server/audio/AudioService.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 14685,
+      "author": {
+        "id": 1478901
+      },
+      "writtenOn": "2025-01-16T03:32:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3cbcd678_00f8c935",
+      "range": {
+        "startLine": 14685,
+        "startChar": 37,
+        "endLine": 14685,
+        "endChar": 43
+      },
+      "revId": "bdd671188362c65f475b9d874d4d599e10f8e4ea",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e6cea25a_1bed3953",
@@ -102,6 +150,30 @@
           ]
         }
       ],
+      "revId": "bdd671188362c65f475b9d874d4d599e10f8e4ea",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fa75a1bd_8c619e59",
+        "filename": "services/core/java/com/android/server/audio/AudioService.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 14703,
+      "author": {
+        "id": 1478901
+      },
+      "writtenOn": "2025-01-16T03:32:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e6cea25a_1bed3953",
+      "range": {
+        "startLine": 14701,
+        "startChar": 18,
+        "endLine": 14703,
+        "endChar": 17
+      },
       "revId": "bdd671188362c65f475b9d874d4d599e10f8e4ea",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -153,6 +225,30 @@
           ]
         }
       ],
+      "revId": "bdd671188362c65f475b9d874d4d599e10f8e4ea",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4676ae64_b93861c8",
+        "filename": "services/core/java/com/android/server/audio/AudioService.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 14710,
+      "author": {
+        "id": 1478901
+      },
+      "writtenOn": "2025-01-16T03:32:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "df9ed9a9_3138d661",
+      "range": {
+        "startLine": 14710,
+        "startChar": 0,
+        "endLine": 14710,
+        "endChar": 28
+      },
       "revId": "bdd671188362c65f475b9d874d4d599e10f8e4ea",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
