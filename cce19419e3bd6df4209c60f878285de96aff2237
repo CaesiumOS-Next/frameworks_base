@@ -16,6 +16,24 @@
       "message": "This is changing the getParameters calling convention between AIDL and HIDL,  adding Eric and Jean-Michel for review.\n\nWith this change, getParameters cannot embed an argument in the parameter key for AIDL, rather the response must exhaustively enumerate possibilities for an input argument.",
       "revId": "cce19419e3bd6df4209c60f878285de96aff2237",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f9f4e7be_a17deb57",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2025-01-17T04:48:14Z",
+      "side": 1,
+      "message": "The getParameters convention has already been changed in AIDL, regardless of this change. The `\u003d` symbol is not accepted as part of the key name, it is always a delimiter between keys and values. I believe the approach used for these parameter in HIDL was working \"by accident\", just because the framework was always passing these strings to the HAL as is without trying to parse them into structured KV pairs.\n\nSince these parameters are used by the AOSP framework code, they should be made explicit HAL APIs thus obsoleting the need to use getParameters. I have created b/390528387 to do that in the next API version.",
+      "parentUuid": "cba4ef66_6c8f6e92",
+      "revId": "cce19419e3bd6df4209c60f878285de96aff2237",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
