@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cba4ef66_6c8f6e92",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2025-01-17T02:16:25Z",
+      "side": 1,
+      "message": "This is changing the getParameters calling convention between AIDL and HIDL,  adding Eric and Jean-Michel for review.\n\nWith this change, getParameters cannot embed an argument in the parameter key for AIDL, rather the response must exhaustively enumerate possibilities for an input argument.",
+      "revId": "cce19419e3bd6df4209c60f878285de96aff2237",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
