@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5a39f7a9_264eef2f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1565948
+      },
+      "writtenOn": "2025-01-18T00:10:51Z",
+      "side": 1,
+      "message": "Changes are fine, but this has internal merge conflicts (see related to the build errors)",
+      "revId": "e53899e0bc677247d4fda66ffd3a327e69d33380",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b7dd5f65_aa212566",
+        "filename": "core/java/android/hardware/biometrics/BiometricConstants.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1565948
+      },
+      "writtenOn": "2025-01-18T00:10:51Z",
+      "side": 1,
+      "message": "Please fix this ERROR reported by Build Warnings: could not resolve FlaggedApi\n\nAnalyzer Description: Reports warnings that originate from build.log in the build artifacts.\nOwner: farivar@google.com\n\n    could not resolve FlaggedApi\n        @FlaggedApi(Flags.FLAG_IDENTITY_CHECK_API)\n        ^\n\nThis finding was found on https://android-build.googleplex.com/builds/build-details/P88542510/targets/cf_x86_64_phone-trunk_staging-userdebug, but may also be present on other builds.\n\nThis is a different branch than your cl originated on (it was automerged), and thus might better reflect the state of the code in the git_main branch.",
+      "range": {
+        "startLine": 171,
+        "startChar": 0,
+        "endLine": 171,
+        "endChar": 0
+      },
+      "revId": "e53899e0bc677247d4fda66ffd3a327e69d33380",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
