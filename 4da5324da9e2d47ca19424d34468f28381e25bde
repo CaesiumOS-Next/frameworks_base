@@ -34,6 +34,24 @@
       ],
       "revId": "4da5324da9e2d47ca19424d34468f28381e25bde",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "908b46cb_6dcd673f",
+        "filename": "services/core/java/com/android/server/statusbar/StatusBarManagerService.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 1517,
+      "author": {
+        "id": 3183690
+      },
+      "writtenOn": "2025-01-20T13:20:49Z",
+      "side": 1,
+      "message": "Fix applied. Thanks for you help @valiiftime@google.com",
+      "parentUuid": "3d240979_557a8b17",
+      "revId": "4da5324da9e2d47ca19424d34468f28381e25bde",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
