@@ -1,0 +1,39 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3d240979_557a8b17",
+        "filename": "services/core/java/com/android/server/statusbar/StatusBarManagerService.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 1517,
+      "author": {
+        "id": 1347262
+      },
+      "writtenOn": "2025-01-20T13:16:11Z",
+      "side": 1,
+      "message": "bar.",
+      "fixSuggestions": [
+        {
+          "fixId": "8012ac73_91b10dcb",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "services/core/java/com/android/server/statusbar/StatusBarManagerService.java",
+              "range": {
+                "startLine": 1517,
+                "startChar": 0,
+                "endLine": 1518,
+                "endChar": 0
+              },
+              "replacement": "                        bar.setImeWindowStatus(displayId, vis, backDisposition, showImeSwitcher);\n"
+            }
+          ]
+        }
+      ],
+      "revId": "4da5324da9e2d47ca19424d34468f28381e25bde",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
