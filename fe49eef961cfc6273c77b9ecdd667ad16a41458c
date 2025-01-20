@@ -16,6 +16,24 @@
       "message": "If you get here with `mBar` being `null` and `bar` being not `null`, it means that the binder connection to the service has died; you\u0027ll just get a `RemoteException` next.\n\nA much simpler solution would be to not do what you\u0027re doing and simply catch the `NullPointerException` just like you catch the `RemoteException`.",
       "revId": "fe49eef961cfc6273c77b9ecdd667ad16a41458c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ea82f464_b0157915",
+        "filename": "services/core/java/com/android/server/statusbar/StatusBarManagerService.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 1517,
+      "author": {
+        "id": 3183690
+      },
+      "writtenOn": "2025-01-20T15:50:43Z",
+      "side": 1,
+      "message": "I think this much better to catch NullException.We should handle the NullException and the the RemoteException which we can not controll",
+      "parentUuid": "97799f77_5b9574d9",
+      "revId": "fe49eef961cfc6273c77b9ecdd667ad16a41458c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
