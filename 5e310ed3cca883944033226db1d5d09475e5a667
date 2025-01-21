@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a772f219_41c2ce50",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1974730
+      },
+      "writtenOn": "2025-01-21T19:04:33Z",
+      "side": 1,
+      "message": "Hi Adam, this needs API+2 because we\u0027re removing @FlaggedApi on a graduated API.",
+      "revId": "5e310ed3cca883944033226db1d5d09475e5a667",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
