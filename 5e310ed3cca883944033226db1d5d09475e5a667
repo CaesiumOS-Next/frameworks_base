@@ -16,6 +16,24 @@
       "message": "Hi Adam, this needs API+2 because we\u0027re removing @FlaggedApi on a graduated API.",
       "revId": "5e310ed3cca883944033226db1d5d09475e5a667",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "97e69186_b7d41b39",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1165283
+      },
+      "writtenOn": "2025-01-21T22:53:20Z",
+      "side": 1,
+      "message": "Am I being added for `current.txt`? If so, I\u0027m not really an owner of that. That\u0027s an API file, and you need to add an API council member to get API-review+2. My +2 wouldn\u0027t even help. I don\u0027t know why they don\u0027t make gerrit make that clearer (and sync the api owner\u0027s file with the api councilers).\n\nhttps://g3doc.corp.google.com/company/teams/android-api-council/review-process.md?cl\u003dhead#api-review-2",
+      "parentUuid": "a772f219_41c2ce50",
+      "revId": "5e310ed3cca883944033226db1d5d09475e5a667",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
