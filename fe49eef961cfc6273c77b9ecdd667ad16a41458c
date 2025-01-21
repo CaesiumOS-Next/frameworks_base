@@ -52,6 +52,24 @@
       "parentUuid": "ea82f464_b0157915",
       "revId": "fe49eef961cfc6273c77b9ecdd667ad16a41458c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "96b5d1c4_6bd31e7f",
+        "filename": "services/core/java/com/android/server/statusbar/StatusBarManagerService.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 1517,
+      "author": {
+        "id": 1996295
+      },
+      "writtenOn": "2025-01-21T15:09:59Z",
+      "side": 1,
+      "message": "This isn\u0027t what I meant but I think it\u0027s nicer than what I had in mind. Thank you.",
+      "parentUuid": "7cb37177_1f43ed72",
+      "revId": "fe49eef961cfc6273c77b9ecdd667ad16a41458c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
