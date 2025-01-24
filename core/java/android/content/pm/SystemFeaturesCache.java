@@ -20,6 +20,7 @@ import android.annotation.NonNull;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.util.ArrayMap;
+import android.util.Log;
 
 import com.android.internal.annotations.VisibleForTesting;
 
@@ -29,25 +30,25 @@ import java.util.Collection;
 /**
  * A simple cache for SDK-defined system feature versions.
  *
- * The dense representation minimizes any per-process memory impact (<1KB). The tradeoff is that
+ * <p>The dense representation minimizes any per-process memory impact (<1KB). The tradeoff is that
  * custom, non-SDK defined features are not captured by the cache, for which we can rely on the
  * usual IPC cache for related queries.
  *
  * @hide
  */
 public final class SystemFeaturesCache implements Parcelable {
+    private static final String TAG = "SystemFeaturesCache";
 
     // Sentinel value used for SDK-declared features that are unavailable on the current device.
     private static final int UNAVAILABLE_FEATURE_VERSION = Integer.MIN_VALUE;
 
     // An array of versions for SDK-defined features, from [0, PackageManager.SDK_FEATURE_COUNT).
-    @NonNull
-    private final int[] mSdkFeatureVersions;
+    @NonNull private final int[] mSdkFeatureVersions;
 
     /**
      * Populates the cache from the set of all available {@link FeatureInfo} definitions.
      *
-     * System features declared in {@link PackageManager} will be entered into the cache based on
+     * <p>System features declared in {@link PackageManager} will be entered into the cache based on
      * availability in this feature set. Other custom system features will be ignored.
      */
     public SystemFeaturesCache(@NonNull ArrayMap<String, FeatureInfo> availableFeatures) {
@@ -61,12 +62,21 @@ public final class SystemFeaturesCache implements Parcelable {
         Arrays.fill(mSdkFeatureVersions, UNAVAILABLE_FEATURE_VERSION);
 
         // Then populate SDK-defined feature versions from the full set of runtime features.
+        int cachedFeatureCount = 0;
         for (FeatureInfo fi : availableFeatures) {
             int sdkFeatureIndex = PackageManager.maybeGetSdkFeatureIndex(fi.name);
             if (sdkFeatureIndex >= 0) {
                 mSdkFeatureVersions[sdkFeatureIndex] = fi.version;
+                ++cachedFeatureCount;
             }
         }
+
+        // This should only be initialized/logged once from ground truth bootstrap in system server.
+        Log.d(
+                TAG,
+                String.format(
+                        "Cached %d of %d available system features.",
+                        cachedFeatureCount, availableFeatures.size()));
     }
 
     /** Only used by @{code CREATOR.createFromParcel(...)} */
