@@ -1,0 +1,68 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e0d7aed3_35808d62",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1057373
+      },
+      "writtenOn": "2025-01-30T23:22:56Z",
+      "side": 1,
+      "message": "We lose the potential benefits of tracking fd ownership with this revert. aosp/2982694 has the original motivation.\n\nMight be nice to add that back eventually.",
+      "range": {
+        "startLine": 11,
+        "startChar": 19,
+        "endLine": 11,
+        "endChar": 50
+      },
+      "revId": "cc0028235b70929d0bd2d6175699ece9c3231025",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "037d4c31_e50398e7",
+        "filename": "core/tests/coretests/src/android/content/ContentResolverTest.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1057373
+      },
+      "writtenOn": "2025-01-30T23:22:56Z",
+      "side": 1,
+      "message": "You still need the dup I think, otherwise both mImage and the new ParcelFileDescriptor think they have ownership of the file descriptor.",
+      "range": {
+        "startLine": 90,
+        "startChar": 16,
+        "endLine": 90,
+        "endChar": 20
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "f00f4ae4_6a0139c9",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "core/tests/coretests/src/android/content/ContentResolverTest.java",
+              "range": {
+                "startLine": 90,
+                "startChar": 0,
+                "endLine": 91,
+                "endChar": 0
+              },
+              "replacement": "                ParcelFileDescriptor.dup(mImage.getFileDescriptor()), 0, mSize, null);\n"
+            }
+          ]
+        }
+      ],
+      "revId": "cc0028235b70929d0bd2d6175699ece9c3231025",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
