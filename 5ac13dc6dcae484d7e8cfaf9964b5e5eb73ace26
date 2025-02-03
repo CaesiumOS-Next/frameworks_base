@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d4e271dd_9402b2af",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1304263
+      },
+      "writtenOn": "2025-02-03T05:29:12Z",
+      "side": 1,
+      "message": "As the changes for adopting this new APIs are not yet merged, I think revert-first may be best fit the current timeline and resource.",
+      "revId": "5ac13dc6dcae484d7e8cfaf9964b5e5eb73ace26",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
