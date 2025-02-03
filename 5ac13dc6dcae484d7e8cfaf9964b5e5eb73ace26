@@ -16,6 +16,23 @@
       "message": "As the changes for adopting this new APIs are not yet merged, I think revert-first may be best fit the current timeline and resource.",
       "revId": "5ac13dc6dcae484d7e8cfaf9964b5e5eb73ace26",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "20e9c33e_e1c2657d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1304263
+      },
+      "writtenOn": "2025-02-03T06:32:56Z",
+      "side": 1,
+      "message": "on-hold the revert",
+      "revId": "5ac13dc6dcae484d7e8cfaf9964b5e5eb73ace26",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
