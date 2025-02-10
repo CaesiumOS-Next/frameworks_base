@@ -429,7 +429,7 @@ public class ZygoteInit {
                     null /*dependentPackages*/, null /*dependencies*/, false /*isNative*/));
         }
 
-        if (Flags.enableMediaAndLocationPreload()) {
+        if (true || Flags.enableMediaAndLocationPreload()) {
             // As these libraries are technically optional and not necessarily inherited from
             // base_system.mk, only cache them if they exist.
             final String mediaJarPath = "/system/framework/com.android.media.remotedisplay.jar";
