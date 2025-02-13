@@ -52,6 +52,24 @@
       "parentUuid": "c0bb0e85_b09ae607",
       "revId": "f63863a63022843ab63262eb4f7f5e9afccc4e5f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bd7bf517_822a00c3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1750078
+      },
+      "writtenOn": "2025-02-13T23:24:10Z",
+      "side": 1,
+      "message": "I guess Pixel 7 and newer devices wouldn\u0027t use it but there\u0027re other OEMs which I don\u0027t really know if they do ship multipe ABIs or not?\n\nIf the future is converging toward a single zygote then I can prevent preloading of HttpEngine for seconday zygotes from S -\u003e V only. It will still be code that lives in AOSP as it gets shipped via mainline and mainline cuts from main.",
+      "parentUuid": "986c2edc_f8966323",
+      "revId": "f63863a63022843ab63262eb4f7f5e9afccc4e5f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
