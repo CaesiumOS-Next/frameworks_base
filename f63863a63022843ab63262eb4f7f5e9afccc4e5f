@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f11fdf30_0ef0b72f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1047255
+      },
+      "writtenOn": "2025-02-13T22:15:43Z",
+      "side": 1,
+      "message": "What device are you targeting with this?  Most modern devices only have a single Zygote.",
+      "revId": "f63863a63022843ab63262eb4f7f5e9afccc4e5f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
