@@ -34,6 +34,24 @@
       "parentUuid": "f11fdf30_0ef0b72f",
       "revId": "f63863a63022843ab63262eb4f7f5e9afccc4e5f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "986c2edc_f8966323",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1047255
+      },
+      "writtenOn": "2025-02-13T22:23:09Z",
+      "side": 1,
+      "message": "Pixel 7 and newer devices have a single ABI and therefore a single Zygote.\n\nMy first thought is that I don\u0027t want to add code to AOSP that is irrelevant to newer devices.  Perhaps, if this is necessary, it should be committed directly to release branches?",
+      "parentUuid": "c0bb0e85_b09ae607",
+      "revId": "f63863a63022843ab63262eb4f7f5e9afccc4e5f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
