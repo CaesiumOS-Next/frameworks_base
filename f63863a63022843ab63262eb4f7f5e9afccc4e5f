@@ -16,6 +16,24 @@
       "message": "What device are you targeting with this?  Most modern devices only have a single Zygote.",
       "revId": "f63863a63022843ab63262eb4f7f5e9afccc4e5f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c0bb0e85_b09ae607",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1750078
+      },
+      "writtenOn": "2025-02-13T22:17:41Z",
+      "side": 1,
+      "message": "This is currently targetted for B+ devices since Zygote is not a mainline module, I\u0027ll be sending another CL to prevent preloading HttpEngine for S -\u003e V. I\u0027m not sure if devices from S+ even have more than a single Zygote.\n\n@jdduke@google.com What do you think? Do we need to stop preloading HttpEngine for B+ or is it not worth the effort and we should just target S -\u003e V?",
+      "parentUuid": "f11fdf30_0ef0b72f",
+      "revId": "f63863a63022843ab63262eb4f7f5e9afccc4e5f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
