@@ -70,6 +70,24 @@
       "parentUuid": "986c2edc_f8966323",
       "revId": "f63863a63022843ab63262eb4f7f5e9afccc4e5f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "25dca73c_f7672649",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1064003
+      },
+      "writtenOn": "2025-02-14T17:54:26Z",
+      "side": 1,
+      "message": "The concern is definitely more for older, lower-end devices and other OEMs that ship multiple ABIs but would get this update (either via this load, or via the mainline update).\n\n@chris is your concern here the added complexity? When we rip out support for the secondary zygote, this will naturally fall out. I don\u0027t feel strongly either way though.",
+      "parentUuid": "bd7bf517_822a00c3",
+      "revId": "f63863a63022843ab63262eb4f7f5e9afccc4e5f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
