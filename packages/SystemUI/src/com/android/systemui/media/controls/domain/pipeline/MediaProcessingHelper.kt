@@ -109,8 +109,12 @@ private fun areCustomActionsEqual(
     }
     if (firstAction.extras != null) {
         firstAction.extras.keySet().forEach { key ->
-            if (firstAction.extras[key] != secondAction.extras[key]) {
-                return false
+            try {
+                if (firstAction.extras[key] != secondAction.extras[key]) {
+                    return false
+                }
+            } catch (e: Exception) {
+                Log.e(TAG, "Cannot compare/unparcel extras")
             }
         }
     }
