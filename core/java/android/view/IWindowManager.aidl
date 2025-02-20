@@ -763,6 +763,7 @@ interface IWindowManager
     /**
      * Called when a remote process updates the requested visibilities of insets on a display window
      * container.
+<<<<<<< HEAD
      */
     @EnforcePermission("MANAGE_APP_TOKENS")
     void updateDisplayWindowRequestedVisibleTypes(int displayId, int requestedVisibleTypes);
@@ -770,6 +771,15 @@ interface IWindowManager
     /**
      * Called to get the expected window insets.
      *
+=======
+     * container.
+     */
+    @EnforcePermission("MANAGE_APP_TOKENS")
+    void updateDisplayWindowRequestedVisibleTypes(int displayId, int visibleTypes, int mask,
+            in @nullable ImeTracker.Token statsToken);
+
+    /**
+>>>>>>> PATCH
      * @return {@code true} if system bars are always consumed.
      */
     boolean getWindowInsets(int displayId, in IBinder token, out InsetsState outInsetsState);

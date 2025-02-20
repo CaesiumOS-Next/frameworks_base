@@ -220,7 +220,6 @@ public class DisplayImeController implements DisplayController.OnDisplaysChanged
     public class PerDisplay implements DisplayInsetsController.OnInsetsChangedListener {
         final int mDisplayId;
         final InsetsState mInsetsState = new InsetsState();
-        @InsetsType int mRequestedVisibleTypes = WindowInsets.Type.defaultVisible();
         boolean mImeRequestedVisible =
                 (WindowInsets.Type.defaultVisible() & WindowInsets.Type.ime()) != 0;
         InsetsSourceControl mImeSourceControl = null;
@@ -415,6 +414,7 @@ public class DisplayImeController implements DisplayController.OnDisplaysChanged
                     ? mRequestedVisibleTypes | WindowInsets.Type.ime()
                     : mRequestedVisibleTypes & ~WindowInsets.Type.ime();
             try {
+<<<<<<< HEAD
                 mWmService.updateDisplayWindowRequestedVisibleTypes(mDisplayId,
                         mRequestedVisibleTypes);
             } catch (RemoteException e) {
@@ -427,6 +427,18 @@ public class DisplayImeController implements DisplayController.OnDisplaysChanged
 
         private boolean calcIsFloating(InsetsSource imeSource) {
             final Rect frame = imeSource.getFrame();
+=======
+         */
+        private void setVisibleDirectly(boolean visible, @Nullable ImeTracker.Token statsToken) {
+            mInsetsState.setSourceVisible(InsetsSource.ID_IME, visible);
+            int visibleTypes = visible ? WindowInsets.Type.ime() : 0;
+            try {
+                mWmService.updateDisplayWindowRequestedVisibleTypes(mDisplayId,
+                        visibleTypes, WindowInsets.Type.ime(), statsToken);
+            } catch (RemoteException e) {
+            }
+        }
+>>>>>>> PATCH
             if (frame.height() == 0) {
                 return true;
             }
