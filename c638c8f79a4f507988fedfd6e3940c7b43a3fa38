@@ -16,6 +16,24 @@
       "message": "Please explain how to test this change",
       "revId": "c638c8f79a4f507988fedfd6e3940c7b43a3fa38",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b2c51d4e_adc6d8d9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1946610
+      },
+      "writtenOn": "2025-02-21T17:22:08Z",
+      "side": 1,
+      "message": "To clarify: please explain how to reproduce the issue this is fixing and how you verified that this does not cause regressions.",
+      "parentUuid": "8de41038_7bf45e0c",
+      "revId": "c638c8f79a4f507988fedfd6e3940c7b43a3fa38",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
