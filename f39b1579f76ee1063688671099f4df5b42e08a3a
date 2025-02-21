@@ -50,6 +50,29 @@
       "message": "Okay tests passed, PTAL?",
       "revId": "f39b1579f76ee1063688671099f4df5b42e08a3a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2a27a149_b5b4e1ea",
+        "filename": "core/java/android/content/BroadcastReceiver.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1891746
+      },
+      "writtenOn": "2025-02-21T18:38:25Z",
+      "side": 1,
+      "message": "Why do we need both annotations? I thought RavenwoodPartiallyAllowlisted implies keep",
+      "range": {
+        "startLine": 55,
+        "startChar": 0,
+        "endLine": 56,
+        "endChar": 55
+      },
+      "revId": "f39b1579f76ee1063688671099f4df5b42e08a3a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
