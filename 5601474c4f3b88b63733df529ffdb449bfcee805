@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9daf1bf5_5a1049aa",
+        "filename": "apct-tests/perftests/core/src/android/conscrypt/conscrypt/ClientSocketPerfTest.java",
+        "patchSetId": 17
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1334152
+      },
+      "writtenOn": "2025-02-21T11:18:40Z",
+      "side": 1,
+      "message": "I don\u0027t think there\u0027s any minSdk restriction here, so you can use List.of() or even Guava\u0027s ImmutableList",
+      "range": {
+        "startLine": 111,
+        "startChar": 35,
+        "endLine": 111,
+        "endChar": 48
+      },
+      "revId": "5601474c4f3b88b63733df529ffdb449bfcee805",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "96a48fb9_d907bbc1",
+        "filename": "apct-tests/perftests/core/src/android/conscrypt/conscrypt/ClientSocketPerfTest.java",
+        "patchSetId": 17
+      },
+      "lineNbr": 237,
+      "author": {
+        "id": 1334152
+      },
+      "writtenOn": "2025-02-21T11:18:40Z",
+      "side": 1,
+      "message": "isn\u0027t it an error if the future is null?",
+      "range": {
+        "startLine": 237,
+        "startChar": 29,
+        "endLine": 237,
+        "endChar": 33
+      },
+      "revId": "5601474c4f3b88b63733df529ffdb449bfcee805",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7f9f2f02_7a08ea13",
+        "filename": "apct-tests/perftests/core/src/android/conscrypt/conscrypt/EngineWrapPerfTest.java",
+        "patchSetId": 17
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1334152
+      },
+      "writtenOn": "2025-02-21T11:18:40Z",
+      "side": 1,
+      "message": "Up to you, but this list is duplicated a lot, maybe split it and the message sizes out into a params class?  Or do you think that adds too much spaghetti?\n\n(no minSdk so you could maybe even use records!)",
+      "range": {
+        "startLine": 95,
+        "startChar": 25,
+        "endLine": 95,
+        "endChar": 32
+      },
+      "revId": "5601474c4f3b88b63733df529ffdb449bfcee805",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
