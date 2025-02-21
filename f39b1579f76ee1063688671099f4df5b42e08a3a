@@ -73,6 +73,30 @@
       },
       "revId": "f39b1579f76ee1063688671099f4df5b42e08a3a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f90e3b35_5f69b403",
+        "filename": "core/java/android/content/BroadcastReceiver.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1003801
+      },
+      "writtenOn": "2025-02-21T20:12:15Z",
+      "side": 1,
+      "message": "Yeah I originally meant that but then I didn\u0027t want to give two separate meanings to the single annotation.\n\nNow @RavenwoodPartiallyAllowlisted just tells the reader (of the code) that you can\u0027t use annotations freely in this class, and we don\u0027t actually change what actual policies are in effect.\n -- usually @KeepPartialClass on the same class, but maybe we just have annotations on nested classes. We may also have @Ridrect.\n \nI think this is easier to explain to other people, than \"oh this RavenwoodPartiallyAllowlisted means XXX _and_ also YYY\".\n\n@RavenwoodPartiallyAllowlisted is also in a way redundant, because it wouldn\u0027t work without `allow-annotation` in the policy file, and if we have it in the policy file, we don\u0027t _really_ need @RavenwoodPartiallyAllowlisted. But again, this is purely a marker to warn the code maintainer they can\u0027t freely expose more APIs. (without it, you\u0027d have to carefully check the policy files to see if that\u0027s the case.)",
+      "parentUuid": "2a27a149_b5b4e1ea",
+      "range": {
+        "startLine": 55,
+        "startChar": 0,
+        "endLine": 56,
+        "endChar": 55
+      },
+      "revId": "f39b1579f76ee1063688671099f4df5b42e08a3a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
