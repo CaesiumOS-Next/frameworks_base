@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7a82a7bf_b78fb17b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1003247
+      },
+      "writtenOn": "2025-02-26T02:36:36Z",
+      "side": 1,
+      "message": "this isn\u0027t a wakelock, just a lock, it doesn\u0027t force wake / prevent suspend",
+      "range": {
+        "startLine": 7,
+        "startChar": 28,
+        "endLine": 7,
+        "endChar": 36
+      },
+      "revId": "1719d4c7658f283306637d7a015832ec206a82bf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2e30702b_bd1656de",
         "filename": "services/core/java/com/android/server/adb/AdbService.java",
         "patchSetId": 2
