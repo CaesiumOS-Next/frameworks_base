@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9f7a016f_ddab51b6",
+        "filename": "services/core/java/com/android/server/adb/AdbService.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 539,
+      "author": {
+        "id": 1758351
+      },
+      "writtenOn": "2025-02-26T03:58:20Z",
+      "side": 1,
+      "message": "I think the way the API is called is correct. All the multicast lock API is async so there is no need for syncing.",
+      "revId": "856ea46a017f6cbbdf4c72a9dae544a72020aef1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
