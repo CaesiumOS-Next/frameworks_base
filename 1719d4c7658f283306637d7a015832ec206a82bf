@@ -45,6 +45,52 @@
       },
       "revId": "1719d4c7658f283306637d7a015832ec206a82bf",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e1126631_48a5bccd",
+        "filename": "services/core/java/com/android/server/adb/AdbService.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 514,
+      "author": {
+        "id": 1003247
+      },
+      "writtenOn": "2025-02-26T02:37:13Z",
+      "side": 1,
+      "message": "perhaps acquired",
+      "range": {
+        "startLine": 514,
+        "startChar": 25,
+        "endLine": 514,
+        "endChar": 34
+      },
+      "revId": "1719d4c7658f283306637d7a015832ec206a82bf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "80211dc6_f5768c56",
+        "filename": "services/core/java/com/android/server/adb/AdbService.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 521,
+      "author": {
+        "id": 1003247
+      },
+      "writtenOn": "2025-02-26T02:37:13Z",
+      "side": 1,
+      "message": "released?",
+      "range": {
+        "startLine": 521,
+        "startChar": 25,
+        "endLine": 521,
+        "endChar": 34
+      },
+      "revId": "1719d4c7658f283306637d7a015832ec206a82bf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
