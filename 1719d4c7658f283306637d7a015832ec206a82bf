@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2e30702b_bd1656de",
+        "filename": "services/core/java/com/android/server/adb/AdbService.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 506,
+      "author": {
+        "id": 1003247
+      },
+      "writtenOn": "2025-02-26T02:36:08Z",
+      "side": 1,
+      "message": "move into the if?",
+      "range": {
+        "startLine": 506,
+        "startChar": 8,
+        "endLine": 506,
+        "endChar": 19
+      },
+      "revId": "1719d4c7658f283306637d7a015832ec206a82bf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
