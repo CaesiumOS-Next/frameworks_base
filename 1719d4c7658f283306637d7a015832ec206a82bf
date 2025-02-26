@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "905dd1d0_b09df3fb",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1083168
+      },
+      "writtenOn": "2025-02-26T02:44:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7a82a7bf_b78fb17b",
+      "range": {
+        "startLine": 7,
+        "startChar": 28,
+        "endLine": 7,
+        "endChar": 36
+      },
+      "revId": "1719d4c7658f283306637d7a015832ec206a82bf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2e30702b_bd1656de",
@@ -37,6 +61,30 @@
       "writtenOn": "2025-02-26T02:36:08Z",
       "side": 1,
       "message": "move into the if?",
+      "range": {
+        "startLine": 506,
+        "startChar": 8,
+        "endLine": 506,
+        "endChar": 19
+      },
+      "revId": "1719d4c7658f283306637d7a015832ec206a82bf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c74b78d3_7666ed46",
+        "filename": "services/core/java/com/android/server/adb/AdbService.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 506,
+      "author": {
+        "id": 1083168
+      },
+      "writtenOn": "2025-02-26T02:44:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2e30702b_bd1656de",
       "range": {
         "startLine": 506,
         "startChar": 8,
@@ -70,6 +118,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4eb78f60_40fcebd5",
+        "filename": "services/core/java/com/android/server/adb/AdbService.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 514,
+      "author": {
+        "id": 1083168
+      },
+      "writtenOn": "2025-02-26T02:44:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e1126631_48a5bccd",
+      "range": {
+        "startLine": 514,
+        "startChar": 25,
+        "endLine": 514,
+        "endChar": 34
+      },
+      "revId": "1719d4c7658f283306637d7a015832ec206a82bf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "80211dc6_f5768c56",
@@ -83,6 +155,30 @@
       "writtenOn": "2025-02-26T02:37:13Z",
       "side": 1,
       "message": "released?",
+      "range": {
+        "startLine": 521,
+        "startChar": 25,
+        "endLine": 521,
+        "endChar": 34
+      },
+      "revId": "1719d4c7658f283306637d7a015832ec206a82bf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "501e302c_ad398374",
+        "filename": "services/core/java/com/android/server/adb/AdbService.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 521,
+      "author": {
+        "id": 1083168
+      },
+      "writtenOn": "2025-02-26T02:44:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "80211dc6_f5768c56",
       "range": {
         "startLine": 521,
         "startChar": 25,
