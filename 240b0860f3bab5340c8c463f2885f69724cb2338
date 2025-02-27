@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d9790f62_ff3c74ce",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1963880
+      },
+      "writtenOn": "2025-02-27T07:32:49Z",
+      "side": 1,
+      "message": "Hi AOSP team, can you help me to review? thank you!\n\n\nThis change is similar to https://cs.android.com/android/_/android/platform/frameworks/base/+/6c5591bba0d82e32b1e8208cca3dd5c34a1bfa66.\n\nWe found this issue on tablets that don\u0027t support SIM cards.",
+      "revId": "240b0860f3bab5340c8c463f2885f69724cb2338",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
