@@ -33,6 +33,24 @@
       "message": "hi Vlad Popa, can you help me to review? thank you!",
       "revId": "240b0860f3bab5340c8c463f2885f69724cb2338",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4a270680_0a3efeae",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1570284
+      },
+      "writtenOn": "2025-02-28T19:44:51Z",
+      "side": 1,
+      "message": "LGTM",
+      "parentUuid": "8924dae5_a70028e1",
+      "revId": "240b0860f3bab5340c8c463f2885f69724cb2338",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
