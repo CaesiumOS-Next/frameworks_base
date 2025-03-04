@@ -49,7 +49,6 @@ class Annotations {
                 "@android.ravenwood.annotation.RavenwoodIgnore"
             FilterPolicy.Remove ->
                 "@android.ravenwood.annotation.RavenwoodRemove"
-            FilterPolicy.AnnotationAllowed -> null // Can't convert to an annotation.
         }
     }
 

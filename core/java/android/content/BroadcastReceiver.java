@@ -52,8 +52,6 @@ import com.android.internal.os.DebugStore;
  * <a href="{@docRoot}guide/components/broadcasts.html">Broadcasts</a> developer guide.</p></div>
  *
  */
-@android.ravenwood.annotation.RavenwoodPartiallyAllowlisted
-@android.ravenwood.annotation.RavenwoodKeepPartialClass
 public abstract class BroadcastReceiver {
     @UnsupportedAppUsage
     private PendingResult mPendingResult;
@@ -363,7 +361,6 @@ public abstract class BroadcastReceiver {
         }
     }
 
-    @android.ravenwood.annotation.RavenwoodKeep
     public BroadcastReceiver() {
     }
 

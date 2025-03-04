@@ -191,14 +191,7 @@ fun String.toJvmClassName(): String {
 }
 
 fun String.toHumanReadableClassName(): String {
-    var ret = this
-    if (ret.startsWith("L")) {
-        ret = ret.substring(1)
-    }
-    if (ret.endsWith(";")) {
-        ret = ret.substring(0, ret.length - 1)
-    }
-    return ret.replace('/', '.')
+    return this.replace('/', '.')
 }
 
 fun String.toHumanReadableMethodName(): String {

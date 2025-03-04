@@ -15,51 +15,44 @@
  */
 package com.android.hoststubgen.filters
 
-enum class FilterPolicy(val policyStringOrPrefix: String) {
+enum class FilterPolicy {
     /**
      * Keep the item in the jar file.
      */
-    Keep("keep"),
+    Keep,
 
     /**
      * Only usable with classes. Keep the class in the jar, and also all its members.
      * Each member can have another policy to override it.
      */
-    KeepClass("keepclass"),
+    KeepClass,
 
     /**
      * Only usable with methods. Replace a method with a "substitution" method.
      */
-    Substitute("@"), // @ is a prefix
+    Substitute,
 
     /**
      * Only usable with methods. Redirect a method to a method in the substitution class.
      */
-    Redirect("redirect"),
+    Redirect,
 
     /**
      * Only usable with methods. The item will be kept in the impl jar file, but when called,
      * it'll throw.
      */
-    Throw("throw"),
+    Throw,
 
     /**
      * Only usable with methods. The item will be kept in the impl jar file, but when called,
      * it'll no-op.
      */
-    Ignore("ignore"),
+    Ignore,
 
     /**
      * Remove the item completely.
      */
-    Remove("remove"),
-
-    /**
-     * Special policy used for "partial annotation allowlisting". This policy must not be
-     * used in the "main" filter chain. (which would be detected by [SanitizationFilter].)
-     * It's used in a separate filter chain used by [AnnotationBasedFilter].
-     */
-    AnnotationAllowed("allow-annotation");
+    Remove;
 
     val needsInOutput: Boolean
         get() {
@@ -73,7 +66,7 @@ enum class FilterPolicy(val policyStringOrPrefix: String) {
     val isUsableWithClasses: Boolean
         get() {
             return when (this) {
-                Keep, KeepClass, Remove, AnnotationAllowed -> true
+                Keep, KeepClass, Remove -> true
                 else -> false
             }
         }
@@ -82,7 +75,6 @@ enum class FilterPolicy(val policyStringOrPrefix: String) {
     val isUsableWithFields: Boolean
         get() {
             return when (this) {
-                // AnnotationAllowed isn't supported on fields (yet). We could support it if needed.
                 Keep, Remove -> true
                 else -> false
             }
@@ -110,7 +102,7 @@ enum class FilterPolicy(val policyStringOrPrefix: String) {
     val isSupported: Boolean
         get() {
             return when (this) {
-                Keep, KeepClass, Substitute, Redirect, AnnotationAllowed -> true
+                Keep, KeepClass, Substitute, Redirect -> true
                 else -> false
             }
         }
@@ -119,25 +111,6 @@ enum class FilterPolicy(val policyStringOrPrefix: String) {
         get() {
             return when (this) {
                 Redirect, Throw, Ignore -> true
-                else -> false
-            }
-        }
-
-    val isClassWide: Boolean
-        get() {
-            return when (this) {
-                Remove, KeepClass -> true
-                else -> false
-            }
-        }
-
-    /**
-     * Internal policies must not be used in the main filter chain.
-     */
-    val isInternalPolicy: Boolean
-        get() {
-            return when (this) {
-                AnnotationAllowed -> true
                 else -> false
             }
         }

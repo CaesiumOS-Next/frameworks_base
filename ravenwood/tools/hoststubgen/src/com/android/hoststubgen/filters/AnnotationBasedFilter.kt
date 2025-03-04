@@ -53,19 +53,10 @@ class AnnotationBasedFilter(
     redirectAnnotations_: Set<String>,
     redirectionClassAnnotations_: Set<String>,
     classLoadHookAnnotations_: Set<String>,
-    partiallyAllowlistedClassAnnotations_: Set<String>,
     keepStaticInitializerAnnotations_: Set<String>,
     private val annotationAllowedClassesFilter: ClassPredicate,
     fallback: OutputFilter,
 ) : DelegatingFilter(fallback) {
-
-    /**
-     * This is a filter chain to check if an entity (class/member) has a "allow-annotation"
-     * policy.
-     */
-    var annotationAllowedMembers: OutputFilter =
-        ConstantFilter(FilterPolicy.Remove, "default disallowed")
-
     private val keepAnnotations = convertToInternalNames(keepAnnotations_)
     private val keepClassAnnotations = convertToInternalNames(keepClassAnnotations_)
     private val throwAnnotations = convertToInternalNames(throwAnnotations_)
@@ -76,9 +67,6 @@ class AnnotationBasedFilter(
     private val redirectionClassAnnotations =
         convertToInternalNames(redirectionClassAnnotations_)
     private val classLoadHookAnnotations = convertToInternalNames(classLoadHookAnnotations_)
-    private val partiallyAllowlistedClassAnnotations =
-        convertToInternalNames(partiallyAllowlistedClassAnnotations_)
-
     private val keepStaticInitializerAnnotations =
         convertToInternalNames(keepStaticInitializerAnnotations_)
 
@@ -91,22 +79,17 @@ class AnnotationBasedFilter(
             redirectAnnotations +
             substituteAnnotations
 
-    /**
-     * Annotations that require "fully" allowlisting.
-     */
-    private val allowlistRequiringAnnotations = visibilityAnnotations +
+    /** All the annotations we use. */
+    private val allAnnotations = visibilityAnnotations +
             redirectionClassAnnotations +
             classLoadHookAnnotations +
             keepStaticInitializerAnnotations
-            // partiallyAllowlistedClassAnnotations // This is excluded.
 
     /**
-     * We always keep these types.
-     *
-     * Note, this one is in a [convertToJvmNames] format unlike other ones, because of how it's
-     * used.
+     * All the annotations we use. Note, this one is in a [convertToJvmNames] format unlike
+     * other ones, because of how it's used.
      */
-    private val alwaysKeepClasses: Set<String> = convertToJvmNames(
+    private val allAnnotationClasses: Set<String> = convertToJvmNames(
         keepAnnotations_ +
                 keepClassAnnotations_ +
                 throwAnnotations_ +
@@ -115,7 +98,6 @@ class AnnotationBasedFilter(
                 substituteAnnotations_ +
                 redirectionClassAnnotations_ +
                 classLoadHookAnnotations_ +
-                partiallyAllowlistedClassAnnotations_ +
                 keepStaticInitializerAnnotations_
     )
 
@@ -140,7 +122,7 @@ class AnnotationBasedFilter(
 
     override fun getPolicyForClass(className: String): FilterPolicyWithReason {
         // If it's any of the annotations, then always keep it.
-        if (alwaysKeepClasses.contains(className)) {
+        if (allAnnotationClasses.contains(className)) {
             return FilterPolicy.KeepClass.withReason("HostStubGen Annotation")
         }
 
@@ -215,34 +197,13 @@ class AnnotationBasedFilter(
         val classLoadHooks: List<String>
 
         init {
-            // First, check if the class has "partially-allowed" policy.
-            // This filter chain contains
-            val annotationPartiallyAllowedClass =
-                annotationAllowedMembers.getPolicyForClass(cn.name).policy ==
-                        FilterPolicy.AnnotationAllowed
-
-            // If a class is partially-allowlisted, then it's not fully-allowlisted.
-            // Otherwise, just use annotationAllowedClassesFilter.
-            val fullyAllowAnnotation = !annotationPartiallyAllowedClass &&
-                annotationAllowedClassesFilter.matches(cn.name)
-            detectInvalidAnnotations(isClass = true,
-                cn.name, fullyAllowAnnotation, annotationPartiallyAllowedClass,
-                annotationPartiallyAllowedClass,
+            val allowAnnotation = annotationAllowedClassesFilter.matches(cn.name)
+            detectInvalidAnnotations(
+                cn.name, allowAnnotation,
                 cn.visibleAnnotations, cn.invisibleAnnotations,
                 "class", cn.name
             )
-
-            val classAnnot = cn.findAnyAnnotation(visibilityAnnotations)
-            classPolicy = classAnnot?.policy
-
-            classPolicy?.let { policy ->
-                if (policy.policy.isClassWide && annotationPartiallyAllowedClass) {
-                    errors.onErrorFound("Class ${cn.name.toHumanReadableClassName()}" +
-                            " has class wide annotation" +
-                            " ${classAnnot?.desc?.toHumanReadableClassName()}" +
-                            ", which can't be used in a partially-allowlisted class")
-                }
-            }
+            classPolicy = cn.findAnyAnnotation(visibilityAnnotations)?.policy
             redirectionClass = cn.findAnyAnnotation(redirectionClassAnnotations)?.let { an ->
                 getAnnotationField(an, "value")?.let { resolveRelativeClass(cn, it) }
             }
@@ -255,10 +216,8 @@ class AnnotationBasedFilter(
             }
 
             for (fn in cn.fields ?: emptyList()) {
-                val partiallyAllowAnnotation = false // No partial allowlisting on fields (yet)
-                detectInvalidAnnotations(isClass = false,
-                    cn.name, fullyAllowAnnotation, partiallyAllowAnnotation,
-                    annotationPartiallyAllowedClass,
+                detectInvalidAnnotations(
+                    cn.name, allowAnnotation,
                     fn.visibleAnnotations, fn.invisibleAnnotations,
                     "field", cn.name, fn.name
                 )
@@ -268,12 +227,8 @@ class AnnotationBasedFilter(
             }
 
             for (mn in cn.methods ?: emptyList()) {
-                val partiallyAllowAnnotation =
-                    annotationAllowedMembers.getPolicyForMethod(cn.name, mn.name, mn.desc).policy ==
-                            FilterPolicy.AnnotationAllowed
-                detectInvalidAnnotations(isClass = false,
-                    cn.name, fullyAllowAnnotation, partiallyAllowAnnotation,
-                    annotationPartiallyAllowedClass,
+                detectInvalidAnnotations(
+                    cn.name, allowAnnotation,
                     mn.visibleAnnotations, mn.invisibleAnnotations,
                     "method", cn.name, mn.name, mn.desc
                 )
@@ -308,11 +263,8 @@ class AnnotationBasedFilter(
          * to avoid unnecessary string concatenations.
          */
         private fun detectInvalidAnnotations(
-            isClass: Boolean,
             className: String,
-            fullyAllowAnnotation: Boolean,
-            partiallyAllowAnnotation: Boolean,
-            classPartiallyAllowAnnotation: Boolean,
+            allowAnnotation: Boolean,
             visibles: List<AnnotationNode>?,
             invisibles: List<AnnotationNode>?,
             type: String,
@@ -320,26 +272,13 @@ class AnnotationBasedFilter(
             name2: String = "",
             name3: String = "",
         ) {
-            // Lazily create the description.
-            val desc = { getItemDescription(type, name1, name2, name3) }
-
-            val partiallyAllowlistAnnotation =
-                findAnyAnnotation(partiallyAllowlistedClassAnnotations, visibles, invisibles)
-            partiallyAllowlistAnnotation?.let { anot ->
-                if (!partiallyAllowAnnotation) {
-                    errors.onErrorFound(desc() +
-                            " has annotation ${anot.desc?.toHumanReadableClassName()}, but" +
-                            " doesn't have" +
-                            " '${FilterPolicy.AnnotationAllowed.policyStringOrPrefix}' policy.'")
-                }
-            }
             var count = 0
             var visibleCount = 0
             for (an in visibles ?: emptyList()) {
                 if (visibilityAnnotations.contains(an.desc)) {
                     visibleCount++
                 }
-                if (allowlistRequiringAnnotations.contains(an.desc)) {
+                if (allAnnotations.contains(an.desc)) {
                     count++
                 }
             }
@@ -347,51 +286,25 @@ class AnnotationBasedFilter(
                 if (visibilityAnnotations.contains(an.desc)) {
                     visibleCount++
                 }
-                if (allowlistRequiringAnnotations.contains(an.desc)) {
+                if (allAnnotations.contains(an.desc)) {
                     count++
                 }
             }
-            // Special case -- if it's a class, and has an "allow-annotation" policy
-            // *and* if it actually has an annotation, then it must have the
-            // "PartiallyAllowlisted" annotation.
-            // Conversely, even if it has an "allow-annotation" policy, it's okay
-            // if it doesn't have the annotation, as long as it doesn't have any
-            // annotations.
-            if (isClass && count > 0 && partiallyAllowAnnotation) {
-                if (partiallyAllowlistAnnotation == null) {
-                    val requiredAnnot = partiallyAllowlistedClassAnnotations.firstOrNull()
-                    throw InvalidAnnotationException(
-                        "${desc()} must have ${requiredAnnot?.toHumanReadableClassName()} to use" +
-                                " annotations")
-                }
-            }
-
-            if (count > 0 && !(fullyAllowAnnotation || partiallyAllowAnnotation)) {
-                val extInfo = if (classPartiallyAllowAnnotation) {
-                    " (Class is partially allowlisted.)"
-                } else {""}
+            if (count > 0 && !allowAnnotation) {
                 throw InvalidAnnotationException(
-                    "${desc()} is not allowed to have " +
-                            "Ravenwood annotations.$extInfo Contact g/ravenwood for more details."
+                    "Class ${className.toHumanReadableClassName()} is not allowed to have " +
+                            "Ravenwood annotations. Contact g/ravenwood for more details."
                 )
             }
             if (visibleCount > 1) {
+                val description = if (name2 == "" && name3 == "") {
+                    "$type $name1"
+                } else {
+                    "$type $name1.$name2$name3"
+                }
                 throw InvalidAnnotationException(
-                    "Found more than one visibility annotations on ${desc()}"
+                    "Found more than one visibility annotations on $description"
                 )
-            }
-        }
-
-        private fun getItemDescription(
-            type: String,
-            name1: String,
-            name2: String,
-            name3: String,
-        ): String {
-            return if (name2 == "" && name3 == "") {
-                "$type $name1"
-            } else {
-                "$type $name1.$name2$name3"
             }
         }
 

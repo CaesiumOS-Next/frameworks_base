@@ -151,7 +151,7 @@ class HostStubGen(val options: HostStubGenOptions) {
             filter
         )
 
-        val annotationAllowedPredicate = options.annotationAllowedClassesFile.get.let { file ->
+        val annotationAllowedClassesFilter = options.annotationAllowedClassesFile.get.let { file ->
             if (file == null) {
                 ClassPredicate.newConstantPredicate(true) // Allow all classes
             } else {
@@ -160,7 +160,7 @@ class HostStubGen(val options: HostStubGenOptions) {
         }
 
         // Next, Java annotation based filter.
-        val annotFilter = AnnotationBasedFilter(
+        filter = AnnotationBasedFilter(
             errors,
             allClasses,
             options.keepAnnotations,
@@ -172,12 +172,10 @@ class HostStubGen(val options: HostStubGenOptions) {
             options.redirectAnnotations,
             options.redirectionClassAnnotations,
             options.classLoadHookAnnotations,
-            options.partiallyAllowedAnnotations,
             options.keepStaticInitializerAnnotations,
-            annotationAllowedPredicate,
+            annotationAllowedClassesFilter,
             filter
         )
-        filter = annotFilter
 
         // Next, "text based" filter, which allows to override polices without touching
         // the target code.
@@ -185,7 +183,6 @@ class HostStubGen(val options: HostStubGenOptions) {
             val builder = TextFileFilterPolicyBuilder(allClasses, filter)
             options.policyOverrideFiles.forEach(builder::parse)
             filter = builder.createOutputFilter()
-            annotFilter.annotationAllowedMembers = builder.annotationAllowedMembersFilter
         }
 
         // Apply the implicit filter.

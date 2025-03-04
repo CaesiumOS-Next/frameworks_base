@@ -86,7 +86,6 @@ class HostStubGenOptions(
         var removeAnnotations: MutableSet<String> = mutableSetOf(),
         var ignoreAnnotations: MutableSet<String> = mutableSetOf(),
         var keepClassAnnotations: MutableSet<String> = mutableSetOf(),
-        var partiallyAllowedAnnotations: MutableSet<String> = mutableSetOf(),
         var redirectAnnotations: MutableSet<String> = mutableSetOf(),
 
         var substituteAnnotations: MutableSet<String> = mutableSetOf(),
@@ -181,9 +180,6 @@ class HostStubGenOptions(
 
                         "--keep-class-annotation" ->
                             ret.keepClassAnnotations.addUniqueAnnotationArg()
-
-                        "--partially-allowed-annotation" ->
-                            ret.partiallyAllowedAnnotations.addUniqueAnnotationArg()
 
                         "--throw-annotation" ->
                             ret.throwAnnotations.addUniqueAnnotationArg()
@@ -291,7 +287,6 @@ class HostStubGenOptions(
               removeAnnotations=$removeAnnotations,
               ignoreAnnotations=$ignoreAnnotations,
               keepClassAnnotations=$keepClassAnnotations,
-              partiallyAllowedAnnotations=$partiallyAllowedAnnotations,
               substituteAnnotations=$substituteAnnotations,
               nativeSubstituteAnnotations=$redirectionClassAnnotations,
               classLoadHookAnnotations=$classLoadHookAnnotations,

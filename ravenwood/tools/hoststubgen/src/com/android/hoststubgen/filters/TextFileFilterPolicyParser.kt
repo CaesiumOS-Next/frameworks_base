@@ -122,25 +122,6 @@ class TextFileFilterPolicyBuilder(
         mutableListOf<TextFilePolicyMethodReplaceFilter.MethodCallReplaceSpec>()
 
     /**
-     * Fields for a filter chain used for "partial allowlisting", which are used by
-     * [AnnotationBasedFilter].
-     */
-    private val annotationAllowedInMemoryFilter: InMemoryOutputFilter
-    val annotationAllowedMembersFilter: OutputFilter
-
-    private val annotationAllowedPolicy = FilterPolicy.AnnotationAllowed.withReason(FILTER_REASON)
-
-    init {
-        // Create a filter that checks "partial allowlisting".
-        var aaf: OutputFilter = ConstantFilter(FilterPolicy.Remove, "default disallowed")
-
-        aaf = InMemoryOutputFilter(classes, aaf)
-        annotationAllowedInMemoryFilter = aaf
-
-        annotationAllowedMembersFilter = annotationAllowedInMemoryFilter
-    }
-
-    /**
      * Parse a given policy file. This method can be called multiple times to read from
      * multiple files. To get the resulting filter, use [createOutputFilter]
      */
@@ -172,11 +153,6 @@ class TextFileFilterPolicyBuilder(
 
     private inner class Processor : PolicyFileProcessor {
         override fun onPackage(name: String, policy: FilterPolicyWithReason) {
-            if (policy.policy == FilterPolicy.AnnotationAllowed) {
-                throw ParseException("${FilterPolicy.AnnotationAllowed.policyStringOrPrefix}" +
-                        " on `package` isn't supported yet.")
-                return
-            }
             packageFilter.addPolicy(name, policy)
         }
 
@@ -193,11 +169,6 @@ class TextFileFilterPolicyBuilder(
         }
 
         override fun onSimpleClassPolicy(className: String, policy: FilterPolicyWithReason) {
-            if (policy.policy == FilterPolicy.AnnotationAllowed) {
-                annotationAllowedInMemoryFilter.setPolicyForClass(
-                    className, annotationAllowedPolicy)
-                return
-            }
             imf.setPolicyForClass(className, policy)
         }
 
@@ -253,11 +224,6 @@ class TextFileFilterPolicyBuilder(
             methodDesc: String,
             policy: FilterPolicyWithReason,
         ) {
-            if (policy.policy == FilterPolicy.AnnotationAllowed) {
-                annotationAllowedInMemoryFilter.setPolicyForMethod(
-                    className, methodName, methodDesc, annotationAllowedPolicy)
-                return
-            }
             imf.setPolicyForMethod(className, methodName, methodDesc, policy)
         }
 
@@ -409,15 +375,14 @@ class TextFileFilterPolicyParser {
 
     private fun parsePolicy(s: String): FilterPolicy {
         return when (s.lowercase()) {
-            "k", FilterPolicy.Keep.policyStringOrPrefix -> FilterPolicy.Keep
-            "t", FilterPolicy.Throw.policyStringOrPrefix -> FilterPolicy.Throw
-            "r", FilterPolicy.Remove.policyStringOrPrefix -> FilterPolicy.Remove
-            "kc", FilterPolicy.KeepClass.policyStringOrPrefix -> FilterPolicy.KeepClass
-            "i", FilterPolicy.Ignore.policyStringOrPrefix -> FilterPolicy.Ignore
-            "rdr", FilterPolicy.Redirect.policyStringOrPrefix -> FilterPolicy.Redirect
-            FilterPolicy.AnnotationAllowed.policyStringOrPrefix -> FilterPolicy.AnnotationAllowed
+            "k", "keep" -> FilterPolicy.Keep
+            "t", "throw" -> FilterPolicy.Throw
+            "r", "remove" -> FilterPolicy.Remove
+            "kc", "keepclass" -> FilterPolicy.KeepClass
+            "i", "ignore" -> FilterPolicy.Ignore
+            "rdr", "redirect" -> FilterPolicy.Redirect
             else -> {
-                if (s.startsWith(FilterPolicy.Substitute.policyStringOrPrefix)) {
+                if (s.startsWith("@")) {
                     FilterPolicy.Substitute
                 } else {
                     throw ParseException("Invalid policy \"$s\"")
