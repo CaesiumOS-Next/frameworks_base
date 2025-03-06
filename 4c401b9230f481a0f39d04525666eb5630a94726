@@ -1,0 +1,75 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8b55a7d6_beea3e6e",
+        "filename": "services/core/java/com/android/server/audio/AudioService.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 14668,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2025-03-06T12:07:30Z",
+      "side": 1,
+      "message": "given BT devices use a MAC address which contains \":\" we must use different separators: \";\" for instance",
+      "range": {
+        "startLine": 14668,
+        "startChar": 63,
+        "endLine": 14668,
+        "endChar": 64
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "d4799298_008804b6",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "services/core/java/com/android/server/audio/AudioService.java",
+              "range": {
+                "startLine": 14668,
+                "startChar": 0,
+                "endLine": 14669,
+                "endChar": 0
+              },
+              "replacement": "     * devices which be composited as \"key\u003ddevice,address,delay;device,address,delay:...\".\n"
+            },
+            {
+              "path": "services/core/java/com/android/server/audio/AudioService.java",
+              "range": {
+                "startLine": 14671,
+                "startChar": 0,
+                "endLine": 14674,
+                "endChar": 0
+              },
+              "replacement": "     * reply: additional_output_device_delay\u003d2,,0;4,,0;8,,0;128,,0;256,,0;512,,0;1024,,0;8192,,0;\n     * 16384,,0;262144,,0;262145,,0;524288,,0;67108864,,0;134217728,,0;536870912,,0;536870913,,0;\n     * 536870914,,0;\n"
+            },
+            {
+              "path": "services/core/java/com/android/server/audio/AudioService.java",
+              "range": {
+                "startLine": 14695,
+                "startChar": 0,
+                "endLine": 14696,
+                "endChar": 0
+              },
+              "replacement": "                    \";\";\n"
+            },
+            {
+              "path": "services/core/java/com/android/server/audio/AudioService.java",
+              "range": {
+                "startLine": 14700,
+                "startChar": 0,
+                "endLine": 14701,
+                "endChar": 0
+              },
+              "replacement": "                    end \u003d reply.indexOf(\";\", start);\n"
+            }
+          ]
+        }
+      ],
+      "revId": "4c401b9230f481a0f39d04525666eb5630a94726",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
