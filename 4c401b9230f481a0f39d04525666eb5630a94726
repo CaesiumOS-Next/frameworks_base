@@ -70,6 +70,53 @@
       ],
       "revId": "4c401b9230f481a0f39d04525666eb5630a94726",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9d8645a9_7f07a057",
+        "filename": "services/core/java/com/android/server/audio/AudioService.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 14668,
+      "author": {
+        "id": 1478901
+      },
+      "writtenOn": "2025-03-07T02:53:31Z",
+      "side": 1,
+      "message": "Since `AudioParameter` is using \";\" as separator, would it be a problem?\nhttps://cs.android.com/android/platform/superproject/main/+/main:frameworks/av/media/libmediahelper/AudioParameter.cpp;drc\u003d7e3c0837cf8e2311e38ce4e47e18b88bc1cdce28;l\u003d102",
+      "parentUuid": "8b55a7d6_beea3e6e",
+      "range": {
+        "startLine": 14668,
+        "startChar": 63,
+        "endLine": 14668,
+        "endChar": 64
+      },
+      "revId": "4c401b9230f481a0f39d04525666eb5630a94726",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6142671d_d87a26a8",
+        "filename": "services/core/java/com/android/server/audio/AudioService.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 14695,
+      "author": {
+        "id": 1478901
+      },
+      "writtenOn": "2025-03-07T02:53:31Z",
+      "side": 1,
+      "message": "Besides, here is introducing a pattern `device,address,delay:` for each device, then use `device,address,` as keyword to iedntify specific device.\nIn case of MAC address, this way should be okay.\nSo do we need to replace \":\" instead of \";\"?\ne.g. Reply from getParameters `2,,0:128,FF:FF:FF:FF:FF:FF,100:256,,0:512,,0` and identify BT with keyword `128,FF:FF:FF:FF:FF:FF,`",
+      "range": {
+        "startLine": 14693,
+        "startChar": 16,
+        "endLine": 14695,
+        "endChar": 24
+      },
+      "revId": "4c401b9230f481a0f39d04525666eb5630a94726",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
