@@ -117,6 +117,30 @@
       },
       "revId": "4c401b9230f481a0f39d04525666eb5630a94726",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5596a462_7fde5137",
+        "filename": "services/core/java/com/android/server/audio/AudioService.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 14695,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2025-03-07T09:07:02Z",
+      "side": 1,
+      "message": "anyway we have bigger problmes because the USB device addrss is \"card\u003d%d;device\u003d%d\" which makes it not transportable as a value for a getParameters command.\nThis API must be conveted to a proper method instead of using getParameters.\nIf a short term fix is needed for android 16 and aidl, we can use this but please use a different separator than : or ; between devices in the reply: we can use |",
+      "parentUuid": "6142671d_d87a26a8",
+      "range": {
+        "startLine": 14693,
+        "startChar": 16,
+        "endLine": 14695,
+        "endChar": 24
+      },
+      "revId": "4c401b9230f481a0f39d04525666eb5630a94726",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
