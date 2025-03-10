@@ -96,6 +96,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1c34cc4b_88652b87",
+        "filename": "services/core/java/com/android/server/audio/AudioService.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 14668,
+      "author": {
+        "id": 1478901
+      },
+      "writtenOn": "2025-03-10T02:55:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9d8645a9_7f07a057",
+      "range": {
+        "startLine": 14668,
+        "startChar": 63,
+        "endLine": 14668,
+        "endChar": 64
+      },
+      "revId": "4c401b9230f481a0f39d04525666eb5630a94726",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6142671d_d87a26a8",
@@ -133,6 +157,30 @@
       "side": 1,
       "message": "anyway we have bigger problmes because the USB device addrss is \"card\u003d%d;device\u003d%d\" which makes it not transportable as a value for a getParameters command.\nThis API must be conveted to a proper method instead of using getParameters.\nIf a short term fix is needed for android 16 and aidl, we can use this but please use a different separator than : or ; between devices in the reply: we can use |",
       "parentUuid": "6142671d_d87a26a8",
+      "range": {
+        "startLine": 14693,
+        "startChar": 16,
+        "endLine": 14695,
+        "endChar": 24
+      },
+      "revId": "4c401b9230f481a0f39d04525666eb5630a94726",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d9ef5704_4dc59a9b",
+        "filename": "services/core/java/com/android/server/audio/AudioService.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 14695,
+      "author": {
+        "id": 1478901
+      },
+      "writtenOn": "2025-03-10T02:55:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5596a462_7fde5137",
       "range": {
         "startLine": 14693,
         "startChar": 16,
