@@ -1,0 +1,45 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8292ba08_0067d649",
+        "filename": "services/core/java/com/android/server/audio/AudioService.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 14711,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2025-03-10T12:58:15Z",
+      "side": 1,
+      "message": "might be good to log a wrning here with the device the query was for.",
+      "range": {
+        "startLine": 14711,
+        "startChar": 0,
+        "endLine": 14711,
+        "endChar": 37
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "2e822c74_d51a0c22",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "services/core/java/com/android/server/audio/AudioService.java",
+              "range": {
+                "startLine": 14712,
+                "startChar": 0,
+                "endLine": 14712,
+                "endChar": 0
+              },
+              "replacement": "            Log.w(TAG, \"NullPointerException when getting delay for device \" + device, e);\n"
+            }
+          ]
+        }
+      ],
+      "revId": "977122bb0b1cf6be1b704602c7d20d2ff833660d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
