@@ -1,0 +1,101 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0a471173_1de2ae91",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1304263
+      },
+      "writtenOn": "2025-03-10T06:21:34Z",
+      "side": 1,
+      "message": "I think the existing test did not cover this case. Do you want to add a test for this?",
+      "range": {
+        "startLine": 15,
+        "startChar": 14,
+        "endLine": 15,
+        "endChar": 21
+      },
+      "revId": "c28e31d5e3c8ae4929f5f666bfc304e5ac06b18d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cf9b4619_aaca0d03",
+        "filename": "services/core/java/com/android/server/connectivity/Vpn.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 1110,
+      "author": {
+        "id": 1304263
+      },
+      "writtenOn": "2025-03-10T06:21:34Z",
+      "side": 1,
+      "message": "debug log?",
+      "range": {
+        "startLine": 1110,
+        "startChar": 12,
+        "endLine": 1110,
+        "endChar": 83
+      },
+      "revId": "c28e31d5e3c8ae4929f5f666bfc304e5ac06b18d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "72fdaf4d_c138b781",
+        "filename": "services/core/java/com/android/server/connectivity/Vpn.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 1121,
+      "author": {
+        "id": 1304263
+      },
+      "writtenOn": "2025-03-10T06:21:34Z",
+      "side": 1,
+      "message": "I am not sure what is the current policy for feature developing in main branch. Do you need a flag to control this?",
+      "range": {
+        "startLine": 1119,
+        "startChar": 16,
+        "endLine": 1121,
+        "endChar": 17
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "a84b3bef_8960ac09",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "services/core/java/com/android/server/connectivity/Vpn.java",
+              "range": {
+                "startLine": 109,
+                "startChar": 0,
+                "endLine": 109,
+                "endChar": 0
+              },
+              "replacement": "import android.os.Build;\n"
+            },
+            {
+              "path": "services/core/java/com/android/server/connectivity/Vpn.java",
+              "range": {
+                "startLine": 1119,
+                "startChar": 0,
+                "endLine": 1120,
+                "endChar": 0
+              },
+              "replacement": "                if (Build.VERSION.SDK_INT \u003e\u003d Build.VERSION_CODES.UPSIDE_DOWN_CAKE\n                        \u0026\u0026 !mContext.getPackageManager().isSafeMode()) {\n"
+            }
+          ]
+        }
+      ],
+      "revId": "c28e31d5e3c8ae4929f5f666bfc304e5ac06b18d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
