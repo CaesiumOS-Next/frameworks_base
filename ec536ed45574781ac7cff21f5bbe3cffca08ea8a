@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ff2e8bbc_499246ab",
+        "filename": "core/java/android/net/flags.aconfig",
+        "patchSetId": 4
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2025-03-10T09:18:44Z",
+      "side": 1,
+      "message": "Can you please be a little more specific ? A future reader should be able to know which refactoring this is. You could describe succinctly what the refactoring does, e.g. \"Flag for moving the socket destroy logic to the thread of XXX\" (obviously replace with a description of what your refactoring actually does).",
+      "range": {
+        "startLine": 44,
+        "startChar": 25,
+        "endLine": 44,
+        "endChar": 36
+      },
+      "revId": "ec536ed45574781ac7cff21f5bbe3cffca08ea8a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
