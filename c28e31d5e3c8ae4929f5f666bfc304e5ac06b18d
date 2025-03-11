@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "35c6ad4c_53e65e5c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1308473
+      },
+      "writtenOn": "2025-03-11T06:36:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0a471173_1de2ae91",
+      "range": {
+        "startLine": 15,
+        "startChar": 14,
+        "endLine": 15,
+        "endChar": 21
+      },
+      "revId": "c28e31d5e3c8ae4929f5f666bfc304e5ac06b18d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cf9b4619_aaca0d03",
@@ -37,6 +61,30 @@
       "writtenOn": "2025-03-10T06:21:34Z",
       "side": 1,
       "message": "debug log?",
+      "range": {
+        "startLine": 1110,
+        "startChar": 12,
+        "endLine": 1110,
+        "endChar": 83
+      },
+      "revId": "c28e31d5e3c8ae4929f5f666bfc304e5ac06b18d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ac8b1374_6498bcf3",
+        "filename": "services/core/java/com/android/server/connectivity/Vpn.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 1110,
+      "author": {
+        "id": 1308473
+      },
+      "writtenOn": "2025-03-11T06:36:16Z",
+      "side": 1,
+      "message": "Removed.",
+      "parentUuid": "cf9b4619_aaca0d03",
       "range": {
         "startLine": 1110,
         "startChar": 12,
@@ -94,6 +142,30 @@
           ]
         }
       ],
+      "revId": "c28e31d5e3c8ae4929f5f666bfc304e5ac06b18d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ec32fb57_9f02f54d",
+        "filename": "services/core/java/com/android/server/connectivity/Vpn.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 1121,
+      "author": {
+        "id": 1308473
+      },
+      "writtenOn": "2025-03-11T06:36:16Z",
+      "side": 1,
+      "message": "As we discussed, there is no need for a flag to control this code improvement.",
+      "parentUuid": "72fdaf4d_c138b781",
+      "range": {
+        "startLine": 1119,
+        "startChar": 16,
+        "endLine": 1121,
+        "endChar": 17
+      },
       "revId": "c28e31d5e3c8ae4929f5f666bfc304e5ac06b18d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
