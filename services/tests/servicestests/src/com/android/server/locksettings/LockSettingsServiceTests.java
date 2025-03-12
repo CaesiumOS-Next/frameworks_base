@@ -17,7 +17,7 @@
 package com.android.server.locksettings;
 
 import static android.Manifest.permission.CONFIGURE_FACTORY_RESET_PROTECTION;
-import static android.security.Flags.FLAG_CLEAR_STRONG_AUTH_ON_ADD_PRIMARY_CREDENTIAL;
+import static android.security.Flags.FLAG_CLEAR_STRONG_AUTH_ON_ADDING_PRIMARY_CREDENTIAL;
 import static android.security.Flags.FLAG_REPORT_PRIMARY_AUTH_ATTEMPTS;
 
 import static com.android.internal.widget.LockPatternUtils.CREDENTIAL_TYPE_NONE;
@@ -265,7 +265,7 @@ public class LockSettingsServiceTests extends BaseLockSettingsServiceTests {
     }
 
     @Test
-    @RequiresFlagsEnabled(FLAG_CLEAR_STRONG_AUTH_ON_ADD_PRIMARY_CREDENTIAL)
+    @RequiresFlagsEnabled(FLAG_CLEAR_STRONG_AUTH_ON_ADDING_PRIMARY_CREDENTIAL)
     public void setLockCredential_forPrimaryUser_clearsStrongAuthWhenFlagIsOn()
             throws Exception {
         setCredential(PRIMARY_USER_ID, newPassword("password"));
@@ -274,7 +274,7 @@ public class LockSettingsServiceTests extends BaseLockSettingsServiceTests {
     }
 
     @Test
-    @RequiresFlagsDisabled(FLAG_CLEAR_STRONG_AUTH_ON_ADD_PRIMARY_CREDENTIAL)
+    @RequiresFlagsDisabled(FLAG_CLEAR_STRONG_AUTH_ON_ADDING_PRIMARY_CREDENTIAL)
     public void setLockCredential_forPrimaryUser_leavesStrongAuthWhenFlagIsOff()
             throws Exception {
         setCredential(PRIMARY_USER_ID, newPassword("password"));
@@ -313,7 +313,7 @@ public class LockSettingsServiceTests extends BaseLockSettingsServiceTests {
     }
 
     @Test
-    @RequiresFlagsEnabled(FLAG_CLEAR_STRONG_AUTH_ON_ADD_PRIMARY_CREDENTIAL)
+    @RequiresFlagsEnabled(FLAG_CLEAR_STRONG_AUTH_ON_ADDING_PRIMARY_CREDENTIAL)
     public void setLockCredential_profileWithNewSeparateChallenge_clearsStrongAuthWhenFlagIsOn()
             throws Exception {
         mService.setSeparateProfileChallengeEnabled(MANAGED_PROFILE_USER_ID, true, null);
@@ -324,7 +324,7 @@ public class LockSettingsServiceTests extends BaseLockSettingsServiceTests {
     }
 
     @Test
-    @RequiresFlagsDisabled(FLAG_CLEAR_STRONG_AUTH_ON_ADD_PRIMARY_CREDENTIAL)
+    @RequiresFlagsDisabled(FLAG_CLEAR_STRONG_AUTH_ON_ADDING_PRIMARY_CREDENTIAL)
     public void setLockCredential_profileWithNewSeparateChallenge_leavesStrongAuthWhenFlagIsOff()
             throws Exception {
         mService.setSeparateProfileChallengeEnabled(MANAGED_PROFILE_USER_ID, true, null);
@@ -378,7 +378,7 @@ public class LockSettingsServiceTests extends BaseLockSettingsServiceTests {
     }
 
     @Test
-    @RequiresFlagsEnabled(FLAG_CLEAR_STRONG_AUTH_ON_ADD_PRIMARY_CREDENTIAL)
+    @RequiresFlagsEnabled(FLAG_CLEAR_STRONG_AUTH_ON_ADDING_PRIMARY_CREDENTIAL)
     public void setLockCredential_primaryWithUnifiedProfile_clearsStrongAuthForBothWhenFlagIsOn()
             throws Exception {
         final LockscreenCredential credential = newPassword("oldPassword");
@@ -394,7 +394,7 @@ public class LockSettingsServiceTests extends BaseLockSettingsServiceTests {
     }
 
     @Test
-    @RequiresFlagsDisabled(FLAG_CLEAR_STRONG_AUTH_ON_ADD_PRIMARY_CREDENTIAL)
+    @RequiresFlagsDisabled(FLAG_CLEAR_STRONG_AUTH_ON_ADDING_PRIMARY_CREDENTIAL)
     public void setLockCredential_primaryWithUnifiedProfile_leavesStrongAuthForBothWhenFlagIsOff()
             throws Exception {
         final LockscreenCredential credential = newPassword("oldPassword");
