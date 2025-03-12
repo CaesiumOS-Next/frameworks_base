@@ -22,6 +22,30 @@
       },
       "revId": "38bbc545f319d7d028df9fee4fc5bf563cf7c30d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "26c1e313_c3f78d1c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1318142
+      },
+      "writtenOn": "2025-03-12T23:42:30Z",
+      "side": 1,
+      "message": "I diffed the file_list.txt create with/without this CL and they are identical.",
+      "parentUuid": "486f3a39_0c10ed58",
+      "range": {
+        "startLine": 10,
+        "startChar": 6,
+        "endLine": 10,
+        "endChar": 16
+      },
+      "revId": "38bbc545f319d7d028df9fee4fc5bf563cf7c30d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
