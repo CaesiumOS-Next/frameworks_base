@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "486f3a39_0c10ed58",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2025-03-12T22:02:50Z",
+      "side": 1,
+      "message": "Would you mind running `out/target/product/$product/obj/PACKAGING/product_intermediates/file_list.txt ` before and after the CL and verify that we do not include/remove any files inadvertently?",
+      "range": {
+        "startLine": 10,
+        "startChar": 6,
+        "endLine": 10,
+        "endChar": 16
+      },
+      "revId": "38bbc545f319d7d028df9fee4fc5bf563cf7c30d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
