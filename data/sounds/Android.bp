@@ -25,6 +25,7 @@ phony {
         "frameworks_ui_sounds",
         "frameworks_ui_48k_sounds",
     ],
+    product_specific: true,
 }
 
 prebuilt_media {
@@ -51,7 +52,6 @@ prebuilt_media {
     ],
     relative_install_path: "audio/alarms",
     product_specific: true,
-    no_full_install: true,
 }
 
 prebuilt_media {
@@ -135,7 +135,6 @@ prebuilt_media {
     ],
     relative_install_path: "audio/notifications",
     product_specific: true,
-    no_full_install: true,
 }
 
 prebuilt_media {
@@ -246,7 +245,6 @@ prebuilt_media {
     ],
     relative_install_path: "audio/ringtones",
     product_specific: true,
-    no_full_install: true,
 }
 
 prebuilt_media {
@@ -277,7 +275,6 @@ prebuilt_media {
     ],
     relative_install_path: "audio/ui",
     product_specific: true,
-    no_full_install: true,
 }
 
 prebuilt_media {
@@ -300,5 +297,4 @@ prebuilt_media {
     ],
     relative_install_path: "audio/ui",
     product_specific: true,
-    no_full_install: true,
 }
