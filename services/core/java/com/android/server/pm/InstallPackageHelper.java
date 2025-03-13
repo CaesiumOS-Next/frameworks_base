@@ -4473,6 +4473,9 @@ final class InstallPackageHelper {
                     && !mPm.mInitialNonStoppedSystemPackages.contains(packageName)
                     && hasLauncherEntry(parsedPackage)) {
                 scanFlags |= SCAN_AS_STOPPED_SYSTEM_APP;
+                if (DEBUG_INSTALL || Build.IS_DEBUGGABLE) {
+                    Slog.d(TAG, "Stopping the preinstalled system app " + packageName);
+                }
             }
         }
 
