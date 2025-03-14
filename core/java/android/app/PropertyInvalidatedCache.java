@@ -388,7 +388,7 @@ public class PropertyInvalidatedCache<Query, Result> {
             new String[]{ "unset", "disabled", "corked", "bypass" };
 
     private static final String TAG = "PropertyInvalidatedCache";
-    private static final boolean DEBUG = false;
+    private static final boolean DEBUG = Log.isLoggable(TAG, Log.DEBUG);
     private static final boolean VERIFY = false;
 
     /**
