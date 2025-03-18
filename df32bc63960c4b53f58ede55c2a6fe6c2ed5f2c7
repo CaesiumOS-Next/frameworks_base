@@ -22,6 +22,30 @@
       },
       "revId": "df32bc63960c4b53f58ede55c2a6fe6c2ed5f2c7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f5a9efcb_c49be8ad",
+        "filename": "data/sounds/Android.bp",
+        "patchSetId": 8
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1318142
+      },
+      "writtenOn": "2025-03-18T06:18:57Z",
+      "side": 1,
+      "message": "The ussages are gone after I reverted the result of auto-format. You can find them in patchset7. I will upload more changes and include them in later patchsets.",
+      "parentUuid": "6f8a2742_2803f2f1",
+      "range": {
+        "startLine": 36,
+        "startChar": 10,
+        "endLine": 36,
+        "endChar": 38
+      },
+      "revId": "df32bc63960c4b53f58ede55c2a6fe6c2ed5f2c7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
