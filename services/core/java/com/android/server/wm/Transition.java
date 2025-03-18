@@ -87,6 +87,7 @@ import android.graphics.Rect;
 import android.hardware.HardwareBuffer;
 import android.os.Binder;
 import android.os.Bundle;
+import android.os.Debug;
 import android.os.IBinder;
 import android.os.IRemoteCallback;
 import android.os.Looper;
@@ -235,6 +236,12 @@ class Transition implements BLASTSyncEngine.TransactionReadyListener {
      * the transition animation.
      */
     private final ArraySet<WindowToken> mVisibleAtTransitionEndTokens = new ArraySet<>();
+
+    /**
+     * Set of participating activity records (wallpaper is not considered currently) which are
+     * invisible at the end of the transition animation.
+     */
+    private final ArraySet<ActivityRecord> mInvisibleAtTransitionEndTokens = new ArraySet<>();
 
     /**
      * Map of transient activities (lifecycle initially tied to this transition) to their
@@ -1377,6 +1384,27 @@ class Transition implements BLASTSyncEngine.TransactionReadyListener {
                         enterAutoPip = true;
                     }
                 }
+                // Here is a special case:
+                // 1. Activity A starts activity B, thus transition A is created and activity A is
+                // set to invisible.
+                // 2. Before transition A finishes, Swipe a short distance from right to left at the
+                // bottom of the screen to starts a transition B of Recents type, and the home task
+                // is brought to front temporarily.
+                // 3. If activity B finishes during transition B, activity A will be resumed and
+                // becomes visible again(without a new transition cause transition B is collecting).
+                // 4. Normally, transition B finishes very quickly before transition A, and we will
+                // return to the app again from home task(in fact the order of finishTransition is
+                // not important).
+                // 5. Transition A finishes, and visibility of activity A remains unchanged.
+                // Finally, the app task is on top again and activity A is resumed, but the
+                // surface of the activity A is hidden in Transitions#setupStartState by transition
+                // A. As a result its window won't gain focus anymore.
+                final boolean invisibleAtTransitionEnd =
+                        mInvisibleAtTransitionEndTokens.contains(ar);
+                if (invisibleAtTransitionEnd && ar.isVisibleRequested() && task.isRootTask()
+                        && task.isOnTop() && task.getTopResumedActivity() == ar) {
+                    mController.onVisibleWithoutCollectingTransition(ar, Debug.getCallers(1, 1));
+                }
                 final ChangeInfo changeInfo = mChanges.get(ar);
                 // Due to transient-hide, there may be some activities here which weren't in the
                 // transition.
@@ -1929,6 +1957,12 @@ class Transition implements BLASTSyncEngine.TransactionReadyListener {
                 final WindowContainer wc = mParticipants.valueAt(i);
                 if (wc.asWindowToken() == null || !wc.isVisibleRequested()) continue;
                 mVisibleAtTransitionEndTokens.add(wc.asWindowToken());
+            }
+        }
+        for (int i = mParticipants.size() - 1; i >= 0; --i) {
+            final WindowContainer wc = mParticipants.valueAt(i);
+            if (wc.asActivityRecord() != null && !wc.isVisibleRequested()) {
+                mInvisibleAtTransitionEndTokens.add(wc.asActivityRecord());
             }
         }
 
