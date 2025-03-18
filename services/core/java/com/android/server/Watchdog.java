@@ -122,6 +122,7 @@ public class Watchdog implements Dumpable {
     public static final String[] NATIVE_STACKS_OF_INTEREST = new String[] {
         "/system/bin/audioserver",
         "/system/bin/cameraserver",
+        "/system/bin/carwatchdogd",
         "/system/bin/drmserver",
         "/system/bin/keystore2",
         "/system/bin/mediadrmserver",
