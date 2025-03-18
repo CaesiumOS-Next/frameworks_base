@@ -108,7 +108,7 @@ public final class MemInfoReader {
      * Amount of RAM that is in use by the kernel for actual allocations.
      */
     public long getKernelUsedSizeKb() {
-        long size = mInfos[Debug.MEMINFO_SHMEM] + mInfos[Debug.MEMINFO_SLAB_UNRECLAIMABLE]
+        long size = mInfos[Debug.MEMINFO_SLAB_UNRECLAIMABLE]
                 + mInfos[Debug.MEMINFO_VM_ALLOC_USED] + mInfos[Debug.MEMINFO_PAGE_TABLES];
         if (!Debug.isVmapStack()) {
             size += mInfos[Debug.MEMINFO_KERNEL_STACK];
