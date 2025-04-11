@@ -16,6 +16,23 @@
       "message": "2059944096fd4503).",
       "revId": "7750d9fa9f0da8619cf88c1b8f4285a489a70591",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8a3d2ebc_a9500f8b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 3976726
+      },
+      "writtenOn": "2025-04-11T18:10:19Z",
+      "side": 1,
+      "message": "Check and update your Android version",
+      "revId": "7750d9fa9f0da8619cf88c1b8f4285a489a70591",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ],
   "submitRequirementResults": [
