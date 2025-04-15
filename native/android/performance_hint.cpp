@@ -368,6 +368,12 @@ int APerformanceHintSession::reportActualWorkDurationInternal(AWorkDuration* wor
     traceActualDuration(workDuration->durationNanos);
     mActualWorkDurations.push_back(std::move(*workDuration));
 
+    const int overflow = mActualWorkDurations.size() - 50;
+    if (overflow > 0) {
+        mActualWorkDurations.erase(mActualWorkDurations.begin(),
+                                    mActualWorkDurations.begin() + overflow);
+    }
+
     if (actualTotalDurationNanos >= mTargetDurationNanos) {
         // Reset timestamps if we are equal or over the target.
         mFirstTargetMetTimestamp = 0;
