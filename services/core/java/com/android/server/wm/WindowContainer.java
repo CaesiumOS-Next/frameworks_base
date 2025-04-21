@@ -3625,7 +3625,7 @@ class WindowContainer<E extends WindowContainer> extends ConfigurationContainer<
      * FROM OUTSIDE.
      */
     protected boolean isSelfAnimating(int flags, int typesToCheck) {
-        if (mSurfaceAnimator.isAnimating()
+        if (mSurfaceAnimator != null && mSurfaceAnimator.isAnimating()
                 && (mSurfaceAnimator.getAnimationType() & typesToCheck) > 0) {
             return true;
         }
