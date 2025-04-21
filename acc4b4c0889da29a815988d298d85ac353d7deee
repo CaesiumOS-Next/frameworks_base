@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ad3d5182_a73ee3bf",
+        "filename": "services/core/java/com/android/server/wm/WindowContainer.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 3628,
+      "author": {
+        "id": 1240085
+      },
+      "writtenOn": "2025-04-21T16:31:58Z",
+      "side": 1,
+      "message": "`mSurfaceAnimator` can\u0027t be null: it is `final` and is initialized in the constructor.\n\nIf it is null, something else is going wrong.",
+      "range": {
+        "startLine": 3628,
+        "startChar": 12,
+        "endLine": 3628,
+        "endChar": 36
+      },
+      "revId": "acc4b4c0889da29a815988d298d85ac353d7deee",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
