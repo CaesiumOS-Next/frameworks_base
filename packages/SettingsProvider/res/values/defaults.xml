@@ -270,6 +270,12 @@
     <!-- Default for Settings.Secure.LOCK_SCREEN_SHOW_QR_CODE_SCANNER -->
     <bool name="def_lock_screen_show_qr_code_scanner">true</bool>
 
+    <!-- Default for Settings.Global.HIDE_ERROR_DIALOGS -->
+    <integer name="def_hide_error_dialogs">0</integer>
+
+    <!-- Default for Settings.Secure.ANR_SHOW_BACKGROUND -->
+    <integer name="def_anr_show_background">0</integer>
+
     <!-- ========================================== -->
     <!-- Default values for wear specific settings. -->
 

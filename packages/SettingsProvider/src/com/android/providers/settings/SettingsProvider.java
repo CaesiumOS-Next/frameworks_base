@@ -3998,7 +3998,7 @@ public class SettingsProvider extends ContentProvider {
         }
 
         private final class UpgradeController {
-            private static final int SETTINGS_VERSION = 226;
+            private static final int SETTINGS_VERSION = 227;
 
             private final int mUserId;
 
@@ -6192,6 +6192,41 @@ public class SettingsProvider extends ContentProvider {
                         }
                     }
                     currentVersion = 226;
+                }
+
+                if (currentVersion == 227) {
+                    final SettingsState globalSettings = getGlobalSettingsLocked();
+                    final SettingsState secureSettings = getSecureSettingsLocked(userId);
+
+                    final Setting hideErrorDialogs =
+                            globalSettings.getSettingLocked(Global.HIDE_ERROR_DIALOGS);
+                    if (hideErrorDialogs.isNull()) {
+                        globalSettings.insertSettingOverrideableByRestoreLocked(
+                                Settings.Global.HIDE_ERROR_DIALOGS,
+                                String.valueOf(
+                                        getContext()
+                                                .getResources()
+                                                .getInteger(R.integer.def_hide_error_dialogs)),
+                                null,
+                                true,
+                                SettingsState.SYSTEM_PACKAGE_NAME);
+                    }
+
+                    final Setting anrShowBackground =
+                            secureSettings.getSettingLocked(Secure.ANR_SHOW_BACKGROUND);
+                    if (anrShowBackground.isNull()) {
+                        secureSettings.insertSettingOverrideableByRestoreLocked(
+                                Settings.Secure.ANR_SHOW_BACKGROUND,
+                                String.valueOf(
+                                        getContext()
+                                                .getResources()
+                                                .getInteger(R.integer.def_anr_show_background)),
+                                null,
+                                true,
+                                SettingsState.SYSTEM_PACKAGE_NAME);
+                    }
+
+                    currentVersion = 228;
                 }
 
                 // vXXX: Add new settings above this point.
