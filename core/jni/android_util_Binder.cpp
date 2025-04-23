@@ -394,8 +394,22 @@ protected:
     {
         JNIEnv* env = javavm_to_jnienv(mVM);
 
-        LOG_ALWAYS_FATAL_IF(env == nullptr,
-                            "Binder thread started or Java binder used, but env null. Attach JVM?");
+        thread_local bool jvmAutoAttachAlreadyAttempted = false;
+        if (!env) {
+            if (jvmAutoAttachAlreadyAttempted) {
+                LOG_ALWAYS_FATAL_IF(env == nullptr,
+                                    "Binder thread started or Java binder used, but env null. Was "
+                                    "JVM detached?");
+            }
+
+            ALOGW("Binder thread started or Java binder used, but env null. Attaching thread to "
+                  "JVM.");
+            jint status = mVM->AttachCurrentThread(&env, nullptr);
+            LOG_ALWAYS_FATAL_IF(status != JNI_OK, "onTransact() failed to attach thread to JVM: %d",
+                                status);
+
+            jvmAutoAttachAlreadyAttempted = true;
+        }
 
         ALOGV("onTransact() on %p calling object %p in env %p vm %p\n", this, mObject, env, mVM);
 
