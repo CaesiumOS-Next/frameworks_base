@@ -34,6 +34,24 @@
       "parentUuid": "aa83ab39_7dc0059b",
       "revId": "79b437d4288288a059b842bbda5b7b5b87227956",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d048ecda_a515262e",
+        "filename": "services/core/java/com/android/server/wm/RootWindowContainer.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 2892,
+      "author": {
+        "id": 1320563
+      },
+      "writtenOn": "2025-04-25T07:50:41Z",
+      "side": 1,
+      "message": "In case some one performs unexpected cleanup that only cleans one container.\nSuch as the current case only happens by DisplayContent#remove that clears the tokens manually without using SleepTokenAcquirer.",
+      "parentUuid": "824c6aad_53895b88",
+      "revId": "79b437d4288288a059b842bbda5b7b5b87227956",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
