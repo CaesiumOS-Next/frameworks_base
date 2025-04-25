@@ -16,6 +16,24 @@
       "message": "This info may be also useful. So prefer\n```\n     void removeSleepToken(SleepToken token) {\n-        if (!mSleepTokens.contains(token.mHashKey)) {\n+        if (mSleepTokens.removeReturnOld(token.mHashKey) \u003d\u003d null) {\n             Slog.d(TAG, \"Remove non-exist sleep token: \" + token + \" from \" + Debug.getCallers(6));\n         }\n-        mSleepTokens.remove(token.mHashKey);\n         final DisplayContent display \u003d getDisplayContent(token.mDisplayId);\n```",
       "revId": "79b437d4288288a059b842bbda5b7b5b87227956",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "824c6aad_53895b88",
+        "filename": "services/core/java/com/android/server/wm/RootWindowContainer.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 2892,
+      "author": {
+        "id": 3183690
+      },
+      "writtenOn": "2025-04-25T07:22:10Z",
+      "side": 1,
+      "message": "if mSleepTokens can not contain this token,the mAllSleepTokens of display also not contain this token,Is it necessary to perform deletion operations?",
+      "parentUuid": "aa83ab39_7dc0059b",
+      "revId": "79b437d4288288a059b842bbda5b7b5b87227956",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
