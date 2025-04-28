@@ -1403,5 +1403,15 @@ public class PersistentDataBlockService extends SystemService {
                 computeAndWriteDigestLocked();
             }
         }
+
+        @Override
+        public void activateFrpSecretProtection(byte[] pubKey){
+            //TODO
+        }
+
+        @Override
+        public void deActivateFrpSecretProtection(byte[] pubKey){
+            //TODO
+        }
     }
 }
