@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4aa0a097_ea784425",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1480715
+      },
+      "writtenOn": "2025-05-06T15:53:37Z",
+      "side": 1,
+      "message": "Can you also add the steps to test the change in the commit message?",
+      "revId": "8e04a811548eb093137416fbab9f345dc88a76a6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
