@@ -16,6 +16,24 @@
       "message": "Can you also add the steps to test the change in the commit message?",
       "revId": "8e04a811548eb093137416fbab9f345dc88a76a6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f8b029a5_0640dee5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1832468
+      },
+      "writtenOn": "2025-05-07T03:29:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4aa0a097_ea784425",
+      "revId": "8e04a811548eb093137416fbab9f345dc88a76a6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
