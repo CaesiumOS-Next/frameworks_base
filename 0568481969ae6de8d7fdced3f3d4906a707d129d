@@ -34,6 +34,24 @@
       "parentUuid": "bcfbfa26_60824715",
       "revId": "0568481969ae6de8d7fdced3f3d4906a707d129d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "34677821_a79e162f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1464496
+      },
+      "writtenOn": "2025-06-02T07:15:54Z",
+      "side": 1,
+      "message": "Gently reminder, please check the patch @wleshner@google.com @brycelee@google.com",
+      "parentUuid": "3e054907_7a79f8ab",
+      "revId": "0568481969ae6de8d7fdced3f3d4906a707d129d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
