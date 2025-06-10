@@ -263,6 +263,9 @@ public abstract class ListenerMultiplexer<TKey, TListener,
         Objects.requireNonNull(key);
         Objects.requireNonNull(registration);
 
+        TRegistration oldRegistration = null;
+        boolean isReplaced = false;
+
         synchronized (mMultiplexerLock) {
             // adding listeners reentrantly is not supported
             Preconditions.checkState(!mReentrancyGuard.isReentrant());
@@ -281,7 +284,6 @@ public abstract class ListenerMultiplexer<TKey, TListener,
 
                 boolean wasEmpty = mRegistrations.isEmpty();
 
-                TRegistration oldRegistration = null;
                 int oldIndex = mRegistrations.indexOfKey(oldKey);
                 if (oldIndex >= 0) {
                     // remove ourselves instead of using remove(), to balance registration callbacks
@@ -298,18 +300,21 @@ public abstract class ListenerMultiplexer<TKey, TListener,
                     mRegistrations.put(key, registration);
                 }
 
+                isReplaced = (oldRegistration != null);
+
                 if (wasEmpty) {
                     onRegister();
                 }
-                registration.onRegister(key);
-                if (oldRegistration == null) {
-                    onRegistrationAdded(key, registration);
-                } else {
-                    onRegistrationReplaced(oldKey, oldRegistration, key, registration);
-                }
-                onRegistrationActiveChanged(registration);
             }
         }
+
+        registration.onRegister(key);
+        if (!isReplaced) {
+            onRegistrationAdded(key, registration);
+        } else {
+            onRegistrationReplaced(oldKey, oldRegistration, key, registration);
+        }
+        onRegistrationActiveChanged(registration);
     }
 
     /**
