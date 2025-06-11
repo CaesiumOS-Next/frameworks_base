@@ -1792,7 +1792,7 @@ class DisplayContent extends RootDisplayArea implements WindowManagerPolicy.Disp
             if (!ar.isVisibleRequested()) {
                 return true;
             }
-            applyFixedRotationForNonTopVisibleActivityIfNeeded(ar, topOrientation);
+            applyFixedRotationForNonTopVisibleActivityIfNeeded(ar, orientationSrcApp);
             return false;
         }, true /* traverseTopToBottom */);
     }
@@ -1808,8 +1808,7 @@ class DisplayContent extends RootDisplayArea implements WindowManagerPolicy.Disp
         }
         final ActivityRecord orientationSrcApp = getLastOrientationSourceApp();
         if (orientationSrcApp != null) {
-            applyFixedRotationForNonTopVisibleActivityIfNeeded(ar,
-                    orientationSrcApp.getRequestedOrientation());
+            applyFixedRotationForNonTopVisibleActivityIfNeeded(ar, orientationSrcApp);
         }
     }
 
@@ -1818,10 +1817,14 @@ class DisplayContent extends RootDisplayArea implements WindowManagerPolicy.Disp
      * fixed rotation transform will be applied to respect its requested appearance.
      */
     private void applyFixedRotationForNonTopVisibleActivityIfNeeded(@NonNull ActivityRecord ar,
-            @ActivityInfo.ScreenOrientation int topOrientation) {
+            @NonNull ActivityRecord orientationSrcApp) {
         final int orientation = ar.getRequestedOrientation();
+        final int topOrientation = orientationSrcApp.getRequestedOrientation();
         if (orientation == topOrientation || ar.inMultiWindowMode()
                 || ar.getRequestedConfigurationOrientation() == ORIENTATION_UNDEFINED) {
+            if (orientation == topOrientation && orientationSrcApp.isFixedRotationTransforming()) {
+                ar.linkFixedRotationTransform(orientationSrcApp);
+            }
             return;
         }
         final int displayRotation = getRotation();
