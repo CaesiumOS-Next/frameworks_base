@@ -2245,15 +2245,13 @@ public class ActivityTaskManagerService extends IActivityTaskManager.Stub {
                 "moveTaskToFront()");
 
         ProtoLog.d(WM_DEBUG_TASKS, "moveTaskToFront: moving taskId=%d", taskId);
-        synchronized (mGlobalLock) {
-            final int callingPid = Binder.getCallingPid();
-            final int callingUid = Binder.getCallingUid();
-            moveTaskToFrontLocked(appThread, callingPackage, taskId, flags,
-                    SafeActivityOptions.fromBundle(bOptions, callingPid, callingUid));
-        }
+        final int callingPid = Binder.getCallingPid();
+        final int callingUid = Binder.getCallingUid();
+        moveTaskToFront(appThread, callingPackage, taskId, flags,
+                SafeActivityOptions.fromBundle(bOptions, callingPid, callingUid));
     }
 
-    void moveTaskToFrontLocked(@Nullable IApplicationThread appThread,
+    void moveTaskToFront(@Nullable IApplicationThread appThread,
             @Nullable String callingPackage, int taskId, int flags, SafeActivityOptions options) {
         final int callingPid = Binder.getCallingPid();
         final int callingUid = Binder.getCallingUid();
@@ -2264,46 +2262,48 @@ public class ActivityTaskManagerService extends IActivityTaskManager.Stub {
         if (appThread != null) {
             callerApp = getProcessController(appThread);
         }
-        final BackgroundActivityStartController balController =
+        synchronized (mGlobalLock) {
+            final BackgroundActivityStartController balController =
                 mTaskSupervisor.getBackgroundActivityLaunchController();
-        final BalVerdict balVerdict = balController.checkBackgroundActivityStart(
-                callingUid,
-                callingPid,
-                callingPackage,
-                -1,
-                -1,
-                callerApp,
-                null,
-                false,
-                null,
-                null,
-                null);
-        if (balVerdict.blocks() && !isBackgroundActivityStartsEnabled()) {
-            Slog.w(TAG, "moveTaskToFront blocked: " + balVerdict);
-            return;
-        }
-        if (DEBUG_ACTIVITY_STARTS) {
-            Slog.d(TAG, "moveTaskToFront allowed: " + balVerdict);
-        }
-        try {
-            final Task task = mRootWindowContainer.anyTaskForId(taskId);
-            if (task == null) {
-                ProtoLog.d(WM_DEBUG_TASKS, "Could not find task for id: %d", taskId);
-                SafeActivityOptions.abort(options);
+            final BalVerdict balVerdict = balController.checkBackgroundActivityStart(
+                    callingUid,
+                    callingPid,
+                    callingPackage,
+                    -1,
+                    -1,
+                    callerApp,
+                    null,
+                    false,
+                    null,
+                    null,
+                    null);
+            if (balVerdict.blocks() && !isBackgroundActivityStartsEnabled()) {
+                Slog.w(TAG, "moveTaskToFront blocked: " + balVerdict);
                 return;
             }
-            if (getLockTaskController().isLockTaskModeViolation(task)) {
-                Slog.e(TAG, "moveTaskToFront: Attempt to violate Lock Task Mode");
-                SafeActivityOptions.abort(options);
-                return;
+            if (DEBUG_ACTIVITY_STARTS) {
+                Slog.d(TAG, "moveTaskToFront allowed: " + balVerdict);
             }
-            ActivityOptions realOptions = options != null
-                    ? options.getOptions(mTaskSupervisor)
-                    : null;
-            mTaskSupervisor.findTaskToMoveToFront(task, flags, realOptions, "moveTaskToFront",
-                    false /* forceNonResizable */);
-        } finally {
-            Binder.restoreCallingIdentity(origId);
+            try {
+                final Task task = mRootWindowContainer.anyTaskForId(taskId);
+                if (task == null) {
+                    ProtoLog.d(WM_DEBUG_TASKS, "Could not find task for id: %d", taskId);
+                    SafeActivityOptions.abort(options);
+                    return;
+                }
+                if (getLockTaskController().isLockTaskModeViolation(task)) {
+                    Slog.e(TAG, "moveTaskToFront: Attempt to violate Lock Task Mode");
+                    SafeActivityOptions.abort(options);
+                    return;
+                }
+                ActivityOptions realOptions = options != null
+                        ? options.getOptions(mTaskSupervisor)
+                        : null;
+                mTaskSupervisor.findTaskToMoveToFront(task, flags, realOptions, "moveTaskToFront",
+                        false /* forceNonResizable */);
+            } finally {
+                Binder.restoreCallingIdentity(origId);
+            }
         }
     }
 
@@ -2961,14 +2961,12 @@ public class ActivityTaskManagerService extends IActivityTaskManager.Stub {
 
     @Override
     public void releaseSomeActivities(IApplicationThread appInt) {
-        synchronized (mGlobalLock) {
-            final long origId = Binder.clearCallingIdentity();
-            try {
-                final WindowProcessController app = getProcessController(appInt);
-                app.releaseSomeActivities("low-mem");
-            } finally {
-                Binder.restoreCallingIdentity(origId);
-            }
+        final long origId = Binder.clearCallingIdentity();
+        try {
+            final WindowProcessController app = getProcessController(appInt);
+            app.releaseSomeActivities("low-mem");
+        } finally {
+            Binder.restoreCallingIdentity(origId);
         }
     }
 
@@ -5631,9 +5629,14 @@ public class ActivityTaskManagerService extends IActivityTaskManager.Stub {
         }
 
         final IBinder threadBinder = thread.asBinder();
-        final ArrayMap<String, SparseArray<WindowProcessController>> pmap = mProcessNames.getMap();
-        for (int i = pmap.size() - 1; i >= 0; i--) {
-            final SparseArray<WindowProcessController> procs = pmap.valueAt(i);
+        ArrayMap<String, SparseArray<WindowProcessController>> tpmap;
+        synchronized (mGlobalLock) {
+            final ArrayMap<String, SparseArray<WindowProcessController>> pmap = mProcessNames.getMap();
+            tpmap = new ArrayMap<String, SparseArray<WindowProcessController>>(pmap);
+        }
+        
+        for (int i = tpmap.size() - 1; i >= 0; i--) {
+            final SparseArray<WindowProcessController> procs = tpmap.valueAt(i);
             for (int j = procs.size() - 1; j >= 0; j--) {
                 final WindowProcessController proc = procs.valueAt(j);
                 if (proc.hasThread() && proc.getThread().asBinder() == threadBinder) {
@@ -5855,13 +5858,13 @@ public class ActivityTaskManagerService extends IActivityTaskManager.Stub {
                 Slog.e(TAG, msg);
                 throw new SecurityException(msg);
             }
-            final WindowProcessController wpc = getProcessController(delegate);
-            if (wpc == null) {
-                Slog.w(TAG, "setRunningRemoteTransition: no process for " + delegate);
-                return;
-            }
-            controller.mRemotePlayer.update(wpc, true /* running */, false /* predict */);
         }
+        final WindowProcessController wpc = getProcessController(delegate);
+        if (wpc == null) {
+            Slog.w(TAG, "setRunningRemoteTransition: no process for " + delegate);
+            return;
+        }
+        controller.mRemotePlayer.update(wpc, true /* running */, false /* predict */);
     }
 
     @Override
