@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "824c6511_89cb9d8d",
+        "filename": "core/java/android/webkit/PlatformSelectionActionMenuClient.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 4195592
+      },
+      "writtenOn": "2025-06-28T02:09:58Z",
+      "side": 1,
+      "message": "This is Samsung internal code and not intended for open source.\n\nThis code should be placed in samsung internal framework.\n\nWe have to support just interface for this in AOSP.\n\nWould you consider about this again?",
+      "range": {
+        "startLine": 48,
+        "startChar": 13,
+        "endLine": 48,
+        "endChar": 46
+      },
+      "revId": "358a05e05d80d0203b71b3288e7d24fd61775eb3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
