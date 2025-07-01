@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7c3d9783_7518b2f3",
+        "filename": "core/java/android/webkit/PlatformSelectionActionMenuClient.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 4195592
+      },
+      "writtenOn": "2025-07-01T11:31:18Z",
+      "side": 1,
+      "message": "I think that we need to make interface or abstract class for this.",
+      "range": {
+        "startLine": 47,
+        "startChar": 7,
+        "endLine": 47,
+        "endChar": 13
+      },
+      "revId": "6c17f1e104182fd9497a449edaf6863d07297f41",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "325990cd_51c76cdb",
         "filename": "core/java/android/webkit/PlatformSelectionActionMenuClient.java",
         "patchSetId": 3
