@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "325990cd_51c76cdb",
+        "filename": "core/java/android/webkit/PlatformSelectionActionMenuClient.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 4195592
+      },
+      "writtenOn": "2025-07-01T10:57:17Z",
+      "side": 1,
+      "message": "Would you check this variable?",
+      "range": {
+        "startLine": 80,
+        "startChar": 8,
+        "endLine": 80,
+        "endChar": 26
+      },
+      "revId": "6c17f1e104182fd9497a449edaf6863d07297f41",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d44e9a3f_817f2538",
+        "filename": "core/java/android/webkit/PlatformSelectionActionMenuClient.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 4195592
+      },
+      "writtenOn": "2025-07-01T10:57:17Z",
+      "side": 1,
+      "message": "is this title resource id?\nIt would be better to do more clearly.",
+      "range": {
+        "startLine": 175,
+        "startChar": 20,
+        "endLine": 175,
+        "endChar": 28
+      },
+      "revId": "6c17f1e104182fd9497a449edaf6863d07297f41",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
