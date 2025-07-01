@@ -45,6 +45,75 @@
       },
       "revId": "6c17f1e104182fd9497a449edaf6863d07297f41",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1574a87c_a54ad427",
+        "filename": "core/java/android/webkit/WebView.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 451,
+      "author": {
+        "id": 3693272
+      },
+      "writtenOn": "2025-07-01T11:30:23Z",
+      "side": 1,
+      "message": "Maybe -\u003e Specifies platform specific selection menu modification client.\n\nbecause this is not boolean toggle.",
+      "range": {
+        "startLine": 451,
+        "startChar": 7,
+        "endLine": 451,
+        "endChar": 24
+      },
+      "revId": "6c17f1e104182fd9497a449edaf6863d07297f41",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4f69622d_2a64fef2",
+        "filename": "core/java/android/webkit/WebView.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 456,
+      "author": {
+        "id": 3693272
+      },
+      "writtenOn": "2025-07-01T11:30:23Z",
+      "side": 1,
+      "message": "Ditto.",
+      "range": {
+        "startLine": 456,
+        "startChar": 16,
+        "endLine": 456,
+        "endChar": 52
+      },
+      "revId": "6c17f1e104182fd9497a449edaf6863d07297f41",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d9f9ef9d_11c7f4ec",
+        "filename": "core/java/android/webkit/WebViewProvider.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 268,
+      "author": {
+        "id": 3693272
+      },
+      "writtenOn": "2025-07-01T11:30:23Z",
+      "side": 1,
+      "message": "It seems like typo. setPlatformSelectionActionMenuClient",
+      "range": {
+        "startLine": 268,
+        "startChar": 24,
+        "endLine": 268,
+        "endChar": 60
+      },
+      "revId": "6c17f1e104182fd9497a449edaf6863d07297f41",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
