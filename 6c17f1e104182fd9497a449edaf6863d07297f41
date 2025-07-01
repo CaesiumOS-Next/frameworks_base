@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "adb95375_f44925c2",
+        "filename": "core/java/android/webkit/PlatformSelectionActionMenuClient.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 4169919
+      },
+      "writtenOn": "2025-07-01T13:21:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7c3d9783_7518b2f3",
+      "range": {
+        "startLine": 47,
+        "startChar": 7,
+        "endLine": 47,
+        "endChar": 13
+      },
+      "revId": "6c17f1e104182fd9497a449edaf6863d07297f41",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "325990cd_51c76cdb",
@@ -37,6 +61,30 @@
       "writtenOn": "2025-07-01T10:57:17Z",
       "side": 1,
       "message": "Would you check this variable?",
+      "range": {
+        "startLine": 80,
+        "startChar": 8,
+        "endLine": 80,
+        "endChar": 26
+      },
+      "revId": "6c17f1e104182fd9497a449edaf6863d07297f41",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f70f9d55_0a330efc",
+        "filename": "core/java/android/webkit/PlatformSelectionActionMenuClient.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 4169919
+      },
+      "writtenOn": "2025-07-01T13:21:02Z",
+      "side": 1,
+      "message": "We should not filter any menu items if there are no platform specific implementation present and hence we are returning same list if no implementation is provided for this method in child/implementation class.",
+      "parentUuid": "325990cd_51c76cdb",
       "range": {
         "startLine": 80,
         "startChar": 8,
@@ -70,6 +118,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "41d9a495_70474803",
+        "filename": "core/java/android/webkit/PlatformSelectionActionMenuClient.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 4169919
+      },
+      "writtenOn": "2025-07-01T13:21:02Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "d44e9a3f_817f2538",
+      "range": {
+        "startLine": 175,
+        "startChar": 20,
+        "endLine": 175,
+        "endChar": 28
+      },
+      "revId": "6c17f1e104182fd9497a449edaf6863d07297f41",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1574a87c_a54ad427",
@@ -83,6 +155,30 @@
       "writtenOn": "2025-07-01T11:30:23Z",
       "side": 1,
       "message": "Maybe -\u003e Specifies platform specific selection menu modification client.\n\nbecause this is not boolean toggle.",
+      "range": {
+        "startLine": 451,
+        "startChar": 7,
+        "endLine": 451,
+        "endChar": 24
+      },
+      "revId": "6c17f1e104182fd9497a449edaf6863d07297f41",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "30607029_e98b87a6",
+        "filename": "core/java/android/webkit/WebView.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 451,
+      "author": {
+        "id": 4169919
+      },
+      "writtenOn": "2025-07-01T13:21:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1574a87c_a54ad427",
       "range": {
         "startLine": 451,
         "startChar": 7,
@@ -116,6 +212,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c4d728c7_fe2618f0",
+        "filename": "core/java/android/webkit/WebView.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 456,
+      "author": {
+        "id": 4169919
+      },
+      "writtenOn": "2025-07-01T13:21:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4f69622d_2a64fef2",
+      "range": {
+        "startLine": 456,
+        "startChar": 16,
+        "endLine": 456,
+        "endChar": 52
+      },
+      "revId": "6c17f1e104182fd9497a449edaf6863d07297f41",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d9f9ef9d_11c7f4ec",
@@ -129,6 +249,30 @@
       "writtenOn": "2025-07-01T11:30:23Z",
       "side": 1,
       "message": "It seems like typo. setPlatformSelectionActionMenuClient",
+      "range": {
+        "startLine": 268,
+        "startChar": 24,
+        "endLine": 268,
+        "endChar": 60
+      },
+      "revId": "6c17f1e104182fd9497a449edaf6863d07297f41",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "09054340_051e3999",
+        "filename": "core/java/android/webkit/WebViewProvider.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 268,
+      "author": {
+        "id": 4169919
+      },
+      "writtenOn": "2025-07-01T13:21:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d9f9ef9d_11c7f4ec",
       "range": {
         "startLine": 268,
         "startChar": 24,
