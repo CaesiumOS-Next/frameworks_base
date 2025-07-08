@@ -33,6 +33,24 @@
       "message": "Any more details on why the value is 0 or negative? I\u0027d rather not just paper over things here when it sounds like something more fundamental has gone wrong.",
       "revId": "e3cabc76fa3762084543f6be5e0793f87f9773ed",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8da69db8_4fa554fd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 3645304
+      },
+      "writtenOn": "2025-07-08T11:41:22Z",
+      "side": 1,
+      "message": "Hi Patric, the drawable returned as an icon here can be for example ColorDrawable which doesn\u0027t have size.\n\nIt\u0027s actually currently possible to specify Color(Drawable) resource as an icon  - while this might be weird, it definitely shouldn\u0027t crash the system server.\n\nWe could go one step further and try to render the color into icon-sized BitmapDrawable, but I would consider it out-of-scope of this change.",
+      "parentUuid": "2fe0ec7e_1b308994",
+      "revId": "e3cabc76fa3762084543f6be5e0793f87f9773ed",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
