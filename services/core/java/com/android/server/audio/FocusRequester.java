@@ -603,6 +603,11 @@ public class FocusRequester {
         }
     }
 
+    boolean hasReceivedTransientLoss() {
+        return mFocusLossReceived == AudioManager.AUDIOFOCUS_LOSS_TRANSIENT
+                || mFocusLossReceived == AudioManager.AUDIOFOCUS_GAIN_TRANSIENT_MAY_DUCK;
+    }
+
     AudioFocusInfo toAudioFocusInfo() {
         return new AudioFocusInfo(mAttributes, mCallingUid, mClientId, mPackageName,
                 mFocusGainRequest, mFocusLossReceived, mGrantFlags, mSdkTarget);
