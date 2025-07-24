@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f8d40033_d25745fa",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 4223511
+      },
+      "writtenOn": "2025-07-24T06:52:30Z",
+      "side": 1,
+      "message": "for https://partnerissuetracker.corp.google.com/issues/430773068",
+      "revId": "3d750493a77bf66ac4a9932dc5f8cec8f82e2709",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
