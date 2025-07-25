@@ -69,6 +69,24 @@
       "message": "@wleshner@google.com Thanks a lot for the review! May I know if the patch applied to the Google main branch?",
       "revId": "0568481969ae6de8d7fdced3f3d4906a707d129d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b17a1908_d908cb4f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1014370
+      },
+      "writtenOn": "2025-07-25T16:23:55Z",
+      "side": 1,
+      "message": "I don\u0027t believe there has been any change as of yet. I have to admit, though, that I\u0027m not very familiar with the protocol for merging patches from AOSP.",
+      "parentUuid": "a2e0737e_ea71b8da",
+      "revId": "0568481969ae6de8d7fdced3f3d4906a707d129d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
