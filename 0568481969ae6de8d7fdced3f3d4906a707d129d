@@ -87,6 +87,24 @@
       "parentUuid": "a2e0737e_ea71b8da",
       "revId": "0568481969ae6de8d7fdced3f3d4906a707d129d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "772edf8f_2a8a1e74",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1464496
+      },
+      "writtenOn": "2025-07-28T06:49:18Z",
+      "side": 1,
+      "message": "Thanks. May I ask you to call someone from your colleagues who could help with applying the patch to the main branch?",
+      "parentUuid": "b17a1908_d908cb4f",
+      "revId": "0568481969ae6de8d7fdced3f3d4906a707d129d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
