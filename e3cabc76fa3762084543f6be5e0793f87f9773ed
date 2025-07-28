@@ -51,6 +51,24 @@
       "parentUuid": "2fe0ec7e_1b308994",
       "revId": "e3cabc76fa3762084543f6be5e0793f87f9773ed",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a086dcf7_8db762ba",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1061144
+      },
+      "writtenOn": "2025-07-28T16:57:51Z",
+      "side": 1,
+      "message": "I see your point. That said, I\u0027m not comfortable just bypassing this. Can you please file a bug for us to chase down and make sure there aren\u0027t other potential complications with just not writing an icon?",
+      "parentUuid": "8da69db8_4fa554fd",
+      "revId": "e3cabc76fa3762084543f6be5e0793f87f9773ed",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
