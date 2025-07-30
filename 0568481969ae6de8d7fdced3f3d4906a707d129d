@@ -177,6 +177,24 @@
       "parentUuid": "5c6a45a1_9bf9cf7c",
       "revId": "0568481969ae6de8d7fdced3f3d4906a707d129d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "88ebc36d_8c5e1aac",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1014370
+      },
+      "writtenOn": "2025-07-30T17:33:27Z",
+      "side": 1,
+      "message": "So it turns out that this change needs to be merged into AOSP and then manually cherry-picked to main. I don\u0027t have owners for this file, so I think it needs to wait for one of the owners to approve it.",
+      "parentUuid": "5c6a45a1_9bf9cf7c",
+      "revId": "0568481969ae6de8d7fdced3f3d4906a707d129d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
