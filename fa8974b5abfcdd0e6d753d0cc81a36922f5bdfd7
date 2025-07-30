@@ -16,6 +16,24 @@
       "message": "We no longer merge CLs from AOSP; we will merge this change in our internal branch.",
       "revId": "fa8974b5abfcdd0e6d753d0cc81a36922f5bdfd7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a9f5cc1e_da7f0c9d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1963740
+      },
+      "writtenOn": "2025-07-30T17:20:35Z",
+      "side": 1,
+      "message": "Merged internally.",
+      "parentUuid": "eb184dc4_c80747e1",
+      "revId": "fa8974b5abfcdd0e6d753d0cc81a36922f5bdfd7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
