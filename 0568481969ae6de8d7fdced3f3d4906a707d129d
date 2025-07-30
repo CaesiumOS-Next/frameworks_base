@@ -123,6 +123,24 @@
       "parentUuid": "772edf8f_2a8a1e74",
       "revId": "0568481969ae6de8d7fdced3f3d4906a707d129d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d2b95a8d_42b3695d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1464496
+      },
+      "writtenOn": "2025-07-30T05:28:59Z",
+      "side": 1,
+      "message": "Thanks.\n@jjaggi@google.com Could you please help with applying the patch to the Google main branch?",
+      "parentUuid": "560a96a8_795764e9",
+      "revId": "0568481969ae6de8d7fdced3f3d4906a707d129d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
