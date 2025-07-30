@@ -141,6 +141,24 @@
       "parentUuid": "560a96a8_795764e9",
       "revId": "0568481969ae6de8d7fdced3f3d4906a707d129d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5c6a45a1_9bf9cf7c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1014370
+      },
+      "writtenOn": "2025-07-30T14:47:17Z",
+      "side": 1,
+      "message": "I will investigate how merges from AOSP work.",
+      "parentUuid": "d2b95a8d_42b3695d",
+      "revId": "0568481969ae6de8d7fdced3f3d4906a707d129d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
