@@ -48,7 +48,7 @@ static constexpr int64_t kWaitTimeBeforeCloseNs = 9 * NANOS_PER_SECOND;
 // Normally we lock the StreamManager worker thread during stop ONLY
 // for SoundPools configured with a single Stream.
 //
-static constexpr bool kForceLockStreamManagerStop = false;
+static constexpr bool kForceLockStreamManagerStop = true;
 
 ////////////
 
