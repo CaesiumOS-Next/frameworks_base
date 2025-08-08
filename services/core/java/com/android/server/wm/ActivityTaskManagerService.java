@@ -6363,6 +6363,9 @@ public class ActivityTaskManagerService extends IActivityTaskManager.Stub {
         @Override
         public boolean useTopSchedGroupForTopProcess() {
             // If it is non-zero, there may be a more important UI/animation than the top app.
+            if (ActivityManager.isLowRamDeviceStatic()) {
+                return mDemoteTopAppReasons == 0 || mDemoteTopAppReasons == 1;
+            }
             return mDemoteTopAppReasons == 0;
         }
 
