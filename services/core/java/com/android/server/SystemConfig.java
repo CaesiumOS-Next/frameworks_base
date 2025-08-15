@@ -26,6 +26,7 @@ import android.content.pm.FeatureInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.Signature;
 import android.content.pm.SignedPackage;
+import android.content.pm.parsing.FrameworkParsingPackageUtils;
 import android.os.Build;
 import android.os.CarrierAssociatedAppEntry;
 import android.os.Environment;
@@ -843,6 +844,16 @@ public class SystemConfig {
                 + permFile + " at " + parser.getPositionDescription());
     }
 
+    private static boolean checkRequiredSystemProperties(final XmlPullParser parser) {
+        String requiredSystemPropertyName = parser.getAttributeValue(null,
+                "requiredSystemPropertyName");
+        String requiredSystemPropertyValue = parser.getAttributeValue(null,
+                "requiredSystemPropertyValue");
+        return FrameworkParsingPackageUtils
+                    .checkRequiredSystemProperties(requiredSystemPropertyName,
+                            requiredSystemPropertyValue);
+    }
+
     private void readPermissionsFromXml(final XmlPullParser parser, File permFile,
             int permissionFlag) {
         final FileReader permReader;
@@ -1041,6 +1052,8 @@ public class SystemConfig {
                                 String notLowRam = parser.getAttributeValue(null, "notLowRam");
                                 allowed = !"true".equals(notLowRam);
                             }
+                            // Only available if the sysprop values match or are empty
+                            allowed &= checkRequiredSystemProperties(parser);
                             if (fname == null) {
                                 Slog.w(TAG, "<" + name + "> without name in " + permFile + " at "
                                         + parser.getPositionDescription());
@@ -1059,7 +1072,10 @@ public class SystemConfig {
                                 Slog.w(TAG, "<" + name + "> without name in " + permFile
                                         + " at " + parser.getPositionDescription());
                             } else {
-                                mUnavailableFeatures.add(fname);
+                                // Only unavailable if the sysprop values match or are empty
+                                if (checkRequiredSystemProperties(parser)) {
+                                    mUnavailableFeatures.add(fname);
+                                }
                             }
                         } else {
                             logNotAllowedInPartition(name, permFile, parser);

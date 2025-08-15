@@ -81,9 +81,13 @@
         <xs:attribute name="name" type="xs:string"/>
         <xs:attribute name="notLowRam" type="xs:string"/>
         <xs:attribute name="version" type="xs:int"/>
+        <xs:attribute name="requiredSystemPropertyName" type="xs:string"/>
+        <xs:attribute name="requiredSystemPropertyValue" type="xs:string"/>
     </xs:complexType>
     <xs:complexType name="unavailable-feature">
         <xs:attribute name="name" type="xs:string"/>
+        <xs:attribute name="requiredSystemPropertyName" type="xs:string"/>
+        <xs:attribute name="requiredSystemPropertyValue" type="xs:string"/>
     </xs:complexType>
     <xs:complexType name="allow-in-power-save-except-idle">
         <xs:attribute name="package" type="xs:string"/>
