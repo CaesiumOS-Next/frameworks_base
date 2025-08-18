@@ -1,0 +1,165 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8e299eec_4c6704cf",
+        "filename": "core/java/android/webkit/PlatformSelectionActionMenuClient.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1962645
+      },
+      "writtenOn": "2025-08-18T13:33:16Z",
+      "side": 1,
+      "message": "Where is this defined?",
+      "range": {
+        "startLine": 52,
+        "startChar": 63,
+        "endLine": 52,
+        "endChar": 84
+      },
+      "revId": "68caf9da2a768b50e5e37703b49860b8c716baa6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a4f62d9f_bb624b12",
+        "filename": "core/java/android/webkit/PlatformSelectionActionMenuClient.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1962645
+      },
+      "writtenOn": "2025-08-18T13:33:16Z",
+      "side": 1,
+      "message": "If this is a generic API, we probably don\u0027t want to mention Samsung specific things like the \"Manage Apps\" menu item in the documentation.",
+      "range": {
+        "startLine": 62,
+        "startChar": 48,
+        "endLine": 62,
+        "endChar": 59
+      },
+      "revId": "68caf9da2a768b50e5e37703b49860b8c716baa6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "843a9d7e_b5161a7b",
+        "filename": "core/java/android/webkit/PlatformSelectionActionMenuClient.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1962645
+      },
+      "writtenOn": "2025-08-18T13:33:16Z",
+      "side": 1,
+      "message": "Do you think it\u0027s worth mentioning explicitly that the OEM should not add extra ResolveInfo\u0027s into the returned list and should only ever remove items?",
+      "range": {
+        "startLine": 70,
+        "startChar": 7,
+        "endLine": 70,
+        "endChar": 82
+      },
+      "revId": "68caf9da2a768b50e5e37703b49860b8c716baa6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "79eee3df_8d15d5a4",
+        "filename": "core/java/android/webkit/PlatformSelectionActionMenuClient.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1962645
+      },
+      "writtenOn": "2025-08-18T13:33:16Z",
+      "side": 1,
+      "message": "When would it make sense to reuse vs not reuse a menu? I\u0027m trying to understand whether true is a sensible default here. It seems like false would be better so that every menu is freshly built but perhaps I\u0027m misunderstanding.",
+      "range": {
+        "startLine": 107,
+        "startChar": 8,
+        "endLine": 107,
+        "endChar": 19
+      },
+      "revId": "68caf9da2a768b50e5e37703b49860b8c716baa6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9b26e4a3_6b48bc92",
+        "filename": "core/java/android/webkit/PlatformSelectionActionMenuClient.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1962645
+      },
+      "writtenOn": "2025-08-18T13:33:16Z",
+      "side": 1,
+      "message": "If true is returned for a menu item here, will it then be handled by handleMenuItemClick? If so, we should mention that.",
+      "range": {
+        "startLine": 116,
+        "startChar": 3,
+        "endLine": 118,
+        "endChar": 5
+      },
+      "revId": "68caf9da2a768b50e5e37703b49860b8c716baa6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d3c6fe21_51621570",
+        "filename": "core/java/android/webkit/PlatformSelectionActionMenuClient.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1962645
+      },
+      "writtenOn": "2025-08-18T13:33:16Z",
+      "side": 1,
+      "message": "This class seems very similar to MenuItem. I\u0027m not sure if there\u0027s a way to use MenuItem instead but it\u0027s a little worrying to me that some of our APIs use MenuItems and some of them use PlatformMenuData despite both containing almost identical information.",
+      "range": {
+        "startLine": 144,
+        "startChar": 17,
+        "endLine": 144,
+        "endChar": 33
+      },
+      "revId": "68caf9da2a768b50e5e37703b49860b8c716baa6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4eab6bac_78dc1fe9",
+        "filename": "core/java/android/webkit/PlatformSelectionActionMenuClient.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1962645
+      },
+      "writtenOn": "2025-08-18T13:33:16Z",
+      "side": 1,
+      "message": "getTitleRes",
+      "range": {
+        "startLine": 196,
+        "startChar": 19,
+        "endLine": 196,
+        "endChar": 30
+      },
+      "revId": "68caf9da2a768b50e5e37703b49860b8c716baa6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
