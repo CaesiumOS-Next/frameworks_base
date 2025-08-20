@@ -189,6 +189,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "243297c3_a5b306a2",
+        "filename": "core/java/android/webkit/PlatformSelectionActionMenuClient.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 4169919
+      },
+      "writtenOn": "2025-08-20T10:41:46Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "ac9010a7_98d8cf47",
+      "range": {
+        "startLine": 107,
+        "startChar": 8,
+        "endLine": 107,
+        "endChar": 19
+      },
+      "revId": "68caf9da2a768b50e5e37703b49860b8c716baa6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9b26e4a3_6b48bc92",
