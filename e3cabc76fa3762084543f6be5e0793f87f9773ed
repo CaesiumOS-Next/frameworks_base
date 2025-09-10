@@ -69,6 +69,24 @@
       "parentUuid": "8da69db8_4fa554fd",
       "revId": "e3cabc76fa3762084543f6be5e0793f87f9773ed",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fb7d2004_5f7901d0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 3507701
+      },
+      "writtenOn": "2025-09-10T19:13:23Z",
+      "side": 1,
+      "message": "@Patrick Baumann created a bug here: https://issuetracker.google.com/issues/444255716",
+      "parentUuid": "a086dcf7_8db762ba",
+      "revId": "e3cabc76fa3762084543f6be5e0793f87f9773ed",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
