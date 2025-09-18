@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b7e2b0b9_e73b7ed9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 16
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1962645
+      },
+      "writtenOn": "2025-09-18T15:31:37Z",
+      "side": 1,
+      "message": "I believe these are what\u0027s causing the Lint failures we discussed in today\u0027s meeting",
+      "revId": "f97abdf23d7395e19266a887fa117c421100b639",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ed74f8aa_93940830",
+        "filename": "core/java/android/webkit/PlatformSelectionActionMenuClient.java",
+        "patchSetId": 16
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1962645
+      },
+      "writtenOn": "2025-09-18T15:31:37Z",
+      "side": 1,
+      "message": "Please fix this WARNING reported by Check Contents: Lines longer than 100 characters should be wrapped to improve readability; see h...\n\nLines longer than 100 characters should be wrapped to improve readability; see https://source.android.com/setup/contribute/code-style#limit-line-length for more details. See go/ayeaye-long-lines for ayeaye-specific info.\n\nTo rerun the analyzer locally, run: `alint -- -c CheckContents`\n\nFor more information, see go/alint.",
+      "range": {
+        "startLine": 67,
+        "startChar": 0,
+        "endLine": 67,
+        "endChar": 101
+      },
+      "revId": "f97abdf23d7395e19266a887fa117c421100b639",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d56e7ea6_8d3cb705",
+        "filename": "core/java/android/webkit/PlatformSelectionActionMenuClient.java",
+        "patchSetId": 16
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1962645
+      },
+      "writtenOn": "2025-09-18T15:31:37Z",
+      "side": 1,
+      "message": "Please fix this ERROR reported by Common Typos: Common typo found: \"implemetation\" -- should it be \"implementation\"?\nNote: a lin...\n\nCommon typo found: \"implemetation\" -- should it be \"implementation\"?\nNote: a line containing \"common_typos_disable\" or \"common_typos_enable\" will turn off or on (respectively) the linter for subsequent lines in the file. Alternatively include the token \"NOTYPO\" within a line to skip typo linting that line or include \u0027No-Typo-Check: \u003creason\u003e\u0027in the commit message.",
+      "range": {
+        "startLine": 97,
+        "startChar": 70,
+        "endLine": 97,
+        "endChar": 83
+      },
+      "revId": "f97abdf23d7395e19266a887fa117c421100b639",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "40f57a5b_450684f2",
+        "filename": "core/java/android/webkit/PlatformSelectionActionMenuClient.java",
+        "patchSetId": 16
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1962645
+      },
+      "writtenOn": "2025-09-18T15:31:37Z",
+      "side": 1,
+      "message": "Please fix this WARNING reported by Check Contents: Lines longer than 100 characters should be wrapped to improve readability; see h...\n\nLines longer than 100 characters should be wrapped to improve readability; see https://source.android.com/setup/contribute/code-style#limit-line-length for more details. See go/ayeaye-long-lines for ayeaye-specific info.\n\nTo rerun the analyzer locally, run: `alint -- -c CheckContents`\n\nFor more information, see go/alint.",
+      "range": {
+        "startLine": 113,
+        "startChar": 0,
+        "endLine": 113,
+        "endChar": 101
+      },
+      "revId": "f97abdf23d7395e19266a887fa117c421100b639",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
