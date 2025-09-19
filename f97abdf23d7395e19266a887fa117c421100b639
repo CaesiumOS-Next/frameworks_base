@@ -41,6 +41,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "df064386_a2ee2712",
+        "filename": "core/java/android/webkit/PlatformSelectionActionMenuClient.java",
+        "patchSetId": 16
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 4169919
+      },
+      "writtenOn": "2025-09-19T10:33:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ed74f8aa_93940830",
+      "range": {
+        "startLine": 67,
+        "startChar": 0,
+        "endLine": 67,
+        "endChar": 101
+      },
+      "revId": "f97abdf23d7395e19266a887fa117c421100b639",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d56e7ea6_8d3cb705",
@@ -64,6 +88,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e221cc1e_708baf48",
+        "filename": "core/java/android/webkit/PlatformSelectionActionMenuClient.java",
+        "patchSetId": 16
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 4169919
+      },
+      "writtenOn": "2025-09-19T10:33:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d56e7ea6_8d3cb705",
+      "range": {
+        "startLine": 97,
+        "startChar": 70,
+        "endLine": 97,
+        "endChar": 83
+      },
+      "revId": "f97abdf23d7395e19266a887fa117c421100b639",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "40f57a5b_450684f2",
@@ -77,6 +125,30 @@
       "writtenOn": "2025-09-18T15:31:37Z",
       "side": 1,
       "message": "Please fix this WARNING reported by Check Contents: Lines longer than 100 characters should be wrapped to improve readability; see h...\n\nLines longer than 100 characters should be wrapped to improve readability; see https://source.android.com/setup/contribute/code-style#limit-line-length for more details. See go/ayeaye-long-lines for ayeaye-specific info.\n\nTo rerun the analyzer locally, run: `alint -- -c CheckContents`\n\nFor more information, see go/alint.",
+      "range": {
+        "startLine": 113,
+        "startChar": 0,
+        "endLine": 113,
+        "endChar": 101
+      },
+      "revId": "f97abdf23d7395e19266a887fa117c421100b639",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b8da1960_0ddce695",
+        "filename": "core/java/android/webkit/PlatformSelectionActionMenuClient.java",
+        "patchSetId": 16
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 4169919
+      },
+      "writtenOn": "2025-09-19T10:33:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "40f57a5b_450684f2",
       "range": {
         "startLine": 113,
         "startChar": 0,
