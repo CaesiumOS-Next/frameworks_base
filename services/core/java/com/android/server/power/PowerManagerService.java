@@ -2338,6 +2338,7 @@ public final class PowerManagerService extends SystemService
                     // in case we are going to sleep without dozing before
                     mLastGlobalSleepTime = eventTime;
                     mLastGlobalSleepReason = reason;
+                    mLastGlobalSleepTimeRealtime = mClock.elapsedRealtime();
                 }
                 break;
 
