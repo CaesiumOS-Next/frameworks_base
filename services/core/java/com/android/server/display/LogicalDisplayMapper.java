@@ -1000,6 +1000,19 @@ class LogicalDisplayMapper implements DisplayDeviceRepository.Listener {
 
             final int id = mLogicalDisplaysToUpdate.keyAt(i);
             final LogicalDisplay display = getDisplayLocked(id);
+            if (logicalDisplayEvent == LOGICAL_DISPLAY_EVENT_ADDED) {
+                mDisplaysEnabledCache.put(id, true);
+            } else if (logicalDisplayEvent == LOGICAL_DISPLAY_EVENT_REMOVED) {
+                mDisplaysEnabledCache.delete(id);
+            } else if (logicalDisplayEvent == LOGICAL_DISPLAY_EVENT_DISCONNECTED) {
+                mLogicalDisplays.delete(id);
+            }
+
+            if (display == null) {
+                Slog.w(TAG, "The display is no longer valid and has been removed," +
+                        "no need to send display event");
+                continue;
+            }
             if (DEBUG) {
                 final DisplayDevice device = display.getPrimaryDisplayDeviceLocked();
                 final String uniqueId = device == null ? "null" : device.getUniqueId();
@@ -1007,17 +1020,7 @@ class LogicalDisplayMapper implements DisplayDeviceRepository.Listener {
                         + "display=" + id + " with device=" + uniqueId);
             }
 
-            if (logicalDisplayEvent == LOGICAL_DISPLAY_EVENT_ADDED) {
-                mDisplaysEnabledCache.put(id, true);
-            } else if (logicalDisplayEvent == LOGICAL_DISPLAY_EVENT_REMOVED) {
-                mDisplaysEnabledCache.delete(id);
-            }
-
             mListener.onLogicalDisplayEventLocked(display, logicalDisplayEvent);
-
-            if (logicalDisplayEvent == LOGICAL_DISPLAY_EVENT_DISCONNECTED) {
-                mLogicalDisplays.delete(id);
-            }
         }
     }
 
