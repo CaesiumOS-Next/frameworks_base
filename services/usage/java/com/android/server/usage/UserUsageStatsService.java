@@ -209,7 +209,7 @@ class UserUsageStatsService {
 
     private void readPackageMappingsLocked(HashMap<String, Long> installedPackages,
             boolean deleteObsoleteData) {
-        mDatabase.readMappingsLocked();
+        mDatabase.readMappings();
         // Package mappings for the system user are updated after 24 hours via a job scheduled by
         // UsageStatsIdleService to ensure restored data is not lost on first boot. Additionally,
         // this makes user service initialization a little quicker on subsequent boots.
@@ -251,7 +251,7 @@ class UserUsageStatsService {
             mDatabase.mPackagesTokenData.removePackage(removedPackages.get(i), timeNow);
         }
         try {
-            mDatabase.writeMappingsLocked();
+            mDatabase.writeMappings();
         } catch (Exception e) {
             Slog.w(TAG, "Unable to write updated package mappings file on service initialization.");
             return false;
@@ -814,7 +814,7 @@ class UserUsageStatsService {
             Slog.i(TAG, mLogPrefix + "Flushing usage stats to disk");
             try {
                 mDatabase.obfuscateCurrentStats(mCurrentStats);
-                mDatabase.writeMappingsLocked();
+                mDatabase.writeMappings();
                 for (int i = 0; i < mCurrentStats.length; i++) {
                     mDatabase.putUsageStats(i, mCurrentStats[i]);
                 }

@@ -526,7 +526,7 @@ public class UsageStatsDatabase {
 
         // Upgrade step logic for the entire usage stats directory, not individual interval dirs.
         if (version >= 5) {
-            readMappingsLocked();
+            readMappings();
         }
 
         // Read each file in the backup according to the version and write to the interval
@@ -566,7 +566,7 @@ public class UsageStatsDatabase {
         // Upgrade step logic for the entire usage stats directory, not individual interval dirs.
         if (mCurrentVersion >= 5) {
             try {
-                writeMappingsLocked();
+                writeMappings();
             } catch (IOException e) {
                 Slog.e(TAG, "Failed to write the tokens mappings file.");
             }
@@ -581,7 +581,7 @@ public class UsageStatsDatabase {
         synchronized (mLock) {
             final int tokenRemoved = mPackagesTokenData.removePackage(packageName, timeRemoved);
             try {
-                writeMappingsLocked();
+                writeMappings();
             } catch (Exception e) {
                 Slog.w(TAG, "Unable to update package mappings on disk after removing token "
                         + tokenRemoved);
@@ -622,7 +622,7 @@ public class UsageStatsDatabase {
             }
 
             try {
-                writeMappingsLocked();
+                writeMappings();
             } catch (IOException e) {
                 Slog.e(TAG, "Failed to write package mappings after pruning data.");
                 return false;
@@ -1187,46 +1187,50 @@ public class UsageStatsDatabase {
      * Reads the obfuscated data file from disk containing the tokens to packages mappings and
      * rebuilds the packages to tokens mappings based on that data.
      */
-    public void readMappingsLocked() {
-        if (!mPackageMappingsFile.exists()) {
-            return; // package mappings file is missing - recreate mappings on next write.
-        }
-
-        try (FileInputStream in = new AtomicFile(mPackageMappingsFile).openRead()) {
-            UsageStatsProtoV2.readObfuscatedData(in, mPackagesTokenData);
-        } catch (Exception e) {
-            Slog.e(TAG, "Failed to read the obfuscated packages mapping file.", e);
-            return;
-        }
-
-        final SparseArray<ArrayList<String>> tokensToPackagesMap =
-                mPackagesTokenData.tokensToPackagesMap;
-        final int tokensToPackagesMapSize = tokensToPackagesMap.size();
-        for (int i = 0; i < tokensToPackagesMapSize; i++) {
-            final int packageToken = tokensToPackagesMap.keyAt(i);
-            final ArrayList<String> tokensMap = tokensToPackagesMap.valueAt(i);
-            final ArrayMap<String, Integer> packageStringsMap = new ArrayMap<>();
-            final int tokensMapSize = tokensMap.size();
-            // package name will always be at index 0 but its token should not be 0
-            packageStringsMap.put(tokensMap.get(0), packageToken);
-            for (int j = 1; j < tokensMapSize; j++) {
-                packageStringsMap.put(tokensMap.get(j), j);
+    public void readMappings() {
+        synchronized (mLock) {
+            if (!mPackageMappingsFile.exists()) {
+                return; // package mappings file is missing - recreate mappings on next write.
             }
-            mPackagesTokenData.packagesToTokensMap.put(tokensMap.get(0), packageStringsMap);
+
+            try (FileInputStream in = new AtomicFile(mPackageMappingsFile).openRead()) {
+                UsageStatsProtoV2.readObfuscatedData(in, mPackagesTokenData);
+            } catch (Exception e) {
+                Slog.e(TAG, "Failed to read the obfuscated packages mapping file.", e);
+                return;
+            }
+
+            final SparseArray<ArrayList<String>> tokensToPackagesMap =
+                    mPackagesTokenData.tokensToPackagesMap;
+            final int tokensToPackagesMapSize = tokensToPackagesMap.size();
+            for (int i = 0; i < tokensToPackagesMapSize; i++) {
+                final int packageToken = tokensToPackagesMap.keyAt(i);
+                final ArrayList<String> tokensMap = tokensToPackagesMap.valueAt(i);
+                final ArrayMap<String, Integer> packageStringsMap = new ArrayMap<>();
+                final int tokensMapSize = tokensMap.size();
+                // package name will always be at index 0 but its token should not be 0
+                packageStringsMap.put(tokensMap.get(0), packageToken);
+                for (int j = 1; j < tokensMapSize; j++) {
+                    packageStringsMap.put(tokensMap.get(j), j);
+                }
+                mPackagesTokenData.packagesToTokensMap.put(tokensMap.get(0), packageStringsMap);
+            }
         }
     }
 
-    void writeMappingsLocked() throws IOException {
-        final AtomicFile file = new AtomicFile(mPackageMappingsFile);
-        FileOutputStream fos = file.startWrite();
-        try {
-            UsageStatsProtoV2.writeObfuscatedData(fos, mPackagesTokenData);
-            file.finishWrite(fos);
-            fos = null;
-        } catch (Exception e) {
-            Slog.e(TAG, "Unable to write obfuscated data to proto.", e);
-        } finally {
-            file.failWrite(fos);
+    void writeMappings() throws IOException {
+        synchronized (mLock) {
+            final AtomicFile file = new AtomicFile(mPackageMappingsFile);
+            FileOutputStream fos = file.startWrite();
+            try {
+                UsageStatsProtoV2.writeObfuscatedData(fos, mPackagesTokenData);
+                file.finishWrite(fos);
+                fos = null;
+            } catch (Exception e) {
+                Slog.e(TAG, "Unable to write obfuscated data to proto.", e);
+            } finally {
+                file.failWrite(fos);
+            }
         }
     }
 

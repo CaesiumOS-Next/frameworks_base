@@ -81,7 +81,7 @@ public class UsageStatsDatabasePerfTest {
         sContext = InstrumentationRegistry.getTargetContext();
         mTestDir = new File(sContext.getFilesDir(), "UsageStatsDatabasePerfTest");
         sUsageStatsDatabase = new UsageStatsDatabase(mTestDir);
-        sUsageStatsDatabase.readMappingsLocked();
+        sUsageStatsDatabase.readMappings();
         sUsageStatsDatabase.init(1);
     }
 
