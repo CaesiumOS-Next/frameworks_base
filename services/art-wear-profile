@@ -19157,12 +19157,12 @@ PLcom/android/server/usage/UsageStatsDatabase;->putUsageStats(ILcom/android/serv
 PLcom/android/server/usage/UsageStatsDatabase;->readLocked(Landroid/util/AtomicFile;Lcom/android/server/usage/IntervalStats;ILcom/android/server/usage/PackagesTokenData;Z)Z
 PLcom/android/server/usage/UsageStatsDatabase;->readLocked(Landroid/util/AtomicFile;Lcom/android/server/usage/IntervalStats;Z)V
 HPLcom/android/server/usage/UsageStatsDatabase;->readLocked(Ljava/io/InputStream;Lcom/android/server/usage/IntervalStats;ILcom/android/server/usage/PackagesTokenData;Z)Z+]Landroid/app/usage/EventList;Landroid/app/usage/EventList;]Landroid/util/SparseArray;Landroid/util/SparseArray;]Ljava/util/ArrayList;Ljava/util/ArrayList;
-PLcom/android/server/usage/UsageStatsDatabase;->readMappingsLocked()V
+PLcom/android/server/usage/UsageStatsDatabase;->readMappings()V
 PLcom/android/server/usage/UsageStatsDatabase;->writeIntervalStatsToStream(Ljava/io/DataOutputStream;Landroid/util/AtomicFile;I)V
 PLcom/android/server/usage/UsageStatsDatabase;->writeLocked(Landroid/util/AtomicFile;Lcom/android/server/usage/IntervalStats;)V
 PLcom/android/server/usage/UsageStatsDatabase;->writeLocked(Landroid/util/AtomicFile;Lcom/android/server/usage/IntervalStats;ILcom/android/server/usage/PackagesTokenData;)V
 PLcom/android/server/usage/UsageStatsDatabase;->writeLocked(Ljava/io/OutputStream;Lcom/android/server/usage/IntervalStats;ILcom/android/server/usage/PackagesTokenData;)V
-PLcom/android/server/usage/UsageStatsDatabase;->writeMappingsLocked()V
+PLcom/android/server/usage/UsageStatsDatabase;->writeMappings()V
 PLcom/android/server/usage/UsageStatsHandlerThread;-><clinit>()V
 PLcom/android/server/usage/UsageStatsIdleService$$ExternalSyntheticLambda0;-><init>(Lcom/android/server/usage/UsageStatsIdleService;Landroid/app/job/JobParameters;I)V
 PLcom/android/server/usage/UsageStatsIdleService$$ExternalSyntheticLambda0;->run()V

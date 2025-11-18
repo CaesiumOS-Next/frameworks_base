@@ -82,7 +82,7 @@ public class UsageStatsDatabaseTest {
         mContext = InstrumentationRegistry.getTargetContext();
         mTestDir = new File(mContext.getFilesDir(), "UsageStatsDatabaseTest");
         mUsageStatsDatabase = new UsageStatsDatabase(mTestDir);
-        mUsageStatsDatabase.readMappingsLocked();
+        mUsageStatsDatabase.readMappings();
         mUsageStatsDatabase.init(1);
         populateIntervalStats(MAX_TESTED_VERSION);
         clearUsageStatsFiles();
@@ -434,16 +434,16 @@ public class UsageStatsDatabaseTest {
         populateIntervalStats(oldVersion);
         // Write IntervalStats to disk in old version format
         UsageStatsDatabase prevDB = new UsageStatsDatabase(mTestDir, oldVersion);
-        prevDB.readMappingsLocked();
+        prevDB.readMappings();
         prevDB.init(1);
         prevDB.putUsageStats(interval, mIntervalStats);
         if (oldVersion >= 5) {
-            prevDB.writeMappingsLocked();
+            prevDB.writeMappings();
         }
 
         // Simulate an upgrade to a new version and read from the disk
         UsageStatsDatabase newDB = new UsageStatsDatabase(mTestDir, newVersion);
-        newDB.readMappingsLocked();
+        newDB.readMappings();
         newDB.init(mEndTime);
         List<IntervalStats> stats = newDB.queryUsageStats(interval, 0, mEndTime,
                 mIntervalStatsVerifier, false);
@@ -463,7 +463,7 @@ public class UsageStatsDatabaseTest {
      */
     void runBackupRestoreTest(int version) throws IOException {
         UsageStatsDatabase prevDB = new UsageStatsDatabase(mTestDir);
-        prevDB.readMappingsLocked();
+        prevDB.readMappings();
         prevDB.init(1);
         prevDB.putUsageStats(UsageStatsManager.INTERVAL_DAILY, mIntervalStats);
         Set<String> prevDBApps = mIntervalStats.packageStats.keySet();
@@ -483,7 +483,7 @@ public class UsageStatsDatabaseTest {
         clearUsageStatsFiles();
 
         UsageStatsDatabase newDB = new UsageStatsDatabase(mTestDir);
-        newDB.readMappingsLocked();
+        newDB.readMappings();
         newDB.init(1);
         // Attempt to restore the usage stats from the backup
         Set<String> restoredApps = newDB.applyRestoredPayload(KEY_USAGE_STATS, blob);
@@ -608,14 +608,14 @@ public class UsageStatsDatabaseTest {
     private void compareObfuscatedData(int interval) throws IOException {
         // Write IntervalStats to disk
         UsageStatsDatabase prevDB = new UsageStatsDatabase(mTestDir, 5);
-        prevDB.readMappingsLocked();
+        prevDB.readMappings();
         prevDB.init(1);
         prevDB.putUsageStats(interval, mIntervalStats);
-        prevDB.writeMappingsLocked();
+        prevDB.writeMappings();
 
         // Read IntervalStats from disk into a new db
         UsageStatsDatabase newDB = new UsageStatsDatabase(mTestDir, 5);
-        newDB.readMappingsLocked();
+        newDB.readMappings();
         newDB.init(mEndTime);
         List<IntervalStats> stats = newDB.queryUsageStats(interval, 0, mEndTime,
                 mIntervalStatsVerifier, false);
@@ -635,10 +635,10 @@ public class UsageStatsDatabaseTest {
 
     private void verifyPackageNotRetained(int interval) throws IOException {
         UsageStatsDatabase db = new UsageStatsDatabase(mTestDir, 5);
-        db.readMappingsLocked();
+        db.readMappings();
         db.init(1);
         db.putUsageStats(interval, mIntervalStats);
-        db.writeMappingsLocked();
+        db.writeMappings();
 
         final String removedPackage = "fake.package.name0";
         // invoke handler call directly from test to remove package
@@ -718,7 +718,7 @@ public class UsageStatsDatabaseTest {
     @Test
     public void testPackageDataIsRemoved() throws IOException {
         UsageStatsDatabase db = new UsageStatsDatabase(mTestDir);
-        db.readMappingsLocked();
+        db.readMappings();
         db.init(1);
 
         // write stats to disk for each interval
@@ -726,7 +726,7 @@ public class UsageStatsDatabaseTest {
         db.putUsageStats(UsageStatsManager.INTERVAL_WEEKLY, mIntervalStats);
         db.putUsageStats(UsageStatsManager.INTERVAL_MONTHLY, mIntervalStats);
         db.putUsageStats(UsageStatsManager.INTERVAL_YEARLY, mIntervalStats);
-        db.writeMappingsLocked();
+        db.writeMappings();
 
         final Set<String> installedPackages = mIntervalStats.packageStats.keySet();
         final String removedPackage = installedPackages.iterator().next();
@@ -740,7 +740,7 @@ public class UsageStatsDatabaseTest {
 
         // read data from disk into a new db instance
         UsageStatsDatabase newDB = new UsageStatsDatabase(mTestDir);
-        newDB.readMappingsLocked();
+        newDB.readMappings();
         newDB.init(mEndTime);
 
         // query data for each interval and ensure data for package doesn't exist
