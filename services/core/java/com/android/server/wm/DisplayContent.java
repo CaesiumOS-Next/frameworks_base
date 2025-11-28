@@ -2050,9 +2050,37 @@ class DisplayContent extends RootDisplayArea implements WindowManagerPolicy.Disp
         if (!r.hasFixedRotationTransform()) {
             startFixedRotationTransform(r, rotation);
         }
+        linkFixedRotationTransformToAboveActivityIfNeeded(r);
         setFixedRotationLaunchingAppUnchecked(r, rotation);
         if (prevRotatedLaunchingApp != null) {
             prevRotatedLaunchingApp.finishFixedRotationTransform();
+        }
+    }
+
+    private void linkFixedRotationTransformToAboveActivityIfNeeded(@NonNull ActivityRecord r) {
+        if (r.hasFixedRotationTransform() && mFixedRotationLaunchingApp == null) {
+            final Task task = r.getTask();
+            if (task != null) {
+                final List<ActivityRecord> arList = new ArrayList<>();
+                task.forAllActivities(ar -> { arList.add(ar); }, true);
+                final int cur = arList.indexOf(r);
+                ActivityRecord aboveAr = null;
+                for (int i = cur - 1; i >= 0; i--) {
+                    aboveAr = arList.get(i);
+                    if (aboveAr != null && !aboveAr.finishing && !aboveAr.isTaskOverlay()) {
+                        if (aboveAr.occludesParent()) {
+                            break;
+                        }
+                        if (aboveAr.isVisibleRequested()
+                                && aboveAr.getOrientation() == SCREEN_ORIENTATION_UNSPECIFIED) {
+                            Slog.i(TAG, "link fixed rotation transform to " + aboveAr
+                                    + " for it is transparent, orient-unspecified"
+                                    + " and above " + r);
+                            aboveAr.linkFixedRotationTransform(r);
+                        }
+                    }
+                }
+            }
         }
     }
 
