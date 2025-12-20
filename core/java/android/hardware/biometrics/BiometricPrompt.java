@@ -48,9 +48,14 @@ import android.os.IBinder;
 import android.os.Parcel;
 import android.os.RemoteException;
 import android.os.ServiceManager;
+<<<<<<< PATCH SET (a2fabce912a05f5e6692d264ad226cf64c49ed4d Revert "Add Framework APIs for Identity Credential.")
+||||||| BASE      (045b6de97564ef58e33890ae2f87b504c4c725d2 Add Framework APIs for Identity Credential.)
+import android.security.identity.IdentityCredential;
+=======
 import android.security.identity.IdentityCredential;
 import android.security.identity.PresentationSession;
 import android.security.keystore.KeyProperties;
+>>>>>>> BASE      (1cdfff555f4a21f71ccc978290e2e212e2f8b168 Merge "Remove Redundant Variable for getStatusBarHeightForRo)
 import android.text.TextUtils;
 import android.util.Log;
 
@@ -1036,6 +1041,13 @@ public class BiometricPrompt implements BiometricAuthenticator, BiometricConstan
             super(mac);
         }
 
+<<<<<<< PATCH SET (a2fabce912a05f5e6692d264ad226cf64c49ed4d Revert "Add Framework APIs for Identity Credential.")
+||||||| BASE      (045b6de97564ef58e33890ae2f87b504c4c725d2 Add Framework APIs for Identity Credential.)
+        public CryptoObject(@NonNull IdentityCredential credential) {
+            super(credential);
+        }
+
+=======
         /**
          * Create from a {@link IdentityCredential} object.
          *
@@ -1047,6 +1059,7 @@ public class BiometricPrompt implements BiometricAuthenticator, BiometricConstan
             super(credential);
         }
 
+>>>>>>> BASE      (1cdfff555f4a21f71ccc978290e2e212e2f8b168 Merge "Remove Redundant Variable for getStatusBarHeightForRo)
         /**
          * Create from a {@link PresentationSession} object.
          *
@@ -1100,6 +1113,17 @@ public class BiometricPrompt implements BiometricAuthenticator, BiometricConstan
         public @Nullable Mac getMac() {
             return super.getMac();
         }
+<<<<<<< PATCH SET (a2fabce912a05f5e6692d264ad226cf64c49ed4d Revert "Add Framework APIs for Identity Credential.")
+||||||| BASE      (045b6de97564ef58e33890ae2f87b504c4c725d2 Add Framework APIs for Identity Credential.)
+
+        /**
+         * Get {@link IdentityCredential} object.
+         * @return {@link IdentityCredential} object or null if this doesn't contain one.
+         */
+        public @Nullable IdentityCredential getIdentityCredential() {
+            return super.getIdentityCredential();
+        }
+=======
 
         /**
          * Get {@link IdentityCredential} object.
@@ -1148,6 +1172,7 @@ public class BiometricPrompt implements BiometricAuthenticator, BiometricConstan
         public long getOperationHandle() {
             return super.getOpId();
         }
+>>>>>>> BASE      (1cdfff555f4a21f71ccc978290e2e212e2f8b168 Merge "Remove Redundant Variable for getStatusBarHeightForRo)
     }
 
     /**

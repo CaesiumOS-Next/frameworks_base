@@ -20,10 +20,17 @@ import static android.hardware.biometrics.Flags.FLAG_ADD_KEY_AGREEMENT_CRYPTO_OB
 
 import android.annotation.FlaggedApi;
 import android.annotation.NonNull;
+<<<<<<< PATCH SET (a2fabce912a05f5e6692d264ad226cf64c49ed4d Revert "Add Framework APIs for Identity Credential.")
+import android.security.keystore.AndroidKeyStoreProvider;
+||||||| BASE      (045b6de97564ef58e33890ae2f87b504c4c725d2 Add Framework APIs for Identity Credential.)
+import android.security.identity.IdentityCredential;
+import android.security.keystore.AndroidKeyStoreProvider;
+=======
 import android.annotation.Nullable;
 import android.security.identity.IdentityCredential;
 import android.security.identity.PresentationSession;
 import android.security.keystore2.AndroidKeyStoreProvider;
+>>>>>>> BASE      (1cdfff555f4a21f71ccc978290e2e212e2f8b168 Merge "Remove Redundant Variable for getStatusBarHeightForRo)
 
 import java.security.Signature;
 
@@ -33,8 +40,15 @@ import javax.crypto.Mac;
 
 /**
  * A wrapper class for the crypto objects supported by BiometricPrompt and FingerprintManager.
+<<<<<<< PATCH SET (a2fabce912a05f5e6692d264ad226cf64c49ed4d Revert "Add Framework APIs for Identity Credential.")
+ * Currently the framework supports {@link Signature}, {@link Cipher} and {@link Mac} objects.
+||||||| BASE      (045b6de97564ef58e33890ae2f87b504c4c725d2 Add Framework APIs for Identity Credential.)
+ * Currently the framework supports {@link Signature}, {@link Cipher}, {@link Mac} and
+ * {@link IdentityCredential} objects.
+=======
  * Currently the framework supports {@link Signature}, {@link Cipher}, {@link Mac},
  * {@link KeyAgreement}, {@link IdentityCredential}, and {@link PresentationSession} objects.
+>>>>>>> BASE      (1cdfff555f4a21f71ccc978290e2e212e2f8b168 Merge "Remove Redundant Variable for getStatusBarHeightForRo)
  * @hide
  */
 public class CryptoObject {
@@ -67,6 +81,13 @@ public class CryptoObject {
         mCrypto = mac;
     }
 
+<<<<<<< PATCH SET (a2fabce912a05f5e6692d264ad226cf64c49ed4d Revert "Add Framework APIs for Identity Credential.")
+||||||| BASE      (045b6de97564ef58e33890ae2f87b504c4c725d2 Add Framework APIs for Identity Credential.)
+    public CryptoObject(@NonNull IdentityCredential credential) {
+        mCrypto = credential;
+    }
+
+=======
     /**
      * Create from a {@link IdentityCredential} object.
      *
@@ -78,6 +99,7 @@ public class CryptoObject {
         mCrypto = credential;
     }
 
+>>>>>>> BASE      (1cdfff555f4a21f71ccc978290e2e212e2f8b168 Merge "Remove Redundant Variable for getStatusBarHeightForRo)
     /**
      * Create from a {@link PresentationSession} object.
      *
@@ -126,6 +148,17 @@ public class CryptoObject {
     }
 
     /**
+<<<<<<< PATCH SET (a2fabce912a05f5e6692d264ad226cf64c49ed4d Revert "Add Framework APIs for Identity Credential.")
+||||||| BASE      (045b6de97564ef58e33890ae2f87b504c4c725d2 Add Framework APIs for Identity Credential.)
+     * Get {@link IdentityCredential} object.
+     * @return {@link IdentityCredential} object or null if this doesn't contain one.
+     */
+    public IdentityCredential getIdentityCredential() {
+        return mCrypto instanceof IdentityCredential ? (IdentityCredential) mCrypto : null;
+    }
+
+    /**
+=======
      * Get {@link IdentityCredential} object.
      * @return {@link IdentityCredential} object or null if this doesn't contain one.
      * @deprecated Use {@link PresentationSession} instead of {@link IdentityCredential}.
@@ -155,9 +188,23 @@ public class CryptoObject {
     }
 
     /**
+>>>>>>> BASE      (1cdfff555f4a21f71ccc978290e2e212e2f8b168 Merge "Remove Redundant Variable for getStatusBarHeightForRo)
      * @hide
      * @return the opId associated with this object or 0 if none
      */
+<<<<<<< PATCH SET (a2fabce912a05f5e6692d264ad226cf64c49ed4d Revert "Add Framework APIs for Identity Credential.")
+    public final long getOpId() {
+        return mCrypto != null
+                ? AndroidKeyStoreProvider.getKeyStoreOperationHandle(mCrypto) : 0;
+||||||| BASE      (045b6de97564ef58e33890ae2f87b504c4c725d2 Add Framework APIs for Identity Credential.)
+    public final long getOpId() {
+        if (mCrypto == null) {
+            return 0;
+        } else if (mCrypto instanceof IdentityCredential) {
+            return ((IdentityCredential) mCrypto).getCredstoreOperationHandle();
+        }
+        return AndroidKeyStoreProvider.getKeyStoreOperationHandle(mCrypto);
+=======
     public long getOpId() {
         if (mCrypto == null) {
             return 0;
@@ -169,5 +216,6 @@ public class CryptoObject {
             return ((PresentationSession) mCrypto).getCredstoreOperationHandle();
         }
         return AndroidKeyStoreProvider.getKeyStoreOperationHandle(mCrypto);
+>>>>>>> BASE      (1cdfff555f4a21f71ccc978290e2e212e2f8b168 Merge "Remove Redundant Variable for getStatusBarHeightForRo)
     }
 }

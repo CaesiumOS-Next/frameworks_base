@@ -65,8 +65,13 @@ import android.os.IRemoteCallback;
 import android.os.PowerManager;
 import android.os.RemoteException;
 import android.os.UserHandle;
+<<<<<<< PATCH SET (a2fabce912a05f5e6692d264ad226cf64c49ed4d Revert "Add Framework APIs for Identity Credential.")
+||||||| BASE      (045b6de97564ef58e33890ae2f87b504c4c725d2 Add Framework APIs for Identity Credential.)
+import android.security.identity.IdentityCredential;
+=======
 import android.security.identity.IdentityCredential;
 import android.security.identity.PresentationSession;
+>>>>>>> BASE      (1cdfff555f4a21f71ccc978290e2e212e2f8b168 Merge "Remove Redundant Variable for getStatusBarHeightForRo)
 import android.util.Slog;
 import android.view.Surface;
 
@@ -264,6 +269,17 @@ public class FingerprintManager implements BiometricAuthenticator, BiometricFing
         public Mac getMac() {
             return super.getMac();
         }
+<<<<<<< PATCH SET (a2fabce912a05f5e6692d264ad226cf64c49ed4d Revert "Add Framework APIs for Identity Credential.")
+||||||| BASE      (045b6de97564ef58e33890ae2f87b504c4c725d2 Add Framework APIs for Identity Credential.)
+
+        /**
+         * Get {@link IdentityCredential} object.
+         * @return {@link IdentityCredential} object or null if this doesn't contain one.
+         */
+        public @Nullable IdentityCredential getIdentityCredential() {
+            return super.getIdentityCredential();
+        }
+=======
 
         /**
          * Get {@link IdentityCredential} object.
@@ -294,6 +310,7 @@ public class FingerprintManager implements BiometricAuthenticator, BiometricFing
         public KeyAgreement getKeyAgreement() {
             return super.getKeyAgreement();
         }
+>>>>>>> BASE      (1cdfff555f4a21f71ccc978290e2e212e2f8b168 Merge "Remove Redundant Variable for getStatusBarHeightForRo)
     }
 
     /**

@@ -57,6 +57,310 @@ license {
     license_text: [
         "NOTICE",
     ],
+<<<<<<< PATCH SET (a2fabce912a05f5e6692d264ad226cf64c49ed4d Revert "Add Framework APIs for Identity Credential.")
+    path: "drm/java",
+}
+
+filegroup {
+    name: "framework-graphics-sources",
+    srcs: [
+        "graphics/java/**/*.java",
+        "graphics/java/**/*.aidl",
+    ],
+    path: "graphics/java",
+}
+
+filegroup {
+    name: "framework-keystore-sources",
+    srcs: [
+        "keystore/java/**/*.java",
+        "keystore/java/**/*.aidl",
+    ],
+    path: "keystore/java",
+}
+
+filegroup {
+    name: "framework-location-sources",
+    srcs: [
+        "location/java/**/*.java",
+        "location/java/**/*.aidl",
+    ],
+    path: "location/java",
+}
+
+filegroup {
+    name: "framework-lowpan-sources",
+    srcs: [
+        "lowpan/java/**/*.java",
+        "lowpan/java/**/*.aidl",
+    ],
+    path: "lowpan/java",
+}
+
+filegroup {
+    name: "framework-media-sources",
+    srcs: [
+        "media/java/**/*.java",
+        "media/java/**/*.aidl",
+    ],
+    path: "media/java",
+}
+
+filegroup {
+    name: "framework-mca-effect-sources",
+    srcs: [
+        "media/mca/effect/java/**/*.java",
+    ],
+    path: "media/mca/effect/java",
+}
+
+filegroup {
+    name: "framework-mca-filterfw-sources",
+    srcs: [
+        "media/mca/filterfw/java/**/*.java",
+    ],
+    path: "media/mca/filterfw/java",
+}
+
+filegroup {
+    name: "framework-mca-filterpacks-sources",
+    srcs: [
+        "media/mca/filterpacks/java/**/*.java",
+    ],
+    path: "media/mca/filterpacks/java",
+}
+
+filegroup {
+    name: "framework-mime-sources",
+    srcs: [
+        "mime/java/**/*.java",
+    ],
+    path: "mime/java",
+}
+
+filegroup {
+    name: "framework-opengl-sources",
+    srcs: [
+        "opengl/java/**/*.java",
+    ],
+    path: "opengl/java",
+}
+
+filegroup {
+    name: "framework-rs-sources",
+    srcs: [
+        "rs/java/**/*.java",
+    ],
+    path: "rs/java",
+}
+
+filegroup {
+    name: "framework-sax-sources",
+    srcs: [
+        "sax/java/**/*.java",
+    ],
+    path: "sax/java",
+}
+
+filegroup {
+    name: "framework-telecomm-sources",
+    srcs: [
+        "telecomm/java/**/*.java",
+        "telecomm/java/**/*.aidl",
+    ],
+    path: "telecomm/java",
+}
+
+filegroup {
+    name: "framework-telephony-sources",
+    srcs: [
+        "telephony/java/**/*.java",
+        "telephony/java/**/*.aidl",
+    ],
+    path: "telephony/java",
+}
+
+filegroup {
+    name: "framework-telephony-common-sources",
+    srcs: [
+        "telephony/common/**/*.java",
+    ],
+    path: "telephony/common",
+}
+
+filegroup {
+    name: "framework-mms-sources",
+    srcs: [
+        "mms/java/**/*.java",
+        "mms/java/**/*.aidl",
+    ],
+    path: "mms/java",
+}
+
+filegroup {
+    name: "framework-wifi-sources",
+    srcs: [
+        "wifi/java/**/*.java",
+        "wifi/java/**/*.aidl",
+    ],
+    path: "wifi/java",
+||||||| BASE      (045b6de97564ef58e33890ae2f87b504c4c725d2 Add Framework APIs for Identity Credential.)
+    path: "drm/java",
+}
+
+filegroup {
+    name: "framework-graphics-sources",
+    srcs: [
+        "graphics/java/**/*.java",
+        "graphics/java/**/*.aidl",
+    ],
+    path: "graphics/java",
+}
+
+filegroup {
+    name: "framework-identity-sources",
+    srcs: [
+        "identity/java/**/*.java",
+    ],
+    path: "identity/java",
+}
+
+filegroup {
+    name: "framework-keystore-sources",
+    srcs: [
+        "keystore/java/**/*.java",
+        "keystore/java/**/*.aidl",
+    ],
+    path: "keystore/java",
+}
+
+filegroup {
+    name: "framework-location-sources",
+    srcs: [
+        "location/java/**/*.java",
+        "location/java/**/*.aidl",
+    ],
+    path: "location/java",
+}
+
+filegroup {
+    name: "framework-lowpan-sources",
+    srcs: [
+        "lowpan/java/**/*.java",
+        "lowpan/java/**/*.aidl",
+    ],
+    path: "lowpan/java",
+}
+
+filegroup {
+    name: "framework-media-sources",
+    srcs: [
+        "media/java/**/*.java",
+        "media/java/**/*.aidl",
+    ],
+    path: "media/java",
+}
+
+filegroup {
+    name: "framework-mca-effect-sources",
+    srcs: [
+        "media/mca/effect/java/**/*.java",
+    ],
+    path: "media/mca/effect/java",
+}
+
+filegroup {
+    name: "framework-mca-filterfw-sources",
+    srcs: [
+        "media/mca/filterfw/java/**/*.java",
+    ],
+    path: "media/mca/filterfw/java",
+}
+
+filegroup {
+    name: "framework-mca-filterpacks-sources",
+    srcs: [
+        "media/mca/filterpacks/java/**/*.java",
+    ],
+    path: "media/mca/filterpacks/java",
+}
+
+filegroup {
+    name: "framework-mime-sources",
+    srcs: [
+        "mime/java/**/*.java",
+    ],
+    path: "mime/java",
+}
+
+filegroup {
+    name: "framework-opengl-sources",
+    srcs: [
+        "opengl/java/**/*.java",
+    ],
+    path: "opengl/java",
+}
+
+filegroup {
+    name: "framework-rs-sources",
+    srcs: [
+        "rs/java/**/*.java",
+    ],
+    path: "rs/java",
+}
+
+filegroup {
+    name: "framework-sax-sources",
+    srcs: [
+        "sax/java/**/*.java",
+    ],
+    path: "sax/java",
+}
+
+filegroup {
+    name: "framework-telecomm-sources",
+    srcs: [
+        "telecomm/java/**/*.java",
+        "telecomm/java/**/*.aidl",
+    ],
+    path: "telecomm/java",
+}
+
+filegroup {
+    name: "framework-telephony-sources",
+    srcs: [
+        "telephony/java/**/*.java",
+        "telephony/java/**/*.aidl",
+    ],
+    path: "telephony/java",
+}
+
+filegroup {
+    name: "framework-telephony-common-sources",
+    srcs: [
+        "telephony/common/**/*.java",
+    ],
+    path: "telephony/common",
+}
+
+filegroup {
+    name: "framework-mms-sources",
+    srcs: [
+        "mms/java/**/*.java",
+        "mms/java/**/*.aidl",
+    ],
+    path: "mms/java",
+}
+
+filegroup {
+    name: "framework-wifi-sources",
+    srcs: [
+        "wifi/java/**/*.java",
+        "wifi/java/**/*.aidl",
+    ],
+    path: "wifi/java",
+=======
+>>>>>>> BASE      (1cdfff555f4a21f71ccc978290e2e212e2f8b168 Merge "Remove Redundant Variable for getStatusBarHeightForRo)
 }
 
 filegroup {
@@ -70,7 +374,18 @@ filegroup {
         ":framework-graphics-nonupdatable-sources",
         ":framework-jobscheduler-sources", // jobscheduler is not a module for R
         ":framework-keystore-sources",
+<<<<<<< PATCH SET (a2fabce912a05f5e6692d264ad226cf64c49ed4d Revert "Add Framework APIs for Identity Credential.")
+        ":framework-location-sources",
+        ":framework-lowpan-sources",
+        ":framework-media-sources",
+||||||| BASE      (045b6de97564ef58e33890ae2f87b504c4c725d2 Add Framework APIs for Identity Credential.)
         ":framework-identity-sources",
+        ":framework-location-sources",
+        ":framework-lowpan-sources",
+        ":framework-media-sources",
+=======
+        ":framework-identity-sources",
+>>>>>>> BASE      (1cdfff555f4a21f71ccc978290e2e212e2f8b168 Merge "Remove Redundant Variable for getStatusBarHeightForRo)
         ":framework-mca-effect-sources",
         ":framework-mca-filterfw-sources",
         ":framework-mca-filterpacks-sources",
@@ -94,6 +409,10 @@ filegroup {
         ":platform-compat-native-aidl",
 
         // AIDL sources from external directories
+<<<<<<< PATCH SET (a2fabce912a05f5e6692d264ad226cf64c49ed4d Revert "Add Framework APIs for Identity Credential.")
+||||||| BASE      (045b6de97564ef58e33890ae2f87b504c4c725d2 Add Framework APIs for Identity Credential.)
+        ":credstore_aidl",
+=======
         ":android.frameworks.location.altitude-V2-java-source",
         ":android.hardware.biometrics.common-V4-java-source",
         ":android.hardware.biometrics.fingerprint-V5-java-source",
@@ -117,6 +436,7 @@ filegroup {
         ":android.security.metrics-java-source",
         ":android.hardware.cas-V1-java-source",
         ":credstore_aidl",
+>>>>>>> BASE      (1cdfff555f4a21f71ccc978290e2e212e2f8b168 Merge "Remove Redundant Variable for getStatusBarHeightForRo)
         ":dumpstate_aidl",
         ":framework_native_aidl",
         ":gatekeeper_aidl",
@@ -187,7 +507,6 @@ java_defaults {
             "core/java",
             "drm/java",
             "graphics/java",
-            "identity/java",
             "keystore/java",
             "media/java",
             "media/mca/effect/java",
