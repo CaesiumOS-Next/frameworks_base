@@ -2018,6 +2018,11 @@ class UserController implements Handler.Callback {
             t.traceEnd();
 
             if (foreground) {
+                try {
+                    Thread.sleep(1000);
+                } catch (InterruptedException e) {
+                    Thread.currentThread().interrupt();
+                }
                 t.traceBegin("moveUserToForeground");
                 moveUserToForeground(uss, userId);
                 t.traceEnd();
