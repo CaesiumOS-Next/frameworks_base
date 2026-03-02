@@ -34,6 +34,7 @@ import android.app.BroadcastOptions;
 import android.app.PendingIntent;
 import android.compat.annotation.UnsupportedAppUsage;
 import android.content.Context;
+import android.content.Intent;
 import android.content.pm.ParceledListSlice;
 import android.os.Build;
 import android.os.PersistableBundle;
@@ -1629,6 +1630,18 @@ public final class UsageStatsManager {
     public String getAppStandbyConstant(@NonNull String key) {
         try {
             return mService.getAppStandbyConstant(key);
+        } catch (RemoteException re) {
+            throw re.rethrowFromSystemServer();
+        }
+    }
+
+    /**
+     * @hide
+     */
+    @RequiresPermission(android.Manifest.permission.SUSPEND_APPS)
+    public void setAppInterception(@NonNull String packageName, @Nullable Intent interceptIntent) {
+        try {
+            mService.setAppInterception(packageName, interceptIntent, mContext.getUserId());
         } catch (RemoteException re) {
             throw re.rethrowFromSystemServer();
         }
