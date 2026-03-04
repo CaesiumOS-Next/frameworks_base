@@ -29,6 +29,8 @@ import com.android.internal.annotations.VisibleForTesting;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -40,7 +42,7 @@ public class CachedBluetoothDeviceManager {
     private static final String TAG = "CachedBluetoothDeviceManager";
     private static final boolean DEBUG = BluetoothUtils.D;
 
-    @VisibleForTesting static int sLateBondingTimeoutMillis = 10000; // 10s
+    @VisibleForTesting static int sLateBondingTimeoutMillis = 15000; // 15s
 
     private Context mContext;
     private final LocalBluetoothManager mBtManager;
@@ -447,8 +449,44 @@ public class CachedBluetoothDeviceManager {
         return true;
     }
 
+    private boolean isValidGroupId(int groupId) {
+        return groupId != BluetoothCsipSetCoordinator.GROUP_ID_INVALID;
+    }
+
+    @VisibleForTesting
+    List<CachedBluetoothDevice> getGroupDevicesFromAllOfDevicesList(int groupId) {
+        List<CachedBluetoothDevice> groupDevicesList = new ArrayList<>();
+        if (!isValidGroupId(groupId)) {
+            return groupDevicesList;
+        }
+        for (CachedBluetoothDevice item : mCachedDevices) {
+            if (groupId != item.getGroupId()) {
+                continue;
+            }
+            groupDevicesList.add(item);
+            groupDevicesList.addAll(item.getMemberDevice());
+        }
+        return groupDevicesList;
+    }
+
+    private CachedBluetoothDevice getRecentMemberDevice(int groupId) {
+        List<CachedBluetoothDevice> members = getGroupDevicesFromAllOfDevicesList(groupId);
+        if (members.isEmpty())
+            return null;
+
+        Collections.sort(members, Comparator.comparing(device ->
+            device.getBondTimestamp() != null ? device.getBondTimestamp().getTime() : 0,
+            Comparator.reverseOrder()
+        ));
+
+        CachedBluetoothDevice latestBondDevice = members.get(0);
+        log("getRecentMemberDevice: groupId=" + groupId
+                + " address=" + latestBondDevice.getDevice().getAnonymizedAddress());
+        return latestBondDevice;
+    }
+
     private synchronized boolean checkLateBonding(int groupId) {
-        CachedBluetoothDevice firstDevice = mCsipDeviceManager.getFirstMemberDevice(groupId);
+        CachedBluetoothDevice firstDevice = getRecentMemberDevice(groupId);
         if (firstDevice == null) {
             Log.d(TAG, "No first device in group: " + groupId);
             return false;
@@ -463,7 +501,7 @@ public class CachedBluetoothDeviceManager {
         Timestamp now = new Timestamp(System.currentTimeMillis());
 
         long diff = (now.getTime() - then.getTime());
-        Log.d(TAG, "Time difference to first bonding: " + diff + "ms");
+        Log.d(TAG, "Time difference to last bonding: " + diff + "ms");
 
         return diff > sLateBondingTimeoutMillis;
     }

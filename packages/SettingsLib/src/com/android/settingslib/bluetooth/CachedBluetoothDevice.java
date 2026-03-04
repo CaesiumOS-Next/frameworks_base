@@ -1024,15 +1024,11 @@ public class CachedBluetoothDevice implements Comparable<CachedBluetoothDevice> 
             mDevice.setPhonebookAccessPermission(BluetoothDevice.ACCESS_UNKNOWN);
             mDevice.setMessageAccessPermission(BluetoothDevice.ACCESS_UNKNOWN);
             mDevice.setSimAccessPermission(BluetoothDevice.ACCESS_UNKNOWN);
-
-            mBondTimestamp = null;
         }
 
         refresh();
 
         if (bondState == BluetoothDevice.BOND_BONDED) {
-            mBondTimestamp = new Timestamp(System.currentTimeMillis());
-
             if (mDevice.isBondingInitiatedLocally()) {
                 connect();
             }
@@ -1045,6 +1041,10 @@ public class CachedBluetoothDevice implements Comparable<CachedBluetoothDevice> 
 
     public Timestamp getBondTimestamp() {
         return mBondTimestamp;
+    }
+
+    public void setBondTimestamp(Timestamp timestamp) {
+        mBondTimestamp = timestamp;
     }
 
     public BluetoothClass getBtClass() {

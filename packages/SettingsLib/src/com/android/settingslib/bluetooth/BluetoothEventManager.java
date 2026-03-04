@@ -38,6 +38,7 @@ import androidx.annotation.VisibleForTesting;
 
 import com.android.settingslib.R;
 
+import java.sql.Timestamp;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
@@ -389,16 +390,22 @@ public class BluetoothEventManager {
             int bondState = intent.getIntExtra(BluetoothDevice.EXTRA_BOND_STATE,
                     BluetoothDevice.ERROR);
 
-            if (mDeviceManager.onBondStateChangedIfProcess(device, bondState)) {
-                Log.d(TAG, "Should not update UI for the set member");
-                return;
-            }
-
             CachedBluetoothDevice cachedDevice = mDeviceManager.findDevice(device);
             if (cachedDevice == null) {
                 Log.w(TAG, "Got bonding state changed for " + device +
                         ", but we have no record of that device.");
                 cachedDevice = mDeviceManager.addDevice(device);
+            }
+
+            if (bondState == BluetoothDevice.BOND_BONDED) {
+                cachedDevice.setBondTimestamp(new Timestamp(System.currentTimeMillis()));
+            } else if (bondState == BluetoothDevice.BOND_BONDED) {
+                cachedDevice.setBondTimestamp(null);
+            }
+
+            if (mDeviceManager.onBondStateChangedIfProcess(device, bondState)) {
+                Log.d(TAG, "Should not update UI for the set member");
+                return;
             }
 
             if (bondState == BluetoothDevice.BOND_BONDED) {
