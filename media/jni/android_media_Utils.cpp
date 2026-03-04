@@ -448,33 +448,35 @@ status_t getLockedImageInfo(LockedImage* buffer, int idx,
             break;
         case HAL_PIXEL_FORMAT_RAW10:
             // Single plane 10bpp bayer data.
+            uint64_t byte_stride = (buffer->stride * 10) / 8;
             LOG_ALWAYS_FATAL_IF(idx != 0, "Wrong index: %d", idx);
             LOG_ALWAYS_FATAL_IF(buffer->width % 4,
                                 "Width is not multiple of 4 %d", buffer->width);
             LOG_ALWAYS_FATAL_IF(buffer->height % 2,
                                 "Height is not even %d", buffer->height);
-            LOG_ALWAYS_FATAL_IF(buffer->stride < (buffer->width * 10 / 8),
+            LOG_ALWAYS_FATAL_IF(byte_stride < (buffer->width * 10 / 8),
                                 "stride (%d) should be at least %d",
-                                buffer->stride, buffer->width * 10 / 8);
+                                byte_stride, buffer->width * 10 / 8);
             pData = buffer->data;
-            dataSize = buffer->stride * buffer->height;
+            dataSize = byte_stride * buffer->height;
             pStride = 0;
-            rStride = buffer->stride;
+            rStride = byte_stride;
             break;
         case HAL_PIXEL_FORMAT_RAW12:
-            // Single plane 10bpp bayer data.
+            // Single plane 12bpp bayer data.
+            uint64_t byte_stride = (buffer->stride * 10) / 8;
             LOG_ALWAYS_FATAL_IF(idx != 0, "Wrong index: %d", idx);
             LOG_ALWAYS_FATAL_IF(buffer->width % 4,
                                 "Width is not multiple of 4 %d", buffer->width);
             LOG_ALWAYS_FATAL_IF(buffer->height % 2,
                                 "Height is not even %d", buffer->height);
-            LOG_ALWAYS_FATAL_IF(buffer->stride < (buffer->width * 12 / 8),
+            LOG_ALWAYS_FATAL_IF(byte_stride < (buffer->width * 12 / 8),
                                 "stride (%d) should be at least %d",
-                                buffer->stride, buffer->width * 12 / 8);
+                                byte_stride, buffer->width * 12 / 8);
             pData = buffer->data;
-            dataSize = buffer->stride * buffer->height;
+            dataSize = byte_stride * buffer->height;
             pStride = 0;
-            rStride = buffer->stride;
+            rStride = byte_stride;
             break;
         case HAL_PIXEL_FORMAT_RGBA_8888:
         case HAL_PIXEL_FORMAT_RGBX_8888:
