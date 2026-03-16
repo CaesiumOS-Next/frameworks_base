@@ -29,7 +29,6 @@ import android.os.Parcelable;
 import android.telephony.Annotation.NetCapability;
 import android.telephony.TelephonyManager;
 import android.telephony.TelephonyManager.NetworkTypeBitMask;
-import android.telephony.data.ApnSetting.ApnType;
 import android.telephony.data.ApnSetting.AuthType;
 import android.text.TextUtils;
 
@@ -246,7 +245,7 @@ public final class DataProfile implements Parcelable {
      * @return The supported APN types bitmask.
      * @deprecated Use {@link #getApnSetting()} and {@link ApnSetting#getApnTypeBitmask()} instead.
      */
-    @Deprecated public @ApnType int getSupportedApnTypesBitmask() {
+    @Deprecated public @ApnSetting.ApnType int getSupportedApnTypesBitmask() {
         if (mApnSetting != null) {
             return mApnSetting.getApnTypeBitmask();
         }
@@ -401,7 +400,7 @@ public final class DataProfile implements Parcelable {
      * @return APN type.
      * @hide
      */
-    private static @ApnType int networkCapabilityToApnType(@NetCapability int networkCapability) {
+    private static @ApnSetting.ApnType int networkCapabilityToApnType(@NetCapability int networkCapability) {
         switch (networkCapability) {
             case NetworkCapabilities.NET_CAPABILITY_MMS:
                 return ApnSetting.TYPE_MMS;
@@ -539,7 +538,7 @@ public final class DataProfile implements Parcelable {
 
         private boolean mEnabled = true;
 
-        @ApnType
+        @ApnSetting.ApnType
         private int mSupportedApnTypesBitmask;
 
         @ProtocolType
@@ -683,7 +682,7 @@ public final class DataProfile implements Parcelable {
          * {@link ApnSetting.Builder#setApnTypeBitmask(int)} instead.
          */
         @Deprecated
-        public @NonNull Builder setSupportedApnTypesBitmask(@ApnType int supportedApnTypesBitmask) {
+        public @NonNull Builder setSupportedApnTypesBitmask(@ApnSetting.ApnType int supportedApnTypesBitmask) {
             mSupportedApnTypesBitmask = supportedApnTypesBitmask;
             return this;
         }

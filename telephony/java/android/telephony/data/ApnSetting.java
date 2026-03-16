@@ -854,7 +854,7 @@ public class ApnSetting implements Parcelable {
      * @see Builder#setApnTypeBitmask(int)
      * @return a bitmask describing the types of the APN
      */
-    public @ApnType int getApnTypeBitmask() {
+    public @ApnSetting.ApnType int getApnTypeBitmask() {
         return mApnTypeBitmask;
     }
 
@@ -1278,7 +1278,7 @@ public class ApnSetting implements Parcelable {
     }
 
     /** @hide */
-    public boolean canHandleType(@ApnType int type) {
+    public boolean canHandleType(@ApnSetting.ApnType int type) {
         if (!mCarrierEnabled) {
             return false;
         }
@@ -1539,7 +1539,7 @@ public class ApnSetting implements Parcelable {
      * @return list of APN types
      * @hide
      */
-    @ApnType
+    @ApnSetting.ApnType
     public List<Integer> getApnTypes() {
         List<Integer> types = new ArrayList<>();
         for (Integer type : APN_TYPE_INT_MAP.keySet()) {
@@ -1590,7 +1590,7 @@ public class ApnSetting implements Parcelable {
      * @hide
      */
     @SystemApi
-    public static @NonNull @ApnTypeString String getApnTypeString(@ApnType int apnType) {
+    public static @NonNull @ApnSetting.ApnTypeString String getApnTypeString(@ApnSetting.ApnType int apnType) {
         if (apnType == TYPE_ALL) {
             return "*";
         }
@@ -1607,7 +1607,7 @@ public class ApnSetting implements Parcelable {
      * @hide
      */
     @SystemApi
-    public static @ApnType int getApnTypeInt(@NonNull @ApnTypeString String apnType) {
+    public static @ApnSetting.ApnType int getApnTypeInt(@NonNull @ApnSetting.ApnTypeString String apnType) {
         return APN_TYPE_STRING_MAP.getOrDefault(apnType.toLowerCase(Locale.ROOT), 0);
     }
 
@@ -2221,7 +2221,7 @@ public class ApnSetting implements Parcelable {
          * @param apnTypeBitmask a bitmask describing the types of the APN
          */
         @NonNull
-        public Builder setApnTypeBitmask(@ApnType int apnTypeBitmask) {
+        public Builder setApnTypeBitmask(@ApnSetting.ApnType int apnTypeBitmask) {
             this.mApnTypeBitmask = apnTypeBitmask;
             return this;
         }

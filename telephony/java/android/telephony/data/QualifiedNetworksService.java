@@ -29,7 +29,6 @@ import android.os.Message;
 import android.os.RemoteException;
 import android.telephony.AccessNetworkConstants;
 import android.telephony.AccessNetworkConstants.AccessNetworkType;
-import android.telephony.Annotation.ApnType;
 import android.telephony.Annotation.NetCapability;
 import android.telephony.PreciseDataConnectionState;
 import android.telephony.TelephonyManager;
@@ -108,7 +107,7 @@ public abstract class QualifiedNetworksService extends Service {
         private IQualifiedNetworksServiceCallback mCallback;
 
         /**
-         * Qualified networks for each APN type. Key is the {@link ApnType}, value is the array
+         * Qualified networks for each APN type. Key is the {@link ApnSetting.ApnType}, value is the array
          * of available networks.
          */
         private SparseArray<int[]> mQualifiedNetworkTypesList = new SparseArray<>();
@@ -168,7 +167,7 @@ public abstract class QualifiedNetworksService extends Service {
          * requests to {@link AccessNetworkConstants#TRANSPORT_TYPE_WWAN}.
          *
          * @param apnTypes APN type(s) of the qualified networks. This must be a bitmask combination
-         * of {@link ApnType}. The same qualified networks will be applicable to all APN types
+         * of {@link ApnSetting.ApnType}. The same qualified networks will be applicable to all APN types
          * specified here.
          * @param qualifiedNetworkTypes List of access network types which are qualified for data
          * connection setup for {@code apnTypes} in the preferred order. Empty list means QNS has no
@@ -179,7 +178,7 @@ public abstract class QualifiedNetworksService extends Service {
          * this operation becomes a no-op.
          */
         public final void updateQualifiedNetworkTypes(
-                @ApnType int apnTypes, @NonNull List<Integer> qualifiedNetworkTypes) {
+                @ApnSetting.ApnType int apnTypes, @NonNull List<Integer> qualifiedNetworkTypes) {
             int[] qualifiedNetworkTypesArray =
                     qualifiedNetworkTypes.stream().mapToInt(i->i).toArray();
             mHandler.obtainMessage(QNS_UPDATE_QUALIFIED_NETWORKS, mSlotIndex, apnTypes,
@@ -202,10 +201,10 @@ public abstract class QualifiedNetworksService extends Service {
          * qualified network type for this APN type.
          *
          * @param apnTypes APN type(s) of the qualified networks. This must be a bitmask combination
-         * of {@link ApnType}. The same qualified networks will be applicable to all APN types
+         * of {@link ApnSetting.ApnType}. The same qualified networks will be applicable to all APN types
          * specified here.
          * @param qualifiedNetworkType Access network types which are qualified for data connection
-         * setup for {@link ApnType}. Empty list means QNS has no suggestion to the frameworks, and
+         * setup for {@link ApnSetting.ApnType}. Empty list means QNS has no suggestion to the frameworks, and
          * for that APN type frameworks will route the corresponding network requests to
          * {@link AccessNetworkConstants#TRANSPORT_TYPE_WWAN}.
          *
@@ -214,14 +213,14 @@ public abstract class QualifiedNetworksService extends Service {
          *
          * @hide
          */
-        public final void reconnectQualifiedNetworkType(@ApnType int apnTypes,
+        public final void reconnectQualifiedNetworkType(@ApnSetting.ApnType int apnTypes,
                 @AccessNetworkConstants.RadioAccessNetworkType int qualifiedNetworkType) {
             mHandler.obtainMessage(QNS_RECONNECT_QUALIFIED_NETWORK, mSlotIndex, apnTypes,
                     new Integer(qualifiedNetworkType)).sendToTarget();
         }
 
         private void onUpdateQualifiedNetworkTypes(
-                @ApnType int apnTypes, int[] qualifiedNetworkTypes) {
+                @ApnSetting.ApnType int apnTypes, int[] qualifiedNetworkTypes) {
             mQualifiedNetworkTypesList.put(apnTypes, qualifiedNetworkTypes);
             if (mCallback != null) {
                 try {
@@ -232,7 +231,7 @@ public abstract class QualifiedNetworksService extends Service {
             }
         }
 
-        private void onReconnectQualifiedNetworkType(@ApnType int apnTypes,
+        private void onReconnectQualifiedNetworkType(@ApnSetting.ApnType int apnTypes,
                 @AccessNetworkConstants.RadioAccessNetworkType int qualifiedNetworkType) {
             if (mCallback != null) {
                 try {

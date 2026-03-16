@@ -89,7 +89,6 @@ import android.telecom.InCallService;
 import android.telecom.PhoneAccount;
 import android.telecom.PhoneAccountHandle;
 import android.telecom.TelecomManager;
-import android.telephony.Annotation.ApnType;
 import android.telephony.Annotation.CallState;
 import android.telephony.Annotation.CarrierPrivilegeStatus;
 import android.telephony.Annotation.NetworkType;
@@ -16286,7 +16285,7 @@ public class TelephonyManager {
     @SystemApi
     @RequiresPermission(android.Manifest.permission.READ_PRIVILEGED_PHONE_STATE)
     @RequiresFeature(PackageManager.FEATURE_TELEPHONY_DATA)
-    public boolean isDataEnabledForApn(@ApnType int apnType) {
+    public boolean isDataEnabledForApn(@ApnSetting.ApnType int apnType) {
         String pkgForDebug = mContext != null ? mContext.getOpPackageName() : "<unknown>";
         try {
             ITelephony service = getITelephony();
@@ -16310,7 +16309,7 @@ public class TelephonyManager {
     @SystemApi
     @RequiresPermission(android.Manifest.permission.READ_PRIVILEGED_PHONE_STATE)
     @RequiresFeature(PackageManager.FEATURE_TELEPHONY_DATA)
-    public boolean isApnMetered(@ApnType int apnType) {
+    public boolean isApnMetered(@ApnSetting.ApnType int apnType) {
         try {
             ITelephony service = getITelephony();
             if (service != null) {

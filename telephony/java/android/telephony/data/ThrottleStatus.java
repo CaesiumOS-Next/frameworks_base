@@ -25,7 +25,6 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.SystemClock;
 import android.telephony.AccessNetworkConstants;
-import android.telephony.Annotation;
 
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
@@ -85,7 +84,7 @@ public final class ThrottleStatus implements Parcelable {
 
     private final int mSlotIndex;
     private final @AccessNetworkConstants.TransportType int mTransportType;
-    private final @Annotation.ApnType int mApnType;
+    private final @ApnSetting.ApnType int mApnType;
     private final long mThrottleExpiryTimeMillis;
     private final @RetryType int mRetryType;
     private final @ThrottleType int mThrottleType;
@@ -114,7 +113,7 @@ public final class ThrottleStatus implements Parcelable {
      *
      * @return the apn type
      */
-    @Annotation.ApnType
+    @ApnSetting.ApnType
     public int getApnType() {
         return mApnType;
     }
@@ -158,7 +157,7 @@ public final class ThrottleStatus implements Parcelable {
 
     private ThrottleStatus(int slotIndex,
             @AccessNetworkConstants.TransportType int transportType,
-            @Annotation.ApnType int apnTypes,
+            @ApnSetting.ApnType int apnTypes,
             @ThrottleType int throttleType,
             long throttleExpiryTimeMillis,
             @RetryType int retryType) {
@@ -261,7 +260,7 @@ public final class ThrottleStatus implements Parcelable {
     public static final class Builder {
         private int mSlotIndex;
         private @AccessNetworkConstants.TransportType int mTransportType;
-        private @Annotation.ApnType int mApnType;
+        private @ApnSetting.ApnType int mApnType;
         private long mThrottleExpiryTimeMillis;
         private @RetryType int mRetryType;
         private @ThrottleType int mThrottleType;
@@ -310,7 +309,7 @@ public final class ThrottleStatus implements Parcelable {
          * @return The same instance of the builder.
          */
         @NonNull
-        public Builder setApnType(@Annotation.ApnType int apnType) {
+        public Builder setApnType(@ApnSetting.ApnType int apnType) {
             this.mApnType = apnType;
             return this;
         }

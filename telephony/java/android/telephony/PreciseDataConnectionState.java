@@ -30,7 +30,6 @@ import android.os.Build;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.telephony.AccessNetworkConstants.TransportType;
-import android.telephony.Annotation.ApnType;
 import android.telephony.Annotation.DataFailureCause;
 import android.telephony.Annotation.DataState;
 import android.telephony.Annotation.NetworkType;
@@ -125,7 +124,7 @@ public final class PreciseDataConnectionState implements Parcelable {
     // FIXME: figure out how to remove the UnsupportedAppUsage and delete this constructor
     public PreciseDataConnectionState(@DataState int state,
                                       @NetworkType int networkType,
-                                      @ApnType int apnTypes, @NonNull String apn,
+                                      @ApnSetting.ApnType int apnTypes, @NonNull String apn,
                                       @Nullable LinkProperties linkProperties,
                                       @DataFailureCause int failCause) {
         this(AccessNetworkConstants.TRANSPORT_TYPE_INVALID, -1, -1, state, networkType,
@@ -276,7 +275,7 @@ public final class PreciseDataConnectionState implements Parcelable {
      */
     @Deprecated
     @SystemApi
-    public @ApnType int getDataConnectionApnTypeBitMask() {
+    public @ApnSetting.ApnType int getDataConnectionApnTypeBitMask() {
         return (mApnSetting != null) ? mApnSetting.getApnTypeBitmask() : ApnSetting.TYPE_NONE;
     }
 

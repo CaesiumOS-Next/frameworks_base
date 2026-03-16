@@ -113,28 +113,6 @@ public class Annotation {
     public @interface NetworkType {
     }
 
-    // TODO(b/180542000): remove and replace references with @ApnSetting.ApnType
-    @IntDef(flag = true, prefix = {"TYPE_"}, value = {
-            ApnSetting.TYPE_DEFAULT,
-            ApnSetting.TYPE_MMS,
-            ApnSetting.TYPE_SUPL,
-            ApnSetting.TYPE_DUN,
-            ApnSetting.TYPE_HIPRI,
-            ApnSetting.TYPE_FOTA,
-            ApnSetting.TYPE_IMS,
-            ApnSetting.TYPE_CBS,
-            ApnSetting.TYPE_IA,
-            ApnSetting.TYPE_EMERGENCY,
-            ApnSetting.TYPE_MCX,
-            ApnSetting.TYPE_XCAP,
-            ApnSetting.TYPE_BIP,
-            ApnSetting.TYPE_VSIM,
-            ApnSetting.TYPE_ENTERPRISE
-    })
-    @Retention(RetentionPolicy.SOURCE)
-    public @interface ApnType {
-    }
-
     @IntDef(value = {
             DataFailCause.NONE,
             DataFailCause.OPERATOR_BARRED,
