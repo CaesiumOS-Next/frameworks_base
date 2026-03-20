@@ -21,6 +21,7 @@
 #include <algorithm>
 
 #include <nativehelper/JNIHelp.h>
+#include <nativehelper/ScopedLocalRef.h>
 #include <utils/Errors.h>
 #include <utils/Log.h>
 
@@ -73,22 +74,24 @@ binder::Status JNIAudioTrackCallback::onCodecFormatChanged(
         return binder::Status::ok();
     }
 
-    jobject byteBuffer = env->CallStaticObjectMethod(mByteBufferClass, mAllocateDirectMethod,
-                                                     (jint)audioMetadata.size());
+    ScopedLocalRef<jobject> byteBuffer(env,
+                                     env->CallStaticObjectMethod(mByteBufferClass,
+                                                                 mAllocateDirectMethod,
+                                                                 (jint)audioMetadata.size()));
     if (env->ExceptionCheck()) {
         ALOGW("An exception occurred while allocating direct buffer");
         env->ExceptionDescribe();
         env->ExceptionClear();
     }
-    if (byteBuffer == nullptr) {
+    if (byteBuffer.get() == nullptr) {
         ALOGE("Failed allocating a direct ByteBuffer");
         return binder::Status::fromStatusT(NO_MEMORY);
     }
 
-    uint8_t* byteBufferAddr = (uint8_t*)env->GetDirectBufferAddress(byteBuffer);
+    uint8_t* byteBufferAddr = (uint8_t*)env->GetDirectBufferAddress(byteBuffer.get());
     std::copy(audioMetadata.begin(), audioMetadata.end(), byteBufferAddr);
     env->CallStaticVoidMethod(mClass, mPostEventFromNative, mObject,
-                              AUDIO_NATIVE_EVENT_CODEC_FORMAT_CHANGE, 0, 0, byteBuffer);
+                              AUDIO_NATIVE_EVENT_CODEC_FORMAT_CHANGE, 0, 0, byteBuffer.get());
     if (env->ExceptionCheck()) {
         ALOGW("An exception occurred while notifying codec format changed.");
         env->ExceptionDescribe();
