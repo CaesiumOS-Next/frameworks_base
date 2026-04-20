@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2bd96498_ff0a4cdb",
+        "filename": "services/autofill/java/com/android/server/autofill/Session.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 920,
+      "author": {
+        "id": 3869110
+      },
+      "writtenOn": "2026-04-20T02:03:18Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "2b4a51aa_deccf104",
+      "range": {
+        "startLine": 920,
+        "startChar": 0,
+        "endLine": 920,
+        "endChar": 0
+      },
+      "revId": "49b0c76ac2830d5cf619d5423f80028e0844e5c0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8eb2dbcc_de44e642",
@@ -37,6 +61,30 @@
       "writtenOn": "2026-04-17T05:48:42Z",
       "side": 1,
       "message": "This `wtf` call is formatted differently than the one at line 922. It\u0027s better to stay consistent. Also, as with the previous hunk, removing the TODO(b/35708678) loses valuable context.",
+      "range": {
+        "startLine": 1142,
+        "startChar": 0,
+        "endLine": 1142,
+        "endChar": 0
+      },
+      "revId": "49b0c76ac2830d5cf619d5423f80028e0844e5c0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "255564c1_a9017fff",
+        "filename": "services/autofill/java/com/android/server/autofill/Session.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 1142,
+      "author": {
+        "id": 3869110
+      },
+      "writtenOn": "2026-04-20T02:03:18Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "8eb2dbcc_de44e642",
       "range": {
         "startLine": 1142,
         "startChar": 0,
