@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "72b5356e_2329dce6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1951823
+      },
+      "writtenOn": "2026-04-28T11:55:32Z",
+      "side": 1,
+      "message": "Could you add some lines to the description describing how you tested the change?",
+      "revId": "cee0b66ac854e598724a1a97c235740ea8bb1418",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "06ed95cd_39f47c5a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1951823
+      },
+      "writtenOn": "2026-04-28T11:55:32Z",
+      "side": 1,
+      "message": "Thanks for the patch! CCing my team and adding Avtansh as a reviewer, who\u0027s been doing quite a bit of gamepad compatibility work recently.",
+      "revId": "cee0b66ac854e598724a1a97c235740ea8bb1418",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f0d5eaa6_3a172b8e",
+        "filename": "data/keyboards/Vendor_057e_Product_2006.kl",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1951823
+      },
+      "writtenOn": "2026-04-28T11:55:32Z",
+      "side": 1,
+      "message": "Small thing, but could you use hexadecimal for the key codes (here and in the other file)? This is what\u0027s done in the [KL file for the Switch Pro controller](https://cs.android.com/android/platform/superproject/+/android-latest-release:frameworks/base/data/keyboards/Vendor_057e_Product_2009.kl), as well as in the Linux headers, so it should make it a little easier to compare with those",
+      "revId": "cee0b66ac854e598724a1a97c235740ea8bb1418",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
