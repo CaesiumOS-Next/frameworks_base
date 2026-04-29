@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8606dbf5_811d923c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1951823
+      },
+      "writtenOn": "2026-04-29T10:41:15Z",
+      "side": 1,
+      "message": "Thanks! Over to Avtansh for the +2",
+      "revId": "b43c6eab0ca2db0010afb6944a06fa705aa2fdc5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c0c34e3a_bf1e7c0b",
+        "filename": "data/keyboards/Vendor_057e_Product_2007.kl",
+        "patchSetId": 6
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1951823
+      },
+      "writtenOn": "2026-04-29T10:41:15Z",
+      "side": 1,
+      "message": "@avtanshpandey@google.com, in an internal change for the Switch Pro controller you updated this to `BUTTON_MODE`; should it be the same here? Though it looks like there\u0027s already the circle button mapped to that on the left Joycon, so not sure",
+      "revId": "b43c6eab0ca2db0010afb6944a06fa705aa2fdc5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
