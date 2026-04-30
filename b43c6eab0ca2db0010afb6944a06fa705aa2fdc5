@@ -41,6 +41,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a23a7890_be55d7cd",
+        "filename": "data/keyboards/Vendor_057e_Product_2006.kl",
+        "patchSetId": 6
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 4806029
+      },
+      "writtenOn": "2026-04-30T12:22:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "46840197_9da59dba",
+      "range": {
+        "startLine": 44,
+        "startChar": 0,
+        "endLine": 45,
+        "endChar": 23
+      },
+      "revId": "b43c6eab0ca2db0010afb6944a06fa705aa2fdc5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c0c34e3a_bf1e7c0b",
@@ -72,6 +96,24 @@
       "side": 1,
       "message": "This should be mapped to BUTTON_MODE. \nLeft a comment on the circle button as well.",
       "parentUuid": "c0c34e3a_bf1e7c0b",
+      "revId": "b43c6eab0ca2db0010afb6944a06fa705aa2fdc5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e9919023_a7bd7639",
+        "filename": "data/keyboards/Vendor_057e_Product_2007.kl",
+        "patchSetId": 6
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 4806029
+      },
+      "writtenOn": "2026-04-30T12:22:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "03cfbf6a_78760c6e",
       "revId": "b43c6eab0ca2db0010afb6944a06fa705aa2fdc5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
