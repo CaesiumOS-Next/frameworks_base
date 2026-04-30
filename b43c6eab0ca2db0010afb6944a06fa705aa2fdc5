@@ -20,6 +20,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "46840197_9da59dba",
+        "filename": "data/keyboards/Vendor_057e_Product_2006.kl",
+        "patchSetId": 6
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 4412837
+      },
+      "writtenOn": "2026-04-30T10:34:30Z",
+      "side": 1,
+      "message": "This is the \"capture\" button on the controller and should be mapped to BUTTON_C. The circle button doesn\u0027t generate BTN_MODE keycode event, but rather a BTN_Z.",
+      "range": {
+        "startLine": 44,
+        "startChar": 0,
+        "endLine": 45,
+        "endChar": 23
+      },
+      "revId": "b43c6eab0ca2db0010afb6944a06fa705aa2fdc5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c0c34e3a_bf1e7c0b",
         "filename": "data/keyboards/Vendor_057e_Product_2007.kl",
         "patchSetId": 6
@@ -31,6 +54,24 @@
       "writtenOn": "2026-04-29T10:41:15Z",
       "side": 1,
       "message": "@avtanshpandey@google.com, in an internal change for the Switch Pro controller you updated this to `BUTTON_MODE`; should it be the same here? Though it looks like there\u0027s already the circle button mapped to that on the left Joycon, so not sure",
+      "revId": "b43c6eab0ca2db0010afb6944a06fa705aa2fdc5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "03cfbf6a_78760c6e",
+        "filename": "data/keyboards/Vendor_057e_Product_2007.kl",
+        "patchSetId": 6
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 4412837
+      },
+      "writtenOn": "2026-04-30T10:34:30Z",
+      "side": 1,
+      "message": "This should be mapped to BUTTON_MODE. \nLeft a comment on the circle button as well.",
+      "parentUuid": "c0c34e3a_bf1e7c0b",
       "revId": "b43c6eab0ca2db0010afb6944a06fa705aa2fdc5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
