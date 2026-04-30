@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "48f0cbfc_41b65e37",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1149384
+      },
+      "writtenOn": "2026-04-30T17:36:57Z",
+      "side": 1,
+      "message": "@avtanshpandey@google.com - you might have to cherry-pick this to internal gerrit. looks like we can submit this here. You can try go/android-cherry",
+      "revId": "15ffd8c0ba102be2fcc1bfebf1f21ebcf16658c9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
