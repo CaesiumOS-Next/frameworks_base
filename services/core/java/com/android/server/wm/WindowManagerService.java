@@ -3946,6 +3946,17 @@ public class WindowManagerService extends IWindowManager.Stub
                 return;
             }
 
+            // Apply maxUiWidth after bootanimation exits to avoid changing display projection
+            // while boot animation is running.
+            if (mMaxUiWidth > 0) {
+                mRoot.forAllDisplays(dc -> {
+                    if (dc.mDisplay.getType() == Display.TYPE_INTERNAL) {
+                        dc.setMaxUiWidth(mMaxUiWidth);
+                        dc.reconfigureDisplayLocked();
+                    }
+                });
+            }
+
             EventLogTags.writeWmBootAnimationDone(SystemClock.uptimeMillis());
             Trace.asyncTraceEnd(TRACE_TAG_WINDOW_MANAGER, "Stop bootanim", 0);
             mDisplayEnabled = true;
@@ -5559,13 +5570,6 @@ public class WindowManagerService extends IWindowManager.Stub
 
     public void displayReady() {
         synchronized (mGlobalLock) {
-            if (mMaxUiWidth > 0) {
-                mRoot.forAllDisplays(dc -> {
-                    if (dc.mDisplay.getType() == Display.TYPE_INTERNAL) {
-                        dc.setMaxUiWidth(mMaxUiWidth);
-                    }
-                });
-            }
             applyForcedPropertiesForDefaultDisplay();
             mAnimator.ready();
             mDisplayReady = true;
