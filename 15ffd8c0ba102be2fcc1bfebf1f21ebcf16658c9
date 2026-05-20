@@ -16,6 +16,23 @@
       "message": "@avtanshpandey@google.com - you might have to cherry-pick this to internal gerrit. looks like we can submit this here. You can try go/android-cherry",
       "revId": "15ffd8c0ba102be2fcc1bfebf1f21ebcf16658c9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "47aa800d_4662cc82",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1951823
+      },
+      "writtenOn": "2026-05-20T16:15:35Z",
+      "side": 1,
+      "message": "Thanks for your contribution! We\u0027ve now cherry-picked it to our internal main branch, so it should appear in the next AOSP release.",
+      "revId": "15ffd8c0ba102be2fcc1bfebf1f21ebcf16658c9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
