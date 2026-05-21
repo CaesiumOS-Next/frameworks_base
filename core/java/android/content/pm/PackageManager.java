@@ -4156,6 +4156,20 @@ public abstract class PackageManager {
     public static final String FEATURE_VR_HEADTRACKING = "android.hardware.vr.headtracking";
 
     /**
+     * Feature for {@link #getSystemAvailableFeatures} and {@link #hasSystemFeature}:
+     * The device provides the Spatial XR API to the application.
+     */
+    @SdkConstant(SdkConstantType.FEATURE)
+    public static final String FEATURE_XR_API_SPATIAL = "android.software.xr.api.spatial";
+
+    /**
+     * Feature for {@link #getSystemAvailableFeatures} and {@link #hasSystemFeature}:
+     * The device provides the OpenXR API to the application.
+     */
+    @SdkConstant(SdkConstantType.FEATURE)
+    public static final String FEATURE_XR_API_OPENXR = "android.software.xr.api.openxr";
+
+    /**
      * Feature for {@link #getSystemAvailableFeatures} and
      * {@link #hasSystemFeature(String, int)}: If this feature is supported, the device implements
      * the Android Keystore backed by an isolated execution environment. The version indicates
