@@ -66,7 +66,6 @@ import android.app.job.JobInfo;
 import android.app.usage.UsageEvents;
 import android.app.usage.UsageStatsManager;
 import android.app.usage.UsageStatsManagerInternal;
-import android.compat.testing.PlatformCompatChangeRule;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.pm.ApplicationInfo;
@@ -77,7 +76,6 @@ import android.os.BatteryManagerInternal;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.RemoteException;
-import android.os.ServiceManager;
 import android.os.SystemClock;
 import android.platform.test.annotations.DisableFlags;
 import android.platform.test.annotations.EnableFlags;
@@ -94,7 +92,6 @@ import androidx.test.runner.AndroidJUnit4;
 import com.android.internal.util.ArrayUtils;
 import com.android.server.LocalServices;
 import com.android.server.PowerAllowlistInternal;
-import com.android.server.compat.PlatformCompat;
 import com.android.server.job.Flags;
 import com.android.server.job.JobSchedulerInternal;
 import com.android.server.job.JobSchedulerService;
@@ -110,7 +107,6 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
-import org.junit.rules.TestRule;
 import org.junit.runner.RunWith;
 import org.mockito.ArgumentCaptor;
 import org.mockito.ArgumentMatchers;
@@ -139,9 +135,6 @@ public class QuotaControllerTest {
     private static final int SOURCE_USER_ID = 0;
 
     @Rule public final SetFlagsRule mSetFlagsRule = new SetFlagsRule();
-
-    @Rule
-    public TestRule compatChangeRule = new PlatformCompatChangeRule();
     private QuotaController mQuotaController;
     private QuotaController.QcConstants mQcConstants;
     private JobSchedulerService.Constants mConstants = new JobSchedulerService.Constants();
@@ -168,8 +161,6 @@ public class QuotaControllerTest {
     private PowerAllowlistInternal mPowerAllowlistInternal;
     @Mock
     private UsageStatsManagerInternal mUsageStatsManager;
-    @Mock
-    private PlatformCompat mPlatformCompat;
 
     @Rule
     public final CheckFlagsRule mCheckFlagsRule =
@@ -184,7 +175,6 @@ public class QuotaControllerTest {
                 .strictness(Strictness.LENIENT)
                 .spyStatic(DeviceConfig.class)
                 .mockStatic(LocalServices.class)
-                .mockStatic(ServiceManager.class)
                 .startMocking();
 
         // Called in StateController constructor.
@@ -257,8 +247,6 @@ public class QuotaControllerTest {
                 ArgumentCaptor.forClass(PowerAllowlistInternal.TempAllowlistChangeListener.class);
         ArgumentCaptor<UsageStatsManagerInternal.UsageEventListener> ueListenerCaptor =
                 ArgumentCaptor.forClass(UsageStatsManagerInternal.UsageEventListener.class);
-        doReturn(mPlatformCompat)
-                .when(() -> ServiceManager.getService(Context.PLATFORM_COMPAT_SERVICE));
         mQuotaController = new QuotaController(mJobSchedulerService,
                 mock(BackgroundJobsController.class), mock(ConnectivityController.class));
 
@@ -4704,103 +4692,6 @@ public class QuotaControllerTest {
         expected.add(createTimingSession(start, 10 * SECOND_IN_MILLIS, 1));
         assertEquals(expected,
                 mQuotaController.getTimingSessions(SOURCE_USER_ID, SOURCE_PACKAGE));
-    }
-
-    @Test
-    public void testTracking_OutOfQuota_ForegroundAndBackground_CompactChangeOverrides() {
-        setDischarging();
-
-        // Mock the OVERRIDE_QUOTA_ENFORCEMENT_TO_TOP_STARTED_JOBS compat change overrides.
-        doReturn(true).when(mPlatformCompat).isChangeEnabledByUid(
-                eq(QuotaController.OVERRIDE_QUOTA_ENFORCEMENT_TO_TOP_STARTED_JOBS), anyInt());
-        doReturn(true).when(mPlatformCompat).isChangeEnabledByUid(
-                eq(QuotaController.OVERRIDE_QUOTA_ENFORCEMENT_TO_FGS_JOBS), anyInt());
-
-        JobStatus jobBg = createJobStatus("testTracking_OutOfQuota_ForegroundAndBackground", 1);
-        JobStatus jobTop = createJobStatus("testTracking_OutOfQuota_ForegroundAndBackground", 2);
-        trackJobs(jobBg, jobTop);
-        setStandbyBucket(WORKING_INDEX, jobTop, jobBg); // 2 hour window
-        // Now the package only has 20 seconds to run.
-        final long remainingTimeMs = 20 * SECOND_IN_MILLIS;
-        mQuotaController.saveTimingSession(SOURCE_USER_ID, SOURCE_PACKAGE,
-                createTimingSession(
-                        JobSchedulerService.sElapsedRealtimeClock.millis() - HOUR_IN_MILLIS,
-                        10 * MINUTE_IN_MILLIS - remainingTimeMs, 1), false);
-
-        InOrder inOrder = inOrder(mJobSchedulerService);
-
-        // UID starts out inactive.
-        setProcessState(ActivityManager.PROCESS_STATE_SERVICE);
-        // Start the job.
-        synchronized (mQuotaController.mLock) {
-            mQuotaController.prepareForExecutionLocked(jobBg);
-        }
-        advanceElapsedClock(remainingTimeMs / 2);
-        // New job starts after UID is in the foreground. Since the app is now in the foreground, it
-        // should continue to have remainingTimeMs / 2 time remaining.
-        setProcessState(ActivityManager.PROCESS_STATE_TOP);
-        synchronized (mQuotaController.mLock) {
-            mQuotaController.prepareForExecutionLocked(jobTop);
-        }
-        advanceElapsedClock(remainingTimeMs);
-
-        // Wait for some extra time to allow for job processing.
-        inOrder.verify(mJobSchedulerService,
-                        timeout(remainingTimeMs + 2 * SECOND_IN_MILLIS).times(0))
-                .onControllerStateChanged(argThat(jobs -> jobs.size() > 0));
-        synchronized (mQuotaController.mLock) {
-            assertEquals(remainingTimeMs / 2,
-                    mQuotaController.getRemainingExecutionTimeLocked(jobBg));
-            assertEquals(remainingTimeMs / 2,
-                    mQuotaController.getRemainingExecutionTimeLocked(jobTop));
-        }
-        // Go to a background state.
-        setProcessState(ActivityManager.PROCESS_STATE_TOP_SLEEPING);
-        advanceElapsedClock(remainingTimeMs / 2 + 1);
-        // Only Bg job will be changed from in-quota to out-of-quota.
-        inOrder.verify(mJobSchedulerService,
-                        timeout(remainingTimeMs / 2 + 2 * SECOND_IN_MILLIS).times(1))
-                .onControllerStateChanged(argThat(jobs -> jobs.size() == 1));
-        // Top job should still be allowed to run.
-        assertFalse(jobBg.isConstraintSatisfied(JobStatus.CONSTRAINT_WITHIN_QUOTA));
-        assertTrue(jobTop.isConstraintSatisfied(JobStatus.CONSTRAINT_WITHIN_QUOTA));
-
-        // New jobs to run.
-        JobStatus jobBg2 = createJobStatus("testTracking_OutOfQuota_ForegroundAndBackground", 3);
-        JobStatus jobTop2 = createJobStatus("testTracking_OutOfQuota_ForegroundAndBackground", 4);
-        JobStatus jobFg = createJobStatus("testTracking_OutOfQuota_ForegroundAndBackground", 5);
-        setStandbyBucket(WORKING_INDEX, jobBg2, jobTop2, jobFg);
-
-        advanceElapsedClock(20 * SECOND_IN_MILLIS);
-        setProcessState(ActivityManager.PROCESS_STATE_TOP);
-        inOrder.verify(mJobSchedulerService, timeout(SECOND_IN_MILLIS).times(1))
-                .onControllerStateChanged(argThat(jobs -> jobs.size() == 1));
-        trackJobs(jobFg, jobTop);
-        synchronized (mQuotaController.mLock) {
-            mQuotaController.prepareForExecutionLocked(jobTop);
-        }
-        assertTrue(jobTop.isConstraintSatisfied(JobStatus.CONSTRAINT_WITHIN_QUOTA));
-        assertTrue(jobFg.isConstraintSatisfied(JobStatus.CONSTRAINT_WITHIN_QUOTA));
-        assertTrue(jobBg.isConstraintSatisfied(JobStatus.CONSTRAINT_WITHIN_QUOTA));
-
-        // App still in foreground so everything should be in quota.
-        advanceElapsedClock(20 * SECOND_IN_MILLIS);
-        setProcessState(ActivityManager.PROCESS_STATE_FOREGROUND_SERVICE);
-        assertTrue(jobTop.isConstraintSatisfied(JobStatus.CONSTRAINT_WITHIN_QUOTA));
-        assertTrue(jobFg.isConstraintSatisfied(JobStatus.CONSTRAINT_WITHIN_QUOTA));
-        assertTrue(jobBg.isConstraintSatisfied(JobStatus.CONSTRAINT_WITHIN_QUOTA));
-
-        advanceElapsedClock(20 * SECOND_IN_MILLIS);
-        setProcessState(ActivityManager.PROCESS_STATE_SERVICE);
-        inOrder.verify(mJobSchedulerService, timeout(SECOND_IN_MILLIS).times(1))
-                .onControllerStateChanged(argThat(jobs -> jobs.size() == 2));
-        // App is now in background and out of quota. Fg should now change to out of quota since it
-        // wasn't started. Top should remain in quota since it started when the app was in TOP.
-        assertTrue(jobTop.isConstraintSatisfied(JobStatus.CONSTRAINT_WITHIN_QUOTA));
-        assertFalse(jobFg.isConstraintSatisfied(JobStatus.CONSTRAINT_WITHIN_QUOTA));
-        assertFalse(jobBg.isConstraintSatisfied(JobStatus.CONSTRAINT_WITHIN_QUOTA));
-        trackJobs(jobBg2);
-        assertFalse(jobBg2.isConstraintSatisfied(JobStatus.CONSTRAINT_WITHIN_QUOTA));
     }
 
     /**
