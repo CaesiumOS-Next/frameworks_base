@@ -174,15 +174,41 @@ class SoundTriggerModule implements IBinder.DeathRecipient, ISoundTriggerHal.Glo
                 mHalService = new SoundTriggerHalEnforcer(
                         new SoundTriggerHalWatchdog(
                             new SoundTriggerDuplicateModelHandler(mHalFactory.create())));
-            } catch (RuntimeException e) {
-                if (!(e.getCause() instanceof RemoteException)) {
-                    throw e;
+                mHalService.linkToDeath(this);
+                mHalService.registerCallback(this);
+                mProperties = mHalService.getProperties();
+            } catch (RemoteException | RuntimeException e) {
+                safelyDetach();
+                mHalService = null;
+                if (e instanceof RuntimeException && !(e.getCause() instanceof RemoteException)) {
+                    throw (RuntimeException) e;
                 }
             }
         }
-        mHalService.linkToDeath(this);
-        mHalService.registerCallback(this);
-        mProperties = mHalService.getProperties();
+    }
+
+    /**
+     * Safely detaches from the HAL service, ignoring any exceptions that occur during
+     * cleanup. This ensures that a cleanup failure does not break the retry loop in
+     * {@link #attachToHal()}.
+     *
+     * If the detach call itself fails (e.g., the underlying HAL has already died), we
+     * must not let the exception propagate. Otherwise, the {@code mHalService = null}
+     * assignment would be skipped, effectively breaking the retry mechanism.
+     */
+    private void safelyDetach() {
+        if (mHalService != null) {
+            try {
+                mHalService.unlinkToDeath(this, 0);
+            } catch (RemoteException e) {
+                Slog.w(TAG, "RemoteException during unlinkToDeath (HAL might be dead)", e);
+            }
+            try {
+                mHalService.detach();
+            } catch (Exception e) {
+                Slog.w(TAG, "Exception during detach", e);
+            }
+        }
     }
 
     /**
