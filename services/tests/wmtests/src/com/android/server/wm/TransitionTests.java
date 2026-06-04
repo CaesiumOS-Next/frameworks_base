@@ -2457,6 +2457,78 @@ public class TransitionTests extends WindowTestsBase {
     }
 
     @Test
+    public void testCollectVisibleChange_displayContent_skipsFreeze_whenConfigDisabled() {
+        registerTestTransitionPlayer();
+        final TransitionController controller = new TestTransitionController(mAtm);
+        final BLASTSyncEngine syncEngine = createTestBLASTSyncEngine();
+        controller.setSyncEngine(syncEngine);
+
+        final Transition transition = new Transition(TRANSIT_CHANGE, 0 /* flags */,
+                controller, syncEngine);
+        spyOn(transition.mLogger);
+        doNothing().when(transition.mLogger).logOnSendAsync(any());
+        transition.startCollecting(0 /* timeoutMs */);
+        controller.moveToCollecting(transition);
+        syncEngine.setSyncMethod(transition.getSyncId(), BLASTSyncEngine.METHOD_NONE);
+
+        controller.mEnableDisplayTransitionFreeze = false;
+
+        transition.collect(mDisplayContent);
+
+        final ArrayList<WindowContainer> freezeCalls = new ArrayList<>();
+        transition.setContainerFreezer(new Transition.IContainerFreezer() {
+            @Override
+            public boolean freeze(@NonNull WindowContainer wc, @NonNull Rect bounds) {
+                freezeCalls.add(wc);
+                return true;
+            }
+            @Override
+            public void cleanUp(SurfaceControl.Transaction t) {}
+        });
+
+        transition.collectVisibleChange(mDisplayContent);
+
+        assertFalse("freeze() must NOT be called for DisplayContent when config is disabled",
+                freezeCalls.contains(mDisplayContent));
+    }
+
+    @Test
+    public void testCollectVisibleChange_taskContainer_stillFreezes_whenDisplayFreezeDisabled() {
+        registerTestTransitionPlayer();
+        final ActivityRecord app = createActivityRecord(
+                mDisplayContent, WINDOWING_MODE_MULTI_WINDOW, ACTIVITY_TYPE_STANDARD);
+        final Transition transition = new Transition(TRANSIT_CHANGE, 0 /* flags */,
+                app.mTransitionController, mWm.mSyncEngine);
+        app.mTransitionController.moveToCollecting(transition);
+        mWm.mSyncEngine.setSyncMethod(transition.getSyncId(), BLASTSyncEngine.METHOD_NONE);
+
+        app.mTransitionController.mEnableDisplayTransitionFreeze = false;
+
+        final Task task = app.getTask();
+        transition.collect(task);
+
+        final ArrayList<WindowContainer> freezeCalls = new ArrayList<>();
+        transition.setContainerFreezer(new Transition.IContainerFreezer() {
+            @Override
+            public boolean freeze(@NonNull WindowContainer wc, @NonNull Rect bounds) {
+                freezeCalls.add(wc);
+                return true;
+            }
+            @Override
+            public void cleanUp(SurfaceControl.Transaction t) {}
+        });
+
+        final Rect bounds = new Rect(task.getBounds());
+        final Configuration c = new Configuration(task.getRequestedOverrideConfiguration());
+        bounds.inset(10, 10);
+        c.windowConfiguration.setBounds(bounds);
+        task.onRequestedOverrideConfigurationChanged(c);
+
+        assertTrue("freeze() MUST still be called for Task even when display freeze is disabled",
+                freezeCalls.contains(task));
+    }
+
+    @Test
     public void testDeferTransitionReady_deferStartedTransition() {
         final Transition transition = createTestTransition(TRANSIT_OPEN);
         transition.setAllReady();
