@@ -6963,6 +6963,14 @@
     <!-- Whether this device should support taking app snapshots on closure -->
     <bool name="config_disableTaskSnapshots">false</bool>
 
+    <!-- Whether to take a freeze screenshot when a display-level CHANGE
+         transition occurs. When true (default), WindowManager captures the
+         current display state to freeze the visual during reconfiguration.
+         Set to false on devices where display config changes are non-visual
+         (e.g. keyboard connect/disconnect on TV) and the screenshot would
+         capture hardware overlay layers as black, causing a visible flash. -->
+    <bool name="config_enableDisplayTransitionFreeze">true</bool>
+
     <!-- The display cutout configs for secondary built-in display. -->
     <string name="config_secondaryBuiltInDisplayCutout" translatable="false"></string>
     <string name="config_secondaryBuiltInDisplayCutoutRectApproximation" translatable="false">

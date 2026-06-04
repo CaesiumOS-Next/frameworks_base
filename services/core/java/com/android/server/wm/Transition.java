@@ -952,6 +952,9 @@ class Transition implements BLASTSyncEngine.TransactionReadyListener {
                 return;
             }
         }
+        if (wc.asDisplayContent() != null && !mController.mEnableDisplayTransitionFreeze) {
+            return;
+        }
 
         if (mContainerFreezer == null) {
             mContainerFreezer = new ScreenshotFreezer();

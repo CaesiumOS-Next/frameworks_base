@@ -252,6 +252,8 @@ class TransitionController {
      */
     boolean mIsWaitingForDisplayEnabled = false;
 
+    boolean mEnableDisplayTransitionFreeze = true;
+
     TransitionController(ActivityTaskManagerService atm) {
         mAtm = atm;
         mRemotePlayer = new RemotePlayer(atm);
@@ -268,6 +270,8 @@ class TransitionController {
         registerLegacyListener(wms.mActivityManagerAppTransitionNotifier);
         setSyncEngine(wms.mSyncEngine);
         mFullReadyTracking = Flags.transitReadyTracking();
+        mEnableDisplayTransitionFreeze = wms.mContext.getResources().getBoolean(
+                com.android.internal.R.bool.config_enableDisplayTransitionFreeze);
     }
 
     @VisibleForTesting
