@@ -71,6 +71,11 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.concurrent.Executor;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.Future;
+import java.util.concurrent.TimeUnit;
+import java.util.concurrent.TimeoutException;
 
 import javax.inject.Inject;
 import javax.inject.Provider;
@@ -104,6 +109,7 @@ public class SecurityControllerImpl implements SecurityController {
     private final UserManager mUserManager;
     private final Executor mMainExecutor;
     private final Executor mBgExecutor;
+    private final Handler mBgHandler;
 
     @GuardedBy("mCallbacks")
     private final ArrayList<SecurityControllerCallback> mCallbacks = new ArrayList<>();
@@ -155,6 +161,7 @@ public class SecurityControllerImpl implements SecurityController {
         mUserManager = (UserManager) context.getSystemService(Context.USER_SERVICE);
         mMainExecutor = mainExecutor;
         mBgExecutor = bgExecutor;
+        mBgHandler = bgHandler;
 
         dumpManager.registerDumpable(getClass().getSimpleName(), this);
 
@@ -466,20 +473,48 @@ public class SecurityControllerImpl implements SecurityController {
     private void refreshCACerts(int userId) {
         mBgExecutor.execute(() -> {
             Pair<Integer, Boolean> idWithCert = null;
-            try (KeyChain.KeyChainConnection conn = KeyChain.bindAsUser(mContext,
-                    UserHandle.of(userId))) {
-                boolean hasCACerts = !(conn.getService().getUserCaAliases().getList().isEmpty());
-                idWithCert = new Pair<Integer, Boolean>(userId, hasCACerts);
-            } catch (RemoteException | InterruptedException | AssertionError
-                     | IllegalStateException e) {
-                Log.i(TAG, "failed to get CA certs", e);
-                idWithCert = new Pair<Integer, Boolean>(userId, null);
-            } finally {
-                if (DEBUG) Log.d(TAG, "Refreshing CA Certs " + idWithCert);
-                if (idWithCert != null && idWithCert.second != null) {
-                    mHasCACerts.put(idWithCert.first, idWithCert.second);
-                    fireCallbacks();
+
+            // Add timeout protection for KeyChain.bindAsUser
+            // Log analysis shows this can block for 11+ seconds during boot
+            ExecutorService executor = Executors.newSingleThreadExecutor();
+            Future<Boolean> future = executor.submit(() -> {
+                try (KeyChain.KeyChainConnection conn = KeyChain.bindAsUser(mContext,
+                        UserHandle.of(userId))) {
+                    return !(conn.getService().getUserCaAliases().getList().isEmpty());
+                } catch (RemoteException | InterruptedException | AssertionError
+                         | IllegalStateException e) {
+                    Log.i(TAG, "failed to get CA certs", e);
+                    return null;
                 }
+            });
+
+            try {
+                // Wait maximum 2 seconds to prevent blocking SystemUI startup
+                Boolean hasCACerts = future.get(2000, TimeUnit.MILLISECONDS);
+                if (hasCACerts != null) {
+                    idWithCert = new Pair<>(userId, hasCACerts);
+                }
+            } catch (TimeoutException e) {
+                Log.w(TAG, "Timeout waiting for CA certs (2s), will retry in "
+                        + CA_CERT_LOADING_RETRY_TIME_IN_MS + "ms");
+                future.cancel(true);
+                // Retry later after SystemUI has fully started
+                mBgHandler.postDelayed(() -> {
+                    if (DEBUG) Log.d(TAG, "Retrying CA cert check for user " + userId);
+                    refreshCACerts(userId);
+                }, CA_CERT_LOADING_RETRY_TIME_IN_MS);
+                return;
+            } catch (Exception e) {
+                Log.e(TAG, "Error checking CA certs", e);
+                idWithCert = new Pair<>(userId, null);
+            } finally {
+                executor.shutdown();
+            }
+
+            if (DEBUG) Log.d(TAG, "Refreshing CA Certs " + idWithCert);
+            if (idWithCert != null && idWithCert.second != null) {
+                mHasCACerts.put(idWithCert.first, idWithCert.second);
+                fireCallbacks();
             }
         });
     }

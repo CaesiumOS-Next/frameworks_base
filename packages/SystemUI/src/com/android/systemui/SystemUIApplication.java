@@ -81,6 +81,9 @@ public class SystemUIApplication extends Application implements
     private SystemUIInitializer mInitializer;
     private ProcessWrapper mProcessWrapper;
 
+    // Track deferred startables to prevent ANR
+    private java.util.List<CoreStartable> mDeferredStartables = new java.util.ArrayList<>();
+
     public SystemUIApplication() {
         super();
         if (!isSubprocess()) {
@@ -167,6 +170,15 @@ public class SystemUIApplication extends Application implements
                     unregisterReceiver(this);
                     mBootCompleteCache.setBootComplete();
                     if (mServicesStarted) {
+                        // Start deferred services on BOOT_COMPLETED
+                        if (!mDeferredStartables.isEmpty()) {
+                            Log.i(TAG, "Starting " + mDeferredStartables.size() + " deferred services");
+                            for (CoreStartable startable : mDeferredStartables) {
+                                Log.i(TAG, "Starting deferred service: " + startable.getClass().getSimpleName());
+                                startable.start();
+                            }
+                            mDeferredStartables.clear();
+                        }
                         final int N = mServices.length;
                         for (int i = 0; i < N; i++) {
                             notifyBootCompleted(mServices[i]);
@@ -322,6 +334,17 @@ public class SystemUIApplication extends Application implements
                         mSysUIComponent.getStartableDependencies().get(cls);
                 if (deps == null || startedStartables.containsAll(deps)) {
                     String clsName = cls.getName();
+
+                    // Defer non-critical slow services to BOOT_COMPLETED to prevent ANR
+                    if (shouldDeferToBootCompleted(clsName)) {
+                        Log.i(TAG, "Deferring " + clsName + " to BOOT_COMPLETED to prevent ANR");
+                        CoreStartable startable = entry.getValue().get();
+                        mDeferredStartables.add(startable);
+                        mServices[serviceIndex++] = startable;
+                        startedStartables.add(cls);
+                        startedAny = true;
+                        continue;
+                    }
                     int i = serviceIndex;  // Copied to make lambda happy.
                     timeInitialization(
                             clsName,
@@ -455,6 +478,12 @@ public class SystemUIApplication extends Application implements
         Trace.endSection();
 
         return startable;
+    }
+
+    private boolean shouldDeferToBootCompleted(String clsName) {
+        return clsName.contains("MagnificationImpl") ||
+                clsName.contains("GlobalActionsComponent") ||
+                clsName.contains("UserSwitcherDialogCoordinator");
     }
 
     @Override
