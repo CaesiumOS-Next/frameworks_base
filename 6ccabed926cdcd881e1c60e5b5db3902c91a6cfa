@@ -39,6 +39,30 @@
       },
       "revId": "6ccabed926cdcd881e1c60e5b5db3902c91a6cfa",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "aa2bf2c0_203b5ee1",
+        "filename": "services/core/java/com/android/server/wm/WindowManagerService.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 2199,
+      "author": {
+        "id": 1792527
+      },
+      "writtenOn": "2026-06-10T03:36:37Z",
+      "side": 1,
+      "message": "I invert the if condition, similar to the #relayoutWindow method.",
+      "parentUuid": "a07fe46b_6c32bfc3",
+      "range": {
+        "startLine": 2199,
+        "startChar": 0,
+        "endLine": 2199,
+        "endChar": 103
+      },
+      "revId": "6ccabed926cdcd881e1c60e5b5db3902c91a6cfa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
