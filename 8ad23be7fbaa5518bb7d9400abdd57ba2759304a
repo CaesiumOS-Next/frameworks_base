@@ -54,6 +54,40 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "481d5f6e_89108e92",
+        "filename": "services/core/java/com/android/server/power/ShutdownThread.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 514,
+      "author": {
+        "id": 1888886
+      },
+      "writtenOn": "2026-06-19T06:33:43Z",
+      "side": 1,
+      "message": "`android.os.SystemService.stop(\"keystore2\");` should be usable here",
+      "revId": "8ad23be7fbaa5518bb7d9400abdd57ba2759304a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9bb061c0_b26e905f",
+        "filename": "services/core/java/com/android/server/power/ShutdownThread.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 518,
+      "author": {
+        "id": 1888886
+      },
+      "writtenOn": "2026-06-19T06:33:43Z",
+      "side": 1,
+      "message": "`android.os.SystemService.waitForAnyStopped(\"keystore2\");` may be equivalent",
+      "revId": "8ad23be7fbaa5518bb7d9400abdd57ba2759304a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "bcbaf73e_e5a044bc",
         "filename": "services/core/java/com/android/server/recoverysystem/RecoverySystemService.java",
         "patchSetId": 1
