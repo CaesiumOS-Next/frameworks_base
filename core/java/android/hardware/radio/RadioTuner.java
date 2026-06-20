@@ -133,7 +133,7 @@ public abstract class RadioTuner {
     /**
      * Get mute state.
      *
-     * @return {@code true} if the radio tuner audio source is muted or a problem occured
+     * @return {@code true} if the radio tuner audio source is muted or a problem occurred
      * retrieving the mute state, {@code false} otherwise.
      */
     @RequiresPermission(Manifest.permission.ACCESS_BROADCAST_RADIO)
@@ -575,7 +575,7 @@ public abstract class RadioTuner {
      * callback) or close and reopen the tuner interface.
      *
      * @return {@code true} if this interface controls the tuner,
-     * {@code false} otherwise or if a problem occured retrieving the state.
+     * {@code false} otherwise or if a problem occurred retrieving the state.
      */
     @RequiresPermission(Manifest.permission.ACCESS_BROADCAST_RADIO)
     public abstract boolean hasControl();
@@ -676,7 +676,7 @@ public abstract class RadioTuner {
      */
     public static abstract class Callback {
         /**
-         * onError() is called when an error occured while performing an asynchronous
+         * onError() is called when an error occurred while performing an asynchronous
          * operation of when the hardware or system service experiences a problem.
          * status is one of {@link #ERROR_HARDWARE_FAILURE}, {@link #ERROR_SERVER_DIED},
          * {@link #ERROR_CANCELLED}, {@link #ERROR_SCAN_TIMEOUT},
