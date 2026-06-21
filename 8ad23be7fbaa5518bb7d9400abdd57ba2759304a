@@ -52,6 +52,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "940cede4_f884c489",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 3071839
+      },
+      "writtenOn": "2026-06-21T08:25:08Z",
+      "side": 1,
+      "message": "Fixed in patchset3. The file permission has been reverted.",
+      "parentUuid": "3827f4a7_07b320c3",
+      "revId": "8ad23be7fbaa5518bb7d9400abdd57ba2759304a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "481d5f6e_89108e92",
@@ -65,6 +83,24 @@
       "writtenOn": "2026-06-19T06:33:43Z",
       "side": 1,
       "message": "`android.os.SystemService.stop(\"keystore2\");` should be usable here",
+      "revId": "8ad23be7fbaa5518bb7d9400abdd57ba2759304a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "48ea0201_15d4155d",
+        "filename": "services/core/java/com/android/server/power/ShutdownThread.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 514,
+      "author": {
+        "id": 3071839
+      },
+      "writtenOn": "2026-06-21T08:25:08Z",
+      "side": 1,
+      "message": "Updated in PatchSet3: replaced the polling loop with\nSystemService.stop(\"keystore2\") as suggested.\nThanks for pointing this out.",
+      "parentUuid": "481d5f6e_89108e92",
       "revId": "8ad23be7fbaa5518bb7d9400abdd57ba2759304a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -86,6 +122,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e5dabae2_b61e562a",
+        "filename": "services/core/java/com/android/server/power/ShutdownThread.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 518,
+      "author": {
+        "id": 3071839
+      },
+      "writtenOn": "2026-06-21T08:25:08Z",
+      "side": 1,
+      "message": "Updated in PatchSet3: replaced the polling loop with\nSystemService.waitForAnyStopped(\"keystore2\") as suggested.\nThanks for pointing this out.",
+      "parentUuid": "9bb061c0_b26e905f",
+      "revId": "8ad23be7fbaa5518bb7d9400abdd57ba2759304a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bcbaf73e_e5a044bc",
@@ -99,6 +153,24 @@
       "writtenOn": "2026-06-19T06:29:47Z",
       "side": 1,
       "message": "Please confirm that you repurposing `--wipe_data` to trigger the special factory reset path.",
+      "revId": "8ad23be7fbaa5518bb7d9400abdd57ba2759304a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dfad5815_df52dd4e",
+        "filename": "services/core/java/com/android/server/recoverysystem/RecoverySystemService.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 535,
+      "author": {
+        "id": 3071839
+      },
+      "writtenOn": "2026-06-21T08:25:08Z",
+      "side": 1,
+      "message": "Yes. --wipe_data already indicates a factory reset, and we use\nit to select the factory-reset-specific reboot path without\nchanging its original semantics.",
+      "parentUuid": "bcbaf73e_e5a044bc",
       "revId": "8ad23be7fbaa5518bb7d9400abdd57ba2759304a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }

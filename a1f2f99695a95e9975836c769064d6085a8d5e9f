@@ -16,6 +16,23 @@
       "message": "k",
       "revId": "a1f2f99695a95e9975836c769064d6085a8d5e9f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "48976afe_6ed2f6da",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 3071839
+      },
+      "writtenOn": "2026-06-21T08:25:08Z",
+      "side": 1,
+      "message": "Thanks for the review.\n\nAll comments are addressed in Patchset 3, including the keystore2\nservice handling changes, reverting the file permission update,\nand confirming that --wipe_data semantics remain unchanged.",
+      "revId": "a1f2f99695a95e9975836c769064d6085a8d5e9f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
