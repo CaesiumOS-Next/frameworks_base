@@ -16,11 +16,10 @@
 
 package android.util;
 
+import android.annotation.Hide;
 import android.annotation.Nullable;
 import android.annotation.TestApi;
 import android.compat.annotation.UnsupportedAppUsage;
-
-import libcore.util.EmptyArray;
 
 import java.lang.reflect.Array;
 import java.util.Arrays;
@@ -53,7 +52,8 @@ import java.util.function.Predicate;
  *
  * <p>This structure is <b>NOT</b> thread-safe.</p>
  */
-public final class ArraySet<E> implements Collection<E>, Set<E> {
+@android.ravenwood.annotation.RavenwoodKeepWholeClass
+public class ArraySet<E> implements Collection<E>, Set<E> {
     private static final boolean DEBUG = false;
     private static final String TAG = "ArraySet";
 
@@ -85,7 +85,6 @@ public final class ArraySet<E> implements Collection<E>, Set<E> {
     private static final Object sBaseCacheLock = new Object();
     private static final Object sTwiceBaseCacheLock = new Object();
 
-    private final boolean mIdentityHashCode;
     @UnsupportedAppUsage(maxTargetSdk = 28) // Hashes are an implementation detail. Use public API.
     int[] mHashes;
     @UnsupportedAppUsage(maxTargetSdk = 28) // Storage is an implementation detail. Use public API.
@@ -93,6 +92,13 @@ public final class ArraySet<E> implements Collection<E>, Set<E> {
     @UnsupportedAppUsage(maxTargetSdk = 28) // Use size()
     int mSize;
     private MapCollections<E, E> mCollections;
+
+    /** @hide */
+    @Hide
+    protected int getHashCode(Object o) {
+        return o.hashCode();
+    }
+
 
     private int binarySearch(int[] hashes, int hash) {
         try {
@@ -299,9 +305,11 @@ public final class ArraySet<E> implements Collection<E>, Set<E> {
         this(capacity, false);
     }
 
-    /** {@hide} */
+    @Hide
     public ArraySet(int capacity, boolean identityHashCode) {
-        mIdentityHashCode = identityHashCode;
+        if (identityHashCode) {
+            throw new UnsupportedOperationException("Identity hash code is not supported on ArraySet. Use IdentityArraySet instead.");
+        }
         if (capacity == 0) {
             mHashes = EmptyArray.INT;
             mArray = EmptyArray.OBJECT;
@@ -401,8 +409,7 @@ public final class ArraySet<E> implements Collection<E>, Set<E> {
      * @return Returns the index of the value if it exists, else a negative integer.
      */
     public int indexOf(Object key) {
-        return key == null ? indexOfNull()
-                : indexOf(key, mIdentityHashCode ? System.identityHashCode(key) : key.hashCode());
+        return key == null ? indexOfNull() : indexOf(key, getHashCode(key));
     }
 
     /**
@@ -429,8 +436,6 @@ public final class ArraySet<E> implements Collection<E>, Set<E> {
      * Returns the value at the given index in the array without checking that the index is within
      * bounds. This allows testing values at the end of the internal array, outside of the
      * [0, mSize) bounds.
-     *
-     * @hide
      */
     @TestApi
     public E valueAtUnchecked(int index) {
@@ -461,7 +466,7 @@ public final class ArraySet<E> implements Collection<E>, Set<E> {
             hash = 0;
             index = indexOfNull();
         } else {
-            hash = mIdentityHashCode ? System.identityHashCode(value) : value.hashCode();
+            hash = getHashCode(value);
             index = indexOf(value, hash);
         }
         if (index >= 0) {
@@ -513,13 +518,12 @@ public final class ArraySet<E> implements Collection<E>, Set<E> {
     /**
      * Special fast path for appending items to the end of the array without validation.
      * The array must already be large enough to contain the item.
-     * @hide
      */
+    @Hide
     public void append(E value) {
         final int oSize = mSize;
         final int index = mSize;
-        final int hash = value == null ? 0
-                : (mIdentityHashCode ? System.identityHashCode(value) : value.hashCode());
+        final int hash = value == null ? 0 : getHashCode(value);
         if (index >= mHashes.length) {
             throw new IllegalStateException("Array is full");
         }
@@ -527,7 +531,6 @@ public final class ArraySet<E> implements Collection<E>, Set<E> {
             // Cannot optimize since it would break the sorted order - fallback to add()
             if (DEBUG) {
                 RuntimeException e = new RuntimeException("here");
-                e.fillInStackTrace();
                 Log.w(TAG, "New hash " + hash
                         + " is before end of array hash " + mHashes[index - 1]
                         + " at index " + index, e);
