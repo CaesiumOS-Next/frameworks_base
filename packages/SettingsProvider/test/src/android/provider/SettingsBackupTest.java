@@ -356,6 +356,7 @@ public class SettingsBackupTest {
                     Settings.Global.NTP_TIMEOUT,
                     Settings.Global.OTA_DISABLE_AUTOMATIC_UPDATE,
                     Settings.Global.OVERLAY_DISPLAY_DEVICES,
+                    Settings.Global.OPENXR_RUNTIME_PACKAGE,
                     Settings.Global.PAC_CHANGE_DELAY,
                     Settings.Global.PACKAGE_STREAMING_VERIFIER_TIMEOUT,
                     Settings.Global.PACKAGE_VERIFIER_DEFAULT_RESPONSE,

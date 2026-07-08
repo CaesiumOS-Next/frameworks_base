@@ -16794,6 +16794,14 @@ public final class Settings {
         public static final String GPU_DEBUG_LAYER_APP = "gpu_debug_layer_app";
 
         /**
+         * Active OpenXR runtime package. May be null if there is not active runtime.
+         * May be configurable on phones or fixed by OEM in AOI devices.
+         */
+        @Hide
+        @Readable
+        public static final String OPENXR_RUNTIME_PACKAGE = "openxr_runtime_package";
+
+        /**
          * Control whether the process CPU usage meter should be shown.
          *
          * @deprecated This functionality is no longer available as of

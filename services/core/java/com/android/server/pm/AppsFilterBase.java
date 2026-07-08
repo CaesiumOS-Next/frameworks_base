@@ -161,6 +161,16 @@ public abstract class AppsFilterBase implements AppsFilterSnapshot {
     protected SnapshotCache<WatchedArraySet<Integer>> mForceQueryableSnapshot;
 
     /**
+     * A set of App IDs that are always queryable by any package, regardless of their manifest
+     * content. These may change dynamically based on system changes other than adding new packages.
+     */
+    @NonNull
+    @Watched
+    protected WatchedArraySet<Integer> mDynamicForceQueryable;
+    @NonNull
+    protected SnapshotCache<WatchedArraySet<Integer>> mDynamicForceQueryableSnapshot;
+
+    /**
      * The set of package names provided by the device that should be force queryable regardless of
      * their manifest contents.
      */
@@ -204,8 +214,9 @@ public abstract class AppsFilterBase implements AppsFilterSnapshot {
     protected static final boolean CACHE_INVALID = false;
     protected final AtomicBoolean mCacheValid = new AtomicBoolean(CACHE_INVALID);
 
-    protected boolean isForceQueryable(int callingAppId) {
-        return mForceQueryable.contains(callingAppId);
+    protected boolean isForceQueryable(int appId) {
+        return mForceQueryable.contains(appId)
+                || mDynamicForceQueryable.contains(appId);
     }
 
     protected boolean isQueryableViaPackage(int callingAppId, int targetAppId) {

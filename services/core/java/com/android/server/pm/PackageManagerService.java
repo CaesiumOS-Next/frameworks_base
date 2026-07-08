@@ -4518,12 +4518,36 @@ public class PackageManagerService implements PackageSender, TestUtilityService 
         mContext.enforceCallingOrSelfPermission(android.Manifest.permission.CLEAR_APP_CACHE,
                 "deletePreloadsFileCache");
         File dir = Environment.getDataPreloadsFileCacheDirectory();
+<<<<<<< HEAD
         Slog.i(PackageManagerService.TAG, "Deleting preloaded file cache " + dir);
         FileUtils.deleteContents(dir);
     }
 
     void setSystemAppHiddenUntilInstalled(@NonNull Computer snapshot, String packageName,
             boolean hidden) {
+=======
+                .getUriFor(Secure.INSTANT_APPS_ENABLED), false, co, USER_ALL);
+        co.onChange(true);
+
+        if (android.openxr.flags.Flags.openxrLoaderFlag()) {
+            ContentObserver openxrObserver = new ContentObserver(mHandler) {
+                @Override
+                public void onChange(boolean selfChange) {
+                    final String openXrPackageName = Global.getString(
+                            resolver, Global.OPENXR_RUNTIME_PACKAGE);
+                    mAppsFilter.addDynamicForceQueryablePackage(snapshotComputer(),
+                        openXrPackageName);
+                }
+            };
+            mContext.getContentResolver().registerContentObserver(android.provider.Settings.Global
+                    .getUriFor(Global.OPENXR_RUNTIME_PACKAGE), false, openxrObserver, USER_ALL);
+            openxrObserver.onChange(true);
+        }
+
+        mAppsFilter.onSystemReady(LocalServices.getService(PackageManagerInternal.class));
+
+        // Disable any carrier apps. We do this very early in boot to prevent the apps from being
+>>>>>>> PATCH
         final int callingUid = Binder.getCallingUid();
         final boolean calledFromSystemOrPhone = isSystemOrPhone(callingUid);
         if (!calledFromSystemOrPhone) {

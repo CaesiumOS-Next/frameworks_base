@@ -324,5 +324,15 @@ prebuilt_etc {
 
 prebuilt_etc {
     name: "core.protolog.pb",
+<<<<<<< HEAD
     src: ":gen-core.protolog.pb",
 }
+=======
+        "statslog-contexthub",
+        "statslog-mediarouter",
+        "crashrecovery-statslog",
+        "android.openxr.flags-aconfig-java",
+    ],
+    javac_shard_size: 50,
+    javacflags: [
+>>>>>>> PATCH

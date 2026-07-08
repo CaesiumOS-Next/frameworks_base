@@ -85,6 +85,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
+import java.util.Set;
 
 /**
  * Implementation of the methods that update the internal structures of AppsFilter. Because of the
@@ -221,6 +222,10 @@ public final class AppsFilterImpl extends AppsFilterLocked implements Watchable,
         mForceQueryable = new WatchedArraySet<>();
         mForceQueryableSnapshot = new SnapshotCache.Auto<>(
                 mForceQueryable, mForceQueryable, "AppsFilter.mForceQueryable");
+        mDynamicForceQueryable = new WatchedArraySet<>();
+        mDynamicForceQueryableSnapshot = new SnapshotCache.Auto<>(
+                mDynamicForceQueryable, mDynamicForceQueryable,
+                "AppsFilter.mDynamicForceQueryable");
         mProtectedBroadcasts = new WatchedArraySet<>();
         mProtectedBroadcastsSnapshot = new SnapshotCache.Auto<>(
                 mProtectedBroadcasts, mProtectedBroadcasts, "AppsFilter.mProtectedBroadcasts");
@@ -1171,6 +1176,7 @@ public final class AppsFilterImpl extends AppsFilterLocked implements Watchable,
 
         synchronized (mForceQueryableLock) {
             mForceQueryable.remove(setting.getAppId());
+            mDynamicForceQueryable.remove(setting.getAppId());
         }
 
         boolean protectedBroadcastsChanged = false;
@@ -1292,5 +1298,34 @@ public final class AppsFilterImpl extends AppsFilterLocked implements Watchable,
         }
         FrameworkStatsLog.write(PACKAGE_MANAGER_APPS_FILTER_CACHE_UPDATE_REPORTED,
                 eventId, appId, latency, userCount, packageCount, mShouldFilterCache.size());
+    }
+
+    /**
+     * Adds a new package to the dynamic set of force-queryable packages.
+     */
+    public void addDynamicForceQueryablePackage(Computer snapshot, String packageName) {
+        synchronized (mForceQueryableLock) {
+            final ArrayMap<String, ? extends PackageStateInternal> settings =
+                    snapshot.getPackageStates();
+            PackageStateInternal targetSetting = settings.get(packageName);
+            if (targetSetting == null) {
+                return;
+            }
+
+            int targetAppId = targetSetting.getAppId();
+            mDynamicForceQueryable.add(targetAppId);
+
+            if (mCacheReady) {
+                synchronized (mCacheLock) {
+                    for (int i = 0; i < mShouldFilterCache.size(); i++) {
+                        int callingUid = mShouldFilterCache.keyAt(i);
+                        int userId = UserHandle.getUserId(callingUid);
+                        int targetUid = UserHandle.getUid(userId, targetAppId);
+                        mShouldFilterCache.put(callingUid, targetUid, false);
+                    }
+                }
+            }
+        }
+        onChanged();
     }
 }

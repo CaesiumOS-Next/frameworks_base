@@ -50,8 +50,10 @@ public final class AppsFilterSnapshotImpl extends AppsFilterBase {
         mQueryableViaUsesPermissionSnapshot = new SnapshotCache.Sealed<>();
         synchronized (orig.mForceQueryableLock) {
             mForceQueryable = orig.mForceQueryableSnapshot.snapshot();
+            mDynamicForceQueryable = orig.mDynamicForceQueryableSnapshot.snapshot();
         }
         mForceQueryableSnapshot = new SnapshotCache.Sealed<>();
+        mDynamicForceQueryableSnapshot = new SnapshotCache.Sealed<>();
         synchronized (orig.mProtectedBroadcastsLock) {
             mProtectedBroadcasts = orig.mProtectedBroadcastsSnapshot.snapshot();
         }
@@ -61,6 +63,7 @@ public final class AppsFilterSnapshotImpl extends AppsFilterBase {
                 Arrays.copyOf(orig.mForceQueryableByDevicePackageNames,
                         orig.mForceQueryableByDevicePackageNames.length);
         mSystemAppsQueryable = orig.mSystemAppsQueryable;
+
         mFeatureConfig = orig.mFeatureConfig.snapshot();
         mOverlayReferenceMapper = orig.mOverlayReferenceMapper;
         mSystemSigningDetails = orig.mSystemSigningDetails;

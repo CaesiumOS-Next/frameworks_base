@@ -726,6 +726,37 @@ public class AppsFilterImplTest {
                         SYSTEM_USER));
     }
 
+    @Test
+    public void testDynamicForceQueryable_DoesntFilter() throws Exception {
+        final AppsFilterImpl appsFilter =
+                new AppsFilterImpl(
+                        mFeatureConfigMock,
+                        new String[] {}, /* systemAppsQueryable */
+                        false, /* overlayProvider */
+                        null,
+                        mMockHandler);
+        simulateAddBasicAndroid(appsFilter);
+        appsFilter.onSystemReady(mPmInternal);
+
+        PackageSetting target =
+                simulateAddPackage(appsFilter, pkg("com.some.package"), DUMMY_TARGET_APPID);
+        PackageSetting calling =
+                simulateAddPackage(appsFilter, pkg("com.calling.package"), DUMMY_CALLING_APPID);
+
+        assertTrue(
+                appsFilter.shouldFilterApplication(
+                        mSnapshot, DUMMY_CALLING_APPID, calling, target, SYSTEM_USER));
+
+        appsFilter.addDynamicForceQueryablePackage(mSnapshot, "com.some.package");
+        assertFalse(
+                appsFilter.shouldFilterApplication(
+                        mSnapshot, DUMMY_CALLING_APPID, calling, target, SYSTEM_USER));
+
+        appsFilter.removePackage(mSnapshot, target);
+        assertTrue(
+                appsFilter.shouldFilterApplication(
+                        mSnapshot, DUMMY_CALLING_APPID, calling, target, SYSTEM_USER));
+    }
 
     @Test
     public void testSystemQueryable_DoesntFilter() throws Exception {
