@@ -30,20 +30,19 @@ mod android_os_trace;
 mod android_util_event_log;
 mod android_util_log;
 mod android_view_key_event;
+// The MotionEvent JNI needs symbols that exist only inside libandroid_runtime
+// itself (parcelForJavaObject behind the bridge's parcel shims, hwui's
+// AMatrix_getContents), which the host test binary does not link, so unlike
+// its siblings it is also compiled out of the test harness.
+#[cfg(not(test))]
+mod android_view_motion_event;
 mod event_log_helper;
-mod input_event_ffi;
-// The MotionEvent bridge lands ahead of its JNI conversion (the
-// android.view.MotionEvent natives), which will be its first non-test
-// consumer; until then its items are only used by its own tests.
-#[allow(dead_code)]
 mod event_wire_format;
 mod input_event_compat;
+mod input_event_ffi;
 mod libbase_parse;
-mod motion_event_ffi;
-// Un-gated like input_event_compat, and additionally dead-code-allowed under
-// soong until the MotionEvent JNI conversion consumes it.
-#[allow(dead_code)]
 mod motion_event_compat;
+mod motion_event_ffi;
 mod sysprop_change;
 
 /// Called from AndroidRuntime.cpp's gRegJNI table.
@@ -188,5 +187,25 @@ pub unsafe extern "C" fn register_android_view_KeyEvent(
     // SAFETY: The caller (AndroidRuntime::startReg) passes a valid JNIEnv.
     let mut env = unsafe { jni::JNIEnv::from_raw(env) }.expect("null JNIEnv");
     android_view_key_event::register(&mut env);
+    0
+}
+
+/// Called from the gRegJNI tables of AndroidRuntime.cpp and HostRuntime.cpp.
+///
+/// Registers `android.view.MotionEvent`'s native methods, caches its class
+/// IDs, and returns 0. Panics if registration fails, matching the C++
+/// `RegisterMethodsOrDie` semantics.
+///
+/// # Safety
+///
+/// `env` must be a valid, non-null `JNIEnv` pointer for the current thread.
+#[cfg(not(test))]
+#[no_mangle]
+pub unsafe extern "C" fn register_android_view_MotionEvent(
+    env: *mut jni::sys::JNIEnv,
+) -> jni::sys::jint {
+    // SAFETY: The caller (AndroidRuntime::startReg) passes a valid JNIEnv.
+    let mut env = unsafe { jni::JNIEnv::from_raw(env) }.expect("null JNIEnv");
+    android_view_motion_event::register(&mut env);
     0
 }

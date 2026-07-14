@@ -137,11 +137,13 @@ pub(crate) mod ffi {
         /// (`PointerCoords::set_axis_value`). Returns a `status_t`: 0 on
         /// success, `NAME_NOT_FOUND` for an out-of-range axis, `NO_MEMORY`
         /// when full.
+        #[allow(dead_code)] // Only the parity tests call the C++ oracle.
         #[cxx_name = "setAxisValue"]
         fn cpp_set_axis_value(self: &mut PointerCoords, axis: i32, value: f32) -> i32;
 
         /// The real C++ `PointerCoords::getAxisValue`, the parity oracle for
         /// `PointerCoords::axis_value`.
+        #[allow(dead_code)] // Only the parity tests call the C++ oracle.
         #[cxx_name = "getAxisValue"]
         fn cpp_axis_value(self: &PointerCoords, axis: i32) -> f32;
 
@@ -206,6 +208,15 @@ pub(crate) mod ffi {
         /// `MotionEvent::setButtonState`.
         #[cxx_name = "setButtonState"]
         fn set_button_state(self: Pin<&mut MotionEvent>, button_state: i32);
+
+        /// `MotionEvent::getRawXOffset`: the x coordinate the origin of the
+        /// raw coordinate space maps to under the event transform.
+        #[cxx_name = "getRawXOffset"]
+        fn raw_x_offset(self: &MotionEvent) -> f32;
+
+        /// `MotionEvent::getRawYOffset`.
+        #[cxx_name = "getRawYOffset"]
+        fn raw_y_offset(self: &MotionEvent) -> f32;
 
         /// `MotionEvent::getXPrecision`.
         #[cxx_name = "getXPrecision"]
@@ -467,11 +478,13 @@ pub(crate) mod ffi {
     }
 }
 
-// MotionEventInitArgs has no consumer outside the tests until the
-// android.view.MotionEvent JNI conversion lands.
-#[allow(unused_imports)]
 pub(crate) use ffi::{MotionEvent, MotionEventInitArgs};
 
+// Only the android.view.MotionEvent JNI calls these. That module is compiled
+// out of the test harness (see lib.rs), and so is this block: a call would
+// pull ffi/motion_event_parcel.cpp — and its undefined reference to
+// libandroid_runtime's parcelForJavaObject — into the test link.
+#[cfg(not(test))]
 extern "C" {
     /// `MotionEvent::readFromParcel` through `parcelForJavaObject`, which
     /// needs a live `JNIEnv` and therefore cannot cross the cxx bridge; the
@@ -738,6 +751,9 @@ mod tests {
         assert!(BitSet64(raw.bits).has_bit(AXIS_X as u32));
         assert!(!raw.is_resampled);
         assert_eq!(event.raw_axis_value(AXIS_X, 0), 5.0);
+        // The raw offsets are the transformed position of the raw origin.
+        assert_eq!(event.raw_x_offset(), 5.0);
+        assert_eq!(event.raw_y_offset(), -3.0);
     }
 
     #[test]

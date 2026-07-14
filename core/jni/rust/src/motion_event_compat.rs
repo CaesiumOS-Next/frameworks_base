@@ -26,10 +26,27 @@
 //! parity test in [`crate::motion_event_ffi`] runs the same operations
 //! through the real `PointerCoords::setAxisValue` to keep the two
 //! implementations in lock step.
+//!
+//! The module also carries the pure pieces of the Java `PointerCoords`
+//! packing protocol — the `mPackedAxisBits`/`mPackedAxisValues` transfer
+//! ([`PointerCoords::set_packed_axes`], [`PointerCoords::export_packed_axes`],
+//! [`packed_axis_values_capacity`]) and the [`HISTORY_CURRENT`] sentinel — so
+//! that [`crate::android_view_motion_event`] keeps only the JNI field traffic.
+
+/// Java `MotionEvent.HISTORY_CURRENT` (-0x80000000): the `historyPos` value
+/// that addresses the current sample rather than a historical one.
+pub const HISTORY_CURRENT: i32 = i32::MIN;
 
 /// The number of axis values a [`PointerCoords`] can hold (C++ `MAX_AXES`,
 /// chosen so that `sizeof(PointerCoords) == 136`).
 pub const MAX_AXES: usize = 30;
+
+/// The `AMOTION_EVENT_AXIS_*` ids that `MotionEvent$PointerCoords` stores in
+/// dedicated Java float fields (X, Y, PRESSURE, SIZE, TOUCH/TOOL major & minor,
+/// ORIENTATION, RELATIVE_X, RELATIVE_Y). Every other axis travels in the
+/// packed words, so the JNI marshaling pairs these ids with their field IDs
+/// and treats the rest as the packed remainder ([`PointerCoords::packed_remainder_bits`]).
+pub const FIELD_BACKED_AXES: [i32; 11] = [0, 1, 2, 3, 4, 5, 6, 7, 8, 27, 28];
 
 /// A set of 64 bits with libutils `BitSet64` semantics (utils/BitSet.h):
 /// bit `n` is stored **MSB-first**, at `0x8000_0000_0000_0000 >> n`, so
@@ -160,14 +177,29 @@ impl PointerCoords {
     /// Forgets all stored axes and the resampled flag, like the C++
     /// `clear()`: `values` is left untouched, it is meaningless once no bit
     /// refers to it.
+    // Part of the C++ mirror surface; currently exercised only by the tests.
+    #[allow(dead_code)]
     pub fn clear(&mut self) {
         self.bits = 0;
         self.is_resampled = false;
     }
 
     /// Returns true if no axis is stored.
+    // Part of the C++ mirror surface; currently exercised only by the tests.
+    #[allow(dead_code)]
     pub fn is_empty(&self) -> bool {
         BitSet64(self.bits).is_empty()
+    }
+
+    /// The presence word of the axes that are *not* stored in a dedicated Java
+    /// field — the axes that travel through `mPackedAxisValues`. The JNI
+    /// read-back copies exactly these into the Java `PointerCoords`.
+    pub fn packed_remainder_bits(&self) -> BitSet64 {
+        let mut bits = BitSet64(self.bits);
+        for axis in FIELD_BACKED_AXES {
+            bits.clear_bit(axis as u32);
+        }
+        bits
     }
 
     /// Returns the value stored for `axis`, or `0.0` when the axis is
@@ -216,6 +248,48 @@ impl PointerCoords {
         self.values[index] = value;
         Ok(())
     }
+
+    /// Applies the packed-axis words of a Java `PointerCoords` — the
+    /// `mPackedAxisBits` presence word and the `mPackedAxisValues` array — on
+    /// top of whatever axes are already stored, visiting marked axes in
+    /// ascending order (the order the Java side packs values in). `values`
+    /// must hold at least `BitSet64(bits).count()` elements. Stores that fail
+    /// (more than [`MAX_AXES`] axes in total) are silently dropped, exactly
+    /// like the unchecked `setAxisValue` calls in the C++ JNI.
+    pub fn set_packed_axes(&mut self, bits: u64, values: &[f32]) {
+        let mut bits = BitSet64(bits);
+        let mut index = 0;
+        while let Some(axis) = bits.clear_first_marked_bit() {
+            let _ = self.set_axis_value(axis as i32, values[index]);
+            index += 1;
+        }
+    }
+
+    /// Writes the values of the axes marked in `axes` into `out_values` in
+    /// ascending axis order — packing order — and returns the matching Java
+    /// `mPackedAxisBits` presence word (Java mirrors [`BitSet64`]'s MSB-first
+    /// layout). Absent axes read as `0.0`, like the C++ `getAxisValue`.
+    /// `out_values` must hold at least `axes.count()` elements.
+    pub fn export_packed_axes(&self, axes: BitSet64, out_values: &mut [f32]) -> u64 {
+        let mut remaining = axes;
+        let mut index = 0;
+        while let Some(axis) = remaining.clear_first_marked_bit() {
+            out_values[index] = self.axis_value(axis as i32);
+            index += 1;
+        }
+        axes.0
+    }
+}
+
+/// The capacity a Java `PointerCoords.mPackedAxisValues` array must be grown
+/// to for `min_size` packed values: the first power-of-two size, starting at
+/// 8, that fits (the growth policy of the old `obtainPackedAxisValuesArray`).
+pub fn packed_axis_values_capacity(min_size: u32) -> u32 {
+    let mut size = 8;
+    while size < min_size {
+        size *= 2;
+    }
+    size
 }
 
 /// Mirror of `android::PointerProperties`: a pointer's stable id and tool
@@ -233,6 +307,8 @@ pub struct PointerProperties {
 
 impl PointerProperties {
     /// The C++ `clear()` state: no pointer (`id` -1), unknown tool.
+    // Part of the C++ mirror surface; currently exercised only by the tests.
+    #[allow(dead_code)]
     pub const fn cleared() -> Self {
         PointerProperties { id: -1, tool_type: 0 }
     }
@@ -485,5 +561,142 @@ mod tests {
     #[test]
     fn pointer_properties_cleared_matches_cpp() {
         assert_eq!(PointerProperties::cleared(), PointerProperties { id: -1, tool_type: 0 });
+    }
+
+    /// The sentinel must be Java's -0x80000000 literal; writing it as a
+    /// negated hex literal is the classic overflow mistake this test pins.
+    #[test]
+    fn history_current_is_javas_sentinel() {
+        assert_eq!(HISTORY_CURRENT, -0x8000_0000_i64 as i32);
+        assert_eq!(HISTORY_CURRENT, i32::MIN);
+    }
+
+    #[test]
+    fn packed_axis_values_capacity_grows_in_powers_of_two_from_eight() {
+        for (min_size, capacity) in
+            [(0, 8), (1, 8), (8, 8), (9, 16), (16, 16), (17, 32), (33, 64), (64, 64)]
+        {
+            assert_eq!(packed_axis_values_capacity(min_size), capacity, "min_size {min_size}");
+        }
+    }
+
+    #[test]
+    fn set_packed_axes_unpacks_in_ascending_axis_order() {
+        let mut coords = PointerCoords::cleared();
+        let mut bits = BitSet64::default();
+        for axis in [9, 20, 63] {
+            bits.mark_bit(axis);
+        }
+        coords.set_packed_axes(bits.0, &[9.0, 20.0, 63.0]);
+        assert_eq!(coords.axis_value(9), 9.0);
+        assert_eq!(coords.axis_value(20), 20.0);
+        assert_eq!(coords.axis_value(63), 63.0);
+        assert_eq!(BitSet64(coords.bits).count(), 3);
+    }
+
+    #[test]
+    fn set_packed_axes_interleaves_with_directly_stored_axes() {
+        // Mimics pointerCoordsToNative: direct axes first, then the packed
+        // remainder, which must insert between them by axis order.
+        let mut coords = PointerCoords::cleared();
+        coords.set_axis_value(0, 100.0).unwrap();
+        coords.set_axis_value(8, 108.0).unwrap();
+        let mut bits = BitSet64::default();
+        bits.mark_bit(4);
+        bits.mark_bit(30);
+        coords.set_packed_axes(bits.0, &[4.5, 30.5]);
+        assert_eq!(&coords.values[..4], &[100.0, 4.5, 108.0, 30.5]);
+        assert_eq!(coords.axis_value(4), 4.5);
+        assert_eq!(coords.axis_value(30), 30.5);
+    }
+
+    #[test]
+    fn set_packed_axes_reads_only_count_values() {
+        // The extra array capacity beyond the marked-bit count (Java grows
+        // mPackedAxisValues in chunks) must be ignored.
+        let mut coords = PointerCoords::cleared();
+        let mut bits = BitSet64::default();
+        bits.mark_bit(2);
+        coords.set_packed_axes(bits.0, &[2.5, 99.0, 99.0]);
+        assert_eq!(coords.axis_value(2), 2.5);
+        assert_eq!(BitSet64(coords.bits).count(), 1);
+    }
+
+    #[test]
+    fn export_packed_axes_writes_packing_order_and_returns_the_bits_word() {
+        let mut coords = PointerCoords::cleared();
+        for (axis, value) in [(1, 1.5), (5, 5.5), (40, 40.5)] {
+            coords.set_axis_value(axis, value).unwrap();
+        }
+        let mut axes = BitSet64::default();
+        axes.mark_bit(5);
+        axes.mark_bit(40);
+        axes.mark_bit(63); // Absent from the coords: exported as 0.0.
+        let mut out = [f32::NAN; 4];
+        let out_bits = coords.export_packed_axes(axes, &mut out);
+        assert_eq!(out_bits, axes.0);
+        assert_eq!(&out[..3], &[5.5, 40.5, 0.0]);
+        assert!(out[3].is_nan(), "entries past the axis count are untouched");
+    }
+
+    #[test]
+    fn export_packed_axes_of_empty_set_is_a_no_op() {
+        let coords = PointerCoords::cleared();
+        let mut out = [f32::NAN; 1];
+        assert_eq!(coords.export_packed_axes(BitSet64::default(), &mut out), 0);
+        assert!(out[0].is_nan());
+    }
+
+    /// The transfer the JNI performs must round-trip: exporting a coords'
+    /// packed remainder and re-applying it onto direct axes reproduces the
+    /// original values.
+    #[test]
+    fn packed_axes_round_trip_through_export_and_set() {
+        let mut rng = Lcg(0xDEAD_BEEF);
+        for _ in 0..200 {
+            let mut original = PointerCoords::cleared();
+            let mut axes = BitSet64::default();
+            for _ in 0..(rng.next() % 20) {
+                let axis = (rng.next() % 64) as u32;
+                let value = (rng.next() % 1000) as f32 / 4.0;
+                if original.set_axis_value(axis as i32, value).is_ok() && value != 0.0 {
+                    axes.mark_bit(axis);
+                }
+            }
+            let mut packed = [0.0; 64];
+            let bits = original.export_packed_axes(axes, &mut packed);
+
+            let mut restored = PointerCoords::cleared();
+            restored.set_packed_axes(bits, &packed);
+            for axis in 0..64 {
+                let expected =
+                    if axes.has_bit(axis) { original.axis_value(axis as i32) } else { 0.0 };
+                assert_eq!(restored.axis_value(axis as i32).to_bits(), expected.to_bits());
+            }
+        }
+    }
+
+    #[test]
+    fn packed_remainder_excludes_the_field_backed_axes() {
+        let mut coords = PointerCoords::cleared();
+        // A field-backed axis (X=0), a field-backed axis (ORIENTATION=8), and
+        // two axes that are not field-backed (HAT_X=15, GENERIC_1=32).
+        for axis in [0, 8, 15, 32] {
+            coords.set_axis_value(axis, 1.0).unwrap();
+        }
+        let remainder = coords.packed_remainder_bits();
+        assert!(!remainder.has_bit(0), "X is field-backed");
+        assert!(!remainder.has_bit(8), "ORIENTATION is field-backed");
+        assert!(remainder.has_bit(15), "HAT_X travels packed");
+        assert!(remainder.has_bit(32), "GENERIC_1 travels packed");
+    }
+
+    #[test]
+    fn packed_remainder_of_only_field_backed_axes_is_empty() {
+        let mut coords = PointerCoords::cleared();
+        for axis in FIELD_BACKED_AXES {
+            coords.set_axis_value(axis, 2.0).unwrap();
+        }
+        assert!(coords.packed_remainder_bits().is_empty());
     }
 }
