@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "85d882d3_87614bd0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1959265
+      },
+      "writtenOn": "2026-07-20T15:51:12Z",
+      "side": 1,
+      "message": "Thank you for the patch! We have already resolved this in the next release.",
+      "revId": "e77dd54bd7173de52cd39aef7d14a8ad3b45c1a6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
