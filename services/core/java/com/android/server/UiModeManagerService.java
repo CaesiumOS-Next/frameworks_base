@@ -461,16 +461,23 @@ final class UiModeManagerService extends SystemService {
             return;
         }
 
+        final List<Runnable> callbacksToNotify = new ArrayList<>();
+
         synchronized (mLock) {
             for (int i = 0; i < mUiModeManagerCallbacks.size(); i++) {
                 int userId = mUiModeManagerCallbacks.keyAt(i);
                 if (updateForceInvertStateLocked(userId)) {
                     int forceInvertState = getForceInvertStateLocked(userId);
-                    mUiModeManagerCallbacks.valueAt(i).broadcast(ignoreRemoteException(
+                    var callbacks = mUiModeManagerCallbacks.valueAt(i);
+                    callbacksToNotify.add(() -> callbacks.broadcast(ignoreRemoteException(
                             callback -> callback.notifyForceInvertStateChanged(
-                                    forceInvertState)));
+                                    forceInvertState))));
                 }
             }
+        }
+
+        for (var callback : callbacksToNotify) {
+            callback.run();
         }
     }
 
@@ -478,6 +485,8 @@ final class UiModeManagerService extends SystemService {
         if (!android.view.accessibility.Flags.forceInvertColor()) {
             return;
         }
+
+        final List<Runnable> callbacksToNotify = new ArrayList<>();
 
         synchronized (mLock) {
             for (var i = 0; i < mUiModeManagerCallbacks.size(); i++) {
@@ -487,11 +496,14 @@ final class UiModeManagerService extends SystemService {
                 // false if the Settings value is changed by `setForceInvertOverrideStateLocked`.
                 var userId = mUiModeManagerCallbacks.keyAt(i);
                 updateForceInvertOverrideStateLocked(userId);
-                mUiModeManagerCallbacks.valueAt(i).broadcast(ignoreRemoteException(
-                        callback -> callback
-                                .notifyForceInvertOverrideStateChanged()
-                ));
+                var callbacks = mUiModeManagerCallbacks.valueAt(i);
+                callbacksToNotify.add(() -> callbacks.broadcast(ignoreRemoteException(
+                        callback -> callback.notifyForceInvertOverrideStateChanged())));
             }
+        }
+
+        for (var callback : callbacksToNotify) {
+            callback.run();
         }
     }
 
@@ -499,6 +511,7 @@ final class UiModeManagerService extends SystemService {
         @Override
         public void onChange(boolean selfChange, Uri uri) {
             final SparseArray<Float> usersToNotify = new SparseArray<>();
+            final List<Runnable> callbacksToNotify = new ArrayList<>();
 
             synchronized (mLock) {
                 for (int i = 0; i < mUiModeManagerCallbacks.size(); i++) {
@@ -506,10 +519,15 @@ final class UiModeManagerService extends SystemService {
                     if (updateContrastLocked(userId)) {
                         float contrast = getContrastLocked(userId);
                         usersToNotify.append(userId, contrast);
-                        mUiModeManagerCallbacks.valueAt(i).broadcast(ignoreRemoteException(
-                                callback -> callback.notifyContrastChanged(contrast)));
+                        var callbacks = mUiModeManagerCallbacks.valueAt(i);
+                        callbacksToNotify.add(() -> callbacks.broadcast(ignoreRemoteException(
+                                callback -> callback.notifyContrastChanged(contrast))));
                     }
                 }
+            }
+
+            for (var callback : callbacksToNotify) {
+                callback.run();
             }
 
             for (int i = 0; i < usersToNotify.size(); i++) {
