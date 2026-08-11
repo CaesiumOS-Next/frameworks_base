@@ -43,8 +43,8 @@ public class LooperStats implements Looper.Observer {
     private static final boolean DISABLED_SCREEN_STATE_TRACKING_VALUE = false;
     public static final boolean DEFAULT_IGNORE_BATTERY_STATUS = false;
 
-    @GuardedBy("mLock")
-    private final SparseArray<Entry> mEntries = new SparseArray<>(512);
+    // Uses Copy-On-Write semantics to guarantee lock-free, zero-allocation reads.
+    private volatile SparseArray<Entry> mEntries = new SparseArray<>(512);
     private final Object mLock = new Object();
     private final Entry mOverflowEntry = new Entry("OVERFLOW");
     private final Entry mHashCollisionEntry = new Entry("HASH_COLLISION");
@@ -156,15 +156,13 @@ public class LooperStats implements Looper.Observer {
 
     /** Returns an array of {@link ExportedEntry entries} with the aggregated statistics. */
     public List<ExportedEntry> getEntries() {
-        final ArrayList<ExportedEntry> exportedEntries;
-        synchronized (mLock) {
-            final int size = mEntries.size();
-            exportedEntries = new ArrayList<>(size);
-            for (int i = 0; i < size; i++) {
-                Entry entry = mEntries.valueAt(i);
-                synchronized (entry) {
-                    exportedEntries.add(new ExportedEntry(entry));
-                }
+        final SparseArray<Entry> entries = mEntries; // Volatile snapshot
+        final int size = entries.size();
+        final ArrayList<ExportedEntry> exportedEntries = new ArrayList<>(size);
+        for (int i = 0; i < size; i++) {
+            Entry entry = entries.valueAt(i);
+            synchronized (entry) {
+                exportedEntries.add(new ExportedEntry(entry));
             }
         }
         // Add the overflow and collision entries only if they have any data.
@@ -213,7 +211,7 @@ public class LooperStats implements Looper.Observer {
     /** Removes all collected data. */
     public void reset() {
         synchronized (mLock) {
-            mEntries.clear();
+            mEntries = new SparseArray<>(512);
         }
         synchronized (mHashCollisionEntry) {
             mHashCollisionEntry.reset();
@@ -246,18 +244,24 @@ public class LooperStats implements Looper.Observer {
                 ? mDeviceState.isScreenInteractive()
                 : DISABLED_SCREEN_STATE_TRACKING_VALUE;
         final int id = Entry.idFor(msg, isInteractive);
-        Entry entry;
-        synchronized (mLock) {
-            entry = mEntries.get(id);
-            if (entry == null) {
-                if (!allowCreateNew) {
-                    return null;
-                } else if (mEntries.size() >= mEntriesSizeCap) {
-                    // If over the size cap track totals under OVERFLOW entry.
-                    return mOverflowEntry;
-                } else {
+        SparseArray<Entry> entries = mEntries; // Volatile snapshot
+        Entry entry = entries.get(id);
+        if (entry == null) {
+            if (!allowCreateNew) {
+                return null;
+            }
+            synchronized (mLock) {
+                entries = mEntries; // Refresh snapshot
+                entry = entries.get(id);
+                if (entry == null) {
+                    if (entries.size() >= mEntriesSizeCap) {
+                        // If over the size cap track totals under OVERFLOW entry.
+                        return mOverflowEntry;
+                    }
                     entry = new Entry(msg, isInteractive);
-                    mEntries.put(id, entry);
+                    SparseArray<Entry> newEntries = entries.clone();
+                    newEntries.put(id, entry);
+                    mEntries = newEntries; // Volatile publish
                 }
             }
         }
