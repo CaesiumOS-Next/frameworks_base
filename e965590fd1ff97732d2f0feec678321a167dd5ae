@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "748d35eb_228d9062",
+        "filename": "services/appwidget/java/com/android/server/appwidget/AppWidgetServiceImpl.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 280,
+      "author": {
+        "id": 1960866
+      },
+      "writtenOn": "2026-08-19T22:37:01Z",
+      "side": 1,
+      "message": "This seems like something that should be handled by the launcher.",
+      "revId": "e965590fd1ff97732d2f0feec678321a167dd5ae",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
