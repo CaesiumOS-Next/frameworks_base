@@ -4750,7 +4750,7 @@ public class NetworkPolicyManagerService extends INetworkPolicyManager.Stub {
                     boolean allowedInLpsChanged =
                             isProcStateAllowedWhileInLowPowerStandby(oldUidState)
                                     != isProcStateAllowedWhileInLowPowerStandby(newUidState);
-                    if (allowedInLpsChanged) {
+                    if (allowedInLpsChanged || oldUidState == null) {
                         updateRuleForLowPowerStandbyUL(uid);
                         updatePowerRestrictionRules = true;
                     }
