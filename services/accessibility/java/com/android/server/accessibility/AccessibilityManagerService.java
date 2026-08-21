@@ -2990,6 +2990,73 @@ public class AccessibilityManagerService extends IAccessibilityManager.Stub
         return result;
     }
 
+    /**
+     * Performs a lightweight check to determine whether the set of installed accessibility
+     * service components has changed since the last full parse. This method only compares
+     * {@link ComponentName} sets without parsing XML metadata, avoiding the creation of
+     * {@link android.app.LoadedApk} objects via
+     * {@link ServiceInfo#loadXmlMetaData(PackageManager, String)}.
+     *
+     * <p>Called from {@link ManagerPackageMonitor#onSomePackagesChanged()} before the
+     * expensive full re-parse. If this returns {@code false}, the full parse is skipped
+     * entirely, saving significant memory and CPU for unrelated package changes.</p>
+     *
+     * @param userId The user ID to check.
+     * @return {@code true} if the accessibility service component list has changed and
+     *         a full re-parse is needed, {@code false} otherwise.
+     */
+    private boolean hasAccessibilityServiceListChangedLocked(int userId) {
+        int flags = PackageManager.GET_SERVICES
+                | PackageManager.GET_META_DATA
+                | PackageManager.MATCH_DISABLED_UNTIL_USED_COMPONENTS
+                | PackageManager.MATCH_DIRECT_BOOT_AWARE
+                | PackageManager.MATCH_DIRECT_BOOT_UNAWARE;
+
+        synchronized (mLock) {
+            final AccessibilityUserState userState = getUserStateLocked(userId);
+            if (userState == null) {
+                // User state not initialized yet, need full parse.
+                return true;
+            }
+            if (userState.getBindInstantServiceAllowedLocked()) {
+                flags |= PackageManager.MATCH_INSTANT;
+            }
+        }
+
+        final List<ResolveInfo> currentServices = mPackageManager.queryIntentServicesAsUser(
+                new Intent(AccessibilityService.SERVICE_INTERFACE), flags, userId);
+
+        if (currentServices == null || currentServices.isEmpty()) {
+            // No services found. If the cache is also empty, nothing changed.
+            synchronized (mLock) {
+                final AccessibilityUserState userState = getUserStateLocked(userId);
+                if (userState == null) {
+                    return true;
+                }
+                return !userState.mInstalledServicesMap.isEmpty();
+            }
+        }
+
+        final Set<ComponentName> currentComponents = new ArraySet<>();
+        for (int i = 0; i < currentServices.size(); i++) {
+            final ServiceInfo serviceInfo = currentServices.get(i).serviceInfo;
+            if (serviceInfo == null) {
+                continue;
+            }
+            if (mSecurityPolicy.canRegisterService(serviceInfo)) {
+                currentComponents.add(new ComponentName(serviceInfo.packageName, serviceInfo.name));
+            }
+        }
+
+        synchronized (mLock) {
+            final AccessibilityUserState userState = getUserStateLocked(userId);
+            if (userState == null) {
+                return true;
+            }
+            return !currentComponents.equals(userState.mInstalledServicesMap.keySet());
+        }
+    }
+
     private boolean readInstalledAccessibilityServiceLocked(AccessibilityUserState userState,
             @Nullable List<AccessibilityServiceInfo> parsedAccessibilityServiceInfos,
             @NonNull Set<ComponentName> validA11yTileServices) {
@@ -7133,6 +7200,16 @@ public class AccessibilityManagerService extends IAccessibilityManager.Stub
             }
 
             final int userId = getChangingUserId();
+
+            // Phase 1: Lightweight check — only compare component names without XML parsing.
+            // If the set of accessibility service components hasn't changed, skip the expensive
+            // full re-parse to avoid creating LoadedApk objects via loadXmlMetaData for every
+            // installed accessibility service on every unrelated package change.
+            if (!mManagerService.hasAccessibilityServiceListChangedLocked(userId)) {
+                return;
+            }
+
+            // Phase 2: The accessibility service list has changed. Perform full re-parse.
             List<AccessibilityServiceInfo> parsedAccessibilityServiceInfos = mManagerService
                     .parseAccessibilityServiceInfos(userId);
             List<AccessibilityShortcutInfo> parsedAccessibilityShortcutInfos = mManagerService
