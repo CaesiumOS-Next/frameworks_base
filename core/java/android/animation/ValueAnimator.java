@@ -310,6 +310,9 @@ public class ValueAnimator extends Animator implements AnimationHandler.Animatio
     @TestApi
     @MainThread
     public static void setDurationScale(@FloatRange(from = 0) float durationScale) {
+        if (sDurationScale == durationScale) {
+            return;
+        }
         sDurationScale = durationScale;
         List<WeakReference<DurationScaleChangeListener>> listenerCopy;
 
