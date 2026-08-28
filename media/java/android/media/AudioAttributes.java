@@ -1462,7 +1462,8 @@ public final class AudioAttributes implements Parcelable {
 
     private AudioAttributes(Parcel in) {
         mUsage = in.readInt();
-        mContentType = in.readInt();
+        int contentType = in.readInt();
+        mContentType = isSdkContentType(contentType) ? contentType : CONTENT_TYPE_UNKNOWN;
         mSource = in.readInt();
         mFlags = in.readInt();
         boolean hasFlattenedTags = ((in.readInt() & FLATTEN_TAGS) == FLATTEN_TAGS);
