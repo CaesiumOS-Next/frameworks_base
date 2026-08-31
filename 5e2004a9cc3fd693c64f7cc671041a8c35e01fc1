@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "13b0d412_b78d1836",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1961565
+      },
+      "writtenOn": "2026-08-31T17:44:09Z",
+      "side": 1,
+      "message": "Added the attributes to the permission.xsd file so VTS will pass when features are using this new ability.",
+      "revId": "5e2004a9cc3fd693c64f7cc671041a8c35e01fc1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
