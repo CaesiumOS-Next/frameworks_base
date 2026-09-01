@@ -4451,6 +4451,9 @@ public class ActivityManagerService extends IActivityManager.Stub
                     app.killLocked("start timeout",
                             ApplicationExitInfo.REASON_INITIALIZATION_FAILURE, true);
                     removeLruProcessLocked(app);
+                    // Resume the home activity immediately after attach-timeout
+                    // instead of waiting for an external trigger.
+                    mAtmInternal.resumeTopActivities(false /* scheduleIdle */);
                 }
                 if (app.isolated) {
                     mBatteryStatsService.removeIsolatedUid(app.uid, app.info.uid);
