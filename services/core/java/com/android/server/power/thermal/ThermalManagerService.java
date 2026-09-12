@@ -1199,12 +1199,13 @@ public class ThermalManagerService extends SystemService {
         protected abstract void dump(PrintWriter pw, String prefix);
 
         protected void resendCurrentTemperatures() {
+            List<Temperature> temperatures;
             synchronized (mHalLock) {
-                List<Temperature> temperatures = getCurrentTemperatures(false, 0);
-                final int count = temperatures.size();
-                for (int i = 0; i < count; i++) {
-                    mCallback.onTemperatureChanged(temperatures.get(i));
-                }
+                temperatures = getCurrentTemperatures(false, 0);
+            }
+            final int count = temperatures.size();
+            for (int i = 0; i < count; i++) {
+                mCallback.onTemperatureChanged(temperatures.get(i));
             }
         }
 
@@ -1215,9 +1216,9 @@ public class ThermalManagerService extends SystemService {
                     Slog.e(TAG, "Thermal HAL service died cookie: " + cookie);
                     synchronized (mHalLock) {
                         connectToHal();
-                        // Post to listeners after reconnect to HAL.
-                        resendCurrentTemperatures();
                     }
+                    // Post to listeners after reconnect to HAL.
+                    resendCurrentTemperatures();
                 }
             }
         }
