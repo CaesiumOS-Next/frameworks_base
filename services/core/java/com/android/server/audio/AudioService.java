@@ -8152,11 +8152,16 @@ public class AudioService extends IAudioService.Stub
         // update device masks based on volume behavior
         switch (deviceVolumeBehavior) {
             case AudioManager.DEVICE_VOLUME_BEHAVIOR_VARIABLE:
+                boolean wasFullVolume =
+                        removeAudioSystemDeviceOutFromFullVolumeDevices(audioSystemDeviceOut);
                 volumeBehaviorChanged |=
-                        removeAudioSystemDeviceOutFromFullVolumeDevices(audioSystemDeviceOut)
+                        wasFullVolume
                         | removeAudioSystemDeviceOutFromFixedVolumeDevices(audioSystemDeviceOut)
                         | (removeAudioSystemDeviceOutFromAbsVolumeDevices(audioSystemDeviceOut)
                                 != null);
+                if (wasFullVolume && audioSystemDeviceOut == AudioSystem.DEVICE_OUT_HDMI) {
+                    restoreDeviceVolumeFromSettings(audioSystemDeviceOut);
+                }
                 break;
             case AudioManager.DEVICE_VOLUME_BEHAVIOR_FIXED:
                 volumeBehaviorChanged |=
@@ -15448,6 +15453,26 @@ public class AudioService extends IAudioService.Stub
                     + " from mFullVolumeDevices");
         }
         return mFullVolumeDevices.remove(audioSystemDeviceOut);
+    }
+
+    /**
+     * Restore stream volumes for the given device from Settings to mIndexMap
+     */
+    private void restoreDeviceVolumeFromSettings(int device) {
+        final int numStreamTypes = AudioSystem.getNumStreamTypes();
+        for (int streamType = 0; streamType < numStreamTypes; streamType++) {
+            final VolumeStreamState vss = getVssForStream(streamType);
+            if (vss == null) {
+                continue;
+            }
+            final int defaultIndex = (vss.getIndex(AudioSystem.DEVICE_OUT_DEFAULT) + 5) / 10;
+            final String name = vss.getSettingNameForDevice(device);
+            final int index = (name != null)
+                    ? mSettings.getSystemIntForUser(mContentResolver, name, defaultIndex,
+                            UserHandle.USER_CURRENT)
+                    : defaultIndex;
+            vss.setIndex(index * 10, device, "restoreDeviceVolumeFromSettings", true);
+        }
     }
 
     private void addAudioSystemDeviceOutToAbsVolumeDevices(int audioSystemDeviceOut,
