@@ -2325,7 +2325,15 @@ class Task extends TaskFragment {
 
     @Override
     void migrateToNewSurfaceControl(SurfaceControl.Transaction t) {
+        final boolean wasSurfaceShowing = mLastSurfaceShowing;
         super.migrateToNewSurfaceControl(t);
+        // A Task surface is hidden when it is created. Preserve the visibility of the old
+        // surface when revoking organizer control; otherwise mLastSurfaceShowing remains true
+        // and prepareSurfaces() will not issue the show for the new surface.
+        if (wasSurfaceShowing) {
+            t.show(mSurfaceControl);
+            Slog.i(TAG, "Preserving visible surface after migration: " + this);
+        }
         mLastSurfaceSize.x = 0;
         mLastSurfaceSize.y = 0;
         updateSurfaceSize(t);
