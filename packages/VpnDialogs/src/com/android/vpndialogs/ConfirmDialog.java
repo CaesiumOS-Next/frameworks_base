@@ -46,6 +46,13 @@ public class ConfirmDialog extends AlertActivity
     @VisibleForTesting
     static final int MAX_VPN_LABEL_LENGTH = 150;
 
+    /**
+     * Maximum count of visible units reserved for simplified VPN label.
+     * Use only with {@link #getSimplifiedLabelImpl(String, String)}.
+     * @hide
+    */
+    private static final int MAX_VISIBLE_UNITS = 30;
+
     @VpnManager.VpnType private final int mVpnType;
 
     private String mPackage;
@@ -53,6 +60,19 @@ public class ConfirmDialog extends AlertActivity
     private VpnManager mVm;
 
     private View mView;
+
+
+    /**
+     * Pattern for matching visible units in VPN label.
+     * Matches HTML entities, Unicode surrogate pairs and all other characters.
+     * Use only with {@link #getSimplifiedLabelImpl(String, String)}.
+     * @hide
+    */
+    private static final Pattern VISIBLE_UNIT_PATTERN = Pattern.compile(
+            "&(?:#\\d+|#[xX][0-9a-fA-F]+|[a-zA-Z][a-zA-Z0-9]*);" +
+                "|[\\uD800-\\uDBFF][\\uDC00-\\uDFFF]" +
+                "|[\\s\\S]"
+    );
 
     public ConfirmDialog() {
         this(VpnManager.TYPE_VPN_SERVICE);
@@ -79,12 +99,56 @@ public class ConfirmDialog extends AlertActivity
      */
     private String getSimplifiedLabel(String vpnLabel, String packageName) {
         if (vpnLabel.codePointCount(0, vpnLabel.length()) > 30) {
-            return getString(R.string.sanitized_vpn_label_with_ellipsis,
-                    vpnLabel.substring(0, vpnLabel.offsetByCodePoints(0, 30)),
-                            packageName);
+            return getSimplifiedLabelImpl(vpnLabel, packageName);
         }
 
         return getString(R.string.sanitized_vpn_label, vpnLabel, packageName);
+    }
+
+    /**
+     * Generates a simplified VPN label for UI display.
+     *
+     * <p>This method truncates by "visible units" rather than ordinary Java {@code char}s,
+     * preventing multi-character units such as emoji, surrogate pairs, or combining
+     * characters from being split in the middle. The truncation process is constrained
+     * by the following two conditions:
+     * <ul>
+     *     <li>{@code MAX_VISIBLE_UNITS}: the maximum number of visible units to retain;</li>
+     *     <li>{@code MAX_VPN_LABEL_LENGTH}: the character length threshold for the retained
+     *     content; once reached, no further units are appended.</li>
+     * </ul>
+     *
+     * <p>If the extracted visible content is exactly the same as the original label, the
+     * original label is returned directly. Otherwise, the ellipsis-enabled resource template
+     * {@code R.string.sanitized_vpn_label_with_ellipsis} is used to generate the simplified
+     * display text, with the package name included as contextual information.
+     *
+     * @param vpnLabel    the original VPN label
+     * @param packageName the package name of the app that owns the VPN, used to add source
+     *                    information to the simplified label
+     * @return the simplified VPN label; if no simplification is needed, returns the original label
+     */
+    private String getSimplifiedLabelImpl(String vpnLabel, String packageName) {
+        Matcher matcher = VISIBLE_UNIT_PATTERN.matcher(vpnLabel);
+        StringBuilder matched = new StringBuilder();
+        int totalLength = 0;
+        int visibleCount = 0;
+        while (visibleCount < MAX_VISIBLE_UNITS && matcher.find()) {
+            String unit = matcher.group();
+            matched.append(unit);
+            totalLength += unit.length();
+            visibleCount ++;
+            if(totalLength >= MAX_VPN_LABEL_LENGTH) {
+                break;
+            }
+        }
+        String newVpnLabel = matched.toString();
+        if(newVpnLabel.equals(vpnLabel)) {
+            return vpnLabel;
+        }
+
+        return getString(R.string.sanitized_vpn_label_with_ellipsis,
+                matched.toString(), packageName);
     }
 
     @VisibleForTesting
