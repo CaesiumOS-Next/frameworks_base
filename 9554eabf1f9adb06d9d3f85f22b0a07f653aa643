@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e93b367a_31ee8387",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1624675
+      },
+      "writtenOn": "2026-09-17T01:01:48Z",
+      "side": 1,
+      "message": "Hi rgl@google.com, could you review the patchset#6 again?",
+      "revId": "9554eabf1f9adb06d9d3f85f22b0a07f653aa643",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
