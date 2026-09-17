@@ -39,6 +39,30 @@
       },
       "revId": "01fbe3a214fa0e6c5c78fcb00d25a2f20b933389",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "391cdb3f_b7126099",
+        "filename": "services/core/java/com/android/server/wm/DimmerAnimationHelper.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1624675
+      },
+      "writtenOn": "2026-09-17T02:16:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6cba1e5f_7440b3fe",
+      "range": {
+        "startLine": 193,
+        "startChar": 0,
+        "endLine": 193,
+        "endChar": 34
+      },
+      "revId": "01fbe3a214fa0e6c5c78fcb00d25a2f20b933389",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
