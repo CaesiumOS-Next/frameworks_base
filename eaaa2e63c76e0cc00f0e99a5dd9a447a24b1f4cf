@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4ced6fd6_da60d110",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1624675
+      },
+      "writtenOn": "2026-09-18T12:10:06Z",
+      "side": 1,
+      "message": "Hi rajekumar@google.com, could you review this CL?",
+      "revId": "eaaa2e63c76e0cc00f0e99a5dd9a447a24b1f4cf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
