@@ -12467,10 +12467,12 @@ public class BatteryStatsImpl extends BatteryStats {
      *
      * @param info The energy information from the WiFi controller.
      */
-    @GuardedBy("this")
     public void updateWifiState(@Nullable final WifiActivityEnergyInfo info,
             final long consumedChargeUC, long elapsedRealtimeMs, long uptimeMs,
             @NonNull NetworkStatsManager networkStatsManager) {
+        if (mPowerStatsCollectorEnabled.get(BatteryConsumer.POWER_COMPONENT_WIFI)) {
+            return;
+        }
         if (DEBUG_ENERGY) {
             synchronized (mWifiNetworkLock) {
                 Slog.d(TAG, "Updating wifi stats: " + Arrays.toString(mWifiIfaces));

@@ -30,6 +30,7 @@ import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.reset;
 import static org.mockito.Mockito.when;
 
+import android.app.usage.NetworkStatsManager;
 import android.content.Context;
 import android.content.pm.PackageManager;
 import android.hardware.power.stats.EnergyConsumerResult;
@@ -37,6 +38,7 @@ import android.hardware.power.stats.EnergyConsumerType;
 import android.net.NetworkStats;
 import android.net.wifi.WifiManager;
 import android.os.BatteryConsumer;
+import android.os.BatteryStats;
 import android.os.BatteryStatsManager;
 import android.os.Handler;
 import android.os.WorkSource;
@@ -356,6 +358,147 @@ public class WifiPowerStatsCollectorTest {
         assertThat(stats.getTxTimeMillis()).isEqualTo(1000);
         assertThat(stats.getIdleTimeMillis()).isEqualTo(300);
         assertThat(stats.getSleepTimeMillis()).isEqualTo(30000 - 6000 - 1000 - 300);
+    }
+
+    @SuppressWarnings("GuardedBy")
+    @Test
+    public void getWifiBatteryStats_collectorEnabled_doesNotDoubleCountTraffic() throws Throwable {
+        when(mWifiManager.isEnhancedPowerReportingSupported()).thenReturn(true);
+        mBatteryStats.setPowerStatsCollectorEnabled(BatteryConsumer.POWER_COMPONENT_WIFI,
+                true);
+
+        BatteryExternalStatsWorker worker = new BatteryExternalStatsWorker(
+                new BatteryExternalStatsWorker.Injector(mContext) {
+                    @Override
+                    public <T> T getSystemService(Class<T> serviceClass) {
+                        if (serviceClass == WifiManager.class) {
+                            return (T) mWifiManager;
+                        }
+                        return null;
+                    }
+
+                    @Override
+                    public <T> T getLocalService(Class<T> serviceClass) {
+                        return null;
+                    }
+                },
+                mBatteryStats, mStatsRule.getHandler());
+        worker.systemServicesReady();
+
+        mockWifiActivityInfo(1000, 600, 100, 2000, 3000);
+        mockNetworkStats(1000);
+        mockNetworkStatsEntry(APP_UID1, 4321, 321, 1234, 23);
+        mockNetworkStatsEntry(APP_UID2, 4000, 40, 2000, 20);
+        mockWifiScanTimes(APP_UID1, 1000, 2000);
+        mockWifiScanTimes(APP_UID2, 3000, 4000);
+
+        // Trigger baseline sample collection
+        mBatteryStats.onSystemReady(mContext);
+        mStatsRule.waitForBackgroundThread();
+
+        mockWifiActivityInfo(1100, 6600, 1100, 2200, 3300);
+        mockNetworkStats(1100);
+        mockNetworkStatsEntry(APP_UID1, 5321, 421, 3234, 223);
+        mockNetworkStatsEntry(APP_UID2, 8000, 80, 4000, 40);
+        mockWifiScanTimes(APP_UID1, 1234, 2345);
+        mockWifiScanTimes(APP_UID2, 3100, 4200);
+
+        mStatsRule.setTime(30000, 30000);
+        // Schedule external UPDATE_WIFI sync via BatteryExternalStatsWorker; when the collector is
+        // enabled, this should schedule the collector rather than running legacy updateWifiState().
+        worker.scheduleSync("test-wifi", BatteryStatsImpl.ExternalStatsSync.UPDATE_WIFI);
+        // Two handler hops: the first wait drains the worker sync() task, the second drains the
+        // collectAndDeliverStats task that sync() posts via collector.schedule().
+        mStatsRule.waitForBackgroundThread();
+        mStatsRule.waitForBackgroundThread();
+
+        // Also verify that a direct call to updateWifiState() is ignored when the collector is
+        // enabled, preventing duplicate accumulation of UID and global Wi-Fi traffic.
+        mBatteryStats.updateWifiState(
+                new WifiActivityEnergyInfo(1100, 0, 1000, 6000, 200, 300),
+                BatteryStats.POWER_DATA_UNAVAILABLE, 30000, 30000,
+                mock(NetworkStatsManager.class));
+
+        WifiBatteryStats stats = mBatteryStats.getWifiBatteryStats();
+        assertThat(stats.getNumPacketsRx()).isEqualTo(501);
+        assertThat(stats.getNumBytesRx()).isEqualTo(13321);
+        assertThat(stats.getNumPacketsTx()).isEqualTo(263);
+        assertThat(stats.getNumBytesTx()).isEqualTo(7234);
+        assertThat(stats.getScanTimeMillis()).isEqualTo(200);
+        assertThat(stats.getRxTimeMillis()).isEqualTo(6000);
+        assertThat(stats.getTxTimeMillis()).isEqualTo(1000);
+        assertThat(stats.getIdleTimeMillis()).isEqualTo(300);
+        assertThat(stats.getSleepTimeMillis()).isEqualTo(30000 - 6000 - 1000 - 300);
+
+        BatteryStats.Uid uid1 = mBatteryStats.getUidStatsLocked(APP_UID1);
+        assertThat(uid1.getNetworkActivityBytes(
+                BatteryStats.NETWORK_WIFI_RX_DATA, BatteryStats.STATS_SINCE_CHARGED))
+                .isEqualTo(5321);
+        assertThat(uid1.getNetworkActivityBytes(
+                BatteryStats.NETWORK_WIFI_TX_DATA, BatteryStats.STATS_SINCE_CHARGED))
+                .isEqualTo(3234);
+        assertThat(uid1.getNetworkActivityPackets(
+                BatteryStats.NETWORK_WIFI_RX_DATA, BatteryStats.STATS_SINCE_CHARGED))
+                .isEqualTo(421);
+        assertThat(uid1.getNetworkActivityPackets(
+                BatteryStats.NETWORK_WIFI_TX_DATA, BatteryStats.STATS_SINCE_CHARGED))
+                .isEqualTo(223);
+
+        BatteryStats.Uid uid2 = mBatteryStats.getUidStatsLocked(APP_UID2);
+        assertThat(uid2.getNetworkActivityBytes(
+                BatteryStats.NETWORK_WIFI_RX_DATA, BatteryStats.STATS_SINCE_CHARGED))
+                .isEqualTo(8000);
+        assertThat(uid2.getNetworkActivityBytes(
+                BatteryStats.NETWORK_WIFI_TX_DATA, BatteryStats.STATS_SINCE_CHARGED))
+                .isEqualTo(4000);
+        assertThat(uid2.getNetworkActivityPackets(
+                BatteryStats.NETWORK_WIFI_RX_DATA, BatteryStats.STATS_SINCE_CHARGED))
+                .isEqualTo(80);
+        assertThat(uid2.getNetworkActivityPackets(
+                BatteryStats.NETWORK_WIFI_TX_DATA, BatteryStats.STATS_SINCE_CHARGED))
+                .isEqualTo(40);
+    }
+
+    @SuppressWarnings("GuardedBy")
+    @Test
+    public void updateWifiState_collectorConfiguredBeforeSystemReady_doesNotDoubleCountTraffic()
+            throws Throwable {
+        when(mWifiManager.isEnhancedPowerReportingSupported()).thenReturn(true);
+        mBatteryStats.setPowerStatsCollectorEnabled(BatteryConsumer.POWER_COMPONENT_WIFI,
+                true);
+
+        mockWifiActivityInfo(1000, 600, 100, 2000, 3000);
+        mockNetworkStats(1000);
+        mockNetworkStatsEntry(APP_UID1, 4321, 321, 1234, 23);
+        mockNetworkStatsEntry(APP_UID2, 4000, 40, 2000, 20);
+
+        // The collector is configured but not yet enabled, because onSystemReady() has not run.
+        mBatteryStats.updateWifiState(
+                new WifiActivityEnergyInfo(1000, 0, 100, 600, 2000, 3000),
+                BatteryStats.POWER_DATA_UNAVAILABLE, 10000, 10000,
+                mock(NetworkStatsManager.class));
+
+        WifiBatteryStats stats = mBatteryStats.getWifiBatteryStats();
+        assertThat(stats.getNumBytesRx()).isEqualTo(0);
+        assertThat(stats.getNumBytesTx()).isEqualTo(0);
+
+        // The first collector sample records the traffic accumulated since boot exactly once.
+        mBatteryStats.onSystemReady(mContext);
+        mStatsRule.waitForBackgroundThread();
+
+        stats = mBatteryStats.getWifiBatteryStats();
+        assertThat(stats.getNumPacketsRx()).isEqualTo(361);
+        assertThat(stats.getNumBytesRx()).isEqualTo(8321);
+        assertThat(stats.getNumPacketsTx()).isEqualTo(43);
+        assertThat(stats.getNumBytesTx()).isEqualTo(3234);
+
+        BatteryStats.Uid uid1 = mBatteryStats.getUidStatsLocked(APP_UID1);
+        assertThat(uid1.getNetworkActivityBytes(
+                BatteryStats.NETWORK_WIFI_RX_DATA, BatteryStats.STATS_SINCE_CHARGED))
+                .isEqualTo(4321);
+        assertThat(uid1.getNetworkActivityBytes(
+                BatteryStats.NETWORK_WIFI_TX_DATA, BatteryStats.STATS_SINCE_CHARGED))
+                .isEqualTo(1234);
     }
 
     private PowerStats collectPowerStats(boolean hasPowerReporting) {

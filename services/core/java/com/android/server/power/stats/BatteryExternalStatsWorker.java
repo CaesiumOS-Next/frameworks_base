@@ -485,26 +485,36 @@ public class BatteryExternalStatsWorker implements BatteryStatsImpl.ExternalStat
                 getEnergyConsumersLocked(updateFlags);
 
         if ((updateFlags & BatteryStatsImpl.ExternalStatsSync.UPDATE_WIFI) != 0) {
-            // We were asked to fetch WiFi data.
-            // Only fetch WiFi power data if it is supported.
-            if (mWifiManager != null && mWifiManager.isEnhancedPowerReportingSupported()) {
-                SynchronousResultReceiver tempWifiReceiver = new SynchronousResultReceiver("wifi");
-                mWifiManager.getWifiActivityEnergyInfoAsync(
-                        new Executor() {
-                            @Override
-                            public void execute(Runnable runnable) {
-                                // run the listener on the binder thread, if it was run on the main
-                                // thread it would deadlock since we would be waiting on ourselves
-                                runnable.run();
+            @SuppressWarnings("GuardedBy")
+            PowerStatsCollector collector = mStats.getPowerStatsCollector(
+                    BatteryConsumer.POWER_COMPONENT_WIFI);
+            if (collector != null && collector.isEnabled()) {
+                collector.schedule();
+            } else {
+                // We were asked to fetch WiFi data.
+                // Only fetch WiFi power data if it is supported.
+                if (mWifiManager != null && mWifiManager.isEnhancedPowerReportingSupported()) {
+                    SynchronousResultReceiver tempWifiReceiver =
+                            new SynchronousResultReceiver("wifi");
+                    mWifiManager.getWifiActivityEnergyInfoAsync(
+                            new Executor() {
+                                @Override
+                                public void execute(Runnable runnable) {
+                                    // run the listener on the binder thread, if it was run on the
+                                    // main thread it would deadlock since we would be waiting on
+                                    // ourselves
+                                    runnable.run();
+                                }
+                            },
+                            info -> {
+                                Bundle bundle = new Bundle();
+                                bundle.putParcelable(
+                                        BatteryStats.RESULT_RECEIVER_CONTROLLER_KEY, info);
+                                tempWifiReceiver.send(0, bundle);
                             }
-                        },
-                        info -> {
-                            Bundle bundle = new Bundle();
-                            bundle.putParcelable(BatteryStats.RESULT_RECEIVER_CONTROLLER_KEY, info);
-                            tempWifiReceiver.send(0, bundle);
-                        }
-                );
-                wifiReceiver = tempWifiReceiver;
+                    );
+                    wifiReceiver = tempWifiReceiver;
+                }
             }
             synchronized (mStats) {
                 mStats.updateRailStatsLocked();
