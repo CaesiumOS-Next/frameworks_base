@@ -418,7 +418,12 @@ public class BatteryExternalStatsWorker implements BatteryStatsImpl.ExternalStat
         if ((updateFlags & BatteryStatsImpl.ExternalStatsSync.UPDATE_WIFI) != 0) {
             // We were asked to fetch WiFi data.
             // Only fetch WiFi power data if it is supported.
-            if (mWifiManager != null && mWifiManager.isEnhancedPowerReportingSupported()) {
+            @SuppressWarnings("GuardedBy")
+            PowerStatsCollector collector = mStats.getPowerStatsCollector(
+                    BatteryConsumer.POWER_COMPONENT_WIFI);
+            if (collector.isEnabled()) {
+                collector.schedule();
+            } else if (mWifiManager != null && mWifiManager.isEnhancedPowerReportingSupported()) {
                 SynchronousResultReceiver tempWifiReceiver = new SynchronousResultReceiver("wifi");
                 mWifiManager.getWifiActivityEnergyInfoAsync(
                         new Executor() {

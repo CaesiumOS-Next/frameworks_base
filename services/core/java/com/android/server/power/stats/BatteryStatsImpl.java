@@ -11380,6 +11380,9 @@ public class BatteryStatsImpl extends BatteryStats {
     public void updateWifiState(@Nullable final WifiActivityEnergyInfo info,
             long elapsedRealtimeMs, long uptimeMs,
             @NonNull NetworkStatsManager networkStatsManager) {
+        if (mWifiPowerStatsCollector.isEnabled()) {
+            return;
+        }
         if (DEBUG_ENERGY) {
             synchronized (mWifiNetworkLock) {
                 Slog.d(TAG, "Updating wifi stats: " + Arrays.toString(mWifiIfaces));
