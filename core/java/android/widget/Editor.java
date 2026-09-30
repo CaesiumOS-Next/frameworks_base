@@ -6201,8 +6201,6 @@ public class Editor {
         // Distance from edge of horizontally scrolling text view
         // to use to switch to character mode.
         private final float mTextViewEdgeSlop;
-        // Used to save text view location.
-        private final int[] mTextViewLocation = new int[2];
 
         public SelectionHandleView(Drawable drawableLtr, Drawable drawableRtl, int id,
                 @HandleType int handleType) {
@@ -6501,17 +6499,16 @@ public class Editor {
         }
 
         private boolean positionNearEdgeOfScrollingView(float x, boolean atRtl) {
-            mTextView.getLocationOnScreen(mTextViewLocation);
-            boolean nearEdge;
+            // x is relative to the TextView, as passed to getOffsetAtCoordinate().
+            // Use viewport edges in that same coordinate space. TextView performs
+            // the separate padding/scroll conversion when resolving a text offset.
             if (atRtl == isStartHandle()) {
-                int rightEdge = mTextViewLocation[0] + mTextView.getWidth()
-                        - mTextView.getPaddingRight();
-                nearEdge = x > rightEdge - mTextViewEdgeSlop;
+                final int rightEdge = mTextView.getWidth() - mTextView.getPaddingRight();
+                return x > rightEdge - mTextViewEdgeSlop;
             } else {
-                int leftEdge = mTextViewLocation[0] + mTextView.getPaddingLeft();
-                nearEdge = x < leftEdge + mTextViewEdgeSlop;
+                final int leftEdge = mTextView.getPaddingLeft();
+                return x < leftEdge + mTextViewEdgeSlop;
             }
-            return nearEdge;
         }
 
         @Override
