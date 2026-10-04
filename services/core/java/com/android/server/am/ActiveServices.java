@@ -9227,7 +9227,7 @@ public final class ActiveServices {
             // Allow FGS while-in-use if the WindowManager allows background activity start.
             // This is mainly to get the 10 seconds grace period if any activity in the caller has
             // either started or finished very recently. The binding flag
-            // BIND_ALLOW_BACKGROUND_ACTIVITY_STARTS is also allowed by the check here.
+            // BIND_ALLOW_ACTIVITY_STARTS is also allowed by the check here.
             final Integer allowedType = mAm.mProcessList.searchEachLruProcessesLOSP(false, pr -> {
                 if (pr.uid == callingUid) {
                     if (pr.getWindowProcessController().areBackgroundFgsStartsAllowed()) {
