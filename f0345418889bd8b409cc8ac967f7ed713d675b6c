@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0cdd0458_22e24d45",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1101726
+      },
+      "writtenOn": "2026-10-05T03:17:31Z",
+      "side": 1,
+      "message": "Please file a bug with some context so it can be prioritized. It is not clear why BIND_ALLOW_BACKGROUND_ACTIVITY_STARTS is not relevant here.",
+      "revId": "f0345418889bd8b409cc8ac967f7ed713d675b6c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
