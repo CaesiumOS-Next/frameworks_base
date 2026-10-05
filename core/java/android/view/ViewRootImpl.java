@@ -642,6 +642,7 @@ public final class ViewRootImpl implements ViewParent,
     private boolean mUseMTRenderer;
     private boolean mPendingDragResizing;
     private boolean mDragResizing;
+    private boolean mDragResizeCropApplied;
     private boolean mInvalidateRootRequested;
     private int mCanvasOffsetX;
     private int mCanvasOffsetY;
@@ -9497,6 +9498,12 @@ public final class ViewRootImpl implements ViewParent,
                 // resizing to a larger size).
                 mTransaction.setWindowCrop(mSurfaceControl,
                         mWinFrameInScreen.width(), mWinFrameInScreen.height());
+                mDragResizeCropApplied = true;
+            } else if (mDragResizeCropApplied) {
+                // Drag-resize ended: remove its crop so a later resize to a larger size is not
+                // clipped to the last drag frame.
+                mDragResizeCropApplied = false;
+                mTransaction.setWindowCrop(mSurfaceControl, new Rect(0, 0, -1, -1));
             } else if (!HardwareRenderer.isDrawingEnabled()) {
                 // When drawing is disabled the window layer won't have a valid buffer.
                 // Set a window crop so input can get delivered to the window.
