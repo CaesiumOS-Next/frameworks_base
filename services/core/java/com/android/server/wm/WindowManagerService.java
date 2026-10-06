@@ -4250,11 +4250,25 @@ public class WindowManagerService extends IWindowManager.Stub
      */
     public void moveUserToForeground(@UserIdInt int newUserId, UserState uss, String reason) {
         boolean homeInFront = mAtmService.mInternal.switchUser(newUserId, uss);
-        if (homeInFront) {
+        final boolean shouldStartHome = shouldStartHomeOnUserSwitch(newUserId, homeInFront);
+        if (shouldStartHome) {
             mAtmService.mInternal.startHomeActivity(newUserId, reason);
         } else {
             mAtmService.mInternal.resumeTopActivities(false /* scheduleIdle */);
         }
+    }
+
+    private boolean shouldStartHomeOnUserSwitch(@UserIdInt int userId, boolean homeInFront) {
+        if (!homeInFront) {
+            return false;
+        }
+
+        // At boot, home can be resumed before a queued user-switch transition is collected.
+        // Starting home again would deliver a duplicate HOME intent to the already resumed task.
+        final ActivityRecord home = mRoot.getDefaultTaskDisplayArea()
+                .getHomeActivityForUser(userId);
+        return home == null || home.finishing
+                || !home.isState(ActivityRecord.State.RESUMED);
     }
 
     /* Called by WindowState */
