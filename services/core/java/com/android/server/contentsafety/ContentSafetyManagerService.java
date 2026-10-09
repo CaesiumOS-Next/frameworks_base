@@ -787,6 +787,15 @@ public class ContentSafetyManagerService extends SystemService {
     private void ensureRemoteContentSafetyServicesInitialized() {
         synchronized (mLock) {
             setRemoteServiceComponentNames();
+            // Bind the remote services within the calling user, not hard-coded USER_SYSTEM.
+            // On HSUM devices (headless system user) the foreground user is never user 0:
+            // binding as USER_SYSTEM puts the remote service in a different user (and app UID)
+            // than the caller, so the CHECK_CONTENT_SAFETY permission enforced on every
+            // callback into this service fails with a SecurityException (KITTYHAWK-25089,
+            // all 6 CtsContentSafetyServiceTestCases fail under HSUM, pass with HSUM off).
+            // This is consistent with requestIsFeatureEnabled(), which already forwards
+            // Binder.getCallingUserHandle() as the user performing the request.
+            final int bindingUserId = Binder.getCallingUserHandle().getIdentifier();
 
             if (mRemoteContentSafetySettingsService == null) {
                 // System Service connect to the remote settings service with its own permission.
@@ -799,7 +808,7 @@ public class ContentSafetyManagerService extends SystemService {
                         new RemoteContentSafetySettingsService(
                                 mContext,
                                 mContentSafetySettingsComponentName,
-                                UserHandle.SYSTEM.getIdentifier());
+                                bindingUserId);
             }
 
             if (mIsSandboxedServicePcc) {
@@ -813,7 +822,7 @@ public class ContentSafetyManagerService extends SystemService {
                                             Manifest.permission
                                                     .BIND_SANDBOXED_CONTENT_SAFETY_SERVICE));
                     mRemoteContentSafetyPccService = mPccServiceConnectionFactory.create(
-                            mContentSafetyPccComponentName);
+                            mContentSafetyPccComponentName, bindingUserId);
                 }
                 mRemoteSandboxedService = mRemoteContentSafetyPccService;
             } else {
@@ -828,7 +837,7 @@ public class ContentSafetyManagerService extends SystemService {
                                                     .BIND_SANDBOXED_CONTENT_SAFETY_SERVICE));
                     mRemoteContentSafetyIsolatedService =
                             mIsolatedServiceConnectionFactory.create(
-                                    mContentSafetyIsolatedComponentName);
+                                    mContentSafetyIsolatedComponentName, bindingUserId);
                 }
                 mRemoteSandboxedService = mRemoteContentSafetyIsolatedService;
             }
@@ -843,7 +852,7 @@ public class ContentSafetyManagerService extends SystemService {
                         new RemoteContentSafetyService(
                                 mContext,
                                 mContentSafetyComponentName,
-                                UserHandle.SYSTEM.getIdentifier());
+                                bindingUserId);
             }
 
             // setup ServiceLifeCycleCallbacks for the Settings Service
@@ -1143,7 +1152,8 @@ public class ContentSafetyManagerService extends SystemService {
         }
 
 
-        RemoteContentSafetySandboxedService create(@NonNull ComponentName componentName) {
+        RemoteContentSafetySandboxedService create(
+                @NonNull ComponentName componentName, int userId) {
             Intent remoteSandboxedServiceIntent =
                     new Intent(ContentSafetySandboxedService.SERVICE_INTERFACE)
                             .setComponent(componentName)
@@ -1153,7 +1163,7 @@ public class ContentSafetyManagerService extends SystemService {
                             mContext,
                             remoteSandboxedServiceIntent,
                             mBindingFlags,
-                            UserHandle.SYSTEM.getIdentifier(),
+                            userId,
                             IContentSafetySandboxedService.Stub::asInterface,
                             mSandboxedServiceType);
             connection.connect();

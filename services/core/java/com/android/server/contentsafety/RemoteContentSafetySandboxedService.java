@@ -88,7 +88,12 @@ public class RemoteContentSafetySandboxedService
                             "bindService failure mSandboxedServiceType = " + mSandboxedServiceType);
                 }
             } else {
-                mContext.bindService(mIntent, serviceConnection, mBindingFlags);
+                bindResult = mContext.bindService(mIntent, serviceConnection, mBindingFlags);
+                if (!bindResult) {
+                    Slog.w(
+                            TAG,
+                            "bindService failure mSandboxedServiceType = " + mSandboxedServiceType);
+                }
             }
             return bindResult;
         } catch (IllegalArgumentException e) {
