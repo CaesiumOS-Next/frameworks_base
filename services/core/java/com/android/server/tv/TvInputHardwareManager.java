@@ -168,6 +168,28 @@ class TvInputHardwareManager implements TvInputHal.Callback {
             filter.addAction(AudioManager.STREAM_MUTE_CHANGED_ACTION);
             mContext.registerReceiver(mVolumeReceiver, filter);
             updateVolume();
+            mAudioManager.setAudioServerStateCallback(
+                    mContext.getMainExecutor(),
+                    new AudioManager.AudioServerStateCallback() {
+                        @Override
+                        public void onAudioServerDown() {
+                            Slog.i(TAG, "audioserver is down.");
+                        }
+
+                        @Override
+                        public void onAudioServerUp() {
+                            Slog.i(TAG, "audioserver is up.");
+                            synchronized (mLock) {
+                                for (int i = 0; i < mConnections.size(); ++i) {
+                                    TvInputHardwareImpl impl =
+                                            mConnections.valueAt(i).getHardwareImplLocked();
+                                    if (impl != null) {
+                                        impl.handleAudioServerRestarted();
+                                    }
+                                }
+                            }
+                        }
+                    });
         }
     }
 
@@ -1338,6 +1360,14 @@ class TvInputHardwareManager implements TvInputHal.Callback {
         private void handleAudioSinkUpdated() {
             synchronized (mImplLock) {
                 updateAudioConfigLocked();
+            }
+        }
+
+        private void handleAudioServerRestarted() {
+            synchronized (mImplLock) {
+                if (!mReleased && mActiveConfig != null) {
+                    updateAudioConfigLocked();
+                }
             }
         }
 
