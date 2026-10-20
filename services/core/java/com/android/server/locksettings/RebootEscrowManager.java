@@ -187,6 +187,16 @@ class RebootEscrowManager {
     private boolean mLoadEscrowDataWithRetry = false;
 
     /**
+     * Set once the reboot escrow load flow for this boot has settled (restore succeeded, failed,
+     * or there was nothing to restore). Guarded by {@link #mEscrowLoadSettledCallbacks}.
+     */
+    private boolean mEscrowLoadSettled = false;
+    /**
+     * Callbacks to invoke once the reboot escrow load flow settles. Also used as the lock for
+     * itself and {@link #mEscrowLoadSettled}.
+     */
+    private final ArrayList<Runnable> mEscrowLoadSettledCallbacks = new ArrayList<>();
+    /**
      * Hold this lock when checking or generating the reboot escrow key.
      */
     private final Object mKeyGenerationLock = new Object();
@@ -496,6 +506,7 @@ class RebootEscrowManager {
             Slog.i(TAG, "No reboot escrow data found for users,"
                     + " skipping loading escrow data");
             clearMetricsStorage();
+            notifyEscrowLoadSettled();
             return;
         }
 
@@ -750,6 +761,60 @@ class RebootEscrowManager {
 
         if (mWakeLock != null) {
             mWakeLock.release();
+        }
+
+        notifyEscrowLoadSettled();
+    }
+    /**
+     * Runs {@code callback} once the reboot escrow load flow for this boot has settled
+     * (restore succeeded, failed, or there was nothing to restore). If it has already
+     * settled — including when reboot escrow is not in use at all — the callback runs
+     * immediately on the calling thread; otherwise it runs on the thread that settles
+     * the flow.
+     *
+     * <p>Note: callers must not rely on this to wait indefinitely; the load flow itself
+     * is bounded by {@link Injector#getLoadEscrowTimeoutMillis}.
+     */
+    void runWhenEscrowLoadSettled(@NonNull Runnable callback) {
+        Objects.requireNonNull(callback);
+        synchronized (mEscrowLoadSettledCallbacks) {
+            if (!mEscrowLoadSettled) {
+                mEscrowLoadSettledCallbacks.add(callback);
+                return;
+            }
+        }
+        callback.run();
+    }
+    /** Returns true when the reboot escrow load flow for this boot has settled. */
+    boolean isEscrowLoadSettled() {
+        synchronized (mEscrowLoadSettledCallbacks) {
+            return mEscrowLoadSettled;
+        }
+    }
+    /**
+     * Returns true if there is reboot escrow data waiting to be restored this boot and the
+     * restore flow has not yet settled. Uses the same user filtering as
+     * {@link #loadRebootEscrowDataIfAvailable}, so this is true exactly when that method will
+     * (or is still trying to) perform a restore.
+     */
+    boolean hasPendingRebootEscrowData() {
+        if (isEscrowLoadSettled()) {
+            return false;
+        }
+        return !getUsersToUnlock(mUserManager.getUsers()).isEmpty();
+    }
+    private void notifyEscrowLoadSettled() {
+        final ArrayList<Runnable> callbacks;
+        synchronized (mEscrowLoadSettledCallbacks) {
+            if (mEscrowLoadSettled) {
+                return;
+            }
+            mEscrowLoadSettled = true;
+            callbacks = new ArrayList<>(mEscrowLoadSettledCallbacks);
+            mEscrowLoadSettledCallbacks.clear();
+        }
+        for (int i = 0; i < callbacks.size(); i++) {
+            callbacks.get(i).run();
         }
     }
 

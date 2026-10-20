@@ -38,12 +38,15 @@ import android.util.Log;
 
 import com.android.internal.R;
 import com.android.internal.annotations.VisibleForTesting;
+import com.android.server.LocalServices;
 import com.android.server.am.ActivityManagerService;
+import com.android.server.locksettings.LockSettingsInternal;
 import com.android.server.utils.Slogf;
 import com.android.server.utils.TimingsTraceAndSlog;
 
 import java.io.PrintWriter;
 import java.lang.ref.WeakReference;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 /**
  * Class responsible for booting the device in the proper user on headless system user mode.
@@ -64,7 +67,14 @@ public final class HsumBootUserInitializer {
      */
     @VisibleForTesting
     static final String SYSPROP_DESIGNATE_MAIN_USER = "fw.designate_main_user_on_boot";
-
+    /**
+     * Upper bound on how long {@link #maybeDeferSwitchForRebootEscrow} may hold the boot-user
+     * switch while waiting for the resume-on-reboot escrow restore to settle. Deliberately well
+     * below the escrow flow's own 3-minute network/load timeout (so a boot with no usable
+     * connectivity does not sit on the headless system user for that long), and comfortably above
+     * a typical boot-time Wi-Fi connect plus escrow-server round-trip.
+     */
+    private static final long MAX_SWITCH_DEFERRAL_FOR_REBOOT_ESCROW_MILLIS = 60_000;
     // Lazy-instantiated on createInstance()
     private static @Nullable Dumpable sDumpable;
 
@@ -498,6 +508,52 @@ public final class HsumBootUserInitializer {
     }
 
     private void switchToBootUser(@UserIdInt int bootUserId) {
+        if (bootUserId != UserHandle.USER_SYSTEM && maybeDeferSwitchForRebootEscrow(bootUserId)) {
+            return;
+        }
+        switchToBootUserNow(bootUserId);
+    }
+    /**
+     * Defers the boot-user switch while a resume-on-reboot (reboot escrow) restore is pending.
+     *
+     * <p>On headless-system-user-mode devices the boot-time foreground switch away from the
+     * system user makes the Wi-Fi framework tear down connectivity until the target user's CE
+     * storage is unlocked — but unlocking that storage is exactly what the server-based reboot
+     * escrow restore needs the network for. Switching immediately therefore starves the escrow
+     * restore of connectivity and it fails at its timeout, delaying the target user's unlock and
+     * BOOT_COMPLETED (see KITTYHAWK-24942). Deferring the switch until the escrow flow settles
+     * lets the restore complete on the connectivity the system user still owns; on boots with no
+     * pending escrow data (every boot except the first one after an OTA armed with RoR) this
+     * defers nothing.
+     *
+     * @return true if the switch was deferred and will be performed asynchronously.
+     */
+    private boolean maybeDeferSwitchForRebootEscrow(@UserIdInt int bootUserId) {
+        final LockSettingsInternal lockSettings =
+                LocalServices.getService(LockSettingsInternal.class);
+        if (lockSettings == null || !lockSettings.hasPendingRebootEscrowData()) {
+            return false;
+        }
+        Slogf.i(TAG, "Deferring switch to boot user %d until the resume-on-reboot escrow "
+                + "restore settles (switching now would tear down the connectivity the restore "
+                + "depends on)", bootUserId);
+        final AtomicBoolean switched = new AtomicBoolean(false);
+        final Handler handler = new Handler(Looper.getMainLooper());
+        final Runnable doSwitch = () -> {
+            if (switched.compareAndSet(false, true)) {
+                switchToBootUserNow(bootUserId);
+            }
+        };
+        lockSettings.runWhenRebootEscrowLoadSettled(() -> handler.post(doSwitch));
+        // Safety net: never leave the device on the headless system user for long. This is
+        // deliberately well below the escrow flow's own network/load timeout so a boot with no
+        // usable connectivity is not held on the system user for the full escrow timeout, and
+        // comfortably above a typical boot-time Wi-Fi connect + escrow server round-trip.
+        handler.postDelayed(doSwitch, MAX_SWITCH_DEFERRAL_FOR_REBOOT_ESCROW_MILLIS);
+        return true;
+    }
+    private void switchToBootUserNow(@UserIdInt int bootUserId) {
+
         Slogf.i(TAG, "Switching to boot user %d", bootUserId);
         if (bootUserId == UserHandle.USER_SYSTEM) {
             // System user is already the foreground user, so onUserSwitching() will not be called

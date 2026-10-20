@@ -4190,6 +4190,14 @@ public class LockSettingsService extends ILockSettings.Stub {
         }
 
         @Override
+        public void runWhenRebootEscrowLoadSettled(@NonNull Runnable callback) {
+            mRebootEscrowManager.runWhenEscrowLoadSettled(callback);
+        }
+        @Override
+        public boolean hasPendingRebootEscrowData() {
+            return mRebootEscrowManager.hasPendingRebootEscrowData();
+        }
+        @Override        
         public void refreshStrongAuthTimeout(int userId) {
             mStrongAuth.refreshStrongAuthTimeout(userId);
         }

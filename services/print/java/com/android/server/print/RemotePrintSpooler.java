@@ -14,6 +14,14 @@
  * limitations under the License.
  */
 
+/*
+ * Portions of this file are copyright (c) 2026 Amazon.com, Inc. or its affiliates.  All rights reserved.
+ *
+ * PORTIONS OF THIS FILE ARE AMAZON PROPRIETARY/CONFIDENTIAL.  USE IS SUBJECT TO LICENSE TERMS.
+ *
+ * Amazon modifications are indicated by [fosmod_* comments].
+ */
+
 package com.android.server.print;
 
 import android.annotation.FloatRange;
@@ -641,6 +649,25 @@ final class RemotePrintSpooler {
             } else {
                 flags = Context.BIND_AUTO_CREATE | Context.BIND_FOREGROUND_SERVICE;
             }
+            // [fosmod_print_spooler_bind_fail_fast] begin
+            final boolean bound = mContext.bindServiceAsUser(mIntent, mServiceConnection, flags,
+                    mUserHandle);
+            if (!bound) {
+                // The spooler cannot be bound for this user at all, e.g. it is not installed for
+                // the headless system user. No connection will ever arrive, so fail now rather
+                // than parking the calling thread (BackgroundThread on user unlock) for
+                // BIND_SPOOLER_SERVICE_TIMEOUT per call, which starves every other client of
+                // that shared thread.
+                try {
+                    mContext.unbindService(mServiceConnection);
+                } catch (IllegalArgumentException e) {
+                    // Not registered; nothing to release.
+                }
+                throw new TimeoutException("Cannot get spooler! Binding "
+                        + mIntent.getComponent() + " for user "
+                        + mUserHandle.getIdentifier() + " failed");
+            }
+            // [fosmod_print_spooler_bind_fail_fast] end
 
             mContext.bindServiceAsUser(mIntent, mServiceConnection, flags, mUserHandle);
 

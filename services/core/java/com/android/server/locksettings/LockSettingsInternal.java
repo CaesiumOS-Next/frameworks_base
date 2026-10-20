@@ -17,6 +17,7 @@
 package com.android.server.locksettings;
 
 import android.annotation.IntDef;
+import android.annotation.NonNull;
 import android.annotation.Nullable;
 import android.annotation.UserIdInt;
 import android.app.admin.PasswordMetrics;
@@ -204,6 +205,24 @@ public abstract class LockSettingsInternal {
      * @return ARM_ERROR_NONE if the arming worked
      */
     public abstract @ArmRebootEscrowErrorCode int armRebootEscrow();
+    /**
+     * Runs {@code callback} once the resume-on-reboot (reboot escrow) restore flow for this boot
+     * has settled — the escrow key was restored, the restore failed, or there was no escrow data
+     * to restore. If the flow has already settled (including when reboot escrow is not in use),
+     * the callback runs immediately on the calling thread.
+     *
+     * <p>This lets boot-time actions that would tear down connectivity (e.g. the headless system
+     * user mode boot-user switch) wait until the server-based reboot escrow flow no longer needs
+     * the network. The escrow flow itself is time-bounded, so the callback always runs within
+     * that bound.
+     */
+    public abstract void runWhenRebootEscrowLoadSettled(@NonNull Runnable callback);
+    /**
+     * Returns true if there is resume-on-reboot (reboot escrow) data waiting to be restored this
+     * boot and the restore flow has not yet settled. Only true on boots following an update where
+     * reboot escrow was armed; on all other boots this returns false immediately.
+     */
+    public abstract boolean hasPendingRebootEscrowData();
 
 
     /**
