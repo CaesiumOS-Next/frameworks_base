@@ -46,6 +46,7 @@ import android.util.SparseArray;
 
 import com.android.internal.annotations.GuardedBy;
 
+import java.util.List;
 import java.util.Objects;
 
 /**
@@ -121,6 +122,14 @@ public final class StorageSessionController {
 
         StorageUserConnection connection = null;
         synchronized (mLock) {
+            if (mIsResetting) {
+                return;
+            }
+            List<UserHandle> users = mUserManager.getUserHandles(/* excludeDying= */ true);
+            if (!users.contains(UserHandle.of(vol.getMountUserId()))
+                    || !users.contains(UserHandle.of(userId))) {
+                throw new ExternalStorageServiceException("User removed for volume " + sessionId);
+            }
             connection = mConnections.get(userId);
             if (connection == null) {
                 Slog.i(TAG, "Creating connection for user: " + userId);
@@ -294,6 +303,18 @@ public final class StorageSessionController {
             connection.removeAllSessions();
         } else {
             Slog.w(TAG, "No connection found for user: " + userId);
+        }
+    }
+
+    /** Permanently releases the connection owned by a removed user. */
+    public void onUserRemoved(int userId) {
+        final StorageUserConnection connection;
+        synchronized (mLock) {
+            connection = mConnections.get(userId);
+            mConnections.remove(userId);
+        }
+        if (connection != null) {
+            connection.close();
         }
     }
 

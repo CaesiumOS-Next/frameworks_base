@@ -223,12 +223,14 @@ public final class StorageUserConnection {
     }
 
     /**
-     * Closes the connection to the {@link ExternalStorageService}. The connection will typically
-     * be restarted after close.
+    * Permanently closes the connection to the {@link ExternalStorageService} and its worker.
      */
     public void close() {
-        mActiveConnection.close();
-        mHandlerThread.quit();
+        try {
+            mActiveConnection.closePermanently();
+        } finally {
+            mHandlerThread.quit();
+        }
     }
 
     /** Returns all created sessions. */
@@ -292,6 +294,9 @@ public final class StorageUserConnection {
     private final class ActiveConnection implements AutoCloseable {
         private final Object mLock = new Object();
 
+        @GuardedBy("mLock")
+        private boolean mClosedPermanently;
+
         // Lifecycle connection to the external storage service, needed to unbind.
         @GuardedBy("mLock") @Nullable private ServiceConnection mServiceConnection;
 
@@ -306,8 +311,17 @@ public final class StorageUserConnection {
 
         @Override
         public void close() {
+            close(false);
+        }
+
+        void closePermanently() {
+            close(true);
+        }
+
+        private void close(boolean permanently) {
             ServiceConnection oldConnection = null;
             synchronized (mLock) {
+                mClosedPermanently |= permanently;
                 Slog.i(TAG, "Closing connection for user " + mUserId);
                 oldConnection = mServiceConnection;
                 mServiceConnection = null;
@@ -366,6 +380,10 @@ public final class StorageUserConnection {
 
             try {
                 synchronized (mLock) {
+                    if (mClosedPermanently) {
+                        throw new ExternalStorageServiceException(
+                                "Connection closed for user " + mUserId);
+                    }
                     outstandingOps.add(opFuture);
                 }
                 return serviceFuture.thenCompose(service -> {
@@ -462,6 +480,10 @@ public final class StorageUserConnection {
                         "Not ready to bind to the ExternalStorageService for user " + mUserId);
             }
             synchronized (mLock) {
+                if (mClosedPermanently) {
+                    throw new ExternalStorageServiceException(
+                            "Connection closed for user " + mUserId);
+                }
                 if (mRemoteFuture != null) {
                     return mRemoteFuture;
                 }

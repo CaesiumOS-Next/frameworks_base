@@ -899,6 +899,7 @@ class StorageManagerService extends IStorageManager.Stub
                             }
                         }
                     }
+                    mHandler.post(() -> mStorageSessionController.onUserRemoved(userId));
                     mVold.onUserRemoved(userId);
                 }
             } catch (Exception e) {
