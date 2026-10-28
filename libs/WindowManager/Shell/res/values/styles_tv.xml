@@ -18,7 +18,7 @@
 
     <style name="TvPipEduText">
         <item name="android:fontFamily">@string/font_display_medium</item>
-        <item name="android:textAllCaps">true</item>
+        <item name="android:textAllCaps">false</item>
         <item name="android:textFontWeight">700</item>
         <item name="android:textSize">10sp</item>
         <item name="android:lineSpacingExtra">4sp</item>
