@@ -64,13 +64,21 @@ constructor(
      */
     private val mediaControlChipModelLegacy = MutableStateFlow<MediaControlChipModel?>(null)
 
+    private val activeMediaDataForScene: Flow<MediaData?> = snapshotFlow {
+        mediaRepository.currentUserEntries.value.values.firstOrNull { it.active }
+    }
+
     private val _activeMediaDataLegacy = MutableStateFlow<MediaData?>(null)
 
     /**
-     * The first active [MediaData] in the carousel, or null if there is none. Only updated when
-     * [MediaControlsInComposeFlag] is disabled.
+     * The first active [MediaData] in the carousel, or null if there is none.
      */
-    val activeMediaDataLegacy: StateFlow<MediaData?> = _activeMediaDataLegacy.asStateFlow()
+    val activeMediaDataLegacy: StateFlow<MediaData?> =
+        if (MediaControlsInComposeFlag.isEnabled) {
+            activeMediaDataForScene.stateIn(backgroundScope, SharingStarted.WhileSubscribed(), null)
+        } else {
+            _activeMediaDataLegacy.asStateFlow()
+        }
 
     fun updateMediaControlChipModelLegacy(mediaData: MediaData?) {
         if (!MediaControlsInComposeFlag.isEnabled) {

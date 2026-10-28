@@ -115,6 +115,7 @@ fun OngoingActivityChip(
             RoundedCornerShape(dimensionResource(id = R.dimen.ongoing_activity_chip_corner_radius)),
         modifier =
             modifier
+                .keepOffStatusBarEdges()
                 .wrapContentSize()
                 .semantics {
                     if (contentDescription != null) {
@@ -160,6 +161,26 @@ fun OngoingActivityChip(
     ) {
         ChipBody(model, iconViewStore, minWidth = minWidth)
     }
+}
+
+/**
+ * Caps the chip height so that it stays [STATUS_BAR_CHIP_EDGE_GAP] away from the top and bottom of
+ * the status bar, which can be barely taller than the chip.
+ */
+private fun Modifier.keepOffStatusBarEdges(): Modifier = layout { measurable, constraints ->
+    val capped =
+        if (constraints.hasBoundedHeight) {
+            val maxHeight =
+                (constraints.maxHeight - 2 * STATUS_BAR_CHIP_EDGE_GAP.roundToPx()).coerceAtLeast(0)
+            constraints.copy(
+                minHeight = constraints.minHeight.coerceAtMost(maxHeight),
+                maxHeight = maxHeight,
+            )
+        } else {
+            constraints
+        }
+    val placeable = measurable.measure(capped)
+    layout(placeable.width, placeable.height) { placeable.place(0, 0) }
 }
 
 @Composable
@@ -306,6 +327,7 @@ private fun StatusBarIcon(
 }
 
 private const val TAG = "OngoingActivityChip"
+private val STATUS_BAR_CHIP_EDGE_GAP = 3.dp
 // Used for end-to-end tests - if changing this, be sure to change the status bar e2e tests also.
 private const val STATUS_BAR_CHIP_CONTENT_ID = "ongoing_activity_chip_content"
 @IdRes private val CUSTOM_ICON_VIEW_ID = R.id.ongoing_activity_chip_custom_icon

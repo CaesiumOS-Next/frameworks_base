@@ -16,12 +16,14 @@
 
 package com.android.systemui.statusbar.chips.ui.compose
 
+import android.graphics.Typeface
 import androidx.compose.foundation.layout.BoxWithConstraints
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.ExperimentalMaterial3ExpressiveApi
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.drawWithContent
 import androidx.compose.ui.graphics.BlendMode
@@ -33,9 +35,12 @@ import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.res.dimensionResource
+import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.rememberTextMeasurer
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import com.android.systemui.res.R
 import com.android.systemui.statusbar.chips.ui.model.ColorsModel
 import com.android.systemui.statusbar.chips.ui.model.OngoingActivityChipModel
@@ -123,26 +128,27 @@ fun ChipContent(
             val text = viewModel.text
             if (text.isNotBlank()) {
                 if (viewModel.clipAtTimerWidth) {
+                    val clippedTextStyle = rememberClippedTextStyle(textStyle)
                     val timerWidthPx =
                         textMeasurer
-                            .measure(TIMER_WIDTH_SAMPLE, textStyle, softWrap = false)
+                            .measure(TIMER_WIDTH_SAMPLE, clippedTextStyle, softWrap = false)
                             .size
                             .width
                     val hasOverflow =
-                        textMeasurer.measure(text, textStyle, softWrap = false).size.width >
+                        textMeasurer.measure(text, clippedTextStyle, softWrap = false).size.width >
                             timerWidthPx
                     val fadeLength =
                         dimensionResource(id = R.dimen.ongoing_activity_chip_text_fading_edge_length)
                     Text(
                         text = text,
                         color = textColor,
-                        style = textStyle,
+                        style = clippedTextStyle,
                         softWrap = false,
                         modifier =
                             modifier
                                 .hideTextIfDoesNotFit(
                                     text = TIMER_WIDTH_SAMPLE,
-                                    textStyle = textStyle,
+                                    textStyle = clippedTextStyle,
                                     textMeasurer = textMeasurer,
                                     maxTextWidth = with(density) { timerWidthPx.toDp() },
                                     startPadding = startPadding,
@@ -277,6 +283,25 @@ fun ChipContent(
         is OngoingActivityChipModel.Content.IconOnly -> {
             throw IllegalStateException("ChipContent should only be used if the chip shows text")
         }
+    }
+}
+
+/**
+ * A smaller [TextStyle] in the system font for clipped text, which can be any free text such as a
+ * song title and would otherwise look larger than the other status bar items.
+ */
+@Composable
+private fun rememberClippedTextStyle(base: TextStyle): TextStyle {
+    val context = LocalContext.current
+    return remember(base, context) {
+        val family =
+            context.getString(com.android.internal.R.string.config_headlineFontFamilyMedium)
+        base.copy(
+            fontFamily = FontFamily(Typeface.create(family, Typeface.NORMAL)),
+            fontWeight = null,
+            fontSize = 12.sp,
+            lineHeight = 16.sp,
+        )
     }
 }
 
