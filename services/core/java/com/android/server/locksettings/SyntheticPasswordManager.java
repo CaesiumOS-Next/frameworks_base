@@ -1673,6 +1673,16 @@ class SyntheticPasswordManager {
 
             // Perform verifyChallenge to refresh auth tokens for GK if user password exists.
             result.response = verifyChallenge(gatekeeper, result.syntheticPassword, 0L, userId);
+            if (result.response == null && !credential.isNone()) {
+                // The synthetic password was unwrapped from a credential-verified protector,
+                // so authentication has already succeeded; verifyChallenge() only refreshes
+                // the Gatekeeper auth token and returns null when no SP handle exists on disk.
+                // unlockTokenBasedProtectorInternal() already handles this null by returning OK
+                // with a null payload; do the same here instead of letting null reach
+                // LockSettingsService.reportResultToSoftwareRateLimiter(), where it NPEs and
+                // crash-loops SystemUI.
+                result.response = VerifyCredentialResponse.OK;
+            }
 
             // Upgrade case: store the metrics if the device did not have stored metrics before,
             // should only happen once on old protectors.
