@@ -28,6 +28,7 @@ import com.android.systemui.statusbar.chips.StatusBarChipToHunAnimation
 import com.android.systemui.statusbar.chips.StatusBarChipsLog
 import com.android.systemui.statusbar.chips.call.ui.viewmodel.CallChipViewModel
 import com.android.systemui.statusbar.chips.casttootherdevice.ui.viewmodel.CastToOtherDeviceChipViewModel
+import com.android.systemui.statusbar.chips.media.ui.viewmodel.MediaChipViewModel
 import com.android.systemui.statusbar.chips.notification.ui.viewmodel.NotifChipsViewModel
 import com.android.systemui.statusbar.chips.screenrecord.ui.viewmodel.ScreenRecordChipViewModel
 import com.android.systemui.statusbar.chips.sharetoapp.ui.viewmodel.ShareToAppChipViewModel
@@ -62,6 +63,7 @@ constructor(
     castToOtherDeviceChipViewModel: CastToOtherDeviceChipViewModel,
     callChipViewModel: CallChipViewModel,
     notifChipsViewModel: NotifChipsViewModel,
+    mediaChipViewModel: MediaChipViewModel,
     @DisplayAware displayStateInteractor: DisplayStateInteractor,
     private val screenCaptureRecordFeaturesInteractor: ScreenCaptureRecordFeaturesInteractor,
     private val chipsRefiners: Set<@JvmSuppressWildcards OngoingActivityChipsRefiner>,
@@ -104,6 +106,7 @@ constructor(
         val castToOtherDevice: OngoingActivityChipModel = OngoingActivityChipModel.Inactive(),
         val call: OngoingActivityChipModel = OngoingActivityChipModel.Inactive(),
         val notifs: List<OngoingActivityChipModel.Active> = emptyList(),
+        val media: OngoingActivityChipModel = OngoingActivityChipModel.Inactive(),
     )
 
     /** Bundles all the incoming chips into one object to easily pass to various flows. */
@@ -147,6 +150,7 @@ constructor(
                     )
                 }
             }
+            .combine(mediaChipViewModel.chip) { bundle, media -> bundle.copy(media = media) }
             // Some of the chips could have timers in them and we don't want the start time for
             // those timers to get reset for any reason. So, as soon as any subscriber has requested
             // the chip information, we maintain it forever by using [SharingStarted.Lazily].
@@ -327,7 +331,9 @@ constructor(
         val inactiveChips = mutableListOf<OngoingActivityChipModel.Inactive>()
 
         val sortedChips =
-            with(bundle) { listOf(screenRecord, shareToApp, castToOtherDevice, call) + notifs }
+            with(bundle) {
+                listOf(screenRecord, shareToApp, castToOtherDevice, call) + notifs + media
+            }
 
         var shownSlotsRemaining = MAX_VISIBLE_CHIPS
         for (chip in sortedChips) {

@@ -23,7 +23,12 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.drawWithContent
+import androidx.compose.ui.graphics.BlendMode
+import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.CompositingStrategy
+import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalDensity
@@ -117,21 +122,71 @@ fun ChipContent(
         is OngoingActivityChipModel.Content.Text -> {
             val text = viewModel.text
             if (text.isNotBlank()) {
-                Text(
-                    text = text,
-                    color = textColor,
-                    style = textStyle,
-                    softWrap = false,
-                    modifier =
-                        modifier.hideTextIfDoesNotFit(
-                            text = text,
-                            textStyle = textStyle,
-                            textMeasurer = textMeasurer,
-                            maxTextWidth = maxTextWidth,
-                            startPadding = startPadding,
-                            endPadding = endPadding,
-                        ),
-                )
+                if (viewModel.clipAtTimerWidth) {
+                    val timerWidthPx =
+                        textMeasurer
+                            .measure(TIMER_WIDTH_SAMPLE, textStyle, softWrap = false)
+                            .size
+                            .width
+                    val hasOverflow =
+                        textMeasurer.measure(text, textStyle, softWrap = false).size.width >
+                            timerWidthPx
+                    val fadeLength =
+                        dimensionResource(id = R.dimen.ongoing_activity_chip_text_fading_edge_length)
+                    Text(
+                        text = text,
+                        color = textColor,
+                        style = textStyle,
+                        softWrap = false,
+                        modifier =
+                            modifier
+                                .hideTextIfDoesNotFit(
+                                    text = TIMER_WIDTH_SAMPLE,
+                                    textStyle = textStyle,
+                                    textMeasurer = textMeasurer,
+                                    maxTextWidth = with(density) { timerWidthPx.toDp() },
+                                    startPadding = startPadding,
+                                    endPadding = endPadding,
+                                )
+                                .graphicsLayer {
+                                    if (hasOverflow) {
+                                        compositingStrategy = CompositingStrategy.Offscreen
+                                    }
+                                }
+                                .drawWithContent {
+                                    drawContent()
+                                    if (hasOverflow) {
+                                        drawRect(
+                                            brush =
+                                                Brush.horizontalGradient(
+                                                    colors = listOf(Color.Black, Color.Transparent),
+                                                    startX =
+                                                        (size.width - fadeLength.toPx())
+                                                            .coerceAtLeast(0f),
+                                                    endX = size.width,
+                                                ),
+                                            blendMode = BlendMode.DstIn,
+                                        )
+                                    }
+                                },
+                    )
+                } else {
+                    Text(
+                        text = text,
+                        color = textColor,
+                        style = textStyle,
+                        softWrap = false,
+                        modifier =
+                            modifier.hideTextIfDoesNotFit(
+                                text = text,
+                                textStyle = textStyle,
+                                textMeasurer = textMeasurer,
+                                maxTextWidth = maxTextWidth,
+                                startPadding = startPadding,
+                                endPadding = endPadding,
+                            ),
+                    )
+                }
             }
         }
 
@@ -224,3 +279,6 @@ fun ChipContent(
         }
     }
 }
+
+/** Text with the width of a running chip timer, used to cap clipped text at the same width. */
+private const val TIMER_WIDTH_SAMPLE = "00:00"

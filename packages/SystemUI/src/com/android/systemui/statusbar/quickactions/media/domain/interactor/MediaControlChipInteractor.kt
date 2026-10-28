@@ -31,6 +31,7 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.stateIn
 
@@ -63,9 +64,18 @@ constructor(
      */
     private val mediaControlChipModelLegacy = MutableStateFlow<MediaControlChipModel?>(null)
 
+    private val _activeMediaDataLegacy = MutableStateFlow<MediaData?>(null)
+
+    /**
+     * The first active [MediaData] in the carousel, or null if there is none. Only updated when
+     * [MediaControlsInComposeFlag] is disabled.
+     */
+    val activeMediaDataLegacy: StateFlow<MediaData?> = _activeMediaDataLegacy.asStateFlow()
+
     fun updateMediaControlChipModelLegacy(mediaData: MediaData?) {
         if (!MediaControlsInComposeFlag.isEnabled) {
             mediaControlChipModelLegacy.value = mediaData?.toMediaControlChipModel()
+            _activeMediaDataLegacy.value = mediaData
         }
     }
 

@@ -187,8 +187,13 @@ sealed class OngoingActivityChipModel {
             override val logName = "Countdown($secondsUntilStarted)"
         }
 
-        /** This chip shows the specified [text] in the chip. */
-        data class Text(val text: String) : Content() {
+        /**
+         * This chip shows the specified [text] in the chip.
+         *
+         * @property clipAtTimerWidth true if text wider than a [Timer] should be cut at that width
+         *   and faded out, and false if it should be hidden instead.
+         */
+        data class Text(val text: String, val clipAtTimerWidth: Boolean = false) : Content() {
             override val logName = "Text($text)"
         }
 
