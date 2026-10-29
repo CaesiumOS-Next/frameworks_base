@@ -39,6 +39,11 @@ fun TransitionBuilder.toNotificationsShadeTransition(
     // Ensure the shared elements aren't clipped by the shade outline during the transition from
     // lockscreen.
     sharedElement(
+        LockscreenElementKeys.Clock.Small,
+        enabled = enableSharedElements,
+        elevateInContent = Overlays.NotificationsShade,
+    )
+    sharedElement(
         LockscreenElementKeys.MediaCarousel,
         enabled = enableSharedElements,
         elevateInContent = Overlays.NotificationsShade,
