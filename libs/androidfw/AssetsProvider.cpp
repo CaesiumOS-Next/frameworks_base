@@ -194,6 +194,12 @@ std::unique_ptr<Asset> ZipAssetsProvider::OpenInternal(const std::string& path,
     return {};
   }
 
+  if (entry.method != kCompressStored && entry.method != kCompressDeflated) {
+    LOG(ERROR) << "Unsupported compression method " << entry.method << " for file '" << path
+               << "' in APK '" << name_.GetDebugName() << "'";
+    return {};
+  }
+
   // There's a few apps that do a crazy thing and patch libziparchive's exports to search their
   // separate resource files when the currently configured ones don't have the path.
   // E.g. |com.ataaw.tianyi| just calls FindEntry() again in a different zip_handle, returning
