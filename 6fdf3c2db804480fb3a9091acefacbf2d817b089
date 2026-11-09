@@ -39,6 +39,30 @@
       },
       "revId": "6fdf3c2db804480fb3a9091acefacbf2d817b089",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "824c3a95_57c85d1f",
+        "filename": "services/core/java/com/android/server/inputmethod/InputMethodManagerService.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 3846,
+      "author": {
+        "id": 4874100
+      },
+      "writtenOn": "2026-11-09T11:03:21Z",
+      "side": 1,
+      "message": "getUserData() is @NonNull: it calls UserDataRepository.getOrCreate(), which lazily creates and caches a UserData for any user ID, so it can\u0027t return null here. A null check would be dead code against the @NonNull contract.",
+      "parentUuid": "e19c9788_a99f256a",
+      "range": {
+        "startLine": 3846,
+        "startChar": 0,
+        "endLine": 3846,
+        "endChar": 0
+      },
+      "revId": "6fdf3c2db804480fb3a9091acefacbf2d817b089",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
