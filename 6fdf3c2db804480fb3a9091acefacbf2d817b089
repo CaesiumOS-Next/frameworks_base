@@ -16,6 +16,29 @@
       "message": "Fix this I do not know who or why someone has done this on my phone remove it",
       "revId": "6fdf3c2db804480fb3a9091acefacbf2d817b089",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e19c9788_a99f256a",
+        "filename": "services/core/java/com/android/server/inputmethod/InputMethodManagerService.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 3846,
+      "author": {
+        "id": 1976460
+      },
+      "writtenOn": "2026-11-09T08:53:23Z",
+      "side": 1,
+      "message": "Please fix this WARNING reported by autoreview issue finding: Accessing getUserData(mCurrentImeUserId) without a null check is risky. If the UserData for mCurrentImeUserId is not yet initialized or has been removed, this will throw a NullPointerException.\n\nConsider adding a null check:\n```java\nvar currentImeUserData \u003d getUserData(mCurrentImeUserId);\nif (currentImeUserData !\u003d null) {\n    hideCurrentInputLocked(currentImeUserData.mImeBindingState.mFocusedWindow,\n            0 /* flags */, SoftInputShowHideReason.HIDE_INVALID_USER, mCurrentImeUserId);\n}\n```",
+      "range": {
+        "startLine": 3846,
+        "startChar": 0,
+        "endLine": 3846,
+        "endChar": 0
+      },
+      "revId": "6fdf3c2db804480fb3a9091acefacbf2d817b089",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
