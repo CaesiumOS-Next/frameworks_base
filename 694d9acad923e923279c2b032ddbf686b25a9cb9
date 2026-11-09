@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c2fd3981_cd84aaa1",
+        "filename": "services/core/java/com/android/server/am/UserController.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 2211,
+      "author": {
+        "id": 1976460
+      },
+      "writtenOn": "2026-11-09T08:03:44Z",
+      "side": 1,
+      "message": "Please fix this WARNING reported by Trailing Whitespace: Please remove the trailing whitespace.",
+      "range": {
+        "startLine": 2211,
+        "startChar": 50,
+        "endLine": 2211,
+        "endChar": 51
+      },
+      "revId": "694d9acad923e923279c2b032ddbf686b25a9cb9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
