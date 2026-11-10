@@ -241,7 +241,7 @@ public:
                                             MtpStorageID oldStorage, MtpStorageID newStorage,
                                              MtpObjectHandle handle, bool succeeded);
 
-    virtual MtpResponseCode         beginCopyObject(MtpObjectHandle handle, MtpObjectHandle newParent,
+    virtual MtpObjectHandle         beginCopyObject(MtpObjectHandle handle, MtpObjectHandle newParent,
                                             MtpStorageID newStorage);
     virtual void                    endCopyObject(MtpObjectHandle handle, bool succeeded);
 
@@ -1074,10 +1074,10 @@ void MtpDatabase::endMoveObject(MtpObjectHandle oldParent, MtpObjectHandle newPa
     checkAndClearExceptionFromCallback(env, __FUNCTION__);
 }
 
-MtpResponseCode MtpDatabase::beginCopyObject(MtpObjectHandle handle, MtpObjectHandle newParent,
+MtpObjectHandle MtpDatabase::beginCopyObject(MtpObjectHandle handle, MtpObjectHandle newParent,
         MtpStorageID newStorage) {
     JNIEnv* env = AndroidRuntime::getJNIEnv();
-    MtpResponseCode result = env->CallIntMethod(mDatabase, method_beginCopyObject,
+    MtpObjectHandle result = env->CallIntMethod(mDatabase, method_beginCopyObject,
                 (jint)handle, (jint)newParent, (jint) newStorage);
 
     checkAndClearExceptionFromCallback(env, __FUNCTION__);

@@ -636,7 +636,7 @@ public class MtpDatabase implements AutoCloseable {
         MtpStorageManager.MtpObject parent = newParent == 0 ?
                 mManager.getStorageRoot(newStorage) : mManager.getObject(newParent);
         if (obj == null || parent == null)
-            return MtpConstants.RESPONSE_INVALID_OBJECT_HANDLE;
+            return -1;
         return mManager.beginCopyObject(obj, parent);
     }
 

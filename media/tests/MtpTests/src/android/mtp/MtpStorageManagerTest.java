@@ -1080,6 +1080,21 @@ public class MtpStorageManagerTest {
 
     @Test
     @SmallTest
+    public void testCopyObjectNameExists() {
+        logMethodName();
+        createNewFileNonZero(mainStorageDir);
+        MtpStorageManager.MtpObject fileObj = manager.getObjects(0xFFFFFFFF, 0,
+                mainMtpStorage.getStorageId()).stream()
+                .filter(o -> !o.isDir()).findFirst().get();
+
+        // MtpServer relies on -1 here (kInvalidObjectHandle once it reaches native code).
+        int id = manager.beginCopyObject(fileObj, fileObj.getParent());
+        Assert.assertEquals(id, -1);
+        Assert.assertTrue(manager.checkConsistency());
+    }
+
+    @Test
+    @SmallTest
     public void testRenameObjectSuccess() {
         logMethodName();
         File newFile = createNewFileNonZero(mainStorageDir);
