@@ -12941,6 +12941,30 @@ public class AudioService extends IAudioService.Stub
             provider.onServiceStart(audioPolicy.getPermissionController());
         });
 
+	if (pmi != null) {
+            pmi.getPackageList(new PackageManagerInternal.PackageListObserver() {
+                private void updatePackage(@NonNull String packageName, int uid) {
+                    audioserverExecutor.execute(() -> {
+                        var pkgState = pmi.getPackageStateInternal(packageName);
+                        if (pkgState != null) {
+                            provider.onModifyPackageState(
+                                    uid, makePackageState(pkgState), false /* isRemoved */);
+                        }
+                    });
+                }
+
+                @Override
+                public void onPackageAdded(@NonNull String packageName, int uid) {
+                    updatePackage(packageName, uid);
+                }
+
+                @Override
+                public void onPackageChanged(@NonNull String packageName, int uid) {
+                    updatePackage(packageName, uid);
+                }
+            });
+        }
+
         IntentFilter packageUpdateFilter = new IntentFilter();
         packageUpdateFilter.addAction(ACTION_PACKAGE_ADDED);
         packageUpdateFilter.addAction(ACTION_PACKAGE_REMOVED);
