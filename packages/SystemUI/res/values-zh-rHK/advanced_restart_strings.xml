@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="global_action_restart_system">系統</string>
+    <string name="global_action_restart_download">下載</string>
+</resources>

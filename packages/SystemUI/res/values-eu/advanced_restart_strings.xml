@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="global_action_restart_system">Sistema</string>
+    <string name="global_action_restart_recovery">Berreskuratzea</string>
+    <string name="global_action_restart_bootloader">Abiarazlea</string>
+    <string name="global_action_restart_download">Deskarga</string>
+    <string name="global_action_restart_progress">Berrabiarazten\u2026</string>
+    <string name="global_action_restart_recovery_progress">Berreskuratze modura berrabiarazten\u2026</string>
+    <string name="global_action_restart_bootloader_progress">Abiarazle modura berrabiarazten\u2026</string>
+    <string name="global_action_restart_download_progress">Deskarga modura berrabiarazten\u2026</string>
+</resources>

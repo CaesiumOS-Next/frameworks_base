@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="global_action_restart_more">გადატვირთვა\u2026</string>
+    <string name="global_action_restart_system">სისტემა</string>
+    <string name="global_action_restart_recovery">აღმდგენი</string>
+    <string name="global_action_restart_bootloader">ჩამტვირთავი</string>
+    <string name="global_action_restart_download">ჩატვირთვა</string>
+    <string name="global_action_restart_fastboot">Fastbootd</string>
+    <string name="global_action_restart_progress">გადაიტვირთება\u2026</string>
+    <string name="global_action_restart_recovery_progress">გადაიტვირთება აღმდგენ რეჟიმში\u2026</string>
+    <string name="global_action_restart_bootloader_progress">გადაიტვირთება ჩამტვირთავში\u2026</string>
+    <string name="global_action_restart_download_progress">გადაიტვირთება ჩატვირთვის რეჟიმში\u2026</string>
+    <string name="global_action_restart_fastboot_progress">გადაიტვირთება Fastbootd-რეჟიმში\u2026</string>
+</resources>

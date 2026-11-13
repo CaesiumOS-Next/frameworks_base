@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="global_action_restart_more">Reinicia\u2026</string>
+    <string name="global_action_restart_system">Sistema</string>
+    <string name="global_action_restart_recovery">Recuperació</string>
+    <string name="global_action_restart_bootloader">Bootloader</string>
+    <string name="global_action_restart_download">Descàrrega</string>
+    <string name="global_action_restart_fastboot">Fastbootd</string>
+    <string name="global_action_restart_progress">S\'està reiniciant\u2026</string>
+    <string name="global_action_restart_recovery_progress">S\'està reiniciant al mode de recuperació\u2026</string>
+    <string name="global_action_restart_bootloader_progress">S\'està reiniciant al mode bootloader\u2026</string>
+    <string name="global_action_restart_download_progress">S\'està reiniciant al mode de descàrrega\u2026</string>
+    <string name="global_action_restart_fastboot_progress">S\'està reiniciant al mode fastbootd\u2026</string>
+</resources>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="global_action_restart_system">System</string>
+    <string name="global_action_restart_recovery">Gjenoppretting</string>
+    <string name="global_action_restart_bootloader">Bootloader</string>
+    <string name="global_action_restart_download">Download-modus</string>
+    <string name="global_action_restart_progress">Starter på nytt\u2026</string>
+    <string name="global_action_restart_recovery_progress">Starter på nytt til gjenoppretting-modus\u2026</string>
+    <string name="global_action_restart_bootloader_progress">Starter på nytt til bootloader-modus\u2026</string>
+    <string name="global_action_restart_download_progress">Starter på nytt til download-modus\u2026</string>
+</resources>

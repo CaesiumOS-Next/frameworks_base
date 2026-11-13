@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="global_action_restart_more">Ath-thòisich\u2026</string>
+    <string name="global_action_restart_system">An siostam</string>
+    <string name="global_action_restart_recovery">Aiseag</string>
+    <string name="global_action_restart_bootloader">Bootloader</string>
+    <string name="global_action_restart_download">Luchdadh a-nuas</string>
+    <string name="global_action_restart_fastboot">Fastbootd</string>
+    <string name="global_action_restart_progress">’Ga ath-thòiseachadh\u2026</string>
+    <string name="global_action_restart_recovery_progress">’Ga ath-thòiseachadh gun mhodh aisig\u2026</string>
+    <string name="global_action_restart_bootloader_progress">’Ga ath-thòiseachadh gun mhodh bootloader\u2026</string>
+    <string name="global_action_restart_download_progress">’Ga ath-thòiseachadh gun mhodh luchdaidh a-nuas\u2026</string>
+    <string name="global_action_restart_fastboot_progress">’Ga ath-thòiseachadh gun mhodh fastbootd\u2026</string>
+</resources>

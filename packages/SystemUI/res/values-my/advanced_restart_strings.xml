@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="global_action_restart_more">အစမှ ပြန်စတင်မည် \u2026</string>
+    <string name="global_action_restart_system">စနစ်</string>
+    <string name="global_action_restart_recovery">ပြန်လည်ရယူခြင်း</string>
+    <string name="global_action_restart_bootloader">Bootloader</string>
+    <string name="global_action_restart_download">ဒေါင်းလုပ်မုဒ်</string>
+    <string name="global_action_restart_fastboot">Fastbootd</string>
+    <string name="global_action_restart_progress">အစမှ ပြန်စတင်နေသည် \u2026</string>
+    <string name="global_action_restart_recovery_progress">ပြန်လည်ဆယ်ယူခြင်းမုဒ်ကို ပြန်စတင်နေသည် \u2026</string>
+    <string name="global_action_restart_bootloader_progress">Bootloader မုဒ်ကို ပြန်စတင်နေသည် \u2026</string>
+    <string name="global_action_restart_download_progress">ဒေါင်းလုပ်မုဒ်ကို ပြန်စတင်နေသည် \u2026</string>
+    <string name="global_action_restart_fastboot_progress">Fastbootd မုဒ်ကို ပြန်စတင်နေသည် \u2026</string>
+</resources>

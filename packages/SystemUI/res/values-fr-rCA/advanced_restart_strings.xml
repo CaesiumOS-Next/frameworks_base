@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="global_action_restart_fastboot_progress">Redémarrage en mode fastbootd\u2026</string>
+</resources>

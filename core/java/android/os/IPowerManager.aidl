@@ -80,6 +80,8 @@ interface IPowerManager
     boolean isBatteryDischargePredictionPersonalized();
     boolean isDeviceIdleMode();
     boolean isLightDeviceIdleMode();
+
+    void rebootCustom(boolean confirm, String reason, boolean wait);
     @JavaPassthrough(annotation="@android.annotation.RequiresPermission(anyOf = { android.Manifest.permission.MANAGE_LOW_POWER_STANDBY, android.Manifest.permission.DEVICE_POWER })")
     boolean isLowPowerStandbySupported();
     boolean isLowPowerStandbyEnabled();

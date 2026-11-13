@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="global_action_restart_more">Gnûf inviament\u2026</string>
+    <string name="global_action_restart_system">Sisteme</string>
+    <string name="global_action_restart_recovery">Recovery</string>
+    <string name="global_action_restart_bootloader">Bootloader</string>
+    <string name="global_action_restart_download">Download</string>
+    <string name="global_action_restart_fastboot">Fastbootd</string>
+    <string name="global_action_restart_progress">Gnûf inviament\u2026</string>
+    <string name="global_action_restart_recovery_progress">Gnûf inviament in modalitât recovery\u2026</string>
+    <string name="global_action_restart_bootloader_progress">Gnûf inviament in modalitât bootloader\u2026</string>
+    <string name="global_action_restart_download_progress">Gnûf inviament in modalitât download\u2026</string>
+    <string name="global_action_restart_fastboot_progress">Gnûf inviament in modalitât fastbootd\u2026</string>
+</resources>

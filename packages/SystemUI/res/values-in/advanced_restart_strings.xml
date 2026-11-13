@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="global_action_restart_more">Mulai ulang\u2026</string>
+    <string name="global_action_restart_system">Sistem</string>
+    <string name="global_action_restart_recovery">Recovery</string>
+    <string name="global_action_restart_bootloader">Bootloader</string>
+    <string name="global_action_restart_download">Download</string>
+    <string name="global_action_restart_fastboot">Fastbootd</string>
+    <string name="global_action_restart_progress">Memulai ulang\u2026</string>
+    <string name="global_action_restart_recovery_progress">Memulai ulang ke mode recovery</string>
+    <string name="global_action_restart_bootloader_progress">Memulai ulang ke mode bootloader</string>
+    <string name="global_action_restart_download_progress">Memulai ulang ke mode download</string>
+    <string name="global_action_restart_fastboot_progress">Memulai ulang ke mode fastbootd</string>
+</resources>

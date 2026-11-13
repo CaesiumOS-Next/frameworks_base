@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="global_action_restart_more">Atosaigh\u2026</string>
+    <string name="global_action_restart_system">Córas</string>
+    <string name="global_action_restart_recovery">Aisghabháil</string>
+    <string name="global_action_restart_bootloader">Luchtálaí tosaithe</string>
+    <string name="global_action_restart_download">Íosluchtaigh</string>
+    <string name="global_action_restart_fastboot">Fastbootd</string>
+    <string name="global_action_restart_progress">Ag atosú\u2026</string>
+    <string name="global_action_restart_recovery_progress">Ag atosú go mód athshlánaithe\u2026</string>
+    <string name="global_action_restart_bootloader_progress">Ag atosú go mód an bootloader\u2026</string>
+    <string name="global_action_restart_download_progress">Ag atosú go mód íoslódála\u2026</string>
+    <string name="global_action_restart_fastboot_progress">Ag atosú go mód fastbootd\u2026</string>
+</resources>

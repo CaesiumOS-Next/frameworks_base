@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="global_action_restart_more">Endurræsa\u2026</string>
+    <string name="global_action_restart_system">Kerfi</string>
+    <string name="global_action_restart_recovery">Endurheimting</string>
+    <string name="global_action_restart_bootloader">Ræsistjóri</string>
+    <string name="global_action_restart_download">Niðurhal</string>
+    <string name="global_action_restart_fastboot">Fastbootd</string>
+    <string name="global_action_restart_progress">Endurræsi…\u2026</string>
+    <string name="global_action_restart_recovery_progress">Endurræsi í endurheimtuham\u2026</string>
+    <string name="global_action_restart_bootloader_progress">Endurræsi í ræsistjóraham\u2026</string>
+    <string name="global_action_restart_download_progress">Endurræsi í niðurhalsham\u2026</string>
+    <string name="global_action_restart_fastboot_progress">Endurræsi í fastbootd-ham\u2026</string>
+</resources>

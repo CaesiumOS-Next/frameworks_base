@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="global_action_restart_more">قايتا قوزغات\u2026</string>
+    <string name="global_action_restart_system">سىستېما</string>
+    <string name="global_action_restart_recovery">ئەسلىگە كەلتۈر</string>
+    <string name="global_action_restart_bootloader">قوزغىتىش يۈكلىگۈچ</string>
+    <string name="global_action_restart_download">چۈشۈر</string>
+    <string name="global_action_restart_fastboot">تېز قوزغىتىش</string>
+    <string name="global_action_restart_progress">قايتا قوزغىتىۋاتىدۇ\u2026</string>
+    <string name="global_action_restart_recovery_progress">ئەسلىگە قايتۇرۇش ھالىتىدە قايتا قوزغىتىۋاتىدۇ\u2026</string>
+    <string name="global_action_restart_bootloader_progress">قوزغىتىش يۈكلىگۈچ ھالىتىدە قايتا قوزغىتىۋاتىدۇ\u2026</string>
+    <string name="global_action_restart_download_progress">چۈشۈرۈش ھالىتىدە قايتا قوزغىتىۋاتىدۇ\u2026</string>
+    <string name="global_action_restart_fastboot_progress">تېز قوزغىتىش ھالىتىدە قايتا قوزغىتىۋاتىدۇ\u2026</string>
+</resources>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="global_action_restart_more">Reaniciar\u2026</string>
+    <string name="global_action_restart_system">Sistema</string>
+    <string name="global_action_restart_recovery">Recovery</string>
+    <string name="global_action_restart_bootloader">Cargador d\'arrinque</string>
+    <string name="global_action_restart_download">Descarga</string>
+    <string name="global_action_restart_fastboot">Fastbootd</string>
+    <string name="global_action_restart_progress">Tas reaniciando\u2026</string>
+    <string name="global_action_restart_recovery_progress">Tas reaniciando al recovery\u2026</string>
+    <string name="global_action_restart_bootloader_progress">Tas reaniciando al xestor d\'arrinque\u2026</string>
+    <string name="global_action_restart_download_progress">Tas reaniciando al mou de descarga\u2026</string>
+    <string name="global_action_restart_fastboot_progress">Tas reaniciando al mou fastbootd\u2026</string>
+</resources>

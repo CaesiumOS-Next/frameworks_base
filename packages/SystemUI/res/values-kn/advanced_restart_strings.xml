@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="global_action_restart_system">ವ್ಯವಸ್ಥೆ</string>
+    <string name="global_action_restart_recovery">ಮರುಚೇತರಿಕೆ</string>
+    <string name="global_action_restart_bootloader">Bootloader</string>
+    <string name="global_action_restart_download">ಇಳಿಸು</string>
+    <string name="global_action_restart_progress">ಪುನರಾರಂಭವಾಗುತ್ತಿದೆ\u2026</string>
+    <string name="global_action_restart_recovery_progress">Restarting ರೀತಿಗೆ ಪುನರಾರಂಭವಾಗುತ್ತಿದೆ</string>
+    <string name="global_action_restart_bootloader_progress">Bootloader ರೀತಿಗೆ ಪುನರಾರಂಭವಾಗುತ್ತಿದೆ\u2026</string>
+    <string name="global_action_restart_download_progress">Download ರೀತಿಗೆ ಪುನರಾರಂಭವಾಗುತ್ತಿದೆ\u2026</string>
+</resources>

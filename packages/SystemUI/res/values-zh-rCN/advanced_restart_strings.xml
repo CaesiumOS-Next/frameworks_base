@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="global_action_restart_more">重新启动\u2026</string>
+    <string name="global_action_restart_system">系统</string>
+    <string name="global_action_restart_recovery">恢复模式</string>
+    <string name="global_action_restart_bootloader">引导程序</string>
+    <string name="global_action_restart_download">下载</string>
+    <string name="global_action_restart_fastboot">Fastbootd</string>
+    <string name="global_action_restart_progress">正在重启\u2026</string>
+    <string name="global_action_restart_recovery_progress">重新启动到恢复模式\u2026</string>
+    <string name="global_action_restart_bootloader_progress">重新启动到引导模式\u2026</string>
+    <string name="global_action_restart_download_progress">重新启动到下载模式\u2026</string>
+    <string name="global_action_restart_fastboot_progress">正在重启到 fastbootd 模式\u2026</string>
+</resources>

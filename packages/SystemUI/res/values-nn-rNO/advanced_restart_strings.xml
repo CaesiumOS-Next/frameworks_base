@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="global_action_restart_more">Starta på nytt …</string>
+    <string name="global_action_restart_system">System</string>
+    <string name="global_action_restart_recovery">Recovery</string>
+    <string name="global_action_restart_bootloader">Oppstartslastar</string>
+    <string name="global_action_restart_download">Last ned</string>
+    <string name="global_action_restart_fastboot">Fastbootd</string>
+    <string name="global_action_restart_progress">Startar på nytt …</string>
+    <string name="global_action_restart_recovery_progress">Startar på nytt i recovery-modus …</string>
+    <string name="global_action_restart_bootloader_progress">Startar på nytt i oppstartslastar-modus …</string>
+    <string name="global_action_restart_download_progress">Startar på nytt i nedlastingsmodus …</string>
+    <string name="global_action_restart_fastboot_progress">Startar på nytt i fastbootd-modus …</string>
+</resources>

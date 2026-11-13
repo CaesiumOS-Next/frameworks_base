@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="global_action_restart_more">다시 시작\u2026</string>
+    <string name="global_action_restart_system">시스템</string>
+    <string name="global_action_restart_recovery">복구 모드</string>
+    <string name="global_action_restart_bootloader">부트로더</string>
+    <string name="global_action_restart_download">다운로드</string>
+    <string name="global_action_restart_fastboot">Fastbootd 모드</string>
+    <string name="global_action_restart_progress">다시 시작하는 중\u2026</string>
+    <string name="global_action_restart_recovery_progress">복구 모드로 다시 시작하는 중\u2026</string>
+    <string name="global_action_restart_bootloader_progress">부트로더 모드로 다시 시작하는 중\u2026</string>
+    <string name="global_action_restart_download_progress">다운로드 모드로 다시 시작하는 중\u2026</string>
+    <string name="global_action_restart_fastboot_progress">Fastbootd 모드로 다시 시작하는 중\u2026</string>
+</resources>

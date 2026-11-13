@@ -12718,6 +12718,14 @@ public final class Settings {
                 "power_menu_locked_show_content";
 
         /**
+         * Whether to show advanced restart options in the power menu.
+         *
+         * @hide
+         */
+        @Readable
+        public static final String ADVANCED_REBOOT = "advanced_reboot";
+
+        /**
          * Whether home controls should be accessible from the lockscreen
          *
          * @hide

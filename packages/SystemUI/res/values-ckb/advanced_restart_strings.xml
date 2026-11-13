@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="global_action_restart_more">پێکردنەوە \u2026</string>
+    <string name="global_action_restart_system">سیستم</string>
+    <string name="global_action_restart_recovery">Recovery</string>
+    <string name="global_action_restart_bootloader">Bootloader</string>
+    <string name="global_action_restart_download">داگرتن (Download)</string>
+    <string name="global_action_restart_fastboot">Fastbootd</string>
+    <string name="global_action_restart_progress">پێکردنەوە \u2026</string>
+    <string name="global_action_restart_recovery_progress">پێکردنەوە بۆ دۆخی Recovery \u2026</string>
+    <string name="global_action_restart_bootloader_progress">پێکردنەوە بۆ دۆخی Bootloader \u2026</string>
+    <string name="global_action_restart_download_progress">پێکردنەوە بۆ دۆخی داگرتن \u2026</string>
+    <string name="global_action_restart_fastboot_progress">پێکردنەوە بۆ دۆخی Fastbootd \u2026</string>
+</resources>

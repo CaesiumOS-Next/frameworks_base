@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="global_action_restart_more">אתחול\u2026</string>
+    <string name="global_action_restart_system">מערכת</string>
+    <string name="global_action_restart_recovery">Recovery</string>
+    <string name="global_action_restart_bootloader">מנהל האתחול</string>
+    <string name="global_action_restart_download">הורדה</string>
+    <string name="global_action_restart_fastboot">Fastboot</string>
+    <string name="global_action_restart_progress">מפעיל מחדש\u2026</string>
+    <string name="global_action_restart_recovery_progress">מפעיל מחדש למצב שחזור (Recovery)\u2026</string>
+    <string name="global_action_restart_bootloader_progress">מפעיל מחדש למנהל אתחול (bootloader)\u2026</string>
+    <string name="global_action_restart_download_progress">מפעיל מחדש למצב הורדה\u2026</string>
+    <string name="global_action_restart_fastboot_progress">מפעיל מחדש למצב fastboot\u2026</string>
+</resources>

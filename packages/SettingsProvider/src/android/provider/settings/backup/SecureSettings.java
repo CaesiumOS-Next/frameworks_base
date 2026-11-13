@@ -131,6 +131,7 @@ public class SecureSettings {
         Settings.Secure.QS_AUTO_ADDED_TILES,
         Settings.Secure.CONTROLS_ENABLED,
         Settings.Secure.POWER_MENU_LOCKED_SHOW_CONTENT,
+        Settings.Secure.ADVANCED_REBOOT,
         Settings.Secure.DOZE_ENABLED,
         Settings.Secure.DOZE_ALWAYS_ON,
         Settings.Secure.DOZE_ALWAYS_ON_INACTIVITY_DETECTION,

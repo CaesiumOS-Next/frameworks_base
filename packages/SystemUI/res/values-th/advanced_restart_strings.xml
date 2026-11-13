@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="global_action_restart_more">รีสตาร์ท\u2026</string>
+    <string name="global_action_restart_system">ระบบ</string>
+    <string name="global_action_restart_recovery">กู้คืนระบบ</string>
+    <string name="global_action_restart_bootloader">Bootloader</string>
+    <string name="global_action_restart_download">ดาวน์โหลด</string>
+    <string name="global_action_restart_progress">กำลังเริ่มระบบใหม่\u2026</string>
+    <string name="global_action_restart_recovery_progress">กำลังเริ่มต้นใหม่ในโหมดการกู้คืน\u2026</string>
+    <string name="global_action_restart_bootloader_progress">กำลังเริ่มต้นใหม่ในโหมด bootloader\u2026</string>
+    <string name="global_action_restart_download_progress">กำลังเริ่มต้นใหม่ในโหมด bootloader\u2026</string>
+    <string name="global_action_restart_fastboot_progress">กำลังเริ่มต้นใหม่ในโหมด fastbootd\u2026</string>
+</resources>
