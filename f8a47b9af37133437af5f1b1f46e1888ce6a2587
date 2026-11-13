@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8695dbe3_c72f79b8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1870696
+      },
+      "writtenOn": "2026-11-13T17:57:08Z",
+      "side": 1,
+      "message": "Hi @tyk@google.com Can you please help review this change? Please see b/571870922 for details.\n\nOnce approved, I will cherry-pick it to git_main and to android15+ car branches. Thanks.",
+      "revId": "f8a47b9af37133437af5f1b1f46e1888ce6a2587",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "23a74532_3eddc7ac",
+        "filename": "services/core/java/com/android/server/am/UserController.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 2207,
+      "author": {
+        "id": 1870696
+      },
+      "writtenOn": "2026-11-13T17:57:08Z",
+      "side": 1,
+      "message": "Thanks for tracking down this race condition. I think the suggested fix here makes sense. \nOne question is now we are handling `STATE_STOPPING` here, do we still need to handle it in `continueStartUserInternal()`?\n\n@tyk@google.com WDYT?",
+      "revId": "f8a47b9af37133437af5f1b1f46e1888ce6a2587",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
