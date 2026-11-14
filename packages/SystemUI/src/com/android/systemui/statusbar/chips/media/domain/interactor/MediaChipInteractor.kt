@@ -148,51 +148,51 @@ constructor(
     /** The active media, or null if there is none. */
     val session: StateFlow<MediaChipSessionModel?> =
         combine(activeMediaData, sessionState) { data, state ->
-                data?.let {
-                    val current = state?.takeIf { it.token == data.token }
-                    MediaChipSessionModel(
-                        data = data,
-                        controller = current?.controller,
-                        metadata = current?.metadata,
-                        playbackState = current?.playbackState,
-                    )
-                }
+            data?.let {
+                val current = state?.takeIf { it.token == data.token }
+                MediaChipSessionModel(
+                    data = data,
+                    controller = current?.controller,
+                    metadata = current?.metadata,
+                    playbackState = current?.playbackState,
+                )
             }
+        }
             .stateIn(scope, SharingStarted.WhileSubscribed(), null)
 
     private fun sessionUpdates(token: MediaSession.Token): Flow<SessionState?> =
         callbackFlow {
-                val controller = mediaControllerFactory.create(token)
-                // Only touched on the bgHandler thread, which delivers the callbacks too.
-                var state: SessionState? = null
-                fun update(newState: SessionState?) {
-                    state = newState
-                    trySend(newState)
-                }
-                val callback =
-                    object : MediaController.Callback() {
-                        override fun onMetadataChanged(metadata: MediaMetadata?) {
-                            state?.let { update(it.copy(metadata = metadata)) }
-                        }
-
-                        override fun onPlaybackStateChanged(playbackState: PlaybackState?) {
-                            state?.let { update(it.copy(playbackState = playbackState)) }
-                        }
-
-                        override fun onSessionDestroyed() = update(null)
-                    }
-                controller.registerCallback(callback, bgHandler)
-                bgHandler.post {
-                    update(
-                        SessionState(
-                            token = token,
-                            controller = controller,
-                            metadata = controller.metadata,
-                            playbackState = controller.playbackState,
-                        )
-                    )
-                }
-                awaitClose { controller.unregisterCallback(callback) }
+            val controller = mediaControllerFactory.create(token)
+            // Only touched on the bgHandler thread, which delivers the callbacks too.
+            var state: SessionState? = null
+            fun update(newState: SessionState?) {
+                state = newState
+                trySend(newState)
             }
+            val callback =
+                object : MediaController.Callback() {
+                    override fun onMetadataChanged(metadata: MediaMetadata?) {
+                        state?.let { update(it.copy(metadata = metadata)) }
+                    }
+
+                    override fun onPlaybackStateChanged(playbackState: PlaybackState?) {
+                        state?.let { update(it.copy(playbackState = playbackState)) }
+                    }
+
+                    override fun onSessionDestroyed() = update(null)
+                }
+            controller.registerCallback(callback, bgHandler)
+            bgHandler.post {
+                update(
+                    SessionState(
+                        token = token,
+                        controller = controller,
+                        metadata = controller.metadata,
+                        playbackState = controller.playbackState,
+                    )
+                )
+            }
+            awaitClose { controller.unregisterCallback(callback) }
+        }
             .flowOn(bgDispatcher)
 }
