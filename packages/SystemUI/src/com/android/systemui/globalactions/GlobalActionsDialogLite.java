@@ -1244,8 +1244,8 @@ public class GlobalActionsDialogLite implements DialogInterface.OnDismissListene
         private final Context mContext;
 
         RestartSafeModeAction(Context context) {
-            super(com.android.systemui.res.R.drawable.ic_restart,
-                    com.android.systemui.res.R.string.global_action_restart_safe_mode);
+            super(R.drawable.ic_restart,
+                    R.string.reboot_safemode_title);
             mContext = context;
         }
 
