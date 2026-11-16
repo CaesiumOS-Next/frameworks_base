@@ -4081,8 +4081,14 @@ public class AudioService extends IAudioService.Stub
 
                     boolean playbackDeviceConditions = mHdmiPlaybackClient != null
                             && isFullVolumeDevice(device);
+                    // System Audio mode can remain enabled after media is routed elsewhere.
+                    // Send CEC volume keys only while STREAM_MUSIC is routed to ARC/eARC.
+                    boolean isHdmiSystemAudioDevice =
+                            device == AudioSystem.DEVICE_OUT_HDMI_ARC
+                                    || device == AudioSystem.DEVICE_OUT_HDMI_EARC;
                     boolean tvConditions = mHdmiTvClient != null
                             && mHdmiSystemAudioSupported
+                            && isHdmiSystemAudioDevice
                             && !isAbsoluteVolumeDevice(device)
                             && !isA2dpAbsoluteVolumeDevice(device);
 
