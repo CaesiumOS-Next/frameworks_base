@@ -54,7 +54,7 @@ public final class SharedFilter implements AutoCloseable {
     private Executor mExecutor;
     private Object mCallbackLock = null;
     private boolean mIsClosed = false;
-    private boolean mIsAccessible = true;
+    private volatile boolean mIsAccessible = true;
     private Object mLock = null;
 
     private native int nativeStartSharedFilter();
@@ -70,18 +70,19 @@ public final class SharedFilter implements AutoCloseable {
     }
 
     private void onFilterStatus(int status) {
-        synchronized (mLock) {
-            if (status == STATUS_INACCESSIBLE) {
-                mIsAccessible = false;
-            }
+        if (status == STATUS_INACCESSIBLE) {
+            mIsAccessible = false;
         }
+
         synchronized (mCallbackLock) {
             if (mCallback != null && mExecutor != null) {
                 mExecutor.execute(() -> {
+                    SharedFilterCallback callback;
                     synchronized (mCallbackLock) {
-                        if (mCallback != null) {
-                            mCallback.onFilterStatusChanged(this, status);
-                        }
+                        callback = mCallback;
+                    }
+                    if (callback != null) {
+                        callback.onFilterStatusChanged(this, status);
                     }
                 });
             }
@@ -92,14 +93,16 @@ public final class SharedFilter implements AutoCloseable {
         synchronized (mCallbackLock) {
             if (mCallback != null && mExecutor != null) {
                 mExecutor.execute(() -> {
+                    SharedFilterCallback callback;
                     synchronized (mCallbackLock) {
-                        if (mCallback != null) {
-                            mCallback.onFilterEvent(this, events);
-                        } else {
-                            for (FilterEvent event : events) {
-                                if (event instanceof MediaEvent) {
-                                    ((MediaEvent)event).release();
-                                }
+                        callback = mCallback;
+                    }
+                    if (callback != null) {
+                        callback.onFilterEvent(this, events);
+                    } else {
+                        for (FilterEvent event : events) {
+                            if (event instanceof MediaEvent) {
+                                ((MediaEvent)event).release();
                             }
                         }
                     }
@@ -198,17 +201,17 @@ public final class SharedFilter implements AutoCloseable {
      */
     @Override
     public void close() {
+        synchronized (mCallbackLock) {
+            mCallback = null;
+            mExecutor = null;
+        }
+
         synchronized (mLock) {
             if (mIsClosed) {
                 return;
             }
-            synchronized (mCallbackLock) {
-                mCallback = null;
-                mExecutor = null;
-            }
             nativeSharedClose();
             mIsClosed = true;
-            mCallbackLock = null;
-         }
+        }
     }
 }
