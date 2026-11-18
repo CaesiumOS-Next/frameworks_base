@@ -1472,6 +1472,21 @@ public class WindowProcessController extends ConfigurationContainer<Configuratio
         mAtm.mH.sendMessage(m);
     }
 
+    /** Finishes activities of other processes that {@code requester} started for result. */
+    private void finishActivitiesStartedForResultBy(ActivityRecord requester) {
+        final Task task = requester.getTask();
+        if (task == null) return;
+        final ArrayList<ActivityRecord> waiting = new ArrayList<>();
+        task.forAllActivities(r -> {
+            if (r.resultTo == requester && !r.finishing && r.app != this) {
+                waiting.add(r);
+            }
+        });
+        for (int i = waiting.size() - 1; i >= 0; i--) {
+            waiting.get(i).finishIfPossible("requester-force-stopped", false /* oomAdj */);
+        }
+    }
+
     /**
      * Clean up the activities belonging to this process.
      *
@@ -1498,6 +1513,9 @@ public class WindowProcessController extends ConfigurationContainer<Configuratio
             // visible) activity also resides in the same process. This must be done before removal.
             for (int i = activities.size() - 1; i >= 0; i--) {
                 activities.get(i).makeFinishingLocked();
+            }
+            for (int i = activities.size() - 1; i >= 0; i--) {
+                finishActivitiesStartedForResultBy(activities.get(i));
             }
         }
         for (int i = activities.size() - 1; i >= 0; i--) {
