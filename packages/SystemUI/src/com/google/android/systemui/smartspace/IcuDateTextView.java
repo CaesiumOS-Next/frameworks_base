@@ -15,7 +15,7 @@ import android.util.Log;
 
 import com.android.systemui.plugins.BcSmartspaceDataPlugin;
 
-import com.google.android.systemui.res.R;
+import com.android.systemui.res.R;
 
 import java.util.Locale;
 import java.util.Objects;

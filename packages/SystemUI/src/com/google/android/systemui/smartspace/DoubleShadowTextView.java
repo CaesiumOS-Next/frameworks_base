@@ -7,7 +7,7 @@ import android.widget.TextView;
 
 import androidx.core.graphics.ColorUtils;
 
-import com.google.android.systemui.res.R;
+import com.android.systemui.res.R;
 
 public class DoubleShadowTextView extends TextView {
     public final float mAmbientShadowBlur;

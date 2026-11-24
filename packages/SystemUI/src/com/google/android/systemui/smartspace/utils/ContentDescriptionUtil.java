@@ -3,7 +3,7 @@ package com.google.android.systemui.smartspace.utils;
 import android.util.Log;
 import android.view.View;
 
-import com.google.android.systemui.res.R;
+import com.android.systemui.res.R;
 
 import java.util.Arrays;
 

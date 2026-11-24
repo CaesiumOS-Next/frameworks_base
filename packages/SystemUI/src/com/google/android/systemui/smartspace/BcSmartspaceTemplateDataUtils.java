@@ -8,7 +8,7 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.google.android.systemui.res.R;
+import com.android.systemui.res.R;
 
 import java.util.Map;
 

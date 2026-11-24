@@ -25,7 +25,7 @@ import com.android.launcher3.icons.GraphicsUtils;
 import com.android.systemui.plugins.BcSmartspaceDataPlugin;
 import com.android.systemui.plugins.FalsingManager;
 
-import com.google.android.systemui.res.R;
+import com.android.systemui.res.R;
 import com.google.android.systemui.smartspace.logging.BcSmartspaceCardLoggingInfo;
 import com.google.android.systemui.smartspace.logging.BcSmartspaceCardMetadataLoggingInfo;
 import com.google.android.systemui.smartspace.logging.BcSmartspaceSubcardLoggingInfo;

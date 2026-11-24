@@ -9,7 +9,7 @@ import android.view.ViewGroup;
 
 import com.android.systemui.plugins.BcSmartspaceDataPlugin;
 
-import com.google.android.systemui.res.R;
+import com.android.systemui.res.R;
 
 import java.util.ArrayList;
 import java.util.HashSet;

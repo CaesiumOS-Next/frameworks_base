@@ -19,7 +19,7 @@ import android.widget.LinearLayout;
 import androidx.annotation.Nullable;
 
 import com.android.app.animation.Interpolators;
-import com.google.android.systemui.res.R;
+import com.android.systemui.res.R;
 
 /**
  * Wraps {@link PagerDots} with a {@link PaginationArrow} on either side.

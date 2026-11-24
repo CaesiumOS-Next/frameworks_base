@@ -20,7 +20,7 @@ import com.android.internal.graphics.ColorUtils;
 import com.android.systemui.plugins.BcSmartspaceDataPlugin;
 import com.android.systemui.plugins.FalsingManager;
 
-import com.google.android.systemui.res.R;
+import com.android.systemui.res.R;
 import com.google.android.systemui.smartspace.logging.BcSmartspaceCardLogger;
 import com.google.android.systemui.smartspace.logging.BcSmartspaceCardLoggerUtil;
 import com.google.android.systemui.smartspace.logging.BcSmartspaceCardLoggingInfo;

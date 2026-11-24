@@ -12,7 +12,7 @@ import com.android.systemui.media.NotificationMediaManager
 import com.android.systemui.settings.UserTracker
 import com.android.systemui.statusbar.lockscreen.LockscreenSmartspaceController
 import com.android.systemui.util.concurrency.DelayableExecutor
-import com.google.android.systemui.res.R
+import com.android.systemui.res.R
 import javax.inject.Inject
 
 class KeyguardMediaViewController

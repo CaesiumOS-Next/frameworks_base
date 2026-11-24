@@ -8,7 +8,7 @@ import android.graphics.RectF;
 import android.util.AttributeSet;
 import android.view.View;
 
-import com.google.android.systemui.res.R;
+import com.android.systemui.res.R;
 
 public final class PagerDots extends View {
     public final float activeDotSize;
