@@ -159,6 +159,16 @@ public class StatusBarHeadsUpChangeListener implements OnHeadsUpChangedListener,
                         statusBarWindowController.setForceStatusBarVisible(false, source);
                     }
                 }
+            } else if (SceneContainerFlag.isEnabled()) {
+                // With SceneContainer, HUN animations are managed by Compose via
+                // HeadsUpNotificationViewBinder and NSSL.setHeadsUpAnimatingAway.
+                // The NSSL animation-finished callback (runAfterAnimationFinished) may never
+                // fire because SceneContainer does not use the legacy NSSL animation lifecycle
+                // for HUN transitions. Clear headsUpNotificationShowing immediately to prevent
+                // the NotificationShadeWindow from staying in an expanded/modal state that
+                // blocks Quickstep bottom-edge navigation gestures.
+                mNotificationShadeWindowController.setHeadsUpShowing(false);
+                mNotificationRemoteInputManager.onPanelCollapsed();
             } else {
                 // we need to keep the panel open artificially, let's wait until the
                 //animation

@@ -355,6 +355,14 @@ public final class ShadeTouchableRegionManager implements Dumpable {
                 : shouldObserveForStandardMode();
 
         if (shouldObserve == mShouldAdjustInsets) {
+            // Even when the observer state hasn't changed, we still need to request a layout
+            // pass to re-run onComputeInternalInsets with fresh state (e.g. after a dual shade
+            // overlay closes or a HUN finishes animating). Without this, the touchable region
+            // can remain stale on devices with display cutouts where mShouldAdjustInsets stays
+            // true permanently, blocking Quickstep bottom-edge navigation gestures.
+            if (mShouldAdjustInsets && mNotificationShadeWindowView != null) {
+                mNotificationShadeWindowView.requestLayout();
+            }
             return;
         }
 
